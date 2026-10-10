@@ -1,0 +1,85 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "SYNTHETIC-ISSUE-001",
+    "source": "https://example.invalid/issues/SYNTHETIC-ISSUE-001",
+    "title": "synthetic sample: non-blank label contract",
+    "acceptance_criteria": [
+      {
+        "id": "SYNTHETIC-AC-1",
+        "verbatim": "A label must contain at least one non-whitespace character.",
+        "source": "https://example.invalid/issues/SYNTHETIC-ISSUE-001#ac-1"
+      }
+    ]
+  },
+  "role": "test",
+  "task_id": "SYNTHETIC-TASK-TEST-002",
+  "attempt": 2,
+  "upstream": [
+    {
+      "role": "research-design",
+      "task_id": "SYNTHETIC-TASK-RESEARCH-001",
+      "attempt": 1,
+      "handoff_locator": "examples/research-to-test/research.handoff.json",
+      "revision": "SYNTHETIC-REVISION-1",
+      "relationship": "dependency"
+    },
+    {
+      "role": "test",
+      "task_id": "SYNTHETIC-TASK-TEST-001",
+      "attempt": 1,
+      "handoff_locator": "examples/research-to-test/test.blocked.handoff.json",
+      "revision": "SYNTHETIC-REVISION-1",
+      "relationship": "retry_of"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "synthetic sample: fictional design-plan review only, after Manager supplied AC originals. No product tests were run.",
+  "artifacts": [
+    {
+      "id": "SYNTHETIC-REPORT",
+      "kind": "test-report",
+      "locator": "examples/research-to-test/test-plan-review.md",
+      "revision": "SYNTHETIC-REVISION-2",
+      "summary": "synthetic sample: fictional test-plan review, no implementation execution."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "SYNTHETIC-EVIDENCE-2",
+      "claim": "synthetic sample: proposed cases cover the fictional AC in a test-plan review.",
+      "artifact_ids": [
+        "SYNTHETIC-REPORT"
+      ],
+      "locator": "examples/research-to-test/test-plan-review.md",
+      "observation": "Fictional documentary comparison only; product behavior and CI are unverified."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "SYNTHETIC-AC-1",
+      "disposition": "covered",
+      "scope": "Test-plan review only; this does not certify implemented behavior.",
+      "artifact_ids": [
+        "SYNTHETIC-REPORT"
+      ],
+      "evidence_ids": [
+        "SYNTHETIC-EVIDENCE-2"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "synthetic_sample",
+  "assignment": {
+    "scope": "Test-plan review only; this does not certify implemented behavior.",
+    "ac_ids": [
+      "SYNTHETIC-AC-1"
+    ],
+    "completion_criteria": [
+      "synthetic sample: cover the assigned AC within the stated role scope and record limitations."
+    ]
+  }
+}

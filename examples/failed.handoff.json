@@ -1,0 +1,70 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "SYNTHETIC-ISSUE-001",
+    "source": "https://example.invalid/issues/SYNTHETIC-ISSUE-001",
+    "title": "synthetic sample: non-blank label contract",
+    "acceptance_criteria": [
+      {
+        "id": "SYNTHETIC-AC-1",
+        "verbatim": "A label must contain at least one non-whitespace character.",
+        "source": "https://example.invalid/issues/SYNTHETIC-ISSUE-001#ac-1"
+      }
+    ]
+  },
+  "role": "test",
+  "task_id": "SYNTHETIC-TASK-FAILED-001",
+  "attempt": 1,
+  "upstream": [],
+  "system_status": "completed",
+  "status": "failed",
+  "summary": "synthetic sample: fictional test-plan mismatch.",
+  "artifacts": [
+    {
+      "id": "SYNTHETIC-FAILED-REPORT",
+      "kind": "test-report",
+      "locator": "examples/failed-test-plan-review.md",
+      "revision": "SYNTHETIC-FAILED-REVISION-1",
+      "summary": "synthetic sample: an incomplete alternative plan and its fictional failing review; no product test execution."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "SYNTHETIC-FAILED-EVIDENCE-1",
+      "claim": "synthetic sample: the alternative plan omits whitespace-only rejection cases required for AC coverage.",
+      "artifact_ids": [
+        "SYNTHETIC-FAILED-REPORT"
+      ],
+      "locator": "examples/failed-test-plan-review.md#fictional-review-finding",
+      "observation": "Fictional plan contains only empty-string rejection and single-letter acceptance; whitespace-only inputs are absent. This is a documentary finding, not an actual product-test failure."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "SYNTHETIC-AC-1",
+      "disposition": "not_met",
+      "scope": "Test-plan review only: whitespace-only rejection coverage is missing from the fictional alternative plan. Product behavior is unverified.",
+      "artifact_ids": [
+        "SYNTHETIC-FAILED-REPORT"
+      ],
+      "evidence_ids": [
+        "SYNTHETIC-FAILED-EVIDENCE-1"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [
+    "synthetic sample: required whitespace case missing from a fictional alternative plan."
+  ],
+  "knowledge_candidates": [],
+  "publication": "synthetic_sample",
+  "assignment": {
+    "scope": "Test-plan review only: whitespace-only rejection coverage is missing from the fictional alternative plan. Product behavior is unverified.",
+    "ac_ids": [
+      "SYNTHETIC-AC-1"
+    ],
+    "completion_criteria": [
+      "synthetic sample: cover the assigned AC within the stated role scope and record limitations."
+    ]
+  }
+}

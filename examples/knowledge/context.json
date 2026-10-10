@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "document_type": "knowledge_context",
+  "knowledge_references": [
+    {
+      "id": "SYNTHETIC-ARTICLE-1",
+      "locator": "examples/knowledge/curated-example.md",
+      "revision": "SYNTHETIC-ARTICLE-REVISION-1",
+      "applicability": "synthetic sample: test-plan reviews for string fields requiring a non-whitespace character.",
+      "exceptions": [
+        "synthetic sample: Unicode/runtime behavior requires separate verification."
+      ],
+      "sources": [
+        {
+          "locator": "https://example.invalid/synthetic/design-1",
+          "revision": "SYNTHETIC-REVISION-1"
+        },
+        {
+          "locator": "https://example.invalid/synthetic/design-2",
+          "revision": "SYNTHETIC-REVISION-2"
+        }
+      ],
+      "lifecycle": "draft",
+      "review_trigger": "synthetic sample: re-evaluate before using a different runtime or promoting to active."
+    }
+  ]
+}

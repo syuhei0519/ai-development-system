@@ -1,0 +1,580 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "role": {
+      "const": "knowledge"
+    },
+    "task_id": {
+      "$ref": "#/$defs/text"
+    },
+    "attempt": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+    },
+    "assignment": {
+      "$ref": "#/$defs/assignment"
+    },
+    "raw_findings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/raw_finding"
+      },
+      "minItems": 0
+    },
+    "knowledge_references": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/knowledge_reference"
+      },
+      "minItems": 0
+    },
+    "publication": {
+      "enum": [
+        "synthetic_sample",
+        "public_safe",
+        "private_only"
+      ]
+    },
+    "retry_of": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/retry"
+      },
+      "minItems": 0
+    },
+    "document_type": {
+      "const": "knowledge_handoff"
+    },
+    "system_status": {
+      "enum": [
+        "completed",
+        "failed",
+        "cancelled"
+      ]
+    },
+    "status": {
+      "enum": [
+        "completed",
+        "blocked",
+        "failed"
+      ]
+    },
+    "summary": {
+      "$ref": "#/$defs/text"
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/artifact"
+      },
+      "minItems": 0
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      },
+      "minItems": 0
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/decision"
+      },
+      "minItems": 0
+    },
+    "block_reasons": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/block"
+      },
+      "minItems": 0
+    },
+    "failure_reasons": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/text"
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "schema_version",
+    "role",
+    "task_id",
+    "attempt",
+    "assignment",
+    "raw_findings",
+    "knowledge_references",
+    "publication",
+    "retry_of",
+    "document_type",
+    "system_status",
+    "status",
+    "summary",
+    "artifacts",
+    "evidence",
+    "decisions",
+    "block_reasons",
+    "failure_reasons"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Knowledge handoff v1.0",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "attempt": {
+            "const": 1
+          }
+        },
+        "required": [
+          "attempt"
+        ]
+      },
+      "then": {
+        "properties": {
+          "retry_of": {
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "attempt": {
+            "minimum": 2
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "retry_of": {
+            "minItems": 1,
+            "maxItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "completed"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "system_status": {
+            "const": "completed"
+          },
+          "raw_findings": {
+            "minItems": 1
+          },
+          "artifacts": {
+            "minItems": 1
+          },
+          "evidence": {
+            "minItems": 1
+          },
+          "decisions": {
+            "minItems": 1
+          },
+          "block_reasons": {
+            "maxItems": 0
+          },
+          "failure_reasons": {
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "blocked"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "block_reasons": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "failed"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "failure_reasons": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/text"
+        },
+        "kind": {
+          "enum": [
+            "document",
+            "patch",
+            "commit",
+            "test-report",
+            "review",
+            "knowledge",
+            "other"
+          ]
+        },
+        "locator": {
+          "$ref": "#/$defs/text"
+        },
+        "revision": {
+          "$ref": "#/$defs/text"
+        },
+        "summary": {
+          "$ref": "#/$defs/text"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "locator",
+        "revision",
+        "summary"
+      ]
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/text"
+        },
+        "claim": {
+          "$ref": "#/$defs/text"
+        },
+        "artifact_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          },
+          "minItems": 1
+        },
+        "locator": {
+          "$ref": "#/$defs/text"
+        },
+        "observation": {
+          "$ref": "#/$defs/text"
+        },
+        "raw_finding_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "id",
+        "claim",
+        "artifact_ids",
+        "locator",
+        "observation",
+        "raw_finding_ids"
+      ]
+    },
+    "block": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "enum": [
+            "MISSING_INPUT",
+            "ACCESS_DENIED",
+            "INVALID_HANDOFF",
+            "UPSTREAM_FAILED",
+            "RETRY_LIMIT_REACHED",
+            "OTHER"
+          ]
+        },
+        "detail": {
+          "$ref": "#/$defs/text"
+        },
+        "required_action": {
+          "$ref": "#/$defs/text"
+        }
+      },
+      "required": [
+        "code",
+        "detail",
+        "required_action"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "locator": {
+          "$ref": "#/$defs/text"
+        },
+        "revision": {
+          "$ref": "#/$defs/text"
+        }
+      },
+      "required": [
+        "locator",
+        "revision"
+      ]
+    },
+    "raw_finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/text"
+        },
+        "domain": {
+          "$ref": "#/$defs/text"
+        },
+        "observation": {
+          "$ref": "#/$defs/text"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source"
+          },
+          "minItems": 1
+        },
+        "issue_refs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/text"
+              },
+              "source": {
+                "$ref": "#/$defs/text"
+              }
+            },
+            "required": [
+              "id",
+              "source"
+            ]
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "id",
+        "domain",
+        "observation",
+        "sources",
+        "issue_refs"
+      ]
+    },
+    "knowledge_reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/text"
+        },
+        "locator": {
+          "$ref": "#/$defs/text"
+        },
+        "revision": {
+          "$ref": "#/$defs/text"
+        },
+        "applicability": {
+          "$ref": "#/$defs/text"
+        },
+        "exceptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          },
+          "minItems": 0
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source"
+          },
+          "minItems": 1
+        },
+        "lifecycle": {
+          "enum": [
+            "draft",
+            "active",
+            "deprecated",
+            "superseded"
+          ]
+        },
+        "review_trigger": {
+          "$ref": "#/$defs/text"
+        }
+      },
+      "required": [
+        "id",
+        "locator",
+        "revision",
+        "applicability",
+        "exceptions",
+        "sources",
+        "lifecycle",
+        "review_trigger"
+      ]
+    },
+    "assignment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope": {
+          "$ref": "#/$defs/text"
+        },
+        "completion_criteria": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "scope",
+        "completion_criteria"
+      ]
+    },
+    "retry": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "task_id": {
+          "$ref": "#/$defs/text"
+        },
+        "attempt": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "handoff_locator": {
+          "$ref": "#/$defs/text"
+        },
+        "revision": {
+          "$ref": "#/$defs/text"
+        }
+      },
+      "required": [
+        "task_id",
+        "attempt",
+        "handoff_locator",
+        "revision"
+      ]
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "raw_finding_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          },
+          "minItems": 1
+        },
+        "outcome": {
+          "enum": [
+            "adopted",
+            "deferred",
+            "rejected"
+          ]
+        },
+        "reason": {
+          "$ref": "#/$defs/text"
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          },
+          "minItems": 1
+        },
+        "article_artifact_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "raw_finding_ids",
+        "outcome",
+        "reason",
+        "evidence_ids",
+        "article_artifact_ids"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "outcome": {
+                "const": "adopted"
+              }
+            },
+            "required": [
+              "outcome"
+            ]
+          },
+          "then": {
+            "properties": {
+              "article_artifact_ids": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

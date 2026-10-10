@@ -1,0 +1,47 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "SYNTHETIC-ISSUE-001",
+    "source": "https://example.invalid/issues/SYNTHETIC-ISSUE-001",
+    "title": "synthetic sample: non-blank label contract",
+    "acceptance_criteria": []
+  },
+  "role": "test",
+  "task_id": "SYNTHETIC-TASK-TEST-001",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "research-design",
+      "task_id": "SYNTHETIC-TASK-RESEARCH-001",
+      "attempt": 1,
+      "handoff_locator": "examples/research-to-test/research.handoff.json",
+      "revision": "SYNTHETIC-REVISION-1",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "blocked",
+  "summary": "synthetic sample: Test cannot begin because the required AC original was omitted from this fictional dispatch.",
+  "artifacts": [],
+  "evidence": [],
+  "ac_mapping": [],
+  "block_reasons": [
+    {
+      "code": "MISSING_ACCEPTANCE_CRITERIA",
+      "detail": "synthetic sample: Test received no AC originals. It must not infer them from the design or fetch them externally.",
+      "required_action": "Manager must recover the exact originals from an authorized source and dispatch a new independent task."
+    }
+  ],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "synthetic_sample",
+  "assignment": {
+    "scope": "synthetic sample: review the supplied label test plan.",
+    "ac_ids": [
+      "SYNTHETIC-AC-1"
+    ],
+    "completion_criteria": [
+      "synthetic sample: cover the assigned AC within the stated role scope and record limitations."
+    ]
+  }
+}
