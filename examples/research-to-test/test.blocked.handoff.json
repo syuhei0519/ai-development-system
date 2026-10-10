@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "issue": {
     "id": "SYNTHETIC-ISSUE-001",
     "source": "https://example.invalid/issues/SYNTHETIC-ISSUE-001",
@@ -34,5 +34,14 @@
   ],
   "failure_reasons": [],
   "knowledge_candidates": [],
-  "publication": "synthetic_sample"
+  "publication": "synthetic_sample",
+  "assignment": {
+    "scope": "synthetic sample: review the supplied label test plan.",
+    "ac_ids": [
+      "SYNTHETIC-AC-1"
+    ],
+    "completion_criteria": [
+      "synthetic sample: cover the assigned AC within the stated role scope and record limitations."
+    ]
+  }
 }

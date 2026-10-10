@@ -21,8 +21,8 @@ class HandoffTests(unittest.TestCase):
             with self.subTest(name=name):
                 self.assertEqual(validate(fixture(name)), [])
 
-    def test_all_roles_use_same_contract(self):
-        for role in ('manager', 'research-design', 'implementation', 'test', 'review', 'knowledge'):
+    def test_issue_roles_use_issue_contract(self):
+        for role in ('manager', 'research-design', 'implementation', 'test', 'review'):
             data = fixture()
             data['role'] = role
             with self.subTest(role=role):
@@ -95,7 +95,7 @@ class HandoffTests(unittest.TestCase):
                 self.assertFalse(VALIDATOR.is_valid(data))
         data = fixture()
         data['ac_mapping'][0]['disposition'] = 'unverified'
-        self.assertFalse(VALIDATOR.is_valid(data))
+        self.assertTrue(validate(data))
 
     def test_integrity_rejects_dangling_references_and_duplicate_ids(self):
         for collection, field in (('evidence', 'artifact_ids'), ('ac_mapping', 'evidence_ids'),
@@ -111,13 +111,81 @@ class HandoffTests(unittest.TestCase):
             with self.subTest(collection=collection):
                 self.assertTrue(validate(data))
 
-    def test_completed_requires_every_supplied_ac(self):
+    def test_completed_requires_every_assigned_ac(self):
         data = fixture()
         extra = deepcopy(data['issue']['acceptance_criteria'][0])
         extra['id'] = 'SYNTHETIC-AC-2'
         data['issue']['acceptance_criteria'].append(extra)
+        data['assignment']['ac_ids'].append('SYNTHETIC-AC-2')
         self.assertTrue(VALIDATOR.is_valid(data))
         self.assertTrue(validate(data))
+
+
+    def test_partial_assignment_leaves_other_ac_unverified(self):
+        for role in ('research-design', 'implementation', 'test', 'review'):
+            for disposition in ('not_assigned', 'unverified'):
+                data = fixture('partial-assignment.handoff.json')
+                data['role'] = role
+                data['ac_mapping'][1]['disposition'] = disposition
+                with self.subTest(role=role, disposition=disposition):
+                    self.assertEqual(validate(data), [])
+            data['ac_mapping'].pop()  # Outside-scope AC need not be mapped.
+            self.assertEqual(validate(data), [])
+
+    def test_cannot_cover_unassigned_or_mislabel_assigned_ac(self):
+        data = fixture('partial-assignment.handoff.json')
+        data['assignment']['ac_ids'] = ['SYNTHETIC-AC-2']
+        self.assertTrue(validate(data))
+        data = fixture()
+        data['ac_mapping'][0]['disposition'] = 'not_assigned'
+        self.assertTrue(validate(data))
+
+    def test_assignment_rejects_empty_unknown_and_duplicate_ids(self):
+        for ids in ([], ['SYNTHETIC-UNKNOWN'], ['SYNTHETIC-AC-1'] * 2):
+            data = fixture()
+            data['assignment']['ac_ids'] = ids
+            with self.subTest(ids=ids):
+                self.assertTrue(validate(data))
+
+    def test_only_manager_can_make_final_issue_assessment(self):
+        data = fixture()
+        data['final_assessment'] = {
+            'outcome': 'achieved', 'rationale': 'synthetic sample: fictional final review',
+            'ac_results': [{'ac_id': 'SYNTHETIC-AC-1', 'outcome': 'met',
+                            'evidence_ids': ['SYNTHETIC-EVIDENCE-1']}],
+        }
+        for role in ('research-design', 'implementation', 'test', 'review'):
+            data['role'] = role
+            with self.subTest(role=role):
+                self.assertFalse(VALIDATOR.is_valid(data))
+        data['role'] = 'manager'
+        self.assertEqual(validate(data), [])
+        data['final_assessment']['ac_results'][0]['evidence_ids'] = []
+        self.assertTrue(validate(data))
+
+    def test_manager_final_assessment_requires_all_issue_acs_and_consistency(self):
+        data = fixture('partial-assignment.handoff.json')
+        data['role'] = 'manager'
+        data['final_assessment'] = {
+            'outcome': 'unverified', 'rationale': 'synthetic sample: AC-2 unverified',
+            'ac_results': [
+                {'ac_id': 'SYNTHETIC-AC-1', 'outcome': 'met', 'evidence_ids': ['SYNTHETIC-EVIDENCE-1']},
+                {'ac_id': 'SYNTHETIC-AC-2', 'outcome': 'unverified', 'evidence_ids': []},
+            ],
+        }
+        self.assertEqual(validate(data), [])  # Manager task done; Issue not yet accepted.
+        data['final_assessment']['outcome'] = 'achieved'
+        self.assertTrue(validate(data))
+        data['final_assessment']['ac_results'].pop()
+        self.assertTrue(validate(data))
+        data['final_assessment']['ac_results'].append(deepcopy(data['final_assessment']['ac_results'][0]))
+        self.assertTrue(validate(data))
+
+    def test_v1_and_knowledge_role_require_explicit_migration(self):
+        for key, value in (('schema_version', '1.0'), ('role', 'knowledge')):
+            data = fixture()
+            data[key] = value
+            self.assertTrue(validate(data))
 
     def test_retry_chain_validation(self):
         data = fixture('research-to-test/test.handoff.json')

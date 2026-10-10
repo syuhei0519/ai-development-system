@@ -23,3 +23,9 @@ jobs:
           examples/research-to-test/test.blocked.handoff.json
           examples/research-to-test/test.handoff.json
           examples/failed.handoff.json
+          examples/partial-assignment.handoff.json
+      - run: >-
+          python scripts/validate_knowledge.py
+          examples/knowledge/input.json
+          examples/knowledge/handoff.json
+          examples/knowledge/context.json

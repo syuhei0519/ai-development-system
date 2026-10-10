@@ -1,10 +1,10 @@
 # 独立専門エージェント起動入力
 
-Dots / Manager が専門役割の独立 Codex Cloud タスクに渡す入力テンプレート。Manager 自身の Cloud 起動には使わない。山括弧の項目を埋め、未記入のまま起動しない。必須 AC 原文が取得できなければ不足を明示し blocked を要求する。実識別子や非公開資料は認可された非公開実行領域だけで扱う。
+Dots / Manager が専門役割の独立 Codex Cloud タスクに渡す入力テンプレート。Manager 自身の Cloud 起動には使わない。Knowledge は [専用入力](knowledge-input.md) を使用する。山括弧の項目を埋め、未記入のまま起動しない。必須 AC 原文が取得できなければ不足を明示し blocked を要求する。実識別子や非公開資料は認可された非公開実行領域だけで扱う。
 
 ## Role / Contract
 
-- role: <research-design | implementation | test | review | knowledge>
+- role: <research-design | implementation | test | review>
 - role_definition: <該当 agents/*.md の全文または取得済み添付>
 - contract: <handoff.schema.json と contracts/README.md の取得済み添付>
 - workflow: <single-issue.md の取得済み添付>
@@ -16,7 +16,8 @@ Dots / Manager が専門役割の独立 Codex Cloud タスクに渡す入力テ�
 - AC の完全性確認: <全件取得済み / 欠落項目と MISSING_ACCEPTANCE_CRITERIA>
 - task_id / attempt / logical scope: <独立 task・1〜3・再試行を通じ固定する責務>
 - repo / base / target revision: <明示的な対象>
-- Mission / deliverables / role-specific completion criteria: <今回の担当範囲>
+- assignment.scope / ac_ids / completion_criteria: <今回の担当範囲・担当 AC ID の明示的リスト・工程の完了条件>
+- Mission / deliverables: <今回の責務と成果物>
 - 許可操作・作業領域・禁止事項: <read/write/feature Push/Draft PR を個別指定>
 - 環境・依存物・検証手順: <既存認可済みの環境>
 
@@ -31,10 +32,15 @@ Dots / Manager が専門役割の独立 Codex Cloud タスクに渡す入力テ�
 
 前タスクの会話やローカルファイルの自動共有を仮定しない。必要な実体が未着なら blocked を返す。
 
+## Optional Knowledge Context
+
+必要な場合は [knowledge-context.schema.json](../contracts/knowledge-context.schema.json) に従う JSON と記事実体を初回入力に添付する。固定 revision、適用条件、例外、出典、lifecycle、再評価条件を確認し、採否を記録する。参照知識で AC 原文や実測根拠を代替しない。参照なしだけで開発を止めない。
+
 ## Return Contract
 
 - 取得先: <Manager が handoff.json と成果物を取得する場所>
-- handoff: schema_version=1.0、issue、role、task_id、attempt、upstream、system_status、status、summary、artifacts、evidence、ac_mapping、block_reasons、failure_reasons、knowledge_candidates、publication
+- handoff: schema_version=2.0、issue、assignment、role、task_id、attempt、upstream、system_status、status、summary、artifacts、evidence、ac_mapping、block_reasons、failure_reasons、knowledge_candidates、publication
+- completed は assignment の工程完了。担当外・未検証を covered にしない。専門役割は final_assessment を出力しない。
 - 基盤終了と業務判定を区別する。原文欠落は外部取得・推測で埋めない。
 - 最大3試行。自己再起動せず Manager に修正内容を返す。
 - Knowledge 候補は任意。公開前の安全性確認を別途行う。

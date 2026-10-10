@@ -37,22 +37,23 @@ Dots 自身が Manager としてタスク管理と完了判定に専念し、Kno
 | [agents/review.md](agents/review.md) | 品質・AC・公開安全性レビュー |
 | [agents/knowledge.md](agents/knowledge.md) | 非同期の知識管理 |
 | [workflows/single-issue.md](workflows/single-issue.md) | 起動、完了検査、明示的引き継ぎ、有限再試行 |
-| [contracts/handoff.schema.json](contracts/handoff.schema.json) / [契約説明](contracts/README.md) | JSON Schema と形式検証の限界 |
-| [templates/task-input.md](templates/task-input.md) | 役割定義と分離した Issue 固有の初回入力 |
+| [contracts/handoff.schema.json](contracts/handoff.schema.json) / [契約説明](contracts/README.md) | Issue v2.0: assignment と Manager の最終 AC 判定 |
+| [Knowledge 入力](contracts/knowledge-input.schema.json) / [出力](contracts/knowledge-handoff.schema.json) / [参照コンテキスト](contracts/knowledge-context.schema.json) | Knowledge v1.0: 複数 Issue の根拠、固定参照、AC 非依存 |
+| [templates/task-input.md](templates/task-input.md) / [knowledge-input.md](templates/knowledge-input.md) | Issue 工程と Knowledge を分離した初回入力 |
 | [templates/knowledge-article.md](templates/knowledge-article.md) / [raw-finding.md](templates/raw-finding.md) | 人間向け記事、AI メタデータ、原根拠 |
 | [knowledge/README.md](knowledge/README.md) | raw / curated の技術領域別索引 |
 | [examples/README.md](examples/README.md) | synthetic sample: Research→Test と blocked/failed/異常例 |
-| [scripts/validate_handoff.py](scripts/validate_handoff.py) / [tests/test_handoff.py](tests/test_handoff.py) | 検証 CLI と回帰テスト |
+| [Issue CLI](scripts/validate_handoff.py) / [Knowledge CLI](scripts/validate_knowledge.py) / tests/ | 専用 schema・参照整合性の検証と回帰テスト |
 | [.github/workflows/validate.yml](.github/workflows/validate.yml) | feature Push / PR 時の契約検証 |
 
 ## Dots からの利用方法
 
 1. 既存の認可済み Dots / Codex Cloud 環境でこの repo の固定 revision を取得します。対象 repo の AGENTS.md と関連 SKILL.md があれば確認します。
 2. Dots 自身が Manager を担当します。Dots に `agents/manager.md`、契約、ワークフローと Issue 固有の依頼・認可済み出典・許可範囲を渡します。別の Manager Cloud タスクを起動する必要はありません。
-3. Dots / Manager は全必須 AC 原文・出典と許可範囲を確認し、`templates/task-input.md` に役割定義と Issue 固有情報を明示して、必要な専門役割を独立 Cloud タスクとして起動します。画面/API の名称や起動・回収能力は環境依存です。Dots に必要な操作手段がない環境では、人間が作成済みの初回入力を使って起動・成果物回収を補助します。この制限を二重 Manager の起動で解消したとはみなしません。
-4. 終了通知後、Manager が handoff JSON と成果物実体を取得し、形式と業務の両方を検査します。合格した成果物・根拠・AC 原文を後続の初回入力に渡します。
+3. Dots / Manager は全必須 AC 原文・出典と許可範囲を確認し、`templates/task-input.md` に役割定義と Issue 固有情報、assignment.scope・担当 ac_ids・completion_criteria を明示して、必要な専門役割を独立 Cloud タスクとして起動します。Knowledge は専用入力で raw_findings と出典を渡し、単一 Issue / AC を要求しません。画面/API の名称や起動・回収能力は環境依存です。Dots に必要な操作手段がない環境では、人間が作成済みの初回入力を使って起動・成果物回収を補助します。この制限を二重 Manager の起動で解消したとはみなしません。
+4. 終了通知後、Manager が handoff JSON と成果物実体を取得し、形式と担当範囲の業務完了を検査します。担当外 AC は covered にせず、未検証のままでも担当工程を completed にできます。Issue 全体の最終判定は Manager が全 AC を別途確認します。合格した成果物・根拠・AC 原文を後続の初回入力に渡します。
 5. 欠落・失敗時は依存後続を停止し、修正後に新しい独立タスクを起動します。各論理工程で初回を含め最大3試行です。必須 AC 原文欠落は `MISSING_ACCEPTANCE_CRITERIA` とし、Manager が認可済み情報源から原文を補完するまで進めません。
-6. 実装完了、feature branch の remote SHA、Draft PR、同じ head SHA の CI を個別に確認します。CLI と GitHub 連携は別経路として扱います。main 直接 Push、merge、auto-merge は行いません。
+6. 実装完了、feature branch の remote SHA、Draft PR、同じ head SHA の CI を個別に確認します。CLI と GitHub 連携は別経路として扱います。main 直接 Push は行いません。現在の Phase 1-1 では merge / auto-merge は行わず Draft を維持します。Phase 1-2 以降はユーザーが許可した品質ゲート通過後の AI マージを扱います。GitHub の保護ルール・必須 checks/review は迂回しません。[マージ方針](workflows/single-issue.md#マージ方針) を参照してください。
 
 [Research→Test のサンプル](examples/README.md) は起動失敗と修正入力も示します。すべて架空データです。例の `completed` は実際の検証実績を表しません。
 
@@ -69,7 +70,10 @@ python scripts/validate_handoff.py \
   examples/research-to-test/research.handoff.json \
   examples/research-to-test/test.blocked.handoff.json \
   examples/research-to-test/test.handoff.json \
-  examples/failed.handoff.json
+  examples/failed.handoff.json \
+  examples/partial-assignment.handoff.json
+python scripts/validate_knowledge.py examples/knowledge/input.json \
+  examples/knowledge/handoff.json examples/knowledge/context.json
 ```
 
 正常例は exit 0 です。次の異常例は completed の根拠が空なので **exit 1 が期待値**です。
@@ -78,20 +82,20 @@ python scripts/validate_handoff.py \
 python scripts/validate_handoff.py examples/invalid-completed.handoff.json
 ```
 
-テストは completed の必須成果物/根拠/AC 対応、blocked/failed の理由、AC 欠落、型不正・空文字・空白、試行上限、再試行元、ID と参照、CLI 終了コードを検証します。形式検証に通る未裏付けの主張もテストし、真実性を証明できない境界を固定しています。
+テストは completed の必須成果物/根拠/担当 AC 対応、一部 AC の割り当てと担当漏れ、担当外・未検証の扱い、非 Manager の最終判定拒否、Knowledge の AC 非依存入力と根拠欠落、blocked/failed の理由、AC 欠落、型不正・空文字・空白、試行上限、再試行元、ID と参照、CLI 終了コードを検証します。形式検証に通る未裏付けの主張もテストし、真実性を証明できない境界を固定しています。
 
 JSON Schema は構造、CLI の追加検査はローカル ID の参照整合性を扱います。根拠の真実性、AC 原文の完全性、業務 AC 充足、公開安全性は [Manager の業務ゲート](workflows/single-issue.md) で別に検査します。CI 成功も実運用の完了を証明しません。
 
 ## 知識ライフサイクル
 
-候補 → Raw Findings（原根拠・観測）→ Knowledge Agent の採否判断 → Curated Knowledge（人間向け Markdown）→ 適用条件・例外・陳腐化の再評価、という流れです。重要判断、失敗、不採用案、出典、更新日と後継リンクを保持します。AI メタデータは本文の補助です。
+候補 → Raw Findings（原根拠・観測）→ Knowledge Agent の採否判断 → Curated Knowledge（人間向け Markdown）→ 適用条件・例外・陳腐化の再評価、という流れです。重要判断、失敗、不採用案、出典、更新日と後継リンクを保持します。AI メタデータは本文の補助です。記事には「理解を深めるための問い」を含めます。複数 Issue の知識を集約でき、後続は knowledge-context の固定 revision・適用条件・例外・出典を確認して利用します。
 
-初期領域は orchestration と validation で、raw / curated の索引を分離しています。詳細は [Knowledge index](knowledge/README.md)。1 Issue=1 PR や repo ごとの知識分割は絶対条件にせず、権限とレビュー範囲に応じて選びます。
+初期領域は orchestration と validation で、raw / curated の索引を分離しています。非同期収集・定期同期の実行基盤は Phase 1-3 で扱い、このフェーズでは実装・起動しません。詳細は [Knowledge index](knowledge/README.md)。1 Issue=1 PR や repo ごとの知識分割は絶対条件にせず、権限とレビュー範囲に応じて選びます。
 
 ## Phase 1-1 の補完判断と制約
 
 - 再試行上限は初回を含む3回とし、工程をまたぐ修正でも同じ論理工程の回数を引き継ぎます。
-- handoff は Draft 2020-12、schema_version=1.0。任意の知識候補は空配列を許可します。
-- `covered` は役割の担当範囲の完了です。Research の設計完了を製品の AC 合格と誤認しないよう `scope` を必須にしました。
+- Issue handoff は Draft 2020-12、schema_version=2.0。v1.0 とは非互換で、assignment の明示と担当外 covered の修正が必要です。Knowledge は独立した v1.0 契約へ移行しました。[移行説明](contracts/README.md#移行と互換性) を参照してください。任意の知識候補は空配列を許可します。
+- `covered` は役割の担当範囲の完了です。Research の設計完了を製品の AC 合格と誤認しないよう `assignment.scope・ac_ids・completion_criteria` を必須にしました。最終の final_assessment は Manager のみが全 Issue AC について判定します。
 - 初期の技術領域と手動補助可能な Dots 起動手順は最小構成です。実環境での独立タスク起動・配送の統合試験はこの契約テストの対象外です。
 - 公開サンプルは synthetic sample と明示し、実際の非公開 task/thread/message ID、私的会話、個人情報、内部メモ、認証情報、運用ログは含めません。実運用の台帳は認可された非公開領域に置きます。

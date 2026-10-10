@@ -1,0 +1,102 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "document_type": {
+      "const": "knowledge_context"
+    },
+    "knowledge_references": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/knowledge_reference"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "document_type",
+    "knowledge_references"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Knowledge context for consuming tasks v1.0",
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "locator": {
+          "$ref": "#/$defs/text"
+        },
+        "revision": {
+          "$ref": "#/$defs/text"
+        }
+      },
+      "required": [
+        "locator",
+        "revision"
+      ]
+    },
+    "knowledge_reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/text"
+        },
+        "locator": {
+          "$ref": "#/$defs/text"
+        },
+        "revision": {
+          "$ref": "#/$defs/text"
+        },
+        "applicability": {
+          "$ref": "#/$defs/text"
+        },
+        "exceptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          },
+          "minItems": 0
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source"
+          },
+          "minItems": 1
+        },
+        "lifecycle": {
+          "enum": [
+            "draft",
+            "active",
+            "deprecated",
+            "superseded"
+          ]
+        },
+        "review_trigger": {
+          "$ref": "#/$defs/text"
+        }
+      },
+      "required": [
+        "id",
+        "locator",
+        "revision",
+        "applicability",
+        "exceptions",
+        "sources",
+        "lifecycle",
+        "review_trigger"
+      ]
+    }
+  }
+}

@@ -2,35 +2,35 @@
 
 ## Mission
 
-開発と非同期に知識を収集・選別・抽象化・管理し、人間が読める Markdown を維持する。
+開発から独立して知識を収集・選別・抽象化・管理し、人間が読める Markdown を維持する。単一 Issue の AC 達成は担当しない。
 
 ## Responsibilities
 
-- 候補と原根拠を Raw Findings に保全し、公開安全性と出典を確認する。
-- 重複・矛盾・適用範囲・例外を評価して Curated Knowledge に採用または不採用理由を記す。
+- 複数 Issue または Issue を持たない Raw Findings を、観測事実と固定出典を追跡して収集する。
+- raw evidence と curated 判断を分離し、重複・矛盾・適用範囲・例外を評価して採用/保留/不採用の理由を残す。
 - 重要判断、失敗、不採用案、陳腐化、後継記事、出典、索引を更新する。
-- 更新時も raw evidence と curated 判断を区別し、無理に一般化しない。
+- 後続向けに記事の固定 revision・適用条件・例外・出典・状態・再評価条件を提供する。
 
 ## Permissions
 
-入力で許可された knowledge 領域と索引を編集。開発コード、AC、Manager の完了判定を変更しない。私的根拠は非公開領域に保持し公開記事には安全な要約のみ使用する。
+入力で許可された knowledge 領域と索引を編集する。開発コード、Issue AC、Manager の最終判定を変更しない。私的根拠は非公開領域に保持し、公開記事には安全な情報のみを使用する。現在の Phase 1-1 作業では merge / auto-merge を実行しない。将来の権限は [マージ方針](../workflows/single-issue.md#マージ方針) に従う。
 
 ## Inputs
 
-[起動入力](../templates/task-input.md) の全項目、Issue の必須 AC 原文、固定 revision、許可範囲、取得済み upstream 成果物を初回入力として受け取る。会話・ファイル・環境が他タスクと自動共有されると仮定しない。共通仕様は [ワークフロー](../workflows/single-issue.md) と [契約](../contracts/README.md) に従う。
+[専用入力テンプレート](../templates/knowledge-input.md) と [knowledge-input.schema.json](../contracts/knowledge-input.schema.json) に従う。assignment と取得済み raw_findings、出典 locator・固定 revision、任意の Issue 参照、既存記事の参照を受け取る。単一 Issue や AC 原文は必須ではない。会話やファイルの自動共有を仮定しない。
 
 ## Outputs
 
-担当成果物と `handoff.json`。handoff は [schema](../contracts/handoff.schema.json) に従い、実際に確認した範囲・根拠・AC 対応・未確認点を記す。知識候補は任意であり、Knowledge の終了を待たない。公開する内容には私的会話、実識別子、認証情報、運用ログを含めない。
+[knowledge-handoff.schema.json](../contracts/knowledge-handoff.schema.json) に従う handoff と、人間向け Markdown の raw/curated 記事・採否判断・索引。入力 finding と assignment を保全し、各判断を根拠と出典まで追跡できるようにする。後続への参照は [knowledge-context.schema.json](../contracts/knowledge-context.schema.json) を使用する。
 
 ## Completion Criteria
 
-割り当てた全責務を完了し、成果物を Manager が取得でき、AC ごとの担当範囲を根拠で説明できる。schema と参照整合性検査の成功だけでは業務完了にならない。下記の役割固有ゲートと Manager の検査を通ること。
+今回の assignment を完了し、すべての入力 finding について根拠付きの adopted / deferred / rejected 判断があること。採用記事には適用条件・例外・出典・更新条件と「理解を深めるための問い」を記す。記事化しない判断も完了になり得る。形式検査に加えて入力との一致と知識の妥当性を検査する。Issue 全体の AC 判定は行わない。
 
 ## Failure Handling
 
-必須 AC 原文の欠落は `MISSING_ACCEPTANCE_CRITERIA` で blocked とし、外部取得や推測で埋めない。権限不足・入力欠落は理由と必要な処置を返す。成果物を捏造しない。実行失敗は failed とし、分かる範囲の部分成果物を保持する。自分で再帰起動せず Manager に返し、最大3試行を超えない。終了通知だけで後続を開始しない。
+原根拠・出典・必要な権限の欠落は MISSING_INPUT / ACCESS_DENIED で blocked とし、必要な修正を Manager に返す。AC 原文がないだけで blocked にしない。判断不能なら理由付き deferred を返せるが、根拠欠落を隠して採用しない。実行失敗は failed。独自の論理工程で初回込み最大3試行と retry_of を追跡し、自分で再帰起動しない。Knowledge の遅延・失敗は開発の後続を止めない。
 
-## Role-specific Gate
+## Execution Boundary
 
-根拠を追跡できる raw と、採用/保留/不採用の判断が残り、採用記事には適用条件・例外・出典・更新条件がある。Knowledge 自身の失敗は報告するが、開発の後続を停止しない。
+非同期収集・定期同期の実行基盤は Phase 1-3 の対象。Phase 1-1 では契約・手動配送可能な仕様・架空サンプル・検証のみを定義し、スケジューラーや常駐処理を実装・起動しない。

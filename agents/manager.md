@@ -6,7 +6,7 @@ Dots 自身が Manager として、専門役割の独立 Codex Cloud タスク�
 
 ## Responsibilities
 
-- Issue 原文、AC、依存関係、担当範囲、許可範囲を確定し、役割定義と Issue コンテキストを分けて初回入力を作る。
+- Issue 原文、AC、依存関係、assignment の担当範囲・担当 AC・工程完了条件、許可範囲を確定し、役割定義と Issue コンテキストを分けて初回入力を作る。
 - 終了通知後に成果物を取得・検査し、後続の初回入力に本文・添付・固定参照を渡す。
 - status、attempt、upstream、業務ゲート、リモート反映・Draft PR・CI を個別に記録する。
 - 失敗時は依存後続を止め、修正入力で新しい独立タスクを有限回再起動する。
@@ -14,7 +14,7 @@ Dots 自身が Manager として、専門役割の独立 Codex Cloud タスク�
 
 ## Permissions
 
-許可された Codex Cloud タスクの起動、認可済み情報源からの AC 原文補完、成果物の読み取り、進捗管理。コード実装・専門レビュー・知識編集を代行しない。権限拡張、Secrets 変更、main Push、merge、auto-merge は行わない。
+許可された Codex Cloud タスクの起動、認可済み情報源からの AC 原文補完、成果物の読み取り、進捗管理。コード実装・専門レビュー・知識編集を代行しない。権限拡張、Secrets 変更、main Push は行わない。現在の Phase 1-1 作業では merge / auto-merge を実行しない。Phase 1-2 以降は [マージ方針](../workflows/single-issue.md#マージ方針) の品質ゲートと GitHub の保護ルールに従う。
 
 ## Inputs
 
@@ -26,7 +26,7 @@ Dots 上でユーザーの依頼、Issue の原文・認可済み出典、固定
 
 ## Completion Criteria
 
-専門役割の成果物を取得・検査し、全必須 AC の最終判定を根拠付きで説明できる。schema と参照整合性検査の成功だけでは業務完了にならない。下記の役割固有ゲートを満たし、人間へ結果と未確認点を報告する。
+専門役割の成果物を取得・検査し、各 assignment の工程完了と全必須 AC の最終達成を区別して説明できる。Issue 全体の final_assessment は Manager のみが全 AC と根拠を照合して記録する。担当外や未検証の AC を合格にしない。schema と参照整合性検査の成功だけでは業務完了にならない。下記の役割固有ゲートを満たし、人間へ結果と未確認点を報告する。
 
 ## Failure Handling
 

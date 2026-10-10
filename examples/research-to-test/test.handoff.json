@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "issue": {
     "id": "SYNTHETIC-ISSUE-001",
     "source": "https://example.invalid/issues/SYNTHETIC-ISSUE-001",
@@ -72,5 +72,14 @@
   "block_reasons": [],
   "failure_reasons": [],
   "knowledge_candidates": [],
-  "publication": "synthetic_sample"
+  "publication": "synthetic_sample",
+  "assignment": {
+    "scope": "Test-plan review only; this does not certify implemented behavior.",
+    "ac_ids": [
+      "SYNTHETIC-AC-1"
+    ],
+    "completion_criteria": [
+      "synthetic sample: cover the assigned AC within the stated role scope and record limitations."
+    ]
+  }
 }

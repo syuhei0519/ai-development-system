@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "document_type": "knowledge_input",
+  "role": "knowledge",
+  "task_id": "SYNTHETIC-KNOWLEDGE-TASK-1",
+  "attempt": 1,
+  "assignment": {
+    "scope": "synthetic sample: compare two fictional raw findings and document a reusable test-plan lesson.",
+    "completion_criteria": [
+      "Record a supported adoption/defer/reject decision for each supplied finding."
+    ]
+  },
+  "raw_findings": [
+    {
+      "id": "SYNTHETIC-RAW-1",
+      "domain": "validation",
+      "observation": "synthetic sample: fictional design 1 separates an empty-string case from a whitespace-only case.",
+      "sources": [
+        {
+          "locator": "https://example.invalid/synthetic/design-1",
+          "revision": "SYNTHETIC-REVISION-1"
+        }
+      ],
+      "issue_refs": [
+        {
+          "id": "SYNTHETIC-ISSUE-1",
+          "source": "https://example.invalid/synthetic/issues/1"
+        }
+      ]
+    },
+    {
+      "id": "SYNTHETIC-RAW-2",
+      "domain": "validation",
+      "observation": "synthetic sample: fictional design 2 separates an empty-string case from a whitespace-only case.",
+      "sources": [
+        {
+          "locator": "https://example.invalid/synthetic/design-2",
+          "revision": "SYNTHETIC-REVISION-2"
+        }
+      ],
+      "issue_refs": [
+        {
+          "id": "SYNTHETIC-ISSUE-2",
+          "source": "https://example.invalid/synthetic/issues/2"
+        }
+      ]
+    }
+  ],
+  "knowledge_references": [],
+  "permissions": [
+    "synthetic sample: read supplied findings and write Knowledge artifacts only."
+  ],
+  "publication": "synthetic_sample",
+  "retry_of": []
+}

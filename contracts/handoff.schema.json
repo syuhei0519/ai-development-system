@@ -3,7 +3,7 @@
   "additionalProperties": false,
   "properties": {
     "schema_version": {
-      "const": "1.0"
+      "const": "2.0"
     },
     "issue": {
       "$ref": "#/$defs/issue"
@@ -14,8 +14,7 @@
         "research-design",
         "implementation",
         "test",
-        "review",
-        "knowledge"
+        "review"
       ]
     },
     "task_id": {
@@ -98,6 +97,136 @@
         "public_safe",
         "private_only"
       ]
+    },
+    "assignment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope": {
+          "$ref": "#/$defs/text"
+        },
+        "ac_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "completion_criteria": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "scope",
+        "ac_ids",
+        "completion_criteria"
+      ]
+    },
+    "final_assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "outcome": {
+          "enum": [
+            "achieved",
+            "not_achieved",
+            "unverified"
+          ]
+        },
+        "ac_results": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "ac_id": {
+                "$ref": "#/$defs/text"
+              },
+              "outcome": {
+                "enum": [
+                  "met",
+                  "not_met",
+                  "unverified"
+                ]
+              },
+              "evidence_ids": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/text"
+                },
+                "minItems": 0
+              }
+            },
+            "required": [
+              "ac_id",
+              "outcome",
+              "evidence_ids"
+            ],
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "outcome": {
+                      "enum": [
+                        "met",
+                        "not_met"
+                      ]
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "evidence_ids": {
+                      "minItems": 1
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "minItems": 1
+        },
+        "rationale": {
+          "$ref": "#/$defs/text"
+        }
+      },
+      "required": [
+        "outcome",
+        "ac_results",
+        "rationale"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "outcome": {
+                "const": "achieved"
+              }
+            },
+            "required": [
+              "outcome"
+            ]
+          },
+          "then": {
+            "properties": {
+              "ac_results": {
+                "items": {
+                  "properties": {
+                    "outcome": {
+                      "const": "met"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "required": [
@@ -116,11 +245,12 @@
     "block_reasons",
     "failure_reasons",
     "knowledge_candidates",
-    "publication"
+    "publication",
+    "assignment"
   ],
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.invalid/ai-development-system/handoff.schema.json",
-  "title": "Independent task handoff v1.0",
+  "title": "Issue task handoff v2.0",
   "$defs": {
     "text": {
       "type": "string",
@@ -254,7 +384,8 @@
           "enum": [
             "covered",
             "unverified",
-            "not_met"
+            "not_met",
+            "not_assigned"
           ]
         },
         "scope": {
@@ -265,14 +396,14 @@
           "items": {
             "$ref": "#/$defs/text"
           },
-          "minItems": 1
+          "minItems": 0
         },
         "evidence_ids": {
           "type": "array",
           "items": {
             "$ref": "#/$defs/text"
           },
-          "minItems": 1
+          "minItems": 0
         }
       },
       "required": [
@@ -281,6 +412,30 @@
         "scope",
         "artifact_ids",
         "evidence_ids"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "disposition": {
+                "const": "covered"
+              }
+            },
+            "required": [
+              "disposition"
+            ]
+          },
+          "then": {
+            "properties": {
+              "artifact_ids": {
+                "minItems": 1
+              },
+              "evidence_ids": {
+                "minItems": 1
+              }
+            }
+          }
+        }
       ]
     },
     "upstream": {
@@ -293,8 +448,7 @@
             "research-design",
             "implementation",
             "test",
-            "review",
-            "knowledge"
+            "review"
           ]
         },
         "task_id": {
@@ -424,20 +578,20 @@
             "minItems": 1
           },
           "ac_mapping": {
-            "minItems": 1,
-            "items": {
-              "properties": {
-                "disposition": {
-                  "const": "covered"
-                }
-              }
-            }
+            "minItems": 1
           },
           "block_reasons": {
             "maxItems": 0
           },
           "failure_reasons": {
             "maxItems": 0
+          },
+          "assignment": {
+            "properties": {
+              "ac_ids": {
+                "minItems": 1
+              }
+            }
           }
         }
       }
@@ -552,6 +706,43 @@
                 "relationship"
               ]
             }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "final_assessment"
+        ]
+      },
+      "then": {
+        "properties": {
+          "role": {
+            "const": "manager"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "final_assessment": {
+            "properties": {
+              "outcome": {
+                "const": "achieved"
+              }
+            }
+          }
+        },
+        "required": [
+          "final_assessment"
+        ]
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "const": "completed"
           }
         }
       }

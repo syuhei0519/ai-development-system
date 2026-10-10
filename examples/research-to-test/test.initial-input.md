@@ -10,6 +10,7 @@ Every ID, revision and source here is fictional. This illustrates the complete i
 - AC completeness: fictional Manager supplied the sole AC original from the authorized source. This is an illustrative premise, not a real retrieval claim.
 - Research upstream: SYNTHETIC-TASK-RESEARCH-001, attempt 1, dependency, SYNTHETIC-REVISION-1.
 - Retry upstream: SYNTHETIC-TASK-TEST-001, attempt 1, retry_of, SYNTHETIC-REVISION-1.
+- assignment.ac_ids: [SYNTHETIC-AC-1]. assignment.scope: test-plan review only. assignment.completion_criteria: compare all proposed cases to the assigned AC and record limitations.
 - Deliverable: compare the proposed matrix to the AC and report scope and limitations. No implementation or product-test success may be claimed.
 - Permission: read attached synthetic documents; write a local report and handoff. No GitHub writes or external AC lookup.
 - Environment: existing authorized Cloud sandbox; no new credentials/services.

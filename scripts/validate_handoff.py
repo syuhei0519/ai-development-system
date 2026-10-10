@@ -35,16 +35,41 @@ def integrity_errors(data):
 
     for item in data['evidence']:
         check_refs(item['artifact_ids'], 'artifacts', f'evidence {item["id"]}')
+    assigned = set(data['assignment']['ac_ids'])
+    missing_originals = data['status'] == 'blocked' and any(
+        reason['code'] == 'MISSING_ACCEPTANCE_CRITERIA' for reason in data['block_reasons'])
+    if not missing_originals:
+        check_refs(assigned, 'acceptance_criteria', 'assignment')
     mapped = []
+    covered = set()
     for item in data['ac_mapping']:
         mapped.append(item['ac_id'])
+        if item['disposition'] == 'covered':
+            covered.add(item['ac_id'])
+            if item['ac_id'] not in assigned:
+                errors.append('ac_mapping: cannot cover an unassigned AC')
+        if item['disposition'] == 'not_assigned' and item['ac_id'] in assigned:
+            errors.append('ac_mapping: assigned AC cannot be not_assigned')
         check_refs([item['ac_id']], 'acceptance_criteria', 'ac_mapping')
         check_refs(item['artifact_ids'], 'artifacts', 'ac_mapping')
         check_refs(item['evidence_ids'], 'evidence', 'ac_mapping')
     if len(set(mapped)) != len(mapped):
         errors.append('ac_mapping: duplicate AC mappings')
-    if data['status'] == 'completed' and set(mapped) != ids['acceptance_criteria']:
-        errors.append('ac_mapping: completed requires every supplied AC to be mapped')
+    if data['status'] == 'completed' and covered != assigned:
+        errors.append('ac_mapping: completed requires every assigned AC to be covered')
+    final = data.get('final_assessment')
+    if final is not None:
+        results = final['ac_results']
+        final_ids = [item['ac_id'] for item in results]
+        if len(set(final_ids)) != len(final_ids) or set(final_ids) != ids['acceptance_criteria']:
+            errors.append('final_assessment: requires exactly one result for every Issue AC')
+        for item in results:
+            check_refs(item['evidence_ids'], 'evidence', 'final_assessment')
+        outcomes = {item['outcome'] for item in results}
+        expected = ('not_achieved' if 'not_met' in outcomes else
+                    'unverified' if 'unverified' in outcomes else 'achieved')
+        if final['outcome'] != expected:
+            errors.append('final_assessment: overall outcome contradicts AC results')
     for item in data['knowledge_candidates']:
         check_refs(item['evidence_ids'], 'evidence', f'knowledge {item["id"]}')
     retries = [item for item in data['upstream'] if item['relationship'] == 'retry_of']
