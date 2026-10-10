@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/ai-development-system/readiness-context.schema.json",
+  "title": "readiness-context v1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "document_type": {
+      "const": "readiness_context"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "subject": {
+      "$ref": "#/$defs/subject"
+    },
+    "issue_id": {
+      "$ref": "#/$defs/text"
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/criterion"
+      },
+      "minItems": 1
+    },
+    "pr_ac_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/text"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "deployment_effect": {
+      "enum": [
+        "none",
+        "automatic",
+        "unknown"
+      ]
+    },
+    "policy_observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "policy_valid_until": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "policy_evidence": {
+      "$ref": "#/$defs/text"
+    },
+    "github_requirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "checks": {
+          "type": "boolean"
+        },
+        "reviews": {
+          "type": "boolean"
+        },
+        "queue": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "checks",
+        "reviews",
+        "queue"
+      ]
+    },
+    "issue_integration_scope": {
+      "enum": [
+        "single_pr",
+        "aggregate_required",
+        "unknown"
+      ]
+    }
+  },
+  "required": [
+    "document_type",
+    "schema_version",
+    "subject",
+    "issue_id",
+    "acceptance_criteria",
+    "pr_ac_ids",
+    "deployment_effect",
+    "policy_observed_at",
+    "policy_valid_until",
+    "policy_evidence",
+    "github_requirements",
+    "issue_integration_scope"
+  ],
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "repository": {
+          "$ref": "#/$defs/text"
+        },
+        "pr_number": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "head_sha": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "base_sha": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "target_revision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "config_revision": {
+          "$ref": "#/$defs/text"
+        },
+        "merge_group_sha": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "repository",
+        "pr_number",
+        "head_sha",
+        "base_sha",
+        "target_revision",
+        "config_revision",
+        "merge_group_sha"
+      ]
+    },
+    "criterion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/text"
+        },
+        "verbatim": {
+          "$ref": "#/$defs/text"
+        },
+        "source": {
+          "$ref": "#/$defs/text"
+        },
+        "verification_phase": {
+          "enum": [
+            "premerge",
+            "postmerge",
+            "postdeploy"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "verbatim",
+        "source",
+        "verification_phase"
+      ]
+    },
+    "proof": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "verdict": {
+          "enum": [
+            "pass",
+            "fail",
+            "pending",
+            "not_applicable"
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "reason": {
+          "$ref": "#/$defs/text"
+        }
+      },
+      "required": [
+        "verdict",
+        "evidence_ids",
+        "reason"
+      ]
+    }
+  }
+}

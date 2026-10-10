@@ -1,0 +1,105 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "SYNTHETIC-ISSUE",
+    "title": "synthetic sample: gated change",
+    "source": "synthetic sample request",
+    "acceptance_criteria": [
+      {
+        "id": "SYNTHETIC-AC-1",
+        "verbatim": "synthetic sample: local contract tests pass",
+        "source": "synthetic sample request"
+      },
+      {
+        "id": "SYNTHETIC-AC-2",
+        "verbatim": "synthetic sample: observe the deployed service",
+        "source": "synthetic sample request"
+      }
+    ]
+  },
+  "role": "manager",
+  "task_id": "SYNTHETIC-TASK-RESEARCH-001",
+  "attempt": 1,
+  "upstream": [],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "synthetic sample: only AC-1 is assigned; AC-2 remains unassigned and unverified. No final Issue assessment.",
+  "artifacts": [
+    {
+      "id": "SYNTHETIC-DESIGN",
+      "kind": "document",
+      "locator": "examples/research-to-test/design.md",
+      "revision": "SYNTHETIC-REVISION-1",
+      "summary": "synthetic sample: proposed label contract and test matrix."
+    },
+    {
+      "id": "SYNTHETIC-READINESS",
+      "kind": "other",
+      "locator": "pr-ready-issue-unverified.json",
+      "revision": "sha256:74dc440a713b568565b8302ad37eac305f2edf8209e2c7d0508de9bef0739035",
+      "summary": "synthetic sample: readiness v1.0, distinct from handoff v2.0"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "SYNTHETIC-EVIDENCE-1",
+      "claim": "synthetic sample: the design covers the supplied AC in research scope only.",
+      "artifact_ids": [
+        "SYNTHETIC-DESIGN"
+      ],
+      "locator": "examples/research-to-test/design.md#proposed-cases",
+      "observation": "Fictional design inspection; no implementation or test execution is claimed."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "SYNTHETIC-AC-1",
+      "disposition": "covered",
+      "scope": "Research/design scope only: proposed non-blank rule and test cases; implementation acceptance remains unverified.",
+      "artifact_ids": [
+        "SYNTHETIC-DESIGN"
+      ],
+      "evidence_ids": [
+        "SYNTHETIC-EVIDENCE-1"
+      ]
+    },
+    {
+      "ac_id": "SYNTHETIC-AC-2",
+      "disposition": "not_assigned",
+      "scope": "synthetic sample: persistence is outside this research assignment and unverified.",
+      "artifact_ids": [],
+      "evidence_ids": []
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "synthetic_sample",
+  "assignment": {
+    "scope": "Research/design scope only: proposed non-blank rule and test cases; implementation acceptance remains unverified.",
+    "ac_ids": [
+      "SYNTHETIC-AC-1"
+    ],
+    "completion_criteria": [
+      "synthetic sample: cover the assigned AC within the stated role scope and record limitations."
+    ]
+  },
+  "final_assessment": {
+    "outcome": "unverified",
+    "ac_results": [
+      {
+        "ac_id": "SYNTHETIC-AC-1",
+        "outcome": "met",
+        "evidence_ids": [
+          "SYNTHETIC-EVIDENCE-1"
+        ]
+      },
+      {
+        "ac_id": "SYNTHETIC-AC-2",
+        "outcome": "unverified",
+        "evidence_ids": []
+      }
+    ],
+    "rationale": "synthetic sample: merge ready while deployed observation remains unverified"
+  }
+}

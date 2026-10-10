@@ -14,3 +14,5 @@ Research→Test の例:
 [一部担当の Issue handoff](partial-assignment.handoff.json) は AC-1 だけを担当し、AC-2 を not_assigned のまま工程 completed にする v2.0 の例。Manager の最終判定は含めない。
 
 [Knowledge 入力](knowledge/input.json)・[handoff](knowledge/handoff.json)・[後続向け参照](knowledge/context.json) は複数の架空 Issue の raw findings を AC 原文なしで扱う専用 v1.0 の例。[記事](knowledge/curated-example.md) は架空の draft であり実運用知識ではない。
+
+[Readiness の正常・異常例](readiness/README.md) は PR ready と Issue unverified の両立、実装のみ可能・配備 blocked、postdeploy 全 AC 実測、および不正な前倒し achieved / premerge defer を示す独立 v1.0 契約。固定時刻で再生し、現在のマージ許可と区別する。

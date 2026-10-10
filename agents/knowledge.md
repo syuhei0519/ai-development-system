@@ -34,3 +34,7 @@
 ## Execution Boundary
 
 非同期収集・定期同期の実行基盤は Phase 1-3 の対象。Phase 1-1 では契約・手動配送可能な仕様・架空サンプル・検証のみを定義し、スケジューラーや常駐処理を実装・起動しない。
+
+## Readiness の責務
+
+Readiness と Issue Completion の判定責任は持たない。知識候補・収集未完了を readiness の必須依存にしない。Knowledge v1.0 と非同期基盤の実装・起動対象外という境界を維持する。 詳細は [Readiness 契約](../contracts/readiness.md) と [ワークフロー](../workflows/single-issue.md#readiness-と-issue-completion-の運用) に従う。
