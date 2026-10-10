@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "issue": {
+    "id": "SYNTHETIC-ISSUE-001",
+    "source": "https://example.invalid/issues/SYNTHETIC-ISSUE-001",
+    "title": "synthetic sample: non-blank label contract",
+    "acceptance_criteria": [
+      {
+        "id": "SYNTHETIC-AC-1",
+        "verbatim": "A label must contain at least one non-whitespace character.",
+        "source": "https://example.invalid/issues/SYNTHETIC-ISSUE-001#ac-1"
+      }
+    ]
+  },
+  "role": "test",
+  "task_id": "SYNTHETIC-TASK-FAILED-001",
+  "attempt": 1,
+  "upstream": [],
+  "system_status": "completed",
+  "status": "failed",
+  "summary": "synthetic sample: fictional test-plan mismatch.",
+  "artifacts": [
+    {
+      "id": "SYNTHETIC-REPORT",
+      "kind": "test-report",
+      "locator": "examples/research-to-test/test-plan-review.md",
+      "revision": "SYNTHETIC-REVISION-2",
+      "summary": "synthetic sample: fictional test-plan review, no implementation execution."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "SYNTHETIC-EVIDENCE-2",
+      "claim": "synthetic sample: proposed cases cover the fictional AC in a test-plan review.",
+      "artifact_ids": [
+        "SYNTHETIC-REPORT"
+      ],
+      "locator": "examples/research-to-test/test-plan-review.md",
+      "observation": "Fictional documentary comparison only; product behavior and CI are unverified."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "SYNTHETIC-AC-1",
+      "disposition": "not_met",
+      "scope": "Test-plan review only; this does not certify implemented behavior.",
+      "artifact_ids": [
+        "SYNTHETIC-REPORT"
+      ],
+      "evidence_ids": [
+        "SYNTHETIC-EVIDENCE-2"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [
+    "synthetic sample: required whitespace case missing from a fictional alternative plan."
+  ],
+  "knowledge_candidates": [],
+  "publication": "synthetic_sample"
+}

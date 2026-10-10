@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "issue": {
+    "id": "SYNTHETIC-ISSUE-001",
+    "source": "https://example.invalid/issues/SYNTHETIC-ISSUE-001",
+    "title": "synthetic sample: non-blank label contract",
+    "acceptance_criteria": [
+      {
+        "id": "SYNTHETIC-AC-1",
+        "verbatim": "A label must contain at least one non-whitespace character.",
+        "source": "https://example.invalid/issues/SYNTHETIC-ISSUE-001#ac-1"
+      }
+    ]
+  },
+  "role": "research-design",
+  "task_id": "SYNTHETIC-TASK-RESEARCH-001",
+  "attempt": 1,
+  "upstream": [],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "synthetic sample: fictional research completion; not an actual execution result.",
+  "artifacts": [
+    {
+      "id": "SYNTHETIC-DESIGN",
+      "kind": "document",
+      "locator": "examples/research-to-test/design.md",
+      "revision": "SYNTHETIC-REVISION-1",
+      "summary": "synthetic sample: proposed label contract and test matrix."
+    }
+  ],
+  "evidence": [],
+  "ac_mapping": [
+    {
+      "ac_id": "SYNTHETIC-AC-1",
+      "disposition": "covered",
+      "scope": "Research/design scope only: proposed non-blank rule and test cases; implementation acceptance remains unverified.",
+      "artifact_ids": [
+        "SYNTHETIC-DESIGN"
+      ],
+      "evidence_ids": [
+        "SYNTHETIC-EVIDENCE-1"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [
+    {
+      "id": "SYNTHETIC-KNOWLEDGE-1",
+      "domain": "validation",
+      "summary": "synthetic sample: distinguish design coverage from executed tests.",
+      "evidence_ids": [
+        "SYNTHETIC-EVIDENCE-1"
+      ],
+      "raw_locator": "https://example.invalid/synthetic/raw/candidate-1",
+      "publication_safety": "safe_synthetic"
+    }
+  ],
+  "publication": "synthetic_sample"
+}

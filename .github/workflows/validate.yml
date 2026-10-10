@@ -1,0 +1,24 @@
+name: Validate handoff contracts
+on:
+  push:
+    branches-ignore: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python -m unittest discover -s tests -v
+      - run: >-
+          python scripts/validate_handoff.py
+          examples/research-to-test/research.handoff.json
+          examples/research-to-test/test.blocked.handoff.json
+          examples/research-to-test/test.handoff.json
+          examples/failed.handoff.json

@@ -1,0 +1,560 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "issue": {
+      "$ref": "#/$defs/issue"
+    },
+    "role": {
+      "enum": [
+        "manager",
+        "research-design",
+        "implementation",
+        "test",
+        "review",
+        "knowledge"
+      ]
+    },
+    "task_id": {
+      "$ref": "#/$defs/text"
+    },
+    "attempt": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+    },
+    "upstream": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/upstream"
+      },
+      "minItems": 0
+    },
+    "system_status": {
+      "enum": [
+        "completed",
+        "failed",
+        "cancelled"
+      ]
+    },
+    "status": {
+      "enum": [
+        "completed",
+        "blocked",
+        "failed"
+      ]
+    },
+    "summary": {
+      "$ref": "#/$defs/text"
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/artifact"
+      },
+      "minItems": 0
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      },
+      "minItems": 0
+    },
+    "ac_mapping": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/mapping"
+      },
+      "minItems": 0
+    },
+    "block_reasons": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/block"
+      },
+      "minItems": 0
+    },
+    "failure_reasons": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/text"
+      },
+      "minItems": 0
+    },
+    "knowledge_candidates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/knowledge"
+      },
+      "minItems": 0
+    },
+    "publication": {
+      "enum": [
+        "synthetic_sample",
+        "public_safe",
+        "private_only"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "issue",
+    "role",
+    "task_id",
+    "attempt",
+    "upstream",
+    "system_status",
+    "status",
+    "summary",
+    "artifacts",
+    "evidence",
+    "ac_mapping",
+    "block_reasons",
+    "failure_reasons",
+    "knowledge_candidates",
+    "publication"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/ai-development-system/handoff.schema.json",
+  "title": "Independent task handoff v1.0",
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "issue": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/text"
+        },
+        "source": {
+          "$ref": "#/$defs/text"
+        },
+        "title": {
+          "$ref": "#/$defs/text"
+        },
+        "acceptance_criteria": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/criterion"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "id",
+        "source",
+        "title",
+        "acceptance_criteria"
+      ]
+    },
+    "criterion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/text"
+        },
+        "verbatim": {
+          "$ref": "#/$defs/text"
+        },
+        "source": {
+          "$ref": "#/$defs/text"
+        }
+      },
+      "required": [
+        "id",
+        "verbatim",
+        "source"
+      ]
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/text"
+        },
+        "kind": {
+          "enum": [
+            "document",
+            "patch",
+            "commit",
+            "test-report",
+            "review",
+            "knowledge",
+            "other"
+          ]
+        },
+        "locator": {
+          "$ref": "#/$defs/text"
+        },
+        "revision": {
+          "$ref": "#/$defs/text"
+        },
+        "summary": {
+          "$ref": "#/$defs/text"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "locator",
+        "revision",
+        "summary"
+      ]
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/text"
+        },
+        "claim": {
+          "$ref": "#/$defs/text"
+        },
+        "artifact_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          },
+          "minItems": 1
+        },
+        "locator": {
+          "$ref": "#/$defs/text"
+        },
+        "observation": {
+          "$ref": "#/$defs/text"
+        }
+      },
+      "required": [
+        "id",
+        "claim",
+        "artifact_ids",
+        "locator",
+        "observation"
+      ]
+    },
+    "mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ac_id": {
+          "$ref": "#/$defs/text"
+        },
+        "disposition": {
+          "enum": [
+            "covered",
+            "unverified",
+            "not_met"
+          ]
+        },
+        "scope": {
+          "$ref": "#/$defs/text"
+        },
+        "artifact_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          },
+          "minItems": 1
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "ac_id",
+        "disposition",
+        "scope",
+        "artifact_ids",
+        "evidence_ids"
+      ]
+    },
+    "upstream": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "role": {
+          "enum": [
+            "manager",
+            "research-design",
+            "implementation",
+            "test",
+            "review",
+            "knowledge"
+          ]
+        },
+        "task_id": {
+          "$ref": "#/$defs/text"
+        },
+        "attempt": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "handoff_locator": {
+          "$ref": "#/$defs/text"
+        },
+        "revision": {
+          "$ref": "#/$defs/text"
+        },
+        "relationship": {
+          "enum": [
+            "dependency",
+            "retry_of"
+          ]
+        }
+      },
+      "required": [
+        "role",
+        "task_id",
+        "attempt",
+        "handoff_locator",
+        "revision",
+        "relationship"
+      ]
+    },
+    "block": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "enum": [
+            "MISSING_ACCEPTANCE_CRITERIA",
+            "MISSING_INPUT",
+            "ACCESS_DENIED",
+            "INVALID_HANDOFF",
+            "UPSTREAM_FAILED",
+            "RETRY_LIMIT_REACHED",
+            "OTHER"
+          ]
+        },
+        "detail": {
+          "$ref": "#/$defs/text"
+        },
+        "required_action": {
+          "$ref": "#/$defs/text"
+        }
+      },
+      "required": [
+        "code",
+        "detail",
+        "required_action"
+      ]
+    },
+    "knowledge": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/text"
+        },
+        "domain": {
+          "$ref": "#/$defs/text"
+        },
+        "summary": {
+          "$ref": "#/$defs/text"
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          },
+          "minItems": 1
+        },
+        "raw_locator": {
+          "$ref": "#/$defs/text"
+        },
+        "publication_safety": {
+          "enum": [
+            "needs_review",
+            "safe_synthetic",
+            "approved_public"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "domain",
+        "summary",
+        "evidence_ids",
+        "raw_locator",
+        "publication_safety"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "completed"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "system_status": {
+            "const": "completed"
+          },
+          "issue": {
+            "properties": {
+              "acceptance_criteria": {
+                "minItems": 1
+              }
+            }
+          },
+          "artifacts": {
+            "minItems": 1
+          },
+          "evidence": {
+            "minItems": 1
+          },
+          "ac_mapping": {
+            "minItems": 1,
+            "items": {
+              "properties": {
+                "disposition": {
+                  "const": "covered"
+                }
+              }
+            }
+          },
+          "block_reasons": {
+            "maxItems": 0
+          },
+          "failure_reasons": {
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "blocked"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "block_reasons": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "failed"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "failure_reasons": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "issue": {
+            "properties": {
+              "acceptance_criteria": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "const": "blocked"
+          },
+          "block_reasons": {
+            "contains": {
+              "properties": {
+                "code": {
+                  "const": "MISSING_ACCEPTANCE_CRITERIA"
+                }
+              },
+              "required": [
+                "code"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "block_reasons": {
+            "contains": {
+              "properties": {
+                "code": {
+                  "const": "MISSING_ACCEPTANCE_CRITERIA"
+                }
+              },
+              "required": [
+                "code"
+              ]
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "const": "blocked"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "attempt": {
+            "minimum": 2
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "upstream": {
+            "contains": {
+              "properties": {
+                "relationship": {
+                  "const": "retry_of"
+                }
+              },
+              "required": [
+                "relationship"
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
+}
