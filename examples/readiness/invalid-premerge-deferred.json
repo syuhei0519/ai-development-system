@@ -1,0 +1,591 @@
+{
+  "document_type": "readiness_assessment",
+  "schema_version": "1.0",
+  "assessor_role": "manager",
+  "subject": {
+    "repository": "example/synthetic-service",
+    "pr_number": 42,
+    "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "config_revision": "synthetic-policy-and-environment-v1",
+    "merge_group_sha": null
+  },
+  "issue_id": "SYNTHETIC-ISSUE",
+  "acceptance_criteria": [
+    {
+      "id": "SYNTHETIC-AC-1",
+      "verbatim": "synthetic sample: local contract tests pass",
+      "source": "synthetic sample request",
+      "verification_phase": "premerge"
+    },
+    {
+      "id": "SYNTHETIC-AC-2",
+      "verbatim": "synthetic sample: observe the deployed service",
+      "source": "synthetic sample request",
+      "verification_phase": "postdeploy"
+    }
+  ],
+  "pr_ac_ids": [
+    "SYNTHETIC-AC-1",
+    "SYNTHETIC-AC-2"
+  ],
+  "deployment_effect": "none",
+  "deployment_effect_evidence_ids": [
+    "impact"
+  ],
+  "evaluated_at": "2030-01-01T12:00:00Z",
+  "implementation_actor": "synthetic-implementer",
+  "evidence": [
+    {
+      "id": "implementation-design",
+      "kind": "design",
+      "subject": {
+        "repository": "example/synthetic-service",
+        "pr_number": 42,
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "config_revision": "synthetic-policy-and-environment-v1",
+        "merge_group_sha": null
+      },
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-02T08:00:00Z",
+      "locator": "https://example.invalid/synthetic/implementation-design",
+      "observation": "synthetic sample: fictional observation, not an actual test",
+      "producer": "synthetic-design",
+      "independent": false,
+      "ac_ids": []
+    },
+    {
+      "id": "implementation-authorization",
+      "kind": "authorization",
+      "subject": {
+        "repository": "example/synthetic-service",
+        "pr_number": 42,
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "config_revision": "synthetic-policy-and-environment-v1",
+        "merge_group_sha": null
+      },
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-02T08:00:00Z",
+      "locator": "https://example.invalid/synthetic/implementation-authorization",
+      "observation": "synthetic sample: fictional observation, not an actual test",
+      "producer": "synthetic-authorization",
+      "independent": false,
+      "ac_ids": []
+    },
+    {
+      "id": "implementation-dependencies",
+      "kind": "dependencies",
+      "subject": {
+        "repository": "example/synthetic-service",
+        "pr_number": 42,
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "config_revision": "synthetic-policy-and-environment-v1",
+        "merge_group_sha": null
+      },
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-02T08:00:00Z",
+      "locator": "https://example.invalid/synthetic/implementation-dependencies",
+      "observation": "synthetic sample: fictional observation, not an actual test",
+      "producer": "synthetic-dependencies",
+      "independent": false,
+      "ac_ids": []
+    },
+    {
+      "id": "deployment-environment",
+      "kind": "environment",
+      "subject": {
+        "repository": "example/synthetic-service",
+        "pr_number": 42,
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "config_revision": "synthetic-policy-and-environment-v1",
+        "merge_group_sha": null
+      },
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-02T08:00:00Z",
+      "locator": "https://example.invalid/synthetic/deployment-environment",
+      "observation": "synthetic sample: fictional observation, not an actual test",
+      "producer": "synthetic-environment",
+      "independent": false,
+      "ac_ids": []
+    },
+    {
+      "id": "deployment-rollback",
+      "kind": "rollback",
+      "subject": {
+        "repository": "example/synthetic-service",
+        "pr_number": 42,
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "config_revision": "synthetic-policy-and-environment-v1",
+        "merge_group_sha": null
+      },
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-02T08:00:00Z",
+      "locator": "https://example.invalid/synthetic/deployment-rollback",
+      "observation": "synthetic sample: fictional observation, not an actual test",
+      "producer": "synthetic-rollback",
+      "independent": false,
+      "ac_ids": []
+    },
+    {
+      "id": "deployment-authorization",
+      "kind": "authorization",
+      "subject": {
+        "repository": "example/synthetic-service",
+        "pr_number": 42,
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "config_revision": "synthetic-policy-and-environment-v1",
+        "merge_group_sha": null
+      },
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-02T08:00:00Z",
+      "locator": "https://example.invalid/synthetic/deployment-authorization",
+      "observation": "synthetic sample: fictional observation, not an actual test",
+      "producer": "synthetic-authorization",
+      "independent": false,
+      "ac_ids": []
+    },
+    {
+      "id": "deployment-dependencies",
+      "kind": "dependencies",
+      "subject": {
+        "repository": "example/synthetic-service",
+        "pr_number": 42,
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "config_revision": "synthetic-policy-and-environment-v1",
+        "merge_group_sha": null
+      },
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-02T08:00:00Z",
+      "locator": "https://example.invalid/synthetic/deployment-dependencies",
+      "observation": "synthetic sample: fictional observation, not an actual test",
+      "producer": "synthetic-dependencies",
+      "independent": false,
+      "ac_ids": []
+    },
+    {
+      "id": "merge-ci",
+      "kind": "ci",
+      "subject": {
+        "repository": "example/synthetic-service",
+        "pr_number": 42,
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "config_revision": "synthetic-policy-and-environment-v1",
+        "merge_group_sha": null
+      },
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-02T08:00:00Z",
+      "locator": "https://example.invalid/synthetic/merge-ci",
+      "observation": "synthetic sample: fictional observation, not an actual test",
+      "producer": "synthetic-ci",
+      "independent": false,
+      "ac_ids": []
+    },
+    {
+      "id": "merge-independent_test",
+      "kind": "independent_test",
+      "subject": {
+        "repository": "example/synthetic-service",
+        "pr_number": 42,
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "config_revision": "synthetic-policy-and-environment-v1",
+        "merge_group_sha": null
+      },
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-02T08:00:00Z",
+      "locator": "https://example.invalid/synthetic/merge-independent_test",
+      "observation": "synthetic sample: fictional observation, not an actual test",
+      "producer": "synthetic-independent_test",
+      "independent": true,
+      "ac_ids": []
+    },
+    {
+      "id": "merge-ai_review",
+      "kind": "ai_review",
+      "subject": {
+        "repository": "example/synthetic-service",
+        "pr_number": 42,
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "config_revision": "synthetic-policy-and-environment-v1",
+        "merge_group_sha": null
+      },
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-02T08:00:00Z",
+      "locator": "https://example.invalid/synthetic/merge-ai_review",
+      "observation": "synthetic sample: fictional observation, not an actual test",
+      "producer": "synthetic-ai_review",
+      "independent": true,
+      "ac_ids": []
+    },
+    {
+      "id": "merge-github_checks",
+      "kind": "github_checks",
+      "subject": {
+        "repository": "example/synthetic-service",
+        "pr_number": 42,
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "config_revision": "synthetic-policy-and-environment-v1",
+        "merge_group_sha": null
+      },
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-02T08:00:00Z",
+      "locator": "https://example.invalid/synthetic/merge-github_checks",
+      "observation": "synthetic sample: fictional observation, not an actual test",
+      "producer": "synthetic-github_checks",
+      "independent": false,
+      "ac_ids": []
+    },
+    {
+      "id": "merge-github_reviews",
+      "kind": "github_reviews",
+      "subject": {
+        "repository": "example/synthetic-service",
+        "pr_number": 42,
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "config_revision": "synthetic-policy-and-environment-v1",
+        "merge_group_sha": null
+      },
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-02T08:00:00Z",
+      "locator": "https://example.invalid/synthetic/merge-github_reviews",
+      "observation": "synthetic sample: fictional observation, not an actual test",
+      "producer": "synthetic-github_reviews",
+      "independent": false,
+      "ac_ids": []
+    },
+    {
+      "id": "merge-github_ruleset",
+      "kind": "github_ruleset",
+      "subject": {
+        "repository": "example/synthetic-service",
+        "pr_number": 42,
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "config_revision": "synthetic-policy-and-environment-v1",
+        "merge_group_sha": null
+      },
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-02T08:00:00Z",
+      "locator": "https://example.invalid/synthetic/merge-github_ruleset",
+      "observation": "synthetic sample: fictional observation, not an actual test",
+      "producer": "synthetic-github_ruleset",
+      "independent": false,
+      "ac_ids": []
+    },
+    {
+      "id": "merge-github_queue",
+      "kind": "github_queue",
+      "subject": {
+        "repository": "example/synthetic-service",
+        "pr_number": 42,
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "config_revision": "synthetic-policy-and-environment-v1",
+        "merge_group_sha": null
+      },
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-02T08:00:00Z",
+      "locator": "https://example.invalid/synthetic/merge-github_queue",
+      "observation": "synthetic sample: fictional observation, not an actual test",
+      "producer": "synthetic-github_queue",
+      "independent": false,
+      "ac_ids": []
+    },
+    {
+      "id": "merge-authorization",
+      "kind": "authorization",
+      "subject": {
+        "repository": "example/synthetic-service",
+        "pr_number": 42,
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "config_revision": "synthetic-policy-and-environment-v1",
+        "merge_group_sha": null
+      },
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-02T08:00:00Z",
+      "locator": "https://example.invalid/synthetic/merge-authorization",
+      "observation": "synthetic sample: fictional observation, not an actual test",
+      "producer": "synthetic-authorization",
+      "independent": false,
+      "ac_ids": []
+    },
+    {
+      "id": "merge-dependencies",
+      "kind": "dependencies",
+      "subject": {
+        "repository": "example/synthetic-service",
+        "pr_number": 42,
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "config_revision": "synthetic-policy-and-environment-v1",
+        "merge_group_sha": null
+      },
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-02T08:00:00Z",
+      "locator": "https://example.invalid/synthetic/merge-dependencies",
+      "observation": "synthetic sample: fictional observation, not an actual test",
+      "producer": "synthetic-dependencies",
+      "independent": false,
+      "ac_ids": []
+    },
+    {
+      "id": "impact",
+      "kind": "deployment_impact",
+      "subject": {
+        "repository": "example/synthetic-service",
+        "pr_number": 42,
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "config_revision": "synthetic-policy-and-environment-v1",
+        "merge_group_sha": null
+      },
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-02T08:00:00Z",
+      "locator": "https://example.invalid/synthetic/impact",
+      "observation": "synthetic sample: fictional observation, not an actual test",
+      "producer": "synthetic-deployment_impact",
+      "independent": false,
+      "ac_ids": []
+    },
+    {
+      "id": "measurement",
+      "kind": "ac_measurement",
+      "subject": {
+        "repository": "example/synthetic-service",
+        "pr_number": 42,
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "config_revision": "synthetic-policy-and-environment-v1",
+        "merge_group_sha": null
+      },
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-02T08:00:00Z",
+      "locator": "https://example.invalid/synthetic/measurement",
+      "observation": "synthetic sample: fictional observation, not an actual test",
+      "producer": "synthetic-ac_measurement",
+      "independent": false,
+      "ac_ids": [
+        "SYNTHETIC-AC-1"
+      ]
+    },
+    {
+      "id": "basis",
+      "kind": "deferral_basis",
+      "subject": {
+        "repository": "example/synthetic-service",
+        "pr_number": 42,
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "config_revision": "synthetic-policy-and-environment-v1",
+        "merge_group_sha": null
+      },
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-02T08:00:00Z",
+      "locator": "https://example.invalid/synthetic/basis",
+      "observation": "synthetic sample: fictional observation, not an actual test",
+      "producer": "synthetic-deferral_basis",
+      "independent": false,
+      "ac_ids": [
+        "SYNTHETIC-AC-2"
+      ]
+    }
+  ],
+  "lifecycle": {
+    "merged_at": null,
+    "deployed_at": null
+  },
+  "ac_results": [
+    {
+      "ac_id": "SYNTHETIC-AC-1",
+      "outcome": "not_met",
+      "evidence_ids": [
+        "measurement"
+      ],
+      "deferred": {
+        "reason": "synthetic sample: service observation requires deployment",
+        "owner": "synthetic-operator",
+        "environment": "synthetic-staging",
+        "method": "synthetic sample: probe the deployed revision and record response",
+        "failure_action": "synthetic sample: rollback, keep Issue open, repair and retest",
+        "evidence_ids": [
+          "basis"
+        ]
+      }
+    },
+    {
+      "ac_id": "SYNTHETIC-AC-2",
+      "outcome": "unverified",
+      "evidence_ids": [],
+      "deferred": {
+        "reason": "synthetic sample: service observation requires deployment",
+        "owner": "synthetic-operator",
+        "environment": "synthetic-staging",
+        "method": "synthetic sample: probe the deployed revision and record response",
+        "failure_action": "synthetic sample: rollback, keep Issue open, repair and retest",
+        "evidence_ids": [
+          "basis"
+        ]
+      }
+    }
+  ],
+  "issue_completion": "not_achieved",
+  "implementation_readiness": {
+    "status": "ready",
+    "checks": {
+      "design": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "implementation-design"
+        ],
+        "reason": "synthetic sample: fictional policy and gate result"
+      },
+      "authorization": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "implementation-authorization"
+        ],
+        "reason": "synthetic sample: fictional policy and gate result"
+      },
+      "dependencies": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "implementation-dependencies"
+        ],
+        "reason": "synthetic sample: fictional policy and gate result"
+      }
+    }
+  },
+  "deployment_readiness": {
+    "status": "ready",
+    "checks": {
+      "environment": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "deployment-environment"
+        ],
+        "reason": "synthetic sample: fictional policy and gate result"
+      },
+      "rollback": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "deployment-rollback"
+        ],
+        "reason": "synthetic sample: fictional policy and gate result"
+      },
+      "authorization": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "deployment-authorization"
+        ],
+        "reason": "synthetic sample: fictional policy and gate result"
+      },
+      "dependencies": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "deployment-dependencies"
+        ],
+        "reason": "synthetic sample: fictional policy and gate result"
+      }
+    }
+  },
+  "merge_readiness": {
+    "status": "ready",
+    "checks": {
+      "ci": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "merge-ci"
+        ],
+        "reason": "synthetic sample: fictional policy and gate result"
+      },
+      "independent_test": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "merge-independent_test"
+        ],
+        "reason": "synthetic sample: fictional policy and gate result"
+      },
+      "ai_review": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "merge-ai_review"
+        ],
+        "reason": "synthetic sample: fictional policy and gate result"
+      },
+      "github_checks": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "merge-github_checks"
+        ],
+        "reason": "synthetic sample: fictional policy and gate result"
+      },
+      "github_reviews": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "merge-github_reviews"
+        ],
+        "reason": "synthetic sample: fictional policy and gate result"
+      },
+      "github_ruleset": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "merge-github_ruleset"
+        ],
+        "reason": "synthetic sample: fictional policy and gate result"
+      },
+      "github_queue": {
+        "verdict": "not_applicable",
+        "evidence_ids": [
+          "merge-github_queue"
+        ],
+        "reason": "synthetic sample: fictional policy and gate result"
+      },
+      "authorization": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "merge-authorization"
+        ],
+        "reason": "synthetic sample: fictional policy and gate result"
+      },
+      "dependencies": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "merge-dependencies"
+        ],
+        "reason": "synthetic sample: fictional policy and gate result"
+      }
+    }
+  }
+}

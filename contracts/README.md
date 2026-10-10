@@ -1,4 +1,4 @@
-# Contracts: Issue v2.0 / Knowledge v1.0
+# Contracts: Issue v2.0 / Knowledge v1.0 / Readiness v1.0
 
 JSON Schema Draft 2020-12 を使用する。追加フィールド、空文字・空白のみの文字列、型不正を拒否する。schema の `$id` にある example.invalid は識別用プレースホルダーであり、ネットワーク取得は不要。
 
@@ -47,3 +47,7 @@ Issue handoff v1.0 → v2.0 は破壊的変更。v1.0 を黙って受け付け�
 Knowledge は Issue 契約の role=knowledge を廃止し、独立した v1.0 の入出力・参照契約へ移行する。必須 AC 原文の要件を引き継がず、実際の raw evidence と固定出典を引き継ぐ。過去の実行成果物は上書きせず元のバージョンで保管する。更新時は schema・CLI・テスト・サンプル・文書を同時に見直す。
 
 すべての形式検査は、根拠の真実性・AC 充足・公開可否・GitHub 反映・CI 成功の証明とは別。[業務ゲート](../workflows/single-issue.md) を省略しない。
+
+## Readiness と Issue Completion
+
+[Readiness v1.0](readiness.md) は3種 readiness と全 AC の実測状態を分離する独立契約。PR 単位の Merge Ready に Issue achieved を要求しない。`readiness.schema.json` と `readiness-context.schema.json` を `validate_readiness.py` で照合し、handoff との配送には `--handoff` も使う。既存 handoff v2.0 の artifacts から固定参照し、既存 final_assessment の全 AC 実測による厳格な Manager 判定を維持する。Knowledge 契約と収集基盤には変更を加えない。

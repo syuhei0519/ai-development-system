@@ -33,3 +33,7 @@
 ## Role-specific Gate
 
 阻害指摘がなく、対象 revision・確認範囲・残留リスクが記録される。阻害指摘がある場合は failed とし、Manager が修正工程へ戻す。
+
+## Readiness の責務
+
+3種 readiness、AC の最早検証段階、配備影響と延期の正当性を独立に検査する。AI Review を GitHub required review の代わりにしない。CI 成功でも阻害指摘があれば merge 不可。対象 head/base/config 更新や証跡期限切れでは再レビューする。 詳細は [Readiness 契約](../contracts/readiness.md) と [ワークフロー](../workflows/single-issue.md#readiness-と-issue-completion-の運用) に従う。

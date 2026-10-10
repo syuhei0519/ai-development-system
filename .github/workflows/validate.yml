@@ -29,3 +29,19 @@ jobs:
           examples/knowledge/input.json
           examples/knowledge/handoff.json
           examples/knowledge/context.json
+      - run: >-
+          python scripts/validate_readiness.py
+          examples/readiness/pr-ready-issue-unverified.json
+          --context examples/readiness/context.json
+          --handoff examples/readiness/manager.handoff.json
+          --at 2030-01-01T12:00:00Z
+      - run: >-
+          python scripts/validate_readiness.py
+          examples/readiness/implementation-only.json
+          --context examples/readiness/automatic-context.json
+          --at 2030-01-01T12:00:00Z
+      - run: >-
+          python scripts/validate_readiness.py
+          examples/readiness/postdeploy-achieved.json
+          --context examples/readiness/context.json
+          --at 2030-01-01T12:00:00Z

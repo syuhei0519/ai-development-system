@@ -35,3 +35,7 @@ Dots 上でユーザーの依頼、Issue の原文・認可済み出典、固定
 ## Role-specific Gate
 
 全依存工程の業務ゲートを検査し、AC の最終判定とリモート/PR/CI の個別状態、未確認点を報告できる。Knowledge 未完了は開発の阻害理由にしない。
+
+## Readiness の責務
+
+Implementation Ready、Deployment Ready、PR ごとの Merge Ready と Issue Completion を別々に記録する。現在の context・保護設定・証跡対象と期限を検査し、head/base/設定変更時に再検証する。全 AC 実測後だけ final_assessment=achieved とし、未検証を残した Issue の早期 close を防ぐ。 詳細は [Readiness 契約](../contracts/readiness.md) と [ワークフロー](../workflows/single-issue.md#readiness-と-issue-completion-の運用) に従う。

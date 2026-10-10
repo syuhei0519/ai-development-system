@@ -33,3 +33,7 @@
 ## Role-specific Gate
 
 全担当 AC の検証結果と再現手順があり、不合格・未実施が明示されている。必要な検証の不合格は failed、実行不能は blocked とする。
+
+## Readiness の責務
+
+CI と独立 Test を分離し、head/base/対象 revision/config/必要な merge-group・環境・観測時刻・期限を伴う実測を返す。premerge 不合格/未実行を延期で隠さない。postmerge/deploy 専用 AC は未検証として方法・担当・環境・失敗時対応を確認し、該当イベント後に実測する。 詳細は [Readiness 契約](../contracts/readiness.md) と [ワークフロー](../workflows/single-issue.md#readiness-と-issue-completion-の運用) に従う。

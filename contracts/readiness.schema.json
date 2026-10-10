@@ -1,0 +1,529 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/ai-development-system/readiness.schema.json",
+  "title": "readiness v1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "document_type": {
+      "const": "readiness_assessment"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "assessor_role": {
+      "const": "manager"
+    },
+    "subject": {
+      "$ref": "#/$defs/subject"
+    },
+    "issue_id": {
+      "$ref": "#/$defs/text"
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/criterion"
+      },
+      "minItems": 1
+    },
+    "pr_ac_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/text"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "deployment_effect": {
+      "enum": [
+        "none",
+        "automatic",
+        "unknown"
+      ]
+    },
+    "deployment_effect_evidence_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/text"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "implementation_actor": {
+      "$ref": "#/$defs/text"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/text"
+          },
+          "kind": {
+            "enum": [
+              "design",
+              "authorization",
+              "dependencies",
+              "environment",
+              "rollback",
+              "ci",
+              "independent_test",
+              "ai_review",
+              "github_checks",
+              "github_reviews",
+              "github_ruleset",
+              "github_queue",
+              "ac_measurement",
+              "deferral_basis",
+              "deployment_impact"
+            ]
+          },
+          "subject": {
+            "$ref": "#/$defs/subject"
+          },
+          "observed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "valid_until": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "locator": {
+            "$ref": "#/$defs/text"
+          },
+          "observation": {
+            "$ref": "#/$defs/text"
+          },
+          "producer": {
+            "$ref": "#/$defs/text"
+          },
+          "independent": {
+            "type": "boolean"
+          },
+          "ac_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/text"
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "subject",
+          "observed_at",
+          "valid_until",
+          "locator",
+          "observation",
+          "producer",
+          "independent",
+          "ac_ids"
+        ]
+      },
+      "minItems": 1
+    },
+    "lifecycle": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "merged_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "deployed_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "merged_at",
+        "deployed_at"
+      ]
+    },
+    "ac_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "ac_id": {
+            "$ref": "#/$defs/text"
+          },
+          "outcome": {
+            "enum": [
+              "met",
+              "not_met",
+              "unverified"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/text"
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "deferred": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "reason": {
+                    "$ref": "#/$defs/text"
+                  },
+                  "owner": {
+                    "$ref": "#/$defs/text"
+                  },
+                  "environment": {
+                    "$ref": "#/$defs/text"
+                  },
+                  "method": {
+                    "$ref": "#/$defs/text"
+                  },
+                  "failure_action": {
+                    "$ref": "#/$defs/text"
+                  },
+                  "evidence_ids": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/text"
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                  }
+                },
+                "required": [
+                  "reason",
+                  "owner",
+                  "environment",
+                  "method",
+                  "failure_action",
+                  "evidence_ids"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "ac_id",
+          "outcome",
+          "evidence_ids",
+          "deferred"
+        ]
+      },
+      "minItems": 1
+    },
+    "issue_completion": {
+      "enum": [
+        "achieved",
+        "not_achieved",
+        "unverified"
+      ]
+    },
+    "implementation_readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "ready",
+            "blocked"
+          ]
+        },
+        "checks": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "design": {
+              "$ref": "#/$defs/proof"
+            },
+            "authorization": {
+              "$ref": "#/$defs/proof"
+            },
+            "dependencies": {
+              "$ref": "#/$defs/proof"
+            }
+          },
+          "required": [
+            "design",
+            "authorization",
+            "dependencies"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "checks"
+      ]
+    },
+    "deployment_readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "ready",
+            "blocked"
+          ]
+        },
+        "checks": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "environment": {
+              "$ref": "#/$defs/proof"
+            },
+            "rollback": {
+              "$ref": "#/$defs/proof"
+            },
+            "authorization": {
+              "$ref": "#/$defs/proof"
+            },
+            "dependencies": {
+              "$ref": "#/$defs/proof"
+            }
+          },
+          "required": [
+            "environment",
+            "rollback",
+            "authorization",
+            "dependencies"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "checks"
+      ]
+    },
+    "merge_readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "ready",
+            "blocked"
+          ]
+        },
+        "checks": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "ci": {
+              "$ref": "#/$defs/proof"
+            },
+            "independent_test": {
+              "$ref": "#/$defs/proof"
+            },
+            "ai_review": {
+              "$ref": "#/$defs/proof"
+            },
+            "github_checks": {
+              "$ref": "#/$defs/proof"
+            },
+            "github_reviews": {
+              "$ref": "#/$defs/proof"
+            },
+            "github_ruleset": {
+              "$ref": "#/$defs/proof"
+            },
+            "github_queue": {
+              "$ref": "#/$defs/proof"
+            },
+            "authorization": {
+              "$ref": "#/$defs/proof"
+            },
+            "dependencies": {
+              "$ref": "#/$defs/proof"
+            }
+          },
+          "required": [
+            "ci",
+            "independent_test",
+            "ai_review",
+            "github_checks",
+            "github_reviews",
+            "github_ruleset",
+            "github_queue",
+            "authorization",
+            "dependencies"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "checks"
+      ]
+    }
+  },
+  "required": [
+    "document_type",
+    "schema_version",
+    "assessor_role",
+    "subject",
+    "issue_id",
+    "acceptance_criteria",
+    "pr_ac_ids",
+    "deployment_effect",
+    "deployment_effect_evidence_ids",
+    "evaluated_at",
+    "implementation_actor",
+    "evidence",
+    "lifecycle",
+    "ac_results",
+    "issue_completion",
+    "implementation_readiness",
+    "deployment_readiness",
+    "merge_readiness"
+  ],
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "repository": {
+          "$ref": "#/$defs/text"
+        },
+        "pr_number": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "head_sha": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "base_sha": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "target_revision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "config_revision": {
+          "$ref": "#/$defs/text"
+        },
+        "merge_group_sha": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "repository",
+        "pr_number",
+        "head_sha",
+        "base_sha",
+        "target_revision",
+        "config_revision",
+        "merge_group_sha"
+      ]
+    },
+    "criterion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/text"
+        },
+        "verbatim": {
+          "$ref": "#/$defs/text"
+        },
+        "source": {
+          "$ref": "#/$defs/text"
+        },
+        "verification_phase": {
+          "enum": [
+            "premerge",
+            "postmerge",
+            "postdeploy"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "verbatim",
+        "source",
+        "verification_phase"
+      ]
+    },
+    "proof": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "verdict": {
+          "enum": [
+            "pass",
+            "fail",
+            "pending",
+            "not_applicable"
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "reason": {
+          "$ref": "#/$defs/text"
+        }
+      },
+      "required": [
+        "verdict",
+        "evidence_ids",
+        "reason"
+      ]
+    }
+  }
+}

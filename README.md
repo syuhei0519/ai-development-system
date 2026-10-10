@@ -1,6 +1,6 @@
 # AI Development System
 
-既存の Dots / Codex Cloud 上で独立タスクを起動し、役割と成果物の契約を明示して AI 開発を進めるための Phase 1-1 設定・運用仕様です。追加 OpenAI API、新規課金サービス、6プロセスの常設は不要です。自動オーケストレーターや Dots 専用 API 連携の実装は含みません。
+既存の Dots / Codex Cloud 上で独立タスクを起動し、役割と成果物の契約を明示して AI 開発を進めるための設定・運用仕様です。Phase 1-1 の契約に Phase 1-2 のマージゲート契約を追加しています。追加 OpenAI API、新規課金サービス、6プロセスの常設は不要です。自動オーケストレーターや Dots 専用 API 連携の実装は含みません。
 
 ## アーキテクチャ
 
@@ -99,3 +99,9 @@ JSON Schema は構造、CLI の追加検査はローカル ID の参照整合性
 - `covered` は役割の担当範囲の完了です。Research の設計完了を製品の AC 合格と誤認しないよう `assignment.scope・ac_ids・completion_criteria` を必須にしました。最終の final_assessment は Manager のみが全 Issue AC について判定します。
 - 初期の技術領域と手動補助可能な Dots 起動手順は最小構成です。実環境での独立タスク起動・配送の統合試験はこの契約テストの対象外です。
 - 公開サンプルは synthetic sample と明示し、実際の非公開 task/thread/message ID、私的会話、個人情報、内部メモ、認証情報、運用ログは含めません。実運用の台帳は認可された非公開領域に置きます。
+
+## 3種 Readiness と Issue Completion
+
+[Readiness v1.0](contracts/readiness.md) では Implementation Ready と Deployment Ready を独立評価し、PR 単位の Merge Ready を Issue Completion と分離します。マージ前の Issue achieved 要求はありません。本当に postmerge/deploy 専用の AC は責任・方法・失敗時対応付きで unverified を保持し、全 AC 実測後だけ Manager が最終達成を判定します。自動配備・影響不明のマージは Deployment Ready が必要です。
+
+[判定 schema](contracts/readiness.schema.json)、[現在 context schema](contracts/readiness-context.schema.json)、[CLI](scripts/validate_readiness.py)、[架空サンプルと再現手順](examples/readiness/README.md) を参照してください。Handoff v2.0 と Knowledge v1.0 は後方互換を維持し、新契約を artifact で配送します。schema/CLI は記録整合性のみで、証拠の真偽や live GitHub のマージ可否は保証しません。この仕様追加は merge/auto-merge や環境・保護設定の変更許可を与えません。

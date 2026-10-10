@@ -56,7 +56,16 @@ CLI Git と GitHub 連携は別経路。GitHub 連携の成功は CLI の認証�
 
 ユーザーが許可した将来方針として、**Phase 1-2 以降は品質ゲート通過後に AI がマージできる**。Manager または明示的に割り当てられた実装担当が、既存の認可済み GitHub 経路で実行する。これは本作業での即時実行許可ではない。
 
-マージ前には最新 head に対する assignment の検証、Manager の Issue 全体の achieved 判定、Test/Review の阻害指摘解消、GitHub が要求する checks・review・merge queue 等の保護条件、適用される依頼の範囲を確認する。GitHub の必須 checks/review/Ruleset/ブランチ保護を AI が無効化・書き換え・管理者権限で迂回してはならない。失敗・未実行・未承認・head 更新があれば停止して必要な再検証を行う。auto-merge を使う将来運用でも同じ条件を適用し、今回の PR では有効化しない。
+マージ前には対象 PR の [Merge Readiness v1.0](../contracts/readiness.md) を判定する。Issue 全体の achieved はマージ前の必須条件にしない。最新 head/base/対象 revision/設定/必要な merge-group の証跡、独立 Test、AI Review、CI、GitHub 必須 checks・review・Ruleset・queue、依存関係、ユーザー許可を個別に照合する。Implementation Ready と Deployment Ready は独立評価し、自動配備または配備影響不明の場合は Deployment Ready も要求する。GitHub の必須 checks/review/Ruleset/ブランチ保護を AI が無効化・書き換え・管理者権限で迂回してはならない。必須条件の失敗・未実行・未承認、head/base/設定/対象 revision 更新、証跡期限切れがあれば停止して必要な再検証を行う。auto-merge を使う将来運用でも同じ条件を適用し、今回の PR では有効化しない。
+
+## Readiness と Issue Completion の運用
+
+1. Research は Implementation Ready と Deployment Ready の条件、未決設計の比較・推奨・根拠、ユーザー判断/承認が必要な箇所を分離する。Manager は環境未準備だけで実装可能な範囲を一律停止せず、必要な設計・許可・依存が揃った assignment を確定する。
+2. Manager は全 AC 原文、最早検証段階、対象 PR の AC、配備影響と現状の保護設定を current context に確定する。premerge で達成可能な必須条件の不合格・未実行・承認待ちを deferred に逃がさない。
+3. Implementation の固定成果物を独立 Test/Review に渡す。CI、独立 Test、AI Review、GitHub 必須条件を別証跡として取得し、[readiness CLI](../scripts/validate_readiness.py) を現在の context と実行する。handoff と一緒に配送するときは `--handoff` も指定する。形式検査の成功と ready と実行許可を区別する。
+4. 本当にマージ・配備後にしか確認できない AC は理由・担当・環境・検証方法・失敗時対応・分類根拠を記録し unverified のまま保持する。GitOps 等のマージによる配備がある/影響不明なら Deployment Ready を追加必須条件とする。
+5. 許可されたマージ操作の直前に現状と期限を再確認する。更新で ready を失効させ再検証する。今回の作業に与えられた PR/merge/auto-merge 禁止をこの将来手順で上書きしない。
+6. PR ready やマージ成功では Issue を完了扱いにしない。未検証が残る PR に自動 close キーワードを使わない。マージ・配備後の実測を回収し、Manager だけが全 Issue AC を final_assessment で判定する。全 AC 実測 met のみ achieved。失敗・未確認は未完了で追跡する。
 
 ## Knowledge と変更単位
 

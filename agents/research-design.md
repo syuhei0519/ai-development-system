@@ -33,3 +33,7 @@
 ## Role-specific Gate
 
 設計判断と全担当 AC の工程範囲が根拠付きで示され、Implementation または Test が追加の会話に依存せず開始できる。
+
+## Readiness の責務
+
+Implementation Ready と Deployment Ready の条件を独立に設計する。未決 API/DB 設計は選択肢・比較・推奨・根拠を提示し、ユーザー判断/承認が必要な部分を明示する。AC の最早検証段階と postmerge/deploy にしか確認できない理由・担当・環境・方法・失敗時対応を提案する。 詳細は [Readiness 契約](../contracts/readiness.md) と [ワークフロー](../workflows/single-issue.md#readiness-と-issue-completion-の運用) に従う。

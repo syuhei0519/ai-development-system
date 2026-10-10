@@ -44,3 +44,17 @@ Dots / Manager が専門役割の独立 Codex Cloud タスクに渡す入力テ�
 - 基盤終了と業務判定を区別する。原文欠落は外部取得・推測で埋めない。
 - 最大3試行。自己再起動せず Manager に修正内容を返す。
 - Knowledge 候補は任意。公開前の安全性確認を別途行う。
+
+## Readiness Context（該当する変更工程）
+
+- Implementation Ready: <担当実装範囲、設計・実装許可・依存の根拠、未決設計とユーザー判断事項>
+- Deployment Ready: <対象環境・rollback・配備許可・依存の状態。実装可否とは別評価>
+- 対象: <repository、PR番号または未作成、head/base/target SHA、config revision、必要な merge-group SHA>
+- AC: <全原文、最早検証段階、対象 PR の ac_ids、Manager による分類・scope 確認>
+- 配備影響: <none / automatic / unknown と根拠。automatic/unknown の merge は Deployment Ready 必須>
+- 現在の context: <readiness-context.schema.json に従う取得済み実体、保護設定・必須 checks/reviews/queue・取得時刻・期限>
+- 証跡: <CI / 独立 Test / AI Review / GitHub 各保護条件 / 承認 / 依存を個別に取得。対象・時刻・期限・producer>
+- postmerge/deploy 専用 AC: <unverified、前に検証できない理由・担当・環境・方法・失敗時対応・分類根拠>
+- 配送: <Readiness v1.0 を Handoff v2.0 artifact として固定参照・実体添付し、両 CLI と --handoff 照合結果を返す>
+
+該当しない工程は理由を記録し、架空の PR/証跡を作らない。Merge Ready は Issue Completion ではない。premerge の不合格・未実行・承認待ちを deferred にしない。未検証があれば自動 close を指定せず、Manager の全 AC 実測後の最終判定を待つ。
