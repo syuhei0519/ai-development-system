@@ -1,5 +1,7 @@
 """Regressions for Issue integration and real artifact delivery."""
 from copy import deepcopy
+from contextlib import redirect_stderr
+import io
 import hashlib
 import json
 from pathlib import Path
@@ -9,7 +11,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from scripts.validate_readiness import validate, validate_handoff_pair
+from scripts.validate_readiness import validate, validate_handoff_pair, main, VALIDATOR
 from test_readiness import fixture, NOW, ROOT
 
 
@@ -57,6 +59,14 @@ class IntegrationTests(unittest.TestCase):
             mutation(data)
             self.assertTrue(validate(data, fixture('context.json'), NOW))
 
+    def test_integration_fail_is_not_achieved(self):
+        data = fixture('postdeploy-achieved.json')
+        data['issue_integration']['verdict'] = 'fail'
+        data['issue_completion'] = 'not_achieved'
+        self.assertEqual(validate(data, fixture('context.json'), NOW), [])
+        data['issue_completion'] = 'unverified'
+        self.assertTrue(validate(data, fixture('context.json'), NOW))
+
     def test_merged_without_integration_evidence_still_unverified(self):
         data = fixture('postdeploy-achieved.json')
         data['issue_integration'].update(verdict='pending', evidence_ids=[])
@@ -75,12 +85,13 @@ class ArtifactBindingTests(unittest.TestCase):
         self.handoff = fixture('manager.handoff.json')
         self.artifact = next(a for a in self.handoff['artifacts'] if a['id'] == self.data['artifact_id'])
         self.path.write_text(json.dumps(self.data))
+        self.initial_bytes = self.path.read_bytes()
         self.artifact.update(locator=self.path.name,
                              revision='sha256:' + hashlib.sha256(self.path.read_bytes()).hexdigest())
 
     def errors(self):
         return validate_handoff_pair(self.data, self.handoff,
-                                     readiness_path=self.path, handoff_path=self.hpath)
+                                     readiness_bytes=self.initial_bytes, readiness_path=self.path, handoff_path=self.hpath)
 
     def test_real_readable_artifact_matches(self):
         self.assertEqual(self.errors(), [])
@@ -114,6 +125,8 @@ class ArtifactBindingTests(unittest.TestCase):
         self.path.write_bytes(self.path.read_bytes() + b'\n')
         self.assertTrue(self.errors())  # semantic equality does not bypass byte digest
         self.artifact['revision'] = 'sha256:' + hashlib.sha256(self.path.read_bytes()).hexdigest()
+        self.assertTrue(self.errors())  # Updating the digest cannot replace initial bytes.
+        self.initial_bytes = self.path.read_bytes()
         self.assertEqual(self.errors(), [])
         self.data['artifact_id'] = 'OTHER'
         self.assertTrue(self.errors())
@@ -132,3 +145,47 @@ class ArtifactBindingTests(unittest.TestCase):
             self.hpath.write_text(json.dumps(self.handoff))
             run = subprocess.run(command, cwd='/', text=True, capture_output=True)
             self.assertEqual(run.returncode, expected, run.stderr)
+
+
+class InitialBytesRaceTests(unittest.TestCase):
+    setUp = ArtifactBindingTests.setUp
+    def race(self, boolean_replacement):
+        self.data['subject']['pr_number'] = 1
+        for evidence in self.data['evidence']:
+            evidence['subject']['pr_number'] = 1
+        initial = json.dumps(self.data).encode()
+        replacement = initial.replace(b'"pr_number": 1', b'"pr_number": true') if boolean_replacement else initial + b' \n'
+        if boolean_replacement:
+            self.assertFalse(VALIDATOR.is_valid(json.loads(replacement)))
+            self.assertEqual(json.loads(initial), json.loads(replacement))  # original bypass
+        context = fixture('context.json')
+        context['subject']['pr_number'] = 1
+        cpath = self.root / 'context.json'
+        cpath.write_text(json.dumps(context))
+        self.path.write_bytes(initial)
+        self.artifact['revision'] = 'sha256:' + hashlib.sha256(replacement).hexdigest()
+        self.hpath.write_text(json.dumps(self.handoff))
+        original_read = Path.read_bytes
+        reads = []
+
+        def swap_after_read(path):
+            payload = original_read(path)
+            if path == self.path:
+                reads.append(payload)
+                if len(reads) == 1:
+                    path.write_bytes(replacement)
+            return payload
+
+        args = ['validate_readiness.py', str(self.path), '--context', str(cpath),
+                '--handoff', str(self.hpath), '--at', NOW.isoformat()]
+        errors = io.StringIO()
+        with patch.object(Path, 'read_bytes', swap_after_read), patch.object(sys, 'argv', args), redirect_stderr(errors):
+            self.assertEqual(main(), 1)
+        self.assertIn('readiness bytes changed after initial read', errors.getvalue())
+        self.assertEqual(reads, [initial, replacement])
+
+    def test_integer_to_boolean_replacement_after_initial_read(self):
+        self.race(True)
+
+    def test_whitespace_replacement_after_initial_read(self):
+        self.race(False)

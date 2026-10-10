@@ -62,11 +62,11 @@ CLI は JSON Schema、参照、対象一致、時刻、状態整合性と AC 実
 
 複数PR・複数repoの依存一覧、各マージrevision、統合環境と全体検証を束ねる集約契約・収集検証はPhase 1-2の対象外。本CLIでaggregate_required/unknownを統合passやachievedにすることはできない。Managerは依存を明記し、集約契約と固定証跡による別工程が用意されるまでunverifiedを保持する。単一PRのマージから全体達成を推論しない。
 
-Handoff v2.0の既存schema/CLIは変更しない。全AC metでも統合がpending/failedの中間報告は、`final_assessment`を省略し、Readiness artifactのissue_completion=unverifiedで追跡する（ACの実測をunverifiedへ偽装しない）。最終achievedの発行は統合完了後だけ。集約待ちも同様に最終判定を保留する。
+Handoff v2.0の既存schema/CLIは変更しない。全AC metでも統合がpending/failの中間報告は、`final_assessment`を省略し、Readiness artifactでpendingはissue_completion=unverified、failはnot_achievedとして追跡する（ACの実測をunverifiedへ偽装しない）。最終achievedの発行は統合完了後だけ。集約待ちも同様に最終判定を保留する。
 
 ## Readiness成果物の実体照合
 
-assessmentの`artifact_id`に一致するHandoff artifactsの1件を要求する。kind=other、locatorは配送されたローカルReadiness JSON（相対パスはHandoffファイルのディレクトリ基準）、revisionは`sha256:<実ファイル全bytesの64桁hex digest>`とする。`--handoff`はlocatorの存在・読み取り、CLIが評価したファイルとの同一パス、読み込んだJSONとの一致、実bytesのSHA-256を検査する。欠落、別ファイル、改変、読み取り不能、digest不一致はexit 1。URLを自己申告しただけでは成功せず、認可済み経路で事前に実体を配送する。コピー配送時はコピーした実体へlocatorを設定し、元の固定digestを保持する。
+assessmentの`artifact_id`に一致するHandoff artifactsの1件を要求する。kind=other、locatorは配送されたローカルReadiness JSON（相対パスはHandoffファイルのディレクトリ基準）、revisionは`sha256:<実ファイル全bytesの64桁hex digest>`とする。`--handoff`はlocatorの存在・読み取り、CLIが評価したファイルとの同一パス、初回raw bytesからのparse・schema/意味検証、初回bytesのSHA-256、参照先を再読込したbytesとの完全一致を検査する。欠落、別ファイル、改変、読み取り不能、digest不一致はexit 1。URLを自己申告しただけでは成功せず、認可済み経路で事前に実体を配送する。コピー配送時はコピーした実体へlocatorを設定し、元の固定digestを保持する。
 
 digestはJSONを整形し直して計算するのではなく、そのままのファイルbytesから計算する。参照ID・locator・digestも含む配送元Handoffの真正性はManagerが別途確認する。実体と参照を一緒に偽装した場合の真偽や署名認証まで保証するものではない。
 

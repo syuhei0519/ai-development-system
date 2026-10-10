@@ -191,15 +191,16 @@ def validate(data, context, now=None):
     return errors
 
 
-def validate_handoff_pair(data, handoff, *, readiness_path=None, handoff_path=None):
+def validate_handoff_pair(data, handoff, *, readiness_bytes=None,
+                          readiness_path=None, handoff_path=None):
     # Handoff v2.0 remains unchanged; link the independent contract via an artifact.
     from scripts.validate_handoff import validate as validate_handoff
     errors = validate_handoff(handoff)
     if errors:
         return errors
     # Bind the actual file inspected by the CLI, not just two matching declarations.
-    if readiness_path is None or handoff_path is None:
-        return ['handoff pairing requires actual readiness and handoff paths']
+    if readiness_path is None or handoff_path is None or not isinstance(readiness_bytes, bytes):
+        return ['handoff pairing requires initial raw bytes and actual file paths']
     artifacts = [a for a in handoff['artifacts'] if a['id'] == data.get('artifact_id')]
     if len(artifacts) != 1:
         return ['handoff must reference exactly the readiness artifact_id']
@@ -214,9 +215,13 @@ def validate_handoff_pair(data, handoff, *, readiness_path=None, handoff_path=No
         if target != Path(readiness_path).resolve(strict=True):
             return ['handoff locator refers to a different readiness file']
         payload = target.read_bytes()
-        if json.loads(payload) != data:
-            return ['readiness file differs from the evaluated document']
-        if artifact['revision'] != 'sha256:' + hashlib.sha256(payload).hexdigest():
+        if payload != readiness_bytes:
+            return ['readiness bytes changed after initial read']
+        # Type-sensitive comparison also protects callers of this pairing helper.
+        # Python object equality alone treats JSON true and 1 as equal.
+        if json.dumps(json.loads(readiness_bytes), sort_keys=True) != json.dumps(data, sort_keys=True):
+            return ['initial readiness bytes differ from the evaluated document']
+        if artifact['revision'] != 'sha256:' + hashlib.sha256(readiness_bytes).hexdigest():
             return ['readiness artifact digest mismatch']
     except (OSError, ValueError, RuntimeError) as exc:
         return [f'readiness artifact unreadable: {exc}']
@@ -247,13 +252,14 @@ def main():
         now = instant(args.at) if args.at else datetime.now(timezone.utc)
         if now.tzinfo is None:
             raise ValueError('--at must include a timezone')
-        data = json.loads(args.file.read_text(encoding='utf-8'))
+        readiness_bytes = args.file.read_bytes()
+        data = json.loads(readiness_bytes)
         context = json.loads(args.context.read_text(encoding='utf-8'))
         errors = validate(data, context, now)
         if args.handoff and not errors:
             errors += validate_handoff_pair(
                 data, json.loads(args.handoff.read_text(encoding='utf-8')),
-                readiness_path=args.file, handoff_path=args.handoff)
+                readiness_bytes=readiness_bytes, readiness_path=args.file, handoff_path=args.handoff)
     except (OSError, ValueError, OverflowError) as exc:
         errors = [str(exc)]
     if errors:

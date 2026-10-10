@@ -230,11 +230,11 @@ class ReadinessTests(unittest.TestCase):
 
     def test_handoff_pair_prevents_premature_final_achieved(self):
         handoff = fixture('manager.handoff.json')
-        self.assertEqual(validate_handoff_pair(self.data, handoff, readiness_path=FIXTURES / 'pr-ready-issue-unverified.json', handoff_path=FIXTURES / 'manager.handoff.json'), [])
+        self.assertEqual(validate_handoff_pair(self.data, handoff, readiness_bytes=(FIXTURES / 'pr-ready-issue-unverified.json').read_bytes(), readiness_path=FIXTURES / 'pr-ready-issue-unverified.json', handoff_path=FIXTURES / 'manager.handoff.json'), [])
         handoff['final_assessment']['outcome'] = 'achieved'
         handoff['final_assessment']['ac_results'][1].update(
             outcome='met', evidence_ids=[handoff['evidence'][0]['id']])
-        self.assertTrue(validate_handoff_pair(self.data, handoff, readiness_path=FIXTURES / 'pr-ready-issue-unverified.json', handoff_path=FIXTURES / 'manager.handoff.json'))
+        self.assertTrue(validate_handoff_pair(self.data, handoff, readiness_bytes=(FIXTURES / 'pr-ready-issue-unverified.json').read_bytes(), readiness_path=FIXTURES / 'pr-ready-issue-unverified.json', handoff_path=FIXTURES / 'manager.handoff.json'))
 
     def test_record_validator_does_not_certify_truth(self):
         self.data['evidence'][0]['observation'] = 'synthetic sample: unsupported assertion'
