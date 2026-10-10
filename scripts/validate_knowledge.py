@@ -16,10 +16,13 @@ for kind in ('input', 'handoff', 'context'):
 
 
 def validate(data):
-    if not isinstance(data, dict) or data.get('document_type') not in VALIDATORS:
+    if not isinstance(data, dict):
+        return ['schema: Knowledge document must be an object']
+    document_type = data.get('document_type')
+    if not isinstance(document_type, str) or document_type not in VALIDATORS:
         return ['schema: unknown Knowledge document_type']
     errors = [f'schema: {error.json_path}: {error.message}'
-              for error in VALIDATORS[data['document_type']].iter_errors(data)]
+              for error in VALIDATORS[document_type].iter_errors(data)]
     if errors:
         return errors
     ids = {}

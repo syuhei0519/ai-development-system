@@ -1,8 +1,10 @@
 """Synthetic regressions for AC-independent Knowledge contracts."""
 from copy import deepcopy
 import json
+from pathlib import Path
 import subprocess
 import sys
+import tempfile
 import unittest
 
 from scripts.validate_knowledge import ROOT, validate
@@ -128,6 +130,33 @@ class KnowledgeTests(unittest.TestCase):
                                  cwd=ROOT.parent, capture_output=True, text=True, check=False)
             self.assertEqual(run.returncode, expected)
         self.assertTrue(validate([]))
+
+    def test_document_type_rejects_all_non_string_json_types(self):
+        for value in ([], {}, None, True, 1, 1.5):
+            with self.subTest(value=value):
+                errors = validate({'document_type': value})
+                self.assertTrue(errors)
+                self.assertTrue(all(error.startswith('schema:') for error in errors))
+        self.assertTrue(validate({}))
+
+    def test_cli_continues_after_unhashable_document_types(self):
+        with tempfile.TemporaryDirectory() as directory:
+            paths = []
+            for index, value in enumerate(([], {})):
+                path = Path(directory) / f'synthetic-invalid-{index}.json'
+                path.write_text(json.dumps({'document_type': value}), encoding='utf-8')
+                paths.append(path)
+            valid = ROOT / 'examples/knowledge/input.json'
+            run = subprocess.run(
+                [sys.executable, str(ROOT / 'scripts/validate_knowledge.py'),
+                 *map(str, paths), str(valid)],
+                cwd=ROOT.parent, capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(run.returncode, 1)
+            for path in paths:
+                self.assertIn(f'FAIL {path}', run.stderr)
+            self.assertIn(f'PASS {valid}', run.stdout)
+            self.assertNotIn('Traceback', run.stderr)
 
 
 if __name__ == '__main__':
