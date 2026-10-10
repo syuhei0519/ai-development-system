@@ -9,4 +9,4 @@ Research→Test の例:
 3. Manager が原文を補完した [再起動の初回入力](research-to-test/test.initial-input.md) と取得済み添付を新規タスクに渡す。
 4. [Test retry handoff](research-to-test/test.handoff.json) は attempt=2 と retry_of を追跡し、[設計検証計画のレビュー](research-to-test/test-plan-review.md) に限定して completed とする。実装のテスト合格ではない。
 
-[failed](failed.handoff.json) は業務失敗の正常な契約例。[invalid-completed](invalid-completed.handoff.json) は根拠のない completed を意図的に拒否する異常例。
+[failed](failed.handoff.json) は業務失敗の正常な契約例で、[専用の架空の不完全な計画と失敗レビュー](failed-test-plan-review.md) を根拠とする。成功した Research→Test の計画・レポートとは別の例。[invalid-completed](invalid-completed.handoff.json) は根拠のない completed を意図的に拒否する異常例。

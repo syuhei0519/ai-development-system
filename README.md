@@ -6,7 +6,7 @@
 
 ```mermaid
 flowchart TD
-    M[Manager: 起動・進捗・業務ゲート]
+    M[Dots / Manager: 起動・進捗・業務ゲート]
     R[Research / Design] --> I[Implementation]
     I --> T[Test]
     T --> V[Review]
@@ -24,7 +24,7 @@ flowchart TD
 
 矢印は論理依存を示します。実際の引き継ぎは毎回 Manager が成果物を取得・検査して、後続の**初回入力**に明示的に渡します。タスク間の会話やファイルの自動共有を仮定しません。Research→Test の設計検証など、依存関係に応じた短い経路も使えます。
 
-Manager はタスク管理と完了判定に専念し、Knowledge Agent が知識の収集・選別・抽象化・管理を非同期に担当します。Knowledge の完了は開発をブロックしません。
+Dots 自身が Manager としてタスク管理と完了判定に専念し、Knowledge Agent が知識の収集・選別・抽象化・管理を非同期に担当します。Knowledge の完了は開発をブロックしません。
 
 ## ファイル構成
 
@@ -48,8 +48,8 @@ Manager はタスク管理と完了判定に専念し、Knowledge Agent が知�
 ## Dots からの利用方法
 
 1. 既存の認可済み Dots / Codex Cloud 環境でこの repo の固定 revision を取得します。対象 repo の AGENTS.md と関連 SKILL.md があれば確認します。
-2. Dots の利用可能な Cloud タスク起動操作で Manager を独立タスクとして開始します。`agents/manager.md`、契約、ワークフローと、`templates/task-input.md` を埋めた Issue 固有入力を初回入力に添付します。画面/API の名称や自動起動機能は環境依存です。この repo は特定の操作名を前提にしません。
-3. Manager は全必須 AC 原文・出典と許可範囲を確認し、必要な役割のみを独立 Cloud タスクとして起動します。利用環境で Manager からの起動手段がない場合は、人間がその初回入力を使って起動・成果物回収を補助します。
+2. Dots 自身が Manager を担当します。Dots に `agents/manager.md`、契約、ワークフローと Issue 固有の依頼・認可済み出典・許可範囲を渡します。別の Manager Cloud タスクを起動する必要はありません。
+3. Dots / Manager は全必須 AC 原文・出典と許可範囲を確認し、`templates/task-input.md` に役割定義と Issue 固有情報を明示して、必要な専門役割を独立 Cloud タスクとして起動します。画面/API の名称や起動・回収能力は環境依存です。Dots に必要な操作手段がない環境では、人間が作成済みの初回入力を使って起動・成果物回収を補助します。この制限を二重 Manager の起動で解消したとはみなしません。
 4. 終了通知後、Manager が handoff JSON と成果物実体を取得し、形式と業務の両方を検査します。合格した成果物・根拠・AC 原文を後続の初回入力に渡します。
 5. 欠落・失敗時は依存後続を停止し、修正後に新しい独立タスクを起動します。各論理工程で初回を含め最大3試行です。必須 AC 原文欠落は `MISSING_ACCEPTANCE_CRITERIA` とし、Manager が認可済み情報源から原文を補完するまで進めません。
 6. 実装完了、feature branch の remote SHA、Draft PR、同じ head SHA の CI を個別に確認します。CLI と GitHub 連携は別経路として扱います。main 直接 Push、merge、auto-merge は行いません。

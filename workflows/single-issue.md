@@ -2,7 +2,7 @@
 
 ## 起動と責任分担
 
-この手順は Manager が Dots / 既存 Codex Cloud から実行する運用契約であり、自動実行エンジンや Dots API の実装ではない。6プロセスを常設しない。各工程で役割定義と [起動入力](../templates/task-input.md) を渡した独立 Cloud タスクを起動する。追加の OpenAI API、新規課金サービス、新規 PAT は不要。
+この手順は Dots 自身が Manager として実行する運用契約であり、自動実行エンジンや Dots API の実装ではない。Dots は `agents/manager.md` と契約・本ワークフローを使用し、専門工程ごとに役割定義と [起動入力](../templates/task-input.md) を渡した独立 Codex Cloud タスクを起動する。別の Manager Cloud タスクは標準構成に含めず、6プロセスも常設しない。Dots に起動・回収能力がない環境では人間が操作を補助し、その制限を明示する。追加の OpenAI API、新規課金サービス、新規 PAT は不要。
 
 標準依存関係は Research/Design → Implementation → Test → Review → Manager 最終ゲート。設計だけの検証では Research → Test も可能。独立した作業の並行実行は依存がないことを Manager が確認した場合のみ。Knowledge は各工程の候補から非同期に起動し、開発の必須依存にしない。
 
@@ -26,7 +26,7 @@
 
 | 状況 | Manager の処置 |
 | --- | --- |
-| 必須 AC 原文が一つでも欠落 | `MISSING_ACCEPTANCE_CRITERIA` で blocked。役割側は外部取得・推測しない。Manager が既存の認可済み情報源から原文を補完し、出典付きの修正入力を作る。認可がない/取得不能なら人間に不足を報告して停止する。 |
+| 必須 AC 原文が一つでも欠落 | `MISSING_ACCEPTANCE_CRITERIA` で blocked。専門役割側は外部取得・推測しない。Dots / Manager が既存の認可済み情報源から原文を補完し、出典付きの修正入力を作る。認可がない/取得不能なら人間に不足を報告して停止する。 |
 | 修正可能な入力・成果物の不足 | 依存後続を停止し、修正点と責務を明記した新しい独立タスクを起動する。 |
 | テスト不合格・レビュー阻害指摘 | Implementation 等の責任工程へ戻し、修正 revision に対して必要な Test/Review を再実行する。古い revision の合格を転用しない。 |
 | 基盤失敗・handoff 不在 | 部分成果物を回収し Manager が失敗記録を作る。存在しない成果物・テスト結果を埋めない。 |

@@ -21,34 +21,34 @@
   "summary": "synthetic sample: fictional test-plan mismatch.",
   "artifacts": [
     {
-      "id": "SYNTHETIC-REPORT",
+      "id": "SYNTHETIC-FAILED-REPORT",
       "kind": "test-report",
-      "locator": "examples/research-to-test/test-plan-review.md",
-      "revision": "SYNTHETIC-REVISION-2",
-      "summary": "synthetic sample: fictional test-plan review, no implementation execution."
+      "locator": "examples/failed-test-plan-review.md",
+      "revision": "SYNTHETIC-FAILED-REVISION-1",
+      "summary": "synthetic sample: an incomplete alternative plan and its fictional failing review; no product test execution."
     }
   ],
   "evidence": [
     {
-      "id": "SYNTHETIC-EVIDENCE-2",
-      "claim": "synthetic sample: proposed cases cover the fictional AC in a test-plan review.",
+      "id": "SYNTHETIC-FAILED-EVIDENCE-1",
+      "claim": "synthetic sample: the alternative plan omits whitespace-only rejection cases required for AC coverage.",
       "artifact_ids": [
-        "SYNTHETIC-REPORT"
+        "SYNTHETIC-FAILED-REPORT"
       ],
-      "locator": "examples/research-to-test/test-plan-review.md",
-      "observation": "Fictional documentary comparison only; product behavior and CI are unverified."
+      "locator": "examples/failed-test-plan-review.md#fictional-review-finding",
+      "observation": "Fictional plan contains only empty-string rejection and single-letter acceptance; whitespace-only inputs are absent. This is a documentary finding, not an actual product-test failure."
     }
   ],
   "ac_mapping": [
     {
       "ac_id": "SYNTHETIC-AC-1",
       "disposition": "not_met",
-      "scope": "Test-plan review only; this does not certify implemented behavior.",
+      "scope": "Test-plan review only: whitespace-only rejection coverage is missing from the fictional alternative plan. Product behavior is unverified.",
       "artifact_ids": [
-        "SYNTHETIC-REPORT"
+        "SYNTHETIC-FAILED-REPORT"
       ],
       "evidence_ids": [
-        "SYNTHETIC-EVIDENCE-2"
+        "SYNTHETIC-FAILED-EVIDENCE-1"
       ]
     }
   ],

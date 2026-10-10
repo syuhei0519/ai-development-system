@@ -1,10 +1,10 @@
-# 独立エージェント起動入力
+# 独立専門エージェント起動入力
 
-これは入力テンプレート。山括弧の項目を埋め、未記入のまま起動しない。必須 AC 原文が取得できなければ不足を明示し blocked を要求する。実識別子や非公開資料は認可された非公開実行領域だけで扱う。
+Dots / Manager が専門役割の独立 Codex Cloud タスクに渡す入力テンプレート。Manager 自身の Cloud 起動には使わない。山括弧の項目を埋め、未記入のまま起動しない。必須 AC 原文が取得できなければ不足を明示し blocked を要求する。実識別子や非公開資料は認可された非公開実行領域だけで扱う。
 
 ## Role / Contract
 
-- role: <manager | research-design | implementation | test | review | knowledge>
+- role: <research-design | implementation | test | review | knowledge>
 - role_definition: <該当 agents/*.md の全文または取得済み添付>
 - contract: <handoff.schema.json と contracts/README.md の取得済み添付>
 - workflow: <single-issue.md の取得済み添付>
