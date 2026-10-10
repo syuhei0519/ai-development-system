@@ -34,3 +34,5 @@ python scripts/validate_readiness.py examples/readiness/invalid-premerge-deferre
 `tests/test_readiness.py` はこれらに加え CI success + AI review fail、GitHub 必須 review 未充足、古い head/base/target/config/merge-group、期限切れ、独立性、依存未完、配備影響 automatic/unknown の fail-closed、queue、AC 原文と分類の context 不一致、全 AC 対応、CLI の終了コードと cwd 非依存を検査する。
 
 形式が PASS でも真実性・独立性・実際のマージ可否は証明しない。架空の主張が構造上 PASS になるテストでこの境界も固定する。
+
+追加回帰は全premerge met・未マージのunverified、集約待ち/範囲不明、統合証跡欠落・時刻・AC対応、artifact ID/locator/実体/digestの不一致を扱う。manager.handoff.jsonのReadiness参照はHandoff相対パスと実bytesのSHA-256で固定している。

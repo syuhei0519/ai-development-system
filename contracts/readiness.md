@@ -9,7 +9,7 @@
 | Implementation Ready | 担当範囲の設計、実装許可、実装依存の合格 | 配備環境がなくても実装可能な範囲を進められる |
 | Deployment Ready | 配備環境、rollback/失敗時対応、配備許可、配備依存の合格 | Implementation Ready と独立。配備操作の許可を新たに与えない |
 | Merge Ready | Implementation Ready、PR 内の premerge AC 実測合格、下記すべての merge checks、postmerge/deploy AC の追跡 | 配備影響 automatic / unknown なら Deployment Ready も必須。Issue achieved は要求しない |
-| Issue Completion | 全 Issue AC の実測結果を Manager が確認 | 全件 met のときだけ achieved。not_met があれば not_achieved、残りは unverified |
+| Issue Completion | 全 Issue AC の実測結果を Manager が確認 | 全件 met かつ必要な統合完了のときだけ achieved。AC/統合の失敗は not_achieved、残りは unverified |
 
 `*_readiness.status` は ready / blocked。checks の verdict は pass / fail / pending / not_applicable。blocked な記録も正常な契約であり、CLI exit 0 は ready を意味しない。各 checks.dependencies は当該工程で必要な依存物・前工程の固定成果物・未完依存を列挙した証跡を参照する。依存がない場合も確認根拠を残す。依存の欠落を pass にしてはいけない。
 
@@ -53,3 +53,21 @@ CLI は JSON Schema、参照、対象一致、時刻、状態整合性と AC 実
 `--at` は明示時刻で架空例や過去記録を再生するオプション。出力は REPLAY と表示し、現在のマージ許可に使わない。通常の評価は現在UTC時刻を使う。context は Manager が別途取得した現状であり、古い assessment を複写して current と称してはいけない。
 
 **schema/CLI は証拠の真偽、原文の完全性、実際の独立性、live GitHub のマージ可否、実際の配備や権限を証明しない。** readiness=ready は操作権限を付与せず、ユーザーの明示的許可と GitHub の実保護条件が別途必要。証跡取得不能・設定不明・期限切れは再確認まで進めない。
+
+## Issue全体の統合とPhase 1-2の境界
+
+`issue_integration_scope` を assessment と current context に必須化する。Manager は Issue の全必要変更を確認し、`single_pr`（必要な統合がこの1 PRのみ）、`aggregate_required`（複数PR・複数repo等）、`unknown` を確定する。PRのpr_ac_idsとは別のIssue全体条件であり、scopeの縮小を推測してはいけない。
+
+全premerge ACがmetでも、merged_at=nullならissue_completion=unverified。single_prでもマージ済みだけでは不足し、`issue_integration` のpassと `kind=issue_integration` の証跡が必要。証跡は全Issue ACを対象とし、現在のsubjectと一致し、マージ以後の観測であること。実際のマージ結果と必要な統合完了をManagerが確認する。全AC metと統合passが揃って初めてachievedになる。統合pendingでもPRのMerge Readyは妨げない。
+
+複数PR・複数repoの依存一覧、各マージrevision、統合環境と全体検証を束ねる集約契約・収集検証はPhase 1-2の対象外。本CLIでaggregate_required/unknownを統合passやachievedにすることはできない。Managerは依存を明記し、集約契約と固定証跡による別工程が用意されるまでunverifiedを保持する。単一PRのマージから全体達成を推論しない。
+
+Handoff v2.0の既存schema/CLIは変更しない。全AC metでも統合がpending/failedの中間報告は、`final_assessment`を省略し、Readiness artifactのissue_completion=unverifiedで追跡する（ACの実測をunverifiedへ偽装しない）。最終achievedの発行は統合完了後だけ。集約待ちも同様に最終判定を保留する。
+
+## Readiness成果物の実体照合
+
+assessmentの`artifact_id`に一致するHandoff artifactsの1件を要求する。kind=other、locatorは配送されたローカルReadiness JSON（相対パスはHandoffファイルのディレクトリ基準）、revisionは`sha256:<実ファイル全bytesの64桁hex digest>`とする。`--handoff`はlocatorの存在・読み取り、CLIが評価したファイルとの同一パス、読み込んだJSONとの一致、実bytesのSHA-256を検査する。欠落、別ファイル、改変、読み取り不能、digest不一致はexit 1。URLを自己申告しただけでは成功せず、認可済み経路で事前に実体を配送する。コピー配送時はコピーした実体へlocatorを設定し、元の固定digestを保持する。
+
+digestはJSONを整形し直して計算するのではなく、そのままのファイルbytesから計算する。参照ID・locator・digestも含む配送元Handoffの真正性はManagerが別途確認する。実体と参照を一緒に偽装した場合の真偽や署名認証まで保証するものではない。
+
+今回のDraft内改訂ではReadiness v1.0の必須項目を追加する。旧DraftのReadiness/contextはそのまま受理せず、Managerが統合scope・状態・証跡を確認して追加し、artifact_idと実体digestを配送する。バージョンは未リリースのv1.0を維持し、Handoff v2.0 / Knowledge v1.0の互換性は維持する。

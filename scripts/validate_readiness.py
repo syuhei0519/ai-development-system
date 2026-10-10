@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Validate recorded gates against a supplied current snapshot; no live GitHub approval."""
 import argparse
+import hashlib
 from datetime import datetime, timezone
 import json
 from pathlib import Path
@@ -50,7 +51,8 @@ def validate(data, context, now=None):
     evaluated = instant(data['evaluated_at'])
     if evaluated > now:
         errors.append('evaluated_at is in the future')
-    for field in ('subject', 'issue_id', 'acceptance_criteria', 'pr_ac_ids', 'deployment_effect'):
+    for field in ('subject', 'issue_id', 'acceptance_criteria', 'pr_ac_ids', 'deployment_effect',
+                  'issue_integration_scope'):
         if data[field] != context[field]:
             errors.append(f'{field}: does not match current context; revalidate')
     subject = data['subject']
@@ -149,8 +151,27 @@ def validate(data, context, now=None):
                 outcome == 'unverified' and phase != 'premerge' and deferred is not None)):
             scoped_acs_ok = False
     outcomes = {r['outcome'] for r in results.values()}
+    integration = data['issue_integration']
+    integrated = False
+    if integration['verdict'] != 'pending' or integration['evidence_ids']:
+        observations = proofs(integration['evidence_ids'], 'issue_integration')
+    else:
+        observations = []
+    if integration['verdict'] == 'not_applicable':
+        errors.append('Issue integration cannot be not_applicable')
+    if integration['verdict'] == 'pass':
+        integrated = (data['issue_integration_scope'] == 'single_pr' and merged is not None
+                      and subject['pr_number'] is not None and bool(observations))
+        if not integrated:
+            errors.append('Issue integration requires merged single-PR scope; aggregation is unsupported')
+        for observation in observations:
+            if set(observation['ac_ids']) != set(criteria):
+                errors.append('Issue integration evidence must cover all Issue ACs')
+            if merged and instant(observation['observed_at']) < instant(merged):
+                errors.append('Issue integration observation predates merge')
     completion = ('not_achieved' if 'not_met' in outcomes else
-                  'unverified' if 'unverified' in outcomes else 'achieved')
+                  'not_achieved' if integration['verdict'] == 'fail' else
+                  'unverified' if 'unverified' in outcomes or not integrated else 'achieved')
     if data['issue_completion'] != completion:
         errors.append('issue_completion contradicts all-AC measured outcomes')
 
@@ -170,12 +191,35 @@ def validate(data, context, now=None):
     return errors
 
 
-def validate_handoff_pair(data, handoff):
+def validate_handoff_pair(data, handoff, *, readiness_path=None, handoff_path=None):
     # Handoff v2.0 remains unchanged; link the independent contract via an artifact.
     from scripts.validate_handoff import validate as validate_handoff
     errors = validate_handoff(handoff)
     if errors:
         return errors
+    # Bind the actual file inspected by the CLI, not just two matching declarations.
+    if readiness_path is None or handoff_path is None:
+        return ['handoff pairing requires actual readiness and handoff paths']
+    artifacts = [a for a in handoff['artifacts'] if a['id'] == data.get('artifact_id')]
+    if len(artifacts) != 1:
+        return ['handoff must reference exactly the readiness artifact_id']
+    artifact = artifacts[0]
+    if artifact['kind'] != 'other' or not re.fullmatch(r'sha256:[0-9a-f]{64}', artifact['revision']):
+        return ['readiness artifact requires kind=other and fixed sha256 digest revision']
+    try:
+        locator = artifact['locator']
+        if '://' in locator:
+            return ['materialize readiness artifact locally; remote locators are not fetched']
+        target = (Path(handoff_path).resolve().parent / locator).resolve(strict=True)
+        if target != Path(readiness_path).resolve(strict=True):
+            return ['handoff locator refers to a different readiness file']
+        payload = target.read_bytes()
+        if json.loads(payload) != data:
+            return ['readiness file differs from the evaluated document']
+        if artifact['revision'] != 'sha256:' + hashlib.sha256(payload).hexdigest():
+            return ['readiness artifact digest mismatch']
+    except (OSError, ValueError, RuntimeError) as exc:
+        return [f'readiness artifact unreadable: {exc}']
     if handoff['issue']['id'] != data['issue_id']:
         errors.append('handoff issue differs from readiness issue')
     originals = [{k: ac[k] for k in ('id', 'verbatim', 'source')} for ac in data['acceptance_criteria']]
@@ -207,7 +251,9 @@ def main():
         context = json.loads(args.context.read_text(encoding='utf-8'))
         errors = validate(data, context, now)
         if args.handoff and not errors:
-            errors += validate_handoff_pair(data, json.loads(args.handoff.read_text(encoding='utf-8')))
+            errors += validate_handoff_pair(
+                data, json.loads(args.handoff.read_text(encoding='utf-8')),
+                readiness_path=args.file, handoff_path=args.handoff)
     except (OSError, ValueError, OverflowError) as exc:
         errors = [str(exc)]
     if errors:

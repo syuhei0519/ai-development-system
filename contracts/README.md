@@ -13,7 +13,7 @@ JSON Schema Draft 2020-12 を使用する。追加フィールド、空文字・
 - `status`: **今回の assignment の工程完了**。completed は全担当 AC の工程上の責務が完了し、根拠と成果物がある状態。Issue 全体の AC 合格ではない。blocked には理由と必要な処置、failed には失敗理由が必要。
 - `ac_mapping.disposition`: `covered` は担当 AC に対する役割の責務の完了、`unverified` は未検証、`not_met` は担当工程の不合格、`not_assigned` は担当外。担当外を covered としない。担当 AC が未検証・不合格・未記載なら completed にできない。担当外 AC は省略または正直な状態で記録し、未検証や担当外が残っていても今回の工程は completed にできる。
 - `ac_mapping.scope`: 実際に確認した範囲と限界。Research の設計済み、Implementation の実装済み、Test の担当検証済みはいずれも製品全体の最終合格ではない。
-- `final_assessment`: **Manager のみ**が記録できる Issue 全体の最終 AC 判定。全 Issue AC を重複なく列挙し、各 `met / not_met / unverified` と根拠を記録する。全件 met なら achieved、1件でも not_met なら not_achieved、残りは unverified。未検証を met にしない。Manager の判定作業が completed でも、最終判定が unverified / not_achieved なら Issue は完了していない。
+- `final_assessment`: **Manager のみ**が記録できる Issue 全体の最終 AC 判定。全 Issue AC を重複なく列挙し、各 `met / not_met / unverified` と根拠を記録する。v2.0のAC判定内では全件 met なら achieved、1件でも not_met なら not_achieved、残りは unverified。ただしReadiness運用で全AC metでも統合未完了の場合は、最終判定自体を保留しfinal_assessmentを省略する。未検証を met にしない。Manager の判定作業が completed でも、最終判定が unverified / not_achieved なら Issue は完了していない。
 - `artifacts` / `evidence`: 成果物の locator・固定 revision、主張・根拠・観測内容。テストはコマンド、対象 revision、結果、環境の制約を観測内容に含める。別タスクにローカルパスだけを渡さず実体を取得・配送する。
 - `knowledge_candidates`: 任意の知識候補。空でも開発を進められる。Knowledge 起動時は根拠を取得して専用入力に変換する。Issue handoff をそのまま Knowledge 入力とはしない。
 - `publication`: synthetic_sample / public_safe / private_only。自己申告は公開許可の代用にならない。
@@ -51,3 +51,8 @@ Knowledge は Issue 契約の role=knowledge を廃止し、独立した v1.0 �
 ## Readiness と Issue Completion
 
 [Readiness v1.0](readiness.md) は3種 readiness と全 AC の実測状態を分離する独立契約。PR 単位の Merge Ready に Issue achieved を要求しない。`readiness.schema.json` と `readiness-context.schema.json` を `validate_readiness.py` で照合し、handoff との配送には `--handoff` も使う。既存 handoff v2.0 の artifacts から固定参照し、既存 final_assessment の全 AC 実測による厳格な Manager 判定を維持する。Knowledge 契約と収集基盤には変更を加えない。
+
+
+Issue Completionには全AC実測に加えて必要な統合完了が必要。全premerge ACがmetでも未マージならunverified。Readiness/contextのissue_integration_scopeで単一PRと集約待ちを分離し、複数PR・repo/範囲不明は単一PRからachievedにしない。集約契約と証跡の検証は後続依存として明示する。全AC met・統合待ちの中間Handoffではfinal_assessmentを省略し、Readiness artifactで追跡する。
+
+Readinessの配送にはartifact_id、Handoff基準のローカルlocator、実体bytesのsha256 digest revisionを使用する。`validate_readiness.py --handoff`は実体の読み取り・評価対象ファイルとの同一性・digestを照合する。旧DraftのReadinessは追加必須項目を確認して移行する。詳細と限界はReadiness契約を参照。

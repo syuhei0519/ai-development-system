@@ -82,7 +82,8 @@
               "github_queue",
               "ac_measurement",
               "deferral_basis",
-              "deployment_impact"
+              "deployment_impact",
+              "issue_integration"
             ]
           },
           "subject": {
@@ -384,6 +385,19 @@
         "status",
         "checks"
       ]
+    },
+    "issue_integration_scope": {
+      "enum": [
+        "single_pr",
+        "aggregate_required",
+        "unknown"
+      ]
+    },
+    "artifact_id": {
+      "$ref": "#/$defs/text"
+    },
+    "issue_integration": {
+      "$ref": "#/$defs/proof"
     }
   },
   "required": [
@@ -404,7 +418,10 @@
     "issue_completion",
     "implementation_readiness",
     "deployment_readiness",
-    "merge_readiness"
+    "merge_readiness",
+    "issue_integration_scope",
+    "artifact_id",
+    "issue_integration"
   ],
   "$defs": {
     "text": {

@@ -442,6 +442,29 @@
       "ac_ids": [
         "SYNTHETIC-AC-2"
       ]
+    },
+    {
+      "id": "integration",
+      "kind": "issue_integration",
+      "subject": {
+        "repository": "example/synthetic-service",
+        "pr_number": 42,
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "config_revision": "synthetic-policy-and-environment-v1",
+        "merge_group_sha": null
+      },
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-02T08:00:00Z",
+      "locator": "https://example.invalid/synthetic/post-measurement",
+      "observation": "synthetic sample: fictional observation, not an actual test",
+      "producer": "synthetic-ac_measurement",
+      "independent": false,
+      "ac_ids": [
+        "SYNTHETIC-AC-1",
+        "SYNTHETIC-AC-2"
+      ]
     }
   ],
   "lifecycle": {
@@ -593,5 +616,14 @@
         "reason": "synthetic sample: fictional policy and gate result"
       }
     }
+  },
+  "issue_integration_scope": "single_pr",
+  "artifact_id": "SYNTHETIC-READINESS",
+  "issue_integration": {
+    "verdict": "pass",
+    "evidence_ids": [
+      "integration"
+    ],
+    "reason": "synthetic sample: all required integration is this merged PR"
   }
 }

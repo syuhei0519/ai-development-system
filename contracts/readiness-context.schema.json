@@ -69,6 +69,13 @@
         "reviews",
         "queue"
       ]
+    },
+    "issue_integration_scope": {
+      "enum": [
+        "single_pr",
+        "aggregate_required",
+        "unknown"
+      ]
     }
   },
   "required": [
@@ -82,7 +89,8 @@
     "policy_observed_at",
     "policy_valid_until",
     "policy_evidence",
-    "github_requirements"
+    "github_requirements",
+    "issue_integration_scope"
   ],
   "$defs": {
     "text": {
