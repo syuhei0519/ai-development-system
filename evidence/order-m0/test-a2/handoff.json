@@ -1,0 +1,246 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "app-order-service",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "test",
+  "assignment": {
+    "scope": "application-manifest#backend-app-2/M0",
+    "ac_ids": [
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "既存ci/github/test.sh、既存全tests、release19、trusted/sandbox/security/inventory/checksum/render suites等を独立再実行し自己報告と区別。コード変更せずtestoverlay/一時fixtureのみ。",
+      "v1backend/frontend正常互換、v2Order固定service/source/image/schema全binding。未知service、偽装backend、wrongsource/image/run/attempt/ref/workflow/digest/SBOM/record/config/archive、期限、latestmain/tag移動、matrix欠落/一方失敗、zip単一record/path攻撃を正負両側で独立試験。",
+      "v1処理を緩和しない。token付きHTTPがregistryへ漏れない、PR内容をtrusted側で実行しない、shell/path/zip/symlink/JSON/key/型境界を試験。Secret不要syntheticfixturesだけ。必要以上のsandbox機能制限を正常系成功で隠さない。",
+      "trustedfixedinventory:既存3chart維持、未来Order/order-postgresqlが両方未存在なら許容、chart/values片欠け/未知chart/既存削除/PodSpec未走査拒否。既定disabledとCIenabledfixture両方の境界。現livechart28files/environments4filesの不変とbaseline/headのbyte+semanticrender一致を自分で確認。",
+      "PostgreSQL専用固定image allowlist、security/PVC保持が既存Account含め正しく適用される。DBimageをappreleaseと混同しない。",
+      "premergeCIの実対象head/base/Workflowを観測。CIと独立Testを分離。B2実producerは未実装で、syntheticagreementを実release通過としない。",
+      "実cluster/Argo/syncを一切操作しない。M0diffdeploymentnoneのstaticproofを検証し、live観測と区別。PR17/既存Accountvaluesを変更しない。不合格は再現と期待/実際/位置/重大度を早期報告。Test自身で実装修正しない。",
+      "Handoffv2とtestreport/reproducers/results/固定revisions/環境/観測時刻/限界を返す。元upstreamstatus/bytesを変えずcanonical外側参照で閉包し、schema/typedclosure/freshGit/PublicationReceiptを確認する。新Consumer認可の自己発行禁止。"
+    ]
+  },
+  "task_id": "order-m0-test-a2",
+  "attempt": 2,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "order-m0-implementation-a2",
+      "attempt": 2,
+      "relationship": "dependency",
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/7d91414ea009886a7e0e4be4a11823b0bc341ef6/evidence/order-m0/implementation-a2/handoff.json",
+      "revision": "sha256:172d4e997ab4bab9c7499888cb2b1ad760895d494e7bf1ba75ad3e7d545d471e"
+    },
+    {
+      "role": "test",
+      "task_id": "order-m0-test-a1",
+      "attempt": 1,
+      "relationship": "retry_of",
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/089934bc5a4b708781937f62038706f6434105f2/evidence/order-m0/test-a1/handoff.json",
+      "revision": "sha256:494064a1c668f9308fd7edba2380e88d896130a0d01b522f804c2fae499ab853"
+    }
+  ],
+  "system_status": "completed",
+  "status": "failed",
+  "summary": "F-1 eight bypasses repaired and existing suites pass. F-2 Account PostgreSQL image substitution escapes fixed platform allowlist; independent Test2 fails. Product ACs unverified.",
+  "artifacts": [
+    {
+      "id": "f2-render-results.json",
+      "kind": "test-report",
+      "locator": "f2-render-results.json",
+      "revision": "sha256:8d66eb44d8bf5090df522e14e2f569b6efffa07698207f9dd99a7c4c432183e4",
+      "summary": "Independent Test2 synthetic evidence, reproducer or public-safe report; no product acceptance."
+    },
+    {
+      "id": "f2-trusted.py",
+      "kind": "other",
+      "locator": "f2-trusted.py",
+      "revision": "sha256:76673d1b9b17211ef14f87b7fb899b3d06df27161951d87133674be961c502ff",
+      "summary": "Independent Test2 synthetic evidence, reproducer or public-safe report; no product acceptance."
+    },
+    {
+      "id": "fixed-render-comparison.py",
+      "kind": "other",
+      "locator": "fixed-render-comparison.py",
+      "revision": "sha256:d3617e12164c407f48050aaf0af0ca22128304d019b6124add3bcaaedf92eb62",
+      "summary": "Independent Test2 synthetic evidence, reproducer or public-safe report; no product acceptance."
+    },
+    {
+      "id": "fixed-render-result.json",
+      "kind": "test-report",
+      "locator": "fixed-render-result.json",
+      "revision": "sha256:a0bd1cc9fd817421363a319704976eedacb9265454c93697f3d98df05621832b",
+      "summary": "Independent Test2 synthetic evidence, reproducer or public-safe report; no product acceptance."
+    },
+    {
+      "id": "independent-results.json",
+      "kind": "test-report",
+      "locator": "independent-results.json",
+      "revision": "sha256:5e6dcb3be66db094410bb84e9b79685a75fe7854ed6a306ae6f831f77ae7bfe8",
+      "summary": "Independent Test2 synthetic evidence, reproducer or public-safe report; no product acceptance."
+    },
+    {
+      "id": "observations.json",
+      "kind": "test-report",
+      "locator": "observations.json",
+      "revision": "sha256:d844d306d9c9aeacdb75a5814bf65e033fabde79b82ff0d6a327aaf038bf8cfa",
+      "summary": "Independent Test2 synthetic evidence, reproducer or public-safe report; no product acceptance."
+    },
+    {
+      "id": "publication-safety.txt",
+      "kind": "document",
+      "locator": "publication-safety.txt",
+      "revision": "sha256:5d2d2cccf2b32886f466067e2cb33776055c74887ca67cf5db50e30e2f0f93c5",
+      "summary": "Independent Test2 synthetic evidence, reproducer or public-safe report; no product acceptance."
+    },
+    {
+      "id": "render-comparison.json",
+      "kind": "test-report",
+      "locator": "render-comparison.json",
+      "revision": "sha256:130f93b0e78482bf2926a0ea8ab2a262ee8f4f82651129212d090c00942edfd8",
+      "summary": "Independent Test2 synthetic evidence, reproducer or public-safe report; no product acceptance."
+    },
+    {
+      "id": "render-fixture-results.json",
+      "kind": "test-report",
+      "locator": "render-fixture-results.json",
+      "revision": "sha256:3d9c0fe65a7a0f5bb61ea4dd29439c25e560b1e6399d17ac2b5158c56889efe8",
+      "summary": "Independent Test2 synthetic evidence, reproducer or public-safe report; no product acceptance."
+    },
+    {
+      "id": "reproduce-render.py",
+      "kind": "other",
+      "locator": "reproduce-render.py",
+      "revision": "sha256:040c249db1ee0d73c1a9e11b4d8ce7824fb1eb6b3156288fbbbe9e0b4e1af0e0",
+      "summary": "Independent Test2 synthetic evidence, reproducer or public-safe report; no product acceptance."
+    },
+    {
+      "id": "reproduce.py",
+      "kind": "other",
+      "locator": "reproduce.py",
+      "revision": "sha256:8603bfa9fc5da70d02ec87ffb916942ae44e737b8644ead6f13dbab8fba2f052",
+      "summary": "Independent Test2 synthetic evidence, reproducer or public-safe report; no product acceptance."
+    },
+    {
+      "id": "reproduce.sh",
+      "kind": "other",
+      "locator": "reproduce.sh",
+      "revision": "sha256:2b89c78aa95443c141ebafecbfe96133a37a4321127ada6ede1e3174f2cbff5e",
+      "summary": "Independent Test2 synthetic evidence, reproducer or public-safe report; no product acceptance."
+    },
+    {
+      "id": "security-boundaries.json",
+      "kind": "test-report",
+      "locator": "security-boundaries.json",
+      "revision": "sha256:63e7bcc42d12e91d17932507046a6fef57e5bdc2f5350c2b5cb13edbe9539730",
+      "summary": "Independent Test2 synthetic evidence, reproducer or public-safe report; no product acceptance."
+    },
+    {
+      "id": "security-boundaries.py",
+      "kind": "other",
+      "locator": "security-boundaries.py",
+      "revision": "sha256:191039cee81f00f42668227e95db278a20d5c05144d0d49ca137ddca431c452b",
+      "summary": "Independent Test2 synthetic evidence, reproducer or public-safe report; no product acceptance."
+    },
+    {
+      "id": "suite-results.json",
+      "kind": "test-report",
+      "locator": "suite-results.json",
+      "revision": "sha256:d04c568ef9ba6c9a8a1987c066577a93adc19d336d58f09784e689ca6935b93c",
+      "summary": "Independent Test2 synthetic evidence, reproducer or public-safe report; no product acceptance."
+    },
+    {
+      "id": "test-report.txt",
+      "kind": "document",
+      "locator": "test-report.txt",
+      "revision": "sha256:1890a3e488b5fcccf2d970ce6fed6e3b5e15dc1216de047739337119c9bfb787",
+      "summary": "Independent Test2 synthetic evidence, reproducer or public-safe report; no product acceptance."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "independent-test2",
+      "claim": "Independent fixed-head tests resolve F-1 but detect F-2; static live render unchanged.",
+      "artifact_ids": [
+        "f2-render-results.json",
+        "f2-trusted.py",
+        "fixed-render-comparison.py",
+        "fixed-render-result.json",
+        "independent-results.json",
+        "observations.json",
+        "publication-safety.txt",
+        "render-comparison.json",
+        "render-fixture-results.json",
+        "reproduce-render.py",
+        "reproduce.py",
+        "reproduce.sh",
+        "security-boundaries.json",
+        "security-boundaries.py",
+        "suite-results.json",
+        "test-report.txt"
+      ],
+      "locator": "test-report.txt",
+      "observation": "Head 82505fce911c1dbbe75fe8226a06665e582e1ff9, base e039945a90625262f91382e6f71149d046e31b34. Existing suites and 138 probes pass; 115/116 supplemental checks pass. F-2 direct inventory and bounded renderer accept a forbidden Account DB image substitution. Test-only, no authenticated release or live deployment. Commands, observations, environment and limits retained."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "not_assigned",
+      "scope": "Outside M0; product behavior unverified.",
+      "artifact_ids": [
+        "test-report.txt"
+      ],
+      "evidence_ids": [
+        "independent-test2"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "not_assigned",
+      "scope": "Outside M0; product behavior unverified.",
+      "artifact_ids": [
+        "test-report.txt"
+      ],
+      "evidence_ids": [
+        "independent-test2"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "not_met",
+      "scope": "AC-3 M0 independent infrastructure Test only; F-2 failed. Product Service/Argo/runtime digest unverified; premerge/deferred=null/aggregate_required.",
+      "artifact_ids": [
+        "test-report.txt"
+      ],
+      "evidence_ids": [
+        "independent-test2"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [
+    "F-2 HIGH: platform.go:13-14 skips the fixed DB policy for existing postgresql when its image repository becomes an app repository; independently accepted by inventory and bounded trusted renderer."
+  ],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

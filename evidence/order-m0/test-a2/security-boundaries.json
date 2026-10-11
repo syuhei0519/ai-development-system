@@ -1,0 +1,818 @@
+{
+  "synthetic": true,
+  "target": "82505fce911c1dbbe75fe8226a06665e582e1ff9",
+  "results": [
+    {
+      "case": "postgresql/inherit",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "case": "postgresql/all-equivalent",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "case": "postgresql/partial-runAsUser",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "case": "postgresql/partial-runAsGroup",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "case": "postgresql/partial-runAsNonRoot",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "case": "postgresql/partial-seccompProfile",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "case": "postgresql/runAsUser/null",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/runAsUser/list",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/runAsUser/object",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/runAsUser/string",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/runAsUser/unknown",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/runAsUser/float",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/runAsGroup/null",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/runAsGroup/list",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/runAsGroup/object",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/runAsGroup/string",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/runAsGroup/unknown",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/runAsGroup/float",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/runAsNonRoot/null",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/runAsNonRoot/list",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/runAsNonRoot/object",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/runAsNonRoot/string",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/runAsNonRoot/unknown",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/runAsNonRoot/float",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/seccompProfile/null",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/seccompProfile/list",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/seccompProfile/object",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/seccompProfile/string",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/seccompProfile/unknown",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/seccompProfile/float",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/nonroot/False",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/nonroot/0",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/nonroot/1",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/nonroot/'true'",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/seccomp/{'type': None}",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/seccomp/{'type': []}",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/seccomp/{'type': 'Unknown'}",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/seccomp/{'type': 'Localhost', 'localhostProfile': 'synthetic'}",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/seccomp/{'type': 'Unconfined'}",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/containers/pg-sidecar/False",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/containers/pg-sidecar/True",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/initContainers/pg-sidecar/False",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/initContainers/pg-sidecar/True",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/ephemeralContainers/pg-sidecar/False",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/ephemeralContainers/pg-sidecar/True",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/containers/type/None",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/containers/type/{}",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/containers/type/'invalid'",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/initContainers/type/None",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/initContainers/type/{}",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/initContainers/type/'invalid'",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/ephemeralContainers/type/None",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/ephemeralContainers/type/{}",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/ephemeralContainers/type/'invalid'",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/missing-pvc",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/unknown-resource",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/unscanned-podspec",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "postgresql/app-image-as-db",
+      "expected": "reject",
+      "actual": "accept",
+      "passed": false,
+      "exit_code": 0
+    },
+    {
+      "case": "order-postgresql/inherit",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "case": "order-postgresql/all-equivalent",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "case": "order-postgresql/partial-runAsUser",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "case": "order-postgresql/partial-runAsGroup",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "case": "order-postgresql/partial-runAsNonRoot",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "case": "order-postgresql/partial-seccompProfile",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "case": "order-postgresql/runAsUser/null",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/runAsUser/list",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/runAsUser/object",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/runAsUser/string",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/runAsUser/unknown",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/runAsUser/float",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/runAsGroup/null",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/runAsGroup/list",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/runAsGroup/object",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/runAsGroup/string",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/runAsGroup/unknown",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/runAsGroup/float",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/runAsNonRoot/null",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/runAsNonRoot/list",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/runAsNonRoot/object",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/runAsNonRoot/string",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/runAsNonRoot/unknown",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/runAsNonRoot/float",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/seccompProfile/null",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/seccompProfile/list",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/seccompProfile/object",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/seccompProfile/string",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/seccompProfile/unknown",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/seccompProfile/float",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/nonroot/False",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/nonroot/0",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/nonroot/1",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/nonroot/'true'",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/seccomp/{'type': None}",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/seccomp/{'type': []}",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/seccomp/{'type': 'Unknown'}",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/seccomp/{'type': 'Localhost', 'localhostProfile': 'synthetic'}",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/seccomp/{'type': 'Unconfined'}",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/containers/pg-sidecar/False",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/containers/pg-sidecar/True",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/initContainers/pg-sidecar/False",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/initContainers/pg-sidecar/True",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/ephemeralContainers/pg-sidecar/False",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/ephemeralContainers/pg-sidecar/True",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/containers/type/None",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/containers/type/{}",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/containers/type/'invalid'",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/initContainers/type/None",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/initContainers/type/{}",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/initContainers/type/'invalid'",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/ephemeralContainers/type/None",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/ephemeralContainers/type/{}",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/ephemeralContainers/type/'invalid'",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/missing-pvc",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/unknown-resource",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/unscanned-podspec",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    },
+    {
+      "case": "order-postgresql/app-image-as-db",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "exit_code": 1
+    }
+  ]
+}

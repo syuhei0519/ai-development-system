@@ -1,0 +1,132 @@
+Independent Order M0 Test attempt2
+
+Result: FAILED. Assigned AC-3 M0 verification-infrastructure gate is not_met.
+The historical F-1 is repaired; a different F-2 policy failure remains.
+Product AC-1/2/3 are unverified. No final_assessment or merge/deploy approval.
+
+Fixed target
+Repository syuhei0519/application-manifest, PR18, open Draft.
+Head/independent execution: 82505fce911c1dbbe75fe8226a06665e582e1ff9
+Head tree: 4054469a7f6eebbe2b9d0b081f3c37f11ade12b2
+Base: e039945a90625262f91382e6f71149d046e31b34
+Base tree: 7c9c8d52bf014f54fe2212b0ef4374c53d9700a3
+System contracts: 0083151aa2f6b2aaf0e1db64ada3f196ed766e48
+Scope application-manifest#backend-app-2/M0; role test; attempt2; AC-3 only.
+
+F-2 HIGH: existing Account PostgreSQL can escape the fixed platform image policy
+Location tools/inventory/platform.go:13-14 (early return), with classification
+in tools/inventory/main.go and downstream provenance signaling in trusted-render.py.
+Expected: both postgresql and order-postgresql identities require the dedicated
+fixed PostgreSQL repository/tag/digest and platform security/PVC policy. Manager
+assignment criterion 5 explicitly includes existing Account and forbids confusing
+DB image with app release; M0 documentation says both DB names use this policy.
+Actual: replace only the existing Account PostgreSQL container image with a fully
+pinned synthetic ghcr.io/syuhei0519/backend-app:<40 a>@sha256:<64 b>. Inventory
+exits 0. The identical replacement for order-postgresql exits nonzero. The early
+return checks only the Order resource name when the image repository changes;
+Account therefore stops being subject to platformPolicy.
+Independent bounded trusted renderer also accepts this synthetic chart substitution,
+returns four entries and provenanceRequired=true, eligible=false. It routes the
+DB identity into the application provenance path instead of rejecting the fixed
+DB allowlist violation. This demonstrates a platform-policy classification gap,
+not acceptance of an authenticated release: the synthetic image is not published,
+no release proof was supplied, and authenticated downstream verification was not
+claimed or attempted. No real workload, Account value or cluster was modified.
+Reproduce with security-boundaries.py (one failed expectation out of 116) and
+f2-trusted.py (one failed expected rejection); exact summaries are included.
+Implementation should bind both fixed DB workload identities before image-family
+classification, preserve legal application handling, and add both-identity tests.
+Test has not changed implementation. Manager decides repair and remaining budget.
+
+Historical F-1 verification
+The original Test1 independent reproduce.py was obtained through verified fixed
+Git, read, and adapted only to report the new target SHA. All 138 observations
+now satisfy their expected outcomes, including all eight former root/seccomp/UID/
+GID bypasses across both PostgreSQL names. Generic render-only scan observations
+remain observations, not the dedicated platform-policy gate.
+The independent trusted renderer rejects the old effective-security bypass.
+Additional security-boundaries.py: legal inherited/all-equivalent/partial-equivalent
+settings accepted for both DBs; null, malformed object/list/string/numeric types,
+wrong seccomp types, PostgreSQL extra/init/ephemeral containers, malformed container
+lists, missing PVC and hidden/unknown PodSpec/resource boundaries rejected.
+115/116 expectations pass; the sole failing expectation is F-2.
+
+Independent full existing tests
+bash ci/github/test.sh PASS, including docs 14; Go inventory/release-record/scan-gate;
+checksum compilation; trusted_identity 3, trusted_contract 10, trusted_registry 8,
+pre_merge_check 6, trusted_attempts 13, trusted_render 4, namespace_boundary 3,
+release 19. Prepared Go/Helm toolchain activated before invocation.
+Additional independent runs PASS: release_test 19, trusted_render 4,
+trusted_binary 1, trusted_consumer_failure 1, trusted_phase2 2; ci/validate.sh;
+all checksum Go tests; render-only scan-gate; fixed-head bounded trusted renderer.
+The latter reports provenanceRequired=false and authenticated eligibility=false.
+Test-only execution is never a protected-main or authentic release observation.
+Disabled optional fixture PASS (4 entries), enabled Order+DB fixture PASS (6),
+enabled broken PVC retention REJECT, old F-1 fixture REJECT. Retained reproducer
+can execute all four again. New F-2 has its own single-case reproducer.
+
+Binding/security coverage
+Inspected and independently executed existing release19 and supplemental probes:
+v1 backend/frontend compatibility; v2 closed service/source/image/schema bindings;
+wrong source/run/attempt/workflow/ref/digest/config/record/SBOM/scan/archive;
+expiry/future scans/latest main/moved tag; matrix missing/failing/expired/duplicate
+legs and artifacts; canonical ZIP single regular record/path/duplicate/symlink/
+nonregular modes; JSON duplicate escaped keys/nonfinite/trailing syntax and types.
+Registry boundary fixtures assert token-free subprocess environment; anonymous
+registry reads are separated from token-bearing GitHub reads. Trusted path/shell/
+symlink tests and namespace sandbox positively check a functional isolated render,
+private/read-only/environment/network boundaries, deadlines and output limits.
+PR scripts are not selected as verifier code: fixed verifier source builds inventory;
+candidate chart/values are data in the bounded networkless renderer. No real Secret
+was needed for synthetic tests. These are finite regressions, not exhaustive fuzzing.
+B2 actual protected producer/release interoperability remains unimplemented/unverified.
+Schema, fixtures and M0 README/design bindings were compared; shared names are
+synthetic agreement only. Research design/addendum were read as public derivatives,
+not as independent inspection of unavailable private Research originals.
+
+Static deployment proof
+Independently fetched both fixed commits/trees. All 28 chart and 4 environment files
+are byte-identical and the file sets match. Helm frontend/backend/postgresql output
+matches byte-for-byte and parsed YAML semantics; file/render hashes and lengths in
+render-comparison.json. Secret references, existing PVCs and Account live values
+are unchanged. Tracked working tree is clean. M0 diff has no current rendered
+deployment effect; this is static evidence, not live health/sync/runtime evidence.
+AC-1/2 functionality, real Argo/Service/imageID, deployment, and three-repo integration
+were not tested. AC-3 remains earliest premerge, deferred=null; aggregate_required.
+
+CI and readiness limits
+Read-only GitHub API independently reports push CI 38123936888 and pull_request CI
+38123939453 completed/success, attempt1, .github/workflows/ci.yml and required head.
+PR head/base match the assignment. Workflow bytes/config digest are recorded.
+The workflow checkout uses the event default ref. API head_sha is not proof of the
+actual PR merge checkout. Known Forbidden raw logs were not retried or bypassed.
+The observed PR merge_commit_sha is a current candidate, not an independently
+verified historical CI checkout. This observation limit is separate from F-2;
+no new raw-log gate or CI failure is invented. No CI rerun was dispatched.
+Formal readiness/current protection/queue/merge-group context remains Manager-owned;
+no Manager assessment or validate_readiness --handoff success is fabricated.
+Failure is premerge and cannot be hidden by deferral. Manager must re-evaluate after
+repair and refresh current policy/CI/Test/Review evidence before any operation.
+
+Input, history and delivery
+Canonical consume_delivery.py freshly retrieved and verified all input bytes,
+size/hash/type/slot/candidate/tree/source/AC/retry bindings before use: 84 objects
+including tree members. Exact Manager authorization and independently derived pin
+from the separate Manager-supplied text are private; no bundle receipt granted
+permission. No new Consumer authorization is issued by Test.
+Implementation2 completed is Producer history; old Implementation1 blocked with
+separate delivery recovery, Test1 failed, Research and B1/Review histories remain
+unchanged. Test2 upstream references exact Implementation2 and retry_of Test1 bytes.
+All upstream dependencies are canonical outer fixed references, not regenerated
+copies. Public derivatives and unavailable private originals remain distinct.
+System workflow/Handoff2/Delivery1.2/Readiness/IssueCompletion and task/delivery
+input templates were read. No target/System tracked AGENTS.md or related .agents
+skills were found. Cloud setup instructions were read after creating the detached
+test worktree; no further worktrees were created. Synthetic Git fixtures use
+isolated temporary clones. Original checkout and implementation bytes remain intact.
+This is one Test execution attempt2; individual commands are not new Agent attempts.
+Dispatch/execution/delivery budgets remain each <=3 under Manager's ledger; no old
+terminal or attempt is reset. No Agent/scheduler/API service was started. No main
+push, PR merge, Issue edit, PR17 action, real deployment, Secret/permission/ruleset/
+environment change occurred. Only the authorized dedicated System evidence branch
+is used for delivery. Report creation/publication is not a passing Test gate.

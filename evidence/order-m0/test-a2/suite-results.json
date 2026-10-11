@@ -1,0 +1,34 @@
+[
+  {
+    "command": "python3 -I ci/github/release_test.py -v",
+    "exit_code": 0
+  },
+  {
+    "command": "python3 -I ci/trusted_render_test.py -v",
+    "exit_code": 0
+  },
+  {
+    "command": "python3 ci/trusted_binary_test.py",
+    "exit_code": 0
+  },
+  {
+    "command": "python3 ci/trusted_consumer_failure_test.py",
+    "exit_code": 0
+  },
+  {
+    "command": "python3 ci/trusted_phase2_test.py",
+    "exit_code": 0
+  },
+  {
+    "command": "sh ci/validate.sh",
+    "exit_code": 0
+  },
+  {
+    "command": "cd tools/checksum && go test ./...",
+    "exit_code": 0
+  },
+  {
+    "command": ".security/scan-gate -check-render-only .rendered -out OUTPUT/live-render-scan.json",
+    "exit_code": 0
+  }
+]

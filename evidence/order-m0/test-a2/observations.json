@@ -1,0 +1,57 @@
+{
+  "observed_at": "2026-10-11T08:24:44Z",
+  "valid_until": "2026-10-12T08:24:44Z",
+  "environment": "Codex Cloud PlatformEngineering Linux amd64; Go 1.27.1; Helm 4.2.4; Docker 28.4.0; Python 3.12.14; PyYAML 6.0.3",
+  "independent_execution_revision": "82505fce911c1dbbe75fe8226a06665e582e1ff9",
+  "pr": {
+    "base": "e039945a90625262f91382e6f71149d046e31b34",
+    "draft": true,
+    "head": "82505fce911c1dbbe75fe8226a06665e582e1ff9",
+    "merge_commit_sha": "ad588ddb889f77620031b5ef55a2f7e94dbe7f8e",
+    "number": 18,
+    "state": "open",
+    "updated_at": "2026-10-11T08:11:28Z"
+  },
+  "runs": [
+    {
+      "conclusion": "success",
+      "created_at": "2026-10-11T08:11:31Z",
+      "event": "pull_request",
+      "head_branch": "feat/order-trusted-manifest-m0",
+      "head_sha": "82505fce911c1dbbe75fe8226a06665e582e1ff9",
+      "html_url": "https://github.com/syuhei0519/application-manifest/actions/runs/38123939453",
+      "id": 38123939453,
+      "name": "CI",
+      "path": ".github/workflows/ci.yml",
+      "run_attempt": 1,
+      "status": "completed",
+      "updated_at": "2026-10-11T08:12:57Z"
+    },
+    {
+      "conclusion": "success",
+      "created_at": "2026-10-11T08:11:29Z",
+      "event": "push",
+      "head_branch": "feat/order-trusted-manifest-m0",
+      "head_sha": "82505fce911c1dbbe75fe8226a06665e582e1ff9",
+      "html_url": "https://github.com/syuhei0519/application-manifest/actions/runs/38123936888",
+      "id": 38123936888,
+      "name": "CI",
+      "path": ".github/workflows/ci.yml",
+      "run_attempt": 1,
+      "status": "completed",
+      "updated_at": "2026-10-11T08:12:45Z"
+    }
+  ],
+  "workflow_sha256": "33f7d7f9cedf9eb6160baabbc90b65d37458838d7b9a1125871590d4370fb7ee",
+  "actual_ci_checkout": "unverified; authoritative API head/event/workflow observed; known Forbidden raw logs not retried",
+  "merge_group_sha": null,
+  "merge_group_requirement": "Manager current context required",
+  "verification_phase": "premerge",
+  "deferred": null,
+  "issue_integration_scope": "aggregate_required",
+  "product_ac_results": {
+    "AC-1": "unverified",
+    "AC-2": "unverified",
+    "AC-3": "unverified"
+  }
+}
