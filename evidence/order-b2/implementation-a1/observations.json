@@ -1,0 +1,175 @@
+{
+  "observedAt": "2026-10-11T17:06:40.731069+00:00",
+  "assignment_complete": true,
+  "repository": "syuhei0519/backend-app",
+  "base": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+  "head": "65885af3fd648ce7010fa4a06470b273b995d418",
+  "tree": "a041558ad61f96dfbae616bcd3e91ab5f6b4a3a3",
+  "branch": "feat/order-image-ci-b2",
+  "pullRequest": {
+    "auto_merge": null,
+    "base": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+    "draft": true,
+    "head": "65885af3fd648ce7010fa4a06470b273b995d418",
+    "html_url": "https://github.com/syuhei0519/backend-app/pull/32",
+    "state": "open"
+  },
+  "ci": {
+    "push": {
+      "conclusion": "success",
+      "created_at": "2026-10-11T16:58:21Z",
+      "event": "push",
+      "head_branch": "feat/order-image-ci-b2",
+      "head_sha": "65885af3fd648ce7010fa4a06470b273b995d418",
+      "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/38157671767",
+      "id": 38157671767,
+      "path": ".github/workflows/ci.yml",
+      "run_attempt": 1,
+      "status": "completed",
+      "updated_at": "2026-10-11T17:04:20Z"
+    },
+    "pull_request": {
+      "conclusion": "success",
+      "created_at": "2026-10-11T16:58:24Z",
+      "event": "pull_request",
+      "head_branch": "feat/order-image-ci-b2",
+      "head_sha": "65885af3fd648ce7010fa4a06470b273b995d418",
+      "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/38157674375",
+      "id": 38157674375,
+      "path": ".github/workflows/ci.yml",
+      "run_attempt": 1,
+      "status": "completed",
+      "updated_at": "2026-10-11T17:04:19Z"
+    }
+  },
+  "ciHistory": [
+    {
+      "conclusion": "success",
+      "databaseId": 38157674375,
+      "event": "pull_request",
+      "headSha": "65885af3fd648ce7010fa4a06470b273b995d418",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 38157671767,
+      "event": "push",
+      "headSha": "65885af3fd648ce7010fa4a06470b273b995d418",
+      "status": "completed"
+    },
+    {
+      "conclusion": "cancelled",
+      "databaseId": 38157561092,
+      "event": "pull_request",
+      "headSha": "7370286c0fdde52598d65da2fcdf3186aeab42b4",
+      "status": "completed"
+    },
+    {
+      "conclusion": "cancelled",
+      "databaseId": 38157557926,
+      "event": "push",
+      "headSha": "7370286c0fdde52598d65da2fcdf3186aeab42b4",
+      "status": "completed"
+    },
+    {
+      "conclusion": "cancelled",
+      "databaseId": 38157360678,
+      "event": "pull_request",
+      "headSha": "ebd99892d234d98eeecd8c4f74ea21fb95aed289",
+      "status": "completed"
+    },
+    {
+      "conclusion": "cancelled",
+      "databaseId": 38157357059,
+      "event": "push",
+      "headSha": "ebd99892d234d98eeecd8c4f74ea21fb95aed289",
+      "status": "completed"
+    },
+    {
+      "conclusion": "cancelled",
+      "databaseId": 38157057747,
+      "event": "pull_request",
+      "headSha": "7e4db7967009cdfa1654c1f5017e72e59fe1fbbd",
+      "status": "completed"
+    },
+    {
+      "conclusion": "cancelled",
+      "databaseId": 38157053996,
+      "event": "push",
+      "headSha": "7e4db7967009cdfa1654c1f5017e72e59fe1fbbd",
+      "status": "completed"
+    },
+    {
+      "conclusion": "cancelled",
+      "databaseId": 38156929207,
+      "event": "pull_request",
+      "headSha": "595df370b891d968af3b01b6c547f7d7a1e8fd1e",
+      "status": "completed"
+    },
+    {
+      "conclusion": "cancelled",
+      "databaseId": 38156905977,
+      "event": "push",
+      "headSha": "595df370b891d968af3b01b6c547f7d7a1e8fd1e",
+      "status": "completed"
+    }
+  ],
+  "localValidation": {
+    "policy": "passed",
+    "legacyProducerTests": 8,
+    "producerInteropTests": 7,
+    "fixedM0ConsumerTests": 19,
+    "goRace": "passed",
+    "realDisposableDB": "passed",
+    "topLevelPass": 32,
+    "includingSubtests": 112,
+    "vet": "passed",
+    "bothEntrypointBuilds": "passed",
+    "format": "passed",
+    "sourceScan": "passed",
+    "productionOCI": "local build DNS blocked; final GitHub CI executed both production Dockerfiles successfully",
+    "syntheticOCIRuntime": "both passed; not production-image evidence",
+    "skips": [
+      "TestMigrationDisposableDatabase (explicit Account kind fixture absent)",
+      "TestSDKCollectorMetricNames (explicit Collector fixture absent)"
+    ]
+  },
+  "boundaries": {
+    "implementation": "verified within B2 assigned scope",
+    "remote": "verified",
+    "draftPR": "verified",
+    "CI": "verified at exact head",
+    "realGHCRPublication": "not_requested",
+    "realManifestProposal": "not_requested",
+    "deployment": "not_requested",
+    "independentTestReview": "pending separate tasks",
+    "managerReadiness": "not_requested",
+    "issueCompletion": "unverified"
+  },
+  "readinessContextSummary": {
+    "pr_kind": "standard",
+    "pr_ac_ids": [
+      "AC-1",
+      "AC-2"
+    ],
+    "all_ac_earliest": "premerge",
+    "deferred": null,
+    "issue_integration_scope": "aggregate_required",
+    "deployment_impact": "none within inspected fixed GitOps configuration; actual cluster and external automation unobserved"
+  },
+  "evidenceRetrieval": {
+    "incomingMandatoryDelivery": "verified fresh, 20 explicit/26 materialized/178681 bytes",
+    "GitCLI": "push and PR metadata succeeded",
+    "GitHubJobLogCLI": "blocked by Forbidden redirect",
+    "GitHubConnectedJobLogReader": "succeeded; only public-safe derived observations retained",
+    "GitHubArtifactCLI": "blocked by Forbidden redirect",
+    "GitHubConnectedArtifactDownload": "returned an opaque reusable ZIP file reference; its storage URL could not be materialized in selected Cloud environment (HTTP 403)",
+    "OCILocalArtifactReinspection": "not performed on final CI tar; CI executed full checks and aggregate download/checksum verification; public artifact IDs/ZIP size/SHA and source head retained"
+  },
+  "limits": [
+    "Actual Argo Synced/Healthy, Service and deployed digest unverified.",
+    "Order proposal target absent in fixed M0 until M1; proposal fails closed.",
+    "No new Consumer authorization issued.",
+    "No raw internal logs, private authorization/receipt or private-original hashes included."
+  ]
+}

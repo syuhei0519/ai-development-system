@@ -1,0 +1,386 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "syuhei0519/backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "implementation",
+  "task_id": "order-b2-implementation-a1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "order-b1-test-e2-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/f5a93108cdbbce934a0838c280bdf0a18ba32429/evidence/order-b1/test-e2-a1/handoff.json",
+      "revision": "sha256:4cc00afcad190f144e9299a89dcef9604ec74a2733da05b605730061bbcebaa3",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "B2 implementation and self-verification only. Dedicated Order image and matrix/release producer; no independent Test/Review, real publication, deployment, Manager Readiness or aggregate Issue Completion claimed.",
+  "assignment": {
+    "scope": "backend-app#2/B2",
+    "ac_ids": [
+      "AC-1",
+      "AC-2",
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "Dockerfile.order と専用cmd/order-serverイメージを作り、既存Accountイメージ仕様を維持する。既存固定base、nonroot、read-only、能力drop、scan基準を弱めない。",
+      "両イメージをservice別作業領域・artifactでbuild/checkし、同一のchecked OCI tarをpublishする。fail-fast=false、全matrix結果をci-resultへ反映、片方の失敗・欠落を成功扱いしない。Account既存v1の名前・tag・公開フロー互換を維持する。",
+      "Order v2 release record/artifact/tag/proposalを、マージ済みM0 consumerの実際の契約へ一致させる。producer→consumerの正常・異常fixtureを実コードで突合する。source/service/run/attempt/config/archive/digest/SBOMの混同・改変・再buildを拒否する。保護されたmain専用公開、既存Environment承認・token最小scopeを維持する。",
+      "既存全テスト、関連回帰、Unit/race/vet、B1 AC-1/2の実HTTP+使い捨てPostgreSQL回帰、両OCIのruntime/scan/SBOM、CI集約の失敗系を実行し、実測・skip・未実行を区別する。使い捨てfixtureは新規作成分だけ、既存DB/volumeを使わず、限定cleanupする。隔離ローカルコンテナの合成試験は許可済み。実kind/実cluster操作は今回は行わない。",
+      "branch feat/order-image-ci-b2 を確認し重複作成せず、許可範囲をfeature Push、backend-appにDraft PR作成。Issue2通常リンクのみでCloses/Fixes禁止。自己merge、auto-merge、workflow_dispatchによる実publish、実環境デプロイは禁止。",
+      "設計差分・理由・不採用案・新リスクを記録。重大な承認境界は勝手に決めず報告。ただし合理的な内部実装判断まで全て人間質問にしない。",
+      "Handoff v2.0、変更head/base/tree、全自己検証結果、独立検証用手順、配送manifest/Publication Receiptを作る。自己検証は独立Test/Reviewではない。System専用branch evidence/order-b2-implementation-a1、prefix evidence/order-b2/implementation-a1/ に安全点検済み報告・合成fixture・公開済み入力・配送記録を保存可。既存検証branchは上書きしない。全参照は固定Gitとrawsize/SHA。後続に必要なclosureのみをまとめ、最大128件・型・必須参照を維持する。",
+      "Consumer利用認可を自分で発行せずManagerへmanifest/pub固定pinを返す。private原本/hash、実taskID、認可、内部ログ、秘密は公開しない。task_idには公開alias、実CloudIDはprivateに別記録する。",
+      "System canonical Handoff/Delivery validationの結果を返す。正式Manager Readinessを自分で決定しない。実装・push・Draft PR・CI・実GHCR公開・デプロイは別々に報告する。Knowledge候補は出すがKnowledge Agentや定期実行を起動しない。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-REPORT",
+      "kind": "test-report",
+      "locator": "implementation-report.txt",
+      "revision": "sha256:546e346d2b45ba77581c6bd0223cf95b75d0a8efee67005010b1d15a4cc0a7dc",
+      "summary": "Measured self-verification, commands, design choices and limits."
+    },
+    {
+      "id": "A-OBS",
+      "kind": "other",
+      "locator": "observations.json",
+      "revision": "sha256:25f5b6f8b20484c22c0ffb9a2b797011a6809734124ca333c1e38d406adf9b6a",
+      "summary": "Fixed target, CI and scope observations; not formal readiness."
+    },
+    {
+      "id": "A-PATCH",
+      "kind": "patch",
+      "locator": "implementation.patch",
+      "revision": "sha256:b937006cb8ff20b4a8cfd241df54e5322db4cc34c132cd4a71dbbfa5f9be459d",
+      "summary": "Exact base to head implementation diff including reproducible synthetic fixtures."
+    },
+    {
+      "id": "A-INPUT",
+      "kind": "other",
+      "locator": "upstream-manifest.json",
+      "revision": "sha256:6c596434432a04a332f08d2eebd6f4901691b54bb52eacfc508aa956987c2e5e",
+      "summary": "Unmodified required public B1 Test delivery manifest; recursive closure retained."
+    },
+    {
+      "id": "A-INPUT-PUB",
+      "kind": "other",
+      "locator": "upstream-publication-receipt.json",
+      "revision": "sha256:4619ebc17d071596351d099648d77533f6a2e7741507d3cd01ea9117b019093f",
+      "summary": "Unmodified fixed B1 Test public receipt; not current Consumer authority."
+    },
+    {
+      "id": "A-README",
+      "kind": "document",
+      "locator": "README.txt",
+      "revision": "sha256:180363cd6166e437facb15419254c02d92201358133e421a269e9ff1514224bc",
+      "summary": "Public delivery and approval boundaries."
+    },
+    {
+      "id": "A-SAFETY",
+      "kind": "other",
+      "locator": "bundle-review.json",
+      "revision": "sha256:b2fbfcf40b81e5051ff2581f507cb5bbd1d5f6f2a16302e5bb12025adbb402b5",
+      "summary": "Full-text safety review and public-file inventory, excluding private materials."
+    },
+    {
+      "id": "A-HEAD",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/backend-app/commit/65885af3fd648ce7010fa4a06470b273b995d418",
+      "revision": "65885af3fd648ce7010fa4a06470b273b995d418",
+      "summary": "Fixed source revision; commit identity is separate from build or deployment success."
+    },
+    {
+      "id": "A-BASE",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/backend-app/commit/2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+      "revision": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+      "summary": "Fixed source revision; commit identity is separate from build or deployment success."
+    },
+    {
+      "id": "A-M0",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/application-manifest/commit/bc6adaedcd645a4663c23284b977a3dd36c0796d",
+      "revision": "bc6adaedcd645a4663c23284b977a3dd36c0796d",
+      "summary": "Fixed source revision; commit identity is separate from build or deployment success."
+    },
+    {
+      "id": "A-P0",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/platform-gitops/commit/b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+      "revision": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+      "summary": "Fixed source revision; commit identity is separate from build or deployment success."
+    },
+    {
+      "id": "A-FIXED-11",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/application-manifest/blob/bc6adaedcd645a4663c23284b977a3dd36c0796d/ci/github/release.py",
+      "revision": "sha256:ed2630b8b3fe3a18a6de2c0ce55dcbe494f7d20414d672326d7e524b30903867",
+      "summary": "Exact fixed code/fixture/configuration used; no recursive M0 Review bundle adopted."
+    },
+    {
+      "id": "A-FIXED-12",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/application-manifest/blob/bc6adaedcd645a4663c23284b977a3dd36c0796d/ci/github/release_test.py",
+      "revision": "sha256:c23078874ec77fb06a54525a4cb4f2a702a7758fe833f396174fc53fd77a4d86",
+      "summary": "Exact fixed code/fixture/configuration used; no recursive M0 Review bundle adopted."
+    },
+    {
+      "id": "A-FIXED-13",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/application-manifest/blob/bc6adaedcd645a4663c23284b977a3dd36c0796d/ci/github/order-release.schema.json",
+      "revision": "sha256:2bdc572d5e2ac6f694a1658b27d36ead6abdb44bcfb9eb284b47f74979468f92",
+      "summary": "Exact fixed code/fixture/configuration used; no recursive M0 Review bundle adopted."
+    },
+    {
+      "id": "A-FIXED-14",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/application-manifest/blob/bc6adaedcd645a4663c23284b977a3dd36c0796d/ci/github/fixtures/backend-record.json",
+      "revision": "sha256:00f2602021a21c553b546083352a50936b10b923b03c39c8218c210d3c8bc4a7",
+      "summary": "Exact fixed code/fixture/configuration used; no recursive M0 Review bundle adopted."
+    },
+    {
+      "id": "A-FIXED-15",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/application-manifest/blob/bc6adaedcd645a4663c23284b977a3dd36c0796d/ci/github/fixtures/order-record.json",
+      "revision": "sha256:a3a2b0472fe51d96614406d85fd89748eb8c255c45ebbfd21cfdde57e0968eb5",
+      "summary": "Exact fixed code/fixture/configuration used; no recursive M0 Review bundle adopted."
+    },
+    {
+      "id": "A-FIXED-16",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/application-manifest/blob/bc6adaedcd645a4663c23284b977a3dd36c0796d/ci/github/fixtures/order-config.json",
+      "revision": "sha256:8bd06c0e86671a7e7f8d56d6ff80bf56db6e753ff45357ca5d1a21e5a8f680ea",
+      "summary": "Exact fixed code/fixture/configuration used; no recursive M0 Review bundle adopted."
+    },
+    {
+      "id": "A-FIXED-17",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/application-manifest/blob/bc6adaedcd645a4663c23284b977a3dd36c0796d/ci/github/fixtures/order-manifest.json",
+      "revision": "sha256:0578ef8eb4991f3b8db3ad3bfe3bb58501962e0ea97449d5feec6cd346d82768",
+      "summary": "Exact fixed code/fixture/configuration used; no recursive M0 Review bundle adopted."
+    },
+    {
+      "id": "A-FIXED-18",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/application-manifest/blob/bc6adaedcd645a4663c23284b977a3dd36c0796d/ci/github/fixtures/sbom.cdx.json",
+      "revision": "sha256:b9104ba1eba76b6b080694eb4eb1717e38d5d9b7dbe4469e50acbfd756c5ca56",
+      "summary": "Exact fixed code/fixture/configuration used; no recursive M0 Review bundle adopted."
+    },
+    {
+      "id": "A-FIXED-19",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/application-manifest/blob/bc6adaedcd645a4663c23284b977a3dd36c0796d/ci/github/fixtures/image-scan.json",
+      "revision": "sha256:63b684854bd4961bcb515b09823ea700dda69135486c5e11352bb1d7850f534e",
+      "summary": "Exact fixed code/fixture/configuration used; no recursive M0 Review bundle adopted."
+    },
+    {
+      "id": "A-FIXED-20",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/application-manifest/blob/bc6adaedcd645a4663c23284b977a3dd36c0796d/environments/local/backend.yaml",
+      "revision": "sha256:be7b8212ea066e0a601396398310505cb5870c3c7d1c67619b1a421a308c71f8",
+      "summary": "Exact fixed code/fixture/configuration used; no recursive M0 Review bundle adopted."
+    },
+    {
+      "id": "A-FIXED-21",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/platform-gitops/blob/b989e29b8addbd6396c5c2b4833b969bc15fc8fa/charts/workloads/values.yaml",
+      "revision": "sha256:2ec0f1e8ea8bde4fbe0151d1a72b40742e987d34277f6eefdbf45e5fcfa2f5da",
+      "summary": "Exact fixed code/fixture/configuration used; no recursive M0 Review bundle adopted."
+    },
+    {
+      "id": "A-FIXED-22",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/platform-gitops/blob/b989e29b8addbd6396c5c2b4833b969bc15fc8fa/charts/workloads/templates/applications.yaml",
+      "revision": "sha256:6bc92483833f169a0f19fb7349f9105f410007328069b25d24509e5c1c58a7ee",
+      "summary": "Exact fixed code/fixture/configuration used; no recursive M0 Review bundle adopted."
+    },
+    {
+      "id": "A-FIXED-23",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/65885af3fd648ce7010fa4a06470b273b995d418/docs/order-image-ci.md",
+      "revision": "sha256:1603fd924154629ecdd842b83da50c314066bc46cabf9c044db2c975da905ef1",
+      "summary": "Exact fixed code/fixture/configuration used; no recursive M0 Review bundle adopted."
+    },
+    {
+      "id": "A-CI-24",
+      "kind": "other",
+      "locator": "ci-evidence/artifacts.json",
+      "revision": "sha256:4d988f922d39d4590d2cb2317cf6c2defcfee27481292892557afad437d3a66e",
+      "summary": "Exact public CI checked-image evidence; not published GHCR evidence."
+    },
+    {
+      "id": "A-CI-25",
+      "kind": "other",
+      "locator": "ci-evidence/image-observations.json",
+      "revision": "sha256:f7daeab5595ba65063c8057b9be91a9d0272a06bf719c4410f4c0e48d009cd93",
+      "summary": "Exact public CI checked-image evidence; not published GHCR evidence."
+    },
+    {
+      "id": "A-CI-26",
+      "kind": "other",
+      "locator": "ci-evidence/local-source-scan.json",
+      "revision": "sha256:7d7db16a623be44656748964dae64de4d7e775994f11805145b7c4dfe5a16dcf",
+      "summary": "Exact public CI checked-image evidence; not published GHCR evidence."
+    },
+    {
+      "id": "A-CI-27",
+      "kind": "other",
+      "locator": "ci-evidence/pr-run.json",
+      "revision": "sha256:3b428f5f3dc49bf59c6933cae1152462c9a8300de0215bb280fb7657cff26bbc",
+      "summary": "Exact public CI checked-image evidence; not published GHCR evidence."
+    },
+    {
+      "id": "A-CI-28",
+      "kind": "other",
+      "locator": "ci-evidence/push-jobs.json",
+      "revision": "sha256:0732628da8bf47e684e1216f63d263608f5d138a34b4d7f0144079e7f7599813",
+      "summary": "Exact public CI checked-image evidence; not published GHCR evidence."
+    },
+    {
+      "id": "A-CI-29",
+      "kind": "other",
+      "locator": "ci-evidence/push-run.json",
+      "revision": "sha256:8e2ccf583d4c17fa12e1417bded60130e8a8f4d548ed166ed903bebd09b3e375",
+      "summary": "Exact public CI checked-image evidence; not published GHCR evidence."
+    },
+    {
+      "id": "A-CI-30",
+      "kind": "other",
+      "locator": "ci-evidence/synthetic-runtime-backend.json",
+      "revision": "sha256:ce9191e6f5bdacd21496a644f0ebc8cf542d59c4d6128926e228dfd5c14b2ad9",
+      "summary": "Exact public CI checked-image evidence; not published GHCR evidence."
+    },
+    {
+      "id": "A-CI-31",
+      "kind": "other",
+      "locator": "ci-evidence/synthetic-runtime-order.json",
+      "revision": "sha256:56ad2f1bf66b05d423efc57bd2afeb41bf7869c98df0431ae853f666ddc15ac2",
+      "summary": "Exact public CI checked-image evidence; not published GHCR evidence."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-INPUT",
+      "claim": "Mandatory upstream fresh canonical validation passed before use",
+      "artifact_ids": [
+        "A-INPUT",
+        "A-INPUT-PUB",
+        "A-REPORT"
+      ],
+      "locator": "implementation-report.txt",
+      "observation": "Fixed System consume_delivery.py accepted every required object, raw byte/hash/type, cross-reference, candidate and tree binding. Private authorization/receipt excluded; no authority inferred."
+    },
+    {
+      "id": "E-REGRESSION",
+      "claim": "B1 real HTTP/DB and Account regression passed as implementation self-verification",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-OBS",
+        "A-HEAD"
+      ],
+      "locator": "implementation-report.txt",
+      "observation": "Unit/race/vet/build/policy and opt-in disposable PostgreSQL persistence/invalid-input/Account tests measured; optional skips listed separately."
+    },
+    {
+      "id": "E-IMAGE",
+      "claim": "B2 dedicated image, matrix and release producer measured within assigned preparation scope",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-OBS",
+        "A-PATCH",
+        "A-HEAD"
+      ],
+      "locator": "observations.json",
+      "observation": "See exact-head CI and checked OCI runtime/scan/SBOM observations. Synthetic producer/unchanged M0 consumer normal and negative tests are separate from real GHCR publication and deployment."
+    },
+    {
+      "id": "E-DELIVERY",
+      "claim": "Bounded public deliverables and immutable input closure prepared",
+      "artifact_ids": [
+        "A-SAFETY",
+        "A-README",
+        "A-INPUT"
+      ],
+      "locator": "bundle-review.json",
+      "observation": "Public reports and synthetic fixtures inspected; private authorization, receipt, environment details and internal logs excluded. Outgoing Consumer authorization remains Manager responsibility."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "covered",
+      "scope": "B2 current-head implementation self-regression of real HTTP/DB restart persistence only. No Kubernetes or aggregate final acceptance.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-OBS"
+      ],
+      "evidence_ids": [
+        "E-REGRESSION"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "covered",
+      "scope": "B2 current-head implementation self-regression of 4xx/no-write and Account CRUD/history preservation only. Independent Test/Review still required.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-OBS"
+      ],
+      "evidence_ids": [
+        "E-REGRESSION"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "covered",
+      "scope": "Assigned B2 image/CI/release preparation responsibility only. Actual Order GHCR publication, Argo Synced/Healthy, deployed digest and aggregate product AC remain unverified.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-OBS"
+      ],
+      "evidence_ids": [
+        "E-IMAGE"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [
+    {
+      "id": "K-MATRIX",
+      "domain": "OCI supply chain",
+      "summary": "Bind same-source multi-service artifacts to explicit source/service/run/attempt identities and verify complete matrix artifacts before publication; transport conversion must preserve the loaded config identity. Candidate only; not adopted Knowledge.",
+      "evidence_ids": [
+        "E-IMAGE"
+      ],
+      "raw_locator": "implementation-report.txt",
+      "publication_safety": "needs_review"
+    }
+  ],
+  "publication": "public_safe"
+}

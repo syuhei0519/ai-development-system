@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "trivyVersion": "0.75.0",
+  "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+  "scannedAt": "2026-10-11T16:58:40.249907423Z",
+  "findings": [
+    {
+      "kind": "vulnerability",
+      "rule": "CVE-2026-78669",
+      "path": "go.mod",
+      "package": "golang.org/x/net",
+      "installedVersion": "v0.59.0",
+      "fixedVersion": "0.60.0",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "vulnerability",
+      "rule": "CVE-2026-78663",
+      "path": "go.mod",
+      "package": "golang.org/x/net",
+      "installedVersion": "v0.59.0",
+      "fixedVersion": "0.60.0",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "vulnerability",
+      "rule": "CVE-2026-97032",
+      "path": "go.mod",
+      "package": "golang.org/x/net",
+      "installedVersion": "v0.59.0",
+      "fixedVersion": "0.60.0",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "vulnerability",
+      "rule": "CVE-2026-78659",
+      "path": "go.mod",
+      "package": "golang.org/x/net",
+      "installedVersion": "v0.59.0",
+      "fixedVersion": "0.60.0",
+      "severity": "UNKNOWN",
+      "decision": "warning"
+    },
+    {
+      "kind": "vulnerability",
+      "rule": "CVE-2026-78660",
+      "path": "go.mod",
+      "package": "golang.org/x/net",
+      "installedVersion": "v0.59.0",
+      "fixedVersion": "0.60.0",
+      "severity": "UNKNOWN",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "DS-0026",
+      "path": "Dockerfile",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "DS-0026",
+      "path": "Dockerfile.order",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "DS-0001",
+      "path": "ci/oci-smoke/Dockerfile",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "DS-0002",
+      "path": "ci/oci-smoke/Dockerfile",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "DS-0026",
+      "path": "ci/oci-smoke/Dockerfile",
+      "severity": "LOW",
+      "decision": "warning"
+    }
+  ],
+  "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+}

@@ -1,0 +1,84 @@
+{
+  "review": "Public-safe derivative review; not Consumer authority",
+  "scope": "Every new public payload plus canonical mandatory upstream closure. Handoff is separately inspected after generation; its digest is outside this file to avoid circular hashing.",
+  "findings": [
+    "Only public aliases and public GitHub repository/commit/PR/run/artifact identifiers are included.",
+    "Reports distinguish local actual, synthetic, remote CI, skipped, failed and unobserved results.",
+    "No credentials, private authorization/receipt, private originals/hashes, actual Cloud task identifiers or raw internal logs are included.",
+    "Synthetic fixtures are explicitly labeled and preserve exact M0 input hashes.",
+    "Historical upstream bytes/representations and mandatory typed bindings are retained without rewriting.",
+    "Publication authority was supplied in the task; no new Consumer use authority is issued."
+  ],
+  "payload_inventory": [
+    {
+      "path": "README.txt",
+      "size": 622,
+      "sha256": "180363cd6166e437facb15419254c02d92201358133e421a269e9ff1514224bc"
+    },
+    {
+      "path": "ci-evidence/artifacts.json",
+      "size": 1003,
+      "sha256": "4d988f922d39d4590d2cb2317cf6c2defcfee27481292892557afad437d3a66e"
+    },
+    {
+      "path": "ci-evidence/image-observations.json",
+      "size": 930,
+      "sha256": "f7daeab5595ba65063c8057b9be91a9d0272a06bf719c4410f4c0e48d009cd93"
+    },
+    {
+      "path": "ci-evidence/local-source-scan.json",
+      "size": 2399,
+      "sha256": "7d7db16a623be44656748964dae64de4d7e775994f11805145b7c4dfe5a16dcf"
+    },
+    {
+      "path": "ci-evidence/pr-run.json",
+      "size": 381,
+      "sha256": "3b428f5f3dc49bf59c6933cae1152462c9a8300de0215bb280fb7657cff26bbc"
+    },
+    {
+      "path": "ci-evidence/push-jobs.json",
+      "size": 6603,
+      "sha256": "0732628da8bf47e684e1216f63d263608f5d138a34b4d7f0144079e7f7599813"
+    },
+    {
+      "path": "ci-evidence/push-run.json",
+      "size": 373,
+      "sha256": "8e2ccf583d4c17fa12e1417bded60130e8a8f4d548ed166ed903bebd09b3e375"
+    },
+    {
+      "path": "ci-evidence/synthetic-runtime-backend.json",
+      "size": 359,
+      "sha256": "ce9191e6f5bdacd21496a644f0ebc8cf542d59c4d6128926e228dfd5c14b2ad9"
+    },
+    {
+      "path": "ci-evidence/synthetic-runtime-order.json",
+      "size": 357,
+      "sha256": "56ad2f1bf66b05d423efc57bd2afeb41bf7869c98df0431ae853f666ddc15ac2"
+    },
+    {
+      "path": "implementation-report.txt",
+      "size": 13403,
+      "sha256": "546e346d2b45ba77581c6bd0223cf95b75d0a8efee67005010b1d15a4cc0a7dc"
+    },
+    {
+      "path": "implementation.patch",
+      "size": 116051,
+      "sha256": "b937006cb8ff20b4a8cfd241df54e5322db4cc34c132cd4a71dbbfa5f9be459d"
+    },
+    {
+      "path": "observations.json",
+      "size": 6126,
+      "sha256": "25f5b6f8b20484c22c0ffb9a2b797011a6809734124ca333c1e38d406adf9b6a"
+    },
+    {
+      "path": "upstream-manifest.json",
+      "size": 37017,
+      "sha256": "6c596434432a04a332f08d2eebd6f4901691b54bb52eacfc508aa956987c2e5e"
+    },
+    {
+      "path": "upstream-publication-receipt.json",
+      "size": 11264,
+      "sha256": "4619ebc17d071596351d099648d77533f6a2e7741507d3cd01ea9117b019093f"
+    }
+  ]
+}

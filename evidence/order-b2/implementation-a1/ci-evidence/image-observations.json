@@ -1,0 +1,33 @@
+{
+  "origin": "Connected GitHub job logs; public-safe derived observations, not raw logs",
+  "runId": 38157671767,
+  "head": "65885af3fd648ce7010fa4a06470b273b995d418",
+  "images": [
+    {
+      "service": "order",
+      "jobId": 114524586818,
+      "manifest": [
+        "sha256:513447fe4d616eae014d9c134e2a26013ffcd66eba04bd6e9950de7deabe5c22"
+      ],
+      "config": [
+        "sha256:fd7a319fbed00640ebe394ea1afc577017a1725d6e21226b92df04abc11f8fe0"
+      ],
+      "scanPass": true,
+      "runtimeFailure": false,
+      "sbomFailure": false
+    },
+    {
+      "service": "backend",
+      "jobId": 114524586851,
+      "manifest": [
+        "sha256:016d1b93af5e3458fbb9a96b653fe8e307d767543050ee90583103df0b8a9b23"
+      ],
+      "config": [
+        "sha256:ff8d22f77d58ed330da4ce1a7b0d9fb91fbc95fc65dc972e09bfe52a081ac5ec"
+      ],
+      "scanPass": true,
+      "runtimeFailure": false,
+      "sbomFailure": false
+    }
+  ]
+}

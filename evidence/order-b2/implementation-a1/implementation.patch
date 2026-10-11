@@ -1,0 +1,1978 @@
+diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml
+index 9dee776..9b28de2 100644
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -63,12 +63,15 @@ jobs:
+         run: |
+           test -z "$(gofmt -l .)"
+           go vet ./...
+-          go test ./...
++          go test -race ./...
+           go build -trimpath -o .build/server ./cmd/server
++          go build -trimpath -o .build/order-server ./cmd/order-server
+       - name: Source and rendered security checks
+         env:
+           SECURITY_RENDER_REQUIRED: 'false'
+-        run: bash ci/github/source-scan.sh
++        run: |
++          bash ci/github/source-scan.sh
++          python3 -I ci/github/source-identity.py
+       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+         if: always()
+         with:
+@@ -78,11 +81,21 @@ jobs:
+           retention-days: 30
+   image:
+     needs: validate
++    strategy:
++      fail-fast: false
++      matrix:
++        service: [backend, order]
++    defaults:
++      run:
++        working-directory: .images/${{ matrix.service }}
++    env:
++      RELEASE_SERVICE: ${{ matrix.service }}
+     runs-on: ubuntu-24.04
+     timeout-minutes: 40
+     steps:
+       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+         with:
++          path: .images/${{ matrix.service }}
+           fetch-depth: 0
+           persist-credentials: false
+       - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16
+@@ -95,32 +108,41 @@ jobs:
+       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+         with:
+           name: security-results-${{ github.run_attempt }}
+-          path: .validation
++          path: .images/${{ matrix.service }}/.validation
+       - name: Build trusted local validators
+         run: |
+           mkdir -p .security
+           (cd tools/scan-gate; CGO_ENABLED=0 go build -o ../../.security/scan-gate .)
+-          (cd tools/oci-input; CGO_ENABLED=0 go build -o ../../.security/github-oci-check ./cmd/github-oci-check; CGO_ENABLED=0 go build -o ../../.security/oci-crane-check ./cmd/oci-crane-check)
++          (cd tools/oci-input; CGO_ENABLED=0 go build -o ../../.security/oci-runtime-export ./cmd/oci-runtime-export; CGO_ENABLED=0 go build -o ../../.security/github-oci-check ./cmd/github-oci-check; CGO_ENABLED=0 go build -o ../../.security/oci-crane-check ./cmd/oci-crane-check)
+           (cd tools/release-record; CGO_ENABLED=0 go build -o ../../.security/sbom-check ./cmd/sbom-check)
+       - name: Build, validate, isolated runtime, image policy and SBOM
+         run: bash ci/github/oci.sh
+       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+         with:
+-          name: checked-image-${{ github.run_attempt }}
++          name: checked-image${{ matrix.service == 'order' && '-order' || '' }}-${{ github.run_attempt }}
+           path: |
+-            .oci/image.tar
+-            .security/public/
++            .images/${{ matrix.service }}/.oci/image.tar
++            .images/${{ matrix.service }}/.security/public/
+           include-hidden-files: true
+           if-no-files-found: error
+           retention-days: 7
+   publish:
+-    needs: [validate, image]
++    needs: [validate, image, ci-result]
+     if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.ref_protected && vars.ENABLE_GHCR_PUBLISH == 'true'
++    strategy:
++      fail-fast: false
++      matrix:
++        service: [backend, order]
++    defaults:
++      run:
++        working-directory: .images/${{ matrix.service }}
++    env:
++      RELEASE_SERVICE: ${{ matrix.service }}
+     runs-on: ubuntu-24.04
+     timeout-minutes: 15
+     environment: ghcr-publish
+     concurrency:
+-      group: ghcr-publication
++      group: ghcr-publication-${{ matrix.service }}
+       cancel-in-progress: false
+     permissions:
+       contents: write
+@@ -128,6 +150,7 @@ jobs:
+     steps:
+       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+         with:
++          path: .images/${{ matrix.service }}
+           fetch-depth: 0
+           persist-credentials: false
+       - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16
+@@ -136,7 +159,8 @@ jobs:
+           cache: false
+       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+         with:
+-          name: checked-image-${{ github.run_attempt }}
++          name: checked-image${{ matrix.service == 'order' && '-order' || '' }}-${{ github.run_attempt }}
++          path: .images/${{ matrix.service }}
+       - name: Verify artifact and compile registry tool
+         run: |
+           mkdir -p .security/bin
+@@ -150,14 +174,23 @@ jobs:
+         run: python3 -I ci/github/release.py publish
+       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+         with:
+-          name: published-evidence-${{ github.run_attempt }}
+-          path: .security/public/release-record.json
++          name: published-evidence${{ matrix.service == 'order' && '-order' || '' }}-${{ github.run_attempt }}
++          path: .images/${{ matrix.service }}/.security/public/release-record.json
+           include-hidden-files: true
+           if-no-files-found: error
+           retention-days: 90
+   propose:
+     needs: publish
+     if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.ref_protected && vars.ENABLE_MANIFEST_PR == 'true'
++    strategy:
++      fail-fast: false
++      matrix:
++        service: [backend, order]
++    defaults:
++      run:
++        working-directory: .images/${{ matrix.service }}
++    env:
++      RELEASE_SERVICE: ${{ matrix.service }}
+     runs-on: ubuntu-24.04
+     timeout-minutes: 10
+     environment: manifest-update
+@@ -166,10 +199,12 @@ jobs:
+     steps:
+       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+         with:
++          path: .images/${{ matrix.service }}
+           fetch-depth: 0
+           persist-credentials: false
+       - name: Propose a manifest update
+         env:
++          GITHUB_REF_PROTECTED: ${{ github.ref_protected }}
+           GH_TOKEN: ${{ secrets.MANIFEST_WRITE_TOKEN }}
+         run: python3 -I ci/github/release.py propose
+ 
+@@ -179,6 +214,14 @@ jobs:
+     runs-on: ubuntu-24.04
+     timeout-minutes: 5
+     steps:
++      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
++        with:
++          persist-credentials: false
++      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
++        if: needs.classify.outputs.docs != 'true' && needs.image.result == 'success'
++        with:
++          pattern: checked-image-*
++          path: .checked
+       - name: Required check
+         env:
+           DOCS: ${{ needs.classify.outputs.docs }}
+@@ -191,4 +234,5 @@ jobs:
+           if test "$DOCS" = true; then test "$DOCS_RESULT" = success; else
+             test "$VALIDATE" = success
+             test "$IMAGE" = success
++            python3 -I ci/github/matrix-result.py
+           fi
+diff --git a/Dockerfile.order b/Dockerfile.order
+new file mode 100644
+index 0000000..5c1cad1
+--- /dev/null
++++ b/Dockerfile.order
+@@ -0,0 +1,20 @@
++# syntax=docker/dockerfile:1.7
++# CIのBuildKitが読む複数段ビルド定義。ソースと固定依存から実行用イメージを作る。
++# 入口はci/build-oci.sh、成果物のdigest検査はtools/oci-input/layout.go。
++# VCS_REF/VCS_SOURCEをOCIラベルへ結び、build用依存を最終runtimeへそのまま持ち込まない。
++FROM golang:1.27.1-bookworm@sha256:648f440f42a0958804efb24df176f806f9d353b41f1c0627f666428e40310f6b AS build
++WORKDIR /src
++COPY go.mod go.sum ./
++RUN go mod download
++COPY . .
++ARG VCS_REF=unknown
++# trimpathとGo symbolを残す。trimpathでbuild-infoからldflagsが省略されても、Trivyがバイナリ内のstamp済みmain module versionを読めるようにする。
++RUN go test ./... && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -ldflags="-X main.buildCommit=${VCS_REF} -X main.version=0.0.0+git.${VCS_REF}" -o /out/order-server ./cmd/order-server
++FROM gcr.io/distroless/static-debian12:nonroot@sha256:afa5c872c891853ca7fcf1f12c3edb23f7eeef36189728842dd51042ff57f7ab
++ARG VCS_REF=unknown
++ARG VCS_SOURCE=unknown
++LABEL org.opencontainers.image.revision=$VCS_REF org.opencontainers.image.source=$VCS_SOURCE
++COPY --from=build --chown=10001:10001 /out/order-server /order-server
++USER 10001:10001
++EXPOSE 8080
++ENTRYPOINT ["/order-server"]
+diff --git a/ci/github/fixtures/m0/SOURCE.json b/ci/github/fixtures/m0/SOURCE.json
+new file mode 100644
+index 0000000..95691f7
+--- /dev/null
++++ b/ci/github/fixtures/m0/SOURCE.json
+@@ -0,0 +1,16 @@
++{
++  "repository": "syuhei0519/application-manifest",
++  "commit": "bc6adaedcd645a4663c23284b977a3dd36c0796d",
++  "prefix": "ci/github",
++  "files": {
++    "fixtures/backend-record.json": "00f2602021a21c553b546083352a50936b10b923b03c39c8218c210d3c8bc4a7",
++    "fixtures/image-scan.json": "63b684854bd4961bcb515b09823ea700dda69135486c5e11352bb1d7850f534e",
++    "fixtures/order-config.json": "8bd06c0e86671a7e7f8d56d6ff80bf56db6e753ff45357ca5d1a21e5a8f680ea",
++    "fixtures/order-manifest.json": "0578ef8eb4991f3b8db3ad3bfe3bb58501962e0ea97449d5feec6cd346d82768",
++    "fixtures/order-record.json": "a3a2b0472fe51d96614406d85fd89748eb8c255c45ebbfd21cfdde57e0968eb5",
++    "fixtures/sbom.cdx.json": "b9104ba1eba76b6b080694eb4eb1717e38d5d9b7dbe4469e50acbfd756c5ca56",
++    "order-release.schema.json": "2bdc572d5e2ac6f694a1658b27d36ead6abdb44bcfb9eb284b47f74979468f92",
++    "release.py": "ed2630b8b3fe3a18a6de2c0ce55dcbe494f7d20414d672326d7e524b30903867",
++    "release_test.py": "c23078874ec77fb06a54525a4cb4f2a702a7758fe833f396174fc53fd77a4d86"
++  }
++}
+diff --git a/ci/github/fixtures/m0/fixtures/backend-record.json b/ci/github/fixtures/m0/fixtures/backend-record.json
+new file mode 100644
+index 0000000..c51faca
+--- /dev/null
++++ b/ci/github/fixtures/m0/fixtures/backend-record.json
+@@ -0,0 +1 @@
++{"archiveSha256":"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff","configDigest":"sha256:609824f6dbe4c2f7d036c93e1a76c3a0b09c97e667a50fe80bff272cdac66b7d","createdAt":"2030-01-01T00:01:00Z","dbUpdatedAt":"2030-01-01T00:00:00Z","deploymentAuthorized":false,"imageDigest":"sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee","imagePolicyPassed":true,"imageRepository":"ghcr.io/syuhei0519/backend-app","imageScanSha256":"63b684854bd4961bcb515b09823ea700dda69135486c5e11352bb1d7850f534e","isolatedRuntimePassed":true,"protectedMain":true,"published":true,"repository":"syuhei0519/backend-app","runAttempt":2,"runId":123,"sbomSha256":"b9104ba1eba76b6b080694eb4eb1717e38d5d9b7dbe4469e50acbfd756c5ca56","sbomValidated":true,"scannedAt":"2030-01-01T00:00:00Z","schema":"core-platform/github-release/v1","sourceCommit":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sourcePolicyPassed":true,"sourceScanSha256":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd","validUntil":"2030-01-02T00:00:00Z","workflowRef":"syuhei0519/backend-app/.github/workflows/ci.yml@refs/heads/main"}
+diff --git a/ci/github/fixtures/m0/fixtures/image-scan.json b/ci/github/fixtures/m0/fixtures/image-scan.json
+new file mode 100644
+index 0000000..f849116
+--- /dev/null
++++ b/ci/github/fixtures/m0/fixtures/image-scan.json
+@@ -0,0 +1 @@
++{"pass":true}
+diff --git a/ci/github/fixtures/m0/fixtures/order-config.json b/ci/github/fixtures/m0/fixtures/order-config.json
+new file mode 100644
+index 0000000..f1fe2c8
+--- /dev/null
++++ b/ci/github/fixtures/m0/fixtures/order-config.json
+@@ -0,0 +1 @@
++{"architecture":"amd64","config":{"Entrypoint":["/order-server"],"Labels":{"org.opencontainers.image.revision":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","org.opencontainers.image.source":"https://github.com/syuhei0519/backend-app"}},"os":"linux"}
+diff --git a/ci/github/fixtures/m0/fixtures/order-manifest.json b/ci/github/fixtures/m0/fixtures/order-manifest.json
+new file mode 100644
+index 0000000..0bf2742
+--- /dev/null
++++ b/ci/github/fixtures/m0/fixtures/order-manifest.json
+@@ -0,0 +1 @@
++{"config":{"digest":"sha256:609824f6dbe4c2f7d036c93e1a76c3a0b09c97e667a50fe80bff272cdac66b7d"},"mediaType":"application/vnd.oci.image.manifest.v1+json"}
+diff --git a/ci/github/fixtures/m0/fixtures/order-record.json b/ci/github/fixtures/m0/fixtures/order-record.json
+new file mode 100644
+index 0000000..d0d969f
+--- /dev/null
++++ b/ci/github/fixtures/m0/fixtures/order-record.json
+@@ -0,0 +1 @@
++{"archiveSha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","configDigest":"sha256:609824f6dbe4c2f7d036c93e1a76c3a0b09c97e667a50fe80bff272cdac66b7d","createdAt":"2030-01-01T00:01:00Z","dbUpdatedAt":"2030-01-01T00:00:00Z","deploymentAuthorized":false,"imageDigest":"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","imagePolicyPassed":true,"imageRepository":"ghcr.io/syuhei0519/backend-app-order","imageScanSha256":"63b684854bd4961bcb515b09823ea700dda69135486c5e11352bb1d7850f534e","isolatedRuntimePassed":true,"protectedMain":true,"published":true,"repository":"syuhei0519/backend-app","runAttempt":2,"runId":123,"sbomSha256":"b9104ba1eba76b6b080694eb4eb1717e38d5d9b7dbe4469e50acbfd756c5ca56","sbomValidated":true,"scannedAt":"2030-01-01T00:00:00Z","schema":"core-platform/github-release/v2","service":"order","sourceCommit":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sourcePolicyPassed":true,"sourceScanSha256":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd","validUntil":"2030-01-02T00:00:00Z","workflowRef":"syuhei0519/backend-app/.github/workflows/ci.yml@refs/heads/main"}
+diff --git a/ci/github/fixtures/m0/fixtures/sbom.cdx.json b/ci/github/fixtures/m0/fixtures/sbom.cdx.json
+new file mode 100644
+index 0000000..bb286d4
+--- /dev/null
++++ b/ci/github/fixtures/m0/fixtures/sbom.cdx.json
+@@ -0,0 +1 @@
++{"bomFormat":"CycloneDX","metadata":{"component":{"name":"sha256:609824f6dbe4c2f7d036c93e1a76c3a0b09c97e667a50fe80bff272cdac66b7d"}},"specVersion":"1.6"}
+diff --git a/ci/github/fixtures/m0/order-release.schema.json b/ci/github/fixtures/m0/order-release.schema.json
+new file mode 100644
+index 0000000..bc0b968
+--- /dev/null
++++ b/ci/github/fixtures/m0/order-release.schema.json
+@@ -0,0 +1,126 @@
++{
++  "$schema": "https://json-schema.org/draft/2020-12/schema",
++  "title": "Published synthetic/B2 Order release v2 structural contract; runtime bindings are mandatory",
++  "type": "object",
++  "additionalProperties": false,
++  "required": [
++    "schema",
++    "service",
++    "repository",
++    "sourceCommit",
++    "runId",
++    "runAttempt",
++    "workflowRef",
++    "imageRepository",
++    "imageDigest",
++    "configDigest",
++    "archiveSha256",
++    "sbomSha256",
++    "sourceScanSha256",
++    "imageScanSha256",
++    "scannedAt",
++    "dbUpdatedAt",
++    "createdAt",
++    "validUntil",
++    "sourcePolicyPassed",
++    "imagePolicyPassed",
++    "sbomValidated",
++    "isolatedRuntimePassed",
++    "published",
++    "protectedMain",
++    "deploymentAuthorized"
++  ],
++  "properties": {
++    "schema": {
++      "const": "core-platform/github-release/v2"
++    },
++    "service": {
++      "const": "order"
++    },
++    "repository": {
++      "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/backend-app$",
++      "type": "string"
++    },
++    "sourceCommit": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{40}$"
++    },
++    "runId": {
++      "type": "integer",
++      "minimum": 1
++    },
++    "runAttempt": {
++      "type": "integer",
++      "minimum": 1
++    },
++    "workflowRef": {
++      "type": "string",
++      "minLength": 1
++    },
++    "imageRepository": {
++      "type": "string",
++      "minLength": 1
++    },
++    "imageDigest": {
++      "type": "string",
++      "pattern": "^sha256:[0-9a-f]{64}$"
++    },
++    "configDigest": {
++      "type": "string",
++      "pattern": "^sha256:[0-9a-f]{64}$"
++    },
++    "archiveSha256": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{64}$"
++    },
++    "sbomSha256": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{64}$"
++    },
++    "sourceScanSha256": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{64}$"
++    },
++    "imageScanSha256": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{64}$"
++    },
++    "scannedAt": {
++      "type": "string",
++      "minLength": 1
++    },
++    "dbUpdatedAt": {
++      "type": "string",
++      "minLength": 1
++    },
++    "createdAt": {
++      "type": "string",
++      "minLength": 1
++    },
++    "validUntil": {
++      "type": "string",
++      "minLength": 1
++    },
++    "sourcePolicyPassed": {
++      "const": true
++    },
++    "imagePolicyPassed": {
++      "const": true
++    },
++    "sbomValidated": {
++      "const": true
++    },
++    "isolatedRuntimePassed": {
++      "const": true
++    },
++    "published": {
++      "const": true
++    },
++    "protectedMain": {
++      "const": true
++    },
++    "deploymentAuthorized": {
++      "const": false
++    }
++  }
++}
+diff --git a/ci/github/fixtures/m0/release.py b/ci/github/fixtures/m0/release.py
+new file mode 100644
+index 0000000..cb7c450
+--- /dev/null
++++ b/ci/github/fixtures/m0/release.py
+@@ -0,0 +1,459 @@
++"""GitHub-native publication and data-only manifest verification.
++
++GitLab evidence is intentionally a separate protocol. This module does not
++reinterpret a GitLab project/job identity as a GitHub identity.
++"""
++import base64
++import datetime as dt
++import hashlib
++import importlib.util
++import json
++import os
++from pathlib import Path
++import re
++import subprocess
++import sys
++import tempfile
++import urllib.error
++import urllib.parse
++import urllib.request
++import io
++import zipfile
++import traceback
++import stat
++
++SCHEMA='core-platform/github-release/v1'
++ORDER_SCHEMA='core-platform/github-release/v2'
++# Source repository is explicit. Never derive it from the registry image name.
++SERVICES={'backend':('backend-app','backend-app',SCHEMA,'github-v1'),
++          'frontend':('frontend-app','frontend-app',SCHEMA,'github-v1'),
++          'order':('backend-app','backend-app-order',ORDER_SCHEMA,'github-v2')}
++POSTGRES=('docker.io/library/postgres','17.10-bookworm','sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f')
++
++def service_contract(repo,service=None):
++    require(isinstance(repo,str) and REPO.fullmatch(repo))
++    owner,source=repo.split('/')
++    if service is None:
++        service={'backend-app':'backend','frontend-app':'frontend'}.get(source)
++    require(service in SERVICES)
++    expected,image,schema,annotation=SERVICES[service]
++    require(source==expected)
++    return service,'ghcr.io/'+owner.lower()+'/'+image,schema,annotation
++
++def positive(value):
++    require(type(value) is int and value>0)
++    return value
++
++def annotation_id(value):
++    require(isinstance(value,str) and re.fullmatch('[1-9][0-9]*',value))
++    return int(value)
++
++SHA=re.compile(r'[0-9a-f]{40}')
++DIGEST=re.compile(r'sha256:[0-9a-f]{64}')
++REPO=re.compile(r'[A-Za-z0-9][A-Za-z0-9-]{0,38}/(?:backend-app|frontend-app|application-manifest)')
++PUBLIC=Path('.security/public')
++
++def require(value):
++    if not value: raise ValueError('GitHub migration contract refused')
++
++def unique(pairs):
++    out={}
++    for key,value in pairs:
++        require(key not in out);out[key]=value
++    return out
++
++def decode(data):
++    def refuse(_): raise ValueError('nonfinite JSON refused')
++    return json.loads(data,object_pairs_hook=unique,parse_constant=refuse)
++def sha(data): return hashlib.sha256(data).hexdigest()
++def load(path): return decode(Path(path).read_bytes())
++def now(): return dt.datetime.now(dt.timezone.utc)
++def stamp(): return now().isoformat()
++def timestamp(text):return dt.datetime.fromisoformat(text.replace('Z','+00:00'))
++def fresh(text,hours=24):
++    value=timestamp(text)
++    require(value.tzinfo is not None and dt.timedelta(0)<=now()-value<=dt.timedelta(hours=hours))
++
++class NoRedirect(urllib.request.HTTPRedirectHandler):
++    def redirect_request(self,*args,**kwargs): raise ValueError('API redirect refused')
++
++class PublicRedirect(urllib.request.HTTPRedirectHandler):
++    def redirect_request(self,req,fp,code,msg,headers,newurl):
++        parsed=urllib.parse.urlsplit(newurl)
++        require(parsed.scheme=='https' and parsed.hostname in ('github.com','objects.githubusercontent.com','release-assets.githubusercontent.com') and not parsed.username)
++        return super().redirect_request(req,fp,code,msg,headers,newurl)
++
++def api(path,method='GET',body=None,raw=None,upload=False):
++    require(path.startswith('/repos/') and '\n' not in path)
++    token=os.environ.get('GH_TOKEN','')
++    target='/'.join(path.split('/')[2:4])
++    if method=='GET' and target!=os.environ.get('GITHUB_REPOSITORY') and target.endswith(('/backend-app','/frontend-app')):
++        token=os.environ.get('EVIDENCE_READ_TOKEN') or token
++    require(token)
++    host='https://uploads.github.com' if upload else 'https://api.github.com'
++    headers={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2026-03-10','User-Agent':'core-platform-migration'}
++    data=raw if raw is not None else (json.dumps(body).encode() if body is not None else None)
++    if data is not None: headers['Content-Type']='application/octet-stream' if raw is not None else 'application/json'
++    request=urllib.request.Request(host+path,data=data,headers=headers,method=method)
++    with urllib.request.build_opener(NoRedirect).open(request,timeout=40) as response:
++        payload=response.read(32*1024**2+1);require(len(payload)<=32*1024**2)
++        return decode(payload) if payload else None
++
++def public_asset(url,repo,tag,name):
++    expected='https://github.com/'+repo+'/releases/download/'+tag+'/'+name
++    require(url==expected)
++    request=urllib.request.Request(url,headers={'User-Agent':'core-platform-migration'})
++    with urllib.request.build_opener(PublicRedirect).open(request,timeout=40) as response:
++        data=response.read(32*1024**2+1);require(len(data)<=32*1024**2);return data
++
++def run(args,**kwargs):
++    p=subprocess.run(args,capture_output=True,timeout=180,**kwargs)
++    require(p.returncode==0);return p.stdout
++
++def identity():
++    repo=os.environ['GITHUB_REPOSITORY'];commit=os.environ['GITHUB_SHA']
++    require(REPO.fullmatch(repo) and SHA.fullmatch(commit))
++    run_id=os.environ['GITHUB_RUN_ID'];attempt=os.environ['GITHUB_RUN_ATTEMPT']
++    require(run_id.isdecimal() and int(run_id)>0 and attempt.isdecimal() and int(attempt)>0)
++    return repo,commit,int(run_id),int(attempt)
++
++def tag_for(commit,run_id,attempt,service=None):
++    require(SHA.fullmatch(commit) and type(run_id) is int and run_id>0 and type(attempt) is int and attempt>0)
++    require(service in (None,'backend','frontend','order'))
++    prefix='gha-order' if service=='order' else 'gha'
++    return f'{prefix}-{commit}-{run_id}-{attempt}'
++
++def record():
++    repo,commit,run_id,attempt=identity()
++    layout=load(PUBLIC/'layout.json');reader=load(PUBLIC/'reader.json')
++    image=load(PUBLIC/'image-scan.json');source=load('.validation/source-scan.json')
++    require(layout['sourceCommit']==commit and DIGEST.fullmatch(layout['digest']))
++    require(layout['digest']==reader['digest'] and DIGEST.fullmatch(reader['configDigest']))
++    require(reader['fullLayerValidation'] is True and source['pass'] is True and image['pass'] is True)
++    for report in (image,source):
++        require(report['trivyVersion']=='0.75.0');fresh(report['dbUpdatedAt']);fresh(report['scannedAt'])
++    require(sha(Path('.oci/image.tar').read_bytes())==layout['archiveSha256'])
++    sbom=Path(PUBLIC/'sbom.cdx.json').read_bytes();require(load(PUBLIC/'sbom-proof.json'))
++    deadlines=[timestamp(report[key])+dt.timedelta(hours=24) for report in (source,image) for key in ('dbUpdatedAt','scannedAt')]
++    deadlines.extend(timestamp(item['expiresAt']) for item in load('security/scan-policy.json')['exceptions'])
++    result={'schema':SCHEMA,'repository':repo,'sourceCommit':commit,'runId':run_id,'runAttempt':attempt,
++            'workflowRef':os.environ['GITHUB_WORKFLOW_REF'],'imageRepository':'ghcr.io/'+repo.lower(),
++            'imageDigest':layout['digest'],'configDigest':reader['configDigest'],'archiveSha256':layout['archiveSha256'],
++            'sbomSha256':sha(sbom),'sourceScanSha256':sha(Path('.validation/source-scan.json').read_bytes()),
++            'imageScanSha256':sha(Path(PUBLIC/'image-scan.json').read_bytes()),
++            'scannedAt':image['scannedAt'],'dbUpdatedAt':image['dbUpdatedAt'],'createdAt':stamp(),
++            'validUntil':min(deadlines).isoformat(),
++            'sourcePolicyPassed':True,'imagePolicyPassed':True,'sbomValidated':True,'isolatedRuntimePassed':True,
++            'published':False,'deploymentAuthorized':False}
++    (PUBLIC/'release-record.json').write_text(json.dumps(result,sort_keys=True,indent=2)+'\n')
++
++def validate_record(result,repo,commit,run_id,attempt,service=None):
++    service,image,schema,_=service_contract(repo,service)
++    positive(run_id);positive(attempt)
++    require(type(result['runId']) is int and type(result['runAttempt']) is int)
++    require(SHA.fullmatch(commit))
++    require(result.get('service')=='order' if service=='order' else 'service' not in result)
++    if service=='order':
++        required={'schema','service','repository','sourceCommit','runId','runAttempt','workflowRef','imageRepository',
++                  'imageDigest','configDigest','archiveSha256','sbomSha256','sourceScanSha256','imageScanSha256',
++                  'scannedAt','dbUpdatedAt','createdAt','validUntil','sourcePolicyPassed','imagePolicyPassed',
++                  'sbomValidated','isolatedRuntimePassed','published','protectedMain','deploymentAuthorized'}
++        require(set(result)==required and result['published'] is True and result['protectedMain'] is True)
++
++    require(result['schema']==schema and result['repository']==repo and result['sourceCommit']==commit)
++    require(result['runId']==run_id and result['runAttempt']==attempt)
++    require(result['workflowRef']==repo+'/.github/workflows/ci.yml@refs/heads/main')
++    require(result['imageRepository']==image and DIGEST.fullmatch(result['imageDigest']) and DIGEST.fullmatch(result['configDigest']))
++    for key in ('sourcePolicyPassed','imagePolicyPassed','sbomValidated','isolatedRuntimePassed'):
++        require(result[key] is True)
++    for key in ('archiveSha256','sbomSha256','sourceScanSha256','imageScanSha256'):
++        require(re.fullmatch('[0-9a-f]{64}',result[key]))
++    for key in ('scannedAt','dbUpdatedAt','createdAt'):fresh(result[key])
++    deadline=timestamp(result['validUntil'])
++    require(now()<deadline<=min(timestamp(result[key])+dt.timedelta(hours=24) for key in ('scannedAt','dbUpdatedAt')))
++    require(result['deploymentAuthorized'] is False)
++
++def publish():
++    repo,commit,run_id,attempt=identity()
++    require(os.environ['GITHUB_EVENT_NAME']=='push' and os.environ['GITHUB_REF']=='refs/heads/main' and os.environ['GITHUB_REF_PROTECTED']=='true')
++    result=load(PUBLIC/'release-record.json');validate_record(result,repo,commit,run_id,attempt)
++    require(result['published'] is False)
++    require(sha(Path('.oci/image.tar').read_bytes())==result['archiveSha256'])
++    require(sha(Path(PUBLIC/'sbom.cdx.json').read_bytes())==result['sbomSha256'])
++    require(sha(Path(PUBLIC/'image-scan.json').read_bytes())==result['imageScanSha256'])
++    proof=decode(run(['github-oci-check','.oci/image.tar',result['archiveSha256'],'.oci/publish-layout',commit,repo]))
++    require(proof['digest']==result['imageDigest'])
++    require(api('/repos/'+repo+'/git/ref/heads/main')['object']['sha']==commit)
++    image=result['imageRepository']+':'+commit
++    with tempfile.TemporaryDirectory(prefix='gha-registry-') as auth:
++        env={**os.environ,'DOCKER_CONFIG':auth};env.pop('GH_TOKEN',None)
++        run(['crane','auth','login','ghcr.io','--username',os.environ['GITHUB_ACTOR'],'--password-stdin'],input=os.environ['GH_TOKEN'].encode(),env=env)
++        lookup=subprocess.run(['crane','digest',image],env=env,capture_output=True,timeout=40)
++        if lookup.returncode==0:
++            require(lookup.stdout.decode().strip()==result['imageDigest'])
++        else:
++            # Transport/auth failures are not evidence that a SHA tag is absent.
++            require(b'404' in lookup.stderr and b'Not Found' in lookup.stderr)
++            run(['crane','push','.oci/publish-layout',image],env=env)
++        require(run(['crane','digest',image],env=env).decode().strip()==result['imageDigest'])
++        config=decode(run(['crane','config',result['imageRepository']+'@'+result['imageDigest']],env=env))
++        require(config['config']['Labels']['org.opencontainers.image.revision']==commit)
++        require(config['config']['Labels']['org.opencontainers.image.source']=='https://github.com/'+repo)
++        require(sha(run(['crane','config',result['imageRepository']+'@'+result['imageDigest']],env=env).rstrip(b'\n'))==result['configDigest'][7:])
++    result['published']=True;result['protectedMain']=True
++    record_bytes=(json.dumps(result,sort_keys=True,indent=2)+'\n').encode()
++    (PUBLIC/'release-record.json').write_bytes(record_bytes)
++    tag=tag_for(commit,run_id,attempt)
++    release=api('/repos/'+repo+'/releases','POST',{'tag_name':tag,'target_commitish':commit,'name':tag,'draft':True,'prerelease':False,'body':'Checked GHCR image, runtime policy and same-input SBOM. Owner approval is required for deployment.'})
++    for name,data in [('release-record.json',record_bytes),('sbom.cdx.json',Path(PUBLIC/'sbom.cdx.json').read_bytes()),('image-scan.json',Path(PUBLIC/'image-scan.json').read_bytes())]:
++        api(f'/repos/{repo}/releases/{release["id"]}/assets?name={name}','POST',raw=data,upload=True)
++    api(f'/repos/{repo}/releases/{release["id"]}','PATCH',{'draft':False})
++    print('Published checked image and GitHub release evidence: '+tag)
++
++def release_data(repo,commit,run_id,attempt,service=None):
++    service_contract(repo,service)
++    tag=tag_for(commit,run_id,attempt,service)
++    release=api('/repos/'+repo+'/releases/tags/'+tag)
++    require(not release['draft'] and not release['prerelease'] and release['tag_name']==tag)
++    assets={a['name']:a for a in release['assets']}
++    require(len(assets)==len(release['assets']) and 'release-record.json' in assets and 'sbom.cdx.json' in assets)
++    urls={name:assets[name]['browser_download_url'] for name in ('release-record.json','sbom.cdx.json')}
++    record_bytes=public_asset(urls['release-record.json'],repo,tag,'release-record.json')
++    result=decode(record_bytes);validate_record(result,repo,commit,run_id,attempt,service)
++    require(result['published'] is True and result['protectedMain'] is True)
++    sbom=public_asset(urls['sbom.cdx.json'],repo,tag,'sbom.cdx.json')
++    require(sha(sbom)==result['sbomSha256'])
++    if service=='order':
++        # Release names and mutable target_commitish are not a Git tag binding.
++        obj=api('/repos/'+repo+'/git/ref/tags/'+tag)['object']
++        if obj['type']=='tag':obj=api('/repos/'+repo+'/git/tags/'+obj['sha'])['object']
++        require(obj['type']=='commit' and obj['sha']==commit)
++        require('image-scan.json' in assets)
++        scan=public_asset(assets['image-scan.json']['browser_download_url'],repo,tag,'image-scan.json')
++        require(sha(scan)==result['imageScanSha256'] and decode(scan)['pass'] is True)
++    return result,urls,sha(record_bytes)
++
++def artifact_record_bytes(data,expected_digest):
++    require(expected_digest=='sha256:'+sha(data))
++    with zipfile.ZipFile(io.BytesIO(data)) as archive:
++        require(archive.namelist()==['release-record.json'])
++        item=archive.getinfo('release-record.json')
++        require(not item.flag_bits & 1 and 0<item.file_size<=8*1024**2)
++        mode=item.external_attr >> 16
++        require(stat.S_IFMT(mode) in (0,stat.S_IFREG) and not item.is_dir())
++        record_bytes=archive.read(item)
++    decode(record_bytes)
++    return record_bytes
++
++def canonical_record_hash(repo,commit,run_id,attempt,service=None):
++    """Bind release bytes to a server-owned artifact of the actual CI run."""
++    service_contract(repo,service)
++    name=f'published-evidence-order-{attempt}' if service=='order' else f'published-evidence-{attempt}'
++    matches=[]
++    for page in range(1,11):
++        data=api(f'/repos/{repo}/actions/runs/{run_id}/artifacts?per_page=100&page={page}')
++        items=data['artifacts']
++        matches.extend(item for item in items if item['name']==name)
++        if len(items)<100:break
++    else:raise ValueError('artifact pagination refused')
++    require(len(matches)==1);artifact=matches[0]
++    require(not artifact['expired'] and artifact['workflow_run']['id']==run_id and artifact['workflow_run']['head_sha']==commit)
++    token=os.environ.get('EVIDENCE_READ_TOKEN','');require(token)
++    class StopRedirect(urllib.request.HTTPRedirectHandler):
++        def redirect_request(self,*args,**kwargs):return None
++    request=urllib.request.Request(f'https://api.github.com/repos/{repo}/actions/artifacts/{int(artifact["id"])}/zip',
++        headers={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','User-Agent':'core-platform-migration','X-GitHub-Api-Version':'2026-03-10'})
++    try:
++        urllib.request.build_opener(StopRedirect).open(request,timeout=40)
++        raise ValueError('artifact redirect expected')
++    except urllib.error.HTTPError as error:
++        require(error.code==302);location=error.headers['Location']
++    parsed=urllib.parse.urlsplit(location)
++    require(parsed.scheme=='https' and parsed.username is None and parsed.hostname is not None)
++    require(parsed.hostname.endswith(('.blob.core.windows.net','.actions.githubusercontent.com')))
++    # Follow a signed URL with no PAT, and do not follow a second redirect.
++    request=urllib.request.Request(location,headers={'User-Agent':'core-platform-migration'})
++    with urllib.request.build_opener(NoRedirect).open(request,timeout=40) as response:
++        payload=response.read(32*1024**2+1);require(len(payload)<=32*1024**2)
++    return sha(artifact_record_bytes(payload,artifact['digest']))
++
++def validate_run(workflow,repo,commit,run_id,attempt):
++    require(workflow['id']==run_id and workflow['repository']['full_name']==repo and workflow['head_sha']==commit and workflow['head_branch']=='main' and workflow['event']=='push')
++    require(workflow['status']=='completed' and workflow['conclusion']=='success' and workflow['run_attempt']==attempt and workflow['path']=='.github/workflows/ci.yml')
++
++def verify_latest_run(repo,commit,run_id,attempt,service=None):
++    validate_run(api(f'/repos/{repo}/actions/runs/{run_id}'),repo,commit,run_id,attempt)
++    runs=[]
++    for page in range(1,11):
++        result=api(f'/repos/{repo}/actions/workflows/ci.yml/runs?head_sha={commit}&branch=main&event=push&per_page=100&page={page}')
++        items=result['workflow_runs'];runs.extend(items)
++        if len(items)<100:break
++    else:raise ValueError('run pagination refused')
++    require(runs)
++    latest=max(runs,key=lambda item:(item['created_at'],item['id']))
++    validate_run(latest,repo,commit,run_id,attempt)
++    if service=='order':
++        verify_order_matrix(repo,commit,run_id,attempt)
++
++def verify_order_matrix(repo,commit,run_id,attempt):
++    # B2 contract: matrix display names, both same-run checked artifacts and
++    # canonical published records. A green aggregate alone is insufficient.
++    jobs=[];artifacts=[]
++    for collection,path,key in ((jobs,f'actions/runs/{run_id}/attempts/{attempt}/jobs','jobs'),
++                                (artifacts,f'actions/runs/{run_id}/artifacts','artifacts')):
++        for page in range(1,11):
++            items=api(f'/repos/{repo}/{path}?per_page=100&page={page}')[key]
++            collection.extend(items)
++            if len(items)<100:break
++        else:raise ValueError('matrix pagination refused')
++    for name in ('validate','image (backend)','image (order)','ci-result'):
++        matches=[j for j in jobs if j['name']==name]
++        require(len(matches)==1)
++        job=matches[0]
++        require(job['run_id']==run_id and job['head_sha']==commit and
++                job['status']=='completed' and job['conclusion']=='success')
++    for name in (f'checked-image-{attempt}',f'checked-image-order-{attempt}',
++                 f'published-evidence-{attempt}',f'published-evidence-order-{attempt}'):
++        matches=[a for a in artifacts if a['name']==name]
++        require(len(matches)==1)
++        artifact=matches[0]
++        require(not artifact['expired'] and artifact['workflow_run']['id']==run_id and
++                artifact['workflow_run']['head_sha']==commit and DIGEST.fullmatch(artifact['digest']))
++
++def patch_values(text,repo,commit,result,urls,record_hash):
++    service,_,_,annotation=service_contract(repo,result.get('service'))
++    image=re.search(r'^image:\s*\n(?:[ \t]+[^\n]*\n)*',text,re.M);require(image)
++    block=image[0]
++    for key,value in {'repository':result['imageRepository'],'tag':commit,'digest':result['imageDigest']}.items():
++        block,count=re.subn(r'^  '+key+r':[^\n]*$', '  '+key+': '+json.dumps(value),block,flags=re.M);require(count==1)
++    text=text[:image.start()]+block+text[image.end():]
++    release=re.search(r'^release:\s*\n(?:[ \t]+[^\n]*\n)*',text,re.M);require(release)
++    values={'schemaVersion':annotation,'sourceRepository':repo,'sourceCommit':commit,'runId':str(result['runId']),
++            'runAttempt':str(result['runAttempt']),'recordUrl':urls['release-record.json'],'recordSha256':record_hash,
++            'sbomUrl':urls['sbom.cdx.json'],'sbomSha256':result['sbomSha256']}
++    if service=='order':values['service']='order'
++    block='release:\n'+''.join('  '+key+': '+json.dumps(value)+'\n' for key,value in values.items())
++    return text[:release.start()]+block+text[release.end():]
++
++def propose():
++    repo,commit,run_id,attempt=identity()
++    service,_,_,_=service_contract(repo,os.environ.get('RELEASE_SERVICE'))
++    result,urls,record_hash=release_data(repo,commit,run_id,attempt,service)
++    owner=repo.split('/')[0];target=owner+'/application-manifest'
++    base=api('/repos/'+target+'/git/ref/heads/main')['object']['sha']
++    branch=f'github/{service}-{commit}-{run_id}-{attempt}'
++    path='environments/local/'+service+'.yaml'
++    file=api('/repos/'+target+'/contents/'+path+'?ref='+base)
++    before=base64.b64decode(file['content']).decode()
++    after=patch_values(before,repo,commit,result,urls,record_hash)
++    api('/repos/'+target+'/git/refs','POST',{'ref':'refs/heads/'+branch,'sha':base})
++    api('/repos/'+target+'/contents/'+path,'PUT',{'message':f'Update {service} to checked GitHub image {commit}',
++        'content':base64.b64encode(after.encode()).decode(),'sha':file['sha'],'branch':branch,
++        'committer':{'name':'github-actions[bot]','email':'41898282+github-actions[bot]@users.noreply.github.com'}})
++    pr=api('/repos/'+target+'/pulls','POST',{'title':f'Update {service} to {commit[:12]}','head':branch,'base':'main',
++        'body':'GHCR digest, release record and same-input SBOM are bound to the GitHub CI run. Run Trusted manifest verification on protected main for this PR before owner review. No automatic merge or cluster apply.'})
++    print('Manifest proposal: '+pr['html_url'])
++
++def pr_snapshot(repo,number):
++    pr=api(f'/repos/{repo}/pulls/{number}')
++    require(pr['state']=='open' and pr['base']['ref']=='main' and pr['base']['repo']['full_name']==repo and pr['head']['repo']['full_name']==repo)
++    head=pr['head']['sha'];base=api('/repos/'+repo+'/git/ref/heads/main')['object']['sha']
++    require(SHA.fullmatch(head) and SHA.fullmatch(base));return base,head
++
++def verify_entry(entry,owner):
++    repository=entry['repository'];commit=entry['tag'];digest=entry['digest'];annotations=entry['release']
++    if repository==POSTGRES[0]:
++        require((repository,commit,digest)==POSTGRES and annotations=={})
++        require(entry['kind']=='StatefulSet' and entry['name'] in ('postgresql','order-postgresql') and
++                entry['containerType']=='containers' and entry['containerName']==entry['name'])
++        return None  # Platform image, never an application release.
++    require(SHA.fullmatch(commit) and DIGEST.fullmatch(digest))
++    matches=[(name,source,schema,version) for name,(source,image,schema,version) in SERVICES.items()
++             if repository=='ghcr.io/'+owner.lower()+'/'+image]
++    require(len(matches)==1)
++    service,source,schema,version=matches[0];repo=owner+'/'+source
++    require(annotations.get('account.lab/release-schema-version')==version and
++            annotations.get('account.lab/source-repository')==repo and annotations.get('account.lab/source-commit')==commit)
++    require(annotations.get('account.lab/service')=='order' if service=='order' else 'account.lab/service' not in annotations)
++    if service=='order':
++        require(set(annotations)=={'account.lab/'+key for key in ('release-schema-version','service','source-repository',
++            'source-commit','github-run-id','github-run-attempt','image-digest','release-record-url','release-record-sha256','sbom-url','sbom-sha256')})
++    run_id=annotation_id(annotations['account.lab/github-run-id']);attempt=annotation_id(annotations['account.lab/github-run-attempt'])
++    result,urls,record_hash=release_data(repo,commit,run_id,attempt,service)
++    require(result['imageDigest']==digest and annotations.get('account.lab/image-digest')==digest)
++    require(annotations.get('account.lab/release-record-url')==urls['release-record.json'] and annotations.get('account.lab/release-record-sha256')==record_hash)
++    require(annotations.get('account.lab/sbom-url')==urls['sbom.cdx.json'] and annotations.get('account.lab/sbom-sha256')==result['sbomSha256'])
++    verify_latest_run(repo,commit,run_id,attempt,service)
++    require(canonical_record_hash(repo,commit,run_id,attempt,service)==record_hash)
++    if service=='order':
++        account,_,account_hash=release_data(repo,commit,run_id,attempt,'backend')
++        require(canonical_record_hash(repo,commit,run_id,attempt,'backend')==account_hash)
++        require(account['sourceScanSha256']==result['sourceScanSha256'])
++        require(account['archiveSha256']!=result['archiveSha256'] and account['imageDigest']!=digest)
++    require(api('/repos/'+repo+'/git/ref/heads/main')['object']['sha']==commit)
++    ref=repository+':'+commit
++    # Public GHCR reads receive no API/registry credentials, including the reader token.
++    with tempfile.TemporaryDirectory(prefix='gha-read-') as auth:
++        env={**os.environ,'DOCKER_CONFIG':auth}
++        for key in ('GH_TOKEN','GITHUB_TOKEN','EVIDENCE_READ_TOKEN','ACTIONS_RUNTIME_TOKEN'):env.pop(key,None)
++        require(run(['crane','digest',ref],env=env).decode().strip()==digest)
++        data=run(['crane','config',repository+'@'+digest],env=env).rstrip(b'\n')
++        config=decode(data);require('sha256:'+sha(data)==result['configDigest'])
++        require(config['config']['Labels']['org.opencontainers.image.revision']==commit and config['config']['Labels']['org.opencontainers.image.source']=='https://github.com/'+repo)
++        if service=='order':
++            manifest=decode(run(['crane','manifest',repository+'@'+digest],env=env))
++            require(manifest['mediaType'] in ('application/vnd.oci.image.manifest.v1+json','application/vnd.docker.distribution.manifest.v2+json'))
++            require('manifests' not in manifest and manifest['config']['digest']==result['configDigest'])
++            require(config['architecture']=='amd64' and config['os']=='linux' and config['config']['Entrypoint']==['/order-server'])
++    return {'repository':repo,'service':service,'sourceCommit':commit,'runId':run_id,'runAttempt':attempt,'digest':digest,'recordSha256':record_hash,'validUntil':result['validUntil']}
++
++def verify():
++    repo,verifier,run_id,attempt=identity();require(repo.endswith('/application-manifest'))
++    require(os.environ['GITHUB_EVENT_NAME']=='workflow_dispatch' and os.environ['GITHUB_REF']=='refs/heads/main' and os.environ['GITHUB_REF_PROTECTED']=='true')
++    number=os.environ['VERIFY_PR'];require(re.fullmatch('[1-9][0-9]*',number))
++    if not os.environ.get('EVIDENCE_READ_TOKEN'):
++        print('Configure EVIDENCE_READ_TOKEN in the manifest-verification Environment.',file=sys.stderr)
++        raise ValueError('read credential missing')
++    base,head=pr_snapshot(repo,number);require(base==verifier)
++    run(['git','fetch','--no-tags','origin','refs/pull/'+number+'/head'])
++    require(run(['git','rev-parse','FETCH_HEAD']).decode().strip()==head)
++    # All executed code is the protected-main checkout. PR charts/values are data
++    # only in the existing bounded, networkless render/inventory sandbox.
++    clean={key:value for key,value in os.environ.items() if key not in ('GH_TOKEN','GITHUB_TOKEN','EVIDENCE_READ_TOKEN','ACTIONS_RUNTIME_TOKEN')}
++    Path('.trusted').mkdir(exist_ok=True)
++    run(['docker','pull','alpine/helm:4.2.4@sha256:76c375eed56144c68d6197c55bc5a4552fb42002190b796729901cbab3ae6e51'],env=clean)
++    run(['docker','pull','golang:1.27.1-bookworm@sha256:648f440f42a0958804efb24df176f806f9d353b41f1c0627f666428e40310f6b'],env=clean)
++    run(['python3','-I','ci/trusted-render.py','--repo','.', '--target',base,'--source',head,'--verifier',verifier,
++         '--producer-job-id',str(run_id),'--output','.trusted/github-render.json','--test-only'],env=clean)
++    render=load('.trusted/github-render.json');require(render['targetSha']==base and render['sourceSha']==head and render['verifierSha']==verifier)
++    before=render['renders']['before']['inventory']['entries'];after=render['renders']['candidate']['inventory']['entries']
++    def key(e):return tuple(e[k] for k in ('namespace','kind','name','podSpecPath','containerType','containerName'))
++    old={key(e):e for e in before};verified=[];cache={}
++    for entry in after:
++        if old.get(key(entry))==entry:continue
++        selection=json.dumps({k:entry[k] for k in ('repository','tag','digest','release')},sort_keys=True)
++        if selection not in cache:cache[selection]=verify_entry(entry,repo.split('/')[0])
++        if cache[selection] is not None:verified.append(cache[selection])
++    require(pr_snapshot(repo,number)==(base,head))
++    for item in verified:
++        require(api('/repos/'+item['repository']+'/git/ref/heads/main')['object']['sha']==item['sourceCommit'])
++        verify_latest_run(item['repository'],item['sourceCommit'],item['runId'],item['runAttempt'],item['service'])
++    deadline=min([now()+dt.timedelta(minutes=15)]+[timestamp(item['validUntil']) for item in verified]);require(deadline>now())
++    report={'schema':'core-platform/github-manifest-verification/v1','repository':repo,'prNumber':int(number),
++        'baseSha':base,'headSha':head,'verifierSha':verifier,'candidateTree':render['candidateTree'],
++        'runId':run_id,'runAttempt':attempt,'verifiedImages':verified,'renderSha256':sha(Path('.trusted/github-render.json').read_bytes()),
++        'createdAt':stamp(),'validUntil':deadline.isoformat(),'mergeAuthorized':False}
++    Path('.trusted/github-verification.json').write_text(json.dumps(report,sort_keys=True,indent=2)+'\n')
++    print('Trusted verification passed. Owner review still required; any PR/main update invalidates the report.')
++
++if __name__=='__main__':
++    try:
++        require(len(sys.argv)==2 and sys.argv[1] in ('record','publish','propose','verify'))
++        globals()[sys.argv[1]]()
++    except Exception as error:
++        # Server bodies, credential-bearing URLs, and raw scanner output stay private.
++        frames=traceback.extract_tb(error.__traceback__)
++        print('Failure location: '+' > '.join(f.name+':'+str(f.lineno) for f in frames)
++              +' ('+type(error).__name__+((' HTTP '+str(error.code)) if isinstance(error,urllib.error.HTTPError) else '')+')',file=sys.stderr)
++        print('GitHub migration operation failed; publication/merge is not authorized.',file=sys.stderr)
++        sys.exit(1)
+diff --git a/ci/github/fixtures/m0/release_test.py b/ci/github/fixtures/m0/release_test.py
+new file mode 100644
+index 0000000..c3a15b3
+--- /dev/null
++++ b/ci/github/fixtures/m0/release_test.py
+@@ -0,0 +1,229 @@
++import importlib.util
++from pathlib import Path
++import unittest
++import datetime as dt
++import io,zipfile
++from unittest.mock import patch
++
++spec=importlib.util.spec_from_file_location('release',Path(__file__).with_name('release.py'))
++m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
++
++class Boundary(unittest.TestCase):
++    def test_duplicate_json(self):
++        with self.assertRaises(ValueError):m.decode('{"pass":false,"pass":true}')
++    def test_stale_and_future_scan(self):
++        for time in (m.now()-dt.timedelta(hours=25),m.now()+dt.timedelta(hours=1)):
++            with self.assertRaises(ValueError):m.fresh(time.isoformat())
++    def test_asset_origin(self):
++        with self.assertRaises(ValueError):m.public_asset('https://example.org/record','owner/backend-app','tag','release-record.json')
++    def test_api_redirect(self):
++        with self.assertRaises(ValueError):m.NoRedirect().redirect_request(None,None,302,'',{},'https://example.org')
++    def test_canonical_artifact_integrity_and_members(self):
++        for name,accepted in [('release-record.json',True),('../release-record.json',False)]:
++            stream=io.BytesIO()
++            with zipfile.ZipFile(stream,'w') as archive:archive.writestr(name,b'{"test":true}')
++            data=stream.getvalue()
++            if accepted:self.assertEqual(m.artifact_record_bytes(data,'sha256:'+m.sha(data)),b'{"test":true}')
++            else:
++                with self.assertRaises(ValueError):m.artifact_record_bytes(data,'sha256:'+m.sha(data))
++            with self.assertRaises(ValueError):m.artifact_record_bytes(data,'sha256:'+'0'*64)
++    def test_server_run_identity_and_revocation(self):
++        run={'id':123,'repository':{'full_name':'owner/backend-app'},'head_sha':'a'*40,'head_branch':'main','event':'push',
++            'status':'completed','conclusion':'success','run_attempt':1,'path':'.github/workflows/ci.yml','created_at':'2026-10-08T10:00:00Z'}
++        m.validate_run(run,'owner/backend-app','a'*40,123,1)
++        for change in ({'event':'pull_request'},{'head_branch':'feature'},{'conclusion':'failure'},{'run_attempt':2},{'head_sha':'b'*40}):
++            with self.assertRaises(ValueError):m.validate_run({**run,**change},'owner/backend-app','a'*40,123,1)
++        later={**run,'id':124,'conclusion':'failure','created_at':'2026-10-08T11:00:00Z'}
++        with patch.object(m,'api',side_effect=[run,{'workflow_runs':[later,run]}]):
++            with self.assertRaises(ValueError):m.verify_latest_run('owner/backend-app','a'*40,123,1)
++    def test_values_patch_preserves_configuration(self):
++        text='telemetry:\n  enabled: true\nimage:\n  repository: "old"\n  tag: "old"\n  digest: "old"\n# comment\nrelease:\n  sourceProjectId: "old"\n  sourceCommit: "old"\nconfig:\n  dbName: account\n'
++        record={'imageRepository':'ghcr.io/owner/backend-app','imageDigest':'sha256:'+'b'*64,'runId':123,'runAttempt':1,'sbomSha256':'c'*64}
++        result=m.patch_values(text,'owner/backend-app','a'*40,record,{'release-record.json':'record-url','sbom.cdx.json':'sbom-url'},'d'*64)
++        self.assertIn('telemetry:\n  enabled: true',result);self.assertIn('config:\n  dbName: account',result)
++        self.assertIn('schemaVersion: "github-v1"',result);self.assertNotIn('sourceProjectId',result)
++    def test_record_rejects_untrusted_workflow_and_failed_scan(self):
++        record={'schema':m.SCHEMA,'repository':'owner/backend-app','sourceCommit':'a'*40,'runId':123,'runAttempt':1,
++          'workflowRef':'owner/backend-app/.github/workflows/ci.yml@refs/heads/main','imageRepository':'ghcr.io/owner/backend-app',
++          'imageDigest':'sha256:'+'b'*64,'configDigest':'sha256:'+'c'*64,'deploymentAuthorized':False}
++        for k in ('sourcePolicyPassed','imagePolicyPassed','sbomValidated','isolatedRuntimePassed'):record[k]=True
++        for k in ('archiveSha256','sbomSha256','sourceScanSha256','imageScanSha256'):record[k]='d'*64
++        for k in ('scannedAt','dbUpdatedAt','createdAt'):record[k]=(m.now()-dt.timedelta(seconds=1)).isoformat()
++        record['validUntil']=(m.now()+dt.timedelta(hours=23)).isoformat()
++        m.validate_record(record,'owner/backend-app','a'*40,123,1)
++        for change in ({'workflowRef':'owner/backend-app/.github/workflows/ci.yml@refs/heads/untrusted'},{'imagePolicyPassed':False},{'repository':'other/backend-app'},{'runAttempt':2},{'imageRepository':'registry.gitlab.com/owner/backend-app'}, {'validUntil':(m.now()-dt.timedelta(minutes=1)).isoformat()}, {'validUntil':(m.now()+dt.timedelta(hours=25)).isoformat()}):
++            with self.assertRaises(ValueError):m.validate_record({**record,**change},'owner/backend-app','a'*40,123,1)
++
++
++
++class OrderContract(unittest.TestCase):
++    def setUp(self):
++        import copy
++        self.fixtures=Path(__file__).with_name('fixtures')
++        self.order=m.load(self.fixtures/'order-record.json')
++        self.account=m.load(self.fixtures/'backend-record.json')
++        self.repo=self.order['repository'];self.commit=self.order['sourceCommit']
++        self.clock=patch.object(m,'now',return_value=dt.datetime(2030,1,1,1,tzinfo=dt.timezone.utc));self.clock.start();self.addCleanup(self.clock.stop)
++    def validate(self,value,service='order'):
++        m.validate_record(value,self.repo,self.commit,123,2,service)
++    def test_shared_v1_v2_positive_and_schema(self):
++        self.validate(self.order);self.validate(self.account,'backend')
++        schema=m.load(Path(__file__).with_name('order-release.schema.json'))
++        self.assertEqual(set(schema['required']),set(self.order))
++        frontend={**self.account,'repository':'syuhei0519/frontend-app','imageRepository':'ghcr.io/syuhei0519/frontend-app','workflowRef':'syuhei0519/frontend-app/.github/workflows/ci.yml@refs/heads/main'}
++        m.validate_record(frontend,'syuhei0519/frontend-app',self.commit,123,2,'frontend')
++    def test_record_negative_bindings(self):
++        cases={'schema':m.SCHEMA,'service':'backend','repository':'syuhei0519/frontend-app','sourceCommit':'0'*40,
++               'runId':124,'runAttempt':True,'workflowRef':self.repo+'/.github/workflows/other.yml@refs/heads/main',
++               'imageRepository':'ghcr.io/'+self.repo,'imageDigest':'sha256:bad','configDigest':'bad',
++               'archiveSha256':'bad','sbomSha256':'bad','sourceScanSha256':'bad','imageScanSha256':'bad',
++               'validUntil':'2030-01-01T00:30:00Z','sourcePolicyPassed':False,'published':False,
++               'protectedMain':False,'deploymentAuthorized':True,'unknown':True}
++        for key,value in cases.items():
++            with self.subTest(key=key),self.assertRaises((ValueError,KeyError)):
++                self.validate({**self.order,key:value})
++        for key in self.order:
++            candidate=dict(self.order);del candidate[key]
++            with self.subTest(missing=key),self.assertRaises((ValueError,KeyError)):self.validate(candidate)
++        with self.assertRaises(ValueError):self.validate(self.account)
++        with self.assertRaises(ValueError):m.service_contract(self.repo,'unknown')
++        with self.assertRaises(ValueError):m.service_contract('syuhei0519/frontend-app','order')
++    def jobs(self):
++        return [{'name':n,'run_id':123,'head_sha':self.commit,'status':'completed','conclusion':'success'} for n in ('validate','image (backend)','image (order)','ci-result')]
++    def artifacts(self):
++        return [{'name':n,'expired':False,'workflow_run':{'id':123,'head_sha':self.commit},'digest':'sha256:'+'1'*64} for n in ('checked-image-2','checked-image-order-2','published-evidence-2','published-evidence-order-2')]
++    def test_matrix_and_artifact_closure(self):
++        def verify(jobs,artifacts):
++            with patch.object(m,'api',side_effect=[{'jobs':jobs},{'artifacts':artifacts}]):m.verify_order_matrix(self.repo,self.commit,123,2)
++        verify(self.jobs(),self.artifacts())
++        for index in range(4):
++            jobs=self.jobs();jobs.pop(index)
++            with self.assertRaises(ValueError):verify(jobs,self.artifacts())
++            artifacts=self.artifacts();artifacts.pop(index)
++            with self.assertRaises(ValueError):verify(self.jobs(),artifacts)
++        for field,value in (('conclusion','failure'),('status','in_progress'),('run_id',124),('head_sha','0'*40)):
++            jobs=self.jobs();jobs[2][field]=value
++            with self.assertRaises(ValueError):verify(jobs,self.artifacts())
++        for field,value in (('expired',True),('workflow_run',{'id':124,'head_sha':self.commit}),('digest','bad')):
++            artifacts=self.artifacts();artifacts[1][field]=value
++            with self.assertRaises(ValueError):verify(self.jobs(),artifacts)
++        with self.assertRaises(ValueError):verify(self.jobs()+[self.jobs()[0]],self.artifacts())
++    def asset(self,url,repo,tag,name):
++        self.assertEqual(url,f'https://github.com/{repo}/releases/download/{tag}/{name}')
++        if name=='release-record.json':return (self.fixtures/('order-record.json' if tag.startswith('gha-order-') else 'backend-record.json')).read_bytes()
++        return (self.fixtures/name).read_bytes()
++    def api(self,path):
++        if '/releases/tags/' in path:
++            tag=path.rsplit('/',1)[1]
++            return {'draft':False,'prerelease':False,'tag_name':tag,'assets':[{'name':n,'browser_download_url':f'https://github.com/{self.repo}/releases/download/{tag}/{n}'} for n in ('release-record.json','sbom.cdx.json','image-scan.json')]}
++        if '/git/ref/' in path:return {'object':{'type':'commit','sha':self.commit}}
++        self.fail('unexpected API path '+path)
++    def entry(self):
++        record=self.order;tag=m.tag_for(self.commit,123,2,'order');root=f'https://github.com/{self.repo}/releases/download/{tag}/'
++        annotations={'release-schema-version':'github-v2','service':'order','source-repository':self.repo,'source-commit':self.commit,
++          'github-run-id':'123','github-run-attempt':'2','image-digest':record['imageDigest'],'release-record-url':root+'release-record.json',
++          'release-record-sha256':m.sha((self.fixtures/'order-record.json').read_bytes()),'sbom-url':root+'sbom.cdx.json','sbom-sha256':record['sbomSha256']}
++        return {'repository':record['imageRepository'],'tag':self.commit,'digest':record['imageDigest'],'release':{'account.lab/'+k:v for k,v in annotations.items()}}
++    def crane(self,args,**kwargs):
++        self.assertTrue(set(kwargs['env']).isdisjoint({'GH_TOKEN','GITHUB_TOKEN','EVIDENCE_READ_TOKEN','ACTIONS_RUNTIME_TOKEN'}))
++        if args[1]=='digest':return self.order['imageDigest'].encode()
++        return (self.fixtures/('order-config.json' if args[1]=='config' else 'order-manifest.json')).read_bytes()
++    def canonical(self,repo,commit,run,attempt,service=None):
++        return m.sha((self.fixtures/('order-record.json' if service=='order' else 'backend-record.json')).read_bytes())
++    def verify(self,entry=None):
++        with patch.object(m,'api',side_effect=self.api),patch.object(m,'public_asset',side_effect=self.asset),patch.object(m,'verify_latest_run'),patch.object(m,'canonical_record_hash',side_effect=self.canonical),patch.object(m,'run',side_effect=self.crane):
++            return m.verify_entry(entry or self.entry(),'syuhei0519')
++    def test_complete_selection_and_anonymous_registry(self):
++        self.assertEqual(self.verify()['service'],'order')
++    def test_selection_spoof_and_wrong_checksums(self):
++        for key,value in (('service','backend'),('source-repository','syuhei0519/backend-app-order'),('release-schema-version','github-v1'),('release-record-sha256','0'*64),('sbom-sha256','0'*64),('github-run-id','+123'),('source-commit','0'*40)):
++            entry=self.entry();entry['release']['account.lab/'+key]=value
++            with self.subTest(key=key),self.assertRaises(ValueError):self.verify(entry)
++        entry=self.entry();entry['repository']='ghcr.io/'+self.repo
++        with self.assertRaises(ValueError):self.verify(entry)
++    def test_release_moved_tag_and_scan_or_sbom_bytes(self):
++        original=self.api
++        def moved(path):
++            if '/git/ref/tags/' in path:return {'object':{'type':'commit','sha':'0'*40}}
++            return original(path)
++        with patch.object(m,'api',side_effect=moved),patch.object(m,'public_asset',side_effect=self.asset):
++            with self.assertRaises(ValueError):m.release_data(self.repo,self.commit,123,2,'order')
++        for damaged in ('sbom.cdx.json','image-scan.json'):
++            def asset(url,repo,tag,name):return b'{}' if name==damaged else self.asset(url,repo,tag,name)
++            with patch.object(m,'api',side_effect=self.api),patch.object(m,'public_asset',side_effect=asset):
++                with self.assertRaises(ValueError):m.release_data(self.repo,self.commit,123,2,'order')
++    def test_platform_image_separate_allowlist(self):
++        entry={'repository':m.POSTGRES[0],'tag':m.POSTGRES[1],'digest':m.POSTGRES[2],'release':{},'kind':'StatefulSet','name':'order-postgresql','containerType':'containers','containerName':'order-postgresql'}
++        self.assertIsNone(m.verify_entry(entry,'syuhei0519'))
++        for change in ({'digest':'sha256:'+'0'*64},{'tag':'latest'},{'release':{'account.lab/service':'order'}},{'kind':'Deployment'},{'name':'unknown'}):
++            with self.assertRaises(ValueError):m.verify_entry({**entry,**change},'syuhei0519')
++    def test_order_values_and_service_tag(self):
++        text='image:\n  repository: old\n  tag: old\n  digest: old\nrelease:\n  schemaVersion: old\nconfig:\n  dbName: orders\n'
++        result=m.patch_values(text,self.repo,self.commit,self.order,{'release-record.json':'record','sbom.cdx.json':'sbom'},'0'*64)
++        self.assertIn('schemaVersion: "github-v2"',result);self.assertIn('service: "order"',result)
++        self.assertIn('dbName: orders',result)
++        self.assertEqual(m.tag_for(self.commit,123,2,'order'),'gha-order-'+self.commit+'-123-2')
++    def test_zip_duplicate_extra_symlink_and_nonfinite(self):
++        import stat,warnings
++        for names in (['release-record.json','other'],['release-record.json','release-record.json'],['/release-record.json'],['dir/release-record.json']):
++            stream=io.BytesIO()
++            with warnings.catch_warnings():
++                warnings.simplefilter('ignore')
++                with zipfile.ZipFile(stream,'w') as z:
++                    for name in names:z.writestr(name,b'{}')
++            with self.assertRaises(ValueError):m.artifact_record_bytes(stream.getvalue(),'sha256:'+m.sha(stream.getvalue()))
++        stream=io.BytesIO();info=zipfile.ZipInfo('release-record.json');info.external_attr=(stat.S_IFLNK|0o777)<<16
++        with zipfile.ZipFile(stream,'w') as z:z.writestr(info,b'{}')
++        with self.assertRaises(ValueError):m.artifact_record_bytes(stream.getvalue(),'sha256:'+m.sha(stream.getvalue()))
++        for data in ('{"value":NaN}','{"value":Infinity}'):
++            with self.assertRaises(ValueError):m.decode(data)
++
++
++
++    def test_registry_main_archive_and_peer_binding_fail_closed(self):
++        from contextlib import ExitStack
++        for fault in ('main','digest','config','index','architecture','canonical','peer-source','peer-archive'):
++            with self.subTest(fault=fault),ExitStack() as stack:
++                original_api=self.api
++                def api(path):
++                    if fault=='main' and '/git/ref/heads/' in path:return {'object':{'sha':'0'*40}}
++                    return original_api(path)
++                def crane(args,**kwargs):
++                    raw=self.crane(args,**kwargs)
++                    if fault=='digest' and args[1]=='digest':return b'sha256:'+b'0'*64
++                    if fault=='config' and args[1]=='config':return b'{}'
++                    if fault=='index' and args[1]=='manifest':return b'{"mediaType":"application/vnd.oci.image.index.v1+json","manifests":[]}'
++                    return raw
++                def canonical(*args):return '0'*64 if fault=='canonical' else self.canonical(*args)
++                original_release=m.release_data
++                def release(*args):
++                    result,urls,checksum=original_release(*args)
++                    if args[-1]=='backend':
++                        if fault=='peer-source':result['sourceScanSha256']='0'*64
++                        if fault=='peer-archive':result['archiveSha256']=self.order['archiveSha256']
++                    return result,urls,checksum
++                stack.enter_context(patch.object(m,'api',side_effect=api));stack.enter_context(patch.object(m,'public_asset',side_effect=self.asset))
++                stack.enter_context(patch.object(m,'verify_latest_run'));stack.enter_context(patch.object(m,'canonical_record_hash',side_effect=canonical))
++                stack.enter_context(patch.object(m,'run',side_effect=crane));stack.enter_context(patch.object(m,'release_data',side_effect=release))
++                if fault=='architecture':
++                    # A changed config also changes its bound digest; both must be refused.
++                    stack.enter_context(patch.object(m,'run',side_effect=lambda args,**kw: b'{}' if args[1]=='config' else crane(args,**kw)))
++                with self.assertRaises((ValueError,KeyError)):m.verify_entry(self.entry(),'syuhei0519')
++    def test_canonical_service_artifact_download(self):
++        from unittest.mock import Mock
++        import urllib.error
++        raw=(self.fixtures/'order-record.json').read_bytes();stream=io.BytesIO()
++        with zipfile.ZipFile(stream,'w') as z:z.writestr('release-record.json',raw)
++        payload=stream.getvalue()
++        artifact={'id':42,'name':'published-evidence-order-2','expired':False,'workflow_run':{'id':123,'head_sha':self.commit},'digest':'sha256:'+m.sha(payload)}
++        response=Mock();response.read.return_value=payload;response.__enter__=Mock(return_value=response);response.__exit__=Mock(return_value=False)
++        signed='https://example.blob.core.windows.net/synthetic'
++        first=Mock();first.open.side_effect=urllib.error.HTTPError('https://api.github.com',302,'',{'Location':signed},None)
++        second=Mock();second.open.return_value=response
++        with patch.dict(m.os.environ,{'EVIDENCE_READ_TOKEN':'synthetic-no-credential'}),patch.object(m,'api',return_value={'artifacts':[artifact]}),patch.object(m.urllib.request,'build_opener',side_effect=[first,second]):
++            self.assertEqual(m.canonical_record_hash(self.repo,self.commit,123,2,'order'),m.sha(raw))
++        self.assertIsNone(second.open.call_args.args[0].get_header('Authorization'))
++        for artifacts in ([],[artifact,artifact],[{**artifact,'expired':True}],[{**artifact,'workflow_run':{'id':124,'head_sha':self.commit}}],[{**artifact,'name':'published-evidence-2'}]):
++            with patch.object(m,'api',return_value={'artifacts':artifacts}),self.assertRaises(ValueError):m.canonical_record_hash(self.repo,self.commit,123,2,'order')
++
++if __name__=='__main__':unittest.main()
+diff --git a/ci/github/matrix-result.py b/ci/github/matrix-result.py
+new file mode 100644
+index 0000000..ef44291
+--- /dev/null
++++ b/ci/github/matrix-result.py
+@@ -0,0 +1,36 @@
++"""Require complete same-source/run/attempt image artifacts, beyond matrix status."""
++import importlib.util
++from pathlib import Path
++spec=importlib.util.spec_from_file_location('release',Path(__file__).with_name('release.py'))
++m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
++
++def check(root=Path('.checked')):
++    repo,commit,run_id,attempt=m.identity()
++    expected={'checked-image-'+str(attempt):'backend','checked-image-order-'+str(attempt):'order'}
++    m.require({p.name for p in root.iterdir()}==set(expected))
++    records=[]
++    for name,service in expected.items():
++        base=root/name;public=base/'.security/public';record=m.load(public/'release-record.json')
++        _,image,schema,_=m.service_contract(repo,service)
++        m.require(record['repository']==repo and record['sourceCommit']==commit and record['runId']==run_id and record['runAttempt']==attempt)
++        m.require(record['workflowRef']==m.os.environ['GITHUB_WORKFLOW_REF'])
++        m.require(record['schema']==schema and record['imageRepository']==image)
++        m.require(record.get('service')=='order' if service=='order' else 'service' not in record)
++        m.require(record['published'] is False and record['deploymentAuthorized'] is False)
++        for key in ('sourcePolicyPassed','imagePolicyPassed','sbomValidated','isolatedRuntimePassed'):m.require(record[key] is True)
++        for filename,key in (('sbom.cdx.json','sbomSha256'),('image-scan.json','imageScanSha256'),('source-scan.json','sourceScanSha256')):
++            m.require(m.sha((public/filename).read_bytes())==record[key])
++        m.require(m.sha((base/'.oci/image.tar').read_bytes())==record['archiveSha256'])
++        m.check_source(repo,commit,run_id,attempt,m.load(public/'source-scan.json'),public)
++        proof=m.load(public/'runtime.json')
++        m.require(proof=={'service':service,'digest':record['imageDigest'],'archiveSha256':record['archiveSha256'],
++                         'configDigest':record['configDigest'],'passed':True,'readOnly':True,'capDrop':'ALL','network':'internal'})
++        records.append(record)
++    m.require(records[0]['sourceScanSha256']==records[1]['sourceScanSha256'])
++    for key in ('archiveSha256','imageDigest','configDigest'):m.require(records[0][key]!=records[1][key])
++
++if __name__=='__main__':
++    try:check()
++    except Exception:
++        print('Incomplete or inconsistent image matrix; CI refused.')
++        raise SystemExit(1)
+diff --git a/ci/github/oci.sh b/ci/github/oci.sh
+index 824e730..5ec4714 100644
+--- a/ci/github/oci.sh
++++ b/ci/github/oci.sh
+@@ -1,18 +1,23 @@
+ #!/usr/bin/env bash
+ set -euo pipefail
+ umask 077
++case "${RELEASE_SERVICE:-backend}" in
++  backend) dockerfile=Dockerfile ;;
++  order) dockerfile=Dockerfile.order ;;
++  *) echo 'Unknown image service' >&2; exit 1 ;;
++esac
+ mkdir -p .oci .security/private .security/public .cache/trivy
+ trap 'rm -rf .security/private' EXIT
+ docker buildx build --platform linux/amd64 --provenance=false --sbom=false \
+   --build-arg "VCS_REF=$GITHUB_SHA" --build-arg "VCS_SOURCE=https://github.com/$GITHUB_REPOSITORY" \
+-  --output type=oci,dest=.oci/image.tar,oci-mediatypes=true .
++  -f "$dockerfile" --output type=oci,dest=.oci/image.tar,oci-mediatypes=true .
+ archive=$(sha256sum .oci/image.tar | cut -d ' ' -f1)
+ .security/github-oci-check .oci/image.tar "$archive" .oci/layout "$GITHUB_SHA" "$GITHUB_REPOSITORY" > .security/public/layout.json
+ digest=$(python3 -c 'import json; print(json.load(open(".security/public/layout.json"))["digest"])')
+ .security/oci-crane-check .oci/layout "$digest" > .security/public/reader.json
+-# Runtime uses the exact checked OCI, no registry fallback and no external network.
+-docker buildx build --platform linux/amd64 --network=none --provenance=false --sbom=false \
+-  --build-context "input=oci-layout://$PWD/.oci/layout@$digest" -f ci/oci-smoke/Dockerfile ci/oci-smoke
++# Runtime imports the exact validated config/layers into a fresh isolated fixture.
++docker pull postgres@sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f
++python3 -I ci/github/runtime.py
+ config=$(python3 -c 'import json; print(json.load(open(".security/public/reader.json"))["configDigest"])')
+ docker run --rm -e IMAGE_CONFIG="$config" --user "$(id -u):$(id -g)" -v "$PWD:/work" -w /work --entrypoint sh \
+   aquasec/trivy:0.75.0@sha256:9db099105405c648166e6b94155eb32f8da12673cf1f455207f7385cc9a77283 -ec '
+diff --git a/ci/github/order-release.schema.json b/ci/github/order-release.schema.json
+new file mode 100644
+index 0000000..bc0b968
+--- /dev/null
++++ b/ci/github/order-release.schema.json
+@@ -0,0 +1,126 @@
++{
++  "$schema": "https://json-schema.org/draft/2020-12/schema",
++  "title": "Published synthetic/B2 Order release v2 structural contract; runtime bindings are mandatory",
++  "type": "object",
++  "additionalProperties": false,
++  "required": [
++    "schema",
++    "service",
++    "repository",
++    "sourceCommit",
++    "runId",
++    "runAttempt",
++    "workflowRef",
++    "imageRepository",
++    "imageDigest",
++    "configDigest",
++    "archiveSha256",
++    "sbomSha256",
++    "sourceScanSha256",
++    "imageScanSha256",
++    "scannedAt",
++    "dbUpdatedAt",
++    "createdAt",
++    "validUntil",
++    "sourcePolicyPassed",
++    "imagePolicyPassed",
++    "sbomValidated",
++    "isolatedRuntimePassed",
++    "published",
++    "protectedMain",
++    "deploymentAuthorized"
++  ],
++  "properties": {
++    "schema": {
++      "const": "core-platform/github-release/v2"
++    },
++    "service": {
++      "const": "order"
++    },
++    "repository": {
++      "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/backend-app$",
++      "type": "string"
++    },
++    "sourceCommit": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{40}$"
++    },
++    "runId": {
++      "type": "integer",
++      "minimum": 1
++    },
++    "runAttempt": {
++      "type": "integer",
++      "minimum": 1
++    },
++    "workflowRef": {
++      "type": "string",
++      "minLength": 1
++    },
++    "imageRepository": {
++      "type": "string",
++      "minLength": 1
++    },
++    "imageDigest": {
++      "type": "string",
++      "pattern": "^sha256:[0-9a-f]{64}$"
++    },
++    "configDigest": {
++      "type": "string",
++      "pattern": "^sha256:[0-9a-f]{64}$"
++    },
++    "archiveSha256": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{64}$"
++    },
++    "sbomSha256": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{64}$"
++    },
++    "sourceScanSha256": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{64}$"
++    },
++    "imageScanSha256": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{64}$"
++    },
++    "scannedAt": {
++      "type": "string",
++      "minLength": 1
++    },
++    "dbUpdatedAt": {
++      "type": "string",
++      "minLength": 1
++    },
++    "createdAt": {
++      "type": "string",
++      "minLength": 1
++    },
++    "validUntil": {
++      "type": "string",
++      "minLength": 1
++    },
++    "sourcePolicyPassed": {
++      "const": true
++    },
++    "imagePolicyPassed": {
++      "const": true
++    },
++    "sbomValidated": {
++      "const": true
++    },
++    "isolatedRuntimePassed": {
++      "const": true
++    },
++    "published": {
++      "const": true
++    },
++    "protectedMain": {
++      "const": true
++    },
++    "deploymentAuthorized": {
++      "const": false
++    }
++  }
++}
+diff --git a/ci/github/order-release_test.py b/ci/github/order-release_test.py
+new file mode 100644
+index 0000000..9fe20e9
+--- /dev/null
++++ b/ci/github/order-release_test.py
+@@ -0,0 +1,147 @@
++"""Synthetic producer/unchanged pinned M0 consumer interoperability. No network."""
++import copy
++import datetime as dt
++import hashlib
++import importlib.util
++import json
++import os
++from pathlib import Path
++import tempfile
++import unittest
++from unittest.mock import patch
++
++HERE=Path(__file__).resolve().parent
++
++def module(name,path):
++    spec=importlib.util.spec_from_file_location(name,path)
++    m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m
++p=module('producer',HERE/'release.py')
++c=module('consumer',HERE/'fixtures/m0/release.py')
++a=module('aggregate',HERE/'matrix-result.py')
++
++class Interop(unittest.TestCase):
++    def setUp(self):
++        self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup)
++        self.old=os.getcwd();os.chdir(self.temp.name);self.addCleanup(os.chdir,self.old)
++        self.clock=dt.datetime(2030,1,1,1,tzinfo=dt.timezone.utc)
++        for m in (p,c):
++            patcher=patch.object(m,'now',return_value=self.clock);patcher.start();self.addCleanup(patcher.stop)
++        self.repo='syuhei0519/backend-app';self.commit='a'*40
++        self.env={'GITHUB_REPOSITORY':self.repo,'GITHUB_SHA':self.commit,'GITHUB_RUN_ID':'123','GITHUB_RUN_ATTEMPT':'2',
++                  'GITHUB_WORKFLOW_REF':self.repo+'/.github/workflows/ci.yml@refs/heads/main',
++                  'GITHUB_EVENT_NAME':'push','GITHUB_REF':'refs/heads/main','GITHUB_REF_PROTECTED':'true',
++                  'RELEASE_SERVICE':'order','GITHUB_ACTOR':'synthetic','GH_TOKEN':'synthetic-no-credential'}
++        patcher=patch.dict(os.environ,self.env);patcher.start();self.addCleanup(patcher.stop)
++        self.fixture=HERE/'fixtures/m0/fixtures'
++        self.order=c.load(self.fixture/'order-record.json')
++        config=c.load(self.fixture/'order-config.json');config['config']['User']='10001:10001'
++        self.config=json.dumps(config).encode();self.order['configDigest']='sha256:'+p.sha(self.config)
++        for path in ('.oci/layout','.security/public','.validation'):Path(path).mkdir(parents=True)
++        Path('.oci/image.tar').write_bytes(b'synthetic checked OCI bytes; not a real image')
++        self.scan={'pass':True,'trivyVersion':'0.75.0','dbUpdatedAt':'2030-01-01T00:00:00Z','scannedAt':'2030-01-01T00:00:00Z'}
++        self.write('.validation/source-scan.json',self.scan)
++        self.write('.validation/source-identity.json',{'repository':self.repo,'sourceCommit':self.commit,'runId':123,'runAttempt':2,'sourceScanSha256':p.sha(Path('.validation/source-scan.json').read_bytes())})
++        self.write('.security/public/image-scan.json',self.scan)
++        sbom=(self.fixture/'sbom.cdx.json').read_bytes();Path('.security/public/sbom.cdx.json').write_bytes(sbom)
++        self.write('.security/public/sbom-proof.json',{'sha256':p.sha(sbom),'configDigest':self.order['configDigest']})
++        self.layout={'sourceCommit':self.commit,'digest':self.order['imageDigest'],'archiveSha256':p.sha(Path('.oci/image.tar').read_bytes())}
++        self.write('.security/public/layout.json',self.layout)
++        self.write('.security/public/reader.json',{'digest':self.order['imageDigest'],'configDigest':self.order['configDigest'],'fullLayerValidation':True})
++        self.write('.security/public/runtime.json',{'service':'order','digest':self.order['imageDigest'],'configDigest':self.order['configDigest'],'archiveSha256':self.layout['archiveSha256'],'passed':True,'readOnly':True,'capDrop':'ALL','network':'internal'})
++        Path('security').mkdir();self.write('security/scan-policy.json',{'exceptions':[]})
++    def write(self,path,value):Path(path).write_text(json.dumps(value))
++    def published(self):
++        p.record();record=p.load('.security/public/release-record.json')
++        return {**record,'published':True,'protectedMain':True}
++    def test_exact_fixed_consumer_and_shared_fixtures(self):
++        root=HERE/'fixtures/m0';source=c.load(root/'SOURCE.json')
++        self.assertEqual(source['commit'],'bc6adaedcd645a4663c23284b977a3dd36c0796d')
++        for name,digest in source['files'].items():self.assertEqual(p.sha((root/name).read_bytes()),digest)
++        for name,service in [('order','order'),('backend','backend')]:
++            record=c.load(self.fixture/(name+'-record.json'))
++            p.validate_record(record,self.repo,self.commit,123,2,service)
++            c.validate_record(record,self.repo,self.commit,123,2,service)
++    def test_generated_record_consumed_by_m0_and_values_match(self):
++        record=self.published();c.validate_record(record,self.repo,self.commit,123,2,'order')
++        self.assertEqual(set(record),set(self.order))
++        text='enabled: false\nimage:\n  repository: old\n  tag: old\n  digest: old\nrelease:\n  schemaVersion: old\nconfig:\n  dbName: orders\n'
++        urls={'release-record.json':'record','sbom.cdx.json':'sbom'}
++        self.assertEqual(p.patch_values(text,self.repo,self.commit,record,urls,'0'*64),c.patch_values(text,self.repo,self.commit,record,urls,'0'*64))
++        self.assertIn('enabled: false',p.patch_values(text,self.repo,self.commit,record,urls,'0'*64))
++    def test_record_negative_binding_and_expiry(self):
++        good=self.published()
++        changes={'service':'backend','schema':p.SCHEMA,'repository':'syuhei0519/frontend-app','sourceCommit':'b'*40,
++                 'runId':124,'runAttempt':3,'imageRepository':'ghcr.io/syuhei0519/backend-app','workflowRef':'untrusted',
++                 'configDigest':'invalid','archiveSha256':'invalid','sbomSha256':'invalid','imageDigest':'invalid',
++                 'imagePolicyPassed':False,'validUntil':'2000-01-01T00:00:00Z','unknown':'unknown'}
++        for key,value in changes.items():
++            for m in (p,c):
++                with self.subTest(key=key,module=m.__name__),self.assertRaises((ValueError,KeyError)):
++                    m.validate_record({**good,key:value},self.repo,self.commit,123,2,'order')
++        for key in good:
++            bad=dict(good);del bad[key]
++            with self.assertRaises((ValueError,KeyError)):c.validate_record(bad,self.repo,self.commit,123,2,'order')
++    def test_producer_rejects_swapped_inputs_and_rebuild(self):
++        for path,key,value in [('.validation/source-identity.json','sourceCommit','b'*40),('.validation/source-identity.json','runId',124),
++                               ('.validation/source-identity.json','runAttempt',3),('.security/public/runtime.json','service','backend'),
++                               ('.security/public/runtime.json','configDigest','sha256:'+'0'*64),('.security/public/runtime.json','readOnly',False),
++                               ('.security/public/sbom-proof.json','sha256','0'*64),('.security/public/sbom-proof.json','configDigest','sha256:'+'0'*64),
++                               ('.security/public/layout.json','archiveSha256','0'*64)]:
++            before=Path(path).read_bytes();value_doc=p.decode(before);value_doc[key]=value;self.write(path,value_doc)
++            with self.subTest(path=path,key=key),self.assertRaises(ValueError):p.record()
++            Path(path).write_bytes(before)
++        Path('.oci/image.tar').write_bytes(b'rebuilt')
++        with self.assertRaises(ValueError):p.record()
++    def test_publish_same_tar_and_service_release_no_rebuild(self):
++        p.record();calls=[];assets={}
++        config=self.config
++        # M0 fixture config is exact real JSON bytes with a checksum in the record.
++        def run(args,**kwargs):
++            calls.append(args)
++            if args[0]=='github-oci-check':
++                dest=Path(args[3])/'blobs/sha256';dest.mkdir(parents=True)
++                (dest/self.order['configDigest'][7:]).write_bytes(config)
++                return json.dumps(self.layout).encode()
++            if args[:2]==['crane','digest']:return self.order['imageDigest'].encode()
++            if args[:2]==['crane','config']:return config
++            return b''
++        def api(path,method='GET',body=None,raw=None,upload=False):
++            if '/git/ref/heads/main' in path:return {'object':{'sha':self.commit}}
++            if method=='POST' and path.endswith('/releases'):
++                self.assertEqual(body['tag_name'],'gha-order-'+self.commit+'-123-2');return {'id':42}
++            if raw is not None:assets[path.split('name=')[1]]=raw
++            return {}
++        # Actual push transport mocked; all local checksum/config/runtime guards execute.
++        with patch.object(p,'run',side_effect=run),patch.object(p,'api',side_effect=api),patch.object(p.subprocess,'run',return_value=type('Result',(),{'returncode':1,'stderr':b'404 Not Found'})()):p.publish()
++        record=p.decode(assets['release-record.json']);c.validate_record(record,self.repo,self.commit,123,2,'order')
++        self.assertIn(['crane','push','.oci/publish-layout','ghcr.io/syuhei0519/backend-app-order:'+self.commit],calls)
++        self.assertFalse(any('build' in arg for call in calls for arg in call))
++    def test_guard_before_publish_and_propose_side_effects(self):
++        for field,value in [('GITHUB_EVENT_NAME','workflow_dispatch'),('GITHUB_REF','refs/heads/feature'),('GITHUB_REF_PROTECTED','false'),('RELEASE_SERVICE','unknown')]:
++            with patch.dict(os.environ,{field:value}),patch.object(p,'api') as api:
++                for operation in (p.publish,p.propose):
++                    with self.assertRaises((ValueError,FileNotFoundError)):operation()
++                if field!='RELEASE_SERVICE':api.assert_not_called()
++    def test_matrix_missing_failure_swaps(self):
++        order=self.published();order.pop('protectedMain');order['published']=False
++        root=Path('.checked');root.mkdir()
++        for service in ('backend','order'):
++            dest=root/('checked-image-'+('order-' if service=='order' else '')+'2');public=dest/'.security/public';public.mkdir(parents=True)
++            (dest/'.oci').mkdir();archive=b'synthetic '+service.encode();(dest/'.oci/image.tar').write_bytes(archive)
++            record=copy.deepcopy(order);record['archiveSha256']=p.sha(archive)
++            if service=='backend':
++                del record['service'];record['schema']=p.SCHEMA;record['imageRepository']='ghcr.io/'+self.repo
++                record['imageDigest']='sha256:'+'e'*64;record['configDigest']='sha256:'+'f'*64
++            for name in ('source-scan.json','source-identity.json','image-scan.json','sbom.cdx.json'):(public/name).write_bytes((Path('.security/public')/name).read_bytes())
++            self.write(public/'release-record.json',record)
++            self.write(public/'runtime.json',{'service':service,'digest':record['imageDigest'],'configDigest':record['configDigest'],'archiveSha256':record['archiveSha256'],'passed':True,'readOnly':True,'capDrop':'ALL','network':'internal'})
++        a.check(root)
++        target=root/'checked-image-order-2/.security/public/release-record.json';raw=target.read_bytes()
++        for key,value in [('runId',124),('sourceCommit','b'*40),('runAttempt',3),('service','backend'),('imagePolicyPassed',False),('sourceScanSha256','0'*64)]:
++            self.write(target,{**p.decode(raw),key:value})
++            with self.subTest(key=key),self.assertRaises(ValueError):a.check(root)
++        target.write_bytes(raw)
++        (root/'checked-image-order-2').rename(root/'missing')
++        with self.assertRaises(ValueError):a.check(root)
++
++if __name__=='__main__':unittest.main()
+diff --git a/ci/github/release.py b/ci/github/release.py
+index c0917f5..7c3d785 100644
+--- a/ci/github/release.py
++++ b/ci/github/release.py
+@@ -21,6 +21,23 @@ import io
+ import zipfile
+ 
+ SCHEMA='core-platform/github-release/v1'
++ORDER_SCHEMA='core-platform/github-release/v2'
++SERVICES={'backend':('backend-app','backend-app',SCHEMA,'github-v1'),
++          'order':('backend-app','backend-app-order',ORDER_SCHEMA,'github-v2')}
++
++def service_contract(repo,service=None):
++    require(isinstance(repo,str) and REPO.fullmatch(repo))
++    owner,source=repo.split('/')
++    if service is None:
++        service={'backend-app':'backend','frontend-app':'frontend'}.get(source)
++    require(service in SERVICES)
++    expected,image,schema,annotation=SERVICES[service]
++    require(source==expected)
++    return service,'ghcr.io/'+owner.lower()+'/'+image,schema,annotation
++
++def positive(value):
++    require(type(value) is int and value>0)
++    return value
+ SHA=re.compile(r'[0-9a-f]{40}')
+ DIGEST=re.compile(r'sha256:[0-9a-f]{64}')
+ REPO=re.compile(r'[A-Za-z0-9][A-Za-z0-9-]{0,38}/(?:backend-app|frontend-app|application-manifest)')
+@@ -35,7 +52,9 @@ def unique(pairs):
+         require(key not in out);out[key]=value
+     return out
+ 
+-def decode(data): return json.loads(data,object_pairs_hook=unique)
++def decode(data):
++    def refuse(_): raise ValueError('nonfinite JSON refused')
++    return json.loads(data,object_pairs_hook=unique,parse_constant=refuse)
+ def sha(data): return hashlib.sha256(data).hexdigest()
+ def load(path): return decode(Path(path).read_bytes())
+ def now(): return dt.datetime.now(dt.timezone.utc)
+@@ -88,12 +107,36 @@ def identity():
+     require(run_id.isdecimal() and int(run_id)>0 and attempt.isdecimal() and int(attempt)>0)
+     return repo,commit,int(run_id),int(attempt)
+ 
+-def tag_for(commit,run_id,attempt):
++def tag_for(commit,run_id,attempt,service=None):
+     require(SHA.fullmatch(commit) and type(run_id) is int and run_id>0 and type(attempt) is int and attempt>0)
+-    return f'gha-{commit}-{run_id}-{attempt}'
++    require(service in (None,'backend','frontend','order'))
++    prefix='gha-order' if service=='order' else 'gha'
++    return f'{prefix}-{commit}-{run_id}-{attempt}'
++
++def check_source(repo,commit,run_id,attempt,source,root=Path('.validation')):
++    binding=load(root/'source-identity.json')
++    require(binding=={'repository':repo,'sourceCommit':commit,'runId':run_id,'runAttempt':attempt,
++                      'sourceScanSha256':sha((root/'source-scan.json').read_bytes())})
++    require(source['pass'] is True)
++
++def check_config(layout,config_digest,service):
++    require(DIGEST.fullmatch(config_digest))
++    data=(layout/'blobs/sha256'/config_digest[7:]).read_bytes()
++    require('sha256:'+sha(data)==config_digest)
++    config=decode(data)
++    require(config['architecture']=='amd64' and config['os']=='linux')
++    require(config['config']['Entrypoint']==['/order-server' if service=='order' else '/server'])
++    require(config['config']['User']=='10001:10001')
++    return config
++
++def check_runtime(service,layout,reader):
++    proof=load(PUBLIC/'runtime.json')
++    require(proof=={'service':service,'digest':layout['digest'],'archiveSha256':layout['archiveSha256'],
++                    'configDigest':reader['configDigest'],'passed':True,'readOnly':True,'capDrop':'ALL','network':'internal'})
+ 
+ def record():
+     repo,commit,run_id,attempt=identity()
++    service,image_repository,schema,_=service_contract(repo,os.environ.get('RELEASE_SERVICE'))
+     layout=load(PUBLIC/'layout.json');reader=load(PUBLIC/'reader.json')
+     image=load(PUBLIC/'image-scan.json');source=load('.validation/source-scan.json')
+     require(layout['sourceCommit']==commit and DIGEST.fullmatch(layout['digest']))
+@@ -102,11 +145,17 @@ def record():
+     for report in (image,source):
+         require(report['trivyVersion']=='0.75.0');fresh(report['dbUpdatedAt']);fresh(report['scannedAt'])
+     require(sha(Path('.oci/image.tar').read_bytes())==layout['archiveSha256'])
+-    sbom=Path(PUBLIC/'sbom.cdx.json').read_bytes();require(load(PUBLIC/'sbom-proof.json'))
++    sbom=Path(PUBLIC/'sbom.cdx.json').read_bytes()
++    proof=load(PUBLIC/'sbom-proof.json')
++    require(proof['sha256']==sha(sbom) and proof['configDigest']==reader['configDigest'])
++    check_source(repo,commit,run_id,attempt,source)
++    check_runtime(service,layout,reader)
++    for name in ('source-scan.json','source-identity.json'):
++        (PUBLIC/name).write_bytes(Path('.validation',name).read_bytes())
+     deadlines=[timestamp(report[key])+dt.timedelta(hours=24) for report in (source,image) for key in ('dbUpdatedAt','scannedAt')]
+     deadlines.extend(timestamp(item['expiresAt']) for item in load('security/scan-policy.json')['exceptions'])
+-    result={'schema':SCHEMA,'repository':repo,'sourceCommit':commit,'runId':run_id,'runAttempt':attempt,
+-            'workflowRef':os.environ['GITHUB_WORKFLOW_REF'],'imageRepository':'ghcr.io/'+repo.lower(),
++    result={'schema':schema,'repository':repo,'sourceCommit':commit,'runId':run_id,'runAttempt':attempt,
++            'workflowRef':os.environ['GITHUB_WORKFLOW_REF'],'imageRepository':image_repository,
+             'imageDigest':layout['digest'],'configDigest':reader['configDigest'],'archiveSha256':layout['archiveSha256'],
+             'sbomSha256':sha(sbom),'sourceScanSha256':sha(Path('.validation/source-scan.json').read_bytes()),
+             'imageScanSha256':sha(Path(PUBLIC/'image-scan.json').read_bytes()),
+@@ -114,13 +163,23 @@ def record():
+             'validUntil':min(deadlines).isoformat(),
+             'sourcePolicyPassed':True,'imagePolicyPassed':True,'sbomValidated':True,'isolatedRuntimePassed':True,
+             'published':False,'deploymentAuthorized':False}
++    if service=='order':result['service']='order'
+     (PUBLIC/'release-record.json').write_text(json.dumps(result,sort_keys=True,indent=2)+'\n')
+ 
+-def validate_record(result,repo,commit,run_id,attempt):
+-    require(result['schema']==SCHEMA and result['repository']==repo and result['sourceCommit']==commit)
++def validate_record(result,repo,commit,run_id,attempt,service=None,published=True):
++    service,image,schema,_=service_contract(repo,service)
++    positive(run_id);positive(attempt)
++    require(type(result['runId']) is int and type(result['runAttempt']) is int)
++    require(result.get('service')=='order' if service=='order' else 'service' not in result)
++    if service=='order':
++        required=set(load(Path(__file__).with_name('order-release.schema.json'))['required'])
++        if not published:required.remove('protectedMain')
++        require(set(result)==required and result['published'] is published)
++        if published:require(result['protectedMain'] is True)
++    require(result['schema']==schema and result['repository']==repo and result['sourceCommit']==commit)
+     require(result['runId']==run_id and result['runAttempt']==attempt)
+     require(result['workflowRef']==repo+'/.github/workflows/ci.yml@refs/heads/main')
+-    require(result['imageRepository']=='ghcr.io/'+repo.lower() and DIGEST.fullmatch(result['imageDigest']) and DIGEST.fullmatch(result['configDigest']))
++    require(result['imageRepository']==image and DIGEST.fullmatch(result['imageDigest']) and DIGEST.fullmatch(result['configDigest']))
+     for key in ('sourcePolicyPassed','imagePolicyPassed','sbomValidated','isolatedRuntimePassed'):
+         require(result[key] is True)
+     for key in ('archiveSha256','sbomSha256','sourceScanSha256','imageScanSha256'):
+@@ -133,13 +192,18 @@ def validate_record(result,repo,commit,run_id,attempt):
+ def publish():
+     repo,commit,run_id,attempt=identity()
+     require(os.environ['GITHUB_EVENT_NAME']=='push' and os.environ['GITHUB_REF']=='refs/heads/main' and os.environ['GITHUB_REF_PROTECTED']=='true')
+-    result=load(PUBLIC/'release-record.json');validate_record(result,repo,commit,run_id,attempt)
++    service,_,_,_=service_contract(repo,os.environ.get('RELEASE_SERVICE'))
++    result=load(PUBLIC/'release-record.json');validate_record(result,repo,commit,run_id,attempt,service,published=False)
+     require(result['published'] is False)
+     require(sha(Path('.oci/image.tar').read_bytes())==result['archiveSha256'])
+     require(sha(Path(PUBLIC/'sbom.cdx.json').read_bytes())==result['sbomSha256'])
+     require(sha(Path(PUBLIC/'image-scan.json').read_bytes())==result['imageScanSha256'])
+     proof=decode(run(['github-oci-check','.oci/image.tar',result['archiveSha256'],'.oci/publish-layout',commit,repo]))
+     require(proof['digest']==result['imageDigest'])
++    config=check_config(Path('.oci/publish-layout'),result['configDigest'],service)
++    check_source(repo,commit,run_id,attempt,load(PUBLIC/'source-scan.json'),PUBLIC)
++    require(sha((PUBLIC/'source-scan.json').read_bytes())==result['sourceScanSha256'])
++    check_runtime(service,proof,{'configDigest':result['configDigest']})
+     require(api('/repos/'+repo+'/git/ref/heads/main')['object']['sha']==commit)
+     image=result['imageRepository']+':'+commit
+     with tempfile.TemporaryDirectory(prefix='gha-registry-') as auth:
+@@ -160,25 +224,34 @@ def publish():
+     result['published']=True;result['protectedMain']=True
+     record_bytes=(json.dumps(result,sort_keys=True,indent=2)+'\n').encode()
+     (PUBLIC/'release-record.json').write_bytes(record_bytes)
+-    tag=tag_for(commit,run_id,attempt)
++    tag=tag_for(commit,run_id,attempt,service)
+     release=api('/repos/'+repo+'/releases','POST',{'tag_name':tag,'target_commitish':commit,'name':tag,'draft':True,'prerelease':False,'body':'Checked GHCR image, runtime policy and same-input SBOM. Owner approval is required for deployment.'})
+     for name,data in [('release-record.json',record_bytes),('sbom.cdx.json',Path(PUBLIC/'sbom.cdx.json').read_bytes()),('image-scan.json',Path(PUBLIC/'image-scan.json').read_bytes())]:
+         api(f'/repos/{repo}/releases/{release["id"]}/assets?name={name}','POST',raw=data,upload=True)
+     api(f'/repos/{repo}/releases/{release["id"]}','PATCH',{'draft':False})
+     print('Published checked image and GitHub release evidence: '+tag)
+ 
+-def release_data(repo,commit,run_id,attempt):
+-    tag=tag_for(commit,run_id,attempt)
++def release_data(repo,commit,run_id,attempt,service=None):
++    service_contract(repo,service)
++    tag=tag_for(commit,run_id,attempt,service)
+     release=api('/repos/'+repo+'/releases/tags/'+tag)
+     require(not release['draft'] and not release['prerelease'] and release['tag_name']==tag)
+     assets={a['name']:a for a in release['assets']}
+     require(len(assets)==len(release['assets']) and 'release-record.json' in assets and 'sbom.cdx.json' in assets)
+     urls={name:assets[name]['browser_download_url'] for name in ('release-record.json','sbom.cdx.json')}
+     record_bytes=public_asset(urls['release-record.json'],repo,tag,'release-record.json')
+-    result=decode(record_bytes);validate_record(result,repo,commit,run_id,attempt)
++    result=decode(record_bytes);validate_record(result,repo,commit,run_id,attempt,service)
+     require(result['published'] is True and result['protectedMain'] is True)
+     sbom=public_asset(urls['sbom.cdx.json'],repo,tag,'sbom.cdx.json')
+     require(sha(sbom)==result['sbomSha256'])
++    if service=='order':
++        # Release names and mutable target_commitish are not a Git tag binding.
++        obj=api('/repos/'+repo+'/git/ref/tags/'+tag)['object']
++        if obj['type']=='tag':obj=api('/repos/'+repo+'/git/tags/'+obj['sha'])['object']
++        require(obj['type']=='commit' and obj['sha']==commit)
++        require('image-scan.json' in assets)
++        scan=public_asset(assets['image-scan.json']['browser_download_url'],repo,tag,'image-scan.json')
++        require(sha(scan)==result['imageScanSha256'] and decode(scan)['pass'] is True)
+     return result,urls,sha(record_bytes)
+ 
+ def artifact_record_bytes(data,expected_digest):
+@@ -238,24 +311,27 @@ def verify_latest_run(repo,commit,run_id,attempt):
+     validate_run(latest,repo,commit,run_id,attempt)
+ 
+ def patch_values(text,repo,commit,result,urls,record_hash):
+-    service=repo.split('/')[1].removesuffix('-app');require(service in ('backend','frontend'))
++    service,_,_,annotation=service_contract(repo,result.get('service'))
+     image=re.search(r'^image:\s*\n(?:[ \t]+[^\n]*\n)*',text,re.M);require(image)
+     block=image[0]
+     for key,value in {'repository':result['imageRepository'],'tag':commit,'digest':result['imageDigest']}.items():
+         block,count=re.subn(r'^  '+key+r':[^\n]*$', '  '+key+': '+json.dumps(value),block,flags=re.M);require(count==1)
+     text=text[:image.start()]+block+text[image.end():]
+     release=re.search(r'^release:\s*\n(?:[ \t]+[^\n]*\n)*',text,re.M);require(release)
+-    values={'schemaVersion':'github-v1','sourceRepository':repo,'sourceCommit':commit,'runId':str(result['runId']),
++    values={'schemaVersion':annotation,'sourceRepository':repo,'sourceCommit':commit,'runId':str(result['runId']),
+             'runAttempt':str(result['runAttempt']),'recordUrl':urls['release-record.json'],'recordSha256':record_hash,
+             'sbomUrl':urls['sbom.cdx.json'],'sbomSha256':result['sbomSha256']}
++    if service=='order':values['service']='order'
+     block='release:\n'+''.join('  '+key+': '+json.dumps(value)+'\n' for key,value in values.items())
+     return text[:release.start()]+block+text[release.end():]
+ 
+ def propose():
+     repo,commit,run_id,attempt=identity()
+-    result,urls,record_hash=release_data(repo,commit,run_id,attempt)
+-    owner,app=repo.split('/');target=owner+'/application-manifest';service=app.removesuffix('-app')
+-    require(service in ('backend','frontend'))
++    require(os.environ['GITHUB_EVENT_NAME']=='push' and os.environ['GITHUB_REF']=='refs/heads/main' and os.environ['GITHUB_REF_PROTECTED']=='true')
++    require(api('/repos/'+repo+'/git/ref/heads/main')['object']['sha']==commit)
++    service,_,_,_=service_contract(repo,os.environ.get('RELEASE_SERVICE'))
++    result,urls,record_hash=release_data(repo,commit,run_id,attempt,service)
++    owner=repo.split('/')[0];target=owner+'/application-manifest'
+     base=api('/repos/'+target+'/git/ref/heads/main')['object']['sha']
+     branch=f'github/{service}-{commit}-{run_id}-{attempt}'
+     path='environments/local/'+service+'.yaml'
+diff --git a/ci/github/runtime.py b/ci/github/runtime.py
+new file mode 100644
+index 0000000..b1cd5ec
+--- /dev/null
++++ b/ci/github/runtime.py
+@@ -0,0 +1,95 @@
++"""Local disposable runtime check of the already checked OCI. No existing DB/volume.
++
++Docker import converts transport only; image ID must equal the OCI config digest.
++All cleanup is restricted to random names created by this invocation.
++"""
++import importlib.util
++import ipaddress
++import json
++import os
++from pathlib import Path
++import secrets
++import subprocess
++import time
++import urllib.request
++import urllib.error
++
++spec=importlib.util.spec_from_file_location('release',Path(__file__).with_name('release.py'))
++m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
++POSTGRES='postgres@sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f'
++
++def check():
++    service,_,_,_=m.service_contract(os.environ['GITHUB_REPOSITORY'],os.environ.get('RELEASE_SERVICE'))
++    layout=m.load('.security/public/layout.json');reader=m.load('.security/public/reader.json')
++    m.require(m.sha(Path('.oci/image.tar').read_bytes())==layout['archiveSha256'])
++    m.check_config(Path('.oci/layout'),reader['configDigest'],service)
++    nonce=secrets.token_hex(12);prefix='order-b2-'+nonce;tag='docker.io/local/'+prefix+':checked'
++    network=prefix+'-net';db=prefix+'-db';app=prefix+'-app';migration=prefix+'-migration'
++    made=[];net=False;imported=False
++    def docker(*args,input=None):
++        # The local daemon only, no inherited remote context or TLS configuration.
++        env={k:v for k,v in os.environ.items() if not k.startswith('DOCKER_') and k not in ('GH_TOKEN','GITHUB_TOKEN')}
++        env['DOCKER_CONFIG']=str(Path('.security/private/docker').resolve())
++        p=subprocess.run(['docker','--host','unix:///var/run/docker.sock',*args],input=input,capture_output=True,timeout=180,env=env)
++        m.require(p.returncode==0);return p.stdout
++    def request(method,path,body=None):
++        data=None if body is None else json.dumps(body).encode()
++        req=urllib.request.Request(url+path,data=data,method=method,headers={'Content-Type':'application/json'})
++        try:
++            with urllib.request.build_opener(urllib.request.ProxyHandler({})).open(req,timeout=2) as res:return res.status,res.read()
++        except urllib.error.HTTPError as err:return err.code,err.read()
++    def endpoint():
++        address=json.loads(docker('inspect',app))[0]['NetworkSettings']['Networks'][network]['IPAddress']
++        m.require(ipaddress.IPv4Address(address).is_private)
++        return 'http://'+address+':8080'
++    try:
++        m.run(['.security/oci-runtime-export','.oci/layout',layout['digest'],'.oci/runtime.tar',tag])
++        docker('load','--input','.oci/runtime.tar');imported=True
++        m.require(json.loads(docker('image','inspect',tag))[0]['Id']==reader['configDigest'])
++        docker('network','create','--internal',network);net=True
++        docker('create','--pull=never','--name',db,'--network',network,'--env','POSTGRES_PASSWORD='+nonce,POSTGRES);made.append(db)
++        docker('start',db)
++        for _ in range(60):
++            try:docker('exec',db,'pg_isready','-h','127.0.0.1','-U','postgres');break
++            except ValueError:time.sleep(1)
++        else:raise ValueError('fixture readiness')
++        database,role=('orders','order_app') if service=='order' else ('accounts','account_app')
++        sql=f"CREATE ROLE {role} LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT PASSWORD '{nonce}';\nCREATE DATABASE {database} OWNER {role};\n"
++        docker('exec','-i',db,'psql','-U','postgres','-v','ON_ERROR_STOP=1',input=sql.encode())
++        dsn=f'postgres://{role}:{nonce}@{db}:5432/{database}?sslmode=disable'
++        flags=['--pull=never','--network',network,'--read-only','--cap-drop=ALL','--security-opt=no-new-privileges','--user','10001:10001','--env','DATABASE_URL='+dsn,'--env','LOG_LEVEL=error']
++        docker('create','--name',migration,*flags,tag,'migrate');made.append(migration)
++        docker('start',migration);m.require(docker('wait',migration).strip()==b'0')
++        docker('create','--name',app,*flags,tag);made.append(app)
++        docker('start',app)
++        url=endpoint()
++        for _ in range(60):
++            try:
++                if request('GET','/readyz')[0]==200:break
++            except (OSError,urllib.error.URLError):pass
++            time.sleep(1)
++        else:raise ValueError('runtime readiness')
++        m.require(request('GET','/livez')[0]==200)
++        # Runtime process and migration command both used the same checked image.
++        docker('restart',app)
++        url=endpoint()
++        for _ in range(60):
++            try:
++                if request('GET','/readyz')[0]==200:break
++            except (OSError,urllib.error.URLError):pass
++            time.sleep(1)
++        else:raise ValueError('runtime restart')
++        result={'service':service,'digest':layout['digest'],'archiveSha256':layout['archiveSha256'],
++                'configDigest':reader['configDigest'],'passed':True,'readOnly':True,'capDrop':'ALL','network':'internal'}
++    finally:
++        for name in reversed(made):docker('rm','--force','--volumes',name)
++        if net:docker('network','rm',network)
++        if imported:docker('image','rm',tag)
++        Path('.oci/runtime.tar').unlink(missing_ok=True)
++    (m.PUBLIC/'runtime.json').write_text(json.dumps(result,sort_keys=True)+'\n')
++
++if __name__=='__main__':
++    try:check()
++    except Exception:
++        print('Checked OCI runtime failed; no publication permitted.')
++        raise SystemExit(1)
+diff --git a/ci/github/source-identity.py b/ci/github/source-identity.py
+new file mode 100644
+index 0000000..91351f7
+--- /dev/null
++++ b/ci/github/source-identity.py
+@@ -0,0 +1,10 @@
++"""Bind the shared source scan to the exact CI source/run/attempt."""
++import importlib.util
++from pathlib import Path
++spec=importlib.util.spec_from_file_location('release',Path(__file__).with_name('release.py'))
++m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
++repo,commit,run_id,attempt=m.identity()
++scan=m.PUBLIC/'source-scan.json'
++m.require(m.load(scan)['pass'] is True)
++(m.PUBLIC/'source-identity.json').write_text(m.json.dumps({'repository':repo,'sourceCommit':commit,'runId':run_id,
++    'runAttempt':attempt,'sourceScanSha256':m.sha(scan.read_bytes())},sort_keys=True)+'\n')
+diff --git a/ci/github/test.sh b/ci/github/test.sh
+index 353b237..2ab1ce0 100644
+--- a/ci/github/test.sh
++++ b/ci/github/test.sh
+@@ -31,3 +31,6 @@ else
+   (cd tools/bootstrap; CGO_ENABLED=0 go test -c -o ../../.build/bootstrap-test .)
+ fi
+ if test -f ci/github/release_test.py; then python3 -I ci/github/release_test.py; fi
++
++python3 -I ci/github/order-release_test.py
++python3 -I ci/github/fixtures/m0/release_test.py
+diff --git a/cmd/order-server/main.go b/cmd/order-server/main.go
+index 11185be..2ccc822 100644
+--- a/cmd/order-server/main.go
++++ b/cmd/order-server/main.go
+@@ -17,6 +17,10 @@ import (
+ 	"gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres"
+ )
+ 
++// OCI build stamps preserve source identity for image scanning.
++var buildCommit = "unknown"
++var version = "0.0.0-dev"
++
+ func main() { os.Exit(run(os.Args[1:])) }
+ func run(args []string) int {
+ 	if len(args) > 1 || (len(args) == 1 && args[0] != "migrate") {
+@@ -29,6 +33,7 @@ func run(args []string) int {
+ 		return 1
+ 	}
+ 	logger = slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: cfg.LogLevel}))
++	logger.Info("Order process starting", "build_version", version, "build_commit", buildCommit)
+ 	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
+ 	defer stop()
+ 	store, err := orderpostgres.Open(ctx, cfg.DatabaseURL)
+diff --git a/docs/order-image-ci.md b/docs/order-image-ci.md
+new file mode 100644
+index 0000000..423e0d9
+--- /dev/null
++++ b/docs/order-image-ci.md
+@@ -0,0 +1,74 @@
++# Order B2: dedicated image and release producer
++
++Order uses Dockerfile.order, /order-server (including its migrate subcommand),
++linux/amd64 and the same pinned builder/runtime bases as Account. Account's
++Dockerfile and v1 image/tag/artifact identities remain unchanged. Order SQL is
++embedded by the existing B1 implementation. No Account migration files are copied
++into the Order image.
++
++The image matrix is fixed to backend/order with fail-fast=false. Each job has its
++own checkout, OCI archive and reports under .images/<service>. A single shared
++source scan is bound to repository/commit/run/attempt and checksum. ci-result
++requires both complete artifacts, distinct image/config/archive identities and
++matching source checksums. Publication also depends on this aggregate gate.
++
++Runtime validation converts the validated OCI into Docker transport without a
++rebuild, checks the loaded config ID, and runs migration, liveness/readiness and
++restart against a newly created PostgreSQL fixture on an internal Docker network.
++App containers run read-only, UID/GID 10001, cap-drop ALL and no-new-privileges.
++Only randomly named resources created by this invocation are removed, including
++the fixture's new anonymous volume. Existing databases and volumes are not used.
++The import is only runtime transport: publication uses the original checked OCI
++archive and requires its checksum again. Scan and CycloneDX SBOM use that same OCI.
++
++Order release schema is core-platform/github-release/v2 with service=order,
++source repository backend-app and image backend-app-order. Release tags are
++ gha-order-<sha>-<run>-<attempt>; artifacts are checked-image-order-<attempt> and
++published-evidence-order-<attempt>. Release asset names are unchanged within the
++separate release. Release creation does not overwrite/reuse an existing release;
++a collision fails. A partial two-service publication remains a failure and M0
++requires both canonical published records. Service concurrency groups serialize
++publication across runs without canceling either service.
++
++Protected main push, ENABLE_GHCR_PUBLISH, ghcr-publish approval, and the existing
++contents/packages permissions still guard publication. Proposal keeps the existing
++manifest-update environment/token; Order targets only environments/local/order.yaml
++on github/order-* and opens a PR. Missing Order values fail closed until M1 provides
++them. No enable flag is changed. This task does not create credentials, publish a
++real image, merge, dispatch publication or deploy.
++
++The unchanged M0 consumer and synthetic fixtures are vendored under
++ci/github/fixtures/m0 with exact commit and raw SHA-256 inventory in SOURCE.json.
++They are executable test inputs, not production imports. Tests execute producer
++record/publish logic using synthetic local bytes and mocked external transport,
++then validate generated v2 records with the actual fixed consumer. The consumer's
++own negative suite covers matrix omissions, canonical ZIP identity, registry/config,
++peer archive, moved tags, source/main/run and checksum spoofing. Synthetic success
++does not claim GHCR publication or deployed AC-3.
++
++## Independent verification
++
++Use Go 1.27.1 and Docker on the local Unix socket. Run bash ci/github/test.sh,
++go vet ./..., go test -race -count=1 ./..., and build both commands. Pull only the
++pinned PostgreSQL image, then run ORDER_DISPOSABLE_TEST=1 go test -race -count=1 ./...
++for B1 HTTP/DB persistence and Account regression. Optional Collector/kind tests
++remain separate. The OCI stage is bash ci/github/oci.sh for each RELEASE_SERVICE
++with the normal GitHub identity variables, compiled .security validators and the
++same .validation source-scan/identity pair. Use separate clean source directories
++for the two services. No existing .oci/layout or publish-layout is reused.
++
++## Design choices and limits
++
++A single image with startup arguments was rejected by the adopted design. Separate
++repositories would exceed scope. A transport conversion was chosen over rebuilding
++an image for runtime tests; loaded config equality and independent OCI reader checks
++bind the test to checked bytes. The full checked artifacts are downloaded once more
++by ci-result to reject an absent member even if a matrix definition is accidentally
++reduced; this adds network/storage cost.
++
++Deployment impact is none for this backend-only diff under the inspected fixed
++GitOps configuration: workloads track application-manifest main and values pin image
++digests; no registry tag updater was found. Publication can create a separate
++manifest PR after approval. Merging that later PR can cause automatic Argo sync.
++Actual cluster state and out-of-repository automation are not observed here. AC-3,
++Deployment Ready and aggregate Issue Completion remain Manager/later-stage gates.
+diff --git a/tools/oci-input/cmd/oci-runtime-export/main.go b/tools/oci-input/cmd/oci-runtime-export/main.go
+new file mode 100644
+index 0000000..8d6064e
+--- /dev/null
++++ b/tools/oci-input/cmd/oci-runtime-export/main.go
+@@ -0,0 +1,50 @@
++// Convert the validated image to Docker transport without changing config/layers.
++package main
++
++import (
++	"fmt"
++	"github.com/google/go-containerregistry/pkg/name"
++	"github.com/google/go-containerregistry/pkg/v1/layout"
++	"github.com/google/go-containerregistry/pkg/v1/tarball"
++	"github.com/google/go-containerregistry/pkg/v1/validate"
++	"os"
++)
++
++func check() error {
++	if len(os.Args) != 5 {
++		return fmt.Errorf("arguments")
++	}
++	idx, err := layout.ImageIndexFromPath(os.Args[1])
++	if err != nil {
++		return err
++	}
++	manifest, err := idx.IndexManifest()
++	if err != nil {
++		return err
++	}
++	if len(manifest.Manifests) != 1 || !manifest.Manifests[0].MediaType.IsImage() {
++		return fmt.Errorf("manifest")
++	}
++	img, err := idx.Image(manifest.Manifests[0].Digest)
++	if err != nil {
++		return err
++	}
++	digest, err := img.Digest()
++	if err != nil || digest.String() != os.Args[2] {
++		return fmt.Errorf("digest")
++	}
++	if err = validate.Image(img); err != nil {
++		return err
++	}
++	ref, err := name.NewTag(os.Args[4], name.StrictValidation)
++	if err != nil {
++		return err
++	}
++	return tarball.WriteToFile(os.Args[3], ref, img)
++}
++func main() {
++	if check() != nil {
++		fmt.Fprintln(os.Stderr, "OCI runtime transport refused")
++		os.Exit(1)
++	}
++}
+diff --git a/tools/oci-input/cmd/oci-runtime-export/main_test.go b/tools/oci-input/cmd/oci-runtime-export/main_test.go
+new file mode 100644
+index 0000000..28a1c32
+--- /dev/null
++++ b/tools/oci-input/cmd/oci-runtime-export/main_test.go
+@@ -0,0 +1,15 @@
++package main
++
++import (
++	"github.com/google/go-containerregistry/pkg/name"
++	"testing"
++)
++
++func TestDisposableTransportTag(t *testing.T) {
++	if _, err := name.NewTag("docker.io/local/order-b2-synthetic:checked", name.StrictValidation); err != nil {
++		t.Fatal(err)
++	}
++	if _, err := name.NewTag("local/order-b2-synthetic:checked", name.StrictValidation); err == nil {
++		t.Fatal("missing registry accepted")
++	}
++}
