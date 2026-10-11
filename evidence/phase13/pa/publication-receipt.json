@@ -1,0 +1,126 @@
+{
+  "schema_version": "1.0",
+  "document_type": "publication_receipt",
+  "manifest_sha256": "58fecc0ada5f48c2e8a233bbd2b8ad82433de261350006a7781a5f45fdceb7c4",
+  "github_state": "published",
+  "artifacts": [
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+        "path": "evidence/phase13/pa/assignment-requirements.json",
+        "size": 2567,
+        "sha256": "7f145ee60b28e14828cf775513747d3e00ee77f3976b90903304e487ba85660c"
+      },
+      "representation": "edited_derivative",
+      "format": "json",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-PA-IMPLEMENTATION-01"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+        "path": "evidence/phase13/pa/fixture-consumption-receipt.json",
+        "size": 3591,
+        "sha256": "0d0267237ab2f6cb4f5511a3df7323a684e0122a34593ff5c93a3e1c4c6ae538"
+      },
+      "representation": "original",
+      "format": "json",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-PA-IMPLEMENTATION-01"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+        "path": "evidence/phase13/pa/handoff.json",
+        "size": 8235,
+        "sha256": "abd9770e562943f4e2ed847b5889bfa15d43419f545a70b07f9cc5875ea391d4"
+      },
+      "representation": "edited_derivative",
+      "format": "handoff-v2",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-PA-IMPLEMENTATION-01"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+        "path": "evidence/phase13/pa/implementation-report.json",
+        "size": 9117,
+        "sha256": "b66153dd07d4dd587a996f0c1a4a0165db19e67a91179fe9083303ddbe0e7701"
+      },
+      "representation": "edited_derivative",
+      "format": "json",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-PA-IMPLEMENTATION-01"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+        "path": "evidence/phase13/pa/research/assignment-requirements.json",
+        "size": 2204,
+        "sha256": "de34bda253a2ca7df0d17a039d4d710c450c984e2226b60920bae5cda3017760"
+      },
+      "representation": "edited_derivative",
+      "format": "json",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-RESEARCH-01"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+        "path": "evidence/phase13/pa/research/design.md",
+        "size": 36689,
+        "sha256": "3bc5071ca6ab336d17ef10fde5c5e7b6b931bc3d16d4850dca946e5766caee46"
+      },
+      "representation": "edited_derivative",
+      "format": "text",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-RESEARCH-01"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+        "path": "evidence/phase13/pa/research/handoff.json",
+        "size": 7829,
+        "sha256": "ba69683794ee6ccea5f29ba277c1a8f13adcfd9308b17fe8f86ad6e65c2398af"
+      },
+      "representation": "edited_derivative",
+      "format": "handoff-v2",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-RESEARCH-01"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+        "path": "evidence/phase13/pa/research/source-inventory.json",
+        "size": 6159,
+        "sha256": "3b70f0a86ad864e6d8682f312a66aabe1036ffa09e3243afc8480806961dec6a"
+      },
+      "representation": "edited_derivative",
+      "format": "json",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-RESEARCH-01"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+        "path": "evidence/phase13/pa/research/verification-observations.json",
+        "size": 1494,
+        "sha256": "8be71756b79529a3317968ff6ec04d79ec47579e3e2f4a33f37208dd139d13b1"
+      },
+      "representation": "edited_derivative",
+      "format": "json",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-RESEARCH-01"
+    }
+  ],
+  "observation": "Nine explicitly approved public candidates fetched from fresh isolated Git at fda74c8094f16adb506163200cda3ca0c23917f2; all 77885 raw bytes matched sealed size/SHA-256 and full Handoff/upstream bindings passed. Five Research copies retain their published bytes. Private originals excluded. This is publication observation only, not Consumer authorization."
+}
