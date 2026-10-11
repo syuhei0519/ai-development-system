@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "document_type": "independent_test_findings",
+  "head": "50cf6aa52f64c45961a354281169064cd2c75e20",
+  "resolved": [
+    {
+      "id": "F1",
+      "result": "Unchanged prior case passes; extra source removal/readdition/rename/overlap checks pass."
+    },
+    {
+      "id": "F2",
+      "result": "Unchanged real-process partial raw-write case passes; added stage/snapshot crash and fsync/link/rename errors recover; correct final objects unchanged."
+    },
+    {
+      "id": "F3",
+      "result": "Both unchanged ancestor cases pass; added 27 type/level/path combinations reject unsafe ancestors and three absent boundaries remain empty."
+    }
+  ],
+  "findings": [
+    {
+      "id": "F4",
+      "severity": "low",
+      "ac_ids": [
+        "PB-6"
+      ],
+      "location": "contracts/README.md:76",
+      "title": "Current contract overview still describes P-B asynchronous collection as unimplemented",
+      "expected": "Current contract overview distinguishes implemented P-B collection/state from unimplemented P-C/P-D, consistently with line 41 and README.",
+      "actual": "Line 76 says 非同期収集・context生成・ack・周期実行・実Agent利用実証は後続P-B/C/Dであり未実装。 It does not qualify this as a historical P-A snapshot; line 41 and README describe P-B as available.",
+      "impact": "Documentation scope ambiguity for consumers. No runtime malfunction, data loss or unauthorized execution observed. PB-6 explicitly requires docs/README/workflow alignment, so this strict acceptance check fails.",
+      "reproduce": "PB_HEAD=/path/to/head PB_PRIOR_CASES=/path/to/bundle/input/upstream/independent_cases.py python /path/to/bundle/extra_cases.py Extra.test_documented_pb_scope_is_consistent",
+      "required_action": "Implementation owner should clarify the P-A-only/historical scope or update the current status line; independent verification and Review remain separate."
+    }
+  ],
+  "legacy_corruption": {
+    "result": "Verified fail-closed",
+    "behavior": "Already-corrupted final object is preserved; read_object and normal retry reject; previous state remains byte-identical. New partial writes use private pending directories and retry succeeds.",
+    "manual_boundary": "Explicit Manager repair is required by contracts/knowledge-collection.md: old corruption is not overwritten automatically. No repair command, automatic migration or operational repair run was performed.",
+    "assessment": "No PB-2/PB-3 contradiction observed for the new writer within trusted POSIX storage: retaining damaged historical evidence and requiring explicit repair is preferable to silently overwriting it. Physical power-loss behavior and actual legacy-store manual recovery remain unverified."
+  }
+}

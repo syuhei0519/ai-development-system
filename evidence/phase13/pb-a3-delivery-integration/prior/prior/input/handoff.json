@@ -1,0 +1,267 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "acceptance_criteria": [
+      {
+        "id": "PB-1",
+        "source": "assignment-requirements.json",
+        "verbatim": "KnowledgeEvent、source registry、KnowledgeCollectionStateの閉じた版付き契約を実装する。event identityは固定repo/commit/path/source SHA256/candidate ID/event kindから決まり、時刻・配送試行・実task IDに依存しない。同identity別payloadを拒否し、類似内容だけで根拠を失う重複排除をしない。"
+      },
+      {
+        "id": "PB-2",
+        "source": "assignment-requirements.json",
+        "verbatim": "許可済み固定Git snapshotのinboxを全件列挙し全source bytesと必要依存を検証するscan/reconcileを実装する。partial readや改変時にcursorを先行させず、registry変更・履歴欠落・force push・旧cursor非ancestorでは全照合する。過去event消失を成功扱いせず隔離し、raw historyを保持する。"
+      },
+      {
+        "id": "PB-3",
+        "source": "assignment-requirements.json",
+        "verbatim": "single Manager writer、previous-state digest CAS、atomic保存、durable staging、scan/event/cursorのtransactionを実装する。pending/verified/reserved/dispatching/started/output_received/validated/commit_pending/committed/context_available、blocked/quarantined/dispatch_unknown/terminalを区別し、不正遷移・stale writer・overlapを拒否する。"
+      },
+      {
+        "id": "PB-4",
+        "source": "assignment-requirements.json",
+        "verbatim": "既存retry契約と連携しdispatch/execution/delivery各3上限・過去履歴・RETRY_LIMIT_REACHEDを保持する。開始不明をlease期限だけで再起動せず、取得済みoutputはdeliveryから再開し、Git確定後state更新前crashは固定commit検証で追認する。再開承認をreceiptやreplayから作らず、無限再試行を拒否する。"
+      },
+      {
+        "id": "PB-5",
+        "source": "assignment-requirements.json",
+        "verbatim": "collector自体はLLM/API/専門Agentを起動せず、scan/plan/record/reconcile/replayの機械的CLIとsynthetic fixturesを提供する。Knowledge失敗で開発gateを止めない。private stateとpublic-safe観測を分離し、runtime ID/認可/秘密/内部ログをpublic出力しない。scheduleは登録・有効化しない。"
+      },
+      {
+        "id": "PB-6",
+        "source": "assignment-requirements.json",
+        "verbatim": "正常系、重複・衝突、scan中断、source変更、CAS競合、各crash点、poison event、no-op、retry上限、未承認再開、legacy互換の回帰を実装し全128既存テストを維持する。schema/CLI/docs/README/workflow/templatesを整合させ、独立Testが再現できる固定head・自己検証根拠・Handoff v2を提出する。P-C/P-Dや定期実運用完了を主張しない。"
+      }
+    ],
+    "id": "SYSTEM-PHASE13-PB",
+    "source": "assignment-requirements.json",
+    "title": "System Phase 1-3 P-B asynchronous collection and durable inbox/state"
+  },
+  "assignment": {
+    "scope": "system/phase1-3/P-B",
+    "ac_ids": [
+      "PB-1",
+      "PB-2",
+      "PB-3",
+      "PB-4",
+      "PB-5",
+      "PB-6"
+    ],
+    "completion_criteria": [
+      "全担当の独立検証・再現根拠・不合格と未実施の明示。",
+      "担当外の P-C/P-D、実 Knowledge 運用や製品 AC を達成としない。"
+    ]
+  },
+  "role": "test",
+  "task_id": "PUBLIC-PHASE13-PB-TEST-02",
+  "attempt": 2,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "PUBLIC-PHASE13-PB-TEST-01",
+      "attempt": 1,
+      "handoff_locator": "input/upstream/handoff.json",
+      "revision": "sha256:06ed1cb4e81c3a3565a1f32de4728474b349e1acfac1a3927646afd56774e853",
+      "relationship": "retry_of"
+    },
+    {
+      "role": "implementation",
+      "task_id": "PUBLIC-PHASE13-PB-IMPLEMENTATION-02",
+      "attempt": 2,
+      "handoff_locator": "input/handoff.json",
+      "revision": "sha256:a05cc878489338ec1699d637c0d3164304ba50e4fc39d0480747f6d23549c63c",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "failed",
+  "summary": "Independent P-B Test attempt 2 completed verification. F1/F2/F3 repairs pass unchanged probes; 178 head regressions and 128 base regressions pass. F4 low-severity current contract scope inconsistency fails PB-6. No product AC, Review or readiness approval is claimed.",
+  "artifacts": [
+    {
+      "id": "A1",
+      "kind": "test-report",
+      "locator": "verification-summary.json",
+      "revision": "sha256:fe19efba995739dd00c04ddf8c058ec3c4dcc85cba8b5857fb9e2f54247d8d35",
+      "summary": "Independent test evidence: verification-summary.json"
+    },
+    {
+      "id": "A2",
+      "kind": "test-report",
+      "locator": "findings.json",
+      "revision": "sha256:93bb3597717adcb50e74c92662c75ad8340df0dfc83f2ca1214e48b9bbf7d4e1",
+      "summary": "Independent test evidence: findings.json"
+    },
+    {
+      "id": "A3",
+      "kind": "test-report",
+      "locator": "cli-schema-observation.json",
+      "revision": "sha256:a49cf8c1f4d2077ccee8df4a86a77ff0a0aa25819bb8a30fe5fa8fb3345e4784",
+      "summary": "Independent test evidence: cli-schema-observation.json"
+    },
+    {
+      "id": "A4",
+      "kind": "test-report",
+      "locator": "live-observation.json",
+      "revision": "sha256:fe35492815c8763a23ce579f297e881c408bcef6d98bb1936063e9cf240e0696",
+      "summary": "Independent test evidence: live-observation.json"
+    },
+    {
+      "id": "A5",
+      "kind": "test-report",
+      "locator": "integration-observation.json",
+      "revision": "sha256:201b12906581553bf88ada7f62830e0d141b18bd4018db4e595bc7a97e36ee12",
+      "summary": "Independent test evidence: integration-observation.json"
+    },
+    {
+      "id": "A6",
+      "kind": "document",
+      "locator": "extra_cases.py",
+      "revision": "sha256:2a799af77737038c9014fcdb8923814fb9e248d906850cc4a274259029e14c6a",
+      "summary": "Independent test evidence: extra_cases.py"
+    },
+    {
+      "id": "A7",
+      "kind": "document",
+      "locator": "live_fixture.py",
+      "revision": "sha256:f92d296b6ec1f6cc229f2930fa66aac788cb095fe56876d88d3c5f9d0ef727bf",
+      "summary": "Independent test evidence: live_fixture.py"
+    },
+    {
+      "id": "A8",
+      "kind": "document",
+      "locator": "reproduce.txt",
+      "revision": "sha256:71e81d426d69b83b1e03a4ee072aeb11e130a48a01b8b7895ec4046867d4b6a4",
+      "summary": "Independent test evidence: reproduce.txt"
+    },
+    {
+      "id": "A9",
+      "kind": "test-report",
+      "locator": "assignment-requirements.json",
+      "revision": "sha256:665bef183d7dc0e38edeb96f09835ff6aa49f68105b8952e9d3d614734d1e803",
+      "summary": "Independent test evidence: assignment-requirements.json"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E1",
+      "claim": "Independent functional/negative verification for PB-1 through PB-5; PB-6 docs failure reported separately.",
+      "artifact_ids": [
+        "A1",
+        "A6"
+      ],
+      "locator": "verification-summary.json",
+      "observation": "Unchanged prior suite 21/21 at target; before 3 failures+1 error; head 178/178; base 128/128; additional 14/15, only F4 fails."
+    },
+    {
+      "id": "E2",
+      "claim": "Schema, CLI, fixed HTTPS and revision/CI observations independently collected.",
+      "artifact_ids": [
+        "A3",
+        "A4",
+        "A5",
+        "A7",
+        "A8"
+      ],
+      "locator": "cli-schema-observation.json",
+      "observation": "19 schema checks, six CLI commands, scan/reconcile/plan/replay/reserve; CI actual checkout differs push head vs PR test-merge, both 178 pass."
+    },
+    {
+      "id": "E3",
+      "claim": "PB-6 documentation consistency is not met.",
+      "artifact_ids": [
+        "A2",
+        "A6"
+      ],
+      "locator": "findings.json#F4",
+      "observation": "contracts/README.md:76 calls P-B collection unimplemented; current line 41 and README describe implemented P-B. Low severity; no runtime failure observed."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "PB-1",
+      "disposition": "covered",
+      "scope": "covered within independent Test scope",
+      "artifact_ids": [
+        "A1",
+        "A6"
+      ],
+      "evidence_ids": [
+        "E1",
+        "E2"
+      ]
+    },
+    {
+      "ac_id": "PB-2",
+      "disposition": "covered",
+      "scope": "covered within independent Test scope",
+      "artifact_ids": [
+        "A1",
+        "A6"
+      ],
+      "evidence_ids": [
+        "E1",
+        "E2"
+      ]
+    },
+    {
+      "ac_id": "PB-3",
+      "disposition": "covered",
+      "scope": "covered within independent Test scope",
+      "artifact_ids": [
+        "A1",
+        "A6"
+      ],
+      "evidence_ids": [
+        "E1",
+        "E2"
+      ]
+    },
+    {
+      "ac_id": "PB-4",
+      "disposition": "covered",
+      "scope": "covered within independent Test scope",
+      "artifact_ids": [
+        "A1",
+        "A6"
+      ],
+      "evidence_ids": [
+        "E1",
+        "E2"
+      ]
+    },
+    {
+      "ac_id": "PB-5",
+      "disposition": "covered",
+      "scope": "covered within independent Test scope",
+      "artifact_ids": [
+        "A1",
+        "A6"
+      ],
+      "evidence_ids": [
+        "E1",
+        "E2"
+      ]
+    },
+    {
+      "ac_id": "PB-6",
+      "disposition": "not_met",
+      "scope": "not_met: F4 documentation inconsistency; runtime/schema/CLI/regression checks pass",
+      "artifact_ids": [
+        "A1",
+        "A2",
+        "A3"
+      ],
+      "evidence_ids": [
+        "E1",
+        "E2",
+        "E3"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [
+    "F4: contracts/README.md:76 conflicts with current implemented P-B scope; PB-6 documentation consistency is not met."
+  ],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}
