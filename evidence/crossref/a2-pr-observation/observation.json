@@ -1,0 +1,66 @@
+{
+  "record_type": "draft_pr_integration_observation",
+  "scope": "system/artifact-delivery/cross-reference",
+  "attempt": 2,
+  "pr": {
+    "number": 7,
+    "url": "https://github.com/syuhei0519/ai-development-system/pull/7",
+    "state": "open",
+    "draft": true,
+    "head_branch": "feat/artifact-delivery-crossrefs-a2",
+    "head": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+    "base_branch": "main",
+    "base": "b1e606544174481b7b6904f811e857f80978c287",
+    "mergeable": true,
+    "mergeable_state": "clean"
+  },
+  "dependency": {
+    "pa_head": "5345303db8c5208859ed741b98f119882de7a973",
+    "pa_tree": "10a4b8ccf7a8d10d991bef2cbe714afc35709b48",
+    "new_main_tree": "10a4b8ccf7a8d10d991bef2cbe714afc35709b48",
+    "new_main_parents": [
+      "df400018057735b7cb6a9c6ea4619508f0e6ba3a",
+      "5345303db8c5208859ed741b98f119882de7a973"
+    ],
+    "merge_base": "5345303db8c5208859ed741b98f119882de7a973",
+    "tree_equal": true
+  },
+  "test_merge": {
+    "commit": "fe410be606c9b22bd466c78b10728fff3e4723b6",
+    "parents": [
+      "b1e606544174481b7b6904f811e857f80978c287",
+      "4b4e9c249451881f1e5eef82efb3a3b111cacbdb"
+    ],
+    "tree": "f2d0532db12b08d86b44e882742cda2dbf33a9e0",
+    "head_tree": "f2d0532db12b08d86b44e882742cda2dbf33a9e0",
+    "tree_equal": true,
+    "local_merge_tree_exit_code": 0,
+    "github_ref": "refs/pull/7/merge"
+  },
+  "ci": {
+    "event": "pull_request",
+    "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38111698373",
+    "job_url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38111698373/job/114388434723",
+    "head_sha": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+    "checkout_sha": "fe410be606c9b22bd466c78b10728fff3e4723b6",
+    "status": "completed",
+    "conclusion": "success",
+    "job": "validate",
+    "tests": 173,
+    "completed_at": "2026-10-11T04:29:00Z",
+    "checkout_evidence": "Authorized GitHub connector job logs show checkout of refs/remotes/pull/7/merge and git log -1 resolving to the recorded test-merge SHA; 173 tests observed. Raw logs excluded.",
+    "log_access": "CLI run-log download was forbidden; separate authorized GitHub connector read succeeded. This does not establish CLI log-route recovery."
+  },
+  "changes": "Created one Draft PR after checking all existing PRs for the same purpose/head; no rebase or code/head update. This is a new supplemental record; existing published delivery payload/records and prior seals unchanged.",
+  "source_delivery": {
+    "payload_commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+    "records_commit": "e469292b1811a4a08d3e182884fde5ec20001f76"
+  },
+  "boundaries": [
+    "Independent Test remains a separate fixed-head evaluation; its completion is not asserted here.",
+    "Independent Review, current merge-readiness/permissions and Manager final gates remain separate.",
+    "No main push, merge, auto-merge, application execution or deployment.",
+    "No private runtime identifiers, authorization bytes/pins or raw logs in this record."
+  ],
+  "authority_granted": false
+}
