@@ -1,0 +1,14 @@
+{
+  "document_type": "knowledge_candidates",
+  "publication_status": "pending_manager_review",
+  "candidates": [
+    {
+      "id": "K-DEPLOY-SOURCE",
+      "domain": "GitOps deployment impact",
+      "summary": "A backend image producer change alone does not change a digest-pinned workload; inspect the full trusted Application chart before classifying automatic deployment impact. Candidate only; not adopted Knowledge.",
+      "evidence": "The fixed workloads chart sources application-manifest main and enables automatic sync; the fixed backend values select an explicit image digest. B2 changes only backend-app. Actual cluster/external automation are unobserved.",
+      "source": "https://github.com/syuhei0519/platform-gitops/tree/b989e29b8addbd6396c5c2b4833b969bc15fc8fa/charts/workloads",
+      "scope": "B2 inspected GitOps source configuration only; not deployed-state evidence or deployment authority."
+    }
+  ]
+}

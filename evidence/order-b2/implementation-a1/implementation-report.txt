@@ -63,3 +63,5 @@ Account checked OCI manifest sha256:016d1b93af5e3458fbb9a96b653fe8e307d767543050
 These are checked CI image digests, not a claim that either new image was published to GHCR or deployed.
 Final task-owned builder was removed; no invocation-owned Order B2 containers or networks remained.
 Canonical fixed-System validate_handoff.py passed shape and local reference validation. This is not business approval. Outgoing fresh structural Delivery validation and publication pins are returned separately after sealing the payload; no Consumer authorization is self-issued.
+
+Delivery candidate 1 structural validation failed because an explicit Helm source template starts with {{ and is not a JSON document. Candidate 1 records are retained unchanged. Delivery candidate 2 uses the canonical complete git-tree-snapshot-v1 source profile for charts/workloads, tied to a genuine pending GitOps impact candidate. No source bytes, mandatory upstream or execution attempt changed; this is a source-tree classification correction, not a count-limit bypass.

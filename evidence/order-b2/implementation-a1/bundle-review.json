@@ -7,7 +7,8 @@
     "No credentials, private authorization/receipt, private originals/hashes, actual Cloud task identifiers or raw internal logs are included.",
     "Synthetic fixtures are explicitly labeled and preserve exact M0 input hashes.",
     "Historical upstream bytes/representations and mandatory typed bindings are retained without rewriting.",
-    "Publication authority was supplied in the task; no new Consumer use authority is issued."
+    "Publication authority was supplied in the task; no new Consumer use authority is issued.",
+    "Failed candidate 1 records are preserved as historical data; active candidate 2 uses a full unmodified Helm source tree and no self-issued Consumer authority."
   ],
   "payload_inventory": [
     {
@@ -56,14 +57,34 @@
       "sha256": "56ad2f1bf66b05d423efc57bd2afeb41bf7869c98df0431ae853f666ddc15ac2"
     },
     {
+      "path": "delivery-attempts.json",
+      "size": 1040,
+      "sha256": "f2610a72469b9e454ee37b7e563c952a5c0dcb838d69d85c217f91b230c3db10"
+    },
+    {
+      "path": "failed-delivery-manifest.json",
+      "size": 88673,
+      "sha256": "cd0431748d9c913c87d75dc08d662df0bffb8e5fd44b13975823e5ccf20608cf"
+    },
+    {
+      "path": "failed-publication-receipt.json",
+      "size": 27816,
+      "sha256": "01973e0aac5549e549a15106aec4e7f912e9b0d83bfc3167dcc15ea0b0ac5c41"
+    },
+    {
       "path": "implementation-report.txt",
-      "size": 13403,
-      "sha256": "546e346d2b45ba77581c6bd0223cf95b75d0a8efee67005010b1d15a4cc0a7dc"
+      "size": 13881,
+      "sha256": "d16453ccf7083f6b28a3c2e394c2b0443d5b9d5cab1ac62e77006fe36e30d211"
     },
     {
       "path": "implementation.patch",
       "size": 116051,
       "sha256": "b937006cb8ff20b4a8cfd241df54e5322db4cc34c132cd4a71dbbfa5f9be459d"
+    },
+    {
+      "path": "knowledge-candidates.json",
+      "size": 928,
+      "sha256": "70e998014ef8396d4986a8f4b0866dc58bfd0b36521ebda7daceb4228262c123"
     },
     {
       "path": "observations.json",

@@ -1,0 +1,20 @@
+{
+  "delivery_attempts": [
+    {
+      "attempt": 1,
+      "result": "failed",
+      "payloadCommit": "4b26d9536d74c6adbde5b3ecbad7ade2cd715f36",
+      "manifestSha256": "cd0431748d9c913c87d75dc08d662df0bffb8e5fd44b13975823e5ccf20608cf",
+      "publicationSha256": "01973e0aac5549e549a15106aec4e7f912e9b0d83bfc3167dcc15ea0b0ac5c41",
+      "reason": "Explicit Helm template blob begins with {{; canonical content parser requires JSON and rejects the non-JSON template. No Consumer authorization was issued and no Consumer success claimed."
+    },
+    {
+      "attempt": 2,
+      "result": "prepared",
+      "reason": "Preserve exact Helm source bytes in the canonical complete source-tree snapshot profile, associated with an actual pending GitOps impact Knowledge candidate. No mandatory upstream removed, no source edited, no artifact count limit avoided. Source tree members are not implicitly interpreted as Handoff/JSON documents."
+    }
+  ],
+  "executionAttempt": 1,
+  "scope": "backend-app#2/B2",
+  "priorB1M0HistoryChanged": false
+}
