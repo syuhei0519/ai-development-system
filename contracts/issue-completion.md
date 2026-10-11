@@ -53,6 +53,9 @@ CLI 自身は image や live 環境へアクセスしない。設定 digest の�
 BlobRef は `id, locator, sha256, size`。locator は **assessment ディレクトリを bundle root とする**
 相対 path。root 外、`..`、remote URL、symlink、特殊ファイル、16 MiB 超は拒否する。
 Handoff artifact の locator のみ従来どおり Handoff ディレクトリ基準。
+歴史的 PR Handoff の Readiness locator にも集約入口で同じ通常ファイル・祖先検査を適用する。
+同じ正当な実体を指す symlink、絶対 path、空要素、`.` / `..`、backslash も受理しない。
+通常の入れ子ディレクトリ内の相対 locator は使用できる。既存 Readiness CLI 自体は変更しない。
 同じ ref ID を異なる path/bytes に使わない。読み取った全ファイルを成功前に再読照合する。
 ローカルの悪意ある writer が検査終了後に変更することまでは防がないので、配送時の pin を保全する。
 
@@ -82,6 +85,14 @@ head/base/target/config/queue、scope/必須 PR/repo/AC/subcheck、deployment re
 2 回目以降は `history.previous_ref`、context の `previous_assessment_sha256`、Manager 最新台帳の
 `--previous-sha256` と実ファイルが一致する必要がある。古い枝への復帰や初回偽装は Manager の最新 pin 管理でも防ぐ。
 全履歴 events は prefix を変更せず追加する。scope/集合/head/配備変更には対応 event を残す。
+必須 subcheck の追加・削除・ID変更・AC対応変更は、前回 assessment の
+verification_results / ac_results と比較し、新規 `required_set_changed` event を要求する。
+前回の ac_measurement に記録された phase・対象member/deployment・環境/workload・method・
+expected_result・producer(owner) と現 required_verifications の差も同様に扱う。
+配列の並べ替え、測定結果・時刻・証拠IDの更新だけは必須集合変更にしない。
+v1 assessment は未測定の定義全文や failure_action を保持していないため、そこから過去の値を
+復元したとは扱わない。Manager はこれらの変更も scope 原本と scope_revision に反映し、
+対応 event を残す。全定義の機械的な過去比較には別途 pin された旧 context が必要である。
 失敗/rollback/revert は証拠付き event が必要。
 
 v1 は保守的に前回 not_achieved を保持し、単なる期限切れや pending 化で unverified へ消さない。

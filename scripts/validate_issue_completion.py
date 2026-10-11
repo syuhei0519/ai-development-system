@@ -50,6 +50,34 @@ def normalize_vector(items):
                   'images': index(value['images'], 'component')} for key, value in result.items()}
 
 
+def verification_requirements_changed(previous, verifications):
+    """Compare the requirement identity/semantics retained by an assessment.
+
+    Result status, evidence IDs, observation times and binding digests are not
+    requirements: a fresh measurement alone must not imply a changed subcheck.
+    Unmeasured definitions and failure_action are not stored in v1 assessments;
+    their changes must also be recorded by the Manager through scope_revision.
+    """
+    if set(index(previous['verification_results'], 'verification_id')) != set(verifications):
+        return True
+    old_ac = {r['ac_id']: set(r['verification_ids']) for r in previous['ac_results']}
+    current_ac = {}
+    for key, v in verifications.items():
+        current_ac.setdefault(v['ac_id'], set()).add(key)
+    if old_ac != current_ac:
+        return True
+    for e in previous['evidence']:
+        if e['kind'] != 'ac_measurement':
+            continue
+        for key in e['verification_ids']:
+            v = verifications[key]
+            if (e['ac_ids'] != [v['ac_id']] or e['producer'] != v['owner'] or
+                    any(e[k] != v[k] for k in ('phase', 'environment_id', 'workload_id', 'method', 'expected_result')) or
+                    any(set(e[k]) != set(v[k]) for k in ('member_ids', 'deployment_ids'))):
+                return True
+    return False
+
+
 class Bundle:
     """Local regular files only. All refs are relative to the assessment directory.
 
@@ -80,12 +108,20 @@ class Bundle:
         self.cache[path] = raw
         return raw
 
-    def ref(self, ref):
-        locator = ref['locator']
+    def locator(self, locator, *, parent=None):
         require(not Path(locator).is_absolute() and '://' not in locator and
                 '\\' not in locator and all(p not in ('', '.', '..') for p in locator.split('/')),
                 'unsafe local locator')
-        path = self.path(self.root / locator)
+        return self.path((self.root if parent is None else Path(parent)) / locator)
+
+    def artifact(self, artifact, handoff_path):
+        path = self.locator(artifact['locator'], parent=Path(handoff_path).parent)
+        raw = self.read(path)
+        require(artifact['revision'] == 'sha256:' + sha(raw), 'Handoff artifact sha256 mismatch')
+        return path
+
+    def ref(self, ref):
+        path = self.locator(ref['locator'])
         raw = self.read(path)
         require(len(raw) == ref['size'] and sha(raw) == ref['sha256'], 'reference size/digest mismatch')
         identity = (path, ref['sha256'], ref['size'])
@@ -208,6 +244,11 @@ def validate_record(data, context, bundle, now, previous=None):
             require(member['merged_at'] is not None and result['gate_checked_at'] is not None, 'historical gate needs merge time')
             merge_time = instant(member['merged_at'])
             require(not validate_readiness(ready, rc, merge_time), 'invalid historical Readiness at actual merge')
+            require(not validate_handoff(handoff), 'invalid PR Handoff v2')
+            artifacts = index(handoff['artifacts'], 'id')
+            require(ready['artifact_id'] in artifacts and
+                    bundle.artifact(artifacts[ready['artifact_id']], hp) == rp,
+                    'PR Handoff must bind evaluated Readiness file')
             require(not readiness_pair(ready, handoff, readiness_bytes=raw, readiness_path=rp, handoff_path=hp), 'invalid PR Readiness/Handoff pair')
             require(ready['merge_readiness']['status'] == 'ready' and ready['issue_integration_scope'] == 'aggregate_required', 'historical aggregate PR not Merge Ready')
             subject = ready['subject']
@@ -374,7 +415,10 @@ def validate_record(data, context, bundle, now, previous=None):
         require(all(instant(e['observed_at']) >= instant(previous['evaluated_at']) for e in additions), 'new event predates previous assessment')
         changed_kinds = {e['kind'] for e in additions}
         old_members = index(previous['member_results'], 'member_id')
-        if set(old_members) != set(results) or not same(previous['acceptance_criteria'], data['acceptance_criteria']) or previous['scope_revision'] != data['scope_revision']:
+        if (set(old_members) != set(results) or
+                not same(previous['acceptance_criteria'], data['acceptance_criteria']) or
+                previous['scope_revision'] != data['scope_revision'] or
+                verification_requirements_changed(previous, verifications)):
             require('required_set_changed' in changed_kinds, 'scope/required set change needs history event')
         if any(old_members[k]['approved_head_sha'] != results[k]['approved_head_sha'] for k in set(old_members) & set(results)):
             require('head_changed' in changed_kinds, 'head change needs history event')
@@ -411,12 +455,7 @@ def validate_handoff_pair(data, handoff, bundle, assessment_path, handoff_path, 
     require(data['artifact_id'] in artifacts, 'Issue Handoff artifact_id missing')
     artifact = artifacts[data['artifact_id']]
     def artifact_path(a):
-        require('://' not in a['locator'] and not Path(a['locator']).is_absolute() and
-                all(p not in ('', '.', '..') for p in a['locator'].split('/')), 'unsafe Handoff locator')
-        target = bundle.path(Path(handoff_path).parent / a['locator'])
-        payload = bundle.read(target)
-        require(a['revision'] == 'sha256:' + sha(payload), 'Handoff artifact sha256 mismatch')
-        return target
+        return bundle.artifact(a, handoff_path)
     require(artifact['kind'] == 'other' and artifact_path(artifact) == bundle.path(assessment_path) and
             bundle.read(assessment_path) == raw and same(parse(raw), data), 'Issue Handoff must bind evaluated file and initial bytes')
     final = handoff.get('final_assessment')

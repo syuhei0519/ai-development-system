@@ -254,6 +254,9 @@ class CompletionTest(unittest.TestCase):
         later='2030-01-03T13:00:00Z'
         self.a['evaluated_at']=later
         self.a['history']['events'][-1]['observed_at']=later
+        # Changing required verification phases is a requirement change, separate
+        # from revalidating the repaired failure. Keep the successful expectation.
+        self.a['history']['events'].append(dict(event_id='changed-checks',kind='required_set_changed',observed_at=later,affected_ids=['app-pre','config-pre','client-pre'],reason=SAMPLE,evidence_refs=self.c['source_refs']))
         for v in self.c['required_verifications']:
             if v['phase']=='premerge':
                 v.update(phase='postdeploy',deployment_ids=['staging'],environment_id='synthetic-staging',workload_id='synthetic-service')
