@@ -132,3 +132,5 @@ Readinessの配送にはartifact_id、Handoff基準のローカルlocator、実�
 Knowledge1.0の型付き配送と入力/出力・source/記事の実体照合を提供する。
 [固定Gitのsynthetic再現手順](examples/knowledge-delivery/README.md)を参照。
 非同期inbox/state、context生成/ack/periodic、実Knowledge/Consumer運用実証はP-B/C/Dの未実施範囲。
+
+Fixed cross-repository delivery and immutable candidate/tree verification use [Delivery 1.2](contracts/cross-reference-delivery.md). [Reproduction instructions](examples/crossref-delivery/README.md) separate record preparation from Manager-authorized consumption.

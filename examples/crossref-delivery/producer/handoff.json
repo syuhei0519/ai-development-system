@@ -1,0 +1,96 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "SYNTHETIC-ISSUE-001",
+    "source": "https://example.invalid/issues/SYNTHETIC-ISSUE-001",
+    "title": "synthetic sample: non-blank label contract",
+    "acceptance_criteria": [
+      {
+        "id": "SYNTHETIC-AC-1",
+        "verbatim": "A label must contain at least one non-whitespace character.",
+        "source": "https://example.invalid/issues/SYNTHETIC-ISSUE-001#ac-1"
+      }
+    ]
+  },
+  "role": "implementation",
+  "task_id": "SYNTHETIC-CROSSREF-PRODUCER",
+  "attempt": 1,
+  "upstream": [],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Synthetic sample; transport self-verification only.",
+  "artifacts": [
+    {
+      "id": "SYNTHETIC-DESIGN",
+      "kind": "knowledge",
+      "locator": "candidates.json",
+      "revision": "sha256:a420dba26496e66149e19081da1de28e2733b406a0578c06fdacdc27ca879e9e",
+      "summary": "Synthetic candidates."
+    },
+    {
+      "id": "SYNTHETIC-COMMIT",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/ai-development-system/commit/512f27626fa63c88c4c94a9a088335d7c5307c9c",
+      "revision": "512f27626fa63c88c4c94a9a088335d7c5307c9c",
+      "summary": "Commit existence only."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "SYNTHETIC-EVIDENCE-1",
+      "claim": "synthetic sample: the design covers the supplied AC in research scope only.",
+      "artifact_ids": [
+        "SYNTHETIC-DESIGN"
+      ],
+      "locator": "candidates.json",
+      "observation": "Synthetic sample; not an actual product result."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "SYNTHETIC-AC-1",
+      "disposition": "covered",
+      "scope": "Research/design scope only: proposed non-blank rule and test cases; implementation acceptance remains unverified.",
+      "artifact_ids": [
+        "SYNTHETIC-DESIGN"
+      ],
+      "evidence_ids": [
+        "SYNTHETIC-EVIDENCE-1"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [
+    {
+      "id": "SYNTHETIC-BLOB",
+      "domain": "synthetic-transport",
+      "summary": "Short synthetic summary.",
+      "evidence_ids": [
+        "SYNTHETIC-EVIDENCE-1"
+      ],
+      "raw_locator": "candidates.json",
+      "publication_safety": "safe_synthetic"
+    },
+    {
+      "id": "SYNTHETIC-TREE",
+      "domain": "synthetic-transport",
+      "summary": "Short synthetic summary.",
+      "evidence_ids": [
+        "SYNTHETIC-EVIDENCE-1"
+      ],
+      "raw_locator": "candidates.json",
+      "publication_safety": "safe_synthetic"
+    }
+  ],
+  "publication": "synthetic_sample",
+  "assignment": {
+    "scope": "Research/design scope only: proposed non-blank rule and test cases; implementation acceptance remains unverified.",
+    "ac_ids": [
+      "SYNTHETIC-AC-1"
+    ],
+    "completion_criteria": [
+      "synthetic sample: cover the assigned AC within the stated role scope and record limitations."
+    ]
+  }
+}

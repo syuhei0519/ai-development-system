@@ -15,9 +15,11 @@ from jsonschema import Draft202012Validator
 try:
     from .validate_handoff import validate as validate_handoff
     from .validate_knowledge import validate as validate_knowledge
+    from .delivery_candidates import verify_candidates, oid as git_oid
 except ImportError:
     from validate_handoff import validate as validate_handoff
     from validate_knowledge import validate as validate_knowledge
+    from delivery_candidates import verify_candidates, oid as git_oid
 
 ROOT = Path(__file__).resolve().parents[1]
 MAX_FILE = 16 * 1024 * 1024
@@ -51,10 +53,10 @@ def parse(raw):
 
 def schema(name, data):
     if name in DELIVERY_SCHEMAS:
-        require(isinstance(data, dict) and data.get('schema_version') in ('1.0', '1.1'),
+        require(isinstance(data, dict) and data.get('schema_version') in ('1.0', '1.1', '1.2'),
                 'unsupported delivery version')
-        if data['schema_version'] == '1.1':
-            name += '-v1.1'
+        if data['schema_version'] != '1.0':
+            name += '-v' + data['schema_version']
     spec = json.loads((ROOT / 'contracts' / f'{name}.schema.json').read_text())
     require(Draft202012Validator(spec).is_valid(data), f'invalid {name} contract')
 
@@ -71,7 +73,8 @@ def check_reference(ref):
     require(re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}', ref['repository']) is not None,
             'only canonical GitHub owner/repository accepted')
     require(re.fullmatch('[0-9a-f]{40}', ref['commit']) is not None, 'fixed commit required')
-    safe_path(ref['path'])
+    if ref.get('object_type') != 'git-commit-object':
+        safe_path(ref['path'])
 
 
 class GitSource:
@@ -97,7 +100,7 @@ class GitSource:
         require(result.returncode == 0, 'Git retrieval failed')
         return result.stdout
 
-    def read(self, ref):
+    def repository(self, ref):
         check_reference(ref)
         key = (ref['repository'], ref['commit'])
         if key not in self.repositories:
@@ -111,7 +114,16 @@ class GitSource:
             require(self.git(directory, 'rev-parse', 'FETCH_HEAD').decode().strip() == ref['commit'],
                     'fetched commit mismatch')
             self.repositories[key] = directory
-        directory = self.repositories[key]
+        return self.repositories[key]
+
+    def read(self, ref):
+        directory = self.repository(ref)
+        if ref.get('object_type') == 'git-commit-object':
+            size = int(self.git(directory, 'cat-file', '-s', ref['commit']))
+            require(size == ref['size'] and size <= MAX_FILE, 'Git commit size mismatch')
+            raw = self.git(directory, 'cat-file', 'commit', ref['commit'])
+            verify_commit_object(ref, raw)
+            return raw
         # Inspect each tree edge. A gitlink or symlink is never followed.
         parts = ref['path'].split('/')
         for index in range(len(parts)):
@@ -128,7 +140,9 @@ class GitSource:
                         'symlink/submodule/non-blob rejected')
         size = int(self.git(directory, 'cat-file', '-s', oid.decode()))
         require(size == ref['size'] and size <= MAX_FILE, 'Git blob size mismatch')
-        return self.git(directory, 'cat-file', 'blob', oid.decode())
+        raw = self.git(directory, 'cat-file', 'blob', oid.decode())
+        require(len(raw) == size and git_oid('blob', raw) == oid.decode(), 'Git blob OID/size mismatch')
+        return raw
 
 
 def read_local(path):
@@ -139,18 +153,100 @@ def read_local(path):
     return raw
 
 
-def verify_handoffs(artifacts, blobs, version='1.0', knowledge_bindings=None):
-    require(version in ('1.0', '1.1'), 'unsupported delivery version')
+def reference_key(ref):
+    # None is a distinct object namespace; no blob path can collide with it.
+    return (ref['repository'], ref['commit'], ref.get('path'))
+
+
+def verify_commit_object(ref, raw):
+    require(ref.get('object_type') == 'git-commit-object' and
+            len(raw) == ref['size'] and digest(raw) == ref['sha256'],
+            'raw commit size/hash mismatch')
+    # Git SHA-1 OID includes the object header, unlike the raw-payload SHA-256.
+    oid = hashlib.sha1(b'commit ' + str(len(raw)).encode('ascii') + b'\0' + raw).hexdigest()
+    require(oid == ref['commit'], 'raw commit OID mismatch')
+
+
+def artifact_slot(artifact):
+    return {'kind':'artifact', 'id':artifact['id']}
+
+
+def upstream_slot(upstream):
+    return {'kind':'upstream', **{k:upstream[k] for k in ('role', 'task_id', 'attempt', 'relationship')}}
+
+
+class SlotResolver:
+    """v1.2: every structural dependency has exactly one explicit outer binding.
+
+    No URL traversal: compare the original locator to a canonical string derived
+    solely from an enumerated, pinned target. Never rewrite the owner document.
+    """
+    def __init__(self, by_ref, blobs, bindings):
+        require(isinstance(bindings, list), 'slot bindings required')
+        self.by_ref, self.blobs = by_ref, blobs
+        self.bindings, self.used = {}, set()
+        for binding in bindings:
+            owner = reference_key(binding['owner'])
+            target = reference_key(binding['target']['reference'])
+            require(owner in by_ref and by_ref[owner]['reference'] == binding['owner'] and
+                    by_ref[owner]['format'] in {'handoff-v2', *KNOWLEDGE_FORMATS},
+                    'slot owner reference/type mismatch')
+            require(target in by_ref and by_ref[target]['reference'] == binding['target']['reference'] and
+                    by_ref[target]['format'] == binding['target']['format'], 'slot target mismatch')
+            identity = (owner, json.dumps(binding['slot'], sort_keys=True))
+            require(identity not in self.bindings, 'duplicate structural slot')
+            self.bindings[identity] = binding
+
+    def bind(self, owner, slot, locator, revision, commit=False):
+        identity = (owner, json.dumps(slot, sort_keys=True))
+        require(identity in self.bindings and identity not in self.used, 'missing or ambiguous slot')
+        binding = self.bindings[identity]
+        require(binding['locator'] == locator and binding['revision'] == revision,
+                'original locator/revision mismatch')
+        ref = binding['target']['reference']
+        target = reference_key(ref)
+        require(ref['object_type'] == ('git-commit-object' if commit else 'git-blob'),
+                'slot object type mismatch')
+        if commit:
+            require(binding['target']['format'] == 'git-commit-object' and
+                    locator == f"https://github.com/{ref['repository']}/commit/{ref['commit']}" and
+                    revision == ref['commit'], 'commit URL/revision mismatch')
+        else:
+            require(revision == 'sha256:' + digest(self.blobs[target]), 'slot digest mismatch')
+            if locator.startswith('https://'):
+                require(locator == f"https://github.com/{ref['repository']}/blob/{ref['commit']}/{ref['path']}",
+                        'blob URL mismatch')
+            else:
+                safe_path(locator)
+                require(target == (owner[0], owner[1], str(PurePosixPath(owner[2]).parent / locator)),
+                        'relative slot snapshot mismatch')
+        self.used.add(identity)
+        return target
+
+    def finish(self):
+        require(self.used == set(self.bindings), 'extra slot binding')
+
+
+def verify_handoffs(artifacts, blobs, version='1.0', knowledge_bindings=None, slot_bindings=None,
+                    candidate_bindings=None, source=None):
+    require(version in ('1.0', '1.1', '1.2'), 'unsupported delivery version')
     formats = {'text', 'json', 'handoff-v2'}
-    if version == '1.1':
+    if version != '1.0':
         formats.update(KNOWLEDGE_FORMATS)
+    if version == '1.2':
+        formats.update(('git-commit-object', 'knowledge-candidates-v1'))
     require(all(a['format'] in formats for a in artifacts), 'unsupported delivery format')
-    by_ref = {(a['reference']['repository'], a['reference']['commit'], a['reference']['path']): a
+    by_ref = {reference_key(a['reference']): a
               for a in artifacts}
     require(len(by_ref) == len(artifacts), 'duplicate artifact path')
     parsed = {}
     for key, item in by_ref.items():
         raw = blobs[key]
+        if item['format'] == 'git-commit-object':
+            require(item['reference'].get('object_type') == 'git-commit-object', 'commit type mismatch')
+            verify_commit_object(item['reference'], raw)
+            continue
+        require(item['reference'].get('object_type', 'git-blob') == 'git-blob', 'blob type mismatch')
         # Inspect content even for text/non-.json names. Only syntax errors in
         # ordinary prose may fall back to text; duplicate keys/non-finite numbers
         # and JSON-looking truncated documents must never reach that fallback.
@@ -169,9 +265,13 @@ def verify_handoffs(artifacts, blobs, version='1.0', knowledge_bindings=None):
             require(not json_required, 'invalid JSON content')
             continue
         require(item['format'] != 'text', 'JSON content must not be typed text')
-        if version == '1.1' and isinstance(parsed[key], dict):
+        if version != '1.0' and isinstance(parsed[key], dict):
             require(parsed[key].get('publication') != 'private_only', 'private document forbidden')
-        if item['format'] in KNOWLEDGE_FORMATS:
+        if item['format'] == 'knowledge-candidates-v1':
+            schema('knowledge-candidates-v1', parsed[key])
+            candidates = parsed[key]['candidates']
+            require(len({c['id'] for c in candidates}) == len(candidates), 'duplicate candidate ID')
+        elif item['format'] in KNOWLEDGE_FORMATS:
             data = parsed[key]
             require(isinstance(data, dict) and
                     data.get('document_type') == KNOWLEDGE_FORMATS[item['format']],
@@ -185,7 +285,10 @@ def verify_handoffs(artifacts, blobs, version='1.0', knowledge_bindings=None):
             # Reserved Handoff identity/coverage fields still identify incomplete
             # documents: deleting one required field must not downgrade the type.
             data = parsed[key]
-            if version == '1.1':
+            if version == '1.2':
+                require(not (set(data) & {'candidates', 'publication_status'}),
+                        'Candidates must use explicit candidate profile')
+            if version != '1.0':
                 require(not (set(data) & {'raw_findings', 'knowledge_references', 'retry_of'} or
                              data.get('role') == 'knowledge' or
                              (isinstance(data.get('document_type'), str) and
@@ -195,11 +298,20 @@ def verify_handoffs(artifacts, blobs, version='1.0', knowledge_bindings=None):
                          ('schema_version' in data and
                           set(data) & {'issue', 'assignment', 'upstream'})),
                     'Handoff must be typed handoff-v2')
+    resolver = SlotResolver(by_ref, blobs, slot_bindings) if version == '1.2' else None
+    identities = set()
     for key, item in by_ref.items():
         if item['format'] != 'handoff-v2':
             continue
         handoff = parsed[key]
-        def bind(locator, revision):
+        if resolver:
+            identity = (handoff['role'], handoff['task_id'])
+            require(identity not in identities, 'duplicate Handoff task identity')
+            identities.add(identity)
+        def bind(locator, revision, slot, commit=False):
+            if resolver:
+                return resolver.bind(key, slot, locator, revision, commit)
+
             safe_path(locator)
             path = str(PurePosixPath(key[2]).parent / locator)
             target = (key[0], key[1], path)
@@ -207,20 +319,25 @@ def verify_handoffs(artifacts, blobs, version='1.0', knowledge_bindings=None):
             require(revision == 'sha256:' + digest(blobs[target]), 'Handoff binding digest mismatch')
             return target
         for artifact in handoff['artifacts']:
-            bind(artifact['locator'], artifact['revision'])
+            bind(artifact['locator'], artifact['revision'], artifact_slot(artifact), artifact['kind'] == 'commit')
         for upstream in handoff['upstream']:
-            target = bind(upstream['handoff_locator'], upstream['revision'])
+            target = bind(upstream['handoff_locator'], upstream['revision'], upstream_slot(upstream))
             require(by_ref[target]['format'] == 'handoff-v2', 'upstream must be Handoff')
             previous = parsed[target]
             require(all(previous[k] == upstream[k] for k in ('role', 'task_id', 'attempt')),
                     'upstream identity mismatch')
             if upstream['relationship'] == 'retry_of':
                 require(previous['issue'] == handoff['issue'], 'retry Issue mismatch')
-    if version == '1.1':
-        verify_knowledge_bindings(by_ref, parsed, blobs, knowledge_bindings)
+    if version != '1.0':
+        verify_knowledge_bindings(by_ref, parsed, blobs, knowledge_bindings, resolver)
+
+    if resolver:
+        resolver.finish()
+        return verify_candidates(by_ref, parsed, blobs, candidate_bindings or [], source)
+    return {}
 
 
-def verify_knowledge_bindings(by_ref, parsed, blobs, bindings):
+def verify_knowledge_bindings(by_ref, parsed, blobs, bindings, resolver=None):
     """Bind immutable input/output snapshots and every declared Knowledge dependency.
 
     Locators are safe relative paths in the containing document's repo/commit;
@@ -229,12 +346,14 @@ def verify_knowledge_bindings(by_ref, parsed, blobs, bindings):
     require(isinstance(bindings, list), 'Knowledge bindings required')
 
     def reference(ref, kind):
-        key = (ref['repository'], ref['commit'], ref['path'])
+        key = reference_key(ref)
         require(key in by_ref and by_ref[key]['reference'] == ref and
                 by_ref[key]['format'] == kind, 'Knowledge binding reference mismatch')
         return key
 
-    def bind(owner, locator, revision):
+    def bind(owner, locator, revision, slot):
+        if resolver:
+            return resolver.bind(owner, slot, locator, revision)
         safe_path(locator)
         target = (owner[0], owner[1], str(PurePosixPath(owner[2]).parent / locator))
         require(target in by_ref, 'Knowledge referenced bytes missing from bundle')
@@ -269,18 +388,21 @@ def verify_knowledge_bindings(by_ref, parsed, blobs, bindings):
             require(identity not in identities, 'duplicate Knowledge task identity')
             identities.add(identity)
         for finding in data.get('raw_findings', []):
-            for source in finding['sources']:
-                bind(key, source['locator'], source['revision'])
+            for index, source in enumerate(finding['sources']):
+                bind(key, source['locator'], source['revision'],
+                     {'kind':'finding-source', 'finding_id':finding['id'], 'source_index':index})
         for article in data['knowledge_references']:
-            article_bytes(bind(key, article['locator'], article['revision']))
-            for source in article['sources']:
-                bind(key, source['locator'], source['revision'])
+            article_bytes(bind(key, article['locator'], article['revision'], {'kind':'knowledge-reference', 'id':article['id']}))
+            for index, source in enumerate(article['sources']):
+                bind(key, source['locator'], source['revision'],
+                     {'kind':'knowledge-source', 'id':article['id'], 'source_index':index})
         for artifact in data.get('artifacts', []):
-            target = bind(key, artifact['locator'], artifact['revision'])
+            target = bind(key, artifact['locator'], artifact['revision'], artifact_slot(artifact))
             if artifact['kind'] == 'knowledge':
                 article_bytes(target)
         for previous in data.get('retry_of', []):
-            target = bind(key, previous['handoff_locator'], previous['revision'])
+            target = bind(key, previous['handoff_locator'], previous['revision'],
+                          {'kind':'knowledge-retry', 'task_id':previous['task_id'], 'attempt':previous['attempt']})
             require(by_ref[target]['format'] == 'knowledge-handoff-v1',
                     'Knowledge retry must reference Knowledge handoff')
             prior = parsed[target]
@@ -313,7 +435,7 @@ def consume(manifest_raw, policy_raw, publication_raw, policy_sha256,
     require(publication['manifest_sha256'] == digest(manifest_raw) and
             publication['artifacts'] == manifest['artifacts'], 'publication receipt mismatch')
     artifacts = manifest['artifacts']
-    keys = [(a['reference']['repository'], a['reference']['commit'], a['reference']['path']) for a in artifacts]
+    keys = [reference_key(a['reference']) for a in artifacts]
     require(len(keys) == len(set(keys)), 'duplicate artifact path')
     require(sum(a['reference']['size'] for a in artifacts) <= MAX_BUNDLE, 'bundle too large')
     for artifact in artifacts:
@@ -325,7 +447,12 @@ def consume(manifest_raw, policy_raw, publication_raw, policy_sha256,
         raw = source.read(ref)
         require(len(raw) == ref['size'] and digest(raw) == ref['sha256'], 'raw size/hash mismatch')
         blobs[key] = raw
-    verify_handoffs(artifacts, blobs, version, manifest.get('knowledge_bindings'))
+    if version == '1.2' and any(s['target']['kind'] == 'tree'
+            for b in manifest.get('candidate_bindings', []) for s in b['sources']):
+        require('original' in policy['allowed_representations'], 'tree originals not approved')
+    tree_blobs = verify_handoffs(artifacts, blobs, version, manifest.get('knowledge_bindings'),
+                                 manifest.get('slot_bindings'), manifest.get('candidate_bindings'), source)
+    blobs.update(tree_blobs)
     receipt = {'schema_version':version, 'document_type':'consumption_receipt',
                'manifest_sha256':digest(manifest_raw), 'authorization_sha256':digest(policy_raw),
                'publication_receipt_sha256':digest(publication_raw),
@@ -334,6 +461,10 @@ def consume(manifest_raw, policy_raw, publication_raw, policy_sha256,
                                if version == '1.1' else
                                'full-raw-bytes-size-sha256-json-handoff-bindings'),
                'authority_granted':False}
+    if version == '1.2':
+        receipt['slot_bindings'] = manifest['slot_bindings']
+        receipt['candidate_bindings'] = manifest.get('candidate_bindings', [])
+        receipt['verification'] = 'full-raw-bytes-size-sha256-json-handoff-knowledge-slots-git-objects-candidates-trees'
     schema('consumption-receipt', receipt)
     if receipt_raw is not None:
         candidate = parse(receipt_raw)
@@ -349,7 +480,8 @@ def write_bundle(output, receipt, blobs):
         staged = Path(temp) / 'verified'
         staged.mkdir(mode=0o700)
         for (repository, commit, path), raw in blobs.items():
-            dest = staged / 'artifacts' / repository / commit / path
+            dest = (staged / 'git-commit-objects' / repository / commit / 'commit.raw'
+                    if path is None else staged / 'artifacts' / repository / commit / path)
             dest.parent.mkdir(parents=True, exist_ok=True)
             dest.write_bytes(raw)
         (staged / 'consumption-receipt.json').write_text(json.dumps(receipt, indent=2)+'\n')
