@@ -1,0 +1,31 @@
+{
+  "verification": "canonical producer raw bytes/size/hash/object/type/slot/tree validation",
+  "result": "passed",
+  "explicit": 128,
+  "new_explicit": 7,
+  "objects": 137,
+  "bytes": 2214708,
+  "payload_commit": "b8a3cb76d760bd208be432f0b4095e6ca4368d26",
+  "handoff_sha256": "930b52ec3fa58840d7f6fa66a4e9e4a087fe7a792b5b14b5f3634fd2b882dbc2",
+  "manifest_sha256": "3ca60f5fcbd09d53fb040c1cc09d35ac05512b8506f1881a5e621974fb75455d",
+  "publication_receipt_sha256": "49b90e79c37181f74d791634ea2a65ed72037e880b0e8b2058a8209460fa23f6",
+  "consumer_authorization_issued": false,
+  "consumer_receipt_issued": false,
+  "source": "all fresh fixed public Git after payload push",
+  "historical_representations_preserved": true,
+  "previous_input_full_closure_retained": true,
+  "observed_at": "2026-10-11T19:22:16.552739+00:00",
+  "epoch": 1,
+  "execution_attempt": 1,
+  "delivery_attempt": 1,
+  "limits": {
+    "dispatch": 3,
+    "execution": 3,
+    "delivery": 3
+  },
+  "previous_history": "Test all prior epochs/attempts/terminal and Implementation histories unchanged. First Review; dependencies not retry_of. Manager ledger not reconstructed.",
+  "upstream_test_valid_until": "2026-10-11T19:27:15Z",
+  "business_status": "failed: blocking P2 R-B2-1 scan association",
+  "safety": "Seven new files inspected; actual trust/proxy/credential bytes, private authorization/Consumption Receipt, real task identifiers and raw logs excluded. No private-original equivalence asserted.",
+  "authority_granted": false
+}
