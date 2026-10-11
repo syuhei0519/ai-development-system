@@ -1,0 +1,24 @@
+{
+  "status": "prepublication_safety_pass",
+  "inspection": "All candidate UTF-8 file bytes inspected using full-content scans, strict JSON parsing, public/synthetic identity-field review and review of new report/reproducers; typed Handoff and source closure verified by unchanged canonical Consumer functions. No private-original comparison claimed.",
+  "preserved": {
+    "prior_test_files": 59,
+    "prior_test_bytes": 583545,
+    "producer_files": 53,
+    "producer_bytes": 520619,
+    "independent_preconsumption_files": 10,
+    "independent_preconsumption_bytes": 88805
+  },
+  "excluded": [
+    "Private original bytes and hashes",
+    "Manager authorization and independently retained pins",
+    "Current Consumption Receipts",
+    "Private state/objects/plans",
+    "Real runtime task/thread IDs",
+    "Raw internal logs and signed URLs"
+  ],
+  "historical_synthetic_receipts": "Existing public synthetic fixture receipts occur in the two immutable input closures; retained unchanged as historical synthetic evidence, never authority. No newly generated private receipt is included.",
+  "publication_approval": "Owner bounded Phase1-2/1-3 same-repository evidence permission relayed by Manager for this dedicated integration branch/prefix.",
+  "closure": "Explicit root integration-supplement binding plus full local copied Handoff/retry closure. No new execution attempt or rewritten historical Handoff.",
+  "consumer_authorization": "No self-issued Consumer authorization for the resulting public bundle; later consumer must receive independent Manager authorization."
+}

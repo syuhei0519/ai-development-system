@@ -1,0 +1,54 @@
+{
+  "repository": "syuhei0519/ai-development-system",
+  "pr": 6,
+  "url": "https://github.com/syuhei0519/ai-development-system/pull/6",
+  "observed_at": "2026-10-11T05:22:18.665344+00:00",
+  "valid_until": "2026-10-11T06:00:00Z",
+  "validity": "Observation only; any head/base/config change invalidates it. Manager must reobserve before action.",
+  "head": "b79f98d3cb3bd58059a12b543df1d187b284fe35",
+  "base": "b1e606544174481b7b6904f811e857f80978c287",
+  "test_merge": "fa7d724ac51d0e892faf37d2d7751145ef33e093",
+  "test_merge_parents": [
+    "b1e606544174481b7b6904f811e857f80978c287",
+    "b79f98d3cb3bd58059a12b543df1d187b284fe35"
+  ],
+  "head_tree": "7140746055c0cf136a10dc935a537d9166bf3676",
+  "test_merge_tree": "7140746055c0cf136a10dc935a537d9166bf3676",
+  "draft": true,
+  "merged": false,
+  "ci": [
+    {
+      "run_id": 38113976869,
+      "job_id": 114395074343,
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "api_head_sha": "b79f98d3cb3bd58059a12b543df1d187b284fe35",
+      "actual_checkout": "b79f98d3cb3bd58059a12b543df1d187b284fe35",
+      "checkout_evidence": "Independent connector retrieval of job checkout log and git log -1 output; 179 tests observed.",
+      "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38113976869"
+    },
+    {
+      "run_id": 38113979618,
+      "job_id": 114395083132,
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "api_head_sha": "b79f98d3cb3bd58059a12b543df1d187b284fe35",
+      "actual_checkout": "fa7d724ac51d0e892faf37d2d7751145ef33e093",
+      "checkout_evidence": "Independent connector retrieval of job checkout log and git log -1 output; 179 tests observed.",
+      "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38113979618"
+    }
+  ],
+  "config_revision": "b79f98d3cb3bd58059a12b543df1d187b284fe35",
+  "workflow": ".github/workflows/validate.yml",
+  "deployment_effect": "No deployment step in this workflow; no actual deployment evaluated.",
+  "routes": {
+    "public_api": "PR/run/job metadata retrieved",
+    "git": "refs/pull/6/merge fetched and parent/tree pins checked",
+    "cli_log_download": "redirect download returned Forbidden; unresolved on this route",
+    "connector_log_download": "succeeded for both jobs; separate from failed CLI route"
+  },
+  "merge_readiness": "not_assessed; independent Review and Manager/GitHub protection/authorization gates remain",
+  "merge_group": "not observed or required by this Test assignment; queue policy not assessed"
+}

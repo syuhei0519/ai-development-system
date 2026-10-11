@@ -1,0 +1,39 @@
+{
+  "head": "b79f98d3cb3bd58059a12b543df1d187b284fe35",
+  "remote_head": "b79f98d3cb3bd58059a12b543df1d187b284fe35",
+  "base": "b1e606544174481b7b6904f811e857f80978c287",
+  "pr": {
+    "baseRefName": "main",
+    "headRefOid": "b79f98d3cb3bd58059a12b543df1d187b284fe35",
+    "isDraft": true,
+    "state": "OPEN",
+    "url": "https://github.com/syuhei0519/ai-development-system/pull/6"
+  },
+  "ci": [
+    {
+      "conclusion": "success",
+      "databaseId": 38113979618,
+      "event": "pull_request",
+      "headSha": "b79f98d3cb3bd58059a12b543df1d187b284fe35",
+      "status": "completed",
+      "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38113979618",
+      "tests": 179,
+      "checkout": "GitHub synthetic PR merge ref"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 38113976869,
+      "event": "push",
+      "headSha": "b79f98d3cb3bd58059a12b543df1d187b284fe35",
+      "status": "completed",
+      "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38113976869",
+      "tests": 179,
+      "checkout": "feature head"
+    }
+  ],
+  "pr_checkout": "fa7d724ac51d0e892faf37d2d7751145ef33e093",
+  "ci_checkout_note": "Push checks feature head; pull_request checks GitHub synthetic merge ref. Both logs confirm 179 tests. CLI log download returned Forbidden; existing GitHub connector job-log reads succeeded.",
+  "merge_performed": false,
+  "independent_test": "pending",
+  "independent_review": "pending"
+}

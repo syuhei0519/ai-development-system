@@ -1,0 +1,113 @@
+{
+  "observed_at": "2026-10-11T04:28:57.978193+00:00",
+  "pull_requests": [
+    {
+      "number": 6,
+      "html_url": "https://github.com/syuhei0519/ai-development-system/pull/6",
+      "state": "open",
+      "draft": true,
+      "merge_commit_sha": "32266557cdfdbfe57c918b55b3806e7c6a200b6b",
+      "mergeable": null,
+      "mergeable_state": null,
+      "head": "29b87fd1014c66c0368e4aad231846b17b53707b",
+      "base": "b1e606544174481b7b6904f811e857f80978c287"
+    }
+  ],
+  "runs": [
+    {
+      "id": 38111684239,
+      "event": "pull_request",
+      "head_sha": "29b87fd1014c66c0368e4aad231846b17b53707b",
+      "head_branch": "feat/knowledge-collector-state",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38111684239",
+      "created_at": "2026-10-11T04:28:22Z",
+      "updated_at": "2026-10-11T04:28:43Z",
+      "pull_requests": [
+        {
+          "url": "https://api.github.com/repos/syuhei0519/ai-development-system/pulls/6",
+          "id": 4816569532,
+          "number": 6,
+          "head": {
+            "ref": "feat/knowledge-collector-state",
+            "sha": "29b87fd1014c66c0368e4aad231846b17b53707b",
+            "repo": {
+              "id": 1413183045,
+              "url": "https://api.github.com/repos/syuhei0519/ai-development-system",
+              "name": "ai-development-system"
+            }
+          },
+          "base": {
+            "ref": "main",
+            "sha": "b1e606544174481b7b6904f811e857f80978c287",
+            "repo": {
+              "id": 1413183045,
+              "url": "https://api.github.com/repos/syuhei0519/ai-development-system",
+              "name": "ai-development-system"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 38110699401,
+      "event": "push",
+      "head_sha": "29b87fd1014c66c0368e4aad231846b17b53707b",
+      "head_branch": "feat/knowledge-collector-state",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38110699401",
+      "created_at": "2026-10-11T04:09:49Z",
+      "updated_at": "2026-10-11T04:10:10Z",
+      "pull_requests": [
+        {
+          "url": "https://api.github.com/repos/syuhei0519/ai-development-system/pulls/6",
+          "id": 4816569532,
+          "number": 6,
+          "head": {
+            "ref": "feat/knowledge-collector-state",
+            "sha": "29b87fd1014c66c0368e4aad231846b17b53707b",
+            "repo": {
+              "id": 1413183045,
+              "url": "https://api.github.com/repos/syuhei0519/ai-development-system",
+              "name": "ai-development-system"
+            }
+          },
+          "base": {
+            "ref": "main",
+            "sha": "b1e606544174481b7b6904f811e857f80978c287",
+            "repo": {
+              "id": 1413183045,
+              "url": "https://api.github.com/repos/syuhei0519/ai-development-system",
+              "name": "ai-development-system"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "tree_verification": {
+    "original_base": "5345303db8c5208859ed741b98f119882de7a973",
+    "new_main": "b1e606544174481b7b6904f811e857f80978c287",
+    "base_and_new_main_tree": "10a4b8ccf7a8d10d991bef2cbe714afc35709b48",
+    "new_main_parents": [
+      "df400018057735b7cb6a9c6ea4619508f0e6ba3a",
+      "5345303db8c5208859ed741b98f119882de7a973"
+    ],
+    "pr_merge_target": "32266557cdfdbfe57c918b55b3806e7c6a200b6b",
+    "pr_merge_parents": [
+      "b1e606544174481b7b6904f811e857f80978c287",
+      "29b87fd1014c66c0368e4aad231846b17b53707b"
+    ],
+    "head_and_pr_merge_tree": "07f815ef5fe584aa84f817ccb67501563c405ea5",
+    "conclusion": "Original base and new main tree-identical; PR merge target and fixed head tree-identical. Local tests remain attributed to original fixed head/base, not retroactively relabelled."
+  },
+  "pr_ci_checkout": {
+    "run_id": 38111684239,
+    "job_id": 114388391676,
+    "conclusion": "success",
+    "checkout_commit": "32266557cdfdbfe57c918b55b3806e7c6a200b6b",
+    "evidence": "Independently fetched job logs show fetch/checkout refs/remotes/pull/6/merge, git log -1 matching this SHA, and Ran 172 tests. Raw log excluded from public candidate."
+  }
+}

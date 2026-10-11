@@ -1,0 +1,296 @@
+{
+  "document_type": "implementation_integration_supplement",
+  "role": "implementation",
+  "attempt": 3,
+  "scope": "system/phase1-3/P-B",
+  "relationship": "Supplement to existing attempt3, not a retry or new execution attempt",
+  "head": "d3f8f582caef99a0e004c29ad3a430efe7df98bc",
+  "tree": "7a7a945c8a2913f43b9df59bdf13c924f7db7779",
+  "parents": [
+    "b79f98d3cb3bd58059a12b543df1d187b284fe35",
+    "8afe6044857783dbf6d6ae7ac9459ae5e890a744"
+  ],
+  "base": "8afe6044857783dbf6d6ae7ac9459ae5e890a744",
+  "base_tree": "1c7b003edd88407af2e8ae34524992f4d2b54324",
+  "base_parents": [
+    "b1e606544174481b7b6904f811e857f80978c287",
+    "b6d446ceb072e3a6d137318175bb672155d9b206"
+  ],
+  "merge_method": "normal --no-ff merge, ort automatic; no conflicts or manual resolutions",
+  "results": {
+    "commands": [
+      {
+        "name": "combined",
+        "command": [
+          "python",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "exit": 0,
+        "test_counts": [
+          "232"
+        ]
+      },
+      {
+        "name": "prior21",
+        "command": [
+          "python",
+          "$BUNDLE/prior/input/input/upstream/independent_cases.py"
+        ],
+        "exit": 0,
+        "test_counts": [
+          "21"
+        ]
+      },
+      {
+        "name": "extra15",
+        "command": [
+          "python",
+          "$BUNDLE/prior/input/extra_cases.py"
+        ],
+        "exit": 0,
+        "test_counts": [
+          "15"
+        ]
+      },
+      {
+        "name": "live",
+        "command": [
+          "python",
+          "$BUNDLE/prior/input/live_fixture.py"
+        ],
+        "exit": 0,
+        "test_counts": []
+      },
+      {
+        "name": "cli0",
+        "command": [
+          "python",
+          "scripts/validate_delivery_records.py"
+        ],
+        "exit": 0,
+        "test_counts": []
+      },
+      {
+        "name": "cli1",
+        "command": [
+          "python",
+          "scripts/validate_handoff.py",
+          "examples/research-to-test/research.handoff.json",
+          "examples/research-to-test/test.blocked.handoff.json",
+          "examples/research-to-test/test.handoff.json",
+          "examples/failed.handoff.json",
+          "examples/partial-assignment.handoff.json"
+        ],
+        "exit": 0,
+        "test_counts": []
+      },
+      {
+        "name": "cli2",
+        "command": [
+          "python",
+          "scripts/validate_knowledge.py",
+          "examples/knowledge/input.json",
+          "examples/knowledge/handoff.json",
+          "examples/knowledge/context.json",
+          "examples/knowledge-delivery/input.json",
+          "examples/knowledge-delivery/handoff.json",
+          "examples/knowledge-delivery/context.json",
+          "examples/knowledge-collector/input.json",
+          "examples/knowledge-collector/handoff.json",
+          "examples/knowledge-collector/context.json"
+        ],
+        "exit": 0,
+        "test_counts": []
+      },
+      {
+        "name": "cli3",
+        "command": [
+          "python",
+          "scripts/validate_readiness.py",
+          "examples/readiness/pr-ready-issue-unverified.json",
+          "--context",
+          "examples/readiness/context.json",
+          "--handoff",
+          "examples/readiness/manager.handoff.json",
+          "--at",
+          "2030-01-01T12:00:00Z"
+        ],
+        "exit": 0,
+        "test_counts": []
+      },
+      {
+        "name": "cli4",
+        "command": [
+          "python",
+          "scripts/validate_readiness.py",
+          "examples/readiness/implementation-only.json",
+          "--context",
+          "examples/readiness/automatic-context.json",
+          "--at",
+          "2030-01-01T12:00:00Z"
+        ],
+        "exit": 0,
+        "test_counts": []
+      },
+      {
+        "name": "cli5",
+        "command": [
+          "python",
+          "scripts/validate_readiness.py",
+          "examples/readiness/postdeploy-achieved.json",
+          "--context",
+          "examples/readiness/context.json",
+          "--at",
+          "2030-01-01T12:00:00Z"
+        ],
+        "exit": 0,
+        "test_counts": []
+      },
+      {
+        "name": "aggregate10",
+        "command": [
+          "python",
+          "scripts/validate_issue_completion.py",
+          "examples/issue-completion/synthetic-achieved/completion.json",
+          "--context",
+          "examples/issue-completion/synthetic-achieved/context.json",
+          "--context-sha256",
+          "951048815ca07294e13e6df297272e719e121d81a8e1c523c3958e4ba97742ac",
+          "--handoff",
+          "examples/issue-completion/synthetic-achieved/handoff.json",
+          "--at",
+          "2030-01-03T12:00:00Z"
+        ],
+        "exit": 0,
+        "test_counts": []
+      },
+      {
+        "name": "aggregate11",
+        "command": [
+          "python",
+          "scripts/validate_issue_completion.py",
+          "examples/issue-completion/synthetic-pending/completion.json",
+          "--context",
+          "examples/issue-completion/synthetic-pending/context.json",
+          "--context-sha256",
+          "8943ce6030f4335adb8cfab5f7338670b2c45b3d24bd3114e92fab5c1cd8d5ff",
+          "--handoff",
+          "examples/issue-completion/synthetic-pending/handoff.json",
+          "--at",
+          "2030-01-03T12:00:00Z"
+        ],
+        "exit": 0,
+        "test_counts": []
+      }
+    ],
+    "schemas": [
+      "contracts/artifact-delivery-v1.1.schema.json",
+      "contracts/artifact-delivery.schema.json",
+      "contracts/consumption-receipt-v1.1.schema.json",
+      "contracts/consumption-receipt.schema.json",
+      "contracts/delivery-authorization-v1.1.schema.json",
+      "contracts/delivery-authorization.schema.json",
+      "contracts/handoff.schema.json",
+      "contracts/issue-completion-context.schema.json",
+      "contracts/issue-completion.schema.json",
+      "contracts/knowledge-collection-authorization.schema.json",
+      "contracts/knowledge-collection-record.schema.json",
+      "contracts/knowledge-collection-state.schema.json",
+      "contracts/knowledge-context.schema.json",
+      "contracts/knowledge-event.schema.json",
+      "contracts/knowledge-handoff.schema.json",
+      "contracts/knowledge-input.schema.json",
+      "contracts/knowledge-source-registry.schema.json",
+      "contracts/publication-receipt-v1.1.schema.json",
+      "contracts/publication-receipt.schema.json",
+      "contracts/readiness-context.schema.json",
+      "contracts/readiness.schema.json"
+    ],
+    "schema_count": 21,
+    "legacy_unchanged": true,
+    "pb_runtime_unchanged": true,
+    "nonoverlap_main_bytes_equal": true,
+    "auto_merged_overlap": [
+      ".github/workflows/validate.yml",
+      "README.md",
+      "agents/manager.md",
+      "contracts/README.md",
+      "workflows/single-issue.md"
+    ],
+    "manual_conflicts": false,
+    "documentation_files": 13,
+    "local_link_targets": 95
+  },
+  "prior_payload": {
+    "repository": "syuhei0519/ai-development-system",
+    "commit": "21f31f8432868af6546faf612adebfb452d4e5c1",
+    "prefix": "evidence/phase13/pb-implementation-a3/",
+    "files": 48,
+    "bytes": 497391,
+    "local_copy": "prior/",
+    "preservation": "all 48 original payload bytes unchanged; previous Handoff remains pinned to old feature head b79f98d3cb3bd58059a12b543df1d187b284fe35"
+  },
+  "prior_records": {
+    "commit": "30f2157dc9209740ac1840ff4fa361a1680d15ad",
+    "manifest_sha256": "542bb6ba8dd5596a805ff5f22c822219fc6a62a0b2e76ac82eabc3e19f8a842c",
+    "publication_receipt_sha256": "37c7b43665cd7b60f0d24a5ccee85ddcbcb4e7d4a380a04a92f153b75be06136"
+  },
+  "scope_observation": "Main Issue Completion additions integrated; P-B collector/runtime/test bytes unchanged, F4 scope fix retained. Both approved document/workflow scopes retained.",
+  "gates": {
+    "local": "verified",
+    "remote": "verified",
+    "ci": "verified",
+    "independent_test": "new-head recheck pending",
+    "independent_review": "new-head recheck pending",
+    "pr_merge": "not_requested",
+    "draft_pr": "verified"
+  },
+  "limitations": [
+    "All current checks are Implementation self-verification; supplied independent reproducers were rerun by Implementation.",
+    "Old-head independent Test/Review results remain old-head evidence and were not relabelled. Manager owns new-head integration rechecks.",
+    "No P-C/P-D, real Agent, periodic operation, app, deployment, main or other-branch writes.",
+    "Synthetic live test uses unchanged fixture snapshot 50cf6aa52f64c45961a354281169064cd2c75e20 with merged CLI code; no dispatch.",
+    "Supplement remains local; only existing feature branch was pushed."
+  ],
+  "ci": [
+    {
+      "run_id": 38115257524,
+      "event": "pull_request",
+      "head": "d3f8f582caef99a0e004c29ad3a430efe7df98bc",
+      "job_id": 114398779250,
+      "conclusion": "success",
+      "tests": 232,
+      "checkout": "003f8149be38cc7561655e9640828fe960fdc67c",
+      "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38115257524"
+    },
+    {
+      "run_id": 38115255006,
+      "event": "push",
+      "head": "d3f8f582caef99a0e004c29ad3a430efe7df98bc",
+      "job_id": 114398772173,
+      "conclusion": "success",
+      "tests": 232,
+      "checkout": "d3f8f582caef99a0e004c29ad3a430efe7df98bc",
+      "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38115255006"
+    }
+  ],
+  "pr": {
+    "baseRefName": "main",
+    "headRefOid": "d3f8f582caef99a0e004c29ad3a430efe7df98bc",
+    "isDraft": true,
+    "state": "OPEN",
+    "url": "https://github.com/syuhei0519/ai-development-system/pull/6"
+  },
+  "preservation_checks": {
+    "main_only_files_byte_equal": 45,
+    "feature_only_files_byte_equal": 25,
+    "automatic_overlap_files": 5,
+    "manual_resolutions": 0,
+    "working_tree_clean": true
+  }
+}

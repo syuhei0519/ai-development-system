@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "document_type": "candidate_safety_and_closure",
+  "candidate_only": true,
+  "published": false,
+  "input_files": 28,
+  "input_bytes": 393632,
+  "input_all_bytes_unchanged": true,
+  "scope": "Public alias Test attempt 2; source input is previously public approved material, not private producer originals.",
+  "new_content": "Authored summary, findings and synthetic reproduction scripts; no raw execution logs or CI runner logs included.",
+  "screening": "Full UTF-8 scan of every candidate file for known private task identifiers, all current authorization/pin/state/receipt digests and credential patterns: zero matches. No symlinks. New reports inspected for private/runtime fields; integration observation retains public PR/run/commit metadata only.",
+  "inherited_content": "All 28 approved public input files retained unchanged, including prior failed Test and implementation history. Their public-safety classification is inherited from the approved input plus current full-byte screening; no independent comparison to producer private originals is claimed.",
+  "dependency_closure": "Unmodified Consumer verify_handoffs passed for every artifact/upstream reference, digest, format and retry Issue/role/attempt binding using local validation coordinates; this is not a new remote Consumption Receipt.",
+  "publication_boundary": "No new publication approval inferred; no push, PR edit, merge, schedule, API/Agent launch or deployment performed.",
+  "raw_material": "Private originals, local operational authorization/pins/Consumption Receipt and raw logs retained separately and excluded."
+}

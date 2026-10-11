@@ -1,0 +1,151 @@
+{
+  "code_head": "d3f8f582caef99a0e004c29ad3a430efe7df98bc",
+  "result": {
+    "head": "d3f8f582caef99a0e004c29ad3a430efe7df98bc",
+    "operations": [
+      {
+        "operation": "scan",
+        "exit": 0,
+        "stdout": {
+          "authority_granted": false,
+          "counts": {
+            "blocked": 0,
+            "commit_pending": 0,
+            "committed": 0,
+            "context_available": 0,
+            "dispatch_unknown": 0,
+            "dispatching": 0,
+            "output_received": 0,
+            "pending": 0,
+            "quarantined": 0,
+            "reserved": 0,
+            "started": 0,
+            "terminal": 0,
+            "validated": 0,
+            "verified": 2
+          },
+          "development_gate_changed": false,
+          "document_type": "knowledge_collection_observation",
+          "schema_version": "1.0"
+        },
+        "stderr": ""
+      },
+      {
+        "operation": "reconcile",
+        "exit": 0,
+        "stdout": {
+          "authority_granted": false,
+          "counts": {
+            "blocked": 0,
+            "commit_pending": 0,
+            "committed": 0,
+            "context_available": 0,
+            "dispatch_unknown": 0,
+            "dispatching": 0,
+            "output_received": 0,
+            "pending": 0,
+            "quarantined": 0,
+            "reserved": 0,
+            "started": 0,
+            "terminal": 0,
+            "validated": 0,
+            "verified": 2
+          },
+          "development_gate_changed": false,
+          "document_type": "knowledge_collection_observation",
+          "schema_version": "1.0"
+        },
+        "stderr": ""
+      },
+      {
+        "operation": "plan",
+        "exit": 0,
+        "stdout": {
+          "authority_granted": false,
+          "counts": {
+            "blocked": 0,
+            "commit_pending": 0,
+            "committed": 0,
+            "context_available": 0,
+            "dispatch_unknown": 0,
+            "dispatching": 0,
+            "output_received": 0,
+            "pending": 0,
+            "quarantined": 0,
+            "reserved": 0,
+            "started": 0,
+            "terminal": 0,
+            "validated": 0,
+            "verified": 2
+          },
+          "development_gate_changed": false,
+          "document_type": "knowledge_collection_observation",
+          "schema_version": "1.0"
+        },
+        "stderr": ""
+      },
+      {
+        "operation": "replay",
+        "exit": 0,
+        "stdout": {
+          "authority_granted": false,
+          "counts": {
+            "blocked": 0,
+            "commit_pending": 0,
+            "committed": 0,
+            "context_available": 0,
+            "dispatch_unknown": 0,
+            "dispatching": 0,
+            "output_received": 0,
+            "pending": 0,
+            "quarantined": 0,
+            "reserved": 0,
+            "started": 0,
+            "terminal": 0,
+            "validated": 0,
+            "verified": 2
+          },
+          "development_gate_changed": false,
+          "document_type": "knowledge_collection_observation",
+          "schema_version": "1.0"
+        },
+        "stderr": ""
+      },
+      {
+        "operation": "record",
+        "exit": 0,
+        "stdout": {
+          "authority_granted": false,
+          "counts": {
+            "blocked": 0,
+            "commit_pending": 0,
+            "committed": 0,
+            "context_available": 0,
+            "dispatch_unknown": 0,
+            "dispatching": 0,
+            "output_received": 0,
+            "pending": 0,
+            "quarantined": 0,
+            "reserved": 2,
+            "started": 0,
+            "terminal": 0,
+            "validated": 0,
+            "verified": 0
+          },
+          "development_gate_changed": false,
+          "document_type": "knowledge_collection_observation",
+          "schema_version": "1.0"
+        },
+        "stderr": ""
+      }
+    ],
+    "event_count": 2,
+    "scan_reconcile_events_equal": true,
+    "plan_replay_equal": true,
+    "read_only_store_equal": true,
+    "dispatch_performed": false,
+    "scope": "synthetic-only",
+    "observed_at": "2026-10-11T05:40:24.492436+00:00"
+  },
+  "scope": "Explicitly authorized bounded synthetic scan/reconcile/plan/replay/reserve. No dispatch, Agent/API/product operation or schedule. State, authorizations, pins, private plan and logs remain private."
+}
