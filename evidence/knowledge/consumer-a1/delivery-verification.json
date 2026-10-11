@@ -1,0 +1,375 @@
+{
+  "schema_version": "1.0",
+  "report_type": "independent_knowledge_delivery_observation",
+  "repository": "syuhei0519/ai-development-system",
+  "canonical_commit": "8afe6044857783dbf6d6ae7ac9459ae5e890a744",
+  "payload_commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+  "records_commit": "e2f62afd30bd4334875902cc695fa8cbf753e16d",
+  "delivery_version": "1.1",
+  "knowledge_bindings": [],
+  "consumer_runs": [
+    {
+      "index": 1,
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "index": 2,
+      "exit_code": 0,
+      "result": "PASS",
+      "fresh_git_receipt_recheck": true
+    }
+  ],
+  "utilized_output": "second fresh verified output",
+  "payload_count": 13,
+  "payload_bytes": 63991,
+  "artifacts": [
+    {
+      "path": "context.candidate.json",
+      "size": 3098,
+      "sha256": "6e19b98691eb3c5e4c780e65fe2a592e4f20c26181b3ffbc5d6d0c24b6be04b5",
+      "format": "knowledge-context-v1",
+      "representation": "original",
+      "initial_equals_fresh": true
+    },
+    {
+      "path": "knowledge/README.md",
+      "size": 2874,
+      "sha256": "45716993c30cbb564278442443548e65f1e3b891cdc582d35f99ed1002a06db6",
+      "format": "text",
+      "representation": "original",
+      "initial_equals_fresh": true
+    },
+    {
+      "path": "knowledge/curated/validation/README.md",
+      "size": 604,
+      "sha256": "33f0a61041aafa768065d6e01a12b0f7f893eaf6f95430e7cd126f68211fe54e",
+      "format": "text",
+      "representation": "original",
+      "initial_equals_fresh": true
+    },
+    {
+      "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+      "size": 5799,
+      "sha256": "b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+      "format": "text",
+      "representation": "original",
+      "initial_equals_fresh": true
+    },
+    {
+      "path": "knowledge/curated/validation/delivery-evidence-boundaries.md",
+      "size": 4418,
+      "sha256": "efde077ec14efb1991c1393f637be020f036f5e048f888eca75976156aea66f8",
+      "format": "text",
+      "representation": "original",
+      "initial_equals_fresh": true
+    },
+    {
+      "path": "knowledge/raw/validation/README.md",
+      "size": 469,
+      "sha256": "e4dc2f06bbada492cf6fdec699b91957d146e8c66e7b4b183ef91bac8c9911f5",
+      "format": "text",
+      "representation": "original",
+      "initial_equals_fresh": true
+    },
+    {
+      "path": "knowledge/raw/validation/artifact-delivery-lessons.md",
+      "size": 5998,
+      "sha256": "46394d653cd33c9fe5b13f3e5f8a82a178435150c01dba7545604f403f8deec7",
+      "format": "text",
+      "representation": "original",
+      "initial_equals_fresh": true
+    },
+    {
+      "path": "knowledge/raw/validation/evidence/implementation-blocked.json",
+      "size": 6599,
+      "sha256": "29d2ef67748681c07dd456e5a0618be91ede5a9f81feb331ff826ee63f258e03",
+      "format": "json",
+      "representation": "edited_derivative",
+      "initial_equals_fresh": true
+    },
+    {
+      "path": "knowledge/raw/validation/evidence/implementation-completed.json",
+      "size": 4401,
+      "sha256": "47e4461fc6006f65369304b4448715ebdd2bb76cb800156376f8fd5b93963e79",
+      "format": "json",
+      "representation": "edited_derivative",
+      "initial_equals_fresh": true
+    },
+    {
+      "path": "knowledge/raw/validation/evidence/implementation-repair.json",
+      "size": 6079,
+      "sha256": "f9b4a9c13a145adad78a641991f454606501f755450ada6a5695dd1c2937f4ea",
+      "format": "json",
+      "representation": "edited_derivative",
+      "initial_equals_fresh": true
+    },
+    {
+      "path": "knowledge/raw/validation/evidence/preparation_probe.py",
+      "size": 5295,
+      "sha256": "6c6fa0aa166ad1a112255ef7b731ec6b1564594f533794901fac7cb2d0fa177d",
+      "format": "text",
+      "representation": "edited_derivative",
+      "initial_equals_fresh": true
+    },
+    {
+      "path": "knowledge/raw/validation/evidence/review-report.json",
+      "size": 11085,
+      "sha256": "ce2793c1454151c9c8c203f4c608048e41a89f3f15b33becb0f8ae61945c9b85",
+      "format": "json",
+      "representation": "edited_derivative",
+      "initial_equals_fresh": true
+    },
+    {
+      "path": "knowledge/raw/validation/evidence/test-report.json",
+      "size": 7272,
+      "sha256": "af3a802497eb2007495e47be9088bbc5b1275382b892ecdd41b486fd58fd8613",
+      "format": "json",
+      "representation": "edited_derivative",
+      "initial_equals_fresh": true
+    }
+  ],
+  "records": [
+    {
+      "path": "evidence/knowledge/milestone-a1/manifest.json",
+      "size": 7726,
+      "sha256": "2be52b2ef14bd56882ea0d7f1a19c1a8411326c3e8103796f6003f7220cc6e34",
+      "commit_and_regular_blob_ancestry_verified": true
+    },
+    {
+      "path": "evidence/knowledge/milestone-a1/publication-receipt.json",
+      "size": 8549,
+      "sha256": "fa2f4691d2d249493a85b2a684d0cc77f4d74ea1a5bfcbdaa7660e7628a56707",
+      "commit_and_regular_blob_ancestry_verified": true
+    }
+  ],
+  "source_origin_comparisons": [
+    {
+      "copied_path": "knowledge/raw/validation/evidence/implementation-blocked.json",
+      "origin": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "72b729aabce1c6dd0877102e9af0194ea6055cba",
+        "path": "evidence/crossref/implementation-a3/input/input/input/prior/implementation-report.public.json",
+        "size": 6599,
+        "sha256": "29d2ef67748681c07dd456e5a0618be91ede5a9f81feb331ff826ee63f258e03"
+      },
+      "exact_bytes_equal": true
+    },
+    {
+      "copied_path": "knowledge/raw/validation/evidence/implementation-completed.json",
+      "origin": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "72b729aabce1c6dd0877102e9af0194ea6055cba",
+        "path": "evidence/crossref/implementation-a3/input/input/input/implementation-report.public.json",
+        "size": 4401,
+        "sha256": "47e4461fc6006f65369304b4448715ebdd2bb76cb800156376f8fd5b93963e79"
+      },
+      "exact_bytes_equal": true
+    },
+    {
+      "copied_path": "knowledge/raw/validation/evidence/implementation-repair.json",
+      "origin": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "72b729aabce1c6dd0877102e9af0194ea6055cba",
+        "path": "evidence/crossref/implementation-a3/implementation-report.json",
+        "size": 6079,
+        "sha256": "f9b4a9c13a145adad78a641991f454606501f755450ada6a5695dd1c2937f4ea"
+      },
+      "exact_bytes_equal": true
+    },
+    {
+      "copied_path": "knowledge/raw/validation/evidence/preparation_probe.py",
+      "origin": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "72b729aabce1c6dd0877102e9af0194ea6055cba",
+        "path": "evidence/crossref/implementation-a3/input/preparation_probe.py",
+        "size": 5295,
+        "sha256": "6c6fa0aa166ad1a112255ef7b731ec6b1564594f533794901fac7cb2d0fa177d"
+      },
+      "exact_bytes_equal": true
+    },
+    {
+      "copied_path": "knowledge/raw/validation/evidence/review-report.json",
+      "origin": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "72b729aabce1c6dd0877102e9af0194ea6055cba",
+        "path": "evidence/crossref/implementation-a3/input/review-report.json",
+        "size": 11085,
+        "sha256": "ce2793c1454151c9c8c203f4c608048e41a89f3f15b33becb0f8ae61945c9b85"
+      },
+      "exact_bytes_equal": true
+    },
+    {
+      "copied_path": "knowledge/raw/validation/evidence/test-report.json",
+      "origin": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "72b729aabce1c6dd0877102e9af0194ea6055cba",
+        "path": "evidence/crossref/implementation-a3/input/input/test-report.json",
+        "size": 7272,
+        "sha256": "af3a802497eb2007495e47be9088bbc5b1275382b892ecdd41b486fd58fd8613"
+      },
+      "exact_bytes_equal": true
+    }
+  ],
+  "canonical_files": [
+    {
+      "path": "contracts/README.md",
+      "size": 11041,
+      "sha256": "96faf292d00d2cd570b583f5ca1fa8d6eb55856500cf666a7e5014e4767ee09e"
+    },
+    {
+      "path": "contracts/artifact-delivery-v1.1.schema.json",
+      "size": 5051,
+      "sha256": "4338f69dbdac36af4c7a861b3f7201720de6e3025a580528030e5182eb0d6056"
+    },
+    {
+      "path": "contracts/artifact-delivery.md",
+      "size": 18235,
+      "sha256": "e9e3a2beab394f412984566f66e61f75ddaee5e73054dd6149c7f430efe479e0"
+    },
+    {
+      "path": "contracts/artifact-delivery.schema.json",
+      "size": 2490,
+      "sha256": "480ba09256cb5b947d8b2df380a12a7ab9ff5fd3c777653e056eacb2541b655c"
+    },
+    {
+      "path": "contracts/consumption-receipt-v1.1.schema.json",
+      "size": 3566,
+      "sha256": "0c8c4294162584b4fe1bc6576304507c8b79f70fe4fa02aa19a6393bbcb04364"
+    },
+    {
+      "path": "contracts/consumption-receipt.schema.json",
+      "size": 3439,
+      "sha256": "f4d005cb0c806fb02989662b3df9e97902850f0304eec5e49308b1927da7a661"
+    },
+    {
+      "path": "contracts/delivery-authorization-v1.1.schema.json",
+      "size": 2353,
+      "sha256": "4e13e3d04b954c04261dff1a215865dd6b41eb1a6dcdfc07ae3a589d0d5d447c"
+    },
+    {
+      "path": "contracts/delivery-authorization.schema.json",
+      "size": 2348,
+      "sha256": "2a0955ed47b7f75e7a80b93f945dce1b2a6f8b07eb43806ae5c42176494c43b3"
+    },
+    {
+      "path": "contracts/handoff.schema.json",
+      "size": 15093,
+      "sha256": "3df669f230c3f1d65ddaaa9e7de5f713f70b9e8440512403f6ea309eb70b3ae1"
+    },
+    {
+      "path": "contracts/issue-completion-context.schema.json",
+      "size": 23435,
+      "sha256": "8a7eaab8791d5fb18bc68e1d9f07decd560ac6eb0a4f603ad0f329691e09961c"
+    },
+    {
+      "path": "contracts/issue-completion.md",
+      "size": 11109,
+      "sha256": "62467a25653658c99bd5def432c4c5035631e2f660698d2802a3e6c8cb1536cd"
+    },
+    {
+      "path": "contracts/issue-completion.schema.json",
+      "size": 24414,
+      "sha256": "77350b58da98c10568acffb3e90de060853561f34bedd4bc071242171aae7574"
+    },
+    {
+      "path": "contracts/knowledge-context.schema.json",
+      "size": 2097,
+      "sha256": "458b15686bc2be28cc4a6b6b6b4e370b3334cf5ad91300c7d84e8c6f1e4a052a"
+    },
+    {
+      "path": "contracts/knowledge-handoff.schema.json",
+      "size": 11347,
+      "sha256": "e36d8a4fd6bc4f2fa4f8d6d234f9dd04dd01ad71f69364c369b664996188c420"
+    },
+    {
+      "path": "contracts/knowledge-input.schema.json",
+      "size": 5598,
+      "sha256": "9af62e3b2a63b82445cf7114487b8b07eaf96ec22c63a373183aad4c96c181ae"
+    },
+    {
+      "path": "contracts/publication-receipt-v1.1.schema.json",
+      "size": 2941,
+      "sha256": "78b0acf4e25f65357d7074ce1a51b1bc2fcbfbf6d061f472fe21884e5bb84441"
+    },
+    {
+      "path": "contracts/publication-receipt.schema.json",
+      "size": 2824,
+      "sha256": "ca67a9513341975bafa6ff80e4c4010aedac3180835787de9d602b05fd41bd62"
+    },
+    {
+      "path": "contracts/readiness-context.schema.json",
+      "size": 4425,
+      "sha256": "e10a8069441a17b447819b0bec9cb145b7a7f91f8d758a6f3dbdcc44361a2f4d"
+    },
+    {
+      "path": "contracts/readiness.md",
+      "size": 12752,
+      "sha256": "4932a3e05b515cb45b504839cc120d3aa6c37bc1542c41fc54740b1a1f331b65"
+    },
+    {
+      "path": "contracts/readiness.schema.json",
+      "size": 12251,
+      "sha256": "bfb1589b2cc0fce39b9b098dc72265796aa79053dd6c3f3131d28aa43d341693"
+    },
+    {
+      "path": "scripts/consume_delivery.py",
+      "size": 20060,
+      "sha256": "7dcc60c05ab4174caadb00e86dded394caf118cd9918cd188805e42ec2cd5411"
+    },
+    {
+      "path": "scripts/prepare_knowledge_fixture.py",
+      "size": 4243,
+      "sha256": "564e275cb9f5f6e12916195f4b4006a2d82be01974e2c9f39e910716ee42467f"
+    },
+    {
+      "path": "scripts/validate_delivery_records.py",
+      "size": 2638,
+      "sha256": "5ffc30cf885a7a5f549a2eebd1c0f3dada12c64cc88272268c4687e1aa4edb51"
+    },
+    {
+      "path": "scripts/validate_handoff.py",
+      "size": 5107,
+      "sha256": "c78e917498087cf9bf230ac644135d3dd3aacfe6ff68e294dfe3bc563bfbe221"
+    },
+    {
+      "path": "scripts/validate_issue_completion.py",
+      "size": 35591,
+      "sha256": "80e0b4f8ee49c99e293d6abeeae1a98028cedd16327548198793bcd3ea3815ba"
+    },
+    {
+      "path": "scripts/validate_knowledge.py",
+      "size": 3766,
+      "sha256": "a2464f8164b48f3141d8f3a7f4b6a61bc66cf3380c5fa3503d61643421ae5b74"
+    },
+    {
+      "path": "scripts/validate_readiness.py",
+      "size": 13968,
+      "sha256": "73ecbcacf1adcadda7200666d123079dd58adb1a7dfd63ba3aadccef86757080"
+    },
+    {
+      "path": "scripts/validate_retry.py",
+      "size": 5522,
+      "sha256": "95ebe03f12eeb7415f1c474b8215b362732662a84b4d6bb00f0ec9b75fb080a2"
+    }
+  ],
+  "boundaries": [
+    "No historical application, tests or reproducer executed.",
+    "Six copied public sources equal their fixed public Git origins; private originals unverified.",
+    "Separate explicit byte comparison checks initial and fresh output; receipt recheck itself does not inspect old output.",
+    "Consumer authorization and receipts retained privately; authority_granted=false.",
+    "No current PR/head/product acceptance inferred."
+  ],
+  "authorization_verification": {
+    "source": "explicit Manager task-input; independently materialized and pinned from input bytes",
+    "scope": "knowledge/milestone/independent-consumption",
+    "purpose": "contract-review",
+    "publication_approval": "approved in outer authorization; not inferred for inner historical B1 sources",
+    "consumer_use_approval": "approved",
+    "expired_at_verification": false,
+    "private_records": "not included in public candidate",
+    "authority_granted": false
+  },
+  "readiness": "not_issued",
+  "proposed_test_execution": "not_executed"
+}

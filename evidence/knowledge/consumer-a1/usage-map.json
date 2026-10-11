@@ -1,0 +1,836 @@
+{
+  "schema_version": "1.0",
+  "report_type": "knowledge_plan_usage_map",
+  "scope": "knowledge/milestone/independent-consumption",
+  "context": {
+    "path": "context.candidate.json",
+    "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+    "size": 3098,
+    "sha256": "6e19b98691eb3c5e4c780e65fe2a592e4f20c26181b3ffbc5d6d0c24b6be04b5"
+  },
+  "articles": {
+    "K-DELIVERY-001": {
+      "id": "K-DELIVERY-001",
+      "locator": "knowledge/curated/validation/delivery-evidence-boundaries.md",
+      "revision": "sha256:efde077ec14efb1991c1393f637be020f036f5e048f888eca75976156aea66f8",
+      "applicability": "固定Git配送の完全性・承認・内容評価を分離する読取り用途。Delivery 1.0/1.2の版を区別する。",
+      "exceptions": [
+        "未公開draft候補。Managerと独立確認前にactive扱いしない。",
+        "製品AC、Readiness、最新独立合格を認定しない。",
+        "後続Consumerの実利用・周期実行は未検証。"
+      ],
+      "sources": [
+        {
+          "locator": "knowledge/raw/validation/evidence/test-report.json",
+          "revision": "sha256:af3a802497eb2007495e47be9088bbc5b1275382b892ecdd41b486fd58fd8613"
+        }
+      ],
+      "lifecycle": "draft",
+      "review_trigger": "修正headの独立Test/Review確定、契約版更新、反例発見、または2026-11-11。",
+      "repository": "syuhei0519/ai-development-system",
+      "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b"
+    },
+    "K-VALIDATION-002": {
+      "id": "K-VALIDATION-002",
+      "locator": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+      "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+      "applicability": "固定Git URLを扱う準備処理とConsumerの正常境界検査、および元bytesを保つ型付き契約拡張。",
+      "exceptions": [
+        "未公開draft候補。Managerと独立確認前にactive扱いしない。",
+        "製品AC、Readiness、最新独立合格を認定しない。",
+        "後続Consumerの実利用・周期実行は未検証。"
+      ],
+      "sources": [
+        {
+          "locator": "knowledge/raw/validation/evidence/test-report.json",
+          "revision": "sha256:af3a802497eb2007495e47be9088bbc5b1275382b892ecdd41b486fd58fd8613"
+        },
+        {
+          "locator": "knowledge/raw/validation/evidence/review-report.json",
+          "revision": "sha256:ce2793c1454151c9c8c203f4c608048e41a89f3f15b33becb0f8ae61945c9b85"
+        },
+        {
+          "locator": "knowledge/raw/validation/evidence/preparation_probe.py",
+          "revision": "sha256:6c6fa0aa166ad1a112255ef7b731ec6b1564594f533794901fac7cb2d0fa177d"
+        },
+        {
+          "locator": "knowledge/raw/validation/evidence/implementation-blocked.json",
+          "revision": "sha256:29d2ef67748681c07dd456e5a0618be91ede5a9f81feb331ff826ee63f258e03"
+        },
+        {
+          "locator": "knowledge/raw/validation/evidence/implementation-completed.json",
+          "revision": "sha256:47e4461fc6006f65369304b4448715ebdd2bb76cb800156376f8fd5b93963e79"
+        },
+        {
+          "locator": "knowledge/raw/validation/evidence/implementation-repair.json",
+          "revision": "sha256:f9b4a9c13a145adad78a641991f454606501f755450ada6a5695dd1c2937f4ea"
+        }
+      ],
+      "lifecycle": "draft",
+      "review_trigger": "修正headの独立Test/Review確定、契約版更新、反例発見、または2026-11-11。",
+      "repository": "syuhei0519/ai-development-system",
+      "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b"
+    }
+  },
+  "sources": {
+    "S1": {
+      "path": "knowledge/raw/validation/evidence/test-report.json",
+      "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+      "size": 7272,
+      "sha256": "af3a802497eb2007495e47be9088bbc5b1275382b892ecdd41b486fd58fd8613",
+      "evidence_level": "fixed_public_report_or_static_reproducer_not_rerun"
+    },
+    "S2": {
+      "path": "knowledge/raw/validation/evidence/review-report.json",
+      "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+      "size": 11085,
+      "sha256": "ce2793c1454151c9c8c203f4c608048e41a89f3f15b33becb0f8ae61945c9b85",
+      "evidence_level": "fixed_public_report_or_static_reproducer_not_rerun"
+    },
+    "S3": {
+      "path": "knowledge/raw/validation/evidence/preparation_probe.py",
+      "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+      "size": 5295,
+      "sha256": "6c6fa0aa166ad1a112255ef7b731ec6b1564594f533794901fac7cb2d0fa177d",
+      "evidence_level": "fixed_public_report_or_static_reproducer_not_rerun"
+    },
+    "S4": {
+      "path": "knowledge/raw/validation/evidence/implementation-blocked.json",
+      "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+      "size": 6599,
+      "sha256": "29d2ef67748681c07dd456e5a0618be91ede5a9f81feb331ff826ee63f258e03",
+      "evidence_level": "fixed_public_report_or_static_reproducer_not_rerun"
+    },
+    "S5": {
+      "path": "knowledge/raw/validation/evidence/implementation-completed.json",
+      "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+      "size": 4401,
+      "sha256": "47e4461fc6006f65369304b4448715ebdd2bb76cb800156376f8fd5b93963e79",
+      "evidence_level": "fixed_public_report_or_static_reproducer_not_rerun"
+    },
+    "S6": {
+      "path": "knowledge/raw/validation/evidence/implementation-repair.json",
+      "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+      "size": 6079,
+      "sha256": "f9b4a9c13a145adad78a641991f454606501f755450ada6a5695dd1c2937f4ea",
+      "evidence_level": "fixed_public_report_or_static_reproducer_not_rerun"
+    }
+  },
+  "tests": [
+    {
+      "id": "T01",
+      "title": "正常blob URLの名前衝突",
+      "applicability": "1.2等、固定blob URLを入力とする準備機能が次回対象にある場合。今回の1.1相対path専用配送にはそのまま実行しない。",
+      "procedure": "同じ内容を持つ承認済み固定fixtureを、通常repo/docs/note.txt、通常repo/docs/tree/note.txt、repo名tree/docs/note.txtの3配置で用意する。各URLを準備処理へ渡し、その出力を正式Consumerへ渡す。fixture生成/実行は次回の明示権限下で行う。",
+      "expected": "3件ともblobとして準備受理しConsumerもPASS。routeがblobなのにrepo/path内treeだけでtree扱いしない。元URL・commit・raw bytesを保存する。",
+      "evidence": "各ケースの固定fixture参照、準備exit/型、manifest digest、Consumer exit/新規出力照合を別々に記録。",
+      "refs": [
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "根拠と出典",
+          "line_range": [
+            29,
+            37
+          ]
+        },
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "再利用手順・検証",
+          "line_range": [
+            57,
+            59
+          ]
+        }
+      ],
+      "sources": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "addition": "同じ内容を用いた配置別fixtureとケース単位の結果欄はConsumerが具体化した設計。",
+      "decision": "adopted_conditionally",
+      "execution_status": "not_executed",
+      "plan_use": "implemented_in_plan",
+      "authority": "future_explicit_test_authorization_required"
+    },
+    {
+      "id": "T02",
+      "title": "routeと実treeを区別",
+      "applicability": "選択済みの契約版が完全tree snapshotを明示的にサポートするときだけ。",
+      "procedure": "T01のblob対照と、owner/repo直後のrouteがtreeの固定tree対照を比較する。treeにnested/emptyディレクトリを含め、完全inventoryと全通常blobを照合する。1.1ではtreeを擬似blobに変換せず未対応として扱う。",
+      "expected": "対応版では実treeだけtree型、完全snapshotでPASS。欠落・余剰・型不正は拒否。tree未対応版の拒否を製品不具合と誤分類しない。",
+      "evidence": "選択版、tree/blobの型、期待inventoryと実inventory、適用外理由。",
+      "refs": [
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "例外・適用しない条件",
+          "line_range": [
+            45,
+            47
+          ]
+        },
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "失敗・不採用案",
+          "line_range": [
+            51,
+            55
+          ]
+        }
+      ],
+      "sources": [
+        "S4",
+        "S5"
+      ],
+      "addition": "nested/emptyと欠落・余剰の具体例はS5報告を参考にした追加設計。全配送でtree取得を必須にはしない。",
+      "decision": "adopted_conditionally",
+      "execution_status": "not_executed",
+      "plan_use": "implemented_in_plan",
+      "authority": "future_explicit_test_authorization_required"
+    },
+    {
+      "id": "T03",
+      "title": "安全制約を残す異常URL対照",
+      "applicability": "URL準備機能を持つ選択契約版。許可されたlocal synthetic fixtureのみ。",
+      "procedure": "正常対照に続き、浮動branch、短縮commit、query/fragment、別host、path traversal、曖昧routeを1要因ずつ加える。準備処理と独立manifestのConsumer経路を区別する。",
+      "expected": "規約外URLをfail-closedで拒否し、新しい検証済みbundleやreceiptを出さない。T01の正常受理を維持する。",
+      "evidence": "変更した1要因、適用契約、期待拒否理由、exitと新規出力不存在。",
+      "refs": [
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "重要な判断と理由",
+          "line_range": [
+            39,
+            41
+          ]
+        },
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "再利用手順・検証",
+          "line_range": [
+            57,
+            59
+          ]
+        }
+      ],
+      "sources": [
+        "S2",
+        "S6"
+      ],
+      "addition": "列挙した異常URL軸は本Consumerの追加テスト設計。記事に同じ全ケースの実測があるとは主張しない。",
+      "decision": "adopted_conditionally",
+      "execution_status": "not_executed",
+      "plan_use": "implemented_in_plan",
+      "authority": "future_explicit_test_authorization_required"
+    },
+    {
+      "id": "T04",
+      "title": "準備処理とConsumerの独立対照",
+      "applicability": "準備helperとConsumerの両方が対象にある場合。",
+      "procedure": "T01各入力について、準備出力→Consumerという経路Pと、原bytes/固定参照から別担当が明示型manifestを組む経路Cを用意する。準備失敗時も元資料を書き換えず、Cの成功でPの失敗を上書きしない。",
+      "expected": "P/C両経路に個別結果。P拒否かつC受理は準備機能の正常入力不具合としてfailed。Cのみ成功をend-to-end成功としない。",
+      "evidence": "独立oracleの由来、同一元bytes比較、P準備/P消費/C消費の3結果。",
+      "refs": [
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "根拠と出典",
+          "line_range": [
+            29,
+            37
+          ]
+        },
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "重要な判断と理由",
+          "line_range": [
+            39,
+            41
+          ]
+        }
+      ],
+      "sources": [
+        "S2",
+        "S3"
+      ],
+      "addition": "3結果を別欄にするレビュー表は本Consumerの具体化。oracleの作成も次回権限が必要。",
+      "decision": "adopted_conditionally",
+      "execution_status": "not_executed",
+      "plan_use": "implemented_in_plan",
+      "authority": "future_explicit_test_authorization_required"
+    },
+    {
+      "id": "T05",
+      "title": "未知Knowledge型の降格拒否",
+      "applicability": "1.1 typed Knowledge配送。1.2候補profileは別契約としてのみ追加検査。",
+      "procedure": "正常knowledge-context-v1を対照に、document_type=knowledge_unknown、型identity欠損、format=json/textへの変更を別々に試す。正しいmanifest/承認をfixture用に独立再sealした上で型検査へ到達させる。",
+      "expected": "正常contextのみ受理。未知型やidentity欠損をgeneric JSON/textに降格できない。元文書へのfield追加やstatus/attempt書換えで通さない。1.0に新型を番号変更だけで通さない。",
+      "evidence": "元bytes保持、選択schema/format、型拒否が発生した段階。hash不一致だけで型拒否を検証したことにしない。",
+      "refs": [
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "要点",
+          "line_range": [
+            17,
+            19
+          ]
+        },
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "重要な判断と理由",
+          "line_range": [
+            43,
+            43
+          ]
+        },
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "失敗・不採用案",
+          "line_range": [
+            52,
+            53
+          ]
+        }
+      ],
+      "sources": [
+        "S4",
+        "S5"
+      ],
+      "addition": "digest/承認をfixtureとして正しく作り直して型gateを分離する手順は追加推論。実運用認可の編集を許可するものではない。",
+      "decision": "adopted_conditionally",
+      "execution_status": "not_executed",
+      "plan_use": "implemented_in_plan",
+      "authority": "future_explicit_test_authorization_required"
+    },
+    {
+      "id": "T06",
+      "title": "外側bindingと記事・source閉包",
+      "applicability": "Delivery1.1。context-onlyとtyped input/handoff pairを別fixtureとして扱う。",
+      "procedure": "context-only正常系はknowledge_bindings=[]のまま全記事/sourceを同repo/commitの安全相対pathとdigestで収録する。1 source欠落・digest不一致・別commit同bytesへの差替えを1つずつ試す。別のpair系では入力/出力のassignment/raw_findings/knowledge_references/task_id/attempt/retry_of一致とbindingの重複・欠落を検査する。",
+      "expected": "context-onlyで空bindingを正常受理し、記事/source欠落等は拒否。pair系は全構造と固定referenceが一致するときだけ受理。原Knowledge1.0本体を変更しない。",
+      "evidence": "元文書digest、manifest外側digest、閉包一覧、pairの差分箇所と期待拒否。",
+      "refs": [
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "重要な判断と理由",
+          "line_range": [
+            43,
+            43
+          ]
+        },
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "例外・適用しない条件",
+          "line_range": [
+            45,
+            47
+          ]
+        },
+        {
+          "article_id": "K-DELIVERY-001",
+          "path": "knowledge/curated/validation/delivery-evidence-boundaries.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:efde077ec14efb1991c1393f637be020f036f5e048f888eca75976156aea66f8",
+          "section": "再利用手順・検証",
+          "line_range": [
+            46,
+            49
+          ]
+        }
+      ],
+      "sources": [
+        "S4",
+        "S5"
+      ],
+      "addition": "具体的1.1規則は固定正本contracts/artifact-delivery.md「外側binding」に基づく追加設計。記事の1.2 candidate bindingを同一仕様とみなしていない。",
+      "decision": "adopted_conditionally",
+      "execution_status": "not_executed",
+      "plan_use": "implemented_in_plan",
+      "authority": "future_explicit_test_authorization_required"
+    },
+    {
+      "id": "T07",
+      "title": "公開承認とConsumer承認を独立検査",
+      "applicability": "全配送。現在のManager認可・独立pinが必要。",
+      "procedure": "安全性レビュー、過去公開操作承認、今回Consumer承認を別欄にする。consumer/scope/purpose/期限/representation、manifest/publication digestの一致を検査する。local fixtureでは公開承認unverified+限定contract-review承認と、利用未承認/期限切れを対照にする。",
+      "expected": "契約が許す限定読取りは過去公開承認の追認なしに扱える。利用未承認/不一致/期限切れは拒否。receiptのauthority_granted=falseを確認し実装・merge権限を推論しない。",
+      "evidence": "認可原本とpinは非公開。公開候補には状態・観測範囲のみ。内側資料の過去承認を外側から逆算しない。",
+      "refs": [
+        {
+          "article_id": "K-DELIVERY-001",
+          "path": "knowledge/curated/validation/delivery-evidence-boundaries.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:efde077ec14efb1991c1393f637be020f036f5e048f888eca75976156aea66f8",
+          "section": "重要な判断と理由",
+          "line_range": [
+            34,
+            34
+          ]
+        },
+        {
+          "article_id": "K-DELIVERY-001",
+          "path": "knowledge/curated/validation/delivery-evidence-boundaries.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:efde077ec14efb1991c1393f637be020f036f5e048f888eca75976156aea66f8",
+          "section": "例外・適用しない条件",
+          "line_range": [
+            38,
+            38
+          ]
+        },
+        {
+          "article_id": "K-DELIVERY-001",
+          "path": "knowledge/curated/validation/delivery-evidence-boundaries.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:efde077ec14efb1991c1393f637be020f036f5e048f888eca75976156aea66f8",
+          "section": "再利用手順・検証",
+          "line_range": [
+            46,
+            51
+          ]
+        }
+      ],
+      "sources": [
+        "S1",
+        "S4"
+      ],
+      "addition": "承認状態のfixture対照は追加設計。実承認の真正性はManagerの別経路に依存し、自己発行しない。",
+      "decision": "adopted_conditionally",
+      "execution_status": "not_executed",
+      "plan_use": "implemented_in_plan",
+      "authority": "future_explicit_test_authorization_required"
+    },
+    {
+      "id": "T08",
+      "title": "fresh receipt再検査後の実利用出力",
+      "applicability": "初回CLI成功後に現在の認可が有効で再利用する場合。",
+      "procedure": "初回receiptを非公開保存し、--verify-receipt付きで新規Git取得・別の新規出力へ再検査する。次の意味レビュー/計画作成が参照する実体を新出力から選び、利用locatorとdigestを記録する。必要なら旧出力と新出力を別途全bytes比較する。",
+      "expected": "再検査成功は新取得bytesとreceiptの一致のみ。利用出力が新規出力と一致し、旧出力の改変検知をreceiptに帰属させない。承認失効・再検査失敗ならその新規利用を停止。",
+      "evidence": "2回のexit、新規出力、非公開receipt、利用したファイルdigest。旧新比較は別証拠欄。",
+      "refs": [
+        {
+          "article_id": "K-DELIVERY-001",
+          "path": "knowledge/curated/validation/delivery-evidence-boundaries.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:efde077ec14efb1991c1393f637be020f036f5e048f888eca75976156aea66f8",
+          "section": "重要な判断と理由",
+          "line_range": [
+            32,
+            32
+          ]
+        },
+        {
+          "article_id": "K-DELIVERY-001",
+          "path": "knowledge/curated/validation/delivery-evidence-boundaries.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:efde077ec14efb1991c1393f637be020f036f5e048f888eca75976156aea66f8",
+          "section": "理解を深めるための問い",
+          "line_range": [
+            59,
+            61
+          ]
+        }
+      ],
+      "sources": [
+        "S2"
+      ],
+      "addition": "利用出力のlocatorをレビュー成果物に記録する手順を追加。このtaskでは実際に2回目出力を読んで計画を作成した。",
+      "decision": "adopted_conditionally",
+      "execution_status": "not_executed",
+      "plan_use": "implemented_in_plan",
+      "authority": "future_explicit_test_authorization_required"
+    },
+    {
+      "id": "T09",
+      "title": "配送gateの後に内容妥当性gate",
+      "applicability": "助言を判断へ採用するすべてのKnowledge消費。",
+      "procedure": "型/bytes合格とは別に2記事の重要主張を元sourceへ対応させ、事実/報告/推論、適用条件・例外・draft・問い・更新条件を読む。誤った内容を含むがbytes自体は正しいsynthetic文書を意味gateの負対照とする。",
+      "expected": "配送PASSでも意味不整合は採用保留/不採用。限定参考利用には教訓→判断→具体検証項目の対応と根拠が必要。単に要約しただけを実利用成功にしない。",
+      "evidence": "主張対応表、採否理由、計画の項目ID。製品ACの実測結果は別gateのまま。",
+      "refs": [
+        {
+          "article_id": "K-DELIVERY-001",
+          "path": "knowledge/curated/validation/delivery-evidence-boundaries.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:efde077ec14efb1991c1393f637be020f036f5e048f888eca75976156aea66f8",
+          "section": "要点",
+          "line_range": [
+            19,
+            19
+          ]
+        },
+        {
+          "article_id": "K-DELIVERY-001",
+          "path": "knowledge/curated/validation/delivery-evidence-boundaries.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:efde077ec14efb1991c1393f637be020f036f5e048f888eca75976156aea66f8",
+          "section": "例外・適用しない条件",
+          "line_range": [
+            38,
+            38
+          ]
+        },
+        {
+          "article_id": "K-DELIVERY-001",
+          "path": "knowledge/curated/validation/delivery-evidence-boundaries.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:efde077ec14efb1991c1393f637be020f036f5e048f888eca75976156aea66f8",
+          "section": "理解を深めるための問い",
+          "line_range": [
+            59,
+            61
+          ]
+        },
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "再利用手順・検証",
+          "line_range": [
+            59,
+            59
+          ]
+        }
+      ],
+      "sources": [
+        "S1",
+        "S2",
+        "S5"
+      ],
+      "addition": "意味誤りを持つsynthetic負対照と利用対応表の構造は本Consumerの追加設計。",
+      "decision": "adopted_conditionally",
+      "execution_status": "not_executed",
+      "plan_use": "implemented_in_plan",
+      "authority": "future_explicit_test_authorization_required"
+    },
+    {
+      "id": "T10",
+      "title": "歴史・draft・現在headを分離",
+      "applicability": "過去報告または修正headに関するKnowledgeを参照するとき。",
+      "procedure": "S4 blocked→S5自己検証→S1独立Test→S2独立Review failed→S6修正自己検証の順を保持。対象head/観測者/時点を並べ、現head判定が必要なら別途固定された独立Test/Review証拠を要求する。",
+      "expected": "旧failedと自己検証を消さず、現在状態は根拠がなければunverified。draftのまま限定採用し、修正独立結果/版変更/反例/2026-11-11で再評価。周期運用やactive化の達成にしない。",
+      "evidence": "head別状態表、出典revision、更新trigger、保留理由。",
+      "refs": [
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "陳腐化・更新履歴",
+          "line_range": [
+            61,
+            63
+          ]
+        },
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "失敗・不採用案",
+          "line_range": [
+            55,
+            55
+          ]
+        },
+        {
+          "article_id": "K-DELIVERY-001",
+          "path": "knowledge/curated/validation/delivery-evidence-boundaries.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:efde077ec14efb1991c1393f637be020f036f5e048f888eca75976156aea66f8",
+          "section": "陳腐化・更新履歴",
+          "line_range": [
+            53,
+            55
+          ]
+        }
+      ],
+      "sources": [
+        "S1",
+        "S2",
+        "S4",
+        "S5",
+        "S6"
+      ],
+      "addition": "最新証拠がなければ現在状態判断を保留する運用は本Consumerの適用判断。",
+      "decision": "adopted_conditionally",
+      "execution_status": "not_executed",
+      "plan_use": "implemented_in_plan",
+      "authority": "future_explicit_test_authorization_required"
+    },
+    {
+      "id": "T11",
+      "title": "版と元bytesの保全",
+      "applicability": "配送契約やprofileを更新する場合。",
+      "procedure": "元context/article/source bytesを先にsealし、追加規則は版付き外側recordへ記録する。4配送recordの版一致、選択版schema、型identityと旧版互換条件を確認する。許可されない未知版や混在版を負対照にする。",
+      "expected": "元locator/status/attempt/digestは不変。Knowledge1.0/外側Delivery1.1/歴史的Delivery1.2を混同しない。新型受理には正式契約と明示認可が必要。",
+      "evidence": "変更前後bytes比較、版の一覧、契約固定revision、schema判定。",
+      "refs": [
+        {
+          "article_id": "K-DELIVERY-001",
+          "path": "knowledge/curated/validation/delivery-evidence-boundaries.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:efde077ec14efb1991c1393f637be020f036f5e048f888eca75976156aea66f8",
+          "section": "適用条件・範囲",
+          "line_range": [
+            21,
+            23
+          ]
+        },
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "重要な判断と理由",
+          "line_range": [
+            43,
+            43
+          ]
+        },
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "失敗・不採用案",
+          "line_range": [
+            52,
+            55
+          ]
+        }
+      ],
+      "sources": [
+        "S4",
+        "S5"
+      ],
+      "addition": "4配送recordの版一致等は正本1.1契約からの具体化。",
+      "decision": "adopted_conditionally",
+      "execution_status": "not_executed",
+      "plan_use": "implemented_in_plan",
+      "authority": "future_explicit_test_authorization_required"
+    },
+    {
+      "id": "T12",
+      "title": "失敗時の利用停止と有限配送",
+      "applicability": "全配送。Managerが次回の予算を明示していること。",
+      "procedure": "利用前に参照欠落/不一致を見つけたら新規利用を停止し、部分結果を保存。dispatch/execution/deliveryを別カウンタで記録し各最大3、失敗理由と必要処置をManagerへ返す。Knowledge待ちだけではアプリ開発を停止しない。",
+      "expected": "failed/blockedを成功に変換せず、古い成功出力で代替しない。上限をscope変更等でリセットしない。計画作成と実行結果は別状態。",
+      "evidence": "失敗段階、出力有無、予算消費、引継ぎの未確認点。",
+      "refs": [
+        {
+          "article_id": "K-DELIVERY-001",
+          "path": "knowledge/curated/validation/delivery-evidence-boundaries.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:efde077ec14efb1991c1393f637be020f036f5e048f888eca75976156aea66f8",
+          "section": "再利用手順・検証",
+          "line_range": [
+            46,
+            51
+          ]
+        },
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "失敗・不採用案",
+          "line_range": [
+            53,
+            55
+          ]
+        }
+      ],
+      "sources": [
+        "S4",
+        "S6"
+      ],
+      "addition": "3種類の最大3回管理はユーザーassignmentと固定workflowによる追加運用条件。記事だけから予算や実行許可を導かない。",
+      "decision": "adopted_conditionally",
+      "execution_status": "not_executed",
+      "plan_use": "implemented_in_plan",
+      "authority": "future_explicit_test_authorization_required"
+    }
+  ],
+  "non_adoptions": [
+    {
+      "id": "N01",
+      "decision": "rejected",
+      "claim": "配送PASSを製品AC/Readiness/新PR7 headの合格として使う",
+      "reason": "全bytesは内容・製品挙動を証明しない。今回アプリTestも新head独立Testも実行していない。",
+      "refs": [
+        {
+          "article_id": "K-DELIVERY-001",
+          "path": "knowledge/curated/validation/delivery-evidence-boundaries.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:efde077ec14efb1991c1393f637be020f036f5e048f888eca75976156aea66f8",
+          "section": "例外・適用しない条件",
+          "line_range": [
+            38,
+            42
+          ]
+        }
+      ],
+      "related_tests": [
+        "T09",
+        "T10"
+      ]
+    },
+    {
+      "id": "N02",
+      "decision": "rejected",
+      "claim": "1.2 candidate/tree bindingを1.1 context-onlyにそのまま追加する",
+      "reason": "契約版と対象型が異なる。今回のknowledge_bindings=[]と全source閉包を維持。",
+      "refs": [
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "例外・適用しない条件",
+          "line_range": [
+            45,
+            47
+          ]
+        },
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "失敗・不採用案",
+          "line_range": [
+            52,
+            54
+          ]
+        }
+      ],
+      "related_tests": [
+        "T02",
+        "T06",
+        "T11"
+      ]
+    },
+    {
+      "id": "N03",
+      "decision": "deferred",
+      "claim": "修正headの最新独立合格・現在merge状態・draftのactive昇格",
+      "reason": "固定6出典には新しい独立合格がなく、初回時点のManager報告は現在状態証明ではない。新しい固定証拠と権限が必要。",
+      "refs": [
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "陳腐化・更新履歴",
+          "line_range": [
+            63,
+            63
+          ]
+        }
+      ],
+      "related_tests": [
+        "T10"
+      ]
+    },
+    {
+      "id": "N04",
+      "decision": "rejected",
+      "claim": "過去のtree sourceが未知型と別の実測停止原因だったと断定する",
+      "reason": "S4は未知型で止まった報告。treeは追加設計課題としてしか支持されない。",
+      "refs": [
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "例外・適用しない条件",
+          "line_range": [
+            47,
+            47
+          ]
+        }
+      ],
+      "related_tests": [
+        "T05",
+        "T06"
+      ]
+    },
+    {
+      "id": "N05",
+      "decision": "deferred",
+      "claim": "周期実行・自動context生成・一般的な運用成功",
+      "reason": "今回の任務外で延期。独立計画への手動限定利用はその代替証拠にならない。",
+      "refs": [
+        {
+          "article_id": "K-DELIVERY-001",
+          "path": "knowledge/curated/validation/delivery-evidence-boundaries.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:efde077ec14efb1991c1393f637be020f036f5e048f888eca75976156aea66f8",
+          "section": "陳腐化・更新履歴",
+          "line_range": [
+            55,
+            55
+          ]
+        },
+        {
+          "article_id": "K-VALIDATION-002",
+          "path": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+          "commit": "74d0fb0d899984d99ea9fbde2871c46c66c3f52b",
+          "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+          "section": "陳腐化・更新履歴",
+          "line_range": [
+            63,
+            63
+          ]
+        }
+      ],
+      "related_tests": [
+        "T10",
+        "T12"
+      ]
+    }
+  ],
+  "actual_use": "Verified fresh output was semantically reviewed and used to author delivery-review-test-plan.md; proposed test execution is not performed.",
+  "product_acceptance": "unverified",
+  "periodic_execution": "deferred_out_of_scope"
+}

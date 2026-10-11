@@ -1,0 +1,76 @@
+{
+  "report_type": "blocked_implementation_self_verification",
+  "status": "blocked",
+  "scope": "system/artifact-delivery/cross-reference",
+  "attempt": 1,
+  "repository": "syuhei0519/ai-development-system",
+  "canonical_main": "df400018057735b7cb6a9c6ea4619508f0e6ba3a",
+  "fixed_dependency_head": "5345303db8c5208859ed741b98f119882de7a973",
+  "local_head": "e758614f876e45914332016045d336d52ec109ff",
+  "branch": "feat/artifact-delivery-crossrefs",
+  "local_commit_state": "WIP, saved locally; not a completed implementation",
+  "remote_push": "not performed: stopped at mandatory X-6 blocker",
+  "pr": "not created",
+  "merge": "not performed",
+  "initial_delivery": {
+    "result": "PASS: base CLI fetched and verified all nine input artifacts before use",
+    "manifest_size": 4658,
+    "manifest_sha256": "58fecc0ada5f48c2e8a233bbd2b8ad82433de261350006a7781a5f45fdceb7c4",
+    "publication_size": 5156,
+    "publication_sha256": "d8a6c806aee6fcb4941d0b4f3043d957286fa05facd60097b563af3113b9f9df",
+    "all_nine_inputs_read": true,
+    "adopted_design": "implementation-report.json remaining_delivery_constraints.minimum_followup_contract"
+  },
+  "concrete_design": [
+    "Delivery 1.2 adds typed references: git-blob with repository/commit/path/size/sha256, or git-commit-object without path.",
+    "slot_bindings are mandatory for every declared dependency including relative locators. Owner full reference, structural identity, exact original locator/revision and target reference+format are matched once. Extra/missing/duplicate slots fail closed.",
+    "Artifact slot uses artifact ID; upstream uses role/task_id/attempt/relationship; Knowledge sources use finding or article ID and source index; Knowledge retry uses task_id/attempt.",
+    "Canonical HTTPS GitHub blob/commit URL is compared to a string generated from the explicit target. No arbitrary URL traversal, redirects, mutable ref, percent-encoded alias or query/fragment accepted.",
+    "Relative references remain in their owner repository/commit; redirecting to an identical copied file elsewhere is rejected.",
+    "Commit raw payload is fetched through isolated Git cat-file commit; type and FETCH_HEAD checked. Full payload SHA256 and Git SHA1(commit header + payload) checked. Separate git-commit-objects/{repository}/{commit}/commit.raw output namespace.",
+    "Receipt 1.2 records typed artifacts and exact slot bindings; schema versions and independent authorization pin, consumer/scope/purpose/expiry stay mandatory.",
+    "Handoff retry retains Issue/role/task/prior-attempt checks. Assignment equality was considered and not added: existing authorized Research attempts have differing assignment text. Knowledge input-output/retry full-assignment rules remain unchanged.",
+    "All existing 1.0/1.1 schemas and Handoff/Knowledge/Readiness schemas are unchanged. No original B1 locator, revision, status or attempt is modified."
+  ],
+  "blocker": {
+    "code": "UNSUPPORTED_B1_KNOWLEDGE_CANDIDATES_TYPE",
+    "artifact": "https://github.com/syuhei0519/ai-development-system/blob/f794cf63a8379f06b9bb770b2fac4ba1fb0951fa/evidence/order-b1/e2-a1/knowledge-candidates.json",
+    "size": 1546,
+    "sha256": "e93d2066e3d3b1bab6753ba2eef9f28edaf33f9d3f0fb710eebfdcc7282748b8",
+    "diagnosis": "document_type=knowledge_candidates is reserved by P-A Knowledge-prefix protection but has no approved typed schema. format=json fails; format=text or knowledge-input-v1 also cannot faithfully deliver these bytes.",
+    "operational_result": "X-6 blocked. CLI exit 1 and no verified bundle/output/Consumption Receipt. Diagnostic fresh isolated Git obtained 10 objects / 65479 raw bytes before the same typed-content rejection.",
+    "required_action": "Historical blocker retained. Manager has now adopted the strict candidate profile, candidate_bindings, full blob verification and complete tree snapshot design for a future independent attempt. See design-supplement.md; no implementation/retry started.",
+    "additional_design_question": "Resolved by later Manager design decision for the next assignment: verify both source blobs and complete tree snapshots; provenance-only is not accepted. This does not change the blocked attempt 1 result.",
+    "authority_boundary": "No authorization JSON is included in this public candidate. Manager must supply a new private independent authorization and pin for the next consumer; no prior grant is transferable."
+  },
+  "checks": "149 tests including unchanged 128 pass; all delivery schema/sample checks and diff whitespace check pass.",
+  "unfinished": [
+    "X-6 actual B1 successful bundle",
+    "Full documentation and reusable public fixtures",
+    "Remaining real crossrepo positive acceptance and independent Test/Review",
+    "Feature push and same-head CI",
+    "P-A merge and Manager dependency confirmation",
+    "PR creation and merge"
+  ],
+  "publication_safety": "Public delivery derivative prepared from the sealed public-alias candidate. No authorization JSON, private/runtime identifiers, private originals, raw internal logs or credentials included. Producer inspection only; publication and new consumer authorization remain Manager gates.",
+  "retries": "Execution attempt 1. No agent restart or attempt reset. One B1 CLI rejection and one diagnostic fresh fetch are recorded; no further retries after the blocker.",
+  "no_claims": [
+    "B1 independent Test/Review/Issue acceptance",
+    "B1 implementation restart",
+    "Commit tree/build correctness",
+    "Readiness success",
+    "IssueCompletion",
+    "P-A merged",
+    "Manager approval for new publications"
+  ],
+  "delivery_preparation": {
+    "state": "local-unpublished-candidate",
+    "engineering_attempt_status": "attempt 1 remains blocked",
+    "base_consumer_commit": "df400018057735b7cb6a9c6ea4619508f0e6ba3a",
+    "format": "Delivery 1.0 report bundle; not Delivery 1.2 B1 payload verification",
+    "preservation": "Saved implementation.patch copied exactly, never regenerated; original seal and implementation branch unchanged; all nine prior public P-A artifacts copied byte-for-byte.",
+    "new_design": "design-supplement.md records a later Manager design decision and proposed next-assignment X-7/X-8/X-9. Original X-1 through X-6 and attempt history are unchanged.",
+    "excluded": "All authorization JSON and original B1 payloads are excluded. The B1 observation is historical evidence only.",
+    "review": "No successful remote publication or live Consumer delivery is claimed for these unpublished files. A new private Manager pin is required after approved publication."
+  }
+}

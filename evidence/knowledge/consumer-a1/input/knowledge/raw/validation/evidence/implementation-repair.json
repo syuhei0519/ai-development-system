@@ -1,0 +1,102 @@
+{
+  "record_type": "implementation_repair_attempt_3",
+  "role": "implementation",
+  "attempt": 3,
+  "status": "completed",
+  "head": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+  "base": "b1e606544174481b7b6904f811e857f80978c287",
+  "prior_head": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+  "scope": "system/artifact-delivery/cross-reference",
+  "finding": {
+    "id": "R-1",
+    "priority": "P2",
+    "result": "repaired and self-verified",
+    "root_cause": "Substring /tree/ in any URL position incorrectly selected tree parsing.",
+    "repair": "Read only route segment immediately after canonical owner/repository; require blob or tree; retain fixed_url full-match and safe_path checks.",
+    "changed_files": [
+      "scripts/prepare_crossref_bundle.py",
+      "tests/test_preparation.py",
+      "examples/crossref-delivery/README.md"
+    ],
+    "public_code_commit": "520ef1e7a59662fe3e58d49d5510350ee08c3160"
+  },
+  "coverage": [
+    {
+      "id": "X-1",
+      "result": "covered in Implementation repair/self-verification scope",
+      "assessment": "Explicit 1.2 records, exact structural owner/slot/target and original locator/revision bindings; 1.0/1.1 behavior retained.",
+      "code": "contracts/*-v1.2.schema.json; scripts/consume_delivery.py:53,178,230",
+      "evidence": "176 regressions; 245/43 reruns; unchanged legacy schema files"
+    },
+    {
+      "id": "X-2",
+      "result": "covered in Implementation repair/self-verification scope",
+      "assessment": "Canonical fixed repo/OID/path acquisition and bytes validation retained; R-1 preparation now derives kind only from the route position.",
+      "code": "scripts/prepare_crossref_bundle.py:110; scripts/consume_delivery.py:72,80,119",
+      "evidence": "before 1/3; after 3/3; 12 positives and 39 malformed source boundaries; B1 CLI"
+    },
+    {
+      "id": "X-3",
+      "result": "covered in Implementation repair/self-verification scope",
+      "assessment": "Separate typed raw commit object; exact URL/OID/type/size/hash and receipt/output namespace. Existence grants no source/build claim.",
+      "code": "scripts/consume_delivery.py:119,156,210,478",
+      "evidence": "176/245 commit fault cases and real B1 raw commit OID oracle"
+    },
+    {
+      "id": "X-4",
+      "result": "covered in Implementation repair/self-verification scope",
+      "assessment": "Independent current Manager pins and separate outer/B1 authorizations, exact purpose/scope/consumer/expiry/record versions, full verification before output; no receipt authority.",
+      "code": "scripts/consume_delivery.py:414,478,494",
+      "evidence": "245/43 authorization and staging/recheck negatives; private CLI receipts"
+    },
+    {
+      "id": "X-5",
+      "result": "covered in Implementation repair/self-verification scope",
+      "assessment": "Existing 173 regressions unchanged, base 128 rerun, three added methods and original Review reproducer; actual legacy10/11 rejection and documented CLI/schema checks.",
+      "code": "tests/; self-verification.json",
+      "evidence": "176 + 128 PASS; 245 + 43 + 3 PASS"
+    },
+    {
+      "id": "X-6",
+      "result": "covered in Implementation repair/self-verification scope",
+      "assessment": "Original public B1 Handoff/code commit/Research dependencies preserved and formally fetched.",
+      "code": "delivery-observation.json",
+      "evidence": "17 objects/89071 bytes, fresh recheck and exact re-preparation records; no product execution"
+    },
+    {
+      "id": "X-7",
+      "result": "covered in Implementation repair/self-verification scope",
+      "assessment": "Strict external candidate profile, original document bytes and pending status, exact producer/raw_locator/candidate IDs/source/typed target with full blob verification.",
+      "code": "scripts/delivery_candidates.py:101; contracts/knowledge-candidates-v1.schema.json",
+      "evidence": "176/245/43 producer/type/ID/approval negatives; R-1 blob/tree preparation cases"
+    },
+    {
+      "id": "X-8",
+      "result": "covered in Implementation repair/self-verification scope",
+      "assessment": "Complete fixed tree snapshot, raw ancestor/descendant object/OID/mode and every regular blob; exact inventories and fail-closed bounds retained.",
+      "code": "scripts/delivery_candidates.py:26,46,156",
+      "evidence": "176/245/43 tree faults, inventory/limit cases; six actual B1 tree blobs"
+    },
+    {
+      "id": "X-9",
+      "result": "covered in Implementation repair/self-verification scope",
+      "assessment": "Immutable real B1 and source closure verified twice; old tests and version/type/authorization/retry boundaries retained; all gates separated.",
+      "code": "delivery-observation.json; integration-observation.json",
+      "evidence": "B1 two formal CLI runs, fresh equality/oracle, unchanged input bytes, separate pending independent Test/Review"
+    }
+  ],
+  "independent_review": "Historical Review attempt 1 remains failed. Manager must launch new independent Test/Review on this head.",
+  "constraints": [
+    "Only existing feature branch changed; no main push, force push, new PR, merge, permission/Secrets/Ruleset change, new API service, subagent, application execution or deployment.",
+    "Implementation 3 is the final permitted attempt; no history/budget reset. Backend B1 attempts remain separate and no restart authorized.",
+    "Current original authorizations/pins/receipts/private hashes/runtime identifiers/internal logs excluded from public candidate.",
+    "Candidate is unpublished and conveys no new authority."
+  ],
+  "residual_limits": [
+    "Source truthfulness, Knowledge semantics/adoption, product behavior and IssueCompletion are separate gates.",
+    "Git fetch pack totals remain environment bounded, not globally capped by payload limits.",
+    "Current Manager authorization authenticity and trusted local runtime remain required.",
+    "CI log body unavailable (Forbidden); only result/step metadata verified.",
+    "Prior public derivatives retained as supplied; private Producer originals not independently available."
+  ]
+}

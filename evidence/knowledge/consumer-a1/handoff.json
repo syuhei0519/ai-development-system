@@ -1,0 +1,287 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "SYSTEM-KNOWLEDGE-CONSUMPTION",
+    "title": "固定Git Knowledgeの独立取得と実利用確認",
+    "source": "task-input",
+    "acceptance_criteria": [
+      {
+        "id": "KC-1",
+        "verbatim": "Producerのワークスペースや会話に依存せず固定GitからKnowledge context・記事・全根拠を取得し、全bytes・size・SHA256・型・参照・利用承認を検証する。",
+        "source": "task-input"
+      },
+      {
+        "id": "KC-2",
+        "verbatim": "2記事の重要な主張・適用条件・例外・更新条件・draft状態を固定出典と照合し、事実・報告・推論を分離して独立に評価する。",
+        "source": "task-input"
+      },
+      {
+        "id": "KC-3",
+        "verbatim": "検証済みKnowledgeを具体的な配送検証計画の作成に使用し、どの記事のどの教訓をどの判断・検証項目に採用または不採用としたかを根拠付きで記録する。",
+        "source": "task-input"
+      },
+      {
+        "id": "KC-4",
+        "verbatim": "Git保存、配送完全性、意味評価、実利用、定期実行、製品AC判定を区別し、未実施を成功にせずHandoff v2と利用報告を返す。",
+        "source": "task-input"
+      }
+    ]
+  },
+  "assignment": {
+    "scope": "knowledge/milestone/independent-consumption",
+    "ac_ids": [
+      "KC-1",
+      "KC-2",
+      "KC-3",
+      "KC-4"
+    ],
+    "completion_criteria": [
+      "全担当結果・再現可能な根拠・具体的計画と利用対応表。"
+    ]
+  },
+  "role": "review",
+  "task_id": "knowledge-consumer-review-a1",
+  "attempt": 1,
+  "upstream": [],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "固定Git入力のtyped Delivery1.1独立消費・fresh再検査・6出典照合後、2draft記事を限定採用し次回配送計画と利用対応表を作成。KC1〜4のReview工程を完了。製品AC/最新PR合格/周期運用/記事active化は認定しない。",
+  "artifacts": [
+    {
+      "id": "A01",
+      "kind": "document",
+      "locator": "assignment.md",
+      "revision": "sha256:f058855127901c59252f1f98e321415839f9072f689afd043769ee786d9ac218",
+      "summary": "今回の独立Consumer/Review成果物: assignment.md"
+    },
+    {
+      "id": "A02",
+      "kind": "document",
+      "locator": "delivery-review-test-plan.md",
+      "revision": "sha256:c89c9cb4074537387fc3a8b2358be05f1c23abc64abf3c35941d512a32243ca1",
+      "summary": "今回の独立Consumer/Review成果物: delivery-review-test-plan.md"
+    },
+    {
+      "id": "A03",
+      "kind": "other",
+      "locator": "delivery-verification.json",
+      "revision": "sha256:727714fe393df8a922878ff49ec4d297f61b1b8a108922ecef7162481c0118ea",
+      "summary": "今回の独立Consumer/Review成果物: delivery-verification.json"
+    },
+    {
+      "id": "A04",
+      "kind": "other",
+      "locator": "input/context.candidate.json",
+      "revision": "sha256:6e19b98691eb3c5e4c780e65fe2a592e4f20c26181b3ffbc5d6d0c24b6be04b5",
+      "summary": "固定Gitから取得した全bytes不変の入力資料。実行対象ではない。"
+    },
+    {
+      "id": "A05",
+      "kind": "document",
+      "locator": "input/knowledge/README.md",
+      "revision": "sha256:45716993c30cbb564278442443548e65f1e3b891cdc582d35f99ed1002a06db6",
+      "summary": "固定Gitから取得した全bytes不変の入力資料。実行対象ではない。"
+    },
+    {
+      "id": "A06",
+      "kind": "document",
+      "locator": "input/knowledge/curated/validation/README.md",
+      "revision": "sha256:33f0a61041aafa768065d6e01a12b0f7f893eaf6f95430e7cd126f68211fe54e",
+      "summary": "固定Gitから取得した全bytes不変の入力資料。実行対象ではない。"
+    },
+    {
+      "id": "A07",
+      "kind": "knowledge",
+      "locator": "input/knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+      "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+      "summary": "固定Gitから取得した全bytes不変の入力資料。実行対象ではない。"
+    },
+    {
+      "id": "A08",
+      "kind": "knowledge",
+      "locator": "input/knowledge/curated/validation/delivery-evidence-boundaries.md",
+      "revision": "sha256:efde077ec14efb1991c1393f637be020f036f5e048f888eca75976156aea66f8",
+      "summary": "固定Gitから取得した全bytes不変の入力資料。実行対象ではない。"
+    },
+    {
+      "id": "A09",
+      "kind": "document",
+      "locator": "input/knowledge/raw/validation/README.md",
+      "revision": "sha256:e4dc2f06bbada492cf6fdec699b91957d146e8c66e7b4b183ef91bac8c9911f5",
+      "summary": "固定Gitから取得した全bytes不変の入力資料。実行対象ではない。"
+    },
+    {
+      "id": "A10",
+      "kind": "document",
+      "locator": "input/knowledge/raw/validation/artifact-delivery-lessons.md",
+      "revision": "sha256:46394d653cd33c9fe5b13f3e5f8a82a178435150c01dba7545604f403f8deec7",
+      "summary": "固定Gitから取得した全bytes不変の入力資料。実行対象ではない。"
+    },
+    {
+      "id": "A11",
+      "kind": "other",
+      "locator": "input/knowledge/raw/validation/evidence/implementation-blocked.json",
+      "revision": "sha256:29d2ef67748681c07dd456e5a0618be91ede5a9f81feb331ff826ee63f258e03",
+      "summary": "固定Gitから取得した全bytes不変の入力資料。実行対象ではない。"
+    },
+    {
+      "id": "A12",
+      "kind": "other",
+      "locator": "input/knowledge/raw/validation/evidence/implementation-completed.json",
+      "revision": "sha256:47e4461fc6006f65369304b4448715ebdd2bb76cb800156376f8fd5b93963e79",
+      "summary": "固定Gitから取得した全bytes不変の入力資料。実行対象ではない。"
+    },
+    {
+      "id": "A13",
+      "kind": "other",
+      "locator": "input/knowledge/raw/validation/evidence/implementation-repair.json",
+      "revision": "sha256:f9b4a9c13a145adad78a641991f454606501f755450ada6a5695dd1c2937f4ea",
+      "summary": "固定Gitから取得した全bytes不変の入力資料。実行対象ではない。"
+    },
+    {
+      "id": "A14",
+      "kind": "document",
+      "locator": "input/knowledge/raw/validation/evidence/preparation_probe.py",
+      "revision": "sha256:6c6fa0aa166ad1a112255ef7b731ec6b1564594f533794901fac7cb2d0fa177d",
+      "summary": "固定Gitから取得した全bytes不変の入力資料。実行対象ではない。"
+    },
+    {
+      "id": "A15",
+      "kind": "other",
+      "locator": "input/knowledge/raw/validation/evidence/review-report.json",
+      "revision": "sha256:ce2793c1454151c9c8c203f4c608048e41a89f3f15b33becb0f8ae61945c9b85",
+      "summary": "固定Gitから取得した全bytes不変の入力資料。実行対象ではない。"
+    },
+    {
+      "id": "A16",
+      "kind": "other",
+      "locator": "input/knowledge/raw/validation/evidence/test-report.json",
+      "revision": "sha256:af3a802497eb2007495e47be9088bbc5b1275382b892ecdd41b486fd58fd8613",
+      "summary": "固定Gitから取得した全bytes不変の入力資料。実行対象ではない。"
+    },
+    {
+      "id": "A17",
+      "kind": "document",
+      "locator": "reproduction.md",
+      "revision": "sha256:185c97384ac85dceef002370a00e120e7b6fe2968278c8c949d6f821c136e9c1",
+      "summary": "今回の独立Consumer/Review成果物: reproduction.md"
+    },
+    {
+      "id": "A18",
+      "kind": "review",
+      "locator": "semantic-review.md",
+      "revision": "sha256:3db1fa7f2493a1b2401190630f7f00f691a86ea0cdc15c6ed35f0d7fe9ab5ded",
+      "summary": "今回の独立Consumer/Review成果物: semantic-review.md"
+    },
+    {
+      "id": "A19",
+      "kind": "other",
+      "locator": "usage-map.json",
+      "revision": "sha256:61e85023163e5fe30948cc0adc955c0ba70306639e05e7accae6cf061eacc3cf",
+      "summary": "今回の独立Consumer/Review成果物: usage-map.json"
+    },
+    {
+      "id": "A20",
+      "kind": "document",
+      "locator": "usage-report.md",
+      "revision": "sha256:0a4ab1df90c4a24d2a7a7d543d3a7aecdc23d3118360e6cb9caf87a02af3e1dc",
+      "summary": "今回の独立Consumer/Review成果物: usage-report.md"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E1",
+      "claim": "認可された固定Git配送の全bytes・型・参照閉包を独立検査した。",
+      "artifact_ids": [
+        "A03",
+        "A04"
+      ],
+      "locator": "delivery-verification.json",
+      "observation": "未変更正本Delivery1.1 CLI初回exit0、fresh Git receipt再検査exit0。13件63991 bytes、records2件、6元公開出典のbytes一致。利用前に現在のManager認可と独立pinを照合。認可・receipt原本は非公開。"
+    },
+    {
+      "id": "E2",
+      "claim": "2draft記事の意味と固定6出典を独立に評価した。",
+      "artifact_ids": [
+        "A18"
+      ],
+      "locator": "semantic-review.md",
+      "observation": "主張・適用条件・例外・時系列・更新条件・問いを照合。報告と独立観測と推論を分離し、限定計画利用を阻害する不整合なし。過去実行や現在PR状態は再認定しない。"
+    },
+    {
+      "id": "E3",
+      "claim": "検証済みKnowledgeを具体的な次回配送計画へ利用した。",
+      "artifact_ids": [
+        "A02",
+        "A19"
+      ],
+      "locator": "usage-map.json",
+      "observation": "12項目に手順・期待結果・適用条件・証拠・固定記事段落・追加推論を記載。5件の不採用/保留判断。全提案テストはnot_executed。"
+    },
+    {
+      "id": "E4",
+      "claim": "工程完了と配送・意味・実利用・周期・製品判定を分離した。",
+      "artifact_ids": [
+        "A20",
+        "A17",
+        "A01"
+      ],
+      "locator": "usage-report.md",
+      "observation": "KC1〜4は担当Review工程としてcovered。製品AC/最新PR7 head/Readiness/周期実行/active化は未認定。公開・Push・PR・merge・配備・アプリ実行・別Agent起動なし。"
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "KC-1",
+      "disposition": "covered",
+      "scope": "固定入力13件・records・6出典の独立取得と認可されたtyped Consumer検査。私的原本と歴史的テスト再実行は対象外。",
+      "artifact_ids": [
+        "A03",
+        "A04"
+      ],
+      "evidence_ids": [
+        "E1"
+      ]
+    },
+    {
+      "ac_id": "KC-2",
+      "disposition": "covered",
+      "scope": "2draft記事の意味/source照合と限定採用。最新headの独立合格や現在merge状態は未確認。",
+      "artifact_ids": [
+        "A18"
+      ],
+      "evidence_ids": [
+        "E2"
+      ]
+    },
+    {
+      "ac_id": "KC-3",
+      "disposition": "covered",
+      "scope": "12検証項目と5不採用/保留を持つ具体計画への利用。計画の実行結果ではない。",
+      "artifact_ids": [
+        "A02",
+        "A19"
+      ],
+      "evidence_ids": [
+        "E3"
+      ]
+    },
+    {
+      "ac_id": "KC-4",
+      "disposition": "covered",
+      "scope": "状態を分離した利用報告とHandoff。周期実行は延期、製品最終判定はManagerのみ。",
+      "artifact_ids": [
+        "A20",
+        "A17",
+        "A01"
+      ],
+      "evidence_ids": [
+        "E4"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

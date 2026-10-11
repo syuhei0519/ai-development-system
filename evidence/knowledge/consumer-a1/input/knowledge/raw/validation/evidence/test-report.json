@@ -1,0 +1,120 @@
+{
+  "report_type": "independent_test_attempt_1",
+  "role": "test",
+  "attempt": 1,
+  "status": "completed",
+  "scope": "system/artifact-delivery/cross-reference",
+  "head": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+  "original_base": "5345303db8c5208859ed741b98f119882de7a973",
+  "system_canonical_consumer": "df400018057735b7cb6a9c6ea4619508f0e6ba3a",
+  "issue_policy": "Exact original Issue and X-1 through X-6 retained. X-7 through X-9 remain additional assignment completion conditions, linked to original adoption record. Test attempt 1 is separate from Implementation attempt 2.",
+  "summary": "173 existing tests and 245 independent cases PASS. Real B1 Delivery 1.2 and fresh recheck PASS, 17 objects / 89071 bytes unchanged. No implementation defect identified in assigned tests.",
+  "requirements": [
+    {
+      "id": "X-1",
+      "result": "pass",
+      "verified": "Explicit 1.2 four-record schema dispatch; exact owner/structural slot/raw locator/revision/target; missing/extra/duplicate/copy and actual 1.0/1.1 validator rejection.",
+      "evidence": "tests/test_crossref_delivery.py; independent_probe.py binding and legacy cases"
+    },
+    {
+      "id": "X-2",
+      "result": "pass",
+      "verified": "Cross-repository blobs and cross-commit Handoffs, full fixed Git retrieval, canonical generated URL, tree ancestry, raw size/hash and Git blob OID; retry identity/Issue equality.",
+      "evidence": "B1 CLI/recheck; independent canonical URL/copy/retry/transport cases; existing crossref tests"
+    },
+    {
+      "id": "X-3",
+      "result": "pass",
+      "verified": "Typed commit object, no path; full raw payload size/SHA256/Git header SHA1 recomputation; isolated Git commit type and FETCH_HEAD checks; typed output retained.",
+      "evidence": "B1 output oracle; independent raw commit probes; existing CommitGitTests"
+    },
+    {
+      "id": "X-4",
+      "result": "pass",
+      "verified": "Separate independent private Manager pins; exact consumer/scope/purpose/expiry, manifest/publication/version and receipt equality; no authority inferred and late CLI failure leaves no output.",
+      "evidence": "Outer 1.0 CLI; B1 1.2 CLI/recheck; independent policy/CLI cases"
+    },
+    {
+      "id": "X-5",
+      "result": "pass",
+      "verified": "173 existing regressions including unchanged P-A tests, plus 245 independent cases; legacy files unchanged; contract examples validated.",
+      "evidence": "regression-summary.json; independent-results.json"
+    },
+    {
+      "id": "X-6",
+      "result": "pass",
+      "verified": "Immutable real B1 objects fetched by new 1.2 CLI and fresh recheck, 17 unique objects / 89071 bytes. Original status/attempt/locators/revisions retained.",
+      "evidence": "delivery-observation.json; private original receipts and outputs"
+    },
+    {
+      "id": "X-7",
+      "result": "pass",
+      "verified": "Strict external candidate type/fields/bounds/unique IDs, producer artifact/raw_locator/ID set/domain/source target correspondence, unknown-type downgrade refusal, pending status grants nothing.",
+      "evidence": "independent candidate cases; existing CandidateTests; real B1 candidate bytes"
+    },
+    {
+      "id": "X-8",
+      "result": "pass",
+      "verified": "Complete raw tree traversal and inventory, normal blob mode/path/OID/size/hash, binary/executable/nested/empty trees; omission/extra/duplicate/truncation/special ancestors and limits reject.",
+      "evidence": "independent tree oracle/faults; existing TreeTests; real B1 six-member tree"
+    },
+    {
+      "id": "X-9",
+      "result": "pass",
+      "verified": "System regression and actual B1 formal delivery/recheck independently reproduced; legacy rejection and fresh receipt tests; CI and integration independently observed as separate evidence.",
+      "evidence": "delivery-observation.json; ci-observation.json; independent-results.json"
+    }
+  ],
+  "findings": [],
+  "harness_correction": "An intermediate independent retry fixture incorrectly omitted required Handoff artifacts and failed its own positive controls. Fixture corrected without production changes; final independent run 245/245 passes. Intermediate harness result retained privately, not classified as an implementation failure or new execution attempt.",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux",
+    "git": "git version 2.52.0",
+    "jsonschema": "4.26.0"
+  },
+  "source_inspection": [
+    "agents/test.md",
+    "templates/task-input.md",
+    "workflows/single-issue.md",
+    "contracts/README.md",
+    "contracts/artifact-delivery.md",
+    "contracts/cross-reference-delivery.md",
+    "contracts/*v1.2.schema.json",
+    "contracts/knowledge-candidates-v1.schema.json",
+    "scripts/consume_delivery.py",
+    "scripts/delivery_candidates.py",
+    "scripts/validate_handoff.py",
+    "tests/test_crossref_delivery.py",
+    "tests/test_candidate_delivery.py",
+    "input assignment/report/Handoffs/prior/design supplement/source inventory/research design"
+  ],
+  "workspace_instructions": "No AGENTS.md or repository skill files found in target checkouts; selected environment .agents/.codex instruction directories empty. No additional agent launched.",
+  "integration": {
+    "observation": "Added after original-base tests; original result base never rewritten.",
+    "new_main": "b1e606544174481b7b6904f811e857f80978c287",
+    "new_main_second_parent": "5345303db8c5208859ed741b98f119882de7a973",
+    "base_tree_equal": true,
+    "test_merge": "fe410be606c9b22bd466c78b10728fff3e4723b6",
+    "merge_tree_equal_to_head": true,
+    "pr": 7,
+    "pr_draft": true,
+    "ci": "Push and pull_request runs success independently observed; PR checkout SHA and 173 tests confirmed from job logs."
+  },
+  "boundaries": [
+    "Independent Test only; Review and Manager final gates are separate.",
+    "No B1 implementation restart, application execution, application repository edits, build/product AC acceptance, Knowledge adoption, semantic source truth, Readiness or IssueCompletion certified.",
+    "Public fixed derivatives do not prove private originals. Publication approval unverified preserved for B1; consumer approved only for bounded reading.",
+    "No push, PR creation/comment, merge, deployment, permission/Secrets/Ruleset changes, or additional agents by this Test task.",
+    "Synthetic fault injection uses local data and production entry points, not adversarial live GitHub publication.",
+    "No arbitrary remote redirect server contacted; generated canonical URL and subprocess redirect/config prohibition verified.",
+    "Resource bounds exercised through lowered constants on real nested data; does not measure maximum pack network/disk usage."
+  ],
+  "history": "Implementation attempt 1 blocked and attempt 2 result history preserved byte-for-byte through upstream closure. No budget reset or relabeling; unrelated B1 terminal history unchanged.",
+  "remaining": [
+    "Independent Review and Manager integration/readiness gates.",
+    "Public-alias candidate remains local/unpublished pending Manager safety/publication decision and fresh delivery authorization."
+  ],
+  "reproduction": "reproduction.md",
+  "publication": "Public alias candidate classification only, no publication approval asserted."
+}

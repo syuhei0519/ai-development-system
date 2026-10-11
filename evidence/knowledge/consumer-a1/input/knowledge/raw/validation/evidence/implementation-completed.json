@@ -1,0 +1,72 @@
+{
+  "report_type": "implementation_attempt_2_self_verification",
+  "status": "completed",
+  "attempt": 2,
+  "scope": "system/artifact-delivery/cross-reference",
+  "repository": "syuhei0519/ai-development-system",
+  "canonical_main": "df400018057735b7cb6a9c6ea4619508f0e6ba3a",
+  "fixed_dependency_head": "5345303db8c5208859ed741b98f119882de7a973",
+  "head": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+  "branch": "feat/artifact-delivery-crossrefs-a2",
+  "remote": "verified exact head",
+  "ci": "same-head push CI success",
+  "pr": "not created; awaiting P-A merge and Manager dependency confirmation",
+  "merge": "not performed",
+  "initial_delivery": "PASS using unchanged canonical main consume_delivery.py: all 18 artifacts, 213362 payload bytes, independent private authorization pin, exact public manifest/publication pins, types/dependencies checked before use.",
+  "inherited_patch": {
+    "size": 90015,
+    "sha256": "c65dc1e4f5fc848ea995a9cc6807d381cab1862cedc6521e1627c9ddf8cdb817",
+    "base": "5345303db8c5208859ed741b98f119882de7a973",
+    "application": "git apply --check and git apply succeeded"
+  },
+  "implementation": [
+    "Explicit Delivery 1.2 typed blob/commit object and exact outer structural slots inherited and completed.",
+    "Strict external knowledge-candidates-v1 profile without changing original schema_version/status/bytes.",
+    "Complete producer artifact/raw_locator/candidate set/domain/source binding; semantic summaries remain separate review.",
+    "Full raw tree-object traversal and OID checks, exact descendant inventory with all ordinary file bytes, size/hash/mode/OID; symlink/gitlink/truncation/limits fail closed.",
+    "Versioned schemas, receipt bindings, docs, preparation helpers and published synthetic fixtures."
+  ],
+  "supplemental_conditions": [
+    {
+      "id": "X-7",
+      "status": "self_verified",
+      "evidence": "Strict candidate/blob tests and synthetic fixed Git source retrieval; pending status never becomes approval."
+    },
+    {
+      "id": "X-8",
+      "status": "self_verified",
+      "evidence": "Complete nested/binary/executable/empty tree and negative integrity/resource cases; fixed synthetic Git tree retrieved twice."
+    },
+    {
+      "id": "X-9",
+      "status": "self_verified",
+      "evidence": "173 tests including unchanged 149, old-version probes, fixed synthetic Git checks, and actual B1 formal CLI plus fresh receipt recheck under new Manager authorization all pass. No independent or product acceptance."
+    }
+  ],
+  "b1_records": {
+    "status": "Formal Consumer CLI and fresh receipt recheck PASS under new Manager authorization; local record publication remains unapproved",
+    "manifest": {
+      "size": 22789,
+      "sha256": "5a1e3edfcdc1751c7a02ece0a2962b208f1285dc974e80889e58e42aedff1ae3"
+    },
+    "publication": {
+      "size": 6164,
+      "sha256": "0cb6488dd3b1faa0d069489fb0e24036287cca4fe4de728bce40821e472c068d"
+    },
+    "explicit_objects": 11,
+    "explicit_payload_bytes": 69989,
+    "tree_files": 6,
+    "tree_bytes": 19082,
+    "preserved": "Actual fixed B1 Handoff/test-report/candidates and code commit; all declared Research handoffs including attempts 3/2/1 and artifacts were retrieved for record preparation. No B1 file/locator/revision/status/attempt edited.",
+    "required_action": "Manager may proceed to separate delivery/safety review and independent evaluation; no PR before P-A merge and Manager dependency confirmation.",
+    "formal_observation": "b1-cli-observation.public.json; full Consumption Receipts kept privately due to authorization binding"
+  },
+  "remaining": [
+    "Independent Test/Review by Manager",
+    "P-A merge and dependency confirmation before PR",
+    "Operational Handoff/report publication approval and separate downstream delivery"
+  ],
+  "safety": "Public alias candidate only; no runtime identifiers, authorization JSON/pin, private original hash, secrets or raw internal logs. Producer inspection only, not independent Review or publication approval.",
+  "history": "Previous authorization-wait blocked Handoff/report remain byte-identical. This final revision records a subsequently supplied Manager authorization and two successful formal CLI executions within attempt 2. No budget reset; unrelated B1 terminal history remains unchanged.",
+  "result_revision": "final-r2 within existing attempt 2; not a new execution attempt"
+}
