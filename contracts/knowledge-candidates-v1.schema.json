@@ -1,0 +1,76 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "document_type": {
+      "const": "knowledge_candidates"
+    },
+    "publication_status": {
+      "const": "pending_manager_review"
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048,
+            "pattern": "\\S"
+          },
+          "domain": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048,
+            "pattern": "\\S"
+          },
+          "summary": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 16384,
+            "pattern": "\\S"
+          },
+          "evidence": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 16384,
+            "pattern": "\\S"
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048,
+            "pattern": "\\S"
+          },
+          "scope": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 16384,
+            "pattern": "\\S"
+          }
+        },
+        "required": [
+          "id",
+          "domain",
+          "summary",
+          "evidence",
+          "source",
+          "scope"
+        ]
+      },
+      "maxItems": 128,
+      "uniqueItems": true,
+      "minItems": 1
+    }
+  },
+  "required": [
+    "document_type",
+    "publication_status",
+    "candidates"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/ai-development-system/knowledge-candidates-v1.schema.json",
+  "title": "Externally selected immutable knowledge-candidates-v1 profile"
+}

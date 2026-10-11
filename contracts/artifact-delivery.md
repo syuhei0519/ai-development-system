@@ -207,3 +207,7 @@ P-A 単体は inbox/state を提供しない。P-B は別の [collector 契約](
 公開済みsynthetic fixtureを固定Gitから再取得する手順は
 [Knowledge配送fixture](../examples/knowledge-delivery/README.md)。unit testsはnetwork不要、
 実Gitの再現は独立した検証であり、Implementationの自己検証を独立Test/Reviewとして数えない。
+
+## Delivery 1.2
+
+[Fixed cross-reference and candidate/tree extension](cross-reference-delivery.md) adds explicit typed bindings without rewriting original documents. Legacy 1.0/1.1 semantics remain unchanged.

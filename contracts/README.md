@@ -74,3 +74,7 @@ Knowledge input/handoff/contextのtyped配送、原入力一致、source/記事/
 版別schemaは `*-v1.1.schema.json`、CLIは4種配送recordの版一致を要求する。
 公開synthetic fixtureと固定Git再現手順は [examples/knowledge-delivery](../examples/knowledge-delivery/README.md)。
 P-B の機械的な非同期収集 CLI と永続 inbox/state は [Knowledge Collection v1.0](knowledge-collection.md) で実装済み。P-C の context生成/ack と P-D の実Agent利用実証・周期実行は未実施であり、定期実運用の完了を意味しない。
+
+## Delivery 1.2 cross references
+
+See [the versioned extension](cross-reference-delivery.md) for typed Git commit objects, canonical cross-repository blobs, immutable candidate profiles and complete tree snapshots. Transport integrity is separate from approval and semantic review.

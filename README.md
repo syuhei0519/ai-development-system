@@ -140,3 +140,5 @@ P-B の非同期 inbox/state は下記 CLI で実装。context生成/ack/periodi
 固定 Git 全件照合、event identity、CAS/atomic transaction、raw 履歴、有限 retry/crash 復旧を扱います。
 collector は Agent/API を起動せず、schedule を登録・有効化しません。Knowledge の失敗は開発 gate を変更しません。
 state・認可・runtime ID は非公開。stdout は安全な状態件数のみです。
+
+Fixed cross-repository delivery and immutable candidate/tree verification use [Delivery 1.2](contracts/cross-reference-delivery.md). [Reproduction instructions](examples/crossref-delivery/README.md) separate record preparation from Manager-authorized consumption.
