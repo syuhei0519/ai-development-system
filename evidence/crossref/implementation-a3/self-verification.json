@@ -1,0 +1,180 @@
+{
+  "record_type": "implementation_attempt_3_self_verification",
+  "head": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+  "base": "b1e606544174481b7b6904f811e857f80978c287",
+  "prior_head": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+  "runner_role": "implementation",
+  "independent_new_test_or_review": false,
+  "regression": {
+    "total": 176,
+    "passed": 176,
+    "failed": 0,
+    "existing_unchanged_methods": 173,
+    "added_methods": 3,
+    "all_preexisting_test_files_byte_identical_to_prior_head": true
+  },
+  "fixed_base_regression": {
+    "head": "b1e606544174481b7b6904f811e857f80978c287",
+    "total": 128,
+    "passed": 128,
+    "failed": 0
+  },
+  "original_preparation": {
+    "before_head": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+    "before_passed": 1,
+    "before_failed": 2,
+    "after_head": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+    "after_passed": 3,
+    "after_failed": 0,
+    "before_cases": [
+      {
+        "case": "control",
+        "source_repository": "synthetic/source",
+        "source_path": "docs/note.txt",
+        "expected_preparation": "accepted",
+        "actual_preparation": "accepted",
+        "error": null,
+        "consumer_with_explicit_canonical_blob_manifest": "PASS",
+        "objects": 3,
+        "passed": true
+      },
+      {
+        "case": "nested-tree",
+        "source_repository": "synthetic/source",
+        "source_path": "docs/tree/note.txt",
+        "expected_preparation": "accepted",
+        "actual_preparation": "rejected",
+        "error": "canonical fixed Git URL required",
+        "consumer_with_explicit_canonical_blob_manifest": "PASS",
+        "objects": 3,
+        "passed": false
+      },
+      {
+        "case": "repository-tree",
+        "source_repository": "synthetic/tree",
+        "source_path": "docs/note.txt",
+        "expected_preparation": "accepted",
+        "actual_preparation": "rejected",
+        "error": "canonical fixed Git URL required",
+        "consumer_with_explicit_canonical_blob_manifest": "PASS",
+        "objects": 3,
+        "passed": false
+      }
+    ],
+    "after_cases": [
+      {
+        "case": "control",
+        "source_repository": "synthetic/source",
+        "source_path": "docs/note.txt",
+        "expected_preparation": "accepted",
+        "actual_preparation": "accepted",
+        "error": null,
+        "consumer_with_explicit_canonical_blob_manifest": "PASS",
+        "objects": 3,
+        "passed": true
+      },
+      {
+        "case": "nested-tree",
+        "source_repository": "synthetic/source",
+        "source_path": "docs/tree/note.txt",
+        "expected_preparation": "accepted",
+        "actual_preparation": "accepted",
+        "error": null,
+        "consumer_with_explicit_canonical_blob_manifest": "PASS",
+        "objects": 3,
+        "passed": true
+      },
+      {
+        "case": "repository-tree",
+        "source_repository": "synthetic/tree",
+        "source_path": "docs/note.txt",
+        "expected_preparation": "accepted",
+        "actual_preparation": "accepted",
+        "error": null,
+        "consumer_with_explicit_canonical_blob_manifest": "PASS",
+        "objects": 3,
+        "passed": true
+      }
+    ],
+    "source": "input/preparation_probe.py",
+    "note": "Original harness bytes unchanged. Its historical production_modified=false flag describes the harness, not the changed checkout."
+  },
+  "test_harness_rerun": {
+    "source": "input/input/independent_probe.py",
+    "total": 245,
+    "passed": 245,
+    "failed": 0,
+    "target_head": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+    "note": "Implementation self-rerun of existing independent Test harness. The unchanged harness embeds its historical old head; execution target is this new fixed head."
+  },
+  "review_harness_rerun": {
+    "source": "input/review_probe.py",
+    "total": 43,
+    "passed": 43,
+    "failed": 0,
+    "target_head": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+    "note": "Implementation self-rerun; the original independent failed Review remains failed."
+  },
+  "added_boundaries": {
+    "source": "tests/test_preparation.py at 520ef1e7a59662fe3e58d49d5510350ee08c3160",
+    "positive_cases": 12,
+    "malformed_source_cases": 39,
+    "commit_route_positive": 1,
+    "commit_route_negative": 4,
+    "coverage": [
+      "regular blob",
+      "blob path docs/tree/note.txt",
+      "repository tree",
+      "owner tree/blob",
+      "real tree route",
+      "unknown route",
+      "scheme/host/credentials/port",
+      "missing/extra segments",
+      "floating/short/uppercase OID",
+      "empty/path traversal/.git/double slash/backslash",
+      "query/fragment including empty delimiters",
+      "encoded owner/repository/route/path",
+      "newline"
+    ],
+    "verification": "Real local synthetic Git objects; only fetch destination substituted. Complete Preparation.finish plus Consumer and receipt recheck for all positive cases; no application source execution."
+  },
+  "compatibility": {
+    "legacy10": "df400018057735b7cb6a9c6ea4619508f0e6ba3a",
+    "legacy11": "b1e606544174481b7b6904f811e857f80978c287",
+    "actual_legacy_rejection": "PASS in 245-case rerun",
+    "old_schema_files_changed_by_repair": false,
+    "consumer_code_changed_by_repair": false,
+    "documents": "Canonical kind location and continued strict validation documented in examples/crossref-delivery/README.md"
+  },
+  "cli_schema_checks": [
+    {
+      "command": "python scripts/validate_delivery_records.py",
+      "returncode": 0
+    },
+    {
+      "command": "python scripts/validate_handoff.py examples/research-to-test/research.handoff.json examples/research-to-test/test.blocked.handoff.json examples/research-to-test/test.handoff.json examples/failed.handoff.json examples/partial-assignment.handoff.json",
+      "returncode": 0
+    },
+    {
+      "command": "python scripts/validate_knowledge.py examples/knowledge/input.json examples/knowledge/handoff.json examples/knowledge/context.json examples/knowledge-delivery/input.json examples/knowledge-delivery/handoff.json examples/knowledge-delivery/context.json",
+      "returncode": 0
+    },
+    {
+      "command": "python scripts/validate_readiness.py examples/readiness/pr-ready-issue-unverified.json --context examples/readiness/context.json --handoff examples/readiness/manager.handoff.json --at 2030-01-01T12:00:00Z",
+      "returncode": 0
+    },
+    {
+      "command": "python scripts/validate_readiness.py examples/readiness/implementation-only.json --context examples/readiness/automatic-context.json --at 2030-01-01T12:00:00Z",
+      "returncode": 0
+    },
+    {
+      "command": "python scripts/validate_readiness.py examples/readiness/postdeploy-achieved.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+      "returncode": 0
+    }
+  ],
+  "limitations": [
+    "All new executions are Implementation self-verification, not independently assigned Test/Review.",
+    "Synthetic negative probes are not real remote attacks.",
+    "No B1 application build, test, execution or deployment; source bytes are data."
+  ]
+}

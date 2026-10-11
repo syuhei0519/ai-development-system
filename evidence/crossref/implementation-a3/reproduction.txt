@@ -1,0 +1,38 @@
+Implementation attempt 3 repair reproduction (self-verification, not independent Test/Review)
+
+Fixed head: 520ef1e7a59662fe3e58d49d5510350ee08c3160
+Fixed base: b1e606544174481b7b6904f811e857f80978c287
+Prior head: 4b4e9c249451881f1e5eef82efb3a3b111cacbdb
+
+In fixed System checkout:
+python -m unittest discover -s tests -v
+python scripts/validate_delivery_records.py
+python CANDIDATE/input/input/independent_probe.py HEAD_CHECKOUT RESULTS_JSON LEGACY10_CHECKOUT LEGACY11_CHECKOUT
+python CANDIDATE/input/review_probe.py HEAD_CHECKOUT REVIEW_RESULTS_JSON
+python CANDIDATE/input/preparation_probe.py HEAD_CHECKOUT PREPARATION_RESULTS_JSON
+
+Legacy10=df400018057735b7cb6a9c6ea4619508f0e6ba3a; Legacy11=fixed base.
+Expected new-head results: 176 methods, Test harness 245, Review harness 43,
+preparation 3 all PASS. The before-head preparation result was 1 PASS/2 FAIL.
+Read test_preparation.py for 12 positive routes, 39 invalid source boundaries
+and commit route cases. All fixture source bytes are synthetic data, never run.
+The original harnesses are preserved unchanged, including historical metadata;
+the new report explicitly records the actual invocation target.
+
+Actual B1 records: input/input/input/b1-manifest.json and b1-publication-receipt.json.
+Obtain a separate current Manager authorization and independently supplied pin.
+python scripts/consume_delivery.py --manifest B1_MANIFEST --publication B1_PUBLICATION \
+  --authorization PRIVATE_AUTH --authorization-sha256 PRIVATE_MANAGER_PIN \
+  --consumer APPROVED_CONSUMER --scope system/artifact-delivery/cross-reference \
+  --purpose contract-review --output NEW_PRIVATE_OUTPUT
+Repeat with a fresh output plus --verify-receipt FIRST_OUTPUT/consumption-receipt.json.
+Observed: 17 objects / 89071 bytes, six source-tree blobs; fresh outputs identical.
+Never use this observation or historical receipt as an authorization grant.
+
+Repair patch is exact prior-head..head Git diff. Retrieve that public fixed head
+for all implementation files. Handoff retry_of is input/input/input/handoff.public.json;
+failed Review dependency is input/handoff.public.json. Their original locators,
+statuses, Issue text, attempts and complete 52-file dependency closure are retained.
+Inventory is outside the candidate directory to avoid a self-hash cycle.
+Do not publish this operational candidate without separate Manager approval.
+No B1 app execution, acceptance, restart, merge or IssueCompletion is certified.

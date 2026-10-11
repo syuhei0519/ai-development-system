@@ -1,0 +1,115 @@
+{
+  "record_type": "independent_regression_and_compatibility",
+  "head": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+  "base": "5345303db8c5208859ed741b98f119882de7a973",
+  "regression": {
+    "command": "python -m unittest discover -s tests -v",
+    "count": 173,
+    "exit_code": 0,
+    "result": "OK",
+    "elapsed_seconds": 6.015
+  },
+  "unchanged_legacy_files": [
+    "contracts/artifact-delivery-v1.1.schema.json",
+    "contracts/artifact-delivery.schema.json",
+    "contracts/consumption-receipt-v1.1.schema.json",
+    "contracts/consumption-receipt.schema.json",
+    "contracts/delivery-authorization-v1.1.schema.json",
+    "contracts/delivery-authorization.schema.json",
+    "contracts/handoff.schema.json",
+    "contracts/knowledge-context.schema.json",
+    "contracts/knowledge-handoff.schema.json",
+    "contracts/knowledge-input.schema.json",
+    "contracts/publication-receipt-v1.1.schema.json",
+    "contracts/publication-receipt.schema.json",
+    "contracts/readiness-context.schema.json",
+    "contracts/readiness.schema.json",
+    "tests/test_delivery.py",
+    "tests/test_delivery_content.py",
+    "tests/test_handoff.py",
+    "tests/test_knowledge.py",
+    "tests/test_knowledge_delivery.py",
+    "tests/test_readiness.py",
+    "tests/test_readiness_binding.py",
+    "tests/test_retry.py"
+  ],
+  "commands": [
+    {
+      "command": [
+        "python",
+        "scripts/validate_delivery_records.py"
+      ],
+      "exit_code": 0,
+      "result": "PASS: delivery schemas and sample bindings only; no live approval certified"
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_handoff.py",
+        "examples/research-to-test/research.handoff.json",
+        "examples/research-to-test/test.blocked.handoff.json",
+        "examples/research-to-test/test.handoff.json",
+        "examples/failed.handoff.json",
+        "examples/partial-assignment.handoff.json"
+      ],
+      "exit_code": 0,
+      "result": "PASS examples/research-to-test/research.handoff.json (shape + local references only; not business approval)\nPASS examples/research-to-test/test.blocked.handoff.json (shape + local references only; not business approval)\nPASS examples/research-to-test/test.handoff.json (shape + local references only; not business approval)\nPASS examples/failed.handoff.json (shape + local references only; not business approval)\nPASS examples/partial-assignment.handoff.json (shape + local references only; not business approval)"
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_knowledge.py",
+        "examples/knowledge/input.json",
+        "examples/knowledge/handoff.json",
+        "examples/knowledge/context.json",
+        "examples/knowledge-delivery/input.json",
+        "examples/knowledge-delivery/handoff.json",
+        "examples/knowledge-delivery/context.json"
+      ],
+      "exit_code": 0,
+      "result": "PASS examples/knowledge/input.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge/handoff.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge/context.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge-delivery/input.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge-delivery/handoff.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge-delivery/context.json (shape + local references only; not knowledge approval)"
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_readiness.py",
+        "examples/readiness/pr-ready-issue-unverified.json",
+        "--context",
+        "examples/readiness/context.json",
+        "--at",
+        "2030-01-01T12:00:00Z",
+        "--handoff",
+        "examples/readiness/manager.handoff.json"
+      ],
+      "exit_code": 0,
+      "result": "PASS examples/readiness/pr-ready-issue-unverified.json (record consistency only; not evidence truth or live GitHub permission)\nREPLAY: explicit historical time; not current readiness"
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_readiness.py",
+        "examples/readiness/implementation-only.json",
+        "--context",
+        "examples/readiness/automatic-context.json",
+        "--at",
+        "2030-01-01T12:00:00Z"
+      ],
+      "exit_code": 0,
+      "result": "PASS examples/readiness/implementation-only.json (record consistency only; not evidence truth or live GitHub permission)\nREPLAY: explicit historical time; not current readiness"
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_readiness.py",
+        "examples/readiness/postdeploy-achieved.json",
+        "--context",
+        "examples/readiness/context.json",
+        "--at",
+        "2030-01-01T12:00:00Z"
+      ],
+      "exit_code": 0,
+      "result": "PASS examples/readiness/postdeploy-achieved.json (record consistency only; not evidence truth or live GitHub permission)\nREPLAY: explicit historical time; not current readiness"
+    }
+  ],
+  "limits": "Historical sample readiness validation only; no live Readiness decision."
+}
