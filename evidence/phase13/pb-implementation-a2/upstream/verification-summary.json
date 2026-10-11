@@ -1,0 +1,273 @@
+{
+  "schema_version": "1.0",
+  "document_type": "independent_test_report",
+  "role": "test",
+  "scope": "system/phase1-3/P-B",
+  "attempt": 1,
+  "status": "failed",
+  "publication": "public_safe",
+  "publication_status": "candidate only; not published; no publication authority inferred",
+  "repository": "syuhei0519/ai-development-system",
+  "head": "29b87fd1014c66c0368e4aad231846b17b53707b",
+  "base": "5345303db8c5208859ed741b98f119882de7a973",
+  "canonical": "df400018057735b7cb6a9c6ea4619508f0e6ba3a",
+  "branch": "feat/knowledge-collector-state",
+  "environment": {
+    "python": "3.12.14",
+    "git": "2.52.0",
+    "jsonschema": "4.26.0",
+    "filesystem": "private local POSIX",
+    "applicable_AGENTS_or_dot_agents_skills": "Absent in fixed repository and selected workspace; agents/test.md was used."
+  },
+  "regression": {
+    "base": {
+      "tests": 128,
+      "exit_code": 0
+    },
+    "head": {
+      "tests": 172,
+      "exit_code": 0
+    },
+    "legacy_schema_count": 14,
+    "legacy_schemas_unchanged": true,
+    "cli_commands": 6,
+    "cli_commands_passed": 6
+  },
+  "independent": {
+    "test_count": 21,
+    "passed": 17,
+    "failures": 3,
+    "errors": 1,
+    "exit_code": 1,
+    "cases": [
+      {
+        "name": "test_CAS_process_lock_and_fsync_order",
+        "result": "ok"
+      },
+      {
+        "name": "test_F1_per_source_disappearance_must_not_be_masked",
+        "result": "FAIL"
+      },
+      {
+        "name": "test_F2_crash_during_raw_write_then_retry_recovers",
+        "result": "ERROR"
+      },
+      {
+        "name": "test_F3_real_git_ancestor_symlink_rejected",
+        "result": "FAIL"
+      },
+      {
+        "name": "test_all_five_crash_points_real_process_restart",
+        "result": "ok"
+      },
+      {
+        "name": "test_catchup_after_interruption_and_full_nonancestor",
+        "result": "ok"
+      },
+      {
+        "name": "test_closed_registry_state_and_record",
+        "result": "ok"
+      },
+      {
+        "name": "test_delivery_terminal_and_renew_grant_negative_matrix",
+        "result": "ok"
+      },
+      {
+        "name": "test_dependency_every_entry_read_even_unused",
+        "result": "ok"
+      },
+      {
+        "name": "test_dependency_missing_modified_partial_no_cursor",
+        "result": "ok"
+      },
+      {
+        "name": "test_disappearance_quarantine_and_raw_history",
+        "result": "ok"
+      },
+      {
+        "name": "test_gitlink_ancestor_rejected",
+        "result": "FAIL"
+      },
+      {
+        "name": "test_identical_content_distinct_source_preserved",
+        "result": "ok"
+      },
+      {
+        "name": "test_identity_exact_canonical_and_time_independence",
+        "result": "ok"
+      },
+      {
+        "name": "test_mutable_ref_and_type_downgrade",
+        "result": "ok"
+      },
+      {
+        "name": "test_noop_and_unapproved_cli",
+        "result": "ok"
+      },
+      {
+        "name": "test_replay_readonly_public_closed",
+        "result": "ok"
+      },
+      {
+        "name": "test_same_id_payload_collision_retains_both_raw",
+        "result": "ok"
+      },
+      {
+        "name": "test_strict_poison_matrix",
+        "result": "ok"
+      },
+      {
+        "name": "test_three_dispatch_terminal_next_scan_no_reset",
+        "result": "ok"
+      },
+      {
+        "name": "test_unknown_no_evidence_expired_lease",
+        "result": "ok"
+      }
+    ]
+  },
+  "remote_ci": {
+    "id": 38110699401,
+    "head_sha": "29b87fd1014c66c0368e4aad231846b17b53707b",
+    "head_branch": "feat/knowledge-collector-state",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "path": ".github/workflows/validate.yml",
+    "created_at": "2026-10-11T04:09:49Z",
+    "updated_at": "2026-10-11T04:10:10Z",
+    "html_url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38110699401",
+    "observed_at": "2026-10-11T04:23:10.167742+00:00"
+  },
+  "remote_ci_note": "Independently observed public push run and successful validate job. PR-only connector query returned no runs; it does not cover push runs.",
+  "fixed_git": {
+    "head": "29b87fd1014c66c0368e4aad231846b17b53707b",
+    "observed_at": "2026-10-11T04:25:41.606444+00:00",
+    "operations": [
+      {
+        "operation": "scan",
+        "exit_code": 0,
+        "stdout": "{\"authority_granted\": false, \"counts\": {\"blocked\": 0, \"commit_pending\": 0, \"committed\": 0, \"context_available\": 0, \"dispatch_unknown\": 0, \"dispatching\": 0, \"output_received\": 0, \"pending\": 0, \"quarantined\": 0, \"reserved\": 0, \"started\": 0, \"terminal\": 0, \"validated\": 0, \"verified\": 2}, \"development_gate_changed\": false, \"document_type\": \"knowledge_collection_observation\", \"schema_version\": \"1.0\"}\n",
+        "stderr": ""
+      },
+      {
+        "operation": "reconcile",
+        "exit_code": 0,
+        "stdout": "{\"authority_granted\": false, \"counts\": {\"blocked\": 0, \"commit_pending\": 0, \"committed\": 0, \"context_available\": 0, \"dispatch_unknown\": 0, \"dispatching\": 0, \"output_received\": 0, \"pending\": 0, \"quarantined\": 0, \"reserved\": 0, \"started\": 0, \"terminal\": 0, \"validated\": 0, \"verified\": 2}, \"development_gate_changed\": false, \"document_type\": \"knowledge_collection_observation\", \"schema_version\": \"1.0\"}\n",
+        "stderr": ""
+      },
+      {
+        "operation": "replay",
+        "exit_code": 0,
+        "stdout": "{\"authority_granted\": false, \"counts\": {\"blocked\": 0, \"commit_pending\": 0, \"committed\": 0, \"context_available\": 0, \"dispatch_unknown\": 0, \"dispatching\": 0, \"output_received\": 0, \"pending\": 0, \"quarantined\": 0, \"reserved\": 0, \"started\": 0, \"terminal\": 0, \"validated\": 0, \"verified\": 2}, \"development_gate_changed\": false, \"document_type\": \"knowledge_collection_observation\", \"schema_version\": \"1.0\"}\n",
+        "stderr": ""
+      }
+    ],
+    "event_count": 2,
+    "scan_count": 2,
+    "synthetic_only": true
+  },
+  "ac_coverage": {
+    "PB-1": {
+      "result": "pass",
+      "evidence": [
+        "identity_exact_canonical_and_time_independence",
+        "identical_content_distinct_source_preserved",
+        "same_id_payload_collision_retains_both_raw",
+        "strict_poison_matrix",
+        "closed_registry_state_and_record"
+      ],
+      "limits": "Schema/type/identity and synthetic cases; no semantic curation."
+    },
+    "PB-2": {
+      "result": "fail",
+      "findings": [
+        "F1",
+        "F3"
+      ],
+      "evidence": [
+        "dependency_missing_modified_partial_no_cursor",
+        "dependency_every_entry_read_even_unused",
+        "catchup_after_interruption_and_full_nonancestor",
+        "disappearance_quarantine_and_raw_history",
+        "fixed HTTPS scan/reconcile"
+      ],
+      "limits": "Force-push/nonancestor behavior exercised as unrelated fixed snapshots; no remote force push performed. Source contents and actual tree modes exercised with synthetic Git fixtures."
+    },
+    "PB-3": {
+      "result": "fail",
+      "findings": [
+        "F2"
+      ],
+      "evidence": [
+        "CAS_process_lock_and_fsync_order",
+        "all_five_crash_points_real_process_restart",
+        "unknown_no_evidence_expired_lease",
+        "existing transition regression suite"
+      ],
+      "limits": "All five published crash hooks passed with child process exits/reload. Additional crash inside raw-file write fails recovery. fsync order observed; no physical power-loss test or distributed filesystem certification."
+    },
+    "PB-4": {
+      "result": "pass",
+      "evidence": [
+        "three_dispatch_terminal_next_scan_no_reset",
+        "delivery_terminal_and_renew_grant_negative_matrix",
+        "unknown_no_evidence_expired_lease",
+        "head regression: execution limit/retry input/legacy terminal/committed bytes recovery"
+      ],
+      "limits": "Three execution attempts and Git-confirmation recovery are production regression cases independently executed, not newly authored independent scenarios. No real Agent dispatch or remote write."
+    },
+    "PB-5": {
+      "result": "pass",
+      "evidence": [
+        "replay_readonly_public_closed",
+        "noop_and_unapproved_cli",
+        "fixed Git public observations",
+        "static review of collector entrypoints"
+      ],
+      "limits": "Collector only uses Git reads for sources, local filesystem bookkeeping and validation. No Agent/LLM/additional service/schedule calls exist in inspected implementation. No operational Knowledge/Consumer run was performed."
+    },
+    "PB-6": {
+      "result": "fail",
+      "findings": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "evidence": [
+        "base 128/head 172 passed",
+        "14 schema bytes unchanged",
+        "6 CLI checks passed",
+        "21 independent probes: 17 pass, 3 failure, 1 error"
+      ],
+      "limits": "Existing regression success does not establish the omitted adversarial cases. P-C/P-D/real periodic operation/article use remain unperformed."
+    }
+  },
+  "delivery_verification": {
+    "result": "passed",
+    "consumer": "unchanged System canonical consume_delivery.py",
+    "artifacts": 14,
+    "checks": "Independent authorization pin, all raw size/hash/type and Handoff dependency bindings. Fresh HTTPS Git fetch; private Consumption Receipt kept separate.",
+    "authority_granted": false
+  },
+  "safety": {
+    "product_modified": false,
+    "push": false,
+    "pr": false,
+    "comments": false,
+    "merge": false,
+    "rebase": false,
+    "deploy": false,
+    "agent_launched": false,
+    "schedule_activated": false,
+    "private_authorization_or_new_receipt_in_candidate": false
+  },
+  "remaining": [
+    "Implementation correction and new fixed-head independent Test/Review required.",
+    "After initial baseline observation, P-A merged: new main tree equals original dependency base; PR6 merge-target tree equals fixed test head. Separate integration observation recorded without rewriting original test base.",
+    "No Merge Ready/Issue Completion/final_assessment judgment made.",
+    "P-C/P-D, actual periodic operation, Knowledge article use and real Knowledge/Consumer execution not performed.",
+    "Private-original equivalence is Producer testimony only; consumed public bytes were independently verified."
+  ],
+  "latest_integration_observation": "integration-observation.json"
+}

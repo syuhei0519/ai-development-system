@@ -1,0 +1,262 @@
+{
+  "ac_mapping": [
+    {
+      "ac_id": "PB-1",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE"
+      ],
+      "disposition": "covered",
+      "evidence_ids": [
+        "E-PB-1"
+      ],
+      "scope": "Implementation repair and self-verification only; independent acceptance and Issue completion not claimed."
+    },
+    {
+      "ac_id": "PB-2",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE"
+      ],
+      "disposition": "covered",
+      "evidence_ids": [
+        "E-PB-2"
+      ],
+      "scope": "Implementation repair and self-verification only; independent acceptance and Issue completion not claimed."
+    },
+    {
+      "ac_id": "PB-3",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE"
+      ],
+      "disposition": "covered",
+      "evidence_ids": [
+        "E-PB-3"
+      ],
+      "scope": "Implementation repair and self-verification only; independent acceptance and Issue completion not claimed."
+    },
+    {
+      "ac_id": "PB-4",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE"
+      ],
+      "disposition": "covered",
+      "evidence_ids": [
+        "E-PB-4"
+      ],
+      "scope": "Implementation repair and self-verification only; independent acceptance and Issue completion not claimed."
+    },
+    {
+      "ac_id": "PB-5",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE"
+      ],
+      "disposition": "covered",
+      "evidence_ids": [
+        "E-PB-5"
+      ],
+      "scope": "Implementation repair and self-verification only; independent acceptance and Issue completion not claimed."
+    },
+    {
+      "ac_id": "PB-6",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE"
+      ],
+      "disposition": "covered",
+      "evidence_ids": [
+        "E-PB-6"
+      ],
+      "scope": "Implementation repair and self-verification only; independent acceptance and Issue completion not claimed."
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "REPORT",
+      "kind": "test-report",
+      "locator": "implementation-report.json",
+      "revision": "sha256:e3a086908f282a026af5b81e8eb31f5190d4b30a9718854b7c7f1ca27ed1b40a",
+      "summary": "implementation-report.json"
+    },
+    {
+      "id": "PATCH",
+      "kind": "patch",
+      "locator": "repair.patch",
+      "revision": "sha256:3639b718f417af6ab0297d7a4fd2a906e3a08d1c5594a1ab78c7dc2164ff34f1",
+      "summary": "repair.patch"
+    },
+    {
+      "id": "REPRODUCE",
+      "kind": "document",
+      "locator": "reproduce.txt",
+      "revision": "sha256:0493cf238e54e4fe63c575121b293bd11de7ba9525bead747f58dbb5cd5c660d",
+      "summary": "reproduce.txt"
+    },
+    {
+      "id": "REQUIREMENTS",
+      "kind": "document",
+      "locator": "assignment-requirements.json",
+      "revision": "sha256:6d4a8c980760381fb33e93da19a05d6af2c3b0edddafb667cc3a9b16b942fbec",
+      "summary": "assignment-requirements.json"
+    }
+  ],
+  "assignment": {
+    "ac_ids": [
+      "PB-1",
+      "PB-2",
+      "PB-3",
+      "PB-4",
+      "PB-5",
+      "PB-6"
+    ],
+    "completion_criteria": [
+      "Implement all PB-1 through PB-6 and self-verify on pinned P-A dependency.",
+      "Feature push only; no PR before P-A main integration, no merge or scheduler activation.",
+      "Preserve operational original and separately seal public alias candidate without publishing."
+    ],
+    "scope": "system/phase1-3/P-B"
+  },
+  "attempt": 2,
+  "block_reasons": [],
+  "evidence": [
+    {
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE"
+      ],
+      "claim": "PB-1 repair implementation/self-check coverage",
+      "id": "E-PB-1",
+      "locator": "implementation-report.json#ac_coverage/PB-1",
+      "observation": "Unchanged versioned contracts and event identity; same-identity collision and distinct-source evidence regressions pass."
+    },
+    {
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE"
+      ],
+      "claim": "PB-2 repair implementation/self-check coverage",
+      "id": "E-PB-2",
+      "locator": "implementation-report.json#ac_coverage/PB-2",
+      "observation": "F1 checks every retained (event, source) membership; duplicate source cannot mask disappearance. F3 resolves every Git ancestor and rejects symlink/gitlink/blob before enumeration; genuine missing paths remain empty. Cursors and payload history preserved."
+    },
+    {
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE"
+      ],
+      "claim": "PB-3 repair implementation/self-check coverage",
+      "id": "E-PB-3",
+      "locator": "implementation-report.json#ac_coverage/PB-3",
+      "observation": "F2 fsyncs private temporary files and publishes with no-replace hard links; partial object/stage/snapshot writes and link-boundary process exits recover against unchanged state. Existing valid object bytes and inodes preserved."
+    },
+    {
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE"
+      ],
+      "claim": "PB-4 repair implementation/self-check coverage",
+      "id": "E-PB-4",
+      "locator": "implementation-report.json#ac_coverage/PB-4",
+      "observation": "Existing three-counter limits, terminal history, start-unknown, output delivery recovery and fixed Git commit acknowledgement tests pass. F1 additionally preserves terminal batch ledgers."
+    },
+    {
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE"
+      ],
+      "claim": "PB-5 repair implementation/self-check coverage",
+      "id": "E-PB-5",
+      "locator": "implementation-report.json#ac_coverage/PB-5",
+      "observation": "All five mechanical CLI operations exercised with synthetic inputs; plan/replay leave store bytes unchanged. No Agent, schedule, API, deployment or development-gate mutation."
+    },
+    {
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE"
+      ],
+      "claim": "PB-6 repair implementation/self-check coverage",
+      "id": "E-PB-6",
+      "locator": "implementation-report.json#ac_coverage/PB-6",
+      "observation": "178 repository tests (all prior 172 plus 6 added methods), unchanged independent 21 cases, six validator CLI commands, all 19 schemas, fixed HTTPS scan/reconcile/plan/replay/record, feature and PR CI pass."
+    }
+  ],
+  "failure_reasons": [],
+  "issue": {
+    "acceptance_criteria": [
+      {
+        "id": "PB-1",
+        "source": "assignment-requirements.json",
+        "verbatim": "KnowledgeEvent、source registry、KnowledgeCollectionStateの閉じた版付き契約を実装する。event identityは固定repo/commit/path/source SHA256/candidate ID/event kindから決まり、時刻・配送試行・実task IDに依存しない。同identity別payloadを拒否し、類似内容だけで根拠を失う重複排除をしない。"
+      },
+      {
+        "id": "PB-2",
+        "source": "assignment-requirements.json",
+        "verbatim": "許可済み固定Git snapshotのinboxを全件列挙し全source bytesと必要依存を検証するscan/reconcileを実装する。partial readや改変時にcursorを先行させず、registry変更・履歴欠落・force push・旧cursor非ancestorでは全照合する。過去event消失を成功扱いせず隔離し、raw historyを保持する。"
+      },
+      {
+        "id": "PB-3",
+        "source": "assignment-requirements.json",
+        "verbatim": "single Manager writer、previous-state digest CAS、atomic保存、durable staging、scan/event/cursorのtransactionを実装する。pending/verified/reserved/dispatching/started/output_received/validated/commit_pending/committed/context_available、blocked/quarantined/dispatch_unknown/terminalを区別し、不正遷移・stale writer・overlapを拒否する。"
+      },
+      {
+        "id": "PB-4",
+        "source": "assignment-requirements.json",
+        "verbatim": "既存retry契約と連携しdispatch/execution/delivery各3上限・過去履歴・RETRY_LIMIT_REACHEDを保持する。開始不明をlease期限だけで再起動せず、取得済みoutputはdeliveryから再開し、Git確定後state更新前crashは固定commit検証で追認する。再開承認をreceiptやreplayから作らず、無限再試行を拒否する。"
+      },
+      {
+        "id": "PB-5",
+        "source": "assignment-requirements.json",
+        "verbatim": "collector自体はLLM/API/専門Agentを起動せず、scan/plan/record/reconcile/replayの機械的CLIとsynthetic fixturesを提供する。Knowledge失敗で開発gateを止めない。private stateとpublic-safe観測を分離し、runtime ID/認可/秘密/内部ログをpublic出力しない。scheduleは登録・有効化しない。"
+      },
+      {
+        "id": "PB-6",
+        "source": "assignment-requirements.json",
+        "verbatim": "正常系、重複・衝突、scan中断、source変更、CAS競合、各crash点、poison event、no-op、retry上限、未承認再開、legacy互換の回帰を実装し全128既存テストを維持する。schema/CLI/docs/README/workflow/templatesを整合させ、独立Testが再現できる固定head・自己検証根拠・Handoff v2を提出する。P-C/P-Dや定期実運用完了を主張しない。"
+      }
+    ],
+    "id": "SYSTEM-PHASE13-PB",
+    "source": "assignment-requirements.json",
+    "title": "System Phase 1-3 P-B asynchronous collection and durable inbox/state"
+  },
+  "knowledge_candidates": [],
+  "publication": "public_safe",
+  "role": "implementation",
+  "schema_version": "2.0",
+  "status": "completed",
+  "summary": "P-B repair attempt 2 completed at 50cf6aa52f64c45961a354281169064cd2c75e20; F1/F2/F3 repaired, 178 regression and unchanged 21 supplied cases pass, fixed Git CLI and same-head CI pass. Public task alias, not runtime identity. Prior failed Test and Implementation history retained; independent Test/Review and operational publication await Manager.",
+  "system_status": "completed",
+  "task_id": "PUBLIC-PHASE13-PB-IMPLEMENTATION-02",
+  "upstream": [
+    {
+      "attempt": 1,
+      "handoff_locator": "upstream/upstream/handoff.json",
+      "relationship": "retry_of",
+      "revision": "sha256:ae53e6da0a7ea7c671c1b638ee26bdaf2a4e21438a23067f3d326ac228ea2a82",
+      "role": "implementation",
+      "task_id": "PUBLIC-PHASE13-PB-IMPLEMENTATION-01"
+    },
+    {
+      "attempt": 1,
+      "handoff_locator": "upstream/handoff.json",
+      "relationship": "dependency",
+      "revision": "sha256:06ed1cb4e81c3a3565a1f32de4728474b349e1acfac1a3927646afd56774e853",
+      "role": "test",
+      "task_id": "PUBLIC-PHASE13-PB-TEST-01"
+    }
+  ]
+}
