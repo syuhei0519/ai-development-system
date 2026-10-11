@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "document_type": "artifact_delivery",
+  "artifacts": [
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "bd5821472a005ccd2d52380f7ca4bb3a3f18db7a",
+        "path": "research/phase13/assignment-requirements.json",
+        "size": 2204,
+        "sha256": "de34bda253a2ca7df0d17a039d4d710c450c984e2226b60920bae5cda3017760"
+      },
+      "representation": "original",
+      "format": "json",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-ASSIGNMENT-REQUIREMENTS"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "bd5821472a005ccd2d52380f7ca4bb3a3f18db7a",
+        "path": "research/phase13/design.md",
+        "size": 36689,
+        "sha256": "3bc5071ca6ab336d17ef10fde5c5e7b6b931bc3d16d4850dca946e5766caee46"
+      },
+      "representation": "edited_derivative",
+      "format": "text",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-DESIGN"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "bd5821472a005ccd2d52380f7ca4bb3a3f18db7a",
+        "path": "research/phase13/handoff.json",
+        "size": 7829,
+        "sha256": "ba69683794ee6ccea5f29ba277c1a8f13adcfd9308b17fe8f86ad6e65c2398af"
+      },
+      "representation": "edited_derivative",
+      "format": "handoff-v2",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-HANDOFF"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "bd5821472a005ccd2d52380f7ca4bb3a3f18db7a",
+        "path": "research/phase13/source-inventory.json",
+        "size": 6159,
+        "sha256": "3b70f0a86ad864e6d8682f312a66aabe1036ffa09e3243afc8480806961dec6a"
+      },
+      "representation": "original",
+      "format": "json",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-SOURCE-INVENTORY"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "bd5821472a005ccd2d52380f7ca4bb3a3f18db7a",
+        "path": "research/phase13/verification-observations.json",
+        "size": 1494,
+        "sha256": "8be71756b79529a3317968ff6ec04d79ec47579e3e2f4a33f37208dd139d13b1"
+      },
+      "representation": "original",
+      "format": "json",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-VERIFICATION-OBSERVATIONS"
+    }
+  ]
+}
