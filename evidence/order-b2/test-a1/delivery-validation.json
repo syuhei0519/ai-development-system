@@ -1,0 +1,27 @@
+{
+  "document_type": "producer_delivery_verification",
+  "public_alias": "order-b2-test-a1",
+  "delivery_attempt": 3,
+  "result": "verified",
+  "manifest_sha256": "d50379fd6797659dae9d0f28187aedf1c35c67344634ae4a2b9c1a44d1e9251d",
+  "publication_receipt_sha256": "5d1c05cc12b7a8a8282f5e0059b045cb0e3448be341d6750bd5f74bbdc57f2a5",
+  "explicit_artifacts": 83,
+  "all_objects": 92,
+  "all_raw_bytes": 1026470,
+  "verification": "Fresh Git raw bytes/size/hash/type/commit/slot/candidate/tree bindings using fixed canonical System functions. Separate producer observation, not Consumer approval or Consumption Receipt.",
+  "consumer_authority_granted": false,
+  "business_status": "blocked",
+  "execution_attempt": 1,
+  "prior_deliveries": [
+    {
+      "attempt": 1,
+      "result": "failed",
+      "reason": "Unsafe leading-dot workflow reference; initial payload/history retained."
+    },
+    {
+      "attempt": 2,
+      "result": "failed",
+      "reason": "Duplicate typed Helm template is JSON-looking; failed records and original tree bytes retained."
+    }
+  ]
+}
