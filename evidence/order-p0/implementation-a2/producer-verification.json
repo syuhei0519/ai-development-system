@@ -1,0 +1,22 @@
+{
+  "document_type": "producer_delivery_verification",
+  "public_alias": "order-p0-implementation-a2",
+  "observed_at": "2026-10-11T18:21:46.368746+00:00",
+  "system_commit": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+  "payload_commit": "dcd7744f66b83f5dd4c8ac5db7f06e240238a9c2",
+  "manifest_sha256": "909513cbb48bec733804b8d8ab5c684c6e1da4ae8cadc95d258c76647c0b08c5",
+  "publication_receipt_sha256": "655ffa71ac125b988795d01c7e36fae32435e720cbec4571cde63bca41fcd778",
+  "explicit_artifacts": 74,
+  "physical_objects": 145,
+  "total_bytes": 1050973,
+  "original_input_closure_preserved": 57,
+  "representations": [
+    "edited_derivative",
+    "original"
+  ],
+  "verification": "Fresh isolated GitSource reads + canonical strict parse/schema/verify_handoffs with slots, retry identity, candidate and complete source-tree verification",
+  "result": "pass",
+  "authority_granted": false,
+  "consumer_authorization": "Not issued. This is Producer verification, not a Consumer Consumption Receipt. Manager must independently authorize and next Consumer must freshly run canonical consume_delivery.py.",
+  "history": "Epoch1 attempt2 same-scope implementation repair; original Implementation1 completed, Test1 completed, Review1 failed unchanged. No dispatch/execution/delivery budget reset."
+}
