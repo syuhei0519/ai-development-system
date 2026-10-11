@@ -1,0 +1,229 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "syuhei0519/backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "test",
+  "task_id": "order-p0-test-a1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "order-p0-implementation-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/69e4df7abbcd574eb97112cec0550b5f8a512c56/evidence/order-p0/implementation-a1/handoff.json",
+      "revision": "sha256:53724f69a928f7d08df1ec3de9b267f350d1b5d21070ea8518d61aba50cbd9c1",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Independent P0-S1..S4 preparation verification completed at fixed PR58 head. AC-3 covered is Test-stage preparation only, not product met. All product ACs and real Service/Argo/digest/kind/P1/T6/T7 remain unverified. Historical Issue ID retained; Manager canonical pairing responsibility reported.",
+  "assignment": {
+    "scope": "platform-gitops#backend-app-2/P0",
+    "ac_ids": [
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "P0-S1: orderEnabled=false既定で、新Order関連Applicationを生成しない。既存3Application/namespace/AppProject/既存Account main追跡とdefault/local renderを不変に保つ。",
+      "P0-S2: 将来有効化時のOrder専用40桁Manifest revisionと独立DB→OrderのApplication定義を用意し、欠落/浮動revision/不正値をfail-closedに検証する。trueは合成render fixtureだけで、live valuesはfalse。",
+      "P0-S3: bootstrap observerのleaf/hook対象をoptionalに拡張し、disabledでは既存3Appだけ、enabledではOrder DB/Orderの欠落・進行・失敗・revision/health/migration状態を正しく扱う。未知状態を成功化せず、既存observer動作を回帰検証する。",
+      "P0-S4: 全既存関連testsと新schema/render/observer正常異常境界試験を実行し、設定とドキュメント整合、デプロイ影響noneの根拠、P1/T6/T7と必要承認/環境/失敗対応を引き渡す。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-REPORT",
+      "kind": "document",
+      "locator": "report.txt",
+      "revision": "sha256:2ef8fcc078955da40e7834ad9382f49b4797fa9ce46d096471ee30c7121044c7",
+      "summary": "Independent P0 preparation outcome, reproduction, limits and identity compatibility."
+    },
+    {
+      "id": "A-RESULTS",
+      "kind": "test-report",
+      "locator": "results.json",
+      "revision": "sha256:16f25a9a5edd01b480fc76461c4bc53bbbdcfd14f4747c40465296c20221b85c",
+      "summary": "All independent measurements, 143 synthetic cases, 15-file condition coverage, exact pins, security warnings and failure history."
+    },
+    {
+      "id": "A-FIXTURES",
+      "kind": "other",
+      "locator": "independent.py",
+      "revision": "sha256:c1ab0c340b98717520196121d03d0b050ce06920dd840764fed5de08442805bc",
+      "summary": "Independently authored synthetic render/schema/observer negative fixtures; fake kubectl only."
+    },
+    {
+      "id": "A-REPRO",
+      "kind": "other",
+      "locator": "reproduce.sh",
+      "revision": "sha256:50bb0e41dfc1fa65e922da6f35d243840352d2b90f222e35d02b509d29ac90e2",
+      "summary": "Local reproduction commands with pinned source/tools; no cluster operation."
+    },
+    {
+      "id": "A-CONTEXT",
+      "kind": "other",
+      "locator": "context.json",
+      "revision": "sha256:a6bd128794d1a3130a43e1a6274ccda5c3e200c9300d970d8ad3023b67dc63b9",
+      "summary": "Unmodified independently pinned Manager classification input; not Merge Ready."
+    },
+    {
+      "id": "A-CONFIG",
+      "kind": "other",
+      "locator": "config.json",
+      "revision": "sha256:3ba80361940bcb0423db220d3fbc13ec1c0acb791e10b71d3327e160936fc969",
+      "summary": "Unmodified independently pinned public technical configuration."
+    },
+    {
+      "id": "A-ORDER",
+      "kind": "other",
+      "locator": "artifacts/order-applications",
+      "revision": "sha256:de513a9849e81ea479076027461d0542aea4104b75fe4db39988aadb4fffbcfd",
+      "summary": "Raw fixed Git source bytes matched to context artifact."
+    },
+    {
+      "id": "A-SCHEMA",
+      "kind": "other",
+      "locator": "artifacts/workloads-schema",
+      "revision": "sha256:24c6cf3632e199a1c7b4b3cdfe93798741fd4ac11839d8bfbd4cba32b1f62e3c",
+      "summary": "Raw fixed Git source bytes matched to context artifact."
+    },
+    {
+      "id": "A-OBSERVER",
+      "kind": "other",
+      "locator": "artifacts/bootstrap-observer",
+      "revision": "sha256:9f5bd6f950d0bf5fa4c11939b1c205826511b3e81bb36b33526e789476682af2",
+      "summary": "Raw fixed Git source bytes matched to context artifact."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-1",
+      "claim": "P0-S1 independent preparation checks passed",
+      "artifact_ids": [
+        "A-RESULTS",
+        "A-REPORT",
+        "A-FIXTURES",
+        "A-REPRO",
+        "A-CONTEXT",
+        "A-CONFIG",
+        "A-ORDER",
+        "A-SCHEMA",
+        "A-OBSERVER"
+      ],
+      "locator": "results.json",
+      "observation": "Six byte-equal base/head renders; five unchanged boundary sources; default three main-tracking Applications and no Order."
+    },
+    {
+      "id": "E-2",
+      "claim": "P0-S2 independent preparation checks passed",
+      "artifact_ids": [
+        "A-RESULTS",
+        "A-REPORT",
+        "A-FIXTURES",
+        "A-REPRO",
+        "A-CONTEXT",
+        "A-CONFIG",
+        "A-ORDER",
+        "A-SCHEMA",
+        "A-OBSERVER"
+      ],
+      "locator": "results.json",
+      "observation": "Synthetic enabled topology and sync safeguards verified; missing/invalid/floating values rejected, no real source availability inferred."
+    },
+    {
+      "id": "E-3",
+      "claim": "P0-S3 independent preparation checks passed",
+      "artifact_ids": [
+        "A-RESULTS",
+        "A-REPORT",
+        "A-FIXTURES",
+        "A-REPRO",
+        "A-CONTEXT",
+        "A-CONFIG",
+        "A-ORDER",
+        "A-SCHEMA",
+        "A-OBSERVER"
+      ],
+      "locator": "results.json",
+      "observation": "Independent synthetic observer state machine, flags, finite failures, 3/5 leaves and earlier-leaf rechecks passed."
+    },
+    {
+      "id": "E-4",
+      "claim": "P0-S4 independent preparation checks passed",
+      "artifact_ids": [
+        "A-RESULTS",
+        "A-REPORT",
+        "A-FIXTURES",
+        "A-REPRO",
+        "A-CONTEXT",
+        "A-CONFIG",
+        "A-ORDER",
+        "A-SCHEMA",
+        "A-OBSERVER"
+      ],
+      "locator": "results.json",
+      "observation": "All related local regression/race/vet/build/render/schema/security checks passed; 15 files and 3 artifacts bound, initial environment failures retained, follow-up/unverified boundaries explicit."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "unverified",
+      "scope": "Outside P0 Test assignment; no product runtime/API/persistence/Account CRUD measurement.",
+      "artifact_ids": [
+        "A-RESULTS",
+        "A-REPORT"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "unverified",
+      "scope": "Outside P0 Test assignment; no product runtime/API/persistence/Account CRUD measurement.",
+      "artifact_ids": [
+        "A-RESULTS",
+        "A-REPORT"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "covered",
+      "scope": "P0-S1..S4 independent Test preparation-stage responsibility only; product AC-3 real Service/Synced/Healthy/digest and T6/T7 remain unverified.",
+      "artifact_ids": [
+        "A-RESULTS",
+        "A-REPORT"
+      ],
+      "evidence_ids": [
+        "E-1",
+        "E-2",
+        "E-3",
+        "E-4"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

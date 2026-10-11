@@ -1,0 +1,34 @@
+P0 independent Test — order-p0-test-a1 / epoch 1 / attempt 1
+
+判定: completed。P0-S1..S4の独立準備検証は合格。AC-3 coveredはこのTest工程責務のみで、製品AC metではない。AC-1/2は担当外unverified、実Service/Argo Synced Healthy/image digest、kind/P1/T6/T7、Issue統合完了はunverified。Merge/Deployment Readyや操作許可を発行しない。
+
+固定対象
+System 4693887fa79c2b4a291c555b8bd27b6903eb4199
+platform-gitops PR58 head e01882d8a2c4ac4eadad5b081c1b5c69e5599776
+base b989e29b8addbd6396c5c2b4833b969bc15fc8fa
+Manifest読取依存 bc6adaedcd645a4663c23284b977a3dd36c0796d
+context.json/config.jsonはManager入力のUTF-8一行+LFを保全し、指定size/SHAを照合済み。結果に測定時刻、24h以内の期限、tool binary SHA、環境、15変更ファイルと条件ID、3固定artifactのsize/SHAを記録。source/config変更や新failureで即失効。元policy期限は延長しない。
+
+独立測定
+P0-S1: root/platform/workloadsのdefault/local全6renderがbaseとraw byte一致。既存3Applicationとmain追跡を維持し、新Order Applicationゼロ。Namespace、bootstrap root project、Argo health、root AppProjects、既存Application templateの5sourceもbyte一致。noneはdesired resource差分がないという範囲で確認した。実clusterの状態不変を観測したとはしない。
+P0-S2: 独立合成revisionで2Applicationを追加し、DB wave -10 / Order wave 0、account/lab-account、chart path/valueFiles、releaseName、prune/selfHeal/allowEmpty=false/PruneLast/FailOnSharedResource/Prune=confirmを照合。既存3App不変。flag型・未知key・欠落required key・空/浮動/短縮/大文字/不正revision・repository/Account revision driftを拒否。disabled+有効固定revisionはrenderで許容されるが出力は既存のみ。observerのdisabled+revisionは引数エラーであり、両境界を混同しない。合成SHAの実在を主張しない。
+P0-S3: 合成fake-kubectlのみで既定3leafと有効5leaf、欠落/failed/running/pending/unknown/missing phase、Syncedのみ/Healthyのみ、progressing health、不完全operation、status drift、Order spec/operation drift、DB/Deployment resource欠落/不健康/namespace不正、同revision migration hook欠落/失敗/未知/PreSync/別namespace、invalid flagを独立検査。非0有限timeoutと不正引数exit2/読取ゼロを測定。後段待機時にAccount DB/Order DBを再pollし、劣化と途中revision変更を拒否。旧Account non-hook leafは比較revision一致という既存仕様を維持し、未知operation phaseだけを安全側へ閉じる。Application JSONからDB readiness/imageIDや全Appの原子的整合性を推論しない。
+P0-S4: 独立143ケース合格。既存docs checker14ケース、両Go module通常/race/vet/build、Helm strict lint/schema/render/固定chart checksum、実renderを用いる4Go回帰テスト（skipなし）、render構造境界を再実行。Kubeconform strict: core37、Application16、AppProject4すべてvalid、invalid/errors/skipped=0。Trivy固定policyはsource/renderともpass、既存warning8/196件を結果に保持。GitHub同一headのCI successは独立したREST観測として分離して記録し、独立Testの代用にしていない。
+
+初回失敗と修復
+旧gh CLIのbaseRefOid field未対応はREST GETで取得。worktreeを/workだけにmountしたsecurity commandは外部.git参照を解決できずexit128。独立した同一head cloneで解消した。コンテナCA不足でKubeconform schema取得が37/16/4件error、security DB取得もexit2。既存インフラCAをread-only mountして解消し、TLS検証/policyは緩和しなかった。内部生ログは公開しない。これらは同じexecution attempt内の環境準備修復であり、製品failureや未実行を成功へ書換えたものではない。元失敗はresults.jsonに保持。
+
+再現
+Go1.27.1、Helm4.2.4、Python3+PyYAML+jsonschema、Dockerと公開chart/schema/DBへの接続を用意。head/baseを各固定SHAへcheckoutし、bash reproduce.sh HEAD_CHECKOUT BASE_CHECKOUT NEW_OUTPUT_DIR。independent.pyは自分で合成JSONとfake-kubectlを生成する。実kubectl/kindを呼ばない。再現には取得時点の公開security DBを使うため、その判定/時刻は新観測として扱う。生ログを公開しない。
+
+入力・契約
+固定Systemの役割、templates、Handoff/Readiness/Delivery1.2契約を確認。該当checkoutにはAGENTS.md/SKILL.mdなし。入力は未変更canonical consume_delivery.pyでfresh固定Git取得し、42明示artifactとtree実体を含む96物体/497469bytesのsize/hash/type/slot/candidate/treeを全件検証した。Producer自己証言から省略していない。元Handoff schema検査とassignment/全AC原文の入力一致を確認。認可とConsumption Receiptは非公開。公開原本と非公開原本の同一性は未検証、過去publication承認unverifiedと今回Consumer承認を区別する。
+
+Issue ID互換の注意
+元専門Handoffのsyuhei0519/backend-app#2とManager contextのbackend-app#2は同一source URL/全AC原文。各schemaは合格するが、固定validate_readiness.py:283-284のpairingは文字列完全一致を要求するので、そのままの正式Readiness pairingは不一致となる。歴史的Handoffを改変せず、このTestでも元Issue IDを保持した。Managerが正式canonical集約を行う。これは新Issueや製品failureではなく、正式Manager Readiness作成時に解決する責務。今回は正式assessmentを代行していない。
+
+後続
+固定ManifestにはOrder chartがまだない。B2/M1/M2の成功やmergeを前提にしていない。P1には正規B2 digest、M2採用済みManifest revisionと実マージ、承認済み隔離kind/context、Secret metadata/PVC/容量/backup/復旧責任/自動デプロイ承認が必要。独立Test/承認済み運用者がT6で実migration/DB/Service/Argo/Pod imageID/Order・Account CRUD/再起動永続性を測り、T7で全必要統合後の実SHA/digestを再測定する。失敗時は後続merge/enable/deploy停止、AccountデータとOrderPVC保持、非秘密failure証跡保存、許可された停止/無効化、forward-fixと独立再試験。初回Orderの架空rollback先を作らない。詳細のowner/environment/method/dependencies/failure_actionは未変更contextとresultsに保全。
+
+公開・配送
+新報告、合成fixture、技術context/config、固定公開artifactだけを専用System evidence branchへ保存。実タスク識別子/私的会話/認可/Consumption Receipt/秘密/内部生ログ/非公開原本hashを含めない。過去成果物は固定参照でtyped closureを保持し、無意味な全コピーはしない。安全点検後の公開は既存Owner許可に基づく。Publication Receiptは公開byte取得の証拠に限り、Consumer認可を発生させない。次Consumer認可はManagerが別途発行する。dispatch/execution/delivery各最大3、epoch1 attempt1を保持、旧B1等の履歴は不変。新Agent/Review/Knowledge、アプリ変更、PR変更、merge、cluster操作、Secret/権限/Ruleset変更は実施していない。

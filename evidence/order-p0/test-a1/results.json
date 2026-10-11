@@ -1,0 +1,3440 @@
+{
+  "document_type": "independent_test_results",
+  "public_alias": "order-p0-test-a1",
+  "epoch": 1,
+  "attempt": 1,
+  "status": "completed",
+  "subject": {
+    "repository": "syuhei0519/platform-gitops",
+    "pr_number": 58,
+    "head_sha": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+    "base_sha": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+    "target_revision": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+    "config_revision": "sha256:3ba80361940bcb0423db220d3fbc13ec1c0acb791e10b71d3327e160936fc969",
+    "merge_group_sha": null
+  },
+  "system_revision": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+  "manifest_revision": "bc6adaedcd645a4663c23284b977a3dd36c0796d",
+  "measurement_window": {
+    "started_at": "2026-10-11T17:39:00Z",
+    "completed_at": "2026-10-11T17:46:22Z",
+    "valid_until": "2026-10-12T17:39:00Z",
+    "invalidation": "Any relevant source/config change or new failure invalidates these fixed measurements; 24 hours from earliest measurement is the conservative upper bound.",
+    "started_at_precision": "Conservative lower-bound minute; individual result and scanner timestamps are preserved. Completed_at is the fresh consolidation observation time."
+  },
+  "environment": {
+    "os": "Linux",
+    "architecture": "x86_64",
+    "python": "3.12.14",
+    "go": "go1.27.1 linux/amd64",
+    "helm": "v4.2.4+g3900f43",
+    "tool_binaries": {
+      "go": "30969f97169d7f43fe6a085873d75613adc21e30818a8c61d95bd27275df4624",
+      "helm": "92e191314f44aac173711bb0247c38c727f3ddf65ad16a01c0861d509a63a9e1",
+      "observer": "dcef7334724ca8e820a51b8ee8484d15dedd65e189db0da04450077d13b94fd7"
+    },
+    "cluster": "none; all observer invocations use generated fake-kubectl"
+  },
+  "context_pin": {
+    "size": 5737,
+    "sha256": "a6bd128794d1a3130a43e1a6274ccda5c3e200c9300d970d8ad3023b67dc63b9",
+    "schema_valid": true,
+    "classification": "preparation/none/aggregate_required; product pr_ac_ids empty; assignment AC-3"
+  },
+  "config_pin": {
+    "size": 2036,
+    "sha256": "3ba80361940bcb0423db220d3fbc13ec1c0acb791e10b71d3327e160936fc969"
+  },
+  "input_delivery": {
+    "canonical_system_fixed": true,
+    "exit_code": 0,
+    "explicit_artifacts": 42,
+    "physical_payload_objects": 96,
+    "physical_payload_bytes": 497469,
+    "verification": "full-raw-bytes-size-sha256-json-handoff-knowledge-slots-git-objects-candidates-trees",
+    "manifest_sha256": "aa3b7f0caadf7902b9c934bf6849c0772c5ac387554f091fbc34caa9a241e1af",
+    "publication_receipt_sha256": "e41d7dbe9f59df1478df0c89d765fb1e27e8886c7c241068215b1f251f7fed4a",
+    "authority_granted": false,
+    "limits": "Authorization and Consumption Receipt retained privately. Public original is not private-original equivalence; historical publication approval remains unverified."
+  },
+  "commands": [
+    {
+      "id": "existing-policy-tests",
+      "command": "bash ci/github/test.sh",
+      "result": "passed: docs 14 cases; both Go modules",
+      "exit_code": 0,
+      "recorded_at": "2026-10-11T17:46:22Z"
+    },
+    {
+      "id": "race-vet-build",
+      "command": "for module in tools/bootstrap tools/scan-gate: go test -race -count=1 ./...; go vet ./...; go build",
+      "result": "passed both modules",
+      "exit_code": 0,
+      "recorded_at": "2026-10-11T17:46:22Z"
+    },
+    {
+      "id": "helm",
+      "command": "sh ci/validate.sh",
+      "result": "passed complete strict lint/render, checksums, 24 implementation rejection fixtures",
+      "exit_code": 0,
+      "recorded_at": "2026-10-11T17:46:22Z"
+    },
+    {
+      "id": "render-regressions",
+      "command": "PE_OBSERVABILITY_RENDER_DIR=.rendered .build/bootstrap-test -test.run 'TestObservabilityContract|TestCollectorContract|TestGrafanaProvisioningBoundary|TestOrderWorkloadsContract' -test.v",
+      "result": "all four passed, zero skipped",
+      "exit_code": 0,
+      "recorded_at": "2026-10-11T17:46:22Z"
+    },
+    {
+      "id": "render-boundary",
+      "command": ".security/scan-gate -check-render-only .rendered -out result.json",
+      "result": "passed",
+      "exit_code": 0,
+      "recorded_at": "2026-10-11T17:46:22Z"
+    },
+    {
+      "id": "independent",
+      "command": "python independent.py HEAD BASE OBSERVER OUTPUT",
+      "result": "143 passed",
+      "exit_code": 0,
+      "recorded_at": "2026-10-11T17:46:22Z"
+    },
+    {
+      "id": "kubeconform",
+      "command": "See reproduce.sh: pinned v0.7.0, strict, existing CA read-only mount",
+      "result": "37 core + 16 Applications + 4 AppProjects valid; zero invalid/errors/skipped",
+      "exit_code": 0,
+      "recorded_at": "2026-10-11T17:46:22Z"
+    },
+    {
+      "id": "security",
+      "command": "See reproduce.sh: pinned Trivy 0.75.0 on standalone fixed clone and renders",
+      "result": "source/render policy passed; warnings retained",
+      "exit_code": 0,
+      "recorded_at": "2026-10-11T17:46:22Z"
+    }
+  ],
+  "independent": {
+    "synthetic_sample": true,
+    "observed_at": "2026-10-11T17:44:02.434028+00:00",
+    "tests": [
+      {
+        "name": "render/root/default",
+        "passed": true,
+        "hashes": [
+          "c69faea1649252f4495606f271cbbff5cebf8b98cae6cde6d103a7fb2c6e8e1c",
+          "c69faea1649252f4495606f271cbbff5cebf8b98cae6cde6d103a7fb2c6e8e1c"
+        ],
+        "sizes": [
+          2619,
+          2619
+        ]
+      },
+      {
+        "name": "render/root/local",
+        "passed": true,
+        "hashes": [
+          "8518d5f7e12d5cff1be0274b41ee38fcbced4ec0bc84d06aa87cb7c7deecda83",
+          "8518d5f7e12d5cff1be0274b41ee38fcbced4ec0bc84d06aa87cb7c7deecda83"
+        ],
+        "sizes": [
+          4331,
+          4331
+        ]
+      },
+      {
+        "name": "render/platform/default",
+        "passed": true,
+        "hashes": [
+          "38f4d485c94f37f76ce70b3d8fd7c755716e9192977b06c7c0ced20fb369193e",
+          "38f4d485c94f37f76ce70b3d8fd7c755716e9192977b06c7c0ced20fb369193e"
+        ],
+        "sizes": [
+          1608,
+          1608
+        ]
+      },
+      {
+        "name": "render/platform/local",
+        "passed": true,
+        "hashes": [
+          "4c022b9aac2fbb0cd9ccc733847cbe52afb2d1d664fa7d33bbbec253d75a26ed",
+          "4c022b9aac2fbb0cd9ccc733847cbe52afb2d1d664fa7d33bbbec253d75a26ed"
+        ],
+        "sizes": [
+          4800,
+          4800
+        ]
+      },
+      {
+        "name": "render/workloads/default",
+        "passed": true,
+        "hashes": [
+          "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5",
+          "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5"
+        ],
+        "sizes": [
+          2196,
+          2196
+        ]
+      },
+      {
+        "name": "render/workloads/local",
+        "passed": true,
+        "hashes": [
+          "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5",
+          "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5"
+        ],
+        "sizes": [
+          2196,
+          2196
+        ]
+      },
+      {
+        "name": "source/bootstrap/namespaces.yaml",
+        "passed": true,
+        "sha256": "9c8f5981bffa444cad3ec4b0d64f533b1bdffdfe9e4f46fc090dda9824b54764"
+      },
+      {
+        "name": "source/bootstrap/argocd-values.yaml",
+        "passed": true,
+        "sha256": "5a869b06a8d067b5bbd326508aad45ea76f9bafa16260849be35e8c93daf7d2a"
+      },
+      {
+        "name": "source/charts/root/templates/projects.yaml",
+        "passed": true,
+        "sha256": "e41ca9a79479ee1e1b41f55cf343e006769828191e7c8be76844c1d2b6388c02"
+      },
+      {
+        "name": "source/charts/workloads/templates/applications.yaml",
+        "passed": true,
+        "sha256": "6bc92483833f169a0f19fb7349f9105f410007328069b25d24509e5c1c58a7ee"
+      },
+      {
+        "name": "disabled-three-main",
+        "passed": true
+      },
+      {
+        "name": "enabled-preserve-existing",
+        "passed": true
+      },
+      {
+        "name": "enabled/order-postgresql",
+        "passed": true
+      },
+      {
+        "name": "enabled/order",
+        "passed": true
+      },
+      {
+        "name": "schema-missing/applicationRepository",
+        "passed": true
+      },
+      {
+        "name": "schema-missing/targetRevision",
+        "passed": true
+      },
+      {
+        "name": "schema-missing/orderEnabled",
+        "passed": true
+      },
+      {
+        "name": "schema-missing/orderTargetRevision",
+        "passed": true
+      },
+      {
+        "name": "render-boundary/flag/None",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/flag/'true'",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/flag/'false'",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/flag/'yes'",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/flag/'unknown'",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/flag/0",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/flag/1",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/flag/{}",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/flag/[]",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/revision/''",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/revision/None",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/revision/'main'",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/revision/'HEAD'",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/revision/'v1.2.3'",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/revision/'abcdef1234567890abcdef1234567890abcdef1'",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/revision/'abcdef1234567890abcdef1234567890abcdef120'",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/revision/'ABCDEF1234567890ABCDEF1234567890ABCDEF12'",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/revision/'gggggggggggggggggggggggggggggggggggggggg'",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/revision/' abcdef1234567890abcdef1234567890abcdef12'",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/revision/'abcdef1234567890abcdef1234567890abcdef12\\n'",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/revision/1",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/revision/True",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/revision/{}",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/revision/[]",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/valid-enabled",
+        "passed": true,
+        "exit": 0,
+        "expected_accept": true
+      },
+      {
+        "name": "render-boundary/disabled-staged-fixed",
+        "passed": true,
+        "exit": 0,
+        "expected_accept": true
+      },
+      {
+        "name": "render-boundary/disabled-floating",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/unknown-key",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/account-floating",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "render-boundary/repository-drift",
+        "passed": true,
+        "exit": 1,
+        "expected_accept": false
+      },
+      {
+        "name": "observer/default-success",
+        "passed": true,
+        "exit": 0,
+        "expected_exit": 0,
+        "elapsed_seconds": 0.084,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend"
+        ]
+      },
+      {
+        "name": "observer/enabled-success",
+        "passed": true,
+        "exit": 0,
+        "expected_exit": 0,
+        "elapsed_seconds": 0.131,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-postgresql/missing",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-postgresql/pending",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-postgresql/unknown-phase",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-postgresql/missing-phase",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.654,
+        "calls": [
+          "lab-local-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-postgresql/failed",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-postgresql/running",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-postgresql/synced-only",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-postgresql/healthy-only",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.654,
+        "calls": [
+          "lab-local-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-postgresql/health-stale-progress",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.654,
+        "calls": [
+          "lab-local-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-postgresql/status-revision",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.654,
+        "calls": [
+          "lab-local-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-postgresql/operation-incomplete",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-backend/missing",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-backend/pending",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.654,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-backend/unknown-phase",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.654,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-backend/missing-phase",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-backend/failed",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-backend/running",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-backend/synced-only",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.655,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-backend/healthy-only",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-backend/health-stale-progress",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-backend/status-revision",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-backend/operation-incomplete",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-backend/hook-missing",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-backend/hook-stale-revision",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-backend/hook-failed",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.656,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-backend/hook-unknown",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-backend/hook-presync",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-backend/hook-wrong-namespace",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-frontend/missing",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-frontend/pending",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-frontend/unknown-phase",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.654,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-frontend/missing-phase",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-frontend/failed",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-frontend/running",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-frontend/synced-only",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-frontend/healthy-only",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-frontend/health-stale-progress",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-frontend/status-revision",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-frontend/operation-incomplete",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order-postgresql/missing",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order-postgresql/pending",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.654,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order-postgresql/unknown-phase",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order-postgresql/missing-phase",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order-postgresql/failed",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order-postgresql/running",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order-postgresql/synced-only",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order-postgresql/healthy-only",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order-postgresql/health-stale-progress",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order-postgresql/status-revision",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.656,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order-postgresql/operation-incomplete",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order-postgresql/spec-revision",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order-postgresql/operation-revision",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order-postgresql/resource-absent",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order-postgresql/resource-health",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order-postgresql/resource-sync",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order-postgresql/resource-namespace",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/missing",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.656,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/pending",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/unknown-phase",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.655,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/missing-phase",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/failed",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.654,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/running",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/synced-only",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/healthy-only",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/health-stale-progress",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/status-revision",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/operation-incomplete",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.654,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/spec-revision",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/operation-revision",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.654,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/resource-absent",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/resource-health",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.654,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/resource-sync",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/resource-namespace",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/hook-missing",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/hook-stale-revision",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/hook-failed",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/hook-unknown",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.653,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/hook-presync",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.654,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/lab-local-order/hook-wrong-namespace",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 0.652,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order"
+        ]
+      },
+      {
+        "name": "observer/invalid-bool",
+        "passed": true,
+        "exit": 2,
+        "expected_exit": 2,
+        "elapsed_seconds": 0.001,
+        "calls": []
+      },
+      {
+        "name": "observer/floating-order",
+        "passed": true,
+        "exit": 2,
+        "expected_exit": 2,
+        "elapsed_seconds": 0.001,
+        "calls": []
+      },
+      {
+        "name": "observer/empty-order",
+        "passed": true,
+        "exit": 2,
+        "expected_exit": 2,
+        "elapsed_seconds": 0.001,
+        "calls": []
+      },
+      {
+        "name": "observer/uppercase-order",
+        "passed": true,
+        "exit": 2,
+        "expected_exit": 2,
+        "elapsed_seconds": 0.002,
+        "calls": []
+      },
+      {
+        "name": "observer/disabled-conflict",
+        "passed": true,
+        "exit": 2,
+        "expected_exit": 2,
+        "elapsed_seconds": 0.002,
+        "calls": []
+      },
+      {
+        "name": "observer/missing-context",
+        "passed": true,
+        "exit": 2,
+        "expected_exit": 2,
+        "elapsed_seconds": 0.002,
+        "calls": []
+      },
+      {
+        "name": "observer/zero-timeout",
+        "passed": true,
+        "exit": 2,
+        "expected_exit": 2,
+        "elapsed_seconds": 0.002,
+        "calls": []
+      },
+      {
+        "name": "observer/unknown-flag",
+        "passed": true,
+        "exit": 2,
+        "expected_exit": 2,
+        "elapsed_seconds": 0.002,
+        "calls": []
+      },
+      {
+        "name": "observer/positional",
+        "passed": true,
+        "exit": 2,
+        "expected_exit": 2,
+        "elapsed_seconds": 0.002,
+        "calls": []
+      },
+      {
+        "name": "observer/short-account",
+        "passed": true,
+        "exit": 2,
+        "expected_exit": 2,
+        "elapsed_seconds": 0.001,
+        "calls": []
+      },
+      {
+        "name": "observer/repoll/lab-local-postgresql/degraded",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 3.001,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order",
+          "lab-local-postgresql"
+        ]
+      },
+      {
+        "name": "observer/repoll/lab-local-postgresql/revision-changed",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 3.002,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order",
+          "lab-local-postgresql"
+        ]
+      },
+      {
+        "name": "observer/repoll/lab-local-order-postgresql/degraded",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 3.006,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order",
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql"
+        ]
+      },
+      {
+        "name": "observer/repoll/lab-local-order-postgresql/revision-changed",
+        "passed": true,
+        "exit": 1,
+        "expected_exit": 1,
+        "elapsed_seconds": 3.003,
+        "calls": [
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql",
+          "lab-local-order",
+          "lab-local-postgresql",
+          "lab-local-backend",
+          "lab-local-frontend",
+          "lab-local-order-postgresql"
+        ]
+      }
+    ],
+    "passed": true,
+    "count": 143
+  },
+  "fixed_artifacts": [
+    {
+      "id": "order-applications",
+      "locator": "artifacts/order-applications",
+      "revision": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+      "sha256": "de513a9849e81ea479076027461d0542aea4104b75fe4db39988aadb4fffbcfd",
+      "size_bytes": 1274,
+      "source_path": "charts/workloads/templates/order-applications.yaml",
+      "matched": true
+    },
+    {
+      "id": "workloads-schema",
+      "locator": "artifacts/workloads-schema",
+      "revision": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+      "sha256": "24c6cf3632e199a1c7b4b3cdfe93798741fd4ac11839d8bfbd4cba32b1f62e3c",
+      "size_bytes": 864,
+      "source_path": "charts/workloads/values.schema.json",
+      "matched": true
+    },
+    {
+      "id": "bootstrap-observer",
+      "locator": "artifacts/bootstrap-observer",
+      "revision": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+      "sha256": "9f5bd6f950d0bf5fa4c11939b1c205826511b3e81bb36b33526e789476682af2",
+      "size_bytes": 6662,
+      "source_path": "tools/bootstrap/main.go",
+      "matched": true
+    }
+  ],
+  "changed_files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "size": 4762,
+      "sha256": "996404ab8df03ae66113256b1426a7a8827dcc4fa054bfc23034262ffda94701",
+      "condition_ids": [
+        "P0-S4"
+      ],
+      "inspection": "Fixed source/diff inspected and related tests executed."
+    },
+    {
+      "path": "charts/workloads/templates/order-applications.yaml",
+      "size": 1274,
+      "sha256": "de513a9849e81ea479076027461d0542aea4104b75fe4db39988aadb4fffbcfd",
+      "condition_ids": [
+        "P0-S4",
+        "P0-S1",
+        "P0-S2"
+      ],
+      "inspection": "Fixed source/diff inspected and related tests executed."
+    },
+    {
+      "path": "charts/workloads/values.schema.json",
+      "size": 864,
+      "sha256": "24c6cf3632e199a1c7b4b3cdfe93798741fd4ac11839d8bfbd4cba32b1f62e3c",
+      "condition_ids": [
+        "P0-S4",
+        "P0-S1",
+        "P0-S2"
+      ],
+      "inspection": "Fixed source/diff inspected and related tests executed."
+    },
+    {
+      "path": "charts/workloads/values.yaml",
+      "size": 225,
+      "sha256": "579456ac99e497ad4e5c94b1c2d65d7d4627400073d835f2207353c85b07054e",
+      "condition_ids": [
+        "P0-S4",
+        "P0-S1",
+        "P0-S2"
+      ],
+      "inspection": "Fixed source/diff inspected and related tests executed."
+    },
+    {
+      "path": "ci/fixtures/order-p0/README.md",
+      "size": 669,
+      "sha256": "c419e148b4960e284138a518462164a7cfdc2f22d1bb6dec3c1a8cce0a170a17",
+      "condition_ids": [
+        "P0-S4",
+        "P0-S1",
+        "P0-S2"
+      ],
+      "inspection": "Fixed source/diff inspected and related tests executed."
+    },
+    {
+      "path": "ci/fixtures/order-p0/enabled.yaml",
+      "size": 156,
+      "sha256": "97d092410f67c1aadac6449c9062313d18dc974b9ed0811a01bc4be9c57c4703",
+      "condition_ids": [
+        "P0-S4",
+        "P0-S1",
+        "P0-S2"
+      ],
+      "inspection": "Fixed source/diff inspected and related tests executed."
+    },
+    {
+      "path": "ci/fixtures/order-p0/workloads-before.yaml",
+      "size": 2196,
+      "sha256": "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5",
+      "condition_ids": [
+        "P0-S4",
+        "P0-S1",
+        "P0-S2"
+      ],
+      "inspection": "Fixed source/diff inspected and related tests executed."
+    },
+    {
+      "path": "ci/includes/full-pipeline.yml",
+      "size": 2380,
+      "sha256": "f6f8d1e368c0d0b2dc13fafd65ca37d19eb78ff2bedfed2ef2c7af52af1bb118",
+      "condition_ids": [
+        "P0-S4"
+      ],
+      "inspection": "Fixed source/diff inspected and related tests executed."
+    },
+    {
+      "path": "ci/test-order-workloads.sh",
+      "size": 3617,
+      "sha256": "3fa2e231c42f5c863d4d4c032cb89f11c2e56e450fc0d026e7097abffb2d5eaa",
+      "condition_ids": [
+        "P0-S4",
+        "P0-S1",
+        "P0-S2"
+      ],
+      "inspection": "Fixed source/diff inspected and related tests executed."
+    },
+    {
+      "path": "ci/validate.sh",
+      "size": 6501,
+      "sha256": "ebeb8c94db40c4e8561108be032dfd4eba7e1288d07ec6b3d9c49943cc6be7a5",
+      "condition_ids": [
+        "P0-S4"
+      ],
+      "inspection": "Fixed source/diff inspected and related tests executed."
+    },
+    {
+      "path": "docs/operations/initial-leaf-readiness.md",
+      "size": 6431,
+      "sha256": "481529891b0f9198777bd3b3225f49917d353e72043c427fe8fb0a44b2ca6267",
+      "condition_ids": [
+        "P0-S4",
+        "P0-S1",
+        "P0-S2",
+        "P0-S3"
+      ],
+      "inspection": "Fixed source/diff inspected and related tests executed."
+    },
+    {
+      "path": "environments/local/workloads.yaml",
+      "size": 122,
+      "sha256": "30b9ed7c5b9b1c4e04f889e8b895c32f02250b268ff47ca2919f1d21e1757819",
+      "condition_ids": [
+        "P0-S4",
+        "P0-S1",
+        "P0-S2"
+      ],
+      "inspection": "Fixed source/diff inspected and related tests executed."
+    },
+    {
+      "path": "tools/bootstrap/main.go",
+      "size": 6662,
+      "sha256": "9f5bd6f950d0bf5fa4c11939b1c205826511b3e81bb36b33526e789476682af2",
+      "condition_ids": [
+        "P0-S4",
+        "P0-S3"
+      ],
+      "inspection": "Fixed source/diff inspected and related tests executed."
+    },
+    {
+      "path": "tools/bootstrap/order_render_test.go",
+      "size": 1916,
+      "sha256": "d6b1a8fdcedbe63c317e22e23d41b7a4b5c975f47f40721ac572e09dad6ef09b",
+      "condition_ids": [
+        "P0-S4",
+        "P0-S3",
+        "P0-S1",
+        "P0-S2"
+      ],
+      "inspection": "Fixed source/diff inspected and related tests executed."
+    },
+    {
+      "path": "tools/bootstrap/order_test.go",
+      "size": 9303,
+      "sha256": "67c153fd44f0fb7dc87c47c57ab214bd5814490eaff38404fc3a04ced0d8b63d",
+      "condition_ids": [
+        "P0-S4",
+        "P0-S3"
+      ],
+      "inspection": "Fixed source/diff inspected and related tests executed."
+    }
+  ],
+  "unchanged_boundary_sources": [
+    {
+      "path": "bootstrap/namespaces.yaml",
+      "sha256": "9c8f5981bffa444cad3ec4b0d64f533b1bdffdfe9e4f46fc090dda9824b54764",
+      "size": 1010,
+      "byte_equal": true
+    },
+    {
+      "path": "bootstrap/root-project.yaml",
+      "sha256": "dc7cc172cb0cd74ee6520a0751f727d47f95cf9010af8bc5ccd95b2bd3620969",
+      "size": 576,
+      "byte_equal": true
+    },
+    {
+      "path": "bootstrap/argocd-values.yaml",
+      "sha256": "5a869b06a8d067b5bbd326508aad45ea76f9bafa16260849be35e8c93daf7d2a",
+      "size": 3119,
+      "byte_equal": true
+    },
+    {
+      "path": "charts/root/templates/projects.yaml",
+      "sha256": "e41ca9a79479ee1e1b41f55cf343e006769828191e7c8be76844c1d2b6388c02",
+      "size": 2855,
+      "byte_equal": true
+    },
+    {
+      "path": "charts/workloads/templates/applications.yaml",
+      "sha256": "6bc92483833f169a0f19fb7349f9105f410007328069b25d24509e5c1c58a7ee",
+      "size": 1233,
+      "byte_equal": true
+    }
+  ],
+  "preparation_results": [
+    {
+      "condition_id": "P0-S1",
+      "outcome": "met",
+      "artifact_ids": [
+        "order-applications",
+        "workloads-schema",
+        "bootstrap-observer"
+      ],
+      "evidence": "Fresh independent fixtures, fixed-source inspection and command measurements in this report."
+    },
+    {
+      "condition_id": "P0-S2",
+      "outcome": "met",
+      "artifact_ids": [
+        "order-applications",
+        "workloads-schema",
+        "bootstrap-observer"
+      ],
+      "evidence": "Fresh independent fixtures, fixed-source inspection and command measurements in this report."
+    },
+    {
+      "condition_id": "P0-S3",
+      "outcome": "met",
+      "artifact_ids": [
+        "order-applications",
+        "workloads-schema",
+        "bootstrap-observer"
+      ],
+      "evidence": "Fresh independent fixtures, fixed-source inspection and command measurements in this report."
+    },
+    {
+      "condition_id": "P0-S4",
+      "outcome": "met",
+      "artifact_ids": [
+        "order-applications",
+        "workloads-schema",
+        "bootstrap-observer"
+      ],
+      "evidence": "Fresh independent fixtures, fixed-source inspection and command measurements in this report."
+    }
+  ],
+  "security": {
+    "source-scan": {
+      "schemaVersion": 1,
+      "pass": true,
+      "trivyVersion": "0.75.0",
+      "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+      "scannedAt": "2026-10-11T17:44:22.316010309Z",
+      "findings": [
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "charts/grafana/charts/grafana/templates/deployment.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0047",
+          "path": "charts/observability-foundation/templates/rbac.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-01010",
+          "path": "charts/otel-collector/templates/configmap.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "charts/otel-collector/templates/deployment.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0048",
+          "path": "charts/runner-foundation/templates/role.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0053",
+          "path": "charts/runner-foundation/templates/role.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0056",
+          "path": "charts/runner-foundation/templates/role.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0113",
+          "path": "charts/runner-foundation/templates/role.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        }
+      ],
+      "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+    },
+    "render-scan": {
+      "schemaVersion": 1,
+      "pass": true,
+      "trivyVersion": "0.75.0",
+      "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+      "scannedAt": "2026-10-11T17:44:22.291621891Z",
+      "findings": [
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0044",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/clusterrole.yaml",
+          "severity": "CRITICAL",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0046",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/clusterrole.yaml",
+          "severity": "CRITICAL",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0113",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/role.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0011",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/statefulset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0015",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/statefulset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0016",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/statefulset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0018",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/statefulset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0020",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/statefulset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/statefulset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0118",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/statefulset.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/statefulset.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0011",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-applicationset/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0015",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-applicationset/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0016",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-applicationset/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0018",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-applicationset/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0020",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-applicationset/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-applicationset/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0118",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-applicationset/deployment.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-applicationset/deployment.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0049",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-applicationset/role.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0113",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-applicationset/role.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-01010",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-configs/argocd-cm.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0041",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/clusterrole.yaml",
+          "severity": "CRITICAL",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0041",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/clusterrole.yaml",
+          "severity": "CRITICAL",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0011",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0015",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0016",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0018",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0020",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0118",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/deployment.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/deployment.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0113",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/role.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0113",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/role.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0011",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0011",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0015",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0015",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0016",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0016",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0018",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0018",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0020",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0020",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0118",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0046",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/clusterrole.yaml",
+          "severity": "CRITICAL",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0048",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/clusterrole.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0011",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0015",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0016",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0018",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0020",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0118",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/deployment.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/deployment.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0049",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/role.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0113",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/role.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0011",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0011",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0015",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0015",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0016",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0016",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0018",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0018",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0020",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0020",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0118",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0113",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/role.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0011",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/redis/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0015",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/redis/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0016",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/redis/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0018",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/redis/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0020",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/redis/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/redis/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": ".charts/argo-cd-10.8.2.tgz/templates/redis/deployment.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0011",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/alertmanager/templates/statefulset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0011",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/alertmanager/templates/statefulset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0015",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/alertmanager/templates/statefulset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0015",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/alertmanager/templates/statefulset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0016",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/alertmanager/templates/statefulset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0016",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/alertmanager/templates/statefulset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0018",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/alertmanager/templates/statefulset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0018",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/alertmanager/templates/statefulset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/alertmanager/templates/statefulset.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/alertmanager/templates/statefulset.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0011",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/kube-state-metrics/templates/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0015",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/kube-state-metrics/templates/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0016",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/kube-state-metrics/templates/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0018",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/kube-state-metrics/templates/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/kube-state-metrics/templates/deployment.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0041",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/kube-state-metrics/templates/role.yaml",
+          "severity": "CRITICAL",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0003",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0004",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0009",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0010",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0011",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0015",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0016",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0018",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0023",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0030",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0104",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0106",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0121",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0001",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0003",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0004",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0011",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0014",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0015",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0016",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0018",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0030",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0104",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0106",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0001",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0001",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0003",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0003",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0004",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0004",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0011",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0011",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0014",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0014",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0015",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0015",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0016",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0016",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0018",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0018",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0030",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0030",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0104",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0104",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0106",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0106",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0020",
+          "path": "argocd-pods.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0020",
+          "path": "argocd-pods.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0020",
+          "path": "argocd-pods.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0020",
+          "path": "argocd-pods.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0020",
+          "path": "argocd-pods.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0020",
+          "path": "argocd-pods.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0020",
+          "path": "argocd-pods.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": "argocd-pods.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": "argocd-pods.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": "argocd-pods.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": "argocd-pods.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": "argocd-pods.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": "argocd-pods.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": "argocd-pods.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0118",
+          "path": "argocd-pods.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0118",
+          "path": "argocd-pods.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0118",
+          "path": "argocd-pods.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0118",
+          "path": "argocd-pods.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0118",
+          "path": "argocd-pods.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "argocd-pods.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "argocd-pods.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "argocd-pods.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "argocd-pods.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "argocd-pods.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "argocd-pods.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "argocd-pods.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-01010",
+          "path": "collector-disabled.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "collector-disabled.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-01010",
+          "path": "collector-enabled.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "collector-enabled.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0014",
+          "path": "gitlab-runner.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0020",
+          "path": "gitlab-runner.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": "gitlab-runner.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-01010",
+          "path": "gitlab-runner.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0109",
+          "path": "gitlab-runner.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "gitlab-runner.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "grafana.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0047",
+          "path": "observability-foundation.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "prometheus.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "prometheus.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "prometheus.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0048",
+          "path": "runner-foundation.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0053",
+          "path": "runner-foundation.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0056",
+          "path": "runner-foundation.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0113",
+          "path": "runner-foundation.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        }
+      ],
+      "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+    }
+  },
+  "ci": {
+    "source": "Fresh read-only GitHub REST observation; distinct from independent local measurements",
+    "observed_at": "2026-10-11T17:41:46.966165Z",
+    "valid_until": "2026-10-11T17:56:46.966165Z",
+    "pr": {
+      "base": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+      "draft": true,
+      "head": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+      "html_url": "https://github.com/syuhei0519/platform-gitops/pull/58",
+      "state": "open"
+    },
+    "checks": [
+      {
+        "name": "ci-result",
+        "head_sha": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+        "status": "completed",
+        "conclusion": "success",
+        "details_url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38159914118/job/114530777960"
+      },
+      {
+        "name": "docs",
+        "head_sha": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+        "status": "completed",
+        "conclusion": "skipped",
+        "details_url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38159914118/job/114530502434"
+      },
+      {
+        "name": "validate",
+        "head_sha": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+        "status": "completed",
+        "conclusion": "success",
+        "details_url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38159914118/job/114530501240"
+      },
+      {
+        "name": "classify",
+        "head_sha": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+        "status": "completed",
+        "conclusion": "success",
+        "details_url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38159914118/job/114530474795"
+      },
+      {
+        "name": "ci-result",
+        "head_sha": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+        "status": "completed",
+        "conclusion": "success",
+        "details_url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38159810435/job/114530428068"
+      },
+      {
+        "name": "docs",
+        "head_sha": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+        "status": "completed",
+        "conclusion": "skipped",
+        "details_url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38159810435/job/114530201065"
+      },
+      {
+        "name": "validate",
+        "head_sha": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+        "status": "completed",
+        "conclusion": "success",
+        "details_url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38159810435/job/114530199921"
+      },
+      {
+        "name": "classify",
+        "head_sha": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+        "status": "completed",
+        "conclusion": "success",
+        "details_url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38159810435/job/114530176830"
+      }
+    ]
+  },
+  "initial_failures": [
+    {
+      "step": "gh PR observation",
+      "result": "Old CLI rejects baseRefOid JSON field, subsequent read of empty output failed",
+      "resolution": "Used supported REST GET; exact head/base/draft confirmed."
+    },
+    {
+      "step": "source-scan worktree container",
+      "exit_code": 128,
+      "result": "Mounted worktree .git reference outside /work cannot resolve",
+      "resolution": "Standalone fixed clone; no source change."
+    },
+    {
+      "step": "kubeconform three schemas",
+      "exit_code": 1,
+      "result": "Untrusted container CA prevented schema downloads: 37/16/4 errors, zero valid",
+      "resolution": "Existing host infrastructure CA mounted read-only; TLS verification preserved, all 57 resources valid."
+    },
+    {
+      "step": "security standalone first run",
+      "exit_code": 2,
+      "result": "Scanner DB retrieval unavailable in container",
+      "resolution": "Existing CA mounted read-only; source/render gates subsequently passed."
+    }
+  ],
+  "identity_compatibility": {
+    "handoff_issue_id": "syuhei0519/backend-app#2",
+    "context_issue_id": "backend-app#2",
+    "same_source_url": true,
+    "original_ac_equal": true,
+    "schema_valid_individually": true,
+    "direct_readiness_pairing": "IDs differ: fixed validate_readiness.py lines 283-284 requires exact equality and reports handoff issue differs from readiness issue. Manager canonical aggregate pairing required; historical Handoff not modified. No formal Manager Readiness created."
+  },
+  "dependency_observation": {
+    "manifest_fixed_charts": [
+      "README.md",
+      "backend",
+      "frontend",
+      "postgresql"
+    ],
+    "order_chart_exists_at_fixed_manifest": false,
+    "B2_M1_M2": "No success/merge assumed; synthetic SHA is not real source availability."
+  },
+  "followup": [
+    {
+      "ac_id": "AC-3",
+      "owner": "Manager coordinates M2/P1; independent Test measures real Argo/runtime acceptance.",
+      "environment": "Approved isolated kind first, then actual target only with Deployment Ready and required owner/environment approval.",
+      "method": "Use genuine B2 image digest, merged M2 revision and fixed P1 candidate, check migration/DB/Service/ArgoSyncedHealthy/runtimeimageID and AccountOrder regressions, then repeat final integrated main state.",
+      "dependencies": [
+        "B2 actual Order release",
+        "M1 disabled charts and M2 realdigest selection",
+        "P1 fixed final Manifestrevision",
+        "Authorized kind/context/Secret/PVC/rollback readiness",
+        "T7 final integrated measurement"
+      ],
+      "failure_action": "Stop affected merge/enable/deploy, retain Account data and OrderPVC, record safe failure evidence, forward-fix and independently retest."
+    }
+  ],
+  "product_outcomes": [
+    {
+      "ac_id": "AC-1",
+      "outcome": "unverified"
+    },
+    {
+      "ac_id": "AC-2",
+      "outcome": "unverified"
+    },
+    {
+      "ac_id": "AC-3",
+      "outcome": "unverified"
+    }
+  ],
+  "limitations": [
+    "P0 preparation stage only. No real Argo/Service/digest/DB/API/Account CRUD/persistence measurements.",
+    "kind, P1, T6, T7 and aggregate Issue completion unverified. AC-1/2 outside assignment.",
+    "Applications report only: matching current snapshots cannot prove runtime DB readiness, timestamp freshness, imageID or atomic cross-App consistency.",
+    "Account non-hook leaves retain matching comparison revision behavior; no new fixed-spec requirement for Account main tracking.",
+    "Disabled Helm accepts a staged valid fixed revision and emits no Order apps; disabled observer rejects an order-revision argument. This documented CLI boundary is stricter.",
+    "Parent/child sync waves are not a cross-Application transaction.",
+    "Original Manager policy expiry retained; operation-time refresh belongs to Manager."
+  ]
+}
