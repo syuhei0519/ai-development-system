@@ -1,0 +1,123 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "syuhei0519/backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "research-design",
+  "task_id": "research-order-design-a1",
+  "attempt": 1,
+  "upstream": [],
+  "system_status": "completed",
+  "status": "blocked",
+  "summary": "edited derivative。公開task_idは実Cloud IDではないalias。原attempt=1/status=blockedを保持。製品AC未実測。公開承認や新たな実装許可を意味しない。",
+  "artifacts": [
+    {
+      "id": "A-HISTORY",
+      "kind": "document",
+      "locator": "history.txt",
+      "revision": "sha256:dbdcd75a5fbf91e3cde6d983def2226d2d15d7e7aa07b226cdc0514f20f9cc74",
+      "summary": "編集済み履歴。原status/attemptと阻害分類を保持。"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-HISTORY",
+      "claim": "原attempt/status履歴を維持",
+      "artifact_ids": [
+        "A-HISTORY"
+      ],
+      "locator": "history.txt",
+      "observation": "attempt1/2はblocked、attempt3はResearch completed。製品AC実測合格は未確認。実ID・内部ログを省いた編集済み履歴であり原本証跡ではない。"
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "unverified",
+      "scope": "再起動永続化の設計・検証案を記録。Order API/DB分離と再起動対象が未決で工程完了には至らない。DB試験未実施。",
+      "artifact_ids": [
+        "A-HISTORY"
+      ],
+      "evidence_ids": [
+        "E-HISTORY"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "unverified",
+      "scope": "Account CRUDとmigration互換境界を調査。不正入力仕様・Account関連方針とintegration環境が未決。回帰試験未実施。",
+      "artifact_ids": [
+        "A-HISTORY"
+      ],
+      "evidence_ids": [
+        "E-HISTORY"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "unverified",
+      "scope": "独立image/Helm/GitOpsとSynced/Healthy/digestの検証案を記録。配布契約・対象環境・承認・マージ循環が未解決。実配備未実施。",
+      "artifact_ids": [
+        "A-HISTORY"
+      ],
+      "evidence_ids": [
+        "E-HISTORY"
+      ]
+    }
+  ],
+  "block_reasons": [
+    {
+      "code": "MISSING_INPUT",
+      "detail": "当時のAPI/DB/関連/証跡/受入環境/実行承認が未決。",
+      "required_action": "採用設計・検証環境・実行境界を確定して配送する。"
+    },
+    {
+      "code": "ACCESS_DENIED",
+      "detail": "必要な認証設定metadataを確認できなかった。内部認証ログは公開版から除去。",
+      "required_action": "運用者が既存権限で非秘密metadataを確認する。新PATや権限拡張は行わない。"
+    },
+    {
+      "code": "OTHER",
+      "detail": "当時のマージ条件と配備後受入の循環。",
+      "required_action": "ManagerがMerge ReadinessとIssue Completionの分離を判断する。履歴であり現行仕様では解消済み。"
+    }
+  ],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe",
+  "assignment": {
+    "scope": "Issue #2 の3repo現況、開発/検証環境、認証承認、Merge Readiness と Issue Completion 分離の Readiness 評価",
+    "ac_ids": [
+      "AC-1",
+      "AC-2",
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "3repo現行mainのSHAとcheckout SHAを区別して責任境界、Account API/DB migration/Helm/GitOps、必要変更を根拠付き調査。",
+      "現行CI/GHCR公開/Manifest更新フロー、Cloudから3repoアクセス可否、Integration Test/隔離kind実行可能性を confirmed/unverified/blocked に区別。",
+      "Credentials/Secretは値を読んだり開示せず、必要な名称・権限・承認条件と有無を許可されたメタデータだけで確認。権限拡張しない。",
+      "未解決リスク/仕様判断、3repo実装・マージ順序、Implementation起動可否と根拠を提示。",
+      "現行マージ方針はIssue全体 achievedをマージ前必須としている。マージ後ACがある今回の循環を評価し、必要な仕様変更を具体的に提案する。変更はしない。",
+      "固定Handoff v2.0契約で検証し、成果物と完全JSONを配送。工程coveredと製品AC合格を分離。Knowledge起動なし。公開版は原本のedited derivative。"
+    ]
+  }
+}

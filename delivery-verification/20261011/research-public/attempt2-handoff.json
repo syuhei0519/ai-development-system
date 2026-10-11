@@ -1,0 +1,144 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "syuhei0519/backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "research-design",
+  "task_id": "research-order-design-a2",
+  "attempt": 2,
+  "upstream": [
+    {
+      "role": "research-design",
+      "task_id": "research-order-design-a1",
+      "attempt": 1,
+      "handoff_locator": "attempt1-handoff.json",
+      "revision": "sha256:3ebef4d803e39ef6ae23943f229518fce6d85dff82a5214c1324b98ddd864681",
+      "relationship": "retry_of"
+    }
+  ],
+  "system_status": "completed",
+  "status": "blocked",
+  "summary": "edited derivative。公開task_idは実Cloud IDではないalias。原attempt=2/status=blockedを保持。製品AC未実測。公開承認や新たな実装許可を意味しない。",
+  "artifacts": [
+    {
+      "id": "A-HISTORY",
+      "kind": "document",
+      "locator": "history.txt",
+      "revision": "sha256:dbdcd75a5fbf91e3cde6d983def2226d2d15d7e7aa07b226cdc0514f20f9cc74",
+      "summary": "編集済み履歴。原status/attemptと阻害分類を保持。"
+    },
+    {
+      "id": "A-DESIGN",
+      "kind": "document",
+      "locator": "design.txt",
+      "revision": "sha256:44ab0b6be4f709f5bfcb4750250d94bb1781a4083a52082df62b366647b5b8e8",
+      "summary": "原attempt2技術設計のedited derivative。全AC・変更単位・承認境界を保持。"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-HISTORY",
+      "claim": "原attempt/status履歴を維持",
+      "artifact_ids": [
+        "A-HISTORY"
+      ],
+      "locator": "history.txt",
+      "observation": "attempt1/2はblocked、attempt3はResearch completed。製品AC実測合格は未確認。実ID・内部ログを省いた編集済み履歴であり原本証跡ではない。"
+    },
+    {
+      "id": "E-DESIGN",
+      "claim": "Researchの技術設計と検証計画を保持",
+      "artifact_ids": [
+        "A-DESIGN"
+      ],
+      "locator": "design.txt 3〜10節",
+      "observation": "API/Account削除整合、専用DB・migration、独立image証跡、Helm/Argo、7変更単位、T1〜T7、全AC最早premergeと承認依存。製品試験結果ではない。"
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "covered",
+      "scope": "Research範囲のAPI/DB/migration/再起動永続化/Account非変更とpremerge試験を設計済み。実装・実DB試験・製品合格は未確認。",
+      "artifact_ids": [
+        "A-HISTORY",
+        "A-DESIGN"
+      ],
+      "evidence_ids": [
+        "E-HISTORY",
+        "E-DESIGN"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "covered",
+      "scope": "Research範囲の4xx契約/履歴Account参照/削除整合性/CRUD回帰とpremerge試験を設計済み。製品試験未実施。",
+      "artifact_ids": [
+        "A-HISTORY",
+        "A-DESIGN"
+      ],
+      "evidence_ids": [
+        "E-HISTORY",
+        "E-DESIGN"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "covered",
+      "scope": "Research範囲の独立image/証跡/Helm/Argoと最早premergeの隔離kind検証、最終統合確認を設計済み。配備・Synced/Healthy/imageIDは未観測。",
+      "artifact_ids": [
+        "A-HISTORY",
+        "A-DESIGN"
+      ],
+      "evidence_ids": [
+        "E-HISTORY",
+        "E-DESIGN"
+      ]
+    }
+  ],
+  "block_reasons": [
+    {
+      "code": "MISSING_INPUT",
+      "detail": "当時の前工程成果物の完全性検証が未完了。",
+      "required_action": "完全実体とdigestを確認する。attempt3で解消したが本attemptのblockedは維持。"
+    }
+  ],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe",
+  "assignment": {
+    "scope": "Issue #2の3repo現況・設計・開発検証環境・認証承認・Readiness評価",
+    "ac_ids": [
+      "AC-1",
+      "AC-2",
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "現行3repo（syuhei0519/backend-app, application-manifest, platform-gitops）のmainを確認固定し差分/責任境界を把握。",
+      "下記技術設計を比較案・判断軸・推奨案・採用理由・不採用理由付きで実装可能な具体案に確定。未決列挙だけで終わらず、追加会話なしで開始できる安全な実装範囲を示す。",
+      "Implementation ReadyとDeployment Readyを独立評価。必須API/DB設計が確定した範囲のみ実装可。kind/Secret未準備は配備/検証依存として保持し独立コードを一律停止しない。",
+      "3repo変更単位ごとに対象、変更範囲、担当Agent、受入条件、テスト、premerge検証、postdeploy確認、必要承認、前工程依存、マージ順を具体化。",
+      "全AC原文維持、最早検証段階と理由を正確に分類。premerge可能な試験を環境未準備の理由でpostdeployへ延期しない。真のpostmerge/deploy限定ACには理由/担当/環境/方法/失敗対応を記録。",
+      "固定Handoff v2.0契約で検証し、成果物と完全JSONを配送。工程coveredと製品AC合格を分離。Knowledge起動なし。公開版は原本のedited derivative。"
+    ]
+  }
+}

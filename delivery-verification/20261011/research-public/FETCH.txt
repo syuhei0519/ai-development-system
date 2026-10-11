@@ -1,0 +1,15 @@
+Edited derivative retrieval instructions (publication candidate; not uploaded)
+Only planned destination: syuhei0519/ai-development-system
+Branch: test/artifact-delivery-20261011
+Directory: delivery-verification/20261011/research-public/
+No commit or push has been performed by this preparation.
+
+After Manager approval and publication, obtain the actual 40-hex delivery commit SHA and the expected manifest.json SHA-256 from the approved delivery record. The synthetic verification commit is not this candidate's commit. No candidate commit SHA exists yet.
+Fetch manifest.json as raw bytes from:
+https://raw.githubusercontent.com/syuhei0519/ai-development-system/<DELIVERY_COMMIT>/delivery-verification/20261011/research-public/manifest.json
+Verify its supplied SHA-256 before parsing. Fetch every listed path from the same immutable commit and directory as raw bytes. Verify the exact byte size and SHA-256 of each file before UTF-8 decoding/JSON parsing. Do not reserialize JSON, normalize newlines, or reconstruct files from chat.
+The manifest lists every payload file except itself to avoid a self-hash cycle. Its own size/digest must be supplied independently in the approved delivery record. Digest equality verifies bytes, not authorship or publication authorization.
+Use contracts and scripts from syuhei0519/ai-development-system at 5ca00d89f97ebc597d214fd8f046e4cc98d781fb. Run:
+python <FIXED_CONTRACT_CHECKOUT>/scripts/validate_handoff.py attempt1-handoff.json attempt2-handoff.json handoff.json
+Separately resolve all artifact locators relative to their Handoff, verify their sha256 revisions, and verify each retry_of locator/alias/attempt/digest. The Handoff CLI alone does not hash referenced artifacts or prove AC truth.
+Read design.txt, addendum.txt, history.txt, and provenance.json completely. Public aliases are not Cloud IDs. All files are edited derivatives, not original private records. Historical status and attempts are preserved; product ACs remain unverified. Manager content/safety/scope approval remains required before publication. No readiness assessment or deployment permission is supplied.

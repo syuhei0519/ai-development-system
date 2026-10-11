@@ -1,0 +1,55 @@
+{
+  "document_type": "edited_derivative_provenance",
+  "source_snapshot_date": "2026-10-10",
+  "derivative_date": "2026-10-11",
+  "description": "技術本文は保存済み原本から抽出・削除・置換。原本bytesと同一ではない。技術設計の再実行・再生成ではない。",
+  "task_identifier_policy": "research-order-design-a1/a2/a3は公開aliasであり実Cloud task IDではない。実IDとの対応と原本digestは非公開mappingに保持。",
+  "history": [
+    {
+      "alias": "research-order-design-a1",
+      "attempt": 1,
+      "status": "blocked",
+      "role": "research-design"
+    },
+    {
+      "alias": "research-order-design-a2",
+      "attempt": 2,
+      "status": "blocked",
+      "role": "research-design"
+    },
+    {
+      "alias": "research-order-design-a3",
+      "attempt": 3,
+      "status": "completed",
+      "role": "research-design"
+    }
+  ],
+  "contract": {
+    "repository": "syuhei0519/ai-development-system",
+    "revision": "5ca00d89f97ebc597d214fd8f046e4cc98d781fb",
+    "schema": "contracts/handoff.schema.json",
+    "cli": "scripts/validate_handoff.py"
+  },
+  "publication_state": "candidate_pending_manager_content_safety_scope_review",
+  "authorization": "この候補作成はcommit/push、製品実装、配備、認証変更を許可しない。",
+  "retained": [
+    "public repository links and fixed revisions",
+    "API/DB/CI/GitOps design and alternatives",
+    "change units and merge order",
+    "verbatim AC and unverified outcomes",
+    "approval and deployment boundaries"
+  ],
+  "removed": [
+    "private task/thread/message identifiers",
+    "conversation and delivery-session details",
+    "internal executor paths",
+    "internal environment and authentication logs",
+    "private artifact digests and raw private provenance"
+  ],
+  "secret_policy": "コード上のSecret/変数/DB role名と権限要件は設計として保持。値・実credential・実環境接続情報は含めない。",
+  "source_repositories": {
+    "backend-app": "d29a390c09f8667316569e1bb599bf690b00313d",
+    "application-manifest": "e039945a90625262f91382e6f71149d046e31b34",
+    "platform-gitops": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa"
+  }
+}

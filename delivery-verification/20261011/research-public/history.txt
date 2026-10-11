@@ -1,0 +1,14 @@
+Research history — edited derivative
+公開aliasは実Cloud IDではない。attempt/statusの履歴を保持し、成功への書換えや試行回数のリセットはしない。
+公開に必要な履歴分類のみ抽出し、内部認証ログや配送会話を省略した。
+alias=research-order-design-a1; role=research-design; attempt=1; system_status=completed; status=blocked
+AC dispositions: AC-1=unverified, AC-2=unverified, AC-3=unverified
+alias=research-order-design-a2; role=research-design; attempt=2; system_status=completed; status=blocked
+AC dispositions: AC-1=covered, AC-2=covered, AC-3=covered
+alias=research-order-design-a3; role=research-design; attempt=3; system_status=completed; status=completed
+AC dispositions: AC-1=covered, AC-2=covered, AC-3=covered
+attempt1 blockers: MISSING_INPUT（API/DB/関連/証跡/受入環境/実行承認の未決）、ACCESS_DENIED（必要な認証設定metadataの確認不能）、OTHER（当時のマージ条件と配備後受入の循環）。
+attempt2 blocker: MISSING_INPUT（前工程成果物の完全性検証が未完了）。技術設計は具体化済み。
+attempt3: 前工程成果物の完全性検証を完了し配送阻害を解消。設計工程completed。旧blocked履歴は維持。
+全attemptで製品ACの実測合格を主張しない。coveredはResearch工程責務。Managerの採用・実装許可・業務ゲートは別途。
+Implementation ReadyとDeployment Readyは独立。製品ACは全件unverified、issue_integration_scope=aggregate_required、Issue Completion=unverified。

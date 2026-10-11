@@ -1,0 +1,26 @@
+Order Service technical addendum — edited derivative
+公開alias: research-order-design-a3（実Cloud task IDではない）。原attempt=3/status=completedを保持。
+原本の2026-10-10技術補足からの抽出。実ID、配送会話、内部環境/認証ログは含めない。
+設計の現在状態を再評価したものではない。原本と同一bytesではなく、公開・実装・配備の許可を与えない。
+
+Issue: https://github.com/syuhei0519/backend-app/issues/2
+正本契約: syuhei0519/ai-development-system@5ca00d89f97ebc597d214fd8f046e4cc98d781fb
+判定: Research assignment completed。Managerの採用・業務ゲート・実装許可は別途。製品ACは全件unverified。
+
+B backend-app=d29a390c09f8667316569e1bb599bf690b00313d
+M application-manifest=e039945a90625262f91382e6f71149d046e31b34
+P platform-gitops=b989e29b8addbd6396c5c2b4833b969bc15fc8fa
+BはAPI/SQL/image producer、MはHelm/DB/PVC/Secret参照/検証器、Pはnamespace/AppProject/Application/bootstrap、Secret値は運用者の責任。Account Readyのversion=1、独立履歴必要性、DB初期化は空PGDATAのみ、M rendererの3chart固定、P自動同期とobserverの3leaf固定を限定再読し、継承設計と整合した。
+追加の実装条件: P0/P1 observerはleafごとに期待するM revisionとhook名を持つ。既存Account系main追跡の解決SHAと新Order系固定SHAを一つのrevision引数で混同しない。未登録disabledは期待leaf集合から除外し、enabledなのに欠落/誤revisionは失敗。既存3leafの監視は継続し、異なる期待SHA・欠落・失敗hookをUnitで検証する。
+Order migrationsは独立order-migrations/embed.goでSQLを埋込み、orderpostgresからimportする。Account embed/historyを共有せず、親ディレクトリ参照のgo:embedに依存しない。これはB1境界を具体化する補足であり製品変更は未実施。
+
+3. AC・開始可能範囲・Readiness材料
+AC-1: 作成したOrderが再起動後も取得できる
+AC-2: 不正入力は4xxとなりAccount CRUDが維持される
+AC-3: 独立ServiceがSyncedかつHealthyになり対応image digestが確認できる
+全出典は上記Issueの原文。全担当ACのResearch設計責務はcovered、製品結果はunverified。全最早段階premerge/deferred=nullの提案を維持。AC-1/2は実DB Integration、AC-3はB2公開後かつM2/P1 merge前の候補固定版kind/Argoで検証。未実行・環境不足をpostdeployへ延期しない。正規統合後T7は別途必須。
+最初はB1内部のOrder domain/HTTP/独立Store interface/SQL定義/Unitを推薦。immutable Order、履歴account_id（Account現存保証なし、削除後保持）、専用PostgreSQL/DB/role/履歴、独立image、disabled既定を継承。Managerの設計採用・当該slice実装許可・初回成果物配送後に開始でき、kind/Secret不足だけで止めない。B1 mergeには実Store/entrypoint/T2/T3/Account回帰等のpremerge合格が必要。
+Deployment Readyは環境/Secret有効性/公開image/運用承認/復旧能力が未確認。Merge ReadyもPR・CI・独立Test/Review未成立。現在の権限/存在を確認済みにしない。Managerが最新metadata・承認を取得する。Systemの分離契約で旧マージ循環は解消済み。
+issue_integration_scope=aggregate_required、Issue Completion=unverified。各repoのmerge SHA、source/image/release/M/P採用版、統合環境/T7を束ねる集約契約・検証は後続依存。Manager assessment/final_assessmentは作成しない。
+
+正式assessment/contextを生成していないため本Issueのvalidate_readiness.py --context/--handoff評価はnot_requested。架空Manager記録を作って合格させない。Managerが正式artifact作成後に実bytes digestとHandoffを結合して実行する。
