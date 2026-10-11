@@ -1,0 +1,116 @@
+{
+  "document_type": "github_observations",
+  "observed_at": "2026-10-11T18:19:18.186317+00:00",
+  "pr": {
+    "auto_merge": null,
+    "base": {
+      "ref": "main",
+      "sha": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa"
+    },
+    "draft": true,
+    "head": {
+      "ref": "feat/order-disabled-gitops-p0",
+      "sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e"
+    },
+    "merged": false,
+    "number": 58,
+    "state": "open",
+    "url": "https://github.com/syuhei0519/platform-gitops/pull/58"
+  },
+  "ci_runs": [
+    {
+      "conclusion": "success",
+      "event": "pull_request",
+      "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "id": 38163066806,
+      "status": "completed",
+      "url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38163066806"
+    },
+    {
+      "conclusion": "success",
+      "event": "push",
+      "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "id": 38163063839,
+      "status": "completed",
+      "url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38163063839"
+    }
+  ],
+  "checks": [
+    {
+      "conclusion": "success",
+      "details_url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38163066806/job/114540127044",
+      "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "name": "ci-result",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "details_url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38163063839/job/114540119892",
+      "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "name": "ci-result",
+      "status": "completed"
+    },
+    {
+      "conclusion": "skipped",
+      "details_url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38163066806/job/114539869556",
+      "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "name": "docs",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "details_url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38163066806/job/114539868648",
+      "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "name": "validate",
+      "status": "completed"
+    },
+    {
+      "conclusion": "skipped",
+      "details_url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38163063839/job/114539860397",
+      "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "name": "docs",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "details_url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38163063839/job/114539859361",
+      "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "name": "validate",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "details_url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38163066806/job/114539851557",
+      "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "name": "classify",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "details_url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38163063839/job/114539842492",
+      "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "name": "classify",
+      "status": "completed"
+    }
+  ],
+  "remote_refs": [
+    {
+      "sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "ref": "refs/heads/feat/order-disabled-gitops-p0"
+    },
+    {
+      "sha": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+      "ref": "refs/heads/main"
+    }
+  ],
+  "local_head": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+  "states": {
+    "local_implementation": "verified",
+    "remote_reflection": "verified",
+    "draft_pr": "verified",
+    "same_head_ci": "verified",
+    "independent_test_review": "pending",
+    "issue_final_achievement": "pending"
+  },
+  "limits": "Mutable GitHub observation, not Merge Ready or authority; Manager must refresh before any action. No comments/reviews/merge/auto-merge/security settings changed."
+}

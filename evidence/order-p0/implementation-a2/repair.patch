@@ -1,0 +1,420 @@
+diff --git a/docs/operations/initial-leaf-readiness.md b/docs/operations/initial-leaf-readiness.md
+index c9077d2..d4c0458 100644
+--- a/docs/operations/initial-leaf-readiness.md
++++ b/docs/operations/initial-leaf-readiness.md
+@@ -41,11 +41,42 @@ go run . -context <approved-context> -revision <account-main-full-SHA> \
+   -order-enabled -order-revision <adopted-order-manifest-full-SHA> -timeout 10m
+ ```
+ 
+-Orderの2leafは専用SHAのsource.targetRevision / status.sync.revision / operation syncResult.revision、
+-Synced/Healthy、operation Succeededをすべて要求する。DB StatefulSet / Order Deploymentの
+-Synced/Healthyなresource観測と、同revisionの `order-migration` Sync hook成功も確認する。
+-欠落・途中・失敗・未知状態は成功にしない。既存leafもoperation phaseが不明なら待機する。
+-毎周回、先行leafを再確認し、後段待機中のDB劣化を見逃さない。読取失敗・不足は有限待機後に非0終了する。
++Orderの2leafは `metadata.name/namespace`、`spec.project=lab-account`、配備先
++`server=https://kubernetes.default.svc` / `namespace=account` と、以下の期待sourceを要求する。
++
++- repoURL: `https://github.com/syuhei0519/application-manifest.git`
++- targetRevision: 指定したOrder専用40桁SHA
++- path: `charts/order-postgresql` または `charts/order`
++- Helm releaseName: `order-postgresql` または `order`
++- Helm valueFiles: 各 `../../environments/local/<releaseName>.yaml` の1件のみ
++
++現在のspecだけでなく、`status.sync.comparedTo.source/destination` と
++`status.operationState.syncResult.source` もこの期待値と照合する。同じSHAでもHelmの
++parameters / fileParameters / values / valuesObject、releaseName、valueFiles、namespace、
++version、kubeVersion、apiVersions、skip系の設定を変更した観測は受理しない。
++未指定と既知の空/false値だけは同等として扱う（valuesObjectの空objectも含む）。
++未知source/Helm/destination項目、複数source、sourceHydrator、ignoreDifferencesは拒否する。
++比較・operationのsourceが欠落しているときはspecから補完せず待機する。
++
++これは固定版Argo CD v3.5.2の [Application型](https://github.com/argoproj/argo-cd/blob/v3.5.2/pkg/apis/application/v1alpha1/types.go)
++にあるComparedToとSyncOperationResultを使う。存在しないobservedGenerationや
++operationのproject/destinationフィールドは要求しない。projectは現在specの固定値検査、
++destinationは現在specと比較結果、実効sourceは現在spec・比較結果・operation結果の3者で検査する。
++過去operation実行時のproject/destinationの証明や、全leafの原子的なスナップショットではない。
++取得後の変更、Argo controller自身の誤報、repo外の可変依存はこの読取CLIだけでは証明できない。
++実際の配備先・imageID・APIはT6/T7で別に実測する。
++
++専用SHAのstatus.sync.revision / operation syncResult.revision、Synced/Healthy、
++operation Succeeded、DB StatefulSet / Order DeploymentのSynced/Healthyなresource観測、
++同revisionの `order-migration` Sync hook成功も必須。metadata.deletionTimestampが
++null/未指定以外ならreadyより先に拒否し、finalizer待ちも有限timeout後に非0終了する。
++finalizerがあるだけで削除中でなければ拒否しない。
++
++既存3leafは従来のrevision / phase / hook条件を維持し、Order専用のspec・比較設定検査を
++要求しない。唯一の追加安全化は既存leafもdeletionTimestampを拒否することであり、
++従来成功していた削除中Applicationは待機になる。未知phase拒否はP0初回実装から継続する。
++欠落・途中・失敗・未知状態は成功にしない。毎周回、先行leafを再確認し、
++後段待機中のDB劣化を見逃さない。読取失敗・不足は有限待機後に非0終了する。
+ `-order-revision` だけの指定は無視せず引数エラーにする。有効化済みなのに無効のCLIを使う誤りは、
+ このCLIだけでは検出できないため、運用者がvaluesと引数を照合する。
+ 
+diff --git a/tools/bootstrap/main.go b/tools/bootstrap/main.go
+index cdee43d..a48f948 100644
+--- a/tools/bootstrap/main.go
++++ b/tools/bootstrap/main.go
+@@ -16,12 +16,25 @@ import (
+ 
+ type app struct {
+ 	Operation json.RawMessage `json:"operation"`
+-	Spec      struct {
+-		Source struct{ TargetRevision string }
++	Metadata  struct {
++		Name, Namespace   string
++		DeletionTimestamp json.RawMessage `json:"deletionTimestamp"`
++	} `json:"metadata"`
++	Spec struct {
++		Project                    string
++		Source, Destination        map[string]any
++		Sources, IgnoreDifferences []json.RawMessage
++		SourceHydrator             json.RawMessage
+ 	} `json:"spec"`
+ 	Status struct {
+-		Sync      struct{ Status, Revision string } `json:"sync"`
+-		Health    struct{ Status string }           `json:"health"`
++		Sync struct {
++			Status, Revision string
++			ComparedTo       struct {
++				Source, Destination        map[string]any
++				Sources, IgnoreDifferences []json.RawMessage
++			}
++		} `json:"sync"`
++		Health    struct{ Status string } `json:"health"`
+ 		Resources []struct {
+ 			Kind, Name, Namespace, Status string
+ 			Health                        struct{ Status string }
+@@ -29,8 +42,10 @@ type app struct {
+ 		OperationState struct {
+ 			Phase      string
+ 			SyncResult struct {
+-				Revision  string
+-				Resources []struct{ Kind, Name, Namespace, HookType, HookPhase string }
++				Revision           string
++				Source             map[string]any
++				Sources, Revisions []json.RawMessage
++				Resources          []struct{ Kind, Name, Namespace, HookType, HookPhase string }
+ 			}
+ 		} `json:"operationState"`
+ 	} `json:"status"`
+@@ -42,6 +57,9 @@ func leafReady(data []byte, revision, hook string) error {
+ 	if err := json.Unmarshal(data, &a); err != nil {
+ 		return fmt.Errorf("invalid Application JSON: %w", err)
+ 	}
++	if len(a.Metadata.DeletionTimestamp) > 0 && string(a.Metadata.DeletionTimestamp) != "null" {
++		return fmt.Errorf("Application is deleting")
++	}
+ 	if len(a.Operation) > 0 && string(a.Operation) != "null" {
+ 		return fmt.Errorf("sync operation pending")
+ 	}
+@@ -107,8 +125,8 @@ func (leaf leafExpectation) ready(data []byte) error {
+ 	if err := json.Unmarshal(data, &a); err != nil {
+ 		return err
+ 	}
+-	if a.Spec.Source.TargetRevision != leaf.revision || a.Status.OperationState.SyncResult.Revision != leaf.revision {
+-		return fmt.Errorf("Order source/operation revision does not match the fixed Manifest commit")
++	if err := leaf.orderConfigurationReady(a); err != nil {
++		return err
+ 	}
+ 	// Require the observed child workload too; a parent's health or wave alone is insufficient.
+ 	for _, r := range a.Status.Resources {
+diff --git a/tools/bootstrap/order_configuration.go b/tools/bootstrap/order_configuration.go
+new file mode 100644
+index 0000000..7f3d7e6
+--- /dev/null
++++ b/tools/bootstrap/order_configuration.go
+@@ -0,0 +1,87 @@
++package main
++
++import (
++	"fmt"
++	"reflect"
++)
++
++// Match the rendered single-source Order contract, including all effective Helm
++// inputs. Check each snapshot against the expectation, not merely against the
++// current spec: mutually consistent but wrong snapshots must fail too.
++func (leaf leafExpectation) orderConfigurationReady(a app) error {
++	if a.Metadata.Name != leaf.name || a.Metadata.Namespace != "argocd" || a.Spec.Project != "lab-account" {
++		return fmt.Errorf("Order Application identity/project does not match the expected contract")
++	}
++	compared := a.Status.Sync.ComparedTo
++	result := a.Status.OperationState.SyncResult
++	if len(a.Spec.Sources) != 0 || len(compared.Sources) != 0 || len(result.Sources) != 0 || len(result.Revisions) != 0 ||
++		len(a.Spec.IgnoreDifferences) != 0 || len(compared.IgnoreDifferences) != 0 ||
++		(len(a.Spec.SourceHydrator) != 0 && string(a.Spec.SourceHydrator) != "null") {
++		return fmt.Errorf("Order requires single-source comparison without hydration or ignored differences")
++	}
++	destination := map[string]any{"server": "https://kubernetes.default.svc", "namespace": "account"}
++	for _, actual := range []map[string]any{a.Spec.Destination, compared.Destination} {
++		if !contractObject(actual, destination, map[string][]any{"name": {""}}) {
++			return fmt.Errorf("Order current/comparison destination does not match the expected contract")
++		}
++	}
++	source := map[string]any{
++		"repoURL":        "https://github.com/syuhei0519/application-manifest.git",
++		"targetRevision": leaf.revision, "path": "charts/" + leaf.resourceName,
++	}
++	helm := map[string]any{"releaseName": leaf.resourceName, "valueFiles": []any{"../../environments/local/" + leaf.resourceName + ".yaml"}}
++	// Argo omitempty serialization can omit neutral optional values. Accept only
++	// these known neutral forms; unknown inputs require explicit contract review.
++	neutralHelm := map[string][]any{
++		"parameters": {nil, []any{}}, "fileParameters": {nil, []any{}}, "apiVersions": {nil, []any{}},
++		"values": {""}, "valuesObject": {nil, map[string]any{}}, "version": {""}, "namespace": {""}, "kubeVersion": {""},
++		"passCredentials": {false}, "ignoreMissingValueFiles": {false}, "skipCrds": {false}, "skipTests": {false}, "skipSchemaValidation": {false},
++	}
++	for _, actual := range []map[string]any{a.Spec.Source, compared.Source, result.Source} {
++		h, ok := actual["helm"].(map[string]any)
++		if !ok || !contractObject(h, helm, neutralHelm) {
++			return fmt.Errorf("Order current/comparison/operation Helm settings do not match the expected contract")
++		}
++		expected := make(map[string]any, len(source)+1)
++		for key, value := range source {
++			expected[key] = value
++		}
++		expected["helm"] = h // Already validated, including unknown/override fields.
++		if !contractObject(actual, expected, map[string][]any{
++			"chart": {""}, "ref": {""}, "name": {""}, "kustomize": {nil}, "directory": {nil}, "plugin": {nil},
++		}) {
++			return fmt.Errorf("Order current/comparison/operation source does not match the expected contract")
++		}
++	}
++	if result.Revision != leaf.revision {
++		return fmt.Errorf("Order operation revision does not match the fixed Manifest commit")
++	}
++	return nil
++}
++
++// Required keys must exist with exact JSON values; optional keys are a closed
++// allowlist of equivalent zero values. Missing observations are never inferred.
++func contractObject(actual, required map[string]any, optional map[string][]any) bool {
++	for key, value := range required {
++		got, exists := actual[key]
++		if !exists || !reflect.DeepEqual(got, value) {
++			return false
++		}
++	}
++	for key, value := range actual {
++		if _, exists := required[key]; exists {
++			continue
++		}
++		matched := false
++		for _, neutral := range optional[key] {
++			if reflect.DeepEqual(value, neutral) {
++				matched = true
++				break
++			}
++		}
++		if !matched {
++			return false
++		}
++	}
++	return true
++}
+diff --git a/tools/bootstrap/order_configuration_test.go b/tools/bootstrap/order_configuration_test.go
+new file mode 100644
+index 0000000..4f2a974
+--- /dev/null
++++ b/tools/bootstrap/order_configuration_test.go
+@@ -0,0 +1,116 @@
++// Synthetic Argo Application observations only. No cluster API calls.
++package main
++
++import (
++	"encoding/json"
++	"testing"
++)
++
++func TestOrderConfigurationEvidence(t *testing.T) {
++	leaves, _ := expectedLeaves(accountFixtureSHA, true, orderFixtureSHA)
++	for _, leaf := range leaves[3:] {
++		t.Run(leaf.name, func(t *testing.T) {
++			cases := map[string][]any{
++				"metadata.name": {"other", nil}, "metadata.namespace": {"other", nil},
++				"metadata.deletionTimestamp": {"2026-10-11T00:00:00Z", "", false, map[string]any{}},
++				"spec.project":               {"default", "", nil},
++				"spec.sources":               {[]any{map[string]any{}}}, "spec.sourceHydrator": {map[string]any{}},
++				"spec.ignoreDifferences":                     {[]any{map[string]any{"kind": "Deployment"}}},
++				"status.sync.comparedTo":                     {nil, map[string]any{}},
++				"status.sync.comparedTo.sources":             {[]any{map[string]any{}}},
++				"status.sync.comparedTo.ignoreDifferences":   {[]any{map[string]any{"kind": "Deployment"}}},
++				"status.operationState.syncResult.sources":   {[]any{map[string]any{}}},
++				"status.operationState.syncResult.revisions": {[]any{orderFixtureSHA}},
++			}
++			for _, root := range []string{"spec.destination", "status.sync.comparedTo.destination"} {
++				cases[root] = []any{nil, map[string]any{}}
++				cases[root+".server"] = []any{"https://example.invalid", "", nil}
++				cases[root+".namespace"] = []any{"other", "", nil}
++				cases[root+".name"] = []any{"other-cluster"}
++				cases[root+".unknown"] = []any{nil}
++			}
++			for _, root := range []string{"spec.source", "status.sync.comparedTo.source", "status.operationState.syncResult.source"} {
++				cases[root] = []any{nil, map[string]any{}}
++				cases[root+".targetRevision"] = []any{"main", accountFixtureSHA, nil}
++				cases[root+".repoURL"] = []any{"https://github.com/example/other.git", "", nil}
++				cases[root+".path"] = []any{"charts/other", "", nil}
++				for _, k := range []string{"chart", "ref", "name", "kustomize", "plugin", "directory", "unknown"} {
++					cases[root+"."+k] = []any{"override", map[string]any{}}
++				}
++				cases[root+".helm"] = []any{nil, map[string]any{}}
++				cases[root+".helm.releaseName"] = []any{"other", "", nil}
++				cases[root+".helm.valueFiles"] = []any{nil, []any{}, []any{"other.yaml"}, []any{"../../environments/local/" + leaf.resourceName + ".yaml", "override.yaml"}}
++				for _, k := range []string{"parameters", "fileParameters", "apiVersions"} {
++					cases[root+".helm."+k] = []any{[]any{map[string]any{"name": "enabled", "value": "false"}}, "wrong-type"}
++				}
++				for _, k := range []string{"values", "version", "namespace", "kubeVersion"} {
++					cases[root+".helm."+k] = []any{"override", false}
++				}
++				cases[root+".helm.valuesObject"] = []any{map[string]any{"enabled": false}, "wrong-type"}
++				for _, k := range []string{"passCredentials", "ignoreMissingValueFiles", "skipCrds", "skipTests", "skipSchemaValidation"} {
++					cases[root+".helm."+k] = []any{true, "false"}
++				}
++				cases[root+".helm.futureOverride"] = []any{nil, false, ""}
++			}
++			for path, values := range cases {
++				for _, value := range values {
++					t.Run(path+"/"+jsonLabel(value), func(t *testing.T) {
++						obj := observation(leaf)
++						change(obj, path, value)
++						data, _ := json.Marshal(obj)
++						if leaf.ready(data) == nil {
++							t.Fatalf("accepted mismatched or missing %s", path)
++						}
++					})
++				}
++			}
++			// A settled but wrong configuration must fail even if all snapshots agree.
++			for _, suffix := range []string{"repoURL", "path", "helm.releaseName", "helm.values"} {
++				obj := observation(leaf)
++				for _, root := range []string{"spec.source", "status.sync.comparedTo.source", "status.operationState.syncResult.source"} {
++					change(obj, root+"."+suffix, "wrong")
++				}
++				data, _ := json.Marshal(obj)
++				if leaf.ready(data) == nil {
++					t.Fatalf("accepted mutually matching wrong %s", suffix)
++				}
++			}
++			// Normal omitempty/neutral representations need no invented generation,
++			// project or destination fields in syncResult (Argo does not record them).
++			obj := observation(leaf)
++			change(obj, "metadata.deletionTimestamp", nil)
++			change(obj, "metadata.finalizers", []any{"resources-finalizer.argocd.argoproj.io"})
++			change(obj, "spec.sources", []any{})
++			for _, root := range []string{"spec.source", "status.sync.comparedTo.source", "status.operationState.syncResult.source"} {
++				for key, value := range map[string]any{"parameters": []any{}, "fileParameters": nil, "apiVersions": []any{}, "valuesObject": map[string]any{}, "values": "", "version": "", "namespace": "", "kubeVersion": "", "passCredentials": false, "ignoreMissingValueFiles": false, "skipCrds": false, "skipTests": false, "skipSchemaValidation": false} {
++					change(obj, root+".helm."+key, value)
++				}
++			}
++			data, _ := json.Marshal(obj)
++			if err := leaf.ready(data); err != nil {
++				t.Fatal(err)
++			}
++		})
++	}
++}
++func jsonLabel(value any) string { data, _ := json.Marshal(value); return string(data) }
++
++func TestLegacyConfigurationCompatibilityAndDeletion(t *testing.T) {
++	leaves, _ := expectedLeaves(accountFixtureSHA, false, "")
++	for _, leaf := range leaves {
++		obj := observation(leaf)
++		delete(obj, "spec")
++		delete(obj, "metadata")
++		change(obj, "status.sync.comparedTo", nil)
++		change(obj, "status.operationState.syncResult.source", nil)
++		data, _ := json.Marshal(obj)
++		if err := leaf.ready(data); err != nil {
++			t.Fatalf("legacy status-only observation changed: %v", err)
++		}
++		obj["metadata"] = map[string]any{"deletionTimestamp": "2026-10-11T00:00:00Z", "finalizers": []any{"resources-finalizer.argocd.argoproj.io"}}
++		data, _ = json.Marshal(obj)
++		if leaf.ready(data) == nil {
++			t.Fatal("accepted deleting legacy Application")
++		}
++	}
++}
+diff --git a/tools/bootstrap/order_test.go b/tools/bootstrap/order_test.go
+index 326ea7b..4592a47 100644
+--- a/tools/bootstrap/order_test.go
++++ b/tools/bootstrap/order_test.go
+@@ -2,6 +2,7 @@
+ package main
+ 
+ import (
++	"context"
+ 	"encoding/json"
+ 	"flag"
+ 	"os"
+@@ -10,6 +11,7 @@ import (
+ 	"reflect"
+ 	"strings"
+ 	"testing"
++	"time"
+ )
+ 
+ const accountFixtureSHA = "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+@@ -53,9 +55,15 @@ func observation(leaf leafExpectation) map[string]any {
+ 	if leaf.hook != "" {
+ 		hooks = append(hooks, map[string]any{"kind": "Job", "name": leaf.hook, "namespace": "account", "hookType": "Sync", "hookPhase": "Succeeded"})
+ 	}
+-	return map[string]any{"spec": map[string]any{"source": map[string]any{"targetRevision": leaf.revision}}, "status": map[string]any{
+-		"sync": map[string]any{"status": "Synced", "revision": leaf.revision}, "health": map[string]any{"status": "Healthy"},
+-		"operationState": map[string]any{"phase": "Succeeded", "syncResult": map[string]any{"revision": leaf.revision, "resources": hooks}},
++	source := func() map[string]any {
++		return map[string]any{"repoURL": "https://github.com/syuhei0519/application-manifest.git", "targetRevision": leaf.revision, "path": "charts/" + leaf.resourceName, "helm": map[string]any{"releaseName": leaf.resourceName, "valueFiles": []any{"../../environments/local/" + leaf.resourceName + ".yaml"}}}
++	}
++	destination := func() map[string]any {
++		return map[string]any{"server": "https://kubernetes.default.svc", "namespace": "account"}
++	}
++	return map[string]any{"metadata": map[string]any{"name": leaf.name, "namespace": "argocd"}, "spec": map[string]any{"project": "lab-account", "source": source(), "destination": destination()}, "status": map[string]any{
++		"sync": map[string]any{"status": "Synced", "revision": leaf.revision, "comparedTo": map[string]any{"source": source(), "destination": destination()}}, "health": map[string]any{"status": "Healthy"},
++		"operationState": map[string]any{"phase": "Succeeded", "syncResult": map[string]any{"revision": leaf.revision, "source": source(), "resources": hooks}},
+ 		"resources":      []any{map[string]any{"kind": leaf.resourceKind, "name": leaf.resourceName, "namespace": "account", "status": "Synced", "health": map[string]any{"status": "Healthy"}}}}}
+ }
+ func change(obj map[string]any, path string, value any) {
+@@ -161,7 +169,7 @@ func TestObserverProcess(t *testing.T) {
+ }
+ func TestObserverCLI(t *testing.T) {
+ 	leaves, _ := expectedLeaves(accountFixtureSHA, true, orderFixtureSHA)
+-	for _, scenario := range []string{"disabled", "enabled", "missing-db", "missing-order", "failed-hook", "progressing-db", "missing-revision", "wrong-source", "invalid-options", "regressed-db"} {
++	for _, scenario := range []string{"disabled", "enabled", "missing-db", "missing-order", "failed-hook", "progressing-db", "missing-revision", "wrong-source", "invalid-options", "regressed-db", "deleting-db", "deleting-order", "deleting-account", "stale-comparison", "stale-operation"} {
+ 		t.Run(scenario, func(t *testing.T) {
+ 			dir := t.TempDir()
+ 			for _, leaf := range leaves {
+@@ -181,6 +189,16 @@ func TestObserverCLI(t *testing.T) {
+ 				if scenario == "wrong-source" && leaf.name == leaves[3].name {
+ 					change(obj, "spec.source.targetRevision", "main")
+ 				}
++				if scenario == "deleting-db" && leaf.name == leaves[3].name || scenario == "deleting-order" && leaf.name == leaves[4].name || scenario == "deleting-account" && leaf.name == leaves[0].name {
++					change(obj, "metadata.deletionTimestamp", "2026-10-11T00:00:00Z")
++					change(obj, "metadata.finalizers", []any{"resources-finalizer.argocd.argoproj.io"})
++				}
++				if scenario == "stale-comparison" && leaf.name == leaves[3].name {
++					change(obj, "status.sync.comparedTo.source.helm.parameters", []any{map[string]any{"name": "enabled", "value": "false"}})
++				}
++				if scenario == "stale-operation" && leaf.name == leaves[4].name {
++					change(obj, "status.operationState.syncResult.source.helm.values", "enabled: false")
++				}
+ 				data, _ := json.Marshal(obj)
+ 				if err := os.WriteFile(filepath.Join(dir, leaf.name), data, 0600); err != nil {
+ 					t.Fatal(err)
+@@ -209,9 +227,18 @@ func TestObserverCLI(t *testing.T) {
+ 			if scenario == "invalid-options" {
+ 				args = append(args, "-order-revision", "main")
+ 			}
+-			cmd := exec.Command(os.Args[0], args...)
++			processCtx, cancel := context.WithTimeout(context.Background(), 8*time.Second)
++			defer cancel()
++			started := time.Now()
++			cmd := exec.CommandContext(processCtx, os.Args[0], args...)
+ 			cmd.Env = append(os.Environ(), "ORDER_OBSERVER_TEST_PROCESS=1", "OBSERVER_FIXTURES="+dir)
+ 			output, err := cmd.CombinedOutput()
++			if processCtx.Err() != nil {
++				t.Fatalf("observer did not respect finite timeout: %s", output)
++			}
++			if strings.HasPrefix(scenario, "deleting-") && time.Since(started) > 4*time.Second {
++				t.Fatalf("deleting Application exceeded finite wait: %s", output)
++			}
+ 			success := scenario == "enabled" || scenario == "disabled"
+ 			if success && err != nil || !success && err == nil {
+ 				t.Fatalf("unexpected result %v: %s", err, output)

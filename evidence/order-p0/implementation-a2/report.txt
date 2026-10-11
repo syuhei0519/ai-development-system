@@ -1,0 +1,56 @@
+P0 same-scope Implementation repair / order-p0-implementation-a2 / epoch 1 attempt 2
+
+Scope: platform-gitops#backend-app-2/P0. Role: implementation. The original P0-S1..S4 and assigned AC-3 preparation responsibility are unchanged. Implementation1 completed, Test1 completed and Review1 failed remain historical facts. This retry does not rewrite their status, scope, artifacts, or measurements. Typed retry_of points to original Implementation1; failed Review1 remains a typed dependency.
+
+Implementation and self-validation completed for the preparation stage. This is not independent Test or Review. All three product ACs, real Argo/Service/image digest, kind/P1/T6/T7 and Issue Completion remain unverified. No Merge/Deployment Ready, GitHub review approval or final_assessment is issued. Manager must commission fresh independent Test/Review and a new context/config for the repaired head before advancing.
+
+Fixed subject:
+- Repository: syuhei0519/platform-gitops; PR https://github.com/syuhei0519/platform-gitops/pull/58
+- Feature branch: feat/order-disabled-gitops-p0; retained Draft, no merge/auto-merge.
+- Repaired head: 5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e
+- Repaired root tree: 566f72d09bbbd567f2ebfefdde6d353587a9d4c6
+- Previous head: e01882d8a2c4ac4eadad5b081c1b5c69e5599776
+- Base: b989e29b8addbd6396c5c2b4833b969bc15fc8fa
+- System: 4693887fa79c2b4a291c555b8bd27b6903eb4199
+- Historical Manifest dependency: bc6adaedcd645a4663c23284b977a3dd36c0796d; Order charts absent in that fixed upstream evidence. No later Manifest/main claim is made.
+
+R1 repair:
+The new Order path checks Application name/namespace, current spec.project=lab-account, destination server=https://kubernetes.default.svc and namespace=account. All current/comparison/operation source snapshots must independently match the expected repository, fixed Order revision, charts/<release> path, Helm releaseName and sole local value file. This rejects both stale observations and mutually matching but wrong sources. Merely comparing spec with status or merely comparing SHA would still accept settled wrong settings.
+
+status.sync.comparedTo.source/destination and status.operationState.syncResult.source are mandatory. Missing snapshots are not inferred from spec. The single-source contract rejects sources/revisions alternatives, sourceHydrator and ignoreDifferences. A closed map allowlist rejects unknown effective source/Helm/destination keys. Known neutral optional Helm fields (empty/false, including empty valuesObject) are equivalent to omission; any override is rejected, even at the same Git SHA. No new flag broadens repository/cluster/project selection.
+
+Compatibility is based on the published Argo CD v3.5.2 Application types corresponding to bootstrap/versions.lock.yaml. ComparedTo records source/destination and SyncOperationResult records source; neither carries historical project, and SyncOperationResult has no destination. We do not invent those fields or observedGeneration. Current project is checked directly, destination is checked against comparison, and source/Helm configuration against both comparison and operation. This does not prove historical operation project/destination, atomic cross-leaf state, future changes, controller truthfulness, external dependency immutability or real resource/image identity. Those limits are explicit, not converted into product acceptance. Per-leaf readiness remains a read-only observation, with runtime target/image acceptance assigned to T6/T7.
+
+R2 repair:
+metadata.deletionTimestamp is checked before readiness for every leaf. Any non-null/non-absent value refuses readiness, including finalizer-delayed deletion with old Healthy/Synced/Succeeded status. A finalizer without deletion is permitted. Each Order leaf has a fake-kubectl deletion test requiring nonzero exit within the finite timeout; the process harness has its own outer deadline.
+
+Legacy behavior:
+Existing three leaves retain their prior status/revision/phase/hook checks and do not gain the strict Order spec/comparedTo/source contract. Existing status-only observations remain accepted. The deliberate safety change is rejecting deletionTimestamp for legacy leaves too. No existing desired resource, namespace, AppProject, Argo health customization, Account template or main-tracking source changed. Unknown phase rejection already existed at the previous P0 head.
+
+Changed files (repair only):
+- tools/bootstrap/main.go: decode needed configuration/deletion fields; guard teardown and call Order configuration matcher.
+- tools/bootstrap/order_configuration.go: closed expected-config matching including comparison and operation source.
+- tools/bootstrap/order_configuration_test.go: synthetic config/stale/missing/unknown/neutral/legacy/deletion cases.
+- tools/bootstrap/order_test.go: realistic source snapshots, deletion/stale CLI cases and outer finite deadline.
+- docs/operations/initial-leaf-readiness.md: exact contract, compatibility, limitations and follow-up.
+repair.patch is the entire incremental five-file repair. Source-tree candidate binding includes all observer files, not just main.go.
+
+Old failure and new results:
+The canonically consumed independent Review reproduce.py was run unchanged against clean fixed OLD/BASE checkouts. The OLD binary reproduced all 14 erroneous successes (12 config changes plus two deletions). Its original output is retained in old-reproductions.json. The repaired committed binary was supplied separately to the same unchanged script: all 27 observer cases match, including both positive controls and all 14 repaired negatives. Because that script asserts OLD checkout identity, its render sections remain old-head comparisons; repaired head render measurements are separately in render-boundaries.json. Do not label this rerun independent Review. A script exit 0 alone is not the measurement; per-case matched/exit/calls/stdout/stderr were checked.
+
+Validation:
+Go 1.27.1, Helm 4.2.4, Python 3, fake kubectl only. Existing docs checker (14 cases), both Go modules, race/vet/build, Order schema fixtures, full Helm lint/render/checksum checks, four actual-render semantic tests, structural render policy, Kubeconform 37+16+4=57 resources with zero invalid/errors/skipped, and pinned source/render security gates passed. Standard bootstrap JSON test run has 495 passed tests/subtests, zero failed, and four environment-gated render tests subsequently passed with actual Helm output. Counts include parent/subtest nodes and are not claims of 495 independent scenarios. Existing security policy warnings are preserved in scan artifacts; pass does not mean zero findings.
+Six root/platform/workloads default/local renders and five fixed source boundaries are raw-byte identical across base/old/repaired head. Live orderEnabled remains false and Order revision empty; only synthetic fixtures enable it. preparation/none/aggregate_required is supported for this desired-resource delta, not for live cluster invariance or independently moving Manifest main.
+
+Environment-only recovery:
+The generic shell PATH initially resolved a different executable named go; the provided Go/Helm toolchain was selected without changing repository policy. First schema-container retrieval failed TLS because the container lacked the environment trust CA. Repeating with the existing host trust bundle mounted read-only succeeded; certificate validation was never disabled. Internal tool logs remain private. Temporary command-location and output-name mistakes were corrected before fixed-head measurements; they are not product passes. Final observer provenance and hashes are in validation.json.
+
+Input and publication:
+Mandatory canonical consume_delivery.py freshly validated 57 explicit artifacts / 117 physical objects / 732681 bytes using fixed Git, including types, hash/size, Handoff/upstream slots and candidate/tree bindings. Review records pin: ea73f91b69ff637e175619a552e26da1f6f98439, prefix evidence/order-p0/review-a1/. Input manifest SHA-256 49ba54db29ee659b3eb91cf6c8312753d60968ec59a0e553c4995e60d3a275f8 and publication receipt SHA-256 2920ab194e3fe7d442348c6d8c457a1d8f81babea38d2644c7dd4dac169e4739 were verified. Authorization and Consumption Receipt remain private. Current Consumer approval differs from historical publication approval (unverified). Public originals and edited derivatives retain their representation labels; private-original equivalence is unverified. Historical context/config remain fixed old-head artifacts; neither is reused as new-head Readiness or regenerated. Historical policy expiry 2026-10-11T18:22:33Z is not extended. Findings do not disappear on expiry.
+
+The original historical specialist Issue ID syuhei0519/backend-app#2 and Manager backend-app#2 share the given source URL and all AC verbatim. Original Issue bytes are retained for typed retry equality. Manager owns formal Readiness/Handoff identity reconciliation. No scope renaming or new epoch is used; dispatch/execution/delivery maximum3 each and old B1 terminal history are unchanged. No new Review/Test/Knowledge Agent was started.
+
+Follow-up and failure handling:
+Manager owns B2 genuine image digest, M1/M2 adopted Manifest, P1 fixed candidate and approved kind/context/Secret metadata/PVC capacity/backup/recovery ownership. Independent Test and an approved operator must measure T6 migration, DB, Service, Argo Synced/Healthy, Pod imageID, Account/Order CRUD and restart persistence, then T7 on final integrated SHA/digest. If a gate fails, stop dependent merge/enable/deploy, preserve Account data and Order PVC, retain non-secret diagnostics, use only authorized pause/disable operations, forward-fix and independently revalidate. P0 repair does not authorize those operations.
+
+Dedicated evidence branch: evidence/order-p0/implementation-a2 in ai-development-system. Public outputs contain public aliases, public fixed source, technical findings and synthetic test data only. New Consumer authorization must be independently issued by Manager after publication. Producer byte/schema/slot checks and Publication Receipt grant no authority and do not replace Consumer validation.

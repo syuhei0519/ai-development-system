@@ -1,0 +1,133 @@
+{
+  "document_type": "disabled_render_boundaries",
+  "synthetic_sample": true,
+  "revisions": [
+    "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+    "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+    "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e"
+  ],
+  "renders": [
+    {
+      "chart": "root",
+      "values": "default",
+      "equal": true,
+      "sizes": [
+        2619,
+        2619,
+        2619
+      ],
+      "sha256": [
+        "c69faea1649252f4495606f271cbbff5cebf8b98cae6cde6d103a7fb2c6e8e1c",
+        "c69faea1649252f4495606f271cbbff5cebf8b98cae6cde6d103a7fb2c6e8e1c",
+        "c69faea1649252f4495606f271cbbff5cebf8b98cae6cde6d103a7fb2c6e8e1c"
+      ]
+    },
+    {
+      "chart": "root",
+      "values": "local",
+      "equal": true,
+      "sizes": [
+        4331,
+        4331,
+        4331
+      ],
+      "sha256": [
+        "8518d5f7e12d5cff1be0274b41ee38fcbced4ec0bc84d06aa87cb7c7deecda83",
+        "8518d5f7e12d5cff1be0274b41ee38fcbced4ec0bc84d06aa87cb7c7deecda83",
+        "8518d5f7e12d5cff1be0274b41ee38fcbced4ec0bc84d06aa87cb7c7deecda83"
+      ]
+    },
+    {
+      "chart": "platform",
+      "values": "default",
+      "equal": true,
+      "sizes": [
+        1608,
+        1608,
+        1608
+      ],
+      "sha256": [
+        "38f4d485c94f37f76ce70b3d8fd7c755716e9192977b06c7c0ced20fb369193e",
+        "38f4d485c94f37f76ce70b3d8fd7c755716e9192977b06c7c0ced20fb369193e",
+        "38f4d485c94f37f76ce70b3d8fd7c755716e9192977b06c7c0ced20fb369193e"
+      ]
+    },
+    {
+      "chart": "platform",
+      "values": "local",
+      "equal": true,
+      "sizes": [
+        4800,
+        4800,
+        4800
+      ],
+      "sha256": [
+        "4c022b9aac2fbb0cd9ccc733847cbe52afb2d1d664fa7d33bbbec253d75a26ed",
+        "4c022b9aac2fbb0cd9ccc733847cbe52afb2d1d664fa7d33bbbec253d75a26ed",
+        "4c022b9aac2fbb0cd9ccc733847cbe52afb2d1d664fa7d33bbbec253d75a26ed"
+      ]
+    },
+    {
+      "chart": "workloads",
+      "values": "default",
+      "equal": true,
+      "sizes": [
+        2196,
+        2196,
+        2196
+      ],
+      "sha256": [
+        "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5",
+        "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5",
+        "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5"
+      ]
+    },
+    {
+      "chart": "workloads",
+      "values": "local",
+      "equal": true,
+      "sizes": [
+        2196,
+        2196,
+        2196
+      ],
+      "sha256": [
+        "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5",
+        "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5",
+        "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5"
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "path": "bootstrap/namespaces.yaml",
+      "equal": true,
+      "size": 1010,
+      "sha256": "9c8f5981bffa444cad3ec4b0d64f533b1bdffdfe9e4f46fc090dda9824b54764"
+    },
+    {
+      "path": "bootstrap/root-project.yaml",
+      "equal": true,
+      "size": 576,
+      "sha256": "dc7cc172cb0cd74ee6520a0751f727d47f95cf9010af8bc5ccd95b2bd3620969"
+    },
+    {
+      "path": "bootstrap/argocd-values.yaml",
+      "equal": true,
+      "size": 3119,
+      "sha256": "5a869b06a8d067b5bbd326508aad45ea76f9bafa16260849be35e8c93daf7d2a"
+    },
+    {
+      "path": "charts/root/templates/projects.yaml",
+      "equal": true,
+      "size": 2855,
+      "sha256": "e41ca9a79479ee1e1b41f55cf343e006769828191e7c8be76844c1d2b6388c02"
+    },
+    {
+      "path": "charts/workloads/templates/applications.yaml",
+      "equal": true,
+      "size": 1233,
+      "sha256": "6bc92483833f169a0f19fb7349f9105f410007328069b25d24509e5c1c58a7ee"
+    }
+  ]
+}

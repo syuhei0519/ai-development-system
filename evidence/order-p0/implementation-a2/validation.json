@@ -1,0 +1,113 @@
+{
+  "document_type": "implementation_self_validation",
+  "public_alias": "order-p0-implementation-a2",
+  "epoch": 1,
+  "attempt": 2,
+  "head": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+  "base": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+  "root_tree": "566f72d09bbbd567f2ebfefdde6d353587a9d4c6",
+  "tool_versions": {
+    "go": "1.27.1",
+    "helm": "4.2.4",
+    "python": "Python 3.12.14",
+    "kubeconform": "v0.7.0",
+    "trivy": "0.75.0"
+  },
+  "observer_builds": [
+    {
+      "label": "old",
+      "head": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+      "CGO_ENABLED": "0",
+      "command": "go build -trimpath -o OBSERVER .",
+      "vcs_modified": false,
+      "sha256": "1afbe03fad9c8c172f153d027da07d775ade8bbbf972fbc94711a7891302d3ed"
+    },
+    {
+      "label": "repaired",
+      "head": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "CGO_ENABLED": "0",
+      "command": "go build -trimpath -o OBSERVER .",
+      "vcs_modified": false,
+      "sha256": "9d9f020590ffc92c11c8e6e2b9343b304f943d6f71b9a772fd854f6dfe19e922"
+    }
+  ],
+  "commands": [
+    {
+      "command": "bash ci/github/test.sh",
+      "exit": 0,
+      "observation": "14 docs cases and both Go modules pass; four actual-render tests compiled for later execution"
+    },
+    {
+      "command": "go test -race -count=1 ./...; go vet ./...; CGO_ENABLED=0 go build -trimpath . (both Go modules)",
+      "exit": 0
+    },
+    {
+      "command": "sh ci/validate.sh",
+      "exit": 0,
+      "observation": "Order schema fixture, complete pinned Helm lint/render/checksums and existing contract checks passed"
+    },
+    {
+      "command": "PE_OBSERVABILITY_RENDER_DIR=.rendered .build/bootstrap-test -test.run TestObservabilityContract|TestCollectorContract|TestGrafanaProvisioningBoundary|TestOrderWorkloadsContract -test.v",
+      "exit": 0,
+      "passed_tests": 4,
+      "skipped": 0
+    },
+    {
+      "command": ".security/scan-gate -check-render-only .rendered",
+      "exit": 0
+    },
+    {
+      "command": "Pinned Kubeconform workflow commands with existing trusted CA mounted read-only",
+      "exit": 0,
+      "valid": [
+        37,
+        16,
+        4
+      ],
+      "invalid": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "command": "Pinned Trivy 0.75.0 container: SECURITY_RENDER_REQUIRED=true sh ci/source-scan.sh (existing trusted CA read-only)",
+      "exit": 0,
+      "warning_counts": {
+        "source-scan.json": 8,
+        "render-scan.json": 196
+      }
+    }
+  ],
+  "original_reproduction": {
+    "script_commit": "affc6776597ce961394dc821c568d0c3719b19f1",
+    "script_path": "evidence/order-p0/review-a1/reproduce.py",
+    "script_sha256": "d7910d86cdfcc5ef6e68b38d41cd5ca02ae80c84af6e8b3af8a302a5d90ebe43",
+    "modified": false,
+    "old_unexpected_successes": 14,
+    "repaired_observer_expected_matches": 27,
+    "render_scope": "Review script retains OLD checkout render comparisons; repaired renders measured separately"
+  },
+  "input_delivery": {
+    "canonical_consumer_exit": 0,
+    "explicit": 57,
+    "objects": 117,
+    "bytes": 732681,
+    "private_records_published": false,
+    "historical_publication_approval": "unverified",
+    "private_original_equivalence": "unverified"
+  },
+  "boundaries": {
+    "cluster_operations": 0,
+    "default_and_local_order_enabled": false,
+    "independent_test_review": "not performed; Manager must assign",
+    "product_ac_1": "unverified",
+    "product_ac_2": "unverified",
+    "product_ac_3": "unverified",
+    "readiness": "not issued; new Manager context/config required",
+    "historical_policy_valid_until": "2026-10-11T18:22:33Z"
+  },
+  "measurement_lifetime": {
+    "observed_at": "2026-10-11T18:18:29.608903+00:00",
+    "valid_until": "2026-10-12T18:00:00Z",
+    "invalidation": "Any subject/config/source change, contradictory result or expiry requires new measurements. No historical failed finding is resolved solely by expiry."
+  }
+}

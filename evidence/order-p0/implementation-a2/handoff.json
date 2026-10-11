@@ -1,0 +1,312 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "syuhei0519/backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "implementation",
+  "task_id": "order-p0-implementation-a2",
+  "attempt": 2,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "order-p0-implementation-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/69e4df7abbcd574eb97112cec0550b5f8a512c56/evidence/order-p0/implementation-a1/handoff.json",
+      "revision": "sha256:53724f69a928f7d08df1ec3de9b267f350d1b5d21070ea8518d61aba50cbd9c1",
+      "relationship": "retry_of"
+    },
+    {
+      "role": "review",
+      "task_id": "order-p0-review-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/18d603cbd4e9f8dc398de99bdb1e430c7cb09030/evidence/order-p0/review-a1/handoff.json",
+      "revision": "sha256:5fce14e80335280a66124fc282edfc86fb85df6fb61ff67a9c91f26b0792b50b",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Same-scope epoch1 attempt2 P0 preparation repair/self-validation completed. R1/R2 original counterexamples reproduced then rejected by repaired head; independent Test/Review and new Manager context/config required. AC-3 covered means assigned preparation implementation only; all product ACs and actual Argo/Service/digest/kind/P1/T6/T7 remain unverified.",
+  "assignment": {
+    "scope": "platform-gitops#backend-app-2/P0",
+    "ac_ids": [
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "P0-S1: orderEnabled=false既定で、新Order関連Applicationを生成しない。既存3Application/namespace/AppProject/既存Account main追跡とdefault/local renderを不変に保つ。",
+      "P0-S2: 将来有効化時のOrder専用40桁Manifest revisionと独立DB→OrderのApplication定義を用意し、欠落/浮動revision/不正値をfail-closedに検証する。trueは合成render fixtureだけで、live valuesはfalse。",
+      "P0-S3: bootstrap observerのleaf/hook対象をoptionalに拡張し、disabledでは既存3Appだけ、enabledではOrder DB/Orderの欠落・進行・失敗・revision/health/migration状態を正しく扱う。未知状態を成功化せず、既存observer動作を回帰検証する。",
+      "P0-S4: 全既存関連testsと新schema/render/observer正常異常境界試験を実行し、設定とドキュメント整合、デプロイ影響noneの根拠、P1/T6/T7と必要承認/環境/失敗対応を引き渡す。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-REPORT",
+      "kind": "document",
+      "locator": "report.txt",
+      "revision": "sha256:0ed082d9c4efecb03b6aff9b4f728a23b46252ede53cad5243982bafb453c275",
+      "summary": "Repair design, exact boundaries, legacy safety change and follow-up."
+    },
+    {
+      "id": "A-VALIDATION",
+      "kind": "test-report",
+      "locator": "validation.json",
+      "revision": "sha256:1291b8b17e7219c4647342431d71ff09daf04f48815c7138c64dfe64fec6a70f",
+      "summary": "Self-validation commands, provenance and limits; not independent Test/Review."
+    },
+    {
+      "id": "A-TESTS",
+      "kind": "test-report",
+      "locator": "test-results.json",
+      "revision": "sha256:83877d244d64cc773c61ddb985f32e7a5546dcba2fb7a7b16f6d0dab9262fd0a",
+      "summary": "Named synthetic Go tests/subtests and render-only skip resolution."
+    },
+    {
+      "id": "A-OLD",
+      "kind": "test-report",
+      "locator": "old-reproductions.json",
+      "revision": "sha256:ace8a912330528f00d9458ebe6136f91a6df9b7e6da3ababb64ca92221d97bf6",
+      "summary": "Unmodified original-script output: all14 erroneous successes reproduced on OLD."
+    },
+    {
+      "id": "A-NEW",
+      "kind": "test-report",
+      "locator": "new-reproductions.json",
+      "revision": "sha256:e052983679f7adf35a3a6611b3af9faccf707fe9b08707216eb6080ef9b511c9",
+      "summary": "Unmodified original-script output: committed repaired binary matches all27 observer cases."
+    },
+    {
+      "id": "A-RENDER",
+      "kind": "test-report",
+      "locator": "render-boundaries.json",
+      "revision": "sha256:fb5e326bea569ce308d483a7cde4b8ad2080444564849117a24f9dc27491b0d2",
+      "summary": "Six renders and five boundary source files byte-equal across base/old/repaired."
+    },
+    {
+      "id": "A-PATCH",
+      "kind": "patch",
+      "locator": "repair.patch",
+      "revision": "sha256:ce81d19a1ba9500bb51f7716dbf0b55ab754822cec2bb8955eecff518c1811ad",
+      "summary": "Entire incremental five-file repair against previous head."
+    },
+    {
+      "id": "A-REPRO",
+      "kind": "other",
+      "locator": "reproduce.py",
+      "revision": "sha256:87c33e7216822ff53b62d10062218a77d07c99de803f15be101156f650264481",
+      "summary": "Synthetic self-check reproduction; needs separately consumed original Review script."
+    },
+    {
+      "id": "A-GITHUB",
+      "kind": "other",
+      "locator": "github-observations.json",
+      "revision": "sha256:28626926a6717804b28f3c3b0d95938ffce6904ed3094c518768aaf8d5d83870",
+      "summary": "Exact remote head, Draft PR, push and pull_request CI success."
+    },
+    {
+      "id": "A-SOURCE-SCAN",
+      "kind": "test-report",
+      "locator": "source-scan.json",
+      "revision": "sha256:16c0cbf219c9e14814ddff0e22f94a201b45b9c5b18f2605049f2f0d972a52d3",
+      "summary": "Existing pinned source security policy passed; warnings retained."
+    },
+    {
+      "id": "A-RENDER-SCAN",
+      "kind": "test-report",
+      "locator": "render-scan.json",
+      "revision": "sha256:adecbd24b81c1db2cd0d4eec0daf4f249acb6af711a1ed9f2d1a050ec4c5a247",
+      "summary": "Existing pinned render security policy passed; warnings retained."
+    },
+    {
+      "id": "A-STRUCTURAL",
+      "kind": "test-report",
+      "locator": "pre-render.json",
+      "revision": "sha256:b8ec3809269593fe04a606ea0167ecc905fd551b31897906051a4a2f5b7a3b22",
+      "summary": "Existing rendered structural gate passed."
+    },
+    {
+      "id": "A-KNOWLEDGE",
+      "kind": "knowledge",
+      "locator": "knowledge-candidates.json",
+      "revision": "sha256:5c59a5e88bb386b83c752fdc252547adf8ce95d25a3f3a9d1d44c39bc388c96e",
+      "summary": "Pending Manager-reviewed candidates with fixed typed source tree/blob."
+    },
+    {
+      "id": "A-SAFETY",
+      "kind": "other",
+      "locator": "publication-safety.json",
+      "revision": "sha256:d3f3dfa748f24bdbf18fcb392c3d686b78027504fbe7ad1698c8b1355f411a7f",
+      "summary": "Content review and scope of authorized safe publication; no Consumer authority."
+    },
+    {
+      "id": "A-COMMIT",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/platform-gitops/commit/5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "revision": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "summary": "Repaired feature commit; source tree separately bound, existence alone does not prove behavior."
+    },
+    {
+      "id": "A-HISTORICAL-CONTEXT",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/cd17d0c5d07fd2f451538c778c721dd081b234b7/evidence/order-p0/test-a1/context.json",
+      "revision": "sha256:a6bd128794d1a3130a43e1a6274ccda5c3e200c9300d970d8ad3023b67dc63b9",
+      "summary": "Historical OLD-head raw bytes only; not regenerated or adopted for repaired-head Readiness."
+    },
+    {
+      "id": "A-HISTORICAL-CONFIG",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/cd17d0c5d07fd2f451538c778c721dd081b234b7/evidence/order-p0/test-a1/config.json",
+      "revision": "sha256:3ba80361940bcb0423db220d3fbc13ec1c0acb791e10b71d3327e160936fc969",
+      "summary": "Historical OLD-head raw bytes only; not regenerated or adopted for repaired-head Readiness."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-R1-R2",
+      "claim": "Blocking counterexamples repaired in assigned observer implementation, with explicit configuration and deletion boundaries.",
+      "artifact_ids": [
+        "A-COMMIT",
+        "A-PATCH",
+        "A-OLD",
+        "A-NEW",
+        "A-TESTS",
+        "A-REPORT"
+      ],
+      "locator": "new-reproductions.json",
+      "observation": "Original fixed OLD binary reproduces all14 unexpected successes; fixed repaired binary passes all27 original observer cases. Closed expected source/Helm matches current spec, comparedTo and syncResult; current project/destination and deletion checked. Status-only legacy compatibility preserved except deliberate deleting-leaf veto. Self-tests only."
+    },
+    {
+      "id": "E-S1-S2",
+      "claim": "Disabled desired resources and fixed revision template/schema contract are unchanged.",
+      "artifact_ids": [
+        "A-RENDER",
+        "A-VALIDATION",
+        "A-REPORT"
+      ],
+      "locator": "render-boundaries.json",
+      "observation": "Six root/platform/workloads default/local renders and five source boundaries equal across base/old/repaired. Full Helm/schema fixture and actual-render semantics passed; no live enablement."
+    },
+    {
+      "id": "E-S4",
+      "claim": "Related existing and new self-validation passes with bounded synthetic CLI and source/render/schema/security coverage.",
+      "artifact_ids": [
+        "A-VALIDATION",
+        "A-TESTS",
+        "A-SOURCE-SCAN",
+        "A-RENDER-SCAN",
+        "A-STRUCTURAL",
+        "A-REPRO"
+      ],
+      "locator": "validation.json",
+      "observation": "Docs14; both Go modules normal/race/vet/build; bootstrap495 passed test/subtest nodes, 0 failures, four render-only tests subsequently passed with actual Helm output; Kubeconform57 valid; source/render gates passed with warning findings retained. Not independent Test/Review."
+    },
+    {
+      "id": "E-GITHUB",
+      "claim": "Existing feature PR update is remotely visible as Draft with successful same-head CI.",
+      "artifact_ids": [
+        "A-GITHUB",
+        "A-COMMIT"
+      ],
+      "locator": "github-observations.json",
+      "observation": "Remote head5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e matches local; base unchanged; Draft/open/unmerged, auto_merge null; push38163063839 and pull_request38163066806 completed success. No review approval or Merge Ready."
+    },
+    {
+      "id": "E-INPUT",
+      "claim": "Mandatory upstream closure freshly validated before use and original histories preserved.",
+      "artifact_ids": [
+        "A-VALIDATION",
+        "A-REPORT",
+        "A-HISTORICAL-CONTEXT",
+        "A-HISTORICAL-CONFIG"
+      ],
+      "locator": "validation.json",
+      "observation": "Canonical fixed System consume_delivery passed57 explicit/117 objects/732681 bytes with independent input authorization. Authorization and Consumption Receipt private. Implementation1 completed/Test1 completed/Review1 failed retained; old context/config not reused as repaired readiness."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "unverified",
+      "scope": "Outside preparation implementation assignment; no real product/API/persistence/Account CRUD measurement.",
+      "artifact_ids": [
+        "A-REPORT"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "unverified",
+      "scope": "Outside preparation implementation assignment; no real product/API/persistence/Account CRUD measurement.",
+      "artifact_ids": [
+        "A-REPORT"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "covered",
+      "scope": "Only same-scope P0-S1..S4 implementation repair and self-validation. Product AC-3 real Service/Argo/digest remains unverified; independent Test/Review and formal Readiness belong to Manager.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-COMMIT",
+        "A-VALIDATION",
+        "A-OLD",
+        "A-NEW",
+        "A-GITHUB"
+      ],
+      "evidence_ids": [
+        "E-R1-R2",
+        "E-S1-S2",
+        "E-S4",
+        "E-GITHUB",
+        "E-INPUT"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [
+    {
+      "id": "K-effective-source-observation",
+      "domain": "gitops-observer-readiness",
+      "summary": "Readiness needs expected effective source settings plus comparison and operation snapshots, even for a fixed Git SHA.",
+      "evidence_ids": [
+        "E-R1-R2",
+        "E-S4"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "approved_public"
+    },
+    {
+      "id": "K-teardown-legacy-boundary",
+      "domain": "gitops-observer-compatibility",
+      "summary": "Treat deletionTimestamp as a readiness veto and distinguish this deliberate legacy safety change from a new service configuration contract.",
+      "evidence_ids": [
+        "E-R1-R2",
+        "E-S4"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "approved_public"
+    }
+  ],
+  "publication": "public_safe"
+}

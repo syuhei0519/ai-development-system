@@ -1,0 +1,2050 @@
+{
+  "document_type": "implementation_test_results",
+  "synthetic_sample": true,
+  "modules": {
+    "bootstrap": {
+      "passed_tests_and_subtests": 495,
+      "failed": 0,
+      "skipped": [
+        "TestCollectorContract",
+        "TestGrafanaProvisioningBoundary",
+        "TestObservabilityContract",
+        "TestOrderWorkloadsContract"
+      ],
+      "tests": [
+        {
+          "name": "TestCollectorContract",
+          "result": "skip"
+        },
+        {
+          "name": "TestGrafanaProvisioningBoundary",
+          "result": "skip"
+        },
+        {
+          "name": "TestApplicationHealth/no-status",
+          "result": "pass"
+        },
+        {
+          "name": "TestApplicationHealth/missing-health",
+          "result": "pass"
+        },
+        {
+          "name": "TestApplicationHealth/missing-sync",
+          "result": "pass"
+        },
+        {
+          "name": "TestApplicationHealth/out-of-sync",
+          "result": "pass"
+        },
+        {
+          "name": "TestApplicationHealth/degraded-out-of-sync",
+          "result": "pass"
+        },
+        {
+          "name": "TestApplicationHealth/progressing",
+          "result": "pass"
+        },
+        {
+          "name": "TestApplicationHealth/healthy",
+          "result": "pass"
+        },
+        {
+          "name": "TestApplicationHealth/failed-sync",
+          "result": "pass"
+        },
+        {
+          "name": "TestApplicationHealth/running-sync",
+          "result": "pass"
+        },
+        {
+          "name": "TestApplicationHealth/pending-operation",
+          "result": "pass"
+        },
+        {
+          "name": "TestApplicationHealth",
+          "result": "pass"
+        },
+        {
+          "name": "TestLeafRevisionAndMigration",
+          "result": "pass"
+        },
+        {
+          "name": "TestObservabilityContract",
+          "result": "skip"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.apiVersions/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.apiVersions/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.apiVersions/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.apiVersions/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.directory/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.directory/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.version/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.version/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.destination.server/\"https://example.invalid\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.destination.server/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.destination.server/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.releaseName/\"other\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.releaseName/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.releaseName/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.skipCrds/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.skipCrds/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.ref/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.ref/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.kubeVersion/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.kubeVersion/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.namespace/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.namespace/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/metadata.name/\"other\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/metadata.name/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.destination.namespace/\"other\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.destination.namespace/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.destination.namespace/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.futureOverride/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.futureOverride/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.futureOverride/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.plugin/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.plugin/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.values/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.values/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.passCredentials/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.passCredentials/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.skipCrds/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.skipCrds/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.ignoreDifferences/[{\"kind\":\"Deployment\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.kustomize/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.kustomize/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.ref/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.ref/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.valueFiles/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.valueFiles/[]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.valueFiles/[\"other.yaml\"]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.valueFiles/[\"../../environments/local/order-postgresql.yaml\",\"override.yaml\"]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.fileParameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.fileParameters/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.sourceHydrator/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.destination.namespace/\"other\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.destination.namespace/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.destination.namespace/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.namespace/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.namespace/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.skipSchemaValidation/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.skipSchemaValidation/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.parameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.parameters/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.destination.name/\"other-cluster\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.path/\"charts/other\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.path/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.path/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.name/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.name/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.plugin/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.plugin/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.version/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.version/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.futureOverride/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.futureOverride/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.futureOverride/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.destination.unknown/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.targetRevision/\"main\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.targetRevision/\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.targetRevision/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.plugin/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.plugin/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.parameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.parameters/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.values/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.values/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.namespace/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.namespace/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.path/\"charts/other\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.path/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.path/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.skipSchemaValidation/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.skipSchemaValidation/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.name/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.name/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.directory/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.directory/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.unknown/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.unknown/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.path/\"charts/other\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.path/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.path/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.directory/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.directory/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.targetRevision/\"main\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.targetRevision/\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.targetRevision/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.chart/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.chart/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.destination.unknown/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.destination/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.destination/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.unknown/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.unknown/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.sources/[{}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.futureOverride/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.futureOverride/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.futureOverride/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.repoURL/\"https://github.com/example/other.git\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.repoURL/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.repoURL/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.fileParameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.fileParameters/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.repoURL/\"https://github.com/example/other.git\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.repoURL/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.repoURL/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.skipTests/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.skipTests/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.skipTests/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.skipTests/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.unknown/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.unknown/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.valueFiles/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.valueFiles/[]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.valueFiles/[\"other.yaml\"]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.valueFiles/[\"../../environments/local/order-postgresql.yaml\",\"override.yaml\"]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.kustomize/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.kustomize/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.apiVersions/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.apiVersions/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.revisions/[\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.fileParameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.fileParameters/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.values/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.values/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.passCredentials/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.passCredentials/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.targetRevision/\"main\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.targetRevision/\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.targetRevision/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.valuesObject/{\"enabled\":false}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.valuesObject/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.ignoreMissingValueFiles/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.ignoreMissingValueFiles/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.ignoreMissingValueFiles/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.ignoreMissingValueFiles/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/metadata.namespace/\"other\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/metadata.namespace/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.sources/[{}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.version/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.version/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.valuesObject/{\"enabled\":false}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.valuesObject/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.parameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.parameters/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.skipSchemaValidation/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.skipSchemaValidation/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.releaseName/\"other\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.releaseName/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.releaseName/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.passCredentials/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.passCredentials/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.valuesObject/{\"enabled\":false}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.valuesObject/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.sources/[{}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.ignoreDifferences/[{\"kind\":\"Deployment\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.destination.name/\"other-cluster\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.valueFiles/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.valueFiles/[]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.valueFiles/[\"other.yaml\"]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.valueFiles/[\"../../environments/local/order-postgresql.yaml\",\"override.yaml\"]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.ignoreMissingValueFiles/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.ignoreMissingValueFiles/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.chart/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.chart/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.name/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.name/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.kubeVersion/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.kubeVersion/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/metadata.deletionTimestamp/\"2026-10-11T00:00:00Z\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/metadata.deletionTimestamp/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/metadata.deletionTimestamp/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/metadata.deletionTimestamp/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.project/\"default\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.project/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.project/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.destination.server/\"https://example.invalid\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.destination.server/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.destination.server/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.kubeVersion/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.kubeVersion/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.kustomize/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.kustomize/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.skipCrds/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.skipCrds/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.skipTests/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.skipTests/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.releaseName/\"other\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.releaseName/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.releaseName/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.destination/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.destination/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.repoURL/\"https://github.com/example/other.git\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.repoURL/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.repoURL/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.chart/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.chart/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.ref/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.ref/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order-postgresql",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.plugin/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.plugin/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.parameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.parameters/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.targetRevision/\"main\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.targetRevision/\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.targetRevision/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.chart/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.chart/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.ref/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.ref/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.values/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.values/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.destination.unknown/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.destination.namespace/\"other\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.destination.namespace/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.destination.namespace/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.version/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.version/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.valuesObject/{\"enabled\":false}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.valuesObject/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.passCredentials/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.passCredentials/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.chart/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.chart/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.ref/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.ref/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.apiVersions/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.apiVersions/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.releaseName/\"other\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.releaseName/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.releaseName/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.valuesObject/{\"enabled\":false}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.valuesObject/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.repoURL/\"https://github.com/example/other.git\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.repoURL/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.repoURL/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.kustomize/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.kustomize/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.apiVersions/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.apiVersions/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.ignoreMissingValueFiles/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.ignoreMissingValueFiles/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.skipTests/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.skipTests/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.futureOverride/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.futureOverride/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.futureOverride/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.path/\"charts/other\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.path/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.path/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.valueFiles/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.valueFiles/[]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.valueFiles/[\"other.yaml\"]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.valueFiles/[\"../../environments/local/order.yaml\",\"override.yaml\"]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.passCredentials/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.passCredentials/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.futureOverride/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.futureOverride/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.futureOverride/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.ignoreDifferences/[{\"kind\":\"Deployment\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.revisions/[\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.chart/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.chart/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.valuesObject/{\"enabled\":false}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.valuesObject/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.targetRevision/\"main\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.targetRevision/\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.targetRevision/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.plugin/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.plugin/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.directory/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.directory/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.namespace/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.namespace/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/metadata.namespace/\"other\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/metadata.namespace/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/metadata.deletionTimestamp/\"2026-10-11T00:00:00Z\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/metadata.deletionTimestamp/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/metadata.deletionTimestamp/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/metadata.deletionTimestamp/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.sources/[{}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.unknown/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.unknown/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.namespace/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.namespace/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.repoURL/\"https://github.com/example/other.git\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.repoURL/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.repoURL/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.ignoreMissingValueFiles/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.ignoreMissingValueFiles/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.ignoreDifferences/[{\"kind\":\"Deployment\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.destination.name/\"other-cluster\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.directory/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.directory/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.plugin/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.plugin/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.values/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.values/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.skipSchemaValidation/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.skipSchemaValidation/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.ignoreMissingValueFiles/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.ignoreMissingValueFiles/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.parameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.parameters/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.skipCrds/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.skipCrds/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.skipTests/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.skipTests/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.kustomize/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.kustomize/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.releaseName/\"other\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.releaseName/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.releaseName/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.fileParameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.fileParameters/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.values/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.values/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.version/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.version/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.path/\"charts/other\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.path/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.path/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.name/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.name/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.targetRevision/\"main\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.targetRevision/\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.targetRevision/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/metadata.name/\"other\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/metadata.name/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.sources/[{}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.destination/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.destination/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.name/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.name/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.directory/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.directory/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.fileParameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.fileParameters/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.skipCrds/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.skipCrds/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.destination/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.destination/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.destination.server/\"https://example.invalid\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.destination.server/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.destination.server/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.valueFiles/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.valueFiles/[]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.valueFiles/[\"other.yaml\"]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.valueFiles/[\"../../environments/local/order.yaml\",\"override.yaml\"]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.namespace/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.namespace/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.destination.namespace/\"other\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.destination.namespace/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.destination.namespace/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.path/\"charts/other\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.path/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.path/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.repoURL/\"https://github.com/example/other.git\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.repoURL/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.repoURL/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.kubeVersion/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.kubeVersion/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.unknown/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.unknown/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.fileParameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.fileParameters/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.version/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.version/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.kubeVersion/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.kubeVersion/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.passCredentials/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.passCredentials/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.skipCrds/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.skipCrds/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.ref/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.ref/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.destination.server/\"https://example.invalid\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.destination.server/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.destination.server/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.valueFiles/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.valueFiles/[]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.valueFiles/[\"other.yaml\"]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.valueFiles/[\"../../environments/local/order.yaml\",\"override.yaml\"]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.unknown/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.unknown/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.releaseName/\"other\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.releaseName/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.releaseName/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.apiVersions/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.apiVersions/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.kubeVersion/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.kubeVersion/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.skipSchemaValidation/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.skipSchemaValidation/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.futureOverride/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.futureOverride/false",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.futureOverride/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.destination.name/\"other-cluster\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.destination.unknown/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.project/\"default\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.project/\"\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.project/null",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.sourceHydrator/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.parameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.parameters/\"wrong-type\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.sources/[{}]",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.name/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.name/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.skipTests/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.skipTests/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.skipSchemaValidation/true",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.skipSchemaValidation/\"false\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.kustomize/\"override\"",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.kustomize/{}",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence/lab-local-order",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderConfigurationEvidence",
+          "result": "pass"
+        },
+        {
+          "name": "TestLegacyConfigurationCompatibilityAndDeletion",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderWorkloadsContract",
+          "result": "skip"
+        },
+        {
+          "name": "TestExpectedLeaves",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderLeafBoundaries/lab-local-order-postgresql",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderLeafBoundaries/lab-local-order",
+          "result": "pass"
+        },
+        {
+          "name": "TestOrderLeafBoundaries",
+          "result": "pass"
+        },
+        {
+          "name": "TestObserverProcess",
+          "result": "pass"
+        },
+        {
+          "name": "TestObserverCLI/disabled",
+          "result": "pass"
+        },
+        {
+          "name": "TestObserverCLI/enabled",
+          "result": "pass"
+        },
+        {
+          "name": "TestObserverCLI/missing-db",
+          "result": "pass"
+        },
+        {
+          "name": "TestObserverCLI/missing-order",
+          "result": "pass"
+        },
+        {
+          "name": "TestObserverCLI/failed-hook",
+          "result": "pass"
+        },
+        {
+          "name": "TestObserverCLI/progressing-db",
+          "result": "pass"
+        },
+        {
+          "name": "TestObserverCLI/missing-revision",
+          "result": "pass"
+        },
+        {
+          "name": "TestObserverCLI/wrong-source",
+          "result": "pass"
+        },
+        {
+          "name": "TestObserverCLI/invalid-options",
+          "result": "pass"
+        },
+        {
+          "name": "TestObserverCLI/regressed-db",
+          "result": "pass"
+        },
+        {
+          "name": "TestObserverCLI/deleting-db",
+          "result": "pass"
+        },
+        {
+          "name": "TestObserverCLI/deleting-order",
+          "result": "pass"
+        },
+        {
+          "name": "TestObserverCLI/deleting-account",
+          "result": "pass"
+        },
+        {
+          "name": "TestObserverCLI/stale-comparison",
+          "result": "pass"
+        },
+        {
+          "name": "TestObserverCLI/stale-operation",
+          "result": "pass"
+        },
+        {
+          "name": "TestObserverCLI",
+          "result": "pass"
+        }
+      ],
+      "skipped_resolution": "All four render-only tests were run with actual Helm rendered files and passed; see validation.json."
+    },
+    "scan-gate": {
+      "passed_tests_and_subtests": 7,
+      "failed": 0,
+      "skipped": [],
+      "tests": [
+        {
+          "name": "TestFixedSeverityDecisions",
+          "result": "pass"
+        },
+        {
+          "name": "TestSecretRedactionAndPrivileged",
+          "result": "pass"
+        },
+        {
+          "name": "TestDBUpdatedAtNotDownloadedAt",
+          "result": "pass"
+        },
+        {
+          "name": "TestStrictExceptionScopeAndExpiry",
+          "result": "pass"
+        },
+        {
+          "name": "TestRenderedPlainSecretAndPrivileged",
+          "result": "pass"
+        },
+        {
+          "name": "TestRenderedCredentialURLAndConfigMap",
+          "result": "pass"
+        },
+        {
+          "name": "TestOnlyReadOnlySecretVolumeFileReferenceAllowed",
+          "result": "pass"
+        }
+      ]
+    }
+  }
+}

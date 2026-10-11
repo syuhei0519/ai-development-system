@@ -1,0 +1,22 @@
+{
+  "document_type": "knowledge_candidates",
+  "publication_status": "pending_manager_review",
+  "candidates": [
+    {
+      "id": "K-effective-source-observation",
+      "domain": "gitops-observer-readiness",
+      "summary": "Readiness needs expected effective source settings plus comparison and operation snapshots, even for a fixed Git SHA.",
+      "evidence": "Original 14 unexpected successes reproduced; repaired binary matches all27 original cases and expanded fail-closed regressions.",
+      "source": "https://github.com/syuhei0519/platform-gitops/tree/5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e/tools/bootstrap",
+      "scope": "Read-only single-source Order observer with synthetic tests; no runtime, historical project/destination or atomic snapshot guarantee."
+    },
+    {
+      "id": "K-teardown-legacy-boundary",
+      "domain": "gitops-observer-compatibility",
+      "summary": "Treat deletionTimestamp as a readiness veto and distinguish this deliberate legacy safety change from a new service configuration contract.",
+      "evidence": "Both finalizer-delayed deleting Order leaves time out nonzero; legacy status-only observations remain accepted except deletion.",
+      "source": "https://github.com/syuhei0519/platform-gitops/blob/5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e/docs/operations/initial-leaf-readiness.md",
+      "scope": "P0 observer contract only; no cluster, deployment or product acceptance evidence."
+    }
+  ]
+}
