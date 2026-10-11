@@ -1,0 +1,11 @@
+# Validation summary
+
+- Baseline existing suite: 107 tests passed.
+- Final fixed-head local suite: `python -m unittest discover -s tests -v`: 152 tests passed (107 existing + 45 added test methods with mutation subcases).
+- Existing Handoff, Knowledge and all Readiness CLI samples passed; delivery schema/record consistency passed; aggregate achieved and pending synthetic CLI replays passed; git diff whitespace check passed.
+- New negative coverage: missing/extra/duplicate PR, deployment, verification and AC sets; dependency cycles; stale head/base/target/config/queue; merge result mismatch; missing correspondence; source fake; measurement kind/phase/producer/method/target; wrong source/config/image/environment/workload; approval type/scope/actor/action; expiry boundary/future observations; old invalid merge gate; AC text; unmeasured subchecks; rollback/revert/failure; history truncation/previous pin/failure latch; strict JSON, boolean IDs, unexpected fields; local identity, hash/size, one-byte changes, symlinks/escape, read-time changes, Handoff final evidence mismatch.
+- Positive coverage is synthetic only: three repos, multiple PRs in one repo, merge/squash/rebase/queue mapping, historically valid but now expired gates with current evidence, honest pending, failure/rollback/revert, and repair with new measurements.
+- GitHub push CI: https://github.com/syuhei0519/ai-development-system/actions/runs/38108769215 — success, same feature head.
+- GitHub PR CI: https://github.com/syuhei0519/ai-development-system/actions/runs/38108785285 — success, same feature head; validate job and both aggregate replay steps succeeded.
+- Producer reviewed generated source/docs/tests/fixtures and public candidate text. Pattern inspection found no private task/thread identifiers, runtime paths/logs, credentials or private originals. Public Git source hashes and public CI/PR links are retained. This is Producer inspection, not an independent Review or publication approval.
+- Incoming delivery: expected manifest/receipt/authorization bytes and SHA matched; existing consume_delivery.py passed all five full raw bytes, Handoff v2 and artifact/upstream binding checks. All 19 pinned source inventory files matched size/SHA. No authority was inferred from receipts.
