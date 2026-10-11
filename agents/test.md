@@ -38,7 +38,7 @@
 
 CI と独立 Test を分離し、head/base/対象 revision/config/必要な merge-group・環境・観測時刻・期限を伴う実測を返す。premerge 不合格/未実行を延期で隠さない。postmerge/deploy 専用 AC は未検証として方法・担当・環境・失敗時対応を確認し、該当イベント後に実測する。 詳細は [Readiness 契約](../contracts/readiness.md) と [ワークフロー](../workflows/single-issue.md#readiness-と-issue-completion-の運用) に従う。
 
-Issue全体の統合完了はPRのreadinessとは別条件。全AC metでも未マージ/統合待ちは最終achievedにせず、複数PR・repoは集約契約と証跡の後続依存を明記する。Readiness成果物はartifact_id・ローカル実体・sha256 digestを照合して配送する。全AC met・統合待ちではHandoff final_assessmentを省略してReadinessで追跡する。
+Issue全体の統合完了はPRのreadinessとは別条件。全AC metでも未マージ/統合待ちは最終achievedにせず、複数PR・repoは独立[Issue Completion契約](../contracts/issue-completion.md)のcontext・全必要集合・実測証跡を引き渡す。Readiness成果物はartifact_id・ローカル実体・sha256 digestを照合して配送する。全AC met・統合待ちではHandoff final_assessmentを省略してReadinessで追跡する。
 
 ## Artifact Delivery の責務
 

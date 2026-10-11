@@ -1,0 +1,188 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "SYNTHETIC-ISSUE",
+    "source": "synthetic sample request",
+    "title": "synthetic sample: three PR aggregate",
+    "acceptance_criteria": [
+      {
+        "id": "SYNTHETIC-AC-1",
+        "verbatim": "synthetic sample: local contract tests pass",
+        "source": "synthetic sample request"
+      },
+      {
+        "id": "SYNTHETIC-AC-2",
+        "verbatim": "synthetic sample: observe the deployed service",
+        "source": "synthetic sample request"
+      }
+    ]
+  },
+  "role": "manager",
+  "task_id": "SYNTHETIC-AGGREGATE-MANAGER",
+  "attempt": 1,
+  "upstream": [],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "synthetic sample: fictional record, no product result or authority",
+  "artifacts": [
+    {
+      "id": "SYNTHETIC-COMPLETION",
+      "kind": "other",
+      "locator": "completion.json",
+      "revision": "sha256:1a6347710dc1c801cf10a2e355a369687bd05c5b076cc7cd5e9cfd9ec1405d91",
+      "summary": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "app-pre-observation.json",
+      "kind": "test-report",
+      "locator": "app-pre-observation.json",
+      "revision": "sha256:78093cdff1d8d6b3038a297e7f0a5555f55a881cf0a72f52c8575ce1534b7a23",
+      "summary": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "config-pre-observation.json",
+      "kind": "test-report",
+      "locator": "config-pre-observation.json",
+      "revision": "sha256:90caab942c14b4d23e533a52d64321e034bf8e831247e3bbb07301b53dc38fc7",
+      "summary": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "client-pre-observation.json",
+      "kind": "test-report",
+      "locator": "client-pre-observation.json",
+      "revision": "sha256:b7f7d6abff465ab20e07903a4c4dd518e7b3197df16a521c879e196b9be377d3",
+      "summary": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "runtime-response-observation.json",
+      "kind": "test-report",
+      "locator": "runtime-response-observation.json",
+      "revision": "sha256:068344556235a534d469f42954371d39a38252c1dd769762a949121bacb6a61f",
+      "summary": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "runtime-persistence-observation.json",
+      "kind": "test-report",
+      "locator": "runtime-persistence-observation.json",
+      "revision": "sha256:834c121bb171a8ab709cd7c55c56d0e2d5acbe4e577c3299a83910b9cda8baf7",
+      "summary": "synthetic sample: fictional record, no product result or authority"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "record",
+      "claim": "synthetic sample: fictional record, no product result or authority",
+      "artifact_ids": [
+        "SYNTHETIC-COMPLETION"
+      ],
+      "locator": "completion.json",
+      "observation": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "app-pre",
+      "claim": "synthetic sample: fictional record, no product result or authority",
+      "artifact_ids": [
+        "app-pre-observation.json"
+      ],
+      "locator": "app-pre-observation.json",
+      "observation": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "config-pre",
+      "claim": "synthetic sample: fictional record, no product result or authority",
+      "artifact_ids": [
+        "config-pre-observation.json"
+      ],
+      "locator": "config-pre-observation.json",
+      "observation": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "client-pre",
+      "claim": "synthetic sample: fictional record, no product result or authority",
+      "artifact_ids": [
+        "client-pre-observation.json"
+      ],
+      "locator": "client-pre-observation.json",
+      "observation": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "runtime-response",
+      "claim": "synthetic sample: fictional record, no product result or authority",
+      "artifact_ids": [
+        "runtime-response-observation.json"
+      ],
+      "locator": "runtime-response-observation.json",
+      "observation": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "runtime-persistence",
+      "claim": "synthetic sample: fictional record, no product result or authority",
+      "artifact_ids": [
+        "runtime-persistence-observation.json"
+      ],
+      "locator": "runtime-persistence-observation.json",
+      "observation": "synthetic sample: fictional record, no product result or authority"
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "SYNTHETIC-AC-1",
+      "disposition": "covered",
+      "scope": "Synthetic record validation only",
+      "artifact_ids": [
+        "SYNTHETIC-COMPLETION"
+      ],
+      "evidence_ids": [
+        "record"
+      ]
+    },
+    {
+      "ac_id": "SYNTHETIC-AC-2",
+      "disposition": "covered",
+      "scope": "Synthetic record validation only",
+      "artifact_ids": [
+        "SYNTHETIC-COMPLETION"
+      ],
+      "evidence_ids": [
+        "record"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "synthetic_sample",
+  "assignment": {
+    "scope": "synthetic sample: fictional record, no product result or authority",
+    "ac_ids": [
+      "SYNTHETIC-AC-1",
+      "SYNTHETIC-AC-2"
+    ],
+    "completion_criteria": [
+      "synthetic sample: fictional record, no product result or authority"
+    ]
+  },
+  "final_assessment": {
+    "outcome": "achieved",
+    "ac_results": [
+      {
+        "ac_id": "SYNTHETIC-AC-1",
+        "outcome": "met",
+        "evidence_ids": [
+          "app-pre",
+          "config-pre",
+          "client-pre"
+        ]
+      },
+      {
+        "ac_id": "SYNTHETIC-AC-2",
+        "outcome": "met",
+        "evidence_ids": [
+          "runtime-response",
+          "runtime-persistence"
+        ]
+      }
+    ],
+    "rationale": "synthetic sample: fictional record, no product result or authority"
+  }
+}

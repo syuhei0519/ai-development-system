@@ -1,0 +1,1176 @@
+{
+  "schema_version": "1.0",
+  "document_type": "issue_completion_assessment",
+  "artifact_id": "SYNTHETIC-COMPLETION",
+  "assessor_role": "manager",
+  "evaluated_at": "2030-01-03T12:00:00Z",
+  "context_sha256": "951048815ca07294e13e6df297272e719e121d81a8e1c523c3958e4ba97742ac",
+  "issue_id": "SYNTHETIC-ISSUE",
+  "acceptance_criteria": [
+    {
+      "id": "SYNTHETIC-AC-1",
+      "verbatim": "synthetic sample: local contract tests pass",
+      "source": "synthetic sample request",
+      "verification_phase": "premerge"
+    },
+    {
+      "id": "SYNTHETIC-AC-2",
+      "verbatim": "synthetic sample: observe the deployed service",
+      "source": "synthetic sample request",
+      "verification_phase": "postdeploy"
+    }
+  ],
+  "scope_revision": "5ab7d53af079dfbab944f5fc567b59a8df55f56cbd9880f931e5fe257d43967d",
+  "member_results": [
+    {
+      "member_id": "app",
+      "readiness_ref": {
+        "id": "app-readiness",
+        "locator": "app-readiness.json",
+        "sha256": "e52ef88b27391bb7290bf1de48c98f2372e681db318c6fb5483ade79cdea9f2c",
+        "size": 21138
+      },
+      "readiness_context_ref": {
+        "id": "app-context.json",
+        "locator": "app-context.json",
+        "sha256": "9098656f57b277323f3b68de37f528114c60f140c6e567b42707956c2ab97d27",
+        "size": 1290
+      },
+      "readiness_handoff_ref": {
+        "id": "app-handoff.json",
+        "locator": "app-handoff.json",
+        "sha256": "33b00aef12ad7f804c4d08f4d0b484cc2676a3170d3b46c1bb44ceb735f565e5",
+        "size": 2317
+      },
+      "gate_checked_at": "2030-01-01T12:30:00Z",
+      "approved_head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "actual_merge_sha": "1111111111111111111111111111111111111111",
+      "merged_at": "2030-01-01T13:00:00Z",
+      "merge_binding": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "app-merge"
+        ],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      },
+      "historical_merge_gate": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "app-merge"
+        ],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      }
+    },
+    {
+      "member_id": "config",
+      "readiness_ref": {
+        "id": "config-readiness",
+        "locator": "config-readiness.json",
+        "sha256": "66121801462ec2973debf48ad5dbfde690b06a6b7bf00ff3dd6831d2fb8ce7f8",
+        "size": 21198
+      },
+      "readiness_context_ref": {
+        "id": "config-context.json",
+        "locator": "config-context.json",
+        "sha256": "a7533974bc818687fc19009208eca263d037a082338cb423f207684168507a50",
+        "size": 1293
+      },
+      "readiness_handoff_ref": {
+        "id": "config-handoff.json",
+        "locator": "config-handoff.json",
+        "sha256": "cacc2db513ab6c4722fb1232974669959d76ddeb682068f37cf52ceaba624ffa",
+        "size": 2323
+      },
+      "gate_checked_at": "2030-01-01T12:30:00Z",
+      "approved_head_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "actual_merge_sha": "2222222222222222222222222222222222222222",
+      "merged_at": "2030-01-01T13:00:00Z",
+      "merge_binding": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "config-merge"
+        ],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      },
+      "historical_merge_gate": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "config-merge"
+        ],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      }
+    },
+    {
+      "member_id": "client",
+      "readiness_ref": {
+        "id": "client-readiness",
+        "locator": "client-readiness.json",
+        "sha256": "2add35bbeb2dcfb4440c341b13b2f7f270d5986c1effb9770c51085485688e7d",
+        "size": 21198
+      },
+      "readiness_context_ref": {
+        "id": "client-context.json",
+        "locator": "client-context.json",
+        "sha256": "7df029b2136935a8b96beac3d9862e4810febd85b52f94972cc60142c3d33345",
+        "size": 1293
+      },
+      "readiness_handoff_ref": {
+        "id": "client-handoff.json",
+        "locator": "client-handoff.json",
+        "sha256": "99323fb6ccd7b2663859fcbd204b069a6ba5a344fdf7e0d02b3d1bdfd1e1825b",
+        "size": 2323
+      },
+      "gate_checked_at": "2030-01-01T12:30:00Z",
+      "approved_head_sha": "cccccccccccccccccccccccccccccccccccccccc",
+      "actual_merge_sha": "3333333333333333333333333333333333333333",
+      "merged_at": "2030-01-01T13:00:00Z",
+      "merge_binding": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "client-merge"
+        ],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      },
+      "historical_merge_gate": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "client-merge"
+        ],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      }
+    }
+  ],
+  "deployment_results": [
+    {
+      "deployment_id": "staging",
+      "status": "ready",
+      "evidence_ids": [
+        "deployment"
+      ],
+      "reason": "synthetic sample: fictional record, no product result or authority"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "app-merge",
+      "kind": "merge_binding",
+      "phase": "postmerge",
+      "member_ids": [
+        "app"
+      ],
+      "deployment_ids": [],
+      "verification_ids": [],
+      "ac_ids": [],
+      "binding": {
+        "type": "integration",
+        "context_sha256": "951048815ca07294e13e6df297272e719e121d81a8e1c523c3958e4ba97742ac",
+        "scope_revision": "5ab7d53af079dfbab944f5fc567b59a8df55f56cbd9880f931e5fe257d43967d",
+        "merged_members": [
+          {
+            "member_id": "app",
+            "merge_sha": "1111111111111111111111111111111111111111"
+          },
+          {
+            "member_id": "config",
+            "merge_sha": "2222222222222222222222222222222222222222"
+          },
+          {
+            "member_id": "client",
+            "merge_sha": "3333333333333333333333333333333333333333"
+          }
+        ],
+        "deployments": []
+      },
+      "environment_id": "synthetic-staging",
+      "workload_id": "synthetic-service",
+      "method": "synthetic observation",
+      "expected_result": "synthetic pass",
+      "merge": {
+        "member_id": "app",
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "base_sha": "ffffffffffffffffffffffffffffffffffffffff",
+        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "merge_sha": "1111111111111111111111111111111111111111",
+        "merged_at": "2030-01-01T13:00:00Z",
+        "method": "squash"
+      },
+      "observed_at": "2030-01-03T10:00:00Z",
+      "valid_until": "2030-01-04T00:00:00Z",
+      "producer": "synthetic-tester",
+      "independent": true,
+      "result": "pass",
+      "source_ref": {
+        "id": "app-merge-observation.json",
+        "locator": "app-merge-observation.json",
+        "sha256": "2920791d796f31e685548e204e8007833f7f947eef7ce5d6c65009337f81dfff",
+        "size": 1738
+      },
+      "observation": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "config-merge",
+      "kind": "merge_binding",
+      "phase": "postmerge",
+      "member_ids": [
+        "config"
+      ],
+      "deployment_ids": [],
+      "verification_ids": [],
+      "ac_ids": [],
+      "binding": {
+        "type": "integration",
+        "context_sha256": "951048815ca07294e13e6df297272e719e121d81a8e1c523c3958e4ba97742ac",
+        "scope_revision": "5ab7d53af079dfbab944f5fc567b59a8df55f56cbd9880f931e5fe257d43967d",
+        "merged_members": [
+          {
+            "member_id": "app",
+            "merge_sha": "1111111111111111111111111111111111111111"
+          },
+          {
+            "member_id": "config",
+            "merge_sha": "2222222222222222222222222222222222222222"
+          },
+          {
+            "member_id": "client",
+            "merge_sha": "3333333333333333333333333333333333333333"
+          }
+        ],
+        "deployments": []
+      },
+      "environment_id": "synthetic-staging",
+      "workload_id": "synthetic-service",
+      "method": "synthetic observation",
+      "expected_result": "synthetic pass",
+      "merge": {
+        "member_id": "config",
+        "head_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "base_sha": "ffffffffffffffffffffffffffffffffffffffff",
+        "target_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "merge_sha": "2222222222222222222222222222222222222222",
+        "merged_at": "2030-01-01T13:00:00Z",
+        "method": "squash"
+      },
+      "observed_at": "2030-01-03T10:00:00Z",
+      "valid_until": "2030-01-04T00:00:00Z",
+      "producer": "synthetic-tester",
+      "independent": true,
+      "result": "pass",
+      "source_ref": {
+        "id": "config-merge-observation.json",
+        "locator": "config-merge-observation.json",
+        "sha256": "c1c9a86d0ed9871f611eb4c8556a72751275b3b9bb9364f46bd09807bc2f394f",
+        "size": 1747
+      },
+      "observation": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "client-merge",
+      "kind": "merge_binding",
+      "phase": "postmerge",
+      "member_ids": [
+        "client"
+      ],
+      "deployment_ids": [],
+      "verification_ids": [],
+      "ac_ids": [],
+      "binding": {
+        "type": "integration",
+        "context_sha256": "951048815ca07294e13e6df297272e719e121d81a8e1c523c3958e4ba97742ac",
+        "scope_revision": "5ab7d53af079dfbab944f5fc567b59a8df55f56cbd9880f931e5fe257d43967d",
+        "merged_members": [
+          {
+            "member_id": "app",
+            "merge_sha": "1111111111111111111111111111111111111111"
+          },
+          {
+            "member_id": "config",
+            "merge_sha": "2222222222222222222222222222222222222222"
+          },
+          {
+            "member_id": "client",
+            "merge_sha": "3333333333333333333333333333333333333333"
+          }
+        ],
+        "deployments": []
+      },
+      "environment_id": "synthetic-staging",
+      "workload_id": "synthetic-service",
+      "method": "synthetic observation",
+      "expected_result": "synthetic pass",
+      "merge": {
+        "member_id": "client",
+        "head_sha": "cccccccccccccccccccccccccccccccccccccccc",
+        "base_sha": "ffffffffffffffffffffffffffffffffffffffff",
+        "target_revision": "cccccccccccccccccccccccccccccccccccccccc",
+        "merge_sha": "3333333333333333333333333333333333333333",
+        "merged_at": "2030-01-01T13:00:00Z",
+        "method": "squash"
+      },
+      "observed_at": "2030-01-03T10:00:00Z",
+      "valid_until": "2030-01-04T00:00:00Z",
+      "producer": "synthetic-tester",
+      "independent": true,
+      "result": "pass",
+      "source_ref": {
+        "id": "client-merge-observation.json",
+        "locator": "client-merge-observation.json",
+        "sha256": "23d40c070f739fc46b1a38ed1d5628872cda42505b7cfe956af78f647b0bde4e",
+        "size": 1747
+      },
+      "observation": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "scope",
+      "kind": "scope",
+      "phase": "postdeploy",
+      "member_ids": [
+        "app",
+        "config",
+        "client"
+      ],
+      "deployment_ids": [
+        "staging"
+      ],
+      "verification_ids": [],
+      "ac_ids": [],
+      "binding": {
+        "type": "integration",
+        "context_sha256": "951048815ca07294e13e6df297272e719e121d81a8e1c523c3958e4ba97742ac",
+        "scope_revision": "5ab7d53af079dfbab944f5fc567b59a8df55f56cbd9880f931e5fe257d43967d",
+        "merged_members": [
+          {
+            "member_id": "app",
+            "merge_sha": "1111111111111111111111111111111111111111"
+          },
+          {
+            "member_id": "config",
+            "merge_sha": "2222222222222222222222222222222222222222"
+          },
+          {
+            "member_id": "client",
+            "merge_sha": "3333333333333333333333333333333333333333"
+          }
+        ],
+        "deployments": [
+          {
+            "deployment_id": "staging",
+            "sources": [
+              {
+                "repository": "example/synthetic-app",
+                "revision": "1111111111111111111111111111111111111111"
+              },
+              {
+                "repository": "example/synthetic-config",
+                "revision": "2222222222222222222222222222222222222222"
+              },
+              {
+                "repository": "example/synthetic-client",
+                "revision": "3333333333333333333333333333333333333333"
+              }
+            ],
+            "config_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "images": [
+              {
+                "component": "synthetic-app",
+                "digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+              }
+            ],
+            "environment_id": "synthetic-staging",
+            "workload_id": "synthetic-service"
+          }
+        ]
+      },
+      "environment_id": "synthetic-staging",
+      "workload_id": "synthetic-service",
+      "method": "synthetic observation",
+      "expected_result": "synthetic pass",
+      "merge": null,
+      "observed_at": "2030-01-03T10:00:00Z",
+      "valid_until": "2030-01-04T00:00:00Z",
+      "producer": "synthetic-tester",
+      "independent": true,
+      "result": "pass",
+      "source_ref": {
+        "id": "scope-observation.json",
+        "locator": "scope-observation.json",
+        "sha256": "c3d77168293bb4f372c57553bfad7e328270463304e394a14fcc1d45b4ee0881",
+        "size": 2380
+      },
+      "observation": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "authorization",
+      "kind": "authorization",
+      "phase": "postdeploy",
+      "member_ids": [
+        "app",
+        "config",
+        "client"
+      ],
+      "deployment_ids": [
+        "staging"
+      ],
+      "verification_ids": [],
+      "ac_ids": [],
+      "binding": {
+        "type": "integration",
+        "context_sha256": "951048815ca07294e13e6df297272e719e121d81a8e1c523c3958e4ba97742ac",
+        "scope_revision": "5ab7d53af079dfbab944f5fc567b59a8df55f56cbd9880f931e5fe257d43967d",
+        "merged_members": [
+          {
+            "member_id": "app",
+            "merge_sha": "1111111111111111111111111111111111111111"
+          },
+          {
+            "member_id": "config",
+            "merge_sha": "2222222222222222222222222222222222222222"
+          },
+          {
+            "member_id": "client",
+            "merge_sha": "3333333333333333333333333333333333333333"
+          }
+        ],
+        "deployments": [
+          {
+            "deployment_id": "staging",
+            "sources": [
+              {
+                "repository": "example/synthetic-app",
+                "revision": "1111111111111111111111111111111111111111"
+              },
+              {
+                "repository": "example/synthetic-config",
+                "revision": "2222222222222222222222222222222222222222"
+              },
+              {
+                "repository": "example/synthetic-client",
+                "revision": "3333333333333333333333333333333333333333"
+              }
+            ],
+            "config_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "images": [
+              {
+                "component": "synthetic-app",
+                "digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+              }
+            ],
+            "environment_id": "synthetic-staging",
+            "workload_id": "synthetic-service"
+          }
+        ]
+      },
+      "environment_id": "synthetic-staging",
+      "workload_id": "synthetic-service",
+      "method": "synthetic observation",
+      "expected_result": "synthetic pass",
+      "merge": null,
+      "observed_at": "2030-01-03T10:00:00Z",
+      "valid_until": "2030-01-04T00:00:00Z",
+      "producer": "synthetic-tester",
+      "independent": true,
+      "result": "pass",
+      "source_ref": {
+        "id": "authorization-observation.json",
+        "locator": "authorization-observation.json",
+        "sha256": "04a97aa90a6abb487074f2c13a758548932f63ebeb018f994de1f11b42a23f90",
+        "size": 2396
+      },
+      "observation": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "deployment",
+      "kind": "deployment",
+      "phase": "postdeploy",
+      "member_ids": [
+        "app",
+        "config",
+        "client"
+      ],
+      "deployment_ids": [
+        "staging"
+      ],
+      "verification_ids": [],
+      "ac_ids": [],
+      "binding": {
+        "type": "integration",
+        "context_sha256": "951048815ca07294e13e6df297272e719e121d81a8e1c523c3958e4ba97742ac",
+        "scope_revision": "5ab7d53af079dfbab944f5fc567b59a8df55f56cbd9880f931e5fe257d43967d",
+        "merged_members": [
+          {
+            "member_id": "app",
+            "merge_sha": "1111111111111111111111111111111111111111"
+          },
+          {
+            "member_id": "config",
+            "merge_sha": "2222222222222222222222222222222222222222"
+          },
+          {
+            "member_id": "client",
+            "merge_sha": "3333333333333333333333333333333333333333"
+          }
+        ],
+        "deployments": [
+          {
+            "deployment_id": "staging",
+            "sources": [
+              {
+                "repository": "example/synthetic-app",
+                "revision": "1111111111111111111111111111111111111111"
+              },
+              {
+                "repository": "example/synthetic-config",
+                "revision": "2222222222222222222222222222222222222222"
+              },
+              {
+                "repository": "example/synthetic-client",
+                "revision": "3333333333333333333333333333333333333333"
+              }
+            ],
+            "config_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "images": [
+              {
+                "component": "synthetic-app",
+                "digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+              }
+            ],
+            "environment_id": "synthetic-staging",
+            "workload_id": "synthetic-service"
+          }
+        ]
+      },
+      "environment_id": "synthetic-staging",
+      "workload_id": "synthetic-service",
+      "method": "synthetic observation",
+      "expected_result": "synthetic pass",
+      "merge": null,
+      "observed_at": "2030-01-03T10:00:00Z",
+      "valid_until": "2030-01-04T00:00:00Z",
+      "producer": "synthetic-tester",
+      "independent": true,
+      "result": "pass",
+      "source_ref": {
+        "id": "deployment-observation.json",
+        "locator": "deployment-observation.json",
+        "sha256": "64aeb3f55c989ba29a6106b2110fa63584dcdf20c60fc967daa9c6b24806395f",
+        "size": 2390
+      },
+      "observation": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "compatibility",
+      "kind": "compatibility",
+      "phase": "postdeploy",
+      "member_ids": [
+        "app",
+        "config",
+        "client"
+      ],
+      "deployment_ids": [
+        "staging"
+      ],
+      "verification_ids": [],
+      "ac_ids": [],
+      "binding": {
+        "type": "integration",
+        "context_sha256": "951048815ca07294e13e6df297272e719e121d81a8e1c523c3958e4ba97742ac",
+        "scope_revision": "5ab7d53af079dfbab944f5fc567b59a8df55f56cbd9880f931e5fe257d43967d",
+        "merged_members": [
+          {
+            "member_id": "app",
+            "merge_sha": "1111111111111111111111111111111111111111"
+          },
+          {
+            "member_id": "config",
+            "merge_sha": "2222222222222222222222222222222222222222"
+          },
+          {
+            "member_id": "client",
+            "merge_sha": "3333333333333333333333333333333333333333"
+          }
+        ],
+        "deployments": [
+          {
+            "deployment_id": "staging",
+            "sources": [
+              {
+                "repository": "example/synthetic-app",
+                "revision": "1111111111111111111111111111111111111111"
+              },
+              {
+                "repository": "example/synthetic-config",
+                "revision": "2222222222222222222222222222222222222222"
+              },
+              {
+                "repository": "example/synthetic-client",
+                "revision": "3333333333333333333333333333333333333333"
+              }
+            ],
+            "config_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "images": [
+              {
+                "component": "synthetic-app",
+                "digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+              }
+            ],
+            "environment_id": "synthetic-staging",
+            "workload_id": "synthetic-service"
+          }
+        ]
+      },
+      "environment_id": "synthetic-staging",
+      "workload_id": "synthetic-service",
+      "method": "synthetic observation",
+      "expected_result": "synthetic pass",
+      "merge": null,
+      "observed_at": "2030-01-03T10:00:00Z",
+      "valid_until": "2030-01-04T00:00:00Z",
+      "producer": "synthetic-tester",
+      "independent": true,
+      "result": "pass",
+      "source_ref": {
+        "id": "compatibility-observation.json",
+        "locator": "compatibility-observation.json",
+        "sha256": "0bf75282a9d3649bd3ac97612f2bff109053f7ad0e9f39b1825478e4e2d18603",
+        "size": 2396
+      },
+      "observation": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "integration",
+      "kind": "integration",
+      "phase": "postdeploy",
+      "member_ids": [
+        "app",
+        "config",
+        "client"
+      ],
+      "deployment_ids": [
+        "staging"
+      ],
+      "verification_ids": [],
+      "ac_ids": [],
+      "binding": {
+        "type": "integration",
+        "context_sha256": "951048815ca07294e13e6df297272e719e121d81a8e1c523c3958e4ba97742ac",
+        "scope_revision": "5ab7d53af079dfbab944f5fc567b59a8df55f56cbd9880f931e5fe257d43967d",
+        "merged_members": [
+          {
+            "member_id": "app",
+            "merge_sha": "1111111111111111111111111111111111111111"
+          },
+          {
+            "member_id": "config",
+            "merge_sha": "2222222222222222222222222222222222222222"
+          },
+          {
+            "member_id": "client",
+            "merge_sha": "3333333333333333333333333333333333333333"
+          }
+        ],
+        "deployments": [
+          {
+            "deployment_id": "staging",
+            "sources": [
+              {
+                "repository": "example/synthetic-app",
+                "revision": "1111111111111111111111111111111111111111"
+              },
+              {
+                "repository": "example/synthetic-config",
+                "revision": "2222222222222222222222222222222222222222"
+              },
+              {
+                "repository": "example/synthetic-client",
+                "revision": "3333333333333333333333333333333333333333"
+              }
+            ],
+            "config_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "images": [
+              {
+                "component": "synthetic-app",
+                "digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+              }
+            ],
+            "environment_id": "synthetic-staging",
+            "workload_id": "synthetic-service"
+          }
+        ]
+      },
+      "environment_id": "synthetic-staging",
+      "workload_id": "synthetic-service",
+      "method": "synthetic observation",
+      "expected_result": "synthetic pass",
+      "merge": null,
+      "observed_at": "2030-01-03T10:00:00Z",
+      "valid_until": "2030-01-04T00:00:00Z",
+      "producer": "synthetic-tester",
+      "independent": true,
+      "result": "pass",
+      "source_ref": {
+        "id": "integration-observation.json",
+        "locator": "integration-observation.json",
+        "sha256": "d63597387028ebcc79dff69bf2bcac33a0f980f094fc4e96afc1625b56232fc8",
+        "size": 2392
+      },
+      "observation": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "app-pre",
+      "kind": "ac_measurement",
+      "phase": "premerge",
+      "member_ids": [
+        "app"
+      ],
+      "deployment_ids": [],
+      "verification_ids": [
+        "app-pre"
+      ],
+      "ac_ids": [
+        "SYNTHETIC-AC-1"
+      ],
+      "binding": {
+        "type": "pr",
+        "member_id": "app",
+        "subject": {
+          "repository": "example/synthetic-app",
+          "pr_number": 1,
+          "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "base_sha": "ffffffffffffffffffffffffffffffffffffffff",
+          "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "config_revision": "synthetic-policy-and-environment-v1",
+          "merge_group_sha": null
+        },
+        "scope_revision": "5ab7d53af079dfbab944f5fc567b59a8df55f56cbd9880f931e5fe257d43967d"
+      },
+      "environment_id": "synthetic-ci",
+      "workload_id": "synthetic-tests",
+      "method": "synthetic unit checks",
+      "expected_result": "synthetic pass",
+      "merge": null,
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-04T00:00:00Z",
+      "producer": "synthetic-tester",
+      "independent": true,
+      "result": "pass",
+      "source_ref": {
+        "id": "app-pre-observation.json",
+        "locator": "app-pre-observation.json",
+        "sha256": "78093cdff1d8d6b3038a297e7f0a5555f55a881cf0a72f52c8575ce1534b7a23",
+        "size": 1330
+      },
+      "observation": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "config-pre",
+      "kind": "ac_measurement",
+      "phase": "premerge",
+      "member_ids": [
+        "config"
+      ],
+      "deployment_ids": [],
+      "verification_ids": [
+        "config-pre"
+      ],
+      "ac_ids": [
+        "SYNTHETIC-AC-1"
+      ],
+      "binding": {
+        "type": "pr",
+        "member_id": "config",
+        "subject": {
+          "repository": "example/synthetic-config",
+          "pr_number": 2,
+          "head_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "base_sha": "ffffffffffffffffffffffffffffffffffffffff",
+          "target_revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "config_revision": "synthetic-policy-and-environment-v1",
+          "merge_group_sha": null
+        },
+        "scope_revision": "5ab7d53af079dfbab944f5fc567b59a8df55f56cbd9880f931e5fe257d43967d"
+      },
+      "environment_id": "synthetic-ci",
+      "workload_id": "synthetic-tests",
+      "method": "synthetic unit checks",
+      "expected_result": "synthetic pass",
+      "merge": null,
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-04T00:00:00Z",
+      "producer": "synthetic-tester",
+      "independent": true,
+      "result": "pass",
+      "source_ref": {
+        "id": "config-pre-observation.json",
+        "locator": "config-pre-observation.json",
+        "sha256": "90caab942c14b4d23e533a52d64321e034bf8e831247e3bbb07301b53dc38fc7",
+        "size": 1345
+      },
+      "observation": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "client-pre",
+      "kind": "ac_measurement",
+      "phase": "premerge",
+      "member_ids": [
+        "client"
+      ],
+      "deployment_ids": [],
+      "verification_ids": [
+        "client-pre"
+      ],
+      "ac_ids": [
+        "SYNTHETIC-AC-1"
+      ],
+      "binding": {
+        "type": "pr",
+        "member_id": "client",
+        "subject": {
+          "repository": "example/synthetic-client",
+          "pr_number": 3,
+          "head_sha": "cccccccccccccccccccccccccccccccccccccccc",
+          "base_sha": "ffffffffffffffffffffffffffffffffffffffff",
+          "target_revision": "cccccccccccccccccccccccccccccccccccccccc",
+          "config_revision": "synthetic-policy-and-environment-v1",
+          "merge_group_sha": null
+        },
+        "scope_revision": "5ab7d53af079dfbab944f5fc567b59a8df55f56cbd9880f931e5fe257d43967d"
+      },
+      "environment_id": "synthetic-ci",
+      "workload_id": "synthetic-tests",
+      "method": "synthetic unit checks",
+      "expected_result": "synthetic pass",
+      "merge": null,
+      "observed_at": "2030-01-01T10:00:00Z",
+      "valid_until": "2030-01-04T00:00:00Z",
+      "producer": "synthetic-tester",
+      "independent": true,
+      "result": "pass",
+      "source_ref": {
+        "id": "client-pre-observation.json",
+        "locator": "client-pre-observation.json",
+        "sha256": "b7f7d6abff465ab20e07903a4c4dd518e7b3197df16a521c879e196b9be377d3",
+        "size": 1345
+      },
+      "observation": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "runtime-response",
+      "kind": "ac_measurement",
+      "phase": "postdeploy",
+      "member_ids": [
+        "app",
+        "config",
+        "client"
+      ],
+      "deployment_ids": [
+        "staging"
+      ],
+      "verification_ids": [
+        "runtime-response"
+      ],
+      "ac_ids": [
+        "SYNTHETIC-AC-2"
+      ],
+      "binding": {
+        "type": "integration",
+        "context_sha256": "951048815ca07294e13e6df297272e719e121d81a8e1c523c3958e4ba97742ac",
+        "scope_revision": "5ab7d53af079dfbab944f5fc567b59a8df55f56cbd9880f931e5fe257d43967d",
+        "merged_members": [
+          {
+            "member_id": "app",
+            "merge_sha": "1111111111111111111111111111111111111111"
+          },
+          {
+            "member_id": "config",
+            "merge_sha": "2222222222222222222222222222222222222222"
+          },
+          {
+            "member_id": "client",
+            "merge_sha": "3333333333333333333333333333333333333333"
+          }
+        ],
+        "deployments": [
+          {
+            "deployment_id": "staging",
+            "sources": [
+              {
+                "repository": "example/synthetic-app",
+                "revision": "1111111111111111111111111111111111111111"
+              },
+              {
+                "repository": "example/synthetic-config",
+                "revision": "2222222222222222222222222222222222222222"
+              },
+              {
+                "repository": "example/synthetic-client",
+                "revision": "3333333333333333333333333333333333333333"
+              }
+            ],
+            "config_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "images": [
+              {
+                "component": "synthetic-app",
+                "digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+              }
+            ],
+            "environment_id": "synthetic-staging",
+            "workload_id": "synthetic-service"
+          }
+        ]
+      },
+      "environment_id": "synthetic-staging",
+      "workload_id": "synthetic-service",
+      "method": "synthetic response",
+      "expected_result": "synthetic pass",
+      "merge": null,
+      "observed_at": "2030-01-03T10:00:00Z",
+      "valid_until": "2030-01-04T00:00:00Z",
+      "producer": "synthetic-tester",
+      "independent": true,
+      "result": "pass",
+      "source_ref": {
+        "id": "runtime-response-observation.json",
+        "locator": "runtime-response-observation.json",
+        "sha256": "068344556235a534d469f42954371d39a38252c1dd769762a949121bacb6a61f",
+        "size": 2455
+      },
+      "observation": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "id": "runtime-persistence",
+      "kind": "ac_measurement",
+      "phase": "postdeploy",
+      "member_ids": [
+        "app",
+        "config",
+        "client"
+      ],
+      "deployment_ids": [
+        "staging"
+      ],
+      "verification_ids": [
+        "runtime-persistence"
+      ],
+      "ac_ids": [
+        "SYNTHETIC-AC-2"
+      ],
+      "binding": {
+        "type": "integration",
+        "context_sha256": "951048815ca07294e13e6df297272e719e121d81a8e1c523c3958e4ba97742ac",
+        "scope_revision": "5ab7d53af079dfbab944f5fc567b59a8df55f56cbd9880f931e5fe257d43967d",
+        "merged_members": [
+          {
+            "member_id": "app",
+            "merge_sha": "1111111111111111111111111111111111111111"
+          },
+          {
+            "member_id": "config",
+            "merge_sha": "2222222222222222222222222222222222222222"
+          },
+          {
+            "member_id": "client",
+            "merge_sha": "3333333333333333333333333333333333333333"
+          }
+        ],
+        "deployments": [
+          {
+            "deployment_id": "staging",
+            "sources": [
+              {
+                "repository": "example/synthetic-app",
+                "revision": "1111111111111111111111111111111111111111"
+              },
+              {
+                "repository": "example/synthetic-config",
+                "revision": "2222222222222222222222222222222222222222"
+              },
+              {
+                "repository": "example/synthetic-client",
+                "revision": "3333333333333333333333333333333333333333"
+              }
+            ],
+            "config_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "images": [
+              {
+                "component": "synthetic-app",
+                "digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+              }
+            ],
+            "environment_id": "synthetic-staging",
+            "workload_id": "synthetic-service"
+          }
+        ]
+      },
+      "environment_id": "synthetic-staging",
+      "workload_id": "synthetic-service",
+      "method": "synthetic persistence",
+      "expected_result": "synthetic pass",
+      "merge": null,
+      "observed_at": "2030-01-03T10:00:00Z",
+      "valid_until": "2030-01-04T00:00:00Z",
+      "producer": "synthetic-tester",
+      "independent": true,
+      "result": "pass",
+      "source_ref": {
+        "id": "runtime-persistence-observation.json",
+        "locator": "runtime-persistence-observation.json",
+        "sha256": "834c121bb171a8ab709cd7c55c56d0e2d5acbe4e577c3299a83910b9cda8baf7",
+        "size": 2464
+      },
+      "observation": "synthetic sample: fictional record, no product result or authority"
+    }
+  ],
+  "verification_results": [
+    {
+      "verification_id": "app-pre",
+      "outcome": "met",
+      "evidence_ids": [
+        "app-pre"
+      ],
+      "reason": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "verification_id": "config-pre",
+      "outcome": "met",
+      "evidence_ids": [
+        "config-pre"
+      ],
+      "reason": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "verification_id": "client-pre",
+      "outcome": "met",
+      "evidence_ids": [
+        "client-pre"
+      ],
+      "reason": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "verification_id": "runtime-response",
+      "outcome": "met",
+      "evidence_ids": [
+        "runtime-response"
+      ],
+      "reason": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "verification_id": "runtime-persistence",
+      "outcome": "met",
+      "evidence_ids": [
+        "runtime-persistence"
+      ],
+      "reason": "synthetic sample: fictional record, no product result or authority"
+    }
+  ],
+  "ac_results": [
+    {
+      "ac_id": "SYNTHETIC-AC-1",
+      "outcome": "met",
+      "verification_ids": [
+        "app-pre",
+        "config-pre",
+        "client-pre"
+      ],
+      "evidence_ids": [
+        "app-pre",
+        "config-pre",
+        "client-pre"
+      ]
+    },
+    {
+      "ac_id": "SYNTHETIC-AC-2",
+      "outcome": "met",
+      "verification_ids": [
+        "runtime-response",
+        "runtime-persistence"
+      ],
+      "evidence_ids": [
+        "runtime-response",
+        "runtime-persistence"
+      ]
+    }
+  ],
+  "integration_readiness": {
+    "status": "ready",
+    "checks": {
+      "scope": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "scope"
+        ],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      },
+      "required_merges": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "app-merge",
+          "config-merge",
+          "client-merge"
+        ],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      },
+      "deployment": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "deployment"
+        ],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      },
+      "compatibility": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "compatibility"
+        ],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      },
+      "measurement_coverage": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "app-pre",
+          "config-pre",
+          "client-pre",
+          "runtime-response",
+          "runtime-persistence"
+        ],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      },
+      "current_evidence": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "integration"
+        ],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      },
+      "authorizations": {
+        "verdict": "pass",
+        "evidence_ids": [
+          "authorization"
+        ],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      }
+    },
+    "evidence_ids": [
+      "app-merge",
+      "app-pre",
+      "authorization",
+      "client-merge",
+      "client-pre",
+      "compatibility",
+      "config-merge",
+      "config-pre",
+      "deployment",
+      "integration",
+      "runtime-persistence",
+      "runtime-response",
+      "scope"
+    ],
+    "reason": "synthetic sample: fictional record, no product result or authority"
+  },
+  "issue_completion": "achieved",
+  "reasons": [
+    "synthetic sample: fictional record, no product result or authority"
+  ],
+  "history": {
+    "previous_ref": null,
+    "events": []
+  }
+}
