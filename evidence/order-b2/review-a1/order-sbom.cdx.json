@@ -1,0 +1,1419 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.7",
+  "serialNumber": "urn:uuid:026e7fec-773b-49ab-8069-362403e8ca30",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-11T19:14:24+00:00",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "manufacturer": {
+            "name": "Aqua Security Software Ltd."
+          },
+          "group": "aquasecurity",
+          "name": "trivy",
+          "version": "0.75.0"
+        }
+      ]
+    },
+    "component": {
+      "bom-ref": "c4a220e5-7e0a-4d4a-9965-b86956231999",
+      "type": "container",
+      "name": ".oci/layout",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:DiffID",
+          "value": "sha256:114dde0fefebbca13165d0da9c500a66190e497a82a53dcaabc3172d630be1e9"
+        },
+        {
+          "name": "aquasecurity:trivy:DiffID",
+          "value": "sha256:35b5ba6e08cdd034b8d1920f9c7203e5d66f258e1915f164a01de0af14f34710"
+        },
+        {
+          "name": "aquasecurity:trivy:DiffID",
+          "value": "sha256:4cde6b0bb6f50a5f255eef7b2a42162c661cf776b803225dcac9a659e396bb6b"
+        },
+        {
+          "name": "aquasecurity:trivy:DiffID",
+          "value": "sha256:4d049f83d9cf21d1f5cc0e11deaf36df02790d0e60c1a3829538fb4b61685368"
+        },
+        {
+          "name": "aquasecurity:trivy:DiffID",
+          "value": "sha256:5904c32f457c96a16c8c68f5ccdf518c8138cd9e5971de9ce6d564fc481af222"
+        },
+        {
+          "name": "aquasecurity:trivy:DiffID",
+          "value": "sha256:623b907071e4ea80e6bb66ace64a7f7b41ae887287fb47db63f51e324d0ef100"
+        },
+        {
+          "name": "aquasecurity:trivy:DiffID",
+          "value": "sha256:6e7fbcf090d09b73a4aa85f9dce690d0ace73877c150b7c56955487b6e7a822a"
+        },
+        {
+          "name": "aquasecurity:trivy:DiffID",
+          "value": "sha256:6f1cdceb6a3146f0ccb986521156bef8a422cdbb0863396f7f751f575ba308f4"
+        },
+        {
+          "name": "aquasecurity:trivy:DiffID",
+          "value": "sha256:7223ea1323e8c1159ec17f07d35acc27bdd1cc2bc3ed425b44ef21dac9915db0"
+        },
+        {
+          "name": "aquasecurity:trivy:DiffID",
+          "value": "sha256:8fa10c0194df9b7c054c90dbe482585f768a54428fc90a5b78a0066a123b1bba"
+        },
+        {
+          "name": "aquasecurity:trivy:DiffID",
+          "value": "sha256:ad51d0769d16ba578106a177987dfe3d2e02c1668c852b795b2f6b024068242a"
+        },
+        {
+          "name": "aquasecurity:trivy:DiffID",
+          "value": "sha256:af5aa97ebe6ce1604747ec1e21af7136ded391bcabe4acef882e718a87c86bcc"
+        },
+        {
+          "name": "aquasecurity:trivy:DiffID",
+          "value": "sha256:bd3cdfae1d3fdd83a2231d608969b38b82349777c2fff9a7c12d54f8ac5c9b38"
+        },
+        {
+          "name": "aquasecurity:trivy:ImageID",
+          "value": "sha256:824456a20879a609c3309dc6b06043e3ddbbfa551588869f81abed0ec650e9c8"
+        },
+        {
+          "name": "aquasecurity:trivy:Labels:org.opencontainers.image.revision",
+          "value": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5"
+        },
+        {
+          "name": "aquasecurity:trivy:Labels:org.opencontainers.image.source",
+          "value": "https://github.com/syuhei0519/backend-app"
+        },
+        {
+          "name": "aquasecurity:trivy:SchemaVersion",
+          "value": "2"
+        },
+        {
+          "name": "aquasecurity:trivy:Size",
+          "value": "19264000"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "bom-ref": "ad500587-a928-4313-bd52-13350bc5cb3c",
+      "type": "operating-system",
+      "name": "debian",
+      "version": "12.15",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:Class",
+          "value": "os-pkgs"
+        },
+        {
+          "name": "aquasecurity:trivy:Type",
+          "value": "debian"
+        }
+      ]
+    },
+    {
+      "bom-ref": "d8103bc6-4731-42f0-9ebd-e7c096c8bb70",
+      "type": "application",
+      "name": "order-server",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:Class",
+          "value": "lang-pkgs"
+        },
+        {
+          "name": "aquasecurity:trivy:Type",
+          "value": "gobinary"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:deb/debian/base-files@12.4%2Bdeb12u15?arch=amd64&distro=debian-12.15",
+      "type": "library",
+      "supplier": {
+        "name": "Santiago Vila <sanvila@debian.org>"
+      },
+      "name": "base-files",
+      "version": "12.4+deb12u15",
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-or-later"
+          }
+        }
+      ],
+      "purl": "pkg:deb/debian/base-files@12.4%2Bdeb12u15?arch=amd64&distro=debian-12.15",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:LayerDiffID",
+          "value": "sha256:7223ea1323e8c1159ec17f07d35acc27bdd1cc2bc3ed425b44ef21dac9915db0"
+        },
+        {
+          "name": "aquasecurity:trivy:LayerDigest",
+          "value": "sha256:a5789fc40e828c4e7467626e3f69ec5dea8e5da22fe660db8ae6d16f777b0bbf"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "base-files@12.4+deb12u15"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "debian"
+        },
+        {
+          "name": "aquasecurity:trivy:SrcName",
+          "value": "base-files"
+        },
+        {
+          "name": "aquasecurity:trivy:SrcVersion",
+          "value": "12.4+deb12u15"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:deb/debian/ca-certificates@20250419~deb12u1?arch=all&distro=debian-12.15",
+      "type": "library",
+      "supplier": {
+        "name": "Julien Cristau <jcristau@debian.org>"
+      },
+      "name": "ca-certificates",
+      "version": "20250419~deb12u1",
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-or-later"
+          }
+        },
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        },
+        {
+          "license": {
+            "id": "MPL-2.0"
+          }
+        }
+      ],
+      "purl": "pkg:deb/debian/ca-certificates@20250419~deb12u1?arch=all&distro=debian-12.15",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:LayerDiffID",
+          "value": "sha256:5904c32f457c96a16c8c68f5ccdf518c8138cd9e5971de9ce6d564fc481af222"
+        },
+        {
+          "name": "aquasecurity:trivy:LayerDigest",
+          "value": "sha256:96ed2737ae312e0bc637b40783f7c2f23416cb72ca957aa01855f1614278e64b"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "ca-certificates@20250419~deb12u1"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "debian"
+        },
+        {
+          "name": "aquasecurity:trivy:SrcName",
+          "value": "ca-certificates"
+        },
+        {
+          "name": "aquasecurity:trivy:SrcVersion",
+          "value": "20250419~deb12u1"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:deb/debian/media-types@10.0.0?arch=all&distro=debian-12.15",
+      "type": "library",
+      "supplier": {
+        "name": "Mime-Support Packagers <team+debian-mimesupport-packagers@tracker.debian.org>"
+      },
+      "name": "media-types",
+      "version": "10.0.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "ad-hoc"
+          }
+        }
+      ],
+      "purl": "pkg:deb/debian/media-types@10.0.0?arch=all&distro=debian-12.15",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:LayerDiffID",
+          "value": "sha256:114dde0fefebbca13165d0da9c500a66190e497a82a53dcaabc3172d630be1e9"
+        },
+        {
+          "name": "aquasecurity:trivy:LayerDigest",
+          "value": "sha256:bf7a4185f01524837d19abde915ffde84e64368b250f5b5e9f6f75aea62a11d4"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "media-types@10.0.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "debian"
+        },
+        {
+          "name": "aquasecurity:trivy:SrcName",
+          "value": "media-types"
+        },
+        {
+          "name": "aquasecurity:trivy:SrcVersion",
+          "value": "10.0.0"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:deb/debian/netbase@6.4?arch=all&distro=debian-12.15",
+      "type": "library",
+      "supplier": {
+        "name": "Marco d'Itri <md@linux.it>"
+      },
+      "name": "netbase",
+      "version": "6.4",
+      "licenses": [
+        {
+          "license": {
+            "id": "GPL-2.0-only"
+          }
+        }
+      ],
+      "purl": "pkg:deb/debian/netbase@6.4?arch=all&distro=debian-12.15",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:LayerDiffID",
+          "value": "sha256:8fa10c0194df9b7c054c90dbe482585f768a54428fc90a5b78a0066a123b1bba"
+        },
+        {
+          "name": "aquasecurity:trivy:LayerDigest",
+          "value": "sha256:990a9c434e5e0f11549a8d4a41a1991e621b04e30cd63269adbc97b1dc38fd7e"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "netbase@6.4"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "debian"
+        },
+        {
+          "name": "aquasecurity:trivy:SrcName",
+          "value": "netbase"
+        },
+        {
+          "name": "aquasecurity:trivy:SrcVersion",
+          "value": "6.4"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:deb/debian/tzdata@2026b-0%2Bdeb12u1?arch=all&distro=debian-12.15",
+      "type": "library",
+      "supplier": {
+        "name": "GNU Libc Maintainers <debian-glibc@lists.debian.org>"
+      },
+      "name": "tzdata",
+      "version": "2026b-0+deb12u1",
+      "licenses": [
+        {
+          "license": {
+            "name": "public-domain"
+          }
+        }
+      ],
+      "purl": "pkg:deb/debian/tzdata@2026b-0%2Bdeb12u1?arch=all&distro=debian-12.15",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:LayerDiffID",
+          "value": "sha256:35b5ba6e08cdd034b8d1920f9c7203e5d66f258e1915f164a01de0af14f34710"
+        },
+        {
+          "name": "aquasecurity:trivy:LayerDigest",
+          "value": "sha256:39dc083afc39bd8dc43d456fe7ff7d39292e593bb2769972c11bb2e5f9119386"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "tzdata@2026b-0+deb12u1"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "debian"
+        },
+        {
+          "name": "aquasecurity:trivy:SrcName",
+          "value": "tzdata"
+        },
+        {
+          "name": "aquasecurity:trivy:SrcRelease",
+          "value": "0+deb12u1"
+        },
+        {
+          "name": "aquasecurity:trivy:SrcVersion",
+          "value": "2026b"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/github.com/jackc/pgpassfile@v1.0.0",
+      "type": "library",
+      "name": "github.com/jackc/pgpassfile",
+      "version": "v1.0.0",
+      "purl": "pkg:golang/github.com/jackc/pgpassfile@v1.0.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:LayerDiffID",
+          "value": "sha256:623b907071e4ea80e6bb66ace64a7f7b41ae887287fb47db63f51e324d0ef100"
+        },
+        {
+          "name": "aquasecurity:trivy:LayerDigest",
+          "value": "sha256:feb3f709dbae6557e1b9523b0c99a83408d4a9f646ef7508e69878e59fe1b104"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "github.com/jackc/pgpassfile@v1.0.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "gobinary"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/github.com/jackc/pgservicefile@v0.0.0-20240606120523-5a60cdf6a761",
+      "type": "library",
+      "name": "github.com/jackc/pgservicefile",
+      "version": "v0.0.0-20240606120523-5a60cdf6a761",
+      "purl": "pkg:golang/github.com/jackc/pgservicefile@v0.0.0-20240606120523-5a60cdf6a761",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:LayerDiffID",
+          "value": "sha256:623b907071e4ea80e6bb66ace64a7f7b41ae887287fb47db63f51e324d0ef100"
+        },
+        {
+          "name": "aquasecurity:trivy:LayerDigest",
+          "value": "sha256:feb3f709dbae6557e1b9523b0c99a83408d4a9f646ef7508e69878e59fe1b104"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "github.com/jackc/pgservicefile@v0.0.0-20240606120523-5a60cdf6a761"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "gobinary"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/github.com/jackc/pgx/v5@v5.10.0",
+      "type": "library",
+      "name": "github.com/jackc/pgx/v5",
+      "version": "v5.10.0",
+      "purl": "pkg:golang/github.com/jackc/pgx/v5@v5.10.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:LayerDiffID",
+          "value": "sha256:623b907071e4ea80e6bb66ace64a7f7b41ae887287fb47db63f51e324d0ef100"
+        },
+        {
+          "name": "aquasecurity:trivy:LayerDigest",
+          "value": "sha256:feb3f709dbae6557e1b9523b0c99a83408d4a9f646ef7508e69878e59fe1b104"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "github.com/jackc/pgx/v5@v5.10.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "gobinary"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/github.com/jackc/puddle/v2@v2.2.2",
+      "type": "library",
+      "name": "github.com/jackc/puddle/v2",
+      "version": "v2.2.2",
+      "purl": "pkg:golang/github.com/jackc/puddle/v2@v2.2.2",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:LayerDiffID",
+          "value": "sha256:623b907071e4ea80e6bb66ace64a7f7b41ae887287fb47db63f51e324d0ef100"
+        },
+        {
+          "name": "aquasecurity:trivy:LayerDigest",
+          "value": "sha256:feb3f709dbae6557e1b9523b0c99a83408d4a9f646ef7508e69878e59fe1b104"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "github.com/jackc/puddle/v2@v2.2.2"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "gobinary"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/gitlab.com/platform-engineering-lab/backend-app@0.0.0%2Bgit.dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+      "type": "library",
+      "name": "gitlab.com/platform-engineering-lab/backend-app",
+      "version": "0.0.0+git.dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+      "purl": "pkg:golang/gitlab.com/platform-engineering-lab/backend-app@0.0.0%2Bgit.dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:LayerDiffID",
+          "value": "sha256:623b907071e4ea80e6bb66ace64a7f7b41ae887287fb47db63f51e324d0ef100"
+        },
+        {
+          "name": "aquasecurity:trivy:LayerDigest",
+          "value": "sha256:feb3f709dbae6557e1b9523b0c99a83408d4a9f646ef7508e69878e59fe1b104"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "gitlab.com/platform-engineering-lab/backend-app@v0.0.0+git.dab0123f4fd459e12c1f64ff2305e5d28d8a41f5"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "gobinary"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/golang.org/x/sync@v0.23.0",
+      "type": "library",
+      "name": "golang.org/x/sync",
+      "version": "v0.23.0",
+      "purl": "pkg:golang/golang.org/x/sync@v0.23.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:LayerDiffID",
+          "value": "sha256:623b907071e4ea80e6bb66ace64a7f7b41ae887287fb47db63f51e324d0ef100"
+        },
+        {
+          "name": "aquasecurity:trivy:LayerDigest",
+          "value": "sha256:feb3f709dbae6557e1b9523b0c99a83408d4a9f646ef7508e69878e59fe1b104"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "golang.org/x/sync@v0.23.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "gobinary"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/golang.org/x/text@v0.42.0",
+      "type": "library",
+      "name": "golang.org/x/text",
+      "version": "v0.42.0",
+      "purl": "pkg:golang/golang.org/x/text@v0.42.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:LayerDiffID",
+          "value": "sha256:623b907071e4ea80e6bb66ace64a7f7b41ae887287fb47db63f51e324d0ef100"
+        },
+        {
+          "name": "aquasecurity:trivy:LayerDigest",
+          "value": "sha256:feb3f709dbae6557e1b9523b0c99a83408d4a9f646ef7508e69878e59fe1b104"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "golang.org/x/text@v0.42.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "gobinary"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/stdlib@v1.27.1",
+      "type": "library",
+      "name": "stdlib",
+      "version": "v1.27.1",
+      "purl": "pkg:golang/stdlib@v1.27.1",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:LayerDiffID",
+          "value": "sha256:623b907071e4ea80e6bb66ace64a7f7b41ae887287fb47db63f51e324d0ef100"
+        },
+        {
+          "name": "aquasecurity:trivy:LayerDigest",
+          "value": "sha256:feb3f709dbae6557e1b9523b0c99a83408d4a9f646ef7508e69878e59fe1b104"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "stdlib@v1.27.1"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "gobinary"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "ad500587-a928-4313-bd52-13350bc5cb3c",
+      "dependsOn": [
+        "pkg:deb/debian/base-files@12.4%2Bdeb12u15?arch=amd64&distro=debian-12.15",
+        "pkg:deb/debian/ca-certificates@20250419~deb12u1?arch=all&distro=debian-12.15",
+        "pkg:deb/debian/media-types@10.0.0?arch=all&distro=debian-12.15",
+        "pkg:deb/debian/netbase@6.4?arch=all&distro=debian-12.15",
+        "pkg:deb/debian/tzdata@2026b-0%2Bdeb12u1?arch=all&distro=debian-12.15"
+      ]
+    },
+    {
+      "ref": "c4a220e5-7e0a-4d4a-9965-b86956231999",
+      "dependsOn": [
+        "ad500587-a928-4313-bd52-13350bc5cb3c",
+        "d8103bc6-4731-42f0-9ebd-e7c096c8bb70"
+      ]
+    },
+    {
+      "ref": "d8103bc6-4731-42f0-9ebd-e7c096c8bb70",
+      "dependsOn": [
+        "pkg:golang/gitlab.com/platform-engineering-lab/backend-app@0.0.0%2Bgit.dab0123f4fd459e12c1f64ff2305e5d28d8a41f5"
+      ]
+    },
+    {
+      "ref": "pkg:deb/debian/base-files@12.4%2Bdeb12u15?arch=amd64&distro=debian-12.15",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:deb/debian/ca-certificates@20250419~deb12u1?arch=all&distro=debian-12.15",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:deb/debian/media-types@10.0.0?arch=all&distro=debian-12.15",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:deb/debian/netbase@6.4?arch=all&distro=debian-12.15",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:deb/debian/tzdata@2026b-0%2Bdeb12u1?arch=all&distro=debian-12.15",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:golang/github.com/jackc/pgpassfile@v1.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:golang/github.com/jackc/pgservicefile@v0.0.0-20240606120523-5a60cdf6a761",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:golang/github.com/jackc/pgx/v5@v5.10.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:golang/github.com/jackc/puddle/v2@v2.2.2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:golang/gitlab.com/platform-engineering-lab/backend-app@0.0.0%2Bgit.dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+      "dependsOn": [
+        "pkg:golang/github.com/jackc/pgpassfile@v1.0.0",
+        "pkg:golang/github.com/jackc/pgservicefile@v0.0.0-20240606120523-5a60cdf6a761",
+        "pkg:golang/github.com/jackc/pgx/v5@v5.10.0",
+        "pkg:golang/github.com/jackc/puddle/v2@v2.2.2",
+        "pkg:golang/golang.org/x/sync@v0.23.0",
+        "pkg:golang/golang.org/x/text@v0.42.0",
+        "pkg:golang/stdlib@v1.27.1"
+      ]
+    },
+    {
+      "ref": "pkg:golang/golang.org/x/sync@v0.23.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:golang/golang.org/x/text@v0.42.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:golang/stdlib@v1.27.1",
+      "dependsOn": []
+    }
+  ],
+  "vulnerabilities": [
+    {
+      "id": "CVE-2026-56857",
+      "source": {
+        "name": "govulndb",
+        "url": "https://pkg.go.dev/vuln/"
+      },
+      "ratings": [
+        {
+          "source": {
+            "name": "redhat"
+          },
+          "score": 3.3,
+          "severity": "low",
+          "method": "CVSSv31",
+          "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+        }
+      ],
+      "cwes": [
+        1386
+      ],
+      "description": "On Windows, when the target of Root.Mkdir or Root.MkdirAll is a junction pointing to an empty location, the operation can create a directory at the junction target even when that target is located outside the root. This only applies to operations where the last path component is a junction (path/to/junction, but not path/junction/target).",
+      "recommendation": "Upgrade stdlib to version 1.26.9, 1.27.2",
+      "advisories": [
+        {
+          "url": "https://avd.aquasec.com/nvd/cve-2026-56857"
+        },
+        {
+          "url": "https://access.redhat.com/security/cve/CVE-2026-56857"
+        },
+        {
+          "url": "https://go.dev/cl/847305"
+        },
+        {
+          "url": "https://go.dev/issue/81739"
+        },
+        {
+          "url": "https://groups.google.com/g/golang-announce/c/U2fTuyDJznI"
+        },
+        {
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56857"
+        },
+        {
+          "url": "https://pkg.go.dev/vuln/GO-2026-6604"
+        },
+        {
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-56857"
+        }
+      ],
+      "published": "2026-10-08T23:17:01+00:00",
+      "updated": "2026-10-09T16:35:35+00:00",
+      "affects": [
+        {
+          "ref": "pkg:golang/stdlib@v1.27.1",
+          "versions": [
+            {
+              "version": "v1.27.1",
+              "status": "affected"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-56866",
+      "source": {
+        "name": "govulndb",
+        "url": "https://pkg.go.dev/vuln/"
+      },
+      "ratings": [
+        {
+          "source": {
+            "name": "redhat"
+          },
+          "score": 6.5,
+          "severity": "medium",
+          "method": "CVSSv31",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+        }
+      ],
+      "cwes": [
+        444
+      ],
+      "description": "When http.Transport sends an HTTP/1 CONNECT request with a non-empty Request.Body, it writes the body directly to the connection without framing after the request headers. If the server rejects the CONNECT request with a non-2xx keep-alive response, Transport returns the connection to the idle pool. Because CONNECT requests do not have a request body, the server may interpret the trailing body bytes as a subsequent pipelined HTTP/1.1 request on the connection, leaving the pooled connection desynchronized and causing the next caller that reuses it to read the response to the injected request. In reverse proxies (including httputil.ReverseProxy) that forward CONNECT requests through a shared Transport, this can lead to cross-user response poisoning.",
+      "recommendation": "Upgrade stdlib to version 1.26.9, 1.27.2",
+      "advisories": [
+        {
+          "url": "https://avd.aquasec.com/nvd/cve-2026-56866"
+        },
+        {
+          "url": "https://access.redhat.com/security/cve/CVE-2026-56866"
+        },
+        {
+          "url": "https://go.dev/cl/847306"
+        },
+        {
+          "url": "https://go.dev/issue/81740"
+        },
+        {
+          "url": "https://groups.google.com/g/golang-announce/c/U2fTuyDJznI"
+        },
+        {
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56866"
+        },
+        {
+          "url": "https://pkg.go.dev/vuln/GO-2026-6605"
+        },
+        {
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-56866"
+        }
+      ],
+      "published": "2026-10-08T23:17:01+00:00",
+      "updated": "2026-10-09T16:35:35+00:00",
+      "affects": [
+        {
+          "ref": "pkg:golang/stdlib@v1.27.1",
+          "versions": [
+            {
+              "version": "v1.27.1",
+              "status": "affected"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-78659",
+      "source": {
+        "name": "govulndb",
+        "url": "https://pkg.go.dev/vuln/"
+      },
+      "ratings": [],
+      "cwes": [
+        405
+      ],
+      "description": "When \"Trailer\" headers are sent by a client, the HTTP server internally uses the header values to populate the Request.Trailer map passed to the server handler. Because Request.Trailer is a map, each entry incurs memory overhead. For HTTP/2 servers, a malicious client can exploit this by sending a \"Trailer\" header that declares a large number of fields, causing the server to allocate a disproportionate amount of memory while bypassing Server.MaxHeaderValueCount and Server.MaxHeaderBytes limits. This exploit is not applicable for HTTP/1 servers, which do not support multiplexing a large number of requests over one TCP connection, and whose Server.MaxHeaderBytes are calculated differently.",
+      "recommendation": "Upgrade stdlib to version 1.26.9, 1.27.2",
+      "advisories": [
+        {
+          "url": "https://avd.aquasec.com/nvd/cve-2026-78659"
+        },
+        {
+          "url": "https://go.dev/cl/847185"
+        },
+        {
+          "url": "https://go.dev/cl/847314"
+        },
+        {
+          "url": "https://go.dev/issue/81857"
+        },
+        {
+          "url": "https://groups.google.com/g/golang-announce/c/U2fTuyDJznI"
+        },
+        {
+          "url": "https://groups.google.com/g/golang-announce/c/ZPwCyRUuGBs"
+        },
+        {
+          "url": "https://pkg.go.dev/vuln/GO-2026-6603"
+        }
+      ],
+      "published": "2026-10-08T23:17:03+00:00",
+      "updated": "2026-10-09T16:35:35+00:00",
+      "affects": [
+        {
+          "ref": "pkg:golang/stdlib@v1.27.1",
+          "versions": [
+            {
+              "version": "v1.27.1",
+              "status": "affected"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-78660",
+      "source": {
+        "name": "govulndb",
+        "url": "https://pkg.go.dev/vuln/"
+      },
+      "ratings": [],
+      "cwes": [
+        444
+      ],
+      "description": "Historically, we have been rather lax about malformed framing-related headers in our HTTP/2 implementation, as they cannot interfere with HTTP/2 framing. However, this makes it possible for our HTTP/2 implementation to forward responses containing such headers to an HTTP/1 client when acting as a reverse proxy. If the HTTP/1 client also does not behave strictly enough, this can result in response smuggling.",
+      "recommendation": "Upgrade stdlib to version 1.26.9, 1.27.2",
+      "advisories": [
+        {
+          "url": "https://avd.aquasec.com/nvd/cve-2026-78660"
+        },
+        {
+          "url": "https://go.dev/cl/835145"
+        },
+        {
+          "url": "https://go.dev/cl/836385"
+        },
+        {
+          "url": "https://go.dev/issue/81115"
+        },
+        {
+          "url": "https://groups.google.com/g/golang-announce/c/U2fTuyDJznI"
+        },
+        {
+          "url": "https://pkg.go.dev/vuln/GO-2026-6610"
+        }
+      ],
+      "published": "2026-10-08T23:17:03+00:00",
+      "updated": "2026-10-09T17:16:49+00:00",
+      "affects": [
+        {
+          "ref": "pkg:golang/stdlib@v1.27.1",
+          "versions": [
+            {
+              "version": "v1.27.1",
+              "status": "affected"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-78663",
+      "source": {
+        "name": "govulndb",
+        "url": "https://pkg.go.dev/vuln/"
+      },
+      "ratings": [
+        {
+          "source": {
+            "name": "redhat"
+          },
+          "score": 5.3,
+          "severity": "medium",
+          "method": "CVSSv31",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+        }
+      ],
+      "cwes": [
+        675
+      ],
+      "description": "The HTTP/2 server can refund connection-level flow control twice for the same data: Once when a client resets a stream (refunding data for any sent-but-unread portion of the stream), and again when a request handler reads the buffered data. A malicious client can exploit this to bypass the configured connection-level flow control limit (MaxReceiveBufferPerConnection). Total buffered data is still limited by the concurrent stream limit and stream-level flow control.",
+      "recommendation": "Upgrade stdlib to version 1.26.9, 1.27.2",
+      "advisories": [
+        {
+          "url": "https://avd.aquasec.com/nvd/cve-2026-78663"
+        },
+        {
+          "url": "https://access.redhat.com/security/cve/CVE-2026-78663"
+        },
+        {
+          "url": "https://go.dev/cl/847187"
+        },
+        {
+          "url": "https://go.dev/cl/847310"
+        },
+        {
+          "url": "https://go.dev/issue/81743"
+        },
+        {
+          "url": "https://groups.google.com/g/golang-announce/c/U2fTuyDJznI"
+        },
+        {
+          "url": "https://groups.google.com/g/golang-announce/c/ZPwCyRUuGBs"
+        },
+        {
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78663"
+        },
+        {
+          "url": "https://pkg.go.dev/vuln/GO-2026-6612"
+        },
+        {
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-78663"
+        }
+      ],
+      "published": "2026-10-08T23:17:03+00:00",
+      "updated": "2026-10-09T17:16:49+00:00",
+      "affects": [
+        {
+          "ref": "pkg:golang/stdlib@v1.27.1",
+          "versions": [
+            {
+              "version": "v1.27.1",
+              "status": "affected"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-78667",
+      "source": {
+        "name": "govulndb",
+        "url": "https://pkg.go.dev/vuln/"
+      },
+      "ratings": [
+        {
+          "source": {
+            "name": "redhat"
+          },
+          "score": 7.5,
+          "severity": "high",
+          "method": "CVSSv31",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "cwes": [
+        770
+      ],
+      "description": "When parsing a Range header containing a large number of small ranges, FileServer(FS), ServeContent, and ServeFile(FS) can consume an excessive amount of CPU.",
+      "recommendation": "Upgrade stdlib to version 1.26.9, 1.27.2",
+      "advisories": [
+        {
+          "url": "https://avd.aquasec.com/nvd/cve-2026-78667"
+        },
+        {
+          "url": "https://access.redhat.com/security/cve/CVE-2026-78667"
+        },
+        {
+          "url": "https://go.dev/cl/847309"
+        },
+        {
+          "url": "https://go.dev/issue/81858"
+        },
+        {
+          "url": "https://groups.google.com/g/golang-announce/c/U2fTuyDJznI"
+        },
+        {
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78667"
+        },
+        {
+          "url": "https://pkg.go.dev/vuln/GO-2026-6609"
+        },
+        {
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-78667"
+        }
+      ],
+      "published": "2026-10-08T23:17:03+00:00",
+      "updated": "2026-10-09T17:16:49+00:00",
+      "affects": [
+        {
+          "ref": "pkg:golang/stdlib@v1.27.1",
+          "versions": [
+            {
+              "version": "v1.27.1",
+              "status": "affected"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-78669",
+      "source": {
+        "name": "govulndb",
+        "url": "https://pkg.go.dev/vuln/"
+      },
+      "ratings": [
+        {
+          "source": {
+            "name": "redhat"
+          },
+          "score": 7.5,
+          "severity": "high",
+          "method": "CVSSv31",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "cwes": [
+        405
+      ],
+      "description": "A malicious HTTP/2 peer can cause excessive CPU consumption in the client or server by opening a large number of streams and then sending many small SETTINGS frames containing SETTINGS_INITIAL_WINDOW_SIZE values.",
+      "recommendation": "Upgrade stdlib to version 1.26.9, 1.27.2",
+      "advisories": [
+        {
+          "url": "https://avd.aquasec.com/nvd/cve-2026-78669"
+        },
+        {
+          "url": "https://access.redhat.com/security/cve/CVE-2026-78669"
+        },
+        {
+          "url": "https://go.dev/cl/847186"
+        },
+        {
+          "url": "https://go.dev/cl/847308"
+        },
+        {
+          "url": "https://go.dev/issue/81742"
+        },
+        {
+          "url": "https://groups.google.com/g/golang-announce/c/U2fTuyDJznI"
+        },
+        {
+          "url": "https://groups.google.com/g/golang-announce/c/ZPwCyRUuGBs"
+        },
+        {
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78669"
+        },
+        {
+          "url": "https://pkg.go.dev/vuln/GO-2026-6611"
+        },
+        {
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-78669"
+        }
+      ],
+      "published": "2026-10-08T23:17:04+00:00",
+      "updated": "2026-10-09T17:16:49+00:00",
+      "affects": [
+        {
+          "ref": "pkg:golang/stdlib@v1.27.1",
+          "versions": [
+            {
+              "version": "v1.27.1",
+              "status": "affected"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-94439",
+      "source": {
+        "name": "govulndb",
+        "url": "https://pkg.go.dev/vuln/"
+      },
+      "ratings": [
+        {
+          "source": {
+            "name": "redhat"
+          },
+          "score": 6.5,
+          "severity": "medium",
+          "method": "CVSSv31",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+        }
+      ],
+      "cwes": [
+        444
+      ],
+      "description": "When an HTTP server handler sends a 2xx response to an HTTP/1 CONNECT request and returns without hijacking the connection, the server improperly continues to read and serve requests from the connection. Since a 2xx response to an HTTP/1 CONNECT converts the connection into a tunnel, the server should not treat the connection as continuing to contain HTTP. The impact of this misbehavior is mostly limited to potential request smuggling, where an intermediate proxy considers the data on the connection to be tunneled and the server considers it to be HTTP.",
+      "recommendation": "Upgrade stdlib to version 1.26.9, 1.27.2",
+      "advisories": [
+        {
+          "url": "https://avd.aquasec.com/nvd/cve-2026-94439"
+        },
+        {
+          "url": "https://access.redhat.com/security/cve/CVE-2026-94439"
+        },
+        {
+          "url": "https://go.dev/cl/847311"
+        },
+        {
+          "url": "https://go.dev/issue/81744"
+        },
+        {
+          "url": "https://groups.google.com/g/golang-announce/c/U2fTuyDJznI"
+        },
+        {
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94439"
+        },
+        {
+          "url": "https://pkg.go.dev/vuln/GO-2026-6613"
+        },
+        {
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-94439"
+        }
+      ],
+      "published": "2026-10-08T23:17:04+00:00",
+      "updated": "2026-10-09T17:16:50+00:00",
+      "affects": [
+        {
+          "ref": "pkg:golang/stdlib@v1.27.1",
+          "versions": [
+            {
+              "version": "v1.27.1",
+              "status": "affected"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-94440",
+      "source": {
+        "name": "govulndb",
+        "url": "https://pkg.go.dev/vuln/"
+      },
+      "ratings": [],
+      "cwes": [
+        770
+      ],
+      "description": "Parsing a multipart form can bypass memory limits and read an arbitrarily long line into memory when the remaining limit at the start of a part is less than 400 bytes.",
+      "recommendation": "Upgrade stdlib to version 1.26.9, 1.27.2",
+      "advisories": [
+        {
+          "url": "https://avd.aquasec.com/nvd/cve-2026-94440"
+        },
+        {
+          "url": "https://go.dev/cl/847307"
+        },
+        {
+          "url": "https://go.dev/issue/81741"
+        },
+        {
+          "url": "https://groups.google.com/g/golang-announce/c/U2fTuyDJznI"
+        },
+        {
+          "url": "https://pkg.go.dev/vuln/GO-2026-6608"
+        }
+      ],
+      "published": "2026-10-08T23:17:04+00:00",
+      "updated": "2026-10-09T17:16:50+00:00",
+      "affects": [
+        {
+          "ref": "pkg:golang/stdlib@v1.27.1",
+          "versions": [
+            {
+              "version": "v1.27.1",
+              "status": "affected"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-94448",
+      "source": {
+        "name": "govulndb",
+        "url": "https://pkg.go.dev/vuln/"
+      },
+      "ratings": [
+        {
+          "source": {
+            "name": "redhat"
+          },
+          "score": 6.1,
+          "severity": "medium",
+          "method": "CVSSv31",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+        }
+      ],
+      "description": "When a JavaScript template literal contains consecutive expressions, the context tracking state was not properly reset upon entering a new expression. We now ensure that template-literal expression entries correctly reset context variables so all subsequent regular expression literals are accurately recognized and escaped.",
+      "recommendation": "Upgrade stdlib to version 1.26.9, 1.27.2",
+      "advisories": [
+        {
+          "url": "https://avd.aquasec.com/nvd/cve-2026-94448"
+        },
+        {
+          "url": "https://access.redhat.com/security/cve/CVE-2026-94448"
+        },
+        {
+          "url": "https://go.dev/cl/839866"
+        },
+        {
+          "url": "https://go.dev/issue/81821"
+        },
+        {
+          "url": "https://groups.google.com/g/golang-announce/c/U2fTuyDJznI"
+        },
+        {
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94448"
+        },
+        {
+          "url": "https://pkg.go.dev/vuln/GO-2026-6599"
+        },
+        {
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-94448"
+        }
+      ],
+      "published": "2026-10-08T23:17:05+00:00",
+      "updated": "2026-10-09T16:35:35+00:00",
+      "affects": [
+        {
+          "ref": "pkg:golang/stdlib@v1.27.1",
+          "versions": [
+            {
+              "version": "v1.27.1",
+              "status": "affected"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-97030",
+      "source": {
+        "name": "govulndb",
+        "url": "https://pkg.go.dev/vuln/"
+      },
+      "ratings": [],
+      "description": "A trusted template author may have previously written a valid template wherein the use of the 'yield' keyword would not be correctly escaped. We now ensure that valid keyword uses are escaped and non-keyword uses are not escaped.",
+      "recommendation": "Upgrade stdlib to version 1.26.9, 1.27.2",
+      "advisories": [
+        {
+          "url": "https://avd.aquasec.com/nvd/cve-2026-97030"
+        },
+        {
+          "url": "https://go.dev/cl/840925"
+        },
+        {
+          "url": "https://go.dev/issue/81823"
+        },
+        {
+          "url": "https://groups.google.com/g/golang-announce/c/U2fTuyDJznI"
+        },
+        {
+          "url": "https://pkg.go.dev/vuln/GO-2026-6600"
+        }
+      ],
+      "published": "2026-10-08T23:17:05+00:00",
+      "updated": "2026-10-09T16:35:35+00:00",
+      "affects": [
+        {
+          "ref": "pkg:golang/stdlib@v1.27.1",
+          "versions": [
+            {
+              "version": "v1.27.1",
+              "status": "affected"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-97031",
+      "source": {
+        "name": "govulndb",
+        "url": "https://pkg.go.dev/vuln/"
+      },
+      "ratings": [
+        {
+          "source": {
+            "name": "redhat"
+          },
+          "score": 7.5,
+          "severity": "high",
+          "method": "CVSSv31",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "cwes": [
+        405
+      ],
+      "description": "Multiple ECH outer extension references are not permitted under RFC 9849; previously, a client could send a well-crafted packet that could trigger memory exhaustion in the server process by specifying multiple references. We now reject these as malformed and curb the memory amplification vector as a result.",
+      "recommendation": "Upgrade stdlib to version 1.26.9, 1.27.2",
+      "advisories": [
+        {
+          "url": "https://avd.aquasec.com/nvd/cve-2026-97031"
+        },
+        {
+          "url": "https://access.redhat.com/security/cve/CVE-2026-97031"
+        },
+        {
+          "url": "https://go.dev/cl/847312"
+        },
+        {
+          "url": "https://go.dev/issue/81855"
+        },
+        {
+          "url": "https://groups.google.com/g/golang-announce/c/U2fTuyDJznI"
+        },
+        {
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97031"
+        },
+        {
+          "url": "https://pkg.go.dev/vuln/GO-2026-6607"
+        },
+        {
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-97031"
+        }
+      ],
+      "published": "2026-10-08T23:17:06+00:00",
+      "updated": "2026-10-09T16:35:35+00:00",
+      "affects": [
+        {
+          "ref": "pkg:golang/stdlib@v1.27.1",
+          "versions": [
+            {
+              "version": "v1.27.1",
+              "status": "affected"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2026-97032",
+      "source": {
+        "name": "govulndb",
+        "url": "https://pkg.go.dev/vuln/"
+      },
+      "ratings": [
+        {
+          "source": {
+            "name": "redhat"
+          },
+          "score": 5.9,
+          "severity": "medium",
+          "method": "CVSSv31",
+          "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "description": "HTTP/2 servers could end up crashing due to inadvertently modifying its HPACK encoder concurrently. This happens because the server modifies the HPACK encoder from two goroutines without synchronization: one uses the encoder to encode a HEADERS frame as part of a response sent to a client and the other modifies the encoder's table size when handling a SETTINGS frame containing SETTINGS_HEADER_TABLE_SIZE that a client sends. A malicious client can repeatedly send a request while changing the header table size to crash the server.",
+      "recommendation": "Upgrade stdlib to version 1.26.9, 1.27.2",
+      "advisories": [
+        {
+          "url": "https://avd.aquasec.com/nvd/cve-2026-97032"
+        },
+        {
+          "url": "https://access.redhat.com/security/cve/CVE-2026-97032"
+        },
+        {
+          "url": "https://go.dev/cl/847188"
+        },
+        {
+          "url": "https://go.dev/cl/847313"
+        },
+        {
+          "url": "https://go.dev/issue/81867"
+        },
+        {
+          "url": "https://groups.google.com/g/golang-announce/c/U2fTuyDJznI"
+        },
+        {
+          "url": "https://groups.google.com/g/golang-announce/c/ZPwCyRUuGBs"
+        },
+        {
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97032"
+        },
+        {
+          "url": "https://pkg.go.dev/vuln/GO-2026-6617"
+        },
+        {
+          "url": "https://www.cve.org/CVERecord?id=CVE-2026-97032"
+        }
+      ],
+      "published": "2026-10-08T23:17:06+00:00",
+      "updated": "2026-10-09T16:35:35+00:00",
+      "affects": [
+        {
+          "ref": "pkg:golang/stdlib@v1.27.1",
+          "versions": [
+            {
+              "version": "v1.27.1",
+              "status": "affected"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "DLA-4792-1",
+      "source": {
+        "name": "debian",
+        "url": "https://salsa.debian.org/security-tracker-team/security-tracker"
+      },
+      "ratings": [],
+      "recommendation": "Upgrade tzdata to version 2026c-0+deb12u1",
+      "affects": [
+        {
+          "ref": "pkg:deb/debian/tzdata@2026b-0%2Bdeb12u1?arch=all&distro=debian-12.15",
+          "versions": [
+            {
+              "version": "2026b-0+deb12u1",
+              "status": "affected"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "review",
+  "task_id": "order-b2-review-a1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "order-b2-test-e2-a2",
+      "attempt": 2,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/61571179b9ae25747244c889b34758a177d3c3e1/evidence/order-b2/test-e2-a2/handoff.json",
+      "revision": "sha256:f3338f701626d40c234cf81bbd6979a5765c8becda5fc921b6441fb29f2e41c0",
+      "relationship": "dependency"
+    },
+    {
+      "role": "implementation",
+      "task_id": "order-b2-implementation-a2",
+      "attempt": 2,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/437cb5b76359a8743613529aa33f7a9dacb88e9c/evidence/order-b2/implementation-a2/handoff.json",
+      "revision": "sha256:751a0130aa37effd18edc57a2af7edc5373cf6ec6ada3914cd458701e00bb8aa",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "failed",
+  "summary": "Independent Review found blocking P2 R-B2-1: a real cross-service image-scan summary is accepted before record creation and passes actual matrix and all local publish guards. AC1/2 regression Review and normal OCI chains passed; AC3 image/CI scan-binding responsibility failed. No application edits, actual publication or deployment. Historical Test deadline and all prior attempts remain unchanged.",
+  "assignment": {
+    "scope": "backend-app#2/B2",
+    "ac_ids": [
+      "AC-1",
+      "AC-2",
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "割り当て AC1/2 の実装・回帰適合、AC3 の image/CI 準備責務。",
+      "全26ファイルを独立に検査し、両サービス matrix/guard/権限/Environment 承認、original OCI build-once→runtime/scan/SBOM→publish 入力の固定結合、Account v1互換と Order v2分離、M0/M1消費互換、optional build_ca が依存取得RUN限定で runtime/layer/ログ/配送に漏れないこと、cold-cache trust異常系、API/DBデータ非破壊を評価。",
+      "独立した adversarial 検証を行ってください。Testの報告を自分の再実測と混同せず、CI/Review/Testは別証跡にします。阻害指摘は failed、必要入力/実行不可は blocked。AC3実稼働/GHCR/kind/Issue全体は未検証です。",
+      "Test実測の期限は 2026-10-11T19:27:15Z。延長や書換えは禁止です。独立Reviewの測定は根拠ある独自期限を記録できますが、Test期限はそのまま引き継いでください。期限に合わせて品質を省略しないでください。",
+      "B2元configのPlatform b989e29 は歴史的固定入力として維持し、新しいP0がB2デプロイ影響none評価に影響するか追加確認してください。",
+      "成果物は reviewed public-safe report、measurements、再現物、Handoff と必要な配送記録。必要closureと表現区分を保持し、payload/recordsを分離、push後fresh bytes/type検証とProducer receiptを返す。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-REPORT",
+      "kind": "review",
+      "locator": "report.txt",
+      "revision": "sha256:3352ef3ae9cd124ef168ca28a90fe21a631e91faa77b9956cd9ab8d7004fc553",
+      "summary": "Independent Review evidence/reproducer. R-B2-1 and scope limits in report.txt; no real publication or deployment."
+    },
+    {
+      "id": "A-MEASURE",
+      "kind": "other",
+      "locator": "measurements.json",
+      "revision": "sha256:842506b9d6cc76782875fac1f87c86c3694f89b2e4260c86d00e1854f9852e7c",
+      "summary": "Independent Review evidence/reproducer. R-B2-1 and scope limits in report.txt; no real publication or deployment."
+    },
+    {
+      "id": "A-ADVERSARIAL",
+      "kind": "document",
+      "locator": "adversarial.py",
+      "revision": "sha256:e894e7e9a21bb76dae8509b1b9d8194cc68ae1eb3e5162d73b576c9390b95241",
+      "summary": "Independent Review evidence/reproducer. R-B2-1 and scope limits in report.txt; no real publication or deployment."
+    },
+    {
+      "id": "A-REPRO",
+      "kind": "document",
+      "locator": "reproduce.sh",
+      "revision": "sha256:f8174d6780cb0c0391a6866f60971cb6e210301d2826cc5eb06380c9a72fb088",
+      "summary": "Independent Review evidence/reproducer. R-B2-1 and scope limits in report.txt; no real publication or deployment."
+    },
+    {
+      "id": "A-BACKEND-SBOM",
+      "kind": "other",
+      "locator": "backend-sbom.cdx.json",
+      "revision": "sha256:53490c21d101f455a12fb98b57a06380927459bc31cc2dea34a748478f691944",
+      "summary": "Independent Review evidence/reproducer. R-B2-1 and scope limits in report.txt; no real publication or deployment."
+    },
+    {
+      "id": "A-ORDER-SBOM",
+      "kind": "other",
+      "locator": "order-sbom.cdx.json",
+      "revision": "sha256:37870c67acab958f2fcd1010e8617fbae4478cbd8075fd29c57c1bcc141cda07",
+      "summary": "Independent Review evidence/reproducer. R-B2-1 and scope limits in report.txt; no real publication or deployment."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-REVIEW",
+      "claim": "All 26 files, independent regressions and boundaries reviewed; blocking scan-association defect reproduced",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE",
+        "A-ADVERSARIAL",
+        "A-REPRO"
+      ],
+      "locator": "measurements.json",
+      "observation": "112 disposable/race tests passed with two existing skips; five new adversarial methods passed, separately actual scan mixing accepted by record/matrix/publish local guards. Test evidence not adopted as Review measurements."
+    },
+    {
+      "id": "E-OCI",
+      "claim": "Both actual normal OCI/runtime/scan/SBOM chains measured; adversarial binding still fails",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE",
+        "A-BACKEND-SBOM",
+        "A-ORDER-SBOM"
+      ],
+      "locator": "measurements.json",
+      "observation": "213 pristine source files, both actual production images, cold trust matrix, transport/runtime/scan/SBOM and mocked original-archive publish input tested. No real registry/API publication or deployment."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "covered",
+      "scope": "Assigned independent B2 implementation/regression Review responsibility only; not aggregate product acceptance.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE"
+      ],
+      "evidence_ids": [
+        "E-REVIEW",
+        "E-OCI"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "covered",
+      "scope": "Assigned independent B2 implementation/regression Review responsibility only; not aggregate product acceptance.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE"
+      ],
+      "evidence_ids": [
+        "E-REVIEW",
+        "E-OCI"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "not_met",
+      "scope": "Assigned B2 image/CI preparation Review fails R-B2-1. Deployed product AC3 is unverified, not assessed as failed.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE"
+      ],
+      "evidence_ids": [
+        "E-REVIEW",
+        "E-OCI"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [
+    "R-B2-1 (P2): actual Order image-scan summary substituted into Account before record creation is accepted by record(), the actual image matrix and all local publish guards. Required original-OCI/scan binding is incomplete; separate implementation correction and independent revalidation required."
+  ],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

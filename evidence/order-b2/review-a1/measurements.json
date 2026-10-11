@@ -1,0 +1,3289 @@
+{
+  "document_type": "independent_review_measurements",
+  "producer": "order-b2-review-a1",
+  "scope": "backend-app#2/B2",
+  "epoch": 1,
+  "attempt": 1,
+  "business_status": "failed",
+  "subject": {
+    "repository": "syuhei0519/backend-app",
+    "pr_number": 32,
+    "head_sha": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+    "base_sha": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+    "target_revision": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+    "config_revision": "sha256:00ebf0a427c1663b953c2088d9ae7013b3e9c58a8abd24ed49fa0e7d7f4fe573",
+    "merge_group_sha": null
+  },
+  "measured_at": "2026-10-11T19:20:47.743694+00:00",
+  "valid_until": "2026-10-11T20:20:47.743694+00:00",
+  "validity_rationale": "One hour for these newly repeated fixed-code observations: conservative bounded use; any subject/head/base/config change invalidates immediately. This does not extend upstream Test or policy, and does not certify Manager Readiness.",
+  "upstream_test_valid_until": "2026-10-11T19:27:15Z",
+  "input_delivery": {
+    "manifest_sha256": "7a3d3a1d454a6d2b7713c755661deb9c14d00d5dc2674b56d2a9a1f1dc14241a",
+    "publication_receipt_sha256": "204e2336d5473f9c6bacac89342ca317fcbd37c6a63cf95a04fafb5349aac19a",
+    "fresh_canonical_cli": "passed",
+    "explicit": 121,
+    "objects": 130,
+    "bytes": 1943701,
+    "private_original_equivalence": "unverified",
+    "private_authorization_and_consumption_receipt": "omitted"
+  },
+  "history": {
+    "dispatch_attempt": 1,
+    "execution_attempt": 1,
+    "delivery_attempt": 1,
+    "limits": {
+      "dispatch": 3,
+      "execution": 3,
+      "delivery": 3
+    },
+    "retry_of": "none: first Review attempt",
+    "dependencies": [
+      "order-b2-test-e2-a2",
+      "order-b2-implementation-a2"
+    ],
+    "prior_history": "all Test epochs/attempts/terminal and Implementation history retained unchanged; authoritative Manager ledger not reconstructed"
+  },
+  "root_tests": {
+    "unit": {
+      "started_at": "2026-10-11T19:08:36.757493922Z",
+      "ended_at": "2026-10-11T19:08:45.540215808Z",
+      "counts": {
+        "pass": 109,
+        "skip": 5,
+        "fail": 0
+      },
+      "tests": [
+        {
+          "Time": "2026-10-11T19:08:36.765647411Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/#00",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.767514098Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/failed",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.769997001Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/wrong-job",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.770020405Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/wrong-source",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.770607894Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/wrong-pipeline",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.771110409Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/wrong-project",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.772924549Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/unprotected-ref",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.77346027Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/allow-failure",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.773468794Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier",
+          "Action": "pass",
+          "Elapsed": 0.01
+        },
+        {
+          "Time": "2026-10-11T19:08:36.774570366Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestProposalAPIRefusesRedirectAndSuppressesResponseBody",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.774658828Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestUpdateChangesOnlyDeclaredKeys",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.77469369Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestUpdateRejectsMissingContractKey",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.775047732Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/#00",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.775282137Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/CI_COMMIT_REF_PROTECTEDfalse",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.779341038Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/CI_COMMIT_BRANCHcodex/fixture",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.779494962Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SOURCE_COMMITcccccccccccccccccccccccccccccccccccccccc",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.779507107Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SOURCE_PROJECT_ID86247025",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.77953243Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/IMAGE_TAGlatest",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.77954295Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/IMAGE_DIGESTsha256:bad",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.779556473Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SCAN_PIPELINE_ID19",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.779566329Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/BUILD_PIPELINE_ID010",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.779577399Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/BUILD_JOB_ID21",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.779587127Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SCAN_JOB_ID0",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.779600696Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/RELEASE_RECORD_URLhttps://outside.invalid/record.json",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.779619118Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/RELEASE_RECORD_URLhttps://gitlab.com/api/v4/projects/86247033/packages/generic/core-platform-backend/sha256-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb/release-record-20-22.json",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.779636069Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SBOM_URLhttps://gitlab.com/api/v4/projects/86247033/packages/generic/core-platform-backend/sha256-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb/sbom-20-22.cdx.json",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.779645406Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SBOM_SHA256bad",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.77965322Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.779662362Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ReleaseAddsRunFieldsAndPreservesOtherValues",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:36.779675736Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ReleaseRemovesLegacyPipelineAuthorityWithExplicitNull",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:37.324595497Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/cmd/order-server",
+          "Test": "TestInvalidArguments",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.677267844Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/cmd/server",
+          "Test": "TestRuntimeLogLevelAndTimestamp",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.679119235Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/account",
+          "Test": "TestValidation",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.687708317Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig/#00",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.687727246Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig/DEBUG",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.6877439Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig/info",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.687765139Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig/warn",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.687779544Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig/error",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.687788582Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.848401237Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/order",
+          "Test": "TestValidation",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.858323484Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderconfig",
+          "Test": "TestLoad",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861660681Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/0",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861675413Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/1",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861687879Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/2",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861699634Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/3",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861710857Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/4",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861723477Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/5",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861734082Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/6",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861744268Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/7",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861755909Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/8",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861767859Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/9",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861783256Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/10",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861794322Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/11",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861804573Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/12",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861814652Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/13",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861824835Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/14",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.86183628Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/15",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.86184762Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/16",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861858995Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/17",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861870529Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/18",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861883207Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/19",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861939949Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/20",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861953365Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/21",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861965147Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/22",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861975634Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/23",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.861987274Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/24",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862000011Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/25",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862011479Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/26",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862021998Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/27",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.86203235Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/28",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862043405Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/29",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862057497Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/30",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862094588Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/31",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862110845Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/32",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862122269Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/33",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862133303Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/34",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862147756Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/35",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862159383Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/36",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862170635Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/37",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.86218244Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/38",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862195118Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/39",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.86220822Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/40",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862224335Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/41",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862236194Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/42",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862247537Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/43",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862258715Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/44",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862272365Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/45",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862284284Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/46",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862295312Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/47",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862305424Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/48",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862315918Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/49",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862330306Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/50",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862439154Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/51",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862446034Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862459511Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestLimitsAndMedia",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.862472197Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestRoutesAndErrors",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.865685075Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestDisposableMigration",
+          "Action": "skip",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.865698092Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestDisposableTargetGuard",
+          "Action": "skip",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.865707375Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestTargetConfiguration",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.865714892Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestErrorClassification",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.865725157Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestWaitExhaustsTenBoundedAttempts",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.865754069Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestWaitRecoversBeforeAttemptLimit",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.865814499Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestWaitCancellationStopsBeforeAnotherConnection",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.874518477Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "Test": "TestMigrationDisposableDatabase",
+          "Action": "skip",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.87458424Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "Test": "TestWaitExhaustsTenBoundedAttempts",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.874737191Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "Test": "TestWaitRecoversBeforeAttemptLimit",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.874793017Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "Test": "TestWaitCancellationStopsBeforeAnotherConnection",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.875842651Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestWaitHonorsShortParentDeadline",
+          "Action": "pass",
+          "Elapsed": 0.01
+        },
+        {
+          "Time": "2026-10-11T19:08:44.882778504Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/telemetry",
+          "Test": "TestResourceInstanceAndRestrictedDestination",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:44.883389612Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/httpapi",
+          "Test": "TestExactRequestsHistogramPrivacyAndTraceParent",
+          "Action": "pass",
+          "Elapsed": 0.03
+        },
+        {
+          "Time": "2026-10-11T19:08:44.885256759Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "Test": "TestWaitHonorsShortParentDeadline",
+          "Action": "pass",
+          "Elapsed": 0.01
+        },
+        {
+          "Time": "2026-10-11T19:08:44.951601722Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/telemetry",
+          "Test": "TestQueueDoesNotBlockRequestsAndShutdownIsBounded",
+          "Action": "pass",
+          "Elapsed": 0.07
+        },
+        {
+          "Time": "2026-10-11T19:08:44.951688463Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/telemetry",
+          "Test": "TestSDKCollectorMetricNames",
+          "Action": "skip",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:08:45.539990508Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/tests/orderintegration",
+          "Test": "TestDisposableHTTPPersistenceAndAccount",
+          "Action": "skip",
+          "Elapsed": 0
+        }
+      ]
+    },
+    "race": {
+      "started_at": "2026-10-11T19:09:29.034386965Z",
+      "ended_at": "2026-10-11T19:11:02.277231023Z",
+      "counts": {
+        "pass": 112,
+        "skip": 2,
+        "fail": 0
+      },
+      "tests": [
+        {
+          "Time": "2026-10-11T19:09:29.066294343Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/#00",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.068502781Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/failed",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.0734395Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/wrong-job",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.075566434Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/wrong-source",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.077683165Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/wrong-pipeline",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.08186742Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/wrong-project",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.084862731Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/unprotected-ref",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.091040986Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/allow-failure",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.091052231Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier",
+          "Action": "pass",
+          "Elapsed": 0.03
+        },
+        {
+          "Time": "2026-10-11T19:09:29.092651279Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestProposalAPIRefusesRedirectAndSuppressesResponseBody",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.092787243Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestUpdateChangesOnlyDeclaredKeys",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.09291699Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestUpdateRejectsMissingContractKey",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.093803569Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/#00",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.094605047Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/CI_COMMIT_REF_PROTECTEDfalse",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.095220614Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/CI_COMMIT_BRANCHcodex/fixture",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.095650232Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SOURCE_COMMITcccccccccccccccccccccccccccccccccccccccc",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.096290637Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SOURCE_PROJECT_ID86247025",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.096622322Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/IMAGE_TAGlatest",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.097018463Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/IMAGE_DIGESTsha256:bad",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.097421807Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SCAN_PIPELINE_ID19",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.10004886Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/BUILD_PIPELINE_ID010",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.100693377Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/BUILD_JOB_ID21",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.10127104Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SCAN_JOB_ID0",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.101889803Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/RELEASE_RECORD_URLhttps://outside.invalid/record.json",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.10251326Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/RELEASE_RECORD_URLhttps://gitlab.com/api/v4/projects/86247033/packages/generic/core-platform-backend/sha256-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb/release-record-20-22.json",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.103106327Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SBOM_URLhttps://gitlab.com/api/v4/projects/86247033/packages/generic/core-platform-backend/sha256-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb/sbom-20-22.cdx.json",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.103929549Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SBOM_SHA256bad",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.10398265Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites",
+          "Action": "pass",
+          "Elapsed": 0.01
+        },
+        {
+          "Time": "2026-10-11T19:09:29.104151668Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ReleaseAddsRunFieldsAndPreservesOtherValues",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:29.104470023Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ReleaseRemovesLegacyPipelineAuthorityWithExplicitNull",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:09:34.317794365Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/cmd/order-server",
+          "Test": "TestInvalidArguments",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:12.168265719Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/account",
+          "Test": "TestValidation",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:12.174423302Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/cmd/server",
+          "Test": "TestRuntimeLogLevelAndTimestamp",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:12.17516633Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig/#00",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:12.175314916Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig/DEBUG",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:12.175377322Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig/info",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:12.175510986Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig/warn",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:12.175631098Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig/error",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:12.175649806Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:12.266162903Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/httpapi",
+          "Test": "TestExactRequestsHistogramPrivacyAndTraceParent",
+          "Action": "pass",
+          "Elapsed": 0.06
+        },
+        {
+          "Time": "2026-10-11T19:10:13.191251482Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/order",
+          "Test": "TestValidation",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.192641458Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderconfig",
+          "Test": "TestLoad",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.212096344Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/0",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.212514231Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/1",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.212632404Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/2",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.21285971Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/3",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.213081634Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/4",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.213388408Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/5",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.217595028Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/6",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.21763307Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/7",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.217647751Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/8",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.217661013Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/9",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.217679004Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/10",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.218061601Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/11",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.218450605Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/12",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.218825414Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/13",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.219237952Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/14",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.219652123Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/15",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.220095504Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/16",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.22067062Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/17",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.221060759Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/18",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.221521904Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/19",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.222047334Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/20",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.222692861Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/21",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.223218195Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/22",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.223645156Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/23",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.223949211Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/24",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.224389192Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/25",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.224780306Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/26",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.225137886Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/27",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.22561805Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/28",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.226055854Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/29",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.226517144Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/30",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.226922529Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/31",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.227342407Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/32",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.227813469Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/33",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.228242352Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/34",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.228822078Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/35",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.229234545Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/36",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.229852251Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/37",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.230377879Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/38",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.230899601Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/39",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.231394003Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/40",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.231839795Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/41",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.232315229Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/42",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.232837174Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/43",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.233301588Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/44",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.234073386Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/45",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.234539036Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/46",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.235161824Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/47",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.235669298Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/48",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.236075762Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/49",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.236796985Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/50",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.237102593Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/51",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.237175082Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary",
+          "Action": "pass",
+          "Elapsed": 0.03
+        },
+        {
+          "Time": "2026-10-11T19:10:13.25804011Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestLimitsAndMedia",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:13.26012874Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestRoutesAndErrors",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:14.227948545Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "Test": "TestMigrationDisposableDatabase",
+          "Action": "skip",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:14.22837544Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "Test": "TestWaitExhaustsTenBoundedAttempts",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:14.228480864Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "Test": "TestWaitRecoversBeforeAttemptLimit",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:14.228608751Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "Test": "TestWaitCancellationStopsBeforeAnotherConnection",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:14.258132579Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "Test": "TestWaitHonorsShortParentDeadline",
+          "Action": "pass",
+          "Elapsed": 0.03
+        },
+        {
+          "Time": "2026-10-11T19:10:14.283264682Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/telemetry",
+          "Test": "TestResourceInstanceAndRestrictedDestination",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:14.922137204Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/telemetry",
+          "Test": "TestQueueDoesNotBlockRequestsAndShutdownIsBounded",
+          "Action": "pass",
+          "Elapsed": 0.64
+        },
+        {
+          "Time": "2026-10-11T19:10:14.922161796Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/telemetry",
+          "Test": "TestSDKCollectorMetricNames",
+          "Action": "skip",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:27.781217753Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestDisposableMigration",
+          "Action": "pass",
+          "Elapsed": 14.46
+        },
+        {
+          "Time": "2026-10-11T19:10:39.477695115Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestDisposableTargetGuard",
+          "Action": "pass",
+          "Elapsed": 11.7
+        },
+        {
+          "Time": "2026-10-11T19:10:39.478646234Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestTargetConfiguration",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:39.478902851Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestErrorClassification",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:39.47975157Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestWaitExhaustsTenBoundedAttempts",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:39.479988005Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestWaitRecoversBeforeAttemptLimit",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:39.480412128Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestWaitCancellationStopsBeforeAnotherConnection",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T19:10:39.491115537Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestWaitHonorsShortParentDeadline",
+          "Action": "pass",
+          "Elapsed": 0.01
+        },
+        {
+          "Time": "2026-10-11T19:11:01.272505Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/tests/orderintegration",
+          "Test": "TestDisposableHTTPPersistenceAndAccount",
+          "Action": "pass",
+          "Elapsed": 46.95
+        }
+      ]
+    }
+  },
+  "other_suites": {
+    "go_mod_verify": "passed",
+    "root_vet_build": "passed",
+    "ci_github_test_sh": "passed",
+    "all_tools_vet_race_build": "passed",
+    "gofmt_and_diff_check": "passed",
+    "m0_consumer_methods": 19,
+    "m1_consumer_methods": 19,
+    "rerun_upstream_negative_methods_per_consumer": 7,
+    "new_review_adversarial_methods": 5,
+    "mock_only": true,
+    "separate_known_failing_scan_binding_probe": true
+  },
+  "pristine_context": {
+    "tracked_files": 213,
+    "all_git_blob_bytes_equal": true,
+    "extra_files": 0
+  },
+  "files_reviewed": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "size": 9101,
+      "sha256": "80c7f6d38e692956c702435250cf0879553d7a409b58cd4ae7d28be04bc4b34a",
+      "inspection": "Both-service matrix; fail-fast=false; unique checkout/artifacts; protected-main push and Environment boundaries; ci-result needs both complete same-run artifacts."
+    },
+    {
+      "path": "Dockerfile",
+      "size": 1672,
+      "sha256": "dc34d001b4451e4059c89b28861187a87e98875138370b0c2b1dd318c26e19d6",
+      "inspection": "Optional dependency RUN secret only; same runtime/base/Account entrypoint and migrations."
+    },
+    {
+      "path": "Dockerfile.order",
+      "size": 1654,
+      "sha256": "febd4bd227fc7cd520f25b467fbe2820142751f1daec040a1c56585f8e24206f",
+      "inspection": "Dedicated stamped Order binary; embedded SQL; UID 10001; same pinned runtime; no Account migrations."
+    },
+    {
+      "path": "ci/github/build-ca_test.py",
+      "size": 3894,
+      "sha256": "93e4d3f2ae9863eb92e0bacefd060636611eb735436295f419fb504ae444a687",
+      "inspection": "Shell scope/argument and missing/empty checks; synthetic distinct from cold builds."
+    },
+    {
+      "path": "ci/github/fixtures/m0/SOURCE.json",
+      "size": 1040,
+      "sha256": "6227a28f67b7dad407b91bd60b9a093baebc98d87e80f0cb17bdb588c95e1bb7",
+      "inspection": "Fixed M0 fixture/consumer: read in full, all 9 payloads matched fresh canonical commit bytes; SOURCE inventory verified. Test fixtures are synthetic, never product evidence."
+    },
+    {
+      "path": "ci/github/fixtures/m0/fixtures/backend-record.json",
+      "size": 1121,
+      "sha256": "00f2602021a21c553b546083352a50936b10b923b03c39c8218c210d3c8bc4a7",
+      "inspection": "Fixed M0 fixture/consumer: read in full, all 9 payloads matched fresh canonical commit bytes; SOURCE inventory verified. Test fixtures are synthetic, never product evidence."
+    },
+    {
+      "path": "ci/github/fixtures/m0/fixtures/image-scan.json",
+      "size": 14,
+      "sha256": "63b684854bd4961bcb515b09823ea700dda69135486c5e11352bb1d7850f534e",
+      "inspection": "Fixed M0 fixture/consumer: read in full, all 9 payloads matched fresh canonical commit bytes; SOURCE inventory verified. Test fixtures are synthetic, never product evidence."
+    },
+    {
+      "path": "ci/github/fixtures/m0/fixtures/order-config.json",
+      "size": 248,
+      "sha256": "8bd06c0e86671a7e7f8d56d6ff80bf56db6e753ff45357ca5d1a21e5a8f680ea",
+      "inspection": "Fixed M0 fixture/consumer: read in full, all 9 payloads matched fresh canonical commit bytes; SOURCE inventory verified. Test fixtures are synthetic, never product evidence."
+    },
+    {
+      "path": "ci/github/fixtures/m0/fixtures/order-manifest.json",
+      "size": 153,
+      "sha256": "0578ef8eb4991f3b8db3ad3bfe3bb58501962e0ea97449d5feec6cd346d82768",
+      "inspection": "Fixed M0 fixture/consumer: read in full, all 9 payloads matched fresh canonical commit bytes; SOURCE inventory verified. Test fixtures are synthetic, never product evidence."
+    },
+    {
+      "path": "ci/github/fixtures/m0/fixtures/order-record.json",
+      "size": 1145,
+      "sha256": "a3a2b0472fe51d96614406d85fd89748eb8c255c45ebbfd21cfdde57e0968eb5",
+      "inspection": "Fixed M0 fixture/consumer: read in full, all 9 payloads matched fresh canonical commit bytes; SOURCE inventory verified. Test fixtures are synthetic, never product evidence."
+    },
+    {
+      "path": "ci/github/fixtures/m0/fixtures/sbom.cdx.json",
+      "size": 154,
+      "sha256": "b9104ba1eba76b6b080694eb4eb1717e38d5d9b7dbe4469e50acbfd756c5ca56",
+      "inspection": "Fixed M0 fixture/consumer: read in full, all 9 payloads matched fresh canonical commit bytes; SOURCE inventory verified. Test fixtures are synthetic, never product evidence."
+    },
+    {
+      "path": "ci/github/fixtures/m0/order-release.schema.json",
+      "size": 2574,
+      "sha256": "2bdc572d5e2ac6f694a1658b27d36ead6abdb44bcfb9eb284b47f74979468f92",
+      "inspection": "Fixed M0 fixture/consumer: read in full, all 9 payloads matched fresh canonical commit bytes; SOURCE inventory verified. Test fixtures are synthetic, never product evidence."
+    },
+    {
+      "path": "ci/github/fixtures/m0/release.py",
+      "size": 30677,
+      "sha256": "ed2630b8b3fe3a18a6de2c0ce55dcbe494f7d20414d672326d7e524b30903867",
+      "inspection": "Fixed M0 fixture/consumer: read in full, all 9 payloads matched fresh canonical commit bytes; SOURCE inventory verified. Test fixtures are synthetic, never product evidence."
+    },
+    {
+      "path": "ci/github/fixtures/m0/release_test.py",
+      "size": 18881,
+      "sha256": "c23078874ec77fb06a54525a4cb4f2a702a7758fe833f396174fc53fd77a4d86",
+      "inspection": "Fixed M0 fixture/consumer: read in full, all 9 payloads matched fresh canonical commit bytes; SOURCE inventory verified. Test fixtures are synthetic, never product evidence."
+    },
+    {
+      "path": "ci/github/matrix-result.py",
+      "size": 2437,
+      "sha256": "afd832406c71447168246a07a11f0da7b9fc93c271a7d7123f2707d0e4d368d5",
+      "inspection": "Same run/attempt/source/workflow; two expected members; source hash and runtime binding; distinct image/config/archive. R-B2-1 also passes this aggregate after record creation; hashing an already mixed scan does not restore provenance."
+    },
+    {
+      "path": "ci/github/oci.sh",
+      "size": 3145,
+      "sha256": "55c2bd3b62f193de7f697154203bc674102433a6fbc872787cfcb6a22da6c4bd",
+      "inspection": "One OCI build then reader/runtime/scan/SBOM/record; secret supplied only on opt-in."
+    },
+    {
+      "path": "ci/github/order-release.schema.json",
+      "size": 2574,
+      "sha256": "2bdc572d5e2ac6f694a1658b27d36ead6abdb44bcfb9eb284b47f74979468f92",
+      "inspection": "Strict published Order v2 shape and service fields."
+    },
+    {
+      "path": "ci/github/order-release_test.py",
+      "size": 11282,
+      "sha256": "6fcf5fa0367d45a130cd19042c601cbb96d20eb588759213e450ed9ec88135f7",
+      "inspection": "Producer/M0 interop and synthetic mutation coverage; mocks do not prove registry publication."
+    },
+    {
+      "path": "ci/github/release.py",
+      "size": 28113,
+      "sha256": "3219acd417c6f01dd5e67bb6c66ac6f76123d42346fd2776d9c652c0ca0b448c",
+      "inspection": "v1/v2 service separation; same original archive/hash; local guards before external publish; proposal path and branch separation. Blocking R-B2-1: record does not bind the image-scan summary to the OCI config; actual cross-service substitution is accepted."
+    },
+    {
+      "path": "ci/github/runtime.py",
+      "size": 5393,
+      "sha256": "20078aea273e96aba3152dd7c15fbecfd4e0f3e4d7aeeaff2c8e51ceeabd92e3",
+      "inspection": "Fresh random local-only isolated DB; same validated image via transport; read-only/drop-all/nonroot; cleanup."
+    },
+    {
+      "path": "ci/github/source-identity.py",
+      "size": 598,
+      "sha256": "87f724a7339189fe1d2c8f037a02a4671f4d2a047f9fd83ab65f4e06b033fcec",
+      "inspection": "Shared passing source scan bound to repo/source/run/attempt/hash."
+    },
+    {
+      "path": "ci/github/test.sh",
+      "size": 1583,
+      "sha256": "c0cc44c812f9566423d4bd30f47f19a41f0a3075994a3d261171daecc1f22801",
+      "inspection": "Adds Order/M0/CA suites without removing existing gates."
+    },
+    {
+      "path": "cmd/order-server/main.go",
+      "size": 2453,
+      "sha256": "895f647192a4278c6ee394d31a4c999a94e0d84ba8893ef1f121de873083c7df",
+      "inspection": "Build stamps/log fields only; no API/DB behavior edit."
+    },
+    {
+      "path": "docs/order-image-ci.md",
+      "size": 7193,
+      "sha256": "0e3e7c6ee3a886bbd5d578a84f85b1f15319d0f05ee52d9caf6ad62082f76c95",
+      "inspection": "Accurately separates runtime transport, original publish archive, disabled deployment and CA cache caveat."
+    },
+    {
+      "path": "tools/oci-input/cmd/oci-runtime-export/main.go",
+      "size": 1211,
+      "sha256": "90fb22c6b5a61ab1593447cece0c9fe5f47fe5d2715892e8183d086b9b99ea4f",
+      "inspection": "Single image/digest/full validation and strictly named transport without rebuild."
+    },
+    {
+      "path": "tools/oci-input/cmd/oci-runtime-export/main_test.go",
+      "size": 406,
+      "sha256": "aeb9b91f22c01432e4f32c37ffc658c2d7883772429b53d70aa20768f12a0ec7",
+      "inspection": "Tag naming test; actual transport independently exercised."
+    }
+  ],
+  "preservation": {
+    "Account_code_SQL_migrations_lockfiles_changed": false,
+    "Order_main_diff": "build stamps and log fields only",
+    "no_application_edits": true
+  },
+  "production_images": {
+    "backend": {
+      "service": "backend",
+      "archive_size": 15378432,
+      "archive_sha256": "d9fc0cf9c865659ec6cbb57ca5f605b3f196e8c2016edd8c766a06ac46e0de36",
+      "descriptors": [
+        {
+          "digest": "sha256:cae0234316f743cea4e12e69bcb3fff3d4dbb0c4078d6cf5784f6b72854102f9",
+          "size": 2936
+        },
+        {
+          "digest": "sha256:ffc1c63cfa7133850ffb032bc1631fabd1595bc0b838cc94d76897b55c8ad90f",
+          "size": 3892
+        },
+        {
+          "digest": "sha256:a5789fc40e828c4e7467626e3f69ec5dea8e5da22fe660db8ae6d16f777b0bbf",
+          "size": 83900
+        },
+        {
+          "digest": "sha256:990a9c434e5e0f11549a8d4a41a1991e621b04e30cd63269adbc97b1dc38fd7e",
+          "size": 12481
+        },
+        {
+          "digest": "sha256:39dc083afc39bd8dc43d456fe7ff7d39292e593bb2769972c11bb2e5f9119386",
+          "size": 445709
+        },
+        {
+          "digest": "sha256:bf7a4185f01524837d19abde915ffde84e64368b250f5b5e9f6f75aea62a11d4",
+          "size": 29005
+        },
+        {
+          "digest": "sha256:2780920e5dbfbe103d03a583ed75345306e572ec5a48cb10361f046767d9f29a",
+          "size": 67
+        },
+        {
+          "digest": "sha256:7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212",
+          "size": 188
+        },
+        {
+          "digest": "sha256:3214acf345c0cc6bbdb56b698a41ccdefc624a09d6beb0d38b5de0b2303ecaf4",
+          "size": 123
+        },
+        {
+          "digest": "sha256:52630fc75a18675c530ed9eba5f55eca09b03e91bd5bc15307918bbc1a7e7296",
+          "size": 162
+        },
+        {
+          "digest": "sha256:dd64bf2dd177757451a98fcdc999a339c35dee5d9872d8f4dc69c8f3c4dd0112",
+          "size": 80
+        },
+        {
+          "digest": "sha256:b839dfae01f66e15c6a8b63520557ed315bdfe036342fa7a0c537259f10d7a9a",
+          "size": 351
+        },
+        {
+          "digest": "sha256:dcaa5a89b0ccda4b283e16d0b4d0891cd93d5fe05c6798f7806781a6a2d84354",
+          "size": 314
+        },
+        {
+          "digest": "sha256:96ed2737ae312e0bc637b40783f7c2f23416cb72ca957aa01855f1614278e64b",
+          "size": 143347
+        },
+        {
+          "digest": "sha256:5da7082c5428151c2963ce08b355f90db0d3cb778cf74b44ca8d9bbe732ced8d",
+          "size": 14638646
+        },
+        {
+          "digest": "sha256:c74718b1ab237dcddf287310055f85b0d132a81beba177cf824978eb5629a2ac",
+          "size": 962
+        }
+      ],
+      "runtime_user": "10001:10001",
+      "stamp_present": true,
+      "secret_paths_absent": true,
+      "bundle_bytes_absent": true,
+      "custom_trust_env_absent": true,
+      "application_layer_entries": [
+        [
+          "server"
+        ],
+        [
+          "migrations",
+          "migrations/0001_create_accounts.sql",
+          "migrations/embed.go"
+        ]
+      ],
+      "chain": {
+        "service": "backend",
+        "head": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+        "archive_sha256": "d9fc0cf9c865659ec6cbb57ca5f605b3f196e8c2016edd8c766a06ac46e0de36",
+        "oci_digest": "sha256:cae0234316f743cea4e12e69bcb3fff3d4dbb0c4078d6cf5784f6b72854102f9",
+        "config_digest": "sha256:ffc1c63cfa7133850ffb032bc1631fabd1595bc0b838cc94d76897b55c8ad90f",
+        "reader": "passed",
+        "runtime": "passed",
+        "scan": "passed",
+        "sbom": "passed",
+        "original_archive_unchanged": true,
+        "actual_publish": false
+      },
+      "transport": {
+        "service": "backend",
+        "config_bytes_equal": true,
+        "layers": [
+          {
+            "compressed_digest": "sha256:a5789fc40e828c4e7467626e3f69ec5dea8e5da22fe660db8ae6d16f777b0bbf",
+            "uncompressed_digest": "sha256:7223ea1323e8c1159ec17f07d35acc27bdd1cc2bc3ed425b44ef21dac9915db0",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:990a9c434e5e0f11549a8d4a41a1991e621b04e30cd63269adbc97b1dc38fd7e",
+            "uncompressed_digest": "sha256:8fa10c0194df9b7c054c90dbe482585f768a54428fc90a5b78a0066a123b1bba",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:39dc083afc39bd8dc43d456fe7ff7d39292e593bb2769972c11bb2e5f9119386",
+            "uncompressed_digest": "sha256:35b5ba6e08cdd034b8d1920f9c7203e5d66f258e1915f164a01de0af14f34710",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:bf7a4185f01524837d19abde915ffde84e64368b250f5b5e9f6f75aea62a11d4",
+            "uncompressed_digest": "sha256:114dde0fefebbca13165d0da9c500a66190e497a82a53dcaabc3172d630be1e9",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:2780920e5dbfbe103d03a583ed75345306e572ec5a48cb10361f046767d9f29a",
+            "uncompressed_digest": "sha256:4d049f83d9cf21d1f5cc0e11deaf36df02790d0e60c1a3829538fb4b61685368",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212",
+            "uncompressed_digest": "sha256:af5aa97ebe6ce1604747ec1e21af7136ded391bcabe4acef882e718a87c86bcc",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:3214acf345c0cc6bbdb56b698a41ccdefc624a09d6beb0d38b5de0b2303ecaf4",
+            "uncompressed_digest": "sha256:6f1cdceb6a3146f0ccb986521156bef8a422cdbb0863396f7f751f575ba308f4",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:52630fc75a18675c530ed9eba5f55eca09b03e91bd5bc15307918bbc1a7e7296",
+            "uncompressed_digest": "sha256:bd3cdfae1d3fdd83a2231d608969b38b82349777c2fff9a7c12d54f8ac5c9b38",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:dd64bf2dd177757451a98fcdc999a339c35dee5d9872d8f4dc69c8f3c4dd0112",
+            "uncompressed_digest": "sha256:4cde6b0bb6f50a5f255eef7b2a42162c661cf776b803225dcac9a659e396bb6b",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:b839dfae01f66e15c6a8b63520557ed315bdfe036342fa7a0c537259f10d7a9a",
+            "uncompressed_digest": "sha256:ad51d0769d16ba578106a177987dfe3d2e02c1668c852b795b2f6b024068242a",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:dcaa5a89b0ccda4b283e16d0b4d0891cd93d5fe05c6798f7806781a6a2d84354",
+            "uncompressed_digest": "sha256:6e7fbcf090d09b73a4aa85f9dce690d0ace73877c150b7c56955487b6e7a822a",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:96ed2737ae312e0bc637b40783f7c2f23416cb72ca957aa01855f1614278e64b",
+            "uncompressed_digest": "sha256:5904c32f457c96a16c8c68f5ccdf518c8138cd9e5971de9ce6d564fc481af222",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:5da7082c5428151c2963ce08b355f90db0d3cb778cf74b44ca8d9bbe732ced8d",
+            "uncompressed_digest": "sha256:04c2b11af582d6b4961c91ea5422b305cbe255e00a9b54cfb88b63eab5d36fb1",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:c74718b1ab237dcddf287310055f85b0d132a81beba177cf824978eb5629a2ac",
+            "uncompressed_digest": "sha256:b71e2367783c5053f8adb2d0820cca49acc555be120a19eb4b0234c3a5bf8367",
+            "exact_bytes": true
+          }
+        ],
+        "loaded_id": "sha256:ffc1c63cfa7133850ffb032bc1631fabd1595bc0b838cc94d76897b55c8ad90f",
+        "container_image": "sha256:ffc1c63cfa7133850ffb032bc1631fabd1595bc0b838cc94d76897b55c8ad90f",
+        "read_only": true,
+        "cap_drop": [
+          "ALL"
+        ],
+        "security_opt": [
+          "no-new-privileges"
+        ],
+        "user": "10001:10001",
+        "wrong_digest_rejected": true,
+        "real_runtime_result": {
+          "archiveSha256": "d9fc0cf9c865659ec6cbb57ca5f605b3f196e8c2016edd8c766a06ac46e0de36",
+          "capDrop": "ALL",
+          "configDigest": "sha256:ffc1c63cfa7133850ffb032bc1631fabd1595bc0b838cc94d76897b55c8ad90f",
+          "digest": "sha256:cae0234316f743cea4e12e69bcb3fff3d4dbb0c4078d6cf5784f6b72854102f9",
+          "network": "internal",
+          "passed": true,
+          "readOnly": true,
+          "service": "backend"
+        }
+      },
+      "trust_leak": {
+        "service": "backend",
+        "custom_certificates_distinguished_from_standard": true,
+        "custom_pem_material_absent": true,
+        "full_bundle_absent": true,
+        "custom_secret_source_path_absent": true,
+        "standard_path_alias_not_a_leak": true,
+        "secret_target_paths_absent": true,
+        "actual_proxy_values_absent": true,
+        "all_runtime_layer_files_and_config_checked": true,
+        "standard_runtime_trust_retained": true
+      },
+      "normal_mock_publish": {
+        "service": "backend",
+        "identity": "synthetic run 1 attempt 2; not GitHub CI",
+        "real_source_scan": true,
+        "local_record": {
+          "archiveSha256": "d9fc0cf9c865659ec6cbb57ca5f605b3f196e8c2016edd8c766a06ac46e0de36",
+          "configDigest": "sha256:ffc1c63cfa7133850ffb032bc1631fabd1595bc0b838cc94d76897b55c8ad90f",
+          "createdAt": "2026-10-11T19:14:03.577603+00:00",
+          "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+          "deploymentAuthorized": false,
+          "imageDigest": "sha256:cae0234316f743cea4e12e69bcb3fff3d4dbb0c4078d6cf5784f6b72854102f9",
+          "imagePolicyPassed": true,
+          "imageRepository": "ghcr.io/syuhei0519/backend-app",
+          "imageScanSha256": "3e9d604b3e4da77c4a4ab531100422e5873750dd20e871a298958e0ad1f87735",
+          "isolatedRuntimePassed": true,
+          "published": false,
+          "repository": "syuhei0519/backend-app",
+          "runAttempt": 2,
+          "runId": 1,
+          "sbomSha256": "53490c21d101f455a12fb98b57a06380927459bc31cc2dea34a748478f691944",
+          "sbomValidated": true,
+          "scannedAt": "2026-10-11T19:13:17.991300941Z",
+          "schema": "core-platform/github-release/v1",
+          "sourceCommit": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+          "sourcePolicyPassed": true,
+          "sourceScanSha256": "913f4dcc8df4309abef0ad885a82b6346ebf4806e4569a5b73cbf27faeb75054",
+          "validUntil": "2026-10-12T13:06:05.155544+00:00",
+          "workflowRef": "syuhei0519/backend-app/.github/workflows/ci.yml@refs/heads/main"
+        },
+        "mocked_published_record": {
+          "archiveSha256": "d9fc0cf9c865659ec6cbb57ca5f605b3f196e8c2016edd8c766a06ac46e0de36",
+          "configDigest": "sha256:ffc1c63cfa7133850ffb032bc1631fabd1595bc0b838cc94d76897b55c8ad90f",
+          "createdAt": "2026-10-11T19:14:03.577603+00:00",
+          "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+          "deploymentAuthorized": false,
+          "imageDigest": "sha256:cae0234316f743cea4e12e69bcb3fff3d4dbb0c4078d6cf5784f6b72854102f9",
+          "imagePolicyPassed": true,
+          "imageRepository": "ghcr.io/syuhei0519/backend-app",
+          "imageScanSha256": "3e9d604b3e4da77c4a4ab531100422e5873750dd20e871a298958e0ad1f87735",
+          "isolatedRuntimePassed": true,
+          "protectedMain": true,
+          "published": true,
+          "repository": "syuhei0519/backend-app",
+          "runAttempt": 2,
+          "runId": 1,
+          "sbomSha256": "53490c21d101f455a12fb98b57a06380927459bc31cc2dea34a748478f691944",
+          "sbomValidated": true,
+          "scannedAt": "2026-10-11T19:13:17.991300941Z",
+          "schema": "core-platform/github-release/v1",
+          "sourceCommit": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+          "sourcePolicyPassed": true,
+          "sourceScanSha256": "913f4dcc8df4309abef0ad885a82b6346ebf4806e4569a5b73cbf27faeb75054",
+          "validUntil": "2026-10-12T13:06:05.155544+00:00",
+          "workflowRef": "syuhei0519/backend-app/.github/workflows/ci.yml@refs/heads/main"
+        },
+        "actual_registry_or_github_writes": false,
+        "fixed_consumers": [
+          "M0",
+          "M1"
+        ],
+        "same_original_archive": true,
+        "negative_tampering_rejected": [
+          ".oci/image.tar",
+          ".security/public/sbom.cdx.json",
+          ".security/public/image-scan.json"
+        ],
+        "real_local_validator_calls": 1,
+        "rebuild": false
+      },
+      "scan_summary": {
+        "schemaVersion": 1,
+        "pass": true,
+        "trivyVersion": "0.75.0",
+        "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+        "scannedAt": "2026-10-11T19:13:17.991300941Z",
+        "findings": [
+          {
+            "kind": "vulnerability",
+            "rule": "DLA-4792-1",
+            "path": "image/os",
+            "package": "tzdata",
+            "installedVersion": "2026b-0+deb12u1",
+            "fixedVersion": "2026c-0+deb12u1",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78669",
+            "path": "server",
+            "package": "golang.org/x/net",
+            "installedVersion": "v0.59.0",
+            "fixedVersion": "0.60.0",
+            "severity": "HIGH",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78663",
+            "path": "server",
+            "package": "golang.org/x/net",
+            "installedVersion": "v0.59.0",
+            "fixedVersion": "0.60.0",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-97032",
+            "path": "server",
+            "package": "golang.org/x/net",
+            "installedVersion": "v0.59.0",
+            "fixedVersion": "0.60.0",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78659",
+            "path": "server",
+            "package": "golang.org/x/net",
+            "installedVersion": "v0.59.0",
+            "fixedVersion": "0.60.0",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78660",
+            "path": "server",
+            "package": "golang.org/x/net",
+            "installedVersion": "v0.59.0",
+            "fixedVersion": "0.60.0",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78667",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "HIGH",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78669",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "HIGH",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-97031",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "HIGH",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-56866",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78663",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-94439",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-94448",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-97032",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-56857",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "LOW",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78659",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78660",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-94440",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-97030",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          }
+        ],
+        "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+      },
+      "sbom_proof": {
+        "format": "CycloneDX",
+        "specVersion": "1.7",
+        "sha256": "53490c21d101f455a12fb98b57a06380927459bc31cc2dea34a748478f691944",
+        "configDigest": "sha256:ffc1c63cfa7133850ffb032bc1631fabd1595bc0b838cc94d76897b55c8ad90f",
+        "componentCount": 38,
+        "scannedPackageCount": 36
+      },
+      "raw_scan_image_id": "sha256:ffc1c63cfa7133850ffb032bc1631fabd1595bc0b838cc94d76897b55c8ad90f"
+    },
+    "order": {
+      "service": "order",
+      "archive_size": 8831488,
+      "archive_sha256": "5458699a28a312449f54ab471e320e87aa3085c427d408a7b21cb7f723b256fa",
+      "descriptors": [
+        {
+          "digest": "sha256:f9bd894ecff338fd0db8fdcfdebd14da1ecbb7ce801cd7d9e75721d340788d4d",
+          "size": 2747
+        },
+        {
+          "digest": "sha256:824456a20879a609c3309dc6b06043e3ddbbfa551588869f81abed0ec650e9c8",
+          "size": 3688
+        },
+        {
+          "digest": "sha256:a5789fc40e828c4e7467626e3f69ec5dea8e5da22fe660db8ae6d16f777b0bbf",
+          "size": 83900
+        },
+        {
+          "digest": "sha256:990a9c434e5e0f11549a8d4a41a1991e621b04e30cd63269adbc97b1dc38fd7e",
+          "size": 12481
+        },
+        {
+          "digest": "sha256:39dc083afc39bd8dc43d456fe7ff7d39292e593bb2769972c11bb2e5f9119386",
+          "size": 445709
+        },
+        {
+          "digest": "sha256:bf7a4185f01524837d19abde915ffde84e64368b250f5b5e9f6f75aea62a11d4",
+          "size": 29005
+        },
+        {
+          "digest": "sha256:2780920e5dbfbe103d03a583ed75345306e572ec5a48cb10361f046767d9f29a",
+          "size": 67
+        },
+        {
+          "digest": "sha256:7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212",
+          "size": 188
+        },
+        {
+          "digest": "sha256:3214acf345c0cc6bbdb56b698a41ccdefc624a09d6beb0d38b5de0b2303ecaf4",
+          "size": 123
+        },
+        {
+          "digest": "sha256:52630fc75a18675c530ed9eba5f55eca09b03e91bd5bc15307918bbc1a7e7296",
+          "size": 162
+        },
+        {
+          "digest": "sha256:dd64bf2dd177757451a98fcdc999a339c35dee5d9872d8f4dc69c8f3c4dd0112",
+          "size": 80
+        },
+        {
+          "digest": "sha256:b839dfae01f66e15c6a8b63520557ed315bdfe036342fa7a0c537259f10d7a9a",
+          "size": 351
+        },
+        {
+          "digest": "sha256:dcaa5a89b0ccda4b283e16d0b4d0891cd93d5fe05c6798f7806781a6a2d84354",
+          "size": 314
+        },
+        {
+          "digest": "sha256:96ed2737ae312e0bc637b40783f7c2f23416cb72ca957aa01855f1614278e64b",
+          "size": 143347
+        },
+        {
+          "digest": "sha256:feb3f709dbae6557e1b9523b0c99a83408d4a9f646ef7508e69878e59fe1b104",
+          "size": 8093562
+        }
+      ],
+      "runtime_user": "10001:10001",
+      "stamp_present": true,
+      "secret_paths_absent": true,
+      "bundle_bytes_absent": true,
+      "custom_trust_env_absent": true,
+      "application_layer_entries": [
+        [
+          "order-server"
+        ]
+      ],
+      "chain": {
+        "service": "order",
+        "head": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+        "archive_sha256": "5458699a28a312449f54ab471e320e87aa3085c427d408a7b21cb7f723b256fa",
+        "oci_digest": "sha256:f9bd894ecff338fd0db8fdcfdebd14da1ecbb7ce801cd7d9e75721d340788d4d",
+        "config_digest": "sha256:824456a20879a609c3309dc6b06043e3ddbbfa551588869f81abed0ec650e9c8",
+        "reader": "passed",
+        "runtime": "passed",
+        "scan": "passed",
+        "sbom": "passed",
+        "original_archive_unchanged": true,
+        "actual_publish": false
+      },
+      "transport": {
+        "service": "order",
+        "config_bytes_equal": true,
+        "layers": [
+          {
+            "compressed_digest": "sha256:a5789fc40e828c4e7467626e3f69ec5dea8e5da22fe660db8ae6d16f777b0bbf",
+            "uncompressed_digest": "sha256:7223ea1323e8c1159ec17f07d35acc27bdd1cc2bc3ed425b44ef21dac9915db0",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:990a9c434e5e0f11549a8d4a41a1991e621b04e30cd63269adbc97b1dc38fd7e",
+            "uncompressed_digest": "sha256:8fa10c0194df9b7c054c90dbe482585f768a54428fc90a5b78a0066a123b1bba",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:39dc083afc39bd8dc43d456fe7ff7d39292e593bb2769972c11bb2e5f9119386",
+            "uncompressed_digest": "sha256:35b5ba6e08cdd034b8d1920f9c7203e5d66f258e1915f164a01de0af14f34710",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:bf7a4185f01524837d19abde915ffde84e64368b250f5b5e9f6f75aea62a11d4",
+            "uncompressed_digest": "sha256:114dde0fefebbca13165d0da9c500a66190e497a82a53dcaabc3172d630be1e9",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:2780920e5dbfbe103d03a583ed75345306e572ec5a48cb10361f046767d9f29a",
+            "uncompressed_digest": "sha256:4d049f83d9cf21d1f5cc0e11deaf36df02790d0e60c1a3829538fb4b61685368",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212",
+            "uncompressed_digest": "sha256:af5aa97ebe6ce1604747ec1e21af7136ded391bcabe4acef882e718a87c86bcc",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:3214acf345c0cc6bbdb56b698a41ccdefc624a09d6beb0d38b5de0b2303ecaf4",
+            "uncompressed_digest": "sha256:6f1cdceb6a3146f0ccb986521156bef8a422cdbb0863396f7f751f575ba308f4",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:52630fc75a18675c530ed9eba5f55eca09b03e91bd5bc15307918bbc1a7e7296",
+            "uncompressed_digest": "sha256:bd3cdfae1d3fdd83a2231d608969b38b82349777c2fff9a7c12d54f8ac5c9b38",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:dd64bf2dd177757451a98fcdc999a339c35dee5d9872d8f4dc69c8f3c4dd0112",
+            "uncompressed_digest": "sha256:4cde6b0bb6f50a5f255eef7b2a42162c661cf776b803225dcac9a659e396bb6b",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:b839dfae01f66e15c6a8b63520557ed315bdfe036342fa7a0c537259f10d7a9a",
+            "uncompressed_digest": "sha256:ad51d0769d16ba578106a177987dfe3d2e02c1668c852b795b2f6b024068242a",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:dcaa5a89b0ccda4b283e16d0b4d0891cd93d5fe05c6798f7806781a6a2d84354",
+            "uncompressed_digest": "sha256:6e7fbcf090d09b73a4aa85f9dce690d0ace73877c150b7c56955487b6e7a822a",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:96ed2737ae312e0bc637b40783f7c2f23416cb72ca957aa01855f1614278e64b",
+            "uncompressed_digest": "sha256:5904c32f457c96a16c8c68f5ccdf518c8138cd9e5971de9ce6d564fc481af222",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:feb3f709dbae6557e1b9523b0c99a83408d4a9f646ef7508e69878e59fe1b104",
+            "uncompressed_digest": "sha256:623b907071e4ea80e6bb66ace64a7f7b41ae887287fb47db63f51e324d0ef100",
+            "exact_bytes": true
+          }
+        ],
+        "loaded_id": "sha256:824456a20879a609c3309dc6b06043e3ddbbfa551588869f81abed0ec650e9c8",
+        "container_image": "sha256:824456a20879a609c3309dc6b06043e3ddbbfa551588869f81abed0ec650e9c8",
+        "read_only": true,
+        "cap_drop": [
+          "ALL"
+        ],
+        "security_opt": [
+          "no-new-privileges"
+        ],
+        "user": "10001:10001",
+        "wrong_digest_rejected": true,
+        "real_runtime_result": {
+          "archiveSha256": "5458699a28a312449f54ab471e320e87aa3085c427d408a7b21cb7f723b256fa",
+          "capDrop": "ALL",
+          "configDigest": "sha256:824456a20879a609c3309dc6b06043e3ddbbfa551588869f81abed0ec650e9c8",
+          "digest": "sha256:f9bd894ecff338fd0db8fdcfdebd14da1ecbb7ce801cd7d9e75721d340788d4d",
+          "network": "internal",
+          "passed": true,
+          "readOnly": true,
+          "service": "order"
+        }
+      },
+      "trust_leak": {
+        "service": "order",
+        "custom_certificates_distinguished_from_standard": true,
+        "custom_pem_material_absent": true,
+        "full_bundle_absent": true,
+        "custom_secret_source_path_absent": true,
+        "standard_path_alias_not_a_leak": true,
+        "secret_target_paths_absent": true,
+        "actual_proxy_values_absent": true,
+        "all_runtime_layer_files_and_config_checked": true,
+        "standard_runtime_trust_retained": true
+      },
+      "normal_mock_publish": {
+        "service": "order",
+        "identity": "synthetic run 1 attempt 2; not GitHub CI",
+        "real_source_scan": true,
+        "local_record": {
+          "archiveSha256": "5458699a28a312449f54ab471e320e87aa3085c427d408a7b21cb7f723b256fa",
+          "configDigest": "sha256:824456a20879a609c3309dc6b06043e3ddbbfa551588869f81abed0ec650e9c8",
+          "createdAt": "2026-10-11T19:14:59.627891+00:00",
+          "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+          "deploymentAuthorized": false,
+          "imageDigest": "sha256:f9bd894ecff338fd0db8fdcfdebd14da1ecbb7ce801cd7d9e75721d340788d4d",
+          "imagePolicyPassed": true,
+          "imageRepository": "ghcr.io/syuhei0519/backend-app-order",
+          "imageScanSha256": "59ab9ab698fd84c6163512ae86f177b955a9d8b598f9b666a56f896802a30b28",
+          "isolatedRuntimePassed": true,
+          "published": false,
+          "repository": "syuhei0519/backend-app",
+          "runAttempt": 2,
+          "runId": 1,
+          "sbomSha256": "37870c67acab958f2fcd1010e8617fbae4478cbd8075fd29c57c1bcc141cda07",
+          "sbomValidated": true,
+          "scannedAt": "2026-10-11T19:14:24.14607255Z",
+          "schema": "core-platform/github-release/v2",
+          "service": "order",
+          "sourceCommit": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+          "sourcePolicyPassed": true,
+          "sourceScanSha256": "913f4dcc8df4309abef0ad885a82b6346ebf4806e4569a5b73cbf27faeb75054",
+          "validUntil": "2026-10-12T13:06:05.155544+00:00",
+          "workflowRef": "syuhei0519/backend-app/.github/workflows/ci.yml@refs/heads/main"
+        },
+        "mocked_published_record": {
+          "archiveSha256": "5458699a28a312449f54ab471e320e87aa3085c427d408a7b21cb7f723b256fa",
+          "configDigest": "sha256:824456a20879a609c3309dc6b06043e3ddbbfa551588869f81abed0ec650e9c8",
+          "createdAt": "2026-10-11T19:14:59.627891+00:00",
+          "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+          "deploymentAuthorized": false,
+          "imageDigest": "sha256:f9bd894ecff338fd0db8fdcfdebd14da1ecbb7ce801cd7d9e75721d340788d4d",
+          "imagePolicyPassed": true,
+          "imageRepository": "ghcr.io/syuhei0519/backend-app-order",
+          "imageScanSha256": "59ab9ab698fd84c6163512ae86f177b955a9d8b598f9b666a56f896802a30b28",
+          "isolatedRuntimePassed": true,
+          "protectedMain": true,
+          "published": true,
+          "repository": "syuhei0519/backend-app",
+          "runAttempt": 2,
+          "runId": 1,
+          "sbomSha256": "37870c67acab958f2fcd1010e8617fbae4478cbd8075fd29c57c1bcc141cda07",
+          "sbomValidated": true,
+          "scannedAt": "2026-10-11T19:14:24.14607255Z",
+          "schema": "core-platform/github-release/v2",
+          "service": "order",
+          "sourceCommit": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+          "sourcePolicyPassed": true,
+          "sourceScanSha256": "913f4dcc8df4309abef0ad885a82b6346ebf4806e4569a5b73cbf27faeb75054",
+          "validUntil": "2026-10-12T13:06:05.155544+00:00",
+          "workflowRef": "syuhei0519/backend-app/.github/workflows/ci.yml@refs/heads/main"
+        },
+        "actual_registry_or_github_writes": false,
+        "fixed_consumers": [
+          "M0",
+          "M1"
+        ],
+        "same_original_archive": true,
+        "negative_tampering_rejected": [
+          ".oci/image.tar",
+          ".security/public/sbom.cdx.json",
+          ".security/public/image-scan.json"
+        ],
+        "real_local_validator_calls": 1,
+        "rebuild": false
+      },
+      "scan_summary": {
+        "schemaVersion": 1,
+        "pass": true,
+        "trivyVersion": "0.75.0",
+        "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+        "scannedAt": "2026-10-11T19:14:24.14607255Z",
+        "findings": [
+          {
+            "kind": "vulnerability",
+            "rule": "DLA-4792-1",
+            "path": "image/os",
+            "package": "tzdata",
+            "installedVersion": "2026b-0+deb12u1",
+            "fixedVersion": "2026c-0+deb12u1",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78667",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "HIGH",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78669",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "HIGH",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-97031",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "HIGH",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-56866",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78663",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-94439",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-94448",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-97032",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-56857",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "LOW",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78659",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78660",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-94440",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-97030",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          }
+        ],
+        "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+      },
+      "sbom_proof": {
+        "format": "CycloneDX",
+        "specVersion": "1.7",
+        "sha256": "37870c67acab958f2fcd1010e8617fbae4478cbd8075fd29c57c1bcc141cda07",
+        "configDigest": "sha256:824456a20879a609c3309dc6b06043e3ddbbfa551588869f81abed0ec650e9c8",
+        "componentCount": 15,
+        "scannedPackageCount": 13
+      },
+      "raw_scan_image_id": "sha256:824456a20879a609c3309dc6b06043e3ddbbfa551588869f81abed0ec650e9c8"
+    }
+  },
+  "cold_build_matrix": {
+    "valid": {
+      "results": [
+        {
+          "service": "backend",
+          "dockerfile": "Dockerfile",
+          "started_at": "2026-10-11T19:08:46Z",
+          "ended_at": "2026-10-11T19:11:40Z",
+          "exit_code": 0,
+          "size": 15378432,
+          "sha256": "d9fc0cf9c865659ec6cbb57ca5f605b3f196e8c2016edd8c766a06ac46e0de36",
+          "dependency_vertex_observed": true,
+          "dependency_cache_hit": false,
+          "other_cache_hits": 0
+        },
+        {
+          "service": "order",
+          "dockerfile": "Dockerfile.order",
+          "started_at": "2026-10-11T19:11:40Z",
+          "ended_at": "2026-10-11T19:13:30Z",
+          "exit_code": 0,
+          "size": 8831488,
+          "sha256": "5458699a28a312449f54ab471e320e87aa3085c427d408a7b21cb7f723b256fa",
+          "dependency_vertex_observed": true,
+          "dependency_cache_hit": false,
+          "other_cache_hits": 3
+        }
+      ],
+      "fresh_worker": true,
+      "no_cache_requested": true,
+      "boundary": {
+        "network": "bridge",
+        "privileged": false,
+        "cap_add": null,
+        "user": "1000:1000",
+        "apparmor": "",
+        "security_opt": [
+          "seccomp=unconfined"
+        ],
+        "masked_paths": [],
+        "readonly_paths": []
+      }
+    },
+    "missing": {
+      "results": [
+        {
+          "service": "backend",
+          "dockerfile": "Dockerfile",
+          "started_at": "2026-10-11T19:13:55Z",
+          "ended_at": "2026-10-11T19:15:36Z",
+          "exit_code": 1,
+          "dependency_vertex_observed": true,
+          "dependency_cache_hit": false,
+          "other_cache_hits": 0,
+          "observed_failure": "dependency RUN TLS unknown authority"
+        },
+        {
+          "service": "order",
+          "dockerfile": "Dockerfile.order",
+          "started_at": "2026-10-11T19:15:36Z",
+          "ended_at": "2026-10-11T19:15:53Z",
+          "exit_code": 1,
+          "dependency_vertex_observed": true,
+          "dependency_cache_hit": false,
+          "other_cache_hits": 3,
+          "observed_failure": "dependency RUN TLS unknown authority"
+        }
+      ],
+      "fresh_worker": true,
+      "no_cache_requested": true,
+      "boundary": {
+        "network": "bridge",
+        "privileged": false,
+        "cap_add": null,
+        "user": "1000:1000",
+        "apparmor": "",
+        "security_opt": [
+          "seccomp=unconfined"
+        ],
+        "masked_paths": [],
+        "readonly_paths": []
+      }
+    },
+    "empty": {
+      "results": [
+        {
+          "service": "backend",
+          "dockerfile": "Dockerfile",
+          "started_at": "2026-10-11T19:16:08Z",
+          "ended_at": "2026-10-11T19:17:38Z",
+          "exit_code": 1,
+          "dependency_vertex_observed": true,
+          "dependency_cache_hit": false,
+          "other_cache_hits": 0,
+          "observed_failure": "explicit empty bundle guard"
+        },
+        {
+          "service": "order",
+          "dockerfile": "Dockerfile.order",
+          "started_at": "2026-10-11T19:17:38Z",
+          "ended_at": "2026-10-11T19:17:56Z",
+          "exit_code": 1,
+          "dependency_vertex_observed": true,
+          "dependency_cache_hit": false,
+          "other_cache_hits": 3,
+          "observed_failure": "explicit empty bundle guard"
+        }
+      ],
+      "fresh_worker": true,
+      "no_cache_requested": true,
+      "boundary": {
+        "network": "bridge",
+        "privileged": false,
+        "cap_add": null,
+        "user": "1000:1000",
+        "apparmor": "",
+        "security_opt": [
+          "seccomp=unconfined"
+        ],
+        "masked_paths": [],
+        "readonly_paths": []
+      }
+    },
+    "invalid": {
+      "results": [
+        {
+          "service": "backend",
+          "dockerfile": "Dockerfile",
+          "started_at": "2026-10-11T19:18:11Z",
+          "ended_at": "2026-10-11T19:19:41Z",
+          "exit_code": 1,
+          "dependency_vertex_observed": true,
+          "dependency_cache_hit": false,
+          "other_cache_hits": 0,
+          "observed_failure": "dependency RUN TLS unknown authority"
+        },
+        {
+          "service": "order",
+          "dockerfile": "Dockerfile.order",
+          "started_at": "2026-10-11T19:19:41Z",
+          "ended_at": "2026-10-11T19:20:00Z",
+          "exit_code": 1,
+          "dependency_vertex_observed": true,
+          "dependency_cache_hit": false,
+          "other_cache_hits": 3,
+          "observed_failure": "dependency RUN TLS unknown authority"
+        }
+      ],
+      "fresh_worker": true,
+      "no_cache_requested": true,
+      "boundary": {
+        "network": "bridge",
+        "privileged": false,
+        "cap_add": null,
+        "user": "1000:1000",
+        "apparmor": "",
+        "security_opt": [
+          "seccomp=unconfined"
+        ],
+        "masked_paths": [],
+        "readonly_paths": []
+      }
+    },
+    "nonexistent": {
+      "results": [
+        {
+          "service": "backend",
+          "dockerfile": "Dockerfile",
+          "started_at": "2026-10-11T19:20:15Z",
+          "ended_at": "2026-10-11T19:20:16Z",
+          "exit_code": 1,
+          "dependency_vertex_observed": false,
+          "dependency_cache_hit": false,
+          "other_cache_hits": 0,
+          "observed_failure": "buildctl missing secret source path"
+        },
+        {
+          "service": "order",
+          "dockerfile": "Dockerfile.order",
+          "started_at": "2026-10-11T19:20:16Z",
+          "ended_at": "2026-10-11T19:20:16Z",
+          "exit_code": 1,
+          "dependency_vertex_observed": false,
+          "dependency_cache_hit": false,
+          "other_cache_hits": 0,
+          "observed_failure": "buildctl missing secret source path"
+        }
+      ],
+      "fresh_worker": true,
+      "no_cache_requested": true,
+      "boundary": {
+        "network": "bridge",
+        "privileged": false,
+        "cap_add": null,
+        "user": "1000:1000",
+        "apparmor": "",
+        "security_opt": [
+          "seccomp=unconfined"
+        ],
+        "masked_paths": [],
+        "readonly_paths": []
+      }
+    }
+  },
+  "production_matrix_normal": {
+    "status": "passed",
+    "identity": "synthetic run 1 attempt 2",
+    "both_actual_oci_archives": true,
+    "distinct_archive_config_image": true,
+    "same_measured_source_scan": true,
+    "real_ci_execution": false
+  },
+  "real_source_scan_summary": {
+    "schemaVersion": 1,
+    "pass": true,
+    "trivyVersion": "0.75.0",
+    "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+    "scannedAt": "2026-10-11T19:12:51.023533648Z",
+    "findings": [
+      {
+        "kind": "vulnerability",
+        "rule": "CVE-2026-78669",
+        "path": "go.mod",
+        "package": "golang.org/x/net",
+        "installedVersion": "v0.59.0",
+        "fixedVersion": "0.60.0",
+        "severity": "HIGH",
+        "decision": "warning"
+      },
+      {
+        "kind": "vulnerability",
+        "rule": "CVE-2026-78663",
+        "path": "go.mod",
+        "package": "golang.org/x/net",
+        "installedVersion": "v0.59.0",
+        "fixedVersion": "0.60.0",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "vulnerability",
+        "rule": "CVE-2026-97032",
+        "path": "go.mod",
+        "package": "golang.org/x/net",
+        "installedVersion": "v0.59.0",
+        "fixedVersion": "0.60.0",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "vulnerability",
+        "rule": "CVE-2026-78659",
+        "path": "go.mod",
+        "package": "golang.org/x/net",
+        "installedVersion": "v0.59.0",
+        "fixedVersion": "0.60.0",
+        "severity": "UNKNOWN",
+        "decision": "warning"
+      },
+      {
+        "kind": "vulnerability",
+        "rule": "CVE-2026-78660",
+        "path": "go.mod",
+        "package": "golang.org/x/net",
+        "installedVersion": "v0.59.0",
+        "fixedVersion": "0.60.0",
+        "severity": "UNKNOWN",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "DS-0026",
+        "path": "Dockerfile",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "DS-0026",
+        "path": "Dockerfile.order",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "DS-0001",
+        "path": "ci/oci-smoke/Dockerfile",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "DS-0002",
+        "path": "ci/oci-smoke/Dockerfile",
+        "severity": "HIGH",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "DS-0026",
+        "path": "ci/oci-smoke/Dockerfile",
+        "severity": "LOW",
+        "decision": "warning"
+      }
+    ],
+    "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+  },
+  "consumer_values": {
+    "fresh_M0_vendored_payloads_equal": 9,
+    "fresh_M0_M1_consumer_bytes_equal": true,
+    "producer_and_consumer_patch_output_equal": [
+      "M0 Account",
+      "M1 Account",
+      "M1 Order"
+    ],
+    "M0_Order_values_absent": true,
+    "M1_Order_values_disabled_preserved": true
+  },
+  "p0_deployment_addendum": {
+    "old_revision": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+    "new_revision": "482ba450983ac2929f8176374d0d6ca50a69cac6",
+    "new_tree": "566f72d09bbbd567f2ebfefdde6d353587a9d4c6",
+    "rendered_resources_equal": true,
+    "names": [
+      "lab-local-postgresql",
+      "lab-local-backend",
+      "lab-local-frontend"
+    ],
+    "order_enabled": false,
+    "actual_deployment": false
+  },
+  "findings": [
+    {
+      "id": "R-B2-1",
+      "severity": "P2",
+      "blocking": true,
+      "location": "ci/github/release.py:141-150",
+      "related_locations": [
+        "ci/github/release.py:160-164",
+        "ci/github/release.py:197-205",
+        "ci/github/matrix-result.py:20-27"
+      ],
+      "expected": "Reject scan summary belonging to other image before record/matrix/publication",
+      "actual": {
+        "probe": "actual cross-service image-scan summary replacement before record",
+        "source_service": "order",
+        "target_service": "backend",
+        "accepted": true,
+        "all_local_publish_guards_passed": true,
+        "actual_matrix_accepted_mixed_scan": true,
+        "own_scan_sha256": "3e9d604b3e4da77c4a4ab531100422e5873750dd20e871a298958e0ad1f87735",
+        "foreign_scan_sha256": "59ab9ab698fd84c6163512ae86f177b955a9d8b598f9b666a56f896802a30b28",
+        "config_digest": "sha256:ffc1c63cfa7133850ffb032bc1631fabd1595bc0b838cc94d76897b55c8ad90f",
+        "archive_sha256": "d9fc0cf9c865659ec6cbb57ca5f605b3f196e8c2016edd8c766a06ac46e0de36",
+        "image_digest": "sha256:cae0234316f743cea4e12e69bcb3fff3d4dbb0c4078d6cf5784f6b72854102f9",
+        "sbom_sha256": "53490c21d101f455a12fb98b57a06380927459bc31cc2dea34a748478f691944",
+        "no_registry_or_api_operations": true
+      },
+      "limitation": "Input-mixing boundary probe; not a claim of unauthenticated artifact access or a current normal-workflow misrouting",
+      "fix_condition": "Bind scan output to validated OCI config and same scan/SBOM input, enforce before record and publication, add cross-service pre-record mixing tests."
+    }
+  ],
+  "unverified": [
+    "real GHCR publication",
+    "actual cluster/kind deployment",
+    "product AC3 Service/Synced/Healthy/imageID",
+    "external automation",
+    "formal Manager Readiness",
+    "aggregate Issue Completion",
+    "private-original equivalence"
+  ],
+  "cleanup": {
+    "owned_containers_networks_and_fixture_volumes_removed": true,
+    "remaining_task_prefixed_containers": 0,
+    "source_tracked_clean": true
+  },
+  "github": {
+    "observed_at": "2026-10-11T19:09:02.052787+00:00",
+    "policy_valid_until": "2026-10-11T19:54:02.052787+00:00",
+    "validity_rationale": "45 minutes for mutable policy, plus mandatory immediate-operation refresh; no extension of original Test context.",
+    "PR": {
+      "head": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+      "base": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+      "state": "open",
+      "draft": true
+    },
+    "CI": [
+      {
+        "id": 38163584094,
+        "head_sha": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+        "event": "pull_request",
+        "conclusion": "success"
+      },
+      {
+        "id": 38163580249,
+        "head_sha": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+        "event": "push",
+        "conclusion": "success"
+      }
+    ],
+    "checks": [
+      {
+        "name": "propose",
+        "conclusion": "skipped"
+      },
+      {
+        "name": "publish",
+        "conclusion": "skipped"
+      },
+      {
+        "name": "ci-result",
+        "conclusion": "success"
+      },
+      {
+        "name": "propose",
+        "conclusion": "skipped"
+      },
+      {
+        "name": "publish",
+        "conclusion": "skipped"
+      },
+      {
+        "name": "ci-result",
+        "conclusion": "success"
+      },
+      {
+        "name": "image (backend)",
+        "conclusion": "success"
+      },
+      {
+        "name": "image (order)",
+        "conclusion": "success"
+      },
+      {
+        "name": "image (backend)",
+        "conclusion": "success"
+      },
+      {
+        "name": "image (order)",
+        "conclusion": "success"
+      },
+      {
+        "name": "docs",
+        "conclusion": "skipped"
+      },
+      {
+        "name": "validate",
+        "conclusion": "success"
+      },
+      {
+        "name": "docs",
+        "conclusion": "skipped"
+      },
+      {
+        "name": "validate",
+        "conclusion": "success"
+      },
+      {
+        "name": "classify",
+        "conclusion": "success"
+      },
+      {
+        "name": "classify",
+        "conclusion": "success"
+      }
+    ],
+    "ruleset": {
+      "id": 24733411,
+      "rules": [
+        {
+          "type": "deletion"
+        },
+        {
+          "type": "non_fast_forward"
+        },
+        {
+          "type": "pull_request",
+          "parameters": {
+            "required_approving_review_count": 0,
+            "dismiss_stale_reviews_on_push": true,
+            "required_reviewers": [],
+            "require_code_owner_review": false,
+            "require_last_push_approval": false,
+            "required_review_thread_resolution": true,
+            "require_extra_approval_for_unattributed_changes": true,
+            "allowed_merge_methods": [
+              "merge",
+              "squash",
+              "rebase"
+            ]
+          }
+        },
+        {
+          "type": "required_status_checks",
+          "parameters": {
+            "strict_required_status_checks_policy": true,
+            "do_not_enforce_on_create": false,
+            "required_status_checks": [
+              {
+                "context": "ci-result"
+              }
+            ]
+          }
+        }
+      ],
+      "bypass_actors": [],
+      "historic_config_semantic_match": true,
+      "only_serialization_difference": "created_at/updated_at equivalent UTC offset representation"
+    },
+    "human_reviewers_per_environment": {
+      "ghcr-publish": 1,
+      "manifest-update": 1
+    },
+    "both_environment_branches": [
+      "main"
+    ],
+    "required_approval_count": 0,
+    "reviews_observed": 0,
+    "tokens_read_or_modified": false,
+    "zip_or_raw_logs_download_attempted": false,
+    "P0_CI_independently_fetched": {
+      "conclusion": "success",
+      "event": "push",
+      "head_sha": "482ba450983ac2929f8176374d0d6ca50a69cac6",
+      "id": 38166532698,
+      "run_attempt": 1,
+      "status": "completed"
+    }
+  }
+}
