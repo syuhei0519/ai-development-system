@@ -1,0 +1,44 @@
+Independent Test attempt 2, same-attempt integration supplement.
+Fixed new head a7fdcd3df53260f67a9040878a131d101fb5b32b
+Fixed new base 8afe6044857783dbf6d6ae7ac9459ae5e890a744
+Expected tree 8c57b1a49781424d3b1be5af52b3d7d02727ae77
+Old Test2 Handoff and all 76 original files are unchanged under prior/.
+Original issue/AC, retry Test1 and Implementation3 history remain unchanged.
+The new root supplement binds this history and current independent evidence;
+it is not a new execution attempt or a rewritten old-head success.
+
+In fixed HEAD and BASE:
+python -m unittest discover -s tests -v
+Expected HEAD229, BASE181 pass.
+Run the eight non-install/non-unittest CLI steps of fixed HEAD's
+.github/workflows/validate.yml. All pass, with readiness/completion examples
+explicitly synthetic historical REPLAY (not actual IssueCompletion).
+python SUPPLEMENT/prior/input/input/input/independent_probe.py HEAD RESULTS LEGACY10 LEGACY11
+python SUPPLEMENT/prior/input/input/review_probe.py HEAD RESULTS
+python SUPPLEMENT/prior/input/input/preparation_probe.py HEAD RESULTS
+python SUPPLEMENT/prior/boundary_probe.py HEAD RESULTS
+Expected 245/43/3/49 pass. LEGACY10=df400018057735b7cb6a9c6ea4619508f0e6ba3a;
+LEGACY11=b1e606544174481b7b6904f811e857f80978c287.
+Historical hard-coded harness head metadata remains unchanged; current
+invocation target is documented in regression-summary.json.
+
+B1 manifest/publication: prior/input/input/input/input/b1-manifest.json and
+b1-publication-receipt.json. Use a separately supplied current Manager
+authorization and independent pin:
+python HEAD/scripts/consume_delivery.py --manifest B1_MANIFEST --publication B1_PUBLICATION --authorization PRIVATE_AUTH --authorization-sha256 MANAGER_PIN --consumer APPROVED_CONSUMER --scope system/artifact-delivery/cross-reference --purpose contract-review --output NEW_PRIVATE_OUTPUT
+Repeat with new output and --verify-receipt FIRST_OUTPUT/consumption-receipt.json.
+Observed 17 objects / 89071 bytes and six tree leaves, equal to prior old-head
+bytes. Do not execute application code or infer product success/restart authority.
+
+The separately delivered Producer integration70 bundle was formally consumed
+with new canonical main before use; producer-input-observation.json and its
+exact outer records identify the original fixed-Git source namespace. This
+bundle retains all Test dependency bytes under prior/; it does not pretend to
+be a rewritten local copy of that separate Producer source bundle.
+
+CI push38115236408 / PR38115238873 run/job/steps succeeded at new head.
+Fetched test-merge4b2a9a958f763da782de0fbb6e609dc5b7b99fed has parents new base
+and new head and the same tree. Exact runner checkout remains unverified;
+workflow default checkout behavior is an inference, not log observation.
+No denied-log bypass, code edits, PR change, merge, application execution or
+IssueCompletion. Publication requires separate bounded Manager authority.

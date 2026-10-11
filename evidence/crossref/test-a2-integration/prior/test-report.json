@@ -1,0 +1,80 @@
+{
+  "record_type": "independent_test_attempt2_report",
+  "role": "test",
+  "attempt": 2,
+  "head": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+  "base": "b1e606544174481b7b6904f811e857f80978c287",
+  "status": "completed",
+  "outcome": "Assigned independent verification passed; R-1 reproduced at old head and resolved at fixed head. No new implementation defect found.",
+  "requirements": [
+    {
+      "id": "X-1",
+      "result": "pass",
+      "verified": "Explicit 1.2 version, structural owner/slot and original locator/revision/typed target. Missing/extra/duplicate/conflicting slots and legacy new-type rejection.",
+      "evidence": "test245.json; head test_crossref_delivery; legacy 1.0/1.1 subprocess cases"
+    },
+    {
+      "id": "X-2",
+      "result": "pass",
+      "verified": "Full fixed Git blob/dependency retrieval, raw bytes/size/hash, canonical URL, ancestry and role/task/attempt/retry Issue; no redirect or arbitrary source URL.",
+      "evidence": "test245.json; boundaries.json; delivery-observation.json"
+    },
+    {
+      "id": "X-3",
+      "result": "pass",
+      "verified": "Separate typed raw commit object, Git OID/type/size/SHA256 and receipt/output representation. No descendant/build inference.",
+      "evidence": "test245.json commit cases; CommitGitTests; actual B1 output oracle"
+    },
+    {
+      "id": "X-4",
+      "result": "pass",
+      "verified": "Four-record versions; independent private Manager pins; scope/consumer/purpose/expiry/representations; authority=false and no partial output.",
+      "evidence": "test245.json authorization/CLI; review43.json exact expiry; actual CLI/fresh"
+    },
+    {
+      "id": "X-5",
+      "result": "pass",
+      "verified": "176 current regressions and unchanged base128; prior Test245 and Review43 independently executed; old/new original preparation probes and 49 new boundaries.",
+      "evidence": "regression-summary.json; old-preparation.json; new-preparation.json; boundaries.json"
+    },
+    {
+      "id": "X-6",
+      "result": "pass",
+      "verified": "Immutable public B1 root/upstream dependencies and code commit fetched formally by CLI and fresh receipt recheck.",
+      "evidence": "delivery-observation.json"
+    },
+    {
+      "id": "X-7",
+      "result": "pass",
+      "verified": "Strict candidate profile and producer artifact/raw locator/ID/domain/source bindings; pending does not authorize; no provenance-only relaxation.",
+      "evidence": "test245.json candidate/binding/downgrade; review43.json; boundaries.json"
+    },
+    {
+      "id": "X-8",
+      "result": "pass",
+      "verified": "Complete Git tree snapshots, all normal leaf bytes/path/mode/OID/size/hash, ancestors, omission/extra/duplicates/truncation/special modes and fail-closed bounds.",
+      "evidence": "test245.json tree oracle/faults; review43.json; actual six-leaf B1 snapshot"
+    },
+    {
+      "id": "X-9",
+      "result": "pass",
+      "verified": "B1 17 objects/89071 bytes unchanged; CLI and fresh fetch, old validators, schema/docs/regression and safety gates separated.",
+      "evidence": "delivery-observation.json; ci-integration-observation.json; regression-summary.json"
+    }
+  ],
+  "repair_evaluation": "Only production change from old head is route-segment selection at parts[5], followed by unchanged canonical fixed_url and safe_path validation. No URL parsing relaxation; unknown/malformed/type variants reject.",
+  "findings": [],
+  "ci_limit": "Run/job/step success verified. Exact CI runtime checkout remains unverified because logs were forbidden and not bypassed. Local fixed-head testing and fetched test-merge tree equality are separate evidence.",
+  "remaining": [
+    "Independent Review of repaired head and Manager gates.",
+    "If mandatory, exact CI checkout proof must be provided through an authorized evidence path.",
+    "Candidate is unpublished; Manager safety/publication decision and fresh consumer authorization remain separate."
+  ],
+  "boundaries": [
+    "No application execution, B1 product AC pass, source truth/semantic validity, Knowledge adoption, B1 restart, merge/deploy or IssueCompletion judgment.",
+    "No source edits, push, PR mutation, extra agent, new API/service, Secrets/Ruleset/access changes.",
+    "Synthetic fault injection and local Git routing are isolated tests; resource ceilings tested by bounded/lowered limits, not maximum network pack consumption.",
+    "Historical publication approval unverified preserved; verified public derivatives do not prove private originals.",
+    "Periodic Knowledge remains deferred; no scheduler or backlog operation performed."
+  ]
+}

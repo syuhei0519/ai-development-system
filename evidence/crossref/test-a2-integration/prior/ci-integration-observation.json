@@ -1,0 +1,196 @@
+{
+  "record_type": "edited_independent_ci_observation",
+  "observed_at": "2026-10-11T05:29:05.370352+00:00",
+  "valid_until": "2026-10-18T00:00:00Z",
+  "head": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+  "base": "b1e606544174481b7b6904f811e857f80978c287",
+  "pr": {
+    "baseRefName": "main",
+    "headRefName": "feat/artifact-delivery-crossrefs-a2",
+    "headRefOid": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+    "isDraft": true,
+    "mergeCommit": null,
+    "mergedAt": null,
+    "number": 7,
+    "potentialMergeCommit": {
+      "oid": "e070cdc9bce02efc42c78e08637444b32e733398"
+    },
+    "state": "OPEN",
+    "url": "https://github.com/syuhei0519/ai-development-system/pull/7"
+  },
+  "runs": [
+    {
+      "event": "push",
+      "headSha": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38113999767",
+      "createdAt": "2026-10-11T05:11:39Z",
+      "updatedAt": "2026-10-11T05:12:05Z",
+      "jobs": [
+        {
+          "name": "validate",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python -m pip install -r requirements-dev.txt",
+              "conclusion": "success"
+            },
+            {
+              "name": "All contracts and delivery/retry regressions",
+              "conclusion": "success"
+            },
+            {
+              "name": "Delivery schema and pinned sample consistency",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_handoff.py examples/research-to-test/research.handoff.json examples/research-to-test/test.blocked.handoff.json examples/research-to-test/test.handoff.json examples/failed.handoff.json examples/partial-assignment.handoff.json",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_knowledge.py examples/knowledge/input.json examples/knowledge/handoff.json examples/knowledge/context.json examples/knowledge-delivery/input.json examples/knowledge-delivery/handoff.json examples/knowledge-delivery/context.json",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/pr-ready-issue-unverified.json --context examples/readiness/context.json --handoff examples/readiness/manager.handoff.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/implementation-only.json --context examples/readiness/automatic-context.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/postdeploy-achieved.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "event": "pull_request",
+      "headSha": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38114002107",
+      "createdAt": "2026-10-11T05:11:42Z",
+      "updatedAt": "2026-10-11T05:12:02Z",
+      "jobs": [
+        {
+          "name": "validate",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python -m pip install -r requirements-dev.txt",
+              "conclusion": "success"
+            },
+            {
+              "name": "All contracts and delivery/retry regressions",
+              "conclusion": "success"
+            },
+            {
+              "name": "Delivery schema and pinned sample consistency",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_handoff.py examples/research-to-test/research.handoff.json examples/research-to-test/test.blocked.handoff.json examples/research-to-test/test.handoff.json examples/failed.handoff.json examples/partial-assignment.handoff.json",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_knowledge.py examples/knowledge/input.json examples/knowledge/handoff.json examples/knowledge/context.json examples/knowledge-delivery/input.json examples/knowledge-delivery/handoff.json examples/knowledge-delivery/context.json",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/pr-ready-issue-unverified.json --context examples/readiness/context.json --handoff examples/readiness/manager.handoff.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/implementation-only.json --context examples/readiness/automatic-context.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/postdeploy-achieved.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "test_merge": {
+    "commit": "e070cdc9bce02efc42c78e08637444b32e733398",
+    "parents": [
+      "b1e606544174481b7b6904f811e857f80978c287",
+      "520ef1e7a59662fe3e58d49d5510350ee08c3160"
+    ],
+    "tree": "a5254319f67f03d30dfcfe49dea3340be582ae38",
+    "tree_equals_head": true
+  },
+  "workflow_revision": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+  "limits": [
+    "Allowed run/job/step metadata only. No forbidden log download attempted or bypassed. Actual CI checkout SHA and test count are not independently log-verified.",
+    "Current test-merge parents/tree and checked workflow support applicability, not proof of the historical runner checkout. If exact CI checkout proof is a mandatory Manager gate it remains unverified.",
+    "Independent Test results are separate from CI; no new-head independent Review or GitHub protection/queue readiness judgment is made."
+  ],
+  "gate_states": {
+    "independent_test": "verified",
+    "ci_run_job_step": "verified",
+    "ci_exact_checkout": "unverified",
+    "new_head_independent_review": "pending",
+    "main_integration": "pending",
+    "merge_readiness": "not_assessed",
+    "b1_product_ac": "unverified",
+    "b1_restart": "not_authorized",
+    "issue_completion": "unverified",
+    "publication": "not_performed"
+  }
+}

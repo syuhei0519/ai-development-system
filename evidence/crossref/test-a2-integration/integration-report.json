@@ -1,0 +1,34 @@
+{
+  "record_type": "independent_test2_same_attempt_integration_recheck",
+  "role": "test",
+  "attempt": 2,
+  "scope": "system/artifact-delivery/cross-reference",
+  "head": "a7fdcd3df53260f67a9040878a131d101fb5b32b",
+  "base": "8afe6044857783dbf6d6ae7ac9459ae5e890a744",
+  "tree": "8c57b1a49781424d3b1be5af52b3d7d02727ae77",
+  "independent_recheck_result": "PASS",
+  "combined_handoff_state": "Final same-attempt integration supplement binds unchanged prior Test2 Handoff; no replacement Handoff, retry increment or reset.",
+  "old_result_preserved": {
+    "head": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+    "payload_commit": "689c846c3981471db7cbd33ea686e3862d025861",
+    "records_commit": "4c112bac7d10cc33654ce8c25cb57de0d194e03f",
+    "handoff_sha256": "1956bd25e14609f7584b0289cb63ea07f2b0aa4cceec7dd6ee302c2fb42aa52a",
+    "status": "completed",
+    "unchanged": true
+  },
+  "result": "229 combined regressions, new-base181, original Test245/Review43/preparation3/independent boundary49 and all workflow CLI validations pass. Actual B1 CLI/fresh recheck 17 objects/89071 bytes unchanged. No defect found.",
+  "diff": "New head parents exactly old reviewed head plus new main. All 50 incoming paths equal base-change set; 48 final files equal new base, both overlapping README files are exactly new base plus unchanged feature append-only suffix. Delivery production code and validators unchanged from old reviewed head.",
+  "requirements": "Original X-1..6 and supplemental X-7..9 remain unchanged. All prior assigned normal/negative/boundary probes re-executed on new head; aggregate53 tests are added to prior176, not substituted.",
+  "history": "Same Test attempt 2 integration extension only; no counter reset or new attempt. Old test/findings/producer/review history preserved.",
+  "producer_input": "New canonical main Consumer CLI verified all 70 Producer files/803254 bytes before use. Internal supplement artifact pins and 62 prior public files independently matched. Producer claims compared with already completed independent measurements.",
+  "remaining": [
+    "Independent Review must bind this verified new-head Test2 supplement and prior Handoff.",
+    "CI actual runner checkout remains unverified; Manager decides whether additional authorized evidence is mandatory.",
+    "Manager readiness, PR7 merge/integration and product acceptance remain separate gates."
+  ],
+  "constraints": [
+    "No implementation edits, push, PR change, merge, application execution or deployment during this integration recheck.",
+    "No extra Agent/API/service, authorization self-issuance or log-denial bypass.",
+    "No B1 product AC, source truth, Knowledge adoption, implementation restart, readiness or IssueCompletion assertion."
+  ]
+}

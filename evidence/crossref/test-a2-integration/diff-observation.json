@@ -1,0 +1,327 @@
+{
+  "record_type": "independent_same_attempt_integration_diff",
+  "old_head": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+  "new_head": "a7fdcd3df53260f67a9040878a131d101fb5b32b",
+  "old_base": "b1e606544174481b7b6904f811e857f80978c287",
+  "new_base": "8afe6044857783dbf6d6ae7ac9459ae5e890a744",
+  "new_head_tree": "8c57b1a49781424d3b1be5af52b3d7d02727ae77",
+  "new_head_parents": [
+    "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+    "8afe6044857783dbf6d6ae7ac9459ae5e890a744"
+  ],
+  "new_base_parents": [
+    "b1e606544174481b7b6904f811e857f80978c287",
+    "b6d446ceb072e3a6d137318175bb672155d9b206"
+  ],
+  "incoming_paths_exactly_equal_actual": true,
+  "feature_delta_paths_equal": true,
+  "overlap": [
+    "README.md",
+    "contracts/README.md"
+  ],
+  "files": [
+    {
+      "path": ".github/workflows/validate.yml",
+      "new_base_oid": "a81afea073438b8c8992159e8cf286c19bc83640",
+      "new_head_oid": "a81afea073438b8c8992159e8cf286c19bc83640",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "README.md",
+      "new_base_oid": "e0b6a392668142651e4a6ee1fe9064fbe8efffb7",
+      "new_head_oid": "0ad9111018811f8ba5bd7fe77aeb6e0176c81b30",
+      "identical_to_new_base": false
+    },
+    {
+      "path": "agents/implementation.md",
+      "new_base_oid": "b7b4bd0007570dc22ea02c7967503b6af694fffe",
+      "new_head_oid": "b7b4bd0007570dc22ea02c7967503b6af694fffe",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "agents/manager.md",
+      "new_base_oid": "d9a8dbc2398da6a668dfd1bec91a4cc12b835537",
+      "new_head_oid": "d9a8dbc2398da6a668dfd1bec91a4cc12b835537",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "agents/research-design.md",
+      "new_base_oid": "e9640bc7b559270a58288b0cc9fb9d3f1d28baa5",
+      "new_head_oid": "e9640bc7b559270a58288b0cc9fb9d3f1d28baa5",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "agents/review.md",
+      "new_base_oid": "6d605e29d29f89766400ac183c97cc2a05c0af7a",
+      "new_head_oid": "6d605e29d29f89766400ac183c97cc2a05c0af7a",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "agents/test.md",
+      "new_base_oid": "63089b0deed30ace9d470887b376c3fba584c1e6",
+      "new_head_oid": "63089b0deed30ace9d470887b376c3fba584c1e6",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "contracts/README.md",
+      "new_base_oid": "4cd5a5d0bfc13e76f9b6960fe8b23d286341bb29",
+      "new_head_oid": "fee48da9002aa5696306c3e6dd837808e975fa27",
+      "identical_to_new_base": false
+    },
+    {
+      "path": "contracts/issue-completion-context.schema.json",
+      "new_base_oid": "f2cb96a34b2ab3b57caeb2abecae2386fdc9b63e",
+      "new_head_oid": "f2cb96a34b2ab3b57caeb2abecae2386fdc9b63e",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "contracts/issue-completion.md",
+      "new_base_oid": "cb1bb1503a60bf24474f8cdb4b113dd9069cc8d8",
+      "new_head_oid": "cb1bb1503a60bf24474f8cdb4b113dd9069cc8d8",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "contracts/issue-completion.schema.json",
+      "new_base_oid": "40aa96cd9b2995f492fcd496d209cfadfa059031",
+      "new_head_oid": "40aa96cd9b2995f492fcd496d209cfadfa059031",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "contracts/readiness.md",
+      "new_base_oid": "fe528870bcf295f7ae2c866080fa42d8c218113a",
+      "new_head_oid": "fe528870bcf295f7ae2c866080fa42d8c218113a",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/README.md",
+      "new_base_oid": "ab0b32b93d274ad9daa9d8b8713545190c664f62",
+      "new_head_oid": "ab0b32b93d274ad9daa9d8b8713545190c664f62",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/app-context.json",
+      "new_base_oid": "a670b452e19a4bc94e1592b86e747db5b246cbac",
+      "new_head_oid": "a670b452e19a4bc94e1592b86e747db5b246cbac",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/app-handoff.json",
+      "new_base_oid": "779c42d49d5d188e4d7002aee7e86e161a72c02c",
+      "new_head_oid": "779c42d49d5d188e4d7002aee7e86e161a72c02c",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/app-merge-observation.json",
+      "new_base_oid": "6db0095300f7c173d9c22c9819e1dfe24257e2cb",
+      "new_head_oid": "6db0095300f7c173d9c22c9819e1dfe24257e2cb",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/app-pre-observation.json",
+      "new_base_oid": "c8ca4f5f204bb5de2be4c9f00402ee7acedd2c69",
+      "new_head_oid": "c8ca4f5f204bb5de2be4c9f00402ee7acedd2c69",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/app-readiness.json",
+      "new_base_oid": "9573ef23ff293c23eeaf2ce16719cd97477efd8d",
+      "new_head_oid": "9573ef23ff293c23eeaf2ce16719cd97477efd8d",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/authorization-observation.json",
+      "new_base_oid": "e23267185cec865549d95c2b4cf2c5f0dc670662",
+      "new_head_oid": "e23267185cec865549d95c2b4cf2c5f0dc670662",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/client-context.json",
+      "new_base_oid": "263c00e75ffe7e4cfdc1d64edd777a6e07cef1a7",
+      "new_head_oid": "263c00e75ffe7e4cfdc1d64edd777a6e07cef1a7",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/client-handoff.json",
+      "new_base_oid": "7c9f00257cacc4af62e0ca1df95f072d881d6b33",
+      "new_head_oid": "7c9f00257cacc4af62e0ca1df95f072d881d6b33",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/client-merge-observation.json",
+      "new_base_oid": "7c5737752f5a96cc60368b546f954ef06f46606b",
+      "new_head_oid": "7c5737752f5a96cc60368b546f954ef06f46606b",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/client-pre-observation.json",
+      "new_base_oid": "d9469ebae2d64f739ea85201c93cf1f57221104f",
+      "new_head_oid": "d9469ebae2d64f739ea85201c93cf1f57221104f",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/client-readiness.json",
+      "new_base_oid": "c5df8fa665335a97d820254da18b967f1f0f421c",
+      "new_head_oid": "c5df8fa665335a97d820254da18b967f1f0f421c",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/compatibility-observation.json",
+      "new_base_oid": "e27708679c336525b0b7c44b9d8f4bddf459c391",
+      "new_head_oid": "e27708679c336525b0b7c44b9d8f4bddf459c391",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/completion.json",
+      "new_base_oid": "24e384e3f323abe696fca72737112f3144cb7db7",
+      "new_head_oid": "24e384e3f323abe696fca72737112f3144cb7db7",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/config-context.json",
+      "new_base_oid": "108e353d5f12d2d053e672b27aa7f132f1bbdc1d",
+      "new_head_oid": "108e353d5f12d2d053e672b27aa7f132f1bbdc1d",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/config-handoff.json",
+      "new_base_oid": "8d9abb32b9438766ca0459b3a97f35c606fc71dc",
+      "new_head_oid": "8d9abb32b9438766ca0459b3a97f35c606fc71dc",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/config-merge-observation.json",
+      "new_base_oid": "e2847400926317b8ed36540656f6d1208c6e0b65",
+      "new_head_oid": "e2847400926317b8ed36540656f6d1208c6e0b65",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/config-pre-observation.json",
+      "new_base_oid": "55565968711879ffb807cc4d86ab5725c39b8870",
+      "new_head_oid": "55565968711879ffb807cc4d86ab5725c39b8870",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/config-readiness.json",
+      "new_base_oid": "ee8c8d89691a14a0aa48bc74b82fee0106a40b6c",
+      "new_head_oid": "ee8c8d89691a14a0aa48bc74b82fee0106a40b6c",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/context.json",
+      "new_base_oid": "b7f8b2a696b1dbae0df5496dbf83bacd1e1a5dcd",
+      "new_head_oid": "b7f8b2a696b1dbae0df5496dbf83bacd1e1a5dcd",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/deployment-observation.json",
+      "new_base_oid": "a67f6e982d90eb27c68d8b82c882d2512c96414c",
+      "new_head_oid": "a67f6e982d90eb27c68d8b82c882d2512c96414c",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/handoff.json",
+      "new_base_oid": "1306a2d89128eace896101455ad453a7f622dfc2",
+      "new_head_oid": "1306a2d89128eace896101455ad453a7f622dfc2",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/integration-observation.json",
+      "new_base_oid": "135593578ea95598669a948e51b610a650072e8e",
+      "new_head_oid": "135593578ea95598669a948e51b610a650072e8e",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/runtime-persistence-observation.json",
+      "new_base_oid": "c0cdb8b951502df5d28c426bb0910412b970d0ba",
+      "new_head_oid": "c0cdb8b951502df5d28c426bb0910412b970d0ba",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/runtime-response-observation.json",
+      "new_base_oid": "bb2db7489e9c3296e14a33f4878174edca293d55",
+      "new_head_oid": "bb2db7489e9c3296e14a33f4878174edca293d55",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/scope-observation.json",
+      "new_base_oid": "305ad6a8b8d960de6fd5d2b02128887266074747",
+      "new_head_oid": "305ad6a8b8d960de6fd5d2b02128887266074747",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/scope.txt",
+      "new_base_oid": "f776e8ecc26144d155befa1c1b136067db8a81e9",
+      "new_head_oid": "f776e8ecc26144d155befa1c1b136067db8a81e9",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-pending/completion.json",
+      "new_base_oid": "34acd6beadffdb406713f99d6a91e9a4b865febd",
+      "new_head_oid": "34acd6beadffdb406713f99d6a91e9a4b865febd",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-pending/context.json",
+      "new_base_oid": "659130ec2b50ad8dea857495e8f3fa2299e46e01",
+      "new_head_oid": "659130ec2b50ad8dea857495e8f3fa2299e46e01",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-pending/handoff.json",
+      "new_base_oid": "7436bab402a1fda569b272e22cc92b6c4aafc7a2",
+      "new_head_oid": "7436bab402a1fda569b272e22cc92b6c4aafc7a2",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "examples/issue-completion/synthetic-pending/scope.txt",
+      "new_base_oid": "f776e8ecc26144d155befa1c1b136067db8a81e9",
+      "new_head_oid": "f776e8ecc26144d155befa1c1b136067db8a81e9",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "scripts/validate_issue_completion.py",
+      "new_base_oid": "56098c8b307e4a9c34780c97464af450e1ab0fc9",
+      "new_head_oid": "56098c8b307e4a9c34780c97464af450e1ab0fc9",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "templates/task-input.md",
+      "new_base_oid": "ac9a25eb9944987651bd30ab8f35d4b1b083e8f2",
+      "new_head_oid": "ac9a25eb9944987651bd30ab8f35d4b1b083e8f2",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "tests/completion_fixture.py",
+      "new_base_oid": "2af3c90f52e9af5e37c1f8f06b26f81b53a8ba73",
+      "new_head_oid": "2af3c90f52e9af5e37c1f8f06b26f81b53a8ba73",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "tests/test_issue_completion.py",
+      "new_base_oid": "70a3dc269b2e4368afca059664f9c756606ad81f",
+      "new_head_oid": "70a3dc269b2e4368afca059664f9c756606ad81f",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "tests/test_issue_completion_binding.py",
+      "new_base_oid": "d8cd032e4ccaef4ba05393ae111e5818015af597",
+      "new_head_oid": "d8cd032e4ccaef4ba05393ae111e5818015af597",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "tests/test_issue_completion_repairs.py",
+      "new_base_oid": "64cd825b3b22f6d10c82a1a327734d4df43379c5",
+      "new_head_oid": "64cd825b3b22f6d10c82a1a327734d4df43379c5",
+      "identical_to_new_base": true
+    },
+    {
+      "path": "workflows/single-issue.md",
+      "new_base_oid": "728841e6363c1b9f71ce39e2f0d52f809b448392",
+      "new_head_oid": "728841e6363c1b9f71ce39e2f0d52f809b448392",
+      "identical_to_new_base": true
+    }
+  ],
+  "overlap_resolution": "Both README files are exactly new-base bytes plus their unchanged old-feature append-only suffix; no conflict-specific rewrite.",
+  "feature_production_files": "All non-README feature files and original probes unchanged from fixed old head.",
+  "no_source_modification_by_test": true
+}

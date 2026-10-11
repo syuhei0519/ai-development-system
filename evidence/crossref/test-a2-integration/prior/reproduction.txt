@@ -1,0 +1,52 @@
+Independent Test attempt 2: fixed PR7 repair verification
+Repository: syuhei0519/ai-development-system
+Head: 520ef1e7a59662fe3e58d49d5510350ee08c3160
+Base: b1e606544174481b7b6904f811e857f80978c287
+Old head: 4b4e9c249451881f1e5eef82efb3a3b111cacbdb
+Legacy10: df400018057735b7cb6a9c6ea4619508f0e6ba3a
+Legacy11: fixed base.
+
+Use separate fixed System checkouts and requirements-dev.txt dependencies.
+Commands (CANDIDATE is this bundle; all RESULTS paths must be new):
+  In HEAD: python -m unittest discover -s tests -v
+  In BASE: python -m unittest discover -s tests -v
+  In HEAD: python scripts/validate_delivery_records.py
+  python CANDIDATE/input/input/preparation_probe.py OLD OLD_RESULTS
+  python CANDIDATE/input/input/preparation_probe.py HEAD NEW_RESULTS
+  python CANDIDATE/input/input/input/independent_probe.py HEAD RESULTS LEGACY10 BASE
+  python CANDIDATE/input/input/review_probe.py HEAD RESULTS
+  python CANDIDATE/boundary_probe.py HEAD RESULTS
+
+Observed 176 head tests, 128 base tests, Test245, Review43, new 49 boundaries:
+all PASS. Original preparation reproducer: old 1 PASS/2 FAIL as expected,
+new 3 PASS. The immutable Test245 harness writes an old hard-coded head in its
+result; actual new-head invocation and revision are recorded separately.
+
+Actual B1 manifest/publication are byte-identical at:
+  input/input/input/input/b1-manifest.json
+  input/input/input/input/b1-publication-receipt.json
+Acquire a new independent Manager authorization/pin for your consumer and purpose.
+  python HEAD/scripts/consume_delivery.py --manifest B1_MANIFEST     --publication B1_PUBLICATION --authorization PRIVATE_AUTH     --authorization-sha256 INDEPENDENT_MANAGER_PIN --consumer APPROVED_CONSUMER     --scope system/artifact-delivery/cross-reference --purpose contract-review     --output NEW_PRIVATE_OUTPUT
+Repeat with fresh output and --verify-receipt FIRST_OUTPUT/consumption-receipt.json.
+Do not execute fetched application sources. Observed 17 objects / 89071 bytes,
+six tree leaves; fresh outputs and receipts identical. Independent SHA256/size,
+raw commit OID and tree leaf blob OID checks passed. Receipt grants no authority.
+
+Initial 62-file/720970-byte implementation bundle was fetched and checked with
+the unchanged base Consumer CLI before use. It is retained under input/.
+Root Handoff retry_of points to Test attempt 1, not Implementation attempt 2.
+Implementation attempt 3 is a dependency. All old locators/bytes/statuses remain
+unchanged; original Issue X-1..6 and verbatim X-7..9 completion criteria retained.
+
+CI run/job/step metadata shows both requested runs successful at the new head.
+The current synthetic merge ref parents are fixed base and new head, and its
+tree equals new head. Forbidden CI logs were not accessed or bypassed. Exact
+historical runner checkout is unverified, not inferred from current merge ref.
+No merge readiness, B1 product acceptance, implementation restart or IssueCompletion.
+
+Candidate closure check uses unchanged base and new verify_handoffs on every
+candidate file with a synthetic local reference namespace; it is a local
+prepublication check, not Git publication or formal Consumer delivery approval.
+The inventory is outside the candidate to avoid self-hashing. New receipts,
+authorization/pins, private originals/digests and raw internal logs are excluded.
+Prior already-public synthetic receipts remain unchanged as historical input.

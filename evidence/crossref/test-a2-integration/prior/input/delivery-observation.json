@@ -1,0 +1,37 @@
+{
+  "record_type": "edited_implementation_delivery_observation_not_receipt",
+  "head": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+  "initial": {
+    "consumer_base": "b1e606544174481b7b6904f811e857f80978c287",
+    "manifest_records_commit": "24442e12ca8127b705a0302527dca9be637e7875",
+    "payload_commit": "77d9fa0918f30b14d6700c5d9e5ff1de438b8717",
+    "prefix": "evidence/crossref/review-a1/",
+    "files": 52,
+    "bytes": 661892,
+    "manifest_sha256": "c0b441ddd671b76a4a73900a579e76ce5c5a8e581bfe747b8d437f71736e4c9a",
+    "publication_sha256": "dc26c07f9450e8ba80293241a217aef762f4535aad75a8225637465954f92092",
+    "root_handoff_sha256": "fd2f89b7a920bf23f91b62b0ceaffef06bf522278b0f6278538e9e55b3bc757f",
+    "result": "PASS: unchanged fixed-base Consumer validated all raw size/hash/type/Handoff/retry/closure before use. Exact 52 original files retained under input/."
+  },
+  "b1": {
+    "manifest": "input/input/input/b1-manifest.json",
+    "publication": "input/input/input/b1-publication-receipt.json",
+    "schema_version": "1.2",
+    "manifest_sha256": "5a1e3edfcdc1751c7a02ece0a2962b208f1285dc974e80889e58e42aedff1ae3",
+    "publication_sha256": "0cb6488dd3b1faa0d069489fb0e24036287cca4fe4de728bce40821e472c068d",
+    "purpose": "contract-review",
+    "objects": 17,
+    "bytes": 89071,
+    "tree_blobs": 6,
+    "formal_cli": "PASS",
+    "fresh_cli_recheck": "PASS",
+    "outputs_and_receipts_byte_identical": true,
+    "independent_output_oracle": "17 sizes/SHA256, raw commit Git OID and six tree-leaf Git OIDs PASS",
+    "repaired_preparation_cli": "PASS: generated manifest/publication bytes exactly equal the separately authorized fixed inputs",
+    "original_documents_rewritten": false,
+    "publication_approval": "unverified",
+    "authority_granted": false
+  },
+  "private_records": "Current authorizations, independent pins, full receipts, fetched application bytes and internal logs remain separate in the private original directory. None is included here.",
+  "limits": "Transport integrity only; no source truth, Knowledge adoption, historical publication approval, independent Test/Review, B1 product AC, restart, deployment, merge or IssueCompletion certification. Historical public fixture receipts within input/ remain unchanged provenance, never current authority."
+}

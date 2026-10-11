@@ -1,0 +1,214 @@
+{
+  "record_type": "independent_same_attempt_CI_integration_observation",
+  "observed_at": "2026-10-11T05:41:59.595591+00:00",
+  "valid_until": "2026-10-18T00:00:00Z",
+  "head": "a7fdcd3df53260f67a9040878a131d101fb5b32b",
+  "base": "8afe6044857783dbf6d6ae7ac9459ae5e890a744",
+  "pr": {
+    "baseRefName": "main",
+    "headRefName": "feat/artifact-delivery-crossrefs-a2",
+    "headRefOid": "a7fdcd3df53260f67a9040878a131d101fb5b32b",
+    "isDraft": true,
+    "mergeCommit": null,
+    "mergedAt": null,
+    "number": 7,
+    "potentialMergeCommit": {
+      "oid": "4b2a9a958f763da782de0fbb6e609dc5b7b99fed"
+    },
+    "state": "OPEN",
+    "url": "https://github.com/syuhei0519/ai-development-system/pull/7"
+  },
+  "runs": [
+    {
+      "event": "push",
+      "headSha": "a7fdcd3df53260f67a9040878a131d101fb5b32b",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38115236408",
+      "createdAt": "2026-10-11T05:34:46Z",
+      "updatedAt": "2026-10-11T05:35:31Z",
+      "jobs": [
+        {
+          "name": "validate",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python -m pip install -r requirements-dev.txt",
+              "conclusion": "success"
+            },
+            {
+              "name": "All contracts and delivery/retry regressions",
+              "conclusion": "success"
+            },
+            {
+              "name": "Delivery schema and pinned sample consistency",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_handoff.py examples/research-to-test/research.handoff.json examples/research-to-test/test.blocked.handoff.json examples/research-to-test/test.handoff.json examples/failed.handoff.json examples/partial-assignment.handoff.json",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_knowledge.py examples/knowledge/input.json examples/knowledge/handoff.json examples/knowledge/context.json examples/knowledge-delivery/input.json examples/knowledge-delivery/handoff.json examples/knowledge-delivery/context.json",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/pr-ready-issue-unverified.json --context examples/readiness/context.json --handoff examples/readiness/manager.handoff.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/implementation-only.json --context examples/readiness/automatic-context.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/postdeploy-achieved.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Aggregate synthetic-achieved replay",
+              "conclusion": "success"
+            },
+            {
+              "name": "Aggregate synthetic-pending replay",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "event": "pull_request",
+      "headSha": "a7fdcd3df53260f67a9040878a131d101fb5b32b",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38115238873",
+      "createdAt": "2026-10-11T05:34:48Z",
+      "updatedAt": "2026-10-11T05:35:35Z",
+      "jobs": [
+        {
+          "name": "validate",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python -m pip install -r requirements-dev.txt",
+              "conclusion": "success"
+            },
+            {
+              "name": "All contracts and delivery/retry regressions",
+              "conclusion": "success"
+            },
+            {
+              "name": "Delivery schema and pinned sample consistency",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_handoff.py examples/research-to-test/research.handoff.json examples/research-to-test/test.blocked.handoff.json examples/research-to-test/test.handoff.json examples/failed.handoff.json examples/partial-assignment.handoff.json",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_knowledge.py examples/knowledge/input.json examples/knowledge/handoff.json examples/knowledge/context.json examples/knowledge-delivery/input.json examples/knowledge-delivery/handoff.json examples/knowledge-delivery/context.json",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/pr-ready-issue-unverified.json --context examples/readiness/context.json --handoff examples/readiness/manager.handoff.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/implementation-only.json --context examples/readiness/automatic-context.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/postdeploy-achieved.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Aggregate synthetic-achieved replay",
+              "conclusion": "success"
+            },
+            {
+              "name": "Aggregate synthetic-pending replay",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "observed": {
+    "test_merge_commit": "4b2a9a958f763da782de0fbb6e609dc5b7b99fed",
+    "test_merge_parents": [
+      "8afe6044857783dbf6d6ae7ac9459ae5e890a744",
+      "a7fdcd3df53260f67a9040878a131d101fb5b32b"
+    ],
+    "test_merge_tree": "8c57b1a49781424d3b1be5af52b3d7d02727ae77",
+    "test_merge_tree_equals_head": true,
+    "workflow_path": ".github/workflows/validate.yml",
+    "workflow_revision": "a7fdcd3df53260f67a9040878a131d101fb5b32b",
+    "workflow_size": 2857,
+    "workflow_sha256": "bb54c08ce511ce616d819a569039aac7db18fc218378f6c97329a6267c3b09c8",
+    "workflow_uses_default_checkout_without_ref_override": true,
+    "workflow_has_combined_unittest_and_aggregate_replay_steps": true
+  },
+  "inferred": "Current merge-ref parents/tree and default checkout configuration support expected pull_request merge-target applicability. They are not direct proof of the historical CI runner checkout.",
+  "unverified": [
+    "Actual runner checkout SHA and actual test count from CI logs. No forbidden log request or alternate-route bypass performed.",
+    "GitHub required protection/review/queue conditions and merge readiness are separate Manager gates."
+  ],
+  "stage_separation": {
+    "independent_test": "verified",
+    "ci_run_job_step": "verified",
+    "ci_actual_checkout": "unverified",
+    "independent_review": "pending",
+    "PR7_merge": "not_performed",
+    "B1_product_ac": "unverified",
+    "issue_completion": "unverified"
+  }
+}

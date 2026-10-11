@@ -1,0 +1,17 @@
+{
+  "record_type": "local_public_candidate_safety_review",
+  "classification": "public_safe candidate; unpublished",
+  "scope": "New edited test observations, synthetic probe, and exact already-public 62-file input dependency closure.",
+  "excluded": [
+    "New authorization files and pins",
+    "New Consumption Receipts",
+    "Private originals and private digests",
+    "Runtime task/thread/message identifiers",
+    "Raw internal execution logs",
+    "Credentials and access configuration"
+  ],
+  "history": "Previously public input files retained verbatim; original synthetic fixture receipt remains historical data, never authority. Private originals of earlier public derivatives were not independently inspected.",
+  "review": "All candidate bytes decoded and scanned; own authored observations manually reviewed. Private pin/digest and runtime identifier exclusion checks and closure validation recorded externally. Existing references to private concepts or synthetic placeholders are not private originals.",
+  "publication_approval": "not_requested",
+  "consumer_use_approval": "not_granted_by_this_record"
+}
