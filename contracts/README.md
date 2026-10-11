@@ -64,3 +64,13 @@ schema を追加する。Handoff v2.0 と Readiness v1.0 の schema・判定責�
 Public Git 原本と edited derivative を区別し、配送成功・公開済み状態・公開承認・利用承認は別判定。
 Git 配送で手書きの再構成をしない。独立 pin の承認と全 bytes の Consumer 検査が揃うまで利用しない。
 再試行分類の変更で旧 attempt を減らさず、各3回の別予算と上限後の承認は配送契約に従う。
+
+
+## Artifact Delivery v1.1 — Knowledge実体照合
+
+[配送契約](artifact-delivery.md#knowledge-typed-delivery-v11-phase1-3-p-a) の明示的minor版は
+Knowledge input/handoff/contextのtyped配送、原入力一致、source/記事/contextの固定bytes検査を追加する。
+本体のKnowledge1.0・Handoff2.0・Readiness1.0とDelivery1.0の正常系は維持する。
+版別schemaは `*-v1.1.schema.json`、CLIは4種配送recordの版一致を要求する。
+公開synthetic fixtureと固定Git再現手順は [examples/knowledge-delivery](../examples/knowledge-delivery/README.md)。
+非同期収集・context生成・ack・周期実行・実Agent利用実証は後続P-B/C/Dであり未実装。

@@ -124,3 +124,11 @@ Readinessの配送にはartifact_id、Handoff基準のローカルlocator、実�
 起動・実行・配送は各最大3回。[retry CLI](scripts/validate_retry.py) は append-only 台帳と
 上限後の明示承認・新予算を検査し、旧3試行や RETRY_LIMIT_REACHED をリセットしません。
 この追加は製品実装再開、PR、merge、deploy の許可を与えません。
+
+
+### Phase1-3 P-A: Knowledge配送
+
+[Delivery 1.1](contracts/artifact-delivery.md#knowledge-typed-delivery-v11-phase1-3-p-a)で
+Knowledge1.0の型付き配送と入力/出力・source/記事の実体照合を提供する。
+[固定Gitのsynthetic再現手順](examples/knowledge-delivery/README.md)を参照。
+非同期inbox/state、context生成/ack/periodic、実Knowledge/Consumer運用実証はP-B/C/Dの未実施範囲。

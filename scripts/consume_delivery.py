@@ -14,12 +14,18 @@ import tempfile
 from jsonschema import Draft202012Validator
 try:
     from .validate_handoff import validate as validate_handoff
+    from .validate_knowledge import validate as validate_knowledge
 except ImportError:
     from validate_handoff import validate as validate_handoff
+    from validate_knowledge import validate as validate_knowledge
 
 ROOT = Path(__file__).resolve().parents[1]
 MAX_FILE = 16 * 1024 * 1024
 MAX_BUNDLE = 64 * 1024 * 1024
+DELIVERY_SCHEMAS = {'artifact-delivery', 'delivery-authorization',
+                    'publication-receipt', 'consumption-receipt'}
+KNOWLEDGE_FORMATS = {f'knowledge-{kind}-v1': f'knowledge_{kind}'
+                     for kind in ('input', 'handoff', 'context')}
 
 
 def require(condition, message):
@@ -44,6 +50,11 @@ def parse(raw):
 
 
 def schema(name, data):
+    if name in DELIVERY_SCHEMAS:
+        require(isinstance(data, dict) and data.get('schema_version') in ('1.0', '1.1'),
+                'unsupported delivery version')
+        if data['schema_version'] == '1.1':
+            name += '-v1.1'
     spec = json.loads((ROOT / 'contracts' / f'{name}.schema.json').read_text())
     require(Draft202012Validator(spec).is_valid(data), f'invalid {name} contract')
 
@@ -128,9 +139,15 @@ def read_local(path):
     return raw
 
 
-def verify_handoffs(artifacts, blobs):
+def verify_handoffs(artifacts, blobs, version='1.0', knowledge_bindings=None):
+    require(version in ('1.0', '1.1'), 'unsupported delivery version')
+    formats = {'text', 'json', 'handoff-v2'}
+    if version == '1.1':
+        formats.update(KNOWLEDGE_FORMATS)
+    require(all(a['format'] in formats for a in artifacts), 'unsupported delivery format')
     by_ref = {(a['reference']['repository'], a['reference']['commit'], a['reference']['path']): a
               for a in artifacts}
+    require(len(by_ref) == len(artifacts), 'duplicate artifact path')
     parsed = {}
     for key, item in by_ref.items():
         raw = blobs[key]
@@ -142,7 +159,7 @@ def verify_handoffs(artifacts, blobs):
         require(not start.startswith('\ufeff'), 'UTF-8 BOM is not supported')
         # A leading Markdown link/reference is ordinary prose, not a JSON array.
         markdown_link = re.match(r'\[[^\]\r\n]+\](?:\([^\r\n]*\)|\[[^\]\r\n]*\]|:[ \t]+\S)', start)
-        json_required = (item['format'] in ('json', 'handoff-v2') or
+        json_required = (item['format'] != 'text' or
                          key[2].lower().endswith('.json') or
                          start.startswith('{') or
                          (start.startswith('[') and not markdown_link))
@@ -152,13 +169,28 @@ def verify_handoffs(artifacts, blobs):
             require(not json_required, 'invalid JSON content')
             continue
         require(item['format'] != 'text', 'JSON content must not be typed text')
-        if item['format'] == 'handoff-v2':
+        if version == '1.1' and isinstance(parsed[key], dict):
+            require(parsed[key].get('publication') != 'private_only', 'private document forbidden')
+        if item['format'] in KNOWLEDGE_FORMATS:
+            data = parsed[key]
+            require(isinstance(data, dict) and
+                    data.get('document_type') == KNOWLEDGE_FORMATS[item['format']],
+                    'Knowledge format/document_type mismatch')
+            require(not validate_knowledge(data), 'invalid Knowledge v1.0')
+            require(data.get('publication') != 'private_only', 'private Knowledge forbidden')
+        elif item['format'] == 'handoff-v2':
             require(not validate_handoff(parsed[key]), 'invalid Handoff v2.0')
             require(parsed[key]['publication'] != 'private_only', 'private Handoff forbidden')
         elif isinstance(parsed.get(key), dict):
             # Reserved Handoff identity/coverage fields still identify incomplete
             # documents: deleting one required field must not downgrade the type.
             data = parsed[key]
+            if version == '1.1':
+                require(not (set(data) & {'raw_findings', 'knowledge_references', 'retry_of'} or
+                             data.get('role') == 'knowledge' or
+                             (isinstance(data.get('document_type'), str) and
+                              data['document_type'].startswith('knowledge'))),
+                        'Knowledge must use explicit Knowledge format')
             require(not (set(data) & {'task_id', 'ac_mapping', 'system_status'} or
                          ('schema_version' in data and
                           set(data) & {'issue', 'assignment', 'upstream'})),
@@ -184,6 +216,76 @@ def verify_handoffs(artifacts, blobs):
                     'upstream identity mismatch')
             if upstream['relationship'] == 'retry_of':
                 require(previous['issue'] == handoff['issue'], 'retry Issue mismatch')
+    if version == '1.1':
+        verify_knowledge_bindings(by_ref, parsed, blobs, knowledge_bindings)
+
+
+def verify_knowledge_bindings(by_ref, parsed, blobs, bindings):
+    """Bind immutable input/output snapshots and every declared Knowledge dependency.
+
+    Locators are safe relative paths in the containing document's repo/commit;
+    revisions are raw sha256 digests. No arbitrary URL or prose proves existence.
+    """
+    require(isinstance(bindings, list), 'Knowledge bindings required')
+
+    def reference(ref, kind):
+        key = (ref['repository'], ref['commit'], ref['path'])
+        require(key in by_ref and by_ref[key]['reference'] == ref and
+                by_ref[key]['format'] == kind, 'Knowledge binding reference mismatch')
+        return key
+
+    def bind(owner, locator, revision):
+        safe_path(locator)
+        target = (owner[0], owner[1], str(PurePosixPath(owner[2]).parent / locator))
+        require(target in by_ref, 'Knowledge referenced bytes missing from bundle')
+        require(revision == 'sha256:' + digest(blobs[target]), 'Knowledge binding digest mismatch')
+        return target
+
+    def article_bytes(target):
+        require(by_ref[target]['format'] == 'text' and bool(blobs[target].strip()),
+                'Knowledge article requires nonempty text bytes')
+
+    inputs, handoffs, identities = set(), set(), set()
+    for pair in bindings:
+        source = reference(pair['input'], 'knowledge-input-v1')
+        require(source not in inputs, 'duplicate Knowledge input binding')
+        inputs.add(source)
+        if 'handoff' in pair:
+            result = reference(pair['handoff'], 'knowledge-handoff-v1')
+            require(result not in handoffs, 'duplicate Knowledge handoff binding')
+            handoffs.add(result)
+            require(all(parsed[source][field] == parsed[result][field] for field in
+                        ('assignment', 'raw_findings', 'knowledge_references',
+                         'task_id', 'attempt', 'retry_of')), 'Knowledge input/handoff mismatch')
+    require(inputs == {k for k, a in by_ref.items() if a['format'] == 'knowledge-input-v1'} and
+            handoffs == {k for k, a in by_ref.items() if a['format'] == 'knowledge-handoff-v1'},
+            'unbound Knowledge input/handoff')
+    for key, item in by_ref.items():
+        if item['format'] not in KNOWLEDGE_FORMATS:
+            continue
+        data = parsed[key]
+        if 'task_id' in data:
+            identity = (data['document_type'], data['task_id'])
+            require(identity not in identities, 'duplicate Knowledge task identity')
+            identities.add(identity)
+        for finding in data.get('raw_findings', []):
+            for source in finding['sources']:
+                bind(key, source['locator'], source['revision'])
+        for article in data['knowledge_references']:
+            article_bytes(bind(key, article['locator'], article['revision']))
+            for source in article['sources']:
+                bind(key, source['locator'], source['revision'])
+        for artifact in data.get('artifacts', []):
+            target = bind(key, artifact['locator'], artifact['revision'])
+            if artifact['kind'] == 'knowledge':
+                article_bytes(target)
+        for previous in data.get('retry_of', []):
+            target = bind(key, previous['handoff_locator'], previous['revision'])
+            require(by_ref[target]['format'] == 'knowledge-handoff-v1',
+                    'Knowledge retry must reference Knowledge handoff')
+            prior = parsed[target]
+            require(all(prior[field] == previous[field] for field in ('task_id', 'attempt')) and
+                    prior['assignment'] == data['assignment'], 'Knowledge retry identity/scope mismatch')
 
 
 def consume(manifest_raw, policy_raw, publication_raw, policy_sha256,
@@ -202,9 +304,12 @@ def consume(manifest_raw, policy_raw, publication_raw, policy_sha256,
     require(digest(manifest_raw) == policy['manifest_sha256'], 'manifest digest mismatch')
     manifest = parse(manifest_raw)
     schema('artifact-delivery', manifest)
+    version = manifest['schema_version']
+    require(policy['schema_version'] == version, 'authorization/manifest version mismatch')
     require(digest(publication_raw) == policy['publication_receipt_sha256'], 'publication receipt digest mismatch')
     publication = parse(publication_raw)
     schema('publication-receipt', publication)
+    require(publication['schema_version'] == version, 'publication/manifest version mismatch')
     require(publication['manifest_sha256'] == digest(manifest_raw) and
             publication['artifacts'] == manifest['artifacts'], 'publication receipt mismatch')
     artifacts = manifest['artifacts']
@@ -220,12 +325,14 @@ def consume(manifest_raw, policy_raw, publication_raw, policy_sha256,
         raw = source.read(ref)
         require(len(raw) == ref['size'] and digest(raw) == ref['sha256'], 'raw size/hash mismatch')
         blobs[key] = raw
-    verify_handoffs(artifacts, blobs)
-    receipt = {'schema_version':'1.0', 'document_type':'consumption_receipt',
+    verify_handoffs(artifacts, blobs, version, manifest.get('knowledge_bindings'))
+    receipt = {'schema_version':version, 'document_type':'consumption_receipt',
                'manifest_sha256':digest(manifest_raw), 'authorization_sha256':digest(policy_raw),
                'publication_receipt_sha256':digest(publication_raw),
                'consumer':consumer, 'scope':scope, 'purpose':purpose, 'artifacts':artifacts,
-               'verification':'full-raw-bytes-size-sha256-json-handoff-bindings',
+               'verification':('full-raw-bytes-size-sha256-json-handoff-knowledge-bindings'
+                               if version == '1.1' else
+                               'full-raw-bytes-size-sha256-json-handoff-bindings'),
                'authority_granted':False}
     schema('consumption-receipt', receipt)
     if receipt_raw is not None:
