@@ -1,0 +1,168 @@
+{
+  "repository": "syuhei0519/ai-development-system",
+  "commit": "df400018057735b7cb6a9c6ea4619508f0e6ba3a",
+  "files": [
+    {
+      "path": "agents/research-design.md",
+      "size": 4380,
+      "sha256": "c62194fe3064a1d36e9292dbf3c3d635db141e340c3c156e4eb668586474d055",
+      "git_blob": "c888e4316b419a271bf8790795b9159ea0c55209"
+    },
+    {
+      "path": "agents/knowledge.md",
+      "size": 4258,
+      "sha256": "c51b6dafd4550dfa49658ca80c825e8b3787dc2b78f2d74ede7ca8a1723df664",
+      "git_blob": "c78e98170f635b696e7f166a2053358f5ce6edf3"
+    },
+    {
+      "path": "agents/manager.md",
+      "size": 5895,
+      "sha256": "73c7af44c4d85f416e728915f85dca31eb273d6728d5bab2ecd4f67dd1ae5acb",
+      "git_blob": "9e808357421234d21bf45739e3bae85c80ce26b0"
+    },
+    {
+      "path": "agents/test.md",
+      "size": 4741,
+      "sha256": "916e210d6b49a730ae5bec629bbade65f33bf9a45d77d4f600182eb3bc51746c",
+      "git_blob": "adb93001ecee3b93f4ae3d467314080a9de18f7d"
+    },
+    {
+      "path": "agents/review.md",
+      "size": 4652,
+      "sha256": "de3d11e28c80dba3edb23ea66b53aef5a4e7d4207109e492888d1943c793cae9",
+      "git_blob": "f16b5e766b9f53a9b63973e2ad953114616cbe48"
+    },
+    {
+      "path": "workflows/single-issue.md",
+      "size": 15288,
+      "sha256": "f3bbeeb49ff537cd1058f9d9b71e1af1a87a5c68e2491aebde7d5743049ffec6",
+      "git_blob": "dcf5c3ed0c4ac7d8b8abebf27d6a8eaf89d85cf7"
+    },
+    {
+      "path": "contracts/README.md",
+      "size": 10257,
+      "sha256": "005e74d6ae1103e1e3c8d543a87ce4f73592040efb2ea8b34088278b2fa7181d",
+      "git_blob": "1e03e04a0281dc2b3622cc04e7e6c35bf75dcd45"
+    },
+    {
+      "path": "contracts/artifact-delivery.md",
+      "size": 12526,
+      "sha256": "6f65c19c74aea4483f900ce045a6648357c754c1977cd38338839fbb1457ef22",
+      "git_blob": "4b508fd112cf1441cbcc86855ab8e45adbcb80d0"
+    },
+    {
+      "path": "contracts/readiness.md",
+      "size": 12727,
+      "sha256": "fbecc481811a7b57d70463d37fff65362e6f8c83b21d6490baef9e24dc6717d3",
+      "git_blob": "c9c52c21d5eb7efe37cb706fb1fa5357df663a7a"
+    },
+    {
+      "path": "contracts/handoff.schema.json",
+      "size": 15093,
+      "sha256": "3df669f230c3f1d65ddaaa9e7de5f713f70b9e8440512403f6ea309eb70b3ae1",
+      "git_blob": "2282039541de477c9b842f5c0e7e9c2fc83d6993"
+    },
+    {
+      "path": "contracts/knowledge-input.schema.json",
+      "size": 5598,
+      "sha256": "9af62e3b2a63b82445cf7114487b8b07eaf96ec22c63a373183aad4c96c181ae",
+      "git_blob": "a88b004f4997d1b31b55d09057a0d25a532fa9d2"
+    },
+    {
+      "path": "contracts/knowledge-handoff.schema.json",
+      "size": 11347,
+      "sha256": "e36d8a4fd6bc4f2fa4f8d6d234f9dd04dd01ad71f69364c369b664996188c420",
+      "git_blob": "e617eda0e673b677301fe5ff8878f606701ead17"
+    },
+    {
+      "path": "contracts/knowledge-context.schema.json",
+      "size": 2097,
+      "sha256": "458b15686bc2be28cc4a6b6b6b4e370b3334cf5ad91300c7d84e8c6f1e4a052a",
+      "git_blob": "d5b9a5d5baab575388cbcdf8b488730709661e9c"
+    },
+    {
+      "path": "contracts/artifact-delivery.schema.json",
+      "size": 2490,
+      "sha256": "480ba09256cb5b947d8b2df380a12a7ab9ff5fd3c777653e056eacb2541b655c",
+      "git_blob": "54aee94bfc0dc1581987f50dd879e08ee3f0d900"
+    },
+    {
+      "path": "contracts/consumption-receipt.schema.json",
+      "size": 3439,
+      "sha256": "f4d005cb0c806fb02989662b3df9e97902850f0304eec5e49308b1927da7a661",
+      "git_blob": "f53bbd67fa637ac8290c00938176cf5561fc67b7"
+    },
+    {
+      "path": "scripts/consume_delivery.py",
+      "size": 13843,
+      "sha256": "62df142aa83c5216aae6151f2d21ffffe4bd8aa9db68dd1144502505cce8fcad",
+      "git_blob": "bca8364a9493c2ea52bb0e237ee91929af7108fb"
+    },
+    {
+      "path": "scripts/validate_knowledge.py",
+      "size": 3766,
+      "sha256": "a2464f8164b48f3141d8f3a7f4b6a61bc66cf3380c5fa3503d61643421ae5b74",
+      "git_blob": "8159aac0a29aaf352dcda25475e8ef0d709e174e"
+    },
+    {
+      "path": "scripts/validate_handoff.py",
+      "size": 5107,
+      "sha256": "c78e917498087cf9bf230ac644135d3dd3aacfe6ff68e294dfe3bc563bfbe221",
+      "git_blob": "164d477795a4e54ce7c6cf8b9ff46d4a18d32fda"
+    },
+    {
+      "path": "scripts/validate_retry.py",
+      "size": 5522,
+      "sha256": "95ebe03f12eeb7415f1c474b8215b362732662a84b4d6bb00f0ec9b75fb080a2",
+      "git_blob": "29dfafb9fdf85745a56d61429dd4ce0125f8e16c"
+    },
+    {
+      "path": "templates/knowledge-article.md",
+      "size": 1530,
+      "sha256": "f9fa2434feb0955414a30ea0c20244ee74d792e90e9027ab3ab2b453cc927f76",
+      "git_blob": "86a4c088966af3c05b7339b1248b252f217d1276"
+    },
+    {
+      "path": "templates/knowledge-input.md",
+      "size": 1946,
+      "sha256": "2e2035055b0e6d70c71455063f4f8a2bd646cae82689a7fbb92c28c05b0d30a2",
+      "git_blob": "4280e5096fd0d186d47ce1a30ffcd0ab552a5387"
+    },
+    {
+      "path": "templates/raw-finding.md",
+      "size": 636,
+      "sha256": "ca8672c90c2eaca941b1258a98e86dfcd50c0efd83b61c645c15ede0e7d0091e",
+      "git_blob": "0f73bd816b1323fce006062afefdf9146992951e"
+    },
+    {
+      "path": "knowledge/README.md",
+      "size": 2762,
+      "sha256": "4e0059145079c46214d9b17ecb966161ddd3affb7193bbfc01c8f1e0dbe1ae86",
+      "git_blob": "9dfc27a10a5ec07f50269d29239c5be41639b3d8"
+    },
+    {
+      "path": "README.md",
+      "size": 13571,
+      "sha256": "4d39320379b83a7a7435f78311a84b2712978e9fb907a08b97067e758fd99a86",
+      "git_blob": "b5ad03c7347619a207e65c40b9c8fde4d9e38241"
+    },
+    {
+      "path": ".github/workflows/validate.yml",
+      "size": 1860,
+      "sha256": "8e26b2496c01354a754b950382d2a55f0843552023c93643d0d53eb6ca6fe67c",
+      "git_blob": "36f5bb34dc7fb094f7eb536e6d2455f6c0fbd983"
+    },
+    {
+      "path": "tests/test_knowledge.py",
+      "size": 7518,
+      "sha256": "81b9b38ede25d2f3a8d8d56b62d18dbb671ffc54f99fd5b16acb9d05a55762da",
+      "git_blob": "ea2f4e4717235b848e25416277c5d3f9dcc6944c"
+    },
+    {
+      "path": "records/artifact-delivery/correction-20261011.json",
+      "size": 3628,
+      "sha256": "18884794d0456df1138e1b3dc24ecf3bce98145a287751d9703761d5b21d36cb",
+      "git_blob": "90a4fafbed77ebc0e861b657e85d30415cc1710f"
+    }
+  ]
+}
