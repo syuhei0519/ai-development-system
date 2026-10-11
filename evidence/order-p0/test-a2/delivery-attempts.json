@@ -1,0 +1,18 @@
+{
+  "document_type": "producer_delivery_history",
+  "public_alias": "order-p0-test-a2",
+  "execution_epoch": 1,
+  "execution_attempt": 2,
+  "delivery_epoch": 2,
+  "attempts": [
+    {
+      "attempt": 1,
+      "result": "failed",
+      "stage": "local canonical preparation before publication",
+      "reason": "Canonical safe_path rejects a tree root beginning with a dot (.github/workflows).",
+      "candidate_commit": "2166d53cfb42b4a923c619ed55ddd53ad756786b",
+      "published": false,
+      "observed_at": "2026-10-11T18:39:37.141859+00:00"
+    }
+  ]
+}

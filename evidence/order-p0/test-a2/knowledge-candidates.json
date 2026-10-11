@@ -23,7 +23,7 @@
       "domain": "gitops-validation-boundaries",
       "summary": "A preparation-only GitOps change needs its enabled synthetic topology checked in the actual render job while default desired resources stay disabled.",
       "evidence": "All17 changes inspected; workflow render job includes Order contract; independent six renders unchanged and synthetic topology validated without cluster operations.",
-      "source": "https://github.com/syuhei0519/platform-gitops/tree/5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e/.github/workflows",
+      "source": "https://github.com/syuhei0519/platform-gitops/tree/5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e/ci/includes",
       "scope": "P0 CI wiring and synthetic preparation tests only; remote CI is separate from independent Test and runtime acceptance."
     }
   ]

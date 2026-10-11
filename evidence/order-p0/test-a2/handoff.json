@@ -63,7 +63,7 @@
       "id": "A-REPORT",
       "kind": "document",
       "locator": "report.txt",
-      "revision": "sha256:9979384317ce44445b950c61d7267a6c516e90e9469564ca1352ecaba4d137f3",
+      "revision": "sha256:b3e4abb59b7a00794ab3ba69d36b708ca610157d3a5816ca13088157d2d1b607",
       "summary": "Independent result, boundaries and private delivery stop."
     },
     {
@@ -168,7 +168,7 @@
       "id": "A-KNOWLEDGE",
       "kind": "knowledge",
       "locator": "knowledge-candidates.json",
-      "revision": "sha256:74ad8a5d4e74c796896a5060f19ee330c7d4238c5c3668c80db4bd0e2c101204",
+      "revision": "sha256:9a94dac384ac7ed33ce708d7e973e3d96aefbd29354b96d31547c11fb9ea7e18",
       "summary": "Pending candidates only; no dispatch/adoption."
     },
     {
@@ -198,6 +198,13 @@
       "locator": "publication-safety.json",
       "revision": "sha256:a35f82c2629b9780beaaa3bb2f6eba227b63461015622e0fd10903e73b86b533",
       "summary": "Public content review scope and excluded private records."
+    },
+    {
+      "id": "A-DELIVERY-HISTORY",
+      "kind": "other",
+      "locator": "delivery-attempts.json",
+      "revision": "sha256:df799ba58c6abe70eeb66a5f6be876c2eaa7917a067b4ed3a37c00e464e6537f",
+      "summary": "Safe alias-only delivery history; no private grant/ledger."
     }
   ],
   "evidence": [
