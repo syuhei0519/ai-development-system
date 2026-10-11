@@ -1,0 +1,54 @@
+{
+  "independent": true,
+  "observed_at": "2026-10-11T19:41:49.645752+00:00",
+  "commands": [
+    {
+      "command": "python scripts/validate_delivery_records.py",
+      "exit_code": 0,
+      "seconds": 0.368,
+      "stdout": "PASS: delivery schemas and sample bindings only; no live approval certified"
+    },
+    {
+      "command": "python scripts/validate_handoff.py examples/research-to-test/research.handoff.json examples/research-to-test/test.blocked.handoff.json examples/research-to-test/test.handoff.json examples/failed.handoff.json examples/partial-assignment.handoff.json",
+      "exit_code": 0,
+      "seconds": 0.134,
+      "stdout": "PASS examples/research-to-test/research.handoff.json (shape + local references only; not business approval)\nPASS examples/research-to-test/test.blocked.handoff.json (shape + local references only; not business approval)\nPASS examples/research-to-test/test.handoff.json (shape + local references only; not business approval)\nPASS examples/failed.handoff.json (shape + local references only; not business approval)\nPASS examples/partial-assignment.handoff.json (shape + local references only; not business approval)"
+    },
+    {
+      "command": "python scripts/validate_knowledge.py examples/knowledge/input.json examples/knowledge/handoff.json examples/knowledge/context.json examples/knowledge-delivery/input.json examples/knowledge-delivery/handoff.json examples/knowledge-delivery/context.json",
+      "exit_code": 0,
+      "seconds": 0.129,
+      "stdout": "PASS examples/knowledge/input.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge/handoff.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge/context.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge-delivery/input.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge-delivery/handoff.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge-delivery/context.json (shape + local references only; not knowledge approval)"
+    },
+    {
+      "command": "python scripts/validate_readiness.py examples/readiness/pr-ready-issue-unverified.json --context examples/readiness/context.json --handoff examples/readiness/manager.handoff.json --at 2030-01-01T12:00:00Z",
+      "exit_code": 0,
+      "seconds": 0.165,
+      "stdout": "PASS examples/readiness/pr-ready-issue-unverified.json (record consistency only; not evidence truth or live GitHub permission)\nREPLAY: explicit historical time; not current readiness"
+    },
+    {
+      "command": "python scripts/validate_readiness.py examples/readiness/implementation-only.json --context examples/readiness/automatic-context.json --at 2030-01-01T12:00:00Z",
+      "exit_code": 0,
+      "seconds": 0.142,
+      "stdout": "PASS examples/readiness/implementation-only.json (record consistency only; not evidence truth or live GitHub permission)\nREPLAY: explicit historical time; not current readiness"
+    },
+    {
+      "command": "python scripts/validate_readiness.py examples/readiness/postdeploy-achieved.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+      "exit_code": 0,
+      "seconds": 0.135,
+      "stdout": "PASS examples/readiness/postdeploy-achieved.json (record consistency only; not evidence truth or live GitHub permission)\nREPLAY: explicit historical time; not current readiness"
+    },
+    {
+      "command": "python scripts/validate_issue_completion.py examples/issue-completion/synthetic-achieved/completion.json --context examples/issue-completion/synthetic-achieved/context.json --context-sha256 951048815ca07294e13e6df297272e719e121d81a8e1c523c3958e4ba97742ac --handoff examples/issue-completion/synthetic-achieved/handoff.json --at 2030-01-03T12:00:00Z",
+      "exit_code": 0,
+      "seconds": 0.405,
+      "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted"
+    },
+    {
+      "command": "python scripts/validate_issue_completion.py examples/issue-completion/synthetic-pending/completion.json --context examples/issue-completion/synthetic-pending/context.json --context-sha256 8943ce6030f4335adb8cfab5f7338670b2c45b3d24bd3114e92fab5c1cd8d5ff --handoff examples/issue-completion/synthetic-pending/handoff.json --at 2030-01-03T12:00:00Z",
+      "exit_code": 0,
+      "seconds": 0.367,
+      "stdout": "PASS REPLAY: integration=blocked; issue_completion=unverified; record consistency only; no authority granted"
+    }
+  ]
+}

@@ -1,0 +1,362 @@
+{
+  "observed_at": "2026-10-11T19:42:29.360244+00:00",
+  "completed_at": "2026-10-11T19:43:07.692993+00:00",
+  "duration_seconds": 38.333,
+  "transport": "Fresh local Git fetch adapter only; actual CLI validators unchanged; no network synthetic fixture.",
+  "cases": [
+    {
+      "name": "prepare-default128",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "prepare-129",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "prepare-legacy129",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "legacy128",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "extended129",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "128-original-bytes-preserved",
+      "actual": 128,
+      "expected": 128,
+      "passed": true
+    },
+    {
+      "name": "old-consumer-rejects13",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "old-consumer-accepts12",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "legacy129-reject",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "prepare256",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "consume256",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "receipt-fresh-recheck",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "mixed-consumption-version",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "prepare257-reject",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "consume257-reject",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "missing-upstream",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "missing-slot",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "duplicate-slot",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "duplicate-artifact",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "wrong-handoff-type",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "hash-mismatch",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "size-mismatch",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "floating-commit",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "unauthorized",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "scope-mismatch",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "bad-independent-pin",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "expired",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "representation",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "mixed-authorization",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "mixed-publication",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "malicious-duplicate.json",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "malicious-nonfinite.json",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "malicious-truncate.json",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "malicious-wrong.txt",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "malicious-tamper.txt",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "malicious-single.txt",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "exact64MiB",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "over64MiB",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "compatibility-1.0",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "compatibility-1.1",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "prepare-candidate-tree",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "candidate-tree-positive",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "candidate-missing",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "candidate-duplicate",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "candidate-profile",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "candidate-ids",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "source-slot-missing",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "tree-file-missing",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "tree-file-size",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "tree-file-hash",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "tree-file-mode",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "tree-root-oid",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "tree-child-missing",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "tree-original-approval-required",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "candidate-type-downgrade",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "exact-schema-delta-artifact-delivery",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "exact-schema-delta-publication-receipt",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "exact-schema-delta-consumption-receipt",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "exact-schema-delta-delivery-authorization",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    }
+  ]
+}

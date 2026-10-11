@@ -1,0 +1,200 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "ai-development-system/artifact-capacity",
+    "source": "https://github.com/syuhei0519/ai-development-system",
+    "title": "Bounded Artifact Delivery Capacity",
+    "acceptance_criteria": [
+      {
+        "id": "AC-C1",
+        "verbatim": "原本bytes・全Handoff依存closure・表現区分・承認分離を維持し、少なくとも現在128件のbundleに後続工程の成果物を追加して正規Consumerで検証できる。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-C2",
+        "verbatim": "新上限は有限256件を基本案とし、1file16MiB/全体64MiB/tree深度・件数・実体上限/型・slot・SHA・size・固定commit/JSON/Handoff/利用承認の既存fail-closedを緩めない。legacy版互換を明示し、maxItems単純変更がversion互換上不適切なら最小の版追加を比較して理由を記録。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-C3",
+        "verbatim": "128既存/129/256正常、257拒否、総bytes超過/欠落closure/重複/改変/誤型/認可不一致を検証。JSON schemaとCLI/receipt上限が矛盾しない。既存全テスト成功、新規回帰追加。実ネットワークや公開本物bundleを必須にせず公開可能syntheticで境界を再現。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-C4",
+        "verbatim": "README/契約/テンプレート/必要workflowに容量と運用上の注意を整合記載。試行上限は変更しない。System PRのCIと独立Review前はmergeしない。既存の配送成果物を上書きしない。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      }
+    ]
+  },
+  "role": "test",
+  "task_id": "PUBLIC-SYSTEM-CAPACITY-TEST-E1-A1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "PUBLIC-SYSTEM-ARTIFACT-CAPACITY-IMPLEMENTATION-E1-A1",
+      "attempt": 1,
+      "relationship": "dependency",
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/750b3771009488834e2bc2aca91c64923af158fd/evidence/artifact-capacity/implementation-a1/handoff.json",
+      "revision": "sha256:89230623e89c7dc4d24ebebaaaa8acb46f0ad3e7781010fa643c05a9f99fc17f"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Independent fixed-head Test passed: 356 suite tests, 8 CI-equivalent commands, 59 independent CLI/schema cases. Review and Manager readiness/integration remain pending.",
+  "artifacts": [
+    {
+      "id": "test-report",
+      "kind": "document",
+      "locator": "test-report.md",
+      "revision": "sha256:6fa94006aec62d3677f3dce8fa7a96f65269810f5a17b4c68d7c04bf25d61671",
+      "summary": "Independent Test evidence; synthetic fixture and measured fixed-source scope only."
+    },
+    {
+      "id": "test-results",
+      "kind": "test-report",
+      "locator": "test-results.json",
+      "revision": "sha256:38acceadd0323aa51307bbe3c5e5c4fcdb9152f4d6819665d8bca3e0f27b3cfd",
+      "summary": "Independent Test evidence; synthetic fixture and measured fixed-source scope only."
+    },
+    {
+      "id": "independent-results",
+      "kind": "test-report",
+      "locator": "independent-results.json",
+      "revision": "sha256:2aac6f58726dcfcb108ae29cbab281f9f2360e2aa7f8ee6371ec94bf8591acd8",
+      "summary": "Independent Test evidence; synthetic fixture and measured fixed-source scope only."
+    },
+    {
+      "id": "reproducer",
+      "kind": "document",
+      "locator": "reproducer.py",
+      "revision": "sha256:4552296cb29c2316600dc0f9db886586942d95e087e8a3b692b28e61bc1493c6",
+      "summary": "Independent Test evidence; synthetic fixture and measured fixed-source scope only."
+    },
+    {
+      "id": "ci-command-replay",
+      "kind": "test-report",
+      "locator": "ci-command-replay.json",
+      "revision": "sha256:85c6e04b4b8303f2e58f5d1cf0bafe10759f149ddfa4f77a541096043e2e55de",
+      "summary": "Independent Test evidence; synthetic fixture and measured fixed-source scope only."
+    },
+    {
+      "id": "github-observation",
+      "kind": "test-report",
+      "locator": "github-observation.json",
+      "revision": "sha256:6f3c7bb1f5699847f6f415328db97ad943c1e4f93e706ec26619988987c2cb91",
+      "summary": "Independent Test evidence; synthetic fixture and measured fixed-source scope only."
+    },
+    {
+      "id": "readiness-evidence",
+      "kind": "other",
+      "locator": "readiness-evidence.json",
+      "revision": "sha256:9bf0b304e1a3d41fdec4043a42702c370ebc2a082ee5900204717f3e9ff301ea",
+      "summary": "Independent Test evidence; synthetic fixture and measured fixed-source scope only."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "independent-measurements",
+      "claim": "Assigned Test scope verified for AC-C1 through AC-C4.",
+      "artifact_ids": [
+        "test-report",
+        "test-results",
+        "independent-results",
+        "reproducer",
+        "ci-command-replay",
+        "github-observation",
+        "readiness-evidence"
+      ],
+      "locator": "test-report.md",
+      "observation": "All measured checks passed; independent synthetic and real incoming transport distinguished. Full scope and limitations in report."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-C1",
+      "disposition": "covered",
+      "scope": "system-artifact-capacity independent Test only; not Issue final assessment or merge permission.",
+      "artifact_ids": [
+        "test-report",
+        "test-results",
+        "independent-results",
+        "reproducer",
+        "ci-command-replay",
+        "github-observation",
+        "readiness-evidence"
+      ],
+      "evidence_ids": [
+        "independent-measurements"
+      ]
+    },
+    {
+      "ac_id": "AC-C2",
+      "disposition": "covered",
+      "scope": "system-artifact-capacity independent Test only; not Issue final assessment or merge permission.",
+      "artifact_ids": [
+        "test-report",
+        "test-results",
+        "independent-results",
+        "reproducer",
+        "ci-command-replay",
+        "github-observation",
+        "readiness-evidence"
+      ],
+      "evidence_ids": [
+        "independent-measurements"
+      ]
+    },
+    {
+      "ac_id": "AC-C3",
+      "disposition": "covered",
+      "scope": "system-artifact-capacity independent Test only; not Issue final assessment or merge permission.",
+      "artifact_ids": [
+        "test-report",
+        "test-results",
+        "independent-results",
+        "reproducer",
+        "ci-command-replay",
+        "github-observation",
+        "readiness-evidence"
+      ],
+      "evidence_ids": [
+        "independent-measurements"
+      ]
+    },
+    {
+      "ac_id": "AC-C4",
+      "disposition": "covered",
+      "scope": "system-artifact-capacity independent Test only; not Issue final assessment or merge permission.",
+      "artifact_ids": [
+        "test-report",
+        "test-results",
+        "independent-results",
+        "reproducer",
+        "ci-command-replay",
+        "github-observation",
+        "readiness-evidence"
+      ],
+      "evidence_ids": [
+        "independent-measurements"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe",
+  "assignment": {
+    "scope": "system-artifact-capacity",
+    "ac_ids": [
+      "AC-C1",
+      "AC-C2",
+      "AC-C3",
+      "AC-C4"
+    ],
+    "completion_criteria": [
+      "Independently verify assigned AC-C1..AC-C4 at fixed head using canonical incoming validation, full existing suite, independent malicious synthetic CLI fixtures, documented measurements and reproducible public-safe Handoff delivery. No implementation changes, PR operations or merge."
+    ]
+  }
+}

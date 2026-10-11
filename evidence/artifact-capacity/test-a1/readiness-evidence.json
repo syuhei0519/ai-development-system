@@ -1,0 +1,55 @@
+{
+  "document_type": "independent_test_evidence",
+  "artifact_id": "readiness-evidence",
+  "subject": {
+    "repository": "syuhei0519/ai-development-system",
+    "pr_number": 9,
+    "head_sha": "4e38376404d9486daae93829735f11166a01e062",
+    "base_sha": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+    "target_revision": "4e38376404d9486daae93829735f11166a01e062",
+    "config_revision": "sha256:f02d090639034d8882e827dfbc9da4a181c3a6218a4d389a46e62c69f30eb1ad",
+    "merge_group_sha": null
+  },
+  "context_sha256": "8e9114ea1ff3d95fb2475382ca8bfed7ecdf0aa79967748dfc7169ca07445b68",
+  "config_sha256": "f02d090639034d8882e827dfbc9da4a181c3a6218a4d389a46e62c69f30eb1ad",
+  "evidence": [
+    {
+      "id": "independent-capacity-test",
+      "kind": "independent_test",
+      "subject": {
+        "repository": "syuhei0519/ai-development-system",
+        "pr_number": 9,
+        "head_sha": "4e38376404d9486daae93829735f11166a01e062",
+        "base_sha": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+        "target_revision": "4e38376404d9486daae93829735f11166a01e062",
+        "config_revision": "sha256:f02d090639034d8882e827dfbc9da4a181c3a6218a4d389a46e62c69f30eb1ad",
+        "merge_group_sha": null
+      },
+      "observed_at": "2026-10-11T19:44:28.353941+00:00",
+      "valid_until": "2026-10-12T19:44:28.353941+00:00",
+      "locator": "test-report.md",
+      "observation": "356 suite tests, eight CI-equivalent commands and 59 independently constructed CLI/schema cases passed. Fixed-source scope only; no merge or deployment.",
+      "producer": "PUBLIC-SYSTEM-CAPACITY-TEST-E1-A1",
+      "independent": true,
+      "ac_ids": [
+        "AC-C1",
+        "AC-C2",
+        "AC-C3",
+        "AC-C4"
+      ]
+    }
+  ],
+  "validity_basis": "Maximum 24 hours is justified for immutable head/base/config and reproducible local fixed-source observations. Immediately invalid if any subject/config changes or contradictory evidence appears. Does not extend live policy.",
+  "policy_observed_at": "2026-10-11T19:37:16Z",
+  "policy_valid_until": "2026-10-11T20:22:16Z",
+  "policy_source": "Manager supplied fixed context; unchanged, not independently refreshed.",
+  "remaining_gates": [
+    "Independent Review",
+    "Manager current policy and readiness aggregation",
+    "Authorized integration after all gates"
+  ],
+  "merge_group": "null in supplied context; no queue required according to Manager snapshot; independently no merge-group executed.",
+  "issue_completion": "unverified",
+  "deployment_effect": "none",
+  "deployment_basis": "All 18 changed paths are System contract/schema/validator/test/docs files. Sole workflow runs validation with contents:read, no deployment jobs. No application repository was modified."
+}
