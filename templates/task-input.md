@@ -60,7 +60,7 @@ Dots / Manager が専門役割の独立 Codex Cloud タスクに渡す入力テ�
 該当しない工程は理由を記録し、架空の PR/証跡を作らない。Merge Ready は Issue Completion ではない。premerge の不合格・未実行・承認待ちを deferred にしない。未検証があれば自動 close を指定せず、Manager の全 AC 実測後の最終判定を待つ。
 
 
-Issue Completionには全AC実測に加えて必要な統合完了が必要。全premerge ACがmetでも未マージならunverified。Readiness/contextのissue_integration_scopeで単一PRと集約待ちを分離し、複数PR・repo/範囲不明は単一PRからachievedにしない。集約契約と証跡の検証は後続依存として明示する。全AC met・統合待ちの中間Handoffではfinal_assessmentを省略し、Readiness artifactで追跡する。
+Issue Completionには全AC実測に加えて必要な統合完了が必要。全premerge ACがmetでも未マージならunverified。Readiness/contextのissue_integration_scopeで単一PRと集約待ちを分離し、複数PR・repo/範囲不明は単一PRからachievedにしない。複数PR・repoは独立[Issue Completion契約](../contracts/issue-completion.md)で全必要集合と固定証跡を検証する。全AC met・統合待ちの中間Handoffではfinal_assessmentを省略し、Readiness artifactで追跡する。
 
 Readinessの配送にはartifact_id、Handoff基準のローカルlocator、実体bytesのsha256 digest revisionを使用する。`validate_readiness.py --handoff`は実体の読み取り・評価対象ファイルとの同一性・digestを照合する。旧DraftのReadinessは追加必須項目を確認して移行する。詳細と限界はReadiness契約を参照。
 
@@ -70,3 +70,7 @@ Readinessの配送にはartifact_id、Handoff基準のローカルlocator、実�
 Publication Receipt、独立 pin の Consumer 利用承認、Consumption Receipt と検証済み実体を渡す。
 未検証 bytes を利用しない。dispatch/execution/delivery の各予算、最新非公開台帳 pin、
 旧 terminal と新承認 epoch の関係を明記する。最大3回は各予算に適用し、旧履歴をリセットしない。
+
+## Aggregate Issue Completion Context
+
+複数 PR/repo は [集約契約](../contracts/issue-completion.md) に従い、独立 context pin、全必須 PR/repo/AC 原文/subchecks、承認 scope、merge head/result 対応、配備 source/config/image/environment/workload、現在観測と期限、最新 previous pin と全履歴を初回入力に渡す。PR Readiness pair と最終 Issue Handoff pair は別実体で配送する。未実測は unverified、既知 failure/rollback は not_achieved を保持する。CLI 成功から操作権限を推論しない。

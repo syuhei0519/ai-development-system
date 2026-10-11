@@ -1,0 +1,44 @@
+{
+  "document_type": "issue_completion_observation",
+  "schema_version": "1.0",
+  "observation": {
+    "id": "client-pre",
+    "kind": "ac_measurement",
+    "phase": "premerge",
+    "member_ids": [
+      "client"
+    ],
+    "deployment_ids": [],
+    "verification_ids": [
+      "client-pre"
+    ],
+    "ac_ids": [
+      "SYNTHETIC-AC-1"
+    ],
+    "binding": {
+      "type": "pr",
+      "member_id": "client",
+      "subject": {
+        "repository": "example/synthetic-client",
+        "pr_number": 3,
+        "head_sha": "cccccccccccccccccccccccccccccccccccccccc",
+        "base_sha": "ffffffffffffffffffffffffffffffffffffffff",
+        "target_revision": "cccccccccccccccccccccccccccccccccccccccc",
+        "config_revision": "synthetic-policy-and-environment-v1",
+        "merge_group_sha": null
+      },
+      "scope_revision": "5ab7d53af079dfbab944f5fc567b59a8df55f56cbd9880f931e5fe257d43967d"
+    },
+    "environment_id": "synthetic-ci",
+    "workload_id": "synthetic-tests",
+    "method": "synthetic unit checks",
+    "expected_result": "synthetic pass",
+    "merge": null,
+    "observed_at": "2030-01-01T10:00:00Z",
+    "valid_until": "2030-01-04T00:00:00Z",
+    "producer": "synthetic-tester",
+    "independent": true,
+    "result": "pass",
+    "observation": "synthetic sample: fictional record, no product result or authority"
+  }
+}

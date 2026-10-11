@@ -1,0 +1,85 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "SYNTHETIC-ISSUE",
+    "source": "synthetic sample request",
+    "title": "synthetic sample: three PR aggregate",
+    "acceptance_criteria": [
+      {
+        "id": "SYNTHETIC-AC-1",
+        "verbatim": "synthetic sample: local contract tests pass",
+        "source": "synthetic sample request"
+      },
+      {
+        "id": "SYNTHETIC-AC-2",
+        "verbatim": "synthetic sample: observe the deployed service",
+        "source": "synthetic sample request"
+      }
+    ]
+  },
+  "role": "manager",
+  "task_id": "SYNTHETIC-AGGREGATE-MANAGER",
+  "attempt": 1,
+  "upstream": [],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "synthetic sample: fictional record, no product result or authority",
+  "artifacts": [
+    {
+      "id": "SYNTHETIC-READINESS",
+      "kind": "other",
+      "locator": "app-readiness.json",
+      "revision": "sha256:e52ef88b27391bb7290bf1de48c98f2372e681db318c6fb5483ade79cdea9f2c",
+      "summary": "synthetic sample: fictional record, no product result or authority"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "record",
+      "claim": "synthetic sample: fictional record, no product result or authority",
+      "artifact_ids": [
+        "SYNTHETIC-READINESS"
+      ],
+      "locator": "app-readiness.json",
+      "observation": "synthetic sample: fictional record, no product result or authority"
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "SYNTHETIC-AC-1",
+      "disposition": "covered",
+      "scope": "Synthetic record validation only",
+      "artifact_ids": [
+        "SYNTHETIC-READINESS"
+      ],
+      "evidence_ids": [
+        "record"
+      ]
+    },
+    {
+      "ac_id": "SYNTHETIC-AC-2",
+      "disposition": "covered",
+      "scope": "Synthetic record validation only",
+      "artifact_ids": [
+        "SYNTHETIC-READINESS"
+      ],
+      "evidence_ids": [
+        "record"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "synthetic_sample",
+  "assignment": {
+    "scope": "synthetic sample: fictional record, no product result or authority",
+    "ac_ids": [
+      "SYNTHETIC-AC-1",
+      "SYNTHETIC-AC-2"
+    ],
+    "completion_criteria": [
+      "synthetic sample: fictional record, no product result or authority"
+    ]
+  }
+}

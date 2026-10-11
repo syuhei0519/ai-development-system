@@ -1,4 +1,4 @@
-# Contracts: Issue v2.0 / Knowledge v1.0 / Readiness v1.0
+# Contracts: Issue v2.0 / Knowledge v1.0 / Readiness v1.0 / Issue Completion v1.0
 
 JSON Schema Draft 2020-12 を使用する。追加フィールド、空文字・空白のみの文字列、型不正を拒否する。schema の `$id` にある example.invalid は識別用プレースホルダーであり、ネットワーク取得は不要。
 
@@ -53,7 +53,7 @@ Knowledge は Issue 契約の role=knowledge を廃止し、独立した v1.0 �
 [Readiness v1.0](readiness.md) は3種 readiness と全 AC の実測状態を分離する独立契約。PR 単位の Merge Ready に Issue achieved を要求しない。`readiness.schema.json` と `readiness-context.schema.json` を `validate_readiness.py` で照合し、handoff との配送には `--handoff` も使う。既存 handoff v2.0 の artifacts から固定参照し、既存 final_assessment の全 AC 実測による厳格な Manager 判定を維持する。Knowledge 契約と収集基盤には変更を加えない。
 
 
-Issue Completionには全AC実測に加えて必要な統合完了が必要。全premerge ACがmetでも未マージならunverified。Readiness/contextのissue_integration_scopeで単一PRと集約待ちを分離し、複数PR・repo/範囲不明は単一PRからachievedにしない。集約契約と証跡の検証は後続依存として明示する。全AC met・統合待ちの中間Handoffではfinal_assessmentを省略し、Readiness artifactで追跡する。
+Issue Completionには全AC実測に加えて必要な統合完了が必要。全premerge ACがmetでも未マージならunverified。Readiness/contextのissue_integration_scopeで単一PRと集約待ちを分離し、複数PR・repo/範囲不明は単一PRからachievedにしない。複数PR・repoは独立[Issue Completion契約](issue-completion.md)で全必要集合と固定証跡を検証する。全AC met・統合待ちの中間Handoffではfinal_assessmentを省略し、Readiness artifactで追跡する。
 
 Readinessの配送にはartifact_id、Handoff基準のローカルlocator、実体bytesのsha256 digest revisionを使用する。`validate_readiness.py --handoff`は実体の読み取り・評価対象ファイルとの同一性・digestを照合する。旧DraftのReadinessは追加必須項目を確認して移行する。詳細と限界はReadiness契約を参照。
 
