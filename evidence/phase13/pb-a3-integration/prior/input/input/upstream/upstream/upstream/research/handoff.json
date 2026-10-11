@@ -1,0 +1,205 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "System Phase1-3 design assignment",
+    "source": "assignment-requirements.json",
+    "title": "System Phase1-3 design assignment: Phase1第3工程Knowledge Agentのread-only設計",
+    "acceptance_criteria": [
+      {
+        "id": "D-1",
+        "verbatim": "現在ある契約/CLI/ドキュメントと未実装の非同期収集・定期同期境界を明確化",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "D-2",
+        "verbatim": "既存Dots+独立CodexCloud+GitHub/Actionsで追加APIなしに実装可能な方式を比較し推奨。存在しないAgent起動APIや必須追加API、架空のscheduler能力を仮定しない。Manager駆動の節目/定期実行とGitの確定処理の責務を分離",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "D-3",
+        "verbatim": "event/inbox/cursor/idempotency/replay/dedup/retry/安全性/原本と派生版/出典/古い知識失効/読み手context acknowledgement/非ブロッキング失敗をどう契約・実装・検証するか具体化",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "D-4",
+        "verbatim": "完了条件、受け入れテスト、独立Test/Review、merge依存順序、実証Knowledge AgentとConsumerタスクの計画",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "D-5",
+        "verbatim": "Phase1-2 Order未完了でも配送基盤の実経験と合成複数Issueで安全に進められる範囲を独立化。Issue2のAC合格や実装再開を知識作業から推論しない",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "D-6",
+        "verbatim": "現行Knowledge.mdにPhase1-3未実装と書かれた境界を更新すべき箇所",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "D-7",
+        "verbatim": "複数PR/repo IssueCompletion集約契約が未実装である点はPhase1-2完走依存として識別するだけで、このタスクでアプリ設計やコード変更はしない",
+        "source": "assignment-requirements.json"
+      }
+    ]
+  },
+  "role": "research-design",
+  "task_id": "PUBLIC-PHASE13-RESEARCH-01",
+  "attempt": 1,
+  "upstream": [],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "System設計工程のみ完了。工程要件は明示的委任本文に由来し、Issue2のACではない。task_idは本報告のローカル管理aliasでありplatform実IDの主張ではない。保存済み成果物は配送待ち。独立Test/Reviewと実装・実運用は後続工程。",
+  "artifacts": [
+    {
+      "id": "DESIGN",
+      "kind": "document",
+      "locator": "design.md",
+      "revision": "sha256:3bc5071ca6ab336d17ef10fde5c5e7b6b931bc3d16d4850dca946e5766caee46",
+      "summary": "構造化設計報告。実装・運用完了の主張ではない。"
+    },
+    {
+      "id": "SOURCES",
+      "kind": "other",
+      "locator": "source-inventory.json",
+      "revision": "sha256:3b70f0a86ad864e6d8682f312a66aabe1036ffa09e3243afc8480806961dec6a",
+      "summary": "固定source inventoryと実bytesのsize/hash。"
+    },
+    {
+      "id": "OBSERVATIONS",
+      "kind": "test-report",
+      "locator": "verification-observations.json",
+      "revision": "sha256:8be71756b79529a3317968ff6ec04d79ec47579e3e2f4a33f37208dd139d13b1",
+      "summary": "Researchによるbaselineと型衝突観測。独立Test/Reviewではない。"
+    },
+    {
+      "id": "REQUIREMENTS",
+      "kind": "document",
+      "locator": "assignment-requirements.json",
+      "revision": "sha256:de34bda253a2ca7df0d17a039d4d710c450c984e2226b60920bae5cda3017760",
+      "summary": "委任されたSystem工程要件原文。backend Issue2 ACではない。"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-DESIGN",
+      "claim": "明示されたSystem設計工程要件D-1〜D-7について、比較・契約案・検証案・依存・文書更新箇所を設計済み。",
+      "artifact_ids": [
+        "DESIGN",
+        "SOURCES",
+        "REQUIREMENTS"
+      ],
+      "locator": "design.md",
+      "observation": "固定main SHA df400018057735b7cb6a9c6ea4619508f0e6ba3aを調査。設計は完了し、コード実装、実Knowledge/Consumerタスク、scheduler登録・周期運用、PR/mergeは未実行。"
+    },
+    {
+      "id": "E-BASELINE",
+      "claim": "既存107testsは成功し、Knowledge input/handoffの配送型衝突を再現した。",
+      "artifact_ids": [
+        "OBSERVATIONS",
+        "SOURCES"
+      ],
+      "locator": "verification-observations.json",
+      "observation": "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -q => 107 tests OK exit 0。既存examplesを使った関数probeでinput/handoffが拒否。Research自己観測であり独立Test/Review/CIとは区別する。"
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "D-1",
+      "disposition": "covered",
+      "scope": "Research/design工程のみ。設計済みであり実装・運用・Issue全体合格は未検証。",
+      "artifact_ids": [
+        "DESIGN"
+      ],
+      "evidence_ids": [
+        "E-DESIGN"
+      ]
+    },
+    {
+      "ac_id": "D-2",
+      "disposition": "covered",
+      "scope": "Research/design工程のみ。設計済みであり実装・運用・Issue全体合格は未検証。",
+      "artifact_ids": [
+        "DESIGN"
+      ],
+      "evidence_ids": [
+        "E-DESIGN"
+      ]
+    },
+    {
+      "ac_id": "D-3",
+      "disposition": "covered",
+      "scope": "Research/design工程のみ。設計済みであり実装・運用・Issue全体合格は未検証。",
+      "artifact_ids": [
+        "DESIGN"
+      ],
+      "evidence_ids": [
+        "E-DESIGN"
+      ]
+    },
+    {
+      "ac_id": "D-4",
+      "disposition": "covered",
+      "scope": "Research/design工程のみ。設計済みであり実装・運用・Issue全体合格は未検証。",
+      "artifact_ids": [
+        "DESIGN"
+      ],
+      "evidence_ids": [
+        "E-DESIGN"
+      ]
+    },
+    {
+      "ac_id": "D-5",
+      "disposition": "covered",
+      "scope": "Research/design工程のみ。設計済みであり実装・運用・Issue全体合格は未検証。",
+      "artifact_ids": [
+        "DESIGN"
+      ],
+      "evidence_ids": [
+        "E-DESIGN"
+      ]
+    },
+    {
+      "ac_id": "D-6",
+      "disposition": "covered",
+      "scope": "Research/design工程のみ。設計済みであり実装・運用・Issue全体合格は未検証。",
+      "artifact_ids": [
+        "DESIGN"
+      ],
+      "evidence_ids": [
+        "E-DESIGN"
+      ]
+    },
+    {
+      "ac_id": "D-7",
+      "disposition": "covered",
+      "scope": "Research/design工程のみ。設計済みであり実装・運用・Issue全体合格は未検証。",
+      "artifact_ids": [
+        "DESIGN"
+      ],
+      "evidence_ids": [
+        "E-DESIGN"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe",
+  "assignment": {
+    "scope": "System Phase1-3 design assignment: Phase1第3工程Knowledge Agentのread-only調査・構造化設計・実装検証計画。公開/配送/実装/起動/merge権限を含まない。",
+    "ac_ids": [
+      "D-1",
+      "D-2",
+      "D-3",
+      "D-4",
+      "D-5",
+      "D-6",
+      "D-7"
+    ],
+    "completion_criteria": [
+      "固定正本の契約・CLI・文書を読み現行仕様と未実装境界を示す。",
+      "追加APIなしの実行可能な方式を比較し、契約・検証・実証・依存・更新箇所を設計する。",
+      "Handoffv2と構造化設計報告を保存し、原本と公開安全候補派生版のbytes size/hashを返す。"
+    ]
+  }
+}

@@ -1,0 +1,282 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "acceptance_criteria": [
+      {
+        "id": "PB-1",
+        "source": "assignment-requirements.json",
+        "verbatim": "KnowledgeEvent、source registry、KnowledgeCollectionStateの閉じた版付き契約を実装する。event identityは固定repo/commit/path/source SHA256/candidate ID/event kindから決まり、時刻・配送試行・実task IDに依存しない。同identity別payloadを拒否し、類似内容だけで根拠を失う重複排除をしない。"
+      },
+      {
+        "id": "PB-2",
+        "source": "assignment-requirements.json",
+        "verbatim": "許可済み固定Git snapshotのinboxを全件列挙し全source bytesと必要依存を検証するscan/reconcileを実装する。partial readや改変時にcursorを先行させず、registry変更・履歴欠落・force push・旧cursor非ancestorでは全照合する。過去event消失を成功扱いせず隔離し、raw historyを保持する。"
+      },
+      {
+        "id": "PB-3",
+        "source": "assignment-requirements.json",
+        "verbatim": "single Manager writer、previous-state digest CAS、atomic保存、durable staging、scan/event/cursorのtransactionを実装する。pending/verified/reserved/dispatching/started/output_received/validated/commit_pending/committed/context_available、blocked/quarantined/dispatch_unknown/terminalを区別し、不正遷移・stale writer・overlapを拒否する。"
+      },
+      {
+        "id": "PB-4",
+        "source": "assignment-requirements.json",
+        "verbatim": "既存retry契約と連携しdispatch/execution/delivery各3上限・過去履歴・RETRY_LIMIT_REACHEDを保持する。開始不明をlease期限だけで再起動せず、取得済みoutputはdeliveryから再開し、Git確定後state更新前crashは固定commit検証で追認する。再開承認をreceiptやreplayから作らず、無限再試行を拒否する。"
+      },
+      {
+        "id": "PB-5",
+        "source": "assignment-requirements.json",
+        "verbatim": "collector自体はLLM/API/専門Agentを起動せず、scan/plan/record/reconcile/replayの機械的CLIとsynthetic fixturesを提供する。Knowledge失敗で開発gateを止めない。private stateとpublic-safe観測を分離し、runtime ID/認可/秘密/内部ログをpublic出力しない。scheduleは登録・有効化しない。"
+      },
+      {
+        "id": "PB-6",
+        "source": "assignment-requirements.json",
+        "verbatim": "正常系、重複・衝突、scan中断、source変更、CAS競合、各crash点、poison event、no-op、retry上限、未承認再開、legacy互換の回帰を実装し全128既存テストを維持する。schema/CLI/docs/README/workflow/templatesを整合させ、独立Testが再現できる固定head・自己検証根拠・Handoff v2を提出する。P-C/P-Dや定期実運用完了を主張しない。"
+      }
+    ],
+    "id": "SYSTEM-PHASE13-PB",
+    "source": "assignment-requirements.json",
+    "title": "System Phase 1-3 P-B asynchronous collection and durable inbox/state"
+  },
+  "assignment": {
+    "scope": "system/phase1-3/P-B",
+    "ac_ids": [
+      "PB-1",
+      "PB-2",
+      "PB-3",
+      "PB-4",
+      "PB-5",
+      "PB-6"
+    ],
+    "completion_criteria": [
+      "Repair F4 minimally, preserve PB-1 through PB-6 implementation and verify all required regressions.",
+      "Append commit to existing feature, retain Draft PR and verify new-head CI.",
+      "Preserve prior attempts and failed Test dependencies; deliver sealed public alias candidate without operational publication."
+    ]
+  },
+  "role": "implementation",
+  "task_id": "PUBLIC-PHASE13-PB-IMPLEMENTATION-03",
+  "attempt": 3,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "PUBLIC-PHASE13-PB-IMPLEMENTATION-02",
+      "attempt": 2,
+      "handoff_locator": "input/input/handoff.json",
+      "revision": "sha256:a05cc878489338ec1699d637c0d3164304ba50e4fc39d0480747f6d23549c63c",
+      "relationship": "retry_of"
+    },
+    {
+      "role": "test",
+      "task_id": "PUBLIC-PHASE13-PB-TEST-02",
+      "attempt": 2,
+      "handoff_locator": "input/handoff.json",
+      "revision": "sha256:8be64957ae82283e9e972d1bf5c981bd46ae93abf95f324fcf821939facc3326",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "P-B Implementation attempt 3: F4 repaired at b79f98d3cb3bd58059a12b543df1d187b284fe35. Self-verification and new-head CI pass; independent Test/Review and Manager business gate remain pending. Public alias, not runtime identity. Final third execution slot; no reset or recursion.",
+  "artifacts": [
+    {
+      "id": "REPORT",
+      "kind": "test-report",
+      "locator": "implementation-report.json",
+      "revision": "sha256:d1439cad12f647f708cbada0e6a7d0b816daecf6f18a61d0c6943993cf871697",
+      "summary": "implementation-report.json"
+    },
+    {
+      "id": "PATCH",
+      "kind": "patch",
+      "locator": "repair.patch",
+      "revision": "sha256:2163aa27025896ea40276041cb53a6c92ead01b7d4397751a12c1cbd606e65d1",
+      "summary": "repair.patch"
+    },
+    {
+      "id": "REPRODUCE",
+      "kind": "document",
+      "locator": "reproduce.txt",
+      "revision": "sha256:541b638a09cecc6dbc8a4daa6514d1603470cc3a2f662557c21754cfdda94fe2",
+      "summary": "reproduce.txt"
+    },
+    {
+      "id": "INTEGRATION",
+      "kind": "test-report",
+      "locator": "integration-observation.json",
+      "revision": "sha256:baac8eaa4bf56acdbcd5b4a8d2510ccb40356880eb2e0904718fdea4e0fb2dd6",
+      "summary": "integration-observation.json"
+    },
+    {
+      "id": "SAFETY",
+      "kind": "document",
+      "locator": "safety-and-closure.json",
+      "revision": "sha256:c2f4bf1ff64c48a5d198a00ee1fa844526a9f2925e7741f2fdc77e784ba26a3f",
+      "summary": "safety-and-closure.json"
+    },
+    {
+      "id": "REQUIREMENTS",
+      "kind": "document",
+      "locator": "assignment-requirements.json",
+      "revision": "sha256:665bef183d7dc0e38edeb96f09835ff6aa49f68105b8952e9d3d614734d1e803",
+      "summary": "assignment-requirements.json"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-PB-1",
+      "claim": "PB-1 implementation self-verification",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE",
+        "INTEGRATION"
+      ],
+      "locator": "implementation-report.json#ac_coverage/PB-1",
+      "observation": "Unchanged closed contracts and identity; 179 repository, supplied 21 and 15 cases cover collision and distinct evidence."
+    },
+    {
+      "id": "E-PB-2",
+      "claim": "PB-2 implementation self-verification",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE",
+        "INTEGRATION"
+      ],
+      "locator": "implementation-report.json#ac_coverage/PB-2",
+      "observation": "Unchanged F1/F3 repairs; disappearance/source membership, full snapshot verification and every Git ancestor remain covered."
+    },
+    {
+      "id": "E-PB-3",
+      "claim": "PB-3 implementation self-verification",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE",
+        "INTEGRATION"
+      ],
+      "locator": "implementation-report.json#ac_coverage/PB-3",
+      "observation": "Unchanged F2 durability/CAS; crash probes, immutable object preservation and legacy corrupt-object fail-closed case pass. No automatic corrupt-object overwrite."
+    },
+    {
+      "id": "E-PB-4",
+      "claim": "PB-4 implementation self-verification",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE",
+        "INTEGRATION"
+      ],
+      "locator": "implementation-report.json#ac_coverage/PB-4",
+      "observation": "Existing retry limits/history, unknown-start stop, output delivery resume, commit acknowledgement and unauthorized-renewal cases pass. Final execution attempt 3; no reset or recursive execution."
+    },
+    {
+      "id": "E-PB-5",
+      "claim": "PB-5 implementation self-verification",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE",
+        "INTEGRATION"
+      ],
+      "locator": "implementation-report.json#ac_coverage/PB-5",
+      "observation": "Five mechanical CLI operations pass synthetic verification. Collector remains unchanged; no Agent launch, scheduler activation, deployment or development gate changes."
+    },
+    {
+      "id": "E-PB-6",
+      "claim": "PB-6 implementation self-verification",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE",
+        "INTEGRATION"
+      ],
+      "locator": "implementation-report.json#ac_coverage/PB-6",
+      "observation": "F4 reproduced before repair; one current documentation sentence corrected and one regression added. 179+21+15 cases, 128 base cases, 19 schemas, six CLI commands and 85 documentation link targets pass. Independent gates remain pending."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "PB-1",
+      "disposition": "covered",
+      "scope": "Implementation repair and self-verification only; independent Test/Review and final assessment pending.",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE"
+      ],
+      "evidence_ids": [
+        "E-PB-1"
+      ]
+    },
+    {
+      "ac_id": "PB-2",
+      "disposition": "covered",
+      "scope": "Implementation repair and self-verification only; independent Test/Review and final assessment pending.",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE"
+      ],
+      "evidence_ids": [
+        "E-PB-2"
+      ]
+    },
+    {
+      "ac_id": "PB-3",
+      "disposition": "covered",
+      "scope": "Implementation repair and self-verification only; independent Test/Review and final assessment pending.",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE"
+      ],
+      "evidence_ids": [
+        "E-PB-3"
+      ]
+    },
+    {
+      "ac_id": "PB-4",
+      "disposition": "covered",
+      "scope": "Implementation repair and self-verification only; independent Test/Review and final assessment pending.",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE"
+      ],
+      "evidence_ids": [
+        "E-PB-4"
+      ]
+    },
+    {
+      "ac_id": "PB-5",
+      "disposition": "covered",
+      "scope": "Implementation repair and self-verification only; independent Test/Review and final assessment pending.",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE"
+      ],
+      "evidence_ids": [
+        "E-PB-5"
+      ]
+    },
+    {
+      "ac_id": "PB-6",
+      "disposition": "covered",
+      "scope": "Implementation repair and self-verification only; independent Test/Review and final assessment pending.",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "REPRODUCE"
+      ],
+      "evidence_ids": [
+        "E-PB-6"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}
