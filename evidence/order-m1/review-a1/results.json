@@ -1,0 +1,2872 @@
+{
+  "observed_at": "2026-10-11T18:21:11.691488+00:00",
+  "valid_until": "2026-10-12T18:21:11.691488+00:00",
+  "independent_probes": {
+    "observed_at": "2026-10-11T18:13:43.665513+00:00",
+    "scope": "synthetic independent review",
+    "cases": [
+      {
+        "name": "head",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "tree",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "existing32files",
+        "passed": true,
+        "detail": {
+          "count": 32
+        }
+      },
+      {
+        "name": "existing-render/frontend",
+        "passed": true,
+        "detail": {
+          "sha256": "16ce7b984d0bfa86d110ed2c9757e565a9ada6056f7cbd583de32aa04a3866de"
+        }
+      },
+      {
+        "name": "existing-render/backend",
+        "passed": true,
+        "detail": {
+          "sha256": "98f9ee0a34d05ffdce403e6b22ea28fd84aa9e9eb508a0872d95b50067f22d88"
+        }
+      },
+      {
+        "name": "existing-render/postgresql",
+        "passed": true,
+        "detail": {
+          "sha256": "108bffe412325d4155c964fcf7ca30b58f23d636f1407b0466d84ec4528f8d38"
+        }
+      },
+      {
+        "name": "disabled/order/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "disabled/order/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "disabled/order-postgresql/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "disabled/order-postgresql/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "fixed-platform-three-apps",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "fixed-platform-existing-paths",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "eleven-resources-three-podspecs",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "positive-inventory",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "positive-scanner",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "same-image",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "no-secret-namespace-appproject",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Deployment/security",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Deployment/app-credentials",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Job/security",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Job/app-credentials",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "selector/order",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "selector/order-postgresql",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "selector/order-postgresql-headless",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "migration-budget",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "dedicated-data",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "pvc-retention",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "stateful-retention",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Pod/hostNetwork/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Pod/hostNetwork/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Pod/hostNetwork/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Pod/hostNetwork/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Pod/hostNetwork/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Pod/hostNetwork/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Pod/hostNetwork/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Pod/hostNetwork/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Pod/hostNetwork/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Pod/hostNetwork/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Pod/hostNetwork/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Pod/hostNetwork/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Pod/hostNetwork/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Pod/hostNetwork/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Pod/hostPID/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Pod/hostPID/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Pod/hostPID/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Pod/hostPID/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Pod/hostPID/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Pod/hostPID/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Pod/hostPID/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Pod/hostPID/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Pod/hostPID/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Pod/hostPID/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Pod/hostPID/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Pod/hostPID/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Pod/hostPID/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Pod/hostPID/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Pod/hostIPC/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Pod/hostIPC/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Pod/hostIPC/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Pod/hostIPC/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Pod/hostIPC/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Pod/hostIPC/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Pod/hostIPC/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Pod/hostIPC/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Pod/hostIPC/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Pod/hostIPC/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Pod/hostIPC/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Pod/hostIPC/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Pod/hostIPC/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Pod/hostIPC/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/Pod/'account'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/Pod/''",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/Pod/'kube-system'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/Pod/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/Pod/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/Pod/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/Pod/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Deployment/hostNetwork/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Deployment/hostNetwork/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Deployment/hostNetwork/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Deployment/hostNetwork/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Deployment/hostNetwork/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Deployment/hostNetwork/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Deployment/hostNetwork/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Deployment/hostNetwork/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Deployment/hostNetwork/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Deployment/hostNetwork/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Deployment/hostNetwork/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Deployment/hostNetwork/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Deployment/hostNetwork/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Deployment/hostNetwork/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Deployment/hostPID/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Deployment/hostPID/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Deployment/hostPID/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Deployment/hostPID/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Deployment/hostPID/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Deployment/hostPID/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Deployment/hostPID/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Deployment/hostPID/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Deployment/hostPID/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Deployment/hostPID/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Deployment/hostPID/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Deployment/hostPID/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Deployment/hostPID/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Deployment/hostPID/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Deployment/hostIPC/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Deployment/hostIPC/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Deployment/hostIPC/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Deployment/hostIPC/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Deployment/hostIPC/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Deployment/hostIPC/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Deployment/hostIPC/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Deployment/hostIPC/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Deployment/hostIPC/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Deployment/hostIPC/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Deployment/hostIPC/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Deployment/hostIPC/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Deployment/hostIPC/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Deployment/hostIPC/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/Deployment/'account'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/Deployment/''",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/Deployment/'kube-system'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/Deployment/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/Deployment/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/Deployment/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/Deployment/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/StatefulSet/hostNetwork/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/StatefulSet/hostNetwork/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/StatefulSet/hostNetwork/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/StatefulSet/hostNetwork/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/StatefulSet/hostNetwork/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/StatefulSet/hostNetwork/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/StatefulSet/hostNetwork/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/StatefulSet/hostNetwork/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/StatefulSet/hostNetwork/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/StatefulSet/hostNetwork/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/StatefulSet/hostNetwork/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/StatefulSet/hostNetwork/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/StatefulSet/hostNetwork/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/StatefulSet/hostNetwork/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/StatefulSet/hostPID/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/StatefulSet/hostPID/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/StatefulSet/hostPID/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/StatefulSet/hostPID/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/StatefulSet/hostPID/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/StatefulSet/hostPID/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/StatefulSet/hostPID/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/StatefulSet/hostPID/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/StatefulSet/hostPID/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/StatefulSet/hostPID/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/StatefulSet/hostPID/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/StatefulSet/hostPID/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/StatefulSet/hostPID/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/StatefulSet/hostPID/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/StatefulSet/hostIPC/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/StatefulSet/hostIPC/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/StatefulSet/hostIPC/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/StatefulSet/hostIPC/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/StatefulSet/hostIPC/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/StatefulSet/hostIPC/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/StatefulSet/hostIPC/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/StatefulSet/hostIPC/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/StatefulSet/hostIPC/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/StatefulSet/hostIPC/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/StatefulSet/hostIPC/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/StatefulSet/hostIPC/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/StatefulSet/hostIPC/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/StatefulSet/hostIPC/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/StatefulSet/'account'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/StatefulSet/''",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/StatefulSet/'kube-system'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/StatefulSet/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/StatefulSet/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/StatefulSet/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/StatefulSet/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/DaemonSet/hostNetwork/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/DaemonSet/hostNetwork/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/DaemonSet/hostNetwork/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/DaemonSet/hostNetwork/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/DaemonSet/hostNetwork/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/DaemonSet/hostNetwork/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/DaemonSet/hostNetwork/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/DaemonSet/hostNetwork/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/DaemonSet/hostNetwork/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/DaemonSet/hostNetwork/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/DaemonSet/hostNetwork/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/DaemonSet/hostNetwork/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/DaemonSet/hostNetwork/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/DaemonSet/hostNetwork/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/DaemonSet/hostPID/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/DaemonSet/hostPID/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/DaemonSet/hostPID/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/DaemonSet/hostPID/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/DaemonSet/hostPID/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/DaemonSet/hostPID/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/DaemonSet/hostPID/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/DaemonSet/hostPID/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/DaemonSet/hostPID/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/DaemonSet/hostPID/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/DaemonSet/hostPID/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/DaemonSet/hostPID/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/DaemonSet/hostPID/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/DaemonSet/hostPID/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/DaemonSet/hostIPC/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/DaemonSet/hostIPC/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/DaemonSet/hostIPC/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/DaemonSet/hostIPC/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/DaemonSet/hostIPC/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/DaemonSet/hostIPC/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/DaemonSet/hostIPC/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/DaemonSet/hostIPC/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/DaemonSet/hostIPC/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/DaemonSet/hostIPC/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/DaemonSet/hostIPC/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/DaemonSet/hostIPC/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/DaemonSet/hostIPC/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/DaemonSet/hostIPC/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/DaemonSet/'account'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/DaemonSet/''",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/DaemonSet/'kube-system'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/DaemonSet/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/DaemonSet/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/DaemonSet/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/DaemonSet/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicaSet/hostNetwork/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicaSet/hostNetwork/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicaSet/hostNetwork/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicaSet/hostNetwork/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicaSet/hostNetwork/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicaSet/hostNetwork/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicaSet/hostNetwork/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicaSet/hostNetwork/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicaSet/hostNetwork/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicaSet/hostNetwork/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicaSet/hostNetwork/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicaSet/hostNetwork/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicaSet/hostNetwork/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicaSet/hostNetwork/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicaSet/hostPID/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicaSet/hostPID/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicaSet/hostPID/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicaSet/hostPID/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicaSet/hostPID/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicaSet/hostPID/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicaSet/hostPID/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicaSet/hostPID/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicaSet/hostPID/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicaSet/hostPID/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicaSet/hostPID/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicaSet/hostPID/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicaSet/hostPID/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicaSet/hostPID/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicaSet/hostIPC/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicaSet/hostIPC/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicaSet/hostIPC/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicaSet/hostIPC/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicaSet/hostIPC/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicaSet/hostIPC/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicaSet/hostIPC/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicaSet/hostIPC/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicaSet/hostIPC/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicaSet/hostIPC/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicaSet/hostIPC/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicaSet/hostIPC/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicaSet/hostIPC/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicaSet/hostIPC/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/ReplicaSet/'account'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/ReplicaSet/''",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/ReplicaSet/'kube-system'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/ReplicaSet/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/ReplicaSet/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/ReplicaSet/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/ReplicaSet/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicationController/hostNetwork/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicationController/hostNetwork/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicationController/hostNetwork/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicationController/hostNetwork/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicationController/hostNetwork/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicationController/hostNetwork/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicationController/hostNetwork/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicationController/hostNetwork/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicationController/hostNetwork/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicationController/hostNetwork/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicationController/hostNetwork/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicationController/hostNetwork/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicationController/hostNetwork/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicationController/hostNetwork/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicationController/hostPID/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicationController/hostPID/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicationController/hostPID/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicationController/hostPID/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicationController/hostPID/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicationController/hostPID/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicationController/hostPID/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicationController/hostPID/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicationController/hostPID/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicationController/hostPID/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicationController/hostPID/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicationController/hostPID/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicationController/hostPID/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicationController/hostPID/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicationController/hostIPC/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicationController/hostIPC/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicationController/hostIPC/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicationController/hostIPC/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicationController/hostIPC/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicationController/hostIPC/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicationController/hostIPC/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicationController/hostIPC/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicationController/hostIPC/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicationController/hostIPC/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicationController/hostIPC/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicationController/hostIPC/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/ReplicationController/hostIPC/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/ReplicationController/hostIPC/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/ReplicationController/'account'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/ReplicationController/''",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/ReplicationController/'kube-system'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/ReplicationController/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/ReplicationController/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/ReplicationController/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/ReplicationController/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Job/hostNetwork/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Job/hostNetwork/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Job/hostNetwork/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Job/hostNetwork/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Job/hostNetwork/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Job/hostNetwork/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Job/hostNetwork/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Job/hostNetwork/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Job/hostNetwork/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Job/hostNetwork/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Job/hostNetwork/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Job/hostNetwork/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Job/hostNetwork/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Job/hostNetwork/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Job/hostPID/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Job/hostPID/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Job/hostPID/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Job/hostPID/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Job/hostPID/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Job/hostPID/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Job/hostPID/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Job/hostPID/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Job/hostPID/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Job/hostPID/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Job/hostPID/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Job/hostPID/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Job/hostPID/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Job/hostPID/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Job/hostIPC/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Job/hostIPC/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Job/hostIPC/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Job/hostIPC/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Job/hostIPC/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Job/hostIPC/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Job/hostIPC/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Job/hostIPC/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Job/hostIPC/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Job/hostIPC/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Job/hostIPC/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Job/hostIPC/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/Job/hostIPC/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/Job/hostIPC/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/Job/'account'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/Job/''",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/Job/'kube-system'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/Job/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/Job/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/Job/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/Job/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/CronJob/hostNetwork/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/CronJob/hostNetwork/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/CronJob/hostNetwork/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/CronJob/hostNetwork/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/CronJob/hostNetwork/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/CronJob/hostNetwork/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/CronJob/hostNetwork/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/CronJob/hostNetwork/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/CronJob/hostNetwork/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/CronJob/hostNetwork/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/CronJob/hostNetwork/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/CronJob/hostNetwork/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/CronJob/hostNetwork/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/CronJob/hostNetwork/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/CronJob/hostPID/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/CronJob/hostPID/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/CronJob/hostPID/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/CronJob/hostPID/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/CronJob/hostPID/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/CronJob/hostPID/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/CronJob/hostPID/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/CronJob/hostPID/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/CronJob/hostPID/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/CronJob/hostPID/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/CronJob/hostPID/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/CronJob/hostPID/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/CronJob/hostPID/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/CronJob/hostPID/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/CronJob/hostIPC/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/CronJob/hostIPC/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/CronJob/hostIPC/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/CronJob/hostIPC/True",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/CronJob/hostIPC/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/CronJob/hostIPC/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/CronJob/hostIPC/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/CronJob/hostIPC/'false'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/CronJob/hostIPC/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/CronJob/hostIPC/0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/CronJob/hostIPC/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/CronJob/hostIPC/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-inventory/CronJob/hostIPC/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "host-scanner/CronJob/hostIPC/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/CronJob/'account'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/CronJob/''",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/CronJob/'kube-system'",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/CronJob/None",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/CronJob/False",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/CronJob/[]",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "namespace/CronJob/{}",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "all-resources-namespace/order",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "all-resources-namespace/order-config",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "all-resources-namespace/order",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "all-resources-namespace/order",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "all-resources-namespace/order-migration",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "all-resources-namespace/order-postgresql",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "all-resources-namespace/order-postgresql-init",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "all-resources-namespace/order-postgresql-data",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "all-resources-namespace/order-postgresql-headless",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "all-resources-namespace/order-postgresql",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "all-resources-namespace/order-postgresql",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "hidden-inventory/ConfigMap",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "hidden-scanner/ConfigMap",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "hidden-inventory/UnknownWorkload",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "hidden-scanner/UnknownWorkload",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order/enabled=invalid",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order/replicaCount=2",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order/securityContext.privileged=true",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order/podSecurityContext.runAsUser=0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order/secrets.existingSecret=account-db",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order/imagePullSecrets[0].name=other",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order/extra=1",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order/service.port=80",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order/resources.limits.extra=1",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order/image.tag=latest",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order/release.service=backend",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order/release.runId=999",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order/release.sourceCommit=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order/migration.backoffLimit=2",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order-postgresql/enabled=invalid",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order-postgresql/replicaCount=2",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order-postgresql/securityContext.privileged=true",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order-postgresql/podSecurityContext.runAsUser=0",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order-postgresql/secrets.existingSecret=account-db",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order-postgresql/imagePullSecrets[0].name=other",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order-postgresql/extra=1",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order-postgresql/service.port=80",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order-postgresql/resources.limits.extra=1",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order-postgresql/persistence.enabled=false",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order-postgresql/persistence.size=1Gi",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order-postgresql/image.tag=latest",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "schema/order-postgresql/config.dbName=account",
+        "passed": true,
+        "detail": null
+      }
+    ],
+    "passed": 462,
+    "failed": 0
+  },
+  "original_immutable_fixture_retest": [
+    {
+      "case": "inventory-positive",
+      "sha256": "906e6045384a8e5139001cc572f5087ebdd6559c7b7842d75bea3573601a01fa",
+      "old": {
+        "inventory_exit": 0,
+        "inventory_digest": "edf751742cc148ea6ad1aa7ac96b93004e0ea008599357258bf11918bc8d748c",
+        "scanner_exit": 0
+      },
+      "head": {
+        "inventory_exit": 0,
+        "inventory_digest": "edf751742cc148ea6ad1aa7ac96b93004e0ea008599357258bf11918bc8d748c",
+        "scanner_exit": 0
+      }
+    },
+    {
+      "case": "pod-hostNetwork",
+      "sha256": "55ca32450e887721ffa5ad8f567c861ca7a852aed18f3dd1c8d4ace474016543",
+      "old": {
+        "inventory_exit": 0,
+        "inventory_digest": "edf751742cc148ea6ad1aa7ac96b93004e0ea008599357258bf11918bc8d748c",
+        "scanner_exit": 0
+      },
+      "head": {
+        "inventory_exit": 1,
+        "inventory_digest": null,
+        "scanner_exit": 1
+      }
+    },
+    {
+      "case": "pod-hostPID",
+      "sha256": "15b049a589770ea885cfbfdfbb6515ae95bac7a921059cdfd5407ac1c6736bd4",
+      "old": {
+        "inventory_exit": 0,
+        "inventory_digest": "edf751742cc148ea6ad1aa7ac96b93004e0ea008599357258bf11918bc8d748c",
+        "scanner_exit": 0
+      },
+      "head": {
+        "inventory_exit": 1,
+        "inventory_digest": null,
+        "scanner_exit": 1
+      }
+    },
+    {
+      "case": "pod-hostIPC",
+      "sha256": "aab6108314a26a3291d8b3390429ee03bd0caa6b0d559bbfac98abf1b64f8990",
+      "old": {
+        "inventory_exit": 0,
+        "inventory_digest": "edf751742cc148ea6ad1aa7ac96b93004e0ea008599357258bf11918bc8d748c",
+        "scanner_exit": 0
+      },
+      "head": {
+        "inventory_exit": 1,
+        "inventory_digest": null,
+        "scanner_exit": 1
+      }
+    },
+    {
+      "case": "namespace-escape",
+      "sha256": "3426ab852f2a352213b0045a5e79e722efb964ae4407806dd5a71b6b726a1822",
+      "old": {
+        "inventory_exit": 0,
+        "inventory_digest": "3460cf6eab5b3bf827d1febe6099206f98eb47194ccec3522d6afbc9ec900d0c",
+        "scanner_exit": 0
+      },
+      "head": {
+        "inventory_exit": 1,
+        "inventory_digest": null,
+        "scanner_exit": 0
+      }
+    }
+  ],
+  "go_tests": {
+    "command": "go test -count=1 -json ./... in every tools module; Go1.27.1/Helm4.2.4",
+    "test_subtest_pass": 1317,
+    "failed": 0,
+    "skipped_tests": 0,
+    "packages_without_tests": 5
+  },
+  "python_tests": {
+    "command": "python3 ci/*_test.py and ci/github/release_test.py, excluding namespace/order_inventory handled by CI",
+    "passed": 67
+  },
+  "commands": [
+    {
+      "command": "bash ci/github/test.sh",
+      "exit": 0,
+      "result": "pass; existing CA mounted read-only for Kubeconform, no TLS bypass"
+    },
+    {
+      "command": "sh ci/validate.sh",
+      "exit": 0,
+      "result": "all five strict chart lints and disabled/local rendering checks"
+    },
+    {
+      "command": "kubeconform -strict -summary -kubernetes-version 1.36.0 .rendered/all.yaml .rendered/synthetic-order",
+      "exit": 0,
+      "valid": 26,
+      "invalid": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "command": "SECURITY_RENDER_REQUIRED=true bash ci/github/source-scan.sh",
+      "exit": 0,
+      "result": "fixed pinned Trivy source/render gates pass; warnings preserved"
+    },
+    {
+      "command": "ci/trusted-render.py fixed base/head/verifier --producer-job-id 0 --test-only",
+      "exit": 0,
+      "provenanceRequired": false,
+      "eligibleForAuthenticatedVerification": false,
+      "report_sha256": "336c53e450bab442cf930d54ec53c369cd9f10cdc183149bdc7fcaa8cbede3fa"
+    },
+    {
+      "command": "fixed Test2 contract-checks.py FIXED_SYSTEM NEW_PRIVATE_ROOT",
+      "exit": 0,
+      "result": "canonical context schema and exact context/config/seven raw pins; expected specialized/canonical Issue-ID mismatch"
+    }
+  ],
+  "security_safe_summaries": [
+    {
+      "name": "source-scan.json",
+      "schemaVersion": 1,
+      "pass": true,
+      "trivyVersion": "0.75.0",
+      "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+      "scannedAt": "2026-10-11T18:18:37.272076473Z",
+      "findings": [
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0109",
+          "path": "charts/postgresql/templates/init-configmap.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0020",
+          "path": "charts/postgresql/templates/statefulset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": "charts/postgresql/templates/statefulset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0110",
+          "path": "charts/postgresql/templates/statefulset.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "charts/postgresql/templates/statefulset.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        }
+      ],
+      "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+    },
+    {
+      "name": "render-scan.json",
+      "schemaVersion": 1,
+      "pass": true,
+      "trivyVersion": "0.75.0",
+      "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+      "scannedAt": "2026-10-11T18:18:37.262684808Z",
+      "findings": [
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0020",
+          "path": "all.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": "all.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-01010",
+          "path": "all.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0109",
+          "path": "all.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0110",
+          "path": "all.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0110",
+          "path": "all.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0110",
+          "path": "all.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0110",
+          "path": "all.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "all.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "all.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "all.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "all.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-01010",
+          "path": "backend.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0110",
+          "path": "backend.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0110",
+          "path": "backend.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "backend.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "backend.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0110",
+          "path": "frontend.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "frontend.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0020",
+          "path": "postgresql.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": "postgresql.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0109",
+          "path": "postgresql.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0110",
+          "path": "postgresql.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "postgresql.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0020",
+          "path": "synthetic-order/order-postgresql.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0021",
+          "path": "synthetic-order/order-postgresql.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0109",
+          "path": "synthetic-order/order-postgresql.yaml",
+          "severity": "HIGH",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0110",
+          "path": "synthetic-order/order-postgresql.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "synthetic-order/order-postgresql.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-01010",
+          "path": "synthetic-order/order.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0110",
+          "path": "synthetic-order/order.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0110",
+          "path": "synthetic-order/order.yaml",
+          "severity": "LOW",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "synthetic-order/order.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        },
+        {
+          "kind": "misconfiguration",
+          "rule": "KSV-0125",
+          "path": "synthetic-order/order.yaml",
+          "severity": "MEDIUM",
+          "decision": "warning"
+        }
+      ],
+      "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+    }
+  ],
+  "remote_observation": {
+    "baseRefName": "main",
+    "headRefOid": "41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+    "isDraft": true,
+    "mergeStateStatus": "CLEAN",
+    "state": "OPEN",
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-11T17:36:45Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/syuhei0519/application-manifest/actions/runs/38160370112/job/114531814511",
+        "name": "classify",
+        "startedAt": "2026-10-11T17:36:41Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-11T17:36:42Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/syuhei0519/application-manifest/actions/runs/38160367255/job/114531806753",
+        "name": "classify",
+        "startedAt": "2026-10-11T17:36:39Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-11T17:36:45Z",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://github.com/syuhei0519/application-manifest/actions/runs/38160370112/job/114531834769",
+        "name": "docs",
+        "startedAt": "2026-10-11T17:36:46Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-11T17:36:42Z",
+        "conclusion": "SKIPPED",
+        "detailsUrl": "https://github.com/syuhei0519/application-manifest/actions/runs/38160367255/job/114531824875",
+        "name": "docs",
+        "startedAt": "2026-10-11T17:36:43Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-11T17:37:51Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/syuhei0519/application-manifest/actions/runs/38160370112/job/114531833901",
+        "name": "validate",
+        "startedAt": "2026-10-11T17:36:47Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-11T17:38:03Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/syuhei0519/application-manifest/actions/runs/38160367255/job/114531823928",
+        "name": "validate",
+        "startedAt": "2026-10-11T17:36:44Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-11T17:37:56Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/syuhei0519/application-manifest/actions/runs/38160370112/job/114532058813",
+        "name": "ci-result",
+        "startedAt": "2026-10-11T17:37:53Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-11T17:38:06Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/syuhei0519/application-manifest/actions/runs/38160367255/job/114532101162",
+        "name": "ci-result",
+        "startedAt": "2026-10-11T17:38:04Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      }
+    ],
+    "url": "https://github.com/syuhei0519/application-manifest/pull/19"
+  },
+  "retained_local_failures": [
+    {
+      "operation": "initial independent harness",
+      "result": "failed before complete assertion run: empty YAML document was not filtered; corrected harness then462/462 passed"
+    },
+    {
+      "operation": "Python isolated direct script invocation",
+      "result": "sibling import unavailable under -I; normal repository invocation then67 tests passed"
+    },
+    {
+      "operation": "initial trusted renderer",
+      "result": "image-pull-inclusive sandbox time limit; same fixed inputs/limits second execution passed"
+    },
+    {
+      "operation": "initial full CI",
+      "result": "Kubeconform11 schema CA errors; existing CA mounted read-only and TLS validation retained; repeat passed"
+    },
+    {
+      "operation": "read-only gh query",
+      "result": "local CLI unsupported baseRefOid JSON field; supported head/checks query succeeded"
+    },
+    {
+      "operation": "source-scan initial launch",
+      "result": "nonexistent cwd; no process executed; setup and corrected launch succeeded"
+    },
+    {
+      "operation": "schema inspection commands",
+      "result": "first guessed versioned schema path and then evidence definition key were absent; inspected actual combined schema properties instead"
+    }
+  ],
+  "limits": [
+    "No live DB/OCI release/API/kind/Argo/imageID validation",
+    "No Manager readiness or policy refresh",
+    "Raw internal logs, private authorization and Consumption Receipt excluded"
+  ]
+}

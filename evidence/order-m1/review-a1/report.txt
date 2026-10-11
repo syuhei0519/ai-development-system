@@ -1,0 +1,148 @@
+Independent M1 review — order-m1-review-a1
+Scope application-manifest#backend-app-2/M1; role review; epoch1 attempt1.
+Verdict: no blocking findings in the fixed preparation scope; one nonblocking P3 documentation finding R-N1.
+M1-S1/S2/S3/S4 met for preparation review only. All product ACs remain unverified.
+
+Identity and authority
+System4693887fa79c2b4a291c555b8bd27b6903eb4199; application-manifest PR19.
+Head41a7e9632102a8c30ff7fa57570fd85aea19adf1; basebc6adaedcd645a4663c23284b977a3dd36c0796d;
+tree47ea076ac6f481fdf6a1588abcfd0aaf07c4e25d; platformb989e29b8addbd6396c5c2b4833b969bc15fc8fa.
+All35 changed files were read; coverage.json enumerates their exact hashes and review focus.
+The fixed System, application and platform trees have no AGENTS.md. Read review role, contracts,
+Readiness1.1, Delivery1.2, workflow and task/delivery templates. No optional Knowledge context supplied/adopted.
+The review was performed separately from Implementation and Test, with freshly built binaries and independent probes.
+No application source edits, cluster/kind/DB operation, image publication, merge, main push or settings changes.
+No Agent or Knowledge task was started. Role completion is not Manager Merge Ready or operation authorization.
+
+Input transport and evidence treatment
+Canonical System consume_delivery.py fetched the full incoming fixed Git bundle anew and passed before reuse:
+111 explicit objects,129 structural bindings,5 source-tree slots,89 unique tree members.
+The incoming manifest and publication receipt match the Manager pins in this assignment.
+Authorization and Consumption Receipt remain private. No past public-operation approval is inferred.
+Research original and edited_derivative representations remain distinct; private-original equivalence is not claimed.
+Test1 failures and retry history are preserved; Test2 and Implementation3 are inspected evidence, not a replacement
+for this review. The outgoing closure reuses the original references and retains representations.
+No private retry ledger was provided; none is invented, reset, or published. All three maxima remain3.
+
+M1-S1 — met; preparation / none / aggregate_required supported at these fixed revisions
+Measured all32 pre-existing chart/local-values files byte-identical to base, and3 active renders byte-identical.
+Four default/local disabled renders are empty. New defaults select no Order tag/digest/release evidence.
+Fixed platform workloads render exactly lab-local-postgresql/backend/frontend in account with existing chart paths.
+No Order Application, Namespace, AppProject or Secret is added. Source is disabled before and after the PR;
+existing DB data was never contacted, so the claim is no desired-resource/data-operation change, not a live data audit.
+Fresh isolated trusted-render.py with fixed base/head/verifier and test-only returned provenanceRequired=false,
+empty inventory diff, eligibleForAuthenticatedVerification=false. It is not an authenticated release approval.
+M0 already enumerates optional Order chart/value pairs; candidate-controlled lists cannot omit an existing active chart.
+Synthetic enabled fixtures remain outside live all.yaml and are traversed recursively by structural/security scanning.
+Changing platform registration or values invalidates none and requires Manager reclassification/Deployment Ready.
+This is the adopted disabled preparation slice, not relabeling a failing product PR to escape premerge ACs.
+
+M1-S2 — met; dedicated structural contracts
+Read all Order and dedicated PostgreSQL templates, schemas and values, and rendered eleven resources/three PodSpecs.
+Order and database names/selectors are distinct from Account; Services select their intended app identity/instance.
+Migration and Deployment share the exact repository:tag@digest and release annotations. Job uses migrate,
+Never,180-second deadline,backoff1,Sync wave-10 and BeforeHookCreation/HookSucceeded; config/SA are wave-20,
+Deployment wave0. Startup/liveness /livez, readiness /readyz; readiness is not asserted by render success.
+Order uses UID/GID10001, no token automount, RuntimeDefault, read-only root, dropped ALL capabilities,
+no privilege escalation and writable /tmp only. Runtime/migration reference order-db app keys, not admin credentials.
+DB uses fixed Postgres17.10 digest,UID/GID/fsGroup999, read-only root and dedicated data/run/tmp mounts.
+Init script checks order_app and formats SQL identifiers/literals through psql variables; role has no superuser,
+createdb,createrole or inherit privileges and owns orders. Script executes only on empty PGDATA; no rotation implied.
+Runtime DB-owner/DDL privilege and same-namespace exposure are documented residual lab risks, not security isolation.
+PVC order-postgresql-data retains Prune=false,Delete=false; StatefulSet uses confirmation; no volumeClaimTemplates
+or Account PVC operations. This protects Argo lifecycle, not administrator deletion/storage loss.
+Schemas use additionalProperties=false/const including nested safety objects, enforce enabled digest/SHA formats,
+and template validation binds sourceCommit/tag plus exact service/run/attempt URLs. Invalid enabled fields reject.
+Disabled blank placeholders are deliberate; chart validation does not authenticate a release or prove image existence.
+The unchanged protected release consumer/provenance paths and tests retain service/source/run/record/SBOM bindings;
+B2 actual publication and M2 trusted selection are required before enablement.
+
+M1-S3 — met; validator changes independently evaluated
+Inventory namespace validation runs before workload/auxiliary dispatch. Explicit namespace must be a string and
+empty or the caller's destination; CLI destination remains account. Omission uses destination, not arbitrary input.
+HostNetwork/hostPID/hostIPC validate before image-family classification on every supported PodSpec; only omission
+or boolean false allowed. The platform.go deletion relocates validation universally, not a policy relaxation.
+PodSpec discovery covers containers/initContainers/ephemeralContainers and rejects unknown kinds/extra PodSpec paths.
+Malformed Kubernetes structure also remains subject to strict schema checks; inventory is not a full Kubernetes schema.
+Scanner walks all YAML mappings, including hidden/unknown structures, emits HIGH/fail LOCAL-HOST-NAMESPACE, and
+retains alias/depth/duplicate-key guards. Existing security severity, exceptions and PVC contracts are not loosened.
+The platform_test destination change preserves the DB image-family cross-product; independent wrong-destination
+mutations exercise the new earlier rejection, rather than claiming those cross-product tests test namespace escape.
+
+Independent reproduce.py executed462 successful assertions, zero failures: source identity,32files/3renders,
+4disabled cases, fixed platform registration, same image/credentials/retention/selectors,8 PodSpec kinds with all3
+host fields and false/true/null/string/number/array/object, every11 resource namespace escape, hidden/unknown
+PodSpecs, and enabled schema unknown/unsafe inputs. This harness was written for this review, not copied PASS prose.
+All tools modules freshly reran go test -count=1 -json:1317 test/subtest pass events,0 failed,0 skipped test cases.
+Five release-record command packages have no tests, not five test successes. Additional Python suites total67 tests.
+Full ci/github/test.sh passed after the documented environment remediation, including Linux-userns boundaries,
+trusted identity/contract/registry/premerge/attempt/render, release19 and Order10 mutation checks.
+sh ci/validate.sh passed; strict pinned Kubeconform0.7.0/Kubernetes1.36.0 validated26 resources without errors/skips.
+Final source/render security command and result are separately recorded in results.json, including retained warnings.
+CI wiring was read through classify -> validate -> test.sh/order-chart-test -> rendered/schema/security -> ci-result;
+changed non-document paths cannot take the documentation-only branch. Existing main/authenticated trust is separate.
+
+Original F1/F2 replay used UNMODIFIED Test1 raw fixtures and binaries built from e0f79a6 and repaired41a7e96.
+Positive: old/new inventory0 and structural scanner0.
+F1 hostNetwork/hostPID/hostIPC: old inventory0, same inventory digest as positive; new inventory1.
+Old structural scanner0, new scanner1 for all3. Universal check is exercised independently of image family.
+F2 namespace escape: old inventory0 with DIFFERENT inventory digest, new inventory1. Structural scanner0 in both;
+namespace destination enforcement belongs to Inventory. This is neither same-digest F2 nor proof of real GitOps bypass.
+No actual OCI/DB/Argo observations were invented. Fresh Trivy combined old/new F1 comparison was not repeated here;
+that specific experiment is Test2 evidence. This review independently reran structural binaries and full current gate.
+
+Nonblocking R-N1 and limits
+Guide lines51/58 and ci/order_inventory_test.py:1 still call M0 inventory/security validators unchanged.
+This contradicts final code and should be corrected. Guide's attempt3 section correctly explains the strengthened
+validators. Classified P3/nonblocking because the correct scope is explicit later and freshly inspected/executed here;
+no weak validator guarantee is adopted. findings.json provides exact reproduction and correction condition.
+No additional blocking defect was reproduced. This statement is limited to the reviewed fixed preparation scope.
+
+M1-S4 — met; product and follow-up boundaries
+Fixed Research/addendum and guide preserve all three Issue AC verbatim, earliest premerge, no deferred relabeling.
+AC-3 covered in specialized Handoff means review duties only. AC-1/2/3 product outcomes remain unverified.
+B2 owner publishes/verifies real Order image,source/run/release/record/SBOM; Owner approves ghcr-publish/manifest-update
+operations as applicable. M2 owner selects fixed trusted digest under manifest-verification approval and validates
+fixed candidate M/P revisions. A fake synthetic release is never a substitute for this authenticated chain.
+Independent Test measures authorized isolated kind/Argo acceptance: Order normal/invalid API, process/DB restart
+persistence, Account CRUD and sentinel/history preservation, migration success/failure/recovery, Service endpoints,
+Synced/Healthy/operation/revision and runtime imageID binding. Product premerge conditions stay mandatory.
+Deployment owner verifies target context,Secret metadata/keys,capacity,anonymous pull,backup/restore and permissions.
+P1 includes explicit approval for merge-triggered automatic deployment and final M2 revision checks. T7 repeats
+actual integrated main revisions/digests and API observations; candidate results are not silently transferred.
+Failure stops affected merge/enable/deploy, preserves Account data/Order PVC/failed Job evidence, uses forward repair
+and independent retest. No fabricated known-good rollback image or manual migration success marking.
+Implementation readiness evidence for disabled work is available; Deployment readiness has unobserved dependencies;
+Manager alone decides all three Readiness statuses and aggregate Issue Completion.
+
+Time, identity pairing and reproducibility
+measurement.json is a Readiness1.1 ai_review input, not a Manager assessment. It carries exact subject/config,
+preparation,7 artifact pins, four condition results, observation time and finite24h fixed-source validity.
+Any head/base/source/target/config/platform change or relevant failure invalidates adoption even within that interval.
+Mutable policy_valid_until remains2026-10-11T18:33:14Z; no extension. Manager refreshes policy immediately before operation.
+Canonical context schema, strict JSON and all7 raw artifact sizes/hashes pass. Source templates/validators are
+reused through the incoming typed complete tree at6727c1d9b3a494892e1875643df9fca914a42d43:evidence/order-m1/test-a2/artifacts.
+For local Readiness checks copy those unchanged raw files to artifacts/<id> beside measurement/context in a NEW
+private root, verifying pins. Consumer originals are not rewritten. No unnecessary public raw-file recopy is made.
+Formal Manager context issue_id=backend-app#2; historical specialized Handoffs use syuhei0519/backend-app#2.
+Canonical pairing helper rejects exact-string difference despite identical source URL/AC text. Original bytes are
+preserved and this incompatibility is not hidden. Manager must author canonical Readiness plus canonical Manager
+Handoff and reference specialized evidence. This review does not claim specialist --handoff assessment success.
+
+Reproduction: build fixed Inventory and scan-gate; put Helm4.2.4 in PATH; run reproduce.py HEAD BASE PLATFORM
+INVENTORY SCAN_GATE NEW_OUTPUT. Run go test -count=1 -json ./... in each tools module and the CI commands above.
+For original replay use fixed Test2 retest-original.py with original Test1 fixture directory, head checkout and old
+binaries built at e0f79a6. contract-checks.py from the fixed Test2 payload verifies unchanged context/config/artifacts
+and expected historical Issue-ID mismatch. Full incoming canonical Consumer validation must precede upstream use.
+Initial local harness empty-YAML-document handling failed and was corrected before462 complete assertions;
+Python -I direct execution of a sibling-import suite failed, then normal repository invocation passed67 tests.
+Default host go command was a different program; explicit preinstalled Go1.27.1 was used. One GH CLI field was
+unsupported; corrected read-only query succeeded. Initial trusted render hit image-pull-inclusive sandbox timeout;
+fresh same-pin execution succeeded without changing limits. Initial CI Kubeconform had11 CA errors; existing CA
+mounted read-only, TLS verification maintained, then CI and26-resource validation succeeded. An initial source-scan
+launch referenced a not-yet-created cwd and did not execute; corrected setup proceeded. Failures are not relabeled PASS.
+Safe summaries only are public; private commands/operational logs/authorization and Consumption Receipt are excluded.
+
+Separate remote observation: PR19 Draft/Open at exact head; validate/ci-result checks successful. This is not a
+GitHub approval, ruleset refresh, merge or Deployment Ready. Remote review delivery and final whole-byte verification
+are reported by separate delivery records; Producer validation never creates Consumer approval.

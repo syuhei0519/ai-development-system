@@ -1,0 +1,21 @@
+{
+  "blocking_findings": [],
+  "nonblocking_findings": [
+    {
+      "id": "R-N1",
+      "severity": "P3",
+      "blocking": false,
+      "path": "docs/order-disabled-charts-m1.md",
+      "lines": [
+        51,
+        58
+      ],
+      "related_path": "ci/order_inventory_test.py:1",
+      "title": "Earlier M0 unchanged claims contradict the final validator changes",
+      "evidence": "At fixed head inventory/main.go adds universal host-namespace and resource destination checks, platform.go moves its host check, scan-gate/render.go adds LOCAL-HOST-NAMESPACE. The guide still says unchanged M0 full PodSpec inventory and M0 validators unchanged; the Python docstring repeats it. The later attempt3 section correctly explains the changes.",
+      "reproduction": "git diff bc6adaedcd645a4663c23284b977a3dd36c0796d 41a7e9632102a8c30ff7fa57570fd85aea19adf1 -- tools/inventory/main.go tools/inventory/platform.go tools/scan-gate/render.go; inspect guide lines51 and58 and Python docstring.",
+      "impact": "A reader could under-scope regression review. No runtime or gate weakening is demonstrated; the appended correction, inspected code and fresh full-scope measurements prevent reliance on this claim.",
+      "correction": "Update the earlier statements/docstring to distinguish unchanged active resources and provenance/PVC contract from strengthened Inventory/security validators. Any changed head requires Manager-directed revalidation."
+    }
+  ]
+}

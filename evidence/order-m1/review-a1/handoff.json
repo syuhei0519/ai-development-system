@@ -1,0 +1,258 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "syuhei0519/backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "review",
+  "task_id": "order-m1-review-a1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "order-m1-test-a2",
+      "attempt": 2,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/ffc4881997f8e926edbb1573cb55f9a7e637f9f7/evidence/order-m1/test-a2/handoff.json",
+      "revision": "sha256:e31855d15be891a880bb850feb196bdca506ee70b8d99826be7810dccf8ed2e2",
+      "relationship": "dependency"
+    },
+    {
+      "role": "implementation",
+      "task_id": "order-m1-implementation-a3",
+      "attempt": 3,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f/evidence/order-m1/implementation-a3/handoff.json",
+      "revision": "sha256:543e0fe833c0bbfe828724b83e347d4e8aa81a1640c13b8839f43c2000954f16",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Independent full35-file M1 preparation review completes S1-S4 at fixed repaired head;no blocking findings,one nonblocking P3 stale unchanged-validator wording. Own462 probes,full regressions and original F1/F2 replay pass. Product ACs unverified;no Manager assessment/merge.",
+  "assignment": {
+    "scope": "application-manifest#backend-app-2/M1",
+    "ac_ids": [
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "M1-S1: Orderと専用PostgreSQL chartをdisabled既定で追加し、既存Account chart/values/render、Namespace/AppProject/Secret/既存DBデータを変えない。",
+      "M1-S2: 独立名/selector、同じimage digestのmigration JobとDeployment、health/security/Secret参照、DB/PVC保護を設計通りに表現し正常異常fixtureで検証する。",
+      "M1-S3: 既存trusted inventory/security/PVC検証を弱めず、両disabled/有効synthetic fixtureのlint/schema/render/全PodSpec検証に成功する。",
+      "M1-S4: 合成fixtureと実公開releaseを区別し、実イメージ・kind・M2/P1/T7の未検証と担当/方法/失敗時対応を引き継ぐ。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-REPORT",
+      "kind": "review",
+      "locator": "report.txt",
+      "revision": "sha256:0f204fc5e3e1257c07d484000167d7c234f7f03491322e4731f97445112a285c",
+      "summary": "Independent findings,condition verdicts,follow-up and limits"
+    },
+    {
+      "id": "A-RESULTS",
+      "kind": "other",
+      "locator": "results.json",
+      "revision": "sha256:80f40fc31f12b22a68f69b3b0f08fe9b7069001fc78693eae3cb6fb6190728bd",
+      "summary": "Independent synthetic,regression,remote and original fixture measurements"
+    },
+    {
+      "id": "A-FINDINGS",
+      "kind": "review",
+      "locator": "findings.json",
+      "revision": "sha256:cad335d5f5a531d0b67cc2ff33b06436772d73864a2d80de4234dc643563d270",
+      "summary": "No blocking findings;one nonblocking P3 with reproduction"
+    },
+    {
+      "id": "A-COVERAGE",
+      "kind": "other",
+      "locator": "coverage.json",
+      "revision": "sha256:f0e1418cb97ace5079ec2fadf48afe53eca76c8c746c74d5d6e9f0d37e30bfb9",
+      "summary": "All35 changed files hashes and review focus"
+    },
+    {
+      "id": "A-SCOPE",
+      "kind": "other",
+      "locator": "changed-files.txt",
+      "revision": "sha256:a6c13ca41827a6afac9c7fa54408e4818e326c0eedde01fd61e108e4969a2588",
+      "summary": "Complete35-file PR scope"
+    },
+    {
+      "id": "A-MEASUREMENT",
+      "kind": "other",
+      "locator": "measurement.json",
+      "revision": "sha256:2cd2568f122d80d6a47d374b64b67965d59604d160f2f6f607aac5b41baded4f",
+      "summary": "Readiness1.1 ai_review input;exact subject/config/7 artifact pins;not assessment"
+    },
+    {
+      "id": "A-REPRODUCE",
+      "kind": "other",
+      "locator": "reproduce.py",
+      "revision": "sha256:ecd0f7aa7d8ee1682c87fe66d80fa041b81f72c980eb84ff9facf03f22eb9468",
+      "summary": "Independent synthetic462-case review harness"
+    },
+    {
+      "id": "A-KNOWLEDGE",
+      "kind": "knowledge",
+      "locator": "knowledge-candidates.json",
+      "revision": "sha256:f0158802d02a6ccb67b0f1181c54d198d52fee404744c5c0f251fa0a1780ec1a",
+      "summary": "Pending candidates;no Knowledge task started"
+    },
+    {
+      "id": "A-CONTEXT",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/ffc4881997f8e926edbb1573cb55f9a7e637f9f7/evidence/order-m1/test-a2/context.json",
+      "revision": "sha256:98c3d5be98ee65a3f054c1670a8092830b7707a72bf75ebf45dbca1331221cc7",
+      "summary": "Unchanged Manager-pinned input;reuse exact fixed bytes"
+    },
+    {
+      "id": "A-CONFIG",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/ffc4881997f8e926edbb1573cb55f9a7e637f9f7/evidence/order-m1/test-a2/config.json",
+      "revision": "sha256:178d8cae2b1d7665aaeeb965ef5eb445d09c34171fe8e4ce81e2aad08a676ad6",
+      "summary": "Unchanged Manager-pinned input;reuse exact fixed bytes"
+    },
+    {
+      "id": "A-SAFETY",
+      "kind": "other",
+      "locator": "publication-safety.json",
+      "revision": "sha256:af0f3398910e47820c235fad92eb4ea3f086ecab4f91cc7e8c6b96767c5b95c1",
+      "summary": "Public content inspection and exclusions;does not grant authority"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-S1",
+      "claim": "M1-S1 independently reviewed: met",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-RESULTS",
+        "A-MEASUREMENT",
+        "A-COVERAGE",
+        "A-FINDINGS"
+      ],
+      "locator": "report.txt",
+      "observation": "32files/3renders unchanged;4disabled cases;fixed platform3Apps;trusted no diff"
+    },
+    {
+      "id": "E-S2",
+      "claim": "M1-S2 independently reviewed: met",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-RESULTS",
+        "A-MEASUREMENT",
+        "A-COVERAGE",
+        "A-FINDINGS"
+      ],
+      "locator": "report.txt",
+      "observation": "Dedicated Order/DB/migration security,Secret,PVC and release/schema structural contracts checked"
+    },
+    {
+      "id": "E-S3",
+      "claim": "M1-S3 independently reviewed: met",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-RESULTS",
+        "A-MEASUREMENT",
+        "A-COVERAGE",
+        "A-FINDINGS"
+      ],
+      "locator": "report.txt",
+      "observation": "Independent462 probes;Go1317;Python67;full CI/schema/security;original F1/F2 repaired"
+    },
+    {
+      "id": "E-S4",
+      "claim": "M1-S4 independently reviewed: met",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-RESULTS",
+        "A-MEASUREMENT",
+        "A-COVERAGE",
+        "A-FINDINGS"
+      ],
+      "locator": "report.txt",
+      "observation": "Product ACs unverified;B2/M2/kind/P1/T7 ownership,approval,methods and failure actions retained;P3 wording not used as guarantee"
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "unverified",
+      "scope": "Outside assignment;product outcome unverified.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASUREMENT"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "unverified",
+      "scope": "Outside assignment;product outcome unverified.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASUREMENT"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "covered",
+      "scope": "Independent M1 preparation review duties only;product AC-3 unverified.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASUREMENT"
+      ],
+      "evidence_ids": [
+        "E-S1",
+        "E-S2",
+        "E-S3",
+        "E-S4"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [
+    {
+      "id": "K-REVIEW-DIFF-SCOPE",
+      "domain": "review-evidence",
+      "summary": "After a repair changes validators, reassess the full final diff and correct inherited unchanged claims.",
+      "evidence_ids": [
+        "E-S3",
+        "E-S4"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "approved_public"
+    },
+    {
+      "id": "K-RAW-PREPARATION",
+      "domain": "preparation-delivery",
+      "summary": "Bind raw Helm and validator bytes through a complete typed tree while retaining canonical/historical Issue identities separately.",
+      "evidence_ids": [
+        "E-S3",
+        "E-S4"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "approved_public"
+    }
+  ],
+  "publication": "public_safe"
+}

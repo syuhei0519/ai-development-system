@@ -1,0 +1,180 @@
+{
+  "head": "41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+  "files": [
+    {
+      "path": "charts/order-postgresql/Chart.yaml",
+      "sha256": "14088b2ba1aa49b4f5733cad9d7f98ebeb09ba1b0eb3507369ae79a8eb91a011",
+      "review": "Read dedicated DB templates/defaults/schema: fixed image/999 identity, SQL role and empty-PGDATA semantics, Secret mounts, writable paths, readiness, PVC/StatefulSet retention, Services/selectors and disabled guard. Synthetic positive/negative and baseline regression checked."
+    },
+    {
+      "path": "charts/order-postgresql/templates/_helpers.tpl",
+      "sha256": "c37f6c5503944a87066b6291905fd3547806f2c5331321927af4af9f726a5c98",
+      "review": "Read dedicated DB templates/defaults/schema: fixed image/999 identity, SQL role and empty-PGDATA semantics, Secret mounts, writable paths, readiness, PVC/StatefulSet retention, Services/selectors and disabled guard. Synthetic positive/negative and baseline regression checked."
+    },
+    {
+      "path": "charts/order-postgresql/templates/headless-service.yaml",
+      "sha256": "80cab3be0828b535062d704ff869698633135fd39846b8b92db5a84c699993ce",
+      "review": "Read dedicated DB templates/defaults/schema: fixed image/999 identity, SQL role and empty-PGDATA semantics, Secret mounts, writable paths, readiness, PVC/StatefulSet retention, Services/selectors and disabled guard. Synthetic positive/negative and baseline regression checked."
+    },
+    {
+      "path": "charts/order-postgresql/templates/init-configmap.yaml",
+      "sha256": "af5e2d1d5e93238f51b8763f1c4432dbd4f7d73941044d0f4f6f489b64913bfd",
+      "review": "Read dedicated DB templates/defaults/schema: fixed image/999 identity, SQL role and empty-PGDATA semantics, Secret mounts, writable paths, readiness, PVC/StatefulSet retention, Services/selectors and disabled guard. Synthetic positive/negative and baseline regression checked."
+    },
+    {
+      "path": "charts/order-postgresql/templates/pvc.yaml",
+      "sha256": "91d4e572d1b9ef46dcc0c319f200d8dc4c9541db70c2cb70a341fc411a8c76cd",
+      "review": "Read dedicated DB templates/defaults/schema: fixed image/999 identity, SQL role and empty-PGDATA semantics, Secret mounts, writable paths, readiness, PVC/StatefulSet retention, Services/selectors and disabled guard. Synthetic positive/negative and baseline regression checked."
+    },
+    {
+      "path": "charts/order-postgresql/templates/service.yaml",
+      "sha256": "5eacbb9743edf2c4cc878dee54fca184fa9746fcf567748a781b7722f39bc814",
+      "review": "Read dedicated DB templates/defaults/schema: fixed image/999 identity, SQL role and empty-PGDATA semantics, Secret mounts, writable paths, readiness, PVC/StatefulSet retention, Services/selectors and disabled guard. Synthetic positive/negative and baseline regression checked."
+    },
+    {
+      "path": "charts/order-postgresql/templates/serviceaccount.yaml",
+      "sha256": "7bed1885ef9405b20568de1b104de6521ba5803a76dbe23f4c2d2e6c15b55ec6",
+      "review": "Read dedicated DB templates/defaults/schema: fixed image/999 identity, SQL role and empty-PGDATA semantics, Secret mounts, writable paths, readiness, PVC/StatefulSet retention, Services/selectors and disabled guard. Synthetic positive/negative and baseline regression checked."
+    },
+    {
+      "path": "charts/order-postgresql/templates/statefulset.yaml",
+      "sha256": "cec752347fd3d208ddb15dfb71dd73c75ca60219f08a9de4d2affc47f70cffcc",
+      "review": "Read dedicated DB templates/defaults/schema: fixed image/999 identity, SQL role and empty-PGDATA semantics, Secret mounts, writable paths, readiness, PVC/StatefulSet retention, Services/selectors and disabled guard. Synthetic positive/negative and baseline regression checked."
+    },
+    {
+      "path": "charts/order-postgresql/values.schema.json",
+      "sha256": "30384e4896aa20a05e2e627885b9b015ee27807e227a9455b0baea9da26adb6c",
+      "review": "Read dedicated DB templates/defaults/schema: fixed image/999 identity, SQL role and empty-PGDATA semantics, Secret mounts, writable paths, readiness, PVC/StatefulSet retention, Services/selectors and disabled guard. Synthetic positive/negative and baseline regression checked."
+    },
+    {
+      "path": "charts/order-postgresql/values.yaml",
+      "sha256": "d823097ce9776da0fb5e39dd9d14c96f3d2a6b8a432f0cb96e7c5106a5bc1a6f",
+      "review": "Read dedicated DB templates/defaults/schema: fixed image/999 identity, SQL role and empty-PGDATA semantics, Secret mounts, writable paths, readiness, PVC/StatefulSet retention, Services/selectors and disabled guard. Synthetic positive/negative and baseline regression checked."
+    },
+    {
+      "path": "charts/order/Chart.yaml",
+      "sha256": "f5100b5b3c8801922993f4446b171b1fad1690a48bc4aeb94bc152dd51f3a96d",
+      "review": "Read complete template/default/schema: disabled guard, release URL/tag/run binding, immutable image shared with migration, app Secret keys, independent Service/selectors, waves/probes/budgets, nonroot/read-only/token/capability restrictions. Synthetic positive/negative checks."
+    },
+    {
+      "path": "charts/order/templates/_helpers.tpl",
+      "sha256": "c617f3355a65fb2d3a2e53a015ab51800afb99b1cc00d63bb6e6f10ef8160b32",
+      "review": "Read complete template/default/schema: disabled guard, release URL/tag/run binding, immutable image shared with migration, app Secret keys, independent Service/selectors, waves/probes/budgets, nonroot/read-only/token/capability restrictions. Synthetic positive/negative checks."
+    },
+    {
+      "path": "charts/order/templates/configmap.yaml",
+      "sha256": "ec67ad6c8ffb36af9c2d70e606784c913c8dee91840774eca0832a1a695b768f",
+      "review": "Read complete template/default/schema: disabled guard, release URL/tag/run binding, immutable image shared with migration, app Secret keys, independent Service/selectors, waves/probes/budgets, nonroot/read-only/token/capability restrictions. Synthetic positive/negative checks."
+    },
+    {
+      "path": "charts/order/templates/deployment.yaml",
+      "sha256": "8df6db56f3c51d9d4c8aa64ed2d1e363f0c448175df86e7cc3e3d503998f8ba6",
+      "review": "Read complete template/default/schema: disabled guard, release URL/tag/run binding, immutable image shared with migration, app Secret keys, independent Service/selectors, waves/probes/budgets, nonroot/read-only/token/capability restrictions. Synthetic positive/negative checks."
+    },
+    {
+      "path": "charts/order/templates/migration-job.yaml",
+      "sha256": "d4c3ce246c26cdf515b0859cdd75abf1912e12d0a96c0a7f4dc133ef10b6fcee",
+      "review": "Read complete template/default/schema: disabled guard, release URL/tag/run binding, immutable image shared with migration, app Secret keys, independent Service/selectors, waves/probes/budgets, nonroot/read-only/token/capability restrictions. Synthetic positive/negative checks."
+    },
+    {
+      "path": "charts/order/templates/service.yaml",
+      "sha256": "778752d19c5892fd64e1b457162cb0f191e3ad5f57f2b7794f82dfe280765d50",
+      "review": "Read complete template/default/schema: disabled guard, release URL/tag/run binding, immutable image shared with migration, app Secret keys, independent Service/selectors, waves/probes/budgets, nonroot/read-only/token/capability restrictions. Synthetic positive/negative checks."
+    },
+    {
+      "path": "charts/order/templates/serviceaccount.yaml",
+      "sha256": "c6c8630e683f4a4093f3d666a4830e633856ff58e33bf27e44a3838d4b05e2a7",
+      "review": "Read complete template/default/schema: disabled guard, release URL/tag/run binding, immutable image shared with migration, app Secret keys, independent Service/selectors, waves/probes/budgets, nonroot/read-only/token/capability restrictions. Synthetic positive/negative checks."
+    },
+    {
+      "path": "charts/order/templates/validate.yaml",
+      "sha256": "9f1c93bb7a64291062b344342318d484a9fd564eaac356b0b5debabe4a5d8302",
+      "review": "Read complete template/default/schema: disabled guard, release URL/tag/run binding, immutable image shared with migration, app Secret keys, independent Service/selectors, waves/probes/budgets, nonroot/read-only/token/capability restrictions. Synthetic positive/negative checks."
+    },
+    {
+      "path": "charts/order/values.schema.json",
+      "sha256": "f203f7f97c367bd200111edafa8f0d8d38e0d79580fe6caf12ad42052c4f468e",
+      "review": "Read complete template/default/schema: disabled guard, release URL/tag/run binding, immutable image shared with migration, app Secret keys, independent Service/selectors, waves/probes/budgets, nonroot/read-only/token/capability restrictions. Synthetic positive/negative checks."
+    },
+    {
+      "path": "charts/order/values.yaml",
+      "sha256": "1dca0b18716e781f5b0ada55d50bcfc9fcd86c13674bc869c97feb0e5cacf1b6",
+      "review": "Read complete template/default/schema: disabled guard, release URL/tag/run binding, immutable image shared with migration, app Secret keys, independent Service/selectors, waves/probes/budgets, nonroot/read-only/token/capability restrictions. Synthetic positive/negative checks."
+    },
+    {
+      "path": "ci/fixtures/order/enabled.yaml",
+      "sha256": "10c1251dc6787586f78c7064eacd27b2a21a0507289ff2f6e5387d6d9eccf0e3",
+      "review": "Read disabled local versus enabled synthetic values; fake release pins never treated as real publication. Rendered all cases."
+    },
+    {
+      "path": "ci/fixtures/order/postgresql-enabled.yaml",
+      "sha256": "d643fe3923a950dcf69b49cc4f8dde597dd995436aa7893265135632f2d6e2e6",
+      "review": "Read disabled local versus enabled synthetic values; fake release pins never treated as real publication. Rendered all cases."
+    },
+    {
+      "path": "ci/github/test.sh",
+      "sha256": "6adac71d396fca3df049a786a0d71804d566408a40d843b6e7dd7c0665025c5f",
+      "review": "Read CI wiring, fixture discovery and mutation test implementation against unchanged workflow classifier/validate/source-scan; non-doc path requires full CI, synthetic directory scanned recursively, enabled artifacts excluded from live all.yaml. See execution summaries and R-N1 docstring note."
+    },
+    {
+      "path": "ci/order-chart-test.sh",
+      "sha256": "3339955a85069430dca23f886536fa210335fdc2f444112eb7ef84f0c33402d7",
+      "review": "Read CI wiring, fixture discovery and mutation test implementation against unchanged workflow classifier/validate/source-scan; non-doc path requires full CI, synthetic directory scanned recursively, enabled artifacts excluded from live all.yaml. See execution summaries and R-N1 docstring note."
+    },
+    {
+      "path": "ci/order_inventory_test.py",
+      "sha256": "5a53f7886f1f5f7611645f9a439132c083d0c55fa0f06089d6effd24e3181b9d",
+      "review": "Read CI wiring, fixture discovery and mutation test implementation against unchanged workflow classifier/validate/source-scan; non-doc path requires full CI, synthetic directory scanned recursively, enabled artifacts excluded from live all.yaml. See execution summaries and R-N1 docstring note."
+    },
+    {
+      "path": "docs/order-disabled-charts-m1.md",
+      "sha256": "e57359864df5d2e11935c0796a60803a50cda582640384f06c169a1ec15e8656",
+      "review": "Read full guide and fixed Research/addendum; B2/M2/kind/P1/T7 responsibilities and product unverified retained. R-N1 records stale unchanged wording, not adopted as guarantee."
+    },
+    {
+      "path": "environments/local/order-postgresql.yaml",
+      "sha256": "4b81b3b5ee7ec7ca8b050171426d7dcd08ccb94dd8a03e1c2840dd16db01c457",
+      "review": "Read disabled local versus enabled synthetic values; fake release pins never treated as real publication. Rendered all cases."
+    },
+    {
+      "path": "environments/local/order.yaml",
+      "sha256": "62f0d7de6e83c799098cdd704a768076436b41738115c834c1c216d4636725fc",
+      "review": "Read disabled local versus enabled synthetic values; fake release pins never treated as real publication. Rendered all cases."
+    },
+    {
+      "path": "tools/checksum/order_test.go",
+      "sha256": "1383843572c23b2752ad974910eb8d2865e0a3aa7419ff1aa623f6fc34997a69",
+      "review": "Read added tests and assertions; independently reviewed template semantics beyond string checks. Whole checksum module executed with Helm4.2.4."
+    },
+    {
+      "path": "tools/inventory/main.go",
+      "sha256": "cddbc20767b6a7457be6851f8e26862628339465cc6bcfdbaaf71590dc966de6",
+      "review": "Read universal host check before image classification; explicit destination including auxiliary resources; removal is relocation, not policy relaxation. Identity cross-product retains coverage with matching destination. Whole module and independently constructed PodSpecs/replayed original failures executed."
+    },
+    {
+      "path": "tools/inventory/platform.go",
+      "sha256": "c8c57ae4705434ae57225b97fe7fa3a7a50b1eca6b939ff0a58d873c52df244c",
+      "review": "Read universal host check before image classification; explicit destination including auxiliary resources; removal is relocation, not policy relaxation. Identity cross-product retains coverage with matching destination. Whole module and independently constructed PodSpecs/replayed original failures executed."
+    },
+    {
+      "path": "tools/inventory/platform_test.go",
+      "sha256": "87c2b1dc91d7afd4b5f5b95705a4b1ed9ddc337e708704e51e0341ad017929ee",
+      "review": "Read universal host check before image classification; explicit destination including auxiliary resources; removal is relocation, not policy relaxation. Identity cross-product retains coverage with matching destination. Whole module and independently constructed PodSpecs/replayed original failures executed."
+    },
+    {
+      "path": "tools/inventory/pod_boundary_test.go",
+      "sha256": "2ad72195585f59c157d201ac7652da6d8214f94eebeb8fd1f8ef1ddebd0aff15",
+      "review": "Read universal host check before image classification; explicit destination including auxiliary resources; removal is relocation, not policy relaxation. Identity cross-product retains coverage with matching destination. Whole module and independently constructed PodSpecs/replayed original failures executed."
+    },
+    {
+      "path": "tools/scan-gate/host_namespace_test.go",
+      "sha256": "a70e1fb5acfab6878478448ea3ad1cf34eb39ae422c03090d93a38b78c7732ae",
+      "review": "Read YAML node walk at every mapping, strict false type check, alias/depth/duplicate protections and unchanged HIGH fail policy. Whole module and independent hidden/unknown/supported PodSpec mutations executed."
+    },
+    {
+      "path": "tools/scan-gate/render.go",
+      "sha256": "2382a5cbba198111db4a3aaafbb6abc7a7a66a6bbae01ee8dac953eb7f7a6e3c",
+      "review": "Read YAML node walk at every mapping, strict false type check, alias/depth/duplicate protections and unchanged HIGH fail policy. Whole module and independent hidden/unknown/supported PodSpec mutations executed."
+    }
+  ]
+}

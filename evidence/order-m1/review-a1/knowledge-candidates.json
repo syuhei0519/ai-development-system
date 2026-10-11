@@ -1,0 +1,22 @@
+{
+  "document_type": "knowledge_candidates",
+  "publication_status": "pending_manager_review",
+  "candidates": [
+    {
+      "id": "K-REVIEW-DIFF-SCOPE",
+      "domain": "review-evidence",
+      "summary": "After a repair changes validators, reassess the full final diff and correct inherited unchanged claims.",
+      "evidence": "R-N1 identifies old unchanged wording; final host/destination validator changes were read and probed independently.",
+      "source": "https://github.com/syuhei0519/application-manifest/blob/41a7e9632102a8c30ff7fa57570fd85aea19adf1/docs/order-disabled-charts-m1.md",
+      "scope": "Preparation review; do not infer product acceptance or actual release from schema/CI success."
+    },
+    {
+      "id": "K-RAW-PREPARATION",
+      "domain": "preparation-delivery",
+      "summary": "Bind raw Helm and validator bytes through a complete typed tree while retaining canonical/historical Issue identities separately.",
+      "evidence": "Seven exact artifact bytes matched the fixed context; historical Issue-ID pairing remains rejected. Raw tree is reused without public recopy.",
+      "source": "https://github.com/syuhei0519/ai-development-system/tree/6727c1d9b3a494892e1875643df9fca914a42d43/evidence/order-m1/test-a2/artifacts",
+      "scope": "Delivery1.2/Readiness1.1; tree verification does not confer authority or product acceptance."
+    }
+  ]
+}

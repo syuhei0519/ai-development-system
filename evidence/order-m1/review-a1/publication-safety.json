@@ -1,0 +1,50 @@
+{
+  "scope": "evidence/order-m1/review-a1",
+  "reviewer": "order-m1-review-a1",
+  "reviewed_at": "2026-10-11T18:21:11.691488+00:00",
+  "result": "safe_public_subset",
+  "included": "Public source references,synthetic probes,review findings,safe scanner summaries,public aliases and prepared measurements only",
+  "excluded": [
+    "Private authorization and Consumption Receipt",
+    "Private originals and their hashes",
+    "Actual cloud task/thread IDs",
+    "Internal operational logs",
+    "Secrets or credential values"
+  ],
+  "authorization_basis": "Explicit continuing Owner approval covers safe review evidence on dedicated evidence branches; no authorization document is published",
+  "upstream_representations": "Retained from incoming manifest; no private-original equivalence assertion",
+  "reviewed_files": [
+    {
+      "path": "report.txt",
+      "sha256": "0f204fc5e3e1257c07d484000167d7c234f7f03491322e4731f97445112a285c"
+    },
+    {
+      "path": "results.json",
+      "sha256": "80f40fc31f12b22a68f69b3b0f08fe9b7069001fc78693eae3cb6fb6190728bd"
+    },
+    {
+      "path": "findings.json",
+      "sha256": "cad335d5f5a531d0b67cc2ff33b06436772d73864a2d80de4234dc643563d270"
+    },
+    {
+      "path": "coverage.json",
+      "sha256": "f0e1418cb97ace5079ec2fadf48afe53eca76c8c746c74d5d6e9f0d37e30bfb9"
+    },
+    {
+      "path": "changed-files.txt",
+      "sha256": "a6c13ca41827a6afac9c7fa54408e4818e326c0eedde01fd61e108e4969a2588"
+    },
+    {
+      "path": "measurement.json",
+      "sha256": "2cd2568f122d80d6a47d374b64b67965d59604d160f2f6f607aac5b41baded4f"
+    },
+    {
+      "path": "reproduce.py",
+      "sha256": "ecd0f7aa7d8ee1682c87fe66d80fa041b81f72c980eb84ff9facf03f22eb9468"
+    },
+    {
+      "path": "knowledge-candidates.json",
+      "sha256": "f0158802d02a6ccb67b0f1181c54d198d52fee404744c5c0f251fa0a1780ec1a"
+    }
+  ]
+}
