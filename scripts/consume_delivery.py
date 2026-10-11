@@ -134,16 +134,35 @@ def verify_handoffs(artifacts, blobs):
     parsed = {}
     for key, item in by_ref.items():
         raw = blobs[key]
-        if item['format'] in ('json', 'handoff-v2') or key[2].endswith('.json'):
+        # Inspect content even for text/non-.json names. Only syntax errors in
+        # ordinary prose may fall back to text; duplicate keys/non-finite numbers
+        # and JSON-looking truncated documents must never reach that fallback.
+        text = raw.decode('utf-8')
+        start = text.lstrip()
+        require(not start.startswith('\ufeff'), 'UTF-8 BOM is not supported')
+        # A leading Markdown link/reference is ordinary prose, not a JSON array.
+        markdown_link = re.match(r'\[[^\]\r\n]+\](?:\([^\r\n]*\)|\[[^\]\r\n]*\]|:[ \t]+\S)', start)
+        json_required = (item['format'] in ('json', 'handoff-v2') or
+                         key[2].lower().endswith('.json') or
+                         start.startswith('{') or
+                         (start.startswith('[') and not markdown_link))
+        try:
             parsed[key] = parse(raw)
-        else:
-            raw.decode('utf-8')
+        except json.JSONDecodeError:
+            require(not json_required, 'invalid JSON content')
+            continue
+        require(item['format'] != 'text', 'JSON content must not be typed text')
         if item['format'] == 'handoff-v2':
             require(not validate_handoff(parsed[key]), 'invalid Handoff v2.0')
             require(parsed[key]['publication'] != 'private_only', 'private Handoff forbidden')
         elif isinstance(parsed.get(key), dict):
-            require(not ('schema_version' in parsed[key] and 'task_id' in parsed[key]
-                         and 'artifacts' in parsed[key]), 'Handoff must be typed handoff-v2')
+            # Reserved Handoff identity/coverage fields still identify incomplete
+            # documents: deleting one required field must not downgrade the type.
+            data = parsed[key]
+            require(not (set(data) & {'task_id', 'ac_mapping', 'system_status'} or
+                         ('schema_version' in data and
+                          set(data) & {'issue', 'assignment', 'upstream'})),
+                    'Handoff must be typed handoff-v2')
     for key, item in by_ref.items():
         if item['format'] != 'handoff-v2':
             continue
@@ -236,7 +255,9 @@ def main():
         parser.add_argument('--'+arg, required=True, type=Path)
     for arg in ('authorization-sha256', 'consumer', 'scope', 'purpose'):
         parser.add_argument('--'+arg, required=True)
-    parser.add_argument('--verify-receipt', type=Path)
+    parser.add_argument('--verify-receipt', type=Path,
+                        help='compare receipt with freshly fetched/verified bytes; '
+                             'does not inspect any previous output directory')
     args = parser.parse_args()
     try:
         with tempfile.TemporaryDirectory(prefix='delivery-git-') as temp:

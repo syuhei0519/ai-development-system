@@ -116,7 +116,9 @@ Readinessの配送にはartifact_id、Handoff基準のローカルlocator、実�
 [配送契約 v1.0](contracts/artifact-delivery.md) は固定 Git commit の repository/path/size/SHA-256 と
 原本/公開派生版、Publication/Consumption Receipt、安全性/公開操作/Consumer 利用承認を分離します。
 [Consumer CLI](scripts/consume_delivery.py) は全 bytes と JSON/Handoff binding を検証し、
-独立承認 pin・scope が一致する場合だけ成果物を出力します。receipt は権限を付与しません。
+独立承認 pin・scope が一致する場合だけ成果物を出力します。内容と型宣言の矛盾を拒否し、
+非 `.json`/text 指定でも JSON/Handoff 検査を省略させません。receipt は権限を付与しません。
+`--verify-receipt` は新規 Git 取得を再検査し、旧出力ディレクトリの改変は検査しません。
 [入力テンプレート](templates/artifact-delivery.md)、[正常/異常例](examples/delivery/README.md)、
 [公開時点の訂正記録](records/artifact-delivery/correction-20261011.json) を参照してください。
 起動・実行・配送は各最大3回。[retry CLI](scripts/validate_retry.py) は append-only 台帳と

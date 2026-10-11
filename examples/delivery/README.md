@@ -26,3 +26,13 @@ CI はユニット/一時ローカル Git 検証を行い、外部ネットワ�
 `retry-initial.json` → `retry-dispatch-failed.json` は初回 dispatch 失敗の正常な追記例。
 `retry-exhausted.json` → `invalid-retry-reset.json` は過去3回を消す異常例で拒否必須。
 いずれも synthetic sample の架空 alias だけを使用する。
+
+## 内容と型の回帰サンプル
+
+[tests/test_delivery_content.py](../../tests/test_delivery_content.py) は架空 bytes を生成し、
+manifest/Publication Receipt/承認 pin を正しく再固定した上で内容だけを変えた回帰を行う。
+非 `.json`・拡張子なし・大文字拡張子、text/json に偽装した Handoff、各必須項目欠落、
+private_only、未収録 locator、digest 不一致、重複/escaped key、切詰め、JSON 値の wrapper を拒否する。
+正常系は非 `.json` の正しく型宣言した Handoff、通常 Markdown/text、汎用 JSON と raw bytes 保持。
+text の JSON 状先頭 `{` / `[` は予約される（明確な Markdown link/reference を除く）。引用例を別 Handoff として利用してはいけない。
+`--verify-receipt` の新規取得成功と旧出力改変が両立するテストは、その検査境界を固定する。

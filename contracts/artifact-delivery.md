@@ -39,7 +39,8 @@ consumer_use_approval とその証跡、allowed_representations を分離する�
 Publication Receipt は manifest と全 reference の公開観測記録である。Consumer は記録を信用して
 取得を省略せず、全 reference を再取得する。Consumption Receipt は承認 pin、manifest/Publication
 Receipt digest、利用者/範囲/目的と検査内容を束ね、`authority_granted=false` を強制する。
-`--verify-receipt` は現在承認と実取得から再計算した結果との完全一致を要求する。
+`--verify-receipt` は現在承認と **新たに Git から取得した bytes** から再計算した結果との完全一致を要求する。
+旧出力ディレクトリを入力に取らず、その中の改変・削除は検査しない。成功時は今回の新規出力だけを利用する。
 receipt 単体を入力して権限を獲得するインターフェースはない。
 
 ## Consumer CLI
@@ -68,8 +69,19 @@ Manager は終了コードと今回の出力を照合し、別の古い成功デ
 4. 全 path の祖先 tree を検査し、leaf は通常 blob のみ。symlink、gitlink/submodule、絶対パス、
    `..`、空要素、制御文字、シェル記号を拒否。`git cat-file blob` で全 bytes を得る。
    HTTP partial/range API は使わず、切詰め/過剰 bytes と size/hash 不一致を拒否。
-5. UTF-8/JSON の重複キー、NaN/Infinity、末尾余剰、Handoff schema/参照不整合を拒否。
-   Handoff は `format=handoff-v2` を必須とし、private_only は拒否。
+5. 全 bytes を UTF-8 として読み、拡張子/format に関係なく厳格 JSON 解析を試す。
+   重複キー（入れ子/Unicode escape を含む）、NaN/Infinity、UTF-8 BOM を拒否。
+   `format=json|handoff-v2`、大文字小文字を問わない `.json`、空白除去後 `{` / `[` で始まる
+   JSON 状の文書（先頭の明確な Markdown link/reference は除く）は解析失敗（切詰め/末尾余剰を含む）を text にフォールバックさせない。
+   完全な JSON 値は object/array/string/scalar すべて `format=text` と矛盾するので拒否。
+   Handoff は拡張子によらず `format=handoff-v2` が必須。schema/参照整合性、private_only 拒否と
+   次項の全 binding 検査を行う。汎用 json でもトップレベルの `task_id` / `ac_mapping` /
+   `system_status`、または `schema_version` と `issue` / `assignment` / `upstream` の組合せは
+   Handoff 用に予約し、欠損した Handoff を汎用 json に格下げできない。
+   通常の文章・見出し・箇条書き・文中の JSON 例は text として保持する。JSON 状の先頭は
+   text として利用しない（Markdown link/reference を除く）。text 内の引用/コード例や汎用 json 内の入れ子は別の Handoff として
+   認定しない。下流がそれらを抽出・decode・型変更して利用する場合は独立した artifact として
+   宣言し、全検証・承認をやり直す。receipt は任意の埋込み形式の意味解析を保証しない。
 6. Handoff artifacts と upstream を同じ repository/commit の相対 locator で manifest 内の実体へ解決。
    全 digest、upstream alias/role/attempt、retry_of の Issue を照合。未収録の依存は拒否。
    evidence の prose locator、AC 真実性、assignment の原入力一致は Manager が別途確認する。
@@ -80,7 +92,8 @@ Manager は終了コードと今回の出力を照合し、別の古い成功デ
 Git fetch は commit tree を取得するため pack のネットワーク量/ディスク総量までは制限しない。
 信頼済み repo のみを承認し、sandbox のディスク/実行時間制約を併用する。
 ローカル入力・出力親と承認状態は Manager 管理の非公開領域を使い、同時に改変する別プロセスを許さない。
-対象 repo 内の Git symlink は一切辿らない。出力後の外部改変は再検証で検出する。
+対象 repo 内の Git symlink は一切辿らない。出力後の外部改変をこの CLI が監視/検出するとは主張しない。再利用時は Git から再取得し、
+検査に成功した新規出力を使う。旧ローカル出力の改変検知が必要なら別の実体検査が必要。
 
 ## Handoff / Readiness 互換
 

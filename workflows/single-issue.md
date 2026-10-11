@@ -96,3 +96,5 @@ Readinessの配送にはartifact_id、Handoff基準のローカルlocator、実�
 [retry CLI](../scripts/validate_retry.py) で新 epoch と旧履歴の完全保持を検査する。
 配送成功は Readiness や製品実装再開許可にならない。ユーザーが同一 head の独立 Review と CI を
 PR 前に要求した場合、その確認と後続指示まで PR を作成しない。
+
+Consumer は format/拡張子だけで内容検査を省略しない。再利用では全 bytes を新規取得・再検査した出力を使い、`--verify-receipt` が旧出力の改変を検査したとは扱わない。

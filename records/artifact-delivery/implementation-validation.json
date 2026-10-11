@@ -4,9 +4,10 @@
   "observer": "System delivery implementation agent (not independent reviewer)",
   "tests": {
     "command": "python -m unittest discover -s tests -v",
-    "passed": 98,
-    "existing_regressions": 77,
-    "new_delivery_retry_tests": 21
+    "passed": 107,
+    "predecessor_regressions": 98,
+    "new_content_and_receipt_tests": 9,
+    "content_matrix": "24 Handoff variants x 4 filenames x 2 incorrect declarations = 192 rejects with matching outer pins; additional malformed JSON, escaped duplicates, wrappers, typed binding/publication, positive text, CLI atomic failure, and receipt boundary checks."
   },
   "cli_checks": [
     "existing Handoff positive samples passed",
@@ -36,7 +37,38 @@
     "Producer preservation attestation is relayed by Manager; independent original comparison unverified",
     "no product acceptance or product implementation permission",
     "Git fetch pack volume is bounded by execution sandbox, not by blob payload limits",
-    "no external authorization identity authentication; operator must independently anchor pins"
+    "no external authorization identity authentication; operator must independently anchor pins",
+    "JSON-looking text beginning with { or [ after whitespace must use a JSON declaration; this conservative rule reserves those prefixes except explicit Markdown links/references.",
+    "Text quotes/code examples and nested generic JSON values are not separately certified Handoffs; extraction/decoding/retyping requires a new explicitly declared artifact and complete validation/authorization.",
+    "The prior independent reviewer supplemental test harness was not supplied; its reported case totals are not claimed as re-executed here.",
+    "Predecessor stage Handoff bytes/reference were not supplied in the repository; Manager must bind retry_of to the authentic predecessor Handoff. Do not reconstruct its original bytes."
   ],
-  "public_safety": "Only public immutable references, permitted Manager summary, synthetic fixtures and implementation code. No private originals, original digests, private mapping, real task identifiers or internal logs. No changes to immutable verification artifacts."
+  "public_safety": "Only public immutable references, permitted Manager summary, synthetic fixtures and implementation code. No private originals, original digests, private mapping, real task identifiers or internal logs. No changes to immutable verification artifacts.",
+  "attempt_context": {
+    "public_alias": "system-delivery-implementation-a2",
+    "attempt": 2,
+    "execution_limit": 3,
+    "logical_scope": "System artifact-delivery contract implementation",
+    "relationship": "retry_of system-delivery-implementation-a1; same branch and logical stage",
+    "predecessor_head": "8b6b2cd7d71614a31e64c36554c6802160194b6c",
+    "predecessor_report": {
+      "path": "records/artifact-delivery/implementation-validation.json",
+      "sha256": "16d57202732549f626e38848daeb869c01f73a61ef3f22e74fb253f91e01ec5f"
+    },
+    "predecessor_inventory": {
+      "size": 6306,
+      "sha256": "f4faa9b3639b5efe629be736e39e35ab5b0ca6eb919c801212887d7a53bb803c"
+    },
+    "predecessor_outcome": "Manager reports independent Review FAIL with one content/type bypass finding despite 98 passing implementation tests and prior CI success.",
+    "product_history": "Separate from the immutable three B1 implementation attempts and RETRY_LIMIT_REACHED. No reset or reopening."
+  },
+  "repair": [
+    "Inspect strict JSON content regardless of filename and format; complete JSON cannot claim text.",
+    "Fail closed for malformed JSON-looking documents; reject duplicate keys/non-finite constants/BOM without text fallback.",
+    "Reserve Handoff identity/coverage markers in generic JSON, including incomplete Handoffs.",
+    "Correctly declared non-.json Handoffs still validate schema, public classification, artifacts and upstream bindings.",
+    "--verify-receipt compares fresh retrieval to the receipt; it does not inspect or detect tampering in old output directories."
+  ],
+  "independent_review": "Pending independent re-review of the final exact head; implementer tests are not independent review.",
+  "ci": "Feature-push workflow supports pre-PR CI. Final exact head, run status and URL are supplied separately by the implementer after push; this pre-push record does not claim CI success."
 }

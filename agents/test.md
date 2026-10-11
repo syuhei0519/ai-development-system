@@ -48,3 +48,5 @@ Handoff v2.0 の status/attempt/担当範囲を配送都合で変更しない。
 dispatch/execution/delivery は各最大3回、過去履歴と RETRY_LIMIT_REACHED は不変。
 上限後は新明示承認・理由・新予算・scope・旧履歴との関係が揃うまで再開しない。
 公開派生版の検査は非公開原本の直接検査ではない。Producer 証言と自分の観測を区別する。
+
+型/拡張子と内容の矛盾も、外側 hash と承認 pin を整合させて検査する。receipt 再検査は新規 Git 取得が対象で、旧出力の改変検査とは区別する。
