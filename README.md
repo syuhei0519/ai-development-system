@@ -52,7 +52,7 @@ Dots 自身が Manager としてタスク管理と完了判定に専念し、Kno
 2. Dots 自身が Manager を担当します。Dots に `agents/manager.md`、契約、ワークフローと Issue 固有の依頼・認可済み出典・許可範囲を渡します。別の Manager Cloud タスクを起動する必要はありません。
 3. Dots / Manager は全必須 AC 原文・出典と許可範囲を確認し、`templates/task-input.md` に役割定義と Issue 固有情報、assignment.scope・担当 ac_ids・completion_criteria を明示して、必要な専門役割を独立 Cloud タスクとして起動します。Knowledge は専用入力で raw_findings と出典を渡し、単一 Issue / AC を要求しません。画面/API の名称や起動・回収能力は環境依存です。Dots に必要な操作手段がない環境では、人間が作成済みの初回入力を使って起動・成果物回収を補助します。この制限を二重 Manager の起動で解消したとはみなしません。
 4. 終了通知後、Manager が handoff JSON と成果物実体を取得し、形式と担当範囲の業務完了を検査します。担当外 AC は covered にせず、未検証のままでも担当工程を completed にできます。Issue 全体の最終判定は Manager が全 AC を別途確認します。合格した成果物・根拠・AC 原文を後続の初回入力に渡します。
-5. 欠落・失敗時は依存後続を停止し、修正後に新しい独立タスクを起動します。各論理工程で初回を含め最大3試行です。必須 AC 原文欠落は `MISSING_ACCEPTANCE_CRITERIA` とし、Manager が認可済み情報源から原文を補完するまで進めません。
+5. 欠落・失敗時は依存後続を停止し、修正後に新しい独立タスクを起動します。各論理工程で初回を含め実行最大3試行です。配送/起動は別カウンタで各最大3回とし、過去履歴は変更しません。必須 AC 原文欠落は `MISSING_ACCEPTANCE_CRITERIA` とし、Manager が認可済み情報源から原文を補完するまで進めません。
 6. 実装完了、feature branch の remote SHA、Draft PR、同じ head SHA の CI を個別に確認します。CLI と GitHub 連携は別経路として扱います。main 直接 Push は行いません。現在の Phase 1-1 では merge / auto-merge は行わず Draft を維持します。Phase 1-2 以降はユーザーが許可した品質ゲート通過後の AI マージを扱います。GitHub の保護ルール・必須 checks/review は迂回しません。[マージ方針](workflows/single-issue.md#マージ方針) を参照してください。
 
 [Research→Test のサンプル](examples/README.md) は起動失敗と修正入力も示します。すべて架空データです。例の `completed` は実際の検証実績を表しません。
@@ -110,3 +110,15 @@ JSON Schema は構造、CLI の追加検査はローカル ID の参照整合性
 Issue Completionには全AC実測に加えて必要な統合完了が必要。全premerge ACがmetでも未マージならunverified。Readiness/contextのissue_integration_scopeで単一PRと集約待ちを分離し、複数PR・repo/範囲不明は単一PRからachievedにしない。集約契約と証跡の検証は後続依存として明示する。全AC met・統合待ちの中間Handoffではfinal_assessmentを省略し、Readiness artifactで追跡する。
 
 Readinessの配送にはartifact_id、Handoff基準のローカルlocator、実体bytesのsha256 digest revisionを使用する。`validate_readiness.py --handoff`は実体の読み取り・評価対象ファイルとの同一性・digestを照合する。旧DraftのReadinessは追加必須項目を確認して移行する。詳細と限界はReadiness契約を参照。
+
+## Artifact Delivery
+
+[配送契約 v1.0](contracts/artifact-delivery.md) は固定 Git commit の repository/path/size/SHA-256 と
+原本/公開派生版、Publication/Consumption Receipt、安全性/公開操作/Consumer 利用承認を分離します。
+[Consumer CLI](scripts/consume_delivery.py) は全 bytes と JSON/Handoff binding を検証し、
+独立承認 pin・scope が一致する場合だけ成果物を出力します。receipt は権限を付与しません。
+[入力テンプレート](templates/artifact-delivery.md)、[正常/異常例](examples/delivery/README.md)、
+[公開時点の訂正記録](records/artifact-delivery/correction-20261011.json) を参照してください。
+起動・実行・配送は各最大3回。[retry CLI](scripts/validate_retry.py) は append-only 台帳と
+上限後の明示承認・新予算を検査し、旧3試行や RETRY_LIMIT_REACHED をリセットしません。
+この追加は製品実装再開、PR、merge、deploy の許可を与えません。

@@ -1,0 +1,188 @@
+{
+  "document_type": "review_inventory",
+  "repository": "syuhei0519/ai-development-system",
+  "base": "5ca00d89f97ebc597d214fd8f046e4cc98d781fb",
+  "commit_binding": "Use exact implementation head supplied by Manager; this inventory excludes itself to avoid self-hash cycles.",
+  "files": [
+    {
+      "path": ".github/workflows/validate.yml",
+      "size": 1860,
+      "sha256": "8e26b2496c01354a754b950382d2a55f0843552023c93643d0d53eb6ca6fe67c"
+    },
+    {
+      "path": "README.md",
+      "size": 13334,
+      "sha256": "51136bbc6a9618a5433e1ed678d137721fa41424c1b6a168050dbcbf27c09054"
+    },
+    {
+      "path": "agents/implementation.md",
+      "size": 4585,
+      "sha256": "8cc2a0ce3bc48858d77ceca3c83d1650040f20c6e33b27b077a651bf62f03149"
+    },
+    {
+      "path": "agents/knowledge.md",
+      "size": 4258,
+      "sha256": "c51b6dafd4550dfa49658ca80c825e8b3787dc2b78f2d74ede7ca8a1723df664"
+    },
+    {
+      "path": "agents/manager.md",
+      "size": 5895,
+      "sha256": "73c7af44c4d85f416e728915f85dca31eb273d6728d5bab2ecd4f67dd1ae5acb"
+    },
+    {
+      "path": "agents/research-design.md",
+      "size": 4380,
+      "sha256": "c62194fe3064a1d36e9292dbf3c3d635db141e340c3c156e4eb668586474d055"
+    },
+    {
+      "path": "agents/review.md",
+      "size": 4652,
+      "sha256": "de3d11e28c80dba3edb23ea66b53aef5a4e7d4207109e492888d1943c793cae9"
+    },
+    {
+      "path": "agents/test.md",
+      "size": 4546,
+      "sha256": "8b1bd711c4433dff598aaba064b050b843e753ffa0efe24e0b091986a8f4d25e"
+    },
+    {
+      "path": "contracts/README.md",
+      "size": 10257,
+      "sha256": "005e74d6ae1103e1e3c8d543a87ce4f73592040efb2ea8b34088278b2fa7181d"
+    },
+    {
+      "path": "contracts/artifact-delivery.md",
+      "size": 10766,
+      "sha256": "26e5bfcb91bfed8c6173fd43f924343c6dc7cff32027e49fe3311af6c01f49ee"
+    },
+    {
+      "path": "contracts/artifact-delivery.schema.json",
+      "size": 2490,
+      "sha256": "480ba09256cb5b947d8b2df380a12a7ab9ff5fd3c777653e056eacb2541b655c"
+    },
+    {
+      "path": "contracts/consumption-receipt.schema.json",
+      "size": 3439,
+      "sha256": "f4d005cb0c806fb02989662b3df9e97902850f0304eec5e49308b1927da7a661"
+    },
+    {
+      "path": "contracts/delivery-authorization.schema.json",
+      "size": 2348,
+      "sha256": "2a0955ed47b7f75e7a80b93f945dce1b2a6f8b07eb43806ae5c42176494c43b3"
+    },
+    {
+      "path": "contracts/publication-receipt.schema.json",
+      "size": 2824,
+      "sha256": "ca67a9513341975bafa6ff80e4c4010aedac3180835787de9d602b05fd41bd62"
+    },
+    {
+      "path": "examples/README.md",
+      "size": 2386,
+      "sha256": "6dd54272dafbd0208de05a133a7fa7d927e3ea7debc3236230acea1c8af4b6da"
+    },
+    {
+      "path": "examples/delivery/README.md",
+      "size": 2098,
+      "sha256": "64cd5595bcc5b789269108b3fbb191525e55eca52dc82c42a5db2ccea3b9eca3"
+    },
+    {
+      "path": "examples/delivery/invalid-retry-reset.json",
+      "size": 399,
+      "sha256": "034c23fd1667615d62de6c7cfe8e841931ed15ae8d08249be3a64bc2c1dba31b"
+    },
+    {
+      "path": "examples/delivery/invalid-unapproved.authorization.json",
+      "size": 909,
+      "sha256": "3e119f99098324e896294828d76ca6114631b7b2488f046dfa05ba9091cf5e56"
+    },
+    {
+      "path": "examples/delivery/research-public.manifest.json",
+      "size": 4716,
+      "sha256": "d63eddee5da1a4366b9675a4e9331cc059ce04f4dad514f3a72a92d2dee4772a"
+    },
+    {
+      "path": "examples/delivery/retry-dispatch-failed.json",
+      "size": 398,
+      "sha256": "b7a9148ab295cde06a40fbe1a33b880236bfaa09e9ba7b056ede43e42d05ea0e"
+    },
+    {
+      "path": "examples/delivery/retry-exhausted.json",
+      "size": 670,
+      "sha256": "6a5754d6e104bb7dd4b5c0b98aebac111aa33f36e92dc4054c4b52c0b2cc9462"
+    },
+    {
+      "path": "examples/delivery/retry-initial.json",
+      "size": 265,
+      "sha256": "f46718bf27606c6c05e694e9b2a589cab0b6a04571430a3d3ad81d76f000b771"
+    },
+    {
+      "path": "examples/delivery/synthetic.authorization.json",
+      "size": 910,
+      "sha256": "43f913f30fcbc4a937ec8346195d213d78796af6d6c1b87aa47f095f07d2fcb4"
+    },
+    {
+      "path": "examples/delivery/synthetic.manifest.json",
+      "size": 3555,
+      "sha256": "0e20324297b9f475a67dacc272b642a35161167d0f6e15505760ad30306ffb67"
+    },
+    {
+      "path": "records/artifact-delivery/correction-20261011.json",
+      "size": 3628,
+      "sha256": "18884794d0456df1138e1b3dc24ecf3bce98145a287751d9703761d5b21d36cb"
+    },
+    {
+      "path": "records/artifact-delivery/implementation-validation.json",
+      "size": 1981,
+      "sha256": "16d57202732549f626e38848daeb869c01f73a61ef3f22e74fb253f91e01ec5f"
+    },
+    {
+      "path": "records/artifact-delivery/research-public.publication.json",
+      "size": 4948,
+      "sha256": "d7b1e5bb8986d28c3ebff7f8f9c27f02745af5b7b19bcc191044db2290a71da8"
+    },
+    {
+      "path": "records/artifact-delivery/synthetic.publication.json",
+      "size": 3787,
+      "sha256": "8cc58032b4b5005892dde243dcdd4db8571818134d2af42bd49d5983ced53293"
+    },
+    {
+      "path": "scripts/consume_delivery.py",
+      "size": 12489,
+      "sha256": "5e08664e9da79445ddea3b6f4938d03826bb8a260374d148d4b863bf56e43458"
+    },
+    {
+      "path": "scripts/validate_delivery_records.py",
+      "size": 1831,
+      "sha256": "1be6cbe3c05b2525156f38b1b0931d82bdb43644bae5501356a44e17ff36982f"
+    },
+    {
+      "path": "scripts/validate_retry.py",
+      "size": 5522,
+      "sha256": "95ebe03f12eeb7415f1c474b8215b362732662a84b4d6bb00f0ec9b75fb080a2"
+    },
+    {
+      "path": "templates/artifact-delivery.md",
+      "size": 1403,
+      "sha256": "49252a973c8e77ce048fbff9fdee48dfac360ac910d45d11961573133c5e8fe5"
+    },
+    {
+      "path": "templates/task-input.md",
+      "size": 6168,
+      "sha256": "c3050661170ff2160e551d54aa81bbf2676114675a70ef3b3e554fb64c418007"
+    },
+    {
+      "path": "tests/test_delivery.py",
+      "size": 13631,
+      "sha256": "d877fb3b0f44141e6533d30b1d366e2f142b82a016bccb2d93ccaacca3f1a4a4"
+    },
+    {
+      "path": "tests/test_retry.py",
+      "size": 4503,
+      "sha256": "ae9ddf65df67dcfe10ca18fe04c0fefe7b0de3661d1c0d94dd0246650d0964df"
+    },
+    {
+      "path": "workflows/single-issue.md",
+      "size": 15063,
+      "sha256": "ff8d5b5d0c6b9fb354c6d1cf7ccff04ca07f2af181c72f9d4dc342284aac1bc1"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "document_type": "append_only_publication_correction",
+  "date": "2026-10-11",
+  "contract_base": "5ca00d89f97ebc597d214fd8f046e4cc98d781fb",
+  "observations": [
+    {
+      "name": "synthetic",
+      "commit": "937247afce00d3da016ee2ec19bc1bf9e84dadca",
+      "file_count": 7,
+      "manifest_sha256": "0e20324297b9f475a67dacc272b642a35161167d0f6e15505760ad30306ffb67",
+      "publication_receipt_sha256": "8cc58032b4b5005892dde243dcdd4db8571818134d2af42bd49d5983ced53293"
+    },
+    {
+      "name": "research-public",
+      "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+      "file_count": 9,
+      "manifest_sha256": "d63eddee5da1a4366b9675a4e9331cc059ce04f4dad514f3a72a92d2dee4772a",
+      "publication_receipt_sha256": "d7b1e5bb8986d28c3ebff7f8f9c27f02745af5b7b19bcc191044db2290a71da8"
+    }
+  ],
+  "seal_time_statement": {
+    "provenance.json": "candidate_pending_manager_content_safety_scope_review",
+    "FETCH.txt": "publication candidate; not uploaded",
+    "interpretation": "Historical statements at preparation/seal time. Preserved unchanged; they do not describe the later published Git state."
+  },
+  "current_publication": "published at immutable commits listed above; this observation does not prove historical publication approval",
+  "public_safety": "Manager supplied the following summary for public recording. No private originals, mapping, private digests, internal logs or real task identifiers are included. Independent content safety review remains required.",
+  "preservation": {
+    "status": "producer_attested_via_manager",
+    "summary": "固定公開 commit 10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332 の design.txt、addendum.txt、handoff.json について、認可済み編集対応との一致を原本保持者が確認した。B1 の API・データモデル、入力検証・エラー、Account 削除整合、DB/migration 境界、scope・受入条件・テスト・承認境界は保持されている。公開版は edited derivative であり、製品 AC 合格や Consumer への実装開始許可を証明しない。",
+    "evidence_level": "Producer directly inspected private originals and authorized mapping; relayed by Manager. Implementer and independent reviewer have not inspected private originals.",
+    "public_locations": {
+      "design.txt": [
+        "9",
+        "25-30",
+        "33-37",
+        "70",
+        "10,58,60,65-66,70",
+        "80-83"
+      ],
+      "addendum.txt": [
+        "15",
+        "22-23"
+      ]
+    },
+    "changed_in_derivative": [
+      "identifiers",
+      "locators/digests",
+      "delivery completion criterion"
+    ],
+    "independent_original_comparison": "unverified"
+  },
+  "authorization": {
+    "contract_development_and_review_read": "authorized by current user instruction",
+    "historical_publication_approval": "not independently verified; publication does not imply approval",
+    "product_implementation_start": "not granted",
+    "product_acceptance": "unverified",
+    "current_product_environment": "unverified"
+  },
+  "historical_retry_state": {
+    "public_scope_alias": "B1-implementation",
+    "execution_attempts": 3,
+    "terminal": "RETRY_LIMIT_REACHED",
+    "reset_allowed": false,
+    "reopening": "requires new explicit approval, reason, bounded new budget, scope and relationship to immutable prior history"
+  },
+  "delivery_routes": {
+    "git": "demonstrated; independently revalidated by this implementation only",
+    "library": "previous failure remains unresolved",
+    "inline_manual_reconstruction": "previous failure remains unresolved; never reconstruct original bytes using an LLM"
+  }
+}

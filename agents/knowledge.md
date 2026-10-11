@@ -38,3 +38,11 @@
 ## Readiness の責務
 
 Readiness と Issue Completion の判定責任は持たない。知識候補・収集未完了を readiness の必須依存にしない。Knowledge v1.0 と非同期基盤の実装・起動対象外という境界を維持する。 詳細は [Readiness 契約](../contracts/readiness.md) と [ワークフロー](../workflows/single-issue.md#readiness-と-issue-completion-の運用) に従う。
+
+## Artifact Delivery の責務
+
+[配送契約](../contracts/artifact-delivery.md) に従い、原本と公開派生版、公開前安全性/公開操作承認、
+GitHub 反映、Consumer 利用承認と全 bytes 検査を分離する。receipt の自己申告から権限を得ない。
+Handoff v2.0 の status/attempt/担当範囲を配送都合で変更しない。Knowledge 専用契約の判断も変更しない。
+dispatch/execution/delivery は各最大3回、過去履歴と RETRY_LIMIT_REACHED は不変。
+上限後は新明示承認・理由・新予算・scope・旧履歴との関係が揃うまで再開しない。

@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "scope": "SYNTHETIC-B1",
+  "epochs": [
+    {
+      "id": 1,
+      "limits": {
+        "dispatch": 3,
+        "execution": 3,
+        "delivery": 3
+      },
+      "events": [
+        {
+          "kind": "execution",
+          "result": "failed",
+          "evidence": "SYNTHETIC-OBSERVATION"
+        }
+      ],
+      "terminal": "open",
+      "grant_sha256": null
+    }
+  ]
+}

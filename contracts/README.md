@@ -56,3 +56,11 @@ Knowledge は Issue 契約の role=knowledge を廃止し、独立した v1.0 �
 Issue Completionには全AC実測に加えて必要な統合完了が必要。全premerge ACがmetでも未マージならunverified。Readiness/contextのissue_integration_scopeで単一PRと集約待ちを分離し、複数PR・repo/範囲不明は単一PRからachievedにしない。集約契約と証跡の検証は後続依存として明示する。全AC met・統合待ちの中間Handoffではfinal_assessmentを省略し、Readiness artifactで追跡する。
 
 Readinessの配送にはartifact_id、Handoff基準のローカルlocator、実体bytesのsha256 digest revisionを使用する。`validate_readiness.py --handoff`は実体の読み取り・評価対象ファイルとの同一性・digestを照合する。旧DraftのReadinessは追加必須項目を確認して移行する。詳細と限界はReadiness契約を参照。
+
+## Artifact Delivery v1.0
+
+[配送契約](artifact-delivery.md) と外側 manifest / authorization / publication-receipt / consumption-receipt
+schema を追加する。Handoff v2.0 と Readiness v1.0 の schema・判定責任は維持する。
+Public Git 原本と edited derivative を区別し、配送成功・公開済み状態・公開承認・利用承認は別判定。
+Git 配送で手書きの再構成をしない。独立 pin の承認と全 bytes の Consumer 検査が揃うまで利用しない。
+再試行分類の変更で旧 attempt を減らさず、各3回の別予算と上限後の承認は配送契約に従う。

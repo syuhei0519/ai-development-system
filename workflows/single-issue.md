@@ -8,7 +8,7 @@
 
 1. Manager は認可された Issue 原文・全必須 AC 原文・対象 repo/revision・実行権限・assignment.scope・担当 ac_ids・工程固有の completion_criteria を初回入力へ明示する。専門役割は担当外 AC を完了対象に含めない。Knowledge は Issue/AC ではなく収集・抽象化範囲と raw_findings を渡す。役割定義には Issue 固有情報を書き込まない。
 2. 同じ論理工程（Issue + role + scope）ごとに最大3試行（初回 attempt=1、再実行2回）を割り当てる。scope を言い換えて試行上限を回避しない。新しい独立タスクには新しい task_id を与える。
-3. upstream handoff の JSON だけでなく、成果物の**実体**と根拠を取得する。固定 revision/digest、添付、本文コピーなど、後続が読める形で渡す。元タスクのローカルパスや終了通知だけを渡さない。
+3. upstream handoff の JSON だけでなく、成果物の**実体**と根拠を取得する。固定 Git commit と raw bytes の配送契約で後続が読める形で渡す。LLM に本文を再生成させない。元タスクのローカルパスや終了通知だけを渡さない。
 4. タスクを起動し、非公開の進捗台帳に role/scope/task_id/attempt/upstream と基盤状態を記録する。タスク間の会話・ファイル・認証・環境が自動共有されるとは仮定しない。
 
 ## 終了通知後のゲート
@@ -27,7 +27,7 @@
 | 状況 | Manager の処置 |
 | --- | --- |
 | 必須 AC 原文が一つでも欠落 | Issue 工程は `MISSING_ACCEPTANCE_CRITERIA` で blocked。専門役割側は外部取得・推測しない。Dots / Manager が既存の認可済み情報源から原文を補完し、出典付きの修正入力を作る。認可がない/取得不能なら人間に不足を報告して停止する。 |
-| 修正可能な入力・成果物の不足 | 依存後続を停止し、修正点と責務を明記した新しい独立タスクを起動する。 |
+| 修正可能な入力・成果物の不足 | 依存後続を停止し、配送だけの不足なら delivery の有限再取得を行い、実行の修正が必要なときだけ実行予算内で新しい独立タスクを起動する。 |
 | テスト不合格・レビュー阻害指摘 | Implementation 等の責任工程へ戻し、修正 revision に対して必要な Test/Review を再実行する。古い revision の合格を転用しない。 |
 | 基盤失敗・handoff 不在 | 部分成果物を回収し Manager が失敗記録を作る。存在しない成果物・テスト結果を埋めない。 |
 | 権限・接続不足 | 設定や Secrets、永続アクセスを変更せず阻害を報告する。別経路を使う場合も既存認可の範囲に限定する。 |
@@ -79,3 +79,20 @@ Knowledge の非同期収集・定期同期を実行する基盤は Phase 1-3 �
 Issue Completionには全AC実測に加えて必要な統合完了が必要。全premerge ACがmetでも未マージならunverified。Readiness/contextのissue_integration_scopeで単一PRと集約待ちを分離し、複数PR・repo/範囲不明は単一PRからachievedにしない。集約契約と証跡の検証は後続依存として明示する。全AC met・統合待ちの中間Handoffではfinal_assessmentを省略し、Readiness artifactで追跡する。
 
 Readinessの配送にはartifact_id、Handoff基準のローカルlocator、実体bytesのsha256 digest revisionを使用する。`validate_readiness.py --handoff`は実体の読み取り・評価対象ファイルとの同一性・digestを照合する。旧DraftのReadinessは追加必須項目を確認して移行する。詳細と限界はReadiness契約を参照。
+
+## Artifact Delivery と試行分類
+
+[配送契約](../contracts/artifact-delivery.md) の公開前安全性確認/公開承認、反映後 Publication Receipt、
+別の Consumer 利用承認、Consumer CLI 全件検査と Consumption Receipt を工程ゲートへ追加する。
+元の bytes を手書き再構成しない。Public repo に非公開原本・実識別子・内部ログ・秘密情報は置かない。
+公開派生版の利用には original と別の利用範囲の承認が必要。公開済みは承認済みを意味しない。
+
+従来の同一論理工程の実行上限3回を維持し、dispatch 最大3回、execution 最大3回、delivery 最大3回を
+別カウンタで管理する。Agent 開始確認後の失敗と開始前の dispatch failure を区別し、
+配送未完了は delivery failure として扱う。開始不明は照合まで再送を止める。
+いずれかの最終許容試行が未完了なら RETRY_LIMIT_REACHED で依存ループ停止。
+過去の B1 Implementation 3回と terminal 状態は不変。分類変更・scope の言換えでリセットしない。
+再開には新たな明示承認、理由、各1〜3の新予算、scope、過去履歴 pin と関係がすべて必要。
+[retry CLI](../scripts/validate_retry.py) で新 epoch と旧履歴の完全保持を検査する。
+配送成功は Readiness や製品実装再開許可にならない。ユーザーが同一 head の独立 Review と CI を
+PR 前に要求した場合、その確認と後続指示まで PR を作成しない。

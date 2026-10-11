@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "document_type": "delivery_authorization",
+  "authority": "SYNTHETIC-MANAGER (sample only; operator must independently authorize)",
+  "consumer": "SYNTHETIC-CONSUMER",
+  "scope": "synthetic delivery contract verification",
+  "purpose": "contract-review",
+  "manifest_sha256": "0e20324297b9f475a67dacc272b642a35161167d0f6e15505760ad30306ffb67",
+  "publication_receipt_sha256": "8cc58032b4b5005892dde243dcdd4db8571818134d2af42bd49d5983ced53293",
+  "valid_until": "2030-01-01T00:00:00Z",
+  "public_safety_review": "synthetic sample; no real authorization asserted",
+  "publication_approval": "unverified",
+  "publication_approval_evidence": "publication observed; historical approval not inferred",
+  "consumer_use_approval": "approved",
+  "consumer_use_evidence": "synthetic sample; requires independently trusted operator pin",
+  "allowed_representations": [
+    "original"
+  ]
+}

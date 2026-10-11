@@ -63,3 +63,10 @@ Dots / Manager が専門役割の独立 Codex Cloud タスクに渡す入力テ�
 Issue Completionには全AC実測に加えて必要な統合完了が必要。全premerge ACがmetでも未マージならunverified。Readiness/contextのissue_integration_scopeで単一PRと集約待ちを分離し、複数PR・repo/範囲不明は単一PRからachievedにしない。集約契約と証跡の検証は後続依存として明示する。全AC met・統合待ちの中間Handoffではfinal_assessmentを省略し、Readiness artifactで追跡する。
 
 Readinessの配送にはartifact_id、Handoff基準のローカルlocator、実体bytesのsha256 digest revisionを使用する。`validate_readiness.py --handoff`は実体の読み取り・評価対象ファイルとの同一性・digestを照合する。旧DraftのReadinessは追加必須項目を確認して移行する。詳細と限界はReadiness契約を参照。
+
+## Artifact Delivery Context
+
+[配送テンプレート](artifact-delivery.md) の全 reference、原本/派生版区分、公開前後状態、
+Publication Receipt、独立 pin の Consumer 利用承認、Consumption Receipt と検証済み実体を渡す。
+未検証 bytes を利用しない。dispatch/execution/delivery の各予算、最新非公開台帳 pin、
+旧 terminal と新承認 epoch の関係を明記する。最大3回は各予算に適用し、旧履歴をリセットしない。

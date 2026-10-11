@@ -1,0 +1,42 @@
+{
+  "document_type": "implementation_validation_report",
+  "base": "5ca00d89f97ebc597d214fd8f046e4cc98d781fb",
+  "observer": "System delivery implementation agent (not independent reviewer)",
+  "tests": {
+    "command": "python -m unittest discover -s tests -v",
+    "passed": 98,
+    "existing_regressions": 77,
+    "new_delivery_retry_tests": 21
+  },
+  "cli_checks": [
+    "existing Handoff positive samples passed",
+    "existing Knowledge samples passed",
+    "existing Readiness samples passed in explicit replay mode",
+    "delivery schema and sample bindings passed",
+    "Consumer CLI network fetch and --verify-receipt passed for both immutable bundles"
+  ],
+  "immutable_delivery_checks": [
+    {
+      "commit": "937247afce00d3da016ee2ec19bc1bf9e84dadca",
+      "files": 7,
+      "total_bytes": 61602
+    },
+    {
+      "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+      "files": 9,
+      "total_bytes": 57390,
+      "handoff_size": 5973,
+      "handoff_sha256": "2c1876c21567399ca6ecf1d8afaed96c062da5a154b01d165f42a3e0f3afbc7d"
+    }
+  ],
+  "checked": "all raw bytes, size/SHA256, strict JSON, Handoff v2.0 shape/references, artifact/upstream digest and retry identity",
+  "limits": [
+    "CI and independent review must be checked against final Git head separately",
+    "private originals not inspected by implementer",
+    "Producer preservation attestation is relayed by Manager; independent original comparison unverified",
+    "no product acceptance or product implementation permission",
+    "Git fetch pack volume is bounded by execution sandbox, not by blob payload limits",
+    "no external authorization identity authentication; operator must independently anchor pins"
+  ],
+  "public_safety": "Only public immutable references, permitted Manager summary, synthetic fixtures and implementation code. No private originals, original digests, private mapping, real task identifiers or internal logs. No changes to immutable verification artifacts."
+}
