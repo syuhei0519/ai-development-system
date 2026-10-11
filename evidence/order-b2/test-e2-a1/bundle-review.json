@@ -1,0 +1,57 @@
+{
+  "reviewed_at": "2026-10-11T18:13:03.154936+00:00",
+  "public_alias": "order-b2-test-e2-a1",
+  "scope": "Public technical report, synthetic fixtures/reproducers and already-public fixed references only. All outgoing text inspected; targeted private-identifier/secret scan passed. No private authorization, receipt, original hash, conversation, operational log or actual task/thread identifier.",
+  "publication_authority": "Existing explicit owner authorization for Phase1-2/1-3 reports on dedicated System evidence branches; no new authority inferred from this record.",
+  "classification": "public technical derivative of private execution observations; not private-original equivalence",
+  "payload_inventory_without_self_or_handoff": [
+    {
+      "path": "check-oci-descriptors.py",
+      "size": 1416,
+      "sha256": "587f3cc5380c28b8485ac4d6ecb99f3000208e03b10f26daa5ec4922779e3e1d"
+    },
+    {
+      "path": "knowledge-candidates.json",
+      "size": 934,
+      "sha256": "459eeb3425b477b01cd2a2d2698d53557d6d7cad357189528613efb5c19c38cb"
+    },
+    {
+      "path": "measurements.json",
+      "size": 8073,
+      "sha256": "528204e518de56ca455c376f0ce4eec18d022473b75d25fb29e33aeabc930411"
+    },
+    {
+      "path": "readiness-context.json",
+      "size": 1718,
+      "sha256": "f1411ce4898c41e6503452b17690760295a844c10e59e0d47249c293e17870e2"
+    },
+    {
+      "path": "reproduce-build.py",
+      "size": 4639,
+      "sha256": "a9dc311162718f25eb4f157ed35671b9e3b4ed5830184bbe23c39a1e90a5a00a"
+    },
+    {
+      "path": "reproduce.sh",
+      "size": 2112,
+      "sha256": "83aba0501b14beb298e63032df3105e82c96c10bc354d248ae7f2b9cb882302f"
+    },
+    {
+      "path": "synthetic-Dockerfile",
+      "size": 435,
+      "sha256": "0a6c5f899e93a229a007b8e067566c83d658e8b09b2fc6bc767573822be0c128"
+    },
+    {
+      "path": "synthetic-descriptors.json",
+      "size": 786,
+      "sha256": "f6c4e199ce05dd14ee7bb3ec7e25bdfcb36fe333fb34d417d7298b82c88a59d2"
+    },
+    {
+      "path": "test-report.txt",
+      "size": 12315,
+      "sha256": "14c0e1851c47563cf86bae4e247b82592e76db10c5a1ebf633b73ff34ff419c7"
+    }
+  ],
+  "handoff_review": "Full text reviewed separately; excluded from hash inventory to avoid recursion.",
+  "binary_delivery": "No production OCI exists. Synthetic original tar retained privately; text Delivery1.2 does not carry it.",
+  "consumer_approval": "Separate Manager approval and canonical consume_delivery.py required; this review grants none."
+}

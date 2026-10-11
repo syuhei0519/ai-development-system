@@ -1,0 +1,251 @@
+{
+  "document_type": "independent_test_measurements",
+  "producer": "order-b2-test-e2-a1",
+  "independent": true,
+  "subject": {
+    "repository": "syuhei0519/backend-app",
+    "pr_number": 32,
+    "head_sha": "65885af3fd648ce7010fa4a06470b273b995d418",
+    "base_sha": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+    "target_revision": "65885af3fd648ce7010fa4a06470b273b995d418",
+    "config_revision": "sha256:2f613db39d7c69ef60c74036a41de9dacd70b1c13d60099340a48c2924d5e20c",
+    "merge_group_sha": null
+  },
+  "system_revision": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+  "source_tree": "a041558ad61f96dfbae616bcd3e91ab5f6b4a3a3",
+  "manifest_revision": "bc6adaedcd645a4663c23284b977a3dd36c0796d",
+  "platform_revision": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+  "observed_at": "2026-10-11T18:12:04Z",
+  "valid_until": "2026-10-12T18:12:04Z",
+  "validity_rule": "Invalid immediately on source/relevant-config change or new failure. Does not extend Manager policy TTL.",
+  "policy_observed_at": "2026-10-11T18:00:02Z",
+  "policy_valid_until": "2026-10-11T18:45:02Z",
+  "context_sha256": "f1411ce4898c41e6503452b17690760295a844c10e59e0d47249c293e17870e2",
+  "context_schema_validation": "PASS fixed CONTEXT_VALIDATOR; standard preparation:null; no Readiness assessment",
+  "incoming": {
+    "status": "verified",
+    "explicit_objects": 83,
+    "total_objects": 92,
+    "total_bytes": 1026470,
+    "method": "fresh fixed-System consume_delivery.py; private authorization/receipt excluded"
+  },
+  "business_status": "blocked",
+  "commands": [
+    {
+      "command": "go mod verify",
+      "exit_code": 0
+    },
+    {
+      "command": "go test -json -count=1 ./...",
+      "exit_code": 0,
+      "tests": {
+        "pass": 109,
+        "fail": 0,
+        "skip": 5
+      }
+    },
+    {
+      "command": "go vet ./...",
+      "exit_code": 0
+    },
+    {
+      "command": "go build ./...",
+      "exit_code": 0
+    },
+    {
+      "command": "ORDER_DISPOSABLE_TEST=1 go test -race -json -count=1 ./...",
+      "exit_code": 0,
+      "tests": {
+        "pass": 112,
+        "fail": 0,
+        "skip": 2
+      }
+    },
+    {
+      "command": "bash ci/github/test.sh",
+      "exit_code": 0,
+      "python_methods": {
+        "release": 8,
+        "producer_m0_interop": 7,
+        "vendored_m0": 19
+      }
+    },
+    {
+      "command": "for module in tools/*/go.mod; do (cd MODULE_DIR; go vet ./...; go test -race -count=1 ./...; go build ./...); done",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 independent-negative.py FIXED_BACKEND FIXED_M0",
+      "exit_code": 0,
+      "methods": 7,
+      "remote_transport": "mocked"
+    },
+    {
+      "command": "python3 -I FIXED_M0/ci/github/release_test.py",
+      "exit_code": 0,
+      "methods": 19,
+      "remote_transport": "mocked"
+    },
+    {
+      "command": "go build oci-runtime-export; go run transport-synthetic.go EXPORTER",
+      "exit_code": 0,
+      "scope": "synthetic three-layer transport only"
+    },
+    {
+      "command": "test -z \"$(gofmt -l .)\"; git diff --check FIXED_BASE HEAD",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 reproduce-build.py PRIVATE CLEAN_BACKEND application",
+      "results": [
+        {
+          "service": "backend",
+          "dockerfile": "Dockerfile",
+          "started_at": "2026-10-11T18:04:57Z",
+          "ended_at": "2026-10-11T18:05:35Z",
+          "exit_code": 1
+        },
+        {
+          "service": "order",
+          "dockerfile": "Dockerfile.order",
+          "started_at": "2026-10-11T18:05:35Z",
+          "ended_at": "2026-10-11T18:05:38Z",
+          "exit_code": 1
+        }
+      ],
+      "failure_stage": "RUN go mod download; TLS unknown authority; no original production tar"
+    },
+    {
+      "command": "python3 reproduce-build.py PRIVATE_PROBE SYNTHETIC_CONTEXT synthetic",
+      "results": [
+        {
+          "service": "synthetic",
+          "dockerfile": "Dockerfile",
+          "started_at": "2026-10-11T18:07:09Z",
+          "ended_at": "2026-10-11T18:07:57Z",
+          "exit_code": 0,
+          "size": 7168,
+          "sha256": "5bbab4cda7bf68326acab7bb120deb7513e4755d7205985523280beb91e10ad9"
+        }
+      ],
+      "scope": "environment only"
+    },
+    {
+      "command": "python3 check-oci-descriptors.py ORIGINAL_SYNTHETIC_TAR",
+      "exit_code": 0,
+      "scope": "synthetic archive descriptors only"
+    }
+  ],
+  "regression_started_at": "2026-10-11T18:04:02Z",
+  "regression_ended_at": "2026-10-11T18:06:10Z",
+  "skipped_tests": [
+    {
+      "name": "TestMigrationDisposableDatabase",
+      "scope": "not executed; optional external fixture absent"
+    },
+    {
+      "name": "TestSDKCollectorMetricNames",
+      "scope": "not executed; optional external fixture absent"
+    }
+  ],
+  "ac_results": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "covered",
+      "scope": "Real HTTP/process restart/same fresh DB-volume restart and exact response/history persistence; assigned B2 regression only."
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "covered",
+      "scope": "52 invalid bodies, 8 invalid IDs and other 4xx without writes; Account CRUD/sentinel/history preservation; assigned B2 regression only."
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "unverified",
+      "scope": "Required production OCI stage blocked at dependency TLS. No actual GHCR/Service/Synced/Healthy/runtime digest/aggregate integration."
+    }
+  ],
+  "buildkit_boundary": {
+    "network": "bridge",
+    "privileged": false,
+    "cap_add": null,
+    "user": "1000:1000",
+    "apparmor": "",
+    "security_opt": [
+      "seccomp=unconfined"
+    ],
+    "masked_paths": [],
+    "readonly_paths": [],
+    "snapshotter": "native",
+    "process_mode": "sandbox",
+    "outer_host_network": false,
+    "no_process_sandbox": false
+  },
+  "production_oci": {
+    "backend": null,
+    "order": null,
+    "reader_runtime_scan_sbom": "unverified; no archive generated",
+    "delivery": "no production bytes exist; binary synthetic tar remains private, not misrepresented as text"
+  },
+  "synthetic_oci": {
+    "archive_size": 7168,
+    "archive_sha256": "5bbab4cda7bf68326acab7bb120deb7513e4755d7205985523280beb91e10ad9",
+    "descriptors": [
+      {
+        "digest": "sha256:1e3761cc73a8c51b56b1e38fa877d44e67929ae018b8236e156a9ff1a85f073d",
+        "size": 476,
+        "mediaType": "application/vnd.oci.image.manifest.v1+json"
+      },
+      {
+        "digest": "sha256:57d86d6e8ddcff0cf2506d2e70c0c55b8057a16a1740b588e0401d44983c1c40",
+        "size": 437,
+        "mediaType": "application/vnd.oci.image.config.v1+json"
+      },
+      {
+        "digest": "sha256:f95a231c4edf1dcf521d2826969370d0badd58a4b15e53738b584bcb5a509146",
+        "size": 129,
+        "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip"
+      }
+    ],
+    "os": "linux",
+    "architecture": "amd64",
+    "scope": "OCI descriptor integrity only"
+  },
+  "ci_metadata": {
+    "observed_at": "2026-10-11T18:06:00Z",
+    "observation_precision": "approximately18:06–18:09Z",
+    "valid_until": "2026-10-11T18:36:00Z",
+    "run_id": 38157674375,
+    "same_head": true,
+    "successful_jobs": [
+      "classify",
+      "validate",
+      "image (backend)",
+      "image (order)",
+      "ci-result"
+    ],
+    "skipped_jobs": [
+      "docs",
+      "publish",
+      "propose"
+    ],
+    "scope": "read-only connector metadata, not independent image execution"
+  },
+  "deployment_impact": {
+    "fixed_desired_image_unchanged": true,
+    "backend_digest": "sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d",
+    "order_values_at_M0": false,
+    "order_registered_at_platform": false,
+    "external_automation": "unobserved"
+  },
+  "cleanup": {
+    "task_infrastructure_removed": true,
+    "container_and_image_inventory_restored": true,
+    "shared_cache_pruned": false
+  },
+  "manager_gates": {
+    "final_assessment": "not performed",
+    "merge_readiness": "not performed",
+    "consumer_use_of_outgoing_bundle": "pending separate Manager authorization and canonical full-byte consumption"
+  }
+}

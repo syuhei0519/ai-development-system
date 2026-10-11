@@ -1,0 +1,177 @@
+Independent B2 Test — order-b2-test-e2-a1
+Business status: BLOCKED. Execution epoch2 attempt1.
+No product-wide acceptance, Merge Ready or operation authorization.
+
+Fixed targets
+System: syuhei0519/ai-development-system@4693887fa79c2b4a291c555b8bd27b6903eb4199
+Backend PR32 head: 65885af3fd648ce7010fa4a06470b273b995d418
+Base: 2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0
+Tree: a041558ad61f96dfbae616bcd3e91ab5f6b4a3a3
+M0: application-manifest@bc6adaedcd645a4663c23284b977a3dd36c0796d
+GitOps: platform-gitops@b989e29b8addbd6396c5c2b4833b969bc15fc8fa
+Config: sha256:2f613db39d7c69ef60c74036a41de9dacd70b1c13d60099340a48c2924d5e20c
+Fresh checkouts in the selected Linux amd64 workspace; Go1.27.1 and Docker28.4.0.
+The existing toolchain/module cache was used, but no prior execution result was reused.
+No AGENTS.md or SKILL.md exists in the fixed System/backend trees. The fixed role,
+workflow, Handoff, Readiness, Delivery1.2 and retry contracts were inspected.
+
+Input gates
+Fixed-System consume_delivery.py passed before upstream use. It fetched fresh fixed
+Git bytes and verified all 83 explicit / 92 actual objects / 1026470 bytes, including
+types, structural slots, candidates and source-tree closure. No handoff was regenerated.
+Records b4279734735cfebd3f629be913b51d8d7906b605 and payload
+aa8e6e7622f015c74db9920b14d8a9be4f8b11a5 match the supplied pins.
+Private authorization and Consumption Receipt stay private. Consumer approval does
+not retrospectively certify historical publication or private-original equivalence.
+The old epoch and failed/failed/succeeded delivery history remain immutable.
+The private previous/grant/new-epoch transition passed fixed validate_retry.py.
+This is new epoch2 attempt1, not attempt4 and not an Implementation budget renewal.
+
+Readiness input
+The new context is exactly 1718 UTF-8 bytes including LF, SHA-256
+f1411ce4898c41e6503452b17690760295a844c10e59e0d47249c293e17870e2.
+Fixed CONTEXT_VALIDATOR passed schema1.1 with pr_kind=standard/preparation=null.
+The original config is exactly 2102 bytes and matches the fixed config digest.
+Manager policy observed_at=2026-10-11T18:00:02Z and valid_until=2026-10-11T18:45:02Z
+are unchanged. This proves input classification/schema consistency only.
+measurements.json contains independent results bound to the full subject/config.
+No Manager assessment is substituted. Manager must refresh mutable policy before
+any operation and pair its canonical backend-app#2 context itself. Historical
+specialist handoffs retaining syuhei0519/backend-app#2 remain unchanged.
+
+Independent regression (18:04–18:06 UTC)
+go mod verify; go test -json -count=1 ./...; go vet ./...; go build ./...: exit0.
+Ordinary unit run: 109 tests/subtests PASS and five explicit test skips.
+ORDER_DISPOSABLE_TEST=1 go test -race -json -count=1 ./...: exit0; 112 PASS, zero FAIL.
+Only TestMigrationDisposableDatabase (named kind fixture absent) and
+TestSDKCollectorMetricNames (Collector absent) skipped. Neither was claimed tested.
+The three opt-in Order disposable DB tests did run and pass.
+bash ci/github/test.sh: exit0. Docs checks, all helper modules, manifest-update,
+OCI budget/finalizer/publication/reuse/registry-runtime boundary suites passed.
+Python release 8 / producer-M0 interop 7 / vendored M0 19 test methods passed.
+All tools/* modules separately passed vet, race tests and build.
+gofmt and git diff --check passed; no tracked application file was edited.
+
+AC1/2 measured through real HTTP and newly allocated PostgreSQL
+Order create/get and Location, nonexistent Account acceptance and retention after
+Account deletion passed. Fifty-two invalid bodies and eight invalid IDs were
+rejected without writes; oversize413/media415/method405/missing404 also passed.
+Two process restarts with changed PIDs and DB stop/start on the same newly allocated
+volume preserved exact Order response bytes and migration history.
+Shutdown readiness503, offline readiness/read503 with liveness200 passed.
+Account CRUD before/after, duplicate409/invalid400/missing404 passed; all sentinel
+columns and schema_migrations version/applied_at history were unchanged.
+Fresh/no-op/concurrent migrations, lock cancellation/recovery, failed DDL/history
+atomic rollback/retry, future-version refusal, actual wrong DB/role rejection
+before DDL, constraints and timeout/retry passed.
+Fixtures used only new randomly named containers and new anonymous volumes through
+the local Docker socket; no existing DB connection, cluster or kind was used.
+AC1/2 covered means this assigned regression, not aggregate product achievement.
+
+Synthetic CI/producer/consumer boundary tests
+Fresh execution of the inherited independent-negative.py: seven methods PASS.
+Matrix cases: missing member, wrong attempt namespace, extra/colliding artifact,
+archive/SBOM/image/source checksum tampering, wrong repository/source/run/attempt/
+workflow/service/schema/image/config/digest and false runtime/policy bindings.
+The exact required-job shell rejected failure/skipped/cancelled/empty statuses;
+fixed workflow fail-fast=false and complete backend/order artifacts are enforced.
+Publish tampering failed before mocked API/command side effects.
+Producer-generated records were passed to the actual fresh fixed M0 consumer.
+Unknown service/repository/image, wrong identity, expiry, unpublished/unprotected
+record and deploymentAuthorized=true were refused.
+Fixed M0's independent 19-method suite also passed ZIP paths/record count/duplicate/
+symlink/nonfinite cases, moved tags, missing peers and same-source/registry binding.
+All nine vendored M0 files equal the separate fixed M0 bytes and expected digests.
+Missing Order values caused three GETs and zero writes. Account v1 names and tag
+compatibility are retained; Order uses v2, its image/tag/branch namespace and full
+service binding. Mock publication is synthetic, never actual GHCR publication.
+The real compiled OCI transport exporter passed a synthetic three-layer test:
+config bytes, compressed layer digests and decompressed contents unchanged, wrong
+digest refused. This is not proof of loaded production image ID.
+
+Production OCI blocker — ENV-CA-1
+Severity: blocking required verification, environment/input boundary; no demonstrated
+product defect. Targets Dockerfile:9 and Dockerfile.order:9 at the fixed head.
+Expected: unchanged production Dockerfile completes dependency download, build and
+original OCI export, then exact tar is used for reader/runtime/scan/SBOM.
+Actual: both builds returned exit1 at RUN go mod download:
+tls: failed to verify certificate: x509: certificate signed by unknown authority.
+Backend: 18:04:57Z–18:05:35Z. Order: 18:05:35Z–18:05:38Z, 2026-10-11.
+Reproduction: reproduce-build.py with the exact clean checkout and existing current
+Docker proxy configuration plus SSL_CERT_FILE, as described in reproduce.sh.
+No fixed source was altered. Existing proxy values stayed in a private 0600 env
+file and private argv/logs; no secret value is present in this report or bundle.
+
+The explicitly authorized temporary BuildKit image was
+moby/buildkit@sha256:586cf37ba4bafd151058aa9c857fe06036942a2a765d7dc5630098cf31834200.
+Pre-start inspect confirmed network=bridge, Privileged=false, CapAdd=null,
+User=1000:1000, AppArmor empty, SecurityOpt=[seccomp=unconfined],
+MaskedPaths=[] and ReadonlyPaths=[] (systempaths=unconfined CLI behavior).
+Worker used native snapshotter and process-mode=sandbox. No no-process-sandbox,
+outer host network, AppArmor override or persistent daemon change was used.
+The worker's internal network:host label does not change the outer bridge boundary.
+Frontend metadata/content and both pinned Go/distroless base images were obtained.
+BuildKit's mounted CA supports its own HTTPS, but is not automatically mounted into
+Dockerfile RUN. The fixed files contain no CA secret mount or other CA-consumption
+step for RUN go mod download. Supplying a secret alone would not make RUN consume it.
+We did not change the Dockerfile, base image, Go TLS verification, proxy destination,
+DNS, network security, module sources or source bytes to manufacture a pass.
+
+Separate new synthetic probe (18:07:09Z–18:07:57Z) explicitly consumed the same
+read-only CA through a BuildKit secret. HTTPS to the same Go module endpoint
+succeeded with certificate verification; scratch OCI export returned exit0.
+The original synthetic tar was copied out without repackaging: size7168,
+SHA-256 5bbab4cda7bf68326acab7bb120deb7513e4755d7205985523280beb91e10ad9.
+Manifest sha256:1e3761cc73a8c51b56b1e38fa877d44e67929ae018b8236e156a9ff1a85f073d,
+size476; config sha256:57d86d6e8ddcff0cf2506d2e70c0c55b8057a16a1740b588e0401d44983c1c40,
+size437; layer sha256:f95a231c4edf1dcf521d2826969370d0badd58a4b15e53738b584bcb5a509146,
+size129. Every descriptor size/digest was independently read and checked.
+This is an environment diagnostic only; it is not either application OCI.
+
+No production OCI tar exists. Production archive/config/layer digest and size,
+reader result, transport equality/loadedID/stamp, nonroot/read-only/cap-drop runtime,
+migration/health/restart, image scan/SBOM and complete same-tar publication binding
+are UNVERIFIED, not synthetic passes. Source inspection confirms their intended
+same-input chain and publish does not rebuild, but execution could not reach it.
+The binary synthetic OCI stays private locally; Delivery1.2 text artifacts do not
+transport the tar. No binary was mislabeled text and no production tar is claimed.
+Required action: Manager provide an authorized environment in which the exact
+Dockerfile dependency RUN can validate TLS, or route an explicitly approved source
+change to Implementation and repin/retest. No independent self-dispatch.
+The forbidden CI ZIP redirect and connector403 paths were neither retried nor bypassed.
+
+Mutable metadata and source inspection
+At approximately18:06–18:09Z, PR32 remained open/draft/unmerged with exact assigned
+head/base. PR CI run38157674375 was successful; classify, validate, image(backend),
+image(order) and ci-result successful; docs/publish/propose skipped.
+This is current read-only CI metadata, separate from independent image execution.
+Both ghcr-publish and manifest-update Environments have one required reviewer and
+a main-only custom branch policy. Fixed workflow also requires protected-main push,
+enable variables and these environments. Global contents:read, publication
+contents/packages:write, proposal contents:read plus existing Manifest token.
+No approval event or token scope beyond observable configuration was inferred.
+No credential value, permission, enable flag or Environment was changed.
+
+All24 changed files inspected. Account app/store/SQL, shared go.mod/go.sum,
+migration SQL, Account Dockerfile and scan policy are unchanged from fixed base.
+Application Go diff adds Order source/version stamps and startup logging only.
+Order image entrypoint/user and absence of Account migration COPY match the design.
+Fixed Manifest backend digest remains
+sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d.
+Fixed GitOps points to application-manifest main, service charts/local values and
+automated Argo sync for PostgreSQL/backend/frontend; no Order values at M0 or Order
+registration at fixed platform. No image-tag updater was found in active sources.
+This backend diff changes no pinned desired deployment. Later Manifest changes can
+deploy; live state and outside automation are not observed. M1 was not imported.
+
+Completion boundaries and cleanup
+Required B2 image execution remains BLOCKED. No product test failure was found.
+Actual GHCR, Service/Synced/Healthy/runtime digest and multi-repository integration
+remain unverified. No final_assessment, Merge Ready or deployment success is claimed.
+All task-created DB and BuildKit containers/volumes and fetched BuildKit image were
+removed. Existing container and image inventories returned to the initial state;
+shared caches were not pruned. Private source checkouts, evidence and synthetic tar
+are retained for audit; these are artifacts, not active infrastructure resources.
+Application modifications, main push, PR/merge operations, workflow dispatch,
+Manifest PR17 operations, real cluster/kind and Review/Knowledge self-start: not performed.
+The incoming historical terminal and outgoing publication history are separate.

@@ -1,0 +1,14 @@
+{
+  "document_type": "knowledge_candidates",
+  "publication_status": "pending_manager_review",
+  "candidates": [
+    {
+      "id": "KC-CA-BOUNDARY",
+      "domain": "container-build-verification",
+      "summary": "Daemon/frontend TLS trust and Dockerfile RUN TLS trust are distinct validation boundaries.",
+      "evidence": "Both unchanged production Dockerfiles failed go mod download with unknown authority after successful frontend/base pulls. A separate synthetic CA-secret RUN reached the same dependency URL and exported a descriptor-valid OCI. See test-report.txt and measurements.json; application OCI remains unverified.",
+      "source": "https://github.com/syuhei0519/backend-app/blob/65885af3fd648ce7010fa4a06470b273b995d418/Dockerfile.order",
+      "scope": "A measured proxy/CA environment boundary; not a general product defect, source change recommendation, new permission or application build success."
+    }
+  ]
+}

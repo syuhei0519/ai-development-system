@@ -1,0 +1,24 @@
+{
+  "archive_size": 7168,
+  "archive_sha256": "5bbab4cda7bf68326acab7bb120deb7513e4755d7205985523280beb91e10ad9",
+  "descriptors": [
+    {
+      "digest": "sha256:1e3761cc73a8c51b56b1e38fa877d44e67929ae018b8236e156a9ff1a85f073d",
+      "size": 476,
+      "mediaType": "application/vnd.oci.image.manifest.v1+json"
+    },
+    {
+      "digest": "sha256:57d86d6e8ddcff0cf2506d2e70c0c55b8057a16a1740b588e0401d44983c1c40",
+      "size": 437,
+      "mediaType": "application/vnd.oci.image.config.v1+json"
+    },
+    {
+      "digest": "sha256:f95a231c4edf1dcf521d2826969370d0badd58a4b15e53738b584bcb5a509146",
+      "size": 129,
+      "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip"
+    }
+  ],
+  "os": "linux",
+  "architecture": "amd64",
+  "scope": "OCI descriptor integrity only"
+}

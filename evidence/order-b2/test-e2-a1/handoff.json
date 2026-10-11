@@ -1,0 +1,285 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "test",
+  "task_id": "order-b2-test-e2-a1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "order-b2-implementation-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/ed1d1a04cb3465238f0e560540f2d471f3f16dad/evidence/order-b2/implementation-a1/handoff.json",
+      "revision": "sha256:97a03d7cd27c961488fc7ed37c0969fb4f1069e407e8fff61606f0f8aaf1d554",
+      "relationship": "dependency"
+    },
+    {
+      "role": "test",
+      "task_id": "order-b2-test-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/aa8e6e7622f015c74db9920b14d8a9be4f8b11a5/evidence/order-b2/test-a1/handoff.json",
+      "revision": "sha256:810ac1b6f8a636c029e62aee2ff8a7f22b2b4e2157ebeb430c76884907c41ea6",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "blocked",
+  "summary": "Fresh independent AC1/2 HTTP/disposable DB/race and B2 synthetic CI/producer/M0 regressions passed. Authorized rootless BuildKit frontend/base acquisition and separate synthetic TLS/OCI probe passed. Both exact production Dockerfiles are blocked at go mod download by unknown CA; no production OCI/runtime/scan/SBOM. Corrected pinned Readiness1.1 context schema passed, not an assessment.",
+  "assignment": {
+    "scope": "backend-app#2/B2",
+    "ac_ids": [
+      "AC-1",
+      "AC-2",
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "currentheadの全Unit/race/vet/build/関連既存suite、ORDER_DISPOSABLE_TEST=1の実HTTP+PostgreSQL回帰。Order create/get/不正4xx/書込0、プロセスと同一新規volume DB再起動後永続化、migration履歴、誤DB/role、失敗rollback/timeout、AccountCRUDと全sentinel/history不変。既存kind専用skipと実行済みを区別。使い捨てfixtureは新規専用コンテナ/network/volumeだけ、既存環境へ接続しない。",
+      "両イメージDockerfileを独立に検査/実行し、buildonce同一OCI tar→reader/runtime/scan/SBOM→publishが再buildなしで結合することを検証。runtime transport変換でconfig/layers/content同一、loadedID一致、stamp、nonroot/readonly/dropcap、migration/health/restartを検査。既存proxy/CAを正規手順で利用可。今回明示承認された一時 rootless BuildKit の seccomp/systempaths 以外の新 Secret / 権限 / network security 変更は禁止。実productionimageの未実行をsynthetic合格で埋めない。",
+      "matrixfailfastfalse、片方failure/missing/skip/別run/attempt/source、artifact名collision、混入checksum、異なるconfig/archive/SBOM、publish前guard、Accountv1互換、Orderv2完全bindingを悪性fixtureで検証。mock公開と実GHCRを分離。",
+      "M0固定consumerへproducer生成recordを実コードで渡し正常異常を突合。未知service/repository/image、zip/path/record個数、期限切れ、tag移動、peer不足、same-source確認を含む。M0/Account既存policyを緩めない。",
+      "全差分と関連sourceを検証し、CI/workflowの保護main専用publish、既存Environment人間承認とtoken最小scope、提案先固定/service別branch/未存在Ordervalues時failclosedを確認。実publish/workflowdispatch/Manifest PR17操作はしない。",
+      "backend-onlydiffのデプロイ影響、固定ManifestdigestとGitOpssourceを検証し、外部automation未観測の限界を残す。変更対象外Accountコード/SQL/lock/history保全、M1の未マージchartを取り込まない。",
+      "異常系追加はscratch/テスト成果物のみ。実装の無断修正禁止。阻害findingは重大度/対象fileline/reproducer/期待対実際/修正条件で早期報告しfailed。必要実行不能はblocked。Managerが別Implementationへ戻す。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-REPORT",
+      "kind": "test-report",
+      "locator": "test-report.txt",
+      "revision": "sha256:14c0e1851c47563cf86bae4e247b82592e76db10c5a1ebf633b73ff34ff419c7",
+      "summary": "Public independent test artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-MEASURE",
+      "kind": "other",
+      "locator": "measurements.json",
+      "revision": "sha256:528204e518de56ca455c376f0ce4eec18d022473b75d25fb29e33aeabc930411",
+      "summary": "Public independent test artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-CONTEXT",
+      "kind": "other",
+      "locator": "readiness-context.json",
+      "revision": "sha256:f1411ce4898c41e6503452b17690760295a844c10e59e0d47249c293e17870e2",
+      "summary": "Public independent test artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-REPRO",
+      "kind": "document",
+      "locator": "reproduce.sh",
+      "revision": "sha256:83aba0501b14beb298e63032df3105e82c96c10bc354d248ae7f2b9cb882302f",
+      "summary": "Public independent test artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-BUILD-REPRO",
+      "kind": "document",
+      "locator": "reproduce-build.py",
+      "revision": "sha256:a9dc311162718f25eb4f157ed35671b9e3b4ed5830184bbe23c39a1e90a5a00a",
+      "summary": "Public independent test artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-DESCRIPTOR-CODE",
+      "kind": "document",
+      "locator": "check-oci-descriptors.py",
+      "revision": "sha256:587f3cc5380c28b8485ac4d6ecb99f3000208e03b10f26daa5ec4922779e3e1d",
+      "summary": "Public independent test artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-PROBE",
+      "kind": "document",
+      "locator": "synthetic-Dockerfile",
+      "revision": "sha256:0a6c5f899e93a229a007b8e067566c83d658e8b09b2fc6bc767573822be0c128",
+      "summary": "Public independent test artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-SYNTHETIC-DIGEST",
+      "kind": "other",
+      "locator": "synthetic-descriptors.json",
+      "revision": "sha256:f6c4e199ce05dd14ee7bb3ec7e25bdfcb36fe333fb34d417d7298b82c88a59d2",
+      "summary": "Public independent test artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-KNOWLEDGE",
+      "kind": "knowledge",
+      "locator": "knowledge-candidates.json",
+      "revision": "sha256:459eeb3425b477b01cd2a2d2698d53557d6d7cad357189528613efb5c19c38cb",
+      "summary": "Public independent test artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-NEGATIVE",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/aa8e6e7622f015c74db9920b14d8a9be4f8b11a5/evidence/order-b2/test-a1/independent-negative.py",
+      "revision": "sha256:bc7b3869bfe76bbc7c84976183650ff8e97845def1e0173f95579a11925ce03e",
+      "summary": "Public fixed Test artifact; see report for measured scope and limitations."
+    },
+    {
+      "id": "A-TRANSPORT",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/aa8e6e7622f015c74db9920b14d8a9be4f8b11a5/evidence/order-b2/test-a1/transport-synthetic.go",
+      "revision": "sha256:d2adf073f14a2964c840f8b7573ed175cb436145066e2bbfd6328b6659b08a35",
+      "summary": "Public fixed Test artifact; see report for measured scope and limitations."
+    },
+    {
+      "id": "A-CONFIG",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/aa8e6e7622f015c74db9920b14d8a9be4f8b11a5/evidence/order-b2/test-a1/config.json",
+      "revision": "sha256:2f613db39d7c69ef60c74036a41de9dacd70b1c13d60099340a48c2924d5e20c",
+      "summary": "Public fixed Test artifact; see report for measured scope and limitations."
+    },
+    {
+      "id": "A-INPUT",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/b4279734735cfebd3f629be913b51d8d7906b605/evidence/order-b2/test-a1/manifest.json",
+      "revision": "sha256:d50379fd6797659dae9d0f28187aedf1c35c67344634ae4a2b9c1a44d1e9251d",
+      "summary": "Unchanged incoming public Delivery1.2 record; no private authorization."
+    },
+    {
+      "id": "A-INPUT-PUB",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/b4279734735cfebd3f629be913b51d8d7906b605/evidence/order-b2/test-a1/publication-receipt.json",
+      "revision": "sha256:5d1c05cc12b7a8a8282f5e0059b045cb0e3448be341d6750bd5f74bbdc57f2a5",
+      "summary": "Unchanged incoming public Delivery1.2 record; no private authorization."
+    },
+    {
+      "id": "A-SAFETY",
+      "kind": "other",
+      "locator": "bundle-review.json",
+      "revision": "sha256:6fc6c29bc6e8f94a869e02a9960126dedcc5e7ac50fea00d92aba3510d9d2e6b",
+      "summary": "Public content review and nonrecursive technical-artifact inventory; not Consumer authorization."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-INPUT",
+      "claim": "Fresh canonical Delivery1.2 and exact corrected context/schema verification passed",
+      "artifact_ids": [
+        "A-INPUT",
+        "A-INPUT-PUB",
+        "A-CONTEXT",
+        "A-CONFIG",
+        "A-MEASURE"
+      ],
+      "locator": "measurements.json",
+      "observation": "83 explicit/92 total objects/1026470 bytes verified before use; preparation:null present. Neither grants Readiness."
+    },
+    {
+      "id": "E-REGRESSION",
+      "claim": "Assigned AC1/2 independent HTTP/disposable DB/race regression passed",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE",
+        "A-REPRO"
+      ],
+      "locator": "measurements.json",
+      "observation": "112 tests/subtests passed, no failures; two unrelated fixture skips retained. Current fixed source, fresh containers/volumes."
+    },
+    {
+      "id": "E-B2",
+      "claim": "Independent synthetic producer/M0/CI boundary checks passed; production image execution blocked",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE",
+        "A-NEGATIVE",
+        "A-TRANSPORT",
+        "A-BUILD-REPRO"
+      ],
+      "locator": "test-report.txt",
+      "observation": "Both exact production Dockerfiles failed at dependency TLS before OCI export; no runtime/scan/SBOM success inferred."
+    },
+    {
+      "id": "E-PROBE",
+      "claim": "Authorized rootless BuildKit with explicit synthetic CA consumption exported a descriptor-valid diagnostic OCI",
+      "artifact_ids": [
+        "A-PROBE",
+        "A-SYNTHETIC-DIGEST",
+        "A-DESCRIPTOR-CODE",
+        "A-MEASURE"
+      ],
+      "locator": "synthetic-descriptors.json",
+      "observation": "Original synthetic tar7168 bytes, all manifest/config/layer sizes/digests checked; no application image assertion."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "covered",
+      "scope": "Real HTTP/process restart/same fresh DB-volume restart and exact response/history persistence; assigned B2 regression only.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE"
+      ],
+      "evidence_ids": [
+        "E-REGRESSION"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "covered",
+      "scope": "52 invalid bodies, 8 invalid IDs and other 4xx without writes; Account CRUD/sentinel/history preservation; assigned B2 regression only.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE"
+      ],
+      "evidence_ids": [
+        "E-REGRESSION"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "unverified",
+      "scope": "Required production OCI stage blocked at dependency TLS. No actual GHCR/Service/Synced/Healthy/runtime digest/aggregate integration.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE"
+      ],
+      "evidence_ids": [
+        "E-B2",
+        "E-PROBE"
+      ]
+    }
+  ],
+  "block_reasons": [
+    {
+      "code": "OTHER",
+      "detail": "ENV-CA-1: both unchanged production Dockerfiles stop at line9 RUN go mod download with x509 unknown authority. Rootless worker/frontend/base images and separate explicit-CA synthetic probe succeed. No production OCI bytes or independent runtime/scan/SBOM result. This is an execution blocker, not demonstrated product failure.",
+      "required_action": "Manager arrange authorized environment trust usable by the exact Dockerfile RUN, or route an explicitly approved source change to Implementation then repin/retest within preserved budgets. Keep TLS verification, fixed source and permission boundaries; do not substitute CI or synthetic OCI."
+    }
+  ],
+  "failure_reasons": [],
+  "knowledge_candidates": [
+    {
+      "id": "KC-CA-BOUNDARY",
+      "domain": "container-build-verification",
+      "summary": "Daemon/frontend and Dockerfile RUN TLS trust are separate verification boundaries.",
+      "evidence_ids": [
+        "E-B2",
+        "E-PROBE"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "needs_review"
+    }
+  ],
+  "publication": "public_safe"
+}

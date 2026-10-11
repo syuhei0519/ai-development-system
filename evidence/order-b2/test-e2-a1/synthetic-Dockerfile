@@ -1,0 +1,5 @@
+# syntax=docker/dockerfile:1.7
+FROM golang:1.27.1-bookworm@sha256:648f440f42a0958804efb24df176f806f9d353b41f1c0627f666428e40310f6b AS probe
+RUN --mount=type=secret,id=ca SSL_CERT_FILE=/run/secrets/ca curl --cacert /run/secrets/ca --fail --silent --show-error https://proxy.golang.org/github.com/cenkalti/backoff/v5/@v/v5.0.3.mod >/dev/null && printf 'synthetic TLS probe only\n' >/marker
+FROM scratch
+COPY --from=probe /marker /marker
