@@ -1,0 +1,30 @@
+{
+  "authority_granted": false,
+  "bytes": 584480,
+  "consumer_consumption": "not performed; Manager authorization required",
+  "explicit_artifacts": 55,
+  "materialized_objects": 64,
+  "validation": "canonical schemas and fresh full-byte structural bindings",
+  "observedAt": "2026-10-11T17:11:24.657884+00:00",
+  "systemCommit": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+  "payloadCommit": "ed1d1a04cb3465238f0e560540f2d471f3f16dad",
+  "handoffValidation": "PASS fixed-System validate_handoff.py; shape/local references, not business approval",
+  "deliveryAttempt": 2,
+  "priorDeliveryAttempt": "failed; retained in failed-delivery-manifest.json, failed-publication-receipt.json and delivery-attempts.json",
+  "executionAttempt": 1,
+  "method": "Unmodified canonical prepare_crossref_bundle.py plus canonical schema/GitSource/verify_handoffs functions on a second fresh fetch. No call to consume with a self-issued authorization.",
+  "pins": {
+    "manifest.json": {
+      "size": 96411,
+      "sha256": "aaec396be8c40e4dbef5db20e27621588f04d3ccde8f366f60b5e884972f28bf"
+    },
+    "publication-receipt.json": {
+      "size": 29520,
+      "sha256": "a1d08dcab0c6f9e92dd4a32b546292d8ec5ab4a089d6e6988579baaa36a1dac6"
+    },
+    "handoff.json": {
+      "size": 20543,
+      "sha256": "97a03d7cd27c961488fc7ed37c0969fb4f1069e407e8fff61606f0f8aaf1d554"
+    }
+  }
+}
