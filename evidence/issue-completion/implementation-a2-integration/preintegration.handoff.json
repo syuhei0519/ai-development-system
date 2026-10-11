@@ -1,0 +1,215 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "PUBLIC-AGGREGATION-DESIGN",
+    "source": "requirements.md",
+    "title": "Issue Completion集約契約設計",
+    "acceptance_criteria": [
+      {
+        "id": "AG-1",
+        "verbatim": "PR単位MergeReadinessとIssue全体Completion分離、単一PRmerge/全premergeACmetだけでachievedにしない。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-2",
+        "verbatim": "必要なPR/repo/mergeSHA/承認済みscope/構成・image digest/実測環境/時刻/証跡期限を集約し、欠落・旧head・未merge・未配備・scope不足・証跡不一致はfailclosed。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-3",
+        "verbatim": "postmerge/postdeployの実測とpremerge試験を区別、全AC原文一致/全体integrationready/全必須実測metの後だけManagerがachieved。製品操作権限をreceipt/記事から推論しない。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-4",
+        "verbatim": "head変更/新必須PR/配備revision変更/失効時の再評価、rollback/失敗/未検証を記録。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-5",
+        "verbatim": "Handoffv2/Readinessv1互換、JSONschema/CLI/正常異常テスト/採用案と境界を具体化。既存GitHub必須check/review/rulesetは迂回禁止。UserapprovalとGitHubauthorityは別。",
+        "source": "requirements.md"
+      }
+    ]
+  },
+  "role": "implementation",
+  "task_id": "PUBLIC-AGGREGATE-IMPLEMENTATION-002",
+  "attempt": 2,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "PUBLIC-AGGREGATE-IMPLEMENTATION-001",
+      "attempt": 1,
+      "relationship": "retry_of",
+      "handoff_locator": "implementation.handoff.json",
+      "revision": "sha256:c00bde4f00154e2d5c8c6b8b7d734fef23810db01e0126d1a5b51efc660976a9"
+    },
+    {
+      "role": "test",
+      "task_id": "PUBLIC-AGGREGATE-TEST-001",
+      "attempt": 1,
+      "relationship": "dependency",
+      "handoff_locator": "test.handoff.json",
+      "revision": "sha256:1d011f7b856ee14d6a7b5233f1557b34acd4b28d88135baaf1e205512a4bf958"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Implementation attempt 2 repaired F-1/F-2 at fixed head 2f1c1900aaacf85870742ee989357d9a2b20bfea. 160 local tests and all 130 unchanged independent cases passed; same-head push/PR CI success. Independent Test/Review and product acceptance remain Manager gates. Operational publication pending.",
+  "assignment": {
+    "scope": "system/issue-completion/aggregate",
+    "ac_ids": [
+      "AG-1",
+      "AG-2",
+      "AG-3",
+      "AG-4",
+      "AG-5"
+    ],
+    "completion_criteria": [
+      "Reproduce F-1/F-2 at the fixed head, repair minimally, preserve AG originals and prior Implementation/failed Test history.",
+      "Run all existing tests, unchanged independent 130 cases and legacy CLI checks; verify individual outcomes and preserve completion/protection gates.",
+      "Append commit to existing Draft PR5, verify remote SHA and same-head CI; return private Handoff v2 and inspected public-candidate inventory without operational publication."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "REPAIR-REPORT",
+      "kind": "document",
+      "locator": "repair-report.md",
+      "revision": "sha256:f2de755fefcb9a46936c8992dbf18d2925202e86cb9e461e5ae676a24ac00362",
+      "summary": "Attempt 2 repair evidence and original requirements; no product acceptance or publication authority."
+    },
+    {
+      "id": "REPAIR-RESULTS",
+      "kind": "test-report",
+      "locator": "repair-results.json",
+      "revision": "sha256:5ad3b9ee20c13eba435d7f9312b6e09495a91993074d96d6cc82e33fadcdcb65",
+      "summary": "Attempt 2 repair evidence and original requirements; no product acceptance or publication authority."
+    },
+    {
+      "id": "REQUIREMENTS",
+      "kind": "document",
+      "locator": "requirements.md",
+      "revision": "sha256:6b811a1f49c4825fcab10636251033f1dfcb4c1809d8f356077ce536ae809cbf",
+      "summary": "Attempt 2 repair evidence and original requirements; no product acceptance or publication authority."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "REPAIR-AG-1",
+      "claim": "AG-1 Implementation repair/regression responsibility completed.",
+      "artifact_ids": [
+        "REPAIR-REPORT",
+        "REPAIR-RESULTS"
+      ],
+      "locator": "repair-report.md",
+      "observation": "Fixed head 2f1c1900aaacf85870742ee989357d9a2b20bfea; see before/after individual cases, 160 unit tests, all compatibility commands, remote and CI metadata. No independent Test/Review or product final assessment."
+    },
+    {
+      "id": "REPAIR-AG-2",
+      "claim": "AG-2 Implementation repair/regression responsibility completed.",
+      "artifact_ids": [
+        "REPAIR-REPORT",
+        "REPAIR-RESULTS"
+      ],
+      "locator": "repair-report.md",
+      "observation": "Fixed head 2f1c1900aaacf85870742ee989357d9a2b20bfea; see before/after individual cases, 160 unit tests, all compatibility commands, remote and CI metadata. No independent Test/Review or product final assessment."
+    },
+    {
+      "id": "REPAIR-AG-3",
+      "claim": "AG-3 Implementation repair/regression responsibility completed.",
+      "artifact_ids": [
+        "REPAIR-REPORT",
+        "REPAIR-RESULTS"
+      ],
+      "locator": "repair-report.md",
+      "observation": "Fixed head 2f1c1900aaacf85870742ee989357d9a2b20bfea; see before/after individual cases, 160 unit tests, all compatibility commands, remote and CI metadata. No independent Test/Review or product final assessment."
+    },
+    {
+      "id": "REPAIR-AG-4",
+      "claim": "AG-4 Implementation repair/regression responsibility completed.",
+      "artifact_ids": [
+        "REPAIR-REPORT",
+        "REPAIR-RESULTS"
+      ],
+      "locator": "repair-report.md",
+      "observation": "Fixed head 2f1c1900aaacf85870742ee989357d9a2b20bfea; see before/after individual cases, 160 unit tests, all compatibility commands, remote and CI metadata. No independent Test/Review or product final assessment."
+    },
+    {
+      "id": "REPAIR-AG-5",
+      "claim": "AG-5 Implementation repair/regression responsibility completed.",
+      "artifact_ids": [
+        "REPAIR-REPORT",
+        "REPAIR-RESULTS"
+      ],
+      "locator": "repair-report.md",
+      "observation": "Fixed head 2f1c1900aaacf85870742ee989357d9a2b20bfea; see before/after individual cases, 160 unit tests, all compatibility commands, remote and CI metadata. No independent Test/Review or product final assessment."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AG-1",
+      "disposition": "covered",
+      "scope": "Implementation repair and assigned regression validation only; prior failed Test retained, new independent Test/Review pending.",
+      "artifact_ids": [
+        "REPAIR-REPORT",
+        "REPAIR-RESULTS"
+      ],
+      "evidence_ids": [
+        "REPAIR-AG-1"
+      ]
+    },
+    {
+      "ac_id": "AG-2",
+      "disposition": "covered",
+      "scope": "Implementation repair and assigned regression validation only; prior failed Test retained, new independent Test/Review pending.",
+      "artifact_ids": [
+        "REPAIR-REPORT",
+        "REPAIR-RESULTS"
+      ],
+      "evidence_ids": [
+        "REPAIR-AG-2"
+      ]
+    },
+    {
+      "ac_id": "AG-3",
+      "disposition": "covered",
+      "scope": "Implementation repair and assigned regression validation only; prior failed Test retained, new independent Test/Review pending.",
+      "artifact_ids": [
+        "REPAIR-REPORT",
+        "REPAIR-RESULTS"
+      ],
+      "evidence_ids": [
+        "REPAIR-AG-3"
+      ]
+    },
+    {
+      "ac_id": "AG-4",
+      "disposition": "covered",
+      "scope": "Implementation repair and assigned regression validation only; prior failed Test retained, new independent Test/Review pending.",
+      "artifact_ids": [
+        "REPAIR-REPORT",
+        "REPAIR-RESULTS"
+      ],
+      "evidence_ids": [
+        "REPAIR-AG-4"
+      ]
+    },
+    {
+      "ac_id": "AG-5",
+      "disposition": "covered",
+      "scope": "Implementation repair and assigned regression validation only; prior failed Test retained, new independent Test/Review pending.",
+      "artifact_ids": [
+        "REPAIR-REPORT",
+        "REPAIR-RESULTS"
+      ],
+      "evidence_ids": [
+        "REPAIR-AG-5"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

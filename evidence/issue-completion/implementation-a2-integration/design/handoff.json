@@ -1,0 +1,220 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "PUBLIC-AGGREGATION-DESIGN",
+    "source": "requirements.md",
+    "title": "Issue Completion集約契約設計",
+    "acceptance_criteria": [
+      {
+        "id": "AG-1",
+        "verbatim": "PR単位MergeReadinessとIssue全体Completion分離、単一PRmerge/全premergeACmetだけでachievedにしない。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-2",
+        "verbatim": "必要なPR/repo/mergeSHA/承認済みscope/構成・image digest/実測環境/時刻/証跡期限を集約し、欠落・旧head・未merge・未配備・scope不足・証跡不一致はfailclosed。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-3",
+        "verbatim": "postmerge/postdeployの実測とpremerge試験を区別、全AC原文一致/全体integrationready/全必須実測metの後だけManagerがachieved。製品操作権限をreceipt/記事から推論しない。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-4",
+        "verbatim": "head変更/新必須PR/配備revision変更/失効時の再評価、rollback/失敗/未検証を記録。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-5",
+        "verbatim": "Handoffv2/Readinessv1互換、JSONschema/CLI/正常異常テスト/採用案と境界を具体化。既存GitHub必須check/review/rulesetは迂回禁止。UserapprovalとGitHubauthorityは別。",
+        "source": "requirements.md"
+      }
+    ]
+  },
+  "role": "research-design",
+  "task_id": "PUBLIC-AGGREGATION-RESEARCH-DESIGN-001",
+  "attempt": 1,
+  "upstream": [],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "公開用aliasを用いたedited derivative候補。設計責務の完了だけを示し、実装・製品AC合格・操作承認を示さない。task_idは公開aliasであり実行基盤IDではない。元原本とは別bytesの成果物。公開・Consumer利用は別承認が必要。",
+  "assignment": {
+    "scope": "Systemの複数PR・複数repo Issue Completion集約契約をread-only Research/Designとして設計する。役割、既存契約、CLI、tests、workflowを確認し、互換性を保つ最小変更案と実装・検証の境界を具体化する。",
+    "ac_ids": [
+      "AG-1",
+      "AG-2",
+      "AG-3",
+      "AG-4",
+      "AG-5"
+    ],
+    "completion_criteria": [
+      "AG-1〜AG-5の設計責務と根拠を対応付ける。",
+      "選択肢、採用案、JSON Schema/CLI仕様、正常異常テスト、互換性と権限境界を示す。",
+      "正常テスト案をsyntheticに限定し、未測定の製品結果を合格として扱わない。",
+      "取得可能な成果物実体と固定digestによるHandoffを作成する。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "PUBLIC-DESIGN",
+      "kind": "document",
+      "locator": "report.md",
+      "revision": "sha256:059b4eb96e142e1038072ff3d8a635b7f03bcb751b67874dafbabea1d677bff7",
+      "summary": "集約契約の技術設計。"
+    },
+    {
+      "id": "PUBLIC-REQUIREMENTS",
+      "kind": "document",
+      "locator": "requirements.md",
+      "revision": "sha256:6b811a1f49c4825fcab10636251033f1dfcb4c1809d8f356077ce536ae809cbf",
+      "summary": "設計要件AG-1〜AG-5と担当範囲。"
+    },
+    {
+      "id": "PUBLIC-SOURCES",
+      "kind": "document",
+      "locator": "sources.md",
+      "revision": "sha256:874c764d999fffc04d30459310818799dc42ff33430998284dd1ae6ef1723988",
+      "summary": "公開固定System出典目録。"
+    },
+    {
+      "id": "PUBLIC-VALIDATION",
+      "kind": "test-report",
+      "locator": "validation-summary.md",
+      "revision": "sha256:3d542dc42a6925d8c5cac63bbcf78f8c49e35578af763e8f86c345955c4df5be",
+      "summary": "検証範囲と限界の要約。内部ログなし。"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "PUBLIC-EVIDENCE-AG-1",
+      "claim": "AG-1のResearch/Design責務を技術設計で扱った。",
+      "artifact_ids": [
+        "PUBLIC-DESIGN",
+        "PUBLIC-REQUIREMENTS",
+        "PUBLIC-SOURCES"
+      ],
+      "locator": "report.md",
+      "observation": "AG-1の設計仕様、必要証跡、正常異常条件と限界をreport.mdに記載。実装・製品実測の完了を主張しない。"
+    },
+    {
+      "id": "PUBLIC-EVIDENCE-AG-2",
+      "claim": "AG-2のResearch/Design責務を技術設計で扱った。",
+      "artifact_ids": [
+        "PUBLIC-DESIGN",
+        "PUBLIC-REQUIREMENTS",
+        "PUBLIC-SOURCES"
+      ],
+      "locator": "report.md",
+      "observation": "AG-2の設計仕様、必要証跡、正常異常条件と限界をreport.mdに記載。実装・製品実測の完了を主張しない。"
+    },
+    {
+      "id": "PUBLIC-EVIDENCE-AG-3",
+      "claim": "AG-3のResearch/Design責務を技術設計で扱った。",
+      "artifact_ids": [
+        "PUBLIC-DESIGN",
+        "PUBLIC-REQUIREMENTS",
+        "PUBLIC-SOURCES"
+      ],
+      "locator": "report.md",
+      "observation": "AG-3の設計仕様、必要証跡、正常異常条件と限界をreport.mdに記載。実装・製品実測の完了を主張しない。"
+    },
+    {
+      "id": "PUBLIC-EVIDENCE-AG-4",
+      "claim": "AG-4のResearch/Design責務を技術設計で扱った。",
+      "artifact_ids": [
+        "PUBLIC-DESIGN",
+        "PUBLIC-REQUIREMENTS",
+        "PUBLIC-SOURCES"
+      ],
+      "locator": "report.md",
+      "observation": "AG-4の設計仕様、必要証跡、正常異常条件と限界をreport.mdに記載。実装・製品実測の完了を主張しない。"
+    },
+    {
+      "id": "PUBLIC-EVIDENCE-AG-5",
+      "claim": "AG-5のResearch/Design責務を技術設計で扱った。",
+      "artifact_ids": [
+        "PUBLIC-DESIGN",
+        "PUBLIC-REQUIREMENTS",
+        "PUBLIC-SOURCES"
+      ],
+      "locator": "report.md",
+      "observation": "AG-5の設計仕様、必要証跡、正常異常条件と限界をreport.mdに記載。実装・製品実測の完了を主張しない。"
+    },
+    {
+      "id": "PUBLIC-EVIDENCE-VALIDATION",
+      "claim": "検証の範囲と未実施部分を明記した。",
+      "artifact_ids": [
+        "PUBLIC-VALIDATION"
+      ],
+      "locator": "validation-summary.md",
+      "observation": "既存基準の107 tests成功と新集約実装未検証を区別。候補のbytes/binding検査と実Git配送・承認検査を区別。"
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AG-1",
+      "disposition": "covered",
+      "scope": "Research/Design責務のみ。製品実測・最終Issue判定は対象外。",
+      "artifact_ids": [
+        "PUBLIC-DESIGN",
+        "PUBLIC-REQUIREMENTS"
+      ],
+      "evidence_ids": [
+        "PUBLIC-EVIDENCE-AG-1"
+      ]
+    },
+    {
+      "ac_id": "AG-2",
+      "disposition": "covered",
+      "scope": "Research/Design責務のみ。製品実測・最終Issue判定は対象外。",
+      "artifact_ids": [
+        "PUBLIC-DESIGN",
+        "PUBLIC-REQUIREMENTS"
+      ],
+      "evidence_ids": [
+        "PUBLIC-EVIDENCE-AG-2"
+      ]
+    },
+    {
+      "ac_id": "AG-3",
+      "disposition": "covered",
+      "scope": "Research/Design責務のみ。製品実測・最終Issue判定は対象外。",
+      "artifact_ids": [
+        "PUBLIC-DESIGN",
+        "PUBLIC-REQUIREMENTS"
+      ],
+      "evidence_ids": [
+        "PUBLIC-EVIDENCE-AG-3"
+      ]
+    },
+    {
+      "ac_id": "AG-4",
+      "disposition": "covered",
+      "scope": "Research/Design責務のみ。製品実測・最終Issue判定は対象外。",
+      "artifact_ids": [
+        "PUBLIC-DESIGN",
+        "PUBLIC-REQUIREMENTS"
+      ],
+      "evidence_ids": [
+        "PUBLIC-EVIDENCE-AG-4"
+      ]
+    },
+    {
+      "ac_id": "AG-5",
+      "disposition": "covered",
+      "scope": "Research/Design責務のみ。製品実測・最終Issue判定は対象外。",
+      "artifact_ids": [
+        "PUBLIC-DESIGN",
+        "PUBLIC-REQUIREMENTS"
+      ],
+      "evidence_ids": [
+        "PUBLIC-EVIDENCE-AG-5"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}
