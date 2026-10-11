@@ -12,6 +12,10 @@ from jsonschema import Draft202012Validator, FormatChecker
 
 ROOT = Path(__file__).resolve().parents[1]
 FORMATS = FormatChecker()
+try:
+    from .regular_file import read_regular, artifact_path
+except ImportError:
+    from regular_file import read_regular, artifact_path
 
 
 @FORMATS.checks('date-time', raises=(ValueError, OverflowError))
@@ -181,11 +185,8 @@ def validate(data, context, now=None, *, artifact_root=None):
             try:
                 if artifact_root is None:
                     raise ValueError('materialized artifact root required')
-                root = Path(artifact_root).resolve(strict=True)
-                target = (root / artifact['locator']).resolve(strict=True)
-                if not target.is_relative_to(root):
-                    raise ValueError('artifact path escapes root')
-                payload = target.read_bytes()
+                target = artifact_path(artifact_root, artifact['locator'])
+                payload = read_regular(target, limit=artifact['size_bytes'])
                 if len(payload) != artifact['size_bytes'] or hashlib.sha256(payload).hexdigest() != artifact['sha256']:
                     raise ValueError('artifact bytes/size/digest mismatch')
             except (OSError, ValueError, RuntimeError) as exc:
@@ -315,7 +316,7 @@ def main():
             raise ValueError('v1.1 requires independent Manager --context-sha256')
         if args.context_sha256 and hashlib.sha256(context_bytes).hexdigest() != args.context_sha256:
             raise ValueError('Manager context digest mismatch')
-        errors = validate(data, context, now, artifact_root=args.file.resolve().parent)
+        errors = validate(data, context, now, artifact_root=args.file.absolute().parent)
         if args.handoff and not errors:
             errors += validate_handoff_pair(
                 data, json.loads(args.handoff.read_text(encoding='utf-8')),

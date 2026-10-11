@@ -15,7 +15,11 @@ from scripts.validate_handoff import validate as validate_handoff
 from scripts.validate_readiness import (instant, validator, validate as validate_readiness,
                                         validate_handoff_pair as readiness_pair)
 
+from scripts.regular_file import read_regular, artifact_path
+
 ASSESSMENT = validator('issue-completion')
+ASSESSMENT_V11 = validator('issue-completion-v1.1')
+CONTEXT_V11 = validator('issue-completion-context-v1.1')
 CONTEXT = validator('issue-completion-context')
 PHASES = {'premerge': 0, 'postmerge': 1, 'postdeploy': 2}
 VECTOR_FIELDS = ('deployment_id', 'sources', 'config_sha256', 'images', 'environment_id', 'workload_id')
@@ -101,7 +105,7 @@ class Bundle:
         path = self.path(path)
         stat = path.stat()
         require(stat.st_size <= 16 * 1024 * 1024, 'file too large')
-        raw = path.read_bytes()
+        raw = read_regular(path)
         require(raw and len(raw) <= 16 * 1024 * 1024, 'empty or oversized file')
         if path in self.cache:
             require(raw == self.cache[path], 'bytes changed during validation')
@@ -152,8 +156,10 @@ def time_window(item, evaluated, now):
 
 
 def validate_record(data, context, bundle, now, previous=None):
-    check_schema(ASSESSMENT, data, 'assessment')
-    check_schema(CONTEXT, context, 'context')
+    require(data.get('schema_version') == context.get('schema_version'), 'aggregate version mismatch')
+    v11 = data.get('schema_version') == '1.1'
+    check_schema(ASSESSMENT_V11 if v11 else ASSESSMENT, data, 'assessment')
+    check_schema(CONTEXT_V11 if v11 else CONTEXT, context, 'context')
     bundle.refs(context)
     bundle.refs(data)
     evaluated = instant(data['evaluated_at'])
@@ -182,6 +188,9 @@ def validate_record(data, context, bundle, now, previous=None):
     require(len(pr_keys) == len(set(pr_keys)), 'duplicate repository/PR')
     for r in required.values():
         require(set(r['ac_ids']) <= set(acs), 'unknown member AC')
+        if r.get('pr_kind') == 'preparation':
+            require(set(r['preparation']['related_ac_ids']) <= set(acs), 'unknown related member AC')
+            index(r['preparation']['artifact_refs'], 'artifact_id')
         require(set(r['depends_on']) <= set(required) and r['member_id'] not in r['depends_on'], 'invalid dependency')
     visited, active = set(), set()
     def visit(key):
@@ -243,7 +252,25 @@ def validate_record(data, context, bundle, now, previous=None):
             rc = parse(bundle.ref(refs[1])[0]); hr, hp = bundle.ref(refs[2]); handoff = parse(hr)
             require(member['merged_at'] is not None and result['gate_checked_at'] is not None, 'historical gate needs merge time')
             merge_time = instant(member['merged_at'])
-            require(not validate_readiness(ready, rc, merge_time), 'invalid historical Readiness at actual merge')
+            require(ready.get('pr_kind', 'standard') == requirement.get('pr_kind', 'standard'),
+                    'historical PR kind mismatch')
+            if requirement.get('pr_kind') == 'preparation':
+                require(ready.get('schema_version') == '1.1' and ready.get('preparation') is not None,
+                        'preparation requires historical Readiness 1.1')
+                preparation = requirement['preparation']
+                require(set(preparation['related_ac_ids']) == set(ready['preparation']['related_ac_ids']),
+                        'historical related AC mapping mismatch')
+                fixed = index(ready['preparation']['artifacts'], 'id')
+                delivered = index(preparation['artifact_refs'], 'artifact_id')
+                require(set(fixed) == set(delivered), 'preparation artifact set mismatch')
+                for aid, artifact in fixed.items():
+                    payload, path = bundle.ref(delivered[aid]['ref'])
+                    require(path == artifact_path(rp.parent, artifact['locator']),
+                            'preparation artifact root/path mismatch')
+                    require(len(payload) == artifact['size_bytes'] and sha(payload) == artifact['sha256'],
+                            'preparation artifact bytes/digest mismatch')
+            require(not validate_readiness(ready, rc, merge_time, artifact_root=rp.parent),
+                    'invalid historical Readiness at actual merge')
             require(not validate_handoff(handoff), 'invalid PR Handoff v2')
             artifacts = index(handoff['artifacts'], 'id')
             require(ready['artifact_id'] in artifacts and
@@ -258,7 +285,9 @@ def validate_record(data, context, bundle, now, previous=None):
             require(ready['issue_id'] == data['issue_id'], 'historical Issue mismatch')
             require(set(ready['pr_ac_ids']) == set(requirement['ac_ids']), 'historical PR scope mapping mismatch')
             originals = index(ready['acceptance_criteria'], 'id')
-            require(all(k in acs and same(originals[k], acs[k]) for k in ready['pr_ac_ids']), 'historical AC originals mismatch')
+            historical_ids = (requirement['preparation']['related_ac_ids']
+                              if requirement.get('pr_kind') == 'preparation' else ready['pr_ac_ids'])
+            require(all(k in originals and k in acs and same(originals[k], acs[k]) for k in historical_ids), 'historical AC originals mismatch')
             require(instant(ready['evaluated_at']) <= instant(result['gate_checked_at']) <= merge_time, 'gate time outside merge window')
             gates[key] = ready
         if merged:
@@ -385,7 +414,10 @@ def validate_record(data, context, bundle, now, previous=None):
         kind = 'scope' if key == 'deployment' and not deployments else kinds[key]
         found = proofs(proof, kind)
         if proof['verdict'] == 'pass':
-            require({m for e in found for m in e['member_ids']} == set(required), 'integration check misses required members')
+            expected_members = ({mid for mid, r in required.items() if r.get('pr_kind') != 'preparation'}
+                                if key == 'measurement_coverage' else set(required))
+            require(bool(expected_members) and {m for e in found for m in e['member_ids']} == expected_members,
+                    'integration check misses required members')
             if key in ('scope','deployment','compatibility','current_evidence','authorizations'):
                 require({d for e in found for d in e['deployment_ids']} == set(deployments), 'integration check misses deployments')
             if key in ('compatibility','current_evidence'):
@@ -407,7 +439,7 @@ def validate_record(data, context, bundle, now, previous=None):
         require(event['kind'] not in ('measurement_failed','rollback','revert') or event['evidence_refs'], 'failure history needs evidence')
     require(all(instant(a['observed_at']) <= instant(b['observed_at']) for a,b in zip(events,events[1:])), 'history not chronological')
     if previous is not None:
-        check_schema(ASSESSMENT, previous, 'previous')
+        check_schema(ASSESSMENT_V11 if previous.get('schema_version') == '1.1' else ASSESSMENT, previous, 'previous')
         old_events = previous['history']['events']
         require(previous['issue_id'] == data['issue_id'] and instant(previous['evaluated_at']) <= evaluated, 'previous Issue/time mismatch')
         require(same(events[:len(old_events)], old_events) and len(events) > len(old_events), 'history must be append-only')
@@ -480,7 +512,9 @@ def validate_files(file, context_file, context_sha256, handoff_file, *, now=None
     raw = bundle.read(file); data = parse(raw)
     context_raw = bundle.read(Path(context_file).absolute()); context = parse(context_raw)
     require(re.fullmatch('[0-9a-f]{64}', context_sha256 or '') is not None and sha(context_raw) == context_sha256, 'untrusted current context pin')
-    check_schema(ASSESSMENT, data, 'assessment'); check_schema(CONTEXT, context, 'context')
+    require(data.get('schema_version') == context.get('schema_version'), 'aggregate version mismatch')
+    check_schema(ASSESSMENT_V11 if data.get('schema_version') == '1.1' else ASSESSMENT, data, 'assessment')
+    check_schema(CONTEXT_V11 if context.get('schema_version') == '1.1' else CONTEXT, context, 'context')
     require(data['context_sha256'] == context_sha256, 'assessment context digest mismatch')
     previous = None; ref = data['history']['previous_ref']; pin = context['previous_assessment_sha256']
     if pin is None:

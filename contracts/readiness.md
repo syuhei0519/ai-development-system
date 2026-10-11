@@ -119,3 +119,13 @@ python scripts/validate_readiness.py readiness.json --context current-context.js
 固定コードだから無期限とはしない。全証跡について既存の時刻不等式を維持し、subject/config の
 変更は期限内でも即失効する。旧期限を書き換えず、新たな確認と新記録を作る。
 1.1 は期限検査を緩和しない。
+
+Issue Completion 1.1 は準備 PR を型付き required メンバーとして保持する。
+空の製品担当 ac_ids と関連 AC を分離し、歴史的 Readiness の親を成果物 root として
+context の固定 BlobRef と照合する。全必要 merge 集合と後続 standard PR の全製品実測を要求し、
+工程合格を製品達成へ変換しない。版互換・配送・検証手順は
+[Issue Completion 契約](../contracts/issue-completion.md) と [合成例](../examples/issue-completion/README.md) を参照。
+
+準備の固定成果物は通常ファイルのみ、各16 MiB以内。symlink を祖先を含め拒否し、
+Linux O_PATH による I/O 前の inode 固定、no-follow/nonblocking open と descriptor の型・size・読取前後の同一性を検査する。
+CLI では assessment の親が artifact_root。ライブラリ利用でも同じ境界と raw hash を維持する。
