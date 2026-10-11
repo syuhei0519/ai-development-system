@@ -1,0 +1,39 @@
+{
+  "document_type": "producer_delivery_verification",
+  "public_alias": "order-p0-review-a2",
+  "execution_epoch": 1,
+  "execution_attempt": 2,
+  "delivery_epoch": 1,
+  "delivery_attempt": 2,
+  "observed_at": "2026-10-11T18:56:34.485304+00:00",
+  "payload_commit": "791f5d2fe995ac86e2a1199efd620f459d718c14",
+  "handoff_sha256": "d46db1fe3490c392ef855c37f2680b1b88940b5d05521f44fe77de77b41615b2",
+  "handoff_size": 10486,
+  "explicit_artifacts": 116,
+  "objects": 205,
+  "bytes": 4452444,
+  "manifest_size": 246567,
+  "manifest_sha256": "a0e610f1947ad5170770699646e35ded84693ab741fa897de4bedcae2ec1456d",
+  "publication_size": 61321,
+  "publication_sha256": "9522efb1cffe4e8fa69ad19dea89445337fcfdfe82b70a6d58a14770f77f2956",
+  "prefix": "evidence/order-p0/review-a2/",
+  "canonical_system_revision": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+  "canonical_producer_verification": "passed: GitSource full bytes/size/hash/object-type and verify_handoffs strict JSON/Handoff/slots/candidates/trees; schema validators passed",
+  "canonical_consumer_receipt": "not_issued: producer verification does not impersonate a separately authorized downstream Consumer",
+  "past_history": [
+    {
+      "role": "review",
+      "epoch": 1,
+      "execution_attempt": 1,
+      "execution_result": "failed",
+      "delivery_attempt": 1,
+      "delivery_result": "success",
+      "immutable_handoff": "https://github.com/syuhei0519/ai-development-system/blob/18d603cbd4e9f8dc398de99bdb1e430c7cb09030/evidence/order-p0/review-a1/handoff.json"
+    }
+  ],
+  "test_delivery_history": "Separate role/counter; Test2 renewed epoch2 delivery2 does not change Review epoch1 budget.",
+  "private_records_published": false,
+  "readiness_boundary": "P0 preparation-only Review. Original Test/policy expires2026-10-11T19:08:48Z unchanged. No Manager Readiness/product/merge authority.",
+  "authorization_boundary": "Manager must issue separate pinned Consumer authorization for this output manifest. Existing publication permission used only for safe dedicated-branch evidence.",
+  "records_boundary": "Payload bytes and complete closure were freshly verified after public push. Records commit is fetched and compared after its own publication; that later observation belongs to final report, avoiding self-reference."
+}
