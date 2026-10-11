@@ -1,0 +1,335 @@
+{
+  "changed_files": [
+    {
+      "path": ".github/workflows/validate.yml",
+      "size": 2857,
+      "sha256": "bb54c08ce511ce616d819a569039aac7db18fc218378f6c97329a6267c3b09c8",
+      "category": "docs/workflow"
+    },
+    {
+      "path": "README.md",
+      "size": 14061,
+      "sha256": "1bd429ba6aa07dcb3617a1ff4f1402971c0bcc20c990effd1b28434f462c4a4a",
+      "category": "docs/workflow"
+    },
+    {
+      "path": "agents/implementation.md",
+      "size": 4656,
+      "sha256": "42aca714fb18c585de11332d60def9e011f28bb17dd63e1dac5cc390d4458a7c",
+      "category": "docs/workflow"
+    },
+    {
+      "path": "agents/manager.md",
+      "size": 5966,
+      "sha256": "62868f419e2ab9191aaec5a4aced344ff7289c87d5e2a7a7b31e151d433769f5",
+      "category": "docs/workflow"
+    },
+    {
+      "path": "agents/research-design.md",
+      "size": 4451,
+      "sha256": "5aa52e4de71b31feb238fd1d29e21b683bc3872970587ee1d0158b0b4ec3fb69",
+      "category": "docs/workflow"
+    },
+    {
+      "path": "agents/review.md",
+      "size": 4723,
+      "sha256": "5e65b2e2cbbd0d296fb1e83b7623e9395ef5cdf1d73d1d154ebeabca738035d9",
+      "category": "docs/workflow"
+    },
+    {
+      "path": "agents/test.md",
+      "size": 4812,
+      "sha256": "55ac01f92bec8921900eeb8f4fa84931a01f45de96675abe16d951d946656cb2",
+      "category": "docs/workflow"
+    },
+    {
+      "path": "contracts/README.md",
+      "size": 11041,
+      "sha256": "96faf292d00d2cd570b583f5ca1fa8d6eb55856500cf666a7e5014e4767ee09e",
+      "category": "docs/workflow"
+    },
+    {
+      "path": "contracts/issue-completion-context.schema.json",
+      "size": 23435,
+      "sha256": "8a7eaab8791d5fb18bc68e1d9f07decd560ac6eb0a4f603ad0f329691e09961c",
+      "category": "schema"
+    },
+    {
+      "path": "contracts/issue-completion.md",
+      "size": 11109,
+      "sha256": "62467a25653658c99bd5def432c4c5035631e2f660698d2802a3e6c8cb1536cd",
+      "category": "docs/workflow"
+    },
+    {
+      "path": "contracts/issue-completion.schema.json",
+      "size": 24414,
+      "sha256": "77350b58da98c10568acffb3e90de060853561f34bedd4bc071242171aae7574",
+      "category": "schema"
+    },
+    {
+      "path": "contracts/readiness.md",
+      "size": 12752,
+      "sha256": "4932a3e05b515cb45b504839cc120d3aa6c37bc1542c41fc54740b1a1f331b65",
+      "category": "docs/workflow"
+    },
+    {
+      "path": "examples/issue-completion/README.md",
+      "size": 1860,
+      "sha256": "2d2f6696602d619d52ff5a3262f21cca2bcfee60cca27be6c060723f7666d0c0",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/app-context.json",
+      "size": 1290,
+      "sha256": "9098656f57b277323f3b68de37f528114c60f140c6e567b42707956c2ab97d27",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/app-handoff.json",
+      "size": 2317,
+      "sha256": "33b00aef12ad7f804c4d08f4d0b484cc2676a3170d3b46c1bb44ceb735f565e5",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/app-merge-observation.json",
+      "size": 1738,
+      "sha256": "2920791d796f31e685548e204e8007833f7f947eef7ce5d6c65009337f81dfff",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/app-pre-observation.json",
+      "size": 1330,
+      "sha256": "78093cdff1d8d6b3038a297e7f0a5555f55a881cf0a72f52c8575ce1534b7a23",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/app-readiness.json",
+      "size": 21138,
+      "sha256": "e52ef88b27391bb7290bf1de48c98f2372e681db318c6fb5483ade79cdea9f2c",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/authorization-observation.json",
+      "size": 2396,
+      "sha256": "04a97aa90a6abb487074f2c13a758548932f63ebeb018f994de1f11b42a23f90",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/client-context.json",
+      "size": 1293,
+      "sha256": "7df029b2136935a8b96beac3d9862e4810febd85b52f94972cc60142c3d33345",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/client-handoff.json",
+      "size": 2323,
+      "sha256": "99323fb6ccd7b2663859fcbd204b069a6ba5a344fdf7e0d02b3d1bdfd1e1825b",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/client-merge-observation.json",
+      "size": 1747,
+      "sha256": "23d40c070f739fc46b1a38ed1d5628872cda42505b7cfe956af78f647b0bde4e",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/client-pre-observation.json",
+      "size": 1345,
+      "sha256": "b7f7d6abff465ab20e07903a4c4dd518e7b3197df16a521c879e196b9be377d3",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/client-readiness.json",
+      "size": 21198,
+      "sha256": "2add35bbeb2dcfb4440c341b13b2f7f270d5986c1effb9770c51085485688e7d",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/compatibility-observation.json",
+      "size": 2396,
+      "sha256": "0bf75282a9d3649bd3ac97612f2bff109053f7ad0e9f39b1825478e4e2d18603",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/completion.json",
+      "size": 38679,
+      "sha256": "1a6347710dc1c801cf10a2e355a369687bd05c5b076cc7cd5e9cfd9ec1405d91",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/config-context.json",
+      "size": 1293,
+      "sha256": "a7533974bc818687fc19009208eca263d037a082338cb423f207684168507a50",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/config-handoff.json",
+      "size": 2323,
+      "sha256": "cacc2db513ab6c4722fb1232974669959d76ddeb682068f37cf52ceaba624ffa",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/config-merge-observation.json",
+      "size": 1747,
+      "sha256": "c1c9a86d0ed9871f611eb4c8556a72751275b3b9bb9364f46bd09807bc2f394f",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/config-pre-observation.json",
+      "size": 1345,
+      "sha256": "90caab942c14b4d23e533a52d64321e034bf8e831247e3bbb07301b53dc38fc7",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/config-readiness.json",
+      "size": 21198,
+      "sha256": "66121801462ec2973debf48ad5dbfde690b06a6b7bf00ff3dd6831d2fb8ce7f8",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/context.json",
+      "size": 11779,
+      "sha256": "951048815ca07294e13e6df297272e719e121d81a8e1c523c3958e4ba97742ac",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/deployment-observation.json",
+      "size": 2390,
+      "sha256": "64aeb3f55c989ba29a6106b2110fa63584dcdf20c60fc967daa9c6b24806395f",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/handoff.json",
+      "size": 6126,
+      "sha256": "829c518a2b70cf6df2a2b99a22f52c4eac102e5e56efe2b01f0836d3d03ce61a",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/integration-observation.json",
+      "size": 2392,
+      "sha256": "d63597387028ebcc79dff69bf2bcac33a0f980f094fc4e96afc1625b56232fc8",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/runtime-persistence-observation.json",
+      "size": 2464,
+      "sha256": "834c121bb171a8ab709cd7c55c56d0e2d5acbe4e577c3299a83910b9cda8baf7",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/runtime-response-observation.json",
+      "size": 2455,
+      "sha256": "068344556235a534d469f42954371d39a38252c1dd769762a949121bacb6a61f",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/scope-observation.json",
+      "size": 2380,
+      "sha256": "c3d77168293bb4f372c57553bfad7e328270463304e394a14fcc1d45b4ee0881",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-achieved/scope.txt",
+      "size": 67,
+      "sha256": "5ab7d53af079dfbab944f5fc567b59a8df55f56cbd9880f931e5fe257d43967d",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-pending/completion.json",
+      "size": 6038,
+      "sha256": "4d07d0aaa84cac2fdfcd7a4233f77e1dac3df8f80ea511280d91a8e22f22f00c",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-pending/context.json",
+      "size": 11522,
+      "sha256": "8943ce6030f4335adb8cfab5f7338670b2c45b3d24bd3114e92fab5c1cd8d5ff",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-pending/handoff.json",
+      "size": 2315,
+      "sha256": "c7943adf0b697a3becc4d2888ec749ab30be2762a122d1f49de61fd531388b20",
+      "category": "sample"
+    },
+    {
+      "path": "examples/issue-completion/synthetic-pending/scope.txt",
+      "size": 67,
+      "sha256": "5ab7d53af079dfbab944f5fc567b59a8df55f56cbd9880f931e5fe257d43967d",
+      "category": "sample"
+    },
+    {
+      "path": "scripts/validate_issue_completion.py",
+      "size": 35591,
+      "sha256": "80e0b4f8ee49c99e293d6abeeae1a98028cedd16327548198793bcd3ea3815ba",
+      "category": "code/tests"
+    },
+    {
+      "path": "templates/task-input.md",
+      "size": 6800,
+      "sha256": "0f4c5de1f1a2a57fb753b4d67f9b97b5f66a21a1be63f3385c14d96f75b135e6",
+      "category": "docs/workflow"
+    },
+    {
+      "path": "tests/completion_fixture.py",
+      "size": 12722,
+      "sha256": "4307ef270f4982655ad8cd119f539187d1f31d2f932f8d0ebdb1c5e22fd9160a",
+      "category": "code/tests"
+    },
+    {
+      "path": "tests/test_issue_completion.py",
+      "size": 16968,
+      "sha256": "56b7f8ba2e2bd901851c96da14bb14df8231cc34c18a963f4ec0531d1165fede",
+      "category": "code/tests"
+    },
+    {
+      "path": "tests/test_issue_completion_binding.py",
+      "size": 6339,
+      "sha256": "2fecde9449fc103bd5ef2a725569a3770b634acfa3669e1e66ec572b8603397a",
+      "category": "code/tests"
+    },
+    {
+      "path": "tests/test_issue_completion_repairs.py",
+      "size": 8806,
+      "sha256": "d4b773d34ba11399e778ed2b3804f745ea527e10d4457df22d120d023e4aee12",
+      "category": "code/tests"
+    },
+    {
+      "path": "workflows/single-issue.md",
+      "size": 15585,
+      "sha256": "3d15d3a7e7cc5985fa68c2ba3ca852823186e3aff04158a74bde5866de70df43",
+      "category": "docs/workflow"
+    }
+  ],
+  "unchanged_existing_schema_script_test_files": [
+    "contracts/artifact-delivery-v1.1.schema.json",
+    "contracts/artifact-delivery.schema.json",
+    "contracts/consumption-receipt-v1.1.schema.json",
+    "contracts/consumption-receipt.schema.json",
+    "contracts/delivery-authorization-v1.1.schema.json",
+    "contracts/delivery-authorization.schema.json",
+    "contracts/handoff.schema.json",
+    "contracts/knowledge-context.schema.json",
+    "contracts/knowledge-handoff.schema.json",
+    "contracts/knowledge-input.schema.json",
+    "contracts/publication-receipt-v1.1.schema.json",
+    "contracts/publication-receipt.schema.json",
+    "contracts/readiness-context.schema.json",
+    "contracts/readiness.schema.json",
+    "scripts/consume_delivery.py",
+    "scripts/prepare_knowledge_fixture.py",
+    "scripts/validate_delivery_records.py",
+    "scripts/validate_handoff.py",
+    "scripts/validate_knowledge.py",
+    "scripts/validate_readiness.py",
+    "scripts/validate_retry.py",
+    "tests/test_delivery.py",
+    "tests/test_delivery_content.py",
+    "tests/test_handoff.py",
+    "tests/test_knowledge.py",
+    "tests/test_knowledge_delivery.py",
+    "tests/test_readiness.py",
+    "tests/test_readiness_binding.py",
+    "tests/test_retry.py"
+  ]
+}

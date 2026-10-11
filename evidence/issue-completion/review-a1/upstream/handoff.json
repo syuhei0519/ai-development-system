@@ -1,0 +1,239 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "PUBLIC-AGGREGATION-DESIGN",
+    "source": "requirements.md",
+    "title": "Issue Completion集約契約設計",
+    "acceptance_criteria": [
+      {
+        "id": "AG-1",
+        "verbatim": "PR単位MergeReadinessとIssue全体Completion分離、単一PRmerge/全premergeACmetだけでachievedにしない。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-2",
+        "verbatim": "必要なPR/repo/mergeSHA/承認済みscope/構成・image digest/実測環境/時刻/証跡期限を集約し、欠落・旧head・未merge・未配備・scope不足・証跡不一致はfailclosed。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-3",
+        "verbatim": "postmerge/postdeployの実測とpremerge試験を区別、全AC原文一致/全体integrationready/全必須実測metの後だけManagerがachieved。製品操作権限をreceipt/記事から推論しない。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-4",
+        "verbatim": "head変更/新必須PR/配備revision変更/失効時の再評価、rollback/失敗/未検証を記録。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-5",
+        "verbatim": "Handoffv2/Readinessv1互換、JSONschema/CLI/正常異常テスト/採用案と境界を具体化。既存GitHub必須check/review/rulesetは迂回禁止。UserapprovalとGitHubauthorityは別。",
+        "source": "requirements.md"
+      }
+    ]
+  },
+  "role": "test",
+  "task_id": "PUBLIC-AGGREGATE-TEST-002",
+  "attempt": 2,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "PUBLIC-AGGREGATE-TEST-001",
+      "attempt": 1,
+      "relationship": "retry_of",
+      "handoff_locator": "upstream/test.handoff.json",
+      "revision": "sha256:1d011f7b856ee14d6a7b5233f1557b34acd4b28d88135baaf1e205512a4bf958"
+    },
+    {
+      "role": "implementation",
+      "task_id": "PUBLIC-AGGREGATE-IMPLEMENTATION-002",
+      "attempt": 2,
+      "relationship": "dependency",
+      "handoff_locator": "upstream/handoff.json",
+      "revision": "sha256:ba5aec1d508bc334dcf2687429db328d9255d641b7ec2ee4a9c00902e721ddd0"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Independent integrated-head Test complete: 181 head methods, 128 fixed-main methods, unchanged 130 probes, 38 extra probes and 9 CLI commands pass. Original F-1/F-2 reproduced before repair and rejected at integrated head. CI checkout/tree independently confirmed. Product ACs remain unverified; no operation authority granted.",
+  "assignment": {
+    "scope": "system/issue-completion/aggregate",
+    "ac_ids": [
+      "AG-1",
+      "AG-2",
+      "AG-3",
+      "AG-4",
+      "AG-5"
+    ],
+    "completion_criteria": [
+      "Preserve all assigned AG originals and independently verify the fixed integrated head using verified input bytes and the fixed-main Consumer.",
+      "Reproduce F-1/F-2 without weakened expectations; run all assigned normal, negative, boundary, compatibility and CI revision/tree checks with reproducible evidence.",
+      "Return Handoff v2, test code/results, explicit limitations and a self-contained unpublished public-alias candidate while privately retaining originals and delivery authorization/receipt."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "REPORT",
+      "kind": "test-report",
+      "locator": "report.md",
+      "revision": "sha256:741eb2127cc87dcb30f76b43b44c6c74fd8ca1d838b7f3154f230adadcaae403",
+      "summary": "Independent Test candidate report.md"
+    },
+    {
+      "id": "RESULTS",
+      "kind": "test-report",
+      "locator": "results.json",
+      "revision": "sha256:07f6417315579c7dccea85aadcdc42575867f745bebf640d7654d35a9ef9da1d",
+      "summary": "Independent Test candidate results.json"
+    },
+    {
+      "id": "BOUNDARY-CODE",
+      "kind": "other",
+      "locator": "boundary_cases.py",
+      "revision": "sha256:863f37435af3186241d7c865b05273c87b1fff6c26325c86363d9b317b54286a",
+      "summary": "Independent Test candidate boundary_cases.py"
+    },
+    {
+      "id": "REPRODUCE",
+      "kind": "other",
+      "locator": "reproduce.py",
+      "revision": "sha256:d750145865ce33c0d151aec728c534bfa5d8b2c52e647656559ae265b5cb3e98",
+      "summary": "Independent Test candidate reproduce.py"
+    },
+    {
+      "id": "REQUIREMENTS",
+      "kind": "document",
+      "locator": "requirements.md",
+      "revision": "sha256:6b811a1f49c4825fcab10636251033f1dfcb4c1809d8f356077ce536ae809cbf",
+      "summary": "Independent Test candidate requirements.md"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "TEST-AG-1",
+      "claim": "PR readiness versus aggregate completion, including all-premerge met but unmerged.",
+      "artifact_ids": [
+        "REPORT",
+        "RESULTS",
+        "BOUNDARY-CODE",
+        "REPRODUCE"
+      ],
+      "locator": "results.json",
+      "observation": "Fixed head b6d446ceb072e3a6d137318175bb672155d9b206; Linux/Python3.12.14/jsonschema4.26.0; commands and individual observed outcomes in results.json, reproduction in reproduce.py. Synthetic contract verification only. PR readiness versus aggregate completion, including all-premerge met but unmerged."
+    },
+    {
+      "id": "TEST-AG-2",
+      "claim": "Required sets, merged revisions, deployments, approvals, raw evidence, scope/digests/environment/time and expiry.",
+      "artifact_ids": [
+        "REPORT",
+        "RESULTS",
+        "BOUNDARY-CODE",
+        "REPRODUCE"
+      ],
+      "locator": "results.json",
+      "observation": "Fixed head b6d446ceb072e3a6d137318175bb672155d9b206; Linux/Python3.12.14/jsonschema4.26.0; commands and individual observed outcomes in results.json, reproduction in reproduce.py. Synthetic contract verification only. Required sets, merged revisions, deployments, approvals, raw evidence, scope/digests/environment/time and expiry."
+    },
+    {
+      "id": "TEST-AG-3",
+      "claim": "Phase and original-AC binding, required measurements, Manager final gate, receipt/Knowledge and GitHub authority separation.",
+      "artifact_ids": [
+        "REPORT",
+        "RESULTS",
+        "BOUNDARY-CODE",
+        "REPRODUCE"
+      ],
+      "locator": "results.json",
+      "observation": "Fixed head b6d446ceb072e3a6d137318175bb672155d9b206; Linux/Python3.12.14/jsonschema4.26.0; commands and individual observed outcomes in results.json, reproduction in reproduce.py. Synthetic contract verification only. Phase and original-AC binding, required measurements, Manager final gate, receipt/Knowledge and GitHub authority separation."
+    },
+    {
+      "id": "TEST-AG-4",
+      "claim": "Change history, expiry, failure/rollback latch and F-1 repair, with explicitly tested previous-v1 definition comparison limitations and Manager procedure.",
+      "artifact_ids": [
+        "REPORT",
+        "RESULTS",
+        "BOUNDARY-CODE",
+        "REPRODUCE"
+      ],
+      "locator": "results.json",
+      "observation": "Fixed head b6d446ceb072e3a6d137318175bb672155d9b206; Linux/Python3.12.14/jsonschema4.26.0; commands and individual observed outcomes in results.json, reproduction in reproduce.py. Synthetic contract verification only. Change history, expiry, failure/rollback latch and F-1 repair, with explicitly tested previous-v1 definition comparison limitations and Manager procedure."
+    },
+    {
+      "id": "TEST-AG-5",
+      "claim": "Handoff v2/Readiness v1 compatibility, Delivery v1/v1.1/P-A, schemas/CLI and F-2 regular-file/ancestor/ref mutation repair.",
+      "artifact_ids": [
+        "REPORT",
+        "RESULTS",
+        "BOUNDARY-CODE",
+        "REPRODUCE"
+      ],
+      "locator": "results.json",
+      "observation": "Fixed head b6d446ceb072e3a6d137318175bb672155d9b206; Linux/Python3.12.14/jsonschema4.26.0; commands and individual observed outcomes in results.json, reproduction in reproduce.py. Synthetic contract verification only. Handoff v2/Readiness v1 compatibility, Delivery v1/v1.1/P-A, schemas/CLI and F-2 regular-file/ancestor/ref mutation repair."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AG-1",
+      "disposition": "covered",
+      "scope": "PR readiness versus aggregate completion, including all-premerge met but unmerged. Test responsibility only, not product acceptance.",
+      "artifact_ids": [
+        "REPORT",
+        "RESULTS"
+      ],
+      "evidence_ids": [
+        "TEST-AG-1"
+      ]
+    },
+    {
+      "ac_id": "AG-2",
+      "disposition": "covered",
+      "scope": "Required sets, merged revisions, deployments, approvals, raw evidence, scope/digests/environment/time and expiry. Test responsibility only, not product acceptance.",
+      "artifact_ids": [
+        "REPORT",
+        "RESULTS"
+      ],
+      "evidence_ids": [
+        "TEST-AG-2"
+      ]
+    },
+    {
+      "ac_id": "AG-3",
+      "disposition": "covered",
+      "scope": "Phase and original-AC binding, required measurements, Manager final gate, receipt/Knowledge and GitHub authority separation. Test responsibility only, not product acceptance.",
+      "artifact_ids": [
+        "REPORT",
+        "RESULTS"
+      ],
+      "evidence_ids": [
+        "TEST-AG-3"
+      ]
+    },
+    {
+      "ac_id": "AG-4",
+      "disposition": "covered",
+      "scope": "Change history, expiry, failure/rollback latch and F-1 repair, with explicitly tested previous-v1 definition comparison limitations and Manager procedure. Test responsibility only, not product acceptance.",
+      "artifact_ids": [
+        "REPORT",
+        "RESULTS"
+      ],
+      "evidence_ids": [
+        "TEST-AG-4"
+      ]
+    },
+    {
+      "ac_id": "AG-5",
+      "disposition": "covered",
+      "scope": "Handoff v2/Readiness v1 compatibility, Delivery v1/v1.1/P-A, schemas/CLI and F-2 regular-file/ancestor/ref mutation repair. Test responsibility only, not product acceptance.",
+      "artifact_ids": [
+        "REPORT",
+        "RESULTS"
+      ],
+      "evidence_ids": [
+        "TEST-AG-5"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

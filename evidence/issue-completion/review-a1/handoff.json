@@ -1,0 +1,244 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "PUBLIC-AGGREGATION-DESIGN",
+    "source": "requirements.md",
+    "title": "Issue Completion集約契約設計",
+    "acceptance_criteria": [
+      {
+        "id": "AG-1",
+        "verbatim": "PR単位MergeReadinessとIssue全体Completion分離、単一PRmerge/全premergeACmetだけでachievedにしない。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-2",
+        "verbatim": "必要なPR/repo/mergeSHA/承認済みscope/構成・image digest/実測環境/時刻/証跡期限を集約し、欠落・旧head・未merge・未配備・scope不足・証跡不一致はfailclosed。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-3",
+        "verbatim": "postmerge/postdeployの実測とpremerge試験を区別、全AC原文一致/全体integrationready/全必須実測metの後だけManagerがachieved。製品操作権限をreceipt/記事から推論しない。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-4",
+        "verbatim": "head変更/新必須PR/配備revision変更/失効時の再評価、rollback/失敗/未検証を記録。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-5",
+        "verbatim": "Handoffv2/Readinessv1互換、JSONschema/CLI/正常異常テスト/採用案と境界を具体化。既存GitHub必須check/review/rulesetは迂回禁止。UserapprovalとGitHubauthorityは別。",
+        "source": "requirements.md"
+      }
+    ]
+  },
+  "role": "review",
+  "task_id": "PUBLIC-AGGREGATE-REVIEW-001",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "PUBLIC-AGGREGATE-TEST-002",
+      "attempt": 2,
+      "relationship": "dependency",
+      "handoff_locator": "upstream/handoff.json",
+      "revision": "sha256:581236bd3e79554e529d838ac28dfe332b0e89cc420b25033e9762b00d60ad0d"
+    },
+    {
+      "role": "implementation",
+      "task_id": "PUBLIC-AGGREGATE-IMPLEMENTATION-002",
+      "attempt": 2,
+      "relationship": "dependency",
+      "handoff_locator": "upstream/upstream/handoff.json",
+      "revision": "sha256:ba5aec1d508bc334dcf2687429db328d9255d641b7ec2ee4a9c00902e721ddd0"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Independent Review of fixed PR5 integrated head completed without blocking findings. All assigned differences, source evidence, F1/F2 reproductions, CI checkout/tree, and documented Manager scope/history boundary assessed. Product achievement remains unverified; no authority granted.",
+  "assignment": {
+    "scope": "system/issue-completion/aggregate",
+    "ac_ids": [
+      "AG-1",
+      "AG-2",
+      "AG-3",
+      "AG-4",
+      "AG-5"
+    ],
+    "completion_criteria": [
+      "正本 agents/review.md、workflow、contracts、templates に従い、全担当差分・根拠・境界を評価し阻害指摘がなく範囲と残留リスクを記録できることが完了条件です。製品 Issue AC 達成とは別です。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "REPORT",
+      "kind": "review",
+      "locator": "report.md",
+      "revision": "sha256:0a8c8c1e6c3f19a24f96e7a6e1e9cbc958fd4fe4c47e9b2fcb732fed7fa98d56",
+      "summary": "Independent Review artifact: report.md"
+    },
+    {
+      "id": "RESULTS",
+      "kind": "test-report",
+      "locator": "results.json",
+      "revision": "sha256:c26478c0987fcb7d863a0c465750aceac78e235ba6e099b5e75ff791aeffa498",
+      "summary": "Independent Review artifact: results.json"
+    },
+    {
+      "id": "REQUIREMENTS",
+      "kind": "document",
+      "locator": "requirements.md",
+      "revision": "sha256:6b811a1f49c4825fcab10636251033f1dfcb4c1809d8f356077ce536ae809cbf",
+      "summary": "Independent Review artifact: requirements.md"
+    },
+    {
+      "id": "REVIEW-PROBES",
+      "kind": "other",
+      "locator": "review_probes.py",
+      "revision": "sha256:597a638739e466cb8a1a57113a661456dbdd5e1e311d7cddfe6bb21c01929f4f",
+      "summary": "Independent Review artifact: review_probes.py"
+    },
+    {
+      "id": "REPRODUCE",
+      "kind": "other",
+      "locator": "reproduce.py",
+      "revision": "sha256:c72985503bab67fcbbdf6bc0bfb8cb0bf95bbf34baa3dd3bc39bf5bf33d50129",
+      "summary": "Independent Review artifact: reproduce.py"
+    },
+    {
+      "id": "SOURCE-INVENTORY",
+      "kind": "other",
+      "locator": "source-inventory.json",
+      "revision": "sha256:7a404113f589cd50c67e972cff7bb4f1df56f2a21863483570eca14c10b5dcd3",
+      "summary": "Independent Review artifact: source-inventory.json"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "REVIEW-AG-1",
+      "claim": "PR readiness and Issue completion stay separate; incomplete integration does not achieve.",
+      "artifact_ids": [
+        "REPORT",
+        "RESULTS",
+        "REVIEW-PROBES",
+        "SOURCE-INVENTORY"
+      ],
+      "locator": "report.md",
+      "observation": "Fixed head b6d446ceb072e3a6d137318175bb672155d9b206. Independent rerun: 181 head / 128 main / 130 original / 38 boundary / 9 CLI / 12 Review probes. Commands, exact outcomes and residual constraints in results.json and report.md. Synthetic contract evidence only."
+    },
+    {
+      "id": "REVIEW-AG-2",
+      "claim": "Complete required sets, revisions, approved scopes and current raw evidence bindings verified.",
+      "artifact_ids": [
+        "REPORT",
+        "RESULTS",
+        "REVIEW-PROBES",
+        "SOURCE-INVENTORY"
+      ],
+      "locator": "report.md",
+      "observation": "Fixed head b6d446ceb072e3a6d137318175bb672155d9b206. Independent rerun: 181 head / 128 main / 130 original / 38 boundary / 9 CLI / 12 Review probes. Commands, exact outcomes and residual constraints in results.json and report.md. Synthetic contract evidence only."
+    },
+    {
+      "id": "REVIEW-AG-3",
+      "claim": "Phase/all-AC/all-measurement/Manager final gates and authority separation verified.",
+      "artifact_ids": [
+        "REPORT",
+        "RESULTS",
+        "REVIEW-PROBES",
+        "SOURCE-INVENTORY"
+      ],
+      "locator": "report.md",
+      "observation": "Fixed head b6d446ceb072e3a6d137318175bb672155d9b206. Independent rerun: 181 head / 128 main / 130 original / 38 boundary / 9 CLI / 12 Review probes. Commands, exact outcomes and residual constraints in results.json and report.md. Synthetic contract evidence only."
+    },
+    {
+      "id": "REVIEW-AG-4",
+      "claim": "F1 repair, append-only history, expiry/failure handling and explicit v1 full-definition limitation independently assessed.",
+      "artifact_ids": [
+        "REPORT",
+        "RESULTS",
+        "REVIEW-PROBES",
+        "SOURCE-INVENTORY"
+      ],
+      "locator": "report.md",
+      "observation": "Fixed head b6d446ceb072e3a6d137318175bb672155d9b206. Independent rerun: 181 head / 128 main / 130 original / 38 boundary / 9 CLI / 12 Review probes. Commands, exact outcomes and residual constraints in results.json and report.md. Synthetic contract evidence only."
+    },
+    {
+      "id": "REVIEW-AG-5",
+      "claim": "F2 repair, schema/CLI/synthetic tests, unchanged legacy compatibility, design adoption and GitHub authority boundaries assessed.",
+      "artifact_ids": [
+        "REPORT",
+        "RESULTS",
+        "REVIEW-PROBES",
+        "SOURCE-INVENTORY"
+      ],
+      "locator": "report.md",
+      "observation": "Fixed head b6d446ceb072e3a6d137318175bb672155d9b206. Independent rerun: 181 head / 128 main / 130 original / 38 boundary / 9 CLI / 12 Review probes. Commands, exact outcomes and residual constraints in results.json and report.md. Synthetic contract evidence only."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AG-1",
+      "disposition": "covered",
+      "scope": "PR readiness and Issue completion stay separate; incomplete integration does not achieve. Review responsibility only; not product acceptance.",
+      "artifact_ids": [
+        "REPORT",
+        "RESULTS"
+      ],
+      "evidence_ids": [
+        "REVIEW-AG-1"
+      ]
+    },
+    {
+      "ac_id": "AG-2",
+      "disposition": "covered",
+      "scope": "Complete required sets, revisions, approved scopes and current raw evidence bindings verified. Review responsibility only; not product acceptance.",
+      "artifact_ids": [
+        "REPORT",
+        "RESULTS"
+      ],
+      "evidence_ids": [
+        "REVIEW-AG-2"
+      ]
+    },
+    {
+      "ac_id": "AG-3",
+      "disposition": "covered",
+      "scope": "Phase/all-AC/all-measurement/Manager final gates and authority separation verified. Review responsibility only; not product acceptance.",
+      "artifact_ids": [
+        "REPORT",
+        "RESULTS"
+      ],
+      "evidence_ids": [
+        "REVIEW-AG-3"
+      ]
+    },
+    {
+      "ac_id": "AG-4",
+      "disposition": "covered",
+      "scope": "F1 repair, append-only history, expiry/failure handling and explicit v1 full-definition limitation independently assessed. Review responsibility only; not product acceptance.",
+      "artifact_ids": [
+        "REPORT",
+        "RESULTS"
+      ],
+      "evidence_ids": [
+        "REVIEW-AG-4"
+      ]
+    },
+    {
+      "ac_id": "AG-5",
+      "disposition": "covered",
+      "scope": "F2 repair, schema/CLI/synthetic tests, unchanged legacy compatibility, design adoption and GitHub authority boundaries assessed. Review responsibility only; not product acceptance.",
+      "artifact_ids": [
+        "REPORT",
+        "RESULTS"
+      ],
+      "evidence_ids": [
+        "REVIEW-AG-5"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

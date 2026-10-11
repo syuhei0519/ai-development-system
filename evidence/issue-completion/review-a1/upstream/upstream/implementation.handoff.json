@@ -1,0 +1,207 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "PUBLIC-AGGREGATION-DESIGN",
+    "source": "requirements.md",
+    "title": "Issue Completion集約契約設計",
+    "acceptance_criteria": [
+      {
+        "id": "AG-1",
+        "verbatim": "PR単位MergeReadinessとIssue全体Completion分離、単一PRmerge/全premergeACmetだけでachievedにしない。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-2",
+        "verbatim": "必要なPR/repo/mergeSHA/承認済みscope/構成・image digest/実測環境/時刻/証跡期限を集約し、欠落・旧head・未merge・未配備・scope不足・証跡不一致はfailclosed。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-3",
+        "verbatim": "postmerge/postdeployの実測とpremerge試験を区別、全AC原文一致/全体integrationready/全必須実測metの後だけManagerがachieved。製品操作権限をreceipt/記事から推論しない。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-4",
+        "verbatim": "head変更/新必須PR/配備revision変更/失効時の再評価、rollback/失敗/未検証を記録。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-5",
+        "verbatim": "Handoffv2/Readinessv1互換、JSONschema/CLI/正常異常テスト/採用案と境界を具体化。既存GitHub必須check/review/rulesetは迂回禁止。UserapprovalとGitHubauthorityは別。",
+        "source": "requirements.md"
+      }
+    ]
+  },
+  "role": "implementation",
+  "task_id": "PUBLIC-AGGREGATE-IMPLEMENTATION-001",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "research-design",
+      "task_id": "PUBLIC-AGGREGATION-RESEARCH-DESIGN-001",
+      "attempt": 1,
+      "relationship": "dependency",
+      "handoff_locator": "design/handoff.json",
+      "revision": "sha256:f2a2bc68c696cdf691786bee798006fe24a2c0bcd1e3d38e44d29a57ab5c76bf"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Implementation and assigned local validation completed. Public alias candidate; separate bytes from private original, not yet published.",
+  "assignment": {
+    "scope": "system/issue-completion/aggregate",
+    "ac_ids": [
+      "AG-1",
+      "AG-2",
+      "AG-3",
+      "AG-4",
+      "AG-5"
+    ],
+    "completion_criteria": [
+      "Implement the approved independent aggregate contract without weakening Readiness v1 or Handoff v2.",
+      "Validate schemas, CLI, fixtures, negative cases, existing regressions and docs/CI consistency.",
+      "Push only the authorized feature branch, create a Draft PR, and return fixed head, evidence and scope mapping. No merge or product deployment."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "PUBLIC-IMPLEMENTATION-REPORT",
+      "kind": "document",
+      "locator": "report.md",
+      "revision": "sha256:39bac8884112c3781a0dc8eaef56c978d22f8cb3bf908c058258bd70583bc970",
+      "summary": "Fixed implementation result and limitations; product measurements not claimed."
+    },
+    {
+      "id": "PUBLIC-REQUIREMENTS",
+      "kind": "document",
+      "locator": "requirements.md",
+      "revision": "sha256:6b811a1f49c4825fcab10636251033f1dfcb4c1809d8f356077ce536ae809cbf",
+      "summary": "Fixed implementation result and limitations; product measurements not claimed."
+    },
+    {
+      "id": "PUBLIC-VALIDATION",
+      "kind": "test-report",
+      "locator": "validation-summary.md",
+      "revision": "sha256:f9a6e197b1cf6972017074191bba738606aadc30d8111c84ef2e07bb049c377d",
+      "summary": "Fixed implementation result and limitations; product measurements not claimed."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "PUBLIC-IMPLEMENTATION-AG-1",
+      "claim": "AG-1 implementation responsibility completed at fixed feature head.",
+      "artifact_ids": [
+        "PUBLIC-IMPLEMENTATION-REPORT",
+        "PUBLIC-VALIDATION"
+      ],
+      "locator": "report.md",
+      "observation": "See fixed head, AC mapping, validation commands/results and limits in the report and validation summary."
+    },
+    {
+      "id": "PUBLIC-IMPLEMENTATION-AG-2",
+      "claim": "AG-2 implementation responsibility completed at fixed feature head.",
+      "artifact_ids": [
+        "PUBLIC-IMPLEMENTATION-REPORT",
+        "PUBLIC-VALIDATION"
+      ],
+      "locator": "report.md",
+      "observation": "See fixed head, AC mapping, validation commands/results and limits in the report and validation summary."
+    },
+    {
+      "id": "PUBLIC-IMPLEMENTATION-AG-3",
+      "claim": "AG-3 implementation responsibility completed at fixed feature head.",
+      "artifact_ids": [
+        "PUBLIC-IMPLEMENTATION-REPORT",
+        "PUBLIC-VALIDATION"
+      ],
+      "locator": "report.md",
+      "observation": "See fixed head, AC mapping, validation commands/results and limits in the report and validation summary."
+    },
+    {
+      "id": "PUBLIC-IMPLEMENTATION-AG-4",
+      "claim": "AG-4 implementation responsibility completed at fixed feature head.",
+      "artifact_ids": [
+        "PUBLIC-IMPLEMENTATION-REPORT",
+        "PUBLIC-VALIDATION"
+      ],
+      "locator": "report.md",
+      "observation": "See fixed head, AC mapping, validation commands/results and limits in the report and validation summary."
+    },
+    {
+      "id": "PUBLIC-IMPLEMENTATION-AG-5",
+      "claim": "AG-5 implementation responsibility completed at fixed feature head.",
+      "artifact_ids": [
+        "PUBLIC-IMPLEMENTATION-REPORT",
+        "PUBLIC-VALIDATION"
+      ],
+      "locator": "report.md",
+      "observation": "See fixed head, AC mapping, validation commands/results and limits in the report and validation summary."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AG-1",
+      "disposition": "covered",
+      "scope": "Implementation and assigned local regression validation only; no product AC achievement or independent review claimed.",
+      "artifact_ids": [
+        "PUBLIC-IMPLEMENTATION-REPORT",
+        "PUBLIC-VALIDATION"
+      ],
+      "evidence_ids": [
+        "PUBLIC-IMPLEMENTATION-AG-1"
+      ]
+    },
+    {
+      "ac_id": "AG-2",
+      "disposition": "covered",
+      "scope": "Implementation and assigned local regression validation only; no product AC achievement or independent review claimed.",
+      "artifact_ids": [
+        "PUBLIC-IMPLEMENTATION-REPORT",
+        "PUBLIC-VALIDATION"
+      ],
+      "evidence_ids": [
+        "PUBLIC-IMPLEMENTATION-AG-2"
+      ]
+    },
+    {
+      "ac_id": "AG-3",
+      "disposition": "covered",
+      "scope": "Implementation and assigned local regression validation only; no product AC achievement or independent review claimed.",
+      "artifact_ids": [
+        "PUBLIC-IMPLEMENTATION-REPORT",
+        "PUBLIC-VALIDATION"
+      ],
+      "evidence_ids": [
+        "PUBLIC-IMPLEMENTATION-AG-3"
+      ]
+    },
+    {
+      "ac_id": "AG-4",
+      "disposition": "covered",
+      "scope": "Implementation and assigned local regression validation only; no product AC achievement or independent review claimed.",
+      "artifact_ids": [
+        "PUBLIC-IMPLEMENTATION-REPORT",
+        "PUBLIC-VALIDATION"
+      ],
+      "evidence_ids": [
+        "PUBLIC-IMPLEMENTATION-AG-4"
+      ]
+    },
+    {
+      "ac_id": "AG-5",
+      "disposition": "covered",
+      "scope": "Implementation and assigned local regression validation only; no product AC achievement or independent review claimed.",
+      "artifact_ids": [
+        "PUBLIC-IMPLEMENTATION-REPORT",
+        "PUBLIC-VALIDATION"
+      ],
+      "evidence_ids": [
+        "PUBLIC-IMPLEMENTATION-AG-5"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}
