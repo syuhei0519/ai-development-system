@@ -1,0 +1,210 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "SYSTEM-ARTIFACT-DELIVERY-CONTRACT",
+    "source": "https://github.com/syuhei0519/ai-development-system/blob/8b6b2cd7d71614a31e64c36554c6802160194b6c/contracts/artifact-delivery.md",
+    "title": "System repository Artifact Delivery contract and Consumer CLI (not backend application implementation)",
+    "acceptance_criteria": [
+      {
+        "id": "SYSTEM-DELIVERY-AC-1",
+        "verbatim": "Artifact Delivery 契約: repository、固定 commit SHA、path、size、SHA-256 必須。元成果物と公開派生版、Publication Receipt と Consumption Receipt、公開安全性確認と公開承認と Consumer 利用承認、GitHub 反映前/後を明確に分離。Handoff v2.0 への対応。非公開原本・実タスク ID・内部ログ・秘密情報は Public リポジトリに保存禁止。",
+        "source": "https://github.com/syuhei0519/ai-development-system/blob/8b6b2cd7d71614a31e64c36554c6802160194b6c/contracts/artifact-delivery.md"
+      },
+      {
+        "id": "SYSTEM-DELIVERY-AC-2",
+        "verbatim": "Consumer CLI: 固定 Git commit の存在、raw blob 全体取得、size/hash 一致、JSON/Handoff 検証、原本/派生版区分と利用承認を検証して Consumption Receipt を出す。失敗は fail-closed。LLM に元 bytes を再生成させない。入力の Git URL/path/コマンド注入、symlink/submodule、浮動 ref、部分取得、JSON 重複キー、検証前利用、receipt の自己申告だけで権限獲得できる問題なども考慮し、信頼境界を仕様化。",
+        "source": "https://github.com/syuhei0519/ai-development-system/blob/8b6b2cd7d71614a31e64c36554c6802160194b6c/contracts/artifact-delivery.md"
+      },
+      {
+        "id": "SYSTEM-DELIVERY-AC-3",
+        "verbatim": "正式記録: 下記 immutable 検証コミットを読み、provenance.json と FETCH.txt の未公開/承認待ちという seal 時点記載と、実際の公開済み状態を区別し、新しい correction/publication record を実装ブランチへ追加。元検証成果物を上書きしない。Publication は approval を意味しない。原本との B1 情報保持比較は、元 Producer の非公開対応表による確認を Manager が別途依頼中です。届くまで unverified とし、実装利用を承認済みにしない。",
+        "source": "https://github.com/syuhei0519/ai-development-system/blob/8b6b2cd7d71614a31e64c36554c6802160194b6c/contracts/artifact-delivery.md"
+      },
+      {
+        "id": "SYSTEM-DELIVERY-AC-4",
+        "verbatim": "再試行: Dispatch Failure と Agent Execution Failure を別カウンタ・上限で区別。配送未完了は実装実行失敗と分離。無限リトライ禁止。過去 3 回の B1 Implementation と RETRY_LIMIT_REACHED は不変。上限到達後は新たな明示承認、理由、新予算、scope、履歴との関係がなければ再開拒否。将来の分類変更で過去履歴をリセットしない。既存 workflow の最大 3 回を踏まえ、各上限を明示して回帰テスト。",
+        "source": "https://github.com/syuhei0519/ai-development-system/blob/8b6b2cd7d71614a31e64c36554c6802160194b6c/contracts/artifact-delivery.md"
+      },
+      {
+        "id": "SYSTEM-DELIVERY-AC-5",
+        "verbatim": "README、役割、workflow、契約説明、templates、正常/異常サンプル、CLI、CI、全テストの整合を更新。既存全件テストに加え改変、切詰め、size/SHA/commit 不一致、存在しない commit、未承認派生版、承認範囲不一致、改変 receipt、取得不能などを検証。",
+        "source": "https://github.com/syuhei0519/ai-development-system/blob/8b6b2cd7d71614a31e64c36554c6802160194b6c/contracts/artifact-delivery.md"
+      }
+    ]
+  },
+  "role": "implementation",
+  "task_id": "system-delivery-implementation-a1",
+  "attempt": 1,
+  "upstream": [],
+  "system_status": "completed",
+  "status": "failed",
+  "summary": "Retrospective Handoff created on 2026-10-11 from preserved initial implementation evidence and the subsequently Manager-reported independent Review FAIL. No initial dedicated Handoff was found; this JSON did not exist at initial completion. Public task_id is an alias, not a real execution identifier. Initial self-tests/CI succeeded, but P2 text-format Handoff validation bypass prevents engineering completion. Evidence delivery only; no code fix, new attempt, or backend implementation restart.",
+  "assignment": {
+    "scope": "Implement only syuhei0519/ai-development-system Artifact Delivery contract, Consumer verification CLI, immutable publication correction, bounded retry accounting, documentation, samples and tests at initial head 8b6b2cd7d71614a31e64c36554c6802160194b6c. Excludes backend application implementation, deployment, merge and task-history reset.",
+    "ac_ids": [
+      "SYSTEM-DELIVERY-AC-1",
+      "SYSTEM-DELIVERY-AC-2",
+      "SYSTEM-DELIVERY-AC-3",
+      "SYSTEM-DELIVERY-AC-4",
+      "SYSTEM-DELIVERY-AC-5"
+    ],
+    "completion_criteria": [
+      "Implement the five assigned System delivery requirements and preserve Handoff v2.0 / Readiness v1.0 boundaries.",
+      "Verify raw delivery bytes and fail closed, including mandatory Handoff validation without a text-format bypass.",
+      "Deliver the dedicated implementation branch and exact head with tests and CI; independent Review gate approval is separate and required before PR creation."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A1-COMMIT",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/ai-development-system/commit/8b6b2cd7d71614a31e64c36554c6802160194b6c",
+      "revision": "8b6b2cd7d71614a31e64c36554c6802160194b6c",
+      "summary": "Initial System delivery implementation; not the later attempt2 fix."
+    },
+    {
+      "id": "A1-REPORT",
+      "kind": "test-report",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/8b6b2cd7d71614a31e64c36554c6802160194b6c/records/artifact-delivery/implementation-validation.json",
+      "revision": "8b6b2cd7d71614a31e64c36554c6802160194b6c",
+      "summary": "Contemporaneous implementation self-validation: 98 tests and public Git retrieval checks. Not independent Review approval."
+    },
+    {
+      "id": "A1-CONTRACT",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/8b6b2cd7d71614a31e64c36554c6802160194b6c/contracts/artifact-delivery.md",
+      "revision": "8b6b2cd7d71614a31e64c36554c6802160194b6c",
+      "summary": "Public System task/contract reference. AC verbatim text is copied from the authorized initial task instruction; this URL supplies the public contract context, not a claimed GitHub Issue containing that instruction."
+    },
+    {
+      "id": "A1-CONSUMER",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/8b6b2cd7d71614a31e64c36554c6802160194b6c/scripts/consume_delivery.py",
+      "revision": "8b6b2cd7d71614a31e64c36554c6802160194b6c",
+      "summary": "Initial Consumer source implicated in the Manager-reported P2 text-format Handoff validation bypass."
+    },
+    {
+      "id": "A1-CORRECTION",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/8b6b2cd7d71614a31e64c36554c6802160194b6c/records/artifact-delivery/correction-20261011.json",
+      "revision": "8b6b2cd7d71614a31e64c36554c6802160194b6c",
+      "summary": "Preserved public correction record, including the later Producer preservation attestation relayed by Manager and its evidence limits."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-A1-SELF-VALIDATION",
+      "claim": "Initial implementation self-tests and publication completed, without independent Review approval.",
+      "artifact_ids": [
+        "A1-COMMIT",
+        "A1-REPORT"
+      ],
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/8b6b2cd7d71614a31e64c36554c6802160194b6c/records/artifact-delivery/implementation-validation.json",
+      "observation": "The initial report records 98 passing tests, existing Handoff/Knowledge/Readiness CLI checks, and synthetic 7 / edited derivative 9 public files fetched and checked. Branch CI run https://github.com/syuhei0519/ai-development-system/actions/runs/38102358908 succeeded for this head. These facts do not establish the engineering gate passed."
+    },
+    {
+      "id": "E-A1-REVIEW-FAIL",
+      "claim": "The initial Consumer failed the independent Review engineering gate.",
+      "artifact_ids": [
+        "A1-COMMIT",
+        "A1-CONSUMER"
+      ],
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/8b6b2cd7d71614a31e64c36554c6802160194b6c/scripts/consume_delivery.py",
+      "observation": "Manager subsequently reported independent Review P2: specifying text permits bypassing Handoff validation. The reported outcome for this initial head is gate FAIL. This retrospective record attributes that finding to the Manager-provided Review result; it does not claim direct access to a separate reviewer artifact or invent a public Review URL. No code reproduction or correction is performed in this evidence-only delivery."
+    },
+    {
+      "id": "E-A1-RETROSPECTIVE",
+      "claim": "This is a newly created retrospective Handoff for attempt1, not a previously sealed original.",
+      "artifact_ids": [
+        "A1-REPORT",
+        "A1-CORRECTION"
+      ],
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/8b6b2cd7d71614a31e64c36554c6802160194b6c/records/artifact-delivery/implementation-validation.json",
+      "observation": "Created on 2026-10-11 after Manager requested missing attempt1 evidence. No dedicated initial Handoff was found in the available initial checkout or public implementation tree. Earlier implementation reports are retained unchanged. An unavailable private Handoff is not presumed to exist. This record preserves initial results and the later reported Review failure. It is neither a new implementation attempt nor a claim that Review passed. The subsequent Producer attestation was relayed by Manager; private originals were not inspected by this implementation agent. Product implementation permission remains ungranted."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "SYSTEM-DELIVERY-AC-1",
+      "disposition": "unverified",
+      "scope": "Initial System implementation scope only. Changes and self-validation are preserved in the initial report, but this retrospective record does not re-audit or claim independent gate approval for this requirement.",
+      "artifact_ids": [
+        "A1-COMMIT",
+        "A1-REPORT",
+        "A1-CONSUMER"
+      ],
+      "evidence_ids": [
+        "E-A1-SELF-VALIDATION",
+        "E-A1-REVIEW-FAIL",
+        "E-A1-RETROSPECTIVE"
+      ]
+    },
+    {
+      "ac_id": "SYSTEM-DELIVERY-AC-2",
+      "disposition": "not_met",
+      "scope": "Initial System implementation scope only. Manager-reported P2 text-format Handoff validation bypass invalidates fail-closed Consumer coverage and reveals a missing negative regression in the initial tests.",
+      "artifact_ids": [
+        "A1-COMMIT",
+        "A1-REPORT",
+        "A1-CONSUMER"
+      ],
+      "evidence_ids": [
+        "E-A1-SELF-VALIDATION",
+        "E-A1-REVIEW-FAIL",
+        "E-A1-RETROSPECTIVE"
+      ]
+    },
+    {
+      "ac_id": "SYSTEM-DELIVERY-AC-3",
+      "disposition": "unverified",
+      "scope": "Initial System implementation scope only. Changes and self-validation are preserved in the initial report, but this retrospective record does not re-audit or claim independent gate approval for this requirement.",
+      "artifact_ids": [
+        "A1-COMMIT",
+        "A1-REPORT",
+        "A1-CONSUMER"
+      ],
+      "evidence_ids": [
+        "E-A1-SELF-VALIDATION",
+        "E-A1-REVIEW-FAIL",
+        "E-A1-RETROSPECTIVE"
+      ]
+    },
+    {
+      "ac_id": "SYSTEM-DELIVERY-AC-4",
+      "disposition": "unverified",
+      "scope": "Initial System implementation scope only. Changes and self-validation are preserved in the initial report, but this retrospective record does not re-audit or claim independent gate approval for this requirement.",
+      "artifact_ids": [
+        "A1-COMMIT",
+        "A1-REPORT",
+        "A1-CONSUMER"
+      ],
+      "evidence_ids": [
+        "E-A1-SELF-VALIDATION",
+        "E-A1-REVIEW-FAIL",
+        "E-A1-RETROSPECTIVE"
+      ]
+    },
+    {
+      "ac_id": "SYSTEM-DELIVERY-AC-5",
+      "disposition": "not_met",
+      "scope": "Initial System implementation scope only. Manager-reported P2 text-format Handoff validation bypass invalidates fail-closed Consumer coverage and reveals a missing negative regression in the initial tests.",
+      "artifact_ids": [
+        "A1-COMMIT",
+        "A1-REPORT",
+        "A1-CONSUMER"
+      ],
+      "evidence_ids": [
+        "E-A1-SELF-VALIDATION",
+        "E-A1-REVIEW-FAIL",
+        "E-A1-RETROSPECTIVE"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [
+    "Independent Review gate FAIL reported by Manager for initial head 8b6b2cd7d71614a31e64c36554c6802160194b6c: P2 text-format designation allows Handoff validation bypass.",
+    "Initial passing self-tests and CI do not override the Review failure. Attempt2 is a separate implementation; this record does not assess or modify it."
+  ],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}
