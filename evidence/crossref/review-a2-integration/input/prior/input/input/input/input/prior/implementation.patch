@@ -1,0 +1,2346 @@
+diff --git a/contracts/artifact-delivery-v1.2.schema.json b/contracts/artifact-delivery-v1.2.schema.json
+new file mode 100644
+index 0000000..f5e0655
+--- /dev/null
++++ b/contracts/artifact-delivery-v1.2.schema.json
+@@ -0,0 +1,647 @@
++{
++  "type": "object",
++  "additionalProperties": false,
++  "properties": {
++    "schema_version": {
++      "const": "1.2"
++    },
++    "document_type": {
++      "const": "artifact_delivery"
++    },
++    "artifacts": {
++      "type": "array",
++      "items": {
++        "type": "object",
++        "additionalProperties": false,
++        "properties": {
++          "reference": {
++            "oneOf": [
++              {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "repository": {
++                    "type": "string",
++                    "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                  },
++                  "commit": {
++                    "type": "string",
++                    "pattern": "^[0-9a-f]{40}$"
++                  },
++                  "path": {
++                    "type": "string",
++                    "minLength": 1,
++                    "maxLength": 512,
++                    "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++                  },
++                  "size": {
++                    "type": "integer",
++                    "minimum": 0,
++                    "maximum": 16777216
++                  },
++                  "sha256": {
++                    "type": "string",
++                    "pattern": "^[0-9a-f]{64}$"
++                  },
++                  "object_type": {
++                    "const": "git-blob"
++                  }
++                },
++                "required": [
++                  "repository",
++                  "commit",
++                  "path",
++                  "size",
++                  "sha256",
++                  "object_type"
++                ]
++              },
++              {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "repository": {
++                    "type": "string",
++                    "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                  },
++                  "commit": {
++                    "type": "string",
++                    "pattern": "^[0-9a-f]{40}$"
++                  },
++                  "size": {
++                    "type": "integer",
++                    "minimum": 0,
++                    "maximum": 16777216
++                  },
++                  "sha256": {
++                    "type": "string",
++                    "pattern": "^[0-9a-f]{64}$"
++                  },
++                  "object_type": {
++                    "const": "git-commit-object"
++                  }
++                },
++                "required": [
++                  "repository",
++                  "commit",
++                  "size",
++                  "sha256",
++                  "object_type"
++                ]
++              }
++            ]
++          },
++          "representation": {
++            "enum": [
++              "original",
++              "edited_derivative"
++            ]
++          },
++          "format": {
++            "enum": [
++              "text",
++              "json",
++              "handoff-v2",
++              "knowledge-input-v1",
++              "knowledge-handoff-v1",
++              "knowledge-context-v1",
++              "git-commit-object"
++            ]
++          },
++          "public_classification": {
++            "enum": [
++              "synthetic_sample",
++              "public_safe"
++            ]
++          },
++          "source_alias": {
++            "type": "string",
++            "minLength": 1,
++            "maxLength": 2048,
++            "pattern": "\\S"
++          }
++        },
++        "required": [
++          "reference",
++          "representation",
++          "format",
++          "public_classification",
++          "source_alias"
++        ],
++        "allOf": [
++          {
++            "if": {
++              "properties": {
++                "format": {
++                  "const": "git-commit-object"
++                }
++              }
++            },
++            "then": {
++              "properties": {
++                "reference": {
++                  "type": "object",
++                  "additionalProperties": false,
++                  "properties": {
++                    "repository": {
++                      "type": "string",
++                      "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                    },
++                    "commit": {
++                      "type": "string",
++                      "pattern": "^[0-9a-f]{40}$"
++                    },
++                    "size": {
++                      "type": "integer",
++                      "minimum": 0,
++                      "maximum": 16777216
++                    },
++                    "sha256": {
++                      "type": "string",
++                      "pattern": "^[0-9a-f]{64}$"
++                    },
++                    "object_type": {
++                      "const": "git-commit-object"
++                    }
++                  },
++                  "required": [
++                    "repository",
++                    "commit",
++                    "size",
++                    "sha256",
++                    "object_type"
++                  ]
++                }
++              }
++            },
++            "else": {
++              "properties": {
++                "reference": {
++                  "type": "object",
++                  "additionalProperties": false,
++                  "properties": {
++                    "repository": {
++                      "type": "string",
++                      "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                    },
++                    "commit": {
++                      "type": "string",
++                      "pattern": "^[0-9a-f]{40}$"
++                    },
++                    "path": {
++                      "type": "string",
++                      "minLength": 1,
++                      "maxLength": 512,
++                      "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++                    },
++                    "size": {
++                      "type": "integer",
++                      "minimum": 0,
++                      "maximum": 16777216
++                    },
++                    "sha256": {
++                      "type": "string",
++                      "pattern": "^[0-9a-f]{64}$"
++                    },
++                    "object_type": {
++                      "const": "git-blob"
++                    }
++                  },
++                  "required": [
++                    "repository",
++                    "commit",
++                    "path",
++                    "size",
++                    "sha256",
++                    "object_type"
++                  ]
++                }
++              }
++            }
++          }
++        ]
++      },
++      "minItems": 1,
++      "maxItems": 128,
++      "uniqueItems": true
++    },
++    "knowledge_bindings": {
++      "type": "array",
++      "maxItems": 128,
++      "uniqueItems": true,
++      "items": {
++        "type": "object",
++        "additionalProperties": false,
++        "properties": {
++          "input": {
++            "type": "object",
++            "additionalProperties": false,
++            "properties": {
++              "repository": {
++                "type": "string",
++                "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++              },
++              "commit": {
++                "type": "string",
++                "pattern": "^[0-9a-f]{40}$"
++              },
++              "path": {
++                "type": "string",
++                "minLength": 1,
++                "maxLength": 512,
++                "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++              },
++              "size": {
++                "type": "integer",
++                "minimum": 0,
++                "maximum": 16777216
++              },
++              "sha256": {
++                "type": "string",
++                "pattern": "^[0-9a-f]{64}$"
++              },
++              "object_type": {
++                "const": "git-blob"
++              }
++            },
++            "required": [
++              "repository",
++              "commit",
++              "path",
++              "size",
++              "sha256",
++              "object_type"
++            ]
++          },
++          "handoff": {
++            "type": "object",
++            "additionalProperties": false,
++            "properties": {
++              "repository": {
++                "type": "string",
++                "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++              },
++              "commit": {
++                "type": "string",
++                "pattern": "^[0-9a-f]{40}$"
++              },
++              "path": {
++                "type": "string",
++                "minLength": 1,
++                "maxLength": 512,
++                "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++              },
++              "size": {
++                "type": "integer",
++                "minimum": 0,
++                "maximum": 16777216
++              },
++              "sha256": {
++                "type": "string",
++                "pattern": "^[0-9a-f]{64}$"
++              },
++              "object_type": {
++                "const": "git-blob"
++              }
++            },
++            "required": [
++              "repository",
++              "commit",
++              "path",
++              "size",
++              "sha256",
++              "object_type"
++            ]
++          }
++        },
++        "required": [
++          "input"
++        ]
++      }
++    },
++    "slot_bindings": {
++      "type": "array",
++      "maxItems": 4096,
++      "uniqueItems": true,
++      "items": {
++        "type": "object",
++        "additionalProperties": false,
++        "properties": {
++          "owner": {
++            "type": "object",
++            "additionalProperties": false,
++            "properties": {
++              "repository": {
++                "type": "string",
++                "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++              },
++              "commit": {
++                "type": "string",
++                "pattern": "^[0-9a-f]{40}$"
++              },
++              "path": {
++                "type": "string",
++                "minLength": 1,
++                "maxLength": 512,
++                "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++              },
++              "size": {
++                "type": "integer",
++                "minimum": 0,
++                "maximum": 16777216
++              },
++              "sha256": {
++                "type": "string",
++                "pattern": "^[0-9a-f]{64}$"
++              },
++              "object_type": {
++                "const": "git-blob"
++              }
++            },
++            "required": [
++              "repository",
++              "commit",
++              "path",
++              "size",
++              "sha256",
++              "object_type"
++            ]
++          },
++          "slot": {
++            "oneOf": [
++              {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "kind": {
++                    "const": "artifact"
++                  },
++                  "id": {
++                    "type": "string",
++                    "minLength": 1,
++                    "maxLength": 2048
++                  }
++                },
++                "required": [
++                  "kind",
++                  "id"
++                ]
++              },
++              {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "kind": {
++                    "const": "upstream"
++                  },
++                  "role": {
++                    "type": "string",
++                    "minLength": 1,
++                    "maxLength": 2048
++                  },
++                  "task_id": {
++                    "type": "string",
++                    "minLength": 1,
++                    "maxLength": 2048
++                  },
++                  "attempt": {
++                    "type": "integer",
++                    "minimum": 1,
++                    "maximum": 3
++                  },
++                  "relationship": {
++                    "enum": [
++                      "dependency",
++                      "retry_of"
++                    ]
++                  }
++                },
++                "required": [
++                  "kind",
++                  "role",
++                  "task_id",
++                  "attempt",
++                  "relationship"
++                ]
++              },
++              {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "kind": {
++                    "const": "finding-source"
++                  },
++                  "finding_id": {
++                    "type": "string",
++                    "minLength": 1,
++                    "maxLength": 2048
++                  },
++                  "source_index": {
++                    "type": "integer",
++                    "minimum": 0,
++                    "maximum": 127
++                  }
++                },
++                "required": [
++                  "kind",
++                  "finding_id",
++                  "source_index"
++                ]
++              },
++              {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "kind": {
++                    "const": "knowledge-reference"
++                  },
++                  "id": {
++                    "type": "string",
++                    "minLength": 1,
++                    "maxLength": 2048
++                  }
++                },
++                "required": [
++                  "kind",
++                  "id"
++                ]
++              },
++              {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "kind": {
++                    "const": "knowledge-source"
++                  },
++                  "id": {
++                    "type": "string",
++                    "minLength": 1,
++                    "maxLength": 2048
++                  },
++                  "source_index": {
++                    "type": "integer",
++                    "minimum": 0,
++                    "maximum": 127
++                  }
++                },
++                "required": [
++                  "kind",
++                  "id",
++                  "source_index"
++                ]
++              },
++              {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "kind": {
++                    "const": "knowledge-retry"
++                  },
++                  "task_id": {
++                    "type": "string",
++                    "minLength": 1,
++                    "maxLength": 2048
++                  },
++                  "attempt": {
++                    "type": "integer",
++                    "minimum": 1,
++                    "maximum": 3
++                  }
++                },
++                "required": [
++                  "kind",
++                  "task_id",
++                  "attempt"
++                ]
++              }
++            ]
++          },
++          "locator": {
++            "type": "string",
++            "minLength": 1,
++            "maxLength": 2048
++          },
++          "revision": {
++            "type": "string",
++            "minLength": 1,
++            "maxLength": 2048
++          },
++          "target": {
++            "type": "object",
++            "additionalProperties": false,
++            "properties": {
++              "reference": {
++                "oneOf": [
++                  {
++                    "type": "object",
++                    "additionalProperties": false,
++                    "properties": {
++                      "repository": {
++                        "type": "string",
++                        "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                      },
++                      "commit": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{40}$"
++                      },
++                      "path": {
++                        "type": "string",
++                        "minLength": 1,
++                        "maxLength": 512,
++                        "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++                      },
++                      "size": {
++                        "type": "integer",
++                        "minimum": 0,
++                        "maximum": 16777216
++                      },
++                      "sha256": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{64}$"
++                      },
++                      "object_type": {
++                        "const": "git-blob"
++                      }
++                    },
++                    "required": [
++                      "repository",
++                      "commit",
++                      "path",
++                      "size",
++                      "sha256",
++                      "object_type"
++                    ]
++                  },
++                  {
++                    "type": "object",
++                    "additionalProperties": false,
++                    "properties": {
++                      "repository": {
++                        "type": "string",
++                        "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                      },
++                      "commit": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{40}$"
++                      },
++                      "size": {
++                        "type": "integer",
++                        "minimum": 0,
++                        "maximum": 16777216
++                      },
++                      "sha256": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{64}$"
++                      },
++                      "object_type": {
++                        "const": "git-commit-object"
++                      }
++                    },
++                    "required": [
++                      "repository",
++                      "commit",
++                      "size",
++                      "sha256",
++                      "object_type"
++                    ]
++                  }
++                ]
++              },
++              "format": {
++                "enum": [
++                  "text",
++                  "json",
++                  "handoff-v2",
++                  "knowledge-input-v1",
++                  "knowledge-handoff-v1",
++                  "knowledge-context-v1",
++                  "git-commit-object"
++                ]
++              }
++            },
++            "required": [
++              "reference",
++              "format"
++            ]
++          }
++        },
++        "required": [
++          "owner",
++          "slot",
++          "locator",
++          "revision",
++          "target"
++        ]
++      }
++    }
++  },
++  "required": [
++    "schema_version",
++    "document_type",
++    "artifacts",
++    "knowledge_bindings",
++    "slot_bindings"
++  ],
++  "$schema": "https://json-schema.org/draft/2020-12/schema",
++  "$id": "https://example.invalid/ai-development-system/artifact-delivery-v1.2.schema.json"
++}
+diff --git a/contracts/consumption-receipt-v1.2.schema.json b/contracts/consumption-receipt-v1.2.schema.json
+new file mode 100644
+index 0000000..dbfe49c
+--- /dev/null
++++ b/contracts/consumption-receipt-v1.2.schema.json
+@@ -0,0 +1,596 @@
++{
++  "type": "object",
++  "additionalProperties": false,
++  "properties": {
++    "schema_version": {
++      "const": "1.2"
++    },
++    "document_type": {
++      "const": "consumption_receipt"
++    },
++    "manifest_sha256": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{64}$"
++    },
++    "authorization_sha256": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{64}$"
++    },
++    "publication_receipt_sha256": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{64}$"
++    },
++    "consumer": {
++      "type": "string",
++      "minLength": 1,
++      "maxLength": 2048,
++      "pattern": "\\S"
++    },
++    "scope": {
++      "type": "string",
++      "minLength": 1,
++      "maxLength": 2048,
++      "pattern": "\\S"
++    },
++    "purpose": {
++      "enum": [
++        "contract-review",
++        "implementation"
++      ]
++    },
++    "artifacts": {
++      "type": "array",
++      "items": {
++        "type": "object",
++        "additionalProperties": false,
++        "properties": {
++          "reference": {
++            "oneOf": [
++              {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "repository": {
++                    "type": "string",
++                    "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                  },
++                  "commit": {
++                    "type": "string",
++                    "pattern": "^[0-9a-f]{40}$"
++                  },
++                  "path": {
++                    "type": "string",
++                    "minLength": 1,
++                    "maxLength": 512,
++                    "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++                  },
++                  "size": {
++                    "type": "integer",
++                    "minimum": 0,
++                    "maximum": 16777216
++                  },
++                  "sha256": {
++                    "type": "string",
++                    "pattern": "^[0-9a-f]{64}$"
++                  },
++                  "object_type": {
++                    "const": "git-blob"
++                  }
++                },
++                "required": [
++                  "repository",
++                  "commit",
++                  "path",
++                  "size",
++                  "sha256",
++                  "object_type"
++                ]
++              },
++              {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "repository": {
++                    "type": "string",
++                    "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                  },
++                  "commit": {
++                    "type": "string",
++                    "pattern": "^[0-9a-f]{40}$"
++                  },
++                  "size": {
++                    "type": "integer",
++                    "minimum": 0,
++                    "maximum": 16777216
++                  },
++                  "sha256": {
++                    "type": "string",
++                    "pattern": "^[0-9a-f]{64}$"
++                  },
++                  "object_type": {
++                    "const": "git-commit-object"
++                  }
++                },
++                "required": [
++                  "repository",
++                  "commit",
++                  "size",
++                  "sha256",
++                  "object_type"
++                ]
++              }
++            ]
++          },
++          "representation": {
++            "enum": [
++              "original",
++              "edited_derivative"
++            ]
++          },
++          "format": {
++            "enum": [
++              "text",
++              "json",
++              "handoff-v2",
++              "knowledge-input-v1",
++              "knowledge-handoff-v1",
++              "knowledge-context-v1",
++              "git-commit-object"
++            ]
++          },
++          "public_classification": {
++            "enum": [
++              "synthetic_sample",
++              "public_safe"
++            ]
++          },
++          "source_alias": {
++            "type": "string",
++            "minLength": 1,
++            "maxLength": 2048,
++            "pattern": "\\S"
++          }
++        },
++        "required": [
++          "reference",
++          "representation",
++          "format",
++          "public_classification",
++          "source_alias"
++        ],
++        "allOf": [
++          {
++            "if": {
++              "properties": {
++                "format": {
++                  "const": "git-commit-object"
++                }
++              }
++            },
++            "then": {
++              "properties": {
++                "reference": {
++                  "type": "object",
++                  "additionalProperties": false,
++                  "properties": {
++                    "repository": {
++                      "type": "string",
++                      "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                    },
++                    "commit": {
++                      "type": "string",
++                      "pattern": "^[0-9a-f]{40}$"
++                    },
++                    "size": {
++                      "type": "integer",
++                      "minimum": 0,
++                      "maximum": 16777216
++                    },
++                    "sha256": {
++                      "type": "string",
++                      "pattern": "^[0-9a-f]{64}$"
++                    },
++                    "object_type": {
++                      "const": "git-commit-object"
++                    }
++                  },
++                  "required": [
++                    "repository",
++                    "commit",
++                    "size",
++                    "sha256",
++                    "object_type"
++                  ]
++                }
++              }
++            },
++            "else": {
++              "properties": {
++                "reference": {
++                  "type": "object",
++                  "additionalProperties": false,
++                  "properties": {
++                    "repository": {
++                      "type": "string",
++                      "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                    },
++                    "commit": {
++                      "type": "string",
++                      "pattern": "^[0-9a-f]{40}$"
++                    },
++                    "path": {
++                      "type": "string",
++                      "minLength": 1,
++                      "maxLength": 512,
++                      "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++                    },
++                    "size": {
++                      "type": "integer",
++                      "minimum": 0,
++                      "maximum": 16777216
++                    },
++                    "sha256": {
++                      "type": "string",
++                      "pattern": "^[0-9a-f]{64}$"
++                    },
++                    "object_type": {
++                      "const": "git-blob"
++                    }
++                  },
++                  "required": [
++                    "repository",
++                    "commit",
++                    "path",
++                    "size",
++                    "sha256",
++                    "object_type"
++                  ]
++                }
++              }
++            }
++          }
++        ]
++      },
++      "minItems": 1,
++      "maxItems": 128,
++      "uniqueItems": true
++    },
++    "verification": {
++      "const": "full-raw-bytes-size-sha256-json-handoff-knowledge-slots-git-objects"
++    },
++    "authority_granted": {
++      "const": false
++    },
++    "slot_bindings": {
++      "type": "array",
++      "maxItems": 4096,
++      "uniqueItems": true,
++      "items": {
++        "type": "object",
++        "additionalProperties": false,
++        "properties": {
++          "owner": {
++            "type": "object",
++            "additionalProperties": false,
++            "properties": {
++              "repository": {
++                "type": "string",
++                "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++              },
++              "commit": {
++                "type": "string",
++                "pattern": "^[0-9a-f]{40}$"
++              },
++              "path": {
++                "type": "string",
++                "minLength": 1,
++                "maxLength": 512,
++                "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++              },
++              "size": {
++                "type": "integer",
++                "minimum": 0,
++                "maximum": 16777216
++              },
++              "sha256": {
++                "type": "string",
++                "pattern": "^[0-9a-f]{64}$"
++              },
++              "object_type": {
++                "const": "git-blob"
++              }
++            },
++            "required": [
++              "repository",
++              "commit",
++              "path",
++              "size",
++              "sha256",
++              "object_type"
++            ]
++          },
++          "slot": {
++            "oneOf": [
++              {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "kind": {
++                    "const": "artifact"
++                  },
++                  "id": {
++                    "type": "string",
++                    "minLength": 1,
++                    "maxLength": 2048
++                  }
++                },
++                "required": [
++                  "kind",
++                  "id"
++                ]
++              },
++              {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "kind": {
++                    "const": "upstream"
++                  },
++                  "role": {
++                    "type": "string",
++                    "minLength": 1,
++                    "maxLength": 2048
++                  },
++                  "task_id": {
++                    "type": "string",
++                    "minLength": 1,
++                    "maxLength": 2048
++                  },
++                  "attempt": {
++                    "type": "integer",
++                    "minimum": 1,
++                    "maximum": 3
++                  },
++                  "relationship": {
++                    "enum": [
++                      "dependency",
++                      "retry_of"
++                    ]
++                  }
++                },
++                "required": [
++                  "kind",
++                  "role",
++                  "task_id",
++                  "attempt",
++                  "relationship"
++                ]
++              },
++              {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "kind": {
++                    "const": "finding-source"
++                  },
++                  "finding_id": {
++                    "type": "string",
++                    "minLength": 1,
++                    "maxLength": 2048
++                  },
++                  "source_index": {
++                    "type": "integer",
++                    "minimum": 0,
++                    "maximum": 127
++                  }
++                },
++                "required": [
++                  "kind",
++                  "finding_id",
++                  "source_index"
++                ]
++              },
++              {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "kind": {
++                    "const": "knowledge-reference"
++                  },
++                  "id": {
++                    "type": "string",
++                    "minLength": 1,
++                    "maxLength": 2048
++                  }
++                },
++                "required": [
++                  "kind",
++                  "id"
++                ]
++              },
++              {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "kind": {
++                    "const": "knowledge-source"
++                  },
++                  "id": {
++                    "type": "string",
++                    "minLength": 1,
++                    "maxLength": 2048
++                  },
++                  "source_index": {
++                    "type": "integer",
++                    "minimum": 0,
++                    "maximum": 127
++                  }
++                },
++                "required": [
++                  "kind",
++                  "id",
++                  "source_index"
++                ]
++              },
++              {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "kind": {
++                    "const": "knowledge-retry"
++                  },
++                  "task_id": {
++                    "type": "string",
++                    "minLength": 1,
++                    "maxLength": 2048
++                  },
++                  "attempt": {
++                    "type": "integer",
++                    "minimum": 1,
++                    "maximum": 3
++                  }
++                },
++                "required": [
++                  "kind",
++                  "task_id",
++                  "attempt"
++                ]
++              }
++            ]
++          },
++          "locator": {
++            "type": "string",
++            "minLength": 1,
++            "maxLength": 2048
++          },
++          "revision": {
++            "type": "string",
++            "minLength": 1,
++            "maxLength": 2048
++          },
++          "target": {
++            "type": "object",
++            "additionalProperties": false,
++            "properties": {
++              "reference": {
++                "oneOf": [
++                  {
++                    "type": "object",
++                    "additionalProperties": false,
++                    "properties": {
++                      "repository": {
++                        "type": "string",
++                        "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                      },
++                      "commit": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{40}$"
++                      },
++                      "path": {
++                        "type": "string",
++                        "minLength": 1,
++                        "maxLength": 512,
++                        "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++                      },
++                      "size": {
++                        "type": "integer",
++                        "minimum": 0,
++                        "maximum": 16777216
++                      },
++                      "sha256": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{64}$"
++                      },
++                      "object_type": {
++                        "const": "git-blob"
++                      }
++                    },
++                    "required": [
++                      "repository",
++                      "commit",
++                      "path",
++                      "size",
++                      "sha256",
++                      "object_type"
++                    ]
++                  },
++                  {
++                    "type": "object",
++                    "additionalProperties": false,
++                    "properties": {
++                      "repository": {
++                        "type": "string",
++                        "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                      },
++                      "commit": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{40}$"
++                      },
++                      "size": {
++                        "type": "integer",
++                        "minimum": 0,
++                        "maximum": 16777216
++                      },
++                      "sha256": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{64}$"
++                      },
++                      "object_type": {
++                        "const": "git-commit-object"
++                      }
++                    },
++                    "required": [
++                      "repository",
++                      "commit",
++                      "size",
++                      "sha256",
++                      "object_type"
++                    ]
++                  }
++                ]
++              },
++              "format": {
++                "enum": [
++                  "text",
++                  "json",
++                  "handoff-v2",
++                  "knowledge-input-v1",
++                  "knowledge-handoff-v1",
++                  "knowledge-context-v1",
++                  "git-commit-object"
++                ]
++              }
++            },
++            "required": [
++              "reference",
++              "format"
++            ]
++          }
++        },
++        "required": [
++          "owner",
++          "slot",
++          "locator",
++          "revision",
++          "target"
++        ]
++      }
++    }
++  },
++  "required": [
++    "schema_version",
++    "document_type",
++    "manifest_sha256",
++    "authorization_sha256",
++    "publication_receipt_sha256",
++    "consumer",
++    "scope",
++    "purpose",
++    "artifacts",
++    "verification",
++    "authority_granted",
++    "slot_bindings"
++  ],
++  "$schema": "https://json-schema.org/draft/2020-12/schema",
++  "$id": "https://example.invalid/ai-development-system/consumption-receipt-v1.2.schema.json"
++}
+diff --git a/contracts/delivery-authorization-v1.2.schema.json b/contracts/delivery-authorization-v1.2.schema.json
+new file mode 100644
+index 0000000..e4e94f4
+--- /dev/null
++++ b/contracts/delivery-authorization-v1.2.schema.json
+@@ -0,0 +1,111 @@
++{
++  "type": "object",
++  "additionalProperties": false,
++  "properties": {
++    "schema_version": {
++      "const": "1.2"
++    },
++    "document_type": {
++      "const": "delivery_authorization"
++    },
++    "authority": {
++      "type": "string",
++      "minLength": 1,
++      "maxLength": 2048,
++      "pattern": "\\S"
++    },
++    "consumer": {
++      "type": "string",
++      "minLength": 1,
++      "maxLength": 2048,
++      "pattern": "\\S"
++    },
++    "scope": {
++      "type": "string",
++      "minLength": 1,
++      "maxLength": 2048,
++      "pattern": "\\S"
++    },
++    "purpose": {
++      "enum": [
++        "contract-review",
++        "implementation"
++      ]
++    },
++    "manifest_sha256": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{64}$"
++    },
++    "valid_until": {
++      "type": "string",
++      "minLength": 1,
++      "maxLength": 2048,
++      "pattern": "\\S"
++    },
++    "public_safety_review": {
++      "type": "string",
++      "minLength": 1,
++      "maxLength": 2048,
++      "pattern": "\\S"
++    },
++    "publication_approval": {
++      "enum": [
++        "approved",
++        "unverified"
++      ]
++    },
++    "publication_approval_evidence": {
++      "type": "string",
++      "minLength": 1,
++      "maxLength": 2048,
++      "pattern": "\\S"
++    },
++    "consumer_use_approval": {
++      "enum": [
++        "approved",
++        "pending"
++      ]
++    },
++    "consumer_use_evidence": {
++      "type": "string",
++      "minLength": 1,
++      "maxLength": 2048,
++      "pattern": "\\S"
++    },
++    "allowed_representations": {
++      "type": "array",
++      "items": {
++        "enum": [
++          "original",
++          "edited_derivative"
++        ]
++      },
++      "minItems": 1,
++      "maxItems": 128,
++      "uniqueItems": true
++    },
++    "publication_receipt_sha256": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{64}$"
++    }
++  },
++  "required": [
++    "schema_version",
++    "document_type",
++    "authority",
++    "consumer",
++    "scope",
++    "purpose",
++    "manifest_sha256",
++    "valid_until",
++    "public_safety_review",
++    "publication_approval",
++    "publication_approval_evidence",
++    "consumer_use_approval",
++    "consumer_use_evidence",
++    "allowed_representations",
++    "publication_receipt_sha256"
++  ],
++  "$schema": "https://json-schema.org/draft/2020-12/schema",
++  "$id": "https://example.invalid/ai-development-system/delivery-authorization-v1.2.schema.json"
++}
+diff --git a/contracts/publication-receipt-v1.2.schema.json b/contracts/publication-receipt-v1.2.schema.json
+new file mode 100644
+index 0000000..ccfdca4
+--- /dev/null
++++ b/contracts/publication-receipt-v1.2.schema.json
+@@ -0,0 +1,252 @@
++{
++  "type": "object",
++  "additionalProperties": false,
++  "properties": {
++    "schema_version": {
++      "const": "1.2"
++    },
++    "document_type": {
++      "const": "publication_receipt"
++    },
++    "manifest_sha256": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{64}$"
++    },
++    "github_state": {
++      "const": "published"
++    },
++    "artifacts": {
++      "type": "array",
++      "items": {
++        "type": "object",
++        "additionalProperties": false,
++        "properties": {
++          "reference": {
++            "oneOf": [
++              {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "repository": {
++                    "type": "string",
++                    "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                  },
++                  "commit": {
++                    "type": "string",
++                    "pattern": "^[0-9a-f]{40}$"
++                  },
++                  "path": {
++                    "type": "string",
++                    "minLength": 1,
++                    "maxLength": 512,
++                    "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++                  },
++                  "size": {
++                    "type": "integer",
++                    "minimum": 0,
++                    "maximum": 16777216
++                  },
++                  "sha256": {
++                    "type": "string",
++                    "pattern": "^[0-9a-f]{64}$"
++                  },
++                  "object_type": {
++                    "const": "git-blob"
++                  }
++                },
++                "required": [
++                  "repository",
++                  "commit",
++                  "path",
++                  "size",
++                  "sha256",
++                  "object_type"
++                ]
++              },
++              {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "repository": {
++                    "type": "string",
++                    "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                  },
++                  "commit": {
++                    "type": "string",
++                    "pattern": "^[0-9a-f]{40}$"
++                  },
++                  "size": {
++                    "type": "integer",
++                    "minimum": 0,
++                    "maximum": 16777216
++                  },
++                  "sha256": {
++                    "type": "string",
++                    "pattern": "^[0-9a-f]{64}$"
++                  },
++                  "object_type": {
++                    "const": "git-commit-object"
++                  }
++                },
++                "required": [
++                  "repository",
++                  "commit",
++                  "size",
++                  "sha256",
++                  "object_type"
++                ]
++              }
++            ]
++          },
++          "representation": {
++            "enum": [
++              "original",
++              "edited_derivative"
++            ]
++          },
++          "format": {
++            "enum": [
++              "text",
++              "json",
++              "handoff-v2",
++              "knowledge-input-v1",
++              "knowledge-handoff-v1",
++              "knowledge-context-v1",
++              "git-commit-object"
++            ]
++          },
++          "public_classification": {
++            "enum": [
++              "synthetic_sample",
++              "public_safe"
++            ]
++          },
++          "source_alias": {
++            "type": "string",
++            "minLength": 1,
++            "maxLength": 2048,
++            "pattern": "\\S"
++          }
++        },
++        "required": [
++          "reference",
++          "representation",
++          "format",
++          "public_classification",
++          "source_alias"
++        ],
++        "allOf": [
++          {
++            "if": {
++              "properties": {
++                "format": {
++                  "const": "git-commit-object"
++                }
++              }
++            },
++            "then": {
++              "properties": {
++                "reference": {
++                  "type": "object",
++                  "additionalProperties": false,
++                  "properties": {
++                    "repository": {
++                      "type": "string",
++                      "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                    },
++                    "commit": {
++                      "type": "string",
++                      "pattern": "^[0-9a-f]{40}$"
++                    },
++                    "size": {
++                      "type": "integer",
++                      "minimum": 0,
++                      "maximum": 16777216
++                    },
++                    "sha256": {
++                      "type": "string",
++                      "pattern": "^[0-9a-f]{64}$"
++                    },
++                    "object_type": {
++                      "const": "git-commit-object"
++                    }
++                  },
++                  "required": [
++                    "repository",
++                    "commit",
++                    "size",
++                    "sha256",
++                    "object_type"
++                  ]
++                }
++              }
++            },
++            "else": {
++              "properties": {
++                "reference": {
++                  "type": "object",
++                  "additionalProperties": false,
++                  "properties": {
++                    "repository": {
++                      "type": "string",
++                      "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                    },
++                    "commit": {
++                      "type": "string",
++                      "pattern": "^[0-9a-f]{40}$"
++                    },
++                    "path": {
++                      "type": "string",
++                      "minLength": 1,
++                      "maxLength": 512,
++                      "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++                    },
++                    "size": {
++                      "type": "integer",
++                      "minimum": 0,
++                      "maximum": 16777216
++                    },
++                    "sha256": {
++                      "type": "string",
++                      "pattern": "^[0-9a-f]{64}$"
++                    },
++                    "object_type": {
++                      "const": "git-blob"
++                    }
++                  },
++                  "required": [
++                    "repository",
++                    "commit",
++                    "path",
++                    "size",
++                    "sha256",
++                    "object_type"
++                  ]
++                }
++              }
++            }
++          }
++        ]
++      },
++      "minItems": 1,
++      "maxItems": 128,
++      "uniqueItems": true
++    },
++    "observation": {
++      "type": "string",
++      "minLength": 1,
++      "maxLength": 2048,
++      "pattern": "\\S"
++    }
++  },
++  "required": [
++    "schema_version",
++    "document_type",
++    "manifest_sha256",
++    "github_state",
++    "artifacts",
++    "observation"
++  ],
++  "$schema": "https://json-schema.org/draft/2020-12/schema",
++  "$id": "https://example.invalid/ai-development-system/publication-receipt-v1.2.schema.json"
++}
+diff --git a/scripts/consume_delivery.py b/scripts/consume_delivery.py
+index 349576e..b3552b0 100644
+--- a/scripts/consume_delivery.py
++++ b/scripts/consume_delivery.py
+@@ -51,10 +51,10 @@ def parse(raw):
+ 
+ def schema(name, data):
+     if name in DELIVERY_SCHEMAS:
+-        require(isinstance(data, dict) and data.get('schema_version') in ('1.0', '1.1'),
++        require(isinstance(data, dict) and data.get('schema_version') in ('1.0', '1.1', '1.2'),
+                 'unsupported delivery version')
+-        if data['schema_version'] == '1.1':
+-            name += '-v1.1'
++        if data['schema_version'] != '1.0':
++            name += '-v' + data['schema_version']
+     spec = json.loads((ROOT / 'contracts' / f'{name}.schema.json').read_text())
+     require(Draft202012Validator(spec).is_valid(data), f'invalid {name} contract')
+ 
+@@ -71,7 +71,8 @@ def check_reference(ref):
+     require(re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}', ref['repository']) is not None,
+             'only canonical GitHub owner/repository accepted')
+     require(re.fullmatch('[0-9a-f]{40}', ref['commit']) is not None, 'fixed commit required')
+-    safe_path(ref['path'])
++    if ref.get('object_type') != 'git-commit-object':
++        safe_path(ref['path'])
+ 
+ 
+ class GitSource:
+@@ -112,6 +113,12 @@ class GitSource:
+                     'fetched commit mismatch')
+             self.repositories[key] = directory
+         directory = self.repositories[key]
++        if ref.get('object_type') == 'git-commit-object':
++            size = int(self.git(directory, 'cat-file', '-s', ref['commit']))
++            require(size == ref['size'] and size <= MAX_FILE, 'Git commit size mismatch')
++            raw = self.git(directory, 'cat-file', 'commit', ref['commit'])
++            verify_commit_object(ref, raw)
++            return raw
+         # Inspect each tree edge. A gitlink or symlink is never followed.
+         parts = ref['path'].split('/')
+         for index in range(len(parts)):
+@@ -139,18 +146,99 @@ def read_local(path):
+     return raw
+ 
+ 
+-def verify_handoffs(artifacts, blobs, version='1.0', knowledge_bindings=None):
+-    require(version in ('1.0', '1.1'), 'unsupported delivery version')
++def reference_key(ref):
++    # None is a distinct object namespace; no blob path can collide with it.
++    return (ref['repository'], ref['commit'], ref.get('path'))
++
++
++def verify_commit_object(ref, raw):
++    require(ref.get('object_type') == 'git-commit-object' and
++            len(raw) == ref['size'] and digest(raw) == ref['sha256'],
++            'raw commit size/hash mismatch')
++    # Git SHA-1 OID includes the object header, unlike the raw-payload SHA-256.
++    oid = hashlib.sha1(b'commit ' + str(len(raw)).encode('ascii') + b'\0' + raw).hexdigest()
++    require(oid == ref['commit'], 'raw commit OID mismatch')
++
++
++def artifact_slot(artifact):
++    return {'kind':'artifact', 'id':artifact['id']}
++
++
++def upstream_slot(upstream):
++    return {'kind':'upstream', **{k:upstream[k] for k in ('role', 'task_id', 'attempt', 'relationship')}}
++
++
++class SlotResolver:
++    """v1.2: every structural dependency has exactly one explicit outer binding.
++
++    No URL traversal: compare the original locator to a canonical string derived
++    solely from an enumerated, pinned target. Never rewrite the owner document.
++    """
++    def __init__(self, by_ref, blobs, bindings):
++        require(isinstance(bindings, list), 'slot bindings required')
++        self.by_ref, self.blobs = by_ref, blobs
++        self.bindings, self.used = {}, set()
++        for binding in bindings:
++            owner = reference_key(binding['owner'])
++            target = reference_key(binding['target']['reference'])
++            require(owner in by_ref and by_ref[owner]['reference'] == binding['owner'] and
++                    by_ref[owner]['format'] in {'handoff-v2', *KNOWLEDGE_FORMATS},
++                    'slot owner reference/type mismatch')
++            require(target in by_ref and by_ref[target]['reference'] == binding['target']['reference'] and
++                    by_ref[target]['format'] == binding['target']['format'], 'slot target mismatch')
++            identity = (owner, json.dumps(binding['slot'], sort_keys=True))
++            require(identity not in self.bindings, 'duplicate structural slot')
++            self.bindings[identity] = binding
++
++    def bind(self, owner, slot, locator, revision, commit=False):
++        identity = (owner, json.dumps(slot, sort_keys=True))
++        require(identity in self.bindings and identity not in self.used, 'missing or ambiguous slot')
++        binding = self.bindings[identity]
++        require(binding['locator'] == locator and binding['revision'] == revision,
++                'original locator/revision mismatch')
++        ref = binding['target']['reference']
++        target = reference_key(ref)
++        require(ref['object_type'] == ('git-commit-object' if commit else 'git-blob'),
++                'slot object type mismatch')
++        if commit:
++            require(binding['target']['format'] == 'git-commit-object' and
++                    locator == f"https://github.com/{ref['repository']}/commit/{ref['commit']}" and
++                    revision == ref['commit'], 'commit URL/revision mismatch')
++        else:
++            require(revision == 'sha256:' + digest(self.blobs[target]), 'slot digest mismatch')
++            if locator.startswith('https://'):
++                require(locator == f"https://github.com/{ref['repository']}/blob/{ref['commit']}/{ref['path']}",
++                        'blob URL mismatch')
++            else:
++                safe_path(locator)
++                require(target == (owner[0], owner[1], str(PurePosixPath(owner[2]).parent / locator)),
++                        'relative slot snapshot mismatch')
++        self.used.add(identity)
++        return target
++
++    def finish(self):
++        require(self.used == set(self.bindings), 'extra slot binding')
++
++
++def verify_handoffs(artifacts, blobs, version='1.0', knowledge_bindings=None, slot_bindings=None):
++    require(version in ('1.0', '1.1', '1.2'), 'unsupported delivery version')
+     formats = {'text', 'json', 'handoff-v2'}
+-    if version == '1.1':
++    if version != '1.0':
+         formats.update(KNOWLEDGE_FORMATS)
++    if version == '1.2':
++        formats.add('git-commit-object')
+     require(all(a['format'] in formats for a in artifacts), 'unsupported delivery format')
+-    by_ref = {(a['reference']['repository'], a['reference']['commit'], a['reference']['path']): a
++    by_ref = {reference_key(a['reference']): a
+               for a in artifacts}
+     require(len(by_ref) == len(artifacts), 'duplicate artifact path')
+     parsed = {}
+     for key, item in by_ref.items():
+         raw = blobs[key]
++        if item['format'] == 'git-commit-object':
++            require(item['reference'].get('object_type') == 'git-commit-object', 'commit type mismatch')
++            verify_commit_object(item['reference'], raw)
++            continue
++        require(item['reference'].get('object_type', 'git-blob') == 'git-blob', 'blob type mismatch')
+         # Inspect content even for text/non-.json names. Only syntax errors in
+         # ordinary prose may fall back to text; duplicate keys/non-finite numbers
+         # and JSON-looking truncated documents must never reach that fallback.
+@@ -169,7 +257,7 @@ def verify_handoffs(artifacts, blobs, version='1.0', knowledge_bindings=None):
+             require(not json_required, 'invalid JSON content')
+             continue
+         require(item['format'] != 'text', 'JSON content must not be typed text')
+-        if version == '1.1' and isinstance(parsed[key], dict):
++        if version != '1.0' and isinstance(parsed[key], dict):
+             require(parsed[key].get('publication') != 'private_only', 'private document forbidden')
+         if item['format'] in KNOWLEDGE_FORMATS:
+             data = parsed[key]
+@@ -185,7 +273,7 @@ def verify_handoffs(artifacts, blobs, version='1.0', knowledge_bindings=None):
+             # Reserved Handoff identity/coverage fields still identify incomplete
+             # documents: deleting one required field must not downgrade the type.
+             data = parsed[key]
+-            if version == '1.1':
++            if version != '1.0':
+                 require(not (set(data) & {'raw_findings', 'knowledge_references', 'retry_of'} or
+                              data.get('role') == 'knowledge' or
+                              (isinstance(data.get('document_type'), str) and
+@@ -195,11 +283,20 @@ def verify_handoffs(artifacts, blobs, version='1.0', knowledge_bindings=None):
+                          ('schema_version' in data and
+                           set(data) & {'issue', 'assignment', 'upstream'})),
+                     'Handoff must be typed handoff-v2')
++    resolver = SlotResolver(by_ref, blobs, slot_bindings) if version == '1.2' else None
++    identities = set()
+     for key, item in by_ref.items():
+         if item['format'] != 'handoff-v2':
+             continue
+         handoff = parsed[key]
+-        def bind(locator, revision):
++        if resolver:
++            identity = (handoff['role'], handoff['task_id'])
++            require(identity not in identities, 'duplicate Handoff task identity')
++            identities.add(identity)
++        def bind(locator, revision, slot, commit=False):
++            if resolver:
++                return resolver.bind(key, slot, locator, revision, commit)
++
+             safe_path(locator)
+             path = str(PurePosixPath(key[2]).parent / locator)
+             target = (key[0], key[1], path)
+@@ -207,20 +304,23 @@ def verify_handoffs(artifacts, blobs, version='1.0', knowledge_bindings=None):
+             require(revision == 'sha256:' + digest(blobs[target]), 'Handoff binding digest mismatch')
+             return target
+         for artifact in handoff['artifacts']:
+-            bind(artifact['locator'], artifact['revision'])
++            bind(artifact['locator'], artifact['revision'], artifact_slot(artifact), artifact['kind'] == 'commit')
+         for upstream in handoff['upstream']:
+-            target = bind(upstream['handoff_locator'], upstream['revision'])
++            target = bind(upstream['handoff_locator'], upstream['revision'], upstream_slot(upstream))
+             require(by_ref[target]['format'] == 'handoff-v2', 'upstream must be Handoff')
+             previous = parsed[target]
+             require(all(previous[k] == upstream[k] for k in ('role', 'task_id', 'attempt')),
+                     'upstream identity mismatch')
+             if upstream['relationship'] == 'retry_of':
+                 require(previous['issue'] == handoff['issue'], 'retry Issue mismatch')
+-    if version == '1.1':
+-        verify_knowledge_bindings(by_ref, parsed, blobs, knowledge_bindings)
++    if version != '1.0':
++        verify_knowledge_bindings(by_ref, parsed, blobs, knowledge_bindings, resolver)
++
++    if resolver:
++        resolver.finish()
+ 
+ 
+-def verify_knowledge_bindings(by_ref, parsed, blobs, bindings):
++def verify_knowledge_bindings(by_ref, parsed, blobs, bindings, resolver=None):
+     """Bind immutable input/output snapshots and every declared Knowledge dependency.
+ 
+     Locators are safe relative paths in the containing document's repo/commit;
+@@ -229,12 +329,14 @@ def verify_knowledge_bindings(by_ref, parsed, blobs, bindings):
+     require(isinstance(bindings, list), 'Knowledge bindings required')
+ 
+     def reference(ref, kind):
+-        key = (ref['repository'], ref['commit'], ref['path'])
++        key = reference_key(ref)
+         require(key in by_ref and by_ref[key]['reference'] == ref and
+                 by_ref[key]['format'] == kind, 'Knowledge binding reference mismatch')
+         return key
+ 
+-    def bind(owner, locator, revision):
++    def bind(owner, locator, revision, slot):
++        if resolver:
++            return resolver.bind(owner, slot, locator, revision)
+         safe_path(locator)
+         target = (owner[0], owner[1], str(PurePosixPath(owner[2]).parent / locator))
+         require(target in by_ref, 'Knowledge referenced bytes missing from bundle')
+@@ -269,18 +371,21 @@ def verify_knowledge_bindings(by_ref, parsed, blobs, bindings):
+             require(identity not in identities, 'duplicate Knowledge task identity')
+             identities.add(identity)
+         for finding in data.get('raw_findings', []):
+-            for source in finding['sources']:
+-                bind(key, source['locator'], source['revision'])
++            for index, source in enumerate(finding['sources']):
++                bind(key, source['locator'], source['revision'],
++                     {'kind':'finding-source', 'finding_id':finding['id'], 'source_index':index})
+         for article in data['knowledge_references']:
+-            article_bytes(bind(key, article['locator'], article['revision']))
+-            for source in article['sources']:
+-                bind(key, source['locator'], source['revision'])
++            article_bytes(bind(key, article['locator'], article['revision'], {'kind':'knowledge-reference', 'id':article['id']}))
++            for index, source in enumerate(article['sources']):
++                bind(key, source['locator'], source['revision'],
++                     {'kind':'knowledge-source', 'id':article['id'], 'source_index':index})
+         for artifact in data.get('artifacts', []):
+-            target = bind(key, artifact['locator'], artifact['revision'])
++            target = bind(key, artifact['locator'], artifact['revision'], artifact_slot(artifact))
+             if artifact['kind'] == 'knowledge':
+                 article_bytes(target)
+         for previous in data.get('retry_of', []):
+-            target = bind(key, previous['handoff_locator'], previous['revision'])
++            target = bind(key, previous['handoff_locator'], previous['revision'],
++                          {'kind':'knowledge-retry', 'task_id':previous['task_id'], 'attempt':previous['attempt']})
+             require(by_ref[target]['format'] == 'knowledge-handoff-v1',
+                     'Knowledge retry must reference Knowledge handoff')
+             prior = parsed[target]
+@@ -313,7 +418,7 @@ def consume(manifest_raw, policy_raw, publication_raw, policy_sha256,
+     require(publication['manifest_sha256'] == digest(manifest_raw) and
+             publication['artifacts'] == manifest['artifacts'], 'publication receipt mismatch')
+     artifacts = manifest['artifacts']
+-    keys = [(a['reference']['repository'], a['reference']['commit'], a['reference']['path']) for a in artifacts]
++    keys = [reference_key(a['reference']) for a in artifacts]
+     require(len(keys) == len(set(keys)), 'duplicate artifact path')
+     require(sum(a['reference']['size'] for a in artifacts) <= MAX_BUNDLE, 'bundle too large')
+     for artifact in artifacts:
+@@ -325,7 +430,7 @@ def consume(manifest_raw, policy_raw, publication_raw, policy_sha256,
+         raw = source.read(ref)
+         require(len(raw) == ref['size'] and digest(raw) == ref['sha256'], 'raw size/hash mismatch')
+         blobs[key] = raw
+-    verify_handoffs(artifacts, blobs, version, manifest.get('knowledge_bindings'))
++    verify_handoffs(artifacts, blobs, version, manifest.get('knowledge_bindings'), manifest.get('slot_bindings'))
+     receipt = {'schema_version':version, 'document_type':'consumption_receipt',
+                'manifest_sha256':digest(manifest_raw), 'authorization_sha256':digest(policy_raw),
+                'publication_receipt_sha256':digest(publication_raw),
+@@ -334,6 +439,9 @@ def consume(manifest_raw, policy_raw, publication_raw, policy_sha256,
+                                if version == '1.1' else
+                                'full-raw-bytes-size-sha256-json-handoff-bindings'),
+                'authority_granted':False}
++    if version == '1.2':
++        receipt['slot_bindings'] = manifest['slot_bindings']
++        receipt['verification'] = 'full-raw-bytes-size-sha256-json-handoff-knowledge-slots-git-objects'
+     schema('consumption-receipt', receipt)
+     if receipt_raw is not None:
+         candidate = parse(receipt_raw)
+@@ -349,7 +457,8 @@ def write_bundle(output, receipt, blobs):
+         staged = Path(temp) / 'verified'
+         staged.mkdir(mode=0o700)
+         for (repository, commit, path), raw in blobs.items():
+-            dest = staged / 'artifacts' / repository / commit / path
++            dest = (staged / 'git-commit-objects' / repository / commit / 'commit.raw'
++                    if path is None else staged / 'artifacts' / repository / commit / path)
+             dest.parent.mkdir(parents=True, exist_ok=True)
+             dest.write_bytes(raw)
+         (staged / 'consumption-receipt.json').write_text(json.dumps(receipt, indent=2)+'\n')
+diff --git a/scripts/validate_delivery_records.py b/scripts/validate_delivery_records.py
+index 44d1607..4d7ccdd 100644
+--- a/scripts/validate_delivery_records.py
++++ b/scripts/validate_delivery_records.py
+@@ -13,7 +13,7 @@ except ImportError:
+ def main():
+     try:
+         for name in ('artifact-delivery','delivery-authorization','publication-receipt','consumption-receipt'):
+-            for suffix in ('', '-v1.1'):
++            for suffix in ('', '-v1.1', '-v1.2'):
+                 Draft202012Validator.check_schema(parse((ROOT/f'contracts/{name}{suffix}.schema.json').read_bytes()))
+         for name in ('synthetic','research-public'):
+             raw=(ROOT/f'examples/delivery/{name}.manifest.json').read_bytes()
+diff --git a/tests/test_crossref_delivery.py b/tests/test_crossref_delivery.py
+new file mode 100644
+index 0000000..c6a8423
+--- /dev/null
++++ b/tests/test_crossref_delivery.py
+@@ -0,0 +1,399 @@
++"""Synthetic v1.2 transport tests. No application execution or acceptance claims."""
++from copy import deepcopy
++from datetime import datetime, timezone
++import hashlib
++import json
++from pathlib import Path
++import subprocess
++import sys
++import tempfile
++import unittest
++from unittest.mock import patch
++
++from scripts.consume_delivery import (
++    ROOT, GitSource, consume, digest, parse, schema, reference_key,
++    artifact_slot, upstream_slot, verify_handoffs, write_bundle,
++)
++from scripts.prepare_knowledge_fixture import fixture_manifest
++
++
++def encode(data):
++    return (json.dumps(data, ensure_ascii=False, indent=2) + '\n').encode()
++
++
++class Source:
++    def __init__(self, blobs):
++        self.blobs = blobs
++        self.calls = []
++
++    def read(self, ref):
++        self.calls.append(reference_key(ref))
++        return self.blobs[reference_key(ref)]
++
++
++class Bundle:
++    def __init__(self):
++        self.manifest = dict(schema_version='1.2', document_type='artifact_delivery',
++                             artifacts=[], knowledge_bindings=[], slot_bindings=[])
++        self.blobs = {}
++
++    def add(self, raw, path, fmt='text', repo='synthetic/one', commit='a'*40):
++        ref = dict(repository=repo, commit=commit, size=len(raw), sha256=digest(raw),
++                   object_type='git-blob')
++        if fmt == 'git-commit-object':
++            ref['object_type'] = fmt
++            ref['commit'] = hashlib.sha1(b'commit '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
++        else:
++            ref['path'] = path
++        item = dict(reference=ref, format=fmt, representation='original',
++                    public_classification='synthetic_sample', source_alias='SYNTHETIC-CROSSREF')
++        self.manifest['artifacts'].append(item)
++        self.blobs[reference_key(ref)] = raw
++        return item
++
++    def slot(self, owner, slot, locator, revision, target):
++        binding = dict(owner=deepcopy(owner['reference']), slot=slot, locator=locator,
++                       revision=revision, target={k:deepcopy(target[k]) for k in ('reference','format')})
++        self.manifest['slot_bindings'].append(binding)
++        return binding
++
++    def records(self):
++        raw = encode(self.manifest)
++        pub = dict(schema_version='1.2', document_type='publication_receipt',
++                   manifest_sha256=digest(raw), github_state='published',
++                   artifacts=deepcopy(self.manifest['artifacts']), observation='Synthetic fixture only.')
++        policy = parse((ROOT/'examples/delivery/synthetic.authorization.json').read_bytes())
++        policy.update(schema_version='1.2', manifest_sha256=digest(raw),
++                      publication_receipt_sha256=digest(encode(pub)), allowed_representations=['original'])
++        return raw, pub, policy
++
++    def consume(self, policy_changes=None, **kwargs):
++        raw, pub, policy = self.records()
++        policy.update(policy_changes or {})
++        params = dict(manifest_raw=raw, publication_raw=encode(pub), policy_raw=encode(policy),
++                      policy_sha256=digest(encode(policy)), consumer=policy['consumer'],
++                      scope=policy['scope'], purpose=policy['purpose'], source=Source(self.blobs),
++                      now=datetime(2026,10,11,tzinfo=timezone.utc))
++        params.update(kwargs)
++        return consume(**params)
++
++
++def url(item):
++    r = item['reference']
++    if item['format'] == 'git-commit-object':
++        return f"https://github.com/{r['repository']}/commit/{r['commit']}"
++    return f"https://github.com/{r['repository']}/blob/{r['commit']}/{r['path']}"
++
++
++def handoff():
++    return parse((ROOT/'examples/research-to-test/research.handoff.json').read_bytes())
++
++
++def fixture():
++    b = Bundle()
++    text = b.add(b'Synthetic cross repository evidence.\n','evidence.txt', repo='synthetic/two',commit='b'*40)
++    raw_commit = b'tree '+b'c'*40+b'\nauthor Synthetic <synthetic@example.invalid> 0 +0000\ncommitter Synthetic <synthetic@example.invalid> 0 +0000\n\nSynthetic commit\n'
++    commit = b.add(raw_commit,None,'git-commit-object',repo='synthetic/two')
++    previous = handoff()
++    previous['artifacts'][0].update(locator=url(text),revision='sha256:'+text['reference']['sha256'])
++    prior = b.add(encode(previous),'prior.json','handoff-v2',commit='d'*40)
++    current = deepcopy(previous)
++    current.update(task_id='SYNTHETIC-CROSSREF-CURRENT',attempt=2)
++    current['upstream']=[dict(role=previous['role'],task_id=previous['task_id'],attempt=1,
++                             relationship='retry_of',handoff_locator=url(prior),
++                             revision='sha256:'+prior['reference']['sha256'])]
++    current['artifacts'].append(dict(id='SYNTHETIC-COMMIT',kind='commit',
++                                    locator=url(commit),revision=commit['reference']['commit'],
++                                    summary='Commit existence only.'))
++    owner = b.add(encode(current),'handoff.json','handoff-v2')
++    b.slot(prior,artifact_slot(previous['artifacts'][0]),url(text),'sha256:'+text['reference']['sha256'],text)
++    b.slot(owner,artifact_slot(current['artifacts'][0]),url(text),'sha256:'+text['reference']['sha256'],text)
++    b.slot(owner,artifact_slot(current['artifacts'][1]),url(commit),commit['reference']['commit'],commit)
++    b.slot(owner,upstream_slot(current['upstream'][0]),url(prior),'sha256:'+prior['reference']['sha256'],prior)
++    return b
++
++
++class CrossrefTests(unittest.TestCase):
++    def setUp(self):
++        self.b = fixture()
++
++    def test_crossrepo_blob_crosscommit_handoff_commit_output_and_recheck(self):
++        receipt, blobs = self.b.consume()
++        self.assertEqual(blobs,self.b.blobs)
++        self.assertFalse(receipt['authority_granted'])
++        self.assertEqual(receipt['slot_bindings'], self.b.manifest['slot_bindings'])
++        self.assertEqual(self.b.consume(receipt_raw=encode(receipt))[0],receipt)
++        with tempfile.TemporaryDirectory() as tmp:
++            output=Path(tmp)/'out'
++            write_bundle(output,receipt,blobs)
++            for (repo,commit,path),raw in blobs.items():
++                dest=output/('artifacts' if path else 'git-commit-objects')/repo/commit/(path or 'commit.raw')
++                self.assertEqual(dest.read_bytes(),raw)
++
++    def test_slot_missing_extra_duplicate_conflicting_and_unknown(self):
++        for operation in ('missing','extra','duplicate','conflict','unknown'):
++            b=deepcopy(self.b);slots=b.manifest['slot_bindings']
++            if operation=='missing':slots.pop()
++            elif operation=='unknown':slots[-1]['slot']['unknown']='x'
++            else:
++                extra=deepcopy(slots[-1])
++                if operation=='extra':extra['slot']['task_id']='SYNTHETIC-MISSING'
++                if operation=='conflict':extra['target']=deepcopy(slots[0]['target'])
++                slots.append(extra)
++            with self.subTest(operation=operation),self.assertRaises(ValueError):b.consume()
++
++    def test_owner_pin_and_structural_identity(self):
++        for field,value in [('size',0),('sha256','0'*64),('commit','f'*40),('path','other.json')]:
++            b=deepcopy(self.b);b.manifest['slot_bindings'][0]['owner'][field]=value
++            with self.subTest(field=field),self.assertRaises(ValueError):b.consume()
++        b=deepcopy(self.b);b.manifest['slot_bindings'][0]['slot']['id']='SYNTHETIC-MISSING'
++        with self.assertRaises(ValueError):b.consume()
++
++    def test_target_size_hash_repository_oid_path_and_format(self):
++        for field,value in [('size',1),('sha256','0'*64),('repository','synthetic/other'),
++                            ('commit','e'*40),('path','other.txt'),('object_type','git-commit-object')]:
++            b=deepcopy(self.b);b.manifest['slot_bindings'][0]['target']['reference'][field]=value
++            with self.subTest(field=field),self.assertRaises(ValueError):b.consume()
++        b=deepcopy(self.b);b.manifest['slot_bindings'][0]['target']['format']='json'
++        with self.assertRaises(ValueError):b.consume()
++
++    def mutate_handoff(self,b,index,change):
++        item=b.manifest['artifacts'][index]
++        old=deepcopy(item['reference']);key=reference_key(old)
++        data=parse(b.blobs[key]);change(data)
++        raw=encode(data);b.blobs[key]=raw
++        item['reference'].update(size=len(raw),sha256=digest(raw))
++        # Pin changed owner only; caller must explicitly adjust in-document links.
++        for binding in b.manifest['slot_bindings']:
++            if binding['owner']==old:binding['owner']=deepcopy(item['reference'])
++        return data
++
++    def test_matching_outer_and_inner_malicious_urls_still_rejected(self):
++        original=url(self.b.manifest['artifacts'][0])
++        for locator in [original+'?x=1',original+'#x',original.replace('https:','http:'),
++                        original.replace('github.com','github.com.evil'),
++                        original.replace('/blob/'+'b'*40,'/blob/main'),
++                        original.replace('/evidence.txt','/../evidence.txt'),
++                        original.replace('/evidence.txt','/%65vidence.txt'),
++                        original.replace('github.com/','user@github.com/'),
++                        original.replace('synthetic/two','synthetic/one'),
++                        original.replace('/blob/','/raw/')]:
++            b=deepcopy(self.b)
++            self.mutate_handoff(b,3,lambda d:d['artifacts'][0].update(locator=locator))
++            b.manifest['slot_bindings'][1]['locator']=locator
++            with self.subTest(locator=locator),self.assertRaises(ValueError):b.consume()
++
++    def test_original_locator_revision_cannot_be_overridden(self):
++        for field in ('locator','revision'):
++            b=deepcopy(self.b);b.manifest['slot_bindings'][0][field]='SYNTHETIC-REPLACEMENT'
++            with self.subTest(field=field),self.assertRaises(ValueError):b.consume()
++
++    def test_blob_revision_mismatch_even_if_outer_matches(self):
++        b=deepcopy(self.b)
++        revision='sha256:'+'0'*64
++        self.mutate_handoff(b,3,lambda d:d['artifacts'][0].update(revision=revision))
++        b.manifest['slot_bindings'][1]['revision']=revision
++        with self.assertRaises(ValueError):b.consume()
++
++    def test_missing_dependency_and_duplicate_identity(self):
++        b=deepcopy(self.b);b.manifest['artifacts'].pop(0)
++        with self.assertRaises(ValueError):b.consume()
++        b=deepcopy(self.b);duplicate=deepcopy(b.manifest['artifacts'][-1])
++        duplicate['reference']['path']='copied.json'
++        b.manifest['artifacts'].append(duplicate)
++        b.blobs[reference_key(duplicate['reference'])]=b.blobs[reference_key(self.b.manifest['artifacts'][-1]['reference'])]
++        with self.assertRaises(ValueError):b.consume()
++
++    def test_all_declared_bytes_fetched_before_success(self):
++        source=Source(self.b.blobs)
++        self.b.consume(source=source)
++        self.assertEqual(set(source.calls),set(self.b.blobs))
++        b=deepcopy(self.b)
++        b.add(b'Unavailable dependency\n','extra.txt')
++        with self.assertRaises(KeyError):b.consume(source=Source(self.b.blobs))
++
++    def test_commit_raw_size_sha_oid_and_no_blob_disguise(self):
++        for field,value in [('size',1),('sha256','0'*64),('commit','0'*40),('object_type','git-blob')]:
++            b=deepcopy(self.b)
++            item=b.manifest['artifacts'][1];oldkey=reference_key(item['reference'])
++            item['reference'][field]=value
++            b.blobs[reference_key(item['reference'])]=b.blobs[oldkey]
++            b.manifest['slot_bindings'][2]['target']['reference']=deepcopy(item['reference'])
++            with self.subTest(field=field),self.assertRaises(ValueError):b.consume()
++        for fmt in ('text','json','handoff-v2'):
++            b=deepcopy(self.b);b.manifest['artifacts'][1]['format']=fmt
++            with self.subTest(fmt=fmt),self.assertRaises(ValueError):b.consume()
++
++    def test_commit_url_and_revision_and_kind(self):
++        for field,value in [('locator',url(self.b.manifest['artifacts'][1])+'/'),
++                            ('revision','sha256:'+self.b.manifest['artifacts'][1]['reference']['sha256'])]:
++            b=deepcopy(self.b)
++            self.mutate_handoff(b,3,lambda d:d['artifacts'][1].update({field:value}))
++            b.manifest['slot_bindings'][2][field]=value
++            with self.subTest(field=field),self.assertRaises(ValueError):b.consume()
++        b=deepcopy(self.b)
++        self.mutate_handoff(b,3,lambda d:d['artifacts'][1].update(kind='document'))
++        with self.assertRaises(ValueError):b.consume()
++
++    def test_private_and_json_downgrade(self):
++        b=deepcopy(self.b);self.mutate_handoff(b,3,lambda d:d.update(publication='private_only'))
++        with self.assertRaises(ValueError):b.consume()
++        for fmt in ('json','text','knowledge-input-v1'):
++            b=deepcopy(self.b);b.manifest['artifacts'][-1]['format']=fmt
++            with self.subTest(fmt=fmt),self.assertRaises(ValueError):b.consume()
++        for raw,fmt,path in [(b'{"publication":"private_only"}','json','private'),
++                              (b'{"x":1,"x":2}','json','duplicate'),
++                              (b'{"x":NaN}','json','nan'),(b'\xef\xbb\xbf{}','json','bom'),
++                              (b'{"task_id":"SYNTHETIC"}','json','reserved'),
++                              (b'{"raw_findings":[]}','json','knowledge'),
++                              (b'{"document_type":"knowledge_candidates","candidates":[]}',
++                               'json','unknown-knowledge-candidates'),
++                              (b'{"x":','text','truncated')]:
++            b=deepcopy(self.b);b.add(raw,path,fmt)
++            with self.subTest(path=path),self.assertRaises(ValueError):b.consume()
++
++    def test_retry_role_task_attempt_and_issue(self):
++        for field,value in [('role','test'),('task_id','SYNTHETIC-WRONG'),('attempt',2)]:
++            b=deepcopy(self.b)
++            d=self.mutate_handoff(b,3,lambda d:d['upstream'][0].update({field:value}))
++            b.manifest['slot_bindings'][-1]['slot']=upstream_slot(d['upstream'][0])
++            with self.subTest(field=field),self.assertRaises(ValueError):b.consume()
++        b=deepcopy(self.b)
++        self.mutate_handoff(b,3,lambda d:d['issue'].update(title='Synthetic other Issue'))
++        with self.assertRaises(ValueError):b.consume()
++
++    def test_approval_expiry_scope_pin_and_representation(self):
++        for change in [dict(consumer_use_approval='pending'),dict(valid_until='2020-01-01T00:00:00Z'),
++                       dict(allowed_representations=['edited_derivative']),dict(publication_approval='pending')]:
++            with self.subTest(change=change),self.assertRaises(ValueError):self.b.consume(change)
++        for kw in [dict(consumer='OTHER'),dict(scope='OTHER'),dict(purpose='OTHER'),
++                   dict(policy_sha256='0'*64)]:
++            with self.subTest(kw=kw),self.assertRaises(ValueError):self.b.consume(**kw)
++
++    def test_version_mixing_downgrade_and_old_contracts(self):
++        raw,pub,policy=self.b.records()
++        for version in ('1.0','1.1'):
++            for name,doc in [('artifact-delivery',self.b.manifest),('publication-receipt',pub),
++                             ('consumption-receipt',self.b.consume()[0])]:
++                candidate=deepcopy(doc);candidate['schema_version']=version
++                with self.subTest(name=name,version=version),self.assertRaises(ValueError):schema(name,candidate)
++            with self.assertRaises(ValueError):self.b.consume(dict(schema_version=version))
++            pub['schema_version']=version
++            with self.assertRaises(ValueError):
++                self.b.consume(dict(publication_receipt_sha256=digest(encode(pub))),publication_raw=encode(pub))
++            with self.assertRaises(ValueError):
++                verify_handoffs(self.b.manifest['artifacts'],self.b.blobs,version,[])
++
++    def test_receipt_recheck_requires_current_approval_fresh_bytes_and_exact_slots(self):
++        receipt,_=self.b.consume()
++        b=deepcopy(self.b);key=next(iter(b.blobs));b.blobs[key]=b'changed\n'
++        with self.assertRaises(ValueError):b.consume(receipt_raw=encode(receipt))
++        with self.assertRaises(ValueError):self.b.consume(dict(consumer_use_approval='pending'),receipt_raw=encode(receipt))
++        receipt['slot_bindings'].pop()
++        with self.assertRaises(ValueError):self.b.consume(receipt_raw=encode(receipt))
++
++    def test_relative_snapshot_not_redirected_to_identical_copy(self):
++        b=Bundle();text=b.add(b'Synthetic relative bytes\n','evidence.txt')
++        h=handoff();h['artifacts'][0].update(locator='evidence.txt',revision='sha256:'+text['reference']['sha256'])
++        owner=b.add(encode(h),'handoff.json','handoff-v2')
++        binding=b.slot(owner,artifact_slot(h['artifacts'][0]),'evidence.txt',h['artifacts'][0]['revision'],text)
++        b.consume()
++        copy=b.add(b.blobs[reference_key(text['reference'])],'evidence.txt',repo='synthetic/other')
++        binding['target']={k:deepcopy(copy[k]) for k in ('reference','format')}
++        with self.assertRaises(ValueError):b.consume()
++
++
++def knowledge_fixture():
++    legacy=fixture_manifest('synthetic/knowledge','a'*40)
++    b=Bundle();items={}
++    for a in legacy['artifacts']:
++        path=a['reference']['path']
++        items[path]=b.add((ROOT/path).read_bytes(),path,a['format'],repo='synthetic/knowledge')
++    # Cross-repo fixed source; only synthetic owner bytes are edited here.
++    source=items['examples/knowledge-delivery/source-1.md']
++    oldkey=reference_key(source['reference'])
++    source['reference'].update(repository='synthetic/sources',commit='b'*40)
++    b.blobs[reference_key(source['reference'])]=b.blobs.pop(oldkey)
++    for item in items.values():
++        if not item['format'].startswith('knowledge-'):continue
++        key=reference_key(item['reference']);data=parse(b.blobs[key])
++        for finding in data.get('raw_findings',[]):
++            for src in finding['sources']:
++                if src['locator']=='source-1.md':src['locator']=url(source)
++        for article in data['knowledge_references']:
++            for src in article['sources']:
++                if src['locator']=='source-1.md':src['locator']=url(source)
++        raw=encode(data);b.blobs[key]=raw;item['reference'].update(size=len(raw),sha256=digest(raw))
++        slots=[]
++        for finding in data.get('raw_findings',[]):
++            for i,src in enumerate(finding['sources']):
++                slots.append((dict(kind='finding-source',finding_id=finding['id'],source_index=i),src))
++        for article in data['knowledge_references']:
++            slots.append((dict(kind='knowledge-reference',id=article['id']),article))
++            for i,src in enumerate(article['sources']):
++                slots.append((dict(kind='knowledge-source',id=article['id'],source_index=i),src))
++        for art in data.get('artifacts',[]):slots.append((artifact_slot(art),art))
++        for slot,src in slots:
++            target=source if src['locator']==url(source) else items['examples/knowledge-delivery/'+src['locator']]
++            b.slot(item,slot,src['locator'],src['revision'],target)
++    b.manifest['knowledge_bindings']=[dict(input=items['examples/knowledge-delivery/input.json']['reference'],
++                                         handoff=items['examples/knowledge-delivery/handoff.json']['reference'])]
++    return b
++
++
++class KnowledgeCrossrefTests(unittest.TestCase):
++    def test_crossrepo_finding_article_context_sources(self):
++        b=knowledge_fixture();b.consume()
++        for index in range(len(b.manifest['slot_bindings'])):
++            changed=deepcopy(b);changed.manifest['slot_bindings'].pop(index)
++            with self.subTest(slot=index),self.assertRaises(ValueError):changed.consume()
++
++    def test_unknown_source_position_and_pair_pin(self):
++        b=knowledge_fixture()
++        slot=next(s for s in b.manifest['slot_bindings'] if s['slot']['kind']=='finding-source')
++        slot['slot']['source_index']=99
++        with self.assertRaises(ValueError):b.consume()
++        b=knowledge_fixture();b.manifest['knowledge_bindings'][0]['input']['sha256']='0'*64
++        with self.assertRaises(ValueError):b.consume()
++
++
++class CommitGitTests(unittest.TestCase):
++    def test_real_git_commit_bytes_type_oid_and_forbidden_modes(self):
++        with tempfile.TemporaryDirectory() as tmp:
++            root=Path(tmp);repo=root/'origin';repo.mkdir()
++            def git(*args):
++                return subprocess.check_output(['git','-C',str(repo),*args],stderr=subprocess.DEVNULL)
++            git('init');git('config','user.name','Synthetic');git('config','user.email','synthetic@example.invalid')
++            (repo/'evidence.txt').write_bytes(b'Synthetic data\r\n')
++            (repo/'link').symlink_to('evidence.txt')
++            git('add','.');git('commit','-m','Synthetic fixture')
++            sha=git('rev-parse','HEAD').decode().strip()
++            git('update-index','--add','--cacheinfo',f'160000,{sha},module');git('commit','-m','Synthetic gitlink')
++            sha=git('rev-parse','HEAD').decode().strip();raw=git('cat-file','commit',sha)
++            cache=root/'cache';cache.mkdir();source=GitSource(cache);original=source.git
++            def local(directory,*args):
++                if args[0]=='fetch':
++                    return subprocess.check_output(['git','-C',str(directory),'fetch',str(repo),args[-1]],stderr=subprocess.DEVNULL)
++                return original(directory,*args)
++            source.git=local
++            ref=dict(object_type='git-commit-object',repository='synthetic/repo',commit=sha,size=len(raw),sha256=digest(raw))
++            self.assertEqual(source.read(ref),raw)
++            for field,value in [('size',1),('sha256','0'*64)]:
++                with self.subTest(field=field),self.assertRaises(ValueError):source.read(dict(ref,**{field:value}))
++            blob=git('rev-parse','HEAD:evidence.txt').decode().strip()
++            with self.assertRaises(ValueError):source.read(dict(ref,commit=blob))
++            for path in ('link','link/child','module','module/child'):
++                with self.subTest(path=path),self.assertRaises(ValueError):
++                    source.read(dict(ref,object_type='git-blob',path=path))
++
++    def test_transport_has_no_redirect_or_ambient_credentials(self):
++        with tempfile.TemporaryDirectory() as tmp:
++            source=GitSource(tmp)
++            with patch('scripts.consume_delivery.subprocess.run') as run:
++                run.return_value.returncode=0;run.return_value.stdout=b''
++                source.git(tmp,'status')
++                args,kw=run.call_args
++                self.assertIn('http.followRedirects=false',args[0])
++                self.assertEqual(kw['env']['GIT_ALLOW_PROTOCOL'],'https')
++                self.assertEqual(kw['env']['GIT_CONFIG_GLOBAL'],'/dev/null')
++                self.assertNotIn('GITHUB_TOKEN',kw['env'])

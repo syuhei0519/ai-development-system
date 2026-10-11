@@ -1,0 +1,101 @@
+{
+  "record_type": "independent_review_a2_report",
+  "result": "completed",
+  "head": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+  "base": "b1e606544174481b7b6904f811e857f80978c287",
+  "blocking_findings": [],
+  "repair": {
+    "id": "R-1",
+    "status": "resolved",
+    "location": "scripts/prepare_crossref_bundle.py:110-114",
+    "old_result": "control PASS, nested-tree and repository-tree FAIL",
+    "new_result": "3 PASS",
+    "reason": "Structural segment index 5 selects only blob/tree; fixed_url uses fullmatch with literal canonical HTTPS host, full lowercase OID, path checks. Owner/repository/nested-path kind words cannot choose route. Unknown and malformed routes are rejected.",
+    "delta": "Three files only: 5 changed production lines, README 4 added lines, new tests. Consumer and schemas unchanged versus failed Review1 head."
+  },
+  "coverage": [
+    {
+      "id": "X-1",
+      "review_status": "covered",
+      "observation": "Version 1.2 dispatch, exact full owner/target and structural-slot keys, used-set completeness; old schemas and normal tests unchanged.",
+      "code_or_evidence": "scripts/consume_delivery.py:178; contracts/artifact-delivery-v1.2.schema.json"
+    },
+    {
+      "id": "X-2",
+      "review_status": "covered",
+      "observation": "Canonical blob URL/digest agreement and owner-relative snapshot identity; all explicit dependencies fetched before output, strict type/JSON/Handoff/retry validation. Isolated Git prohibits redirects and ambient credential/config injection.",
+      "code_or_evidence": "scripts/consume_delivery.py:83,230"
+    },
+    {
+      "id": "X-3",
+      "review_status": "covered",
+      "observation": "Commit-specific reference namespace and format; repository acquisition enforces commit type/FETCH_HEAD. Raw SHA-256, size and Git-header OID recomputed, typed receipt and commit.raw output. No descendant/build assertion.",
+      "code_or_evidence": "scripts/consume_delivery.py:103,161,476"
+    },
+    {
+      "id": "X-4",
+      "review_status": "covered",
+      "observation": "Independent authorization pin, exact consumer/scope/purpose/expiry and all record versions/digests; private atomic output only after checks, receipt has authority_granted=false.",
+      "code_or_evidence": "scripts/consume_delivery.py:413"
+    },
+    {
+      "id": "X-5",
+      "review_status": "covered",
+      "observation": "176 and baseline128 regression methods, unchanged Test245 and Review43, 3 repaired reproductions and 57 new boundaries; legacy new-format rejection, explicit fail-closed CLI output cases.",
+      "code_or_evidence": "regression-summary.json"
+    },
+    {
+      "id": "X-6",
+      "review_status": "covered",
+      "observation": "B1 immutable Handoff, code commit and Research dependency obtained with authorized formal CLI/fresh recheck; 17 objects/89071 bytes. No B1 app executed or product acceptance asserted.",
+      "code_or_evidence": "b1-observation.public.json"
+    },
+    {
+      "id": "X-7",
+      "review_status": "covered",
+      "observation": "Strict exact candidate fields/type/limits; unique ID sets, producer artifact/raw locator/domain linkage, source strings and typed target checks. Pending status retained; no provenance-only relaxation.",
+      "code_or_evidence": "scripts/delivery_candidates.py:101; contracts/knowledge-candidates-v1.schema.json"
+    },
+    {
+      "id": "X-8",
+      "review_status": "covered",
+      "observation": "Commit-root and ancestor raw trees verified; all descendant normal blobs fetched with path/mode/OID/size/hash; inventory equality, special-edge refusal and bounded fail-closed enumeration. Empty and binary tree cases exercised.",
+      "code_or_evidence": "scripts/delivery_candidates.py:26,46"
+    },
+    {
+      "id": "X-9",
+      "review_status": "covered",
+      "observation": "Original input history and B1 candidate bytes preserved; complete blob/tree and producer checks plus recheck; Review result, independent Test2, CI metadata/log limits, B1 and Manager gates kept distinct.",
+      "code_or_evidence": "b1-observation.public.json; integration-observation.json"
+    }
+  ],
+  "nonblocking_observations": [
+    {
+      "id": "N-1",
+      "severity": "low",
+      "location": "PR7 body",
+      "detail": "Description still names old head and 173 tests; metadata and this report pin the actual repaired head. Refresh by authorized owner before final Manager gate."
+    }
+  ],
+  "residual_risks": [
+    "CI run/job/step metadata passed; actual checkout SHA and test count inside new CI logs are unverified. No Forbidden log bypass. Independent local head and synthetic test-merge tree agree, but this does not fill the log observation gap.",
+    "Git fetch pack size and total runtime/disk are not bounded by payload limits; trusted approved repositories and sandbox limits remain required.",
+    "Synthetic fault injection and local Git tests supplement real public B1; not exhaustive hostile-network testing.",
+    "Machine validation certifies delivery integrity, not private-original comparison, source truth, candidate semantic adoption, build, product behavior or public authorization.",
+    "Private originals of inherited published design copies were not supplied; exact public copies are independently checked, prior safety assertions remain producer testimony."
+  ],
+  "gates": {
+    "independent_review_a2": "verified",
+    "independent_test_a2": "pending Manager-supplied result; not assumed",
+    "ci_metadata": "verified within stated scope",
+    "ci_checkout_log": "unverified",
+    "github_required_review": "not_assessed",
+    "merge_readiness": "not_assessed",
+    "main_integration": "pending",
+    "b1_product_ac": "unverified",
+    "implementation_restart": "not_authorized",
+    "deployment": "not_authorized",
+    "issue_completion": "Manager only; unverified",
+    "publication": "not_requested"
+  }
+}

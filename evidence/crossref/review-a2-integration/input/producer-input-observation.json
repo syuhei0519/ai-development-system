@@ -1,0 +1,33 @@
+{
+  "record_type": "edited_verified_producer_input_observation",
+  "consumer_revision": "8afe6044857783dbf6d6ae7ac9459ae5e890a744",
+  "manifest": {
+    "commit": "8b2d522c7b41e08dba940819fc67462ab43e9d9c",
+    "path": "evidence/crossref/a3-integration/manifest.json",
+    "size": 37473,
+    "sha256": "af27bd451c4678fb1e7542490c03c67934b3e879b74523a3cb0681d76a744b7c",
+    "local_record": "producer-input-manifest.json"
+  },
+  "publication": {
+    "commit": "8b2d522c7b41e08dba940819fc67462ab43e9d9c",
+    "path": "evidence/crossref/a3-integration/publication-receipt.json",
+    "size": 38499,
+    "sha256": "627de0d0f21d7292b5001026f51df6f27be2e62ead9130ed8c057c09f6ac85a0",
+    "local_record": "producer-input-publication.json"
+  },
+  "source_payload_commit": "5f485091b4860282aff5424f2d9e18b528bae427",
+  "source_root": {
+    "path": "evidence/crossref/a3-integration/integration-supplement.json",
+    "size": 2711,
+    "sha256": "39e4f04c6b1d45b5ca6b66d4363144e1dc4c4b3f4197ad16c5fad8678a9fb05f"
+  },
+  "files": 70,
+  "bytes": 803254,
+  "formal_cli_result": "PASS",
+  "direct_supplement_artifact_pins": "PASS",
+  "prior_62_public_files_byte_identity": "PASS",
+  "raw_fixed_commit_pins": "PASS",
+  "comparison_with_independent_results": "PASS",
+  "source_delivery_boundary": "The original Producer70 source remains a separately authorized fixed-Git bundle, not a claimed local copy in this Test supplement. Its exact outer records are included for retrieval. Independent Test measurements do not rely on its self-reported success. Full source bytes and Consumption Receipt were consumed and retained privately before use.",
+  "authorization": "Separate Manager authorization/pin; no self-issued grant; receipt and authorization remain private."
+}

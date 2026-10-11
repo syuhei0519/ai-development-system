@@ -1,0 +1,88 @@
+{
+  "record_type": "independent_review_a2_same_attempt_integration_result",
+  "review_attempt": 2,
+  "logical_scope": "system/artifact-delivery/cross-reference",
+  "head": "a7fdcd3df53260f67a9040878a131d101fb5b32b",
+  "base": "8afe6044857783dbf6d6ae7ac9459ae5e890a744",
+  "tree": "8c57b1a49781424d3b1be5af52b3d7d02727ae77",
+  "result": "Independent Review2 completed for integrated head with verified integrated Test2 dependency; no blocking findings.",
+  "blocking_findings": [],
+  "history": "Same Review2, no reset/recursive task. Old findings/results remain pinned to old520ef1e7 and oldbaseb1e6065. R-1 remains resolved; old Review1 failed retained.",
+  "git_verification": "Direct fetched objects and raw commit pins match; parents correct; 50 changed paths preserve exact approved main changes; shared README content is base delta plus unchanged crossref suffix. Clean merge-tree matches head. Crossref production/schema/tests bytes unchanged.",
+  "regression": {
+    "command": "python3 -m unittest discover -s tests -v",
+    "tests": 229,
+    "passed": 229,
+    "prior": 176,
+    "main_added": 53,
+    "elapsed_seconds": 17.683
+  },
+  "independent_reruns": [
+    {
+      "file": "test245.json",
+      "total": 245,
+      "passed": 245
+    },
+    {
+      "file": "review43.json",
+      "total": 43,
+      "passed": 43
+    },
+    {
+      "file": "preparation3.json",
+      "total": 3,
+      "passed": 3
+    },
+    {
+      "file": "boundary57.json",
+      "total": 57,
+      "passed": 57
+    },
+    {
+      "file": "test2-boundary49.json",
+      "total": 49,
+      "passed": 49
+    }
+  ],
+  "cli": "Delivery/schema, Handoff, Knowledge, all three Readiness replays and two Issue Completion replays PASS. Replay achieved/unverified results certify synthetic record consistency only.",
+  "b1": "Formal CLI and fresh receipt recheck 17 objects/89071 bytes; old/new/fresh bytes and receipts identical under unchanged valid scope/manifest/purpose approval.",
+  "workflow": {
+    "path": ".github/workflows/validate.yml",
+    "sha256": "bb54c08ce511ce616d819a569039aac7db18fc218378f6c97329a6267c3b09c8",
+    "size": 2857,
+    "change": "Only two aggregate synthetic replay steps added. Default checkout and delivery test commands unchanged."
+  },
+  "producer_input": {
+    "verified": true,
+    "canonical_consumer_revision": "8afe6044857783dbf6d6ae7ac9459ae5e890a744",
+    "records_commit": "8b2d522c7b41e08dba940819fc67462ab43e9d9c",
+    "payload_commit": "5f485091b4860282aff5424f2d9e18b528bae427",
+    "files": 70,
+    "bytes": 803254,
+    "supplement_sha256": "39e4f04c6b1d45b5ca6b66d4363144e1dc4c4b3f4197ad16c5fad8678a9fb05f",
+    "generic_embedded_artifact_pins_and_old62_and_git_dependencies": "independently verified after full CLI consumption",
+    "separation": "Producer self-verification is corroboration; our tests were run independently before relying on the report."
+  },
+  "test2_dependency": {
+    "verified_old_head": true,
+    "head": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+    "handoff_sha256": "1956bd25e14609f7584b0289cb63ea07f2b0aa4cceec7dd6ee302c2fb42aa52a",
+    "fixed_url": "https://github.com/syuhei0519/ai-development-system/blob/689c846c3981471db7cbd33ea686e3862d025861/evidence/crossref/test-a2/handoff.public.json",
+    "integrated_test2_input": {
+      "status": "verified",
+      "payload_commit": "673aec6b4b506e0555334f4b2f42033833d9e687",
+      "records_commit": "ce5e5fad64c7287b16c56105a1aa22c391d53d78",
+      "files": 93,
+      "bytes": 1805198,
+      "supplement": "input/integration-supplement.json",
+      "supplement_sha256": "57163753f445e89fe3adbef1e6a4eecb9be00ce85cffffb4a04ca4b7508f8edd",
+      "consumer_revision": "8afe6044857783dbf6d6ae7ac9459ae5e890a744",
+      "checks": "Full bytes/type/closure and internal supplement artifact pins; exact original Issue/AC/assignment, actual head/base and case counts verified."
+    },
+    "review_rerun_note": "49-case Test2 script rerun by Review is Review evidence, not independent Test2 integrated result."
+  },
+  "ci": "Successful current push/PR metadata and steps tied to new head/base. Push default-checkout target binding sufficient under current canonical policy; PR merge checkout inferred from documented semantics plus fetched merge parents/tree. No direct runner checkout/log or action-resolution SHA observation. No denial bypass.",
+  "readiness": "Updated role/workflow/readiness/aggregate policy read. Issue Completion remains separate Manager responsibility. No current Merge Ready, required GitHub review/Ruleset/queue certification, B1 product acceptance, restart or deployment permission.",
+  "scope_limit": "Integration compatibility for cross-reference assignment; not a replacement for PR5 independent review or real aggregate product AC measurement.",
+  "delivery": "Final Review evidence candidate under bounded Owner publication approval. Private Manager readiness and all new authorization/receipts/pins/internal logs excluded. Old Review2 raw Handoff retained separately with original prior archive; old Review result files included verbatim here."
+}

@@ -1,0 +1,29 @@
+{
+  "record_type": "edited_independent_delivery_observation",
+  "head": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+  "initial": {
+    "consumer_revision": "b1e606544174481b7b6904f811e857f80978c287",
+    "files": 62,
+    "bytes": 720970,
+    "result": "PASS",
+    "root_handoff_size": 14288,
+    "root_handoff_sha256": "021ea2a1178698a2e36bf6e8eb0c71fff09c8368447743d90f0ad176ce00cd7d"
+  },
+  "b1": {
+    "cli": "PASS",
+    "fresh_git_receipt_recheck": "PASS",
+    "objects": 17,
+    "bytes": 89071,
+    "tree_files": 6,
+    "independent_output_size_sha256_and_commit_tree_blob_oid_checks": "PASS",
+    "two_output_trees_and_receipts_byte_identical": true,
+    "authority_granted": false,
+    "publication_approval": "unverified",
+    "consumer_use_approval": "approved",
+    "purpose": "contract-review"
+  },
+  "limits": [
+    "This edited observation is not a Consumption Receipt or authorization. New raw receipts/auth/pins are retained privately.",
+    "Full raw Handoff/candidate bytes and pending status preserved. Source truth/Knowledge adoption/B1 acceptance/restart not certified."
+  ]
+}

@@ -1,0 +1,282 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "SYSTEM-CROSSREF-DELIVERY",
+    "source": "assignment-requirements.json",
+    "title": "System fixed cross-repository artifact delivery implementation",
+    "acceptance_criteria": [
+      {
+        "id": "X-1",
+        "verbatim": "Delivery明示version拡張（推奨1.2）と外側slot-binding契約。ownerdocumentの固定ref、構造上slot（artifact ID/upstream identity/Knowledge source等）と原locator/revisionとtypedtargetを一意結合。欠落/余剰/重複/曖昧/競合は拒否。旧1.0/1.1は新型を拒否し以前の意味と正常系維持。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-2",
+        "verbatim": "blobはrepository/fullcommit/path/size/sha256で取得。canonical GitHub fixed blob URLと元revisionを厳密一致させ、同repo別commit/別repoを安全に解決。任意URL追跡や浮動ref/redirect/外部HTTP自動取得は禁止。列挙された全依存を取得して型/schema/hash/role/task/attempt/retryIssueも検証。暗黙locator削除やコピーによる偽装をしない。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-3",
+        "verbatim": "kind=commitにはblobと別typed git-commit-objectを定義。repo/fullOID/rawcommitobject size/SHA256、canonicalcommitURL/revision一致、cat-file type=commitと取得SHA一致、rawobject全byteshash、出力/receiptへtyped記録。commitobject存在だけでtree内容/build/製品AC合格を認定しない。必要なソースblob証跡は別で取得。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-4",
+        "verbatim": "全manifest/publication/consumption/authorizationの版と承認bindings整合。Manager独立pin、用途consumer/scope/expiry必須、receipt権限なし。全必要artifact実体検証前に利用しない。source truthfulness/意味妥当性/IssueCompletionは別ゲート。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-5",
+        "verbatim": "正常/異常tests: 固定crossrepo blob/Handoff/commit、URL/OID/path/objecttype/size/hash不一致、missingdependency/privateonly/duplicate slot/downgrade、symlink/gitlink/JSON型偽装、retryidentity、承認、旧128testsを含む回帰。新旧validator双方で期待動作確認。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-6",
+        "verbatim": "実B1公開Handoffを一切書換えず固定codecommit/upstreamの正式bundle検証を可能にし、CLI実取得で証明。公開ソースだけを使い、B1Test/Review/Issue合格や実装再開をこのSystemtaskから主張しない。",
+        "source": "assignment-requirements.json"
+      }
+    ]
+  },
+  "assignment": {
+    "scope": "system/artifact-delivery/cross-reference",
+    "ac_ids": [
+      "X-1",
+      "X-2",
+      "X-3",
+      "X-4",
+      "X-5",
+      "X-6"
+    ],
+    "completion_criteria": [
+      "Independently verify all original X-1 through X-6 against fixed implementation head; preserve exact Issue/AC text and prior history.",
+      "X-7: 厳格な knowledge-candidates-v1 profile と版付き外側 candidate_bindings を実装する。原文書にschema_version等を追加せず、document_type・必要field・型・余剰field禁止・候補ID一意性を検証する。producer Handoff固定実体・artifact ID・raw_locator・候補ID集合・原source文字列とtyped targetを一意結合し、欠落/余剰/重複/曖昧/競合を拒否する。pending_manager_reviewを承認へ読み替えず、未知Knowledge型の降格拒否を維持する。blob sourceの全bytes・size/hash・固定URL/OID/pathを検証し、provenance-onlyへ緩和しない。",
+      "X-8: 固定tree sourceの版付き完全snapshotを検証する。固定repo/full commit/directoryとcanonical tree URLを照合し、対象祖先および配下treeを完全列挙する。全通常blobのpath/mode/OID/size/SHA-256と実体を照合し、欠落/余剰/重複/改変/不正祖先/symlink/gitlink/非通常object/部分列挙を拒否する。tree/commit objectの存在だけで配下内容やbuild/製品ACを認定せず、件数/bytes上限超過時は切り詰めずfail closedとする。",
+      "X-9: 実B1公開Handoffとknowledge_candidates原bytesを変更せず、固定code commit・Research依存・候補producer binding・blob source・tree配下の全必要実体をCLI実取得で検証する。旧128testsを含む現149testsを維持し、新旧validatorで版・型・URL/OID/path/mode/size/hash・candidate集合・producer・承認・依存欠落・private_only・symlink/gitlink・JSON偽装・retryidentity・再取得の正常/否定系を検証する。System自己検証、独立Test/Review、B1製品AC、実装再開、IssueCompletionを分離して報告する。",
+      "Preserve Test attempt 1 separately from Implementation attempt 2. Verify 173 regressions, independent negative cases, actual B1 CLI/fresh recheck, separate CI/integration observation, and provide private receipts plus an unpublished safe dependency-closed candidate."
+    ]
+  },
+  "role": "test",
+  "task_id": "PUBLIC-CROSSREF-TEST-A2",
+  "attempt": 2,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "PUBLIC-CROSSREF-TEST-A1",
+      "attempt": 1,
+      "relationship": "retry_of",
+      "handoff_locator": "input/input/input/handoff.public.json",
+      "revision": "sha256:14a235ddb722f581e2a4079dac891ccd725bdbda81640a286e6630ce84ebbb7e"
+    },
+    {
+      "role": "implementation",
+      "task_id": "PUBLIC-CROSSREF-IMPLEMENTATION-A3",
+      "attempt": 3,
+      "relationship": "dependency",
+      "handoff_locator": "input/handoff.public.json",
+      "revision": "sha256:021ea2a1178698a2e36bf6e8eb0c71fff09c8368447743d90f0ad176ce00cd7d"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Independent Test attempt 2 completed for fixed repaired head 520ef1e7a59662fe3e58d49d5510350ee08c3160. R-1 verified resolved; X-1..6 and supplemental X-7..9 tested. Exact CI checkout remains unverified; independent Review/Manager/integration gates separate. No final product/Issue assessment.",
+  "artifacts": [
+    {
+      "id": "A1",
+      "kind": "test-report",
+      "locator": "assignment-adoption.json",
+      "revision": "sha256:2df7b298b0c68f7951303d9b333926daacab0799c49eaf4990d3942d5e2cc795",
+      "summary": "assignment-adoption.json"
+    },
+    {
+      "id": "A2",
+      "kind": "test-report",
+      "locator": "test-report.json",
+      "revision": "sha256:5470619e782610ae4a15756269533722253db0e5c0b09998315ea9554f599270",
+      "summary": "test-report.json"
+    },
+    {
+      "id": "A3",
+      "kind": "test-report",
+      "locator": "regression-summary.json",
+      "revision": "sha256:c8f62768474839ce533e30db2aff8a1f96b1b25043f3af4ac761c4e7bc4af4e8",
+      "summary": "regression-summary.json"
+    },
+    {
+      "id": "A4",
+      "kind": "test-report",
+      "locator": "old-preparation.json",
+      "revision": "sha256:3d716b099c0648d1a1eafdedafe1fa0b065fbd0f1de7f69c1e77e5096d7581fb",
+      "summary": "old-preparation.json"
+    },
+    {
+      "id": "A5",
+      "kind": "test-report",
+      "locator": "new-preparation.json",
+      "revision": "sha256:5b77c2e69ebbe63c9f465e72b87730271f21d32db55ac839b87c386ea0ccbe43",
+      "summary": "new-preparation.json"
+    },
+    {
+      "id": "A6",
+      "kind": "test-report",
+      "locator": "test245.json",
+      "revision": "sha256:e9b93c130f554574788c63d5213b91969537167a5e65f5c0210e3fe8ba949f04",
+      "summary": "test245.json"
+    },
+    {
+      "id": "A7",
+      "kind": "test-report",
+      "locator": "review43.json",
+      "revision": "sha256:22edf2e3ac73c27214d2bceaac62299b9be9f8249dcd6d724a9f8f27739144ed",
+      "summary": "review43.json"
+    },
+    {
+      "id": "A8",
+      "kind": "test-report",
+      "locator": "boundaries.json",
+      "revision": "sha256:b27db57be90eebaa39fed33af81984bae7d30b3dafc1f45e60bc2973558456ff",
+      "summary": "boundaries.json"
+    },
+    {
+      "id": "A9",
+      "kind": "document",
+      "locator": "boundary_probe.py",
+      "revision": "sha256:46d04fd75d91c2745bcc157dd85950406563bc175e16ebfe125ee9c1e4f1245d",
+      "summary": "boundary_probe.py"
+    },
+    {
+      "id": "A10",
+      "kind": "test-report",
+      "locator": "delivery-observation.json",
+      "revision": "sha256:d2d6c2b50f95300032e96e39711c57fce97a4bfc05519681639d6dc47bc86eef",
+      "summary": "delivery-observation.json"
+    },
+    {
+      "id": "A11",
+      "kind": "test-report",
+      "locator": "ci-integration-observation.json",
+      "revision": "sha256:cb278d3dc24cab521e5d93721ff767239dac470d44a9d6493a1ca4acdb6270eb",
+      "summary": "ci-integration-observation.json"
+    },
+    {
+      "id": "A12",
+      "kind": "document",
+      "locator": "reproduction.txt",
+      "revision": "sha256:7caad88caf7770a916823382baf0c1e6cb365562842591bc6b77054a57dde9d6",
+      "summary": "reproduction.txt"
+    },
+    {
+      "id": "A13",
+      "kind": "test-report",
+      "locator": "safety-review.json",
+      "revision": "sha256:6dd07ba68bb8031b43793bb6f2abe4cc45f0a1cf3c126f9e018afa5fbeed60ba",
+      "summary": "safety-review.json"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E1",
+      "claim": "Independent fixed-head verification, regression and R-1 before/after outcomes",
+      "artifact_ids": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "A8",
+        "A9",
+        "A10",
+        "A11",
+        "A12",
+        "A13"
+      ],
+      "locator": "test-report.json",
+      "observation": "176 current/base128/Test245/Review43 PASS; old reproducer 1 pass/2 expected failures, repaired 3 pass; 49 new boundaries pass; actual B1 CLI/fresh 17 objects 89071 bytes. CI metadata success is separate; exact runtime checkout unverified."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "X-1",
+      "disposition": "covered",
+      "scope": "Independent System transport test responsibility completed; detailed X-1..9 normal/negative/boundary matrix in test-report.json. No B1 product or final Issue acceptance.",
+      "artifact_ids": [
+        "A2",
+        "A3",
+        "A10"
+      ],
+      "evidence_ids": [
+        "E1"
+      ]
+    },
+    {
+      "ac_id": "X-2",
+      "disposition": "covered",
+      "scope": "Independent System transport test responsibility completed; detailed X-1..9 normal/negative/boundary matrix in test-report.json. No B1 product or final Issue acceptance.",
+      "artifact_ids": [
+        "A2",
+        "A3",
+        "A10"
+      ],
+      "evidence_ids": [
+        "E1"
+      ]
+    },
+    {
+      "ac_id": "X-3",
+      "disposition": "covered",
+      "scope": "Independent System transport test responsibility completed; detailed X-1..9 normal/negative/boundary matrix in test-report.json. No B1 product or final Issue acceptance.",
+      "artifact_ids": [
+        "A2",
+        "A3",
+        "A10"
+      ],
+      "evidence_ids": [
+        "E1"
+      ]
+    },
+    {
+      "ac_id": "X-4",
+      "disposition": "covered",
+      "scope": "Independent System transport test responsibility completed; detailed X-1..9 normal/negative/boundary matrix in test-report.json. No B1 product or final Issue acceptance.",
+      "artifact_ids": [
+        "A2",
+        "A3",
+        "A10"
+      ],
+      "evidence_ids": [
+        "E1"
+      ]
+    },
+    {
+      "ac_id": "X-5",
+      "disposition": "covered",
+      "scope": "Independent System transport test responsibility completed; detailed X-1..9 normal/negative/boundary matrix in test-report.json. No B1 product or final Issue acceptance.",
+      "artifact_ids": [
+        "A2",
+        "A3",
+        "A10"
+      ],
+      "evidence_ids": [
+        "E1"
+      ]
+    },
+    {
+      "ac_id": "X-6",
+      "disposition": "covered",
+      "scope": "Independent System transport test responsibility completed; detailed X-1..9 normal/negative/boundary matrix in test-report.json. No B1 product or final Issue acceptance.",
+      "artifact_ids": [
+        "A2",
+        "A3",
+        "A10"
+      ],
+      "evidence_ids": [
+        "E1"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

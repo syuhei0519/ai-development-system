@@ -1,0 +1,17 @@
+{
+  "record_type": "test2_integration_candidate_safety_review",
+  "publication_state": "prepared snapshot; publication is separate",
+  "new_content": "Independent integration results, exact public Git diffs, synthetic probe outputs, reproduction and explicit same-attempt bindings.",
+  "prior": "All 76 earlier published Test2 files retained byte-for-byte under prior/, including their transitive Handoff artifact/upstream/retry closure. All prior findings/statuses remain historical.",
+  "source": "Producer manifest/publication copied exactly; separate original source bundle formally validated before comparison. Producer private originals are not certified.",
+  "exclusions": [
+    "Private original files/digests",
+    "Current authorization documents/pins",
+    "Private Consumption Receipts/digests",
+    "Real platform task/thread/message IDs",
+    "Raw internal logs",
+    "Credentials"
+  ],
+  "checks": "Full UTF-8 bytes inspected; identity/path/credential/known-private-pin scans and transitive typed closure checked. Synthetic negative fields and previously public synthetic fixture receipt are historical test data, not permissions.",
+  "consumer_authority": "No new Consumer authorization issued. Publication does not authorize subsequent consumption or product operations."
+}

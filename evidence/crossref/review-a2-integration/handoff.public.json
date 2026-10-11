@@ -1,0 +1,413 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "SYSTEM-CROSSREF-DELIVERY",
+    "source": "assignment-requirements.json",
+    "title": "System fixed cross-repository artifact delivery implementation",
+    "acceptance_criteria": [
+      {
+        "id": "X-1",
+        "verbatim": "Delivery明示version拡張（推奨1.2）と外側slot-binding契約。ownerdocumentの固定ref、構造上slot（artifact ID/upstream identity/Knowledge source等）と原locator/revisionとtypedtargetを一意結合。欠落/余剰/重複/曖昧/競合は拒否。旧1.0/1.1は新型を拒否し以前の意味と正常系維持。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-2",
+        "verbatim": "blobはrepository/fullcommit/path/size/sha256で取得。canonical GitHub fixed blob URLと元revisionを厳密一致させ、同repo別commit/別repoを安全に解決。任意URL追跡や浮動ref/redirect/外部HTTP自動取得は禁止。列挙された全依存を取得して型/schema/hash/role/task/attempt/retryIssueも検証。暗黙locator削除やコピーによる偽装をしない。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-3",
+        "verbatim": "kind=commitにはblobと別typed git-commit-objectを定義。repo/fullOID/rawcommitobject size/SHA256、canonicalcommitURL/revision一致、cat-file type=commitと取得SHA一致、rawobject全byteshash、出力/receiptへtyped記録。commitobject存在だけでtree内容/build/製品AC合格を認定しない。必要なソースblob証跡は別で取得。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-4",
+        "verbatim": "全manifest/publication/consumption/authorizationの版と承認bindings整合。Manager独立pin、用途consumer/scope/expiry必須、receipt権限なし。全必要artifact実体検証前に利用しない。source truthfulness/意味妥当性/IssueCompletionは別ゲート。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-5",
+        "verbatim": "正常/異常tests: 固定crossrepo blob/Handoff/commit、URL/OID/path/objecttype/size/hash不一致、missingdependency/privateonly/duplicate slot/downgrade、symlink/gitlink/JSON型偽装、retryidentity、承認、旧128testsを含む回帰。新旧validator双方で期待動作確認。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-6",
+        "verbatim": "実B1公開Handoffを一切書換えず固定codecommit/upstreamの正式bundle検証を可能にし、CLI実取得で証明。公開ソースだけを使い、B1Test/Review/Issue合格や実装再開をこのSystemtaskから主張しない。",
+        "source": "assignment-requirements.json"
+      }
+    ]
+  },
+  "assignment": {
+    "scope": "system/artifact-delivery/cross-reference",
+    "ac_ids": [
+      "X-1",
+      "X-2",
+      "X-3",
+      "X-4",
+      "X-5",
+      "X-6"
+    ],
+    "completion_criteria": [
+      "Independently verify all original X-1 through X-6 against fixed implementation head; preserve exact Issue/AC text and prior history.",
+      "X-7: 厳格な knowledge-candidates-v1 profile と版付き外側 candidate_bindings を実装する。原文書にschema_version等を追加せず、document_type・必要field・型・余剰field禁止・候補ID一意性を検証する。producer Handoff固定実体・artifact ID・raw_locator・候補ID集合・原source文字列とtyped targetを一意結合し、欠落/余剰/重複/曖昧/競合を拒否する。pending_manager_reviewを承認へ読み替えず、未知Knowledge型の降格拒否を維持する。blob sourceの全bytes・size/hash・固定URL/OID/pathを検証し、provenance-onlyへ緩和しない。",
+      "X-8: 固定tree sourceの版付き完全snapshotを検証する。固定repo/full commit/directoryとcanonical tree URLを照合し、対象祖先および配下treeを完全列挙する。全通常blobのpath/mode/OID/size/SHA-256と実体を照合し、欠落/余剰/重複/改変/不正祖先/symlink/gitlink/非通常object/部分列挙を拒否する。tree/commit objectの存在だけで配下内容やbuild/製品ACを認定せず、件数/bytes上限超過時は切り詰めずfail closedとする。",
+      "X-9: 実B1公開Handoffとknowledge_candidates原bytesを変更せず、固定code commit・Research依存・候補producer binding・blob source・tree配下の全必要実体をCLI実取得で検証する。旧128testsを含む現149testsを維持し、新旧validatorで版・型・URL/OID/path/mode/size/hash・candidate集合・producer・承認・依存欠落・private_only・symlink/gitlink・JSON偽装・retryidentity・再取得の正常/否定系を検証する。System自己検証、独立Test/Review、B1製品AC、実装再開、IssueCompletionを分離して報告する。",
+      "Preserve independent Review attempt 2 separately from failed Review attempt 1, Test attempts 1 and 2, and Implementation attempt 3. Bind the unchanged fixed Review attempt-1 Handoff as retry_of. Independently review head 520ef1e7a59662fe3e58d49d5510350ee08c3160 against base b1e606544174481b7b6904f811e857f80978c287; reproduce R-1 at the old and new heads, run 176 regressions/base128/Test245/Review43/original3 plus additional boundaries, verify actual B1 CLI/fresh recheck, and evaluate X-1 through X-9, code/contracts/CLI/docs, safety and separate CI/integration evidence. Do not assume Test2 passed. Return private receipts and an unpublished safe dependency-closed candidate; no implementation, publication, push, PR operation, merge, application execution, deployment, permission changes or additional agents.",
+      "Same-attempt Manager-authorized integration recheck at a7fdcd3df53260f67a9040878a131d101fb5b32b/base8afe6044857783dbf6d6ae7ac9459ae5e890a744. Preserve old findings, verify integrated Producer/Test2 fixed inputs, assess exact delta/regressions/CI/B1, return combined current-head Review evidence. Owner bounded authorization permits safe evidence publication only; no PR mutation or merge."
+    ]
+  },
+  "role": "review",
+  "task_id": "PUBLIC-CROSSREF-REVIEW-A2",
+  "attempt": 2,
+  "upstream": [
+    {
+      "role": "review",
+      "task_id": "PUBLIC-CROSSREF-REVIEW-A1",
+      "attempt": 1,
+      "relationship": "retry_of",
+      "handoff_locator": "input/prior/input/input/handoff.public.json",
+      "revision": "sha256:fd2f89b7a920bf23f91b62b0ceaffef06bf522278b0f6278538e9e55b3bc757f"
+    },
+    {
+      "role": "test",
+      "task_id": "PUBLIC-CROSSREF-TEST-A2",
+      "attempt": 2,
+      "relationship": "dependency",
+      "handoff_locator": "input/prior/handoff.public.json",
+      "revision": "sha256:1956bd25e14609f7584b0289cb63ea07f2b0aa4cceec7dd6ee302c2fb42aa52a"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Independent Review2 completed at head a7fdcd3df53260f67a9040878a131d101fb5b32b and base8afe6044857783dbf6d6ae7ac9459ae5e890a744. Same-attempt integration recheck: 229 regressions,245/43/3/57/49 probes and B1 17 objects89071 bytes pass. Integrated Test2 formally verified. No blocking findings; old results/history remain fixed. Manager adoption/merge and productAC separate.",
+  "artifacts": [
+    {
+      "id": "assignment-adoption",
+      "kind": "document",
+      "locator": "assignment-adoption.json",
+      "revision": "sha256:d01249cbb274dfa3e7afb76f80675f8440ea5d27598e89d07f5af7823c39978d",
+      "summary": "Current integration evidence or unchanged historical Review result: assignment-adoption.json"
+    },
+    {
+      "id": "current-b1-observation",
+      "kind": "document",
+      "locator": "current/b1-observation.json",
+      "revision": "sha256:a122bdd8dc6d60dd6f67acb3fb2a21ac582144715aa200520d00f72565948593",
+      "summary": "Current integration evidence or unchanged historical Review result: current/b1-observation.json"
+    },
+    {
+      "id": "current-boundary57",
+      "kind": "document",
+      "locator": "current/boundary57.json",
+      "revision": "sha256:a82d8c38e34eeabcf76ea0843f11f02ad22a9bfd5331cb905852262f7e69fc6d",
+      "summary": "Current integration evidence or unchanged historical Review result: current/boundary57.json"
+    },
+    {
+      "id": "current-ci-observation",
+      "kind": "document",
+      "locator": "current/ci-observation.json",
+      "revision": "sha256:f6f4b03cf32b179869dbd7498b22e5fed6574758844d6cf5f653a92acd31f488",
+      "summary": "Current integration evidence or unchanged historical Review result: current/ci-observation.json"
+    },
+    {
+      "id": "current-ci-readiness-supplement",
+      "kind": "document",
+      "locator": "current/ci-readiness-supplement.json",
+      "revision": "sha256:fae240313e4f6f8e3413c685070053d271a3239c28cb14e4cc967aa467b59aa5",
+      "summary": "Current integration evidence or unchanged historical Review result: current/ci-readiness-supplement.json"
+    },
+    {
+      "id": "current-git-delta",
+      "kind": "document",
+      "locator": "current/git-delta.json",
+      "revision": "sha256:c20a58cb01b60b9cb2a78ea0e1a49bf6f11d98b4c43b991cf7b8035e19bd8214",
+      "summary": "Current integration evidence or unchanged historical Review result: current/git-delta.json"
+    },
+    {
+      "id": "current-integration-result",
+      "kind": "review",
+      "locator": "current/integration-result.json",
+      "revision": "sha256:2a4932a1d0d36258463dc3d4348759b11f69e25f5831f597b6325fa5c9f05d60",
+      "summary": "Current integration evidence or unchanged historical Review result: current/integration-result.json"
+    },
+    {
+      "id": "current-preparation3",
+      "kind": "document",
+      "locator": "current/preparation3.json",
+      "revision": "sha256:5b77c2e69ebbe63c9f465e72b87730271f21d32db55ac839b87c386ea0ccbe43",
+      "summary": "Current integration evidence or unchanged historical Review result: current/preparation3.json"
+    },
+    {
+      "id": "current-reproduction",
+      "kind": "document",
+      "locator": "current/reproduction.txt",
+      "revision": "sha256:19f8ef0abc1ed7527fb4a937e6a8d2621dca0d29281c798c130636815c71dad1",
+      "summary": "Current integration evidence or unchanged historical Review result: current/reproduction.txt"
+    },
+    {
+      "id": "current-review43",
+      "kind": "document",
+      "locator": "current/review43.json",
+      "revision": "sha256:22edf2e3ac73c27214d2bceaac62299b9be9f8249dcd6d724a9f8f27739144ed",
+      "summary": "Current integration evidence or unchanged historical Review result: current/review43.json"
+    },
+    {
+      "id": "current-test2-boundary49",
+      "kind": "document",
+      "locator": "current/test2-boundary49.json",
+      "revision": "sha256:10f54836ccf250feb4c6632d3b423c2dc5b87396d5e8f3b22351ccd8a1c69446",
+      "summary": "Current integration evidence or unchanged historical Review result: current/test2-boundary49.json"
+    },
+    {
+      "id": "current-test2-intake-supplement",
+      "kind": "document",
+      "locator": "current/test2-intake-supplement.json",
+      "revision": "sha256:809fa29b91504bd7ec73be968f291f0804162efdce0b991d2c31773093e0a81f",
+      "summary": "Current integration evidence or unchanged historical Review result: current/test2-intake-supplement.json"
+    },
+    {
+      "id": "current-test245",
+      "kind": "document",
+      "locator": "current/test245.json",
+      "revision": "sha256:e9b93c130f554574788c63d5213b91969537167a5e65f5c0210e3fe8ba949f04",
+      "summary": "Current integration evidence or unchanged historical Review result: current/test245.json"
+    },
+    {
+      "id": "old-review-results-assignment-adoption",
+      "kind": "document",
+      "locator": "old-review-results/assignment-adoption.json",
+      "revision": "sha256:87e89190f710436daebe1a5710e2a73938f2a6c477eefa0aaefe50e2169fa014",
+      "summary": "Current integration evidence or unchanged historical Review result: old-review-results/assignment-adoption.json"
+    },
+    {
+      "id": "old-review-results-b1-observation.public",
+      "kind": "document",
+      "locator": "old-review-results/b1-observation.public.json",
+      "revision": "sha256:86a0d11fc217817468894d28a803a2c31ce66200ef3e37e0d0514861b86e365b",
+      "summary": "Current integration evidence or unchanged historical Review result: old-review-results/b1-observation.public.json"
+    },
+    {
+      "id": "old-review-results-boundary-results",
+      "kind": "document",
+      "locator": "old-review-results/boundary-results.json",
+      "revision": "sha256:9c002e2bdcd34a335120c5ae90cea40e0cd388f343623bb824502ed89461208e",
+      "summary": "Current integration evidence or unchanged historical Review result: old-review-results/boundary-results.json"
+    },
+    {
+      "id": "old-review-results-boundary_probe",
+      "kind": "document",
+      "locator": "old-review-results/boundary_probe.py",
+      "revision": "sha256:181e31fd9c47b7c26df3a3b5dbbcc4e78cbcb29cad8a6e7470eec58de15770b6",
+      "summary": "Current integration evidence or unchanged historical Review result: old-review-results/boundary_probe.py"
+    },
+    {
+      "id": "old-review-results-delivery-observation",
+      "kind": "document",
+      "locator": "old-review-results/delivery-observation.json",
+      "revision": "sha256:80619883a95566ddb60369d8996eb965fb695df1880b5247b5eae333d188a9aa",
+      "summary": "Current integration evidence or unchanged historical Review result: old-review-results/delivery-observation.json"
+    },
+    {
+      "id": "old-review-results-integration-observation",
+      "kind": "document",
+      "locator": "old-review-results/integration-observation.json",
+      "revision": "sha256:30e781c64c198b24ce3e4924425d12a7c66d3af0990342b6bebd1dbac55f4fc4",
+      "summary": "Current integration evidence or unchanged historical Review result: old-review-results/integration-observation.json"
+    },
+    {
+      "id": "old-review-results-new-preparation-results",
+      "kind": "document",
+      "locator": "old-review-results/new-preparation-results.json",
+      "revision": "sha256:5b77c2e69ebbe63c9f465e72b87730271f21d32db55ac839b87c386ea0ccbe43",
+      "summary": "Current integration evidence or unchanged historical Review result: old-review-results/new-preparation-results.json"
+    },
+    {
+      "id": "old-review-results-old-preparation-results",
+      "kind": "document",
+      "locator": "old-review-results/old-preparation-results.json",
+      "revision": "sha256:3d716b099c0648d1a1eafdedafe1fa0b065fbd0f1de7f69c1e77e5096d7581fb",
+      "summary": "Current integration evidence or unchanged historical Review result: old-review-results/old-preparation-results.json"
+    },
+    {
+      "id": "old-review-results-regression-summary",
+      "kind": "document",
+      "locator": "old-review-results/regression-summary.json",
+      "revision": "sha256:f3922db29d4cc9f253620af0e69d489c367923abba88d653fa42feef2ee9c7a3",
+      "summary": "Current integration evidence or unchanged historical Review result: old-review-results/regression-summary.json"
+    },
+    {
+      "id": "old-review-results-reproduction",
+      "kind": "document",
+      "locator": "old-review-results/reproduction.txt",
+      "revision": "sha256:ec7b6699a314d17e9b28b303055e19598d6935ab390b089016060240dd79a1c4",
+      "summary": "Current integration evidence or unchanged historical Review result: old-review-results/reproduction.txt"
+    },
+    {
+      "id": "old-review-results-review-report",
+      "kind": "document",
+      "locator": "old-review-results/review-report.json",
+      "revision": "sha256:3bd106f041a072e540249cfa3da79deee789e9fc6b2e213f6eeb0715a8f9e024",
+      "summary": "Current integration evidence or unchanged historical Review result: old-review-results/review-report.json"
+    },
+    {
+      "id": "old-review-results-review43-rerun",
+      "kind": "document",
+      "locator": "old-review-results/review43-rerun.json",
+      "revision": "sha256:22edf2e3ac73c27214d2bceaac62299b9be9f8249dcd6d724a9f8f27739144ed",
+      "summary": "Current integration evidence or unchanged historical Review result: old-review-results/review43-rerun.json"
+    },
+    {
+      "id": "old-review-results-safety-review",
+      "kind": "document",
+      "locator": "old-review-results/safety-review.json",
+      "revision": "sha256:08ea46f98f35873efe28f7080ac474ba2482e3cb94ed1a5a0d2056c07f94f616",
+      "summary": "Current integration evidence or unchanged historical Review result: old-review-results/safety-review.json"
+    },
+    {
+      "id": "old-review-results-test245-rerun",
+      "kind": "document",
+      "locator": "old-review-results/test245-rerun.json",
+      "revision": "sha256:e9b93c130f554574788c63d5213b91969537167a5e65f5c0210e3fe8ba949f04",
+      "summary": "Current integration evidence or unchanged historical Review result: old-review-results/test245-rerun.json"
+    },
+    {
+      "id": "safety-review",
+      "kind": "document",
+      "locator": "safety-review.json",
+      "revision": "sha256:be5da8f8c7c24e1a053c40965fe6294a09e80f5da993af20a12da3a370f7ee7c",
+      "summary": "Current integration evidence or unchanged historical Review result: safety-review.json"
+    },
+    {
+      "id": "verified-integration-supplement",
+      "kind": "test-report",
+      "locator": "input/integration-supplement.json",
+      "revision": "sha256:57163753f445e89fe3adbef1e6a4eecb9be00ce85cffffb4a04ca4b7508f8edd",
+      "summary": "Verified independent integrated Test2 evidence; original prior Handoff stays unchanged."
+    },
+    {
+      "id": "verified-integration-report",
+      "kind": "test-report",
+      "locator": "input/integration-report.json",
+      "revision": "sha256:8b2d6a4659726bee24569fbfabf99c1a0f5d0b353a74b9ab1bfb99cd748c9d4d",
+      "summary": "Verified independent integrated Test2 evidence; original prior Handoff stays unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-CURRENT",
+      "claim": "Assigned X1..6 and supplemental X7..9 independently verified at integrated head; Test2 dependency formally verified",
+      "artifact_ids": [
+        "assignment-adoption",
+        "current-b1-observation",
+        "current-boundary57",
+        "current-ci-observation",
+        "current-ci-readiness-supplement",
+        "current-git-delta",
+        "current-integration-result",
+        "current-preparation3",
+        "current-reproduction",
+        "current-review43",
+        "current-test2-boundary49",
+        "current-test2-intake-supplement",
+        "current-test245",
+        "old-review-results-assignment-adoption",
+        "old-review-results-b1-observation.public",
+        "old-review-results-boundary-results",
+        "old-review-results-boundary_probe",
+        "old-review-results-delivery-observation",
+        "old-review-results-integration-observation",
+        "old-review-results-new-preparation-results",
+        "old-review-results-old-preparation-results",
+        "old-review-results-regression-summary",
+        "old-review-results-reproduction",
+        "old-review-results-review-report",
+        "old-review-results-review43-rerun",
+        "old-review-results-safety-review",
+        "old-review-results-test245-rerun",
+        "safety-review",
+        "verified-integration-supplement",
+        "verified-integration-report"
+      ],
+      "locator": "current/integration-result.json",
+      "observation": "229 regression methods and245/43/3/57/49 independent reruns pass; B1 CLI/fresh17objects89071bytes. Exact base delta and unchanged crossref code; current push/PR CI success. Test2 93files1805198bytes consumed with canonical main before use; no blocker. Actual checkout not directly log-observed; no log-only mandatory gate invented."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "X-1",
+      "disposition": "covered",
+      "scope": "Independent Review at integrated head a7fdcd3; see current matrix and unchanged historical X1..9 analysis. System transport only, not B1 product acceptance or final Manager adoption.",
+      "artifact_ids": [
+        "current-integration-result",
+        "verified-integration-supplement"
+      ],
+      "evidence_ids": [
+        "E-CURRENT"
+      ]
+    },
+    {
+      "ac_id": "X-2",
+      "disposition": "covered",
+      "scope": "Independent Review at integrated head a7fdcd3; see current matrix and unchanged historical X1..9 analysis. System transport only, not B1 product acceptance or final Manager adoption.",
+      "artifact_ids": [
+        "current-integration-result",
+        "verified-integration-supplement"
+      ],
+      "evidence_ids": [
+        "E-CURRENT"
+      ]
+    },
+    {
+      "ac_id": "X-3",
+      "disposition": "covered",
+      "scope": "Independent Review at integrated head a7fdcd3; see current matrix and unchanged historical X1..9 analysis. System transport only, not B1 product acceptance or final Manager adoption.",
+      "artifact_ids": [
+        "current-integration-result",
+        "verified-integration-supplement"
+      ],
+      "evidence_ids": [
+        "E-CURRENT"
+      ]
+    },
+    {
+      "ac_id": "X-4",
+      "disposition": "covered",
+      "scope": "Independent Review at integrated head a7fdcd3; see current matrix and unchanged historical X1..9 analysis. System transport only, not B1 product acceptance or final Manager adoption.",
+      "artifact_ids": [
+        "current-integration-result",
+        "verified-integration-supplement"
+      ],
+      "evidence_ids": [
+        "E-CURRENT"
+      ]
+    },
+    {
+      "ac_id": "X-5",
+      "disposition": "covered",
+      "scope": "Independent Review at integrated head a7fdcd3; see current matrix and unchanged historical X1..9 analysis. System transport only, not B1 product acceptance or final Manager adoption.",
+      "artifact_ids": [
+        "current-integration-result",
+        "verified-integration-supplement"
+      ],
+      "evidence_ids": [
+        "E-CURRENT"
+      ]
+    },
+    {
+      "ac_id": "X-6",
+      "disposition": "covered",
+      "scope": "Independent Review at integrated head a7fdcd3; see current matrix and unchanged historical X1..9 analysis. System transport only, not B1 product acceptance or final Manager adoption.",
+      "artifact_ids": [
+        "current-integration-result",
+        "verified-integration-supplement"
+      ],
+      "evidence_ids": [
+        "E-CURRENT"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

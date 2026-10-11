@@ -1,0 +1,274 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "SYSTEM-CROSSREF-DELIVERY",
+    "source": "assignment-requirements.json",
+    "title": "System fixed cross-repository artifact delivery implementation",
+    "acceptance_criteria": [
+      {
+        "id": "X-1",
+        "verbatim": "Delivery明示version拡張（推奨1.2）と外側slot-binding契約。ownerdocumentの固定ref、構造上slot（artifact ID/upstream identity/Knowledge source等）と原locator/revisionとtypedtargetを一意結合。欠落/余剰/重複/曖昧/競合は拒否。旧1.0/1.1は新型を拒否し以前の意味と正常系維持。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-2",
+        "verbatim": "blobはrepository/fullcommit/path/size/sha256で取得。canonical GitHub fixed blob URLと元revisionを厳密一致させ、同repo別commit/別repoを安全に解決。任意URL追跡や浮動ref/redirect/外部HTTP自動取得は禁止。列挙された全依存を取得して型/schema/hash/role/task/attempt/retryIssueも検証。暗黙locator削除やコピーによる偽装をしない。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-3",
+        "verbatim": "kind=commitにはblobと別typed git-commit-objectを定義。repo/fullOID/rawcommitobject size/SHA256、canonicalcommitURL/revision一致、cat-file type=commitと取得SHA一致、rawobject全byteshash、出力/receiptへtyped記録。commitobject存在だけでtree内容/build/製品AC合格を認定しない。必要なソースblob証跡は別で取得。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-4",
+        "verbatim": "全manifest/publication/consumption/authorizationの版と承認bindings整合。Manager独立pin、用途consumer/scope/expiry必須、receipt権限なし。全必要artifact実体検証前に利用しない。source truthfulness/意味妥当性/IssueCompletionは別ゲート。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-5",
+        "verbatim": "正常/異常tests: 固定crossrepo blob/Handoff/commit、URL/OID/path/objecttype/size/hash不一致、missingdependency/privateonly/duplicate slot/downgrade、symlink/gitlink/JSON型偽装、retryidentity、承認、旧128testsを含む回帰。新旧validator双方で期待動作確認。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-6",
+        "verbatim": "実B1公開Handoffを一切書換えず固定codecommit/upstreamの正式bundle検証を可能にし、CLI実取得で証明。公開ソースだけを使い、B1Test/Review/Issue合格や実装再開をこのSystemtaskから主張しない。",
+        "source": "assignment-requirements.json"
+      }
+    ]
+  },
+  "role": "implementation",
+  "task_id": "PUBLIC-CROSSREF-IMPLEMENTATION-A2",
+  "attempt": 2,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "PUBLIC-CROSSREF-IMPLEMENTATION-A1",
+      "attempt": 1,
+      "relationship": "retry_of",
+      "handoff_locator": "prior/handoff.public.json",
+      "revision": "sha256:3aa90aedc0469c14c7ec457a3f01af21b9bc566f3ea4855336cd2925ffe05e87"
+    },
+    {
+      "role": "implementation",
+      "task_id": "PUBLIC-PHASE13-PA-IMPLEMENTATION-01",
+      "attempt": 1,
+      "relationship": "dependency",
+      "handoff_locator": "prior/pa/handoff.json",
+      "revision": "sha256:abd9770e562943f4e2ed847b5889bfa15d43419f545a70b07f9cc5875ea391d4"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Same System attempt 2, final result revision after Manager authorization. Implementation, 173 self-tests, fixed synthetic Git checks, actual immutable B1 formal CLI and fresh receipt recheck complete. 17 objects / 89071 bytes preserved. Feature push and same-head CI verified. Previous authorization-wait blocked candidate retained unchanged. Independent Test/Review, publication/delivery, P-A dependency confirmation and PR/merge remain separate gates. No B1 execution/restart or product acceptance. Separate Delivery 1.0 public derivative for independent Test input: only upstream locators localized to exact public dependency copies; original final-r2 remains unchanged. B1 1.2 record JSON is transported as data, not validated as B1 cross-reference delivery by the 1.0 consumer.",
+  "artifacts": [
+    {
+      "id": "REPORT",
+      "kind": "test-report",
+      "locator": "implementation-report.public.json",
+      "revision": "sha256:47e4461fc6006f65369304b4448715ebdd2bb76cb800156376f8fd5b93963e79",
+      "summary": "Final attempt 2 delivery candidate; implementation self-verification complete, separate publication/delivery and independent evaluation gates remain."
+    },
+    {
+      "id": "REQUIREMENTS",
+      "kind": "document",
+      "locator": "assignment-requirements.json",
+      "revision": "sha256:f3d9d8e0f58a85325487bffe17aa336f90294f782bb44ebb3a4a69a2c2564ea2",
+      "summary": "Final attempt 2 delivery candidate; implementation self-verification complete, separate publication/delivery and independent evaluation gates remain."
+    },
+    {
+      "id": "SUPPLEMENT",
+      "kind": "document",
+      "locator": "design-supplement.md",
+      "revision": "sha256:bcb779c4c8926627e410e34ba5caf900a261be65548497734bdc8f743aac72e2",
+      "summary": "Final attempt 2 delivery candidate; implementation self-verification complete, separate publication/delivery and independent evaluation gates remain."
+    },
+    {
+      "id": "ADOPTION",
+      "kind": "document",
+      "locator": "assignment-adoption.json",
+      "revision": "sha256:8acc4334bbb37be31dce8b0acfa4efb662aa65a41c909d2ed32e873ef2f9dabf",
+      "summary": "Final attempt 2 delivery candidate; implementation self-verification complete, separate publication/delivery and independent evaluation gates remain."
+    },
+    {
+      "id": "PATCH",
+      "kind": "patch",
+      "locator": "implementation.patch",
+      "revision": "sha256:f2f3906526b98e71ee512a01ee2190c378a9be667a294ca353f5f8631429022a",
+      "summary": "Final attempt 2 delivery candidate; implementation self-verification complete, separate publication/delivery and independent evaluation gates remain."
+    },
+    {
+      "id": "TESTS",
+      "kind": "test-report",
+      "locator": "self-verification.json",
+      "revision": "sha256:1a4ef9455b12387a79cccc139428df4a23593559485360b80b95c568561ccacb",
+      "summary": "Final attempt 2 delivery candidate; implementation self-verification complete, separate publication/delivery and independent evaluation gates remain."
+    },
+    {
+      "id": "B1-MANIFEST",
+      "kind": "other",
+      "locator": "b1-manifest.json",
+      "revision": "sha256:5a1e3edfcdc1751c7a02ece0a2962b208f1285dc974e80889e58e42aedff1ae3",
+      "summary": "Final attempt 2 delivery candidate; implementation self-verification complete, separate publication/delivery and independent evaluation gates remain."
+    },
+    {
+      "id": "B1-PUBLICATION",
+      "kind": "other",
+      "locator": "b1-publication-receipt.json",
+      "revision": "sha256:0cb6488dd3b1faa0d069489fb0e24036287cca4fe4de728bce40821e472c068d",
+      "summary": "Final attempt 2 delivery candidate; implementation self-verification complete, separate publication/delivery and independent evaluation gates remain."
+    },
+    {
+      "id": "B1-CLI",
+      "kind": "test-report",
+      "locator": "b1-cli-observation.public.json",
+      "revision": "sha256:f472ad92c1f2ab4b864e82336519f2e4e556a13f50d2701c23785058456fa140",
+      "summary": "Same-attempt final revision; exact prior blocked record and private authorization boundary preserved."
+    },
+    {
+      "id": "RESULT-HISTORY",
+      "kind": "document",
+      "locator": "result-history.public.json",
+      "revision": "sha256:f2e44a168c31d368d4fdbcf906e7a567885cbf015efc00f46d17dba518571ecd",
+      "summary": "Same-attempt final revision; exact prior blocked record and private authorization boundary preserved."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-SELF",
+      "claim": "Assigned System implementation and self-verification complete; independent evaluation remains a separate Manager gate.",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "TESTS",
+        "ADOPTION",
+        "B1-MANIFEST",
+        "B1-PUBLICATION",
+        "B1-CLI",
+        "RESULT-HISTORY"
+      ],
+      "locator": "self-verification.json",
+      "observation": "173 tests PASS, fixed synthetic Git retrieval PASS, actual immutable B1 formal CLI and fresh receipt recheck PASS under new Manager authorization without changing publication_approval=unverified. Both outputs contain identical 17 objects / 89071 bytes. Feature remote and same-head CI verified."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "X-1",
+      "disposition": "covered",
+      "scope": "Implementation role only: code and assigned self-verification complete, including authorized actual B1 full-bundle CLI/recheck. No independent Test/Review or product/Issue acceptance. Additional X-7/X-8/X-9 conditions tracked in assignment and report.",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "TESTS",
+        "ADOPTION",
+        "B1-CLI",
+        "RESULT-HISTORY"
+      ],
+      "evidence_ids": [
+        "E-SELF"
+      ]
+    },
+    {
+      "ac_id": "X-2",
+      "disposition": "covered",
+      "scope": "Implementation role only: code and assigned self-verification complete, including authorized actual B1 full-bundle CLI/recheck. No independent Test/Review or product/Issue acceptance. Additional X-7/X-8/X-9 conditions tracked in assignment and report.",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "TESTS",
+        "ADOPTION",
+        "B1-CLI",
+        "RESULT-HISTORY"
+      ],
+      "evidence_ids": [
+        "E-SELF"
+      ]
+    },
+    {
+      "ac_id": "X-3",
+      "disposition": "covered",
+      "scope": "Implementation role only: code and assigned self-verification complete, including authorized actual B1 full-bundle CLI/recheck. No independent Test/Review or product/Issue acceptance. Additional X-7/X-8/X-9 conditions tracked in assignment and report.",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "TESTS",
+        "ADOPTION",
+        "B1-CLI",
+        "RESULT-HISTORY"
+      ],
+      "evidence_ids": [
+        "E-SELF"
+      ]
+    },
+    {
+      "ac_id": "X-4",
+      "disposition": "covered",
+      "scope": "Implementation role only: code and assigned self-verification complete, including authorized actual B1 full-bundle CLI/recheck. No independent Test/Review or product/Issue acceptance. Additional X-7/X-8/X-9 conditions tracked in assignment and report.",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "TESTS",
+        "ADOPTION",
+        "B1-CLI",
+        "RESULT-HISTORY"
+      ],
+      "evidence_ids": [
+        "E-SELF"
+      ]
+    },
+    {
+      "ac_id": "X-5",
+      "disposition": "covered",
+      "scope": "Implementation role only: code and assigned self-verification complete, including authorized actual B1 full-bundle CLI/recheck. No independent Test/Review or product/Issue acceptance. Additional X-7/X-8/X-9 conditions tracked in assignment and report.",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "TESTS",
+        "ADOPTION",
+        "B1-CLI",
+        "RESULT-HISTORY"
+      ],
+      "evidence_ids": [
+        "E-SELF"
+      ]
+    },
+    {
+      "ac_id": "X-6",
+      "disposition": "covered",
+      "scope": "Implementation role only: code and assigned self-verification complete, including authorized actual B1 full-bundle CLI/recheck. No independent Test/Review or product/Issue acceptance. Additional X-7/X-8/X-9 conditions tracked in assignment and report.",
+      "artifact_ids": [
+        "REPORT",
+        "PATCH",
+        "TESTS",
+        "ADOPTION",
+        "B1-CLI",
+        "RESULT-HISTORY"
+      ],
+      "evidence_ids": [
+        "E-SELF"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe",
+  "assignment": {
+    "scope": "system/artifact-delivery/cross-reference",
+    "ac_ids": [
+      "X-1",
+      "X-2",
+      "X-3",
+      "X-4",
+      "X-5",
+      "X-6"
+    ],
+    "completion_criteria": [
+      "Implement original X-1 through X-6 from fixed P-A head without changing Issue identity, scope, original AC text or prior Handoff bytes.",
+      "X-7: 厳格な knowledge-candidates-v1 profile と版付き外側 candidate_bindings を実装する。原文書にschema_version等を追加せず、document_type・必要field・型・余剰field禁止・候補ID一意性を検証する。producer Handoff固定実体・artifact ID・raw_locator・候補ID集合・原source文字列とtyped targetを一意結合し、欠落/余剰/重複/曖昧/競合を拒否する。pending_manager_reviewを承認へ読み替えず、未知Knowledge型の降格拒否を維持する。blob sourceの全bytes・size/hash・固定URL/OID/pathを検証し、provenance-onlyへ緩和しない。",
+      "X-8: 固定tree sourceの版付き完全snapshotを検証する。固定repo/full commit/directoryとcanonical tree URLを照合し、対象祖先および配下treeを完全列挙する。全通常blobのpath/mode/OID/size/SHA-256と実体を照合し、欠落/余剰/重複/改変/不正祖先/symlink/gitlink/非通常object/部分列挙を拒否する。tree/commit objectの存在だけで配下内容やbuild/製品ACを認定せず、件数/bytes上限超過時は切り詰めずfail closedとする。",
+      "X-9: 実B1公開Handoffとknowledge_candidates原bytesを変更せず、固定code commit・Research依存・候補producer binding・blob source・tree配下の全必要実体をCLI実取得で検証する。旧128testsを含む現149testsを維持し、新旧validatorで版・型・URL/OID/path/mode/size/hash・candidate集合・producer・承認・依存欠落・private_only・symlink/gitlink・JSON偽装・retryidentity・再取得の正常/否定系を検証する。System自己検証、独立Test/Review、B1製品AC、実装再開、IssueCompletionを分離して報告する。",
+      "Feature push System code/docs/synthetic fixtures only. Wait for P-A merge and Manager dependency confirmation before PR. Preserve separate publication/Consumer approvals, independent Test/Review and all retry budgets."
+    ]
+  }
+}

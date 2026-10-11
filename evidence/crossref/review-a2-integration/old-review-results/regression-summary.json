@@ -1,0 +1,70 @@
+{
+  "record_type": "independent_review_a2_executions",
+  "head": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+  "base": "b1e606544174481b7b6904f811e857f80978c287",
+  "old_head": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+  "results": [
+    {
+      "command": "python3 -m unittest discover -s tests -v",
+      "target": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+      "tests": 176,
+      "result": "PASS"
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -v",
+      "target": "b1e606544174481b7b6904f811e857f80978c287",
+      "tests": 128,
+      "result": "PASS"
+    },
+    {
+      "command": "python3 input/input/input/independent_probe.py HEAD RESULTS LEGACY10 BASE",
+      "target": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+      "cases": 245,
+      "result": "PASS",
+      "note": "Unchanged historical harness emits old head in its JSON; this invocation target is independently pinned here. The four printed CLI rejection messages are expected negative cases."
+    },
+    {
+      "command": "python3 input/input/review_probe.py HEAD RESULTS",
+      "target": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+      "cases": 43,
+      "result": "PASS"
+    },
+    {
+      "command": "python3 input/input/preparation_probe.py OLD RESULTS",
+      "target": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+      "passed": 1,
+      "failed": 2,
+      "result": "EXPECTED R-1 REPRODUCTION"
+    },
+    {
+      "command": "python3 input/input/preparation_probe.py HEAD RESULTS",
+      "target": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+      "cases": 3,
+      "result": "PASS"
+    },
+    {
+      "command": "python3 boundary_probe.py HEAD RESULTS",
+      "target": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+      "cases": 57,
+      "positive": 16,
+      "negative": 41,
+      "result": "PASS"
+    },
+    {
+      "command": "python3 scripts/validate_delivery_records.py",
+      "target": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+      "result": "PASS"
+    },
+    {
+      "command": "git diff --check BASE HEAD",
+      "target": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+      "result": "PASS"
+    }
+  ],
+  "unchanged": "Every base and old-head test file is byte-identical at head; all baseline schemas unchanged. New repair adds 3 unittest methods; previous 173 retained. Legacy10 and unchanged baseline validators explicitly reject 1.2 in the 245-case harness.",
+  "environment": {
+    "python": "3.12.14",
+    "git": "git version 2.52.0"
+  },
+  "limits": "These are Review-owned executions of historical tests plus newly written Review boundaries; they do not constitute the separately assigned Test2 result."
+}

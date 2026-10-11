@@ -1,0 +1,66 @@
+{
+  "record_type": "independent_review_a2_test2_input_supplement",
+  "consumer_verification": "PASS using unchanged b1e606544174481b7b6904f811e857f80978c287 Consumer CLI before reading payload",
+  "records_commit": "4c112bac7d10cc33654ce8c25cb57de0d194e03f",
+  "payload_commit": "689c846c3981471db7cbd33ea686e3862d025861",
+  "prefix": "evidence/crossref/test-a2/",
+  "manifest_sha256": "3fbcd09de25da0744bb157f097a6f9c27fac39302295aed59998aa4093a65ab9",
+  "publication_receipt_sha256": "4b00fa9eb69476df569a5e0f73d2a74c053a0bf87be04552985d631ee4a24ccb",
+  "files": 76,
+  "bytes": 856225,
+  "root_handoff_size": 12352,
+  "root_handoff_sha256": "1956bd25e14609f7584b0289cb63ea07f2b0aa4cceec7dd6ee302c2fb42aa52a",
+  "target": {
+    "head": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+    "base": "b1e606544174481b7b6904f811e857f80978c287"
+  },
+  "assessment": "Verified immutable Test2 evidence supports completed independent Test for this old fixed target. Issue/AC/scope/X7..9 match; complete Test1 retry and Implementation3 dependencies verified. Reports and case-level results agree with prior notification and independent Review observations. Newly received 49-case script inspected as synthetic-only testing; no extra execution necessary for intake.",
+  "checks": [
+    {
+      "file": "old-preparation.json",
+      "total": 3,
+      "passed": 1
+    },
+    {
+      "file": "new-preparation.json",
+      "total": 3,
+      "passed": 3
+    },
+    {
+      "file": "test245.json",
+      "total": 245,
+      "passed": 245
+    },
+    {
+      "file": "review43.json",
+      "total": 43,
+      "passed": 43
+    },
+    {
+      "file": "boundaries.json",
+      "total": 49,
+      "passed": 49
+    }
+  ],
+  "regression_summary": [
+    {
+      "suite": "base",
+      "revision": "b1e606544174481b7b6904f811e857f80978c287",
+      "tests": 128,
+      "result": "PASS"
+    },
+    {
+      "suite": "head",
+      "revision": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+      "tests": 176,
+      "result": "PASS"
+    }
+  ],
+  "b1_observation_consistency": "17 objects/89071 bytes agrees with own independent CLI/fresh verification; Test2 private receipts are not asserted to have been directly inspected.",
+  "inherited_input": "All 62 Implementation3 input files match previously consumed bytes exactly.",
+  "history": "Original Review2 Handoff, candidate bundle and CI supplement unchanged. This is an additional input assessment, not a new execution attempt or retroactive rewrite.",
+  "ci": "Prior epistemic distinction remains: exact runner checkout not directly observed; CI metadata plus fixed workflow supports old-head push CI under canonical policy without inventing a log-only gate.",
+  "current_base_notice": "Manager reports main8afe6044857783dbf6d6ae7ac9459ae5e890a744 after PR5 merge. Old evidence remains tied to old head/base. Integrated head/immutable supplement and separate authorization required before revalidation; no current-base merge-readiness assertion.",
+  "private_material": "New consumption receipt, authorization/pin, full verified payload and original records retained privately. No private data or hashes included here.",
+  "publication": "not_performed"
+}

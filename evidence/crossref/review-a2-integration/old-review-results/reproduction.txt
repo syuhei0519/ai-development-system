@@ -1,0 +1,12 @@
+Independent Review attempt 2 reproduction
+
+Fixed head: 520ef1e7a59662fe3e58d49d5510350ee08c3160
+Base: b1e606544174481b7b6904f811e857f80978c287
+Old head: 4b4e9c249451881f1e5eef82efb3a3b111cacbdb
+Legacy10: df400018057735b7cb6a9c6ea4619508f0e6ba3a
+
+Run commands in regression-summary.json against isolated fixed System checkouts. Historical harnesses remain unchanged; their embedded old metadata does not identify this invocation target. Old preparation exits 1 with two expected R-1 failures; new preparation and all other reported runs exit 0.
+
+B1 records are input/input/input/input/b1-manifest.json and b1-publication-receipt.json. Obtain a separate Manager authorization for the consumer/scope/purpose and a new private output. Run scripts/consume_delivery.py with --manifest, --publication, --authorization, --authorization-sha256, --consumer, --scope, --purpose contract-review, --output. Repeat with a different output and --verify-receipt FIRST_OUTPUT/consumption-receipt.json. Do not execute application sources.
+
+All 62 inherited input files preserve original bytes and relative paths. Root Review2 depends on Implementation3 and retries failed Review1; prior Test1/Implementation2/Implementation1/P-A/Research stay distinct and unchanged. Test2 is not yet supplied. Inventory outside candidate avoids self hash cycles. No publishing, push, PR edit, merge or deployment was performed. New authorizations, pins, receipts and internal logs are excluded. A historical synthetic fixture receipt remains only because it is part of the immutable already-public input closure.

@@ -1,0 +1,32 @@
+{
+  "record_type": "independent_review_github_and_git_observation",
+  "repository": "syuhei0519/ai-development-system",
+  "pr_url": "https://github.com/syuhei0519/ai-development-system/pull/7",
+  "state": "open",
+  "draft": true,
+  "merged": false,
+  "head": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+  "base": "b1e606544174481b7b6904f811e857f80978c287",
+  "prior_dependency_base": "5345303db8c5208859ed741b98f119882de7a973",
+  "base_and_dependency_tree": "10a4b8ccf7a8d10d991bef2cbe714afc35709b48",
+  "head_tree": "f2d0532db12b08d86b44e882742cda2dbf33a9e0",
+  "test_merge": "fe410be606c9b22bd466c78b10728fff3e4723b6",
+  "test_merge_parents": [
+    "b1e606544174481b7b6904f811e857f80978c287",
+    "4b4e9c249451881f1e5eef82efb3a3b111cacbdb"
+  ],
+  "test_merge_tree": "f2d0532db12b08d86b44e882742cda2dbf33a9e0",
+  "local_merge_tree": {
+    "exit_code": 0,
+    "tree": "f2d0532db12b08d86b44e882742cda2dbf33a9e0"
+  },
+  "ci": {
+    "run_id": 38111698373,
+    "job_id": 114388434723,
+    "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38111698373",
+    "conclusion": "success",
+    "checkout": "fe410be606c9b22bd466c78b10728fff3e4723b6",
+    "log_observation": "Independently fetched public job log confirms checkout test-merge and Ran 173 tests / OK. Separate from Review execution."
+  },
+  "limitation": "Point-in-time PR/CI observations. No required-review/Ruleset/queue or Merge Ready certification. AI Review does not replace GitHub required review. Re-evaluate if head/base/config/evidence validity changes."
+}

@@ -1,0 +1,142 @@
+{
+  "record_type": "independent_review_b1_transport_observation",
+  "result": "PASS",
+  "cli_first": "exit 0",
+  "cli_fresh_recheck": "exit 0",
+  "objects": 17,
+  "bytes": 89071,
+  "tree_source_blobs": 6,
+  "fresh_outputs_byte_identical": true,
+  "independent_output_size_sha256_git_oid_check": "PASS",
+  "records": [
+    {
+      "path": "artifacts/syuhei0519/ai-development-system/f794cf63a8379f06b9bb770b2fac4ba1fb0951fa/evidence/order-b1/e2-a1/handoff.json",
+      "size": 5744,
+      "sha256": "3c3ba9cfec83cfbed18c34853d62d833f859df79acb2fbc2bfa2fd8486e40100",
+      "computed_git_oid": "b7482f4323923b61bc52e382763326ce58efc61f",
+      "format": "handoff-v2"
+    },
+    {
+      "path": "git-commit-objects/syuhei0519/backend-app/7b54f55cf1a652ee127528877b3bb9034b75b311/commit.raw",
+      "size": 283,
+      "sha256": "dd53f3e25c16f8fccc95bf4e6329b04d771c36e09e1e92d16a57826a8beb07df",
+      "computed_git_oid": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "format": "git-commit-object"
+    },
+    {
+      "path": "artifacts/syuhei0519/ai-development-system/f794cf63a8379f06b9bb770b2fac4ba1fb0951fa/evidence/order-b1/e2-a1/test-report.txt",
+      "size": 6247,
+      "sha256": "6328ca0720740ba82d971669d53fff6deee5c53a03d88a805aeed2c63f868741",
+      "computed_git_oid": "d6a8a98d94544ce0beef419f1a7fa14f694fb730",
+      "format": "text"
+    },
+    {
+      "path": "artifacts/syuhei0519/ai-development-system/f794cf63a8379f06b9bb770b2fac4ba1fb0951fa/evidence/order-b1/e2-a1/knowledge-candidates.json",
+      "size": 1546,
+      "sha256": "e93d2066e3d3b1bab6753ba2eef9f28edaf33f9d3f0fb710eebfdcc7282748b8",
+      "computed_git_oid": "82502b9a3c1588a0c1c0b1c1f4fbe845146b5afa",
+      "format": "knowledge-candidates-v1"
+    },
+    {
+      "path": "artifacts/syuhei0519/backend-app/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/ordertest/disposable.go",
+      "size": 4510,
+      "sha256": "470442497265bdcb329d33e4b14e58a5cad1d346e6e0cfcda3c95dbb07fd3bf9",
+      "computed_git_oid": "5109aa112288aa7ffc24dffe28236e06a81f6c22",
+      "format": "text"
+    },
+    {
+      "path": "artifacts/syuhei0519/ai-development-system/10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332/delivery-verification/20261011/research-public/handoff.json",
+      "size": 5973,
+      "sha256": "2c1876c21567399ca6ecf1d8afaed96c062da5a154b01d165f42a3e0f3afbc7d",
+      "computed_git_oid": "a7659442d8ad6b0a4daf38ec352a52eb4f53c35c",
+      "format": "handoff-v2"
+    },
+    {
+      "path": "artifacts/syuhei0519/ai-development-system/10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332/delivery-verification/20261011/research-public/history.txt",
+      "size": 1578,
+      "sha256": "dbdcd75a5fbf91e3cde6d983def2226d2d15d7e7aa07b226cdc0514f20f9cc74",
+      "computed_git_oid": "d7d754df46a6636085fce9222797472951e9de51",
+      "format": "text"
+    },
+    {
+      "path": "artifacts/syuhei0519/ai-development-system/10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332/delivery-verification/20261011/research-public/design.txt",
+      "size": 29180,
+      "sha256": "44ab0b6be4f709f5bfcb4750250d94bb1781a4083a52082df62b366647b5b8e8",
+      "computed_git_oid": "b553fdf54df40a15a9a37a8b2c86f25343443133",
+      "format": "text"
+    },
+    {
+      "path": "artifacts/syuhei0519/ai-development-system/10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332/delivery-verification/20261011/research-public/addendum.txt",
+      "size": 3864,
+      "sha256": "73f02dc92f940ade0213e65dedd44fbc6972d61994f7045f3cd10ba8731be697",
+      "computed_git_oid": "d2372f5de79bd1a58d2a41236abe5680189d8f5f",
+      "format": "text"
+    },
+    {
+      "path": "artifacts/syuhei0519/ai-development-system/10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332/delivery-verification/20261011/research-public/attempt2-handoff.json",
+      "size": 5892,
+      "sha256": "73bed3bf2610822723e41f6a99d1154d2629932b7433bc72f2c8812694a91405",
+      "computed_git_oid": "1fc376e3a522918128a273846ebb9d60367c00b4",
+      "format": "handoff-v2"
+    },
+    {
+      "path": "artifacts/syuhei0519/ai-development-system/10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332/delivery-verification/20261011/research-public/attempt1-handoff.json",
+      "size": 5172,
+      "sha256": "3ebef4d803e39ef6ae23943f229518fce6d85dff82a5214c1324b98ddd864681",
+      "computed_git_oid": "457e4b869fd0cb0e03badb64507216d31e4edaf8",
+      "format": "handoff-v2"
+    },
+    {
+      "path": "artifacts/syuhei0519/backend-app/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/store/orderpostgres/migrate.go",
+      "size": 4783,
+      "sha256": "070cd8ca5f7be0ac938c6283a3163ad054e6de368fb92c24b23bb9a0021f76e3",
+      "computed_git_oid": "e7ba1476aa1ec198e714314bcb4781b104b25a00",
+      "mode": "100644",
+      "format": "raw-tree-source-data"
+    },
+    {
+      "path": "artifacts/syuhei0519/backend-app/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/store/orderpostgres/migrate_integration_test.go",
+      "size": 4736,
+      "sha256": "6091cf2e397434782898006b61a2b85681fdb8ef78cb4bdb8c6d1fc69bfc7ea1",
+      "computed_git_oid": "d8b012ff3b0b521d10f4e00e84a1265ea5faed5e",
+      "mode": "100644",
+      "format": "raw-tree-source-data"
+    },
+    {
+      "path": "artifacts/syuhei0519/backend-app/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/store/orderpostgres/store.go",
+      "size": 4607,
+      "sha256": "66464105dab9626688cf5e7706a967c0ed99258e7f6e9341ffa5ed7c766ea9eb",
+      "computed_git_oid": "e21643dd112f3191dfcb2a5e20d90e37906b2d49",
+      "mode": "100644",
+      "format": "raw-tree-source-data"
+    },
+    {
+      "path": "artifacts/syuhei0519/backend-app/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/store/orderpostgres/store_test.go",
+      "size": 1008,
+      "sha256": "bc12ddb6756b6adc18882bf86553ebd005633821df740205a5caaa92ea01e0d5",
+      "computed_git_oid": "6550e38b672e07dcbd01afc598bd9bd9cc9037e7",
+      "mode": "100644",
+      "format": "raw-tree-source-data"
+    },
+    {
+      "path": "artifacts/syuhei0519/backend-app/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/store/orderpostgres/wait.go",
+      "size": 1487,
+      "sha256": "29c46daa3451f0dcd1bdaade93c55d960bc1f6b9bdc5dc0e0aa73cd079d435d4",
+      "computed_git_oid": "695cbef74d585da06fbe8ef07208c7c8a14a82ba",
+      "mode": "100644",
+      "format": "raw-tree-source-data"
+    },
+    {
+      "path": "artifacts/syuhei0519/backend-app/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/store/orderpostgres/wait_test.go",
+      "size": 2461,
+      "sha256": "c7729a49f92bcaf8d6abcae32bab4790f7e7ebbd3404c7d5c8f660e89096e34d",
+      "computed_git_oid": "602e0bd004cc94d07719d6dfa048f7bbee8cf7d8",
+      "mode": "100644",
+      "format": "raw-tree-source-data"
+    }
+  ],
+  "publication_approval": "unverified",
+  "consumer_use_approval": "approved",
+  "application_execution": false,
+  "limits": "Fixed raw transport integrity only; no source truth, Knowledge adoption, B1 Test/Review/product acceptance, restart, merge, deployment or IssueCompletion. Private authorization and receipts excluded."
+}

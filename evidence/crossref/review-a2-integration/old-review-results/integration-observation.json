@@ -1,0 +1,245 @@
+{
+  "observed_at": "2026-10-11",
+  "pr": {
+    "url": "https://github.com/syuhei0519/ai-development-system/pull/7",
+    "state": "open",
+    "merged": false,
+    "mergeable": true,
+    "draft": true,
+    "base": "main",
+    "base_sha": "b1e606544174481b7b6904f811e857f80978c287",
+    "head": "feat/artifact-delivery-crossrefs-a2",
+    "head_sha": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+    "merge_commit_sha": "e070cdc9bce02efc42c78e08637444b32e733398"
+  },
+  "pr_runs": {
+    "workflow_runs": [
+      {
+        "id": 38114002107,
+        "name": "Validate handoff contracts",
+        "status": "completed",
+        "conclusion": "success",
+        "run_number": 81,
+        "jobs_url": "https://api.github.com/repos/syuhei0519/ai-development-system/actions/runs/38114002107/jobs",
+        "logs_url": "https://api.github.com/repos/syuhei0519/ai-development-system/actions/runs/38114002107/logs",
+        "workflow_id": 380522606
+      }
+    ]
+  },
+  "push_jobs": {
+    "jobs": [
+      {
+        "id": 114395141501,
+        "name": "validate",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 38113999767,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run python -m pip install -r requirements-dev.txt",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "All contracts and delivery/retry regressions",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Delivery schema and pinned sample consistency",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Run python scripts/validate_handoff.py examples/research-to-test/research.handoff.json examples/research-to-test/test.blocked.handoff.json examples/research-to-test/test.handoff.json examples/failed.handoff.json examples/partial-assignment.handoff.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Run python scripts/validate_knowledge.py examples/knowledge/input.json examples/knowledge/handoff.json examples/knowledge/context.json examples/knowledge-delivery/input.json examples/knowledge-delivery/handoff.json examples/knowledge-delivery/context.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Run python scripts/validate_readiness.py examples/readiness/pr-ready-issue-unverified.json --context examples/readiness/context.json --handoff examples/readiness/manager.handoff.json --at 2030-01-01T12:00:00Z",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Run python scripts/validate_readiness.py examples/readiness/implementation-only.json --context examples/readiness/automatic-context.json --at 2030-01-01T12:00:00Z",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Run python scripts/validate_readiness.py examples/readiness/postdeploy-achieved.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 21
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 22
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 23
+          }
+        ]
+      }
+    ]
+  },
+  "pr_jobs": {
+    "jobs": [
+      {
+        "id": 114395148476,
+        "name": "validate",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 38114002107,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run python -m pip install -r requirements-dev.txt",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "All contracts and delivery/retry regressions",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Delivery schema and pinned sample consistency",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Run python scripts/validate_handoff.py examples/research-to-test/research.handoff.json examples/research-to-test/test.blocked.handoff.json examples/research-to-test/test.handoff.json examples/failed.handoff.json examples/partial-assignment.handoff.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Run python scripts/validate_knowledge.py examples/knowledge/input.json examples/knowledge/handoff.json examples/knowledge/context.json examples/knowledge-delivery/input.json examples/knowledge-delivery/handoff.json examples/knowledge-delivery/context.json",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Run python scripts/validate_readiness.py examples/readiness/pr-ready-issue-unverified.json --context examples/readiness/context.json --handoff examples/readiness/manager.handoff.json --at 2030-01-01T12:00:00Z",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Run python scripts/validate_readiness.py examples/readiness/implementation-only.json --context examples/readiness/automatic-context.json --at 2030-01-01T12:00:00Z",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Run python scripts/validate_readiness.py examples/readiness/postdeploy-achieved.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 21
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 22
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 23
+          }
+        ]
+      }
+    ]
+  },
+  "limits": "CI log retrieval was previously Forbidden; not attempted or bypassed. Metadata success does not independently attest checkout bytes or test counts. PR body is stale (old head and 173 tests); live metadata is authoritative for current review target.",
+  "record_type": "independent_review_a2_ci_integration_observation",
+  "git_observation": {
+    "head": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+    "base": "b1e606544174481b7b6904f811e857f80978c287",
+    "test_merge": "e070cdc9bce02efc42c78e08637444b32e733398",
+    "parents": [
+      "b1e606544174481b7b6904f811e857f80978c287",
+      "520ef1e7a59662fe3e58d49d5510350ee08c3160"
+    ],
+    "tree": "a5254319f67f03d30dfcfe49dea3340be582ae38",
+    "head_and_test_merge_trees_equal": true,
+    "local_merge_tree_equal": true,
+    "remote_branch_and_pr_head_equal": true
+  },
+  "ci_checkout": "unverified: no new CI log-body observation; forbidden log download not retried or bypassed",
+  "push_head_attribution": "Producer fixed integration-observation records push head and event; independently observed job/steps for the exact run. Connector run-list is PR-only.",
+  "pr_body_note": "Nonblocking stale summary: old head 4b4e9c2 and 173 tests remain. Manager should refresh through authorized PR owner; no PR write in this task.",
+  "required_github_reviews": "not_assessed; AI Review is not a substitute",
+  "main_integration": "pending; test-merge is synthetic, not merge to main"
+}

@@ -1,0 +1,99 @@
+{
+  "record_type": "independent_review_a2_ci_readiness_supplement",
+  "basis_revision": "b1e606544174481b7b6904f811e857f80978c287",
+  "canonical_policy": [
+    "contracts/readiness.md: PR と現在の証跡",
+    "workflows/single-issue.md: Readiness と Issue Completion の運用",
+    "scripts/validate_readiness.py: subject equality and freshness"
+  ],
+  "policy_assessment": "The canonical policy requires credible evidence of actual target revision, fixed config, outcome, observation time and validity, but does not require a checkout log, direct check-suite endpoint read or uploaded artifact as the exclusive proof. A missing log is an observation limit, not automatically a mandatory failing gate.",
+  "runs": [
+    {
+      "id": 38113999767,
+      "head_sha": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+      "head_branch": "feat/artifact-delivery-crossrefs-a2",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "check_suite_id": 103265429486,
+      "path": ".github/workflows/validate.yml",
+      "run_attempt": 1,
+      "created_at": "2026-10-11T05:11:39Z",
+      "updated_at": "2026-10-11T05:12:05Z",
+      "run_started_at": "2026-10-11T05:11:39Z",
+      "html_url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38113999767"
+    },
+    {
+      "id": 38114002107,
+      "head_sha": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+      "head_branch": "feat/artifact-delivery-crossrefs-a2",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "check_suite_id": 103265435547,
+      "path": ".github/workflows/validate.yml",
+      "run_attempt": 1,
+      "created_at": "2026-10-11T05:11:42Z",
+      "updated_at": "2026-10-11T05:12:02Z",
+      "run_started_at": "2026-10-11T05:11:42Z",
+      "html_url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38114002107"
+    }
+  ],
+  "observed_facts": {
+    "run_pr_pairs": [
+      {
+        "run_id": 38113999767,
+        "pull_requests": [
+          {
+            "number": 7,
+            "head_sha": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+            "base_sha": "b1e606544174481b7b6904f811e857f80978c287"
+          }
+        ]
+      },
+      {
+        "run_id": 38114002107,
+        "pull_requests": [
+          {
+            "number": 7,
+            "head_sha": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+            "base_sha": "b1e606544174481b7b6904f811e857f80978c287"
+          }
+        ]
+      }
+    ],
+    "jobs_and_steps": "Previously independently observed completed/success for jobs 114395141501 and 114395148476 and all listed steps, including checkout and unittest regression step.",
+    "artifacts": "Both authorized workflow artifact lists returned empty.",
+    "check_suite": "Run metadata supplies exact suite IDs. Direct suite endpoints were rejected as outside connector allowlist (HTTP 400). No alternate route attempted; independent suite-head response is not claimed.",
+    "git": "Independently fetched PR synthetic test-merge e070cdc9bce02efc42c78e08637444b32e733398 has parents b1e606544174481b7b6904f811e857f80978c287 and 520ef1e7a59662fe3e58d49d5510350ee08c3160. Its a5254319f67f03d30dfcfe49dea3340be582ae38 tree equals head and local merge-tree.",
+    "logs": "No CI log retrieval attempted after reported Forbidden; neither runner actual checkout SHA nor log-emitted test count is directly observed."
+  },
+  "documented_semantics": {
+    "sources": [
+      "https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#pull_request",
+      "https://github.com/actions/checkout/blob/v4/README.md"
+    ],
+    "summary": "Default checkout uses the triggering event ref/SHA. Push targets the pushed commit. pull_request uses the synthetic PR merge ref, not the PR head SHA. These are documented semantics, not a runner log observation."
+  },
+  "assessment": {
+    "push": "Sufficient CI target binding for target_revision=520ef1e7a59662fe3e58d49d5510350ee08c3160: authoritative successful push run head, corresponding successful job/steps, fixed workflow using default checkout with no ref/repository override and no subsequent source revision switch. This is normal metadata-plus-workflow evidence under the canonical policy, not cryptographic attestation of the runner.",
+    "pull_request": "Success directly observed and associated with exact PR head/base. Expected checkout is the synthetic merge target from event/default checkout semantics; e070cdc9... is strongly supported by current immutable parents and equal tree but its runner checkout SHA is inferred, not directly observed. Do not label run.head_sha as the PR checkout SHA.",
+    "recommended_readiness_subject": "Use actual independently tested head 520ef1e7a59662fe3e58d49d5510350ee08c3160 and matching successful push CI for the common subject. Keep PR CI and synthetic merge observations as explicitly qualified corroboration. Equal trees alone do not authorize changing evidence subject SHA; all other current subject fields and evidence validity still require Manager context.",
+    "mandatory_gap": "No additional CI-log-only blocker is imposed by this review for that head subject. Manager still must supply current config/policy snapshot, validity windows, independently verified Test2, required GitHub checks/reviews/Ruleset/queue applicability, authorization and dependencies before Merge Ready. If current policy actually requires a particular merge-group or distinct target, matching evidence for that target remains required.",
+    "review_status": "completed unchanged; no blocking code finding",
+    "test2": "Manager notification says completed, but fixed artifacts and separate authorization not yet supplied/consumed; not promoted to verified input.",
+    "permissions": "No publication, PR mutation, log-denial bypass, application execution or merge."
+  },
+  "fixed_workflow": {
+    "path": ".github/workflows/validate.yml",
+    "revisions": [
+      "b1e606544174481b7b6904f811e857f80978c287",
+      "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+      "e070cdc9bce02efc42c78e08637444b32e733398"
+    ],
+    "all_bytes_equal": true,
+    "size": 2011,
+    "sha256": "4d48518e83b39160ff0059788573cd4e3e46d747a6a084dfffee341121b84457",
+    "review": "Default actions/checkout@v4, no ref/repository override or later checkout/reset; test and schema commands run in repository root. This fixed workflow uses a major-version action tag; exact action revision is not attested by available logs."
+  }
+}

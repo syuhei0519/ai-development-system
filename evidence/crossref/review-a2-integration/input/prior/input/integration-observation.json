@@ -1,0 +1,193 @@
+{
+  "record_type": "edited_implementation_ci_integration_observation",
+  "repository": "syuhei0519/ai-development-system",
+  "base": "b1e606544174481b7b6904f811e857f80978c287",
+  "head": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+  "prior_head": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+  "branch": "feat/artifact-delivery-crossrefs-a2",
+  "push": "verified fast-forward additional commit; remote SHA equals local SHA",
+  "main": "unchanged at fixed base; no feature merge needed",
+  "pr": {
+    "number": 7,
+    "url": "https://github.com/syuhei0519/ai-development-system/pull/7",
+    "isDraft": true,
+    "state": "OPEN",
+    "headRefName": "feat/artifact-delivery-crossrefs-a2",
+    "headRefOid": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+    "baseRefName": "main"
+  },
+  "ci": [
+    {
+      "conclusion": "success",
+      "databaseId": 38114002107,
+      "event": "pull_request",
+      "headSha": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+      "status": "completed",
+      "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38114002107",
+      "workflowName": "Validate handoff contracts",
+      "jobs": [
+        {
+          "name": "validate",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python -m pip install -r requirements-dev.txt",
+              "conclusion": "success"
+            },
+            {
+              "name": "All contracts and delivery/retry regressions",
+              "conclusion": "success"
+            },
+            {
+              "name": "Delivery schema and pinned sample consistency",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_handoff.py examples/research-to-test/research.handoff.json examples/research-to-test/test.blocked.handoff.json examples/research-to-test/test.handoff.json examples/failed.handoff.json examples/partial-assignment.handoff.json",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_knowledge.py examples/knowledge/input.json examples/knowledge/handoff.json examples/knowledge/context.json examples/knowledge-delivery/input.json examples/knowledge-delivery/handoff.json examples/knowledge-delivery/context.json",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/pr-ready-issue-unverified.json --context examples/readiness/context.json --handoff examples/readiness/manager.handoff.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/implementation-only.json --context examples/readiness/automatic-context.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/postdeploy-achieved.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 38113999767,
+      "event": "push",
+      "headSha": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+      "status": "completed",
+      "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38113999767",
+      "workflowName": "Validate handoff contracts",
+      "jobs": [
+        {
+          "name": "validate",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python -m pip install -r requirements-dev.txt",
+              "conclusion": "success"
+            },
+            {
+              "name": "All contracts and delivery/retry regressions",
+              "conclusion": "success"
+            },
+            {
+              "name": "Delivery schema and pinned sample consistency",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_handoff.py examples/research-to-test/research.handoff.json examples/research-to-test/test.blocked.handoff.json examples/research-to-test/test.handoff.json examples/failed.handoff.json examples/partial-assignment.handoff.json",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_knowledge.py examples/knowledge/input.json examples/knowledge/handoff.json examples/knowledge/context.json examples/knowledge-delivery/input.json examples/knowledge-delivery/handoff.json examples/knowledge-delivery/context.json",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/pr-ready-issue-unverified.json --context examples/readiness/context.json --handoff examples/readiness/manager.handoff.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/implementation-only.json --context examples/readiness/automatic-context.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/postdeploy-achieved.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ci_evidence_limit": "GitHub completed/success run and job/step metadata observed. gh run view --log download returned Forbidden; no CI log-body assertion is made.",
+  "test_merge": {
+    "commit": "e070cdc9bce02efc42c78e08637444b32e733398",
+    "parents": [
+      "b1e606544174481b7b6904f811e857f80978c287",
+      "520ef1e7a59662fe3e58d49d5510350ee08c3160"
+    ],
+    "tree": "a5254319f67f03d30dfcfe49dea3340be582ae38",
+    "tree_equals_head": true,
+    "note": "GitHub synthetic PR merge ref, not an actual main merge; actual CI checkout SHA not independently log-verified."
+  },
+  "gate_states": {
+    "local_implementation_self_verification": "verified",
+    "remote_feature": "verified",
+    "draft_pr": "verified",
+    "push_ci": "verified",
+    "pr_ci": "verified",
+    "independent_test_new_head": "pending",
+    "independent_review_new_head": "pending",
+    "main_integration": "pending",
+    "merge_readiness": "not_assessed",
+    "b1_product_ac": "unverified",
+    "b1_implementation_restart": "not_authorized",
+    "issue_completion": "unverified",
+    "evidence_publication": "not_requested"
+  }
+}
