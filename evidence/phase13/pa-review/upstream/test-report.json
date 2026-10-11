@@ -1,0 +1,183 @@
+{
+  "report_type": "independent_test",
+  "status": "completed",
+  "verdict": "PASS within assigned P-A verification scope",
+  "test_alias": "knowledge-delivery-test-a1",
+  "attempt": 1,
+  "scope": "system/phase1-3/P-A",
+  "head": "5345303db8c5208859ed741b98f119882de7a973",
+  "base": "df400018057735b7cb6a9c6ea4619508f0e6ba3a",
+  "observed_at": "2026-10-11T03:11:18.745128Z",
+  "requirements": "upstream/assignment-requirements.json; all six verbatim criteria equal upstream/handoff.json",
+  "initial_delivery": {
+    "consumer": "knowledge-delivery-test-a1",
+    "scope": "system/phase1-3/P-A",
+    "purpose": "contract-review",
+    "base_consumer": "df400018057735b7cb6a9c6ea4619508f0e6ba3a",
+    "manifest_size": 4658,
+    "manifest_sha256": "58fecc0ada5f48c2e8a233bbd2b8ad82433de261350006a7781a5f45fdceb7c4",
+    "publication_size": 5156,
+    "publication_sha256": "d8a6c806aee6fcb4941d0b4f3043d957286fa05facd60097b563af3113b9f9df",
+    "payload_files": 9,
+    "payload_bytes": 77885,
+    "result": "PASS: all raw bytes, types, Handoff/upstream hashes and identities; PA AC text separately matched",
+    "private_original_comparison": "Not performed; inspected approved public derivatives. Producer/Manager original-comparison testimony is not independent original verification."
+  },
+  "tests": {
+    "baseline_unittest": 107,
+    "head_unittest": 128,
+    "independent_inmemory_cases": 111,
+    "independent_cli_cases": 6,
+    "checkout_checks": 45,
+    "all_passed": true,
+    "counts_note": "Unittest methods include parameterized subcases; 111 and 6 are individually recorded additional cases, not added product test methods."
+  },
+  "ac_results": [
+    {
+      "ac_id": "PA-1",
+      "outcome": "verified for assigned independent Test responsibilities",
+      "evidence": "Delivery 1.1 three-format normal fixture passes; baseline 107 and head 128 tests pass. Ten legacy schemas and seven baseline test files byte-identical. Old 1.0 semantics retained."
+    },
+    {
+      "ac_id": "PA-2",
+      "outcome": "verified for assigned independent Test responsibilities",
+      "evidence": "Strict dispatch, missing/unknown/private identities, generic/text/Handoff downgrade, duplicate JSON keys, NaN/Infinity/BOM/truncation, unsafe locators, boolean type confusion rejected. Existing real local Git transport tests reject symlink/gitlink and ancestor traversal. Independently added cross-repo upstream and commit URL probes reject."
+    },
+    {
+      "ac_id": "PA-3",
+      "outcome": "verified for assigned independent Test responsibilities",
+      "evidence": "Full input/output immutable fields, order changes, all-finding coverage, missing/unlisted sources/articles, context digest and resealed source changes rejected. Whitespace-only adopted article rejected. Baseline new tests cover retry chain, same/different snapshot binding, blocked/failed partial outputs; independently inspected lines 229-288. Source prose is not executed by consumer."
+    },
+    {
+      "ac_id": "PA-4",
+      "outcome": "verified for assigned independent Test responsibilities",
+      "evidence": "All 14 schema documents validate; delivery schema sample checker and all workflow CLI samples pass. Independent CLI scope/purpose/pin and numeric-zero receipt attacks fail without output. Receipt authority false enforced; mixed versions reject. Standalone Knowledge CLI is shape/local-reference validation only; strict byte parsing and authority belong to consumer."
+    },
+    {
+      "ac_id": "PA-5",
+      "outcome": "verified for assigned independent Test responsibilities",
+      "evidence": "Fresh isolated Git preparation, consumption, and separate fresh Git receipt recheck reproduced at exact head. Independent added probes: 111 in-memory cases + 6 CLI cases, all expected/actual matched. Old local output tamper is deliberately outside receipt recheck; a new valid copy was fetched. Separate Cloud Test execution complete; Review remains Manager responsibility."
+    },
+    {
+      "ac_id": "PA-6",
+      "outcome": "verified for assigned independent Test responsibilities",
+      "evidence": "Read-only GitHub API confirms PR4 remains draft/open/unmerged at exact head/base; push and PR CI success recorded independently. Full Handoff v2 and local sealed evidence produced. No publication, product edit, push, PR mutation, merge, operational P-B/C/D, or B1 action."
+    }
+  ],
+  "findings": [],
+  "blockers": [],
+  "reproduction": [
+    "Fixed head: PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -v",
+    "Fixed base: PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -q",
+    "python independent_cases.py FIXED_CHECKOUT independent-results.json",
+    "python verify_checkout.py FIXED_CHECKOUT FIXED_BASE checkout-results.json",
+    "examples/knowledge-delivery/README.md: prepare, explicitly authorized synthetic consumption, then fresh --verify-receipt with a new output directory",
+    "python cli_probes.py FIXED_CHECKOUT PRIVATE_INPUT_DIRECTORY cli-results.json",
+    "REPRODUCE.md gives fixed revisions, all commands, scratch file layout and external authorization boundary."
+  ],
+  "limitations": [
+    "No application code changed. Product tracked trees remain clean.",
+    "No public upload/push/commit/PR mutation/merge; candidate publication requires subsequent instruction.",
+    "In-memory adversarial cases use synthetic bytes with outer pins resealed; they do not certify a malicious remote repository. Existing Git transport regression uses synthetic local Git; actual positive fixture uses fresh HTTPS Git.",
+    "No Review, merge authorization, required-policy/queue assessment or IssueCompletion inferred.",
+    "P-A rejects cross-repository URL and commit-object delivery. A separate versioned extension is required for B1 followup; prior B1 history unchanged.",
+    "P-B/C/D periodic, asynchronous, context-generation and real consumer operations not implemented or tested here.",
+    "Source truth, article semantic quality and private-original equivalence are not certified by byte checks."
+  ],
+  "publication_state": "Unpublished minimal candidate. Original Test files preserved separately; this report and Test Handoff are new edited candidate bytes. No publication permission inferred.",
+  "fixed_upstream_sources": [
+    {
+      "local_path": "upstream/assignment-requirements.json",
+      "repository": "syuhei0519/ai-development-system",
+      "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+      "path": "evidence/phase13/pa/assignment-requirements.json",
+      "size": 2567,
+      "sha256": "7f145ee60b28e14828cf775513747d3e00ee77f3976b90903304e487ba85660c"
+    },
+    {
+      "local_path": "upstream/fixture-consumption-receipt.json",
+      "repository": "syuhei0519/ai-development-system",
+      "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+      "path": "evidence/phase13/pa/fixture-consumption-receipt.json",
+      "size": 3591,
+      "sha256": "0d0267237ab2f6cb4f5511a3df7323a684e0122a34593ff5c93a3e1c4c6ae538"
+    },
+    {
+      "local_path": "upstream/handoff.json",
+      "repository": "syuhei0519/ai-development-system",
+      "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+      "path": "evidence/phase13/pa/handoff.json",
+      "size": 8235,
+      "sha256": "abd9770e562943f4e2ed847b5889bfa15d43419f545a70b07f9cc5875ea391d4"
+    },
+    {
+      "local_path": "upstream/implementation-report.json",
+      "repository": "syuhei0519/ai-development-system",
+      "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+      "path": "evidence/phase13/pa/implementation-report.json",
+      "size": 9117,
+      "sha256": "b66153dd07d4dd587a996f0c1a4a0165db19e67a91179fe9083303ddbe0e7701"
+    },
+    {
+      "local_path": "upstream/research/assignment-requirements.json",
+      "repository": "syuhei0519/ai-development-system",
+      "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+      "path": "evidence/phase13/pa/research/assignment-requirements.json",
+      "size": 2204,
+      "sha256": "de34bda253a2ca7df0d17a039d4d710c450c984e2226b60920bae5cda3017760"
+    },
+    {
+      "local_path": "upstream/research/design.md",
+      "repository": "syuhei0519/ai-development-system",
+      "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+      "path": "evidence/phase13/pa/research/design.md",
+      "size": 36689,
+      "sha256": "3bc5071ca6ab336d17ef10fde5c5e7b6b931bc3d16d4850dca946e5766caee46"
+    },
+    {
+      "local_path": "upstream/research/handoff.json",
+      "repository": "syuhei0519/ai-development-system",
+      "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+      "path": "evidence/phase13/pa/research/handoff.json",
+      "size": 7829,
+      "sha256": "ba69683794ee6ccea5f29ba277c1a8f13adcfd9308b17fe8f86ad6e65c2398af"
+    },
+    {
+      "local_path": "upstream/research/source-inventory.json",
+      "repository": "syuhei0519/ai-development-system",
+      "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+      "path": "evidence/phase13/pa/research/source-inventory.json",
+      "size": 6159,
+      "sha256": "3b70f0a86ad864e6d8682f312a66aabe1036ffa09e3243afc8480806961dec6a"
+    },
+    {
+      "local_path": "upstream/research/verification-observations.json",
+      "repository": "syuhei0519/ai-development-system",
+      "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+      "path": "evidence/phase13/pa/research/verification-observations.json",
+      "size": 1494,
+      "sha256": "8be71756b79529a3317968ff6ec04d79ec47579e3e2f4a33f37208dd139d13b1"
+    }
+  ],
+  "package_changes": [
+    "Omit initial receipt; preserve its private original and record initial verification result here.",
+    "Omit duplicate fixture recheck receipt; its full bytes equal fixture-consumption-receipt.json.",
+    "Retain nine mandatory upstream dependency snapshots with unchanged original public bytes and fixed provenance.",
+    "Add REPRODUCE.md to make fixture/private authorization prerequisites explicit. Correct Test issue/AC source locators to upstream/assignment-requirements.json.",
+    "Keep role, status, attempt, scope, AC verbatim text and verdict unchanged."
+  ],
+  "safety_review": {
+    "reviewer": "Independent Test producer; not the later independent Review role",
+    "method": "Full-text inspection of all 21 UTF-8 candidate files, including three reproducers, every result entry, Test Handoff/report, receipts and nine public dependency snapshots; automated pattern scan after final serialization.",
+    "scan_categories": [
+      "private workspace/home absolute paths",
+      "private conversation URLs",
+      "runtime UUID/task/thread identifiers",
+      "GitHub/OpenAI/AWS token signatures",
+      "PEM private-key blocks",
+      "credential-bearing URLs and bearer values"
+    ],
+    "result": "No prohibited value detected. Public aliases, synthetic attack strings, public GitHub CI IDs, fixed hashes and non-secret receipt authorization digests are intentional.",
+    "boundaries": "No private-original equivalence claim. Public safety classification is separate from publication approval. Current authorization records and raw logs excluded."
+  }
+}

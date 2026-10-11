@@ -1,0 +1,212 @@
+{
+  "python": "3.12.14",
+  "jsonschema": "4.26.0",
+  "checks": [
+    {
+      "command": "python scripts/validate_delivery_records.py",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "command": "python scripts/validate_handoff.py examples/research-to-test/research.handoff.json examples/research-to-test/test.blocked.handoff.json examples/research-to-test/test.handoff.json examples/failed.handoff.json examples/partial-assignment.handoff.json",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "command": "python scripts/validate_knowledge.py examples/knowledge/input.json examples/knowledge/handoff.json examples/knowledge/context.json examples/knowledge-delivery/input.json examples/knowledge-delivery/handoff.json examples/knowledge-delivery/context.json",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "command": "python scripts/validate_readiness.py examples/readiness/pr-ready-issue-unverified.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z --handoff examples/readiness/manager.handoff.json",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "command": "python scripts/validate_readiness.py examples/readiness/implementation-only.json --context examples/readiness/automatic-context.json --at 2030-01-01T12:00:00Z",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "command": "python scripts/validate_readiness.py examples/readiness/postdeploy-achieved.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "command": "python scripts/consume_delivery.py",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "command": "python scripts/prepare_knowledge_fixture.py",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "command": "python scripts/validate_handoff.py",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "command": "python scripts/validate_knowledge.py",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "command": "python scripts/validate_readiness.py",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "command": "python scripts/validate_retry.py",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "check": "schema artifact-delivery-v1.1.schema.json",
+      "passed": true
+    },
+    {
+      "check": "schema artifact-delivery.schema.json",
+      "passed": true
+    },
+    {
+      "check": "schema consumption-receipt-v1.1.schema.json",
+      "passed": true
+    },
+    {
+      "check": "schema consumption-receipt.schema.json",
+      "passed": true
+    },
+    {
+      "check": "schema delivery-authorization-v1.1.schema.json",
+      "passed": true
+    },
+    {
+      "check": "schema delivery-authorization.schema.json",
+      "passed": true
+    },
+    {
+      "check": "schema handoff.schema.json",
+      "passed": true
+    },
+    {
+      "check": "schema knowledge-context.schema.json",
+      "passed": true
+    },
+    {
+      "check": "schema knowledge-handoff.schema.json",
+      "passed": true
+    },
+    {
+      "check": "schema knowledge-input.schema.json",
+      "passed": true
+    },
+    {
+      "check": "schema publication-receipt-v1.1.schema.json",
+      "passed": true
+    },
+    {
+      "check": "schema publication-receipt.schema.json",
+      "passed": true
+    },
+    {
+      "check": "schema readiness-context.schema.json",
+      "passed": true
+    },
+    {
+      "check": "schema readiness.schema.json",
+      "passed": true
+    },
+    {
+      "check": "legacy byte preservation contracts/artifact-delivery.schema.json",
+      "passed": true
+    },
+    {
+      "check": "legacy byte preservation contracts/consumption-receipt.schema.json",
+      "passed": true
+    },
+    {
+      "check": "legacy byte preservation contracts/delivery-authorization.schema.json",
+      "passed": true
+    },
+    {
+      "check": "legacy byte preservation contracts/handoff.schema.json",
+      "passed": true
+    },
+    {
+      "check": "legacy byte preservation contracts/knowledge-context.schema.json",
+      "passed": true
+    },
+    {
+      "check": "legacy byte preservation contracts/knowledge-handoff.schema.json",
+      "passed": true
+    },
+    {
+      "check": "legacy byte preservation contracts/knowledge-input.schema.json",
+      "passed": true
+    },
+    {
+      "check": "legacy byte preservation contracts/publication-receipt.schema.json",
+      "passed": true
+    },
+    {
+      "check": "legacy byte preservation contracts/readiness-context.schema.json",
+      "passed": true
+    },
+    {
+      "check": "legacy byte preservation contracts/readiness.schema.json",
+      "passed": true
+    },
+    {
+      "check": "legacy byte preservation tests/test_delivery.py",
+      "passed": true
+    },
+    {
+      "check": "legacy byte preservation tests/test_delivery_content.py",
+      "passed": true
+    },
+    {
+      "check": "legacy byte preservation tests/test_handoff.py",
+      "passed": true
+    },
+    {
+      "check": "legacy byte preservation tests/test_knowledge.py",
+      "passed": true
+    },
+    {
+      "check": "legacy byte preservation tests/test_readiness.py",
+      "passed": true
+    },
+    {
+      "check": "legacy byte preservation tests/test_readiness_binding.py",
+      "passed": true
+    },
+    {
+      "check": "legacy byte preservation tests/test_retry.py",
+      "passed": true
+    },
+    {
+      "check": "exact head",
+      "passed": true
+    },
+    {
+      "check": "product tracked clean",
+      "passed": true
+    }
+  ],
+  "count": 45,
+  "passed": 45
+}

@@ -1,0 +1,25 @@
+{
+  "document_type": "independent_test_readiness_observations",
+  "scope": "system/phase1-3/P-A",
+  "repository": "syuhei0519/ai-development-system",
+  "pr_number": 4,
+  "head_sha": "5345303db8c5208859ed741b98f119882de7a973",
+  "base_sha": "df400018057735b7cb6a9c6ea4619508f0e6ba3a",
+  "target_revision": "5345303db8c5208859ed741b98f119882de7a973",
+  "config_revision": "sha256:4d48518e83b39160ff0059788573cd4e3e46d747a6a084dfffee341121b84457",
+  "observed_at": "2026-10-11T03:11:18.745128Z",
+  "valid_until": "2026-10-12T00:00:00Z",
+  "environment": "Isolated Linux execution workspace; Python 3.12.14; jsonschema 4.26.0; fixed detached head; synthetic scratch probes; GitHub public read only.",
+  "independent_test": "pass",
+  "ci": "Two completed success runs with exact requested head in GitHub metadata; see github-observations.json. CI is separate from local independent tests.",
+  "merge_group_sha": null,
+  "merge_group_requirement": "unverified; Manager must obtain current protection/queue policy and required target evidence",
+  "merge_ready": "not assessed",
+  "remaining_gates": [
+    "Independent Review is a separate Manager-launched task.",
+    "Manager must verify current head/base/config, required checks/reviews/Ruleset/queue/authorization before merge.",
+    "Actual checkout merge revision of pull_request CI was not independently extracted from logs; exact head refers to API run metadata."
+  ],
+  "integration": "Draft PR open and not merged; no Issue Completion or final_assessment.",
+  "postmerge_deploy": "No P-A runtime/deploy claim; P-B/C/D and B1 remain outside this assignment."
+}

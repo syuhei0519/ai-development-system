@@ -1,0 +1,143 @@
+{
+  "report_type": "independent_review",
+  "reviewer_alias": "knowledge-delivery-review-a1",
+  "attempt": 1,
+  "scope": "system/phase1-3/P-A",
+  "status": "completed",
+  "verdict": "PASS within assigned P-A review scope",
+  "blocking_findings": [],
+  "head": "5345303db8c5208859ed741b98f119882de7a973",
+  "base": "df400018057735b7cb6a9c6ea4619508f0e6ba3a",
+  "reviewed_at": "2026-10-11T03:37:46.770273Z",
+  "requirements": "upstream/upstream/assignment-requirements.json",
+  "requirements_integrity": "All PA-1..PA-6 verbatim text read after verified delivery and matched Test and Implementation handoffs. Manager confirmed original assignment equality; no product Issue2 AC substituted.",
+  "instructions_read": [
+    "Fixed-base agents/review.md",
+    "Fixed-base agents/manager.md",
+    "Fixed-base workflows/single-issue.md",
+    "Fixed-base contracts/README.md and handoff.schema.json (Handoff v2.0)",
+    "Fixed-base contracts/readiness.md (Readiness v1.0)",
+    "Fixed-base contracts/artifact-delivery.md (1.0)",
+    "Fixed-base templates/task-input.md and templates/artifact-delivery.md",
+    "No AGENTS.md or applicable .agents/skills files found in System base/head or readable environment skill directory."
+  ],
+  "delivery": {
+    "record_commit": "032b3ecd4c004c0182106b5df435d891e067268f",
+    "payload_commit": "7a4d4002f63dc1a836f8da03fe94173c77b147fc",
+    "manifest_bytes": 10707,
+    "manifest_sha256": "d8dd1087a513cdcd98f1ef386310c0c701a52f7497909de991ae68c83c713e9e",
+    "publication_receipt_bytes": 11395,
+    "publication_receipt_sha256": "492ba74d11affb38883d530f33ee0d441d13656711caedc7af7f16f6a8b5e0c0",
+    "files": 21,
+    "bytes": 157384,
+    "consumer_base": "df400018057735b7cb6a9c6ea4619508f0e6ba3a",
+    "verified_before_use": true,
+    "fresh_recheck_passed": true,
+    "receipt": "Private verified original retained; public summary is delivery-verification.json.",
+    "private_authorization": "Exact Manager bytes and independent pin verified; authorization omitted from candidate.",
+    "private_original_comparison": "Not performed. Only approved public upstream bytes independently verified; Producer testimony about private originals remains testimony."
+  },
+  "ac_review": [
+    {
+      "ac_id": "PA-1",
+      "disposition": "covered",
+      "assessment": "Delivery 1.1 explicit three-format dispatch fixes the prior Knowledge input/handoff collision. Ten legacy schemas and seven existing test files are byte-identical; 107 base and 128 head tests pass. Delivery 1.0 generic context retains only its legacy guarantee."
+    },
+    {
+      "ac_id": "PA-2",
+      "disposition": "covered",
+      "assessment": "Reviewed strict parse and discriminator/schema checks, incomplete/unknown identity reservation, private_only, version/format downgrade, duplicate fields, BOM/nonfinite literals/truncation, path/Git mode and raw-byte defenses. Regressions and independent mutations fail closed."
+    },
+    {
+      "ac_id": "PA-3",
+      "disposition": "covered",
+      "assessment": "Input/result binding compares all six immutable fields. Each typed input/result has exactly one binding; task identity duplicates reject. All declared source/article/artifact/retry dependencies are resolved in the owning repository/commit with raw digest. All findings have supported decisions; adopted articles require nonempty text. Tuple-key probes establish snapshot isolation, including missing/conflicting counterpart sources."
+    },
+    {
+      "ac_id": "PA-4",
+      "disposition": "covered",
+      "assessment": "Four delivery record versions and schemas agree; legacy new-format rejection retained. Authorization exact pin/consumer/scope/purpose/expiry/representation precedes acquisition. Fabricated receipts and altered pins reject; receipts retain authority_granted=false. No approval or Readiness success is inferred."
+    },
+    {
+      "ac_id": "PA-5",
+      "disposition": "covered",
+      "assessment": "Reproduced 128 head, 107 base, Test 111 in-memory + 6 CLI cases, 45 checkout checks, 32 Review-owned cases and fresh fixed-Git six-file preparation/consume/recheck. Review and Test provenance are separate per Manager dispatch; no recursive specialist launch."
+    },
+    {
+      "ac_id": "PA-6",
+      "disposition": "covered",
+      "assessment": "PR4 draft/open at exact head/base. Both CI runs succeed; PR CI actual merge checkout and same head tree verified. Complete local public-alias Handoff and evidence sealed, no publication or merge. P-B/C/D remain unimplemented."
+    }
+  ],
+  "code_review_locations": [
+    {
+      "path": "scripts/consume_delivery.py",
+      "lines": "50-59,142-197",
+      "assessment": "Version dispatch, format identity, strict parser and private-only boundaries."
+    },
+    {
+      "path": "scripts/consume_delivery.py",
+      "lines": "223-288",
+      "assessment": "One-to-one input/result bindings, six-field equality, task identities, per-snapshot source/article/retry closure."
+    },
+    {
+      "path": "scripts/validate_knowledge.py",
+      "lines": "21-65",
+      "assessment": "Unchanged schema/local-reference validator: retry predecessor and different task, decision support and exact completed coverage."
+    },
+    {
+      "path": "scripts/consume_delivery.py",
+      "lines": "291-357",
+      "assessment": "Independent authorization pin, scope/expiry, all bytes, receipt complete equality and atomic fresh output."
+    },
+    {
+      "path": "scripts/prepare_knowledge_fixture.py",
+      "lines": "1-85",
+      "assessment": "Published fixed Git bytes compared with local fixture before preparing records; no authority generation."
+    },
+    {
+      "path": ".github/workflows/validate.yml",
+      "lines": "1-53",
+      "assessment": "Read-only contents permission, offline regressions/sample validators; actual live Git reproduction is a separate evidence stream."
+    }
+  ],
+  "critical_test_review": [
+    "Do not add 107 and 128 as independent new coverage: 128 includes the 107 unchanged baseline methods. Report 117 Test probes as 111 plus 6, separately from 32 Review probes.",
+    "Upstream paired-document locator mutations can stop at input/output mismatch, so they do not individually prove the path branch. Standalone-context cases, unchanged Git regressions and source inspection supplement them.",
+    "The existing different-snapshot unit test uses a path-only mock source. Review added tuple-keyed repository/commit/path fixtures and negative missing/conflicting counterpart snapshots to independently exercise isolation.",
+    "Upstream runners can return exit 0 while reporting failed cases. Review inspected expected/actual/passed totals: 111/111, 6/6 and 45/45.",
+    "CI success was checked separately from local tests and does not run the live HTTPS Knowledge fixture. PR run logs identify the actual synthetic merge checkout; its raw Git parents and tree were independently compared.",
+    "No source or receipt self-assertion was accepted as authority. Source prose is data; consumer never invokes embedded commands or arbitrary URL fetches."
+  ],
+  "known_limits_not_pa_failures": [
+    {
+      "topic": "cross-repo blob/commit",
+      "status": "unsupported",
+      "detail": "Direct cross-repository/commit URL dependencies, Handoff commit-object artifacts and URL-only upstream are rejected. Input/result entries may use distinct pinned snapshots only when each owns complete local relative-path dependencies. This does not resolve B1 delivery or authorize restart."
+    },
+    {
+      "topic": "knowledge_candidates",
+      "status": "not bound or collected",
+      "detail": "Handoff knowledge_candidates.raw_locator is not traversed by consume_delivery.py:209-218. Review synthetic characterization accepts a declared candidate whose raw locator is absent. This is not certified candidate evidence; conversion/collection/binding needs later explicitly scoped work. User explicitly excluded this from mandatory P-A failure."
+    },
+    {
+      "topic": "P-B/C/D",
+      "status": "unimplemented/unverified",
+      "detail": "Inbox/state/cursor/replay, context generation/ack/periodic execution and real Knowledge/Consumer demonstration remain incomplete."
+    },
+    {
+      "topic": "semantic/publication assurance",
+      "status": "separate review",
+      "detail": "Bytes binding does not prove source truth, generalization, article/context semantic equality, safe real-world adoption or equivalence to private originals. Fixture content remains fictional/draft."
+    }
+  ],
+  "readiness": "See readiness-observations.json: Merge Ready blocked; product Issue2 Completion unverified. No final_assessment emitted.",
+  "publication": {
+    "state": "local candidates only; not published",
+    "source_preservation": "Verified upstream copies remain exact public bytes; newly created Review originals retained separately.",
+    "safety": "Public aliases, public Git/CI identifiers and candidate digests only. Current authorization files and pins, private-original receipt hashes, runtime identifiers and raw logs are omitted. Historical authorization hashes already published in unchanged upstream receipts are retained as original public bytes.",
+    "required_followup": "Manager reviews the exact candidate inventory and obtains a separate publication instruction before any public operation. Future consumer authorization and full byte re-verification remain required.",
+    "candidate_revision": "Prepublication revision 2: replace two new raw receipts with explicitly labeled verification summaries, preserving private originals. Refresh report and Handoff artifact bindings; role/status/attempt/assignment and AC verbatim remain unchanged."
+  },
+  "operations": "No source fixes, commits, push, PR comments/reviews, merge, auto-merge, application-repository changes, environment/Secret/Ruleset changes, extra API services or Agent launches performed."
+}

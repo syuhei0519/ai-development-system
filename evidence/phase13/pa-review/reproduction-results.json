@@ -1,0 +1,1438 @@
+{
+  "producer": "knowledge-delivery-review-a1",
+  "observed_at": "2026-10-11T03:37:46.770273Z",
+  "head": "5345303db8c5208859ed741b98f119882de7a973",
+  "base": "df400018057735b7cb6a9c6ea4619508f0e6ba3a",
+  "environment": {
+    "python": "3.12.14",
+    "jsonschema": "4.26.0",
+    "system": "Linux; detached isolated checkouts"
+  },
+  "unittest": [
+    {
+      "revision": "5345303db8c5208859ed741b98f119882de7a973",
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -q",
+      "count": 128,
+      "exit_code": 0,
+      "result": "OK"
+    },
+    {
+      "revision": "df400018057735b7cb6a9c6ea4619508f0e6ba3a",
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -q",
+      "count": 107,
+      "exit_code": 0,
+      "result": "OK"
+    }
+  ],
+  "test_inmemory_reproduction": {
+    "count": 111,
+    "passed": 111,
+    "results": [
+      {
+        "id": "normal-full",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true,
+        "detail": "accepted",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case normal-full"
+      },
+      {
+        "id": "attempt-type-input.json-True",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid Knowledge v1.0",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case attempt-type-input.json-True"
+      },
+      {
+        "id": "attempt-type-input.json-False",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid Knowledge v1.0",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case attempt-type-input.json-False"
+      },
+      {
+        "id": "attempt-type-input.json-'1'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid Knowledge v1.0",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case attempt-type-input.json-'1'"
+      },
+      {
+        "id": "attempt-type-input.json-None",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid Knowledge v1.0",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case attempt-type-input.json-None"
+      },
+      {
+        "id": "immutable-input.json-assignment-scope",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case immutable-input.json-assignment-scope"
+      },
+      {
+        "id": "immutable-input.json-raw_findings-0-observation",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case immutable-input.json-raw_findings-0-observation"
+      },
+      {
+        "id": "immutable-input.json-knowledge_references-0-applicability",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case immutable-input.json-knowledge_references-0-applicability"
+      },
+      {
+        "id": "immutable-input.json-task_id",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case immutable-input.json-task_id"
+      },
+      {
+        "id": "attempt-type-handoff.json-True",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid Knowledge v1.0",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case attempt-type-handoff.json-True"
+      },
+      {
+        "id": "attempt-type-handoff.json-False",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid Knowledge v1.0",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case attempt-type-handoff.json-False"
+      },
+      {
+        "id": "attempt-type-handoff.json-'1'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid Knowledge v1.0",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case attempt-type-handoff.json-'1'"
+      },
+      {
+        "id": "attempt-type-handoff.json-None",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid Knowledge v1.0",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case attempt-type-handoff.json-None"
+      },
+      {
+        "id": "immutable-handoff.json-assignment-scope",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case immutable-handoff.json-assignment-scope"
+      },
+      {
+        "id": "immutable-handoff.json-raw_findings-0-observation",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case immutable-handoff.json-raw_findings-0-observation"
+      },
+      {
+        "id": "immutable-handoff.json-knowledge_references-0-applicability",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case immutable-handoff.json-knowledge_references-0-applicability"
+      },
+      {
+        "id": "immutable-handoff.json-task_id",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case immutable-handoff.json-task_id"
+      },
+      {
+        "id": "dispatch-input.json-json",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge must use explicit Knowledge format",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case dispatch-input.json-json"
+      },
+      {
+        "id": "dispatch-input.json-text",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: JSON content must not be typed text",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case dispatch-input.json-text"
+      },
+      {
+        "id": "dispatch-input.json-handoff-v2",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid Handoff v2.0",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case dispatch-input.json-handoff-v2"
+      },
+      {
+        "id": "dispatch-input.json-knowledge-input-v9",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid artifact-delivery-v1.1 contract",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case dispatch-input.json-knowledge-input-v9"
+      },
+      {
+        "id": "identity-input.json-document_type",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge format/document_type mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case identity-input.json-document_type"
+      },
+      {
+        "id": "identity-input.json-schema_version",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid Knowledge v1.0",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case identity-input.json-schema_version"
+      },
+      {
+        "id": "identity-input.json-publication",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: private document forbidden",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case identity-input.json-publication"
+      },
+      {
+        "id": "parse-input.json-duplicate",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: duplicate JSON key",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case parse-input.json-duplicate"
+      },
+      {
+        "id": "parse-input.json-nan",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: non-finite JSON number",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case parse-input.json-nan"
+      },
+      {
+        "id": "parse-input.json-infinity",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: non-finite JSON number",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case parse-input.json-infinity"
+      },
+      {
+        "id": "parse-input.json-bom",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: UTF-8 BOM is not supported",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case parse-input.json-bom"
+      },
+      {
+        "id": "parse-input.json-truncated",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid JSON content",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case parse-input.json-truncated"
+      },
+      {
+        "id": "parse-input.json-scalar",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge format/document_type mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case parse-input.json-scalar"
+      },
+      {
+        "id": "locator-input.json-'../source-1.md'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case locator-input.json-'../source-1.md'"
+      },
+      {
+        "id": "locator-input.json-'https://github.com/example/repo/blob/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/source.md'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case locator-input.json-'https://github.com/example/repo/blob/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/source.md'"
+      },
+      {
+        "id": "locator-input.json-'a%2fb'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case locator-input.json-'a%2fb'"
+      },
+      {
+        "id": "locator-input.json-'a/.git/x'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case locator-input.json-'a/.git/x'"
+      },
+      {
+        "id": "locator-input.json-'a//b'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case locator-input.json-'a//b'"
+      },
+      {
+        "id": "locator-input.json-'a\\n--help'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case locator-input.json-'a\\n--help'"
+      },
+      {
+        "id": "locator-input.json-'missing.md'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case locator-input.json-'missing.md'"
+      },
+      {
+        "id": "dispatch-handoff.json-json",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge must use explicit Knowledge format",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case dispatch-handoff.json-json"
+      },
+      {
+        "id": "dispatch-handoff.json-text",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: JSON content must not be typed text",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case dispatch-handoff.json-text"
+      },
+      {
+        "id": "dispatch-handoff.json-handoff-v2",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid Handoff v2.0",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case dispatch-handoff.json-handoff-v2"
+      },
+      {
+        "id": "dispatch-handoff.json-knowledge-input-v9",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid artifact-delivery-v1.1 contract",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case dispatch-handoff.json-knowledge-input-v9"
+      },
+      {
+        "id": "identity-handoff.json-document_type",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge format/document_type mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case identity-handoff.json-document_type"
+      },
+      {
+        "id": "identity-handoff.json-schema_version",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid Knowledge v1.0",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case identity-handoff.json-schema_version"
+      },
+      {
+        "id": "identity-handoff.json-publication",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: private document forbidden",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case identity-handoff.json-publication"
+      },
+      {
+        "id": "parse-handoff.json-duplicate",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: duplicate JSON key",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case parse-handoff.json-duplicate"
+      },
+      {
+        "id": "parse-handoff.json-nan",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: non-finite JSON number",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case parse-handoff.json-nan"
+      },
+      {
+        "id": "parse-handoff.json-infinity",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: non-finite JSON number",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case parse-handoff.json-infinity"
+      },
+      {
+        "id": "parse-handoff.json-bom",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: UTF-8 BOM is not supported",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case parse-handoff.json-bom"
+      },
+      {
+        "id": "parse-handoff.json-truncated",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid JSON content",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case parse-handoff.json-truncated"
+      },
+      {
+        "id": "parse-handoff.json-scalar",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge format/document_type mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case parse-handoff.json-scalar"
+      },
+      {
+        "id": "locator-handoff.json-'../source-1.md'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case locator-handoff.json-'../source-1.md'"
+      },
+      {
+        "id": "locator-handoff.json-'https://github.com/example/repo/blob/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/source.md'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case locator-handoff.json-'https://github.com/example/repo/blob/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/source.md'"
+      },
+      {
+        "id": "locator-handoff.json-'a%2fb'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case locator-handoff.json-'a%2fb'"
+      },
+      {
+        "id": "locator-handoff.json-'a/.git/x'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case locator-handoff.json-'a/.git/x'"
+      },
+      {
+        "id": "locator-handoff.json-'a//b'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case locator-handoff.json-'a//b'"
+      },
+      {
+        "id": "locator-handoff.json-'a\\n--help'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case locator-handoff.json-'a\\n--help'"
+      },
+      {
+        "id": "locator-handoff.json-'missing.md'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case locator-handoff.json-'missing.md'"
+      },
+      {
+        "id": "dispatch-context.json-json",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge must use explicit Knowledge format",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case dispatch-context.json-json"
+      },
+      {
+        "id": "dispatch-context.json-text",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: JSON content must not be typed text",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case dispatch-context.json-text"
+      },
+      {
+        "id": "dispatch-context.json-handoff-v2",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid Handoff v2.0",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case dispatch-context.json-handoff-v2"
+      },
+      {
+        "id": "dispatch-context.json-knowledge-input-v9",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid artifact-delivery-v1.1 contract",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case dispatch-context.json-knowledge-input-v9"
+      },
+      {
+        "id": "identity-context.json-document_type",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge format/document_type mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case identity-context.json-document_type"
+      },
+      {
+        "id": "identity-context.json-schema_version",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid Knowledge v1.0",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case identity-context.json-schema_version"
+      },
+      {
+        "id": "identity-context.json-publication",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: private document forbidden",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case identity-context.json-publication"
+      },
+      {
+        "id": "parse-context.json-duplicate",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: duplicate JSON key",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case parse-context.json-duplicate"
+      },
+      {
+        "id": "parse-context.json-nan",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: non-finite JSON number",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case parse-context.json-nan"
+      },
+      {
+        "id": "parse-context.json-infinity",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: non-finite JSON number",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case parse-context.json-infinity"
+      },
+      {
+        "id": "parse-context.json-bom",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: UTF-8 BOM is not supported",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case parse-context.json-bom"
+      },
+      {
+        "id": "parse-context.json-truncated",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid JSON content",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case parse-context.json-truncated"
+      },
+      {
+        "id": "parse-context.json-scalar",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge format/document_type mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case parse-context.json-scalar"
+      },
+      {
+        "id": "locator-context.json-'../source-1.md'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: unsafe repository path",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case locator-context.json-'../source-1.md'"
+      },
+      {
+        "id": "locator-context.json-'https://github.com/example/repo/blob/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/source.md'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: unsafe repository path",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case locator-context.json-'https://github.com/example/repo/blob/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/source.md'"
+      },
+      {
+        "id": "locator-context.json-'a%2fb'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: unsafe repository path",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case locator-context.json-'a%2fb'"
+      },
+      {
+        "id": "locator-context.json-'a/.git/x'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: unsafe repository path",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case locator-context.json-'a/.git/x'"
+      },
+      {
+        "id": "locator-context.json-'a//b'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: unsafe repository path",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case locator-context.json-'a//b'"
+      },
+      {
+        "id": "locator-context.json-'a\\n--help'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: unsafe repository path",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case locator-context.json-'a\\n--help'"
+      },
+      {
+        "id": "locator-context.json-'missing.md'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge referenced bytes missing from bundle",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case locator-context.json-'missing.md'"
+      },
+      {
+        "id": "raw-order",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case raw-order"
+      },
+      {
+        "id": "reference-order",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge input/handoff mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case reference-order"
+      },
+      {
+        "id": "unlisted-input.json",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge binding reference mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case unlisted-input.json"
+      },
+      {
+        "id": "unlisted-source-1.md",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge referenced bytes missing from bundle",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case unlisted-source-1.md"
+      },
+      {
+        "id": "unlisted-source-2.md",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge referenced bytes missing from bundle",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case unlisted-source-2.md"
+      },
+      {
+        "id": "unlisted-article.md",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge referenced bytes missing from bundle",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case unlisted-article.md"
+      },
+      {
+        "id": "source-resealed-tamper",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge binding digest mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case source-resealed-tamper"
+      },
+      {
+        "id": "context-revision",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge binding digest mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case context-revision"
+      },
+      {
+        "id": "coverage",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid Knowledge v1.0",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case coverage"
+      },
+      {
+        "id": "adopted-no-article",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid Knowledge v1.0",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case adopted-no-article"
+      },
+      {
+        "id": "receipt-authority-0",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid consumption-receipt-v1.1 contract",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case receipt-authority-0"
+      },
+      {
+        "id": "receipt-authority-1",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid consumption-receipt-v1.1 contract",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case receipt-authority-1"
+      },
+      {
+        "id": "receipt-authority-True",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid consumption-receipt-v1.1 contract",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case receipt-authority-True"
+      },
+      {
+        "id": "receipt-authority-None",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid consumption-receipt-v1.1 contract",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case receipt-authority-None"
+      },
+      {
+        "id": "approval-consumer",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: authorization scope mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case approval-consumer"
+      },
+      {
+        "id": "approval-scope",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: authorization scope mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case approval-scope"
+      },
+      {
+        "id": "approval-purpose",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: authorization scope mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case approval-purpose"
+      },
+      {
+        "id": "approval-pin",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: untrusted authorization bytes",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case approval-pin"
+      },
+      {
+        "id": "expiry-2026-10-11T00:00:00Z",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: authorization expired or timezone missing",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case expiry-2026-10-11T00:00:00Z"
+      },
+      {
+        "id": "expiry-2020-01-01T00:00:00Z",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: authorization expired or timezone missing",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case expiry-2020-01-01T00:00:00Z"
+      },
+      {
+        "id": "expiry-2030-01-01",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: authorization expired or timezone missing",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case expiry-2030-01-01"
+      },
+      {
+        "id": "approval-pending",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Consumer use is not approved",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case approval-pending"
+      },
+      {
+        "id": "authorization-old-version",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: authorization/manifest version mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case authorization-old-version"
+      },
+      {
+        "id": "publication-old-version",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid publication-receipt contract",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case publication-old-version"
+      },
+      {
+        "id": "manifest-downgrade",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid artifact-delivery contract",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case manifest-downgrade"
+      },
+      {
+        "id": "receipt-scope-tamper",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Consumption Receipt mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case receipt-scope-tamper"
+      },
+      {
+        "id": "publication-artifact-missing",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: publication receipt mismatch",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case publication-artifact-missing"
+      },
+      {
+        "id": "duplicate-binding",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid artifact-delivery-v1.1 contract",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case duplicate-binding"
+      },
+      {
+        "id": "no-binding",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: unbound Knowledge input/handoff",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case no-binding"
+      },
+      {
+        "id": "whitespace-article-resealed",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: Knowledge article requires nonempty text bytes",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case whitespace-article-resealed"
+      },
+      {
+        "id": "normal-deferred",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true,
+        "detail": "accepted",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case normal-deferred"
+      },
+      {
+        "id": "normal-rejected",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true,
+        "detail": "accepted",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case normal-rejected"
+      },
+      {
+        "id": "unsupported-commit-url",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: unsafe repository path",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case unsupported-commit-url"
+      },
+      {
+        "id": "unsupported-cross-repo-upstream-url",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: unsafe repository path",
+        "reproducer": "python independent_cases.py FIXED_CHECKOUT OUTPUT.json; case unsupported-cross-repo-upstream-url"
+      }
+    ]
+  },
+  "test_cli_reproduction": {
+    "count": 6,
+    "passed": 6,
+    "results": [
+      {
+        "id": "wrong-consumer",
+        "expected": "exit1/no-output/no-traceback",
+        "actual_exit": 1,
+        "passed": true
+      },
+      {
+        "id": "wrong-purpose",
+        "expected": "exit1/no-output/no-traceback",
+        "actual_exit": 1,
+        "passed": true
+      },
+      {
+        "id": "wrong-pin",
+        "expected": "exit1/no-output/no-traceback",
+        "actual_exit": 1,
+        "passed": true
+      },
+      {
+        "id": "receipt-false-vs-zero",
+        "expected": "exit1/no-output",
+        "actual_exit": 1,
+        "passed": true
+      },
+      {
+        "id": "local-symlink-policy",
+        "expected": "exit1/no-output",
+        "actual_exit": 1,
+        "passed": true
+      },
+      {
+        "id": "fresh-fetch-not-old-output-inspection",
+        "expected": "exit0/fresh-original-bytes",
+        "actual_exit": 0,
+        "passed": true
+      }
+    ]
+  },
+  "checkout_reproduction": {
+    "python": "3.12.14",
+    "jsonschema": "4.26.0",
+    "checks": [
+      {
+        "command": "python scripts/validate_delivery_records.py",
+        "expected": 0,
+        "actual": 0,
+        "passed": true
+      },
+      {
+        "command": "python scripts/validate_handoff.py examples/research-to-test/research.handoff.json examples/research-to-test/test.blocked.handoff.json examples/research-to-test/test.handoff.json examples/failed.handoff.json examples/partial-assignment.handoff.json",
+        "expected": 0,
+        "actual": 0,
+        "passed": true
+      },
+      {
+        "command": "python scripts/validate_knowledge.py examples/knowledge/input.json examples/knowledge/handoff.json examples/knowledge/context.json examples/knowledge-delivery/input.json examples/knowledge-delivery/handoff.json examples/knowledge-delivery/context.json",
+        "expected": 0,
+        "actual": 0,
+        "passed": true
+      },
+      {
+        "command": "python scripts/validate_readiness.py examples/readiness/pr-ready-issue-unverified.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z --handoff examples/readiness/manager.handoff.json",
+        "expected": 0,
+        "actual": 0,
+        "passed": true
+      },
+      {
+        "command": "python scripts/validate_readiness.py examples/readiness/implementation-only.json --context examples/readiness/automatic-context.json --at 2030-01-01T12:00:00Z",
+        "expected": 0,
+        "actual": 0,
+        "passed": true
+      },
+      {
+        "command": "python scripts/validate_readiness.py examples/readiness/postdeploy-achieved.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+        "expected": 0,
+        "actual": 0,
+        "passed": true
+      },
+      {
+        "command": "python scripts/consume_delivery.py",
+        "expected": 2,
+        "actual": 2,
+        "passed": true
+      },
+      {
+        "command": "python scripts/prepare_knowledge_fixture.py",
+        "expected": 2,
+        "actual": 2,
+        "passed": true
+      },
+      {
+        "command": "python scripts/validate_handoff.py",
+        "expected": 2,
+        "actual": 2,
+        "passed": true
+      },
+      {
+        "command": "python scripts/validate_knowledge.py",
+        "expected": 2,
+        "actual": 2,
+        "passed": true
+      },
+      {
+        "command": "python scripts/validate_readiness.py",
+        "expected": 2,
+        "actual": 2,
+        "passed": true
+      },
+      {
+        "command": "python scripts/validate_retry.py",
+        "expected": 2,
+        "actual": 2,
+        "passed": true
+      },
+      {
+        "check": "schema artifact-delivery-v1.1.schema.json",
+        "passed": true
+      },
+      {
+        "check": "schema artifact-delivery.schema.json",
+        "passed": true
+      },
+      {
+        "check": "schema consumption-receipt-v1.1.schema.json",
+        "passed": true
+      },
+      {
+        "check": "schema consumption-receipt.schema.json",
+        "passed": true
+      },
+      {
+        "check": "schema delivery-authorization-v1.1.schema.json",
+        "passed": true
+      },
+      {
+        "check": "schema delivery-authorization.schema.json",
+        "passed": true
+      },
+      {
+        "check": "schema handoff.schema.json",
+        "passed": true
+      },
+      {
+        "check": "schema knowledge-context.schema.json",
+        "passed": true
+      },
+      {
+        "check": "schema knowledge-handoff.schema.json",
+        "passed": true
+      },
+      {
+        "check": "schema knowledge-input.schema.json",
+        "passed": true
+      },
+      {
+        "check": "schema publication-receipt-v1.1.schema.json",
+        "passed": true
+      },
+      {
+        "check": "schema publication-receipt.schema.json",
+        "passed": true
+      },
+      {
+        "check": "schema readiness-context.schema.json",
+        "passed": true
+      },
+      {
+        "check": "schema readiness.schema.json",
+        "passed": true
+      },
+      {
+        "check": "legacy byte preservation contracts/artifact-delivery.schema.json",
+        "passed": true
+      },
+      {
+        "check": "legacy byte preservation contracts/consumption-receipt.schema.json",
+        "passed": true
+      },
+      {
+        "check": "legacy byte preservation contracts/delivery-authorization.schema.json",
+        "passed": true
+      },
+      {
+        "check": "legacy byte preservation contracts/handoff.schema.json",
+        "passed": true
+      },
+      {
+        "check": "legacy byte preservation contracts/knowledge-context.schema.json",
+        "passed": true
+      },
+      {
+        "check": "legacy byte preservation contracts/knowledge-handoff.schema.json",
+        "passed": true
+      },
+      {
+        "check": "legacy byte preservation contracts/knowledge-input.schema.json",
+        "passed": true
+      },
+      {
+        "check": "legacy byte preservation contracts/publication-receipt.schema.json",
+        "passed": true
+      },
+      {
+        "check": "legacy byte preservation contracts/readiness-context.schema.json",
+        "passed": true
+      },
+      {
+        "check": "legacy byte preservation contracts/readiness.schema.json",
+        "passed": true
+      },
+      {
+        "check": "legacy byte preservation tests/test_delivery.py",
+        "passed": true
+      },
+      {
+        "check": "legacy byte preservation tests/test_delivery_content.py",
+        "passed": true
+      },
+      {
+        "check": "legacy byte preservation tests/test_handoff.py",
+        "passed": true
+      },
+      {
+        "check": "legacy byte preservation tests/test_knowledge.py",
+        "passed": true
+      },
+      {
+        "check": "legacy byte preservation tests/test_readiness.py",
+        "passed": true
+      },
+      {
+        "check": "legacy byte preservation tests/test_readiness_binding.py",
+        "passed": true
+      },
+      {
+        "check": "legacy byte preservation tests/test_retry.py",
+        "passed": true
+      },
+      {
+        "check": "exact head",
+        "passed": true
+      },
+      {
+        "check": "product tracked clean",
+        "passed": true
+      }
+    ],
+    "count": 45,
+    "passed": 45
+  },
+  "review_owned_probes": {
+    "producer": "knowledge-delivery-review-a1",
+    "synthetic": true,
+    "head": "5345303db8c5208859ed741b98f119882de7a973",
+    "count": 32,
+    "passed": 32,
+    "results": [
+      {
+        "id": "control-complete",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true,
+        "detail": "accepted"
+      },
+      {
+        "id": "reserved-discriminator-'knowledge_future'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Knowledge must use explicit Knowledge format"
+      },
+      {
+        "id": "reserved-discriminator-'knowledge'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Knowledge must use explicit Knowledge format"
+      },
+      {
+        "id": "reserved-discriminator-'knowledge_context_v2'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Knowledge must use explicit Knowledge format"
+      },
+      {
+        "id": "reserved-discriminator-'knowledge_input\\x00'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Knowledge must use explicit Knowledge format"
+      },
+      {
+        "id": "wrong-format-handoff.json-knowledge-input-v1",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Knowledge format/document_type mismatch"
+      },
+      {
+        "id": "wrong-format-context.json-knowledge-input-v1",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Knowledge format/document_type mismatch"
+      },
+      {
+        "id": "wrong-format-input.json-knowledge-handoff-v1",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Knowledge format/document_type mismatch"
+      },
+      {
+        "id": "wrong-format-context.json-knowledge-handoff-v1",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Knowledge format/document_type mismatch"
+      },
+      {
+        "id": "wrong-format-input.json-knowledge-context-v1",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Knowledge format/document_type mismatch"
+      },
+      {
+        "id": "wrong-format-handoff.json-knowledge-context-v1",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Knowledge format/document_type mismatch"
+      },
+      {
+        "id": "partial-blocked-still-requires-sources",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Knowledge referenced bytes missing from bundle"
+      },
+      {
+        "id": "partial-failed-still-requires-sources",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Knowledge referenced bytes missing from bundle"
+      },
+      {
+        "id": "distinct-snapshot-pair-with-complete-closure",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true,
+        "detail": "accepted"
+      },
+      {
+        "id": "distinct-snapshot-cannot-borrow-source-from-other-snapshot",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Knowledge referenced bytes missing from bundle"
+      },
+      {
+        "id": "distinct-snapshot-source-digest-mismatch",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Knowledge binding digest mismatch"
+      },
+      {
+        "id": "forged-receipt-consumer",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Consumption Receipt mismatch"
+      },
+      {
+        "id": "forged-receipt-scope",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Consumption Receipt mismatch"
+      },
+      {
+        "id": "forged-receipt-purpose",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Consumption Receipt mismatch"
+      },
+      {
+        "id": "forged-receipt-authorization_sha256",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Consumption Receipt mismatch"
+      },
+      {
+        "id": "forged-receipt-manifest_sha256",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Consumption Receipt mismatch"
+      },
+      {
+        "id": "forged-receipt-publication_receipt_sha256",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Consumption Receipt mismatch"
+      },
+      {
+        "id": "forged-receipt-schema_version",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "invalid consumption-receipt contract"
+      },
+      {
+        "id": "forged-receipt-verification",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "invalid consumption-receipt-v1.1 contract"
+      },
+      {
+        "id": "forged-receipt-dropped-entry",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Consumption Receipt mismatch"
+      },
+      {
+        "id": "representation-not-approved",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "representation not approved"
+      },
+      {
+        "id": "expiry-boundary-equal-now",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "authorization expired or timezone missing"
+      },
+      {
+        "id": "expiry-missing-timezone",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "authorization expired or timezone missing"
+      },
+      {
+        "id": "approval-purpose-mismatch",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "authorization scope mismatch"
+      },
+      {
+        "id": "transport-extra-byte-after-seal",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "raw size/hash mismatch"
+      },
+      {
+        "id": "binding-cannot-reference-undeclared-snapshot",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "Knowledge binding reference mismatch"
+      },
+      {
+        "id": "known-limit-knowledge-candidate-raw-locator-is-not-bound",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true,
+        "detail": "accepted"
+      }
+    ],
+    "limitation": "In-memory synthetic transport with explicit resealing; real positive HTTPS Git verified separately."
+  },
+  "live_git": {
+    "initial_delivery_files": 21,
+    "initial_delivery_bytes": 157384,
+    "initial_base_consumer_exit": 0,
+    "initial_fresh_receipt_recheck_exit": 0,
+    "initial_receipts_byte_equal": true,
+    "fixture_files": 6,
+    "prepare_exit": 0,
+    "consume_exit": 0,
+    "fresh_receipt_recheck_exit": 0,
+    "fixture_receipts_byte_equal": true,
+    "authority_granted": false,
+    "authorization_boundary": "Initial bundle used the exact Manager-provided independent pin. Fixture reproduction recorded the current explicit source-read/synthetic-test permission in a separate private authorization; historical receipts were never authority. The unchanged Test CLI script requires its test alias, used only for this synthetic reproduction, not to impersonate the previous producer."
+  },
+  "reproduce": [
+    "Use detached fixed HEAD_DIR and BASE_DIR. Keep generated output outside both checkouts.",
+    "At each checkout run the unittest command above.",
+    "python upstream/independent_cases.py HEAD_DIR NEW_RESULTS.json",
+    "python upstream/verify_checkout.py HEAD_DIR BASE_DIR NEW_CHECKOUT_RESULTS.json",
+    "Follow upstream/REPRODUCE.md and fixed-head examples/knowledge-delivery/README.md for freshly fetched fixture records and a separate currently authorized private policy. Do not reuse a receipt as authority.",
+    "python upstream/cli_probes.py HEAD_DIR PRIVATE_FIXTURE_DIR NEW_CLI_RESULTS.json; it expects the documented test consumer alias and temporarily corrupts/restores only the synthetic prior output.",
+    "python review_probes.py HEAD_DIR NEW_REVIEW_RESULTS.json; expected 32/32, including one explicit knowledge_candidates limit characterization.",
+    "Inspect every expected/actual result: the upstream in-memory and checkout runners do not themselves fail the process for every failed assertion."
+  ],
+  "limits": [
+    "In-memory mutation probes deliberately reseal synthetic outer records; they are semantic tests, not approval of hostile remote repositories.",
+    "Git symlink/gitlink and ancestor checks are exercised by the unchanged regression suite against synthetic local Git. The positive fixture uses actual fresh HTTPS Git.",
+    "Fresh receipt recheck validates newly fetched output, not previously saved output; CLI probe independently confirmed this distinction."
+  ]
+}

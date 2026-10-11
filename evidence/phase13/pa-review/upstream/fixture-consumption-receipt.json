@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.1",
+  "document_type": "consumption_receipt",
+  "manifest_sha256": "9eb49a44b370b5736a982411809e2b86cf1b2ef76cb3da3e07748e1a61a8d8dc",
+  "authorization_sha256": "fe97d5eb481ae7bc257ad00f0dfaf3f5b93dd6f346810f6f11abaf2b7910c1c1",
+  "publication_receipt_sha256": "7471f913d1887b93feccf8d12871a84beaf4c26911e68a05eb4c2d2092209bc2",
+  "consumer": "knowledge-delivery-test-a1",
+  "scope": "system/phase1-3/P-A",
+  "purpose": "contract-review",
+  "artifacts": [
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "5345303db8c5208859ed741b98f119882de7a973",
+        "path": "examples/knowledge-delivery/input.json",
+        "size": 2556,
+        "sha256": "c2d7ffa618389f82b3e369cc526b655c536b83f70e9ab554a254eaea42105d98"
+      },
+      "representation": "original",
+      "format": "knowledge-input-v1",
+      "public_classification": "synthetic_sample",
+      "source_alias": "SYNTHETIC-KNOWLEDGE-DELIVERY"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "5345303db8c5208859ed741b98f119882de7a973",
+        "path": "examples/knowledge-delivery/handoff.json",
+        "size": 3851,
+        "sha256": "52a8e878011f48dcc73fb0ae6587e0ae47f5f01571c28d00823509a61e3cbbed"
+      },
+      "representation": "original",
+      "format": "knowledge-handoff-v1",
+      "public_classification": "synthetic_sample",
+      "source_alias": "SYNTHETIC-KNOWLEDGE-DELIVERY"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "5345303db8c5208859ed741b98f119882de7a973",
+        "path": "examples/knowledge-delivery/context.json",
+        "size": 982,
+        "sha256": "ba97316b3569d87f7ce3ec8345dbe11e3711b291705a30f018cc76b180e48897"
+      },
+      "representation": "original",
+      "format": "knowledge-context-v1",
+      "public_classification": "synthetic_sample",
+      "source_alias": "SYNTHETIC-KNOWLEDGE-DELIVERY"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "5345303db8c5208859ed741b98f119882de7a973",
+        "path": "examples/knowledge-delivery/article.md",
+        "size": 1599,
+        "sha256": "4252b7f4d71cede5e78b9e540b0e9440c4cdaa6e36ca5afdc9374f4978e3fb72"
+      },
+      "representation": "original",
+      "format": "text",
+      "public_classification": "synthetic_sample",
+      "source_alias": "SYNTHETIC-KNOWLEDGE-DELIVERY"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "5345303db8c5208859ed741b98f119882de7a973",
+        "path": "examples/knowledge-delivery/source-1.md",
+        "size": 176,
+        "sha256": "63e7f46bea8e25dddc6016e99a5234895f58b6f25c6fe3a8fc9981117d3cce3f"
+      },
+      "representation": "original",
+      "format": "text",
+      "public_classification": "synthetic_sample",
+      "source_alias": "SYNTHETIC-KNOWLEDGE-DELIVERY"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "5345303db8c5208859ed741b98f119882de7a973",
+        "path": "examples/knowledge-delivery/source-2.md",
+        "size": 176,
+        "sha256": "7455b6565f9ac4801a6aa19dc5923c81889f743e76d7a001b237c73fe5717b39"
+      },
+      "representation": "original",
+      "format": "text",
+      "public_classification": "synthetic_sample",
+      "source_alias": "SYNTHETIC-KNOWLEDGE-DELIVERY"
+    }
+  ],
+  "verification": "full-raw-bytes-size-sha256-json-handoff-knowledge-bindings",
+  "authority_granted": false
+}

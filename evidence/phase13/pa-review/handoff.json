@@ -1,0 +1,211 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "SYSTEM-PHASE13-PA",
+    "source": "upstream/upstream/assignment-requirements.json",
+    "title": "System Phase1-3 P-A: Knowledge typed delivery and fixed-byte binding engineering assignment",
+    "acceptance_criteria": [
+      {
+        "id": "PA-1",
+        "verbatim": "現行Knowledge input/handoffがHandoffv2予約型検出と衝突し配送不可な問題を解消。ArtifactDeliveryの明示minor version(推奨1.1)でknowledge-input-v1/knowledge-handoff-v1/knowledge-context-v1を導入。旧Delivery1.0/旧Handoff2.0/Knowledge1.0/Readiness1.0の意味・既存正常系を維持。",
+        "source": "upstream/upstream/assignment-requirements.json"
+      },
+      {
+        "id": "PA-2",
+        "verbatim": "format/version/document_type/identity dispatchを厳格検証。genericJSON/text/Handoffへの降格偽装、未知/欠損/重複型、private_only、JSON重複/NaN/BOM/切詰め、path/URL/symlink/gitlink等既存防御を維持。",
+        "source": "upstream/upstream/assignment-requirements.json"
+      },
+      {
+        "id": "PA-3",
+        "verbatim": "Knowledgeinput↔handoff間assignment/raw_findings/knowledge_references/task_id/attempt/retry_ofの一致、全findingの判断、adopted記事実体、source/context/articleの固定bytes/digest/locatorを機械照合。自由locatorだけを存在証明とせず全必要実体をbundleに含めfailclosed。既存schemaに無断追加fieldを押し込まない。引用された内容をAgentへの命令にしない。",
+        "source": "upstream/upstream/assignment-requirements.json"
+      },
+      {
+        "id": "PA-4",
+        "verbatim": "manifest/publication/consumption/authorization schema版とCLI・docs・samplesを整合。承認scope/consumer/purpose/pinとreceiptの無権限性維持。旧版で新formatを静かに通さない。Readiness成功やIssueACに波及しない。",
+        "source": "upstream/upstream/assignment-requirements.json"
+      },
+      {
+        "id": "PA-5",
+        "verbatim": "正常/異常回帰tests、旧107tests全成功、実固定GitのKnowledgefixture配送を独立Testが再現できる手順。データは公開済みexamplesまたは明示synthetic。Test/Reviewは別CloudでManager起動。",
+        "source": "upstream/upstream/assignment-requirements.json"
+      },
+      {
+        "id": "PA-6",
+        "verbatim": "公開安全なコード/契約/文書/fixturesのDraftPR、固定head/CI/消費receipt/完全Handoff/検証証跡を出す。実運用非同期/周期成功はP-B/C/D未実施として残す。",
+        "source": "upstream/upstream/assignment-requirements.json"
+      }
+    ]
+  },
+  "role": "review",
+  "task_id": "knowledge-delivery-review-a1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "knowledge-delivery-test-a1",
+      "attempt": 1,
+      "handoff_locator": "upstream/handoff.json",
+      "revision": "sha256:9a93de9ee306b4c9fa225d14055e73ae2bf0a4234a9c0d37ef8ee34fdf6c8186",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Independent P-A Review PASS at fixed head; no blocking finding. Reproduced 128 head/107 base methods, Test 117 probes, 45 checkout checks, and 32 Review cases. Merge Ready blocked, Issue2 Completion unverified. Public alias is not a runtime identity.",
+  "artifacts": [
+    {
+      "id": "review-report",
+      "kind": "review",
+      "locator": "review-report.json",
+      "revision": "sha256:ed0ca983fae9c0615b3153d5736a5a0341eba0a9b0aa8a61f2ca6bbb1f211a93",
+      "summary": "review-report.json"
+    },
+    {
+      "id": "readiness-observations",
+      "kind": "other",
+      "locator": "readiness-observations.json",
+      "revision": "sha256:ac837c0d1507fb9d6372b1a3bbb314c5aa6a0b50a5f60e1b3388047899e653db",
+      "summary": "readiness-observations.json"
+    },
+    {
+      "id": "reproduction-results",
+      "kind": "test-report",
+      "locator": "reproduction-results.json",
+      "revision": "sha256:5662710ee9e4304539fff71633e7856074727ea35cfae077015e02924fc82165",
+      "summary": "reproduction-results.json"
+    },
+    {
+      "id": "review_probes",
+      "kind": "other",
+      "locator": "review_probes.py",
+      "revision": "sha256:12e044ec7f2fa62770b2d6afc8a5c1241cbef4b4517f13b1c03f9ee95156215b",
+      "summary": "review_probes.py"
+    },
+    {
+      "id": "consumption-receipt",
+      "kind": "other",
+      "locator": "delivery-verification.json",
+      "revision": "sha256:ce75fe0db77630bd5ec26d017ea9b4327868cc5d780345d07218eca1e44d4623",
+      "summary": "delivery-verification.json"
+    },
+    {
+      "id": "fixture-consumption-receipt",
+      "kind": "other",
+      "locator": "fixture-verification.json",
+      "revision": "sha256:df14631048727b92f85093a58f625d1f024313f94639b336920269b5e2410724",
+      "summary": "fixture-verification.json"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-REVIEW",
+      "claim": "Assigned independent review complete at pinned revision with reproducible evidence and explicit limits.",
+      "artifact_ids": [
+        "review-report",
+        "readiness-observations",
+        "reproduction-results",
+        "review_probes",
+        "consumption-receipt",
+        "fixture-consumption-receipt"
+      ],
+      "locator": "review-report.json",
+      "observation": "All recorded reproduction expectations matched. Review code and CI separately; GitHub policy access limits and no merge authority retained."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "PA-1",
+      "disposition": "covered",
+      "scope": "Delivery 1.1 explicit three-format dispatch fixes the prior Knowledge input/handoff collision. Ten legacy schemas and seven existing test files are byte-identical; 107 base and 128 head tests pass. Delivery 1.0 generic context retains only its legacy guarantee.",
+      "artifact_ids": [
+        "review-report",
+        "reproduction-results"
+      ],
+      "evidence_ids": [
+        "E-REVIEW"
+      ]
+    },
+    {
+      "ac_id": "PA-2",
+      "disposition": "covered",
+      "scope": "Reviewed strict parse and discriminator/schema checks, incomplete/unknown identity reservation, private_only, version/format downgrade, duplicate fields, BOM/nonfinite literals/truncation, path/Git mode and raw-byte defenses. Regressions and independent mutations fail closed.",
+      "artifact_ids": [
+        "review-report",
+        "reproduction-results"
+      ],
+      "evidence_ids": [
+        "E-REVIEW"
+      ]
+    },
+    {
+      "ac_id": "PA-3",
+      "disposition": "covered",
+      "scope": "Input/result binding compares all six immutable fields. Each typed input/result has exactly one binding; task identity duplicates reject. All declared source/article/artifact/retry dependencies are resolved in the owning repository/commit with raw digest. All findings have supported decisions; adopted articles require nonempty text. Tuple-key probes establish snapshot isolation, including missing/conflicting counterpart sources.",
+      "artifact_ids": [
+        "review-report",
+        "reproduction-results"
+      ],
+      "evidence_ids": [
+        "E-REVIEW"
+      ]
+    },
+    {
+      "ac_id": "PA-4",
+      "disposition": "covered",
+      "scope": "Four delivery record versions and schemas agree; legacy new-format rejection retained. Authorization exact pin/consumer/scope/purpose/expiry/representation precedes acquisition. Fabricated receipts and altered pins reject; receipts retain authority_granted=false. No approval or Readiness success is inferred.",
+      "artifact_ids": [
+        "review-report",
+        "reproduction-results"
+      ],
+      "evidence_ids": [
+        "E-REVIEW"
+      ]
+    },
+    {
+      "ac_id": "PA-5",
+      "disposition": "covered",
+      "scope": "Reproduced 128 head, 107 base, Test 111 in-memory + 6 CLI cases, 45 checkout checks, 32 Review-owned cases and fresh fixed-Git six-file preparation/consume/recheck. Review and Test provenance are separate per Manager dispatch; no recursive specialist launch.",
+      "artifact_ids": [
+        "review-report",
+        "reproduction-results"
+      ],
+      "evidence_ids": [
+        "E-REVIEW"
+      ]
+    },
+    {
+      "ac_id": "PA-6",
+      "disposition": "covered",
+      "scope": "PR4 draft/open at exact head/base. Both CI runs succeed; PR CI actual merge checkout and same head tree verified. Complete local public-alias Handoff and evidence sealed, no publication or merge. P-B/C/D remain unimplemented.",
+      "artifact_ids": [
+        "review-report",
+        "reproduction-results"
+      ],
+      "evidence_ids": [
+        "E-REVIEW"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe",
+  "assignment": {
+    "scope": "system/phase1-3/P-A",
+    "ac_ids": [
+      "PA-1",
+      "PA-2",
+      "PA-3",
+      "PA-4",
+      "PA-5",
+      "PA-6"
+    ],
+    "completion_criteria": [
+      "Independently review all supplied PA-1 through PA-6 at fixed head/base after authorized whole-bundle consumption.",
+      "Critically reproduce tests and adversarial failures; return findings with location/reproduction/severity/remediation if any, without implementation changes.",
+      "Return Handoff v2, review report, reproduction results, verified Consumption Receipt, and current Merge Readiness observations/unknowns separately from product Issue2 Completion.",
+      "Preserve originals and present safe public-alias candidate sizes/hashes to Manager; do not publish."
+    ]
+  }
+}
