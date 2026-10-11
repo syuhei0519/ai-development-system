@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.2",
+  "document_type": "artifact_delivery",
+  "artifacts": [
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0023d1b1448fa453c18ac1a3e7175f7f9d7bf0b8",
+        "path": "evidence/order-b1/review-e2-a1/handoff.json",
+        "size": 4236,
+        "sha256": "79d822d80e56832e0b5272aeeeedf25f7403a6e79887859630b2c2697e1915f5"
+      },
+      "format": "handoff-v2",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0023d1b1448fa453c18ac1a3e7175f7f9d7bf0b8",
+        "path": "evidence/order-b1/review-e2-a1/review-report.txt",
+        "size": 4300,
+        "sha256": "dc7bd63cee7bd1ce714e1c21b19560b06c99bae17186183f3b1a0e25ca1bbaaa"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0023d1b1448fa453c18ac1a3e7175f7f9d7bf0b8",
+        "path": "evidence/order-b1/review-e2-a1/reproduction.txt",
+        "size": 854,
+        "sha256": "8fb63b050339a42bb67b738579ea88b551de80b9c19a4c12b7e918bb28656f0f"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    }
+  ],
+  "knowledge_bindings": [],
+  "slot_bindings": [
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0023d1b1448fa453c18ac1a3e7175f7f9d7bf0b8",
+        "path": "evidence/order-b1/review-e2-a1/handoff.json",
+        "size": 4236,
+        "sha256": "79d822d80e56832e0b5272aeeeedf25f7403a6e79887859630b2c2697e1915f5"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "review-report"
+      },
+      "locator": "review-report.txt",
+      "revision": "sha256:dc7bd63cee7bd1ce714e1c21b19560b06c99bae17186183f3b1a0e25ca1bbaaa",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0023d1b1448fa453c18ac1a3e7175f7f9d7bf0b8",
+          "path": "evidence/order-b1/review-e2-a1/review-report.txt",
+          "size": 4300,
+          "sha256": "dc7bd63cee7bd1ce714e1c21b19560b06c99bae17186183f3b1a0e25ca1bbaaa"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0023d1b1448fa453c18ac1a3e7175f7f9d7bf0b8",
+        "path": "evidence/order-b1/review-e2-a1/handoff.json",
+        "size": 4236,
+        "sha256": "79d822d80e56832e0b5272aeeeedf25f7403a6e79887859630b2c2697e1915f5"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "reproduction"
+      },
+      "locator": "reproduction.txt",
+      "revision": "sha256:8fb63b050339a42bb67b738579ea88b551de80b9c19a4c12b7e918bb28656f0f",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0023d1b1448fa453c18ac1a3e7175f7f9d7bf0b8",
+          "path": "evidence/order-b1/review-e2-a1/reproduction.txt",
+          "size": 854,
+          "sha256": "8fb63b050339a42bb67b738579ea88b551de80b9c19a4c12b7e918bb28656f0f"
+        },
+        "format": "text"
+      }
+    }
+  ],
+  "candidate_bindings": []
+}
