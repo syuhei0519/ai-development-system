@@ -1,0 +1,71 @@
+{
+  "evidence_level": "Implementation self-verification only",
+  "checks": [
+    {
+      "command": "python -m unittest discover -s tests -q",
+      "exit_code": 0,
+      "total_tests": 173,
+      "result": "OK",
+      "unchanged_prior_tests": 149,
+      "additional_methods": 24
+    },
+    {
+      "command": "python scripts/validate_delivery_records.py",
+      "exit_code": 0,
+      "result": "12 delivery schemas plus candidate profile and legacy sample bindings PASS"
+    },
+    {
+      "command": "All existing workflow Handoff/Knowledge/Readiness sample commands",
+      "exit_code": 0,
+      "result": "PASS; historical Readiness replay only"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "command": "Byte comparison of P-A contract schemas and tests",
+      "exit_code": 0,
+      "result": "22 existing files unchanged"
+    },
+    {
+      "command": "Fixed P-A validator version probes",
+      "exit_code": 0,
+      "result": "1.0/1.1 positives pass; 1.2 rejected as expected"
+    },
+    {
+      "command": "Synthetic fixture generator with malformed source OID",
+      "exit_code": 1,
+      "result": "Expected rejection; no output created"
+    },
+    {
+      "command": "Formal consume_delivery.py and fresh --verify-receipt replay under new independent Manager authorization",
+      "exit_code": 0,
+      "result": "Both PASS; 17 objects / 89071 payload bytes; no authority granted."
+    }
+  ],
+  "synthetic_fixed_git": {
+    "result": "PASS",
+    "kind": "synthetic-fixed-Git-transport-self-check",
+    "commit": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+    "source_commit": "512f27626fa63c88c4c94a9a088335d7c5307c9c",
+    "explicit_objects": 4,
+    "tree_files": 2,
+    "fresh_refetch": true,
+    "formal_consumer_cli": "not executed; no Manager authorization for this fixture",
+    "authority_granted": false
+  },
+  "ci": {
+    "head": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38110429504"
+  },
+  "exclusions": [
+    "No independent Test/Review",
+    "No application execution/build/test/deployment",
+    "No Issue Completion or Knowledge adoption"
+  ],
+  "formal_b1_cli": "b1-cli-observation.public.json: approved formal CLI and fresh receipt recheck both exit 0; exact raw outputs verified."
+}

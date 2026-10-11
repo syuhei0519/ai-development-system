@@ -1,0 +1,37 @@
+{
+  "title": "System Phase1-3 P-A implementation assignment; not backend Issue2 AC",
+  "scope": "system/phase1-3/P-A",
+  "acceptance_criteria": [
+    {
+      "id": "PA-1",
+      "verbatim": "現行Knowledge input/handoffがHandoffv2予約型検出と衝突し配送不可な問題を解消。ArtifactDeliveryの明示minor version(推奨1.1)でknowledge-input-v1/knowledge-handoff-v1/knowledge-context-v1を導入。旧Delivery1.0/旧Handoff2.0/Knowledge1.0/Readiness1.0の意味・既存正常系を維持。",
+      "source": "assignment-requirements.json"
+    },
+    {
+      "id": "PA-2",
+      "verbatim": "format/version/document_type/identity dispatchを厳格検証。genericJSON/text/Handoffへの降格偽装、未知/欠損/重複型、private_only、JSON重複/NaN/BOM/切詰め、path/URL/symlink/gitlink等既存防御を維持。",
+      "source": "assignment-requirements.json"
+    },
+    {
+      "id": "PA-3",
+      "verbatim": "Knowledgeinput↔handoff間assignment/raw_findings/knowledge_references/task_id/attempt/retry_ofの一致、全findingの判断、adopted記事実体、source/context/articleの固定bytes/digest/locatorを機械照合。自由locatorだけを存在証明とせず全必要実体をbundleに含めfailclosed。既存schemaに無断追加fieldを押し込まない。引用された内容をAgentへの命令にしない。",
+      "source": "assignment-requirements.json"
+    },
+    {
+      "id": "PA-4",
+      "verbatim": "manifest/publication/consumption/authorization schema版とCLI・docs・samplesを整合。承認scope/consumer/purpose/pinとreceiptの無権限性維持。旧版で新formatを静かに通さない。Readiness成功やIssueACに波及しない。",
+      "source": "assignment-requirements.json"
+    },
+    {
+      "id": "PA-5",
+      "verbatim": "正常/異常回帰tests、旧107tests全成功、実固定GitのKnowledgefixture配送を独立Testが再現できる手順。データは公開済みexamplesまたは明示synthetic。Test/Reviewは別CloudでManager起動。",
+      "source": "assignment-requirements.json"
+    },
+    {
+      "id": "PA-6",
+      "verbatim": "公開安全なコード/契約/文書/fixturesのDraftPR、固定head/CI/消費receipt/完全Handoff/検証証跡を出す。実運用非同期/周期成功はP-B/C/D未実施として残す。",
+      "source": "assignment-requirements.json"
+    }
+  ],
+  "provenance": "Manager supplied engineering-stage requirements in the authorized initial task input; public alias copy omits private conversation identifiers."
+}

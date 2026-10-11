@@ -1,0 +1,42 @@
+{
+  "scope": "system/artifact-delivery/cross-reference",
+  "acceptance_criteria": [
+    {
+      "id": "X-1",
+      "verbatim": "Delivery明示version拡張（推奨1.2）と外側slot-binding契約。ownerdocumentの固定ref、構造上slot（artifact ID/upstream identity/Knowledge source等）と原locator/revisionとtypedtargetを一意結合。欠落/余剰/重複/曖昧/競合は拒否。旧1.0/1.1は新型を拒否し以前の意味と正常系維持。",
+      "source": "assignment-requirements.json"
+    },
+    {
+      "id": "X-2",
+      "verbatim": "blobはrepository/fullcommit/path/size/sha256で取得。canonical GitHub fixed blob URLと元revisionを厳密一致させ、同repo別commit/別repoを安全に解決。任意URL追跡や浮動ref/redirect/外部HTTP自動取得は禁止。列挙された全依存を取得して型/schema/hash/role/task/attempt/retryIssueも検証。暗黙locator削除やコピーによる偽装をしない。",
+      "source": "assignment-requirements.json"
+    },
+    {
+      "id": "X-3",
+      "verbatim": "kind=commitにはblobと別typed git-commit-objectを定義。repo/fullOID/rawcommitobject size/SHA256、canonicalcommitURL/revision一致、cat-file type=commitと取得SHA一致、rawobject全byteshash、出力/receiptへtyped記録。commitobject存在だけでtree内容/build/製品AC合格を認定しない。必要なソースblob証跡は別で取得。",
+      "source": "assignment-requirements.json"
+    },
+    {
+      "id": "X-4",
+      "verbatim": "全manifest/publication/consumption/authorizationの版と承認bindings整合。Manager独立pin、用途consumer/scope/expiry必須、receipt権限なし。全必要artifact実体検証前に利用しない。source truthfulness/意味妥当性/IssueCompletionは別ゲート。",
+      "source": "assignment-requirements.json"
+    },
+    {
+      "id": "X-5",
+      "verbatim": "正常/異常tests: 固定crossrepo blob/Handoff/commit、URL/OID/path/objecttype/size/hash不一致、missingdependency/privateonly/duplicate slot/downgrade、symlink/gitlink/JSON型偽装、retryidentity、承認、旧128testsを含む回帰。新旧validator双方で期待動作確認。",
+      "source": "assignment-requirements.json"
+    },
+    {
+      "id": "X-6",
+      "verbatim": "実B1公開Handoffを一切書換えず固定codecommit/upstreamの正式bundle検証を可能にし、CLI実取得で証明。公開ソースだけを使い、B1Test/Review/Issue合格や実装再開をこのSystemtaskから主張しない。",
+      "source": "assignment-requirements.json"
+    }
+  ],
+  "provenance": "Exact six System engineering criteria transcribed from the authorized initial delegation; no private conversation or runtime identifiers included.",
+  "attempt": 1,
+  "limits": {
+    "dispatch": 3,
+    "execution": 3,
+    "delivery": 3
+  }
+}

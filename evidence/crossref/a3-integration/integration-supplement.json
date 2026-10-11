@@ -1,0 +1,65 @@
+{
+  "record_type": "implementation_integration_supplement",
+  "public_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A3-INTEGRATION",
+  "role": "implementation",
+  "attempt": 3,
+  "scope": "system/artifact-delivery/cross-reference",
+  "status": "completed",
+  "operation": "Normal merge of verified main into existing feature branch; same Implementation attempt 3, no reset or additional agent.",
+  "head": "a7fdcd3df53260f67a9040878a131d101fb5b32b",
+  "base": "8afe6044857783dbf6d6ae7ac9459ae5e890a744",
+  "tree": "8c57b1a49781424d3b1be5af52b3d7d02727ae77",
+  "parents": [
+    "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+    "8afe6044857783dbf6d6ae7ac9459ae5e890a744"
+  ],
+  "conflicts": 0,
+  "manual_resolutions": 0,
+  "merge_verification": "Content hunks equal approved main delta from prior canonical base; existing R-1 fix and Delivery production files byte-identical to previous repair head. README auto-merges retain both approved scopes.",
+  "prior_handoff": {
+    "path": "prior/handoff.public.json",
+    "size": 14288,
+    "sha256": "021ea2a1178698a2e36bf6e8eb0c71fff09c8368447743d90f0ad176ce00cd7d"
+  },
+  "artifacts": [
+    {
+      "path": "dependency-pins.json",
+      "size": 2957,
+      "sha256": "6ef6978790f37c9679359bbd9644f5197dc1e4e5927a9fcbd1dba8f244df0a79"
+    },
+    {
+      "path": "self-verification.json",
+      "size": 4365,
+      "sha256": "df6d818c2e72d29791cf396a3ea6072b413136e5509799d3f33d065f6e468bd3"
+    },
+    {
+      "path": "ci-observation.json",
+      "size": 1592,
+      "sha256": "b84af4ffa7d69834f6f874466a959f7b46dffbb3a9e5eacd64f9b9ae6d8c6333"
+    },
+    {
+      "path": "safety-review.json",
+      "size": 832,
+      "sha256": "21e97fb17c9f8d793a673cb9bbea4ebac08ad65fe7a0687515b69b5467620e1d"
+    },
+    {
+      "path": "reproduction.txt",
+      "size": 2179,
+      "sha256": "36d917b9ee09ff798ee088a51f130d652f37988f84c9fd7d01c532c8e5cd7b5a"
+    }
+  ],
+  "history": "Prior Handoff and all 62 old inputs retained exactly. This report supplements the same attempt instead of rewriting the old Handoff or creating retry_of attempt 3. Independent old Test/Review passes remain pinned to their original heads.",
+  "gates": {
+    "implementation_integration_self_verification": "verified",
+    "feature_push": "verified",
+    "draft_pr": "verified",
+    "push_ci": "verified",
+    "pr_ci": "verified",
+    "independent_integration_test": "pending",
+    "independent_integration_review": "pending",
+    "pr_merge": "not_performed",
+    "b1_product_ac": "unverified",
+    "issue_completion": "unverified"
+  },
+  "knowledge_priority": "Periodic scheduling deferred; backlog and milestone accumulation prioritized. No change to Knowledge scope or operation in this integration."
+}

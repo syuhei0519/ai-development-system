@@ -1,0 +1,115 @@
+{
+  "record_type": "independent_ci_observation",
+  "observed_at": "2026-10-11T04:33:14.836Z",
+  "repository": "syuhei0519/ai-development-system",
+  "head": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+  "original_base": "5345303db8c5208859ed741b98f119882de7a973",
+  "latest_base": "b1e606544174481b7b6904f811e857f80978c287",
+  "original_base_tree": "10a4b8ccf7a8d10d991bef2cbe714afc35709b48",
+  "latest_base_tree": "10a4b8ccf7a8d10d991bef2cbe714afc35709b48",
+  "test_merge": "fe410be606c9b22bd466c78b10728fff3e4723b6",
+  "head_and_merge_tree": "f2d0532db12b08d86b44e882742cda2dbf33a9e0",
+  "test_merge_parents": [
+    "b1e606544174481b7b6904f811e857f80978c287",
+    "4b4e9c249451881f1e5eef82efb3a3b111cacbdb"
+  ],
+  "workflow": ".github/workflows/validate.yml",
+  "workflow_git_blob": "36f5bb34dc7fb094f7eb536e6d2455f6c0fbd983",
+  "pr": [
+    {
+      "number": 7,
+      "url": "https://github.com/syuhei0519/ai-development-system/pull/7",
+      "draft": true,
+      "head": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+      "base": "b1e606544174481b7b6904f811e857f80978c287"
+    }
+  ],
+  "runs": [
+    {
+      "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38111698373",
+      "event": "pull_request",
+      "head": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-11T04:28:39Z",
+      "updated_at": "2026-10-11T04:29:01Z"
+    },
+    {
+      "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38110429504",
+      "event": "push",
+      "head": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-11T04:04:42Z",
+      "updated_at": "2026-10-11T04:05:00Z"
+    }
+  ],
+  "jobs": [
+    {
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "head": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python -m pip install -r requirements-dev.txt",
+          "conclusion": "success"
+        },
+        {
+          "name": "All contracts and delivery/retry regressions",
+          "conclusion": "success"
+        },
+        {
+          "name": "Delivery schema and pinned sample consistency",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python scripts/validate_handoff.py examples/research-to-test/research.handoff.json examples/research-to-test/test.blocked.handoff.json examples/research-to-test/test.handoff.json examples/failed.handoff.json examples/partial-assignment.handoff.json",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python scripts/validate_knowledge.py examples/knowledge/input.json examples/knowledge/handoff.json examples/knowledge/context.json examples/knowledge-delivery/input.json examples/knowledge-delivery/handoff.json examples/knowledge-delivery/context.json",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python scripts/validate_readiness.py examples/readiness/pr-ready-issue-unverified.json --context examples/readiness/context.json --handoff examples/readiness/manager.handoff.json --at 2030-01-01T12:00:00Z",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python scripts/validate_readiness.py examples/readiness/implementation-only.json --context examples/readiness/automatic-context.json --at 2030-01-01T12:00:00Z",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python scripts/validate_readiness.py examples/readiness/postdeploy-achieved.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "checkout_observation": "PR job log fetched independently: checkout fetched fe410be606c9b22bd466c78b10728fff3e4723b6 as refs/remotes/pull/7/merge, git log -1 confirms same SHA. Ran 173 tests in 7.352s.",
+  "limits": "CI is distinct from local independent Test. No merge readiness, branch protection compliance or product acceptance certified. Recheck head/base/config before integration; this is an observation, not an authorization."
+}

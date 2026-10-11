@@ -1,0 +1,89 @@
+{
+  "record_type": "implementation_attempt_3_integration_self_verification",
+  "tested_head": "a7fdcd3df53260f67a9040878a131d101fb5b32b",
+  "base": "8afe6044857783dbf6d6ae7ac9459ae5e890a744",
+  "tree": "8c57b1a49781424d3b1be5af52b3d7d02727ae77",
+  "regression": {
+    "total": 229,
+    "passed": 229,
+    "failed": 0,
+    "prior_crossref_regressions": 176,
+    "main_added_issue_completion_tests": 53
+  },
+  "reproducer_runs": [
+    {
+      "harness": "prior/input/input/independent_probe.py",
+      "target_head": "a7fdcd3df53260f67a9040878a131d101fb5b32b",
+      "total": 245,
+      "passed": 245,
+      "failed": 0,
+      "classification": "Implementation self-rerun; prior independently assigned results not relabelled"
+    },
+    {
+      "harness": "prior/input/review_probe.py",
+      "target_head": "a7fdcd3df53260f67a9040878a131d101fb5b32b",
+      "total": 43,
+      "passed": 43,
+      "failed": 0,
+      "classification": "Implementation self-rerun; prior independently assigned results not relabelled"
+    },
+    {
+      "harness": "prior/input/preparation_probe.py",
+      "target_head": "a7fdcd3df53260f67a9040878a131d101fb5b32b",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "classification": "Implementation self-rerun; prior independently assigned results not relabelled"
+    }
+  ],
+  "workflow_cli_checks": [
+    {
+      "command": "python scripts/validate_delivery_records.py",
+      "returncode": 0
+    },
+    {
+      "command": "python scripts/validate_handoff.py examples/research-to-test/research.handoff.json examples/research-to-test/test.blocked.handoff.json examples/research-to-test/test.handoff.json examples/failed.handoff.json examples/partial-assignment.handoff.json",
+      "returncode": 0
+    },
+    {
+      "command": "python scripts/validate_knowledge.py examples/knowledge/input.json examples/knowledge/handoff.json examples/knowledge/context.json examples/knowledge-delivery/input.json examples/knowledge-delivery/handoff.json examples/knowledge-delivery/context.json",
+      "returncode": 0
+    },
+    {
+      "command": "python scripts/validate_readiness.py examples/readiness/pr-ready-issue-unverified.json --context examples/readiness/context.json --handoff examples/readiness/manager.handoff.json --at 2030-01-01T12:00:00Z",
+      "returncode": 0
+    },
+    {
+      "command": "python scripts/validate_readiness.py examples/readiness/implementation-only.json --context examples/readiness/automatic-context.json --at 2030-01-01T12:00:00Z",
+      "returncode": 0
+    },
+    {
+      "command": "python scripts/validate_readiness.py examples/readiness/postdeploy-achieved.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+      "returncode": 0
+    },
+    {
+      "command": "python scripts/validate_issue_completion.py examples/issue-completion/synthetic-achieved/completion.json --context examples/issue-completion/synthetic-achieved/context.json --context-sha256 951048815ca07294e13e6df297272e719e121d81a8e1c523c3958e4ba97742ac --handoff examples/issue-completion/synthetic-achieved/handoff.json --at 2030-01-03T12:00:00Z",
+      "returncode": 0
+    },
+    {
+      "command": "python scripts/validate_issue_completion.py examples/issue-completion/synthetic-pending/completion.json --context examples/issue-completion/synthetic-pending/context.json --context-sha256 8943ce6030f4335adb8cfab5f7338670b2c45b3d24bd3114e92fab5c1cd8d5ff --handoff examples/issue-completion/synthetic-pending/handoff.json --at 2030-01-03T12:00:00Z",
+      "returncode": 0
+    }
+  ],
+  "legacy_validators": [
+    "df400018057735b7cb6a9c6ea4619508f0e6ba3a",
+    "b1e606544174481b7b6904f811e857f80978c287"
+  ],
+  "b1": {
+    "formal_cli": "PASS",
+    "fresh_receipt_recheck": "PASS",
+    "objects": 17,
+    "bytes": 89071,
+    "outputs_and_receipts_equal": true,
+    "reprepared_records_equal_authorized_fixed_records": true,
+    "authorization": "Existing separately supplied Manager read-only authorization and independent pin reused within unchanged consumer/scope/purpose/manifest and expiry; no new grant created.",
+    "private_receipts": "Retained separately; not in this supplement.",
+    "application_execution": false
+  },
+  "scope_limit": "Implementation self-verification only. New independent integration Test/Review remain Manager follow-up. No B1 AC, merge readiness or IssueCompletion claim."
+}

@@ -1,0 +1,20 @@
+Same Implementation attempt 3: main integration supplement.
+New fixed head: a7fdcd3df53260f67a9040878a131d101fb5b32b
+Base: 8afe6044857783dbf6d6ae7ac9459ae5e890a744
+Tree: 8c57b1a49781424d3b1be5af52b3d7d02727ae77
+Checkout the fixed public System head and use requirements-dev.txt.
+python -m unittest discover -s tests -v
+Run all eight non-install/non-unittest CLI commands in .github/workflows/validate.yml.
+python SUPPLEMENT/prior/input/input/independent_probe.py CHECKOUT RESULT_JSON LEGACY10_CHECKOUT LEGACY11_CHECKOUT
+python SUPPLEMENT/prior/input/review_probe.py CHECKOUT RESULT_JSON
+python SUPPLEMENT/prior/input/preparation_probe.py CHECKOUT RESULT_JSON
+Expected: 229 regressions, 245 Test harness cases, 43 Review harness cases, 3 preparation controls PASS.
+The unchanged older harnesses embed some historical target metadata. This supplement records actual new invocation targets; their old reports are not modified.
+Real B1 manifest/publication records are under prior/input/input/input/.
+Use only an applicable separately supplied Manager authorization, exact consumer/scope/purpose/expiry and independent pin:
+python scripts/consume_delivery.py --manifest B1_MANIFEST --publication B1_PUBLICATION --authorization PRIVATE_AUTH --authorization-sha256 PRIVATE_PIN --consumer APPROVED_CONSUMER --scope system/artifact-delivery/cross-reference --purpose contract-review --output NEW_PRIVATE_OUTPUT
+Repeat in a new output with --verify-receipt FIRST_OUTPUT/consumption-receipt.json.
+Observed twice: 17 objects / 89071 bytes, exact output/receipt equality. Re-running the preparation CLI from the prior reproduction's fixed B1 root also returns the same authorized manifest/publication bytes.
+No application sources are executed. No new Consumer authority is created by these instructions or reports.
+Normal merge has parents previous repair head and approved new main, with zero conflicts or manual resolutions. Both scopes retained. The supplement adds current observations only; prior/ bytes and all prior history remain unchanged.
+Independent integration Test/Review must be assigned by Manager. No PR merge, product acceptance, B1 restart or IssueCompletion is asserted.

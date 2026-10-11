@@ -1,0 +1,60 @@
+{
+  "record_type": "integration_supplement_fixed_dependencies",
+  "new_head": {
+    "object_type": "git-commit-object",
+    "repository": "syuhei0519/ai-development-system",
+    "commit": "a7fdcd3df53260f67a9040878a131d101fb5b32b",
+    "size": 369,
+    "sha256": "78f5bd706b0221332896b8919aaf8f1dd51300f87b9e1201c7b86129111d04d8",
+    "url": "https://github.com/syuhei0519/ai-development-system/commit/a7fdcd3df53260f67a9040878a131d101fb5b32b"
+  },
+  "new_base": {
+    "object_type": "git-commit-object",
+    "repository": "syuhei0519/ai-development-system",
+    "commit": "8afe6044857783dbf6d6ae7ac9459ae5e890a744",
+    "size": 1240,
+    "sha256": "8e21f241821e3ae3f4c3bd8be9539e77aff31d2cecf9d06f257ccf5cbacfe486",
+    "url": "https://github.com/syuhei0519/ai-development-system/commit/8afe6044857783dbf6d6ae7ac9459ae5e890a744"
+  },
+  "previous_head": {
+    "object_type": "git-commit-object",
+    "repository": "syuhei0519/ai-development-system",
+    "commit": "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+    "size": 286,
+    "sha256": "736827c97bf1f48b18cd0bd4494769c93a633c354f93bee839649ee1c9ecef5e",
+    "url": "https://github.com/syuhei0519/ai-development-system/commit/520ef1e7a59662fe3e58d49d5510350ee08c3160"
+  },
+  "new_head_tree": "8c57b1a49781424d3b1be5af52b3d7d02727ae77",
+  "new_base_tree": "1c7b003edd88407af2e8ae34524992f4d2b54324",
+  "merge_parents": [
+    "520ef1e7a59662fe3e58d49d5510350ee08c3160",
+    "8afe6044857783dbf6d6ae7ac9459ae5e890a744"
+  ],
+  "prior_payload_commit": "72b729aabce1c6dd0877102e9af0194ea6055cba",
+  "prior_records_commit": "50677bd6a31b86cdeacc0060224b43ce569bf73a",
+  "prior_records": {
+    "manifest.json": {
+      "repository": "syuhei0519/ai-development-system",
+      "commit": "50677bd6a31b86cdeacc0060224b43ce569bf73a",
+      "path": "evidence/crossref/implementation-a3/manifest.json",
+      "size": 33357,
+      "sha256": "29bbce0f73ddd04c825567b5d7ff3811b464dd14d86613539d334707e3c0ef0b"
+    },
+    "publication-receipt.json": {
+      "repository": "syuhei0519/ai-development-system",
+      "commit": "50677bd6a31b86cdeacc0060224b43ce569bf73a",
+      "path": "evidence/crossref/implementation-a3/publication-receipt.json",
+      "size": 34291,
+      "sha256": "1b54a40d43e8395c9b22dd16d13d6c18dfd7ae1c58925f6317117f3fc7eaf641"
+    }
+  },
+  "prior_root_handoff": {
+    "repository": "syuhei0519/ai-development-system",
+    "commit": "72b729aabce1c6dd0877102e9af0194ea6055cba",
+    "path": "evidence/crossref/implementation-a3/handoff.public.json",
+    "size": 14288,
+    "sha256": "021ea2a1178698a2e36bf6e8eb0c71fff09c8368447743d90f0ad176ce00cd7d"
+  },
+  "all_old_payload_pins": "prior-manifest.json retains all 62 published artifact references; exact files included under prior/ with original internal locators preserved.",
+  "prior_copy_policy": "No old input, report, Handoff, attempt or test target was rewritten. New supplement is same-attempt integration evidence, not a relabelled old result."
+}

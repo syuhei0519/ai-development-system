@@ -1,0 +1,41 @@
+{
+  "record_type": "independent_review_delivery_observation_public_derivative",
+  "outer": {
+    "consumer_revision": "b1e606544174481b7b6904f811e857f80978c287",
+    "schema_version": "1.0",
+    "records_commit": "3122d7ecfd63c4636894df502ff1808917cd0f8b",
+    "payload_commit": "b5b1520983a606fdfc976b7260b189330fa1204b",
+    "files": 38,
+    "bytes": 557788,
+    "manifest_sha256": "186ca596c2930de8341128d0068d98b82f2a984a570d21807411349b1b59e1b8",
+    "publication_sha256": "9428de574c2d8374723060121b609e253d3ca0e0acae808b153a1f600c5f836c",
+    "handoff_size": 14176,
+    "handoff_sha256": "14a235ddb722f581e2a4079dac891ccd725bdbda81640a286e6630ce84ebbb7e",
+    "result": "PASS before payload use; full raw bytes, types, Handoff dependencies and identity/retry checks"
+  },
+  "b1": {
+    "consumer_revision": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+    "schema_version": "1.2",
+    "manifest_size": 22789,
+    "manifest_sha256": "5a1e3edfcdc1751c7a02ece0a2962b208f1285dc974e80889e58e42aedff1ae3",
+    "publication_size": 6164,
+    "publication_sha256": "0cb6488dd3b1faa0d069489fb0e24036287cca4fe4de728bce40821e472c068d",
+    "first_cli_exit": 0,
+    "fresh_recheck_exit": 0,
+    "objects": 17,
+    "bytes": 89071,
+    "explicit_objects": 11,
+    "explicit_bytes": 69989,
+    "tree_files": 6,
+    "tree_bytes": 19082,
+    "outputs_byte_identical": true,
+    "independent_output_size_sha256_and_commit_blob_oid_oracle": "PASS all 17",
+    "publication_approval": "unverified",
+    "consumer_use_approval": "approved",
+    "purpose": "contract-review",
+    "original_candidate_status": "pending_manager_review",
+    "original_bytes": "No Handoff/candidate/source/locator/revision/status/attempt changes"
+  },
+  "private_records": "Separate Manager authorizations and independent pins; initial and B1 Consumption Receipts retained privately. No authorization or private receipt digest appears in this derivative.",
+  "limits": "Transport integrity only. No source truth, semantic adoption, product AC, B1 implementation restart, Merge/Deployment Ready or IssueCompletion."
+}
