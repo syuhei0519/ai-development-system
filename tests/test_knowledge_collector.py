@@ -49,6 +49,21 @@ class Source:
 
 
 class CollectorTests(unittest.TestCase):
+    def test_documented_pb_scope_is_consistent(self):
+        overview = (c.ROOT / 'contracts/README.md').read_text()
+        delivery_section = overview.split('## Artifact Delivery v1.1', 1)[1]
+        self.assertIn('[Knowledge Collection v1.0](knowledge-collection.md)', delivery_section)
+        self.assertIn('実装済み', delivery_section)
+        for boundary in ('P-C', 'context生成/ack', 'P-D', '実Agent利用実証', '周期実行', '未実施'):
+            self.assertIn(boundary, delivery_section)
+        self.assertIn('定期実運用の完了を意味しない', delivery_section)
+        current_docs = [c.ROOT / 'README.md']
+        for directory in ('contracts', 'workflows', 'templates'):
+            current_docs.extend((c.ROOT / directory).glob('*.md'))
+        for document in current_docs:
+            with self.subTest(document=document.relative_to(c.ROOT)):
+                self.assertNotIn('後続P-B/C/Dであり未実装', document.read_text())
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(); self.addCleanup(self.temp.cleanup)
         self.source = Source(); self.registry = self.source.registry

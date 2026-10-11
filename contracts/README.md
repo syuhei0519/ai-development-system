@@ -73,4 +73,4 @@ Knowledge input/handoff/contextのtyped配送、原入力一致、source/記事/
 本体のKnowledge1.0・Handoff2.0・Readiness1.0とDelivery1.0の正常系は維持する。
 版別schemaは `*-v1.1.schema.json`、CLIは4種配送recordの版一致を要求する。
 公開synthetic fixtureと固定Git再現手順は [examples/knowledge-delivery](../examples/knowledge-delivery/README.md)。
-非同期収集・context生成・ack・周期実行・実Agent利用実証は後続P-B/C/Dであり未実装。
+P-B の機械的な非同期収集 CLI と永続 inbox/state は [Knowledge Collection v1.0](knowledge-collection.md) で実装済み。P-C の context生成/ack と P-D の実Agent利用実証・周期実行は未実施であり、定期実運用の完了を意味しない。
