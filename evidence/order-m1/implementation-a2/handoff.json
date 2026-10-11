@@ -1,0 +1,310 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "syuhei0519/backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "implementation",
+  "task_id": "order-m1-implementation-a2",
+  "attempt": 2,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "order-b1-test-e2-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/f5a93108cdbbce934a0838c280bdf0a18ba32429/evidence/order-b1/test-e2-a1/handoff.json",
+      "revision": "sha256:4cc00afcad190f144e9299a89dcef9604ec74a2733da05b605730061bbcebaa3",
+      "relationship": "dependency"
+    },
+    {
+      "role": "research-design",
+      "task_id": "research-order-design-a3",
+      "attempt": 3,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332/delivery-verification/20261011/research-public/handoff.json",
+      "revision": "sha256:2c1876c21567399ca6ecf1d8afaed96c062da5a154b01d165f42a3e0f3afbc7d",
+      "relationship": "dependency"
+    },
+    {
+      "role": "implementation",
+      "task_id": "order-m1-implementation-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/handoff.json",
+      "revision": "sha256:d1d706e4494ddb5ada98068cb102019de4faa35233c53fe884d5570447ed45bb",
+      "relationship": "retry_of"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "M1-S1 through M1-S4 completed for disabled chart preparation using immutable attempt1 implementation/self-verification evidence and attempt2 read-only reconciliation. AC-3 covered is assignment-stage scope only; all product ACs remain unverified. No code changes or new application tests; independent Test/Review and Manager Readiness pending. Attempt1 remains blocked.",
+  "assignment": {
+    "scope": "application-manifest#backend-app-2/M1",
+    "ac_ids": [
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "M1-S1: Orderと専用PostgreSQL chartをdisabled既定で追加し、既存Account chart/values/render、Namespace/AppProject/Secret/既存DBデータを変えない。",
+      "M1-S2: 独立名/selector、同じimage digestのmigration JobとDeployment、health/security/Secret参照、DB/PVC保護を設計通りに表現し正常異常fixtureで検証する。",
+      "M1-S3: 既存trusted inventory/security/PVC検証を弱めず、両disabled/有効synthetic fixtureのlint/schema/render/全PodSpec検証に成功する。",
+      "M1-S4: 合成fixtureと実公開releaseを区別し、実イメージ・kind・M2/P1/T7の未検証と担当/方法/失敗時対応を引き継ぐ。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-REPORT",
+      "kind": "test-report",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/test-report.txt",
+      "revision": "sha256:e62912ed6aa1880e593ab5b5f261a156007c7f93da66e6b2610cf18c1aa7a7b0",
+      "summary": "Immutable attempt1 artifact. test-report.txt; implementation self-verification only."
+    },
+    {
+      "id": "A-PATCH",
+      "kind": "patch",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/implementation.patch",
+      "revision": "sha256:a24507a747ff85ac4690a103cf5398905a02c519e1a562add23dc1df05289dbc",
+      "summary": "Immutable attempt1 artifact. implementation.patch; implementation self-verification only."
+    },
+    {
+      "id": "A-BASELINE",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/baseline-comparison.json",
+      "revision": "sha256:80d01d2b694918983669dba37971df278df2b5e2c3ff9bb644adcee635df170c",
+      "summary": "Immutable attempt1 artifact. baseline-comparison.json; implementation self-verification only."
+    },
+    {
+      "id": "A-TRUSTED",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/trusted-render.json",
+      "revision": "sha256:3a3c85dd584561d6f50534b0fec4847a424a5ec6a212ef85fa23774738df25e7",
+      "summary": "Immutable attempt1 artifact. trusted-render.json; implementation self-verification only."
+    },
+    {
+      "id": "A-GUIDE",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/implementation-guide.md",
+      "revision": "sha256:7d6126209524a87fdc1a16d80ed2ec87cfe3c14d472e379a9a86c5f15ff06d49",
+      "summary": "Immutable attempt1 artifact. implementation-guide.md; implementation self-verification only."
+    },
+    {
+      "id": "A-REPRO",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/reproduce.py",
+      "revision": "sha256:6ec39a433ed402821d0981ffc77bbf0c34f182e29d5cd71909e336c2bf4ce154",
+      "summary": "Immutable attempt1 artifact. reproduce.py; implementation self-verification only."
+    },
+    {
+      "id": "A-INVENTORY",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/order-synthetic-inventory.json",
+      "revision": "sha256:879e8b6ac82c844e66e988d448e290dc05dc3528a9b326adf715a0743617464f",
+      "summary": "Immutable attempt1 artifact. order-synthetic-inventory.json; implementation self-verification only."
+    },
+    {
+      "id": "A-STRUCTURAL",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/order-synthetic-security.json",
+      "revision": "sha256:b8ec3809269593fe04a606ea0167ecc905fd551b31897906051a4a2f5b7a3b22",
+      "summary": "Immutable attempt1 artifact. order-synthetic-security.json; implementation self-verification only."
+    },
+    {
+      "id": "A-SOURCE-SCAN",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/source-scan.json",
+      "revision": "sha256:895475581dbd4808aa38e3c3e260670a0c87ddbd9ded0063de3d3e049b2df17b",
+      "summary": "Immutable attempt1 artifact. source-scan.json; implementation self-verification only."
+    },
+    {
+      "id": "A-RENDER-SCAN",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/render-scan.json",
+      "revision": "sha256:8211ed4df8f3076a45be98f12205f9796b47952840595443976d936c24694203",
+      "summary": "Immutable attempt1 artifact. render-scan.json; implementation self-verification only."
+    },
+    {
+      "id": "A-COMMIT",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/application-manifest/commit/e0f79a61643d31a29de73ffc54bb6a31c320f0df",
+      "revision": "e0f79a61643d31a29de73ffc54bb6a31c320f0df",
+      "summary": "Immutable attempt1 artifact. Fixed disabled chart implementation commit, base and tree in report."
+    },
+    {
+      "id": "A-CI",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/ci-observations.json",
+      "revision": "sha256:edad080fd9c9fe967f572158465d02f161009f31a102168e27c13b3e135ad320",
+      "summary": "Immutable attempt1 artifact. Both actual same-head GitHub CI runs completed success."
+    },
+    {
+      "id": "A-A2-REPORT",
+      "kind": "document",
+      "locator": "report.txt",
+      "revision": "sha256:2acc06876ed706f2956a487f6d27f9fccf1aec2c7cfdf35f91e4d06bd21f9ca0",
+      "summary": "Attempt2 reporting-only scope, history and evidence reconciliation."
+    },
+    {
+      "id": "A-A2-RECONCILIATION",
+      "kind": "other",
+      "locator": "reconciliation.json",
+      "revision": "sha256:2da393f0a74dbcd42090dd7650e498e909f2aa4d165216d9296b4f5f9160eb3b",
+      "summary": "Attempt2 reporting-only scope, history and evidence reconciliation."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-IMPLEMENTATION",
+      "claim": "Disabled preparation charts implemented and self-tested without product AC measurement",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-PATCH",
+        "A-GUIDE",
+        "A-INVENTORY",
+        "A-STRUCTURAL",
+        "A-SOURCE-SCAN",
+        "A-RENDER-SCAN"
+      ],
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/test-report.txt",
+      "observation": "Original attempt1 observation, not new attempt2 application testing: All final local suites pass; 11 enabled synthetic and 15 existing resources schema-valid; 10 malicious render mutations rejected. Independent Test/Review and real release/runtime remain pending."
+    },
+    {
+      "id": "E-NONE",
+      "claim": "Fixed current desired resources unchanged",
+      "artifact_ids": [
+        "A-BASELINE",
+        "A-TRUSTED",
+        "A-REPRO"
+      ],
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/baseline-comparison.json",
+      "observation": "Original attempt1 observation, not new attempt2 application testing: 32 existing files and 3 renders unchanged; two empty new chart renders. Fixed M0 sandbox inventory unchanged; fixed GitOps only registers old three paths. No live observation."
+    },
+    {
+      "id": "E-CI",
+      "claim": "Both push and PR CI succeeded at the implementation head",
+      "artifact_ids": [
+        "A-CI"
+      ],
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/ci-observations.json",
+      "observation": "Original attempt1 observation, not new attempt2 application testing: Runs 38157049475 and 38157080236 success at e0f79a61643d31a29de73ffc54bb6a31c320f0df; not independent Test/Review."
+    },
+    {
+      "id": "E-M1-S1",
+      "claim": "M1-S1 assigned implementation-stage responsibility supported by fixed existing evidence",
+      "artifact_ids": [
+        "A-PATCH",
+        "A-BASELINE",
+        "A-TRUSTED",
+        "A-REPORT",
+        "A-A2-RECONCILIATION",
+        "A-A2-REPORT"
+      ],
+      "locator": "report.txt",
+      "observation": "Disabled defaults, 32 existing source files and original unchanged render/inventory evidence; no live data measurement. Existing application measurements are attributable to attempt1 only."
+    },
+    {
+      "id": "E-M1-S2",
+      "claim": "M1-S2 assigned implementation-stage responsibility supported by fixed existing evidence",
+      "artifact_ids": [
+        "A-PATCH",
+        "A-GUIDE",
+        "A-INVENTORY",
+        "A-REPORT",
+        "A-A2-REPORT"
+      ],
+      "locator": "report.txt",
+      "observation": "Independent resource identity, identical synthetic Job/Deployment digest, health/security/Secret/DB/PVC contract and original positive/negative self-verification. Existing application measurements are attributable to attempt1 only."
+    },
+    {
+      "id": "E-M1-S3",
+      "claim": "M1-S3 assigned implementation-stage responsibility supported by fixed existing evidence",
+      "artifact_ids": [
+        "A-PATCH",
+        "A-REPORT",
+        "A-STRUCTURAL",
+        "A-SOURCE-SCAN",
+        "A-RENDER-SCAN",
+        "A-A2-RECONCILIATION",
+        "A-A2-REPORT"
+      ],
+      "locator": "report.txt",
+      "observation": "Original final lint/schema/render/full-PodSpec suites and unchanged policy validators; newly confirmed same-head CI success. Warnings retained. Existing application measurements are attributable to attempt1 only."
+    },
+    {
+      "id": "E-M1-S4",
+      "claim": "M1-S4 assigned implementation-stage responsibility supported by fixed existing evidence",
+      "artifact_ids": [
+        "A-GUIDE",
+        "A-REPORT",
+        "A-A2-REPORT"
+      ],
+      "locator": "report.txt",
+      "observation": "Synthetic-only boundary and B2/M2/isolated Test/P1/T7 owners, methods and failure response preserved; real runtime/release and independent Test/Review unverified. Existing application measurements are attributable to attempt1 only."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "unverified",
+      "scope": "Outside assignment; product behavior unverified. earliest premerge, deferred=null, aggregate_required. No covered/met claim.",
+      "artifact_ids": [
+        "A-REPORT"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "unverified",
+      "scope": "Outside assignment; product behavior unverified. earliest premerge, deferred=null, aggregate_required. No covered/met claim.",
+      "artifact_ids": [
+        "A-REPORT"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "covered",
+      "scope": "disabled chart準備の工程責務のみ。M1-S1〜S4の既存実装・attempt1自己検証根拠を照合した工程完了。製品AC metではない。実Service/Synced/Healthy/image digest、kind、M2/P1/T7はunverified、独立Test/Review待ち。正式Readiness ac_resultsとIssue Completionは全製品AC unverified; earliest premerge, deferred=null, aggregate_required。",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-PATCH",
+        "A-BASELINE",
+        "A-TRUSTED",
+        "A-GUIDE",
+        "A-REPRO",
+        "A-INVENTORY",
+        "A-STRUCTURAL",
+        "A-SOURCE-SCAN",
+        "A-RENDER-SCAN",
+        "A-COMMIT",
+        "A-CI",
+        "A-A2-REPORT",
+        "A-A2-RECONCILIATION"
+      ],
+      "evidence_ids": [
+        "E-M1-S1",
+        "E-M1-S2",
+        "E-M1-S3",
+        "E-M1-S4"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

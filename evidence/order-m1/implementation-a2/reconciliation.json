@@ -1,0 +1,43 @@
+{
+  "observed_at": "2026-10-11T17:00:40.070512+00:00",
+  "observation_kind": "attempt2 read-only source/evidence/remote reconciliation; no application test executed",
+  "base": "bc6adaedcd645a4663c23284b977a3dd36c0796d",
+  "head": "e0f79a61643d31a29de73ffc54bb6a31c320f0df",
+  "tree": "1e3618e2f3467ba639ba52c7531c2923c4d85505",
+  "remote_head": "e0f79a61643d31a29de73ffc54bb6a31c320f0df",
+  "pr": {
+    "url": "https://github.com/syuhei0519/application-manifest/pull/19",
+    "draft": true,
+    "state": "open",
+    "merged": false,
+    "auto_merge": null
+  },
+  "ci_runs": [
+    {
+      "id": 38157049475,
+      "event": "push",
+      "head_sha": "e0f79a61643d31a29de73ffc54bb6a31c320f0df",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/syuhei0519/application-manifest/actions/runs/38157049475"
+    },
+    {
+      "id": 38157080236,
+      "event": "pull_request",
+      "head_sha": "e0f79a61643d31a29de73ffc54bb6a31c320f0df",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/syuhei0519/application-manifest/actions/runs/38157080236"
+    }
+  ],
+  "source_checks": {
+    "original_patch_equals_fixed_git_diff": true,
+    "original_guide_equals_fixed_source": true,
+    "unchanged_baseline_files_verified": 32,
+    "only_modified_existing_file": "ci/github/test.sh",
+    "all_other_changes": "28 added files",
+    "four_enabled_defaults_false": true,
+    "target_agents_skills_present": false
+  },
+  "limits": "No new Helm/build/schema/application/runtime test measurement. Old self-tests remain attributed to order-m1-implementation-a1. Not independent Test/Review."
+}
