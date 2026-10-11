@@ -1,0 +1,22 @@
+{
+  "document_type": "knowledge_candidates",
+  "publication_status": "pending_manager_review",
+  "candidates": [
+    {
+      "id": "K-disposable-port",
+      "domain": "integration-testing",
+      "summary": "A Docker-assigned random published port can change across stop/start. Allocate and explicitly publish a loopback port for restart-persistence tests; refuse collisions and preserve only the new test volume.",
+      "evidence": "Initial disposable HTTP test failed after DB restart; final race-enabled integration passes with an explicitly published loopback port.",
+      "source": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/ordertest/disposable.go",
+      "scope": "Fresh local Docker PostgreSQL test harness; not operational guidance for shared databases."
+    },
+    {
+      "id": "K-order-isolation",
+      "domain": "service-database-boundary",
+      "summary": "Separate SQL embedding/history plus configured and actual database/user checks protect an adjacent service migration boundary; verify old-service sentinel columns and complete history before and after new-service migrations.",
+      "evidence": "Fixed-head real DB tests reject wrong DB/role before DDL and preserve Account fixture/history.",
+      "source": "https://github.com/syuhei0519/backend-app/tree/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/store/orderpostgres",
+      "scope": "Dedicated Order database/role design; guards supplement permissions and do not identify the physical host."
+    }
+  ]
+}

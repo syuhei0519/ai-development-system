@@ -1,0 +1,148 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "syuhei0519/backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "implementation",
+  "task_id": "order-b1-implementation-e2-a1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "research-design",
+      "task_id": "research-order-design-a3",
+      "attempt": 3,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332/delivery-verification/20261011/research-public/handoff.json",
+      "revision": "sha256:2c1876c21567399ca6ecf1d8afaed96c062da5a154b01d165f42a3e0f3afbc7d",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Public alias candidate; not publication approval. B1 implementation/assigned validation completed at fixed head and Draft PR #31. CI pending in observation; independent Test/Review and Manager Readiness pending. AC-3 and aggregate Issue Completion unverified. Epoch2/attempt1 does not reclassify prior history.",
+  "assignment": {
+    "scope": "backend-app#2/B1",
+    "ac_ids": [
+      "AC-1",
+      "AC-2"
+    ],
+    "completion_criteria": [
+      "Implement approved Order domain, strict HTTP, Store/PostgreSQL, independent SQL embed/migration and cmd/order-server without Account changes.",
+      "Verify Unit, disposable real DB API/restart/migration and Account regression; preserve unverified results honestly.",
+      "Deliver fixed head, authorized feature push and Draft PR, CI state, ConsumptionReceipt, validated Handoff and reproducible evidence to Manager."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-CODE",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/backend-app/commit/7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "revision": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "summary": "Independent Order API, persistence, migrations, entrypoint, tests and API documentation."
+    },
+    {
+      "id": "A-TEST",
+      "kind": "test-report",
+      "locator": "test-report.txt",
+      "revision": "sha256:6328ca0720740ba82d971669d53fff6deee5c53a03d88a805aeed2c63f868741",
+      "summary": "Sanitized validation report candidate; not approved for publication."
+    },
+    {
+      "id": "A-KNOWLEDGE",
+      "kind": "knowledge",
+      "locator": "knowledge-candidates.json",
+      "revision": "sha256:e93d2066e3d3b1bab6753ba2eef9f28edaf33f9d3f0fb710eebfdcc7282748b8",
+      "summary": "Safe candidates for Manager/Knowledge review; not published."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-IMPLEMENTATION",
+      "claim": "Assigned implementation and disposable validation completed",
+      "artifact_ids": [
+        "A-CODE",
+        "A-TEST"
+      ],
+      "locator": "test-report.txt",
+      "observation": "Fixed-head local Unit/race/vet/build/format, existing policy tests and real DB integration passed. Includes restart persistence, strict errors, Account regression, target/migration boundaries and cleanup. Implementation tests are not independent Test/Review."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "covered",
+      "scope": "B1 implementation and real DB validation: committed Order retained across two changed-PID process restarts and DB restart on the same new disposable volume; independent Test still pending.",
+      "artifact_ids": [
+        "A-CODE",
+        "A-TEST"
+      ],
+      "evidence_ids": [
+        "E-IMPLEMENTATION"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "covered",
+      "scope": "B1 implementation and real DB validation: strict invalid inputs return 4xx without writes; Account CRUD, sentinel columns/history/max-version1 unchanged; independent Test still pending.",
+      "artifact_ids": [
+        "A-CODE",
+        "A-TEST"
+      ],
+      "evidence_ids": [
+        "E-IMPLEMENTATION"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "unverified",
+      "scope": "Outside B1; no independent image, kind/Argo Synced/Healthy/digest measurement. Issue Completion remains aggregate_required/unverified.",
+      "artifact_ids": [
+        "A-TEST"
+      ],
+      "evidence_ids": []
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [
+    {
+      "id": "K-disposable-port",
+      "domain": "integration-testing",
+      "summary": "Explicit loopback publication preserves test connectivity across Docker stop/start.",
+      "evidence_ids": [
+        "E-IMPLEMENTATION"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "needs_review"
+    },
+    {
+      "id": "K-order-isolation",
+      "domain": "service-database-boundary",
+      "summary": "Separate history and target guards plus old-service sentinel/history comparison protect migration boundaries.",
+      "evidence_ids": [
+        "E-IMPLEMENTATION"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "needs_review"
+    }
+  ],
+  "publication": "public_safe"
+}

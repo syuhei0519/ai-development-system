@@ -1,0 +1,38 @@
+B1 implementation validation — publication candidate, Manager approval pending
+Consumer alias: order-b1-implementation-e2-a1 (public alias, not a private task ID).
+Repository: syuhei0519/backend-app
+Base: d29a390c09f8667316569e1bb599bf690b00313d
+Head: 7b54f55cf1a652ee127528877b3bb9034b75b311
+Branch: feat/issue-2-order-api-foundation
+Draft PR: https://github.com/syuhei0519/backend-app/pull/31
+System contract: df400018057735b7cb6a9c6ea4619508f0e6ba3a
+
+Implemented: immutable Order domain; strict POST /api/orders and GET /api/orders/{id}; independent PostgreSQL Store and guarded orders/order_app connections; dedicated SQL embed and order_schema_migrations; forward-only migration with advisory lock 7742340082; cmd/order-server with health/shutdown; API/OpenAPI documentation; Unit and disposable integration harness.
+Account code, migrations, schema_migrations/max version 1, existing entrypoint, dependencies, image and CI files have no diff. Only existing README gains an Order documentation link. No Payment/Notification, Order image, release, GHCR, Helm or GitOps changes.
+
+Environment: Linux amd64, Go 1.27.1, Docker 28.4.0, fresh local PostgreSQL containers from postgres@sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f. Explicit opt-in, local Unix socket, loopback ports, random ephemeral credentials, separate Account/Order engines and newly created anonymous volumes. No existing/shared/live DB accessed. Test-created containers and volumes removed by cleanup; labeled container inventory empty afterward.
+
+Commands (repository root; Go 1.27.1 on PATH):
+- go test ./...: PASS. Opt-in real DB tests skip without environment flag; those skips are not counted as integration success.
+- go test -race ./...: PASS.
+- go vet ./...: PASS.
+- go build ./...: PASS.
+- test -z "$(gofmt -l .)": PASS.
+- bash ci/github/test.sh: PASS, including existing tool-module/policy/release tests.
+- ORDER_DISPOSABLE_TEST=1 go test -race -v ./internal/store/orderpostgres ./tests/orderintegration -count=1: PASS.
+- OpenAPI YAML parsing and local reference resolution: PASS (not a full external OpenAPI conformance review).
+- git diff --check and Account/CI unchanged-path comparison: PASS.
+
+Real DB measurements: 52 invalid JSON bodies and 8 invalid path IDs rejected, wrong media type 415, oversize 413, wrong methods 405/Allow, unknown/missing 404, no rows added by rejected inputs. Max body 16384 bytes, 64-byte item code, positive int64 maximum account reference, quantity endpoints verified. Valid create returns Location and persisted timestamp; GET returns identical bytes. Nonexistent account accepted; deleting fixture Account preserves Order. Two graceful process restarts change PID and preserve Order; PostgreSQL stop/start preserves the same fresh volume and Order. Shutdown readiness 503/liveness 200, offline DB readiness/API 503 verified.
+Account real HTTP create/list/get/update/delete runs before and after Order migrations/restarts. Duplicate email 409, absent 404 and invalid 400 observed. Separate sentinel all columns and complete Account history version/applied_at snapshots unchanged, max version 1 and Account Ready maintained.
+Migration: fresh success, concurrent/no-op history unchanged, lock timeout/cancellation then recovery, interrupted DDL and history rollback then retry, wrong database with correct role and wrong role with correct database refused before DDL, future migration version rejected, database constraints enforced.
+
+Retained failed intermediate observations: first HTTP harness run failed after DB stop/start because Docker dynamically reassigned the published port; harness now explicitly pins its allocated loopback port and repeated real DB tests pass. An earlier race compilation overlapped a test-file import edit; after source stabilization full race/vet/build/format passed. These observations are preserved privately, not reclassified as successful runs or new orchestration attempts.
+
+Limits: the existing Account TestMigrationDisposableDatabase was not run against its special kind/port-forward target; its original guard is unchanged and the new fresh-DB harness independently exercises Account migration/CRUD. No kind/Argo, image publication or deployment was performed. AC-1/AC-2 covered only for assigned B1 implementation/validation; AC-3 unverified. Tests performed by implementation are not independent Test/Review. Issue integration scope remains aggregate_required and Issue Completion unverified. No final_assessment, merge, auto-merge or Issue close.
+
+Source gate: Manager-supplied management inputs matched independent size/hash pins; append-only prior-to-renewed transition passed without editing Manager reservation or historical budgets. Consumer CLI fetched and validated nine raw Git files, JSON/Handoff artifact bindings and retry chain; generated ConsumptionReceipt. Research is an edited derivative at 10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332. Producer preservation attestation is distinguished from independent original comparison (unverified). Historical provenance/FETCH pending statements were read with System correction-20261011.json. All three AC texts match the assignment. Original Research was not copied into backend-app.
+
+Main merge impact: unchanged .github/workflows/ci.yml runs classify, validate, Account image validation and ci-result; protected main push can run publish only with ENABLE_GHCR_PUBLISH=true and ghcr-publish Environment approval. propose additionally requires successful publish, ENABLE_MANIFEST_PR=true and manifest-update Environment approval. It proposes a manifest PR, not a cluster deployment. Actual current variable/Environment approvals were not verified. No CI change requested in B1; opt-in Order integration is not automatically enabled by existing CI and must remain an independent premerge verification requirement. CI does not yet build a separate Order image (B2).
+
+Reproduction and exact scoped cleanup: docs/order-api.md at the fixed head. Manager must acquire this head for independent Test/Review and check current-head CI and Readiness; never use this report as merge authority. Public report/Handoff are candidates only and must not be committed until Manager approves their exact content and hashes.
