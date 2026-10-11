@@ -1,0 +1,41 @@
+{
+  "report_type": "publication_verification",
+  "repository": "syuhei0519/ai-development-system",
+  "payload_commit": "f779040132294228a6ff0c20cec710832e387d18",
+  "canonical_commit": "8afe6044857783dbf6d6ae7ac9459ae5e890a744",
+  "payload_count": 21,
+  "payload_bytes": 166244,
+  "source": "fresh isolated Git, no prior output cache",
+  "checks": [
+    "commit type and exact FETCH_HEAD",
+    "regular-blob safe tree ancestry",
+    "full raw size/SHA256 and exact candidate byte equality",
+    "Delivery1.1 manifest schema",
+    "strict JSON/text/typed content inspection",
+    "Handoff2.0 schema and all20 artifact reference digests",
+    "Knowledge1.0 typed context and two draft articles/six source closure",
+    "Publication Receipt1.1 schema and exact artifacts equality"
+  ],
+  "canonical_functions": [
+    "GitSource.read",
+    "schema",
+    "verify_handoffs",
+    "verify_knowledge_bindings (called by verify_handoffs)"
+  ],
+  "result": "PASS",
+  "authorization_gate": "not performed for newly published bundle; no new Consumer authorization supplied or self-issued",
+  "consumption_receipt": "not issued for this newly published bundle",
+  "historical_consumption": "Original input13 bundle was separately consumed twice under Manager task-input authorization; this history is not a transferable grant.",
+  "safety": "public-safety-review.json",
+  "planned_tests": "not_executed",
+  "article_lifecycle": "draft unchanged",
+  "publication_attempts": {
+    "tree_creation": 1,
+    "commit_creation": 2,
+    "branch_creation": 1,
+    "commit_api_interruption": "First commit create disconnected without response; branch remained absent before one bounded retry. No unknown commit SHA is claimed."
+  },
+  "readiness": "not issued",
+  "product_acceptance": "unverified",
+  "periodic_execution": "deferred_out_of_scope"
+}
