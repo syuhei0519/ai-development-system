@@ -1,0 +1,99 @@
+Order B2 Implementation attempt 2 — optional build-time CA repair
+
+Scope and status
+The repair is limited to backend-app PR32's Dockerfiles, build helper, related
+regressions and documentation. Self-verification is Implementation work, not an
+independent Test or Review. Historical Implementation1 completed and both blocked
+Test records remain unchanged. No new Test/Review/Knowledge task was started.
+The retry uses the historical Issue identity exactly; Manager's new canonical
+backend-app#2 gate must be issued separately. All product-wide ACs and aggregate
+Issue Completion remain unverified; this report makes no final assessment.
+
+Pinned change
+head dab0123f4fd459e12c1f64ff2305e5d28d8a41f5
+tree 8af1119fde6742666c4e4e43cec1aab15ab36ea7
+base 2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0
+previous head 65885af3fd648ce7010fa4a06470b273b995d418
+PR https://github.com/syuhei0519/backend-app/pull/32
+The feature branch was fast-forwarded, and Draft remained true. Tracked source was
+clean after self-verification. Application code, Account/Order API/SQL, go.mod,
+go.sum, workflow permissions, scan policy and runtime stages are byte-unchanged.
+Only six files changed; change.patch contains the exact committed diff.
+
+Design and adoption
+Both dependency RUNs accept optional BuildKit secret id=build_ca, read-only and
+required=false. If present, a nonempty file is selected using command-local
+SSL_CERT_FILE, then go mod download performs normal TLS and checksum verification.
+No secret mount is added to the later test/build RUN or runtime stage. The ordinary
+CI path supplies no secret and retains standard trust. OCI_BUILD_CA_FILE is an
+optional local build-helper input; no GitHub Secret/Environment/token is created
+or required. The source file must stay outside the build context.
+
+Rejected alternatives: COPY-and-delete can retain the CA in layers; persistent
+ARG/ENV or truststore installation widens scope/lifetime; daemon-only CA does not
+supply Dockerfile RUN trust. TLS disabling, GOINSECURE, module-source substitution
+and new credentials are prohibited and absent. BuildKit secret mounts are the
+standard temporary transport: https://docs.docker.com/build/building/secrets/ .
+
+Risks and boundaries
+A supplied CA changes who may authenticate dependency HTTPS during that RUN; only
+an existing authorized bundle may be used. Standard certificate directories may
+still authenticate ordinary public endpoints, so unrelated/invalid PEM does not
+universally guarantee failure outside a custom-issuer environment. Secret contents
+are not cache keys; cold isolated builds are required for trust-change verification.
+An initial overlapping same-worker comparison was stopped and excluded because
+concurrent vertices could be shared. Final negative probes used a separate worker
+and sequential --no-cache builds. No TLS success was inferred from that probe.
+The unchanged distroless SSL_CERT_FILE points to its standard CA bundle; an initial
+verification assertion that rejected even this standard default was corrected.
+No source or image bytes were changed to satisfy the verification assertion.
+
+Verification
+Incoming Delivery1.2 was obtained with fresh Git using the pinned System consumer:
+96 explicit references, 105 objects and 1,258,880 bytes passed full size/hash/type/
+tree/binding validation before use. Consumer authorization and receipt are private.
+Old production Dockerfiles reproduced ENV-CA-1 at go mod download for both images.
+New exact committed Dockerfiles succeeded with the existing CA. Missing and
+malformed CA cases on an isolated no-cache worker failed TLS for both images.
+Synthetic shell/argument regression tests cover omitted/present/empty/missing-path
+helper inputs and RUN environment scope. Empty input fails before module fetching.
+
+Go 1.27.1: unit 109 passed/5 skipped; disposable DB + race 112 passed/2 skipped.
+The two remaining skips are TestMigrationDisposableDatabase and
+TestSDKCollectorMetricNames; neither is counted as executed. Full vet/build,
+module verification, all tools-module race/vet/build, ci/github/test.sh, fixed M0
+19-test suite, upstream 7 negative tests and synthetic transport checks passed.
+The synthetic publish fixture is a mock; no real registry publication occurred.
+
+Both real original OCI archives were read and validated by the exact source
+validators; config/layer digest validation, stamp, loaded config identity, migration,
+health/restart and read-only/nonroot/drop-cap runtime fixtures passed. Fixtures used
+only fresh task-owned resources, and cleanup was limited to those resources.
+Trivy 0.75.0 scanned those same layouts, the unchanged scan policy passed, and
+CycloneDX1.7 SBOM package/config binding passed. Existing vulnerability warnings,
+including HIGH warnings, remain visible in measurements; policy was not weakened
+and dependencies were not changed. Runtime layers contain no mounted bundle bytes
+or secret paths; the application-added layers contain only expected executable/
+migration paths. Original archive hashes remained unchanged after the chain.
+
+A second final build/chain uses a pristine git archive context because the full
+Go suite may leave generated executables in its checkout. Production success is
+not based on temporarily edited Dockerfiles. Measurements retain both the initial
+production run and the final clean-context run, with separate identities.
+Binary OCI archives are private execution products, not mislabeled text delivery.
+The bundle provides digests, structured observations and reproducible source.
+
+Delivery and later work
+Safe public artifacts use only public aliases and reviewed structured results.
+No private authorization, real Cloud identifiers, raw operational logs, internal
+proxy values or CA bytes are published. Historical public inputs retain their
+original fixed references and representation distinctions; no private-original
+equivalence is asserted. Producer publication verification grants no Consumer
+permission. Manager must supply a new separate Consumer authorization.
+The old Readiness context is invalidated by the new source/config head. Manager
+must repin and arrange independent Test/Review within their preserved budgets.
+Implementation2 does not consume or transfer a new Test budget.
+No workflow dispatch, real GHCR publish, Manifest PR17 operation, main push,
+merge/auto-merge, kind/cluster operation or deployment was performed.
+Backend-only build changes do not update the inspected digest-pinned Manifest or
+GitOps sources; external automation and actual cluster state remain unobserved.

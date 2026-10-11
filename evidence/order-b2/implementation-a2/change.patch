@@ -1,0 +1,202 @@
+diff --git a/Dockerfile b/Dockerfile
+index b49152b..6a7def4 100644
+--- a/Dockerfile
++++ b/Dockerfile
+@@ -5,7 +5,13 @@
+ FROM golang:1.27.1-bookworm@sha256:648f440f42a0958804efb24df176f806f9d353b41f1c0627f666428e40310f6b AS build
+ WORKDIR /src
+ COPY go.mod go.sum ./
+-RUN go mod download
++# Optional build-only trust; never copy the bundle or persist its path with ENV.
++RUN --mount=type=secret,id=build_ca,target=/run/secrets/build_ca,required=false \
++    if [ -e /run/secrets/build_ca ]; then \
++      test -s /run/secrets/build_ca || { echo 'Empty build CA bundle' >&2; exit 1; }; \
++      export SSL_CERT_FILE=/run/secrets/build_ca; \
++    fi; \
++    go mod download
+ COPY . .
+ ARG VCS_REF=unknown
+ # trimpathとGo symbolを残す。trimpathでbuild-infoからldflagsが省略されても、Trivyがバイナリ内のstamp済みmain module versionを読めるようにする。
+diff --git a/Dockerfile.order b/Dockerfile.order
+index 5c1cad1..8b6ab96 100644
+--- a/Dockerfile.order
++++ b/Dockerfile.order
+@@ -5,7 +5,13 @@
+ FROM golang:1.27.1-bookworm@sha256:648f440f42a0958804efb24df176f806f9d353b41f1c0627f666428e40310f6b AS build
+ WORKDIR /src
+ COPY go.mod go.sum ./
+-RUN go mod download
++# Optional build-only trust; never copy the bundle or persist its path with ENV.
++RUN --mount=type=secret,id=build_ca,target=/run/secrets/build_ca,required=false \
++    if [ -e /run/secrets/build_ca ]; then \
++      test -s /run/secrets/build_ca || { echo 'Empty build CA bundle' >&2; exit 1; }; \
++      export SSL_CERT_FILE=/run/secrets/build_ca; \
++    fi; \
++    go mod download
+ COPY . .
+ ARG VCS_REF=unknown
+ # trimpathとGo symbolを残す。trimpathでbuild-infoからldflagsが省略されても、Trivyがバイナリ内のstamp済みmain module versionを読めるようにする。
+diff --git a/ci/github/build-ca_test.py b/ci/github/build-ca_test.py
+new file mode 100644
+index 0000000..c18ccb7
+--- /dev/null
++++ b/ci/github/build-ca_test.py
+@@ -0,0 +1,68 @@
++"""Synthetic argument/scope regressions; real TLS requires cold image builds."""
++import json
++import os
++from pathlib import Path
++import subprocess
++import tempfile
++import unittest
++
++ROOT = Path(__file__).resolve().parents[2]
++
++
++class BuildTrust(unittest.TestCase):
++    def test_run_scope(self):
++        for name in ('Dockerfile', 'Dockerfile.order'):
++            text = (ROOT / name).read_text()
++            dependency = text.split('RUN ', 1)[1].split('\nCOPY . .', 1)[0]
++            self.assertIn('type=secret,id=build_ca', dependency)
++            self.assertIn('required=false', dependency)
++            self.assertIn('export SSL_CERT_FILE=/run/secrets/build_ca', dependency)
++            self.assertEqual(text.count('type=secret'), 1)
++            self.assertNotIn('build_ca', text.split('\nCOPY . .', 1)[1])
++            self.assertNotIn('ENV SSL_CERT', text)
++            # Execute the actual shell with only the mount path substituted.
++            shell = dependency.split(' \\\n', 1)[1].replace('\\\n', '')
++            for mode in ('missing', 'present', 'empty'):
++                with tempfile.TemporaryDirectory() as tmp:
++                    d = Path(tmp)
++                    ca = d / 'bundle'
++                    if mode != 'missing':
++                        ca.write_text('synthetic trust fixture' if mode == 'present' else '')
++                    (d / 'go').write_text('#!/bin/sh\n[ "$1 $2" = "mod download" ] || exit 9\nprintf "%s" "${SSL_CERT_FILE-unset}"\n')
++                    (d / 'go').chmod(0o700)
++                    env = dict(os.environ, PATH=tmp + ':' + os.environ['PATH'])
++                    env.pop('SSL_CERT_FILE', None)
++                    p = subprocess.run(['sh', '-c', shell.replace('/run/secrets/build_ca', str(ca))], env=env, capture_output=True, text=True)
++                    self.assertEqual(p.returncode, 1 if mode == 'empty' else 0)
++                    if mode != 'empty':
++                        self.assertEqual(p.stdout, str(ca) if mode == 'present' else 'unset')
++
++    def test_helper_optional_arguments(self):
++        for service in ('backend', 'order'):
++            for mode in ('missing', 'present', 'empty', 'nonexistent'):
++                with tempfile.TemporaryDirectory() as tmp:
++                    d = Path(tmp)
++                    ca = d / 'existing bundle.pem'
++                    if mode in ('present', 'empty'):
++                        ca.write_text('synthetic trust fixture' if mode == 'present' else '')
++                    (d / 'docker').write_text('#!/usr/bin/env python3\nimport json,sys\nfrom pathlib import Path\nPath("args.json").write_text(json.dumps(sys.argv[1:]))\nsys.exit(73)\n')
++                    (d / 'docker').chmod(0o700)
++                    env = dict(os.environ, PATH=tmp + ':' + os.environ['PATH'], RELEASE_SERVICE=service, GITHUB_SHA='a' * 40, GITHUB_REPOSITORY='syuhei0519/backend-app')
++                    env.pop('OCI_BUILD_CA_FILE', None)
++                    if mode != 'missing':
++                        env['OCI_BUILD_CA_FILE'] = str(ca)
++                    p = subprocess.run(['bash', str(ROOT / 'ci/github/oci.sh')], cwd=d, env=env, capture_output=True)
++                    if mode in ('empty', 'nonexistent'):
++                        self.assertNotEqual(p.returncode, 0)
++                        self.assertFalse((d / 'args.json').exists())
++                    else:
++                        self.assertEqual(p.returncode, 73)
++                        args = json.loads((d / 'args.json').read_text())
++                        self.assertEqual(args.count('--secret'), mode == 'present')
++                        if mode == 'present':
++                            self.assertEqual(args[args.index('--secret') + 1], 'id=build_ca,src=' + str(ca))
++                        self.assertEqual(args[args.index('-f') + 1], 'Dockerfile' if service == 'backend' else 'Dockerfile.order')
++
++
++if __name__ == '__main__':
++    unittest.main()
+diff --git a/ci/github/oci.sh b/ci/github/oci.sh
+index 5ec4714..b551b96 100644
+--- a/ci/github/oci.sh
++++ b/ci/github/oci.sh
+@@ -8,7 +8,16 @@ case "${RELEASE_SERVICE:-backend}" in
+ esac
+ mkdir -p .oci .security/private .security/public .cache/trivy
+ trap 'rm -rf .security/private' EXIT
+-docker buildx build --platform linux/amd64 --provenance=false --sbom=false \
++# Opt in only with an existing bundle outside the source context. Ordinary CI
++# passes no secret and retains the builder's standard trust store.
++build_secrets=()
++if [[ -n ${OCI_BUILD_CA_FILE:-} ]]; then
++  [[ -f $OCI_BUILD_CA_FILE && -r $OCI_BUILD_CA_FILE && -s $OCI_BUILD_CA_FILE ]] || {
++    echo 'Build CA bundle must be a readable nonempty file' >&2; exit 1;
++  }
++  build_secrets=(--secret "id=build_ca,src=$OCI_BUILD_CA_FILE")
++fi
++docker buildx build "${build_secrets[@]}" --platform linux/amd64 --provenance=false --sbom=false \
+   --build-arg "VCS_REF=$GITHUB_SHA" --build-arg "VCS_SOURCE=https://github.com/$GITHUB_REPOSITORY" \
+   -f "$dockerfile" --output type=oci,dest=.oci/image.tar,oci-mediatypes=true .
+ archive=$(sha256sum .oci/image.tar | cut -d ' ' -f1)
+diff --git a/ci/github/test.sh b/ci/github/test.sh
+index 2ab1ce0..33ca6a6 100644
+--- a/ci/github/test.sh
++++ b/ci/github/test.sh
+@@ -34,3 +34,5 @@ if test -f ci/github/release_test.py; then python3 -I ci/github/release_test.py;
+ 
+ python3 -I ci/github/order-release_test.py
+ python3 -I ci/github/fixtures/m0/release_test.py
++
++python3 -I ci/github/build-ca_test.py
+diff --git a/docs/order-image-ci.md b/docs/order-image-ci.md
+index 423e0d9..c850444 100644
+--- a/docs/order-image-ci.md
++++ b/docs/order-image-ci.md
+@@ -2,7 +2,7 @@
+ 
+ Order uses Dockerfile.order, /order-server (including its migrate subcommand),
+ linux/amd64 and the same pinned builder/runtime bases as Account. Account's
+-Dockerfile and v1 image/tag/artifact identities remain unchanged. Order SQL is
++runtime and v1 image/tag/artifact identities remain unchanged. Order SQL is
+ embedded by the existing B1 implementation. No Account migration files are copied
+ into the Order image.
+ 
+@@ -72,3 +72,44 @@ digests; no registry tag updater was found. Publication can create a separate
+ manifest PR after approval. Merging that later PR can cause automatic Argo sync.
+ Actual cluster state and out-of-repository automation are not observed here. AC-3,
+ Deployment Ready and aggregate Issue Completion remain Manager/later-stage gates.
++
++## Optional build-time CA bundle
++
++Ordinary GitHub CI needs no new Secret, variable or Environment. Both Dockerfiles
++use the builder's standard trust when `build_ca` is absent. An environment with an
++already authorized CA bundle may pass that existing file read-only as a BuildKit
++secret, outside the source context:
++
++```sh
++docker buildx build --secret "id=build_ca,src=$SSL_CERT_FILE" -f Dockerfile.order .
++# With an already configured buildctl worker:
++buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. \
++  --opt filename=Dockerfile.order --secret "id=build_ca,src=$SSL_CERT_FILE" \
++  --output type=oci,dest=order.oci.tar
++# Existing GitHub OCI chain, optional local invocation:
++OCI_BUILD_CA_FILE="$SSL_CERT_FILE" RELEASE_SERVICE=order bash ci/github/oci.sh
++```
++
++Only `go mod download` receives the secret and command-local `SSL_CERT_FILE`.
++The subsequent test/build RUN and runtime stage do not mount it. TLS and Go module
++checksum verification remain enabled, and module endpoints are unchanged. The
++bundle must be PEM trust material appropriate for the environment; an empty bundle
++fails immediately and a bundle lacking the required issuer fails TLS on a cold
++build. Go can also consult standard certificate directories, so an unrelated bundle
++does not force failure for endpoints already trusted by the standard store.
++
++Secret mounts were selected over COPY/delete (which can retain bytes in layers),
++ARG/ENV (persistent metadata), or truststore installation (unnecessary persistent
++change). The BuildKit daemon's own registry trust is a separate prerequisite; this
++option addresses only the Dockerfile dependency RUN. No trust provisioning or
++permission changes are performed by the helper. Keep the bundle outside the build
++context; do not log it or supply it as a build argument.
++
++Secret contents do not invalidate BuildKit cache. Use a fresh worker or `--no-cache`
++when verifying missing/valid/invalid trust or after CA rotation; a cached dependency
++step is not evidence of current TLS acceptance. A trusted CA can authenticate
++connections for that RUN: only use an existing authorized bundle. Normal runtime
++trust is unchanged, and the custom CA cannot be used by the resulting application.
++
++References: [Docker build secrets](https://docs.docker.com/build/building/secrets/)
++and [secret mount reference](https://docs.docker.com/reference/dockerfile/#run---mounttypesecret).

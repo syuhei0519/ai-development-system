@@ -1,0 +1,1429 @@
+{
+  "head": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+  "base": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+  "tree": "8af1119fde6742666c4e4e43cec1aab15ab36ea7",
+  "prior_head": "65885af3fd648ce7010fa4a06470b273b995d418",
+  "input_delivery": {
+    "explicit": 96,
+    "objects": 105,
+    "bytes": 1258880,
+    "canonical_verification": "passed; fresh output only; authorization and receipt remain private"
+  },
+  "regression": {
+    "unit": {
+      "passed_tests": 109,
+      "failed_tests": 0,
+      "skipped_tests": [
+        "TestDisposableMigration",
+        "TestDisposableTargetGuard",
+        "TestMigrationDisposableDatabase",
+        "TestSDKCollectorMetricNames",
+        "TestDisposableHTTPPersistenceAndAccount"
+      ]
+    },
+    "race": {
+      "passed_tests": 112,
+      "failed_tests": 0,
+      "skipped_tests": [
+        "TestMigrationDisposableDatabase",
+        "TestSDKCollectorMetricNames"
+      ]
+    }
+  },
+  "commands_passed": [
+    "go mod verify",
+    "go test -json -count=1 ./...",
+    "go vet ./...",
+    "go build ./...",
+    "ORDER_DISPOSABLE_TEST=1 go test -race -json -count=1 ./...",
+    "bash ci/github/test.sh",
+    "each tools module: go vet/test -race/build",
+    "gofmt check",
+    "git diff --check",
+    "fixed prior independent-negative.py (self-verification reuse): 7 tests",
+    "fixed M0 release_test.py: 19 tests",
+    "fixed transport-synthetic.go"
+  ],
+  "baseline": [
+    {
+      "service": "backend",
+      "dockerfile": "Dockerfile",
+      "started_at": "2026-10-11T18:21:02Z",
+      "ended_at": "2026-10-11T18:22:44Z",
+      "exit_code": 1
+    },
+    {
+      "service": "order",
+      "dockerfile": "Dockerfile.order",
+      "started_at": "2026-10-11T18:22:44Z",
+      "ended_at": "2026-10-11T18:22:47Z",
+      "exit_code": 1
+    }
+  ],
+  "negative_builds": [
+    {
+      "mode": "missing",
+      "service": "backend",
+      "dockerfile": "Dockerfile",
+      "started_at": "2026-10-11T18:25:58Z",
+      "ended_at": "2026-10-11T18:27:43Z",
+      "exit_code": 1,
+      "unknown_authority": true,
+      "dependency_run": true
+    },
+    {
+      "mode": "missing",
+      "service": "order",
+      "dockerfile": "Dockerfile.order",
+      "started_at": "2026-10-11T18:27:43Z",
+      "ended_at": "2026-10-11T18:27:54Z",
+      "exit_code": 1,
+      "unknown_authority": true,
+      "dependency_run": true
+    },
+    {
+      "mode": "invalid",
+      "service": "backend",
+      "dockerfile": "Dockerfile",
+      "started_at": "2026-10-11T18:27:54Z",
+      "ended_at": "2026-10-11T18:28:05Z",
+      "exit_code": 1,
+      "unknown_authority": true,
+      "dependency_run": true
+    },
+    {
+      "mode": "invalid",
+      "service": "order",
+      "dockerfile": "Dockerfile.order",
+      "started_at": "2026-10-11T18:28:05Z",
+      "ended_at": "2026-10-11T18:28:16Z",
+      "exit_code": 1,
+      "unknown_authority": true,
+      "dependency_run": true
+    }
+  ],
+  "worker_boundary": {
+    "network": "bridge",
+    "privileged": false,
+    "cap_add": null,
+    "user": "1000:1000",
+    "apparmor": "",
+    "security_opt": [
+      "seccomp=unconfined"
+    ],
+    "masked_paths": [],
+    "readonly_paths": [],
+    "native_snapshotter": true,
+    "process_sandbox": true
+  },
+  "discarded_probe": "An overlapping same-worker trust comparison was stopped and excluded; final negatives use a separate worker and sequential no-cache builds. No success inferred from shared vertices.",
+  "assertion_correction": "Initial runtime-env check incorrectly forbade the unchanged distroless SSL_CERT_FILE default; corrected to require the standard path and reject custom trust paths. No image bytes changed.",
+  "limits": [
+    "Self-verification only, no independent Test/Review",
+    "No real publish, dispatch, cluster, kind, deployment, merge or auto-merge",
+    "Product aggregate ACs remain unverified",
+    "Scan warnings retained under unchanged policy; go.mod/go.sum unchanged",
+    "Historical blocked Test records remain unchanged; old readiness context invalidated by new head"
+  ],
+  "initial_checkout_builds": [
+    {
+      "service": "backend",
+      "dockerfile": "Dockerfile",
+      "started_at": "2026-10-11T18:22:30Z",
+      "ended_at": "2026-10-11T18:26:02Z",
+      "exit_code": 0,
+      "size": 15378432,
+      "sha256": "83fb33f0b601916be14f5452ad225533e9464b1af07a874c83010a1827fb428a"
+    },
+    {
+      "service": "order",
+      "dockerfile": "Dockerfile.order",
+      "started_at": "2026-10-11T18:26:02Z",
+      "ended_at": "2026-10-11T18:27:30Z",
+      "exit_code": 0,
+      "size": 8831488,
+      "sha256": "3f6f6b8824f45b9a0c19ac8c4517521ad7bf8657ea1154b726e03975f7ca6655"
+    }
+  ],
+  "initial_checkout_chains": {
+    "backend": {
+      "result": {
+        "service": "backend",
+        "head": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+        "archive_sha256": "83fb33f0b601916be14f5452ad225533e9464b1af07a874c83010a1827fb428a",
+        "oci_digest": "sha256:00be002fd7167dd21a4420a62a7abae7965173ff1fc90280749a5cfc57248840",
+        "config_digest": "sha256:c3090c96e045036ce2f4c5778146e5ac1f3694aeb74396fdb580ed1d7859fac1",
+        "reader": "passed",
+        "runtime": "passed",
+        "scan": "passed",
+        "sbom": "passed",
+        "original_archive_unchanged": true,
+        "actual_publish": false
+      },
+      "image_proof": {
+        "service": "backend",
+        "archive_size": 15378432,
+        "archive_sha256": "83fb33f0b601916be14f5452ad225533e9464b1af07a874c83010a1827fb428a",
+        "descriptors": [
+          {
+            "digest": "sha256:00be002fd7167dd21a4420a62a7abae7965173ff1fc90280749a5cfc57248840",
+            "size": 2936
+          },
+          {
+            "digest": "sha256:c3090c96e045036ce2f4c5778146e5ac1f3694aeb74396fdb580ed1d7859fac1",
+            "size": 3892
+          },
+          {
+            "digest": "sha256:a5789fc40e828c4e7467626e3f69ec5dea8e5da22fe660db8ae6d16f777b0bbf",
+            "size": 83900
+          },
+          {
+            "digest": "sha256:990a9c434e5e0f11549a8d4a41a1991e621b04e30cd63269adbc97b1dc38fd7e",
+            "size": 12481
+          },
+          {
+            "digest": "sha256:39dc083afc39bd8dc43d456fe7ff7d39292e593bb2769972c11bb2e5f9119386",
+            "size": 445709
+          },
+          {
+            "digest": "sha256:bf7a4185f01524837d19abde915ffde84e64368b250f5b5e9f6f75aea62a11d4",
+            "size": 29005
+          },
+          {
+            "digest": "sha256:2780920e5dbfbe103d03a583ed75345306e572ec5a48cb10361f046767d9f29a",
+            "size": 67
+          },
+          {
+            "digest": "sha256:7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212",
+            "size": 188
+          },
+          {
+            "digest": "sha256:3214acf345c0cc6bbdb56b698a41ccdefc624a09d6beb0d38b5de0b2303ecaf4",
+            "size": 123
+          },
+          {
+            "digest": "sha256:52630fc75a18675c530ed9eba5f55eca09b03e91bd5bc15307918bbc1a7e7296",
+            "size": 162
+          },
+          {
+            "digest": "sha256:dd64bf2dd177757451a98fcdc999a339c35dee5d9872d8f4dc69c8f3c4dd0112",
+            "size": 80
+          },
+          {
+            "digest": "sha256:b839dfae01f66e15c6a8b63520557ed315bdfe036342fa7a0c537259f10d7a9a",
+            "size": 351
+          },
+          {
+            "digest": "sha256:dcaa5a89b0ccda4b283e16d0b4d0891cd93d5fe05c6798f7806781a6a2d84354",
+            "size": 314
+          },
+          {
+            "digest": "sha256:96ed2737ae312e0bc637b40783f7c2f23416cb72ca957aa01855f1614278e64b",
+            "size": 143347
+          },
+          {
+            "digest": "sha256:a6debe5c52ed6e1d063b76caa666c24e15844e3e4a2bb946fe436fa554f39428",
+            "size": 14638646
+          },
+          {
+            "digest": "sha256:9c3a070be5a7a0512d0be6cf4ecdd93530d9702d55637a205fef5ba6bb9d7b40",
+            "size": 963
+          }
+        ],
+        "runtime_user": "10001:10001",
+        "stamp_present": true,
+        "secret_paths_absent": true,
+        "bundle_bytes_absent": true,
+        "custom_trust_env_absent": true,
+        "application_layer_entries": [
+          [
+            "server"
+          ],
+          [
+            "migrations",
+            "migrations/0001_create_accounts.sql",
+            "migrations/embed.go"
+          ]
+        ]
+      },
+      "layout": {
+        "schemaVersion": 1,
+        "sourceCommit": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+        "sourceProjectId": 0,
+        "archiveSha256": "83fb33f0b601916be14f5452ad225533e9464b1af07a874c83010a1827fb428a",
+        "archiveBytes": 15378432,
+        "expandedBytes": 15362558,
+        "digest": "sha256:00be002fd7167dd21a4420a62a7abae7965173ff1fc90280749a5cfc57248840",
+        "layerCount": 14,
+        "platform": "linux/amd64",
+        "registryPush": false
+      },
+      "reader": {
+        "configDigest": "sha256:c3090c96e045036ce2f4c5778146e5ac1f3694aeb74396fdb580ed1d7859fac1",
+        "digest": "sha256:00be002fd7167dd21a4420a62a7abae7965173ff1fc90280749a5cfc57248840",
+        "fullLayerValidation": true,
+        "reader": "crane-v0.21.7-layout-reader",
+        "registryPush": false,
+        "schemaVersion": 1
+      },
+      "runtime": {
+        "archiveSha256": "83fb33f0b601916be14f5452ad225533e9464b1af07a874c83010a1827fb428a",
+        "capDrop": "ALL",
+        "configDigest": "sha256:c3090c96e045036ce2f4c5778146e5ac1f3694aeb74396fdb580ed1d7859fac1",
+        "digest": "sha256:00be002fd7167dd21a4420a62a7abae7965173ff1fc90280749a5cfc57248840",
+        "network": "internal",
+        "passed": true,
+        "readOnly": true,
+        "service": "backend"
+      },
+      "image-scan": {
+        "schemaVersion": 1,
+        "pass": true,
+        "trivyVersion": "0.75.0",
+        "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+        "scannedAt": "2026-10-11T18:27:42.123945654Z",
+        "findings": [
+          {
+            "kind": "vulnerability",
+            "rule": "DLA-4792-1",
+            "path": "image/os",
+            "package": "tzdata",
+            "installedVersion": "2026b-0+deb12u1",
+            "fixedVersion": "2026c-0+deb12u1",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78669",
+            "path": "server",
+            "package": "golang.org/x/net",
+            "installedVersion": "v0.59.0",
+            "fixedVersion": "0.60.0",
+            "severity": "HIGH",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78663",
+            "path": "server",
+            "package": "golang.org/x/net",
+            "installedVersion": "v0.59.0",
+            "fixedVersion": "0.60.0",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-97032",
+            "path": "server",
+            "package": "golang.org/x/net",
+            "installedVersion": "v0.59.0",
+            "fixedVersion": "0.60.0",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78659",
+            "path": "server",
+            "package": "golang.org/x/net",
+            "installedVersion": "v0.59.0",
+            "fixedVersion": "0.60.0",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78660",
+            "path": "server",
+            "package": "golang.org/x/net",
+            "installedVersion": "v0.59.0",
+            "fixedVersion": "0.60.0",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78667",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "HIGH",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78669",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "HIGH",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-97031",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "HIGH",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-56866",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78663",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-94439",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-94448",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-97032",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-56857",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "LOW",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78659",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78660",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-94440",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-97030",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          }
+        ],
+        "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+      },
+      "sbom-proof": {
+        "format": "CycloneDX",
+        "specVersion": "1.7",
+        "sha256": "7c729c7f97fad2aeb47a6955168da36f25f1bdb2d55922c726298e5f88aa1293",
+        "configDigest": "sha256:c3090c96e045036ce2f4c5778146e5ac1f3694aeb74396fdb580ed1d7859fac1",
+        "componentCount": 38,
+        "scannedPackageCount": 36
+      }
+    },
+    "order": {
+      "result": {
+        "service": "order",
+        "head": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+        "archive_sha256": "3f6f6b8824f45b9a0c19ac8c4517521ad7bf8657ea1154b726e03975f7ca6655",
+        "oci_digest": "sha256:7f61a1cc86812b35f131c61221d400387eb62dc5930c3870983271c6782f5dd7",
+        "config_digest": "sha256:659f9d8e9662401ca5c08c019b264aa4b906a07734965799244187c5895ca10d",
+        "reader": "passed",
+        "runtime": "passed",
+        "scan": "passed",
+        "sbom": "passed",
+        "original_archive_unchanged": true,
+        "actual_publish": false
+      },
+      "image_proof": {
+        "service": "order",
+        "archive_size": 8831488,
+        "archive_sha256": "3f6f6b8824f45b9a0c19ac8c4517521ad7bf8657ea1154b726e03975f7ca6655",
+        "descriptors": [
+          {
+            "digest": "sha256:7f61a1cc86812b35f131c61221d400387eb62dc5930c3870983271c6782f5dd7",
+            "size": 2747
+          },
+          {
+            "digest": "sha256:659f9d8e9662401ca5c08c019b264aa4b906a07734965799244187c5895ca10d",
+            "size": 3688
+          },
+          {
+            "digest": "sha256:a5789fc40e828c4e7467626e3f69ec5dea8e5da22fe660db8ae6d16f777b0bbf",
+            "size": 83900
+          },
+          {
+            "digest": "sha256:990a9c434e5e0f11549a8d4a41a1991e621b04e30cd63269adbc97b1dc38fd7e",
+            "size": 12481
+          },
+          {
+            "digest": "sha256:39dc083afc39bd8dc43d456fe7ff7d39292e593bb2769972c11bb2e5f9119386",
+            "size": 445709
+          },
+          {
+            "digest": "sha256:bf7a4185f01524837d19abde915ffde84e64368b250f5b5e9f6f75aea62a11d4",
+            "size": 29005
+          },
+          {
+            "digest": "sha256:2780920e5dbfbe103d03a583ed75345306e572ec5a48cb10361f046767d9f29a",
+            "size": 67
+          },
+          {
+            "digest": "sha256:7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212",
+            "size": 188
+          },
+          {
+            "digest": "sha256:3214acf345c0cc6bbdb56b698a41ccdefc624a09d6beb0d38b5de0b2303ecaf4",
+            "size": 123
+          },
+          {
+            "digest": "sha256:52630fc75a18675c530ed9eba5f55eca09b03e91bd5bc15307918bbc1a7e7296",
+            "size": 162
+          },
+          {
+            "digest": "sha256:dd64bf2dd177757451a98fcdc999a339c35dee5d9872d8f4dc69c8f3c4dd0112",
+            "size": 80
+          },
+          {
+            "digest": "sha256:b839dfae01f66e15c6a8b63520557ed315bdfe036342fa7a0c537259f10d7a9a",
+            "size": 351
+          },
+          {
+            "digest": "sha256:dcaa5a89b0ccda4b283e16d0b4d0891cd93d5fe05c6798f7806781a6a2d84354",
+            "size": 314
+          },
+          {
+            "digest": "sha256:96ed2737ae312e0bc637b40783f7c2f23416cb72ca957aa01855f1614278e64b",
+            "size": 143347
+          },
+          {
+            "digest": "sha256:9998e05bebd4b6cc57ad5530a089b338012667aa30921445d7c8a1b2a3cc4efd",
+            "size": 8093563
+          }
+        ],
+        "runtime_user": "10001:10001",
+        "stamp_present": true,
+        "secret_paths_absent": true,
+        "bundle_bytes_absent": true,
+        "custom_trust_env_absent": true,
+        "application_layer_entries": [
+          [
+            "order-server"
+          ]
+        ]
+      },
+      "layout": {
+        "schemaVersion": 1,
+        "sourceCommit": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+        "sourceProjectId": 0,
+        "archiveSha256": "3f6f6b8824f45b9a0c19ac8c4517521ad7bf8657ea1154b726e03975f7ca6655",
+        "archiveBytes": 8831488,
+        "expandedBytes": 8816119,
+        "digest": "sha256:7f61a1cc86812b35f131c61221d400387eb62dc5930c3870983271c6782f5dd7",
+        "layerCount": 13,
+        "platform": "linux/amd64",
+        "registryPush": false
+      },
+      "reader": {
+        "configDigest": "sha256:659f9d8e9662401ca5c08c019b264aa4b906a07734965799244187c5895ca10d",
+        "digest": "sha256:7f61a1cc86812b35f131c61221d400387eb62dc5930c3870983271c6782f5dd7",
+        "fullLayerValidation": true,
+        "reader": "crane-v0.21.7-layout-reader",
+        "registryPush": false,
+        "schemaVersion": 1
+      },
+      "runtime": {
+        "archiveSha256": "3f6f6b8824f45b9a0c19ac8c4517521ad7bf8657ea1154b726e03975f7ca6655",
+        "capDrop": "ALL",
+        "configDigest": "sha256:659f9d8e9662401ca5c08c019b264aa4b906a07734965799244187c5895ca10d",
+        "digest": "sha256:7f61a1cc86812b35f131c61221d400387eb62dc5930c3870983271c6782f5dd7",
+        "network": "internal",
+        "passed": true,
+        "readOnly": true,
+        "service": "order"
+      },
+      "image-scan": {
+        "schemaVersion": 1,
+        "pass": true,
+        "trivyVersion": "0.75.0",
+        "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+        "scannedAt": "2026-10-11T18:28:24.994964419Z",
+        "findings": [
+          {
+            "kind": "vulnerability",
+            "rule": "DLA-4792-1",
+            "path": "image/os",
+            "package": "tzdata",
+            "installedVersion": "2026b-0+deb12u1",
+            "fixedVersion": "2026c-0+deb12u1",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78667",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "HIGH",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78669",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "HIGH",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-97031",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "HIGH",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-56866",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78663",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-94439",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-94448",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-97032",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-56857",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "LOW",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78659",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78660",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-94440",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-97030",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          }
+        ],
+        "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+      },
+      "sbom-proof": {
+        "format": "CycloneDX",
+        "specVersion": "1.7",
+        "sha256": "89c395066a587f8525cffd553d1578d922f000e91bd4ad89a12849d958ea6d5f",
+        "configDigest": "sha256:659f9d8e9662401ca5c08c019b264aa4b906a07734965799244187c5895ca10d",
+        "componentCount": 15,
+        "scannedPackageCount": 13
+      }
+    }
+  },
+  "final_clean_context_builds": [
+    {
+      "service": "backend",
+      "dockerfile": "Dockerfile",
+      "started_at": "2026-10-11T18:29:42Z",
+      "ended_at": "2026-10-11T18:33:09Z",
+      "exit_code": 0,
+      "size": 15378432,
+      "sha256": "d234813b3e21e189d902c66d6dc26c3621e1fd83ef8989a48fba4167048b7509"
+    },
+    {
+      "service": "order",
+      "dockerfile": "Dockerfile.order",
+      "started_at": "2026-10-11T18:33:09Z",
+      "ended_at": "2026-10-11T18:34:38Z",
+      "exit_code": 0,
+      "size": 8831488,
+      "sha256": "12a9b7c4d5b4d2540b8a9d4e1e82627de9344f8104f16dd9d0f46354186afa84"
+    }
+  ],
+  "fixed_source_proof": {
+    "head": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+    "tree": "8af1119fde6742666c4e4e43cec1aab15ab36ea7",
+    "git_archive_source_files_verified": 213,
+    "dockerfiles": {
+      "Dockerfile": "dc34d001b4451e4059c89b28861187a87e98875138370b0c2b1dd318c26e19d6",
+      "Dockerfile.order": "febd4bd227fc7cd520f25b467fbe2820142751f1daec040a1c56585f8e24206f"
+    },
+    "application_sql_locks_workflow_policy_unchanged": true
+  },
+  "final_clean_context_chains": {
+    "backend": {
+      "result": {
+        "service": "backend",
+        "head": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+        "archive_sha256": "d234813b3e21e189d902c66d6dc26c3621e1fd83ef8989a48fba4167048b7509",
+        "oci_digest": "sha256:ef2501d6594c154b3acb9c455d1f58059dd2f4074ca143978c23bd00aff7c4e0",
+        "config_digest": "sha256:1dd250207a79550c167009995bd06ea45512ea2919bcbceb5139c1170bff1533",
+        "reader": "passed",
+        "runtime": "passed",
+        "scan": "passed",
+        "sbom": "passed",
+        "original_archive_unchanged": true,
+        "actual_publish": false
+      },
+      "image_proof": {
+        "service": "backend",
+        "archive_size": 15378432,
+        "archive_sha256": "d234813b3e21e189d902c66d6dc26c3621e1fd83ef8989a48fba4167048b7509",
+        "descriptors": [
+          {
+            "digest": "sha256:ef2501d6594c154b3acb9c455d1f58059dd2f4074ca143978c23bd00aff7c4e0",
+            "size": 2936
+          },
+          {
+            "digest": "sha256:1dd250207a79550c167009995bd06ea45512ea2919bcbceb5139c1170bff1533",
+            "size": 3892
+          },
+          {
+            "digest": "sha256:a5789fc40e828c4e7467626e3f69ec5dea8e5da22fe660db8ae6d16f777b0bbf",
+            "size": 83900
+          },
+          {
+            "digest": "sha256:990a9c434e5e0f11549a8d4a41a1991e621b04e30cd63269adbc97b1dc38fd7e",
+            "size": 12481
+          },
+          {
+            "digest": "sha256:39dc083afc39bd8dc43d456fe7ff7d39292e593bb2769972c11bb2e5f9119386",
+            "size": 445709
+          },
+          {
+            "digest": "sha256:bf7a4185f01524837d19abde915ffde84e64368b250f5b5e9f6f75aea62a11d4",
+            "size": 29005
+          },
+          {
+            "digest": "sha256:2780920e5dbfbe103d03a583ed75345306e572ec5a48cb10361f046767d9f29a",
+            "size": 67
+          },
+          {
+            "digest": "sha256:7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212",
+            "size": 188
+          },
+          {
+            "digest": "sha256:3214acf345c0cc6bbdb56b698a41ccdefc624a09d6beb0d38b5de0b2303ecaf4",
+            "size": 123
+          },
+          {
+            "digest": "sha256:52630fc75a18675c530ed9eba5f55eca09b03e91bd5bc15307918bbc1a7e7296",
+            "size": 162
+          },
+          {
+            "digest": "sha256:dd64bf2dd177757451a98fcdc999a339c35dee5d9872d8f4dc69c8f3c4dd0112",
+            "size": 80
+          },
+          {
+            "digest": "sha256:b839dfae01f66e15c6a8b63520557ed315bdfe036342fa7a0c537259f10d7a9a",
+            "size": 351
+          },
+          {
+            "digest": "sha256:dcaa5a89b0ccda4b283e16d0b4d0891cd93d5fe05c6798f7806781a6a2d84354",
+            "size": 314
+          },
+          {
+            "digest": "sha256:96ed2737ae312e0bc637b40783f7c2f23416cb72ca957aa01855f1614278e64b",
+            "size": 143347
+          },
+          {
+            "digest": "sha256:6b0866d9e7cdf729018946f4b31eec350b43ed03fcb4ed569a5f6aaa2db1e7fa",
+            "size": 14638646
+          },
+          {
+            "digest": "sha256:8bbbea05231230c8e22d4594950a101d40fa4c8c38d6f8dfcbd5d12d3bdd6e1a",
+            "size": 963
+          }
+        ],
+        "runtime_user": "10001:10001",
+        "stamp_present": true,
+        "secret_paths_absent": true,
+        "bundle_bytes_absent": true,
+        "custom_trust_env_absent": true,
+        "application_layer_entries": [
+          [
+            "server"
+          ],
+          [
+            "migrations",
+            "migrations/0001_create_accounts.sql",
+            "migrations/embed.go"
+          ]
+        ]
+      },
+      "layout": {
+        "schemaVersion": 1,
+        "sourceCommit": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+        "sourceProjectId": 0,
+        "archiveSha256": "d234813b3e21e189d902c66d6dc26c3621e1fd83ef8989a48fba4167048b7509",
+        "archiveBytes": 15378432,
+        "expandedBytes": 15362558,
+        "digest": "sha256:ef2501d6594c154b3acb9c455d1f58059dd2f4074ca143978c23bd00aff7c4e0",
+        "layerCount": 14,
+        "platform": "linux/amd64",
+        "registryPush": false
+      },
+      "reader": {
+        "configDigest": "sha256:1dd250207a79550c167009995bd06ea45512ea2919bcbceb5139c1170bff1533",
+        "digest": "sha256:ef2501d6594c154b3acb9c455d1f58059dd2f4074ca143978c23bd00aff7c4e0",
+        "fullLayerValidation": true,
+        "reader": "crane-v0.21.7-layout-reader",
+        "registryPush": false,
+        "schemaVersion": 1
+      },
+      "runtime": {
+        "archiveSha256": "d234813b3e21e189d902c66d6dc26c3621e1fd83ef8989a48fba4167048b7509",
+        "capDrop": "ALL",
+        "configDigest": "sha256:1dd250207a79550c167009995bd06ea45512ea2919bcbceb5139c1170bff1533",
+        "digest": "sha256:ef2501d6594c154b3acb9c455d1f58059dd2f4074ca143978c23bd00aff7c4e0",
+        "network": "internal",
+        "passed": true,
+        "readOnly": true,
+        "service": "backend"
+      },
+      "image-scan": {
+        "schemaVersion": 1,
+        "pass": true,
+        "trivyVersion": "0.75.0",
+        "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+        "scannedAt": "2026-10-11T18:34:35.95929449Z",
+        "findings": [
+          {
+            "kind": "vulnerability",
+            "rule": "DLA-4792-1",
+            "path": "image/os",
+            "package": "tzdata",
+            "installedVersion": "2026b-0+deb12u1",
+            "fixedVersion": "2026c-0+deb12u1",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78669",
+            "path": "server",
+            "package": "golang.org/x/net",
+            "installedVersion": "v0.59.0",
+            "fixedVersion": "0.60.0",
+            "severity": "HIGH",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78663",
+            "path": "server",
+            "package": "golang.org/x/net",
+            "installedVersion": "v0.59.0",
+            "fixedVersion": "0.60.0",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-97032",
+            "path": "server",
+            "package": "golang.org/x/net",
+            "installedVersion": "v0.59.0",
+            "fixedVersion": "0.60.0",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78659",
+            "path": "server",
+            "package": "golang.org/x/net",
+            "installedVersion": "v0.59.0",
+            "fixedVersion": "0.60.0",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78660",
+            "path": "server",
+            "package": "golang.org/x/net",
+            "installedVersion": "v0.59.0",
+            "fixedVersion": "0.60.0",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78667",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "HIGH",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78669",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "HIGH",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-97031",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "HIGH",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-56866",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78663",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-94439",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-94448",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-97032",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-56857",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "LOW",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78659",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78660",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-94440",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-97030",
+            "path": "server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          }
+        ],
+        "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+      },
+      "sbom-proof": {
+        "format": "CycloneDX",
+        "specVersion": "1.7",
+        "sha256": "ab19cf203887d339967420d5fa75d047aacff2109dd177c97c48fd01cc97c462",
+        "configDigest": "sha256:1dd250207a79550c167009995bd06ea45512ea2919bcbceb5139c1170bff1533",
+        "componentCount": 38,
+        "scannedPackageCount": 36
+      }
+    },
+    "order": {
+      "result": {
+        "service": "order",
+        "head": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+        "archive_sha256": "12a9b7c4d5b4d2540b8a9d4e1e82627de9344f8104f16dd9d0f46354186afa84",
+        "oci_digest": "sha256:dda00ab6f55ae79969046b267cfc57908f6cf02b90b67ed81818ddf4c578b2a7",
+        "config_digest": "sha256:8afd782377a15a223f68fcfcdb691cbf0dc4d1346697fa30769e1cdbe8571aca",
+        "reader": "passed",
+        "runtime": "passed",
+        "scan": "passed",
+        "sbom": "passed",
+        "original_archive_unchanged": true,
+        "actual_publish": false
+      },
+      "image_proof": {
+        "service": "order",
+        "archive_size": 8831488,
+        "archive_sha256": "12a9b7c4d5b4d2540b8a9d4e1e82627de9344f8104f16dd9d0f46354186afa84",
+        "descriptors": [
+          {
+            "digest": "sha256:dda00ab6f55ae79969046b267cfc57908f6cf02b90b67ed81818ddf4c578b2a7",
+            "size": 2747
+          },
+          {
+            "digest": "sha256:8afd782377a15a223f68fcfcdb691cbf0dc4d1346697fa30769e1cdbe8571aca",
+            "size": 3688
+          },
+          {
+            "digest": "sha256:a5789fc40e828c4e7467626e3f69ec5dea8e5da22fe660db8ae6d16f777b0bbf",
+            "size": 83900
+          },
+          {
+            "digest": "sha256:990a9c434e5e0f11549a8d4a41a1991e621b04e30cd63269adbc97b1dc38fd7e",
+            "size": 12481
+          },
+          {
+            "digest": "sha256:39dc083afc39bd8dc43d456fe7ff7d39292e593bb2769972c11bb2e5f9119386",
+            "size": 445709
+          },
+          {
+            "digest": "sha256:bf7a4185f01524837d19abde915ffde84e64368b250f5b5e9f6f75aea62a11d4",
+            "size": 29005
+          },
+          {
+            "digest": "sha256:2780920e5dbfbe103d03a583ed75345306e572ec5a48cb10361f046767d9f29a",
+            "size": 67
+          },
+          {
+            "digest": "sha256:7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212",
+            "size": 188
+          },
+          {
+            "digest": "sha256:3214acf345c0cc6bbdb56b698a41ccdefc624a09d6beb0d38b5de0b2303ecaf4",
+            "size": 123
+          },
+          {
+            "digest": "sha256:52630fc75a18675c530ed9eba5f55eca09b03e91bd5bc15307918bbc1a7e7296",
+            "size": 162
+          },
+          {
+            "digest": "sha256:dd64bf2dd177757451a98fcdc999a339c35dee5d9872d8f4dc69c8f3c4dd0112",
+            "size": 80
+          },
+          {
+            "digest": "sha256:b839dfae01f66e15c6a8b63520557ed315bdfe036342fa7a0c537259f10d7a9a",
+            "size": 351
+          },
+          {
+            "digest": "sha256:dcaa5a89b0ccda4b283e16d0b4d0891cd93d5fe05c6798f7806781a6a2d84354",
+            "size": 314
+          },
+          {
+            "digest": "sha256:96ed2737ae312e0bc637b40783f7c2f23416cb72ca957aa01855f1614278e64b",
+            "size": 143347
+          },
+          {
+            "digest": "sha256:2980f5f986f7f812db879c9812201942dae7f54f984b732c20c397b330e8a38c",
+            "size": 8093562
+          }
+        ],
+        "runtime_user": "10001:10001",
+        "stamp_present": true,
+        "secret_paths_absent": true,
+        "bundle_bytes_absent": true,
+        "custom_trust_env_absent": true,
+        "application_layer_entries": [
+          [
+            "order-server"
+          ]
+        ]
+      },
+      "layout": {
+        "schemaVersion": 1,
+        "sourceCommit": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+        "sourceProjectId": 0,
+        "archiveSha256": "12a9b7c4d5b4d2540b8a9d4e1e82627de9344f8104f16dd9d0f46354186afa84",
+        "archiveBytes": 8831488,
+        "expandedBytes": 8816118,
+        "digest": "sha256:dda00ab6f55ae79969046b267cfc57908f6cf02b90b67ed81818ddf4c578b2a7",
+        "layerCount": 13,
+        "platform": "linux/amd64",
+        "registryPush": false
+      },
+      "reader": {
+        "configDigest": "sha256:8afd782377a15a223f68fcfcdb691cbf0dc4d1346697fa30769e1cdbe8571aca",
+        "digest": "sha256:dda00ab6f55ae79969046b267cfc57908f6cf02b90b67ed81818ddf4c578b2a7",
+        "fullLayerValidation": true,
+        "reader": "crane-v0.21.7-layout-reader",
+        "registryPush": false,
+        "schemaVersion": 1
+      },
+      "runtime": {
+        "archiveSha256": "12a9b7c4d5b4d2540b8a9d4e1e82627de9344f8104f16dd9d0f46354186afa84",
+        "capDrop": "ALL",
+        "configDigest": "sha256:8afd782377a15a223f68fcfcdb691cbf0dc4d1346697fa30769e1cdbe8571aca",
+        "digest": "sha256:dda00ab6f55ae79969046b267cfc57908f6cf02b90b67ed81818ddf4c578b2a7",
+        "network": "internal",
+        "passed": true,
+        "readOnly": true,
+        "service": "order"
+      },
+      "image-scan": {
+        "schemaVersion": 1,
+        "pass": true,
+        "trivyVersion": "0.75.0",
+        "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+        "scannedAt": "2026-10-11T18:35:47.887184016Z",
+        "findings": [
+          {
+            "kind": "vulnerability",
+            "rule": "DLA-4792-1",
+            "path": "image/os",
+            "package": "tzdata",
+            "installedVersion": "2026b-0+deb12u1",
+            "fixedVersion": "2026c-0+deb12u1",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78667",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "HIGH",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78669",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "HIGH",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-97031",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "HIGH",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-56866",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78663",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-94439",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-94448",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-97032",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "MEDIUM",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-56857",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "LOW",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78659",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-78660",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-94440",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          },
+          {
+            "kind": "vulnerability",
+            "rule": "CVE-2026-97030",
+            "path": "order-server",
+            "package": "stdlib",
+            "installedVersion": "v1.27.1",
+            "fixedVersion": "1.26.9, 1.27.2",
+            "severity": "UNKNOWN",
+            "decision": "warning"
+          }
+        ],
+        "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+      },
+      "sbom-proof": {
+        "format": "CycloneDX",
+        "specVersion": "1.7",
+        "sha256": "872b505b52c52384e761557096f096ca3156cdfb7e09c1f4a60afd1ff429fa6a",
+        "configDigest": "sha256:8afd782377a15a223f68fcfcdb691cbf0dc4d1346697fa30769e1cdbe8571aca",
+        "componentCount": 15,
+        "scannedPackageCount": 13
+      }
+    }
+  },
+  "normal_no_secret_ci": "push and PR CI both completed success; both image jobs and ci-result passed",
+  "cleanup": {
+    "task_buildkit_containers_removed": true,
+    "introduced_buildkit_trivy_images_removed": true,
+    "image_inventory_equals_initial": true,
+    "runtime_fixtures_removed_by_successful_runtime_finally": true,
+    "env_files_removed": true,
+    "private_evidence_retained": true
+  }
+}

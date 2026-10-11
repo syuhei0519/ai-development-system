@@ -1,0 +1,14 @@
+{
+  "document_type": "knowledge_candidates",
+  "publication_status": "pending_manager_review",
+  "candidates": [
+    {
+      "id": "KC-BUILD-TRUST",
+      "domain": "container-build-verification",
+      "summary": "Use optional RUN-scoped CA secret consumption, and cold isolated verification, to separate dependency trust from daemon and runtime trust.",
+      "evidence": "Both exact production Dockerfiles failed without workspace CA, succeeded with existing CA, and failed with invalid CA; unchanged ordinary GitHub CI also passed both image jobs. Secret contents are not cache keys; overlapping probes were excluded.",
+      "source": "https://github.com/syuhei0519/backend-app/blob/dab0123f4fd459e12c1f64ff2305e5d28d8a41f5/docs/order-image-ci.md",
+      "scope": "BuildKit builds behind an already authorized custom TLS issuer; does not authorize new trust, disabled TLS, publication, deployment or independent acceptance."
+    }
+  ]
+}

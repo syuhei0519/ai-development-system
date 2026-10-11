@@ -1,0 +1,84 @@
+{
+  "review_scope": "Public derivative files and fixed public source references; no private-original equivalence claimed.",
+  "publication_basis": "Existing same-purpose Phase1-2/1-3 feature-branch evidence publication authorization; private authorization excluded.",
+  "checks": [
+    "Content read and reviewed",
+    "No CA bytes or actual configured proxy values",
+    "No real Cloud identifiers, private conversation, authorization or ConsumptionReceipt",
+    "Only summarized structured measurements, source, synthetic fixture code and package inventory",
+    "Original binary OCI archives are not typed as text or committed",
+    "Historical typed tree and upstream closure retained via fixed references"
+  ],
+  "files": [
+    {
+      "path": "backend-initial-sbom.cdx.json",
+      "size": 69743,
+      "sha256": "7c729c7f97fad2aeb47a6955168da36f25f1bdb2d55922c726298e5f88aa1293"
+    },
+    {
+      "path": "backend-sbom.cdx.json",
+      "size": 69743,
+      "sha256": "ab19cf203887d339967420d5fa75d047aacff2109dd177c97c48fd01cc97c462"
+    },
+    {
+      "path": "change.patch",
+      "size": 10822,
+      "sha256": "c779577076ba96e1f596bb55f2c7b826770f92a50e120bc7d4a6dc3d36b25525"
+    },
+    {
+      "path": "check-image.py",
+      "size": 2603,
+      "sha256": "76380118279465f7ad3c4fb5dffa7cabc988baa76a0e0c54413463be6e130b00"
+    },
+    {
+      "path": "ci.json",
+      "size": 4230,
+      "sha256": "4c75e8f9c6f1a4e4b993d6fc05df3473f9a7baf52f4f13b9b49c409a00058216"
+    },
+    {
+      "path": "knowledge-candidates.json",
+      "size": 942,
+      "sha256": "db893480fe43cf02691503a09062772d37e375b26ac995c66725fcd8cd064339"
+    },
+    {
+      "path": "measurements.json",
+      "size": 49375,
+      "sha256": "55042612dd898d1df716073c42d182068b93fafb0daa50a245eca7c86500f0d0"
+    },
+    {
+      "path": "order-initial-sbom.cdx.json",
+      "size": 44714,
+      "sha256": "89c395066a587f8525cffd553d1578d922f000e91bd4ad89a12849d958ea6d5f"
+    },
+    {
+      "path": "order-sbom.cdx.json",
+      "size": 44714,
+      "sha256": "872b505b52c52384e761557096f096ca3156cdfb7e09c1f4a60afd1ff429fa6a"
+    },
+    {
+      "path": "report.txt",
+      "size": 6539,
+      "sha256": "ebb201b4e3fa7a3a6a0df2c17676c996613cf1476e1ba8ae32d03dae3abe3dd3"
+    },
+    {
+      "path": "reproduce-build.py",
+      "size": 4985,
+      "sha256": "261d28d63a237de3a6a11f5fb5394c9294c1cd5c8a6a5a2758f780a220a60003"
+    },
+    {
+      "path": "reproduce.sh",
+      "size": 2129,
+      "sha256": "19961fd3e8c59e1d8956d6cd020a35c41aa1a4d8a983a370bb9b3dcf3fb333e1"
+    },
+    {
+      "path": "verify-chain.py",
+      "size": 3428,
+      "sha256": "67204785f395c03faa1ddf810c83464376694b94034d0110a5d49cfb0491b781"
+    }
+  ],
+  "limitations": [
+    "Review and producer bytes verification do not authorize Consumer use",
+    "Original and edited public inputs remain distinguished",
+    "No independent Test/Review or Manager final AC assessment"
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "syuhei0519/backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "implementation",
+  "task_id": "order-b2-implementation-a2",
+  "attempt": 2,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "order-b2-implementation-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/ed1d1a04cb3465238f0e560540f2d471f3f16dad/evidence/order-b2/implementation-a1/handoff.json",
+      "revision": "sha256:97a03d7cd27c961488fc7ed37c0969fb4f1069e407e8fff61606f0f8aaf1d554",
+      "relationship": "retry_of"
+    },
+    {
+      "role": "test",
+      "task_id": "order-b2-test-e2-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/5702c37fff594141dcbc5f89ca19176468d9f670/evidence/order-b2/test-e2-a1/handoff.json",
+      "revision": "sha256:d3545fcc0ea0fedaf2f563c7a454330c32364a826d6836a2b1d7d81ae223d9c2",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Minimal optional build-time CA support committed and pushed to Draft PR32. Exact clean-context production OCI/runtime/scan/SBOM chains and all assigned self-regressions passed; same-head push and PR CI passed without a CA secret. Historical blocked Test outcomes remain unchanged. Implementation scope only; product-wide ACs, independent Test/Review, Readiness and aggregate completion remain unverified.",
+  "assignment": {
+    "scope": "backend-app#2/B2",
+    "ac_ids": [
+      "AC-1",
+      "AC-2",
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "Dockerfile.order と専用cmd/order-serverイメージを作り、既存Accountイメージ仕様を維持する。既存固定base、nonroot、read-only、能力drop、scan基準を弱めない。",
+      "両イメージをservice別作業領域・artifactでbuild/checkし、同一のchecked OCI tarをpublishする。fail-fast=false、全matrix結果をci-resultへ反映、片方の失敗・欠落を成功扱いしない。Account既存v1の名前・tag・公開フロー互換を維持する。",
+      "Order v2 release record/artifact/tag/proposalを、マージ済みM0 consumerの実際の契約へ一致させる。producer→consumerの正常・異常fixtureを実コードで突合する。source/service/run/attempt/config/archive/digest/SBOMの混同・改変・再buildを拒否する。保護されたmain専用公開、既存Environment承認・token最小scopeを維持する。",
+      "既存全テスト、関連回帰、Unit/race/vet、B1 AC-1/2の実HTTP+使い捨てPostgreSQL回帰、両OCIのruntime/scan/SBOM、CI集約の失敗系を実行し、実測・skip・未実行を区別する。使い捨てfixtureは新規作成分だけ、既存DB/volumeを使わず、限定cleanupする。隔離ローカルコンテナの合成試験は許可済み。実kind/実cluster操作は今回は行わない。",
+      "branch feat/order-image-ci-b2 を確認し重複作成せず、許可範囲をfeature Push、backend-appにDraft PR作成。Issue2通常リンクのみでCloses/Fixes禁止。自己merge、auto-merge、workflow_dispatchによる実publish、実環境デプロイは禁止。",
+      "設計差分・理由・不採用案・新リスクを記録。重大な承認境界は勝手に決めず報告。ただし合理的な内部実装判断まで全て人間質問にしない。",
+      "Handoff v2.0、変更head/base/tree、全自己検証結果、独立検証用手順、配送manifest/Publication Receiptを作る。自己検証は独立Test/Reviewではない。System専用branch evidence/order-b2-implementation-a1、prefix evidence/order-b2/implementation-a1/ に安全点検済み報告・合成fixture・公開済み入力・配送記録を保存可。既存検証branchは上書きしない。全参照は固定Gitとrawsize/SHA。後続に必要なclosureのみをまとめ、最大128件・型・必須参照を維持する。",
+      "Consumer利用認可を自分で発行せずManagerへmanifest/pub固定pinを返す。private原本/hash、実taskID、認可、内部ログ、秘密は公開しない。task_idには公開alias、実CloudIDはprivateに別記録する。",
+      "System canonical Handoff/Delivery validationの結果を返す。正式Manager Readinessを自分で決定しない。実装・push・Draft PR・CI・実GHCR公開・デプロイは別々に報告する。Knowledge候補は出すがKnowledge Agentや定期実行を起動しない。",
+      "既存 CA bundle をビルド時だけ任意に渡せる正規の最小対応を実装してください。",
+      "本番 Dockerfile の正式追加コミット後の固定 bytes を自己検証し、一時編集版の成功を本番成功にしない。",
+      "既存 feature branch に追加コミットし PR32 を Draft のまま更新。同 head CI を確認。",
+      "今回の配送先は専用 evidence/order-b2/implementation-a2。歴史的 assignment の前回配送先を上書きせず、System feature branch evidence/order-b2-implementation-a2 へ安全成果物を配送する。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-BACKEND-INITIAL-SBOM-CDX-JSON",
+      "kind": "other",
+      "locator": "backend-initial-sbom.cdx.json",
+      "revision": "sha256:7c729c7f97fad2aeb47a6955168da36f25f1bdb2d55922c726298e5f88aa1293",
+      "summary": "Public self-verification artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-BACKEND-SBOM-CDX-JSON",
+      "kind": "other",
+      "locator": "backend-sbom.cdx.json",
+      "revision": "sha256:ab19cf203887d339967420d5fa75d047aacff2109dd177c97c48fd01cc97c462",
+      "summary": "Public self-verification artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-SAFETY",
+      "kind": "other",
+      "locator": "bundle-review.json",
+      "revision": "sha256:5f7d7132c6bbb37180a5e75805c50737526127eb4fcb4b4e3d219298d4b52cae",
+      "summary": "Public self-verification artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-PATCH",
+      "kind": "document",
+      "locator": "change.patch",
+      "revision": "sha256:c779577076ba96e1f596bb55f2c7b826770f92a50e120bc7d4a6dc3d36b25525",
+      "summary": "Public self-verification artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-CHECK-IMAGE-PY",
+      "kind": "document",
+      "locator": "check-image.py",
+      "revision": "sha256:76380118279465f7ad3c4fb5dffa7cabc988baa76a0e0c54413463be6e130b00",
+      "summary": "Public self-verification artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-CI",
+      "kind": "other",
+      "locator": "ci.json",
+      "revision": "sha256:4c75e8f9c6f1a4e4b993d6fc05df3473f9a7baf52f4f13b9b49c409a00058216",
+      "summary": "Public self-verification artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-KNOWLEDGE",
+      "kind": "knowledge",
+      "locator": "knowledge-candidates.json",
+      "revision": "sha256:db893480fe43cf02691503a09062772d37e375b26ac995c66725fcd8cd064339",
+      "summary": "Public self-verification artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-MEASURE",
+      "kind": "other",
+      "locator": "measurements.json",
+      "revision": "sha256:55042612dd898d1df716073c42d182068b93fafb0daa50a245eca7c86500f0d0",
+      "summary": "Public self-verification artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-ORDER-INITIAL-SBOM-CDX-JSON",
+      "kind": "other",
+      "locator": "order-initial-sbom.cdx.json",
+      "revision": "sha256:89c395066a587f8525cffd553d1578d922f000e91bd4ad89a12849d958ea6d5f",
+      "summary": "Public self-verification artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-ORDER-SBOM-CDX-JSON",
+      "kind": "other",
+      "locator": "order-sbom.cdx.json",
+      "revision": "sha256:872b505b52c52384e761557096f096ca3156cdfb7e09c1f4a60afd1ff429fa6a",
+      "summary": "Public self-verification artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-REPORT",
+      "kind": "test-report",
+      "locator": "report.txt",
+      "revision": "sha256:ebb201b4e3fa7a3a6a0df2c17676c996613cf1476e1ba8ae32d03dae3abe3dd3",
+      "summary": "Public self-verification artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-REPRODUCE-BUILD-PY",
+      "kind": "document",
+      "locator": "reproduce-build.py",
+      "revision": "sha256:261d28d63a237de3a6a11f5fb5394c9294c1cd5c8a6a5a2758f780a220a60003",
+      "summary": "Public self-verification artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-REPRODUCE-SH",
+      "kind": "document",
+      "locator": "reproduce.sh",
+      "revision": "sha256:19961fd3e8c59e1d8956d6cd020a35c41aa1a4d8a983a370bb9b3dcf3fb333e1",
+      "summary": "Public self-verification artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-VERIFY-CHAIN-PY",
+      "kind": "document",
+      "locator": "verify-chain.py",
+      "revision": "sha256:67204785f395c03faa1ddf810c83464376694b94034d0110a5d49cfb0491b781",
+      "summary": "Public self-verification artifact; measured scope and limitations are explicit."
+    },
+    {
+      "id": "A-COMMIT",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/backend-app/commit/dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+      "revision": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+      "summary": "Minimal committed optional build-time trust support; runtime and application code unchanged."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-REPAIR",
+      "claim": "Minimal committed optional trust addresses dependency RUN boundary without runtime/application/lockfile changes",
+      "artifact_ids": [
+        "A-COMMIT",
+        "A-PATCH",
+        "A-REPORT"
+      ],
+      "locator": "report.txt",
+      "observation": "Both Dockerfiles use one optional secret mount only in go mod download; standard CI path unchanged; exact head/base/tree recorded."
+    },
+    {
+      "id": "E-SELF",
+      "claim": "Assigned real production and regression self-verification passed at fixed committed head",
+      "artifact_ids": [
+        "A-MEASURE",
+        "A-REPORT"
+      ],
+      "locator": "measurements.json",
+      "observation": "Old ENV-CA-1 retained; missing/invalid cold builds fail TLS; valid clean-context production images pass original-OCI reader/runtime/scan/SBOM chain. 112 disposable/race tests pass, two fixture skips; all suites pass. Self-verification is not independent Test."
+    },
+    {
+      "id": "E-CI",
+      "claim": "Feature remote/Draft and same-head ordinary no-secret CI verified",
+      "artifact_ids": [
+        "A-CI",
+        "A-COMMIT"
+      ],
+      "locator": "ci.json",
+      "observation": "Both push and pull_request CI completed success, including both image jobs and aggregate; publish/propose skipped. No real publication or deployment."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "covered",
+      "scope": "Assigned B2 Implementation and self-regression scope only; not product acceptance, independent Test/Review, deployed Synced/Healthy or aggregate Issue Completion.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE",
+        "A-COMMIT"
+      ],
+      "evidence_ids": [
+        "E-REPAIR",
+        "E-SELF"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "covered",
+      "scope": "Assigned B2 Implementation and self-regression scope only; not product acceptance, independent Test/Review, deployed Synced/Healthy or aggregate Issue Completion.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE",
+        "A-COMMIT"
+      ],
+      "evidence_ids": [
+        "E-REPAIR",
+        "E-SELF"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "covered",
+      "scope": "Assigned B2 Implementation and self-regression scope only; not product acceptance, independent Test/Review, deployed Synced/Healthy or aggregate Issue Completion.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE",
+        "A-COMMIT"
+      ],
+      "evidence_ids": [
+        "E-REPAIR",
+        "E-SELF"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [
+    {
+      "id": "KC-BUILD-TRUST",
+      "domain": "container-build-verification",
+      "summary": "Optional RUN-scoped trust requires cold isolated verification; daemon and runtime trust remain separate.",
+      "evidence_ids": [
+        "E-REPAIR",
+        "E-SELF",
+        "E-CI"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "needs_review"
+    }
+  ],
+  "publication": "public_safe"
+}
