@@ -1,0 +1,165 @@
+{
+  "results": [
+    {
+      "command": "python scripts/validate_delivery_records.py",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output": "PASS: delivery schemas and sample bindings only; no live approval certified\n"
+    },
+    {
+      "command": "python scripts/validate_handoff.py examples/research-to-test/research.handoff.json examples/research-to-test/test.blocked.handoff.json examples/research-to-test/test.handoff.json examples/failed.handoff.json examples/partial-assignment.handoff.json",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output": "PASS examples/research-to-test/research.handoff.json (shape + local references only; not business approval)\nPASS examples/research-to-test/test.blocked.handoff.json (shape + local references only; not business approval)\nPASS examples/research-to-test/test.handoff.json (shape + local references only; not business approval)\nPASS examples/failed.handoff.json (shape + local references only; not business approval)\nPASS examples/partial-assignment.handoff.json (shape + local references only; not business approval)\n"
+    },
+    {
+      "command": "python scripts/validate_knowledge.py examples/knowledge/input.json examples/knowledge/handoff.json examples/knowledge/context.json examples/knowledge-delivery/input.json examples/knowledge-delivery/handoff.json examples/knowledge-delivery/context.json",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output": "PASS examples/knowledge/input.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge/handoff.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge/context.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge-delivery/input.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge-delivery/handoff.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge-delivery/context.json (shape + local references only; not knowledge approval)\n"
+    },
+    {
+      "command": "python scripts/validate_readiness.py examples/readiness/pr-ready-issue-unverified.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z --handoff examples/readiness/manager.handoff.json",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output": "PASS examples/readiness/pr-ready-issue-unverified.json (record consistency only; not evidence truth or live GitHub permission)\nREPLAY: explicit historical time; not current readiness\n"
+    },
+    {
+      "command": "python scripts/validate_readiness.py examples/readiness/implementation-only.json --context examples/readiness/automatic-context.json --at 2030-01-01T12:00:00Z",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output": "PASS examples/readiness/implementation-only.json (record consistency only; not evidence truth or live GitHub permission)\nREPLAY: explicit historical time; not current readiness\n"
+    },
+    {
+      "command": "python scripts/validate_readiness.py examples/readiness/postdeploy-achieved.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output": "PASS examples/readiness/postdeploy-achieved.json (record consistency only; not evidence truth or live GitHub permission)\nREPLAY: explicit historical time; not current readiness\n"
+    },
+    {
+      "command": "python scripts/validate_readiness.py examples/readiness/invalid-premature-achieved.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "output": "FAIL examples/readiness/invalid-premature-achieved.json\n  issue_completion contradicts all-AC measured outcomes\n"
+    },
+    {
+      "command": "python scripts/validate_readiness.py examples/readiness/invalid-premerge-deferred.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "output": "FAIL examples/readiness/invalid-premerge-deferred.json\n  SYNTHETIC-AC-1: only unverified postmerge/postdeploy AC may be deferred\n  deferral_basis: evidence does not cover AC SYNTHETIC-AC-1\n  merge_readiness: status contradicts required gates\n"
+    },
+    {
+      "command": "python scripts/validate_readiness.py examples/readiness/preparation-ready.json --context examples/readiness/preparation-context.json --at 2030-01-01T12:00:00Z --context-sha256 7193b9a041c6f655feff5e3a03962887240225d4c929d2e26de2f84dd8305899",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output": "PASS examples/readiness/preparation-ready.json (record consistency only; not evidence truth or live GitHub permission)\nREPLAY: explicit historical time; not current readiness\n"
+    },
+    {
+      "command": "python scripts/validate_issue_completion.py examples/issue-completion/synthetic-achieved/completion.json --context examples/issue-completion/synthetic-achieved/context.json --context-sha256 951048815ca07294e13e6df297272e719e121d81a8e1c523c3958e4ba97742ac --handoff examples/issue-completion/synthetic-achieved/handoff.json --at 2030-01-03T12:00:00Z",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted\n"
+    },
+    {
+      "command": "python scripts/validate_issue_completion.py examples/issue-completion/synthetic-pending/completion.json --context examples/issue-completion/synthetic-pending/context.json --context-sha256 8943ce6030f4335adb8cfab5f7338670b2c45b3d24bd3114e92fab5c1cd8d5ff --handoff examples/issue-completion/synthetic-pending/handoff.json --at 2030-01-03T12:00:00Z",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output": "PASS REPLAY: integration=blocked; issue_completion=unverified; record consistency only; no authority granted\n"
+    },
+    {
+      "check": "preparation definitions identical in both schemas",
+      "passed": true
+    },
+    {
+      "check": "existing Handoff2 Knowledge1 Delivery1.2 IssueCompletion source bytes unchanged",
+      "passed": true,
+      "files": [
+        "contracts/artifact-delivery-v1.2.schema.json",
+        "contracts/consumption-receipt-v1.2.schema.json",
+        "contracts/delivery-authorization-v1.2.schema.json",
+        "contracts/handoff.schema.json",
+        "contracts/issue-completion-context.schema.json",
+        "contracts/knowledge-candidates-v1.schema.json",
+        "contracts/knowledge-collection-authorization.schema.json",
+        "contracts/knowledge-collection-record.schema.json",
+        "contracts/knowledge-collection-state.schema.json",
+        "contracts/knowledge-context.schema.json",
+        "contracts/knowledge-event.schema.json",
+        "contracts/knowledge-handoff.schema.json",
+        "contracts/knowledge-input.schema.json",
+        "contracts/knowledge-source-registry.schema.json",
+        "contracts/publication-receipt-v1.2.schema.json",
+        "scripts/consume_delivery.py",
+        "scripts/validate_handoff.py",
+        "scripts/validate_issue_completion.py",
+        "scripts/validate_knowledge.py"
+      ]
+    },
+    {
+      "check": "documentation updated",
+      "path": "README.md",
+      "passed": true
+    },
+    {
+      "check": "documentation updated",
+      "path": "contracts/README.md",
+      "passed": true
+    },
+    {
+      "check": "documentation updated",
+      "path": "contracts/readiness.md",
+      "passed": true
+    },
+    {
+      "check": "documentation updated",
+      "path": "examples/README.md",
+      "passed": true
+    },
+    {
+      "check": "documentation updated",
+      "path": "examples/readiness/README.md",
+      "passed": true
+    },
+    {
+      "check": "documentation updated",
+      "path": "workflows/single-issue.md",
+      "passed": true
+    },
+    {
+      "check": "documentation updated",
+      "path": "templates/task-input.md",
+      "passed": true
+    },
+    {
+      "check": "documentation updated",
+      "path": "agents/manager.md",
+      "passed": true
+    },
+    {
+      "check": "documentation updated",
+      "path": "agents/research-design.md",
+      "passed": true
+    },
+    {
+      "check": "documentation updated",
+      "path": "agents/implementation.md",
+      "passed": true
+    },
+    {
+      "check": "documentation updated",
+      "path": "agents/test.md",
+      "passed": true
+    },
+    {
+      "check": "documentation updated",
+      "path": "agents/review.md",
+      "passed": true
+    },
+    {
+      "check": "git diff --check",
+      "passed": true,
+      "output": ""
+    }
+  ],
+  "note": "Documentation presence and sample consistency do not certify end-to-end preparation aggregation; see aggregate-results.json."
+}

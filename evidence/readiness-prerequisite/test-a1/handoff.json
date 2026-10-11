@@ -1,0 +1,294 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "system-readiness-prerequisite",
+    "source": "https://github.com/syuhei0519/ai-development-system",
+    "title": "Add bounded readiness for dependency preparation pull requests",
+    "acceptance_criteria": [
+      {
+        "id": "AC-S1",
+        "verbatim": "通常PRの既存マージ条件を維持し、依存準備PRだけを明示的に区分して空の製品AC集合を許容する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S2",
+        "verbatim": "依存準備PRは非空の工程受入条件と関連製品AC、固定成果物、独立TestとReview、後続検証責任を必須とし、工程達成を製品AC達成へ変換しない。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S3",
+        "verbatim": "配備影響noneとaggregate_requiredに限定し、CI、保護ルール、権限、依存、証跡鮮度、Issue Completionの既存fail-closed条件を維持する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S4",
+        "verbatim": "JSON Schema、CLI、正常・異常回帰テスト、サンプル、役割・workflow・テンプレート・READMEが整合し、既存全テストと新規テストが成功する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S5",
+        "verbatim": "変更と検証成果物を固定Git revisionとbytes/hashで取得でき、既存PRを重複作成せずSystem専用feature branchのDraft PRとして提示する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      }
+    ]
+  },
+  "assignment": {
+    "scope": "ai-development-system#readiness-prerequisite-support",
+    "ac_ids": [
+      "AC-S1",
+      "AC-S2",
+      "AC-S3",
+      "AC-S4",
+      "AC-S5"
+    ],
+    "completion_criteria": [
+      "通常PRの既存マージ条件を維持し、依存準備PRだけを明示的に区分して空の製品AC集合を許容する。",
+      "依存準備PRは非空の工程受入条件と関連製品AC、固定成果物、独立TestとReview、後続検証責任を必須とし、工程達成を製品AC達成へ変換しない。",
+      "配備影響noneとaggregate_requiredに限定し、CI、保護ルール、権限、依存、証跡鮮度、Issue Completionの既存fail-closed条件を維持する。",
+      "JSON Schema、CLI、正常・異常回帰テスト、サンプル、役割・workflow・テンプレート・READMEが整合し、既存全テストと新規テストが成功する。",
+      "変更と検証成果物を固定Git revisionとbytes/hashで取得でき、既存PRを重複作成せずSystem専用feature branchのDraft PRとして提示する。"
+    ]
+  },
+  "role": "test",
+  "task_id": "readiness-prerequisite-test-a1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "readiness-prerequisite-implementation-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/2523ad8f63301a1987e1b45cf07d9c24531e4015/evidence/readiness-prerequisite/implementation-a1/handoff.json",
+      "revision": "sha256:46508abb6640dd8ef0574d3bae78d78100f9e2459d35dafe994d3038ed47e457",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "failed",
+  "summary": "Independent Test of fixed PR8 failed: preparation cannot enter required aggregate completion (F1 P1); artifact FIFO blocks or is accepted as fixed file (F2 P2). Baseline280/head292/Readiness55 repository tests passed. No final Issue assessment or MergeReady.",
+  "artifacts": [
+    {
+      "id": "aggregate-results.json",
+      "kind": "test-report",
+      "locator": "aggregate-results.json",
+      "revision": "sha256:86ed2b32c26970bf04654e8a441aab7c6ae10452bf1557dacbd37995e5ea27e7",
+      "summary": "Independent synthetic test evidence: aggregate-results.json"
+    },
+    {
+      "id": "aggregate_reproducer.py",
+      "kind": "other",
+      "locator": "aggregate_reproducer.py",
+      "revision": "sha256:52a8acac5bb28cd919386de3a7dd986b03cce5a263e61d04bedb021823713c30",
+      "summary": "Independent synthetic test evidence: aggregate_reproducer.py"
+    },
+    {
+      "id": "baseline-suite.txt",
+      "kind": "test-report",
+      "locator": "baseline-suite.txt",
+      "revision": "sha256:3241e02aaf427c1b4d16f472d169f872065e5973c9c7f9e6e73586cd813c6b52",
+      "summary": "Independent synthetic test evidence: baseline-suite.txt"
+    },
+    {
+      "id": "fifo-results.json",
+      "kind": "test-report",
+      "locator": "fifo-results.json",
+      "revision": "sha256:a89e5f8ed5ca5a3bf7787e1f4b2707c3b50fad449281230445abbad3ebd5ea59",
+      "summary": "Independent synthetic test evidence: fifo-results.json"
+    },
+    {
+      "id": "fifo_reproducer.py",
+      "kind": "other",
+      "locator": "fifo_reproducer.py",
+      "revision": "sha256:0fcef14da5a49e4ddb6a24737645b02c7fe210674d617dcc90fb555bad06dc0f",
+      "summary": "Independent synthetic test evidence: fifo_reproducer.py"
+    },
+    {
+      "id": "github-observations.json",
+      "kind": "test-report",
+      "locator": "github-observations.json",
+      "revision": "sha256:451bc5256944ef272be9a51cb89e72949df86312e4320241578099ce02baaaa9",
+      "summary": "Independent synthetic test evidence: github-observations.json"
+    },
+    {
+      "id": "head-suite.txt",
+      "kind": "test-report",
+      "locator": "head-suite.txt",
+      "revision": "sha256:2fcbc00ce56b5ebb4819b65b0b4d3a0354d2eba0640ca09299a8ac0f265f8998",
+      "summary": "Independent synthetic test evidence: head-suite.txt"
+    },
+    {
+      "id": "independent-results.json",
+      "kind": "test-report",
+      "locator": "independent-results.json",
+      "revision": "sha256:40dbe8bcbf9b719478adabd80eac97ae960f333eec0b25612f9dcbf20fa1c30c",
+      "summary": "Independent synthetic test evidence: independent-results.json"
+    },
+    {
+      "id": "independent_cases.py",
+      "kind": "other",
+      "locator": "independent_cases.py",
+      "revision": "sha256:43e7edb573cf0f6e34556a11eae9483d51d5c83b4b50f82f4c2e66cb0bce2068",
+      "summary": "Independent synthetic test evidence: independent_cases.py"
+    },
+    {
+      "id": "pins.json",
+      "kind": "test-report",
+      "locator": "pins.json",
+      "revision": "sha256:49d1cac52934fce563a2db023073586e24a51e307fbb4f67773d4064e220d517",
+      "summary": "Independent synthetic test evidence: pins.json"
+    },
+    {
+      "id": "readiness-suite.txt",
+      "kind": "test-report",
+      "locator": "readiness-suite.txt",
+      "revision": "sha256:b4d61dcf073619f7361d33ce73227d62337a3ce18b8261b4154ea94cdfcb0790",
+      "summary": "Independent synthetic test evidence: readiness-suite.txt"
+    },
+    {
+      "id": "sample-results.json",
+      "kind": "test-report",
+      "locator": "sample-results.json",
+      "revision": "sha256:b5cef3748ab60d7950cfa4bf0ea6e3fbc7c030354b366740fcd17ef6a2e272be",
+      "summary": "Independent synthetic test evidence: sample-results.json"
+    },
+    {
+      "id": "sample_checks.py",
+      "kind": "other",
+      "locator": "sample_checks.py",
+      "revision": "sha256:4218b4dd4680bbea18d84ad2da1c5a9b1e618ee81f1c44d40169b684c552d176",
+      "summary": "Independent synthetic test evidence: sample_checks.py"
+    },
+    {
+      "id": "test-config.json",
+      "kind": "test-report",
+      "locator": "test-config.json",
+      "revision": "sha256:c6e5a2a7d74a314e2d903023c7776a8504da26c94b63d622f7e3cf24920deaed",
+      "summary": "Independent synthetic test evidence: test-config.json"
+    },
+    {
+      "id": "test-report.md",
+      "kind": "test-report",
+      "locator": "test-report.md",
+      "revision": "sha256:a934e2aed321cab45688e8d9b1ec4169857b473c590ebbf97709ae5ee3aa6acb",
+      "summary": "Independent synthetic test evidence: test-report.md"
+    },
+    {
+      "id": "tested-head",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/ai-development-system/commit/3f41a0470fd0b7a2199be0b947bb22284e993e2f",
+      "revision": "3f41a0470fd0b7a2199be0b947bb22284e993e2f",
+      "summary": "Fixed implementation subject; no modification by Test."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "independent-tests",
+      "claim": "Independent Test found F1 aggregate integration and F2 special-file failures while baseline/head suites passed.",
+      "artifact_ids": [
+        "test-report.md",
+        "independent-results.json",
+        "aggregate-results.json",
+        "fifo-results.json",
+        "head-suite.txt",
+        "baseline-suite.txt",
+        "readiness-suite.txt",
+        "sample-results.json",
+        "pins.json",
+        "test-config.json"
+      ],
+      "locator": "test-report.md",
+      "observation": "Baseline280/head292/Readiness55 OK. Independent matrix236/237 expected; FIFO timeout and dynamic FIFO acceptance. Preparation historical aggregate rejected. Reproduction commands, revision, environment and limits recorded in test-report.md and pins.json."
+    },
+    {
+      "id": "github-metadata",
+      "claim": "Existing System Draft PR8 and exact-head CI success independently observed.",
+      "artifact_ids": [
+        "github-observations.json",
+        "pins.json"
+      ],
+      "locator": "github-observations.json",
+      "observation": "Open Draft PR8 at requested base/head; existing feature branch. push/pull_request CI success with event/workflow/head. No logs, live policy/Review/queue approval, MergeReady or Issue completion asserted."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-S1",
+      "disposition": "covered",
+      "scope": "Standard modes, baseline obstruction and explicit preparation version boundary independently verified.",
+      "artifact_ids": [
+        "test-report.md",
+        "independent-results.json",
+        "aggregate-results.json",
+        "fifo-results.json",
+        "sample-results.json"
+      ],
+      "evidence_ids": [
+        "independent-tests"
+      ]
+    },
+    {
+      "ac_id": "AC-S2",
+      "disposition": "not_met",
+      "scope": "F2 fixed-artifact special-file boundary failed; F1 subsequent aggregate connection incomplete; other preparation evidence gates verified.",
+      "artifact_ids": [
+        "test-report.md",
+        "independent-results.json",
+        "aggregate-results.json",
+        "fifo-results.json",
+        "sample-results.json"
+      ],
+      "evidence_ids": [
+        "independent-tests"
+      ]
+    },
+    {
+      "ac_id": "AC-S3",
+      "disposition": "covered",
+      "scope": "Synthetic restrictions and existing fail-closed readiness/integration gates preserved; live policy, permissions and merge-group requirements not certified.",
+      "artifact_ids": [
+        "test-report.md",
+        "independent-results.json",
+        "aggregate-results.json",
+        "fifo-results.json",
+        "sample-results.json"
+      ],
+      "evidence_ids": [
+        "independent-tests"
+      ]
+    },
+    {
+      "ac_id": "AC-S4",
+      "disposition": "not_met",
+      "scope": "Repository suites and documented sample checks pass, but independent F1/F2 demonstrate integration and abnormal-artifact failures.",
+      "artifact_ids": [
+        "test-report.md",
+        "independent-results.json",
+        "aggregate-results.json",
+        "fifo-results.json",
+        "sample-results.json"
+      ],
+      "evidence_ids": [
+        "independent-tests"
+      ]
+    },
+    {
+      "ac_id": "AC-S5",
+      "disposition": "covered",
+      "scope": "Exact implementation revision/tree, bytes-pinned upstream and existing dedicated Draft PR8 verified; public output has reproducible fixed Git delivery.",
+      "artifact_ids": [
+        "test-report.md",
+        "pins.json",
+        "github-observations.json"
+      ],
+      "evidence_ids": [
+        "github-metadata"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [
+    "F1 P1: required preparation member is incompatible with aggregate completion ac_ids and artifact-root invocation.",
+    "F2 P2: preparation artifact reader does not reject FIFO special files and can hang or accept dynamically supplied bytes."
+  ],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

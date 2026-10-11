@@ -1,0 +1,56 @@
+{
+  "document_type": "public_github_observations",
+  "pr": {
+    "observed_at": "2026-10-11T09:37:36.676066+00:00",
+    "valid_until": "2026-10-11T09:42:36.676066Z",
+    "url": "https://github.com/syuhei0519/ai-development-system/pull/8",
+    "number": 8,
+    "state": "open",
+    "draft": true,
+    "merged": false,
+    "base": {
+      "ref": "main",
+      "sha": "0083151aa2f6b2aaf0e1db64ada3f196ed766e48"
+    },
+    "head": {
+      "ref": "feat/readiness-prerequisite-gate",
+      "sha": "3f41a0470fd0b7a2199be0b947bb22284e993e2f"
+    },
+    "auto_merge": null
+  },
+  "ci": {
+    "observed_at": "2026-10-11T09:37:37.492863+00:00",
+    "valid_until": "2026-10-11T09:42:37.492863Z",
+    "source": "GitHub REST workflow runs filtered by exact head; connector independently observed pull_request run success.",
+    "runs": [
+      {
+        "id": 38128623164,
+        "head_sha": "3f41a0470fd0b7a2199be0b947bb22284e993e2f",
+        "event": "pull_request",
+        "path": ".github/workflows/validate.yml",
+        "status": "completed",
+        "conclusion": "success",
+        "run_started_at": "2026-10-11T09:30:38Z",
+        "updated_at": "2026-10-11T09:31:33Z",
+        "html_url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38128623164"
+      },
+      {
+        "id": 38128597052,
+        "head_sha": "3f41a0470fd0b7a2199be0b947bb22284e993e2f",
+        "event": "push",
+        "path": ".github/workflows/validate.yml",
+        "status": "completed",
+        "conclusion": "success",
+        "run_started_at": "2026-10-11T09:30:15Z",
+        "updated_at": "2026-10-11T09:31:01Z",
+        "html_url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38128597052"
+      }
+    ]
+  },
+  "limitations": [
+    "Snapshots only; Manager must re-fetch before action. Five-minute observation windows do not assert ongoing GitHub state.",
+    "No required checks/reviews/ruleset/queue or actor permissions were certified.",
+    "Known rawlogsForbidden boundary respected: no raw log request, retry or alternate log retrieval. Metadata success is separate from locally executed independent tests.",
+    "Existing Draft PR 8 observed. No new PR, merge, auto-merge, deploy or policy operation performed."
+  ]
+}

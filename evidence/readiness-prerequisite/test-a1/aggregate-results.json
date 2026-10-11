@@ -1,0 +1,36 @@
+{
+  "head": "3f41a0470fd0b7a2199be0b947bb22284e993e2f",
+  "synthetic": true,
+  "results": [
+    {
+      "case": "existing_standard_aggregate_control",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted\n"
+    },
+    {
+      "case": "preparation_historical_readiness_direct_with_root",
+      "expected_errors": [],
+      "actual_errors": []
+    },
+    {
+      "case": "aggregate_call_omits_artifact_root",
+      "expected_errors": [],
+      "actual_errors": [
+        "preparation artifact scaffold: materialized artifact root required"
+      ]
+    },
+    {
+      "case": "preparation_empty_product_scope_in_aggregate",
+      "expected_exit": 0,
+      "actual_exit": 1,
+      "output": "FAIL: aggregate record rejected; no completion or authority granted\n"
+    },
+    {
+      "case": "related_product_scope_cannot_substitute_empty_preparation_scope",
+      "expected_exit": 0,
+      "actual_exit": 1,
+      "output": "FAIL: aggregate record rejected; no completion or authority granted\n"
+    }
+  ]
+}

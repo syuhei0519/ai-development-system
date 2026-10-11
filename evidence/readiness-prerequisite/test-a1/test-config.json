@@ -1,0 +1,39 @@
+{
+  "document_type": "independent_test_configuration",
+  "repository": "syuhei0519/ai-development-system",
+  "head": "3f41a0470fd0b7a2199be0b947bb22284e993e2f",
+  "base": "0083151aa2f6b2aaf0e1db64ada3f196ed766e48",
+  "python": "3.12.14",
+  "jsonschema": "4.26.0",
+  "platform": {
+    "system": "Linux",
+    "machine": "x86_64"
+  },
+  "source_test_command": "python -m unittest discover -s tests -v",
+  "readiness_subset_command": "python -m unittest discover -s tests -p 'test_readiness*.py' -v",
+  "overlay": [
+    {
+      "path": "aggregate_reproducer.py",
+      "size": 3531,
+      "sha256": "52a8acac5bb28cd919386de3a7dd986b03cce5a263e61d04bedb021823713c30"
+    },
+    {
+      "path": "fifo_reproducer.py",
+      "size": 1846,
+      "sha256": "0fcef14da5a49e4ddb6a24737645b02c7fe210674d617dcc90fb555bad06dc0f"
+    },
+    {
+      "path": "independent_cases.py",
+      "size": 12863,
+      "sha256": "43e7edb573cf0f6e34556a11eae9483d51d5c83b4b50f82f4c2e66cb0bce2068"
+    },
+    {
+      "path": "sample_checks.py",
+      "size": 4151,
+      "sha256": "4218b4dd4680bbea18d84ad2da1c5a9b1e618ee81f1c44d40169b684c552d176"
+    }
+  ],
+  "source_workflow_sha256": "f17ba4f6a20ee572f7c0fde05a1e8bab93efcbb7698efb08747dd1aae838ce95",
+  "dependency_lock_sha256": "756cc9e506ae4ee1a6f6c0507088b5cfc0dc8ba350fb2d2d46f1ffa72033adb6",
+  "test_data": "Only published synthetic fixtures and temporary local files; no product data or external operations."
+}

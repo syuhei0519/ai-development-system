@@ -1,0 +1,37 @@
+{
+  "document_type": "independent_test_pins",
+  "subject": {
+    "repository": "syuhei0519/ai-development-system",
+    "pr_number": 8,
+    "head_sha": "3f41a0470fd0b7a2199be0b947bb22284e993e2f",
+    "base_sha": "0083151aa2f6b2aaf0e1db64ada3f196ed766e48",
+    "target_revision": "3f41a0470fd0b7a2199be0b947bb22284e993e2f",
+    "head_tree": "ee216bc39d2a2dbcfb4a0946e02d72ffd4d2b3c2",
+    "config_revision": "sha256:c6e5a2a7d74a314e2d903023c7776a8504da26c94b63d622f7e3cf24920deaed",
+    "merge_group_sha": null
+  },
+  "test_completed_at": "2026-10-11T09:45:02Z",
+  "measurement_valid_until": "2026-10-12T09:45:02Z",
+  "invalidation": "Subject, configuration or new failure immediately invalidates applicability; no positive readiness is issued. Failure observations remain historical facts. Original timestamps are never renewed.",
+  "environment": "Linux x86_64, Python 3.12.14, jsonschema 4.26.0, isolated synthetic local files",
+  "merge_group": "Not exercised. Manager must determine actual queue requirements and observe required merge-group before any operation.",
+  "upstream": {
+    "records_commit": "3ff2de54e2a7f2280333d26a73b1af3549865b3e",
+    "payload_commit": "2523ad8f63301a1987e1b45cf07d9c24531e4015",
+    "manifest_size": 47178,
+    "manifest_sha256": "d3b58a81d64524cfc3b76b03d1600c7a193c7238225a43770c70f62b8be54943",
+    "publication_size": 15717,
+    "publication_sha256": "434828b5b6a6b23786b1e31a86784ecbecb7a7445c43ab91e6ac1a0b457c3073",
+    "handoff_size": 15811,
+    "handoff_sha256": "46508abb6640dd8ef0574d3bae78d78100f9e2459d35dafe994d3038ed47e457"
+  },
+  "retry_accounting": {
+    "alias": "readiness-prerequisite-test-a1",
+    "attempt": 1,
+    "dispatch": 1,
+    "execution": 1,
+    "delivery": 1,
+    "maximum_each": 3,
+    "retry_relationship": "none; prior task histories and budgets untouched"
+  }
+}
