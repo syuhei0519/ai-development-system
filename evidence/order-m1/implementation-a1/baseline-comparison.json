@@ -1,0 +1,153 @@
+{
+  "base": "bc6adaedcd645a4663c23284b977a3dd36c0796d",
+  "unchanged_files": [
+    {
+      "path": "charts/README.md",
+      "sha256": "7cf38640ab82f1c929fd653995450ff81ed31f8e02effe450447a36c721e5bb3"
+    },
+    {
+      "path": "charts/backend/Chart.yaml",
+      "sha256": "509335b49eb7058bb4a736a904a52c572aa4d4ef990795b5efcfaca4e197973f"
+    },
+    {
+      "path": "charts/backend/templates/_helpers.tpl",
+      "sha256": "c0969159e809a92e68a8e83d82fa3419239887a3d56a552e724a0ce261388253"
+    },
+    {
+      "path": "charts/backend/templates/configmap.yaml",
+      "sha256": "28a99832e9ec20431b783ee055f384943d9be9dc5aeef206302ddf4192e31f2c"
+    },
+    {
+      "path": "charts/backend/templates/deployment.yaml",
+      "sha256": "5417e6c5fecf93049fd809996e32bbd7f94ee6e321a482882e8edde293450e52"
+    },
+    {
+      "path": "charts/backend/templates/migration-job.yaml",
+      "sha256": "0784e69a70a8c73afd62c532d2a411fcd3d3d9682286c36a8d7b9fec65e87a81"
+    },
+    {
+      "path": "charts/backend/templates/service.yaml",
+      "sha256": "84b0d208c354936fa46404a1b2c179dc72fbe0365d3b7cdc201aa14c9c2a03c6"
+    },
+    {
+      "path": "charts/backend/templates/serviceaccount.yaml",
+      "sha256": "efaa2ac575ce0da638a9f151282365ff7b6337de87a28c7a8680920b3be191a1"
+    },
+    {
+      "path": "charts/backend/values.schema.json",
+      "sha256": "ac517fe1e9643c430e82f33a3ff486f9c2a9176563ebd4189a53b58c18ad521e"
+    },
+    {
+      "path": "charts/backend/values.yaml",
+      "sha256": "e5c74d65e00b1bcb98bb214648041c8ac227e4ce352872c08ac3788cc2a77e8b"
+    },
+    {
+      "path": "charts/frontend/Chart.yaml",
+      "sha256": "3d24f55af5013e502a37552fc8c8bd87a7a3dda28bec6778b9fa45ae4d558a44"
+    },
+    {
+      "path": "charts/frontend/templates/_helpers.tpl",
+      "sha256": "b55dde6cf348d4572704105e844e3052bdab95947745589a592bba5eb751cfcf"
+    },
+    {
+      "path": "charts/frontend/templates/configmap.yaml",
+      "sha256": "58e886c4bd117b8aa87bea58f02d3bafe18ed1a585099792678ff75882d1a3a5"
+    },
+    {
+      "path": "charts/frontend/templates/deployment.yaml",
+      "sha256": "5579aa0510d20de312c44600b146a8e7f31fbb839d3035d03f2967e7953f7d0e"
+    },
+    {
+      "path": "charts/frontend/templates/service.yaml",
+      "sha256": "6523f5c436ea8d010603e932c2ed1572af6cb8fde696c4e0402384ffe1815fbb"
+    },
+    {
+      "path": "charts/frontend/templates/serviceaccount.yaml",
+      "sha256": "44e9b26646e023bf08e84c332d1af0a46674f246e3c992228205bd239164843d"
+    },
+    {
+      "path": "charts/frontend/values.schema.json",
+      "sha256": "f7e002e0792242386e57d39b6603729597dea3111278184d526aa9df90c1c301"
+    },
+    {
+      "path": "charts/frontend/values.yaml",
+      "sha256": "624b3632a4ffee71d6fd48ff67543d7dfdc92139bc318a019093e3359bbf76e9"
+    },
+    {
+      "path": "charts/postgresql/Chart.yaml",
+      "sha256": "28482b084bfef71451ce5cec279e7fcaf24069a004ddaca4a80a5c6bdc16e9fd"
+    },
+    {
+      "path": "charts/postgresql/templates/_helpers.tpl",
+      "sha256": "f06eefd7b39fdfe886ef97035b42175c1ef31f8004a6e913f878df015d566dfd"
+    },
+    {
+      "path": "charts/postgresql/templates/headless-service.yaml",
+      "sha256": "618c865b632a1c8b9ebb8e0d5e94108096dd59d6ab9fd21c02ec64a20a5cdf1e"
+    },
+    {
+      "path": "charts/postgresql/templates/init-configmap.yaml",
+      "sha256": "849c3800f17ef9de07964bcf3a1e1d2a5ff629ab5bfe39f11cd50895f6ef5050"
+    },
+    {
+      "path": "charts/postgresql/templates/pvc.yaml",
+      "sha256": "e2b0f7b3114cf86cc5a58cbcba82eea29785dbf341d6b90c20e602b656eb2480"
+    },
+    {
+      "path": "charts/postgresql/templates/service.yaml",
+      "sha256": "f5c8e493e720322450e74cbd9cd7356500896a962570330579279a88a8e4e016"
+    },
+    {
+      "path": "charts/postgresql/templates/serviceaccount.yaml",
+      "sha256": "e446ea511c47f989fa3977ee0c89111597d3def0f0d87c1171e8aa43a12d943b"
+    },
+    {
+      "path": "charts/postgresql/templates/statefulset.yaml",
+      "sha256": "9aeeff20485e3ce9b4dfb6cd57ce897e07d764e438028bbf2206e2eaeb0f2f3e"
+    },
+    {
+      "path": "charts/postgresql/values.schema.json",
+      "sha256": "a8f3d07d2a8be525b7868a75cbada86b5a27699e8a5e12844bbd7f6117219cae"
+    },
+    {
+      "path": "charts/postgresql/values.yaml",
+      "sha256": "16cdbaa74161d5d822199627311b1f0a4957a2685848b2190b6337bd076d7be4"
+    },
+    {
+      "path": "environments/local/README.md",
+      "sha256": "451d5e6a066b6dba79424bea539345aedfcb7b0260d577b28a3c59355b95f4d4"
+    },
+    {
+      "path": "environments/local/backend.yaml",
+      "sha256": "be7b8212ea066e0a601396398310505cb5870c3c7d1c67619b1a421a308c71f8"
+    },
+    {
+      "path": "environments/local/frontend.yaml",
+      "sha256": "57f193504ba28f801c6fe72ec0def62739fe9fb1efd5f853fed8beffd9471a4f"
+    },
+    {
+      "path": "environments/local/postgresql.yaml",
+      "sha256": "376c3ebdc39a5fdf1f2a32724c2821cd56dee79b0bf264b03b4a3fa00d9a7088"
+    }
+  ],
+  "unchanged_renders": [
+    {
+      "chart": "frontend",
+      "size": 5555,
+      "sha256": "16ce7b984d0bfa86d110ed2c9757e565a9ada6056f7cbd583de32aa04a3866de"
+    },
+    {
+      "chart": "backend",
+      "size": 9681,
+      "sha256": "98f9ee0a34d05ffdce403e6b22ea28fd84aa9e9eb508a0872d95b50067f22d88"
+    },
+    {
+      "chart": "postgresql",
+      "size": 6966,
+      "sha256": "108bffe412325d4155c964fcf7ca30b58f23d636f1407b0466d84ec4528f8d38"
+    }
+  ],
+  "gitops_revision": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+  "deployment_effect_proposal": "none",
+  "limits": "Fixed code/desired-resource comparison only. No live cluster queried."
+}

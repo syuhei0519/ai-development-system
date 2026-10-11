@@ -1,0 +1,45 @@
+Order M1 implementation self-verification — public alias order-m1-implementation-a1
+
+Scope: application-manifest#backend-app-2/M1, epoch1 attempt1.
+System: syuhei0519/ai-development-system@4693887fa79c2b4a291c555b8bd27b6903eb4199.
+Base: bc6adaedcd645a4663c23284b977a3dd36c0796d.
+Head: e0f79a61643d31a29de73ffc54bb6a31c320f0df.
+Tree: 1e3618e2f3467ba639ba52c7531c2923c4d85505.
+Backend read dependency: 2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0.
+GitOps read dependency: b989e29b8addbd6396c5c2b4833b969bc15fc8fa.
+Draft PR: https://github.com/syuhei0519/application-manifest/pull/19
+Branch: feat/order-disabled-charts-m1; remote head equals local head; draft=true.
+
+Input gate
+Unmodified fixed-System consume_delivery.py freshly fetched and accepted the Manager-pinned Research/B1 bundle (26 explicit objects plus typed source tree). All bytes/size/hash/type, Handoff slots, candidate/tree and authorization boundaries passed before design use. Private authorization and Consumption Receipt are retained outside public repositories; neither is included here. Original public input bytes and their canonical dependency references remain unchanged. No equivalence to private Research originals or retrospective publication approval is claimed.
+No AGENTS.md or .agents/skills existed in the target/System checkouts. Fixed role, workflow, Handoff, Delivery1.2, Readiness1.1, Issue Completion1.1 and templates were consulted. No other task workspace was used.
+
+Implementation decisions
+Added separate charts instead of factoring/renaming Account resources. Existing 28 chart files and 4 environment files remain byte-identical. Enabled is false in both chart defaults and both local values. Order image tag/digest and evidence remain empty until M2. Enabled synthetic fixtures are explicitly labeled fake/render-only and never authorize a release.
+Fixed security/DB/resource settings are const-bound in the new schemas; dynamic source/tag/URL/run/attempt bindings are checked in the Order template. Unknown properties are rejected. GitHub v2 annotations use the M0-compatible account.lab prefix and service=order. Deployment and migration share helper/values, identical image and app-key-only credentials. PostgreSQL resources have independent names, but official image filesystem/socket paths stay unchanged. Initialization requires the fixed order_app role before DDL. Dedicated DB owner retains DDL privilege as the adopted lab residual risk.
+No legacy validator was changed. Only the CI entrypoint gained the additional synthetic test script. No existing chart, environment value, Namespace/AppProject/Secret, DB data, workflow, policy/approval setting or platform GitOps file changed.
+
+Measured verification (implementation self-tests, not independent Test/Review)
+- bash ci/github/test.sh: final exit 0. Existing Go inventory/release-record/scan-gate modules, Python trusted identity/contract/registry/freshness/attempt/render/release suites, Linux namespace-boundary tests and docs tests passed. Checksum tests are compiled in this script and executed separately under Helm.
+- (cd tools/checksum && go test -count=1 ./...): exit 0; existing checksum/release suites plus Order disabled/schema/workload/DB path checks passed. Explicit uncached run performed after the final template edit.
+- sh ci/validate.sh: exit 0, all five charts strict lint/template successful; existing aggregate remains the 15 existing resources; both Order renders empty.
+- bash ci/order-chart-test.sh: exit 0. Strict default/enabled lint, empty disabled render, enabled inventory covering exactly Deployment/order, Job/order-migration and StatefulSet/order-postgresql. Structural security passed. Kubeconform strict 1.36.0 validated 11/11 enabled resources, no errors/skips. Ten rendered security/PVC/identity/hidden-PodSpec mutations rejected.
+- Kubeconform strict 1.36.0 .rendered/all.yaml: 15/15 existing resources valid, no errors/skips.
+- reproduce.py: 32 existing files and 3 rendered manifests byte-identical; 2 disabled renders empty. Byte equality also establishes identical parsed meaning; initial comparison additionally parsed YAML and compared it. Full hashes are in baseline-comparison.json.
+- Fixed M0 trusted-render.py with --target BASE --source HEAD --verifier BASE --producer-job-id 0 --test-only: exit 0. before/candidate inventory hash 5cdc95741cb1fea328519bd62da13bae117a1a434e3ffc232cdc6d9ce52cbe59, added/changed/removed all empty; provenanceRequired=false. eligibleForAuthenticatedVerification=false retained. This is sandbox/render verification, not actual published release approval.
+- SECURITY_RENDER_REQUIRED=true bash ci/github/source-scan.sh: exit 0. Pinned Trivy source and recursive rendered scans pass unchanged policy; warning findings are retained in the safe reports (not a zero-findings claim). Synthetic enabled render is included in the recursive scan.
+- git diff --check: exit 0. Feature push succeeded and ls-remote/PR observations matched the exact head.
+
+Environment and first failures
+Linux Docker 28.4.0; Go1.27.1; Helm4.2.4 and repository-pinned container digests. The first Kubeconform attempt failed schema retrieval because the container lacked the execution environment's CA. Re-run mounted the existing /etc/ssl/certs/ca-certificates.crt read-only into local test containers; no TLS bypass or repository/environment trust configuration edit. Full final suite and schema verification then passed. One initial local command used an incorrect working directory/tool PATH, wrote no test file and failed; corrected to the selected repository and installed Go toolchain. Intermediate mechanical chart copying was corrected before commit (official PostgreSQL paths/port names); final tests explicitly cover those paths. No product defect was concealed or waived.
+
+Deployment effect and unverified work
+Proposal: none, restricted to the fixed GitOps configuration above. Its Application template enumerates only frontend/backend/postgresql, using the three unchanged paths/values. New charts are unregistered and both local/default disabled renders are empty. No cluster was queried, so this is a fixed desired-resource proof, not an observation of live health. Manager must recheck any changed GitOps configuration.
+AC-1/AC-2 product/runtime regression and AC-3 actual Synced/Healthy/digest are unverified in M1. All earliest stages remain premerge, deferred=null, integration aggregate_required. No real Order image pull/runtime, database execution, kind, Argo deployment, M2/P1/T7 or independent Test/Review was performed. Formal Manager Readiness/Issue final_assessment was not produced.
+Followup: B2 owner supplies real published release; M2 owner fixes digest and obtains trusted verification; independent Test uses authorized isolated kind with fixed M/P candidates for real API/persistence/Account regression/migration-failure and Argo/imageID checks. Deployment owner checks Secret metadata/capacity/context/backup/approval before P1; T7 owner repeats integrated observations. On failure stop related merge/deploy, preserve Account data and Order PVC, retain nonsecret failure evidence and forward-fix/retest. No invented known-good rollback exists.
+
+Handoff representation
+The assigned ac_ids remains [AC-3]. Per Manager instruction AC-3 remains unverified, not covered/met merely by these charts. Fixed Handoff v2 requires every assigned AC covered for status=completed. Therefore the delivered Handoff conservatively records blocked for this reporting constraint, while retaining the completed code/self-test/remote/Draft PR evidence. Assignment is not silently changed to empty; no Manager authority is self-issued. Manager must resolve the reporting contract before accepting an engineering-stage completion. This does not change product gates or historical B1/M0/B2 states.
+
+Remote CI
+Same-head push run 38157049475 and PR run 38157080236 both completed success. CI is verified separately from local self-tests and is not independent Test/Review or Merge Ready.

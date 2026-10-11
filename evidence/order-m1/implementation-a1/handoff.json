@@ -1,0 +1,223 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "syuhei0519/backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "implementation",
+  "task_id": "order-m1-implementation-a1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "order-b1-test-e2-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/f5a93108cdbbce934a0838c280bdf0a18ba32429/evidence/order-b1/test-e2-a1/handoff.json",
+      "revision": "sha256:4cc00afcad190f144e9299a89dcef9604ec74a2733da05b605730061bbcebaa3",
+      "relationship": "dependency"
+    },
+    {
+      "role": "research-design",
+      "task_id": "research-order-design-a3",
+      "attempt": 3,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332/delivery-verification/20261011/research-public/handoff.json",
+      "revision": "sha256:2c1876c21567399ca6ecf1d8afaed96c062da5a154b01d165f42a3e0f3afbc7d",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "blocked",
+  "summary": "Disabled M1 code and local self-verification complete; feature push and Draft PR19 verified. Product AC-3 deliberately unverified. Handoff completed cannot be asserted with assigned AC-3 unverified under fixed v2; Manager reporting resolution and independent gates remain. Public alias only.",
+  "assignment": {
+    "scope": "application-manifest#backend-app-2/M1",
+    "ac_ids": [
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "M1-S1: Orderと専用PostgreSQL chartをdisabled既定で追加し、既存Account chart/values/render、Namespace/AppProject/Secret/既存DBデータを変えない。",
+      "M1-S2: 独立名/selector、同じimage digestのmigration JobとDeployment、health/security/Secret参照、DB/PVC保護を設計通りに表現し正常異常fixtureで検証する。",
+      "M1-S3: 既存trusted inventory/security/PVC検証を弱めず、両disabled/有効synthetic fixtureのlint/schema/render/全PodSpec検証に成功する。",
+      "M1-S4: 合成fixtureと実公開releaseを区別し、実イメージ・kind・M2/P1/T7の未検証と担当/方法/失敗時対応を引き継ぐ。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-REPORT",
+      "kind": "test-report",
+      "locator": "test-report.txt",
+      "revision": "sha256:e62912ed6aa1880e593ab5b5f261a156007c7f93da66e6b2610cf18c1aa7a7b0",
+      "summary": "test-report.txt; implementation self-verification only."
+    },
+    {
+      "id": "A-PATCH",
+      "kind": "patch",
+      "locator": "implementation.patch",
+      "revision": "sha256:a24507a747ff85ac4690a103cf5398905a02c519e1a562add23dc1df05289dbc",
+      "summary": "implementation.patch; implementation self-verification only."
+    },
+    {
+      "id": "A-BASELINE",
+      "kind": "other",
+      "locator": "baseline-comparison.json",
+      "revision": "sha256:80d01d2b694918983669dba37971df278df2b5e2c3ff9bb644adcee635df170c",
+      "summary": "baseline-comparison.json; implementation self-verification only."
+    },
+    {
+      "id": "A-TRUSTED",
+      "kind": "other",
+      "locator": "trusted-render.json",
+      "revision": "sha256:3a3c85dd584561d6f50534b0fec4847a424a5ec6a212ef85fa23774738df25e7",
+      "summary": "trusted-render.json; implementation self-verification only."
+    },
+    {
+      "id": "A-GUIDE",
+      "kind": "document",
+      "locator": "implementation-guide.md",
+      "revision": "sha256:7d6126209524a87fdc1a16d80ed2ec87cfe3c14d472e379a9a86c5f15ff06d49",
+      "summary": "implementation-guide.md; implementation self-verification only."
+    },
+    {
+      "id": "A-REPRO",
+      "kind": "other",
+      "locator": "reproduce.py",
+      "revision": "sha256:6ec39a433ed402821d0981ffc77bbf0c34f182e29d5cd71909e336c2bf4ce154",
+      "summary": "reproduce.py; implementation self-verification only."
+    },
+    {
+      "id": "A-INVENTORY",
+      "kind": "other",
+      "locator": "order-synthetic-inventory.json",
+      "revision": "sha256:879e8b6ac82c844e66e988d448e290dc05dc3528a9b326adf715a0743617464f",
+      "summary": "order-synthetic-inventory.json; implementation self-verification only."
+    },
+    {
+      "id": "A-STRUCTURAL",
+      "kind": "other",
+      "locator": "order-synthetic-security.json",
+      "revision": "sha256:b8ec3809269593fe04a606ea0167ecc905fd551b31897906051a4a2f5b7a3b22",
+      "summary": "order-synthetic-security.json; implementation self-verification only."
+    },
+    {
+      "id": "A-SOURCE-SCAN",
+      "kind": "other",
+      "locator": "source-scan.json",
+      "revision": "sha256:895475581dbd4808aa38e3c3e260670a0c87ddbd9ded0063de3d3e049b2df17b",
+      "summary": "source-scan.json; implementation self-verification only."
+    },
+    {
+      "id": "A-RENDER-SCAN",
+      "kind": "other",
+      "locator": "render-scan.json",
+      "revision": "sha256:8211ed4df8f3076a45be98f12205f9796b47952840595443976d936c24694203",
+      "summary": "render-scan.json; implementation self-verification only."
+    },
+    {
+      "id": "A-COMMIT",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/application-manifest/commit/e0f79a61643d31a29de73ffc54bb6a31c320f0df",
+      "revision": "e0f79a61643d31a29de73ffc54bb6a31c320f0df",
+      "summary": "Fixed disabled chart implementation commit, base and tree in report."
+    },
+    {
+      "id": "A-CI",
+      "kind": "other",
+      "locator": "ci-observations.json",
+      "revision": "sha256:edad080fd9c9fe967f572158465d02f161009f31a102168e27c13b3e135ad320",
+      "summary": "Both actual same-head GitHub CI runs completed success."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-IMPLEMENTATION",
+      "claim": "Disabled preparation charts implemented and self-tested without product AC measurement",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-PATCH",
+        "A-GUIDE",
+        "A-INVENTORY",
+        "A-STRUCTURAL",
+        "A-SOURCE-SCAN",
+        "A-RENDER-SCAN"
+      ],
+      "locator": "test-report.txt",
+      "observation": "All final local suites pass; 11 enabled synthetic and 15 existing resources schema-valid; 10 malicious render mutations rejected. Independent Test/Review and real release/runtime remain pending."
+    },
+    {
+      "id": "E-NONE",
+      "claim": "Fixed current desired resources unchanged",
+      "artifact_ids": [
+        "A-BASELINE",
+        "A-TRUSTED",
+        "A-REPRO"
+      ],
+      "locator": "baseline-comparison.json",
+      "observation": "32 existing files and 3 renders unchanged; two empty new chart renders. Fixed M0 sandbox inventory unchanged; fixed GitOps only registers old three paths. No live observation."
+    },
+    {
+      "id": "E-CI",
+      "claim": "Both push and PR CI succeeded at the implementation head",
+      "artifact_ids": [
+        "A-CI"
+      ],
+      "locator": "ci-observations.json",
+      "observation": "Runs 38157049475 and 38157080236 success at e0f79a61643d31a29de73ffc54bb6a31c320f0df; not independent Test/Review."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "unverified",
+      "scope": "Product behavior not measured in M1 disabled chart preparation. All earliest premerge; deferred=null; aggregate_required. Engineering results only, no covered/met claim.",
+      "artifact_ids": [
+        "A-REPORT"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "unverified",
+      "scope": "Product behavior not measured in M1 disabled chart preparation. All earliest premerge; deferred=null; aggregate_required. Engineering results only, no covered/met claim.",
+      "artifact_ids": [
+        "A-REPORT"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "unverified",
+      "scope": "Product behavior not measured in M1 disabled chart preparation. All earliest premerge; deferred=null; aggregate_required. Engineering results only, no covered/met claim.",
+      "artifact_ids": [
+        "A-REPORT"
+      ],
+      "evidence_ids": []
+    }
+  ],
+  "block_reasons": [
+    {
+      "code": "OTHER",
+      "detail": "Fixed Handoff v2 completed requires assigned AC-3 covered, but Manager explicitly requires actual AC-3 to remain unverified for disabled preparation. Code/self-tests are complete; the assignment and product state are preserved without claiming completion contrary to either input.",
+      "required_action": "Manager resolves engineering-stage completion representation under the fixed contract, performs independent Test/Review and creates its own preparation Readiness context. Real AC-3 measurement remains with B2/M2/isolated Test/P1/T7 gates."
+    }
+  ],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}
