@@ -1,0 +1,27 @@
+Delivery for order-m1-review-a1
+Payload c6b92721abdda1ce4d34f3cad37f76dd09cd107f; prefix evidence/order-m1/review-a1.
+Handoff SHA256 265ceb0bea66362ffaefaf93bf6da1f2e1a9fd5d8c758dada1880f7552b339be.
+manifest.json:261716 bytes;SHA256 a1d019d56a6888abc6188ff378095241ebc762dd7e08eabaca7d886ae8c58afd.
+publication-receipt.json:64439 bytes;SHA256 a380bcf2b71c638df7b1a4c2ecab1d904d94356a38dedc90b14f22f678ab699d.
+Closure has122 explicit objects (under128),142 structural bindings,6 source-tree slots and89 unique tree-member files.
+All incoming111 objects and their original/edited_derivative classifications are retained; no dependency truncated.
+The reused7-file raw preparation tree is still6727c1d9b3a494892e1875643df9fca914a42d43:evidence/order-m1/test-a2/artifacts.
+A duplicate source slot reuses identical tree bytes; do not sum slots as unique files.
+
+Canonical fixed System4693887 preparation/GitSource/strict JSON/Handoff/candidate/tree validation fetched every source
+from public fixed Git and passed. This is Producer verification, not Consumer approval or a Consumption Receipt.
+Manager must independently authorize output consumption and use canonical consume_delivery.py with fresh output.
+No outgoing authorization/Consumption Receipt is invented. Incoming authorization and Consumption Receipt stay private.
+Historical specialized Issue ID remains qualified, Manager canonical ID remains backend-app#2; expected strict pairing
+incompatibility is preserved. For local context/raw-pin checks, copy unchanged context/config/measurement and reused
+artifacts/<id> into a NEW private root after consumption, verify every size/hash. Never rewrite Consumer originals.
+Manager's formal Readiness and canonical Handoff are separate work; no assessment or merge is performed here.
+
+Review measurements expire2026-10-12T18:21:11.691488+00:00; source/subject/config/platform change invalidates earlier.
+Mutable policy expires2026-10-11T18:33:14Z unchanged. Operation-time refresh belongs to Manager.
+Result: M1-S1-S4 met for review preparation only; no blocking findings; one P3 stale validator wording; all product ACs unverified.
+
+Local delivery history: first publication push failed HTTP503. Read-only remote reconciliation found no branch.
+The second delivery attempt pushed the SAME payload commit and verified the complete closure; no execution/dispatch
+budget was reset. Maxima remain3. Record publication and final fixed-byte reconciliation are reported at task handoff.
+Only the dedicated evidence branch was written. No application/main/PR/merge/cluster/Secret/settings change occurred.
