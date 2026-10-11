@@ -1,0 +1,1964 @@
+diff --git a/README.md b/README.md
+index 08ca96c..770bede 100644
+--- a/README.md
++++ b/README.md
+@@ -142,3 +142,7 @@ collector は Agent/API を起動せず、schedule を登録・有効化しま
+ state・認可・runtime ID は非公開。stdout は安全な状態件数のみです。
+ 
+ Fixed cross-repository delivery and immutable candidate/tree verification use [Delivery 1.2](contracts/cross-reference-delivery.md). [Reproduction instructions](examples/crossref-delivery/README.md) separate record preparation from Manager-authorized consumption.
++
++## 依存準備 PR の追加契約
++
++[Readiness 1.1](contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。
+diff --git a/agents/implementation.md b/agents/implementation.md
+index b7b4bd0..8c7f424 100644
+--- a/agents/implementation.md
++++ b/agents/implementation.md
+@@ -47,3 +47,7 @@ GitHub 反映、Consumer 利用承認と全 bytes 検査を分離する。receip
+ Handoff v2.0 の status/attempt/担当範囲を配送都合で変更しない。Knowledge 専用契約の判断も変更しない。
+ dispatch/execution/delivery は各最大3回、過去履歴と RETRY_LIMIT_REACHED は不変。
+ 上限後は新明示承認・理由・新予算・scope・旧履歴との関係が揃うまで再開しない。
++
++## 依存準備 PR の追加契約
++
++[Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。
+diff --git a/agents/manager.md b/agents/manager.md
+index bd6254a..53c6982 100644
+--- a/agents/manager.md
++++ b/agents/manager.md
+@@ -54,3 +54,7 @@ dispatch/execution/delivery は各最大3回、過去履歴と RETRY_LIMIT_REACH
+ ## Phase 1-3 P-B collection
+ 
+ [収集契約](../contracts/knowledge-collection.md) と [入力テンプレート](../templates/knowledge-collection.md) を使い、単一 writer・最新 state digest・独立認可 pin を管理する。毎回全件 scan/reconcile し、候補の選別は代行しない。外部起動前に dispatch intent を永続化し、開始不明は lease 期限だけで再送しない。output 取得後は配送を再開し、Git 結果不明は固定 bytes を再照合する。旧 retry 履歴と terminal を保持する。Knowledge 結果は開発 gate に接続しない。P-C/P-D の定期同期・実運用完了は別に検証する。
++
++## 依存準備 PR の追加契約
++
++[Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。
+diff --git a/agents/research-design.md b/agents/research-design.md
+index e9640bc..63c8809 100644
+--- a/agents/research-design.md
++++ b/agents/research-design.md
+@@ -47,3 +47,7 @@ GitHub 反映、Consumer 利用承認と全 bytes 検査を分離する。receip
+ Handoff v2.0 の status/attempt/担当範囲を配送都合で変更しない。Knowledge 専用契約の判断も変更しない。
+ dispatch/execution/delivery は各最大3回、過去履歴と RETRY_LIMIT_REACHED は不変。
+ 上限後は新明示承認・理由・新予算・scope・旧履歴との関係が揃うまで再開しない。
++
++## 依存準備 PR の追加契約
++
++[Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。
+diff --git a/agents/review.md b/agents/review.md
+index 6d605e2..2f95dc4 100644
+--- a/agents/review.md
++++ b/agents/review.md
+@@ -48,3 +48,7 @@ Handoff v2.0 の status/attempt/担当範囲を配送都合で変更しない。
+ dispatch/execution/delivery は各最大3回、過去履歴と RETRY_LIMIT_REACHED は不変。
+ 上限後は新明示承認・理由・新予算・scope・旧履歴との関係が揃うまで再開しない。
+ 公開派生版の検査は非公開原本の直接検査ではない。Producer 証言と自分の観測を区別する。
++
++## 依存準備 PR の追加契約
++
++[Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。
+diff --git a/agents/test.md b/agents/test.md
+index 63089b0..9d0edd7 100644
+--- a/agents/test.md
++++ b/agents/test.md
+@@ -50,3 +50,7 @@ dispatch/execution/delivery は各最大3回、過去履歴と RETRY_LIMIT_REACH
+ 公開派生版の検査は非公開原本の直接検査ではない。Producer 証言と自分の観測を区別する。
+ 
+ 型/拡張子と内容の矛盾も、外側 hash と承認 pin を整合させて検査する。receipt 再検査は新規 Git 取得が対象で、旧出力の改変検査とは区別する。
++
++## 依存準備 PR の追加契約
++
++[Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。
+diff --git a/contracts/README.md b/contracts/README.md
+index 8aa4abc..2c934f5 100644
+--- a/contracts/README.md
++++ b/contracts/README.md
+@@ -78,3 +78,7 @@ P-B の機械的な非同期収集 CLI と永続 inbox/state は [Knowledge Coll
+ ## Delivery 1.2 cross references
+ 
+ See [the versioned extension](cross-reference-delivery.md) for typed Git commit objects, canonical cross-repository blobs, immutable candidate profiles and complete tree snapshots. Transport integrity is separate from approval and semantic review.
++
++## 依存準備 PR の追加契約
++
++[Readiness 1.1](readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。
+diff --git a/contracts/readiness-context.schema.json b/contracts/readiness-context.schema.json
+index 76bacb0..755457d 100644
+--- a/contracts/readiness-context.schema.json
++++ b/contracts/readiness-context.schema.json
+@@ -1,7 +1,7 @@
+ {
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "https://example.invalid/ai-development-system/readiness-context.schema.json",
+-  "title": "readiness-context v1.0",
++  "title": "readiness-context v1.0 / v1.1",
+   "type": "object",
+   "additionalProperties": false,
+   "properties": {
+@@ -9,7 +9,10 @@
+       "const": "readiness_context"
+     },
+     "schema_version": {
+-      "const": "1.0"
++      "enum": [
++        "1.0",
++        "1.1"
++      ]
+     },
+     "subject": {
+       "$ref": "#/$defs/subject"
+@@ -29,7 +32,6 @@
+       "items": {
+         "$ref": "#/$defs/text"
+       },
+-      "minItems": 1,
+       "uniqueItems": true
+     },
+     "deployment_effect": {
+@@ -76,6 +78,22 @@
+         "aggregate_required",
+         "unknown"
+       ]
++    },
++    "pr_kind": {
++      "enum": [
++        "standard",
++        "preparation"
++      ]
++    },
++    "preparation": {
++      "anyOf": [
++        {
++          "$ref": "#/$defs/preparation"
++        },
++        {
++          "type": "null"
++        }
++      ]
+     }
+   },
+   "required": [
+@@ -210,6 +228,242 @@
+         "evidence_ids",
+         "reason"
+       ]
++    },
++    "preparation": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "scope_reason": {
++          "$ref": "#/$defs/text"
++        },
++        "related_ac_ids": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/text"
++          },
++          "minItems": 1,
++          "uniqueItems": true
++        },
++        "conditions": {
++          "type": "array",
++          "items": {
++            "type": "object",
++            "additionalProperties": false,
++            "properties": {
++              "id": {
++                "$ref": "#/$defs/text"
++              },
++              "verbatim": {
++                "$ref": "#/$defs/text"
++              },
++              "method": {
++                "$ref": "#/$defs/text"
++              },
++              "expected_result": {
++                "$ref": "#/$defs/text"
++              }
++            },
++            "required": [
++              "id",
++              "verbatim",
++              "method",
++              "expected_result"
++            ]
++          },
++          "minItems": 1,
++          "uniqueItems": true
++        },
++        "artifacts": {
++          "type": "array",
++          "items": {
++            "type": "object",
++            "additionalProperties": false,
++            "properties": {
++              "id": {
++                "$ref": "#/$defs/text"
++              },
++              "locator": {
++                "$ref": "#/$defs/text"
++              },
++              "revision": {
++                "type": "string",
++                "pattern": "^[0-9a-f]{40}$"
++              },
++              "sha256": {
++                "type": "string",
++                "pattern": "^[0-9a-f]{64}$"
++              },
++              "size_bytes": {
++                "type": "integer",
++                "minimum": 1
++              }
++            },
++            "required": [
++              "id",
++              "locator",
++              "revision",
++              "sha256",
++              "size_bytes"
++            ]
++          },
++          "minItems": 1,
++          "uniqueItems": true
++        },
++        "followup": {
++          "type": "array",
++          "items": {
++            "type": "object",
++            "additionalProperties": false,
++            "properties": {
++              "ac_id": {
++                "$ref": "#/$defs/text"
++              },
++              "owner": {
++                "$ref": "#/$defs/text"
++              },
++              "environment": {
++                "$ref": "#/$defs/text"
++              },
++              "method": {
++                "$ref": "#/$defs/text"
++              },
++              "dependencies": {
++                "type": "array",
++                "items": {
++                  "$ref": "#/$defs/text"
++                },
++                "minItems": 1,
++                "uniqueItems": true
++              },
++              "failure_action": {
++                "$ref": "#/$defs/text"
++              }
++            },
++            "required": [
++              "ac_id",
++              "owner",
++              "environment",
++              "method",
++              "dependencies",
++              "failure_action"
++            ]
++          },
++          "minItems": 1,
++          "uniqueItems": true
++        },
++        "product_outcomes": {
++          "type": "array",
++          "items": {
++            "type": "object",
++            "additionalProperties": false,
++            "properties": {
++              "ac_id": {
++                "$ref": "#/$defs/text"
++              },
++              "outcome": {
++                "enum": [
++                  "met",
++                  "not_met",
++                  "unverified"
++                ]
++              }
++            },
++            "required": [
++              "ac_id",
++              "outcome"
++            ]
++          },
++          "minItems": 1,
++          "uniqueItems": true
++        }
++      },
++      "required": [
++        "scope_reason",
++        "related_ac_ids",
++        "conditions",
++        "artifacts",
++        "followup",
++        "product_outcomes"
++      ]
++    }
++  },
++  "allOf": [
++    {
++      "if": {
++        "properties": {
++          "schema_version": {
++            "const": "1.0"
++          }
++        }
++      },
++      "then": {
++        "properties": {
++          "pr_ac_ids": {
++            "minItems": 1
++          }
++        },
++        "not": {
++          "anyOf": [
++            {
++              "required": [
++                "pr_kind"
++              ]
++            },
++            {
++              "required": [
++                "preparation"
++              ]
++            }
++          ]
++        }
++      },
++      "else": {
++        "required": [
++          "pr_kind",
++          "preparation"
++        ]
++      }
++    },
++    {
++      "if": {
++        "properties": {
++          "pr_kind": {
++            "const": "preparation"
++          }
++        },
++        "required": [
++          "pr_kind"
++        ]
++      },
++      "then": {
++        "properties": {
++          "schema_version": {
++            "const": "1.1"
++          },
++          "preparation": {
++            "$ref": "#/$defs/preparation"
++          },
++          "pr_ac_ids": {
++            "maxItems": 0
++          },
++          "deployment_effect": {
++            "const": "none"
++          },
++          "issue_integration_scope": {
++            "const": "aggregate_required"
++          }
++        }
++      },
++      "else": {
++        "properties": {
++          "pr_ac_ids": {
++            "minItems": 1
++          },
++          "preparation": {
++            "type": "null"
++          }
++        }
++      }
+     }
+-  }
++  ]
+ }
+diff --git a/contracts/readiness.md b/contracts/readiness.md
+index fe52887..38ac45f 100644
+--- a/contracts/readiness.md
++++ b/contracts/readiness.md
+@@ -1,4 +1,4 @@
+-# Readiness v1.0 と Issue Completion
++# Readiness v1.0 / v1.1 と Issue Completion
+ 
+ [readiness.schema.json](readiness.schema.json) は PR ごとの判定記録、[readiness-context.schema.json](readiness-context.schema.json) は Manager が取得した現在の対象・AC・保護設定の照合用スナップショット。Issue handoff v2.0 と Knowledge v1.0 は変更しない。readiness は独立した v1.0 の artifact として locator・固定 revision/digest を handoff に記録し、実体を配送する。単に handoff のバージョンを置き換えない。
+ 
+@@ -71,3 +71,51 @@ assessmentの`artifact_id`に一致するHandoff artifactsの1件を要求する
+ digestはJSONを整形し直して計算するのではなく、そのままのファイルbytesから計算する。参照ID・locator・digestも含む配送元Handoffの真正性はManagerが別途確認する。実体と参照を一緒に偽装した場合の真偽や署名認証まで保証するものではない。
+ 
+ 今回のDraft内改訂ではReadiness v1.0の必須項目を追加する。旧DraftのReadiness/contextはそのまま受理せず、Managerが統合scope・状態・証跡を確認して追加し、artifact_idと実体digestを配送する。バージョンは未リリースのv1.0を維持し、Handoff v2.0 / Knowledge v1.0の互換性は維持する。
++
++## 依存準備 PR（Readiness 1.1）
++
++通常 PR の 1.0 形式と必須 AC 条件を維持する。1.1 は assessment と Manager context の両方に
++`pr_kind=standard|preparation` と `preparation` を必須とする。standard は preparation=null、
++pr_ac_ids は非空。preparation だけ pr_ac_ids=[] とし、deployment_effect=none、
++issue_integration_scope=aggregate_required に限定する。単なる AC 集合の縮小ではない。
++旧 1.0 Consumer は 1.1 と追加フィールドを拒否するため、黙って通常 PR と解釈しない。
++
++Manager は準備のみという scope_reason、非空 related_ac_ids、製品 AC と異なる ID の非空
++conditions（原文、method、expected_result）、固定 artifacts、followup、全製品 product_outcomes を確定する。
++同じ preparation 全体を assessment に記録し、配列順も含め context と完全一致させる。
++followup は各関連 AC に owner/environment/method/dependencies/failure_action を必須とする。
++依存がないという判断も dependencies に明記する。工程条件を acceptance_criteria に登録しない。
++
++preparation_results は各条件を一度ずつ測定し、met だけを Merge Ready の候補とする。
++preparation_measurement の evidence は condition_ids と全 artifact_ids を参照する。
++独立 Test と AI Review も全条件・全固定成果物を同じフィールドで対象にする。
++既存の producer/independent/subject/期限検査と全 merge checks を維持する。
++artifact は id、assessment 基準のローカル locator、target_revision と等しい40桁 revision、
++size_bytes、raw sha256 を持ち、CLI は全 bytes を読み照合する。証跡本文の真実性や実際の独立性は
++Manager が固定成果物・起動来歴と照合する。schema の pass はその代替ではない。
++
++全製品 AC の原文・最早段階・実測状態は保持する。product_outcomes は Manager の既知状態を
++全件固定し、ac_results との差を拒否する。保守的な境界として、関連外を含む一つでも既知の
++not_met があれば準備 PR の merge は blocked。既知失敗を unverified に戻さない。
++準備のみの PR が未実装の製品 premerge AC を unverified のまま残すことは延期ではない。
++その製品を実装する通常 PR の premerge ゲートは引き続き必須であり、deferred や段階変更で逃がさない。
++Manager は既存 PR を準備へ分類し直して失敗・未承認・未実行の通常ゲートを回避してはならない。
++準備のマージは Issue 達成を示さず、全製品実測と全必要統合を独立 Issue Completion で確認する。
++
++1.1 CLI は認可済み別経路で Manager が固定した `--context-sha256` を必須とする。
++ダウンロードした receipt や assessment 自身の hash はこの信頼の起点にならない。
++認証・署名サービスではなく、正しい独立 pin と最新状態の取得は Manager の責任。
++新形式も操作権限や Consumer 利用承認を与えない。Handoff 2.0 / Knowledge 1.0 / Delivery 1.2 は変更しない。
++
++```sh
++python scripts/validate_readiness.py readiness.json --context current-context.json \
++  --context-sha256 MANAGER_INDEPENDENT_CONTEXT_PIN --handoff handoff.json
++```
++
++### 証跡期限の選択
++
++固定コードに対する測定と可変 GitHub policy の観測は別の寿命を持つ。Manager は測定対象と
++保護条件の変化頻度に応じて各 evidence.valid_until と policy_valid_until を選ぶ。
++固定コードだから無期限とはしない。全証跡について既存の時刻不等式を維持し、subject/config の
++変更は期限内でも即失効する。旧期限を書き換えず、新たな確認と新記録を作る。
++1.1 は期限検査を緩和しない。
+diff --git a/contracts/readiness.schema.json b/contracts/readiness.schema.json
+index a83725b..77d9b29 100644
+--- a/contracts/readiness.schema.json
++++ b/contracts/readiness.schema.json
+@@ -1,7 +1,7 @@
+ {
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "https://example.invalid/ai-development-system/readiness.schema.json",
+-  "title": "readiness v1.0",
++  "title": "readiness v1.0 / v1.1",
+   "type": "object",
+   "additionalProperties": false,
+   "properties": {
+@@ -9,7 +9,10 @@
+       "const": "readiness_assessment"
+     },
+     "schema_version": {
+-      "const": "1.0"
++      "enum": [
++        "1.0",
++        "1.1"
++      ]
+     },
+     "assessor_role": {
+       "const": "manager"
+@@ -32,7 +35,6 @@
+       "items": {
+         "$ref": "#/$defs/text"
+       },
+-      "minItems": 1,
+       "uniqueItems": true
+     },
+     "deployment_effect": {
+@@ -83,7 +85,8 @@
+               "ac_measurement",
+               "deferral_basis",
+               "deployment_impact",
+-              "issue_integration"
++              "issue_integration",
++              "preparation_measurement"
+             ]
+           },
+           "subject": {
+@@ -116,6 +119,22 @@
+             },
+             "minItems": 0,
+             "uniqueItems": true
++          },
++          "condition_ids": {
++            "type": "array",
++            "items": {
++              "$ref": "#/$defs/text"
++            },
++            "minItems": 1,
++            "uniqueItems": true
++          },
++          "artifact_ids": {
++            "type": "array",
++            "items": {
++              "$ref": "#/$defs/text"
++            },
++            "minItems": 1,
++            "uniqueItems": true
+           }
+         },
+         "required": [
+@@ -398,6 +417,56 @@
+     },
+     "issue_integration": {
+       "$ref": "#/$defs/proof"
++    },
++    "pr_kind": {
++      "enum": [
++        "standard",
++        "preparation"
++      ]
++    },
++    "preparation": {
++      "anyOf": [
++        {
++          "$ref": "#/$defs/preparation"
++        },
++        {
++          "type": "null"
++        }
++      ]
++    },
++    "preparation_results": {
++      "type": "array",
++      "items": {
++        "type": "object",
++        "additionalProperties": false,
++        "properties": {
++          "condition_id": {
++            "$ref": "#/$defs/text"
++          },
++          "outcome": {
++            "enum": [
++              "met",
++              "not_met",
++              "unverified"
++            ]
++          },
++          "evidence_ids": {
++            "type": "array",
++            "items": {
++              "$ref": "#/$defs/text"
++            },
++            "minItems": 1,
++            "uniqueItems": true
++          }
++        },
++        "required": [
++          "condition_id",
++          "outcome",
++          "evidence_ids"
++        ]
++      },
++      "minItems": 1,
++      "uniqueItems": true
+     }
+   },
+   "required": [
+@@ -541,6 +610,291 @@
+         "evidence_ids",
+         "reason"
+       ]
++    },
++    "preparation": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "scope_reason": {
++          "$ref": "#/$defs/text"
++        },
++        "related_ac_ids": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/text"
++          },
++          "minItems": 1,
++          "uniqueItems": true
++        },
++        "conditions": {
++          "type": "array",
++          "items": {
++            "type": "object",
++            "additionalProperties": false,
++            "properties": {
++              "id": {
++                "$ref": "#/$defs/text"
++              },
++              "verbatim": {
++                "$ref": "#/$defs/text"
++              },
++              "method": {
++                "$ref": "#/$defs/text"
++              },
++              "expected_result": {
++                "$ref": "#/$defs/text"
++              }
++            },
++            "required": [
++              "id",
++              "verbatim",
++              "method",
++              "expected_result"
++            ]
++          },
++          "minItems": 1,
++          "uniqueItems": true
++        },
++        "artifacts": {
++          "type": "array",
++          "items": {
++            "type": "object",
++            "additionalProperties": false,
++            "properties": {
++              "id": {
++                "$ref": "#/$defs/text"
++              },
++              "locator": {
++                "$ref": "#/$defs/text"
++              },
++              "revision": {
++                "type": "string",
++                "pattern": "^[0-9a-f]{40}$"
++              },
++              "sha256": {
++                "type": "string",
++                "pattern": "^[0-9a-f]{64}$"
++              },
++              "size_bytes": {
++                "type": "integer",
++                "minimum": 1
++              }
++            },
++            "required": [
++              "id",
++              "locator",
++              "revision",
++              "sha256",
++              "size_bytes"
++            ]
++          },
++          "minItems": 1,
++          "uniqueItems": true
++        },
++        "followup": {
++          "type": "array",
++          "items": {
++            "type": "object",
++            "additionalProperties": false,
++            "properties": {
++              "ac_id": {
++                "$ref": "#/$defs/text"
++              },
++              "owner": {
++                "$ref": "#/$defs/text"
++              },
++              "environment": {
++                "$ref": "#/$defs/text"
++              },
++              "method": {
++                "$ref": "#/$defs/text"
++              },
++              "dependencies": {
++                "type": "array",
++                "items": {
++                  "$ref": "#/$defs/text"
++                },
++                "minItems": 1,
++                "uniqueItems": true
++              },
++              "failure_action": {
++                "$ref": "#/$defs/text"
++              }
++            },
++            "required": [
++              "ac_id",
++              "owner",
++              "environment",
++              "method",
++              "dependencies",
++              "failure_action"
++            ]
++          },
++          "minItems": 1,
++          "uniqueItems": true
++        },
++        "product_outcomes": {
++          "type": "array",
++          "items": {
++            "type": "object",
++            "additionalProperties": false,
++            "properties": {
++              "ac_id": {
++                "$ref": "#/$defs/text"
++              },
++              "outcome": {
++                "enum": [
++                  "met",
++                  "not_met",
++                  "unverified"
++                ]
++              }
++            },
++            "required": [
++              "ac_id",
++              "outcome"
++            ]
++          },
++          "minItems": 1,
++          "uniqueItems": true
++        }
++      },
++      "required": [
++        "scope_reason",
++        "related_ac_ids",
++        "conditions",
++        "artifacts",
++        "followup",
++        "product_outcomes"
++      ]
++    }
++  },
++  "allOf": [
++    {
++      "if": {
++        "properties": {
++          "schema_version": {
++            "const": "1.0"
++          }
++        }
++      },
++      "then": {
++        "properties": {
++          "pr_ac_ids": {
++            "minItems": 1
++          }
++        },
++        "not": {
++          "anyOf": [
++            {
++              "required": [
++                "pr_kind"
++              ]
++            },
++            {
++              "required": [
++                "preparation"
++              ]
++            }
++          ]
++        }
++      },
++      "else": {
++        "required": [
++          "pr_kind",
++          "preparation"
++        ]
++      }
++    },
++    {
++      "if": {
++        "properties": {
++          "pr_kind": {
++            "const": "preparation"
++          }
++        },
++        "required": [
++          "pr_kind"
++        ]
++      },
++      "then": {
++        "properties": {
++          "schema_version": {
++            "const": "1.1"
++          },
++          "preparation": {
++            "$ref": "#/$defs/preparation"
++          },
++          "pr_ac_ids": {
++            "maxItems": 0
++          },
++          "deployment_effect": {
++            "const": "none"
++          },
++          "issue_integration_scope": {
++            "const": "aggregate_required"
++          }
++        },
++        "required": [
++          "preparation_results"
++        ]
++      },
++      "else": {
++        "properties": {
++          "pr_ac_ids": {
++            "minItems": 1
++          },
++          "preparation": {
++            "type": "null"
++          }
++        },
++        "not": {
++          "required": [
++            "preparation_results"
++          ]
++        }
++      }
++    },
++    {
++      "if": {
++        "properties": {
++          "schema_version": {
++            "const": "1.0"
++          }
++        }
++      },
++      "then": {
++        "properties": {
++          "evidence": {
++            "items": {
++              "not": {
++                "anyOf": [
++                  {
++                    "required": [
++                      "condition_ids"
++                    ]
++                  },
++                  {
++                    "required": [
++                      "artifact_ids"
++                    ]
++                  },
++                  {
++                    "properties": {
++                      "kind": {
++                        "const": "preparation_measurement"
++                      }
++                    },
++                    "required": [
++                      "kind"
++                    ]
++                  }
++                ]
++              }
++            }
++          }
++        }
++      }
+     }
+-  }
++  ]
+ }
+diff --git a/examples/README.md b/examples/README.md
+index 432b11a..ecc928d 100644
+--- a/examples/README.md
++++ b/examples/README.md
+@@ -18,3 +18,7 @@ Research→Test の例:
+ [Readiness の正常・異常例](readiness/README.md) は PR ready と Issue unverified の両立、実装のみ可能・配備 blocked、postdeploy 全 AC 実測、および不正な前倒し achieved / premerge defer を示す独立 v1.0 契約。固定時刻で再生し、現在のマージ許可と区別する。
+ 
+ 配送の固定公開参照・synthetic 承認例・未承認拒否例は [delivery/](delivery/README.md) を参照。
++
++## 依存準備 PR の追加契約
++
++[Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。
+diff --git a/examples/readiness/README.md b/examples/readiness/README.md
+index b530f6d..3da5712 100644
+--- a/examples/readiness/README.md
++++ b/examples/readiness/README.md
+@@ -36,3 +36,17 @@ python scripts/validate_readiness.py examples/readiness/invalid-premerge-deferre
+ 形式が PASS でも真実性・独立性・実際のマージ可否は証明しない。架空の主張が構造上 PASS になるテストでこの境界も固定する。
+ 
+ 追加回帰は全premerge met・未マージのunverified、集約待ち/範囲不明、統合証跡欠落・時刻・AC対応、artifact ID/locator/実体/digestの不一致を扱う。manager.handoff.jsonのReadiness参照はHandoff相対パスと実bytesのSHA-256で固定している。
++
++## Synthetic preparation 1.1
++
++`preparation-ready.json` / `preparation-context.json` / `preparation-artifact.txt` are synthetic fixtures. Both product ACs remain unverified at their original phases; only the scaffold condition is measured. No real Test/Review, deployment, merge authority or product achievement is asserted.
++
++```sh
++python scripts/validate_readiness.py examples/readiness/preparation-ready.json \
++  --context examples/readiness/preparation-context.json \
++  --context-sha256 7193b9a041c6f655feff5e3a03962887240225d4c929d2e26de2f84dd8305899 \
++  --at 2030-01-01T12:00:00Z
++python -m unittest discover -s tests -p test_readiness_preparation.py -v
++```
++
++This published fixture pin is for synthetic replay only. Live use requires a separately authorized Manager pin. See the [contract](../../contracts/readiness.md) for version compatibility and failure boundaries.
+diff --git a/examples/readiness/preparation-artifact.txt b/examples/readiness/preparation-artifact.txt
+new file mode 100644
+index 0000000..024e1db
+--- /dev/null
++++ b/examples/readiness/preparation-artifact.txt
+@@ -0,0 +1 @@
++synthetic sample: fixed dependency validation scaffold
+diff --git a/examples/readiness/preparation-context.json b/examples/readiness/preparation-context.json
+new file mode 100644
+index 0000000..b8b813b
+--- /dev/null
++++ b/examples/readiness/preparation-context.json
+@@ -0,0 +1,96 @@
++{
++  "document_type": "readiness_context",
++  "schema_version": "1.1",
++  "subject": {
++    "repository": "example/synthetic-service",
++    "pr_number": 42,
++    "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++    "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++    "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++    "config_revision": "synthetic-policy-and-environment-v1",
++    "merge_group_sha": null
++  },
++  "issue_id": "SYNTHETIC-ISSUE",
++  "acceptance_criteria": [
++    {
++      "id": "SYNTHETIC-AC-1",
++      "verbatim": "synthetic sample: local contract tests pass",
++      "source": "synthetic sample request",
++      "verification_phase": "premerge"
++    },
++    {
++      "id": "SYNTHETIC-AC-2",
++      "verbatim": "synthetic sample: observe the deployed service",
++      "source": "synthetic sample request",
++      "verification_phase": "postdeploy"
++    }
++  ],
++  "pr_ac_ids": [],
++  "deployment_effect": "none",
++  "policy_observed_at": "2030-01-01T08:00:00Z",
++  "policy_valid_until": "2030-01-02T08:00:00Z",
++  "policy_evidence": "https://example.invalid/synthetic-policy-snapshot",
++  "github_requirements": {
++    "checks": true,
++    "reviews": true,
++    "queue": false
++  },
++  "issue_integration_scope": "aggregate_required",
++  "pr_kind": "preparation",
++  "preparation": {
++    "scope_reason": "synthetic sample: validation scaffold required before product implementation; no product behavior in this PR",
++    "related_ac_ids": [
++      "SYNTHETIC-AC-1",
++      "SYNTHETIC-AC-2"
++    ],
++    "conditions": [
++      {
++        "id": "PREP-1",
++        "verbatim": "Synthetic scaffold validates dependency evidence",
++        "method": "Run scaffold synthetic checks",
++        "expected_result": "All scaffold checks pass"
++      }
++    ],
++    "artifacts": [
++      {
++        "id": "scaffold",
++        "locator": "preparation-artifact.txt",
++        "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "sha256": "0726a907aee40484a2b1b94e55b85d7b6003f6d25109691470e750b663955475",
++        "size_bytes": 55
++      }
++    ],
++    "followup": [
++      {
++        "ac_id": "SYNTHETIC-AC-1",
++        "owner": "synthetic-product-test",
++        "environment": "synthetic-integration",
++        "method": "Measure original product AC at its unchanged earliest phase",
++        "dependencies": [
++          "subsequent product implementation PR"
++        ],
++        "failure_action": "Keep Issue incomplete and repair"
++      },
++      {
++        "ac_id": "SYNTHETIC-AC-2",
++        "owner": "synthetic-product-test",
++        "environment": "synthetic-integration",
++        "method": "Measure original product AC at its unchanged earliest phase",
++        "dependencies": [
++          "subsequent product implementation PR"
++        ],
++        "failure_action": "Keep Issue incomplete and repair"
++      }
++    ],
++    "product_outcomes": [
++      {
++        "ac_id": "SYNTHETIC-AC-1",
++        "outcome": "unverified"
++      },
++      {
++        "ac_id": "SYNTHETIC-AC-2",
++        "outcome": "unverified"
++      }
++    ]
++  }
++}
+diff --git a/examples/readiness/preparation-ready.json b/examples/readiness/preparation-ready.json
+new file mode 100644
+index 0000000..3197d8a
+--- /dev/null
++++ b/examples/readiness/preparation-ready.json
+@@ -0,0 +1,679 @@
++{
++  "document_type": "readiness_assessment",
++  "schema_version": "1.1",
++  "assessor_role": "manager",
++  "subject": {
++    "repository": "example/synthetic-service",
++    "pr_number": 42,
++    "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++    "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++    "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++    "config_revision": "synthetic-policy-and-environment-v1",
++    "merge_group_sha": null
++  },
++  "issue_id": "SYNTHETIC-ISSUE",
++  "acceptance_criteria": [
++    {
++      "id": "SYNTHETIC-AC-1",
++      "verbatim": "synthetic sample: local contract tests pass",
++      "source": "synthetic sample request",
++      "verification_phase": "premerge"
++    },
++    {
++      "id": "SYNTHETIC-AC-2",
++      "verbatim": "synthetic sample: observe the deployed service",
++      "source": "synthetic sample request",
++      "verification_phase": "postdeploy"
++    }
++  ],
++  "pr_ac_ids": [],
++  "deployment_effect": "none",
++  "deployment_effect_evidence_ids": [
++    "impact"
++  ],
++  "evaluated_at": "2030-01-01T12:00:00Z",
++  "implementation_actor": "synthetic-implementer",
++  "evidence": [
++    {
++      "id": "implementation-design",
++      "kind": "design",
++      "subject": {
++        "repository": "example/synthetic-service",
++        "pr_number": 42,
++        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "config_revision": "synthetic-policy-and-environment-v1",
++        "merge_group_sha": null
++      },
++      "observed_at": "2030-01-01T10:00:00Z",
++      "valid_until": "2030-01-02T08:00:00Z",
++      "locator": "https://example.invalid/synthetic/implementation-design",
++      "observation": "synthetic sample: fictional observation, not an actual test",
++      "producer": "synthetic-design",
++      "independent": false,
++      "ac_ids": []
++    },
++    {
++      "id": "implementation-authorization",
++      "kind": "authorization",
++      "subject": {
++        "repository": "example/synthetic-service",
++        "pr_number": 42,
++        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "config_revision": "synthetic-policy-and-environment-v1",
++        "merge_group_sha": null
++      },
++      "observed_at": "2030-01-01T10:00:00Z",
++      "valid_until": "2030-01-02T08:00:00Z",
++      "locator": "https://example.invalid/synthetic/implementation-authorization",
++      "observation": "synthetic sample: fictional observation, not an actual test",
++      "producer": "synthetic-authorization",
++      "independent": false,
++      "ac_ids": []
++    },
++    {
++      "id": "implementation-dependencies",
++      "kind": "dependencies",
++      "subject": {
++        "repository": "example/synthetic-service",
++        "pr_number": 42,
++        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "config_revision": "synthetic-policy-and-environment-v1",
++        "merge_group_sha": null
++      },
++      "observed_at": "2030-01-01T10:00:00Z",
++      "valid_until": "2030-01-02T08:00:00Z",
++      "locator": "https://example.invalid/synthetic/implementation-dependencies",
++      "observation": "synthetic sample: fictional observation, not an actual test",
++      "producer": "synthetic-dependencies",
++      "independent": false,
++      "ac_ids": []
++    },
++    {
++      "id": "deployment-environment",
++      "kind": "environment",
++      "subject": {
++        "repository": "example/synthetic-service",
++        "pr_number": 42,
++        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "config_revision": "synthetic-policy-and-environment-v1",
++        "merge_group_sha": null
++      },
++      "observed_at": "2030-01-01T10:00:00Z",
++      "valid_until": "2030-01-02T08:00:00Z",
++      "locator": "https://example.invalid/synthetic/deployment-environment",
++      "observation": "synthetic sample: fictional observation, not an actual test",
++      "producer": "synthetic-environment",
++      "independent": false,
++      "ac_ids": []
++    },
++    {
++      "id": "deployment-rollback",
++      "kind": "rollback",
++      "subject": {
++        "repository": "example/synthetic-service",
++        "pr_number": 42,
++        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "config_revision": "synthetic-policy-and-environment-v1",
++        "merge_group_sha": null
++      },
++      "observed_at": "2030-01-01T10:00:00Z",
++      "valid_until": "2030-01-02T08:00:00Z",
++      "locator": "https://example.invalid/synthetic/deployment-rollback",
++      "observation": "synthetic sample: fictional observation, not an actual test",
++      "producer": "synthetic-rollback",
++      "independent": false,
++      "ac_ids": []
++    },
++    {
++      "id": "deployment-authorization",
++      "kind": "authorization",
++      "subject": {
++        "repository": "example/synthetic-service",
++        "pr_number": 42,
++        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "config_revision": "synthetic-policy-and-environment-v1",
++        "merge_group_sha": null
++      },
++      "observed_at": "2030-01-01T10:00:00Z",
++      "valid_until": "2030-01-02T08:00:00Z",
++      "locator": "https://example.invalid/synthetic/deployment-authorization",
++      "observation": "synthetic sample: fictional observation, not an actual test",
++      "producer": "synthetic-authorization",
++      "independent": false,
++      "ac_ids": []
++    },
++    {
++      "id": "deployment-dependencies",
++      "kind": "dependencies",
++      "subject": {
++        "repository": "example/synthetic-service",
++        "pr_number": 42,
++        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "config_revision": "synthetic-policy-and-environment-v1",
++        "merge_group_sha": null
++      },
++      "observed_at": "2030-01-01T10:00:00Z",
++      "valid_until": "2030-01-02T08:00:00Z",
++      "locator": "https://example.invalid/synthetic/deployment-dependencies",
++      "observation": "synthetic sample: fictional observation, not an actual test",
++      "producer": "synthetic-dependencies",
++      "independent": false,
++      "ac_ids": []
++    },
++    {
++      "id": "merge-ci",
++      "kind": "ci",
++      "subject": {
++        "repository": "example/synthetic-service",
++        "pr_number": 42,
++        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "config_revision": "synthetic-policy-and-environment-v1",
++        "merge_group_sha": null
++      },
++      "observed_at": "2030-01-01T10:00:00Z",
++      "valid_until": "2030-01-02T08:00:00Z",
++      "locator": "https://example.invalid/synthetic/merge-ci",
++      "observation": "synthetic sample: fictional observation, not an actual test",
++      "producer": "synthetic-ci",
++      "independent": false,
++      "ac_ids": []
++    },
++    {
++      "id": "merge-independent_test",
++      "kind": "independent_test",
++      "subject": {
++        "repository": "example/synthetic-service",
++        "pr_number": 42,
++        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "config_revision": "synthetic-policy-and-environment-v1",
++        "merge_group_sha": null
++      },
++      "observed_at": "2030-01-01T10:00:00Z",
++      "valid_until": "2030-01-02T08:00:00Z",
++      "locator": "https://example.invalid/synthetic/merge-independent_test",
++      "observation": "synthetic sample: fictional observation, not an actual test",
++      "producer": "synthetic-independent_test",
++      "independent": true,
++      "ac_ids": [],
++      "condition_ids": [
++        "PREP-1"
++      ],
++      "artifact_ids": [
++        "scaffold"
++      ]
++    },
++    {
++      "id": "merge-ai_review",
++      "kind": "ai_review",
++      "subject": {
++        "repository": "example/synthetic-service",
++        "pr_number": 42,
++        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "config_revision": "synthetic-policy-and-environment-v1",
++        "merge_group_sha": null
++      },
++      "observed_at": "2030-01-01T10:00:00Z",
++      "valid_until": "2030-01-02T08:00:00Z",
++      "locator": "https://example.invalid/synthetic/merge-ai_review",
++      "observation": "synthetic sample: fictional observation, not an actual test",
++      "producer": "synthetic-ai_review",
++      "independent": true,
++      "ac_ids": [],
++      "condition_ids": [
++        "PREP-1"
++      ],
++      "artifact_ids": [
++        "scaffold"
++      ]
++    },
++    {
++      "id": "merge-github_checks",
++      "kind": "github_checks",
++      "subject": {
++        "repository": "example/synthetic-service",
++        "pr_number": 42,
++        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "config_revision": "synthetic-policy-and-environment-v1",
++        "merge_group_sha": null
++      },
++      "observed_at": "2030-01-01T10:00:00Z",
++      "valid_until": "2030-01-02T08:00:00Z",
++      "locator": "https://example.invalid/synthetic/merge-github_checks",
++      "observation": "synthetic sample: fictional observation, not an actual test",
++      "producer": "synthetic-github_checks",
++      "independent": false,
++      "ac_ids": []
++    },
++    {
++      "id": "merge-github_reviews",
++      "kind": "github_reviews",
++      "subject": {
++        "repository": "example/synthetic-service",
++        "pr_number": 42,
++        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "config_revision": "synthetic-policy-and-environment-v1",
++        "merge_group_sha": null
++      },
++      "observed_at": "2030-01-01T10:00:00Z",
++      "valid_until": "2030-01-02T08:00:00Z",
++      "locator": "https://example.invalid/synthetic/merge-github_reviews",
++      "observation": "synthetic sample: fictional observation, not an actual test",
++      "producer": "synthetic-github_reviews",
++      "independent": false,
++      "ac_ids": []
++    },
++    {
++      "id": "merge-github_ruleset",
++      "kind": "github_ruleset",
++      "subject": {
++        "repository": "example/synthetic-service",
++        "pr_number": 42,
++        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "config_revision": "synthetic-policy-and-environment-v1",
++        "merge_group_sha": null
++      },
++      "observed_at": "2030-01-01T10:00:00Z",
++      "valid_until": "2030-01-02T08:00:00Z",
++      "locator": "https://example.invalid/synthetic/merge-github_ruleset",
++      "observation": "synthetic sample: fictional observation, not an actual test",
++      "producer": "synthetic-github_ruleset",
++      "independent": false,
++      "ac_ids": []
++    },
++    {
++      "id": "merge-github_queue",
++      "kind": "github_queue",
++      "subject": {
++        "repository": "example/synthetic-service",
++        "pr_number": 42,
++        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "config_revision": "synthetic-policy-and-environment-v1",
++        "merge_group_sha": null
++      },
++      "observed_at": "2030-01-01T10:00:00Z",
++      "valid_until": "2030-01-02T08:00:00Z",
++      "locator": "https://example.invalid/synthetic/merge-github_queue",
++      "observation": "synthetic sample: fictional observation, not an actual test",
++      "producer": "synthetic-github_queue",
++      "independent": false,
++      "ac_ids": []
++    },
++    {
++      "id": "merge-authorization",
++      "kind": "authorization",
++      "subject": {
++        "repository": "example/synthetic-service",
++        "pr_number": 42,
++        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "config_revision": "synthetic-policy-and-environment-v1",
++        "merge_group_sha": null
++      },
++      "observed_at": "2030-01-01T10:00:00Z",
++      "valid_until": "2030-01-02T08:00:00Z",
++      "locator": "https://example.invalid/synthetic/merge-authorization",
++      "observation": "synthetic sample: fictional observation, not an actual test",
++      "producer": "synthetic-authorization",
++      "independent": false,
++      "ac_ids": []
++    },
++    {
++      "id": "merge-dependencies",
++      "kind": "dependencies",
++      "subject": {
++        "repository": "example/synthetic-service",
++        "pr_number": 42,
++        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "config_revision": "synthetic-policy-and-environment-v1",
++        "merge_group_sha": null
++      },
++      "observed_at": "2030-01-01T10:00:00Z",
++      "valid_until": "2030-01-02T08:00:00Z",
++      "locator": "https://example.invalid/synthetic/merge-dependencies",
++      "observation": "synthetic sample: fictional observation, not an actual test",
++      "producer": "synthetic-dependencies",
++      "independent": false,
++      "ac_ids": []
++    },
++    {
++      "id": "impact",
++      "kind": "deployment_impact",
++      "subject": {
++        "repository": "example/synthetic-service",
++        "pr_number": 42,
++        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "config_revision": "synthetic-policy-and-environment-v1",
++        "merge_group_sha": null
++      },
++      "observed_at": "2030-01-01T10:00:00Z",
++      "valid_until": "2030-01-02T08:00:00Z",
++      "locator": "https://example.invalid/synthetic/impact",
++      "observation": "synthetic sample: fictional observation, not an actual test",
++      "producer": "synthetic-deployment_impact",
++      "independent": false,
++      "ac_ids": []
++    },
++    {
++      "id": "measurement",
++      "kind": "ac_measurement",
++      "subject": {
++        "repository": "example/synthetic-service",
++        "pr_number": 42,
++        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "config_revision": "synthetic-policy-and-environment-v1",
++        "merge_group_sha": null
++      },
++      "observed_at": "2030-01-01T10:00:00Z",
++      "valid_until": "2030-01-02T08:00:00Z",
++      "locator": "https://example.invalid/synthetic/measurement",
++      "observation": "synthetic sample: fictional observation, not an actual test",
++      "producer": "synthetic-ac_measurement",
++      "independent": false,
++      "ac_ids": [
++        "SYNTHETIC-AC-1"
++      ]
++    },
++    {
++      "id": "basis",
++      "kind": "deferral_basis",
++      "subject": {
++        "repository": "example/synthetic-service",
++        "pr_number": 42,
++        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "config_revision": "synthetic-policy-and-environment-v1",
++        "merge_group_sha": null
++      },
++      "observed_at": "2030-01-01T10:00:00Z",
++      "valid_until": "2030-01-02T08:00:00Z",
++      "locator": "https://example.invalid/synthetic/basis",
++      "observation": "synthetic sample: fictional observation, not an actual test",
++      "producer": "synthetic-deferral_basis",
++      "independent": false,
++      "ac_ids": [
++        "SYNTHETIC-AC-2"
++      ]
++    },
++    {
++      "id": "prep-measurement",
++      "kind": "preparation_measurement",
++      "subject": {
++        "repository": "example/synthetic-service",
++        "pr_number": 42,
++        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
++        "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "config_revision": "synthetic-policy-and-environment-v1",
++        "merge_group_sha": null
++      },
++      "observed_at": "2030-01-01T10:00:00Z",
++      "valid_until": "2030-01-02T08:00:00Z",
++      "locator": "https://example.invalid/synthetic/implementation-design",
++      "observation": "synthetic sample: all scaffold checks passed",
++      "producer": "synthetic-design",
++      "independent": false,
++      "ac_ids": [],
++      "condition_ids": [
++        "PREP-1"
++      ],
++      "artifact_ids": [
++        "scaffold"
++      ]
++    }
++  ],
++  "lifecycle": {
++    "merged_at": null,
++    "deployed_at": null
++  },
++  "ac_results": [
++    {
++      "ac_id": "SYNTHETIC-AC-1",
++      "outcome": "unverified",
++      "evidence_ids": [],
++      "deferred": null
++    },
++    {
++      "ac_id": "SYNTHETIC-AC-2",
++      "outcome": "unverified",
++      "evidence_ids": [],
++      "deferred": null
++    }
++  ],
++  "issue_completion": "unverified",
++  "implementation_readiness": {
++    "status": "ready",
++    "checks": {
++      "design": {
++        "verdict": "pass",
++        "evidence_ids": [
++          "implementation-design"
++        ],
++        "reason": "synthetic sample: fictional policy and gate result"
++      },
++      "authorization": {
++        "verdict": "pass",
++        "evidence_ids": [
++          "implementation-authorization"
++        ],
++        "reason": "synthetic sample: fictional policy and gate result"
++      },
++      "dependencies": {
++        "verdict": "pass",
++        "evidence_ids": [
++          "implementation-dependencies"
++        ],
++        "reason": "synthetic sample: fictional policy and gate result"
++      }
++    }
++  },
++  "deployment_readiness": {
++    "status": "ready",
++    "checks": {
++      "environment": {
++        "verdict": "pass",
++        "evidence_ids": [
++          "deployment-environment"
++        ],
++        "reason": "synthetic sample: fictional policy and gate result"
++      },
++      "rollback": {
++        "verdict": "pass",
++        "evidence_ids": [
++          "deployment-rollback"
++        ],
++        "reason": "synthetic sample: fictional policy and gate result"
++      },
++      "authorization": {
++        "verdict": "pass",
++        "evidence_ids": [
++          "deployment-authorization"
++        ],
++        "reason": "synthetic sample: fictional policy and gate result"
++      },
++      "dependencies": {
++        "verdict": "pass",
++        "evidence_ids": [
++          "deployment-dependencies"
++        ],
++        "reason": "synthetic sample: fictional policy and gate result"
++      }
++    }
++  },
++  "merge_readiness": {
++    "status": "ready",
++    "checks": {
++      "ci": {
++        "verdict": "pass",
++        "evidence_ids": [
++          "merge-ci"
++        ],
++        "reason": "synthetic sample: fictional policy and gate result"
++      },
++      "independent_test": {
++        "verdict": "pass",
++        "evidence_ids": [
++          "merge-independent_test"
++        ],
++        "reason": "synthetic sample: fictional policy and gate result"
++      },
++      "ai_review": {
++        "verdict": "pass",
++        "evidence_ids": [
++          "merge-ai_review"
++        ],
++        "reason": "synthetic sample: fictional policy and gate result"
++      },
++      "github_checks": {
++        "verdict": "pass",
++        "evidence_ids": [
++          "merge-github_checks"
++        ],
++        "reason": "synthetic sample: fictional policy and gate result"
++      },
++      "github_reviews": {
++        "verdict": "pass",
++        "evidence_ids": [
++          "merge-github_reviews"
++        ],
++        "reason": "synthetic sample: fictional policy and gate result"
++      },
++      "github_ruleset": {
++        "verdict": "pass",
++        "evidence_ids": [
++          "merge-github_ruleset"
++        ],
++        "reason": "synthetic sample: fictional policy and gate result"
++      },
++      "github_queue": {
++        "verdict": "not_applicable",
++        "evidence_ids": [
++          "merge-github_queue"
++        ],
++        "reason": "synthetic sample: fictional policy and gate result"
++      },
++      "authorization": {
++        "verdict": "pass",
++        "evidence_ids": [
++          "merge-authorization"
++        ],
++        "reason": "synthetic sample: fictional policy and gate result"
++      },
++      "dependencies": {
++        "verdict": "pass",
++        "evidence_ids": [
++          "merge-dependencies"
++        ],
++        "reason": "synthetic sample: fictional policy and gate result"
++      }
++    }
++  },
++  "issue_integration_scope": "aggregate_required",
++  "artifact_id": "SYNTHETIC-READINESS",
++  "issue_integration": {
++    "verdict": "pending",
++    "evidence_ids": [],
++    "reason": "synthetic sample: Issue integration still unverified"
++  },
++  "pr_kind": "preparation",
++  "preparation": {
++    "scope_reason": "synthetic sample: validation scaffold required before product implementation; no product behavior in this PR",
++    "related_ac_ids": [
++      "SYNTHETIC-AC-1",
++      "SYNTHETIC-AC-2"
++    ],
++    "conditions": [
++      {
++        "id": "PREP-1",
++        "verbatim": "Synthetic scaffold validates dependency evidence",
++        "method": "Run scaffold synthetic checks",
++        "expected_result": "All scaffold checks pass"
++      }
++    ],
++    "artifacts": [
++      {
++        "id": "scaffold",
++        "locator": "preparation-artifact.txt",
++        "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
++        "sha256": "0726a907aee40484a2b1b94e55b85d7b6003f6d25109691470e750b663955475",
++        "size_bytes": 55
++      }
++    ],
++    "followup": [
++      {
++        "ac_id": "SYNTHETIC-AC-1",
++        "owner": "synthetic-product-test",
++        "environment": "synthetic-integration",
++        "method": "Measure original product AC at its unchanged earliest phase",
++        "dependencies": [
++          "subsequent product implementation PR"
++        ],
++        "failure_action": "Keep Issue incomplete and repair"
++      },
++      {
++        "ac_id": "SYNTHETIC-AC-2",
++        "owner": "synthetic-product-test",
++        "environment": "synthetic-integration",
++        "method": "Measure original product AC at its unchanged earliest phase",
++        "dependencies": [
++          "subsequent product implementation PR"
++        ],
++        "failure_action": "Keep Issue incomplete and repair"
++      }
++    ],
++    "product_outcomes": [
++      {
++        "ac_id": "SYNTHETIC-AC-1",
++        "outcome": "unverified"
++      },
++      {
++        "ac_id": "SYNTHETIC-AC-2",
++        "outcome": "unverified"
++      }
++    ]
++  },
++  "preparation_results": [
++    {
++      "condition_id": "PREP-1",
++      "outcome": "met",
++      "evidence_ids": [
++        "prep-measurement"
++      ]
++    }
++  ]
++}
+diff --git a/scripts/validate_readiness.py b/scripts/validate_readiness.py
+index e8f1560..1cb2afc 100644
+--- a/scripts/validate_readiness.py
++++ b/scripts/validate_readiness.py
+@@ -39,7 +39,7 @@ def instant(value):
+     return datetime.fromisoformat(value.upper().replace('Z', '+00:00'))
+ 
+ 
+-def validate(data, context, now=None):
++def validate(data, context, now=None, *, artifact_root=None):
+     errors = []
+     for label, document, check in [('assessment', data, VALIDATOR),
+                                     ('context', context, CONTEXT_VALIDATOR)]:
+@@ -55,6 +55,9 @@ def validate(data, context, now=None):
+                   'issue_integration_scope'):
+         if data[field] != context[field]:
+             errors.append(f'{field}: does not match current context; revalidate')
++    for field in ('schema_version', 'pr_kind', 'preparation'):
++        if data.get(field) != context.get(field):
++            errors.append(f'{field}: does not match current context; revalidate')
+     subject = data['subject']
+     if subject['merge_group_sha'] is not None and subject['target_revision'] != subject['merge_group_sha']:
+         errors.append('merge-group evidence must target the current merge-group revision')
+@@ -150,6 +153,57 @@ def validate(data, context, now=None):
+         if ac_id in scope and not (outcome == 'met' or (
+                 outcome == 'unverified' and phase != 'premerge' and deferred is not None)):
+             scoped_acs_ok = False
++    if data.get('pr_kind') == 'preparation':
++        preparation = data['preparation']
++        related = set(preparation['related_ac_ids'])
++        if not related <= set(criteria):
++            errors.append('preparation: unknown related product AC')
++        conditions = index(preparation['conditions'], 'id', 'preparation conditions')
++        measurements = index(data['preparation_results'], 'condition_id', 'preparation results')
++        artifacts = index(preparation['artifacts'], 'id', 'preparation artifacts')
++        followup = index(preparation['followup'], 'ac_id', 'preparation followup')
++        baseline = index(preparation['product_outcomes'], 'ac_id', 'product outcomes')
++        if set(conditions) & set(criteria):
++            errors.append('preparation conditions must not be product ACs')
++        if set(measurements) != set(conditions):
++            errors.append('preparation results must cover exactly all conditions')
++        if set(followup) != related:
++            errors.append('preparation followup must cover exactly related product ACs')
++        if set(baseline) != set(criteria) or any(
++                r['outcome'] != baseline.get(aid, {}).get('outcome') for aid, r in results.items()):
++            errors.append('preparation must preserve all Manager product outcomes')
++        # Conservative boundary: any known product failure blocks preparation merge,
++        # including failures outside the related subset. No reclassification/deferral.
++        scoped_acs_ok = not any(r['outcome'] == 'not_met' for r in results.values())
++        for aid, artifact in artifacts.items():
++            if artifact['revision'] != subject['target_revision']:
++                errors.append(f'preparation artifact {aid}: revision differs from target')
++            try:
++                if artifact_root is None:
++                    raise ValueError('materialized artifact root required')
++                root = Path(artifact_root).resolve(strict=True)
++                target = (root / artifact['locator']).resolve(strict=True)
++                if not target.is_relative_to(root):
++                    raise ValueError('artifact path escapes root')
++                payload = target.read_bytes()
++                if len(payload) != artifact['size_bytes'] or hashlib.sha256(payload).hexdigest() != artifact['sha256']:
++                    raise ValueError('artifact bytes/size/digest mismatch')
++            except (OSError, ValueError, RuntimeError) as exc:
++                errors.append(f'preparation artifact {aid}: {exc}')
++        for cid, measurement in measurements.items():
++            if measurement['outcome'] != 'met':
++                scoped_acs_ok = False
++            for item in proofs(measurement['evidence_ids'], 'preparation_measurement'):
++                if cid not in item.get('condition_ids', []) or set(item.get('artifact_ids', [])) != set(artifacts):
++                    errors.append('preparation measurement must bind condition and all fixed artifacts')
++        for kind in ('independent_test', 'ai_review'):
++            check = data['merge_readiness']['checks'][kind]
++            for item in proofs(check['evidence_ids'], kind):
++                if set(item.get('condition_ids', [])) != set(conditions) or set(item.get('artifact_ids', [])) != set(artifacts):
++                    errors.append(f'{kind}: must cover all preparation conditions and fixed artifacts')
++        for item in evidence.values():
++            if not set(item.get('condition_ids', [])) <= set(conditions) or not set(item.get('artifact_ids', [])) <= set(artifacts):
++                errors.append('preparation evidence has unknown condition/artifact')
+     outcomes = {r['outcome'] for r in results.values()}
+     integration = data['issue_integration']
+     integrated = False
+@@ -245,6 +299,7 @@ def main():
+     parser.add_argument('file', type=Path)
+     parser.add_argument('--context', type=Path, required=True,
+                         help='Manager-supplied current revision, AC scope and policy snapshot')
++    parser.add_argument('--context-sha256', help='independently supplied Manager context pin; required for v1.1')
+     parser.add_argument('--handoff', type=Path, help='also cross-check an Issue handoff v2.0')
+     parser.add_argument('--at', help='explicit replay time (not current merge authorization)')
+     args = parser.parse_args()
+@@ -254,8 +309,13 @@ def main():
+             raise ValueError('--at must include a timezone')
+         readiness_bytes = args.file.read_bytes()
+         data = json.loads(readiness_bytes)
+-        context = json.loads(args.context.read_text(encoding='utf-8'))
+-        errors = validate(data, context, now)
++        context_bytes = args.context.read_bytes()
++        context = json.loads(context_bytes)
++        if data.get('schema_version') == '1.1' and not args.context_sha256:
++            raise ValueError('v1.1 requires independent Manager --context-sha256')
++        if args.context_sha256 and hashlib.sha256(context_bytes).hexdigest() != args.context_sha256:
++            raise ValueError('Manager context digest mismatch')
++        errors = validate(data, context, now, artifact_root=args.file.resolve().parent)
+         if args.handoff and not errors:
+             errors += validate_handoff_pair(
+                 data, json.loads(args.handoff.read_text(encoding='utf-8')),
+diff --git a/templates/task-input.md b/templates/task-input.md
+index ac9a25e..10c24c3 100644
+--- a/templates/task-input.md
++++ b/templates/task-input.md
+@@ -74,3 +74,7 @@ Publication Receipt、独立 pin の Consumer 利用承認、Consumption Receipt
+ ## Aggregate Issue Completion Context
+ 
+ 複数 PR/repo は [集約契約](../contracts/issue-completion.md) に従い、独立 context pin、全必須 PR/repo/AC 原文/subchecks、承認 scope、merge head/result 対応、配備 source/config/image/environment/workload、現在観測と期限、最新 previous pin と全履歴を初回入力に渡す。PR Readiness pair と最終 Issue Handoff pair は別実体で配送する。未実測は unverified、既知 failure/rollback は not_achieved を保持する。CLI 成功から操作権限を推論しない。
++
++## 依存準備 PR の追加契約
++
++[Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。
+diff --git a/tests/test_readiness_preparation.py b/tests/test_readiness_preparation.py
+new file mode 100644
+index 0000000..74394da
+--- /dev/null
++++ b/tests/test_readiness_preparation.py
+@@ -0,0 +1,139 @@
++"""Synthetic preparation contract regressions; no independent business verdict."""
++from copy import deepcopy
++import hashlib
++import json
++from pathlib import Path
++import subprocess
++import sys
++import tempfile
++import unittest
++
++from scripts.validate_readiness import validate, validate_handoff_pair
++from test_readiness import fixture, NOW, ROOT, FIXTURES
++
++
++class PreparationTests(unittest.TestCase):
++    def setUp(self):
++        self.data = fixture('preparation-ready.json')
++        self.context = fixture('preparation-context.json')
++
++    def errors(self, data=None, context=None, root=FIXTURES):
++        return validate(data or self.data, context or self.context, NOW, artifact_root=root)
++
++    def test_ready_retains_unverified_original_phases(self):
++        self.assertEqual(self.errors(), [])
++        self.assertEqual(self.data['acceptance_criteria'], fixture()['acceptance_criteria'])
++        self.assertTrue(all(r['outcome'] == 'unverified' for r in self.data['ac_results']))
++        self.assertEqual(self.data['issue_completion'], 'unverified')
++
++    def test_standard_empty_rejected_both_versions(self):
++        for version in ('1.0', '1.1'):
++            d,c=fixture(),fixture('context.json')
++            for x in (d,c):
++                x.update(schema_version=version,pr_ac_ids=[])
++                if version=='1.1': x.update(pr_kind='standard',preparation=None)
++            self.assertTrue(self.errors(d,c))
++            d['pr_ac_ids']=c['pr_ac_ids']=fixture()['pr_ac_ids']
++            self.assertEqual(self.errors(d,c), [])
++
++    def test_each_preparation_field_required(self):
++        for field in self.data['preparation']:
++            d=deepcopy(self.data);del d['preparation'][field]
++            self.assertTrue(self.errors(d), field)
++        for field in self.data['preparation']['followup'][0]:
++            d,c=deepcopy(self.data),deepcopy(self.context)
++            for x in (d,c): del x['preparation']['followup'][0][field]
++            self.assertTrue(self.errors(d,c), field)
++
++    def test_conditions_empty_unmeasured_failed_duplicate_unknown(self):
++        for mutate in (
++            lambda d: d.update(preparation_results=[]),
++            lambda d: d['preparation_results'][0].update(evidence_ids=[]),
++            lambda d: d['preparation_results'][0].update(outcome='unverified'),
++            lambda d: d['preparation_results'][0].update(outcome='not_met'),
++            lambda d: d['preparation_results'][0].update(condition_id='UNKNOWN'),
++            lambda d: d['preparation_results'].append(deepcopy(d['preparation_results'][0])),
++            lambda d: d['preparation_results'][0].update(evidence_ids=['measurement']),
++        ):
++            d=deepcopy(self.data);mutate(d);self.assertTrue(self.errors(d))
++
++    def test_context_mismatch_and_unknown_ac(self):
++        for mutate in (
++            lambda c: c.update(pr_kind='standard'),
++            lambda c: c['preparation'].update(scope_reason='changed'),
++            lambda c: c['preparation']['conditions'][0].update(verbatim='changed'),
++            lambda c: c['acceptance_criteria'][0].update(verification_phase='postdeploy'),
++        ):
++            c=deepcopy(self.context);mutate(c);self.assertTrue(self.errors(context=c))
++        self.data['preparation']['related_ac_ids']=['UNKNOWN']
++        self.context['preparation']=deepcopy(self.data['preparation'])
++        self.assertTrue(self.errors())
++
++    def test_none_aggregate_only_and_old_consumer_rejects(self):
++        for field,values in [('deployment_effect',['automatic','unknown']),('issue_integration_scope',['single_pr','unknown']),('schema_version',['1.0'])]:
++            for value in values:
++                d,c=deepcopy(self.data),deepcopy(self.context)
++                d[field]=c[field]=value
++                self.assertTrue(self.errors(d,c), (field,value))
++
++    def test_all_existing_gates_still_block(self):
++        for kind in self.data['merge_readiness']['checks']:
++            d=deepcopy(self.data);d['merge_readiness']['checks'][kind]['verdict']='fail'
++            self.assertTrue(self.errors(d),kind)
++        for kind in ('independent_test','ai_review'):
++            for change in ({'producer':self.data['implementation_actor']},{'independent':False},{'artifact_ids':['unknown']},{'condition_ids':['unknown']}):
++                d=deepcopy(self.data); next(e for e in d['evidence'] if e['kind']==kind).update(change)
++                self.assertTrue(self.errors(d))
++            d=deepcopy(self.data);d['merge_readiness']['checks'][kind]['evidence_ids']=[]
++            self.assertTrue(self.errors(d))
++
++    def test_product_failure_anywhere_blocks_and_cannot_hide(self):
++        self.data['ac_results'][0].update(outcome='not_met',evidence_ids=['measurement'])
++        self.data['issue_completion']='not_achieved'
++        self.assertTrue(self.errors())  # context snapshot refuses changed outcome
++        self.data['preparation']['product_outcomes'][0]['outcome']='not_met'
++        self.context['preparation']=deepcopy(self.data['preparation'])
++        self.assertTrue(self.errors())  # cannot claim ready
++        self.data['merge_readiness']['status']='blocked'
++        self.assertEqual(self.errors(), [])
++        self.data['ac_results'][0].update(outcome='unverified',evidence_ids=[])
++        self.assertTrue(self.errors())
++
++    def test_premerge_deferral_and_premature_achieved_rejected(self):
++        self.data['ac_results'][0]['deferred']=fixture()['ac_results'][1]['deferred']
++        self.assertTrue(self.errors())
++        self.data=fixture('preparation-ready.json');self.data['issue_completion']='achieved'
++        self.assertTrue(self.errors())
++
++    def test_expired_subject_and_artifact_bytes(self):
++        d=deepcopy(self.data);d['evidence'][-1]['valid_until']='2030-01-01T12:00:00Z'
++        self.assertTrue(self.errors(d))
++        c=deepcopy(self.context);c['policy_valid_until']='2030-01-01T12:00:00Z'
++        self.assertTrue(self.errors(context=c))
++        for field in ('head_sha','base_sha','target_revision','config_revision'):
++            c=deepcopy(self.context);c['subject'][field]='f'*40
++            self.assertTrue(self.errors(context=c))
++        with tempfile.TemporaryDirectory() as tmp:
++            p=Path(tmp)/'preparation-artifact.txt';p.write_bytes((FIXTURES/p.name).read_bytes()+b'changed')
++            self.assertTrue(self.errors(root=tmp));p.unlink();self.assertTrue(self.errors(root=tmp))
++        for field,value in [('sha256','0'*64),('size_bytes',1),('revision','f'*40),('locator','../README.md')]:
++            d,c=deepcopy(self.data),deepcopy(self.context)
++            for x in (d,c): x['preparation']['artifacts'][0][field]=value
++            self.assertTrue(self.errors(d,c))
++
++    def test_cli_context_pin_required_and_verified(self):
++        cmd=[sys.executable,str(ROOT/'scripts/validate_readiness.py'),str(FIXTURES/'preparation-ready.json'),'--context',str(FIXTURES/'preparation-context.json'),'--at',NOW.isoformat()]
++        pin=hashlib.sha256((FIXTURES/'preparation-context.json').read_bytes()).hexdigest()
++        for extra,code in [([],1),(['--context-sha256','0'*64],1),(['--context-sha256',pin],0)]:
++            r=subprocess.run(cmd+extra,capture_output=True,text=True,cwd=ROOT.parent)
++            self.assertEqual(r.returncode,code,r.stderr)
++
++    def test_handoff_binding_applies_to_preparation(self):
++        h=fixture('manager.handoff.json');h.pop('final_assessment',None)
++        with tempfile.TemporaryDirectory() as tmp:
++            p=Path(tmp)/'readiness.json';p.write_text(json.dumps(self.data));b=p.read_bytes()
++            a=next(a for a in h['artifacts'] if a['id']==self.data['artifact_id'])
++            a.update(locator=p.name,revision='sha256:'+hashlib.sha256(b).hexdigest())
++            args=dict(readiness_bytes=b,readiness_path=p,handoff_path=Path(tmp)/'handoff.json')
++            self.assertEqual(validate_handoff_pair(self.data,h,**args),[])
++            p.write_bytes(b+b'\n');self.assertTrue(validate_handoff_pair(self.data,h,**args))
+diff --git a/workflows/single-issue.md b/workflows/single-issue.md
+index 1db6144..653e5a5 100644
+--- a/workflows/single-issue.md
++++ b/workflows/single-issue.md
+@@ -98,3 +98,7 @@ Readinessの配送にはartifact_id、Handoff基準のローカルlocator、実
+ PR 前に要求した場合、その確認と後続指示まで PR を作成しない。
+ 
+ Consumer は format/拡張子だけで内容検査を省略しない。再利用では全 bytes を新規取得・再検査した出力を使い、`--verify-receipt` が旧出力の改変を検査したとは扱わない。
++
++## 依存準備 PR の追加契約
++
++[Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。

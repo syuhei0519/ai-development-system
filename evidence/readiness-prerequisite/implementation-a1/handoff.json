@@ -1,0 +1,369 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "system-readiness-prerequisite",
+    "source": "https://github.com/syuhei0519/ai-development-system",
+    "title": "Add bounded readiness for dependency preparation pull requests",
+    "acceptance_criteria": [
+      {
+        "id": "AC-S1",
+        "verbatim": "通常PRの既存マージ条件を維持し、依存準備PRだけを明示的に区分して空の製品AC集合を許容する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S2",
+        "verbatim": "依存準備PRは非空の工程受入条件と関連製品AC、固定成果物、独立TestとReview、後続検証責任を必須とし、工程達成を製品AC達成へ変換しない。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S3",
+        "verbatim": "配備影響noneとaggregate_requiredに限定し、CI、保護ルール、権限、依存、証跡鮮度、Issue Completionの既存fail-closed条件を維持する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S4",
+        "verbatim": "JSON Schema、CLI、正常・異常回帰テスト、サンプル、役割・workflow・テンプレート・READMEが整合し、既存全テストと新規テストが成功する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S5",
+        "verbatim": "変更と検証成果物を固定Git revisionとbytes/hashで取得でき、既存PRを重複作成せずSystem専用feature branchのDraft PRとして提示する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      }
+    ]
+  },
+  "role": "implementation",
+  "task_id": "readiness-prerequisite-implementation-a1",
+  "attempt": 1,
+  "upstream": [],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Implementation and self-verification complete; independent Test/Review and final assessment remain Manager responsibilities.",
+  "artifacts": [
+    {
+      "id": "baseline-reproduction.txt",
+      "kind": "document",
+      "locator": "baseline-reproduction.txt",
+      "revision": "sha256:d45b358e1fbc18de07577a9cdce4306cd1288306bab6c0e600ef3f168bdf2631",
+      "summary": "Public implementation evidence; self-verification only."
+    },
+    {
+      "id": "change.patch",
+      "kind": "patch",
+      "locator": "change.patch",
+      "revision": "sha256:5a54589d56567f8cb0665422a335fa91499ae877fdeae9530d241cbd6d903ba3",
+      "summary": "Public implementation evidence; self-verification only."
+    },
+    {
+      "id": "implementation-report.md",
+      "kind": "document",
+      "locator": "implementation-report.md",
+      "revision": "sha256:98c39c562861b10dce8f33fafc64073c20687b243e06e30bf92fce925604ffb5",
+      "summary": "Public implementation evidence; self-verification only."
+    },
+    {
+      "id": "reproduce.py",
+      "kind": "document",
+      "locator": "reproduce.py",
+      "revision": "sha256:934f4114552568436f62157ea801d9630d744ba3ebab9e9ff0eae53de155dd19",
+      "summary": "Public implementation evidence; self-verification only."
+    },
+    {
+      "id": "revision.json",
+      "kind": "document",
+      "locator": "revision.json",
+      "revision": "sha256:10fcf7daaeef25c7da0fd82ba2b4d9004823476ab5738bea19ff308147599e40",
+      "summary": "Public implementation evidence; self-verification only."
+    },
+    {
+      "id": "implementation-commit",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/ai-development-system/commit/3f41a0470fd0b7a2199be0b947bb22284e993e2f",
+      "revision": "3f41a0470fd0b7a2199be0b947bb22284e993e2f",
+      "summary": "Fixed implementation revision."
+    },
+    {
+      "id": "source-0",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3f41a0470fd0b7a2199be0b947bb22284e993e2f/README.md",
+      "revision": "sha256:9d1fd2a8aabf33c1d456f638d77d497ca7f5a63e47020a5780290999bd944fcd",
+      "summary": "Fixed changed source bytes."
+    },
+    {
+      "id": "source-1",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3f41a0470fd0b7a2199be0b947bb22284e993e2f/agents/implementation.md",
+      "revision": "sha256:b702a1f63739732057d29f83fd247ce8b1cf6a81614f49ef9bf7710c1def5d5e",
+      "summary": "Fixed changed source bytes."
+    },
+    {
+      "id": "source-2",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3f41a0470fd0b7a2199be0b947bb22284e993e2f/agents/manager.md",
+      "revision": "sha256:d4c29266646fe9bfe803898f2e2d65a9e157007c8fd5b950b92555bbddd5f736",
+      "summary": "Fixed changed source bytes."
+    },
+    {
+      "id": "source-3",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3f41a0470fd0b7a2199be0b947bb22284e993e2f/agents/research-design.md",
+      "revision": "sha256:71d1b232f31c125ee3f47bd4426e9b13fd9b601f518086b6f3a485131db45338",
+      "summary": "Fixed changed source bytes."
+    },
+    {
+      "id": "source-4",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3f41a0470fd0b7a2199be0b947bb22284e993e2f/agents/review.md",
+      "revision": "sha256:28960a661c12b1d0ddc78871904d76f6bb7bf4d5bf43ce2f3efc4b3640ef3b1e",
+      "summary": "Fixed changed source bytes."
+    },
+    {
+      "id": "source-5",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3f41a0470fd0b7a2199be0b947bb22284e993e2f/agents/test.md",
+      "revision": "sha256:a7e37b9d9374501641c78bb69378bf5631324c8aa6b7e7031979d92f8fb311c5",
+      "summary": "Fixed changed source bytes."
+    },
+    {
+      "id": "source-6",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3f41a0470fd0b7a2199be0b947bb22284e993e2f/contracts/README.md",
+      "revision": "sha256:87ed7529ce8bc0a8b093dd8235518b83dbedc41e851b45f23bd5814d31eb71ff",
+      "summary": "Fixed changed source bytes."
+    },
+    {
+      "id": "source-7",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3f41a0470fd0b7a2199be0b947bb22284e993e2f/contracts/readiness-context.schema.json",
+      "revision": "sha256:3a2dd8dc1ea307725c9e2fde99e91e29a20dd26907692e3a4d6c4fb7dded4c65",
+      "summary": "Fixed changed source bytes."
+    },
+    {
+      "id": "source-8",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3f41a0470fd0b7a2199be0b947bb22284e993e2f/contracts/readiness.md",
+      "revision": "sha256:2487551184aeca36d9fb831af9511cb71b315cd61c262973a9fee090cbd428d1",
+      "summary": "Fixed changed source bytes."
+    },
+    {
+      "id": "source-9",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3f41a0470fd0b7a2199be0b947bb22284e993e2f/contracts/readiness.schema.json",
+      "revision": "sha256:5c322fe48a1aaf8c14c6a0f9b54dc67ee566bf376ad1bb986826a49961f54ff4",
+      "summary": "Fixed changed source bytes."
+    },
+    {
+      "id": "source-10",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3f41a0470fd0b7a2199be0b947bb22284e993e2f/examples/README.md",
+      "revision": "sha256:84a3196e8f4f83ebc33556c3de7a664bc249ea1bb6081a117d9aafefb3030b32",
+      "summary": "Fixed changed source bytes."
+    },
+    {
+      "id": "source-11",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3f41a0470fd0b7a2199be0b947bb22284e993e2f/examples/readiness/README.md",
+      "revision": "sha256:e3230b20312abb039f68b0fc3b2cb8c597f87435b8eb802fec2173ec92a87724",
+      "summary": "Fixed changed source bytes."
+    },
+    {
+      "id": "source-12",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3f41a0470fd0b7a2199be0b947bb22284e993e2f/examples/readiness/preparation-artifact.txt",
+      "revision": "sha256:0726a907aee40484a2b1b94e55b85d7b6003f6d25109691470e750b663955475",
+      "summary": "Fixed changed source bytes."
+    },
+    {
+      "id": "source-13",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3f41a0470fd0b7a2199be0b947bb22284e993e2f/examples/readiness/preparation-context.json",
+      "revision": "sha256:7193b9a041c6f655feff5e3a03962887240225d4c929d2e26de2f84dd8305899",
+      "summary": "Fixed changed source bytes."
+    },
+    {
+      "id": "source-14",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3f41a0470fd0b7a2199be0b947bb22284e993e2f/examples/readiness/preparation-ready.json",
+      "revision": "sha256:400324ec829df98232fa2c1396a44949395c7e2c83bd9855004b53d492e7503a",
+      "summary": "Fixed changed source bytes."
+    },
+    {
+      "id": "source-15",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3f41a0470fd0b7a2199be0b947bb22284e993e2f/scripts/validate_readiness.py",
+      "revision": "sha256:5ed023f9d8e392365eaf9a99403bef034ad5be4dab40b1f16f22c4a4ed150b62",
+      "summary": "Fixed changed source bytes."
+    },
+    {
+      "id": "source-16",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3f41a0470fd0b7a2199be0b947bb22284e993e2f/templates/task-input.md",
+      "revision": "sha256:1495cdb1d1885b891d69c0f5fb75116e1ba3bf4b7e5fb66b824a0590605bb0f9",
+      "summary": "Fixed changed source bytes."
+    },
+    {
+      "id": "source-17",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3f41a0470fd0b7a2199be0b947bb22284e993e2f/tests/test_readiness_preparation.py",
+      "revision": "sha256:cd8495f64f06db61588d7609e5ca419303d6a0d198e3f3641fbb0395b8eba768",
+      "summary": "Fixed changed source bytes."
+    },
+    {
+      "id": "source-18",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3f41a0470fd0b7a2199be0b947bb22284e993e2f/workflows/single-issue.md",
+      "revision": "sha256:999568d5f0eae4895d0aa5b198195c88e62206a04d2da296b317c7edf3b828d7",
+      "summary": "Fixed changed source bytes."
+    },
+    {
+      "id": "baseline-0",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0083151aa2f6b2aaf0e1db64ada3f196ed766e48/scripts/validate_readiness.py",
+      "revision": "sha256:73ecbcacf1adcadda7200666d123079dd58adb1a7dfd63ba3aadccef86757080",
+      "summary": "Original fixed baseline bytes for reproduction."
+    },
+    {
+      "id": "baseline-1",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0083151aa2f6b2aaf0e1db64ada3f196ed766e48/contracts/readiness.schema.json",
+      "revision": "sha256:bfb1589b2cc0fce39b9b098dc72265796aa79053dd6c3f3131d28aa43d341693",
+      "summary": "Original fixed baseline bytes for reproduction."
+    },
+    {
+      "id": "baseline-2",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0083151aa2f6b2aaf0e1db64ada3f196ed766e48/contracts/readiness-context.schema.json",
+      "revision": "sha256:e10a8069441a17b447819b0bec9cb145b7a7f91f8d758a6f3dbdcc44361a2f4d",
+      "summary": "Original fixed baseline bytes for reproduction."
+    },
+    {
+      "id": "ci",
+      "kind": "test-report",
+      "locator": "ci.json",
+      "revision": "sha256:48823a11cd365b912b48a368e9b32d5acfe6fa1e91482e1ab86dcb62605a0d6b",
+      "summary": "GitHub CI success on the fixed implementation head."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "implementation-validation",
+      "claim": "Assigned implementation and self-verification completed.",
+      "artifact_ids": [
+        "baseline-reproduction.txt",
+        "change.patch",
+        "implementation-report.md",
+        "reproduce.py",
+        "revision.json",
+        "implementation-commit",
+        "source-0",
+        "source-1",
+        "source-2",
+        "source-3",
+        "source-4",
+        "source-5",
+        "source-6",
+        "source-7",
+        "source-8",
+        "source-9",
+        "source-10",
+        "source-11",
+        "source-12",
+        "source-13",
+        "source-14",
+        "source-15",
+        "source-16",
+        "source-17",
+        "source-18",
+        "baseline-0",
+        "baseline-1",
+        "baseline-2",
+        "ci"
+      ],
+      "locator": "implementation-report.md",
+      "observation": "292 full tests, 55 final readiness tests, fixed baseline reproduction and Draft PR. Not independent Test/Review."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-S1",
+      "disposition": "covered",
+      "scope": "Implementation responsibility only; independent Test/Review and Manager business acceptance pending.",
+      "artifact_ids": [
+        "implementation-report.md",
+        "implementation-commit"
+      ],
+      "evidence_ids": [
+        "implementation-validation"
+      ]
+    },
+    {
+      "ac_id": "AC-S2",
+      "disposition": "covered",
+      "scope": "Implementation responsibility only; independent Test/Review and Manager business acceptance pending.",
+      "artifact_ids": [
+        "implementation-report.md",
+        "implementation-commit"
+      ],
+      "evidence_ids": [
+        "implementation-validation"
+      ]
+    },
+    {
+      "ac_id": "AC-S3",
+      "disposition": "covered",
+      "scope": "Implementation responsibility only; independent Test/Review and Manager business acceptance pending.",
+      "artifact_ids": [
+        "implementation-report.md",
+        "implementation-commit"
+      ],
+      "evidence_ids": [
+        "implementation-validation"
+      ]
+    },
+    {
+      "ac_id": "AC-S4",
+      "disposition": "covered",
+      "scope": "Implementation responsibility only; independent Test/Review and Manager business acceptance pending.",
+      "artifact_ids": [
+        "implementation-report.md",
+        "implementation-commit"
+      ],
+      "evidence_ids": [
+        "implementation-validation"
+      ]
+    },
+    {
+      "ac_id": "AC-S5",
+      "disposition": "covered",
+      "scope": "Implementation responsibility only; independent Test/Review and Manager business acceptance pending.",
+      "artifact_ids": [
+        "implementation-report.md",
+        "implementation-commit"
+      ],
+      "evidence_ids": [
+        "implementation-validation"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe",
+  "assignment": {
+    "scope": "ai-development-system#readiness-prerequisite-support",
+    "ac_ids": [
+      "AC-S1",
+      "AC-S2",
+      "AC-S3",
+      "AC-S4",
+      "AC-S5"
+    ],
+    "completion_criteria": [
+      "通常PRの既存マージ条件を維持し、依存準備PRだけを明示的に区分して空の製品AC集合を許容する。",
+      "依存準備PRは非空の工程受入条件と関連製品AC、固定成果物、独立TestとReview、後続検証責任を必須とし、工程達成を製品AC達成へ変換しない。",
+      "配備影響noneとaggregate_requiredに限定し、CI、保護ルール、権限、依存、証跡鮮度、Issue Completionの既存fail-closed条件を維持する。",
+      "JSON Schema、CLI、正常・異常回帰テスト、サンプル、役割・workflow・テンプレート・READMEが整合し、既存全テストと新規テストが成功する。",
+      "変更と検証成果物を固定Git revisionとbytes/hashで取得でき、既存PRを重複作成せずSystem専用feature branchのDraft PRとして提示する。"
+    ]
+  }
+}
