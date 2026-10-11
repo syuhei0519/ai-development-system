@@ -1,0 +1,151 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "app-order-service",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "test",
+  "task_id": "order-m0-test-e2-a1",
+  "attempt": 1,
+  "assignment": {
+    "scope": "application-manifest#backend-app-2/M0",
+    "ac_ids": [
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "F1/F2 を含む全担当試験の結果と再現手順、固定 head/base/config、既存28 chart files/4 environment files/3 live renders の byte と意味の不変、正常系と異常系、安全境界の根拠があること。失敗は failed、必要な実行不能は blocked とし未実施を隠さないこと。全製品 AC や B2 実 release、実 Argo 配備は未検証です。"
+    ]
+  },
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "order-m0-implementation-e2-a1",
+      "attempt": 1,
+      "relationship": "dependency",
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/b231aa38653333bd86f293a13458f4bf955970f3/evidence/order-m0/implementation-e2-a1/handoff.json",
+      "revision": "sha256:19185748874b350e924c5ec5dd7c468fdb2cb231dd97aea71fb0fcd3b86c7214"
+    },
+    {
+      "role": "test",
+      "task_id": "order-m0-test-a3",
+      "attempt": 3,
+      "relationship": "dependency",
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/406164b1a69ebf4fe2f0e676c11038f08fff5724/evidence/order-m0/test-a3/handoff.json",
+      "revision": "sha256:5012ad21c781056f6f17c16c9403e4637abb73bff981bbd9a85e14d435c79db2"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "New approved Test epoch2 attempt1: actual fixed-head M0 regression passed, including F1/F2, all security/inventory/render suites. Old failed Test1/2 and completed Test3 remain immutable dependencies; Test3 expiry is not code failure. Assigned AC3 infrastructure only; product ACs unverified.",
+  "artifacts": [
+    {
+      "id": "test-report.txt",
+      "kind": "test-report",
+      "locator": "test-report.txt",
+      "revision": "sha256:a501552c41fc14eeb03f75d365fa6ab82936de8f314c7b38899ebac77cd27813",
+      "summary": "New independent epoch2 measurement and limits."
+    },
+    {
+      "id": "results.json",
+      "kind": "test-report",
+      "locator": "results.json",
+      "revision": "sha256:ca7e36721d44d5a1f6ea85dc93f7d90fccd8edc927be170da8a4ed5827b13808",
+      "summary": "New independent epoch2 measurement and limits."
+    },
+    {
+      "id": "publication-safety.txt",
+      "kind": "document",
+      "locator": "publication-safety.txt",
+      "revision": "sha256:d97d7dee3464bb012fb79a7452554c44a066def1a1aac1ac8af016392f2fa4bb",
+      "summary": "Separate safety review and publication authority; no Consumer grant."
+    },
+    {
+      "id": "reproduce.sh",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/406164b1a69ebf4fe2f0e676c11038f08fff5724/evidence/order-m0/test-a3/reproduce.sh",
+      "revision": "sha256:89577bd23afa32e3af06dff57f3fd331dcf0b54676ceda9e8e8f9ab70b8b1103",
+      "summary": "Verified upstream original script independently executed now; fixed reference reused without duplication."
+    },
+    {
+      "id": "independent-probes.py",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/406164b1a69ebf4fe2f0e676c11038f08fff5724/evidence/order-m0/test-a3/independent-probes.py",
+      "revision": "sha256:da3b35549af247c4464379ca0ebdfe576d348bee7f9191a25a82a9d63d282258",
+      "summary": "Verified upstream original script independently executed now; fixed reference reused without duplication."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "fixed-head-independent",
+      "claim": "Assigned M0 verification responsibilities completed; no failing gating expectation.",
+      "artifact_ids": [
+        "test-report.txt",
+        "results.json",
+        "reproduce.sh",
+        "independent-probes.py"
+      ],
+      "locator": "results.json",
+      "observation": "New execution 2026-10-11T09:22:52Z to 09:25:28.207449Z: all existing suites, uncached Go inventory272/release207/checksum20/scan7, release19, F1 128 gating +10 observations, security116, F2 bounded renderer, four bounded fixtures and independent38 pass. 28 chart/4 environment files/3 renders byte and semantic equal. Fixed evidence expires 2026-10-12T09:25:28.207449Z or earlier on changes/new failure. GitHub state has separate 15-minute expirations. No real release/deployment/product AC measurement."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "not_assigned",
+      "scope": "Outside M0; application behavior unverified.",
+      "artifact_ids": [
+        "test-report.txt",
+        "results.json"
+      ],
+      "evidence_ids": [
+        "fixed-head-independent"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "not_assigned",
+      "scope": "Outside M0; application behavior unverified.",
+      "artifact_ids": [
+        "test-report.txt",
+        "results.json"
+      ],
+      "evidence_ids": [
+        "fixed-head-independent"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "covered",
+      "scope": "AC-3 M0 evidence-verification infrastructure only; earliest premerge/deferred=null; aggregate_required; actual Service/Argo/runtime digest unverified.",
+      "artifact_ids": [
+        "test-report.txt",
+        "results.json"
+      ],
+      "evidence_ids": [
+        "fixed-head-independent"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

@@ -1,0 +1,134 @@
+Independent Order M0 Test — epoch2 attempt1
+
+Assigned AC-3 evidence-infrastructure verification PASSED in a new execution.
+This is not product AC met, Merge Ready, real release or deployment approval.
+AC-1/2 are not assigned; actual AC-3 Service/Argo/runtime digest is unverified.
+Earliest phase premerge, deferred=null, issue integration aggregate_required.
+
+Fixed subject and method
+System syuhei0519/ai-development-system@0083151aa2f6b2aaf0e1db64ada3f196ed766e48.
+PR https://github.com/syuhei0519/application-manifest/pull/18
+Head/target e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4
+Head tree 92b867efc6e9163b0cbfd4713b82d0c65e24f769
+Base e039945a90625262f91382e6f71149d046e31b34
+Base tree 7c9c8d52bf014f54fe2212b0ef4374c53d9700a3
+Exact CI/workflow config file hashes and digest, commands, environment, case
+results, observation times and separate expiration policies are in results.json.
+Prepared Cloud Linux amd64: Go1.27.1, Helm4.2.4, Python3.12.14, Docker28.4.0.
+No applicable AGENTS.md in the target/System trees or workspace parent.
+The existing application checkout was detached at the fixed head, with no
+tracked changes. Tests use temporary synthetic Git/Helm fixtures and the
+original bounded networkless renderer; no sandbox policy was weakened.
+
+Input integrity and provenance
+Canonical fixed-System consume_delivery.py freshly retrieved and verified
+117 explicit objects plus six additional tree objects, 123 total. Raw bytes,
+size/hash/type, source/tree, structural slots, upstream and retry bindings passed.
+The independent Manager authorization pin was passed directly to the CLI;
+authorization and private Consumption Receipt remain private. Input manifest
+and public Publication Receipt pins are in results.json.
+Research design/addendum were read as verified public edited derivatives;
+their private originals were not inspected. Implementation claims and old Test3
+success were inputs, not measurements for this epoch. All test outcomes below
+were measured anew, using verified source scripts without rewriting their bytes.
+
+Results
+PASS ci/github/test.sh: documentation14; all Go helper packages; checksum
+test compilation; trusted_identity3, trusted_contract10, trusted_registry8,
+pre_merge_check6, trusted_attempts13, trusted_render4, namespace_boundary3 in
+the pinned Docker container, release19. Additional trusted_binary1,
+trusted_consumer_failure1, trusted_phase2 2, Helm lint/render, checksum and
+render-only scan passed. Supplemental Go execution with -count=1 confirms
+inventory272, release-record207, checksum20, scan-gate7. No failing or skipped
+test case; five release-record command packages explicitly have no test files.
+
+F1: 138 observations, including 128 gating expectations and ten scan-only
+observations, with no failed expectation. Inherited/equivalent container
+security accepts; root/nonroot/UID/GID/seccomp overrides reject for both DBs.
+The historical F1 fixture also rejects in the actual bounded trusted renderer.
+Security116: all pass, including malformed/null/list/string/numeric security,
+sidecar/init/ephemeral containers, malformed arrays, missing PVC, unknown
+resources and hidden PodSpecs. Positive inheritance is preserved.
+F2: Account DB image substitution by a pinned application image rejects in
+the bounded trusted renderer. Inventory also rejects both DB identities with
+backend/order/frontend application images before image classification can
+bypass fixed PostgreSQL security/PVC policy. Dedicated DB image allowlist
+remains distinct from application release verification.
+Independent38: all pass. Both DB names accept implicit namespace, explicit
+account and a different explicit namespace with matching PVC. Wrong PVC
+namespace and application image substitutions reject. Ordinary application
+inventory accepts. Synthetic GitHub token environment does not leak tokens
+to the registry subprocess. Symlink chart snapshots and shell/path/unknown
+chart names reject. These finite synthetic tests do not prove a live release.
+
+Release19 and supplemental F1/release probes cover v1 backend/frontend positive
+compatibility and v2 Order fixed service/source/image/schema bindings, unknown
+service and backend spoofing, wrong source/run/attempt/ref/workflow/digest/
+SBOM/record/config/archive, expiration/latest-main/moved-tag, missing/failed/
+duplicate matrix members, single-record ZIP paths/duplicates/symlinks/nonregular
+members, duplicate escaped JSON keys, nonfinite/trailing syntax and types.
+Trusted suites cover verifier identity/binary/source selection, credential-free
+registry and redirect boundaries, stale proof removal, private/read-only/network/
+environment/deadline/output sandbox boundaries. PR source is not selected as
+trusted verifier. Passing normal renderer fixtures confirm usable sandbox
+functionality; a unavailable sandbox was not disguised as expected rejection.
+
+Inventory/render/deployment proof
+All three existing charts remain required. Optional Order and order-postgresql
+absence accepts; partial chart/values, unknown charts, existing deletion and
+unscanned PodSpecs reject. Actual bounded disabled fixture accepts four entries;
+enabled fixture accepts six, provenanceRequired=true and authenticated
+eligibility=false. Enabled broken PVC retention rejects. Baseline bounded render
+also passes. All 28 chart files and four environment files have identical sets
+and raw bytes at base/head. Frontend/backend/postgresql renders match byte for
+byte and parsed YAML semantics; per-file/render hashes are in results.json.
+The 18-file M0 diff changes verifier/tests/docs/fixtures only. Static deployment
+effect is none; this is not a live Argo/sync/health observation. Account values,
+Secret references, PVC definitions and PR17 are unchanged.
+
+Time and CI separation
+New execution completed 2026-10-11T09:25:28.207449Z. Fixed test evidence expires
+2026-10-12T09:25:28.207449Z, or immediately on code/base/test-config change or
+new failure information. This new 24-hour policy does not extend old Test3.
+GitHub PR and CI observations have separate 15-minute expirations in results.
+CI run38125716138 was observed completed/success, event pull_request, attempt1,
+workflow .github/workflows/ci.yml, exact assigned head and base. PR18 was open,
+Draft and unmerged. CI is separate from this independent test execution.
+Workflow checkout uses event-default ref: run head_sha does not independently
+prove the historical PR merge checkout. Known Forbidden raw logs were not
+retried or bypassed. Current merge candidate is not historical checkout proof.
+Manager must refresh mutable GitHub state/protection/reviews/queue/required
+merge-group immediately before any authorized merge. No current policy or
+formal Manager Readiness/context is invented; validate_readiness --handoff is
+not claimed. No final_assessment is issued.
+
+Reproduction
+First consume the fixed input closure with canonical System CLI and independent
+Manager authorization. Use its verified Test3 reproduce.sh and sibling
+independent-probes.py at:
+https://github.com/syuhei0519/ai-development-system/blob/406164b1a69ebf4fe2f0e676c11038f08fff5724/evidence/order-m0/test-a3/reproduce.sh
+Command: bash <verified-Test3>/reproduce.sh <fixed-checkout> <fresh-input> <new-output>
+Then in every tools/* directory with go.mod: go test -count=1 -json ./...
+Requires prepared Go/Helm/PyYAML/Docker and the repository-pinned images.
+The reproduction script includes all individual commands and resolves original
+Implementation/F1/F2/security scripts from the verified closure. No upstream
+script has been duplicated into this new output.
+
+History, limitations and delivery
+Public alias order-m0-test-e2-a1, role test, attempt1, unchanged assignment scope.
+New epoch2 was explicitly approved for actual remeasurement after Test3 expiry.
+Private canonical retry CLI verified old terminal history, renewal grant and
+empty epoch2 against all independent Manager pins, then append-only dispatch.
+Old Test1 failed F1, Test2 failed F2, Test3 completed remain immutable; Test3
+is a dependency, not retry_of. Implementation order-m0-implementation-e2-a1
+attempt1 is also a dependency. Each epoch2 dispatch/execution/delivery budget
+is at most three; no self retry, scheduler or additional Agent was started.
+No new failing M0 finding. B2 actual producer/release remains unimplemented and
+unverified; synthetic agreement is not real interoperability. Actual API/DB,
+all product ACs, real Argo/Service/imageID and three-repo integration remain
+unverified. No live service, DB or cluster was started or changed.
+Only the authorized System evidence branch/prefix is published after content
+safety review. Product code, main, PR17, Issue, merge, deployment, Secrets,
+permissions, Ruleset and environment conditions were not changed. Publication
+and producer fresh closure verification do not grant downstream Consumer use.
+Manager must independently authorize and freshly consume the published closure.
