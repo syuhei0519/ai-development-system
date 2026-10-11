@@ -1,0 +1,20 @@
+{
+  "verification": "canonical producer raw bytes/size/hash/object/type/slot/tree validation",
+  "explicit": 113,
+  "objects": 122,
+  "bytes": 1596902,
+  "manifest_sha256": "ba2d6232f12fb97b6c107a4fc70cde35f55ef46ef556032a35f8176dd37fcc4b",
+  "publication_receipt_sha256": "1f232393538ed41751cb4d2e1fd6206ace3cb14c4d2690184e482437c1cef0b2",
+  "result": "passed",
+  "consumer_authorization_issued": false,
+  "consumer_receipt_issued": false,
+  "limitations": "Manager must issue independent Consumer authorization; this does not certify product acceptance.",
+  "payload_commit": "437cb5b76359a8743613529aa33f7a9dacb88e9c",
+  "handoff_sha256": "751a0130aa37effd18edc57a2af7edc5373cf6ec6ada3914cd458701e00bb8aa",
+  "remote_head": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+  "base": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+  "draft": true,
+  "ci": "Both push and PR success at remote head",
+  "pr_body_update": "gh pr edit failed on deprecated Projects(classic) GraphQL field; authorized REST PATCH succeeded, same head/base and draft=true rechecked",
+  "historical_failure_preservation": "Old ENV-CA-1/blocked Test and 403 CI artifact path remain unchanged; no retry of that artifact ZIP path"
+}
