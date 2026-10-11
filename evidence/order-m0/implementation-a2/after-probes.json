@@ -1,0 +1,824 @@
+{
+  "target": "82505fce911c1dbbe75fe8226a06665e582e1ff9",
+  "synthetic": true,
+  "results": [
+    {
+      "case": "v2-positive",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true
+    },
+    {
+      "case": "v1-backend-positive",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true
+    },
+    {
+      "case": "v1-frontend-positive",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true
+    },
+    {
+      "case": "record-missing-archiveSha256",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-configDigest",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-createdAt",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-dbUpdatedAt",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-deploymentAuthorized",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-imageDigest",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-imagePolicyPassed",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-imageRepository",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-imageScanSha256",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-isolatedRuntimePassed",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-protectedMain",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-published",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-repository",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-runAttempt",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-runId",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-sbomSha256",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-sbomValidated",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-scannedAt",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-schema",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-service",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-sourceCommit",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-sourcePolicyPassed",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-sourceScanSha256",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-validUntil",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-missing-workflowRef",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-schema-core-platform/github-release/v1",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-service-backend",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-service-unknown",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-repository-syuhei0519/backend-app-order",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-sourceCommit-0000000000000000000000000000000000000000",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-runId-124",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-runId-True",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-runId-123",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-runAttempt-1",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-runAttempt-2.0",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-workflowRef-syuhei0519/backend-app/.github/workflows/ci.yml@refs/heads/feature",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-workflowRef-syuhei0519/backend-app/.github/workflows/evil.yml@refs/heads/main",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-imageRepository-ghcr.io/syuhei0519/backend-app",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-imageDigest-sha256:bad",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-configDigest-bad",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-archiveSha256-bad",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-sbomSha256-bad",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-sourceScanSha256-bad",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-imageScanSha256-bad",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-scannedAt-2030-01-01T01:00:01Z",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-createdAt-2029-12-30T00:00:00Z",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-dbUpdatedAt-2030-01-01T00:00:00",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-validUntil-2030-01-01T01:00:00Z",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-validUntil-2030-01-02T00:00:01Z",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-published-1",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-protectedMain-true",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-deploymentAuthorized-True",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "record-invalid-unknown-True",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "v1-service-spoof-backend",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "v1-service-spoof-frontend",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "JSON-b'{\"a\":1,\"a\":2}'",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "JSON-b'{\"a\":{\"x\":1,\"\\\\u0078\":2}}'",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "JSON-b'{\"x\":NaN}'",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "JSON-b'{\"x\":Infinity}'",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "JSON-b'{}junk'",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "JSON-b'{'",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "ZIP-['release-record.json']",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true
+    },
+    {
+      "case": "ZIP-['../release-record.json']",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "ZIP-['/release-record.json']",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "ZIP-['dir/release-record.json']",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "ZIP-['release-record.json', 'extra']",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "ZIP-['release-record.json', 'release-record.json']",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "ZIP-mode-40960",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "ZIP-mode-16384",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "ZIP-mode-4096",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "ZIP-mode-32768",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true
+    },
+    {
+      "case": "matrix-positive",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true
+    },
+    {
+      "case": "matrix-missing-job-0",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "matrix-missing-artifact-0",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "matrix-failed-job-0",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "matrix-expired-artifact-0",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "matrix-missing-job-1",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "matrix-missing-artifact-1",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "matrix-failed-job-1",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "matrix-expired-artifact-1",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "matrix-missing-job-2",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "matrix-missing-artifact-2",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "matrix-failed-job-2",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "matrix-expired-artifact-2",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "matrix-missing-job-3",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "matrix-missing-artifact-3",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "matrix-failed-job-3",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "matrix-expired-artifact-3",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "matrix-duplicate-job",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "matrix-duplicate-artifact",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "inventory-optional-absent",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true
+    },
+    {
+      "case": "inventory-optional-present-order",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true
+    },
+    {
+      "case": "inventory-missing-values-order",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "inventory-missing-chart-order",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "inventory-removed-baseline-order",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "inventory-optional-present-order-postgresql",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true
+    },
+    {
+      "case": "inventory-missing-values-order-postgresql",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "inventory-missing-chart-order-postgresql",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "inventory-removed-baseline-order-postgresql",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "inventory-unknown-chart",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "inventory-active-removed-frontend",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "inventory-active-removed-backend",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "inventory-active-removed-postgresql",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "postgresql-baseline",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true
+    },
+    {
+      "case": "postgresql-baseline-scan-observation",
+      "exit_code": 0,
+      "expectation": "observation only; inventory must enforce fixed effective security"
+    },
+    {
+      "case": "postgresql-root-override",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "postgresql-root-override-scan-observation",
+      "exit_code": 0,
+      "expectation": "observation only; inventory must enforce fixed effective security"
+    },
+    {
+      "case": "postgresql-seccomp-override",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "postgresql-seccomp-override-scan-observation",
+      "exit_code": 0,
+      "expectation": "observation only; inventory must enforce fixed effective security"
+    },
+    {
+      "case": "postgresql-uid-override",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "postgresql-uid-override-scan-observation",
+      "exit_code": 0,
+      "expectation": "observation only; inventory must enforce fixed effective security"
+    },
+    {
+      "case": "postgresql-gid-override",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "postgresql-gid-override-scan-observation",
+      "exit_code": 0,
+      "expectation": "observation only; inventory must enforce fixed effective security"
+    },
+    {
+      "case": "postgresql-pod-root",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "postgresql-writable-root",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "postgresql-pvc-retention",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "postgresql-stateful-retention",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "postgresql-wrong-image",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "postgresql-hidden-podspec",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "order-postgresql-baseline",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true
+    },
+    {
+      "case": "order-postgresql-baseline-scan-observation",
+      "exit_code": 0,
+      "expectation": "observation only; inventory must enforce fixed effective security"
+    },
+    {
+      "case": "order-postgresql-root-override",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "order-postgresql-root-override-scan-observation",
+      "exit_code": 0,
+      "expectation": "observation only; inventory must enforce fixed effective security"
+    },
+    {
+      "case": "order-postgresql-seccomp-override",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "order-postgresql-seccomp-override-scan-observation",
+      "exit_code": 0,
+      "expectation": "observation only; inventory must enforce fixed effective security"
+    },
+    {
+      "case": "order-postgresql-uid-override",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "order-postgresql-uid-override-scan-observation",
+      "exit_code": 0,
+      "expectation": "observation only; inventory must enforce fixed effective security"
+    },
+    {
+      "case": "order-postgresql-gid-override",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "order-postgresql-gid-override-scan-observation",
+      "exit_code": 0,
+      "expectation": "observation only; inventory must enforce fixed effective security"
+    },
+    {
+      "case": "order-postgresql-pod-root",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "order-postgresql-writable-root",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "order-postgresql-pvc-retention",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "order-postgresql-stateful-retention",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "order-postgresql-wrong-image",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "case": "order-postgresql-hidden-podspec",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    }
+  ]
+}

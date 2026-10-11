@@ -1,0 +1,39 @@
+[
+  {
+    "case": "effective-security-bypass",
+    "expected": "reject",
+    "actual": "accept",
+    "passed": false,
+    "synthetic": true,
+    "provenanceRequired": false,
+    "eligible": false,
+    "entries": 4
+  },
+  {
+    "case": "optional-disabled",
+    "expected": "accept",
+    "actual": "accept",
+    "passed": true,
+    "synthetic": true,
+    "provenanceRequired": false,
+    "eligible": false,
+    "entries": 4
+  },
+  {
+    "case": "optional-enabled",
+    "expected": "accept",
+    "actual": "accept",
+    "passed": true,
+    "synthetic": true,
+    "provenanceRequired": true,
+    "eligible": false,
+    "entries": 6
+  },
+  {
+    "case": "enabled-invalid-pvc",
+    "expected": "reject",
+    "actual": "reject",
+    "passed": true,
+    "synthetic": true
+  }
+]

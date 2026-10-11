@@ -1,0 +1,32 @@
+{
+  "base": "e039945a90625262f91382e6f71149d046e31b34",
+  "head": "82505fce911c1dbbe75fe8226a06665e582e1ff9",
+  "chart_files": 28,
+  "environment_files": 4,
+  "all_tracked_inputs_byte_equal": true,
+  "renders": [
+    {
+      "chart": "frontend",
+      "bytes": 5555,
+      "sha256": "16ce7b984d0bfa86d110ed2c9757e565a9ada6056f7cbd583de32aa04a3866de",
+      "byte_equal": true,
+      "semantic_equal": true
+    },
+    {
+      "chart": "backend",
+      "bytes": 9681,
+      "sha256": "98f9ee0a34d05ffdce403e6b22ea28fd84aa9e9eb508a0872d95b50067f22d88",
+      "byte_equal": true,
+      "semantic_equal": true
+    },
+    {
+      "chart": "postgresql",
+      "bytes": 6966,
+      "sha256": "108bffe412325d4155c964fcf7ca30b58f23d636f1407b0466d84ec4528f8d38",
+      "byte_equal": true,
+      "semantic_equal": true
+    }
+  ],
+  "deployment_effect": "none",
+  "limitation": "Static rendered inputs only; no live workload, Argo, API, database or runtime measurement."
+}

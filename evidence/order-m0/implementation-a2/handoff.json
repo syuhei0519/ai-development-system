@@ -1,0 +1,253 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "app-order-service",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "implementation",
+  "assignment": {
+    "scope": "application-manifest#backend-app-2/M0",
+    "ac_ids": [
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "最小変更feature branch feat/order-trusted-manifest-m0（既存があれば重複せず状態確認）に実装、許可scopeのみ。",
+      "既存ci/github/test.shと関連既存全tests、新v2正常・異常境界回帰、rendererinventory/セキュリティテストが成功。",
+      "main baselineと変更headの既存live render byte/semantic比較、chart/values/Secret/PVC不変と配備影響noneを根拠付き報告。証明不能なら無理にnoneとしない。",
+      "source/commit/fixture/schema/README整合、後続B2へ渡す共通仕様と不採用案/リスクを記録。",
+      "feature pushとDraft PRをapplication-manifestへ作成可。Issue2には通常リンクのみ、Closes/Fixesは禁止。main push/merge/auto-merge/実環境deploy/既存PR17操作は禁止。CI結果は対象headとともに報告、自己testと独立Test/Reviewを区別する。",
+      "Handoffv2、implementation report、test再現手順、knowledge候補任意、固定commit/artifact全pinsを作成。System専用evidence/order-m0-implementation-a2 branch、prefixevidence/order-m0/implementation-a2/へ公開安全性点検後に保存可。privateorig/hash、runtime実ID、認可/私的receipt、秘密/internal生ログは除外。元upstream bytesは不変の固定参照を使う。Delivery1.2の全closure freshGit検証とPublicationReceiptを返す。新Consumer認可を自己発行しない。型/拡張子/JSON-looking textの問題は安全な明示派生版として別shaで記録し、旧sourceを書換えない。",
+      "independentTest/ReviewはManagerが後で別Cloudタスクを起動。あなたが自己起動しない。",
+      "既存DraftPR18/head2d45e35a2aaeee7eacb9a121d92b34a7f291ea76/branchfeat/order-trusted-manifest-m0へ追加commitする。新PR作成・forcepush・旧commit上書き不要。",
+      "独立再現コードreproduce.py/reproduce-render.pyと結果を読み、修正前のF-1を再現してから最小修正。追加negative/positive回帰、既存v1/renderer/security/tests全成功、既存livechart/value/render不変を再実測。"
+    ]
+  },
+  "task_id": "order-m0-implementation-a2",
+  "attempt": 2,
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "F-1 repaired in existing PR18; fixed-head self-tests and CI pass; static live render unchanged. AC-3 M0 infrastructure responsibility only; product ACs and independent Test2/Review remain unverified.",
+  "publication": "public_safe",
+  "failure_reasons": [],
+  "block_reasons": [],
+  "knowledge_candidates": [],
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "order-m0-implementation-a1",
+      "attempt": 1,
+      "relationship": "retry_of",
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/9c7718fbd4b5c1650c30bb36706d14c5df96f1fc/evidence/order-m0/implementation-a1/handoff.json",
+      "revision": "sha256:a1db0e439a6c5fe4088bf3e547c51a2db1825698839721afb12ef066b5f81c66"
+    },
+    {
+      "role": "test",
+      "task_id": "order-m0-test-a1",
+      "attempt": 1,
+      "relationship": "dependency",
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/089934bc5a4b708781937f62038706f6434105f2/evidence/order-m0/test-a1/handoff.json",
+      "revision": "sha256:494064a1c668f9308fd7edba2380e88d896130a0d01b522f804c2fae499ab853"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "after-probes.json",
+      "kind": "test-report",
+      "locator": "after-probes.json",
+      "revision": "sha256:5e6dcb3be66db094410bb84e9b79685a75fe7854ed6a306ae6f831f77ae7bfe8",
+      "summary": "Public implementation self-verification artifact; no independent Test/Review or product approval."
+    },
+    {
+      "id": "after-render-results.json",
+      "kind": "test-report",
+      "locator": "after-render-results.json",
+      "revision": "sha256:3d9c0fe65a7a0f5bb61ea4dd29439c25e560b1e6399d17ac2b5158c56889efe8",
+      "summary": "Public implementation self-verification artifact; no independent Test/Review or product approval."
+    },
+    {
+      "id": "before-probes.json",
+      "kind": "test-report",
+      "locator": "before-probes.json",
+      "revision": "sha256:a2cf1c592bba057c53c22e4202ade62b658c1344d0bc0a24a7fb76399fe21ee7",
+      "summary": "Public implementation self-verification artifact; no independent Test/Review or product approval."
+    },
+    {
+      "id": "before-render-results.json",
+      "kind": "test-report",
+      "locator": "before-render-results.json",
+      "revision": "sha256:ccf2f6cd5aa64c340024236a3ca0e1f5c2d43837ca44c9b500149da2fbf725d5",
+      "summary": "Public implementation self-verification artifact; no independent Test/Review or product approval."
+    },
+    {
+      "id": "ci-observations.json",
+      "kind": "test-report",
+      "locator": "ci-observations.json",
+      "revision": "sha256:0cb7b29e47770452f0857c33ed1ca590d80c42f1699f39789979621d3b8890fb",
+      "summary": "Public implementation self-verification artifact; no independent Test/Review or product approval."
+    },
+    {
+      "id": "compare-renders.py",
+      "kind": "other",
+      "locator": "compare-renders.py",
+      "revision": "sha256:6a02b23926012a1e7cba526e8007002b44b104985fdb2ae9897a7d6a4d9763f1",
+      "summary": "Public implementation self-verification artifact; no independent Test/Review or product approval."
+    },
+    {
+      "id": "implementation-report.txt",
+      "kind": "document",
+      "locator": "implementation-report.txt",
+      "revision": "sha256:f7810b6259d34db4d3de7bcdecde40efc014b8de20baebe5e722690a93308019",
+      "summary": "Public implementation self-verification artifact; no independent Test/Review or product approval."
+    },
+    {
+      "id": "implementation.patch",
+      "kind": "patch",
+      "locator": "implementation.patch",
+      "revision": "sha256:526b084f69c7787530305ac0e72522a4b95188ed396a4d082f310304a7fbb0b8",
+      "summary": "Public implementation self-verification artifact; no independent Test/Review or product approval."
+    },
+    {
+      "id": "publication-safety.txt",
+      "kind": "document",
+      "locator": "publication-safety.txt",
+      "revision": "sha256:8b7dee0aca2f8d93c0d5d0e09d5a738ce506598c5e02e7b41a21631d0cf9a790",
+      "summary": "Public implementation self-verification artifact; no independent Test/Review or product approval."
+    },
+    {
+      "id": "render-comparison.json",
+      "kind": "test-report",
+      "locator": "render-comparison.json",
+      "revision": "sha256:3ea38848b88b9ff68fb422af3c2946a6fbeec47e86a7469d44f19ffb3e4fa1aa",
+      "summary": "Public implementation self-verification artifact; no independent Test/Review or product approval."
+    },
+    {
+      "id": "reproduce-render.py",
+      "kind": "other",
+      "locator": "reproduce-render.py",
+      "revision": "sha256:6a4ba35464cb3d439e3405b48c25e375d3386af2e016703766c2a757f4c29a14",
+      "summary": "Public implementation self-verification artifact; no independent Test/Review or product approval."
+    },
+    {
+      "id": "reproduce.py",
+      "kind": "other",
+      "locator": "reproduce.py",
+      "revision": "sha256:dce229a28ad0eb38273842afdc621df3a0b310daf76e6851dc238ccea4c85553",
+      "summary": "Public implementation self-verification artifact; no independent Test/Review or product approval."
+    },
+    {
+      "id": "reproduce.sh",
+      "kind": "other",
+      "locator": "reproduce.sh",
+      "revision": "sha256:dc4aed86d708ad7f433faa27203bd10d6a1f316a3200470c0f618521efdc81d7",
+      "summary": "Public implementation self-verification artifact; no independent Test/Review or product approval."
+    },
+    {
+      "id": "trusted-render.json",
+      "kind": "test-report",
+      "locator": "trusted-render.json",
+      "revision": "sha256:60a335f889ace596a0fdb436831be1be1d776a7857ded000e58aef1d8ad1771e",
+      "summary": "Public implementation self-verification artifact; no independent Test/Review or product approval."
+    },
+    {
+      "id": "implementation.commit",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/application-manifest/commit/82505fce911c1dbbe75fe8226a06665e582e1ff9",
+      "revision": "82505fce911c1dbbe75fe8226a06665e582e1ff9",
+      "summary": "Fast-forward additional commit on existing PR18 feature branch."
+    },
+    {
+      "id": "tools/inventory/platform.go",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/application-manifest/blob/82505fce911c1dbbe75fe8226a06665e582e1ff9/tools/inventory/platform.go",
+      "revision": "sha256:f349bdae5db6e9976dc9dabc8a168997175f7b3ab7469dfcddde20a4c2731087",
+      "summary": "Exact repaired source, regression test or shared B2 contract."
+    },
+    {
+      "id": "tools/inventory/platform_test.go",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/application-manifest/blob/82505fce911c1dbbe75fe8226a06665e582e1ff9/tools/inventory/platform_test.go",
+      "revision": "sha256:cc2b24c8add50bfb4945cdabc049cf8633ff56b4f7e5adc31bfbbb951a11aa23",
+      "summary": "Exact repaired source, regression test or shared B2 contract."
+    },
+    {
+      "id": "docs/order-trusted-manifest-m0.md",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/application-manifest/blob/82505fce911c1dbbe75fe8226a06665e582e1ff9/docs/order-trusted-manifest-m0.md",
+      "revision": "sha256:8736fcb38f10a91ba3a95070ab9f8f506458289ed1765144527818d5c33b01cc",
+      "summary": "Exact repaired source, regression test or shared B2 contract."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "fixed-head-verification",
+      "claim": "F-1 effective-security bypass repaired with safe inheritance retained; self-tests/CI and static unchanged render measured.",
+      "artifact_ids": [
+        "implementation.commit",
+        "implementation-report.txt",
+        "before-probes.json",
+        "after-probes.json",
+        "before-render-results.json",
+        "after-render-results.json",
+        "render-comparison.json",
+        "trusted-render.json",
+        "ci-observations.json"
+      ],
+      "locator": "implementation-report.txt",
+      "observation": "Fixed head 82505fce911c1dbbe75fe8226a06665e582e1ff9; 138 synthetic probes meet expectations after original eight failures; bounded renderer rejects bypass; existing tests and CI pass. All chart/environment bytes and existing live renders equal main. No live product measurement or independent Test2/Review."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "not_assigned",
+      "scope": "Outside M0; product behavior unverified.",
+      "artifact_ids": [
+        "implementation-report.txt"
+      ],
+      "evidence_ids": [
+        "fixed-head-verification"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "not_assigned",
+      "scope": "Outside M0; product behavior unverified.",
+      "artifact_ids": [
+        "implementation-report.txt"
+      ],
+      "evidence_ids": [
+        "fixed-head-verification"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "covered",
+      "scope": "Assigned M0 evidence infrastructure implementation and self-verification only. Real Service/Argo/runtime digest unverified; earliest premerge; aggregate_required. Manager owns independent Test2/Review and final judgment.",
+      "artifact_ids": [
+        "implementation.commit",
+        "implementation-report.txt"
+      ],
+      "evidence_ids": [
+        "fixed-head-verification"
+      ]
+    }
+  ]
+}

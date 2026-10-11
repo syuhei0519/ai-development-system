@@ -1,0 +1,94 @@
+Order M0 Implementation attempt2: F-1 repair
+Scope: application-manifest#backend-app-2/M0, AC-3 infrastructure only.
+System: syuhei0519/ai-development-system@0083151aa2f6b2aaf0e1db64ada3f196ed766e48
+Base: e039945a90625262f91382e6f71149d046e31b34
+Previous head: 2d45e35a2aaeee7eacb9a121d92b34a7f291ea76
+Repaired head: 82505fce911c1dbbe75fe8226a06665e582e1ff9
+Existing Draft PR: https://github.com/syuhei0519/application-manifest/pull/18
+Related issue: https://github.com/syuhei0519/backend-app/issues/2
+
+Implementation
+Only tools/inventory/platform.go, platform_test.go and the M0 contract document
+changed in this retry. Pod policy remains fixed. Container overrides of UID,
+GID, non-root and seccomp are checked before inventory output. Missing overrides
+inherit; equivalent explicit values pass; conflicting or malformed overrides fail.
+Both PostgreSQL identities are covered by 34 override cases. Twelve role cases
+keep PostgreSQL extra sidecars, init and ephemeral containers rejected even
+with safe inherited defaults. This does not broaden platform image roles.
+Application container inventory/scan behavior is unchanged.
+
+Rejected alternatives: reject every override (breaks equivalent safe explicit
+settings); replace required Pod defaults with container-only settings (weakens
+existing policy); duplicate the PostgreSQL allowlist in generic scan-gate
+(divergent policy). Generic render-only scan-gate is not the PostgreSQL gate.
+Its eight observation-only checks still exit zero, as expected for its limited
+policy; inventory and bounded trusted renderer now reject these inputs.
+The application release consumer, schema and fixtures are byte-identical to the
+previous implementation. B2 remains a future producer interoperability dependency.
+The full service/source/image, artifact/matrix and expiry contract remains in
+docs/order-trusted-manifest-m0.md; synthetic fixture success is no real approval.
+
+Measured self-verification
+Before repair, original independent Test reproduction on previous head returned
+exit1: eight security expectation failures among 138 cases, and bounded renderer
+accepted the root/non-root/seccomp bypass with provenanceRequired=false.
+The original scripts and old outputs remain fixed upstream, not rewritten.
+The published after scripts are explicit edited derivatives changing only fixed
+head and introductory provenance text. Before-results are new self-reproductions,
+not new independent Test results; after-results refer to repaired head.
+After repair all 138 probe expectations pass, including the eight rejects.
+ci/github/test.sh passed: docs 14, all applicable Go modules, checksum compilation,
+trusted_identity 3, trusted_contract 10, trusted_registry 8, pre_merge_check 6,
+trusted_attempts 13, trusted_render 4, namespace_boundary 3, release 19.
+Additional trusted_binary 1, trusted_consumer_failure 1, trusted_phase2 2,
+ci/validate.sh and checksum Go tests passed. New inventory regressions pass.
+The fixed-head bounded renderer reports provenanceRequired=false, eligible=false,
+four unchanged inventory entries and empty added/changed/removed sets.
+This is a test-only fixed verifier invocation, not protected-main authentication.
+
+Deployment boundary
+All 28 chart files and four environment files and the full path sets are identical
+to main baseline. Frontend/backend/PostgreSQL renders are byte-identical, which
+also proves semantic equality. render-comparison.json contains lengths/hashes.
+Existing Secret references, PVC, live values, image selection, workflows and
+approval/permission settings are unchanged. Static rendered deployment effect:
+none. Real cluster access, API/DB checks, Argo sync, Service/runtime imageID,
+Order deployment, merge/main push, PR17 operations were not performed.
+AC-1/2 and real AC-3 remain unverified. AC-3 earliest phase remains premerge,
+no deferred relabeling. Issue integration is aggregate_required.
+
+History and input delivery
+Manager's exact one-line authorization and separate pin were stored privately.
+Fixed records manifest/publication size/hash matched; canonical consume_delivery
+fresh Git full-byte/type/slot/candidate/tree/retry checks succeeded before use:
+59 explicit objects plus six tree members. No original bytes were regenerated.
+retry_of is order-m0-implementation-a1 attempt1 (historical blocked).
+order-m0-test-a1 attempt1 remains failed as dependency; this repair does not change
+that independent result. Old B1/Review/Research attempts and terminal histories
+remain unchanged. No new Consumer authorization or independent Agent was issued.
+Read System workflow, Handoff2, Delivery1.2, Readiness1, Issue Completion and input/
+delivery templates. No target/System tracked AGENTS.md or .agents/skills existed.
+Prepared Cloud toolchain instructions were read; no service/migration was started.
+No worktree, extra paid API/service or periodic Knowledge execution was created.
+
+Delivery and remaining gates
+Public output contains reviewed reports, reproduction scripts and synthetic data,
+plus fixed public references. No private authorization/receipt, private original
+hash, actual task/thread identity, personal data, secret or internal raw log is
+published. Public derived bytes do not assert equivalence to unavailable private
+originals. Output publication and complete fresh Git closure checks are distinct
+from a future Manager Consumer-use authorization and canonical consumption.
+Manager must dispatch independent Test2/Review and evaluate Readiness; this Agent
+claims only implementation/self-verification, not Merge/Deployment Ready or Issue
+achieved. No formal readiness assessment is fabricated without Manager context.
+GitHub Actions raw logs were not requested, bypassed or retried. API head/event/
+workflow bindings and fixed-head local tests are evidence; actual PR checkout
+SHA remains unobserved from logs, not a new canonical blocking gate.
+
+Final fixed-head observations
+PR18 remains OPEN/Draft. Remote feature head matches repaired local head.
+Push CI38123936888 and PR CI38123939453: completed/success, attempt1,
+workflow .github/workflows/ci.yml. classify/validate/ci-result succeeded; docs
+was skipped as expected for code changes. See ci-observations.json for time/binding.
+After bounded renderer: dangerous override rejected, optional disabled/enabled
+accepted, broken enabled PVC rejected; all four expectations pass.

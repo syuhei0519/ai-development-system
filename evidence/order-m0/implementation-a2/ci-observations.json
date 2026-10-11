@@ -1,0 +1,83 @@
+{
+  "observed_at": "2026-10-11T08:14:35.439235+00:00",
+  "valid_until": "2026-10-11T08:29:35.439235+00:00",
+  "pr": {
+    "number": 18,
+    "url": "https://github.com/syuhei0519/application-manifest/pull/18",
+    "draft": true,
+    "state": "open",
+    "head": "82505fce911c1dbbe75fe8226a06665e582e1ff9",
+    "base": "e039945a90625262f91382e6f71149d046e31b34",
+    "head_branch": "feat/order-trusted-manifest-m0",
+    "base_branch": "main"
+  },
+  "runs": [
+    {
+      "id": 38123939453,
+      "head_sha": "82505fce911c1dbbe75fe8226a06665e582e1ff9",
+      "event": "pull_request",
+      "path": ".github/workflows/ci.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "html_url": "https://github.com/syuhei0519/application-manifest/actions/runs/38123939453",
+      "jobs": [
+        {
+          "name": "classify",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "validate",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "docs",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "ci-result",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 38123936888,
+      "head_sha": "82505fce911c1dbbe75fe8226a06665e582e1ff9",
+      "event": "push",
+      "path": ".github/workflows/ci.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "html_url": "https://github.com/syuhei0519/application-manifest/actions/runs/38123936888",
+      "jobs": [
+        {
+          "name": "classify",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "validate",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "docs",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "ci-result",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "actual_pr_checkout_sha": "unobserved; no raw Actions log API requested",
+  "self_verification": true,
+  "independent_test_review": "Manager pending"
+}
