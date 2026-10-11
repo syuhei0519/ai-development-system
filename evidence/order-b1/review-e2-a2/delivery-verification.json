@@ -1,0 +1,21 @@
+{
+  "document_type": "producer_delivery_verification",
+  "system_revision": "2e3acadabe67cbc336e032077dcc14cbeffde2a5",
+  "payload_commit": "402ec6a479535f513c8407cbc3750fbefda7243d",
+  "root_handoff": {
+    "path": "evidence/order-b1/review-e2-a2/handoff.json",
+    "size": 19806,
+    "sha256": "976637a4e54e93624ccdb851b96479254a722cb3ee0ca7339fb51c93aa2aefc9"
+  },
+  "explicit_objects": 62,
+  "explicit_bytes": 363918,
+  "tree_files": 6,
+  "tree_bytes": 19082,
+  "slot_bindings": 64,
+  "candidate_bindings": 1,
+  "edited_derivatives": 7,
+  "checks": "PASS: fresh fixed Git raw size/hash/type/schema/slot/source/tree/Handoff AC/retry closure; exact Issue and assignment inheritance checked separately",
+  "consumer_authority_granted": false,
+  "downstream_consumer_validation": "pending separate Manager authorization and fresh canonical consume_delivery invocation",
+  "canonical_readiness": "not performed: Manager assessment/current context absent; review observations are not a formal assessment"
+}
