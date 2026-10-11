@@ -1,0 +1,356 @@
+{
+  "document_type": "b1_independent_test_observations",
+  "observer_alias": "order-b1-test-e2-a1",
+  "role": "test",
+  "attempt": 1,
+  "scope": "backend-app#2/B1",
+  "independent_from_implementation": true,
+  "observed_at": "2026-10-11T06:22:32Z",
+  "valid_until": "2026-10-12T06:11:00Z",
+  "expiry_policy": "Test evidence only; invalidate earlier on relevant target/base/config/environment change. Manager current policy and operation authorization separate.",
+  "subject": {
+    "repository": "syuhei0519/backend-app",
+    "pr_number": 31,
+    "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+    "base_sha": "d29a390c09f8667316569e1bb599bf690b00313d",
+    "target_revision": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+    "config_revision": "sha256:1153c02681a7adfa690a8ed6319a77f56c80d4085605b3a964661f620ac1e475",
+    "config_scope": "Only fixed .github/workflows/ci.yml raw bytes; live Ruleset/review/queue/environment policy not established",
+    "merge_group_sha": null,
+    "merge_group_requirement": "unverified; Manager current context required"
+  },
+  "environment": {
+    "platform": "Codex Cloud PlatformEngineering",
+    "os_arch": "linux/amd64",
+    "go": "go1.27.1",
+    "docker_client": "28.4.0",
+    "docker_server": "28.4.0",
+    "storage_driver": "vfs",
+    "postgres_image": "postgres@sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f",
+    "isolation": "Fresh containers/anonymous volumes; local Unix socket and explicit loopback ports; separate Account/Order engines; no existing DB/cluster"
+  },
+  "checks": [
+    {
+      "name": "toolchain",
+      "command": [
+        "go",
+        "version"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-11T06:11:03.581790+00:00",
+      "finished_at": "2026-10-11T06:11:03.613556+00:00"
+    },
+    {
+      "name": "unit",
+      "command": [
+        "go",
+        "test",
+        "-count=1",
+        "-v",
+        "./..."
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-11T06:11:03.613815+00:00",
+      "finished_at": "2026-10-11T06:11:12.095147+00:00"
+    },
+    {
+      "name": "race",
+      "command": [
+        "go",
+        "test",
+        "-race",
+        "-count=1",
+        "./..."
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-11T06:11:12.096839+00:00",
+      "finished_at": "2026-10-11T06:11:57.011485+00:00"
+    },
+    {
+      "name": "vet",
+      "command": [
+        "go",
+        "vet",
+        "./..."
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-11T06:11:57.015300+00:00",
+      "finished_at": "2026-10-11T06:11:57.927007+00:00"
+    },
+    {
+      "name": "build",
+      "command": [
+        "go",
+        "build",
+        "./..."
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-11T06:11:57.927773+00:00",
+      "finished_at": "2026-10-11T06:11:59.976551+00:00"
+    },
+    {
+      "name": "format",
+      "command": [
+        "bash",
+        "-c",
+        "test -z \"$(gofmt -l .)\""
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-11T06:11:59.977222+00:00",
+      "finished_at": "2026-10-11T06:12:00.016437+00:00"
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "d29a390c09f8667316569e1bb599bf690b00313d",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-11T06:12:00.016802+00:00",
+      "finished_at": "2026-10-11T06:12:00.022192+00:00"
+    },
+    {
+      "name": "policy",
+      "command": [
+        "bash",
+        "ci/github/test.sh"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-11T06:12:00.022642+00:00",
+      "finished_at": "2026-10-11T06:12:35.909073+00:00"
+    },
+    {
+      "name": "integration",
+      "command": [
+        "go",
+        "test",
+        "-race",
+        "-v",
+        "./internal/store/orderpostgres",
+        "./tests/orderintegration",
+        "-count=1"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-11T06:12:35.909709+00:00",
+      "finished_at": "2026-10-11T06:13:08.418308+00:00"
+    }
+  ],
+  "supplement": {
+    "command": "ORDER_DISPOSABLE_TEST=1 go test -overlay <temporary-overlay.json> -race -v ./internal/store/orderpostgres -run ^TestIndependent -count=1",
+    "helper_sha256": "1d3c045f97890a931faaf29f6aa140205ff88e3c55f8a2c7d8a0bc28d0391dad",
+    "final_exit_code": 0,
+    "test_functions": [
+      "TestIndependentFreshConcurrencyAndHTTPBoundaries",
+      "TestIndependentMigrationFailureRollback",
+      "TestIndependentAccountSchemaAndIsolation"
+    ],
+    "additional_invalid_cases": 19,
+    "fresh_migration_concurrency": 8,
+    "concurrent_creates": 24,
+    "in_attempt_history": [
+      {
+        "sample": 1,
+        "result": "failed",
+        "cause": "test fixture omitted public schema; first test passed; rollback test stopped at fixture creation",
+        "product_defect": false
+      },
+      {
+        "sample": 2,
+        "result": "passed",
+        "change": "Only helper schema qualification corrected and Account schema test added; app unchanged"
+      }
+    ],
+    "packaged_reproducer": {
+      "command": "python3 reproduce.py <clean-fixed-head-checkout>",
+      "exit_code": 0,
+      "all_three_tests": "passed",
+      "package_elapsed_seconds": 40.877,
+      "purpose": "Verify final delivered reproduction entrypoint; same Test attempt1"
+    }
+  },
+  "upstream_delivery": {
+    "system_commit": "2e3acadabe67cbc336e032077dcc14cbeffde2a5",
+    "system_tree": "8c57b1a49781424d3b1be5af52b3d7d02727ae77",
+    "result": "verified",
+    "object_count": 17,
+    "payload_bytes": 89071,
+    "meaning": "Transport and typed bindings only; not product acceptance or historical publication approval"
+  },
+  "ci_observed_at": "2026-10-11T06:13:33Z",
+  "ci": [
+    {
+      "id": 38106093354,
+      "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/38106093354",
+      "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "path": ".github/workflows/ci.yml",
+      "created_at": "2026-10-11T02:43:58Z",
+      "updated_at": "2026-10-11T02:48:59Z",
+      "jobs": [
+        {
+          "name": "classify",
+          "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-11T02:44:00Z",
+          "completed_at": "2026-10-11T02:44:04Z"
+        },
+        {
+          "name": "validate",
+          "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-11T02:44:06Z",
+          "completed_at": "2026-10-11T02:46:09Z"
+        },
+        {
+          "name": "docs",
+          "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+          "status": "completed",
+          "conclusion": "skipped",
+          "started_at": "2026-10-11T02:44:05Z",
+          "completed_at": "2026-10-11T02:44:04Z"
+        },
+        {
+          "name": "image",
+          "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-11T02:46:11Z",
+          "completed_at": "2026-10-11T02:48:53Z"
+        },
+        {
+          "name": "ci-result",
+          "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-11T02:48:56Z",
+          "completed_at": "2026-10-11T02:48:59Z"
+        },
+        {
+          "name": "publish",
+          "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+          "status": "completed",
+          "conclusion": "skipped",
+          "started_at": "2026-10-11T02:48:54Z",
+          "completed_at": "2026-10-11T02:48:54Z"
+        },
+        {
+          "name": "propose",
+          "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+          "status": "completed",
+          "conclusion": "skipped",
+          "started_at": "2026-10-11T02:48:54Z",
+          "completed_at": "2026-10-11T02:48:54Z"
+        }
+      ]
+    },
+    {
+      "id": 38106075234,
+      "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/38106075234",
+      "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "path": ".github/workflows/ci.yml",
+      "created_at": "2026-10-11T02:43:36Z",
+      "updated_at": "2026-10-11T02:48:31Z",
+      "jobs": [
+        {
+          "name": "classify",
+          "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-11T02:43:38Z",
+          "completed_at": "2026-10-11T02:43:42Z"
+        },
+        {
+          "name": "validate",
+          "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-11T02:43:43Z",
+          "completed_at": "2026-10-11T02:45:46Z"
+        },
+        {
+          "name": "docs",
+          "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+          "status": "completed",
+          "conclusion": "skipped",
+          "started_at": "2026-10-11T02:43:42Z",
+          "completed_at": "2026-10-11T02:43:42Z"
+        },
+        {
+          "name": "image",
+          "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-11T02:45:48Z",
+          "completed_at": "2026-10-11T02:48:25Z"
+        },
+        {
+          "name": "ci-result",
+          "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-11T02:48:27Z",
+          "completed_at": "2026-10-11T02:48:30Z"
+        },
+        {
+          "name": "publish",
+          "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+          "status": "completed",
+          "conclusion": "skipped",
+          "started_at": "2026-10-11T02:48:26Z",
+          "completed_at": "2026-10-11T02:48:25Z"
+        },
+        {
+          "name": "propose",
+          "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+          "status": "completed",
+          "conclusion": "skipped",
+          "started_at": "2026-10-11T02:48:26Z",
+          "completed_at": "2026-10-11T02:48:25Z"
+        }
+      ]
+    }
+  ],
+  "source_unchanged": true,
+  "cleanup": {
+    "observed_at": "2026-10-11T06:22:32Z",
+    "test_labeled_containers": 0,
+    "container_and_volume_removal_commands": "all test cleanup callbacks completed without error",
+    "remaining_volume_inventory": "individual removed-volume identities not independently retained; Docker rm --force --volumes succeeded"
+  },
+  "ac_results_in_assignment": [
+    {
+      "ac_id": "AC-1",
+      "result": "passed",
+      "scope": "B1 real disposable DB, process restart and DB restart; deployed integration unverified"
+    },
+    {
+      "ac_id": "AC-2",
+      "result": "passed",
+      "scope": "B1 strict HTTP/no-write and Account CRUD/schema/history/sentinel isolation"
+    },
+    {
+      "ac_id": "AC-3",
+      "result": "unverified",
+      "scope": "Not assigned to B1"
+    }
+  ],
+  "remaining_gates": [
+    "Manager current Readiness context/policy/config/queue and independent Review",
+    "B2 Order image/release; M/P/kind/Argo/digest checks",
+    "Three-repository merge/deployment integration and T7",
+    "Manager-only final Issue assessment"
+  ],
+  "optional_knowledge": "not consumed; no adoption claimed",
+  "formal_readiness_assessment": "not produced; no Manager context supplied; not a claim of ready",
+  "publication": "edited public-alias derivative prepared under subsequent bounded evidence-publication instruction; original observations/expiry unchanged; no Consumer authorization"
+}

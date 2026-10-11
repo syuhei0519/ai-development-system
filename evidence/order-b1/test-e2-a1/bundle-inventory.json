@@ -1,0 +1,50 @@
+{
+  "document_type": "publication_payload_inventory",
+  "files": [
+    {
+      "path": "README.txt",
+      "size": 2970,
+      "sha256": "1e44e53fe5af66549d05a6118ee1364a48fef3f29b177b30a607c2493f256517"
+    },
+    {
+      "path": "bundle-review.json",
+      "size": 12154,
+      "sha256": "a21e628a4b7aa7a3f675575da202bbb3ad01332d50e9ca04a03d54e85215e82f"
+    },
+    {
+      "path": "handoff.json",
+      "size": 9040,
+      "sha256": "4cc00afcad190f144e9299a89dcef9604ec74a2733da05b605730061bbcebaa3"
+    },
+    {
+      "path": "reproduce.py",
+      "size": 1580,
+      "sha256": "4afc0f90bb5d8242dbf429b0d1476b28dda047d2d3363dcf78548232c39c3e7b"
+    },
+    {
+      "path": "supplement_test.go",
+      "size": 14804,
+      "sha256": "1d3c045f97890a931faaf29f6aa140205ff88e3c55f8a2c7d8a0bc28d0391dad"
+    },
+    {
+      "path": "test-observations.json",
+      "size": 11965,
+      "sha256": "a512da83f5ea1fcf117fd58895f165c77b2e82a377b4e07ca9ad1ec870812d11"
+    },
+    {
+      "path": "test-report.txt",
+      "size": 12661,
+      "sha256": "74a70df32299564acfd6f4992e989f6b403553f089b17a1131d4a6bf7e086391"
+    },
+    {
+      "path": "upstream-manifest.json",
+      "size": 22789,
+      "sha256": "5a1e3edfcdc1751c7a02ece0a2962b208f1285dc974e80889e58e42aedff1ae3"
+    }
+  ],
+  "file_count_excluding_inventory": 8,
+  "self_hash_policy": "Inventory is itself pinned by the outer Delivery1.2 manifest. No self-hash.",
+  "unchanged_upstream_objects": 17,
+  "unchanged_upstream_bytes": 89071,
+  "upstream_bytes_location": "Canonical fixed Git references in upstream-manifest.json; Delivery1.2 outer closure pins their complete types and bindings."
+}

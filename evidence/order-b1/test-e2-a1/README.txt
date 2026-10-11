@@ -1,0 +1,14 @@
+B1 independent Test attempt1 — immutable public evidence delivery
+Root handoff.json is an edited public-alias derivative; original status=completed, attempt=1, scope/backend-app#2/B1 and AC responsibilities remain unchanged. This is not Issue completion or operation authority.
+
+The original 26-file local candidate bundle was fully inspected. Publication uses nine new Test evidence files and the seventeen already-public upstream objects at their original canonical fixed Git references. It does not republish duplicate Handoff identities, downgrade Knowledge, or rewrite any upstream locator. The Delivery1.2 manifest binds one root Test identity, Implementation, the entire Research retry chain, typed pending Knowledge candidates, exact backend commit/source blob and complete source tree. Every old public payload byte remains unchanged. See bundle-review.json for the reviewed candidate inventory and bundle-inventory.json for new payload pins.
+
+After the payload commit, manifest.json and publication-receipt.json are stored in a separate record commit on evidence/order-b1-test-e2-a1. They are Producer publication observations, not Consumer approval. Independent Review requires a separately issued Manager authorization pin and fresh unchanged System consume_delivery.py verification before use. This publisher creates neither Consumer authorization nor Consumption Receipt.
+
+Canonical contract code: syuhei0519/ai-development-system@2e3acadabe67cbc336e032077dcc14cbeffde2a5, tree 8c57b1a49781424d3b1be5af52b3d7d02727ae77. No System/app code changes, PR or merge. Verify Handoff and Delivery1.2 types/slot/candidate/tree/source/retry bindings with that unchanged code. A successful transport/schema check does not replace Review or product testing.
+
+Reproduce the independent supplement with Go1.27.1 on PATH, the report's pinned PostgreSQL image preloaded, and an authorized local Docker sandbox: python3 reproduce.py /path/to/clean/backend-app-at-7b54f55cf1a652ee127528877b3bb9034b75b311. The runner creates a temporary Go overlay and fresh disposable containers only, with no app edits. Full baseline and real DB commands/results are in test-report.txt and timestamped test-observations.json. Keep new runtime output private.
+
+AC-1/AC-2 covered only within assigned B1 standalone/disposable Integration scope. AC-3, image/Argo/Kubernetes/three-repo integration/actual deployment and Manager final assessment remain unverified. Optional draft Knowledge context was not consumed/adopted; upstream pending Knowledge candidates remain pending. Evidence expiry remains 2026-10-12T06:11:00Z or earlier relevant change.
+
+No private original seal/hash, real Cloud task/runtime identity, authorization, private pin, Consumption Receipt, credentials or internal raw logs are published. Original public Git commit metadata is preserved only at its existing canonical source. The old local archive and nonpublic originals are retained separately without alteration.

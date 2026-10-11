@@ -1,0 +1,77 @@
+Independent B1 Test — public-safe candidate, NOT publication approval
+Alias order-b1-test-e2-a1; role=test; attempt=1; scope=backend-app#2/B1.
+Result: assigned independent B1 test responsibility completed. No product defect reproduced.
+This is not Manager Merge Readiness, deployment permission or Issue Completion.
+
+Fixed target
+Repository syuhei0519/backend-app; PR https://github.com/syuhei0519/backend-app/pull/31
+head/target 7b54f55cf1a652ee127528877b3bb9034b75b311
+base/merge-base d29a390c09f8667316569e1bb599bf690b00313d
+System 2e3acadabe67cbc336e032077dcc14cbeffde2a5
+System tree 8c57b1a49781424d3b1be5af52b3d7d02727ae77
+Implementation dependency order-b1-implementation-e2-a1/attempt1; Research research-order-design-a3/attempt3 and its original retry chain retained byte-for-byte.
+AC text was taken from Manager's initial input and matched to verified upstream; the Issue was not fetched again.
+
+Acceptance correspondence
+AC-1: 作成したOrderが再起動後も取得できる
+COVERED for assigned B1 standalone/disposable Integration scope only. The unchanged fixed-head real-DB reproducer was independently executed: POST 201+Location, persisted GET byte equality, two graceful OS-process restarts with asserted changed PIDs, then PostgreSQL stop/start on the same new disposable volume and GET equality. No mock restart substituted. Kubernetes/PVC/actual deployed workload remain unverified.
+AC-2: 不正入力は4xxとなりAccount CRUDが維持される
+COVERED for assigned B1 scope only. Existing Integration: 52 invalid JSON bodies, 8 invalid IDs, media 415, >16KiB 413, method 405/Allow; rejected inputs add zero rows. Positive account int64 maximum, item 64 bytes, quantities 1 and 999, exact 16KiB body accepted. Account create/list/get/update/delete before and after migration/restarts; duplicate 409, absent 404, validation 400; complete sentinel and migration version/applied_at preserved. Independent additional cases below.
+AC-3: 独立ServiceがSyncedかつHealthyになり対応image digestが確認できる
+UNVERIFIED, outside B1 assignment. No Order image/release, Kubernetes/kind/Argo Synced/Healthy/digest or three-repository deployment measured. No final_assessment issued.
+
+Environment and isolation
+Codex Cloud PlatformEngineering; Linux amd64; Go 1.27.1; Docker client/server 28.4.0, linux/vfs.
+PostgreSQL source image postgres@sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f, locally present; no image pull.
+Initial shell PATH resolved /usr/bin/go to a non-Go-compiler program. That preflight failed; the preinstalled /workspace/.cloud-setup/go/bin toolchain was then used. This is recorded as environment discovery, not a successful test.
+All real DB tests opt in explicitly; use unix:///var/run/docker.sock, freshly created containers and anonymous volumes, explicit loopback ports and transient random test credentials. Separate Account/Order database engines. No existing DB, PVC, cluster, Secret or live service connected. No implementation/source edits. Supplement uses a Go overlay only.
+
+Independent commands and results (all final commands exit 0)
+From the clean fixed-head worktree with Go 1.27.1 on PATH and preinstalled module cache:
+  go test -count=1 -v ./...
+  go test -race -count=1 ./...
+  go vet ./...
+  go build ./...
+  test -z "$(gofmt -l .)"
+  git diff --check d29a390c09f8667316569e1bb599bf690b00313d HEAD
+  bash ci/github/test.sh
+  ORDER_DISPOSABLE_TEST=1 go test -race -v ./internal/store/orderpostgres ./tests/orderintegration -count=1
+  python3 reproduce.py /path/to/clean/fixed-head-checkout
+The last command recreates the exact supplement Go overlay test invocation. The delivered helper is the final tested byte-identical source. Reproduction launches disposable test resources only; it must be run in an authorized sandbox with the pinned image.
+Go Unit's skipped disposable tests were not counted as Integration passes: they were separately enabled and passed. Legacy Account TestMigrationDisposableDatabase (special kind port-forward guard) and TestSDKCollectorMetricNames (requires disposable Collector) remained skipped. Account persistence/migration/CRUD was instead exercised by the new real disposable PostgreSQL tests; Collector telemetry is outside B1. No full local image/security workflow rerun is claimed: existing policy/boundary script was run, and GitHub workflow results were separately read.
+
+Additional independent tests (supplement_test.go)
+1. Eight separate Store/pool instances migrate a truly empty DB concurrently: all succeed, exactly one version-1 history row. This complements the implementation's already-migrated concurrent no-op case.
+2. Nineteen additional chunked invalid bodies/media cases, each with before/after DB count: missing Content-Type, bad charset/extra/unknown parameter, suffix/malformed media, key case, escaped duplicate key, surrogate/NUL/slash/backslash/newline item, BOM, leading zero/negative zero, comment/comma, 16385-byte body. All return expected 400/413/415 and error envelope; no row is written.
+3. Chunked exact-16384 body, differently cased valid media and reordered/escaped valid key accepted; UTC/Location/GET equality checked. Collection GET/HEAD/PUT/DELETE/PATCH/OPTIONS return 405 with Allow POST and no rows.
+4. Twenty-four simultaneous real committed inserts have distinct positive IDs and exact row-count increase.
+5. CREATE blocked on an actual PostgreSQL table lock is cancelled: ErrUnavailable and no committed row; cancelled GET and twelve cancelled migrations recover on the same Store/pool; subsequent create/readiness/migration succeed without history changes.
+6. Actual embedded migration fails on a conflicting public.orders fixture: fixture preserved, zero applied history. Removing only that test-owned conflicting table allows forward retry. Successful DDL followed by duplicate history INSERT is rolled back. No granted advisory lock remains.
+7. Account full columns/constraints/indexes/history/sentinel snapshot unchanged through three Order migrations, real Account-engine migration-target refusal and HTTP CRUD regression. Deleting an Account retains its Order; nonexistent account ID accepted; no Order foreign key exists.
+
+Retained intermediate failure
+The first supplemental run's concurrency/HTTP/cancellation test passed, but rollback fixture setup failed before exercising product rollback: test DDL omitted public schema while the app deliberately sets search_path=pg_catalog,public. Only test helper DDL was qualified with public, and Account schema/isolation coverage added; final three supplemental tests passed. The failed helper source/log remain privately preserved. This is an in-attempt helper correction, not a new Test task, erased result, app fix or reset of any retry budget.
+
+Migration and failure coverage from unchanged reproducer
+Fresh/no-op history; concurrent no-op; lock timeout/cancel/recovery; cancelled DDL+history atomic rollback/retry; future version rejection; wrong actual DB and role refused before DDL; SQL constraints; offline DB readiness and API 503; process liveness 200; graceful shutdown readiness 503. The supplement independently adds fresh concurrency, actual embedded DDL conflict and history-insertion rollback paths.
+
+Source invariants and cleanup
+Git diff on Account entrypoint/domain/config/HTTP/store/migrations, .github, ci, go.mod/go.sum and Dockerfile is empty against base. The entire fixed worktree remains clean; System checkout also unchanged.
+All test cleanup callbacks ran docker rm --force --volumes without error. Final query for order-b1-disposable=true returns zero containers. Individual anonymous-volume identities were not independently retained before removal, so no separate full volume-inventory comparison is claimed. Test-created resources only were removed.
+
+CI, Readiness and integration boundaries
+Read-only GitHub observation: PR remains open/draft/unmerged with exact specified head/base. Push run 38106075234 and pull_request run 38106093354 both completed success; classify/validate/image/ci-result pass, docs/publish/propose skipped. Every returned job binds to the fixed head. CI is separate from this independent Test.
+Fixed .github/workflows/ci.yml is unchanged from base. Its validate job runs ordinary go test without ORDER_DISPOSABLE_TEST; Order real Integration is NOT automatically enabled by CI. Existing image job targets Account; Order image is B2. Protected-main publish/propose conditions and Environment approval are present; current variables/approvals/Ruleset/required reviews/queue were not independently established.
+No Manager current readiness-context, policy expiry or merge-group requirement was supplied. No manager assessment/context is fabricated and validate_readiness --context/--handoff is not claimed. test-observations.json supplies exact subject, local config digest, observation times and a conservative Test-evidence expiry; live policy/config/merge-group binding remains Manager's gate. Test evidence expires at 2026-10-12T06:11:00Z or any relevant revision/config/environment change, whichever is earlier; this is not a merge authorization.
+Research proposes all three original ACs as premerge-capable; AC-3 is outside this B1 PR, not relabelled postdeploy. Future dedicated Test plus authorized operator must measure candidate kind/Argo/image and stop relevant M/P merges on failure. T7 must subsequently repeat deployed revision/image identity and Order/Account persistence/CRUD against the actual integrated three-repository deployment. Manager owns required-set/context, approvals, rollback owner and final assessment; all remain unverified here. issue_integration_scope=aggregate_required; Issue Completion unverified.
+
+Input delivery versus test and output delivery
+Unmodified fixed-System Delivery 1.2 CLI succeeded once, after exact Manager authorization was saved privately as UTF-8 one-line JSON+LF with an independently derived pin. Seventeen objects / 89071 bytes, size/hash/type/slot/candidate/complete tree/source/Handoff AC/retry bindings passed. Private Consumption Receipt says authority_granted=false. Manifest/publication record was fetched from System commit 72b729aabce1c6dd0877102e9af0194ea6055cba at the supplied prefix; source manifest is copied as immutable upstream-manifest.json. Manifest representation original means those fixed public bytes, not independent inspection of private Research originals. Producer private-original/safety claims remain testimony. Historical publication approval remains unverified; separate current implementation-purpose consumer approval authorized these tests.
+Optional draft Knowledge context was not consumed/adopted. It was not a gate; supplemental tests derive from verified mandatory Research/API contract and direct test design, not unseen articles.
+Test attempt1 is distinct from Implementation epoch2 attempt1. Manager-reported epoch1 three delivery failures/RETRY_LIMIT_REACHED and all existing Implementation/Research histories remain unchanged. No Agent dispatch, recursion or scheduler used. Canonical prior Manager retry ledger was not supplied and no new claim of auditing its unseen bytes is made. Local private observation records one assigned dispatch, one execution, one successful required input delivery; no output publication/consumer acknowledgement is asserted.
+Outputs are local sealed original plus separately reviewed public-safe candidates. No Push, PR operation, merge, Issue edit or publication occurred. A local archive/inventory supports Manager retrieval and exact-byte review. Public safety is a candidate review, not permission to publish. No private authorization/pin/Consumption Receipt/raw runtime logs are in the public candidate bundle.
+
+Delivered-wrapper verification: python3 reproduce.py against the exact clean fixed head completed exit 0, all three supplemental tests passed again (race, 40.877s package result). This additional run verifies the newly packaged reproduction entrypoint; it is not a new logical Test attempt. Final cleanup again found zero test-labeled containers.
+
+Publication derivative note
+This is an edited public-alias derivative of the completed Test report. Test attempt/status/scope/results and old failure history are unchanged. Earlier statements about no publication describe the Test-completion snapshot. A subsequent Manager instruction authorized bounded evidence publication on the dedicated System branch after safety inspection. This note and delivery packaging do not re-run tests, extend their expiry, grant Consumer use or retrospectively approve older publications. All optional Knowledge context remains not consumed/adopted.

@@ -1,0 +1,211 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "syuhei0519/backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "test",
+  "task_id": "order-b1-test-e2-a1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "order-b1-implementation-e2-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/f794cf63a8379f06b9bb770b2fac4ba1fb0951fa/evidence/order-b1/e2-a1/handoff.json",
+      "revision": "sha256:3c3ba9cfec83cfbed18c34853d62d833f859df79acb2fbc2bfa2fd8486e40100",
+      "relationship": "dependency"
+    },
+    {
+      "role": "research-design",
+      "task_id": "research-order-design-a3",
+      "attempt": 3,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332/delivery-verification/20261011/research-public/handoff.json",
+      "revision": "sha256:2c1876c21567399ca6ecf1d8afaed96c062da5a154b01d165f42a3e0f3afbc7d",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Edited public-alias derivative of completed independent B1 Test attempt1. AC-1/AC-2 covered only within assigned isolated scope; AC-3 and aggregate deployment remain unverified. Subsequent bounded evidence publication does not alter tests, upstream history or grant Consumer/merge authority.",
+  "assignment": {
+    "scope": "backend-app#2/B1",
+    "ac_ids": [
+      "AC-1",
+      "AC-2"
+    ],
+    "completion_criteria": [
+      "Verify mandatory immutable Research/Implementation input using unmodified fixed-System Delivery1.2 and separate Manager authorization before use.",
+      "Independently execute fixed-head/base unit/race/vet/build/format and existing policy/CI checks, real disposable HTTP/PostgreSQL normal/invalid/boundary/no-write tests, process/DB restart persistence and Account regression/isolation.",
+      "Verify migration target/history/lock/concurrency/rollback/re-run/context/DB-error/cleanup behavior and report reproduced defects without modifying implementation.",
+      "Deliver Handoffv2, assigned AC evidence, exact revision/environment/commands/results/limits, supplemental tests, private Consumption Receipt and a fully inventoried public-safe candidate bundle; leave AC-3/deployment/aggregate completion and final assessment to Manager."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-REPORT",
+      "kind": "test-report",
+      "locator": "test-report.txt",
+      "revision": "sha256:74a70df32299564acfd6f4992e989f6b403553f089b17a1131d4a6bf7e086391",
+      "summary": "Independent measured results, reproducible commands and explicit limits."
+    },
+    {
+      "id": "A-OBS",
+      "kind": "other",
+      "locator": "test-observations.json",
+      "revision": "sha256:a512da83f5ea1fcf117fd58895f165c77b2e82a377b4e07ca9ad1ec870812d11",
+      "summary": "Timestamped target/config/CI/independent Test observations; not Manager Readiness."
+    },
+    {
+      "id": "A-HELPER",
+      "kind": "other",
+      "locator": "supplement_test.go",
+      "revision": "sha256:1d3c045f97890a931faaf29f6aa140205ff88e3c55f8a2c7d8a0bc28d0391dad",
+      "summary": "Independent overlay tests; no application code modifications."
+    },
+    {
+      "id": "A-REPRO",
+      "kind": "other",
+      "locator": "reproduce.py",
+      "revision": "sha256:4afc0f90bb5d8242dbf429b0d1476b28dda047d2d3363dcf78548232c39c3e7b",
+      "summary": "Recreates temporary overlay against exact clean fixed head."
+    },
+    {
+      "id": "A-INPUT",
+      "kind": "other",
+      "locator": "upstream-manifest.json",
+      "revision": "sha256:5a1e3edfcdc1751c7a02ece0a2962b208f1285dc974e80889e58e42aedff1ae3",
+      "summary": "Unchanged fixed public input manifest; every referenced payload object copied under upstream with original bytes."
+    },
+    {
+      "id": "A-DELIVERY-README",
+      "kind": "document",
+      "locator": "README.txt",
+      "revision": "sha256:1e44e53fe5af66549d05a6118ee1364a48fef3f29b177b30a607c2493f256517",
+      "summary": "Public packaging and Consumer authorization boundaries; immutable upstream closure."
+    },
+    {
+      "id": "A-SAFETY",
+      "kind": "other",
+      "locator": "bundle-review.json",
+      "revision": "sha256:a21e628a4b7aa7a3f675575da202bbb3ad01332d50e9ca04a03d54e85215e82f",
+      "summary": "Full-text review of all 26 candidate files and canonical source closure; not Consumer authority."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-T1",
+      "claim": "Fixed-head unit/race/vet/build/format/policy checks passed independently",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-OBS"
+      ],
+      "locator": "test-observations.json",
+      "observation": "All final baseline commands exit 0; opt-in real DB and Collector skips explicitly separated. Account/CI/dependencies unchanged from base; worktree clean."
+    },
+    {
+      "id": "E-T2",
+      "claim": "Real HTTP and real DB persist across process and DB restarts; invalid writes rejected and Account preserved",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-OBS"
+      ],
+      "locator": "test-report.txt",
+      "observation": "Unchanged fixed-head disposable Integration independently passed under race. Two changed-PID process restarts and DB same-volume restart retain identical Order. 52 invalid bodies/8 IDs plus size/media/method checks; Account CRUD/sentinel/history before-after pass."
+    },
+    {
+      "id": "E-T3",
+      "claim": "Independent boundary, fresh concurrency, cancellation and rollback/isolation tests passed",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-OBS",
+        "A-HELPER",
+        "A-REPRO"
+      ],
+      "locator": "supplement_test.go",
+      "observation": "Three final supplemental tests pass under race. 19 extra negatives; 8 fresh migration instances; 24 committed creates; cancellation/no-write/recovery; DDL/history rollback; Account full schema/index/constraint/history/sentinel preservation. First helper fixture failure retained separately; app never changed."
+    },
+    {
+      "id": "E-DELIVERY",
+      "claim": "Required immutable input fully consumed before app testing",
+      "artifact_ids": [
+        "A-INPUT",
+        "A-REPORT"
+      ],
+      "locator": "upstream-manifest.json",
+      "observation": "Unmodified System Delivery1.2 CLI accepted all 17 objects/89071 bytes and typed slot/candidate/tree/source/AC/retry bindings. Private receipt is separate and grants no authority. Input original means fixed public bytes only."
+    },
+    {
+      "id": "E-CI",
+      "claim": "Fixed-head GitHub CI succeeded separately from independent Test",
+      "artifact_ids": [
+        "A-OBS",
+        "A-REPORT"
+      ],
+      "locator": "test-observations.json",
+      "observation": "Push and PR CI runs completed success; exact head/base retained. No merge/readiness/Issue Completion inferred; Ruleset/reviews/queue remain Manager gates."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "covered",
+      "scope": "Independent B1 standalone and disposable real-DB verification only: committed HTTP representation survives two changed-PID process restarts and DB same-volume restart. Kubernetes and actual deployed integration unverified.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-OBS"
+      ],
+      "evidence_ids": [
+        "E-T1",
+        "E-T2",
+        "E-T3"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "covered",
+      "scope": "Independent B1 strict HTTP invalid-input/no-write, real Account CRUD and schema/constraint/index/history/sentinel preservation; migration guard/concurrency/cancel/rollback. Deployed integration unverified.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-OBS",
+        "A-HELPER"
+      ],
+      "evidence_ids": [
+        "E-T1",
+        "E-T2",
+        "E-T3"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "unverified",
+      "scope": "Outside B1 assignment. No Order image, Kubernetes/Argo Synced/Healthy/digest, three-repo integration or production deployment measured.",
+      "artifact_ids": [
+        "A-REPORT"
+      ],
+      "evidence_ids": []
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}
