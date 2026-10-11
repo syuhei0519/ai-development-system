@@ -1,0 +1,271 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "acceptance_criteria": [
+      {
+        "id": "PB-1",
+        "source": "assignment-requirements.json",
+        "verbatim": "KnowledgeEvent、source registry、KnowledgeCollectionStateの閉じた版付き契約を実装する。event identityは固定repo/commit/path/source SHA256/candidate ID/event kindから決まり、時刻・配送試行・実task IDに依存しない。同identity別payloadを拒否し、類似内容だけで根拠を失う重複排除をしない。"
+      },
+      {
+        "id": "PB-2",
+        "source": "assignment-requirements.json",
+        "verbatim": "許可済み固定Git snapshotのinboxを全件列挙し全source bytesと必要依存を検証するscan/reconcileを実装する。partial readや改変時にcursorを先行させず、registry変更・履歴欠落・force push・旧cursor非ancestorでは全照合する。過去event消失を成功扱いせず隔離し、raw historyを保持する。"
+      },
+      {
+        "id": "PB-3",
+        "source": "assignment-requirements.json",
+        "verbatim": "single Manager writer、previous-state digest CAS、atomic保存、durable staging、scan/event/cursorのtransactionを実装する。pending/verified/reserved/dispatching/started/output_received/validated/commit_pending/committed/context_available、blocked/quarantined/dispatch_unknown/terminalを区別し、不正遷移・stale writer・overlapを拒否する。"
+      },
+      {
+        "id": "PB-4",
+        "source": "assignment-requirements.json",
+        "verbatim": "既存retry契約と連携しdispatch/execution/delivery各3上限・過去履歴・RETRY_LIMIT_REACHEDを保持する。開始不明をlease期限だけで再起動せず、取得済みoutputはdeliveryから再開し、Git確定後state更新前crashは固定commit検証で追認する。再開承認をreceiptやreplayから作らず、無限再試行を拒否する。"
+      },
+      {
+        "id": "PB-5",
+        "source": "assignment-requirements.json",
+        "verbatim": "collector自体はLLM/API/専門Agentを起動せず、scan/plan/record/reconcile/replayの機械的CLIとsynthetic fixturesを提供する。Knowledge失敗で開発gateを止めない。private stateとpublic-safe観測を分離し、runtime ID/認可/秘密/内部ログをpublic出力しない。scheduleは登録・有効化しない。"
+      },
+      {
+        "id": "PB-6",
+        "source": "assignment-requirements.json",
+        "verbatim": "正常系、重複・衝突、scan中断、source変更、CAS競合、各crash点、poison event、no-op、retry上限、未承認再開、legacy互換の回帰を実装し全128既存テストを維持する。schema/CLI/docs/README/workflow/templatesを整合させ、独立Testが再現できる固定head・自己検証根拠・Handoff v2を提出する。P-C/P-Dや定期実運用完了を主張しない。"
+      }
+    ],
+    "id": "SYSTEM-PHASE13-PB",
+    "source": "assignment-requirements.json",
+    "title": "System Phase 1-3 P-B asynchronous collection and durable inbox/state"
+  },
+  "assignment": {
+    "scope": "system/phase1-3/P-B",
+    "ac_ids": [
+      "PB-1",
+      "PB-2",
+      "PB-3",
+      "PB-4",
+      "PB-5",
+      "PB-6"
+    ],
+    "completion_criteria": [
+      "全PB-1〜6について独立再実行、F4変更前再現と変更後解消、F1〜3維持、179/base128/元独立21/追加15/CLI/schema/legacy/liveGitと必要追加probesを記録する。",
+      "固定head/base/test-mergeと指定CIを独立観測し、結果・再現・制約・前回failed retry_ofを保持したHandoff v2と自己完結公開alias候補を返す。",
+      "P-C/P-D・周期2回・定期実運用完了を主張せず、実装変更・公開・Push・PR操作・merge・実Agent・アプリ実行・schedulerを行わない。"
+    ]
+  },
+  "role": "test",
+  "task_id": "PUBLIC-PHASE13-PB-TEST-03",
+  "attempt": 3,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "PUBLIC-PHASE13-PB-IMPLEMENTATION-03",
+      "attempt": 3,
+      "handoff_locator": "input/handoff.json",
+      "revision": "sha256:a3d8fcc0a65180acd95f850bad19ba5caebce5600a6c360c191e9b9fe7b76b4f",
+      "relationship": "dependency"
+    },
+    {
+      "role": "test",
+      "task_id": "PUBLIC-PHASE13-PB-TEST-02",
+      "attempt": 2,
+      "handoff_locator": "input/input/handoff.json",
+      "revision": "sha256:8be64957ae82283e9e972d1bf5c981bd46ae93abf95f324fcf821939facc3326",
+      "relationship": "retry_of"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Independent P-B Test attempt 3 completed for PB-1–6 at fixed head. F4 before failure reproduced and after resolved; F1–3 fixes retained. 179/base128/prior21/extra15/new5 pass; CLI/schema/legacy/live Git and CI checkout observations independently verified. Previous failed Test attempt 2 preserved; no history/budget reset. Public alias candidate only; Review/Manager adoption remain separate. P-C/P-D and periodic operations unverified.",
+  "artifacts": [
+    {
+      "id": "assignment",
+      "kind": "document",
+      "locator": "assignment.json",
+      "revision": "sha256:37eca056bde12d1ad5b43af6f9bb6fc3b0dbc612372790d669f5313dc44dc7f6",
+      "summary": "Independent attempt 3 assignment.json"
+    },
+    {
+      "id": "verification-report",
+      "kind": "test-report",
+      "locator": "verification-report.json",
+      "revision": "sha256:7af6c4f79779d69278bf79b84dd64477889a82e7afe8151c4ba1d03531cc0add",
+      "summary": "Independent attempt 3 verification-report.json"
+    },
+    {
+      "id": "integration-observation",
+      "kind": "test-report",
+      "locator": "integration-observation.json",
+      "revision": "sha256:95b21ccc5129a976ce9bd1848377b5cf0114264aa2b3aa9d3838dc9c20e02d2c",
+      "summary": "Independent attempt 3 integration-observation.json"
+    },
+    {
+      "id": "live-observation",
+      "kind": "test-report",
+      "locator": "live-observation.json",
+      "revision": "sha256:d907d0f52352742182fedc1bcd6586e563c1e89e74a45a9a9c5f73cc80cc1527",
+      "summary": "Independent attempt 3 live-observation.json"
+    },
+    {
+      "id": "attempt3_probes",
+      "kind": "other",
+      "locator": "attempt3_probes.py",
+      "revision": "sha256:672e09142a2c757da5d7210768acfd67641358520b578784704baae97fec9f22",
+      "summary": "Independent attempt 3 attempt3_probes.py"
+    },
+    {
+      "id": "live_head_fixture",
+      "kind": "other",
+      "locator": "live_head_fixture.py",
+      "revision": "sha256:c2410b16d3843a4d995542bed74844107e3fea1d3589da6da8c8b47e214985a5",
+      "summary": "Independent attempt 3 live_head_fixture.py"
+    },
+    {
+      "id": "reproduce",
+      "kind": "document",
+      "locator": "reproduce.txt",
+      "revision": "sha256:a1cd685c7ddb02b32142ae6791a6e0554460beaec7eab4199480c5b2524fdc00",
+      "summary": "Independent attempt 3 reproduce.txt"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "EV-1",
+      "claim": "Closed/versioned schemas, canonical six-component identity, timestamp and size independence; source-distinct equal content retained, exact-payload collisions quarantined with both raw bytes.",
+      "artifact_ids": [
+        "verification-report",
+        "reproduce"
+      ],
+      "locator": "verification-report.json",
+      "observation": "Independently executed results, commands, named test coverage and limitations in report; target b79f98d3cb3bd58059a12b543df1d187b284fe35"
+    },
+    {
+      "id": "EV-2",
+      "claim": "All declared dependencies and immutable inbox bytes inspected; interrupted/partial reads leave state and cursor unchanged; full nonancestor reconcile and per-source disappearance retain raw history. F1/F3 remain resolved.",
+      "artifact_ids": [
+        "verification-report",
+        "reproduce"
+      ],
+      "locator": "verification-report.json",
+      "observation": "Independently executed results, commands, named test coverage and limitations in report; target b79f98d3cb3bd58059a12b543df1d187b284fe35"
+    },
+    {
+      "id": "EV-3",
+      "claim": "Single-writer process lock and digest CAS; atomic replace with fsync, durable objects/staging/snapshots; real process crashes at five transaction hooks plus partial raw/stage/snapshot writes recover. Invalid transitions rejected. F2 remains resolved.",
+      "artifact_ids": [
+        "verification-report",
+        "reproduce"
+      ],
+      "locator": "verification-report.json",
+      "observation": "Independently executed results, commands, named test coverage and limitations in report; target b79f98d3cb3bd58059a12b543df1d187b284fe35"
+    },
+    {
+      "id": "EV-4",
+      "claim": "Dispatch/execution/delivery budgets stay <=3; terminal histories preserved; no lease-triggered restart, output resumes delivery, fixed commit full-byte acknowledgement after restart, separate renewal grant required.",
+      "artifact_ids": [
+        "verification-report",
+        "reproduce"
+      ],
+      "locator": "verification-report.json",
+      "observation": "Independently executed results, commands, named test coverage and limitations in report; target b79f98d3cb3bd58059a12b543df1d187b284fe35"
+    },
+    {
+      "id": "EV-5",
+      "claim": "Mechanical scan/reconcile/record/plan/replay CLI independently exercised with synthetic fixtures; read-only store unchanged and plan=replay; closed public output excludes payload/runtime/private pins, gate unchanged. No schedule or external Agent/API launch.",
+      "artifact_ids": [
+        "verification-report",
+        "reproduce"
+      ],
+      "locator": "verification-report.json",
+      "observation": "Independently executed results, commands, named test coverage and limitations in report; target b79f98d3cb3bd58059a12b543df1d187b284fe35"
+    },
+    {
+      "id": "EV-6",
+      "claim": "179 repository tests, all 128 base tests, 21 prior independent and 15 added independent cases plus 5 new probes pass; six CLI checks and 19 schemas pass; legacy bytes unchanged; F4 reproduced before and resolved after; fixed Git and CI targets independently observed.",
+      "artifact_ids": [
+        "verification-report",
+        "reproduce"
+      ],
+      "locator": "verification-report.json",
+      "observation": "Independently executed results, commands, named test coverage and limitations in report; target b79f98d3cb3bd58059a12b543df1d187b284fe35"
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "PB-1",
+      "disposition": "covered",
+      "scope": "Closed/versioned schemas, canonical six-component identity, timestamp and size independence; source-distinct equal content retained, exact-payload collisions quarantined with both raw bytes. Independent Test scope only; not Manager final assessment.",
+      "artifact_ids": [
+        "verification-report",
+        "reproduce"
+      ],
+      "evidence_ids": [
+        "EV-1"
+      ]
+    },
+    {
+      "ac_id": "PB-2",
+      "disposition": "covered",
+      "scope": "All declared dependencies and immutable inbox bytes inspected; interrupted/partial reads leave state and cursor unchanged; full nonancestor reconcile and per-source disappearance retain raw history. F1/F3 remain resolved. Independent Test scope only; not Manager final assessment.",
+      "artifact_ids": [
+        "verification-report",
+        "reproduce"
+      ],
+      "evidence_ids": [
+        "EV-2"
+      ]
+    },
+    {
+      "ac_id": "PB-3",
+      "disposition": "covered",
+      "scope": "Single-writer process lock and digest CAS; atomic replace with fsync, durable objects/staging/snapshots; real process crashes at five transaction hooks plus partial raw/stage/snapshot writes recover. Invalid transitions rejected. F2 remains resolved. Independent Test scope only; not Manager final assessment.",
+      "artifact_ids": [
+        "verification-report",
+        "reproduce"
+      ],
+      "evidence_ids": [
+        "EV-3"
+      ]
+    },
+    {
+      "ac_id": "PB-4",
+      "disposition": "covered",
+      "scope": "Dispatch/execution/delivery budgets stay <=3; terminal histories preserved; no lease-triggered restart, output resumes delivery, fixed commit full-byte acknowledgement after restart, separate renewal grant required. Independent Test scope only; not Manager final assessment.",
+      "artifact_ids": [
+        "verification-report",
+        "reproduce"
+      ],
+      "evidence_ids": [
+        "EV-4"
+      ]
+    },
+    {
+      "ac_id": "PB-5",
+      "disposition": "covered",
+      "scope": "Mechanical scan/reconcile/record/plan/replay CLI independently exercised with synthetic fixtures; read-only store unchanged and plan=replay; closed public output excludes payload/runtime/private pins, gate unchanged. No schedule or external Agent/API launch. Independent Test scope only; not Manager final assessment.",
+      "artifact_ids": [
+        "verification-report",
+        "reproduce"
+      ],
+      "evidence_ids": [
+        "EV-5"
+      ]
+    },
+    {
+      "ac_id": "PB-6",
+      "disposition": "covered",
+      "scope": "179 repository tests, all 128 base tests, 21 prior independent and 15 added independent cases plus 5 new probes pass; six CLI checks and 19 schemas pass; legacy bytes unchanged; F4 reproduced before and resolved after; fixed Git and CI targets independently observed. Independent Test scope only; not Manager final assessment.",
+      "artifact_ids": [
+        "verification-report",
+        "reproduce"
+      ],
+      "evidence_ids": [
+        "EV-6"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

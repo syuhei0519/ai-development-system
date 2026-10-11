@@ -1,0 +1,50 @@
+{
+  "observed_at": "2026-10-11T04:54:20.081171+00:00",
+  "pr": {
+    "number": 6,
+    "state": "open",
+    "draft": true,
+    "merge_commit_sha": "ce100cc00f5536e29ddfff9afe59f7c1e5a0912a",
+    "mergeable": true,
+    "mergeable_state": "clean",
+    "head": "50cf6aa52f64c45961a354281169064cd2c75e20",
+    "base": "b1e606544174481b7b6904f811e857f80978c287"
+  },
+  "push": {
+    "id": 38112440169,
+    "event": "push",
+    "head_sha": "50cf6aa52f64c45961a354281169064cd2c75e20",
+    "status": "completed",
+    "conclusion": "success",
+    "run_attempt": 1,
+    "path": ".github/workflows/validate.yml",
+    "created_at": "2026-10-11T04:42:36Z",
+    "updated_at": "2026-10-11T04:43:02Z"
+  },
+  "pull_request": {
+    "id": 38112442297,
+    "event": "pull_request",
+    "head_sha": "50cf6aa52f64c45961a354281169064cd2c75e20",
+    "status": "completed",
+    "conclusion": "success",
+    "run_attempt": 1,
+    "path": ".github/workflows/validate.yml",
+    "created_at": "2026-10-11T04:42:38Z",
+    "updated_at": "2026-10-11T04:42:58Z"
+  },
+  "config_revision": "b1e606544174481b7b6904f811e857f80978c287",
+  "test_merge_parents": [
+    "b1e606544174481b7b6904f811e857f80978c287",
+    "50cf6aa52f64c45961a354281169064cd2c75e20"
+  ],
+  "head_and_merge_tree": "b13d0fc644a90e45735bc6e621daae8f77e9af30",
+  "ci_execution_targets": {
+    "push38112440169": "50cf6aa52f64c45961a354281169064cd2c75e20",
+    "PR38112442297": "ce100cc00f5536e29ddfff9afe59f7c1e5a0912a"
+  },
+  "ci_checkout_basis": "Independently fetched GitHub job logs: checkout fetch ref and git log -1 --format=%H. Both logs report Ran 178 tests. Raw logs retained privately.",
+  "retrieval_limit": "REST archive-log redirect was blocked (403); read-only GitHub job-log connector succeeded. No connection/permission settings changed.",
+  "review": "not performed by this Test role",
+  "manager_readiness": "not assessed; CI success and Git mergeable metadata are not readiness approval",
+  "expiry": "Observation only: invalidate on head/base/config/test-merge change; Manager defines final freshness policy."
+}
