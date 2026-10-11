@@ -12,4 +12,4 @@
 <適用環境、確認していないこと。>
 
 ## Curated 判断への参照
-<Knowledge Agent が accepted / deferred / rejected と理由、判断日、記事リンクを追記する。これは観測事実とは分離する。>
+<Knowledge Agent が adopted / deferred / rejected と理由、判断日、記事リンクを追記する。これは観測事実とは分離する。>

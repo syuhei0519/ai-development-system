@@ -1,0 +1,827 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "document_type": {
+      "const": "knowledge_collection_state"
+    },
+    "writer": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048,
+      "pattern": "\\S"
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048,
+      "pattern": "\\S"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "previous_state_sha256": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "registry_sha256": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "cursors": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{40}$"
+      }
+    },
+    "events": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "event_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "event": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "schema_version": {
+                    "const": "1.0"
+                  },
+                  "document_type": {
+                    "const": "knowledge_event"
+                  },
+                  "event_id": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "event_kind": {
+                    "enum": [
+                      "candidate",
+                      "correction",
+                      "invalidation"
+                    ]
+                  },
+                  "source_ref": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "repository": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+                      },
+                      "commit": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{40}$"
+                      },
+                      "path": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 512,
+                        "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
+                      },
+                      "size": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 16777216
+                      },
+                      "sha256": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{64}$"
+                      }
+                    },
+                    "required": [
+                      "repository",
+                      "commit",
+                      "path",
+                      "size",
+                      "sha256"
+                    ]
+                  },
+                  "candidate_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048,
+                    "pattern": "\\S"
+                  },
+                  "producer_role": {
+                    "enum": [
+                      "research-design",
+                      "implementation",
+                      "test",
+                      "review",
+                      "knowledge"
+                    ]
+                  },
+                  "observation_kind": {
+                    "enum": [
+                      "decision",
+                      "research",
+                      "failure",
+                      "test_observation",
+                      "invalidation"
+                    ]
+                  },
+                  "finding_refs": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "repository": {
+                          "type": "string",
+                          "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+                        },
+                        "commit": {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{40}$"
+                        },
+                        "path": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 512,
+                          "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
+                        },
+                        "size": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 16777216
+                        },
+                        "sha256": {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{64}$"
+                        }
+                      },
+                      "required": [
+                        "repository",
+                        "commit",
+                        "path",
+                        "size",
+                        "sha256"
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 128
+                  },
+                  "occurred_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "collected_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "representation": {
+                    "enum": [
+                      "original",
+                      "edited_derivative"
+                    ]
+                  },
+                  "classification": {
+                    "enum": [
+                      "synthetic_sample",
+                      "public_safe"
+                    ]
+                  },
+                  "issue_refs": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 2048,
+                      "pattern": "\\S"
+                    },
+                    "minItems": 0,
+                    "maxItems": 1024
+                  },
+                  "supersedes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "minItems": 0,
+                    "maxItems": 1024
+                  }
+                },
+                "required": [
+                  "schema_version",
+                  "document_type",
+                  "event_id",
+                  "event_kind",
+                  "source_ref",
+                  "candidate_id",
+                  "producer_role",
+                  "observation_kind",
+                  "finding_refs",
+                  "occurred_at",
+                  "collected_at",
+                  "representation",
+                  "classification",
+                  "issue_refs",
+                  "supersedes"
+                ],
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "$id": "https://example.invalid/ai-development-system/knowledge-event.schema.json"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048,
+              "pattern": "\\S"
+            },
+            "minItems": 1,
+            "maxItems": 1024
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "verified",
+              "reserved",
+              "dispatching",
+              "started",
+              "output_received",
+              "validated",
+              "commit_pending",
+              "committed",
+              "context_available",
+              "blocked",
+              "quarantined",
+              "dispatch_unknown",
+              "terminal"
+            ]
+          },
+          "batch_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "history": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "sequence": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "status": {
+                  "enum": [
+                    "pending",
+                    "verified",
+                    "reserved",
+                    "dispatching",
+                    "started",
+                    "output_received",
+                    "validated",
+                    "commit_pending",
+                    "committed",
+                    "context_available",
+                    "blocked",
+                    "quarantined",
+                    "dispatch_unknown",
+                    "terminal"
+                  ]
+                },
+                "reason": {
+                  "enum": [
+                    "discovered",
+                    "verified",
+                    "reserved",
+                    "dispatch",
+                    "unknown",
+                    "started",
+                    "dispatch_failed",
+                    "execution_failed",
+                    "output_received",
+                    "delivery_start",
+                    "delivery_failed",
+                    "validated",
+                    "commit_pending",
+                    "committed",
+                    "context_available",
+                    "blocked",
+                    "renewed",
+                    "collision",
+                    "missing",
+                    "poison"
+                  ]
+                },
+                "evidence_sha256": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "sequence",
+                "status",
+                "reason",
+                "evidence_sha256"
+              ]
+            },
+            "minItems": 0,
+            "maxItems": 1024
+          }
+        },
+        "required": [
+          "event_sha256",
+          "event",
+          "source_ids",
+          "status",
+          "batch_id",
+          "history"
+        ]
+      }
+    },
+    "batches": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "event_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "minItems": 1,
+            "maxItems": 1024
+          },
+          "input_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "ledger": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "version": {
+                "const": "1.0"
+              },
+              "scope": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2048,
+                "pattern": "\\S"
+              },
+              "epochs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "limits": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "dispatch": {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 3
+                        },
+                        "execution": {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 3
+                        },
+                        "delivery": {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 3
+                        }
+                      },
+                      "required": [
+                        "dispatch",
+                        "execution",
+                        "delivery"
+                      ]
+                    },
+                    "events": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "kind": {
+                            "enum": [
+                              "dispatch",
+                              "execution",
+                              "delivery"
+                            ]
+                          },
+                          "result": {
+                            "enum": [
+                              "succeeded",
+                              "failed",
+                              "blocked"
+                            ]
+                          },
+                          "evidence": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 2048,
+                            "pattern": "\\S"
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "result",
+                          "evidence"
+                        ]
+                      },
+                      "minItems": 0,
+                      "maxItems": 1024
+                    },
+                    "terminal": {
+                      "enum": [
+                        "open",
+                        "RETRY_LIMIT_REACHED"
+                      ]
+                    },
+                    "grant_sha256": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{64}$"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "limits",
+                    "events",
+                    "terminal",
+                    "grant_sha256"
+                  ]
+                },
+                "minItems": 1,
+                "maxItems": 1024
+              }
+            },
+            "required": [
+              "version",
+              "scope",
+              "epochs"
+            ]
+          },
+          "ledger_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "pending": {
+            "enum": [
+              null,
+              "dispatch",
+              "execution",
+              "delivery"
+            ]
+          },
+          "runtime_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2048,
+                "pattern": "\\S"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "lease_until": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "output_sha256": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "validated_artifacts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "repository": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+                    },
+                    "commit": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{40}$"
+                    },
+                    "path": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 512,
+                      "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
+                    },
+                    "size": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 16777216
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    }
+                  },
+                  "required": [
+                    "repository",
+                    "commit",
+                    "path",
+                    "size",
+                    "sha256"
+                  ]
+                },
+                "representation": {
+                  "enum": [
+                    "original",
+                    "edited_derivative"
+                  ]
+                },
+                "format": {
+                  "enum": [
+                    "text",
+                    "json",
+                    "handoff-v2",
+                    "knowledge-input-v1",
+                    "knowledge-handoff-v1",
+                    "knowledge-context-v1"
+                  ]
+                },
+                "public_classification": {
+                  "enum": [
+                    "synthetic_sample",
+                    "public_safe"
+                  ]
+                },
+                "source_alias": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2048,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "reference",
+                "representation",
+                "format",
+                "public_classification",
+                "source_alias"
+              ]
+            },
+            "minItems": 0,
+            "maxItems": 128
+          },
+          "committed_output_pin": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "repository": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+                },
+                "commit": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{40}$"
+                },
+                "path": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 512,
+                  "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
+                },
+                "size": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 16777216
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              },
+              "required": [
+                "repository",
+                "commit",
+                "path",
+                "size",
+                "sha256"
+              ]
+            },
+            "minItems": 0,
+            "maxItems": 128
+          },
+          "next_eligible_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "new_input_required": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "event_ids",
+          "input_sha256",
+          "ledger",
+          "ledger_sha256",
+          "pending",
+          "runtime_id",
+          "lease_until",
+          "output_sha256",
+          "validated_artifacts",
+          "committed_output_pin",
+          "next_eligible_at",
+          "new_input_required"
+        ]
+      }
+    },
+    "scans": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "registry_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "mode": {
+            "const": "full"
+          },
+          "result": {
+            "enum": [
+              "verified",
+              "quarantined"
+            ]
+          },
+          "event_digests": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "minItems": 0,
+            "maxItems": 1024
+          },
+          "source_snapshots": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "source_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2048,
+                  "pattern": "\\S"
+                },
+                "repository": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+                },
+                "commit": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{40}$"
+                },
+                "inbox_path": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 512,
+                  "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
+                }
+              },
+              "required": [
+                "source_id",
+                "repository",
+                "commit",
+                "inbox_path"
+              ]
+            },
+            "minItems": 1,
+            "maxItems": 128
+          }
+        },
+        "required": [
+          "registry_sha256",
+          "mode",
+          "result",
+          "event_digests",
+          "source_snapshots"
+        ]
+      },
+      "minItems": 0,
+      "maxItems": 100000
+    },
+    "publication": {
+      "const": "private_only"
+    }
+  },
+  "required": [
+    "schema_version",
+    "document_type",
+    "writer",
+    "scope",
+    "sequence",
+    "previous_state_sha256",
+    "registry_sha256",
+    "cursors",
+    "events",
+    "batches",
+    "scans",
+    "publication"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/ai-development-system/knowledge-collection-state.schema.json"
+}

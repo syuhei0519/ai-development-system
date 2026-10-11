@@ -38,7 +38,7 @@ AC 原文が欠落していれば `MISSING_ACCEPTANCE_CRITERIA` で blocked。�
 
 Manager が参照を取得・配送し、担当エージェントが対象環境への適用可能性を確認する。draft / deprecated / superseded は無条件採用せず、採否と理由を記録する。参照知識は助言であり、Issue の AC 原文や実測根拠を置き換えない。利用可能な知識がないことだけでは開発を止めない。
 
-Knowledge の非同期収集・定期同期を動かす実行基盤、スケジューラー、自動トリガーは **Phase 1-3** の対象。本フェーズは契約と手動配送可能な仕様・サンプル・検証のみであり、これらの基盤を実装・起動しない。
+Phase 1-3 P-B の [Knowledge Collection v1.0](knowledge-collection.md) は別契約で event/registry/private state と機械的 CLI を追加する。既存 Knowledge v1.0 は変更しない。定期同期・schedule・Consumer ack と実運用実証は P-C/P-D の未実施範囲。
 
 ## 移行と互換性
 
@@ -73,7 +73,7 @@ Knowledge input/handoff/contextのtyped配送、原入力一致、source/記事/
 本体のKnowledge1.0・Handoff2.0・Readiness1.0とDelivery1.0の正常系は維持する。
 版別schemaは `*-v1.1.schema.json`、CLIは4種配送recordの版一致を要求する。
 公開synthetic fixtureと固定Git再現手順は [examples/knowledge-delivery](../examples/knowledge-delivery/README.md)。
-非同期収集・context生成・ack・周期実行・実Agent利用実証は後続P-B/C/Dであり未実装。
+P-B の機械的な非同期収集 CLI と永続 inbox/state は [Knowledge Collection v1.0](knowledge-collection.md) で実装済み。P-C の context生成/ack と P-D の実Agent利用実証・周期実行は未実施であり、定期実運用の完了を意味しない。
 
 ## Delivery 1.2 cross references
 
