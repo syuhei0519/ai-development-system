@@ -1,0 +1,192 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "system-readiness-prerequisite",
+    "source": "https://github.com/syuhei0519/ai-development-system",
+    "title": "Add bounded readiness for dependency preparation pull requests",
+    "acceptance_criteria": [
+      {
+        "id": "AC-S1",
+        "verbatim": "通常PRの既存マージ条件を維持し、依存準備PRだけを明示的に区分して空の製品AC集合を許容する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S2",
+        "verbatim": "依存準備PRは非空の工程受入条件と関連製品AC、固定成果物、独立TestとReview、後続検証責任を必須とし、工程達成を製品AC達成へ変換しない。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S3",
+        "verbatim": "配備影響noneとaggregate_requiredに限定し、CI、保護ルール、権限、依存、証跡鮮度、Issue Completionの既存fail-closed条件を維持する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S4",
+        "verbatim": "JSON Schema、CLI、正常・異常回帰テスト、サンプル、役割・workflow・テンプレート・READMEが整合し、既存全テストと新規テストが成功する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S5",
+        "verbatim": "変更と検証成果物を固定Git revisionとbytes/hashで取得でき、既存PRを重複作成せずSystem専用feature branchのDraft PRとして提示する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      }
+    ]
+  },
+  "assignment": {
+    "scope": "ai-development-system#readiness-prerequisite-support",
+    "ac_ids": [
+      "AC-S1",
+      "AC-S2",
+      "AC-S3",
+      "AC-S4",
+      "AC-S5"
+    ],
+    "completion_criteria": [
+      "通常PRの既存マージ条件を維持し、依存準備PRだけを明示的に区分して空の製品AC集合を許容する。",
+      "依存準備PRは非空の工程受入条件と関連製品AC、固定成果物、独立TestとReview、後続検証責任を必須とし、工程達成を製品AC達成へ変換しない。",
+      "配備影響noneとaggregate_requiredに限定し、CI、保護ルール、権限、依存、証跡鮮度、Issue Completionの既存fail-closed条件を維持する。",
+      "JSON Schema、CLI、正常・異常回帰テスト、サンプル、役割・workflow・テンプレート・READMEが整合し、既存全テストと新規テストが成功する。",
+      "変更と検証成果物を固定Git revisionとbytes/hashで取得でき、既存PRを重複作成せずSystem専用feature branchのDraft PRとして提示する。"
+    ]
+  },
+  "role": "test",
+  "task_id": "readiness-prerequisite-test-a2",
+  "attempt": 2,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "readiness-prerequisite-implementation-a2",
+      "attempt": 2,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/cc1076ba6a9c79e60e50fdf7b19ba7cc96dfff64/evidence/readiness-prerequisite/implementation-a2/handoff.json",
+      "revision": "sha256:38fec6cd5f71e9652a7c8f219ef75b219404769a011c23554435bceb3c62dab4",
+      "relationship": "dependency"
+    },
+    {
+      "role": "test",
+      "task_id": "readiness-prerequisite-test-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/e4a9a624e0ce1bf608a401d5fa70215ab7a31118/evidence/readiness-prerequisite/test-a1/handoff.json",
+      "revision": "sha256:fbd67588755a2a3fe3588172cd991b977e35165392a605a270b1900b4f903c46",
+      "relationship": "retry_of"
+    }
+  ],
+  "system_status": "failed",
+  "status": "blocked",
+  "summary": "CODEX_CLOUD_USAGE_LIMIT: interrupted attempt2 recovered. Saved head309/baseline280 unittest summaries are OK; mandatory independent verification remains incomplete. No new tests during recovery; old Test1 failure unchanged.",
+  "artifacts": [
+    {
+      "id": "test-report.md",
+      "kind": "test-report",
+      "locator": "test-report.md",
+      "revision": "sha256:254481d998c71dba8a55cdd5ac8571440467b1babd4911708ab501ef2f94302c",
+      "summary": "Recovered interrupted attempt2 evidence; no new tests: test-report.md"
+    },
+    {
+      "id": "recovered-results.json",
+      "kind": "test-report",
+      "locator": "recovered-results.json",
+      "revision": "sha256:812973ee545714fcabc1a033f6125a602d86b76f4764aae61d72baca2e6d45bd",
+      "summary": "Recovered interrupted attempt2 evidence; no new tests: recovered-results.json"
+    },
+    {
+      "id": "head-suite.txt",
+      "kind": "test-report",
+      "locator": "head-suite.txt",
+      "revision": "sha256:18ff656e08387d27b24e9fa780e639b43e539375ce3a1e238ed05e85b7929549",
+      "summary": "Recovered interrupted attempt2 evidence; no new tests: head-suite.txt"
+    },
+    {
+      "id": "baseline-suite.txt",
+      "kind": "test-report",
+      "locator": "baseline-suite.txt",
+      "revision": "sha256:505d79592b1bf82f150bb48c8403d80ff79e3bc88fbe0ffe1528d95ebe44ee98",
+      "summary": "Recovered interrupted attempt2 evidence; no new tests: baseline-suite.txt"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "recovered-partial-results",
+      "claim": "Only saved partial execution evidence was recovered; assignment remains blocked.",
+      "artifact_ids": [
+        "test-report.md",
+        "recovered-results.json",
+        "head-suite.txt",
+        "baseline-suite.txt"
+      ],
+      "locator": "test-report.md",
+      "observation": "Saved unittest outputs: head309 OK, baseline280 OK. No recovered process exit codes or sealed completion time/config. Original237 cases and dedicated F1/F2 verification plus CI observations incomplete. Input closure retains85 artifacts/65 slots/1828855 bytes."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-S1",
+      "disposition": "unverified",
+      "scope": "Interrupted independent Test assignment; partial suite evidence does not complete mandatory AC verification. Old Test1 findings are not cleared.",
+      "artifact_ids": [
+        "test-report.md",
+        "recovered-results.json"
+      ],
+      "evidence_ids": [
+        "recovered-partial-results"
+      ]
+    },
+    {
+      "ac_id": "AC-S2",
+      "disposition": "unverified",
+      "scope": "Interrupted independent Test assignment; partial suite evidence does not complete mandatory AC verification. Old Test1 findings are not cleared.",
+      "artifact_ids": [
+        "test-report.md",
+        "recovered-results.json"
+      ],
+      "evidence_ids": [
+        "recovered-partial-results"
+      ]
+    },
+    {
+      "ac_id": "AC-S3",
+      "disposition": "unverified",
+      "scope": "Interrupted independent Test assignment; partial suite evidence does not complete mandatory AC verification. Old Test1 findings are not cleared.",
+      "artifact_ids": [
+        "test-report.md",
+        "recovered-results.json"
+      ],
+      "evidence_ids": [
+        "recovered-partial-results"
+      ]
+    },
+    {
+      "ac_id": "AC-S4",
+      "disposition": "unverified",
+      "scope": "Interrupted independent Test assignment; partial suite evidence does not complete mandatory AC verification. Old Test1 findings are not cleared.",
+      "artifact_ids": [
+        "test-report.md",
+        "recovered-results.json"
+      ],
+      "evidence_ids": [
+        "recovered-partial-results"
+      ]
+    },
+    {
+      "ac_id": "AC-S5",
+      "disposition": "unverified",
+      "scope": "Interrupted independent Test assignment; partial suite evidence does not complete mandatory AC verification. Old Test1 findings are not cleared.",
+      "artifact_ids": [
+        "test-report.md",
+        "recovered-results.json"
+      ],
+      "evidence_ids": [
+        "recovered-partial-results"
+      ]
+    }
+  ],
+  "block_reasons": [
+    {
+      "code": "OTHER",
+      "detail": "CODEX_CLOUD_USAGE_LIMIT: platform execution failed before all assigned independent verification and Handoff delivery completed; Manager requested recovery only.",
+      "required_action": "Manager must retrieve and verify this blocked attempt2 record and preserve old Test1 history; any further independent test requires a separate Manager dispatch within the remaining budget."
+    }
+  ],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

@@ -1,0 +1,61 @@
+{
+  "record_type": "interrupted_test_recovery",
+  "public_alias": "readiness-prerequisite-test-a2",
+  "attempt": 2,
+  "system_status": "failed",
+  "status": "blocked",
+  "reason": "CODEX_CLOUD_USAGE_LIMIT",
+  "recovery_observed_at": "2026-10-11T14:54:29.636468+00:00",
+  "subject": {
+    "repository": "syuhei0519/ai-development-system",
+    "pr_number": 8,
+    "head_sha": "cdaad5a0d7437a9abc24481e4849b89a9e112401",
+    "target_revision": "cdaad5a0d7437a9abc24481e4849b89a9e112401",
+    "base_sha": "0083151aa2f6b2aaf0e1db64ada3f196ed766e48",
+    "tree": "bd6db38a828be65062b7cf0bd8044765190b0cc1"
+  },
+  "completed_before_interruption": [
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "checkout_revision": "cdaad5a0d7437a9abc24481e4849b89a9e112401",
+      "output": "head-suite.txt",
+      "tests": 309,
+      "saved_summary": "OK",
+      "duration_seconds": 21.996,
+      "process_exit_code": "not recovered; saved unittest summary only"
+    },
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "checkout_revision": "0083151aa2f6b2aaf0e1db64ada3f196ed766e48",
+      "output": "baseline-suite.txt",
+      "tests": 280,
+      "saved_summary": "OK",
+      "duration_seconds": 19.093,
+      "process_exit_code": "not recovered; saved unittest summary only"
+    }
+  ],
+  "input_delivery": {
+    "baseline_consumer_exit": 0,
+    "artifacts": 85,
+    "slots": 65,
+    "payload_bytes": 1828855,
+    "records_commit": "c3f573cb8085c4b0c068e8a1b90d85dd98011244",
+    "manifest_sha256": "b88c2414ba98632ef2de8d18bd4c27f84eb1b2ec0b2057fbb07244521b5ee8e9",
+    "publication_sha256": "b02a4e0facf6eb741c22c9d6c6bbb8f2af73dd550ac36aaf0d41c18a9d80cf3c",
+    "saved_bytes_rechecked": true
+  },
+  "not_completed": [
+    "Original 237-case independent overlay",
+    "Original and edited F1/F2 dedicated reproducers on old/new revisions",
+    "Dedicated independent typed preparation/product/aggregate scenario matrix beyond repository suite",
+    "Independent sample_checks.py and full documentation/schema consistency review",
+    "Independent CI head/event/workflow observation and mutable PR/policy observation",
+    "Complete AC-S1 through AC-S5 independent assessment"
+  ],
+  "limitations": [
+    "Repository suite results were executed independently before interruption, not copied from Implementation. Individual suite regression names remain in raw saved output. They do not complete the mandatory independent overlay.",
+    "Suite completion timestamps and exact test environment configuration were not recorded before interruption. File timestamps and recovery time are not substituted for measurement completion time. No new 24-hour validity window or live readiness is issued.",
+    "Manager reported platform usage-limit failure. No internal platform logs were requested or published.",
+    "No test rerun, implementation modification, new agent, merge or deployment during recovery."
+  ]
+}
