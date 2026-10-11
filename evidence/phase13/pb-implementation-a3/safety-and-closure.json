@@ -1,0 +1,19 @@
+{
+  "publication_status": "candidate_only_not_published",
+  "new_files_review": "New report, patch, reproduction, integration observation and Handoff reviewed in full for approved scope and public aliases.",
+  "inherited_review": "Original 40-file public input carries Manager safety approval and passed canonical Consumer verification; bytes copied unchanged including complete dependency closure.",
+  "input_files": 40,
+  "input_bytes": 459012,
+  "excluded": [
+    "private originals and their hashes",
+    "authorization files and independent pins",
+    "current consumption receipt",
+    "runtime identifiers",
+    "raw execution logs",
+    "private state and plans"
+  ],
+  "legacy_public_fixture_receipt": "Unmodified approved public input dependency only; not newly produced operational receipt or authority.",
+  "history": "Implementation 3 retry_of Implementation 2; failed Test 2 dependency; all prior attempt1/2 records unchanged; no retry budget reset.",
+  "closure": "Every Handoff artifact/upstream is a relative in-bundle file with matching digest; complete recursive closure checked.",
+  "approval": "Manager review/publication approval still required; public_safe is classification only."
+}

@@ -1,0 +1,323 @@
+diff --git a/contracts/knowledge-collection.md b/contracts/knowledge-collection.md
+index 3a3b6a6..ae79e28 100644
+--- a/contracts/knowledge-collection.md
++++ b/contracts/knowledge-collection.md
+@@ -48,7 +48,9 @@ hooks, filters, submodule execution, arbitrary URLs or floating revisions are pe
+ snapshot is a full 40-hex commit. All tree entries beneath the inbox prefix are enumerated,
+ including entries that must fail validation; only regular blobs are accepted. Expected event
+ path is `<inbox_path>/<event_id>.json`. UTF-8/strict JSON rejects duplicate keys, NaN and BOM.
+-Missing prefix is an empty inbox and still participates in historical disappearance checks.
++Every ancestor through the inbox prefix must be a Git tree; symlink, gitlink and ordinary
++blob ancestors are rejected before recursive enumeration. A genuinely missing prefix below
++verified tree ancestors is an empty inbox and still participates in disappearance checks.
+ 
+ Every scan is a **full reconciliation**, even for a repeated commit. There is no ancestry,
+ diff, updated_at, notification-order or shallow-history optimization. Registry changes,
+@@ -62,7 +64,9 @@ extensions are outside P-B; no URL reinterpretation or original-byte rewrite is
+ A network/read/partial blob/hash failure aborts the entire scan transaction: no event/cursor
+ change. Complete but malformed events or events lacking an inventory reference are individually
+ quarantined, with original bytes retained; valid events remain processable. An already recorded
+-event that disappears or changes payload is quarantined, the scan is marked `quarantined`,
++event that disappears from **any previously observed source** or changes payload is quarantined,
++even when another inbox still supplies the same event bytes. Historical source membership is
++retained, including sources removed from the registry. The scan is marked `quarantined`,
+ and cursors do not advance. Terminal/retry history and original bytes remain intact. A clean
+ scan advances every source cursor together with event registration. Cursor means enumerated,
+ not processed successfully. A poisoned event can coexist with a successful enumeration.
+@@ -93,6 +97,16 @@ old pin; after replacement, reload/verify the new state and update the Manager p
+ repeat an external dispatch when a CLI result was lost. `plan`/`replay` do not recover or mutate
+ staging. Power-loss guarantees depend on the filesystem honoring fsync and atomic rename.
+ 
++Objects, staged states and snapshots are first written and fsynced inside a fresh private
++temporary directory on the same filesystem. A hard link publishes the complete file at its
++digest name without overwriting an existing name, then the destination directory is fsynced.
++An existing final file must contain exactly the expected bytes and is never replaced. A killed
++writer may leave `.pending-*` directories; retries ignore these incomplete files and use fresh
++temporary paths. They are not automatically promoted or garbage-collected. This also covers
++crashes inside the raw write, before the transaction crash hooks. Corrupted final files already
++created by an older writer remain fail-closed and require explicit Manager repair; retry does
++not silently overwrite historical evidence. No schema or retry-budget migration is required.
++
+ ## Batch, transition and retry protocol
+ 
+ `reserve` seals a nonempty explicit set of verified event IDs and a Knowledge v1 input digest.
+diff --git a/scripts/knowledge_collector.py b/scripts/knowledge_collector.py
+index 9f577da..862d8c0 100644
+--- a/scripts/knowledge_collector.py
++++ b/scripts/knowledge_collector.py
+@@ -105,6 +105,19 @@ class SnapshotSource(GitSource):
+     def enumerate(self, item):
+         safe_path(item['inbox_path'])
+         directory = self.snapshot(item['repository'], item['commit'])
++        # Resolve every edge before recursive listing: ls-tree -r on a path below
++        # a symlink/gitlink returns no entries, just like a genuinely absent path.
++        parts = item['inbox_path'].split('/')
++        for index in range(len(parts)):
++            prefix = '/'.join(parts[:index + 1])
++            entry = self.git(directory, 'ls-tree', '-z', item['commit'], '--', prefix)
++            if not entry:
++                return []
++            require(entry.count(b'\0') == 1, 'ambiguous inbox ancestor')
++            header, name = entry[:-1].split(b'\t', 1)
++            mode, kind, _ = header.split()
++            require(name.decode('utf-8') == prefix and mode == b'040000' and kind == b'tree',
++                    'unsafe inbox ancestor')
+         # Missing prefix means empty inbox, not missing scan: retained history detects disappearances.
+         entries = self.git(directory, 'ls-tree', '-r', '-z', item['commit'], '--', item['inbox_path'])
+         result = []
+@@ -208,7 +221,7 @@ def scan(state, registry_raw, source):
+     candidate = deepcopy(state)
+     seen, anomaly = set(), False
+     for identity, raw_hash, event, source_id in observations:
+-        seen.add(identity)
++        seen.add((identity, source_id))
+         old = candidate['events'].get(identity)
+         if old:
+             if source_id not in old['source_ids']:
+@@ -221,9 +234,10 @@ def scan(state, registry_raw, source):
+         move(candidate, [identity], 'pending', 'discovered', raw_hash)
+         move(candidate, [identity], 'verified' if event else 'quarantined',
+              'verified' if event else 'poison', raw_hash)
+-    for identity in state['events'].keys() - seen:
+-        move(candidate, [identity], 'quarantined', 'missing')
+-        anomaly = True
++    for identity, old in state['events'].items():
++        if any((identity, source_id) not in seen for source_id in old['source_ids']):
++            move(candidate, [identity], 'quarantined', 'missing')
++            anomaly = True
+     # Missing/colliding historical events cannot be reported as successful scan progress.
+     if not anomaly:
+         candidate['cursors'] = {s['source_id']: s['commit'] for s in registry['sources']}
+@@ -511,6 +525,25 @@ def durable(path, raw):
+         stream.write(raw); stream.flush(); os.fsync(stream.fileno())
+ 
+ 
++def publish(path, raw):
++    """Publish complete immutable bytes without replacing any existing final file.
++
++    A killed writer may leave a private temporary directory. A retry starts a new
++    one; partial bytes never occupy the digest name used by readers/recovery.
++    """
++    if path.exists() or path.is_symlink():
++        require(read_local(path) == raw, 'object collision')
++        return
++    with tempfile.TemporaryDirectory(prefix='.pending-', dir=path.parent) as temp:
++        staged = Path(temp) / path.name
++        durable(staged, raw)
++        try:
++            os.link(staged, path)
++        except FileExistsError:
++            require(read_local(path) == raw, 'object collision')
++        fsync_dir(path.parent)
++
++
+ class Store:
+     """POSIX local filesystem, single trusted Manager, advisory lock + digest CAS + fsync.
+ 
+@@ -561,8 +594,7 @@ class Store:
+     def put(self, raw):
+         require(len(raw) <= MAX_FILE, 'object too large')
+         path = self.directory / 'objects' / digest(raw)
+-        if path.exists(): require(read_local(path) == raw, 'object collision')
+-        else: durable(path, raw)
++        publish(path, raw)
+         return digest(raw)
+ 
+     def _commit(self, previous_raw, candidate, archive, crash=lambda point: None):
+@@ -577,12 +609,10 @@ class Store:
+         fsync_dir(self.directory / 'objects'); crash('after_objects')
+         raw = encode(candidate); pin = digest(raw)
+         staged = self.directory / 'staging' / pin
+-        if staged.exists(): require(read_local(staged) == raw, 'stage collision')
+-        else: durable(staged, raw)
++        publish(staged, raw)
+         fsync_dir(staged.parent); crash('after_stage')
+         snapshot = self.directory / 'snapshots' / pin
+-        if snapshot.exists(): require(read_local(snapshot) == raw, 'snapshot collision')
+-        else: durable(snapshot, raw)
++        publish(snapshot, raw)
+         fsync_dir(snapshot.parent); crash('after_snapshot')
+         # Candidate is complete; state pointer replacement is the single commit point.
+         os.replace(staged, self.directory / 'state.json')
+diff --git a/tests/test_knowledge_collector.py b/tests/test_knowledge_collector.py
+index c3ef7cb..617213a 100644
+--- a/tests/test_knowledge_collector.py
++++ b/tests/test_knowledge_collector.py
+@@ -9,6 +9,7 @@ import subprocess
+ import sys
+ import tempfile
+ import unittest
++from unittest.mock import patch
+ 
+ from scripts import knowledge_collector as c
+ 
+@@ -146,6 +147,35 @@ class CollectorTests(unittest.TestCase):
+         self.scan(); self.registry['sources'][0].update(source_id='SYNTHETIC-NEW',inbox_path='empty')
+         self.scan(); self.assertEqual(self.status(),'quarantined')
+ 
++    def test_duplicate_inbox_cannot_hide_source_disappearance(self):
++        first = self.registry['sources'][0]
++        second = dict(first, source_id='SYNTHETIC-SECOND', inbox_path='second')
++        self.registry['sources'].append(second)
++        for key, raw in list(self.source.files.items()):
++            if '/events/' in key[2]:
++                self.source.files[key[:2] + ('second/' + key[2].split('/')[-1],)] = raw
++        self.exhaust('dispatch')
++        before = deepcopy(self.state)
++        # An identical copy remains, but the first source's history is missing.
++        for key in list(self.source.files):
++            if key[2].startswith(first['inbox_path'] + '/'):
++                del self.source.files[key]
++        first['commit'] = 'f' * 40
++        for remove_source in (False, True):
++            if remove_source:
++                self.registry['sources'].remove(first)
++            self.scan()
++            self.assertEqual(self.state['cursors'], before['cursors'])
++            self.assertEqual(self.state['scans'][-1]['result'], 'quarantined')
++            self.assertEqual(self.state['batches'], before['batches'])
++            for identity, old in before['events'].items():
++                event = self.state['events'][identity]
++                self.assertEqual(event['status'], 'quarantined')
++                for field in ('source_ids', 'event', 'event_sha256'):
++                    self.assertEqual(event[field], old[field])
++                self.assertEqual(event['history'][:len(old['history'])], old['history'])
++                self.assertIn(old['event_sha256'], self.objects)
++
+     def test_poison_event_does_not_stop_other_events(self):
+         self.source.files['example/repo','a'*40,'examples/knowledge-collector/events/poison.json']=b'{"x":NaN}'
+         self.scan(); counts=c.public_observation(self.state)['counts']
+@@ -380,6 +410,105 @@ class CollectorTests(unittest.TestCase):
+         self.assertEqual(recovered['sequence'],state['sequence']+1)
+         self.assertNotEqual(pin,newpin)
+ 
++    def test_partial_immutable_write_process_restart(self):
++        # Exercise writes inside durable(), before the five transaction hooks.
++        for destination in ('objects', 'staging', 'snapshots'):
++            with self.subTest(destination=destination):
++                store = c.Store(Path(self.temp.name) / destination)
++                transform = lambda s: c.scan(s, c.encode(self.registry), self.source)
++                state, pin = store.mutate('absent', self.state['writer'], self.state['scope'], transform)
++                payload = b'SYNTHETIC newly received raw bytes\n'
++                key = c.digest(payload)
++                previous = {p.name: (p.read_bytes(), p.stat().st_ino)
++                            for p in (store.directory / 'objects').iterdir() if p.is_file()}
++                child = os.fork()
++                if child == 0:
++                    original = c.durable
++                    def partial(path, raw):
++                        if destination in path.relative_to(store.directory).parts:
++                            fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
++                            os.write(fd, raw[:7]); os.fsync(fd); os._exit(73)
++                        original(path, raw)
++                    c.durable = partial
++                    store.mutate(pin, state['writer'], state['scope'], lambda s: (s, {key: payload}))
++                    os._exit(74)
++                self.assertEqual(os.waitstatus_to_exitcode(os.waitpid(child, 0)[1]), 73)
++                fresh = c.Store(store.directory)
++                self.assertEqual(fresh.load(pin)[0], state)
++                recovered, newpin = fresh.mutate(pin, state['writer'], state['scope'],
++                                                lambda s: (s, {key: payload}))
++                self.assertEqual(recovered['cursors'], state['cursors'])
++                self.assertEqual(recovered['sequence'], state['sequence'] + 1)
++                self.assertEqual(fresh.read_object(key), payload)
++                self.assertEqual(fresh.load(newpin)[0], recovered)
++                for name, (raw, inode) in previous.items():
++                    path = store.directory / 'objects' / name
++                    self.assertEqual((path.read_bytes(), path.stat().st_ino), (raw, inode))
++
++    def test_object_publication_process_crash_before_and_after_link(self):
++        for after_link in (False, True):
++            with self.subTest(after_link=after_link):
++                store = c.Store(Path(self.temp.name) / str(after_link))
++                state, pin = store.mutate('absent', self.state['writer'], self.state['scope'],
++                                          lambda s: (s, {}))
++                payload = b'SYNTHETIC atomic publication\n'; key = c.digest(payload)
++                child = os.fork()
++                if child == 0:
++                    original = c.os.link
++                    def link(source, target):
++                        if target.name == key:
++                            if after_link:
++                                original(source, target)
++                            os._exit(73)
++                        return original(source, target)
++                    c.os.link = link
++                    store.mutate(pin, state['writer'], state['scope'], lambda s: (s, {key: payload}))
++                    os._exit(74)
++                self.assertEqual(os.waitstatus_to_exitcode(os.waitpid(child, 0)[1]), 73)
++                self.assertEqual(store.load(pin)[0], state)
++                path = store.directory / 'objects' / key
++                self.assertEqual(path.exists(), after_link)
++                if after_link:
++                    self.assertEqual(path.read_bytes(), payload)
++                    inode = path.stat().st_ino
++                fresh = c.Store(store.directory)
++                fresh.mutate(pin, state['writer'], state['scope'], lambda s: (s, {key: payload}))
++                self.assertEqual(fresh.read_object(key), payload)
++                if after_link:
++                    self.assertEqual(path.stat().st_ino, inode)
++
++    def test_existing_objects_never_replaced_or_repaired_implicitly(self):
++        store = self.store(); raw = b'SYNTHETIC valid object\n'; key = store.put(raw)
++        path = store.directory / 'objects' / key
++        inode = path.stat().st_ino
++        store.put(raw)
++        self.assertEqual(path.stat().st_ino, inode)
++        # Even a damaged final file from an older writer requires explicit repair.
++        path.write_bytes(raw[:7])
++        with self.assertRaises(ValueError): store.put(raw)
++        self.assertEqual(path.read_bytes(), raw[:7])
++        self.assertEqual(path.stat().st_ino, inode)
++        path.unlink(); target = Path(self.temp.name) / 'external'; target.write_bytes(raw)
++        path.symlink_to(target)
++        with self.assertRaises(ValueError): store.put(raw)
++        self.assertTrue(path.is_symlink()); self.assertEqual(target.read_bytes(), raw)
++
++    def test_publication_does_not_overwrite_file_appearing_at_link(self):
++        store = self.store(); raw = b'SYNTHETIC expected bytes\n'; key = c.digest(raw)
++        path = store.directory / 'objects' / key
++        original = c.os.link
++        for existing in (raw, b'SYNTHETIC conflicting bytes\n'):
++            def race(source, target):
++                target.write_bytes(existing)
++                return original(source, target)
++            with patch.object(c.os, 'link', race):
++                if existing == raw:
++                    store.put(raw)
++                else:
++                    with self.assertRaises(ValueError): store.put(raw)
++            self.assertEqual(path.read_bytes(), existing)
++            path.unlink()
++
+     def test_cli_unapproved_request_does_not_create_store_or_leak_bytes(self):
+         req=Path(self.temp.name)/'request'; req.write_bytes(c.encode(self.registry))
+         auth=Path(self.temp.name)/'auth'; auth.write_bytes(b'{"secret":"SYNTHETIC-SECRET"}')
+@@ -461,6 +590,27 @@ class GitTreeTests(unittest.TestCase):
+         self.item['commit']=commit
+         with self.assertRaises(ValueError): self.source.enumerate(self.item)
+ 
++    def test_all_inbox_ancestor_types_checked(self):
++        original_commit = self.commit
++        (self.repo / 'nested').mkdir()
++        (self.repo / 'nested' / 'alias').symlink_to('../inbox')
++        (self.repo / 'alias').symlink_to('inbox')
++        (self.repo / 'nested' / 'file').write_bytes(b'SYNTHETIC ordinary blob')
++        self.newcommit()
++        self.git('update-index', '--add', '--cacheinfo', '160000', self.commit, 'nested/module')
++        self.git('commit', '-qm', 'synthetic gitlink ancestor')
++        commit = self.git('rev-parse', 'HEAD').decode().strip()
++        self.source.repositories['example/repo', commit] = self.repo
++        for path in ('alias/events', 'nested/alias/events', 'nested/module/events',
++                     'nested/file/events', 'nested/file'):
++            with self.subTest(path=path), self.assertRaises(ValueError):
++                self.source.enumerate(dict(self.item, commit=commit, inbox_path=path))
++        for path in ('missing/events', 'nested/missing/events'):
++            self.assertEqual(self.source.enumerate(dict(self.item, commit=commit, inbox_path=path)), [])
++        # Resolution stays pinned even though the working tree now has unsafe aliases.
++        self.assertEqual(self.source.enumerate(dict(self.item, commit=original_commit,
++                                                   inbox_path='nested/alias/events')), [])
++
+     def test_path_traversal_floating_and_missing(self):
+         for path in ('../inbox','inbox/../inbox','/inbox','inbox//bad'):
+             with self.subTest(path=path),self.assertRaises(ValueError): self.source.enumerate(dict(self.item,inbox_path=path))
