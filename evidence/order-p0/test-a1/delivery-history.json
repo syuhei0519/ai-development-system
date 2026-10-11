@@ -1,0 +1,31 @@
+{
+  "document_type": "test_delivery_history",
+  "public_alias": "order-p0-test-a1",
+  "epoch": 1,
+  "execution_attempt": 1,
+  "dispatch_limit": 3,
+  "execution_limit": 3,
+  "delivery_limit": 3,
+  "events": [
+    {
+      "delivery_attempt": 1,
+      "status": "failed",
+      "payload_commit": "cd17d0c5d07fd2f451538c778c721dd081b234b7",
+      "handoff_sha256": "f646ed4e828dfcac9bc61053b8ce3d43fcc6f4a49d78f8b61d64a23ff88f8334",
+      "manifest_candidate_sha256": "be1459af04df3e6f35fde623ce913f39932ff6b4749d26a04f7fce11ae2ac489",
+      "publication_candidate_sha256": "9477675192653eaa3f3c99adcfe9b67d613426e5e910284e2406ce7b64e31172",
+      "reason": "Canonical verify_handoffs rejected raw Helm template beginning {{ as JSON-looking text: invalid JSON content. Candidate preparation alone did not establish delivery success.",
+      "retention": "Initial public payload and Handoff remain unchanged in fixed Git history; local candidate records retained privately. No Consumer authorization or Consumption Receipt created."
+    },
+    {
+      "delivery_attempt": 2,
+      "status": "pending",
+      "fix": "Use canonical complete git-tree-snapshot-v1 via typed pending candidate for the exact three-file artifact tree at the original public payload commit. Other artifacts bind original public bytes by fixed URLs. No raw template edits, parser relaxation, partial inventory, limit increase or status/assignment/attempt changes.",
+      "validation_required": "Fresh canonical full byte/type/slot/candidate/tree validation and fixed remote records reflection."
+    }
+  ],
+  "scope": "platform-gitops#backend-app-2/P0",
+  "measurement_unchanged": true,
+  "authority_granted": false,
+  "upstream_history": "All Research/B1/P0 upstream typed slots, immutable Handoffs and six edited_derivative entries retained. This delivery repair does not restart the Test execution."
+}

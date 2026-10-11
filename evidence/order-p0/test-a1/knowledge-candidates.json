@@ -1,0 +1,14 @@
+{
+  "document_type": "knowledge_candidates",
+  "publication_status": "pending_manager_review",
+  "candidates": [
+    {
+      "id": "K-fixed-preparation-artifact-tree",
+      "domain": "gitops-preparation-evidence",
+      "summary": "Bind disabled GitOps preparation to exact template/schema/observer raw bytes and a complete source-tree profile when Helm delimiters cannot be safely classified as standalone text.",
+      "evidence": "Independent P0-S1..S4 measurements verified all three raw size/SHA pins and 143 synthetic checks; the first producer delivery verification correctly rejected a Helm template beginning with double braces as JSON-looking text.",
+      "source": "https://github.com/syuhei0519/ai-development-system/tree/cd17d0c5d07fd2f451538c778c721dd081b234b7/evidence/order-p0/test-a1/artifacts",
+      "scope": "Pending technical candidate only. These three preserved public copies map to original fixed-head Git paths in results.json. Full tree/object/byte validation is required; this is not product acceptance or Consumer authority."
+    }
+  ]
+}

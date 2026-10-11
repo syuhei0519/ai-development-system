@@ -54,65 +54,58 @@
     {
       "id": "A-REPORT",
       "kind": "document",
-      "locator": "report.txt",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/cd17d0c5d07fd2f451538c778c721dd081b234b7/evidence/order-p0/test-a1/report.txt",
       "revision": "sha256:2ef8fcc078955da40e7834ad9382f49b4797fa9ce46d096471ee30c7121044c7",
       "summary": "Independent P0 preparation outcome, reproduction, limits and identity compatibility."
     },
     {
       "id": "A-RESULTS",
       "kind": "test-report",
-      "locator": "results.json",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/cd17d0c5d07fd2f451538c778c721dd081b234b7/evidence/order-p0/test-a1/results.json",
       "revision": "sha256:16f25a9a5edd01b480fc76461c4bc53bbbdcfd14f4747c40465296c20221b85c",
       "summary": "All independent measurements, 143 synthetic cases, 15-file condition coverage, exact pins, security warnings and failure history."
     },
     {
       "id": "A-FIXTURES",
       "kind": "other",
-      "locator": "independent.py",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/cd17d0c5d07fd2f451538c778c721dd081b234b7/evidence/order-p0/test-a1/independent.py",
       "revision": "sha256:c1ab0c340b98717520196121d03d0b050ce06920dd840764fed5de08442805bc",
       "summary": "Independently authored synthetic render/schema/observer negative fixtures; fake kubectl only."
     },
     {
       "id": "A-REPRO",
       "kind": "other",
-      "locator": "reproduce.sh",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/cd17d0c5d07fd2f451538c778c721dd081b234b7/evidence/order-p0/test-a1/reproduce.sh",
       "revision": "sha256:50bb0e41dfc1fa65e922da6f35d243840352d2b90f222e35d02b509d29ac90e2",
       "summary": "Local reproduction commands with pinned source/tools; no cluster operation."
     },
     {
       "id": "A-CONTEXT",
       "kind": "other",
-      "locator": "context.json",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/cd17d0c5d07fd2f451538c778c721dd081b234b7/evidence/order-p0/test-a1/context.json",
       "revision": "sha256:a6bd128794d1a3130a43e1a6274ccda5c3e200c9300d970d8ad3023b67dc63b9",
       "summary": "Unmodified independently pinned Manager classification input; not Merge Ready."
     },
     {
       "id": "A-CONFIG",
       "kind": "other",
-      "locator": "config.json",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/cd17d0c5d07fd2f451538c778c721dd081b234b7/evidence/order-p0/test-a1/config.json",
       "revision": "sha256:3ba80361940bcb0423db220d3fbc13ec1c0acb791e10b71d3327e160936fc969",
       "summary": "Unmodified independently pinned public technical configuration."
     },
     {
-      "id": "A-ORDER",
-      "kind": "other",
-      "locator": "artifacts/order-applications",
-      "revision": "sha256:de513a9849e81ea479076027461d0542aea4104b75fe4db39988aadb4fffbcfd",
-      "summary": "Raw fixed Git source bytes matched to context artifact."
+      "id": "A-CANDIDATES",
+      "kind": "knowledge",
+      "locator": "knowledge-candidates.json",
+      "revision": "sha256:3ce6b78b3cf63752dcc0d2c85a13afcf138103fb26adddb541c817477c6568d7",
+      "summary": "Pending candidate binds the complete original public three-artifact tree; raw source bytes unchanged."
     },
     {
-      "id": "A-SCHEMA",
+      "id": "A-DELIVERY-HISTORY",
       "kind": "other",
-      "locator": "artifacts/workloads-schema",
-      "revision": "sha256:24c6cf3632e199a1c7b4b3cdfe93798741fd4ac11839d8bfbd4cba32b1f62e3c",
-      "summary": "Raw fixed Git source bytes matched to context artifact."
-    },
-    {
-      "id": "A-OBSERVER",
-      "kind": "other",
-      "locator": "artifacts/bootstrap-observer",
-      "revision": "sha256:9f5bd6f950d0bf5fa4c11939b1c205826511b3e81bb36b33526e789476682af2",
-      "summary": "Raw fixed Git source bytes matched to context artifact."
+      "locator": "delivery-history.json",
+      "revision": "sha256:cad067f9ef3404a412809e49bace1b1db289cb6ad75136970860c17feef023e8",
+      "summary": "Immutable first delivery failure and current correction; execution status/assignment/attempt unchanged."
     }
   ],
   "evidence": [
@@ -126,9 +119,7 @@
         "A-REPRO",
         "A-CONTEXT",
         "A-CONFIG",
-        "A-ORDER",
-        "A-SCHEMA",
-        "A-OBSERVER"
+        "A-CANDIDATES"
       ],
       "locator": "results.json",
       "observation": "Six byte-equal base/head renders; five unchanged boundary sources; default three main-tracking Applications and no Order."
@@ -143,9 +134,7 @@
         "A-REPRO",
         "A-CONTEXT",
         "A-CONFIG",
-        "A-ORDER",
-        "A-SCHEMA",
-        "A-OBSERVER"
+        "A-CANDIDATES"
       ],
       "locator": "results.json",
       "observation": "Synthetic enabled topology and sync safeguards verified; missing/invalid/floating values rejected, no real source availability inferred."
@@ -160,9 +149,7 @@
         "A-REPRO",
         "A-CONTEXT",
         "A-CONFIG",
-        "A-ORDER",
-        "A-SCHEMA",
-        "A-OBSERVER"
+        "A-CANDIDATES"
       ],
       "locator": "results.json",
       "observation": "Independent synthetic observer state machine, flags, finite failures, 3/5 leaves and earlier-leaf rechecks passed."
@@ -177,9 +164,7 @@
         "A-REPRO",
         "A-CONTEXT",
         "A-CONFIG",
-        "A-ORDER",
-        "A-SCHEMA",
-        "A-OBSERVER"
+        "A-CANDIDATES"
       ],
       "locator": "results.json",
       "observation": "All related local regression/race/vet/build/render/schema/security checks passed; 15 files and 3 artifacts bound, initial environment failures retained, follow-up/unverified boundaries explicit."
@@ -224,6 +209,20 @@
   ],
   "block_reasons": [],
   "failure_reasons": [],
-  "knowledge_candidates": [],
+  "knowledge_candidates": [
+    {
+      "id": "K-fixed-preparation-artifact-tree",
+      "domain": "gitops-preparation-evidence",
+      "summary": "Bind disabled GitOps preparation to exact template/schema/observer raw bytes and a complete source-tree profile when Helm delimiters cannot be safely classified as standalone text.",
+      "evidence_ids": [
+        "E-1",
+        "E-2",
+        "E-3",
+        "E-4"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "approved_public"
+    }
+  ],
   "publication": "public_safe"
 }
