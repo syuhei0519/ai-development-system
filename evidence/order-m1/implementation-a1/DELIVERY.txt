@@ -1,0 +1,39 @@
+Order M1 public delivery records
+
+Payload commit: 0d596964bf351ac59fdacb2e208e0b9bdb828db1
+Prefix: evidence/order-m1/implementation-a1/
+Handoff:  d1d706e4494ddb5ada98068cb102019de4faa35233c53fe884d5570447ed45bb
+Manifest: 58663 bytes; sha256 d11269c1680f9d52f3adb0149861ca8c8f1cd52a13cbb821d286f847eacaa25a
+Publication Receipt: 18045 bytes; sha256 2d7f95f4465923a0b4b1cb8c81209ffd40c3c5be10d0d348b47d0b7e4444acb3
+
+Records were prepared with the fixed System Delivery1.2 helper and then given
+upstream original/edited_derivative metadata from the consumed fixed input.
+The unchanged fixed-System GitSource/verify_handoffs/schema functions freshly
+verified 33 explicit objects and 6 candidate source-tree blobs before publication.
+All Handoff dependencies retain their original canonical references and raw bytes.
+The input bundle's unreferenced extra files are not silently used as dependencies.
+No raw input file was rewritten, no missing typed reference was removed, and no
+private authorization/Consumption Receipt/log/task identity is published here.
+
+Consumer must obtain a separate Manager authorization pinned to these record
+bytes and run unmodified fixed-System consume_delivery.py into a fresh directory.
+No Consumer authorization, Consumer success or operation authority is implied by
+Producer checks or this Publication Receipt. Local original input consumption was
+a distinct gate already performed under the separately supplied Manager grant.
+
+Code: application-manifest@e0f79a61643d31a29de73ffc54bb6a31c320f0df
+Base: bc6adaedcd645a4663c23284b977a3dd36c0796d
+Tree: 1e3618e2f3467ba639ba52c7531c2923c4d85505
+Draft PR: https://github.com/syuhei0519/application-manifest/pull/19
+CI success: 38157049475 (push), 38157080236 (PR), both at the code head.
+
+Engineering implementation/self-tests/feature remote/Draft PR/CI are verified.
+Independent Test/Review and Manager preparation Readiness remain pending.
+Handoff is blocked because the assigned AC-3 remains explicitly unverified and
+fixed Handoff v2 forbids completed unless assigned ACs are covered. Manager must
+resolve this reporting representation; no product gate or assignment was altered.
+Real B2/M2/kind/P1/T7 and all product AC outcomes remain unverified.
+
+CLI PR-body update via gh pr edit failed because of deprecated Projects Classic
+GraphQL lookup; the existing authenticated REST PATCH succeeded afterward and
+confirmed Draft PR19 at the same head. This does not imply the GraphQL path works.
