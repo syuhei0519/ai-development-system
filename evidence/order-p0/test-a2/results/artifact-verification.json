@@ -1,0 +1,30 @@
+[
+  {
+    "id": "order-applications",
+    "source_path": "charts/workloads/templates/order-applications.yaml",
+    "size_bytes": 1274,
+    "sha256": "de513a9849e81ea479076027461d0542aea4104b75fe4db39988aadb4fffbcfd",
+    "matched": true
+  },
+  {
+    "id": "workloads-schema",
+    "source_path": "charts/workloads/values.schema.json",
+    "size_bytes": 864,
+    "sha256": "24c6cf3632e199a1c7b4b3cdfe93798741fd4ac11839d8bfbd4cba32b1f62e3c",
+    "matched": true
+  },
+  {
+    "id": "bootstrap-observer",
+    "source_path": "tools/bootstrap/main.go",
+    "size_bytes": 7138,
+    "sha256": "299878ff1104c0c9adeed1a27ac731f803c641e3495bf2afa21a6bc529aee676",
+    "matched": true
+  },
+  {
+    "id": "order-configuration",
+    "source_path": "tools/bootstrap/order_configuration.go",
+    "size_bytes": 3839,
+    "sha256": "45ef1bd43f31706bee0ca69b8464bf4e655fd74e0ce34e269447b41235aa014f",
+    "matched": true
+  }
+]

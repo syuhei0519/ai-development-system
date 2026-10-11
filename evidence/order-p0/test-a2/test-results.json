@@ -1,0 +1,3080 @@
+{
+  "document_type": "independent_existing_test_results",
+  "measurement_source": "Retained original execution logs; no test rerun during delivery",
+  "modules": {
+    "bootstrap": [
+      {
+        "test": "TestCollectorContract",
+        "action": "skip",
+        "time": "2026-10-11T18:27:06.348312632Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestGrafanaProvisioningBoundary",
+        "action": "skip",
+        "time": "2026-10-11T18:27:06.348354535Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestApplicationHealth/no-status",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.348677972Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestApplicationHealth/missing-health",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.348848098Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestApplicationHealth/missing-sync",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.349008289Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestApplicationHealth/out-of-sync",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.349143012Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestApplicationHealth/degraded-out-of-sync",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.349247499Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestApplicationHealth/progressing",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.349376634Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestApplicationHealth/healthy",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.349455993Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestApplicationHealth/failed-sync",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.349555143Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestApplicationHealth/running-sync",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.349664367Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestApplicationHealth/pending-operation",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.34978567Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestApplicationHealth",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.349789716Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestLeafRevisionAndMigration",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.349947233Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestObservabilityContract",
+        "action": "skip",
+        "time": "2026-10-11T18:27:06.349985591Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.valueFiles/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.350197991Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.valueFiles/[]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.350219624Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.valueFiles/[\"other.yaml\"]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.350287436Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.valueFiles/[\"../../environments/local/order-postgresql.yaml\",\"override.yaml\"]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.350364452Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.passCredentials/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.350441127Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.passCredentials/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.350508118Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.ignoreMissingValueFiles/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.350559996Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.ignoreMissingValueFiles/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.350621519Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.skipTests/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.35068227Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.skipTests/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.350772716Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.350804935Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.350872987Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.sourceHydrator/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.350943774Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.ref/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.351024285Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.ref/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.351069774Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.valueFiles/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.3511533Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.valueFiles/[]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.351222324Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.valueFiles/[\"other.yaml\"]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.351247111Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.valueFiles/[\"../../environments/local/order-postgresql.yaml\",\"override.yaml\"]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.351313711Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.valuesObject/{\"enabled\":false}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.351399871Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.valuesObject/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.351487483Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.skipTests/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.351520923Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.skipTests/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.35157842Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.skipSchemaValidation/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.351648515Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.skipSchemaValidation/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.35169778Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.targetRevision/\"main\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.351771901Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.targetRevision/\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.351834526Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.targetRevision/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.351909679Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.repoURL/\"https://github.com/example/other.git\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.351952954Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.repoURL/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.352015358Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.repoURL/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.352098543Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/metadata.name/\"other\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.352172414Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/metadata.name/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.352213136Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.destination.namespace/\"other\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.352266897Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.destination.namespace/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.352323202Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.destination.namespace/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.352378034Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.destination.name/\"other-cluster\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.352429902Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.fileParameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.352510844Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.fileParameters/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.352553188Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.repoURL/\"https://github.com/example/other.git\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.352630324Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.repoURL/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.352688902Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.repoURL/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.35274701Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.chart/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.352844006Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.chart/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.352951418Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.version/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.35302591Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.version/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.353135545Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.passCredentials/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.353210378Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.passCredentials/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.353273443Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.35332505Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.353373453Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.destination.unknown/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.353421115Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.skipCrds/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.353481826Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.skipCrds/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.354489995Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.chart/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.354501843Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.chart/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.354520471Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.futureOverride/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.354536765Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.futureOverride/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.354593691Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.futureOverride/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.354657988Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.ref/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.354726721Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.ref/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.354784989Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.kustomize/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.354854143Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.kustomize/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.354923077Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.unknown/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.354973233Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.unknown/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.355039562Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.sources/[{}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.355119022Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.skipCrds/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.355173384Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.skipCrds/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.355267075Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.namespace/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.355548208Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.namespace/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.355634378Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.kubeVersion/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.355723643Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.kubeVersion/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.355768741Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.skipCrds/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.355839958Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.skipCrds/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.355902172Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.skipTests/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.355966318Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.skipTests/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.356023705Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.targetRevision/\"main\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.356323446Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.targetRevision/\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.356337207Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.targetRevision/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.35634598Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.chart/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.356355384Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.chart/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.356363937Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.namespace/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.356374122Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.namespace/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.356433702Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.path/\"charts/other\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.356639842Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.path/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.356653022Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.path/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.35667809Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.name/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.356687184Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.name/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.356755777Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.apiVersions/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.356862608Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.apiVersions/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.356913935Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.skipSchemaValidation/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.356972924Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.skipSchemaValidation/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.357029029Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.revisions/[\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.357104232Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.destination.server/\"https://example.invalid\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.357160787Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.destination.server/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.357208729Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.destination.server/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.357272465Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.357325795Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.357403012Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.ref/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.357430714Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.ref/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.357488841Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.releaseName/\"other\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.357544435Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.releaseName/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.35759425Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.releaseName/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.357659308Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.apiVersions/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.357721221Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.apiVersions/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.357801001Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.values/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.357880751Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.values/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.357951157Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.version/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.358100412Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.version/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.358163587Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/metadata.deletionTimestamp/\"2026-10-11T00:00:00Z\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.358229466Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/metadata.deletionTimestamp/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.358256908Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/metadata.deletionTimestamp/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.358313122Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/metadata.deletionTimestamp/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.358356087Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.kustomize/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.358417249Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.kustomize/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.358483359Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.unknown/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.358555047Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.unknown/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.358605112Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.kubeVersion/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.358654176Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.kubeVersion/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.358883341Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.skipSchemaValidation/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.358963091Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.skipSchemaValidation/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.359027929Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.futureOverride/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.359154169Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.futureOverride/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.359204725Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.futureOverride/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.359317625Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.directory/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.359354421Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.directory/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.359405948Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.values/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.359465538Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.values/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.35953992Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.project/\"default\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.359597206Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.project/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.35964629Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.project/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.35970565Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.destination/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.359754693Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.destination/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.359808805Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.repoURL/\"https://github.com/example/other.git\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.359867994Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.repoURL/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.359916527Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.repoURL/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.3599782Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.parameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.360045271Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.parameters/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.360134415Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.valuesObject/{\"enabled\":false}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.360201957Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm.valuesObject/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.360266594Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.unknown/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.360319254Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.unknown/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.360393125Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.ignoreMissingValueFiles/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.360442119Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.ignoreMissingValueFiles/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.360515539Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.directory/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.360569811Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.directory/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.36062866Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.ignoreDifferences/[{\"kind\":\"Deployment\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.360700187Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.destination.unknown/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.360751545Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.targetRevision/\"main\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.360806177Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.targetRevision/\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.360896733Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.targetRevision/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.360951476Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.kustomize/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.361014871Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.kustomize/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.361069904Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.361162524Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.361209905Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.namespace/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.361258718Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.namespace/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.361388874Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.name/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.36139919Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.name/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.361451208Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.361501244Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.361566983Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.plugin/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.361628185Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.plugin/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.361682386Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.fileParameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.36175783Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.fileParameters/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.361810359Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/metadata.namespace/\"other\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.36187722Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/metadata.namespace/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.36194383Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.sources/[{}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.361991432Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.path/\"charts/other\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.362053736Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.path/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.362192294Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.path/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.362267257Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.passCredentials/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.362333567Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.passCredentials/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.362383412Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.parameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.362444134Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.parameters/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.362505746Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.destination/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.362556102Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.destination/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.362600148Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.parameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.362671676Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.parameters/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.362718467Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.version/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.362779088Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.version/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.362836474Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.futureOverride/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.362895724Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.futureOverride/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.362943966Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.futureOverride/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.363001613Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.destination.name/\"other-cluster\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.363103557Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.plugin/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.363189576Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.plugin/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.363242536Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.directory/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.363309797Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.directory/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.363365421Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.36341106Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.helm/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.363459092Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.apiVersions/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.363539413Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.apiVersions/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.363579774Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.path/\"charts/other\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.363640896Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.path/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.363698603Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.path/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.363764912Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.releaseName/\"other\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.36381648Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.releaseName/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.363864562Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.releaseName/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.363923221Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.releaseName/\"other\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.364159266Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.releaseName/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.364246718Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.releaseName/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.364346568Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.kubeVersion/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.364465217Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.source.helm.kubeVersion/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.364562443Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.364679159Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.364772329Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.plugin/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.364902616Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.plugin/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.36499829Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.valueFiles/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.365141265Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.valueFiles/[]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.365207445Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.valueFiles/[\"other.yaml\"]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.365309549Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.valueFiles/[\"../../environments/local/order-postgresql.yaml\",\"override.yaml\"]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.365814719Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.fileParameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.365998736Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.fileParameters/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.366236264Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.ignoreMissingValueFiles/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.366401092Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.ignoreMissingValueFiles/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.366531369Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.ignoreDifferences/[{\"kind\":\"Deployment\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.366640072Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.name/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.366759933Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/spec.source.name/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.366874565Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.values/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.367005703Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.values/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.367160847Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.valuesObject/{\"enabled\":false}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.367257292Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.source.helm.valuesObject/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.367378935Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.operationState.syncResult.sources/[{}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.367508921Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.destination.server/\"https://example.invalid\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.36761455Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.destination.server/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.367735482Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.destination.server/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.367846169Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.destination.namespace/\"other\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.367949444Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.destination.namespace/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.36807299Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql/status.sync.comparedTo.destination.namespace/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.368215605Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order-postgresql",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.368572042Z",
+        "elapsed": 0.02
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.name/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.36875691Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.name/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.368900086Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.passCredentials/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.369022921Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.passCredentials/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.369220168Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.destination.unknown/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.369343864Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.chart/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.369470415Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.chart/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.369612369Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/metadata.namespace/\"other\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.369720051Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/metadata.namespace/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.369850037Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.revisions/[\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.369961935Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.apiVersions/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.370110429Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.apiVersions/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.370236168Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.apiVersions/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.370361947Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.apiVersions/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.370481938Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.skipCrds/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.370606706Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.skipCrds/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.370733908Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/metadata.deletionTimestamp/\"2026-10-11T00:00:00Z\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.37083491Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/metadata.deletionTimestamp/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.370918596Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/metadata.deletionTimestamp/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.371015221Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/metadata.deletionTimestamp/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.371123725Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.passCredentials/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.371239559Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.passCredentials/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.371365208Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.passCredentials/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.371476336Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.passCredentials/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.371595085Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.futureOverride/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.37171169Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.futureOverride/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.371833674Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.futureOverride/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.371947215Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.kustomize/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.372059133Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.kustomize/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.372179415Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.skipTests/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.372306957Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.skipTests/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.372417794Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.futureOverride/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.372548751Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.futureOverride/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.372657064Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.futureOverride/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.372777225Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.kustomize/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.37291342Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.kustomize/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.373038749Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.plugin/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.373206672Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.plugin/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.37332517Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.kubeVersion/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.373436628Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.kubeVersion/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.373554385Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.valuesObject/{\"enabled\":false}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.373672573Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.valuesObject/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.373791182Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.ignoreMissingValueFiles/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.3739158Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.ignoreMissingValueFiles/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.374041098Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.destination.namespace/\"other\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.374169011Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.destination.namespace/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.37428813Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.destination.namespace/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.374393098Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.skipSchemaValidation/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.374503865Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.skipSchemaValidation/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.374635053Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.374747001Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.374866972Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.kustomize/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.374980072Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.kustomize/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.375118851Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.valueFiles/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.375240555Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.valueFiles/[]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.375372073Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.valueFiles/[\"other.yaml\"]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.375494888Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.valueFiles/[\"../../environments/local/order.yaml\",\"override.yaml\"]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.375621719Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.fileParameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.37574229Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.fileParameters/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.375862832Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.namespace/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.375989162Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.namespace/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.376134691Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.skipTests/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.376247061Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.skipTests/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.376384928Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.ref/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.376486331Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.ref/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.376605671Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.sourceHydrator/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.376712031Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.destination.name/\"other-cluster\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.376846013Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.376959984Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.377124422Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.releaseName/\"other\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.377210692Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.releaseName/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.377331103Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.releaseName/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.377438685Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.unknown/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.377559988Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.unknown/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.37768798Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.skipTests/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.37780083Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.skipTests/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.377916114Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.plugin/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.378037427Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.plugin/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.37817928Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.sources/[{}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.378288154Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.destination.server/\"https://example.invalid\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.378398961Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.destination.server/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.378512362Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.destination.server/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.378625011Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.directory/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.378742989Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.directory/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.378871202Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.ref/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.378984723Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.ref/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.379126266Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.releaseName/\"other\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.379246137Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.releaseName/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.379371295Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.releaseName/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.379482383Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.379599158Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.379705869Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.directory/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.379821093Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.directory/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.37994548Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.namespace/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.380057839Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.namespace/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.380202787Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.values/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.380315868Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.values/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.380435908Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.targetRevision/\"main\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.38055675Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.targetRevision/\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.380674037Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.targetRevision/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.380793257Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.chart/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.380929862Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.chart/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.381032126Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.381175893Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.381286519Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.destination.server/\"https://example.invalid\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.381400271Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.destination.server/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.381513251Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.destination.server/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.381630177Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.destination.name/\"other-cluster\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.381752942Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.path/\"charts/other\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.381893013Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.path/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.381995557Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.path/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.382135127Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.skipSchemaValidation/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.382247927Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.skipSchemaValidation/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.382358734Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.kubeVersion/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.382485084Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.kubeVersion/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.382599196Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.targetRevision/\"main\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.382716142Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.targetRevision/\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.382839208Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.targetRevision/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.382954561Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.ref/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.383099099Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.ref/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.383251078Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/metadata.name/\"other\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.383370238Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/metadata.name/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.383493042Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.project/\"default\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.383610549Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.project/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.383713955Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.project/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.383832233Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.skipCrds/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.383943601Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.skipCrds/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.384061398Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.releaseName/\"other\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.384198625Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.releaseName/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.384942065Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.releaseName/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.385154334Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.path/\"charts/other\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.385286594Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.path/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.385379734Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.path/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.38545695Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.values/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.385594267Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.values/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.385665514Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.destination/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.385748489Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.destination/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.385817082Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.parameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.385900108Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.parameters/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.386005256Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.parameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.386092708Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.parameters/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.386209694Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.parameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.38631326Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.parameters/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.386400381Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.valuesObject/{\"enabled\":false}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.386506601Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.valuesObject/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.386617057Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.ignoreMissingValueFiles/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.386693362Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.ignoreMissingValueFiles/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.386801765Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.skipSchemaValidation/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.386892692Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.skipSchemaValidation/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.386966874Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.387047005Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.387150501Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.repoURL/\"https://github.com/example/other.git\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.387217572Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.repoURL/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.387324262Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.repoURL/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.387407197Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.path/\"charts/other\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.387476722Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.path/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.387572486Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.path/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.387643523Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.version/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.387686057Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.version/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.387735712Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.kubeVersion/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.387804105Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.kubeVersion/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.387865087Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.valuesObject/{\"enabled\":false}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.387915262Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.valuesObject/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.387969534Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.name/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.388030356Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.name/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.388115854Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.version/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.388165669Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.version/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.388228835Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.destination.namespace/\"other\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.388293061Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.destination.namespace/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.388322976Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.destination.namespace/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.38837196Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.plugin/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.388441034Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.plugin/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.388498811Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.values/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.388548115Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.values/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.388599733Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.fileParameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.38867092Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.fileParameters/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.388728818Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.futureOverride/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.388779173Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.futureOverride/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.389011073Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.futureOverride/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.389021278Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.targetRevision/\"main\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.389068539Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.targetRevision/\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.389172265Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.targetRevision/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.389222801Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.sources/[{}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.389282822Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.ignoreDifferences/[{\"kind\":\"Deployment\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.389336993Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.name/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.389405867Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.name/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.38945429Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.unknown/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.389520109Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.unknown/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.389571487Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.chart/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.389642584Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.chart/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.389687421Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.apiVersions/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.389772449Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.apiVersions/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.389819139Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.skipCrds/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.389887593Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.skipCrds/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.389937257Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.ignoreDifferences/[{\"kind\":\"Deployment\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.390002606Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.fileParameters/[{\"name\":\"enabled\",\"value\":\"false\"}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.390059562Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.fileParameters/\"wrong-type\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.39013811Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.ignoreMissingValueFiles/true",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.390195777Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.ignoreMissingValueFiles/\"false\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.39026419Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.390306513Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.39037074Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.valueFiles/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.390423419Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.valueFiles/[]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.390479894Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.valueFiles/[\"other.yaml\"]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.390531482Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.valueFiles/[\"../../environments/local/order.yaml\",\"override.yaml\"]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.390610982Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.namespace/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393492772Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm.namespace/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393510538Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.directory/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393520664Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.directory/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393532692Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.unknown/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393546352Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.unknown/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393557479Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.destination.unknown/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393566693Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.repoURL/\"https://github.com/example/other.git\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393579813Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.repoURL/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393590349Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.repoURL/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393601485Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.repoURL/\"https://github.com/example/other.git\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393612061Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.repoURL/\"\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393623879Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.repoURL/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393632532Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.version/\"override\"",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393643188Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.source.helm.version/false",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393654926Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.operationState.syncResult.sources/[{}]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393679242Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.destination/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393689928Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.destination/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393700244Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.valueFiles/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.39371062Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.valueFiles/[]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393720705Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.valueFiles/[\"other.yaml\"]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393732092Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/spec.source.helm.valueFiles/[\"../../environments/local/order.yaml\",\"override.yaml\"]",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393742768Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm/null",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393755267Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order/status.sync.comparedTo.source.helm/{}",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.39376405Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderConfigurationEvidence/lab-local-order",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393768777Z",
+        "elapsed": 0.02
+      },
+      {
+        "test": "TestOrderConfigurationEvidence",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393776158Z",
+        "elapsed": 0.04
+      },
+      {
+        "test": "TestLegacyConfigurationCompatibilityAndDeletion",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393784691Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderWorkloadsContract",
+        "action": "skip",
+        "time": "2026-10-11T18:27:06.393798192Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestExpectedLeaves",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393806364Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderLeafBoundaries/lab-local-order-postgresql",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.393821637Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderLeafBoundaries/lab-local-order",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.395563901Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOrderLeafBoundaries",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.396411463Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestObserverProcess",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.396428238Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestObserverCLI/disabled",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.402806293Z",
+        "elapsed": 0.01
+      },
+      {
+        "test": "TestObserverCLI/enabled",
+        "action": "pass",
+        "time": "2026-10-11T18:27:06.411855791Z",
+        "elapsed": 0.01
+      },
+      {
+        "test": "TestObserverCLI/missing-db",
+        "action": "pass",
+        "time": "2026-10-11T18:27:07.114383318Z",
+        "elapsed": 0.7
+      },
+      {
+        "test": "TestObserverCLI/missing-order",
+        "action": "pass",
+        "time": "2026-10-11T18:27:07.816598331Z",
+        "elapsed": 0.7
+      },
+      {
+        "test": "TestObserverCLI/failed-hook",
+        "action": "pass",
+        "time": "2026-10-11T18:27:08.519150868Z",
+        "elapsed": 0.7
+      },
+      {
+        "test": "TestObserverCLI/progressing-db",
+        "action": "pass",
+        "time": "2026-10-11T18:27:09.221493482Z",
+        "elapsed": 0.7
+      },
+      {
+        "test": "TestObserverCLI/missing-revision",
+        "action": "pass",
+        "time": "2026-10-11T18:27:09.924237039Z",
+        "elapsed": 0.7
+      },
+      {
+        "test": "TestObserverCLI/wrong-source",
+        "action": "pass",
+        "time": "2026-10-11T18:27:10.626534688Z",
+        "elapsed": 0.7
+      },
+      {
+        "test": "TestObserverCLI/invalid-options",
+        "action": "pass",
+        "time": "2026-10-11T18:27:10.628286506Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestObserverCLI/regressed-db",
+        "action": "pass",
+        "time": "2026-10-11T18:27:13.030305693Z",
+        "elapsed": 2.4
+      },
+      {
+        "test": "TestObserverCLI/deleting-db",
+        "action": "pass",
+        "time": "2026-10-11T18:27:13.732532118Z",
+        "elapsed": 0.7
+      },
+      {
+        "test": "TestObserverCLI/deleting-order",
+        "action": "pass",
+        "time": "2026-10-11T18:27:14.435769222Z",
+        "elapsed": 0.7
+      },
+      {
+        "test": "TestObserverCLI/deleting-account",
+        "action": "pass",
+        "time": "2026-10-11T18:27:15.138997619Z",
+        "elapsed": 0.7
+      },
+      {
+        "test": "TestObserverCLI/stale-comparison",
+        "action": "pass",
+        "time": "2026-10-11T18:27:15.841657146Z",
+        "elapsed": 0.7
+      },
+      {
+        "test": "TestObserverCLI/stale-operation",
+        "action": "pass",
+        "time": "2026-10-11T18:27:16.545275725Z",
+        "elapsed": 0.7
+      },
+      {
+        "test": "TestObserverCLI",
+        "action": "pass",
+        "time": "2026-10-11T18:27:16.545298039Z",
+        "elapsed": 10.15
+      }
+    ],
+    "scan-gate": [
+      {
+        "test": "TestFixedSeverityDecisions",
+        "action": "pass",
+        "time": "2026-10-11T18:27:40.69521733Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestSecretRedactionAndPrivileged",
+        "action": "pass",
+        "time": "2026-10-11T18:27:40.695388148Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestDBUpdatedAtNotDownloadedAt",
+        "action": "pass",
+        "time": "2026-10-11T18:27:40.695483231Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestStrictExceptionScopeAndExpiry",
+        "action": "pass",
+        "time": "2026-10-11T18:27:40.695782001Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestRenderedPlainSecretAndPrivileged",
+        "action": "pass",
+        "time": "2026-10-11T18:27:40.695957004Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestRenderedCredentialURLAndConfigMap",
+        "action": "pass",
+        "time": "2026-10-11T18:27:40.696124326Z",
+        "elapsed": 0
+      },
+      {
+        "test": "TestOnlyReadOnlySecretVolumeFileReferenceAllowed",
+        "action": "pass",
+        "time": "2026-10-11T18:27:40.69675101Z",
+        "elapsed": 0
+      }
+    ]
+  },
+  "actual_render": {
+    "passed": [
+      "TestCollectorContract",
+      "TestGrafanaProvisioningBoundary",
+      "TestObservabilityContract",
+      "TestOrderWorkloadsContract"
+    ],
+    "remaining_skips": 0,
+    "basis": "results/actual-render-tests.log retained private; observed exit0"
+  },
+  "suite_results": {
+    "docs_cases": 14,
+    "race_both_modules": 0,
+    "vet_both_modules": 0,
+    "build_both_modules": 0,
+    "full_helm_validation": 0,
+    "kubeconform": {
+      "valid": [
+        37,
+        16,
+        4
+      ],
+      "errors": 0,
+      "invalid": 0,
+      "skipped": 0
+    },
+    "source_and_render_security": {
+      "passed": true,
+      "warnings": [
+        8,
+        196
+      ]
+    }
+  }
+}

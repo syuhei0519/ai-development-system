@@ -1,0 +1,453 @@
+{
+  "document_type": "independent_render_schema_test",
+  "observed_at": "2026-10-11T18:29:03.850183+00:00",
+  "renders": [
+    {
+      "chart": "root",
+      "local": false,
+      "equal": true,
+      "sha256": [
+        "c69faea1649252f4495606f271cbbff5cebf8b98cae6cde6d103a7fb2c6e8e1c",
+        "c69faea1649252f4495606f271cbbff5cebf8b98cae6cde6d103a7fb2c6e8e1c"
+      ],
+      "sizes": [
+        2619,
+        2619
+      ]
+    },
+    {
+      "chart": "root",
+      "local": true,
+      "equal": true,
+      "sha256": [
+        "8518d5f7e12d5cff1be0274b41ee38fcbced4ec0bc84d06aa87cb7c7deecda83",
+        "8518d5f7e12d5cff1be0274b41ee38fcbced4ec0bc84d06aa87cb7c7deecda83"
+      ],
+      "sizes": [
+        4331,
+        4331
+      ]
+    },
+    {
+      "chart": "platform",
+      "local": false,
+      "equal": true,
+      "sha256": [
+        "38f4d485c94f37f76ce70b3d8fd7c755716e9192977b06c7c0ced20fb369193e",
+        "38f4d485c94f37f76ce70b3d8fd7c755716e9192977b06c7c0ced20fb369193e"
+      ],
+      "sizes": [
+        1608,
+        1608
+      ]
+    },
+    {
+      "chart": "platform",
+      "local": true,
+      "equal": true,
+      "sha256": [
+        "4c022b9aac2fbb0cd9ccc733847cbe52afb2d1d664fa7d33bbbec253d75a26ed",
+        "4c022b9aac2fbb0cd9ccc733847cbe52afb2d1d664fa7d33bbbec253d75a26ed"
+      ],
+      "sizes": [
+        4800,
+        4800
+      ]
+    },
+    {
+      "chart": "workloads",
+      "local": false,
+      "equal": true,
+      "sha256": [
+        "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5",
+        "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5"
+      ],
+      "sizes": [
+        2196,
+        2196
+      ]
+    },
+    {
+      "chart": "workloads",
+      "local": true,
+      "equal": true,
+      "sha256": [
+        "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5",
+        "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5"
+      ],
+      "sizes": [
+        2196,
+        2196
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "path": "bootstrap/namespaces.yaml",
+      "equal": true,
+      "sha256": [
+        "9c8f5981bffa444cad3ec4b0d64f533b1bdffdfe9e4f46fc090dda9824b54764",
+        "9c8f5981bffa444cad3ec4b0d64f533b1bdffdfe9e4f46fc090dda9824b54764"
+      ]
+    },
+    {
+      "path": "bootstrap/root-project.yaml",
+      "equal": true,
+      "sha256": [
+        "dc7cc172cb0cd74ee6520a0751f727d47f95cf9010af8bc5ccd95b2bd3620969",
+        "dc7cc172cb0cd74ee6520a0751f727d47f95cf9010af8bc5ccd95b2bd3620969"
+      ]
+    },
+    {
+      "path": "bootstrap/argocd-values.yaml",
+      "equal": true,
+      "sha256": [
+        "5a869b06a8d067b5bbd326508aad45ea76f9bafa16260849be35e8c93daf7d2a",
+        "5a869b06a8d067b5bbd326508aad45ea76f9bafa16260849be35e8c93daf7d2a"
+      ]
+    },
+    {
+      "path": "charts/root/templates/projects.yaml",
+      "equal": true,
+      "sha256": [
+        "e41ca9a79479ee1e1b41f55cf343e006769828191e7c8be76844c1d2b6388c02",
+        "e41ca9a79479ee1e1b41f55cf343e006769828191e7c8be76844c1d2b6388c02"
+      ]
+    },
+    {
+      "path": "charts/workloads/templates/applications.yaml",
+      "equal": true,
+      "sha256": [
+        "6bc92483833f169a0f19fb7349f9105f410007328069b25d24509e5c1c58a7ee",
+        "6bc92483833f169a0f19fb7349f9105f410007328069b25d24509e5c1c58a7ee"
+      ]
+    }
+  ],
+  "schema": [
+    {
+      "case": "default",
+      "args": [],
+      "exit": 0,
+      "expected": 0,
+      "matched": true,
+      "stderr": ""
+    },
+    {
+      "case": "enabled",
+      "args": [
+        "--set",
+        "orderEnabled=true",
+        "--set-string",
+        "orderTargetRevision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ],
+      "exit": 0,
+      "expected": 0,
+      "matched": true,
+      "stderr": ""
+    },
+    {
+      "case": "disabled-staged",
+      "args": [
+        "--set-string",
+        "orderTargetRevision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ],
+      "exit": 0,
+      "expected": 0,
+      "matched": true,
+      "stderr": ""
+    },
+    {
+      "case": "revision-''",
+      "args": [
+        "--set",
+        "orderEnabled=true",
+        "--set-string",
+        "orderTargetRevision="
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '': 'allOf' failed\n  - at '/orderTargetRevision': '' does not match pattern '^[0-9a-f]{40}$'\n\n"
+    },
+    {
+      "case": "revision-'main'",
+      "args": [
+        "--set",
+        "orderEnabled=true",
+        "--set-string",
+        "orderTargetRevision=main"
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '/orderTargetRevision': 'main' does not match pattern '^([0-9a-f]{40})?$'\n- at '': 'allOf' failed\n  - at '/orderTargetRevision': 'main' does not match pattern '^[0-9a-f]{40}$'\n\n"
+    },
+    {
+      "case": "revision-'HEAD'",
+      "args": [
+        "--set",
+        "orderEnabled=true",
+        "--set-string",
+        "orderTargetRevision=HEAD"
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '/orderTargetRevision': 'HEAD' does not match pattern '^([0-9a-f]{40})?$'\n- at '': 'allOf' failed\n  - at '/orderTargetRevision': 'HEAD' does not match pattern '^[0-9a-f]{40}$'\n\n"
+    },
+    {
+      "case": "revision-'v1.0'",
+      "args": [
+        "--set",
+        "orderEnabled=true",
+        "--set-string",
+        "orderTargetRevision=v1.0"
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '/orderTargetRevision': 'v1.0' does not match pattern '^([0-9a-f]{40})?$'\n- at '': 'allOf' failed\n  - at '/orderTargetRevision': 'v1.0' does not match pattern '^[0-9a-f]{40}$'\n\n"
+    },
+    {
+      "case": "revision-'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'",
+      "args": [
+        "--set",
+        "orderEnabled=true",
+        "--set-string",
+        "orderTargetRevision=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '/orderTargetRevision': 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' does not match pattern '^([0-9a-f]{40})?$'\n- at '': 'allOf' failed\n  - at '/orderTargetRevision': 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' does not match pattern '^[0-9a-f]{40}$'\n\n"
+    },
+    {
+      "case": "revision-'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'",
+      "args": [
+        "--set",
+        "orderEnabled=true",
+        "--set-string",
+        "orderTargetRevision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '/orderTargetRevision': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' does not match pattern '^([0-9a-f]{40})?$'\n- at '': 'allOf' failed\n  - at '/orderTargetRevision': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' does not match pattern '^[0-9a-f]{40}$'\n\n"
+    },
+    {
+      "case": "revision-'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'",
+      "args": [
+        "--set",
+        "orderEnabled=true",
+        "--set-string",
+        "orderTargetRevision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '/orderTargetRevision': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' does not match pattern '^([0-9a-f]{40})?$'\n- at '': 'allOf' failed\n  - at '/orderTargetRevision': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' does not match pattern '^[0-9a-f]{40}$'\n\n"
+    },
+    {
+      "case": "revision-'gggggggggggggggggggggggggggggggggggggggg'",
+      "args": [
+        "--set",
+        "orderEnabled=true",
+        "--set-string",
+        "orderTargetRevision=gggggggggggggggggggggggggggggggggggggggg"
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '/orderTargetRevision': 'gggggggggggggggggggggggggggggggggggggggg' does not match pattern '^([0-9a-f]{40})?$'\n- at '': 'allOf' failed\n  - at '/orderTargetRevision': 'gggggggggggggggggggggggggggggggggggggggg' does not match pattern '^[0-9a-f]{40}$'\n\n"
+    },
+    {
+      "case": "revision-' aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'",
+      "args": [
+        "--set",
+        "orderEnabled=true",
+        "--set-string",
+        "orderTargetRevision= aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '/orderTargetRevision': ' aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' does not match pattern '^([0-9a-f]{40})?$'\n- at '': 'allOf' failed\n  - at '/orderTargetRevision': ' aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' does not match pattern '^[0-9a-f]{40}$'\n\n"
+    },
+    {
+      "case": "revision-'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\n'",
+      "args": [
+        "--set",
+        "orderEnabled=true",
+        "--set-string",
+        "orderTargetRevision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n"
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '/orderTargetRevision': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\n' does not match pattern '^([0-9a-f]{40})?$'\n- at '': 'allOf' failed\n  - at '/orderTargetRevision': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\n' does not match pattern '^[0-9a-f]{40}$'\n\n"
+    },
+    {
+      "case": "orderEnabled=null",
+      "args": [
+        "--set",
+        "orderEnabled=true",
+        "--set-json",
+        "orderEnabled=null"
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '': 'allOf' failed\n  - at '/orderTargetRevision': '' does not match pattern '^[0-9a-f]{40}$'\n\n"
+    },
+    {
+      "case": "orderEnabled=1",
+      "args": [
+        "--set",
+        "orderEnabled=true",
+        "--set-json",
+        "orderEnabled=1"
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '': 'allOf' failed\n  - at '/orderTargetRevision': '' does not match pattern '^[0-9a-f]{40}$'\n\n"
+    },
+    {
+      "case": "orderEnabled={}",
+      "args": [
+        "--set",
+        "orderEnabled=true",
+        "--set-json",
+        "orderEnabled={}"
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '': 'allOf' failed\n  - at '/orderTargetRevision': '' does not match pattern '^[0-9a-f]{40}$'\n\n"
+    },
+    {
+      "case": "orderEnabled=[]",
+      "args": [
+        "--set",
+        "orderEnabled=true",
+        "--set-json",
+        "orderEnabled=[]"
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '': 'allOf' failed\n  - at '/orderTargetRevision': '' does not match pattern '^[0-9a-f]{40}$'\n\n"
+    },
+    {
+      "case": "orderEnabled=\"true\"",
+      "args": [
+        "--set",
+        "orderEnabled=true",
+        "--set-json",
+        "orderEnabled=\"true\""
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '': 'allOf' failed\n  - at '/orderTargetRevision': '' does not match pattern '^[0-9a-f]{40}$'\n\n"
+    },
+    {
+      "case": "orderTargetRevision=null",
+      "args": [
+        "--set",
+        "orderEnabled=true",
+        "--set-json",
+        "orderTargetRevision=null"
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '': missing property 'orderTargetRevision'\n\n"
+    },
+    {
+      "case": "orderTargetRevision=1",
+      "args": [
+        "--set",
+        "orderEnabled=true",
+        "--set-json",
+        "orderTargetRevision=1"
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '/orderTargetRevision': got number, want string\n\n"
+    },
+    {
+      "case": "orderTargetRevision=true",
+      "args": [
+        "--set",
+        "orderEnabled=true",
+        "--set-json",
+        "orderTargetRevision=true"
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '/orderTargetRevision': got boolean, want string\n\n"
+    },
+    {
+      "case": "orderTargetRevision={}",
+      "args": [
+        "--set",
+        "orderEnabled=true",
+        "--set-json",
+        "orderTargetRevision={}"
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "level=INFO msg=\"warning: skipped value for workloads.orderTargetRevision: Not a table.\"\nError: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '/orderTargetRevision': got object, want string\n\n"
+    },
+    {
+      "case": "orderTargetRevision=[]",
+      "args": [
+        "--set",
+        "orderEnabled=true",
+        "--set-json",
+        "orderTargetRevision=[]"
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '/orderTargetRevision': got array, want string\n\n"
+    },
+    {
+      "case": "applicationRepository",
+      "args": [
+        "--set-string",
+        "applicationRepository=https://example.invalid/a.git"
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '/applicationRepository': value must be 'https://github.com/syuhei0519/application-manifest.git'\n\n"
+    },
+    {
+      "case": "targetRevision",
+      "args": [
+        "--set-string",
+        "targetRevision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '/targetRevision': value must be 'main'\n\n"
+    },
+    {
+      "case": "orderEnable",
+      "args": [
+        "--set-string",
+        "orderEnable=true"
+      ],
+      "exit": 1,
+      "expected": 1,
+      "matched": true,
+      "stderr": "Error: values don't meet the specifications of the schema(s) in the following chart(s):\nworkloads:\n- at '': additional properties 'orderEnable' not allowed\n\n"
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "document_type": "independent_diff_coverage",
+  "head": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+  "base": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+  "changed_file_count": 17,
+  "files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "conditions": [
+        "P0-S4"
+      ],
+      "measurement": "Diff inspected: same fixed images/security policy; render gate adds Order contract; exact-head GitHub checks independently fetched.",
+      "source_sha256": "996404ab8df03ae66113256b1426a7a8827dcc4fa054bfc23034262ffda94701"
+    },
+    {
+      "path": "charts/workloads/templates/order-applications.yaml",
+      "conditions": [
+        "P0-S1",
+        "P0-S2"
+      ],
+      "measurement": "Independent six byte comparisons, full synthetic topology check, schema rejection, pinned CRD schema check.",
+      "source_sha256": "de513a9849e81ea479076027461d0542aea4104b75fe4db39988aadb4fffbcfd"
+    },
+    {
+      "path": "charts/workloads/values.schema.json",
+      "conditions": [
+        "P0-S2"
+      ],
+      "measurement": "Independent 26 Helm cases plus original CI invalid fixtures; required input/type/pin/closed-property boundary.",
+      "source_sha256": "24c6cf3632e199a1c7b4b3cdfe93798741fd4ac11839d8bfbd4cba32b1f62e3c"
+    },
+    {
+      "path": "charts/workloads/values.yaml",
+      "conditions": [
+        "P0-S1",
+        "P0-S2"
+      ],
+      "measurement": "Parsed default false/empty, independent renders retain existing three main-tracking applications.",
+      "source_sha256": "579456ac99e497ad4e5c94b1c2d65d7d4627400073d835f2207353c85b07054e"
+    },
+    {
+      "path": "ci/fixtures/order-p0/README.md",
+      "conditions": [
+        "P0-S4"
+      ],
+      "measurement": "Read provenance and synthetic-only limitation; compared fixture raw bytes to actual base render.",
+      "source_sha256": "c419e148b4960e284138a518462164a7cfdc2f22d1bb6dec3c1a8cce0a170a17"
+    },
+    {
+      "path": "ci/fixtures/order-p0/enabled.yaml",
+      "conditions": [
+        "P0-S2",
+        "P0-S4"
+      ],
+      "measurement": "Parsed and rendered synthetic a*40, not adopted Manifest or live values.",
+      "source_sha256": "97d092410f67c1aadac6449c9062313d18dc974b9ed0811a01bc4be9c57c4703"
+    },
+    {
+      "path": "ci/fixtures/order-p0/workloads-before.yaml",
+      "conditions": [
+        "P0-S1"
+      ],
+      "measurement": "Raw base Helm output equal; semantic existing prefix checked independently.",
+      "source_sha256": "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5"
+    },
+    {
+      "path": "ci/includes/full-pipeline.yml",
+      "conditions": [
+        "P0-S4"
+      ],
+      "measurement": "Diff inspected: same Order render gate wired into GitLab path; execution occurred locally, not a new GitLab CI run.",
+      "source_sha256": "f6f8d1e368c0d0b2dc13fafd65ca37d19eb78ff2bedfed2ef2c7af52af1bb118"
+    },
+    {
+      "path": "ci/test-order-workloads.sh",
+      "conditions": [
+        "P0-S1",
+        "P0-S2",
+        "P0-S4"
+      ],
+      "measurement": "Executed through full validate; challenged separately with independent render/schema/topology tests.",
+      "source_sha256": "3fa2e231c42f5c863d4d4c032cb89f11c2e56e450fc0d026e7097abffb2d5eaa"
+    },
+    {
+      "path": "ci/validate.sh",
+      "conditions": [
+        "P0-S4"
+      ],
+      "measurement": "Executed complete existing pipeline, pinned chart checksums and seven chart lint; added synthetic Application extraction schema checked.",
+      "source_sha256": "ebeb8c94db40c4e8561108be032dfd4eba7e1288d07ec6b3d9c49943cc6be7a5"
+    },
+    {
+      "path": "docs/operations/initial-leaf-readiness.md",
+      "conditions": [
+        "P0-S3",
+        "P0-S4"
+      ],
+      "measurement": "Inspected fixed Argo fields, neutral semantics, legacy deletion safety change, non-atomic snapshot limitation and P1/T6/T7 prerequisites/failure plan.",
+      "source_sha256": "1d923732046e714bb115cc52cb43b693dd1e2e73c73be2750652d4967f84f186"
+    },
+    {
+      "path": "environments/local/workloads.yaml",
+      "conditions": [
+        "P0-S1"
+      ],
+      "measurement": "Parsed false/empty; independent local render byte-equal to base.",
+      "source_sha256": "30b9ed7c5b9b1c4e04f889e8b895c32f02250b268ff47ca2919f1d21e1757819"
+    },
+    {
+      "path": "tools/bootstrap/main.go",
+      "conditions": [
+        "P0-S3"
+      ],
+      "measurement": "515 independent synthetic binary cases, old original reproductions, finite timeout and earlier-leaf degradation; Go normal/race/vet/build.",
+      "source_sha256": "299878ff1104c0c9adeed1a27ac731f803c641e3495bf2afa21a6bc529aee676"
+    },
+    {
+      "path": "tools/bootstrap/order_configuration.go",
+      "conditions": [
+        "P0-S3"
+      ],
+      "measurement": "Three source snapshot roots separately challenged for exact expectation, same SHA Helm changes, missing/null/type/unknown, plus neutral positive cases.",
+      "source_sha256": "45ef1bd43f31706bee0ca69b8464bf4e655fd74e0ce34e269447b41235aa014f"
+    },
+    {
+      "path": "tools/bootstrap/order_configuration_test.go",
+      "conditions": [
+        "P0-S3",
+        "P0-S4"
+      ],
+      "measurement": "Inspected and executed; independent CLI adversarial fixture authored without using these tests as a substitute.",
+      "source_sha256": "ee93b5effeaf86e81bcfb15e356debe01ccff2c8a0c0360dc2601883bd5768ce"
+    },
+    {
+      "path": "tools/bootstrap/order_render_test.go",
+      "conditions": [
+        "P0-S2",
+        "P0-S4"
+      ],
+      "measurement": "Executed with actual complete Helm output, skip resolved; independently checked topology.",
+      "source_sha256": "d6b1a8fdcedbe63c317e22e23d41b7a4b5c975f47f40721ac572e09dad6ef09b"
+    },
+    {
+      "path": "tools/bootstrap/order_test.go",
+      "conditions": [
+        "P0-S3",
+        "P0-S4"
+      ],
+      "measurement": "Inspected and executed; independently remeasured legacy status-only, deletion veto, hook failures, CLI boundaries and state degradation.",
+      "source_sha256": "1f2ea96279c22b554283e3887cc243e37559c1860a49242658305806123db303"
+    }
+  ]
+}

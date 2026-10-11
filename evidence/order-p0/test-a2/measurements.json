@@ -1,0 +1,223 @@
+{
+  "document_type": "independent_test_measurements",
+  "public_alias": "order-p0-test-a2",
+  "role": "test",
+  "epoch": 1,
+  "attempt": 2,
+  "subject": {
+    "repository": "syuhei0519/platform-gitops",
+    "pr_number": 58,
+    "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+    "base_sha": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+    "target_revision": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+    "config_revision": "sha256:2307e0e0bc59910bb975ac006df55b1029aa0e210de99b8b6b757934c770b3f2",
+    "merge_group_sha": null
+  },
+  "system_revision": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+  "manifest_revision": "bc6adaedcd645a4663c23284b977a3dd36c0796d",
+  "root_tree": "566f72d09bbbd567f2ebfefdde6d353587a9d4c6",
+  "context_sha256": "17a53be660510e495be2fde174863dca46fa2a1f6afbc79731c7424000010153",
+  "config_sha256": "2307e0e0bc59910bb975ac006df55b1029aa0e210de99b8b6b757934c770b3f2",
+  "observed_at": "2026-10-11T18:33:58.994245+00:00",
+  "valid_until": "2026-10-11T19:08:48Z",
+  "policy_observed_at": "2026-10-11T18:23:48Z",
+  "policy_valid_until": "2026-10-11T19:08:48Z",
+  "invalidation": "Any head/base/source/config/target/environment change, new contradictory result or expiry invalidates application of these results. Manager refreshes operation-time policy. No policy extension. Static raw measurements remain historical evidence.",
+  "input_delivery": {
+    "canonical_exit": 0,
+    "explicit_artifacts": 74,
+    "objects": 145,
+    "bytes": 1050973,
+    "manifest_sha256": "909513cbb48bec733804b8d8ab5c684c6e1da4ae8cadc95d258c76647c0b08c5",
+    "publication_receipt_sha256": "655ffa71ac125b988795d01c7e36fae32435e720cbec4571cde63bca41fcd778",
+    "private_records_published": false,
+    "past_publication_approval": "unverified",
+    "consumer_use_approval": "approved",
+    "private_original_equivalence": "unverified"
+  },
+  "conditions": [
+    {
+      "id": "P0-S1",
+      "outcome": "passed",
+      "independent_evidence": [
+        "results/independent-render.json",
+        "results/topology.json"
+      ],
+      "observation": "Six renders and five source boundaries byte-equal. Default/local Order false; existing three Account Applications retain main."
+    },
+    {
+      "id": "P0-S2",
+      "outcome": "passed",
+      "independent_evidence": [
+        "results/independent-render.json",
+        "results/topology.json"
+      ],
+      "observation": "26 independent schema cases match; fixed synthetic two-Application topology and waves checked. Unsafe values reject; staged disabled fixed revision remains permitted by design."
+    },
+    {
+      "id": "P0-S3",
+      "outcome": "passed",
+      "independent_evidence": [
+        "results/independent-observer.json",
+        "results/original-old.json",
+        "results/original-new-binary.json"
+      ],
+      "observation": "515 newly authored CLI cases match; original R1 twelve and R2 two erroneous successes reproduced on old then all rejected on repaired binary. Neutral Helm positives and status-only legacy success separated from intentional deletion veto."
+    },
+    {
+      "id": "P0-S4",
+      "outcome": "passed",
+      "independent_evidence": [
+        "coverage.json",
+        "results/ci-tests.log",
+        "results/actual-render-tests.log",
+        "results/source-scan.json",
+        "results/render-scan.json"
+      ],
+      "observation": "All 17 files covered, existing pipeline executed, two Go modules normal/race/vet/build, four actual-render tests no remaining skip, Kubeconform57 valid, source/render fixed security gates pass with warnings8/196."
+    }
+  ],
+  "observer": {
+    "new_cases": 515,
+    "passed": 515,
+    "old_original_unexpected_successes": 14,
+    "new_binary_original_matches": 27,
+    "original_script_unmodified_sha256": "d7910d86cdfcc5ef6e68b38d41cd5ca02ae80c84af6e8b3af8a302a5d90ebe43",
+    "original_harness_render_schema_scope": "OLD checkout only; repaired render/schema measured separately",
+    "binary_sha256": "9d9f020590ffc92c11c8e6e2b9343b304f943d6f71b9a772fd854f6dfe19e922",
+    "old_binary_sha256": "1afbe03fad9c8c172f153d027da07d775ade8bbbf972fbc94711a7891302d3ed",
+    "build_vcs_modified": false
+  },
+  "existing_go": {
+    "bootstrap": {
+      "skip": 4,
+      "pass": 495
+    },
+    "scan-gate": {
+      "pass": 7
+    }
+  },
+  "render_skip_resolution": {
+    "initial_skips": 4,
+    "actual_render_passed": 4,
+    "remaining_skips": 0
+  },
+  "commands": [
+    {
+      "command": "bash ci/github/test.sh",
+      "exit": 0
+    },
+    {
+      "command": "go test -json -count=1 ./...; go test -race -count=1 ./...; go vet ./...; go build (tools/bootstrap and tools/scan-gate)",
+      "exit": 0
+    },
+    {
+      "command": "sh ci/validate.sh",
+      "exit": 0
+    },
+    {
+      "command": "actual-render four-test compiled bootstrap binary",
+      "exit": 0
+    },
+    {
+      "command": ".security/scan-gate -check-render-only .rendered",
+      "exit": 0
+    },
+    {
+      "command": "workflow pinned Kubeconform with existing infrastructure CA read-only mount",
+      "exit": 0,
+      "valid": [
+        37,
+        16,
+        4
+      ],
+      "invalid": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "command": "workflow pinned Trivy SECURITY_RENDER_REQUIRED=true sh ci/source-scan.sh with existing infrastructure CA read-only",
+      "exit": 0,
+      "warnings": [
+        8,
+        196
+      ]
+    }
+  ],
+  "argo_type_evidence": {
+    "version": "v3.5.2",
+    "resolved_commit": "e258ee23c3e52266d407572f4bcdfe7d9ed36cb5",
+    "path": "pkg/apis/application/v1alpha1/types.go",
+    "sha256": "f39d3024cb4bc7e20d0180260a8284422b6a66066870c2a8f368356d8935a3c8",
+    "verified": "tag bytes equal fixed-commit bytes; actual ComparedTo.source/destination and SyncOperationResult.source exist; no invented operation project/destination/observedGeneration"
+  },
+  "not_verified": [
+    "real Argo controller and runtime",
+    "Service",
+    "image digest/imageID",
+    "kind",
+    "P1",
+    "T6",
+    "T7",
+    "AC-1",
+    "AC-2",
+    "product AC-3",
+    "Issue integration",
+    "Manager Merge/Deployment Ready"
+  ],
+  "known_limits": [
+    "No atomic snapshot across all leaves; no cryptographic/live-controller status freshness guarantee.",
+    "Old snapshot configuration drift tested; equally correct old configuration bytes cannot establish operation-time project/destination or wall-clock freshness.",
+    "Manifest dependency bc6adae has no Order charts/local values; synthetic registration never asserts chart existence.",
+    "Default disabled CLI cannot discover enabled values; operator must align flags with approved configuration."
+  ],
+  "output_delivery": {
+    "status": "blocked",
+    "reason": "Same role/scope epoch1 delivery consumed 3 by Test1; no fourth delivery permitted. Manager explicitly confirms testing may continue privately.",
+    "prior_history": [
+      "Test1 delivery1 type rejection",
+      "Test1 delivery2 HTTP503",
+      "Test1 delivery3 success"
+    ],
+    "candidate_generated": false,
+    "published": false,
+    "post_publication_fetch": "not_performed",
+    "required_action": "Manager supplies owner-approved formal grant and append-only ledger before any delivery resumption; do not alter execution attempt/status or reset prior history."
+  },
+  "historical_statuses": {
+    "Implementation1": "completed",
+    "Implementation2": "completed",
+    "Test1": "completed",
+    "Review1": "failed"
+  },
+  "product_outcomes": [
+    {
+      "ac_id": "AC-1",
+      "outcome": "unverified"
+    },
+    {
+      "ac_id": "AC-2",
+      "outcome": "unverified"
+    },
+    {
+      "ac_id": "AC-3",
+      "outcome": "unverified"
+    }
+  ],
+  "followup": [
+    {
+      "ac_id": "AC-3",
+      "owner": "Manager coordinates M2/P1; independent Test measures real Argo/runtime acceptance.",
+      "environment": "Approved isolated kind first, then actual target only with Deployment Ready and required owner/environment approval.",
+      "method": "Use genuine B2 image digest, merged M2 revision and fixed P1 candidate, check migration/DB/Service/ArgoSyncedHealthy/runtimeimageID and AccountOrder regressions, then repeat final integrated main state.",
+      "dependencies": [
+        "B2 actual Order release",
+        "M1 disabled charts and M2 realdigest selection",
+        "P1 fixed final Manifestrevision",
+        "Authorized kind/context/Secret/PVC/rollback readiness",
+        "T7 final integrated measurement"
+      ],
+      "failure_action": "Stop affected merge/enable/deploy, retain Account data and OrderPVC, record safe failure evidence, forward-fix and independently retest."
+    }
+  ]
+}

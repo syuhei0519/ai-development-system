@@ -1,0 +1,311 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "syuhei0519/backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "test",
+  "task_id": "order-p0-test-a2",
+  "attempt": 2,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "order-p0-test-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/ea233f16b427bea3818c7e898f46267685006cb3/evidence/order-p0/test-a1/handoff.json",
+      "revision": "sha256:88ff01c25b674a0662f9accd7b3a74c43d903b33ef62377758a81a603eefac44",
+      "relationship": "retry_of"
+    },
+    {
+      "role": "implementation",
+      "task_id": "order-p0-implementation-a2",
+      "attempt": 2,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/dcd7744f66b83f5dd4c8ac5db7f06e240238a9c2/evidence/order-p0/implementation-a2/handoff.json",
+      "revision": "sha256:7633b8f9452d5a65b2537a848bbfc97024847352212cd1b30c2eaae4f49a75b2",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Independent epoch1 Test attempt2 P0-S1..S4 preparation measurement completed. Product AC1/2/3 and runtime remain unverified. Delivery resumed under separately validated epoch2 budget; original execution attempt, measurements and histories retained. This is a reviewed public derivative of the private execution handoff.",
+  "assignment": {
+    "scope": "platform-gitops#backend-app-2/P0",
+    "ac_ids": [
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "P0-S1: orderEnabled=false既定で、新Order関連Applicationを生成しない。既存3Application/namespace/AppProject/既存Account main追跡とdefault/local renderを不変に保つ。",
+      "P0-S2: 将来有効化時のOrder専用40桁Manifest revisionと独立DB→OrderのApplication定義を用意し、欠落/浮動revision/不正値をfail-closedに検証する。trueは合成render fixtureだけで、live valuesはfalse。",
+      "P0-S3: bootstrap observerのleaf/hook対象をoptionalに拡張し、disabledでは既存3Appだけ、enabledではOrder DB/Orderの欠落・進行・失敗・revision/health/migration状態を正しく扱う。未知状態を成功化せず、既存observer動作を回帰検証する。",
+      "P0-S4: 全既存関連testsと新schema/render/observer正常異常境界試験を実行し、設定とドキュメント整合、デプロイ影響noneの根拠、P1/T6/T7と必要承認/環境/失敗対応を引き渡す。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-REPORT",
+      "kind": "document",
+      "locator": "report.txt",
+      "revision": "sha256:9979384317ce44445b950c61d7267a6c516e90e9469564ca1352ecaba4d137f3",
+      "summary": "Independent result, boundaries and private delivery stop."
+    },
+    {
+      "id": "A-MEASURE",
+      "kind": "test-report",
+      "locator": "measurements.json",
+      "revision": "sha256:e9c0ba2d60c5b8de7f1b8fb1267a90c79c29897b2e2dcfa1299df1377bf9ad1c",
+      "summary": "Independent conditions, commands, subject and validity."
+    },
+    {
+      "id": "A-COVERAGE",
+      "kind": "test-report",
+      "locator": "coverage.json",
+      "revision": "sha256:77a1de7d2da07cca168fc20359c417eebcdf3e559ddcb02b8debe788685b1ea1",
+      "summary": "All17 PR difference coverage."
+    },
+    {
+      "id": "A-OBSERVER",
+      "kind": "test-report",
+      "locator": "results/independent-observer.json",
+      "revision": "sha256:280d6513a92f8e485b27b6f29ddb76aff030f456ceaeb914ea6def18f348ed74",
+      "summary": "515 independently generated synthetic CLI observations."
+    },
+    {
+      "id": "A-RENDER",
+      "kind": "test-report",
+      "locator": "results/independent-render.json",
+      "revision": "sha256:be1c74117f2e7ed5aa5301b8a21f22326990b339f97f7e329235e6af1b88b7e4",
+      "summary": "Six new-head renders, five boundaries,26 schema cases."
+    },
+    {
+      "id": "A-TOPOLOGY",
+      "kind": "test-report",
+      "locator": "results/topology.json",
+      "revision": "sha256:71e697f4a364f6247a20e8fbc520f2e762646b820fe9f05d205dba8da575058c",
+      "summary": "Independent enabled topology and disabled values checks."
+    },
+    {
+      "id": "A-OLD",
+      "kind": "test-report",
+      "locator": "results/original-old.json",
+      "revision": "sha256:7b871d03997d58161e7188b1d6f3b7582b3687910b892ae521bf59f8269b44d3",
+      "summary": "Unmodified original Review harness, old binary false positives."
+    },
+    {
+      "id": "A-NEW",
+      "kind": "test-report",
+      "locator": "results/original-new-binary.json",
+      "revision": "sha256:4ed97a7054330e12bea598f6f41546d36452af8cde5a95897706b0b25c86b8b6",
+      "summary": "Unmodified original harness, repaired binary; OLD render scope."
+    },
+    {
+      "id": "A-REPRO",
+      "kind": "other",
+      "locator": "independent.py",
+      "revision": "sha256:8a706a9eebf1ec673e5f0c56300d853c9bf84b08142474ebdf518e41638ad0d7",
+      "summary": "Independent fixture generator, fake kubectl only."
+    },
+    {
+      "id": "A-RENDER-REPRO",
+      "kind": "other",
+      "locator": "render-check.py",
+      "revision": "sha256:7240f6e2c6edcdcab27fdcef66ae8f9daf9ddd973c73285b7f7bf4cb8fcf94ab",
+      "summary": "Independent new-head render/schema measurement script."
+    },
+    {
+      "id": "A-GITHUB",
+      "kind": "other",
+      "locator": "github-observations.json",
+      "revision": "sha256:4e6ed4d7234106230257e5a83287c5a6a8c5739e0fa115e6fb00d688a4f0773e",
+      "summary": "Read-only same-head CI evidence; separate from independent Test."
+    },
+    {
+      "id": "A-SOURCE-SCAN",
+      "kind": "test-report",
+      "locator": "results/source-scan.json",
+      "revision": "sha256:d30346925abbbb006c01e293db66f2de08bcfe2e61f0cccd34755b87f7a112f5",
+      "summary": "Fixed source security gate and retained warnings."
+    },
+    {
+      "id": "A-RENDER-SCAN",
+      "kind": "test-report",
+      "locator": "results/render-scan.json",
+      "revision": "sha256:84ebb72a2b1431a76a64c05229a3c931feeea70386d7ee8bae0fdce85d39e63f",
+      "summary": "Fixed render security gate and retained warnings."
+    },
+    {
+      "id": "A-CONTEXT",
+      "kind": "other",
+      "locator": "context.json",
+      "revision": "sha256:17a53be660510e495be2fde174863dca46fa2a1f6afbc79731c7424000010153",
+      "summary": "Unchanged Manager context bytes; not a readiness result."
+    },
+    {
+      "id": "A-CONFIG",
+      "kind": "other",
+      "locator": "config.json",
+      "revision": "sha256:2307e0e0bc59910bb975ac006df55b1029aa0e210de99b8b6b757934c770b3f2",
+      "summary": "Unchanged Manager config bytes."
+    },
+    {
+      "id": "A-KNOWLEDGE",
+      "kind": "knowledge",
+      "locator": "knowledge-candidates.json",
+      "revision": "sha256:74ad8a5d4e74c796896a5060f19ee330c7d4238c5c3668c80db4bd0e2c101204",
+      "summary": "Pending candidates only; no dispatch/adoption."
+    },
+    {
+      "id": "A-FIXED",
+      "kind": "test-report",
+      "locator": "results/artifact-verification.json",
+      "revision": "sha256:a656caab6d1f5e11335ccfc5b1adea4a1895cde82f1955466f5421457b4e7100",
+      "summary": "Four expected fixed raw artifact checks."
+    },
+    {
+      "id": "A-TESTS",
+      "kind": "test-report",
+      "locator": "test-results.json",
+      "revision": "sha256:36141a015e0969b22c70ef2e39b26e25b2c7ed7b6a56ace0092d30d096a2d4a7",
+      "summary": "Mechanically extracted named existing test results; no rerun."
+    },
+    {
+      "id": "A-ARGO",
+      "kind": "other",
+      "locator": "argocd-v3.5.2-types.go",
+      "revision": "sha256:f39d3024cb4bc7e20d0180260a8284422b6a66066870c2a8f368356d8935a3c8",
+      "summary": "Exact fixed Argo type source bytes used during execution."
+    },
+    {
+      "id": "A-SAFETY",
+      "kind": "other",
+      "locator": "publication-safety.json",
+      "revision": "sha256:a35f82c2629b9780beaaa3bb2f6eba227b63461015622e0fd10903e73b86b533",
+      "summary": "Public content review scope and excluded private records."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-INDEPENDENT",
+      "claim": "P0-S1..S4 assigned preparation tests passed independently on the repaired fixed subject.",
+      "artifact_ids": [
+        "A-MEASURE",
+        "A-COVERAGE",
+        "A-OBSERVER",
+        "A-RENDER",
+        "A-TOPOLOGY",
+        "A-OLD",
+        "A-NEW",
+        "A-REPORT"
+      ],
+      "locator": "measurements.json",
+      "observation": "515 new CLI cases,26 schema cases,6 renders/5 boundaries; original14 false positives reproduced old/rejected new; all required existing gates passed. Product outcomes unverified."
+    },
+    {
+      "id": "E-SAFETY",
+      "claim": "Source/render gates and same-head CI separately observed.",
+      "artifact_ids": [
+        "A-SOURCE-SCAN",
+        "A-RENDER-SCAN",
+        "A-GITHUB"
+      ],
+      "locator": "measurements.json",
+      "observation": "Fixed local security gates pass with warnings8/196; remote ci-result success independently recorded, no replacement of Test."
+    },
+    {
+      "id": "E-DELIVERY",
+      "claim": "Execution retained privately; new delivery blocked without altering historical budgets or execution status.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE"
+      ],
+      "locator": "report.txt",
+      "observation": "Manager confirmed Test1 delivery3 success exhausts epoch1 delivery budget; no fourth attempt, candidate or publication."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "unverified",
+      "scope": "Outside assigned preparation Test; product unverified.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "unverified",
+      "scope": "Outside assigned preparation Test; product unverified.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "covered",
+      "scope": "Assigned P0 preparation independent Test only; product AC-3 remains unverified.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE"
+      ],
+      "evidence_ids": [
+        "E-INDEPENDENT"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [
+    {
+      "id": "K-independent-sourcepin-split",
+      "domain": "gitops-test-provenance",
+      "summary": "A historical reproduction script pinned to an old source checkout can validate a new binary only for binary behavior; remeasure render/schema on the new checkout separately.",
+      "evidence_ids": [
+        "E-INDEPENDENT"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "approved_public"
+    },
+    {
+      "id": "K-neutral-snapshot-boundaries",
+      "domain": "gitops-observer-contract",
+      "summary": "Snapshot tests should use fields actually present in the pinned Argo version and distinguish known neutral Helm values from missing required configuration.",
+      "evidence_ids": [
+        "E-INDEPENDENT"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "approved_public"
+    },
+    {
+      "id": "K-render-ci-wiring",
+      "domain": "gitops-validation-boundaries",
+      "summary": "A preparation-only GitOps change needs its enabled synthetic topology checked in the actual render job while default desired resources stay disabled.",
+      "evidence_ids": [
+        "E-INDEPENDENT"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "approved_public"
+    }
+  ],
+  "publication": "public_safe"
+}

@@ -1,0 +1,20 @@
+{
+  "document_type": "publication_safety_review",
+  "public_alias": "order-p0-test-a2",
+  "reviewed_at": "2026-10-11T18:38:25.729842+00:00",
+  "scope": "New public derivative and unchanged public-source/synthetic measurement artifacts only. Original private execution and renewal records remain private.",
+  "excluded": [
+    "authorization",
+    "Consumption Receipt",
+    "renewal history/grant",
+    "actual task/thread/message identifiers",
+    "credentials",
+    "private conversations",
+    "internal execution logs",
+    "private-original hashes"
+  ],
+  "review": "Manually inspected new report/handoff/candidate metadata, scripts, context/config, structured summaries and all synthetic output categories; no real cluster data. Fixed upstream public payload already canonically consumed and not rewritten. Script stdout is synthetic fixture data only.",
+  "authorization_basis": "Owner approved safe same-purpose reports and synthetic data publication on dedicated System evidence branches; Manager authorized delivery continuation only after pinned retry validation.",
+  "representations": "Reviewed new Handoff/report/Knowledge source-pointer/test-summary derivatives are distinguished from original fixed public sources and unchanged synthetic measurements. No private-original equivalence claim.",
+  "limits": "No source truth or product acceptance is inferred from schema/hash/publication; Consumer approval remains separate."
+}

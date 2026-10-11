@@ -1,0 +1,78 @@
+{
+  "document_type": "github_readonly_observation",
+  "observed_at": "2026-10-11T18:26:54.798371+00:00",
+  "time_precision": "checks response file write completion",
+  "head": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+  "base": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+  "draft": true,
+  "state": "open",
+  "merged": false,
+  "auto_merge": null,
+  "checks": [
+    {
+      "name": "ci-result",
+      "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "conclusion": "success",
+      "started_at": "2026-10-11T18:17:06Z",
+      "completed_at": "2026-10-11T18:17:09Z",
+      "url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38163066806/job/114540127044"
+    },
+    {
+      "name": "ci-result",
+      "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "conclusion": "success",
+      "started_at": "2026-10-11T18:17:03Z",
+      "completed_at": "2026-10-11T18:17:06Z",
+      "url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38163063839/job/114540119892"
+    },
+    {
+      "name": "docs",
+      "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "conclusion": "skipped",
+      "started_at": "2026-10-11T18:15:48Z",
+      "completed_at": "2026-10-11T18:15:48Z",
+      "url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38163066806/job/114539869556"
+    },
+    {
+      "name": "validate",
+      "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "conclusion": "success",
+      "started_at": "2026-10-11T18:15:50Z",
+      "completed_at": "2026-10-11T18:17:04Z",
+      "url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38163066806/job/114539868648"
+    },
+    {
+      "name": "docs",
+      "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "conclusion": "skipped",
+      "started_at": "2026-10-11T18:15:46Z",
+      "completed_at": "2026-10-11T18:15:45Z",
+      "url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38163063839/job/114539860397"
+    },
+    {
+      "name": "validate",
+      "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "conclusion": "success",
+      "started_at": "2026-10-11T18:15:47Z",
+      "completed_at": "2026-10-11T18:17:01Z",
+      "url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38163063839/job/114539859361"
+    },
+    {
+      "name": "classify",
+      "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "conclusion": "success",
+      "started_at": "2026-10-11T18:15:45Z",
+      "completed_at": "2026-10-11T18:15:48Z",
+      "url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38163066806/job/114539851557"
+    },
+    {
+      "name": "classify",
+      "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "conclusion": "success",
+      "started_at": "2026-10-11T18:15:42Z",
+      "completed_at": "2026-10-11T18:15:45Z",
+      "url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38163063839/job/114539842492"
+    }
+  ],
+  "independent_test_substitute": false
+}

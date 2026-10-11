@@ -1,0 +1,30 @@
+{
+  "document_type": "knowledge_candidates",
+  "publication_status": "pending_manager_review",
+  "candidates": [
+    {
+      "id": "K-independent-sourcepin-split",
+      "domain": "gitops-test-provenance",
+      "summary": "A historical reproduction script pinned to an old source checkout can validate a new binary only for binary behavior; remeasure render/schema on the new checkout separately.",
+      "evidence": "Original unmodified harness reproduced 14 old false positives then 27 matches on repaired binary, while all six new-head renders were independently compared.",
+      "source": "https://github.com/syuhei0519/platform-gitops/tree/5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e/tools/bootstrap",
+      "scope": "Synthetic P0 observer/configuration tests; does not establish live runtime readiness."
+    },
+    {
+      "id": "K-neutral-snapshot-boundaries",
+      "domain": "gitops-observer-contract",
+      "summary": "Snapshot tests should use fields actually present in the pinned Argo version and distinguish known neutral Helm values from missing required configuration.",
+      "evidence": "515 independently generated CLI cases include three source snapshots, neutral positives, status-only legacy success and deleting-leaf rejection; v3.5.2 source types checked at fixed commit.",
+      "source": "https://github.com/syuhei0519/platform-gitops/tree/5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e/charts/workloads",
+      "scope": "P0 preparation only; no atomic/live status freshness or product AC inference."
+    },
+    {
+      "id": "K-render-ci-wiring",
+      "domain": "gitops-validation-boundaries",
+      "summary": "A preparation-only GitOps change needs its enabled synthetic topology checked in the actual render job while default desired resources stay disabled.",
+      "evidence": "All17 changes inspected; workflow render job includes Order contract; independent six renders unchanged and synthetic topology validated without cluster operations.",
+      "source": "https://github.com/syuhei0519/platform-gitops/tree/5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e/.github/workflows",
+      "scope": "P0 CI wiring and synthetic preparation tests only; remote CI is separate from independent Test and runtime acceptance."
+    }
+  ]
+}
