@@ -3,15 +3,18 @@
 import sys
 from jsonschema import Draft202012Validator
 try:
-    from .consume_delivery import ROOT, parse, schema, digest, require
+    from .consume_delivery import ROOT, parse, schema, digest, require, verify_handoffs
+    from .prepare_knowledge_fixture import fixture_manifest
 except ImportError:
-    from consume_delivery import ROOT, parse, schema, digest, require
+    from consume_delivery import ROOT, parse, schema, digest, require, verify_handoffs
+    from prepare_knowledge_fixture import fixture_manifest
 
 
 def main():
     try:
         for name in ('artifact-delivery','delivery-authorization','publication-receipt','consumption-receipt'):
-            Draft202012Validator.check_schema(parse((ROOT/f'contracts/{name}.schema.json').read_bytes()))
+            for suffix in ('', '-v1.1'):
+                Draft202012Validator.check_schema(parse((ROOT/f'contracts/{name}{suffix}.schema.json').read_bytes()))
         for name in ('synthetic','research-public'):
             raw=(ROOT/f'examples/delivery/{name}.manifest.json').read_bytes()
             data=parse(raw);schema('artifact-delivery',data)
@@ -25,6 +28,13 @@ def main():
                     schema('delivery-authorization',auth)
                     require(auth['manifest_sha256']==digest(raw) and auth['publication_receipt_sha256']==digest(pub),
                             'authorization sample binding mismatch')
+        fixture = fixture_manifest('example/repo', 'a' * 40)
+        blobs = {(a['reference']['repository'], a['reference']['commit'], a['reference']['path']):
+                 (ROOT / a['reference']['path']).read_bytes() for a in fixture['artifacts']}
+        verify_handoffs(fixture['artifacts'], blobs, '1.1', fixture['knowledge_bindings'])
+        template = parse((ROOT / 'examples/knowledge-delivery/authorization.template.json').read_bytes())
+        schema('delivery-authorization', template)
+        require(template['consumer_use_approval'] == 'pending', 'template must not grant approval')
         print('PASS: delivery schemas and sample bindings only; no live approval certified')
         return 0
     except (OSError,ValueError):

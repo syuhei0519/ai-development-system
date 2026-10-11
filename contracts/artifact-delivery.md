@@ -139,3 +139,72 @@ python scripts/validate_retry.py --previous prior.json --candidate next.json \
 
 CLI の台帳/receipt は自己申告を暗号学的な署名に変えない。Manager の信頼された最新状態と
 承認経路が必須である。Public repo には架空台帳だけを置く。
+
+## Knowledge typed delivery v1.1 (Phase1-3 P-A)
+
+v1.0 の schema ファイルと正常系は維持する。v1.1 は `*-v1.1.schema.json` を
+明示選択し、manifest / authorization / Publication Receipt / Consumption Receipt の
+`schema_version` をすべて `1.1` に揃える。CLI は未知版・混在版を拒否する。
+旧v1.0 schemaは新formatを拒否し、バージョン番号だけの変更で新型を通さない。
+Handoff v2.0 / Knowledge v1.0 / Readiness v1.0 本体に追加fieldはない。
+
+| format | document_type | 本体schema_version | role |
+| --- | --- | --- | --- |
+| knowledge-input-v1 | knowledge_input | 1.0 | knowledge |
+| knowledge-handoff-v1 | knowledge_handoff | 1.0 | knowledge |
+| knowledge-context-v1 | knowledge_context | 1.0 | なし（追加不可） |
+
+新formatでは厳格JSON解析後、上表の完全一致、既存Knowledge schemaと意味validatorを検査する。
+v1.1のgeneric JSONは `raw_findings / knowledge_references / retry_of`、`role=knowledge`、
+`knowledge`で始まるdocument_typeをトップレベル予約とする。型欠損や未知Knowledge型を
+汎用json/text/Handoffとして通さない。型別schemaの追加field禁止により複数identityも拒否する。
+既存Handoff予約fieldと厳格JSON/path/Git防御は維持する。v1.1では汎用JSONを含めトップレベルの
+`publication=private_only`も拒否する。任意のprose/埋込みJSONの意味や公開安全性を検証したとはしない。
+v1.0のgeneric context配送は旧保証のままであり、新Knowledge binding検証の成功とは呼ばない。
+
+### 外側binding
+
+v1.1 manifestは `knowledge_bindings` 配列（最大128件、Knowledgeなしなら空）を必須とする。
+各要素は `input` と任意の `handoff` を持ち、どちらもmanifest内artifactと完全一致する
+`repository / commit / path / size / sha256` referenceを使用する。
+これは入力のdigestを外側で固定する契約であり、元のKnowledge本体を書き換えてfieldを追加しない。
+
+- 入力配送だけなら `input` のみ。結果配送には元入力と `input` / `handoff` の対が必要。
+  すべてのtyped input/handoffをちょうど一つのbindingで覆う。孤立handoff、重複binding、
+  同じdocument_type/task_idを別pathに複製したidentityは拒否する。
+- 対の `assignment / raw_findings / knowledge_references / task_id / attempt / retry_of` は
+  全構造で完全一致する（配列順序も維持）。statusやdecisionsを入力から推測しない。
+- `completed` は全findingに一つの根拠付き判断を要求する。採用記事はknowledge種別artifactで
+  非空のtext実体が必要。deferred/rejectedも正当な判断。blocked/failedの未完判断を
+  completedへ変換しない。元入力との一致・参照実体検査はblocked/failedにも実行する。
+- 全raw findingのsources、全knowledge referenceの記事とsources、全handoff artifacts、
+  retry_of先をmanifest内の実体へ解決する。contextは単独配送できるが、全記事とsource実体が必要。
+  context本体もmanifestのsize/hashで固定する。知識記事は非空text（通常Markdown）。
+- 各locatorは**そのKnowledge文書の親ディレクトリ基準の安全な相対path**、revisionは
+  `sha256:<全raw bytesのdigest>`。同じrepository/commit内のmanifest entryを要求する。
+  URL、浮動revision、自由な説明文字列、未収録実体、digest不一致を拒否する。
+  外部資料は事前承認されたsnapshotをbundleに含める。公開派生版は新しいbytesとして別審査し、
+  原本と同一と主張しない。既存Knowledge文書のURLを無断で別pathへ書き換えない。
+- inputとhandoffを別repo/commitから収録することは可能だが、各文書が指す依存実体を
+  **それぞれのsnapshot**に含め、全digestを一致させる。retry先はKnowledge handoff型、
+  task_id/attempt/assignment一致、直前attempt、別task_idを要求し、元入力もbundleに含める。
+- `issue_refs[].source` と `evidence[].locator` は説明・来歴であり存在証明ではない。
+  機械検査の根拠はraw findingの固定sources、evidenceのartifact_idsとraw_finding_ids、
+  対応する全実体。prose locatorから追加取得や命令実行をしない。
+
+Consumption Receipt v1.1 のverificationは
+`full-raw-bytes-size-sha256-json-handoff-knowledge-bindings`。manifest digestが外側bindingも固定する。
+receiptは依然 `authority_granted=false`。承認pin、consumer/scope/purpose/期限/representationの
+制約と再取得検査は変えない。既存のCLI引数で利用し、新型専用の承認迂回flagはない。
+
+### 保証の境界と再現
+
+参照内容はデータ・引用であり、Agentへの指示や実行コードとして扱わない。
+sourceの真実性、記事本文とcontextの適用条件等の意味的一致、公開安全性、採用の適切さは
+機械的bytes照合とは別のレビュー対象。記事/indexからcontextを生成する機能はP-Cであり未実装。
+P-B inbox/state/cursor/replay、P-C context生成/ack/periodic、P-D 実Knowledge/Consumer実証を
+実装・起動したとはしない。Delivery成功はReadiness成功・Issue AC合格・非同期/周期運用成功を意味しない。
+
+公開済みsynthetic fixtureを固定Gitから再取得する手順は
+[Knowledge配送fixture](../examples/knowledge-delivery/README.md)。unit testsはnetwork不要、
+実Gitの再現は独立した検証であり、Implementationの自己検証を独立Test/Reviewとして数えない。

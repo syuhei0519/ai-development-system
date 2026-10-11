@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0",
+  "document_type": "knowledge_handoff",
+  "role": "knowledge",
+  "task_id": "SYNTHETIC-KNOWLEDGE-TASK-1",
+  "attempt": 1,
+  "assignment": {
+    "scope": "synthetic sample: compare two fictional raw findings and document a reusable test-plan lesson.",
+    "completion_criteria": [
+      "Record a supported adoption/defer/reject decision for each supplied finding."
+    ]
+  },
+  "raw_findings": [
+    {
+      "id": "SYNTHETIC-RAW-1",
+      "domain": "validation",
+      "observation": "synthetic sample: fictional design 1 separates an empty-string case from a whitespace-only case.",
+      "sources": [
+        {
+          "locator": "source-1.md",
+          "revision": "sha256:63e7f46bea8e25dddc6016e99a5234895f58b6f25c6fe3a8fc9981117d3cce3f"
+        }
+      ],
+      "issue_refs": [
+        {
+          "id": "SYNTHETIC-ISSUE-1",
+          "source": "https://example.invalid/synthetic/issues/1"
+        }
+      ]
+    },
+    {
+      "id": "SYNTHETIC-RAW-2",
+      "domain": "validation",
+      "observation": "synthetic sample: fictional design 2 separates an empty-string case from a whitespace-only case.",
+      "sources": [
+        {
+          "locator": "source-2.md",
+          "revision": "sha256:7455b6565f9ac4801a6aa19dc5923c81889f743e76d7a001b237c73fe5717b39"
+        }
+      ],
+      "issue_refs": [
+        {
+          "id": "SYNTHETIC-ISSUE-2",
+          "source": "https://example.invalid/synthetic/issues/2"
+        }
+      ]
+    }
+  ],
+  "knowledge_references": [
+    {
+      "id": "SYNTHETIC-ARTICLE-1",
+      "locator": "article.md",
+      "revision": "sha256:4252b7f4d71cede5e78b9e540b0e9440c4cdaa6e36ca5afdc9374f4978e3fb72",
+      "applicability": "synthetic sample: test-plan reviews for string fields requiring a non-whitespace character.",
+      "exceptions": [
+        "synthetic sample: Unicode/runtime behavior requires separate verification."
+      ],
+      "sources": [
+        {
+          "locator": "source-1.md",
+          "revision": "sha256:63e7f46bea8e25dddc6016e99a5234895f58b6f25c6fe3a8fc9981117d3cce3f"
+        },
+        {
+          "locator": "source-2.md",
+          "revision": "sha256:7455b6565f9ac4801a6aa19dc5923c81889f743e76d7a001b237c73fe5717b39"
+        }
+      ],
+      "lifecycle": "draft",
+      "review_trigger": "synthetic sample: re-evaluate before using a different runtime or promoting to active."
+    }
+  ],
+  "publication": "synthetic_sample",
+  "retry_of": [],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "synthetic sample: fictional cross-Issue curation; no actual task execution.",
+  "artifacts": [
+    {
+      "id": "SYNTHETIC-KNOWLEDGE-ARTIFACT",
+      "kind": "knowledge",
+      "locator": "article.md",
+      "revision": "sha256:4252b7f4d71cede5e78b9e540b0e9440c4cdaa6e36ca5afdc9374f4978e3fb72",
+      "summary": "synthetic sample: draft reusable lesson from two fictional sources."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "SYNTHETIC-KNOWLEDGE-EVIDENCE",
+      "claim": "synthetic sample: both supplied fictional findings distinguish empty from whitespace-only cases.",
+      "artifact_ids": [
+        "SYNTHETIC-KNOWLEDGE-ARTIFACT"
+      ],
+      "raw_finding_ids": [
+        "SYNTHETIC-RAW-1",
+        "SYNTHETIC-RAW-2"
+      ],
+      "locator": "article.md",
+      "observation": "Fictional comparison only. No actual product behavior is certified."
+    }
+  ],
+  "decisions": [
+    {
+      "raw_finding_ids": [
+        "SYNTHETIC-RAW-1",
+        "SYNTHETIC-RAW-2"
+      ],
+      "outcome": "adopted",
+      "reason": "synthetic sample: generalize only to test-plan review within the documented applicability.",
+      "evidence_ids": [
+        "SYNTHETIC-KNOWLEDGE-EVIDENCE"
+      ],
+      "article_artifact_ids": [
+        "SYNTHETIC-KNOWLEDGE-ARTIFACT"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": []
+}

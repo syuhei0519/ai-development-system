@@ -32,6 +32,9 @@ jobs:
           examples/knowledge/input.json
           examples/knowledge/handoff.json
           examples/knowledge/context.json
+          examples/knowledge-delivery/input.json
+          examples/knowledge-delivery/handoff.json
+          examples/knowledge-delivery/context.json
       - run: >-
           python scripts/validate_readiness.py
           examples/readiness/pr-ready-issue-unverified.json
