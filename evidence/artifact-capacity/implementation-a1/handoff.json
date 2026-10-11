@@ -1,0 +1,205 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "ai-development-system/artifact-capacity",
+    "source": "https://github.com/syuhei0519/ai-development-system",
+    "title": "Bounded Artifact Delivery Capacity",
+    "acceptance_criteria": [
+      {
+        "id": "AC-C1",
+        "verbatim": "原本bytes・全Handoff依存closure・表現区分・承認分離を維持し、少なくとも現在128件のbundleに後続工程の成果物を追加して正規Consumerで検証できる。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-C2",
+        "verbatim": "新上限は有限256件を基本案とし、1file16MiB/全体64MiB/tree深度・件数・実体上限/型・slot・SHA・size・固定commit/JSON/Handoff/利用承認の既存fail-closedを緩めない。legacy版互換を明示し、maxItems単純変更がversion互換上不適切なら最小の版追加を比較して理由を記録。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-C3",
+        "verbatim": "128既存/129/256正常、257拒否、総bytes超過/欠落closure/重複/改変/誤型/認可不一致を検証。JSON schemaとCLI/receipt上限が矛盾しない。既存全テスト成功、新規回帰追加。実ネットワークや公開本物bundleを必須にせず公開可能syntheticで境界を再現。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-C4",
+        "verbatim": "README/契約/テンプレート/必要workflowに容量と運用上の注意を整合記載。試行上限は変更しない。System PRのCIと独立Review前はmergeしない。既存の配送成果物を上書きしない。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      }
+    ]
+  },
+  "role": "implementation",
+  "task_id": "PUBLIC-SYSTEM-ARTIFACT-CAPACITY-IMPLEMENTATION-E1-A1",
+  "attempt": 1,
+  "upstream": [],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Bounded opt-in Delivery 1.3 implemented and self-tested; Draft PR #9. Independent Test/Review and integration remain pending.",
+  "artifacts": [
+    {
+      "id": "artifact-delivery-v1.3.schema",
+      "kind": "document",
+      "locator": "artifact-delivery-v1.3.schema.json",
+      "revision": "sha256:ca7f1a27e9e65b8d1ad85be189edfd2e67dccc307a01680d14f0b27f6689c942",
+      "summary": "Public System capacity implementation evidence; candidate schemas are review data only."
+    },
+    {
+      "id": "blocker-metadata",
+      "kind": "document",
+      "locator": "blocker-metadata.json",
+      "revision": "sha256:cd67d6031852b8fba09f8094cfd57915f1dc166d01de406068953078871f681e",
+      "summary": "Public System capacity implementation evidence; candidate schemas are review data only."
+    },
+    {
+      "id": "candidate-profile",
+      "kind": "document",
+      "locator": "candidate-profile.json",
+      "revision": "sha256:d302414c9f5421c13a8ac28019284169418aeec287a7fdbd03392c38e32bb5af",
+      "summary": "Public System capacity implementation evidence; candidate schemas are review data only."
+    },
+    {
+      "id": "ci-observation",
+      "kind": "document",
+      "locator": "ci-observation.json",
+      "revision": "sha256:31bfcfc310eda33e065200a6fc36f025953c02f3ae7d045d21b14534728a1659",
+      "summary": "Public System capacity implementation evidence; candidate schemas are review data only."
+    },
+    {
+      "id": "consumption-receipt-v1.3.schema",
+      "kind": "document",
+      "locator": "consumption-receipt-v1.3.schema.json",
+      "revision": "sha256:7e8f84bc368b7256923970e0dc001e5042a624bf85c9ca5115fea927778f7934",
+      "summary": "Public System capacity implementation evidence; candidate schemas are review data only."
+    },
+    {
+      "id": "delivery-authorization-v1.3.schema",
+      "kind": "document",
+      "locator": "delivery-authorization-v1.3.schema.json",
+      "revision": "sha256:3c483bf1c0c6f001ea79e7eae88cb35ce69e77c80ecbc5839bd68ced64d0bef6",
+      "summary": "Public System capacity implementation evidence; candidate schemas are review data only."
+    },
+    {
+      "id": "implementation-report",
+      "kind": "document",
+      "locator": "implementation-report.md",
+      "revision": "sha256:b970f3758b2ac74036508350bbd76585df8655281d6b44a0b3b55cb18ebccd00",
+      "summary": "Public System capacity implementation evidence; candidate schemas are review data only."
+    },
+    {
+      "id": "implementation",
+      "kind": "patch",
+      "locator": "implementation.patch",
+      "revision": "sha256:a9b9b91891809d0181c1b66eb7e2fa614d5bd863be7f9fae521987c215d6c1b3",
+      "summary": "Public System capacity implementation evidence; candidate schemas are review data only."
+    },
+    {
+      "id": "publication-receipt-v1.3.schema",
+      "kind": "document",
+      "locator": "publication-receipt-v1.3.schema.json",
+      "revision": "sha256:70df0c82bf604c0947f01e20dd87054c4aa9ff9c22d906c2df23d0b0c1b9b70f",
+      "summary": "Public System capacity implementation evidence; candidate schemas are review data only."
+    },
+    {
+      "id": "test-results",
+      "kind": "test-report",
+      "locator": "test-results.json",
+      "revision": "sha256:3145ddbeb00d88d203472e3ea816eb763d4667cb0ffad6f749025df202d861ea",
+      "summary": "Public System capacity implementation evidence; candidate schemas are review data only."
+    },
+    {
+      "id": "implementation-commit",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/ai-development-system/commit/4e38376404d9486daae93829735f11166a01e062",
+      "revision": "4e38376404d9486daae93829735f11166a01e062",
+      "summary": "Exact implementation commit; raw commit existence alone does not verify source behavior. See complete patch and tests."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "implementation-checks",
+      "claim": "Assigned implementation and self-verification completed for all four ACs.",
+      "artifact_ids": [
+        "implementation",
+        "implementation-report",
+        "test-results",
+        "candidate-profile",
+        "blocker-metadata"
+      ],
+      "locator": "test-results.json",
+      "observation": "356 tests / 92.409s, exit 0; eight additional CI commands exit 0. Both same-head CI runs succeeded; independent Review/merge are separate gates."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-C1",
+      "disposition": "covered",
+      "scope": "system-artifact-capacity Implementation only; no independent Review or final Issue acceptance.",
+      "artifact_ids": [
+        "implementation",
+        "implementation-report",
+        "test-results",
+        "candidate-profile"
+      ],
+      "evidence_ids": [
+        "implementation-checks"
+      ]
+    },
+    {
+      "ac_id": "AC-C2",
+      "disposition": "covered",
+      "scope": "system-artifact-capacity Implementation only; no independent Review or final Issue acceptance.",
+      "artifact_ids": [
+        "implementation",
+        "implementation-report",
+        "test-results",
+        "candidate-profile"
+      ],
+      "evidence_ids": [
+        "implementation-checks"
+      ]
+    },
+    {
+      "ac_id": "AC-C3",
+      "disposition": "covered",
+      "scope": "system-artifact-capacity Implementation only; no independent Review or final Issue acceptance.",
+      "artifact_ids": [
+        "implementation",
+        "implementation-report",
+        "test-results",
+        "candidate-profile"
+      ],
+      "evidence_ids": [
+        "implementation-checks"
+      ]
+    },
+    {
+      "ac_id": "AC-C4",
+      "disposition": "covered",
+      "scope": "system-artifact-capacity Implementation only; no independent Review or final Issue acceptance.",
+      "artifact_ids": [
+        "implementation",
+        "implementation-report",
+        "test-results",
+        "candidate-profile"
+      ],
+      "evidence_ids": [
+        "implementation-checks"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe",
+  "assignment": {
+    "scope": "system-artifact-capacity",
+    "ac_ids": [
+      "AC-C1",
+      "AC-C2",
+      "AC-C3",
+      "AC-C4"
+    ],
+    "completion_criteria": [
+      "Implement and self-verify assigned AC-C1..AC-C4 at fixed base in a feature branch, deliver Handoff 2.0, rationale, measured tests, compatibility, risks, Draft PR/exact head and a small safe canonical delivery bundle; retain independent CI/Review and all existing retry/approval boundaries."
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "document_type": "system_artifact_capacity_candidate_profile",
+  "profile": "Delivery 1.3",
+  "profile_status": "candidate_pending_independent_review_and_merge",
+  "implementation_commit": "4e38376404d9486daae93829735f11166a01e062",
+  "transport_profile": "Delivery 1.2",
+  "transport_trust_root": {
+    "repository": "syuhei0519/ai-development-system",
+    "commit": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+    "consumer": "scripts/consume_delivery.py"
+  },
+  "schema_documents": [
+    {
+      "path": "artifact-delivery-v1.3.schema.json",
+      "source_path": "contracts/artifact-delivery-v1.3.schema.json",
+      "sha256": "ca7f1a27e9e65b8d1ad85be189edfd2e67dccc307a01680d14f0b27f6689c942",
+      "size": 30892
+    },
+    {
+      "path": "consumption-receipt-v1.3.schema.json",
+      "source_path": "contracts/consumption-receipt-v1.3.schema.json",
+      "sha256": "7e8f84bc368b7256923970e0dc001e5042a624bf85c9ca5115fea927778f7934",
+      "size": 29207
+    },
+    {
+      "path": "delivery-authorization-v1.3.schema.json",
+      "source_path": "contracts/delivery-authorization-v1.3.schema.json",
+      "sha256": "3c483bf1c0c6f001ea79e7eae88cb35ce69e77c80ecbc5839bd68ced64d0bef6",
+      "size": 2353
+    },
+    {
+      "path": "publication-receipt-v1.3.schema.json",
+      "source_path": "contracts/publication-receipt-v1.3.schema.json",
+      "sha256": "70df0c82bf604c0947f01e20dd87054c4aa9ff9c22d906c2df23d0b0c1b9b70f",
+      "size": 7423
+    }
+  ],
+  "interpretation": "Generic JSON review artifacts whose full bytes are verified by known canonical Delivery 1.2. Do not load candidate schemas or candidate Consumer as transport authority. Semantic 1.3 self-tests use candidate code separately and are not independent acceptance."
+}
