@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "document_type": "independent_test_summary",
+  "role": "test",
+  "attempt": 2,
+  "status": "failed",
+  "head": "50cf6aa52f64c45961a354281169064cd2c75e20",
+  "base": "b1e606544174481b7b6904f811e857f80978c287",
+  "before": "29b87fd1014c66c0368e4aad231846b17b53707b",
+  "observed_at": "2026-10-11T05:00:19.599655+00:00",
+  "input_delivery": {
+    "consumer_cli": "Unchanged scripts/consume_delivery.py, byte-identical to fixed base",
+    "consumer_cli_sha256": "7dcc60c05ab4174caadb00e86dded394caf118cd9918cd188805e42ec2cd5411",
+    "files": 28,
+    "bytes": 393632,
+    "records_commit": "40aaab3845dfa55730b29e740c87e42c652a1111",
+    "payload_commit": "2857e3d5388308e173e98756748c17bf85b6ff09",
+    "manifest_sha256": "82377169122491fe4b72d5d81659f88bcc1862fabd548d01b77d5b3c4ce99258",
+    "result": "PASS full raw bytes, format/size/hash, Handoff dependencies and retry closure. Consumer authorization/pin/receipt private. Prior status/attempt/bytes unchanged. Public derivatives do not establish independent access to producer private originals."
+  },
+  "tests": [
+    {
+      "name": "unchanged-prior-before",
+      "tests": 21,
+      "passed": 17,
+      "failures": 3,
+      "errors": 1,
+      "expected": true,
+      "head": "29b87fd1014c66c0368e4aad231846b17b53707b"
+    },
+    {
+      "name": "unchanged-prior-after",
+      "tests": 21,
+      "passed": 21,
+      "failures": 0,
+      "errors": 0,
+      "head": "50cf6aa52f64c45961a354281169064cd2c75e20"
+    },
+    {
+      "name": "head-regression",
+      "tests": 178,
+      "passed": 178,
+      "failures": 0,
+      "errors": 0,
+      "head": "50cf6aa52f64c45961a354281169064cd2c75e20"
+    },
+    {
+      "name": "base-regression",
+      "tests": 128,
+      "passed": 128,
+      "failures": 0,
+      "errors": 0,
+      "head": "b1e606544174481b7b6904f811e857f80978c287"
+    },
+    {
+      "name": "extra-independent",
+      "tests": 15,
+      "passed": 14,
+      "failures": 1,
+      "errors": 0,
+      "failing_case": "Extra.test_documented_pb_scope_is_consistent"
+    }
+  ],
+  "schema_cli": "Six workflow validator commands plus collector Knowledge examples pass; 19 schemas validate and equal pre-repair bytes; 14 base schemas and all base test files byte-identical.",
+  "additional_coverage": [
+    "F1 source membership removal/readdition/rename; overlap rejection and history retention",
+    "F2 raw/stage/snapshot process exit and file/directory fsync, link and rename exception recovery; inode/bytes/modes; legacy-corrupt fail-closed",
+    "F3 regular blob/symlink/gitlink at three levels and leaf/child/deep boundaries; same-prefix and missing path",
+    "CAS/writer/scope rejection before transform; partial source transaction rollback; same-process and real-process lock checks",
+    "dispatch_unknown/expired lease, invalid transition, durable pending delivery, 3 delivery failures, receipt renewal rejection",
+    "complete fixed committed output re-fetch after restart, missing/floating/truncated commit rejection, context binding",
+    "public observation closed counts, poisoned bytes not exposed, no process or network calls for in-memory scan/plan"
+  ],
+  "limitations": [
+    "Synthetic/local process fault injection plus real HTTPS Git reading; no physical power-cut testing, NFS or hostile local writer guarantee.",
+    "Legacy already-corrupt final objects require explicit Manager repair; actual manual repair not executed.",
+    "No P-C/P-D, real Knowledge Agent/consumer operations, periodic scheduling, product execution or product AC achievement.",
+    "No independent Review, Manager readiness, merge, deployment, publication or remote modifications.",
+    "No specialist Agents or additional OpenAI API calls. No self-recursive task launch."
+  ],
+  "test_harness_corrections": "Initial additional harness had two setup bugs: git add removed earlier synthetic gitlinks; fault injection matched the store name rather than staging/snapshot parent. Corrected test-only setup and added Git mode preconditions, keeping product unchanged. Initial live reserve omitted explicit input object; corrected harness supplies unchanged fixture input with --objects. Initial harness files/logs retained privately; unchanged supplied 21-case script was never altered.",
+  "ac_results": {
+    "PB-1": "covered within independent Test scope",
+    "PB-2": "covered within independent Test scope",
+    "PB-3": "covered within independent Test scope",
+    "PB-4": "covered within independent Test scope",
+    "PB-5": "covered within independent Test scope",
+    "PB-6": "not_met: F4 documentation inconsistency; runtime/schema/CLI/regression checks pass"
+  }
+}

@@ -1,0 +1,18 @@
+Independent Test attempt 3; public alias candidate only, no publication approval.
+Use Python 3.12 with requirements-dev.txt from immutable HEAD.
+HEAD=b79f98d3cb3bd58059a12b543df1d187b284fe35
+BEFORE=50cf6aa52f64c45961a354281169064cd2c75e20
+BASE=b1e606544174481b7b6904f811e857f80978c287
+Let BUNDLE be this directory and obtain detached local checkouts of those commits.
+At HEAD: python -m unittest discover -s tests -v => 179 pass.
+At BASE: python -m unittest discover -s tests -v => 128 pass.
+PB_HEAD=/path/to/head python "$BUNDLE/input/input/input/upstream/independent_cases.py" => 21 pass.
+PB_HEAD=/path/to/head PB_PRIOR_CASES="$BUNDLE/input/input/input/upstream/independent_cases.py" python "$BUNDLE/input/input/extra_cases.py" => 15 pass.
+PB_HEAD=/path/to/before PB_PRIOR_CASES="$BUNDLE/input/input/input/upstream/independent_cases.py" python "$BUNDLE/input/input/extra_cases.py" Extra.test_documented_pb_scope_is_consistent => exit 1, one expected F4 failure.
+PB_HEAD=/path/to/head PB_BEFORE=/path/to/before python "$BUNDLE/attempt3_probes.py" => 5 pass.
+Run verification-report.json cli.cli command arrays at HEAD; all six exit 0. Draft202012Validator.check_schema on all 19 schema files succeeds. Base test/schema file bytes match HEAD.
+Under current explicit bounded synthetic test authority only:
+PB_HEAD=/path/to/head PB_PRIVATE=/new/private/parent python "$BUNDLE/input/input/live_fixture.py"
+PB_HEAD=/path/to/head PB_PRIVATE=/another/new/private/parent python "$BUNDLE/live_head_fixture.py"
+Both exercise scan/reconcile/plan/replay/record reserve only. First retains old fixed inbox; second uses HEAD inbox. The fixture expires 2026-10-12; future runs need fresh explicit authority and a new derivative helper, never permission from a receipt. Keep generated authorization/state/objects/plans/logs private.
+Validate Handoff using unchanged BASE scripts/validate_handoff.py. Inventory lists all payload files except itself. Bundle-index pins every payload file including inventory. Closure validation uses BASE consume_delivery.verify_handoffs offline over exact candidate bytes; publication is a separate Manager operation requiring a real fixed Git manifest and approval.

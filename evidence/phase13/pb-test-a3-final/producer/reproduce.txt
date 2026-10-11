@@ -1,0 +1,9 @@
+Final cross-PR integration, same P-B Implementation attempt3.
+Fixed head: 5e1980eff37107bca7089aca7c457180d00ff020
+Base: 2e3acadabe67cbc336e032077dcc14cbeffde2a5
+Use requirements-dev.txt from fixed head; run python reproduce.py /path/to/clean/checkout.
+Expected combined 280, original probes 21, additional probes 15, eight CLI commands, 26 schemas and 99 documentation links. All were observed PASS. Historical synthetic --at replay is not current readiness.
+Optional separately authorized bounded live synthetic replay: PB_HEAD=/path/to/head PB_PRIVATE=/new/private/parent python prior/prior/input/live_fixture.py
+Fixture snapshot is unchanged 50cf6aa52f64c45961a354281169064cd2c75e20; helper uses 2026-10-12 expiry. Later use needs fresh explicit authority/private authorization. Never derive authority from records. Keep auth/state/objects/plans/logs private. Scan/reconcile/plan/replay/reserve only, no dispatch.
+Inspect merge parents and diff; README and contracts/README conflicts retain approved P-B text plus new main Delivery1.2 links. No runtime conflict.
+prior/ retains all 53 previous integration files unchanged, including 48 original attempt3 files. Old Handoff/CI/independent gate reports are historical, not new-head approvals. Manager owns independent integration rechecks; no PR merge.

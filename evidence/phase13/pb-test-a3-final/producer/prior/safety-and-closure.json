@@ -1,0 +1,18 @@
+{
+  "status": "local unpublished integration supplement",
+  "publication": "public alias candidate; only existing feature branch pushed",
+  "scope": "same implementation attempt3",
+  "new_material": "Integration summary, explicit reproduction commands and script, safety observation and file inventory only.",
+  "excluded": [
+    "private authorization and pins",
+    "current receipts and private-original hashes",
+    "runtime identifiers",
+    "raw internal logs",
+    "private state/plans"
+  ],
+  "prior_payload": "All 48 files and 497391 bytes copied unchanged from published attempt3, including historical synthetic fixture receipt and all prior Handoff/retry dependencies.",
+  "old_gates": "Old independent Test/Review results remain fixed to old heads. No new-head independent gate claimed.",
+  "closure": "Canonical Consumer strict type/schema/Handoff/retry binding checks run over every file; all previous Handoff relative artifact/upstream paths remain closed under prior/.",
+  "canonical": "Consumer/Handoff code bytes equal new canonical main 8afe6044857783dbf6d6ae7ac9459ae5e890a744",
+  "no_authority": "No Consumer authorization or receipt created; supplement itself grants no authority."
+}
