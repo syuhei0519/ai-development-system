@@ -1,0 +1,198 @@
+---
+# Source: order-postgresql/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: order-postgresql
+  labels:
+    app.kubernetes.io/name: order-postgresql
+    app.kubernetes.io/instance: order-postgresql
+    app.kubernetes.io/component: database
+    app.kubernetes.io/part-of: order
+    app.kubernetes.io/managed-by: Helm
+automountServiceAccountToken: false
+
+---
+# Source: order-postgresql/templates/init-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: order-postgresql-init
+  labels:
+    app.kubernetes.io/name: order-postgresql
+    app.kubernetes.io/instance: order-postgresql
+    app.kubernetes.io/component: database
+    app.kubernetes.io/part-of: order
+    app.kubernetes.io/managed-by: Helm
+data:
+  10-order.sh: |
+    #!/bin/sh
+    set -eu
+    app_user="$(cat /run/order-db/app-username)"
+    test "$app_user" = order_app || { echo "unexpected Order role" >&2; exit 1; }
+    app_password="$(cat /run/order-db/app-password)"
+    psql --set=ON_ERROR_STOP=1 --set=app_user="$app_user" --set=app_password="$app_password" --set=db_name="orders" <<'SQL'
+    SELECT format('CREATE ROLE %I LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT PASSWORD %L', :'app_user', :'app_password')
+    WHERE NOT EXISTS (SELECT FROM pg_roles WHERE rolname = :'app_user') \gexec
+    SELECT format('CREATE DATABASE %I OWNER %I', :'db_name', :'app_user')
+    WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = :'db_name') \gexec
+    SQL
+
+---
+# Source: order-postgresql/templates/pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: order-postgresql-data
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false,Delete=false
+  labels:
+    app.kubernetes.io/name: order-postgresql
+    app.kubernetes.io/instance: order-postgresql
+    app.kubernetes.io/component: database
+    app.kubernetes.io/part-of: order
+    app.kubernetes.io/managed-by: Helm
+spec:
+  accessModes: 
+    - ReadWriteOnce
+  storageClassName: standard
+  resources:
+    requests: {storage: 2Gi}
+
+---
+# Source: order-postgresql/templates/headless-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-postgresql-headless
+  labels:
+    app.kubernetes.io/name: order-postgresql
+    app.kubernetes.io/instance: order-postgresql
+    app.kubernetes.io/component: database
+    app.kubernetes.io/part-of: order
+    app.kubernetes.io/managed-by: Helm
+spec:
+  clusterIP: None
+  publishNotReadyAddresses: true
+  selector: {app.kubernetes.io/name: order-postgresql, app.kubernetes.io/instance: order-postgresql}
+  ports: [{name: postgresql, port: 5432, targetPort: postgresql}]
+
+---
+# Source: order-postgresql/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-postgresql
+  labels:
+    app.kubernetes.io/name: order-postgresql
+    app.kubernetes.io/instance: order-postgresql
+    app.kubernetes.io/component: database
+    app.kubernetes.io/part-of: order
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  selector: {app.kubernetes.io/name: order-postgresql, app.kubernetes.io/instance: order-postgresql}
+  ports: [{name: postgresql, port: 5432, targetPort: postgresql}]
+
+---
+# Source: order-postgresql/templates/statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: order-postgresql
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=confirm,Delete=confirm
+  labels:
+    app.kubernetes.io/name: order-postgresql
+    app.kubernetes.io/instance: order-postgresql
+    app.kubernetes.io/component: database
+    app.kubernetes.io/part-of: order
+    app.kubernetes.io/managed-by: Helm
+spec:
+  serviceName: order-postgresql-headless
+  replicas: 1
+  updateStrategy: {type: RollingUpdate}
+  selector:
+    matchLabels: {app.kubernetes.io/name: order-postgresql, app.kubernetes.io/instance: order-postgresql}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: order-postgresql
+        app.kubernetes.io/instance: order-postgresql
+        app.kubernetes.io/component: database
+        app.kubernetes.io/part-of: order
+        app.kubernetes.io/managed-by: Helm
+      annotations:
+        checksum/init: 2b7d6d2c3f776415775bef102fdff547dd233e8a7994209a23a8d13cc9534ea0
+    spec:
+      serviceAccountName: order-postgresql
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 60
+      securityContext: 
+        fsGroup: 999
+        fsGroupChangePolicy: OnRootMismatch
+        runAsGroup: 999
+        runAsNonRoot: true
+        runAsUser: 999
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: order-postgresql
+          image: "docker.io/library/postgres:17.10-bookworm@sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f"
+          imagePullPolicy: IfNotPresent
+          command: ["/bin/sh", "-ec"]
+          args:
+            - |
+              umask 077
+              printf '%s:%s:%s:%s:%s\n' '*' '*' 'orders' "$(cat /run/order-db/app-username)" "$(cat /run/order-db/app-password)" > /tmp/pgpass
+              exec docker-entrypoint.sh postgres -c max_connections=30 -c shared_buffers=128MB
+          env:
+            - {name: POSTGRES_USER, value: postgres}
+            - {name: POSTGRES_DB, value: postgres}
+            - {name: POSTGRES_PASSWORD_FILE, value: /run/order-db/admin-password}
+            - {name: PGDATA, value: /var/lib/postgresql/data/pgdata}
+            - {name: POD_IP, valueFrom: {fieldRef: {fieldPath: status.podIP}}}
+            - {name: PGPASSFILE, value: /tmp/pgpass}
+          ports: [{name: postgresql, containerPort: 5432}]
+          securityContext: 
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            readOnlyRootFilesystem: true
+          resources: 
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 256Mi
+          volumeMounts:
+            - {name: data, mountPath: /var/lib/postgresql/data}
+            - {name: run, mountPath: /var/run/postgresql}
+            - {name: tmp, mountPath: /tmp}
+            - {name: init, mountPath: /docker-entrypoint-initdb.d}
+            - {name: order-db, mountPath: /run/order-db, readOnly: true}
+          startupProbe:
+            exec: {command: ["/bin/sh", "-ec", "pg_isready -U postgres -d postgres"]}
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 60
+          livenessProbe:
+            exec: {command: ["/bin/sh", "-ec", "pg_isready -U postgres -d postgres"]}
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 6
+          readinessProbe:
+            exec:
+              command: ["/bin/sh", "-ec", "PGUSER=$(cat /run/order-db/app-username) psql -h $POD_IP -d orders -tAc 'SELECT 1' | grep -qx 1"]
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 3
+      volumes:
+        - {name: data, persistentVolumeClaim: {claimName: order-postgresql-data}}
+        - {name: run, emptyDir: {}}
+        - {name: tmp, emptyDir: {}}
+        - {name: init, configMap: {name: order-postgresql-init, defaultMode: 365}}
+        - name: order-db
+          secret: {secretName: order-db, defaultMode: 288}

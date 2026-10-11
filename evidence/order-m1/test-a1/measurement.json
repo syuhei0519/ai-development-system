@@ -1,0 +1,31 @@
+{
+  "head": "e0f79a61643d31a29de73ffc54bb6a31c320f0df",
+  "base": "bc6adaedcd645a4663c23284b977a3dd36c0796d",
+  "tree": "1e3618e2f3467ba639ba52c7531c2923c4d85505",
+  "system": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+  "platform": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+  "config": "sha256:15e9442185754fad17f2444d88b9b8570956c035415ef995af709785aa6bd77e",
+  "environment": "Isolated Linux amd64 disposable test checkout, Docker 28.4.0; synthetic renders; no Kubernetes context accessed",
+  "tools": {
+    "go": "1.27.1",
+    "helm": "4.2.4",
+    "kubeconform": "0.7.0",
+    "kubernetes_schema": "1.36.0",
+    "trivy": "0.75.0",
+    "python": "Python 3.12.14"
+  },
+  "observed_at": "2026-10-11T17:18:08.432494+00:00",
+  "valid_until": "2026-10-12T17:18:08.432507+00:00",
+  "invalidated_by": [
+    "source or related config changes",
+    "new relevant failure"
+  ],
+  "mutable_policy_observed_at": "2026-10-11T17:05:55Z",
+  "mutable_policy_valid_until": "2026-10-11T17:50:55Z",
+  "mutable_policy_independently_refreshed": false,
+  "product_outcomes": {
+    "AC-1": "unverified",
+    "AC-2": "unverified",
+    "AC-3": "unverified"
+  }
+}

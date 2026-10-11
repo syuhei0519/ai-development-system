@@ -1,0 +1,136 @@
+=== RUN   TestBackendInspectedReleaseAnnotations
+--- PASS: TestBackendInspectedReleaseAnnotations (0.15s)
+=== RUN   TestConfigChangesRollPodTemplate
+=== RUN   TestConfigChangesRollPodTemplate/frontend
+=== RUN   TestConfigChangesRollPodTemplate/frontend/config.apiBasePath=/fixture-api
+    checksum_test.go:76: config.apiBasePath=/fixture-api checksum 1bcac951cf3483345ae5119088a2acfed11f2b07edc53d87f883cadf32dbc1df -> 36d6b51a355410f030ab478698b66b247ebfe0ee5ab477adc1598885082a80df
+=== RUN   TestConfigChangesRollPodTemplate/frontend/config.apiUpstream=http://fixture-backend:8080
+    checksum_test.go:76: config.apiUpstream=http://fixture-backend:8080 checksum 1bcac951cf3483345ae5119088a2acfed11f2b07edc53d87f883cadf32dbc1df -> e54648928d5fbe0585b3128e6824a73ca004acd9e5e1e95d433dcb57c86d442f
+frontend unrelated Service port preserves PodTemplate
+=== RUN   TestConfigChangesRollPodTemplate/backend
+=== RUN   TestConfigChangesRollPodTemplate/backend/config.logLevel=debug
+    checksum_test.go:76: config.logLevel=debug checksum 8d717b99a17dc4b15c9d47f518e24889fa293330334dfbc52fcf9cfedc0ca9a8 -> c1c9cbbc643d066296ce2273fbecd749d6a36b15a2568f78d7e2ddb3bc9c1ffb
+=== RUN   TestConfigChangesRollPodTemplate/backend/config.dbHost=fixture-db
+    checksum_test.go:76: config.dbHost=fixture-db checksum 8d717b99a17dc4b15c9d47f518e24889fa293330334dfbc52fcf9cfedc0ca9a8 -> 78e071608625dad5fa473652ac6b003a148860dc9da0a041ee135a105f3b3748
+=== RUN   TestConfigChangesRollPodTemplate/backend/config.dbPort=5433
+    checksum_test.go:76: config.dbPort=5433 checksum 8d717b99a17dc4b15c9d47f518e24889fa293330334dfbc52fcf9cfedc0ca9a8 -> 5619798e8a81b32b376b81fb68149861be86ce3a4e45e061ef8743f3a29d496d
+=== RUN   TestConfigChangesRollPodTemplate/backend/config.dbName=fixture
+    checksum_test.go:76: config.dbName=fixture checksum 8d717b99a17dc4b15c9d47f518e24889fa293330334dfbc52fcf9cfedc0ca9a8 -> 9e8b7f231d9881e75b77f3d62744c0e43e779517aea17586a70f35359675157e
+=== RUN   TestConfigChangesRollPodTemplate/backend/config.sslmode=require
+    checksum_test.go:76: config.sslmode=require checksum 8d717b99a17dc4b15c9d47f518e24889fa293330334dfbc52fcf9cfedc0ca9a8 -> 6d0d660582301bd3ba566af166ab29ad849b29cdcd42f64b659675b848a5a493
+backend unrelated Service port preserves PodTemplate
+--- PASS: TestConfigChangesRollPodTemplate (0.83s)
+    --- PASS: TestConfigChangesRollPodTemplate/frontend (0.33s)
+        --- PASS: TestConfigChangesRollPodTemplate/frontend/config.apiBasePath=/fixture-api (0.10s)
+        --- PASS: TestConfigChangesRollPodTemplate/frontend/config.apiUpstream=http://fixture-backend:8080 (0.07s)
+    --- PASS: TestConfigChangesRollPodTemplate/backend (0.51s)
+        --- PASS: TestConfigChangesRollPodTemplate/backend/config.logLevel=debug (0.09s)
+        --- PASS: TestConfigChangesRollPodTemplate/backend/config.dbHost=fixture-db (0.05s)
+        --- PASS: TestConfigChangesRollPodTemplate/backend/config.dbPort=5433 (0.06s)
+        --- PASS: TestConfigChangesRollPodTemplate/backend/config.dbName=fixture (0.06s)
+        --- PASS: TestConfigChangesRollPodTemplate/backend/config.sslmode=require (0.06s)
+=== RUN   TestGitHubReleaseAnnotationBoundary
+=== RUN   TestGitHubReleaseAnnotationBoundary/backend/
+=== RUN   TestGitHubReleaseAnnotationBoundary/backend/recordSha256
+=== RUN   TestGitHubReleaseAnnotationBoundary/backend/sourceRepository
+=== RUN   TestGitHubReleaseAnnotationBoundary/backend/runAttempt
+=== RUN   TestGitHubReleaseAnnotationBoundary/frontend/
+=== RUN   TestGitHubReleaseAnnotationBoundary/frontend/recordSha256
+=== RUN   TestGitHubReleaseAnnotationBoundary/frontend/sourceRepository
+=== RUN   TestGitHubReleaseAnnotationBoundary/frontend/runAttempt
+--- PASS: TestGitHubReleaseAnnotationBoundary (0.57s)
+    --- PASS: TestGitHubReleaseAnnotationBoundary/backend/ (0.11s)
+    --- PASS: TestGitHubReleaseAnnotationBoundary/backend/recordSha256 (0.05s)
+    --- PASS: TestGitHubReleaseAnnotationBoundary/backend/sourceRepository (0.06s)
+    --- PASS: TestGitHubReleaseAnnotationBoundary/backend/runAttempt (0.12s)
+    --- PASS: TestGitHubReleaseAnnotationBoundary/frontend/ (0.06s)
+    --- PASS: TestGitHubReleaseAnnotationBoundary/frontend/recordSha256 (0.09s)
+    --- PASS: TestGitHubReleaseAnnotationBoundary/frontend/sourceRepository (0.05s)
+    --- PASS: TestGitHubReleaseAnnotationBoundary/frontend/runAttempt (0.04s)
+=== RUN   TestOrderDisabledAndSchemaBoundaries
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/enabled=oops
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/replicaCount=2
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/config.dbName=account
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/secrets.existingSecret=account-db
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/serviceAccount.automountServiceAccountToken=true
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/podSecurityContext.runAsUser=0
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/securityContext.readOnlyRootFilesystem=false
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/securityContext.capabilities.add[0]=NET_ADMIN
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/service.type=NodePort
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/image.digest=sha256:bad
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/extra=true
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/image.repository=ghcr.io/syuhei0519/backend-app
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/image.tag=latest
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/release.sourceCommit=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/release.service=backend
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/release.schemaVersion=github-v1
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/release.runId=999
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/release.recordSha256=bad
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/migration.activeDeadlineSeconds=181
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/migration.backoffLimit=2
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/config.dbHost=postgresql
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order/secrets.usernameKey=admin-password
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order-postgresql
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order-postgresql/enabled=oops
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order-postgresql/replicaCount=2
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order-postgresql/config.dbName=account
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order-postgresql/secrets.existingSecret=account-db
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order-postgresql/serviceAccount.automountServiceAccountToken=true
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order-postgresql/podSecurityContext.runAsUser=0
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order-postgresql/securityContext.readOnlyRootFilesystem=false
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order-postgresql/securityContext.capabilities.add[0]=NET_ADMIN
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order-postgresql/service.type=NodePort
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order-postgresql/image.digest=sha256:bad
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order-postgresql/extra=true
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order-postgresql/persistence.enabled=false
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order-postgresql/persistence.size=1Gi
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order-postgresql/persistence.storageClass=other
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order-postgresql/image.tag=17.9-bookworm
+=== RUN   TestOrderDisabledAndSchemaBoundaries/order-postgresql/config.pgData=/tmp/data
+--- PASS: TestOrderDisabledAndSchemaBoundaries (4.90s)
+    --- PASS: TestOrderDisabledAndSchemaBoundaries/order (1.83s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/enabled=oops (0.05s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/replicaCount=2 (0.07s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/config.dbName=account (0.12s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/secrets.existingSecret=account-db (0.05s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/serviceAccount.automountServiceAccountToken=true (0.11s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/podSecurityContext.runAsUser=0 (0.05s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/securityContext.readOnlyRootFilesystem=false (0.06s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/securityContext.capabilities.add[0]=NET_ADMIN (0.12s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/service.type=NodePort (0.06s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/image.digest=sha256:bad (0.16s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/extra=true (0.06s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/image.repository=ghcr.io/syuhei0519/backend-app (0.08s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/image.tag=latest (0.05s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/release.sourceCommit=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa (0.05s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/release.service=backend (0.07s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/release.schemaVersion=github-v1 (0.05s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/release.runId=999 (0.08s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/release.recordSha256=bad (0.05s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/migration.activeDeadlineSeconds=181 (0.10s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/migration.backoffLimit=2 (0.09s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/config.dbHost=postgresql (0.12s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order/secrets.usernameKey=admin-password (0.09s)
+    --- PASS: TestOrderDisabledAndSchemaBoundaries/order-postgresql (3.01s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order-postgresql/enabled=oops (0.22s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order-postgresql/replicaCount=2 (0.37s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order-postgresql/config.dbName=account (0.08s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order-postgresql/secrets.existingSecret=account-db (0.23s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order-postgresql/serviceAccount.automountServiceAccountToken=true (0.19s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order-postgresql/podSecurityContext.runAsUser=0 (0.19s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order-postgresql/securityContext.readOnlyRootFilesystem=false (0.14s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order-postgresql/securityContext.capabilities.add[0]=NET_ADMIN (0.09s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order-postgresql/service.type=NodePort (0.05s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order-postgresql/image.digest=sha256:bad (0.07s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order-postgresql/extra=true (0.08s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order-postgresql/persistence.enabled=false (0.08s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order-postgresql/persistence.size=1Gi (0.10s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order-postgresql/persistence.storageClass=other (0.20s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order-postgresql/image.tag=17.9-bookworm (0.24s)
+        --- PASS: TestOrderDisabledAndSchemaBoundaries/order-postgresql/config.pgData=/tmp/data (0.13s)
+=== RUN   TestOrderWorkloadContract
+--- PASS: TestOrderWorkloadContract (0.12s)
+=== RUN   TestOrderDatabasePaths
+--- PASS: TestOrderDatabasePaths (0.14s)
+PASS

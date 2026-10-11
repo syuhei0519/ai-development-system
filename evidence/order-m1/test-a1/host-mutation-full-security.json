@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "trivyVersion": "0.75.0",
+  "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+  "scannedAt": "2026-10-11T17:16:35.780016705Z",
+  "findings": [
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0008",
+      "path": "pod-hostIPC.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": "pod-hostIPC.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": "pod-hostIPC.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-01010",
+      "path": "pod-hostIPC.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0109",
+      "path": "pod-hostIPC.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0110",
+      "path": "pod-hostIPC.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0110",
+      "path": "pod-hostIPC.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0110",
+      "path": "pod-hostIPC.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "pod-hostIPC.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "pod-hostIPC.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "pod-hostIPC.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0009",
+      "path": "pod-hostNetwork.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": "pod-hostNetwork.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": "pod-hostNetwork.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-01010",
+      "path": "pod-hostNetwork.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0109",
+      "path": "pod-hostNetwork.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0110",
+      "path": "pod-hostNetwork.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0110",
+      "path": "pod-hostNetwork.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0110",
+      "path": "pod-hostNetwork.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "pod-hostNetwork.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "pod-hostNetwork.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "pod-hostNetwork.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0010",
+      "path": "pod-hostPID.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": "pod-hostPID.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": "pod-hostPID.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-01010",
+      "path": "pod-hostPID.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0109",
+      "path": "pod-hostPID.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0110",
+      "path": "pod-hostPID.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0110",
+      "path": "pod-hostPID.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0110",
+      "path": "pod-hostPID.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "pod-hostPID.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "pod-hostPID.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "pod-hostPID.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    }
+  ],
+  "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+}

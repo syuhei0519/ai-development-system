@@ -1,0 +1,38 @@
+{
+  "ci/github/test.sh": {
+    "size": 2088,
+    "sha256": "6adac71d396fca3df049a786a0d71804d566408a40d843b6e7dd7c0665025c5f"
+  },
+  "ci/order-chart-test.sh": {
+    "size": 1746,
+    "sha256": "3339955a85069430dca23f886536fa210335fdc2f444112eb7ef84f0c33402d7"
+  },
+  "ci/trusted-render.py": {
+    "size": 11933,
+    "sha256": "0530550423ff2ee8d3e5d2fdd88d0e57892d59bcc5e125e6f0502acd19e75339"
+  },
+  "security/scan-policy.json": {
+    "size": 96,
+    "sha256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+  },
+  ".github/workflows/ci.yml": {
+    "size": 3680,
+    "sha256": "33f7d7f9cedf9eb6160baabbc90b65d37458838d7b9a1125871590d4370fb7ee"
+  },
+  "tools/inventory/main.go": {
+    "size": 7796,
+    "sha256": "2d775e4dd4b9a289f9786ff8e202abc26e642f8ed346c5ffba4df6d2b8a73762"
+  },
+  "tools/inventory/platform.go": {
+    "size": 4208,
+    "sha256": "d31f2314eadd52a1774edb0545e0c30d6746158c16c0e43e648802adf82afefb"
+  },
+  "tools/scan-gate/render.go": {
+    "size": 6284,
+    "sha256": "1f7907feb2578e7532f60da14175a12825422e76ff6c97913dfa6b04e57a678f"
+  },
+  "tools/scan-gate/policy.go": {
+    "size": 8548,
+    "sha256": "226b81c83a8e51df3f21fb3627126bcb7e08886b4f698b115da33fa7a33dfc77"
+  }
+}

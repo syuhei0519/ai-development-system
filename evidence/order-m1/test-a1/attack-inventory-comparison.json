@@ -1,0 +1,357 @@
+{
+  "inventory-positive": {
+    "returncode": 0,
+    "inventory": {
+      "schema": "core-platform/image-inventory/v1",
+      "renderSha256": "906e6045384a8e5139001cc572f5087ebdd6559c7b7842d75bea3573601a01fa",
+      "inventorySha256": "edf751742cc148ea6ad1aa7ac96b93004e0ea008599357258bf11918bc8d748c",
+      "entries": [
+        {
+          "namespace": "account",
+          "kind": "Deployment",
+          "name": "order",
+          "podSpecPath": "spec.template.spec",
+          "containerType": "containers",
+          "containerName": "order",
+          "repository": "ghcr.io/syuhei0519/backend-app-order",
+          "tag": "1111111111111111111111111111111111111111",
+          "digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "release": {
+            "account.lab/github-run-attempt": "1",
+            "account.lab/github-run-id": "123",
+            "account.lab/image-digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "account.lab/release-record-sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+            "account.lab/release-record-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-order-1111111111111111111111111111111111111111-123-1/release-record.json",
+            "account.lab/release-schema-version": "github-v2",
+            "account.lab/sbom-sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+            "account.lab/sbom-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-order-1111111111111111111111111111111111111111-123-1/sbom.cdx.json",
+            "account.lab/service": "order",
+            "account.lab/source-commit": "1111111111111111111111111111111111111111",
+            "account.lab/source-repository": "syuhei0519/backend-app"
+          }
+        },
+        {
+          "namespace": "account",
+          "kind": "Job",
+          "name": "order-migration",
+          "podSpecPath": "spec.template.spec",
+          "containerType": "containers",
+          "containerName": "migrate",
+          "repository": "ghcr.io/syuhei0519/backend-app-order",
+          "tag": "1111111111111111111111111111111111111111",
+          "digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "release": {
+            "account.lab/github-run-attempt": "1",
+            "account.lab/github-run-id": "123",
+            "account.lab/image-digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "account.lab/release-record-sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+            "account.lab/release-record-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-order-1111111111111111111111111111111111111111-123-1/release-record.json",
+            "account.lab/release-schema-version": "github-v2",
+            "account.lab/sbom-sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+            "account.lab/sbom-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-order-1111111111111111111111111111111111111111-123-1/sbom.cdx.json",
+            "account.lab/service": "order",
+            "account.lab/source-commit": "1111111111111111111111111111111111111111",
+            "account.lab/source-repository": "syuhei0519/backend-app"
+          }
+        },
+        {
+          "namespace": "account",
+          "kind": "StatefulSet",
+          "name": "order-postgresql",
+          "podSpecPath": "spec.template.spec",
+          "containerType": "containers",
+          "containerName": "order-postgresql",
+          "repository": "docker.io/library/postgres",
+          "tag": "17.10-bookworm",
+          "digest": "sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f",
+          "release": {}
+        }
+      ]
+    },
+    "same_inventory_sha_as_positive": true
+  },
+  "pod-hostNetwork": {
+    "returncode": 0,
+    "inventory": {
+      "schema": "core-platform/image-inventory/v1",
+      "renderSha256": "55ca32450e887721ffa5ad8f567c861ca7a852aed18f3dd1c8d4ace474016543",
+      "inventorySha256": "edf751742cc148ea6ad1aa7ac96b93004e0ea008599357258bf11918bc8d748c",
+      "entries": [
+        {
+          "namespace": "account",
+          "kind": "Deployment",
+          "name": "order",
+          "podSpecPath": "spec.template.spec",
+          "containerType": "containers",
+          "containerName": "order",
+          "repository": "ghcr.io/syuhei0519/backend-app-order",
+          "tag": "1111111111111111111111111111111111111111",
+          "digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "release": {
+            "account.lab/github-run-attempt": "1",
+            "account.lab/github-run-id": "123",
+            "account.lab/image-digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "account.lab/release-record-sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+            "account.lab/release-record-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-order-1111111111111111111111111111111111111111-123-1/release-record.json",
+            "account.lab/release-schema-version": "github-v2",
+            "account.lab/sbom-sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+            "account.lab/sbom-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-order-1111111111111111111111111111111111111111-123-1/sbom.cdx.json",
+            "account.lab/service": "order",
+            "account.lab/source-commit": "1111111111111111111111111111111111111111",
+            "account.lab/source-repository": "syuhei0519/backend-app"
+          }
+        },
+        {
+          "namespace": "account",
+          "kind": "Job",
+          "name": "order-migration",
+          "podSpecPath": "spec.template.spec",
+          "containerType": "containers",
+          "containerName": "migrate",
+          "repository": "ghcr.io/syuhei0519/backend-app-order",
+          "tag": "1111111111111111111111111111111111111111",
+          "digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "release": {
+            "account.lab/github-run-attempt": "1",
+            "account.lab/github-run-id": "123",
+            "account.lab/image-digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "account.lab/release-record-sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+            "account.lab/release-record-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-order-1111111111111111111111111111111111111111-123-1/release-record.json",
+            "account.lab/release-schema-version": "github-v2",
+            "account.lab/sbom-sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+            "account.lab/sbom-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-order-1111111111111111111111111111111111111111-123-1/sbom.cdx.json",
+            "account.lab/service": "order",
+            "account.lab/source-commit": "1111111111111111111111111111111111111111",
+            "account.lab/source-repository": "syuhei0519/backend-app"
+          }
+        },
+        {
+          "namespace": "account",
+          "kind": "StatefulSet",
+          "name": "order-postgresql",
+          "podSpecPath": "spec.template.spec",
+          "containerType": "containers",
+          "containerName": "order-postgresql",
+          "repository": "docker.io/library/postgres",
+          "tag": "17.10-bookworm",
+          "digest": "sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f",
+          "release": {}
+        }
+      ]
+    },
+    "same_inventory_sha_as_positive": true
+  },
+  "pod-hostPID": {
+    "returncode": 0,
+    "inventory": {
+      "schema": "core-platform/image-inventory/v1",
+      "renderSha256": "15b049a589770ea885cfbfdfbb6515ae95bac7a921059cdfd5407ac1c6736bd4",
+      "inventorySha256": "edf751742cc148ea6ad1aa7ac96b93004e0ea008599357258bf11918bc8d748c",
+      "entries": [
+        {
+          "namespace": "account",
+          "kind": "Deployment",
+          "name": "order",
+          "podSpecPath": "spec.template.spec",
+          "containerType": "containers",
+          "containerName": "order",
+          "repository": "ghcr.io/syuhei0519/backend-app-order",
+          "tag": "1111111111111111111111111111111111111111",
+          "digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "release": {
+            "account.lab/github-run-attempt": "1",
+            "account.lab/github-run-id": "123",
+            "account.lab/image-digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "account.lab/release-record-sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+            "account.lab/release-record-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-order-1111111111111111111111111111111111111111-123-1/release-record.json",
+            "account.lab/release-schema-version": "github-v2",
+            "account.lab/sbom-sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+            "account.lab/sbom-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-order-1111111111111111111111111111111111111111-123-1/sbom.cdx.json",
+            "account.lab/service": "order",
+            "account.lab/source-commit": "1111111111111111111111111111111111111111",
+            "account.lab/source-repository": "syuhei0519/backend-app"
+          }
+        },
+        {
+          "namespace": "account",
+          "kind": "Job",
+          "name": "order-migration",
+          "podSpecPath": "spec.template.spec",
+          "containerType": "containers",
+          "containerName": "migrate",
+          "repository": "ghcr.io/syuhei0519/backend-app-order",
+          "tag": "1111111111111111111111111111111111111111",
+          "digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "release": {
+            "account.lab/github-run-attempt": "1",
+            "account.lab/github-run-id": "123",
+            "account.lab/image-digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "account.lab/release-record-sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+            "account.lab/release-record-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-order-1111111111111111111111111111111111111111-123-1/release-record.json",
+            "account.lab/release-schema-version": "github-v2",
+            "account.lab/sbom-sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+            "account.lab/sbom-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-order-1111111111111111111111111111111111111111-123-1/sbom.cdx.json",
+            "account.lab/service": "order",
+            "account.lab/source-commit": "1111111111111111111111111111111111111111",
+            "account.lab/source-repository": "syuhei0519/backend-app"
+          }
+        },
+        {
+          "namespace": "account",
+          "kind": "StatefulSet",
+          "name": "order-postgresql",
+          "podSpecPath": "spec.template.spec",
+          "containerType": "containers",
+          "containerName": "order-postgresql",
+          "repository": "docker.io/library/postgres",
+          "tag": "17.10-bookworm",
+          "digest": "sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f",
+          "release": {}
+        }
+      ]
+    },
+    "same_inventory_sha_as_positive": true
+  },
+  "pod-hostIPC": {
+    "returncode": 0,
+    "inventory": {
+      "schema": "core-platform/image-inventory/v1",
+      "renderSha256": "aab6108314a26a3291d8b3390429ee03bd0caa6b0d559bbfac98abf1b64f8990",
+      "inventorySha256": "edf751742cc148ea6ad1aa7ac96b93004e0ea008599357258bf11918bc8d748c",
+      "entries": [
+        {
+          "namespace": "account",
+          "kind": "Deployment",
+          "name": "order",
+          "podSpecPath": "spec.template.spec",
+          "containerType": "containers",
+          "containerName": "order",
+          "repository": "ghcr.io/syuhei0519/backend-app-order",
+          "tag": "1111111111111111111111111111111111111111",
+          "digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "release": {
+            "account.lab/github-run-attempt": "1",
+            "account.lab/github-run-id": "123",
+            "account.lab/image-digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "account.lab/release-record-sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+            "account.lab/release-record-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-order-1111111111111111111111111111111111111111-123-1/release-record.json",
+            "account.lab/release-schema-version": "github-v2",
+            "account.lab/sbom-sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+            "account.lab/sbom-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-order-1111111111111111111111111111111111111111-123-1/sbom.cdx.json",
+            "account.lab/service": "order",
+            "account.lab/source-commit": "1111111111111111111111111111111111111111",
+            "account.lab/source-repository": "syuhei0519/backend-app"
+          }
+        },
+        {
+          "namespace": "account",
+          "kind": "Job",
+          "name": "order-migration",
+          "podSpecPath": "spec.template.spec",
+          "containerType": "containers",
+          "containerName": "migrate",
+          "repository": "ghcr.io/syuhei0519/backend-app-order",
+          "tag": "1111111111111111111111111111111111111111",
+          "digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "release": {
+            "account.lab/github-run-attempt": "1",
+            "account.lab/github-run-id": "123",
+            "account.lab/image-digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "account.lab/release-record-sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+            "account.lab/release-record-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-order-1111111111111111111111111111111111111111-123-1/release-record.json",
+            "account.lab/release-schema-version": "github-v2",
+            "account.lab/sbom-sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+            "account.lab/sbom-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-order-1111111111111111111111111111111111111111-123-1/sbom.cdx.json",
+            "account.lab/service": "order",
+            "account.lab/source-commit": "1111111111111111111111111111111111111111",
+            "account.lab/source-repository": "syuhei0519/backend-app"
+          }
+        },
+        {
+          "namespace": "account",
+          "kind": "StatefulSet",
+          "name": "order-postgresql",
+          "podSpecPath": "spec.template.spec",
+          "containerType": "containers",
+          "containerName": "order-postgresql",
+          "repository": "docker.io/library/postgres",
+          "tag": "17.10-bookworm",
+          "digest": "sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f",
+          "release": {}
+        }
+      ]
+    },
+    "same_inventory_sha_as_positive": true
+  },
+  "namespace-escape": {
+    "returncode": 0,
+    "inventory": {
+      "schema": "core-platform/image-inventory/v1",
+      "renderSha256": "3426ab852f2a352213b0045a5e79e722efb964ae4407806dd5a71b6b726a1822",
+      "inventorySha256": "3460cf6eab5b3bf827d1febe6099206f98eb47194ccec3522d6afbc9ec900d0c",
+      "entries": [
+        {
+          "namespace": "account",
+          "kind": "Job",
+          "name": "order-migration",
+          "podSpecPath": "spec.template.spec",
+          "containerType": "containers",
+          "containerName": "migrate",
+          "repository": "ghcr.io/syuhei0519/backend-app-order",
+          "tag": "1111111111111111111111111111111111111111",
+          "digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "release": {
+            "account.lab/github-run-attempt": "1",
+            "account.lab/github-run-id": "123",
+            "account.lab/image-digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "account.lab/release-record-sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+            "account.lab/release-record-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-order-1111111111111111111111111111111111111111-123-1/release-record.json",
+            "account.lab/release-schema-version": "github-v2",
+            "account.lab/sbom-sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+            "account.lab/sbom-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-order-1111111111111111111111111111111111111111-123-1/sbom.cdx.json",
+            "account.lab/service": "order",
+            "account.lab/source-commit": "1111111111111111111111111111111111111111",
+            "account.lab/source-repository": "syuhei0519/backend-app"
+          }
+        },
+        {
+          "namespace": "account",
+          "kind": "StatefulSet",
+          "name": "order-postgresql",
+          "podSpecPath": "spec.template.spec",
+          "containerType": "containers",
+          "containerName": "order-postgresql",
+          "repository": "docker.io/library/postgres",
+          "tag": "17.10-bookworm",
+          "digest": "sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f",
+          "release": {}
+        },
+        {
+          "namespace": "kube-system",
+          "kind": "Deployment",
+          "name": "order",
+          "podSpecPath": "spec.template.spec",
+          "containerType": "containers",
+          "containerName": "order",
+          "repository": "ghcr.io/syuhei0519/backend-app-order",
+          "tag": "1111111111111111111111111111111111111111",
+          "digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "release": {
+            "account.lab/github-run-attempt": "1",
+            "account.lab/github-run-id": "123",
+            "account.lab/image-digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+            "account.lab/release-record-sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+            "account.lab/release-record-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-order-1111111111111111111111111111111111111111-123-1/release-record.json",
+            "account.lab/release-schema-version": "github-v2",
+            "account.lab/sbom-sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+            "account.lab/sbom-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-order-1111111111111111111111111111111111111111-123-1/sbom.cdx.json",
+            "account.lab/service": "order",
+            "account.lab/source-commit": "1111111111111111111111111111111111111111",
+            "account.lab/source-repository": "syuhei0519/backend-app"
+          }
+        }
+      ]
+    },
+    "same_inventory_sha_as_positive": false
+  }
+}

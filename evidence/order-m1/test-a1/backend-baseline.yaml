@@ -1,0 +1,249 @@
+---
+# Source: backend/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: backend
+  annotations: {argocd.argoproj.io/sync-wave: "-20"}
+  labels:
+    app.kubernetes.io/name: backend
+    app.kubernetes.io/instance: backend
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/part-of: account
+    app.kubernetes.io/managed-by: Helm
+automountServiceAccountToken: false
+
+---
+# Source: backend/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  annotations: {argocd.argoproj.io/sync-wave: "-20"}
+  labels:
+    app.kubernetes.io/name: backend
+    app.kubernetes.io/instance: backend
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/part-of: account
+    app.kubernetes.io/managed-by: Helm
+data:
+  db-host: "postgresql"
+  db-port: "5432"
+  db-name: "account"
+  sslmode: "disable"
+  log-level: "info"
+  telemetry-enabled: "true"
+  telemetry-endpoint: "http://otel-collector.observability.svc.cluster.local:4318"
+  telemetry-environment: "local"
+
+---
+# Source: backend/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  annotations: {argocd.argoproj.io/sync-wave: "-20"}
+  labels:
+    app.kubernetes.io/name: backend
+    app.kubernetes.io/instance: backend
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/part-of: account
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  selector: {app.kubernetes.io/name: backend, app.kubernetes.io/instance: backend}
+  ports: [{name: http, port: 8080, targetPort: http}]
+
+---
+# Source: backend/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  annotations: {argocd.argoproj.io/sync-wave: "0"}
+  labels:
+    app.kubernetes.io/name: backend
+    app.kubernetes.io/instance: backend
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/part-of: account
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  progressDeadlineSeconds: 300
+  strategy: {type: RollingUpdate, rollingUpdate: {maxUnavailable: 0, maxSurge: 1}}
+  selector:
+    matchLabels: {app.kubernetes.io/name: backend, app.kubernetes.io/instance: backend}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: backend
+        app.kubernetes.io/instance: backend
+        app.kubernetes.io/component: backend
+        app.kubernetes.io/part-of: account
+        app.kubernetes.io/managed-by: Helm
+      annotations:
+        checksum/config: 8d717b99a17dc4b15c9d47f518e24889fa293330334dfbc52fcf9cfedc0ca9a8
+        account.lab/image-digest: "sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d"
+        account.lab/release-schema-version: "github-v1"
+        account.lab/source-repository: "syuhei0519/backend-app"
+        account.lab/source-commit: "d29a390c09f8667316569e1bb599bf690b00313d"
+        account.lab/github-run-id: "37806373099"
+        account.lab/github-run-attempt: "1"
+        account.lab/release-record-url: "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/release-record.json"
+        account.lab/release-record-sha256: "dbea54fc2a4531790fbec5d47ca44b1ec079176376d294371652b1ba93e25cbd"
+        account.lab/sbom-url: "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/sbom.cdx.json"
+        account.lab/sbom-sha256: "95d554e528a8297461160e3835435d4eda7f19c5cb9d83b63a76c71cda60f1af"
+        account.lab/restart-nonce: ""
+    spec:
+      serviceAccountName: backend
+      automountServiceAccountToken: false
+      securityContext: 
+        fsGroup: 10001
+        runAsGroup: 10001
+        runAsNonRoot: true
+        runAsUser: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      imagePullSecrets: 
+        - name: registry-backend-pull
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: backend
+          image: "ghcr.io/syuhei0519/backend-app:d29a390c09f8667316569e1bb599bf690b00313d@sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d"
+          imagePullPolicy: IfNotPresent
+          env:
+            - {name: PGHOST, value: "postgresql"}
+            - {name: PGPORT, value: "5432"}
+            - {name: PGDATABASE, value: "account"}
+            - {name: PGSSLMODE, value: "disable"}
+            - {name: LOG_LEVEL, value: "info"}
+            - {name: OTEL_EXPORTER_OTLP_ENDPOINT, value: "http://otel-collector.observability.svc.cluster.local:4318"}
+            - {name: DEPLOYMENT_ENVIRONMENT, value: "local"}
+            - name: POD_NAMESPACE
+              valueFrom: {fieldRef: {fieldPath: metadata.namespace}}
+            - name: POD_UID
+              valueFrom: {fieldRef: {fieldPath: metadata.uid}}
+            - name: PGUSER
+              valueFrom: {secretKeyRef: {name: account-db, key: app-username}}
+            - name: PGPASSWORD
+              valueFrom: {secretKeyRef: {name: account-db, key: app-password}}
+          ports: [{name: http, containerPort: 8080}]
+          volumeMounts: [{name: tmp, mountPath: /tmp}]
+          securityContext: 
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            readOnlyRootFilesystem: true
+          resources: 
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+          startupProbe:
+            httpGet: {path: /livez, port: http}
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 30
+          livenessProbe:
+            httpGet: {path: /livez, port: http}
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
+          readinessProbe:
+            httpGet: {path: /readyz, port: http}
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 2
+      volumes: [{name: tmp, emptyDir: {}}]
+
+---
+# Source: backend/templates/migration-job.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: backend-migration
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/sync-wave: "-10"
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation,HookSucceeded
+  labels:
+    app.kubernetes.io/name: backend
+    app.kubernetes.io/instance: backend
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/part-of: account
+    app.kubernetes.io/managed-by: Helm
+spec:
+  backoffLimit: 1
+  activeDeadlineSeconds: 180
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: backend
+        app.kubernetes.io/instance: backend
+        app.kubernetes.io/component: backend
+        app.kubernetes.io/part-of: account
+        app.kubernetes.io/managed-by: Helm
+      annotations:
+        account.lab/image-digest: "sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d"
+        account.lab/release-schema-version: "github-v1"
+        account.lab/source-repository: "syuhei0519/backend-app"
+        account.lab/source-commit: "d29a390c09f8667316569e1bb599bf690b00313d"
+        account.lab/github-run-id: "37806373099"
+        account.lab/github-run-attempt: "1"
+        account.lab/release-record-url: "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/release-record.json"
+        account.lab/release-record-sha256: "dbea54fc2a4531790fbec5d47ca44b1ec079176376d294371652b1ba93e25cbd"
+        account.lab/sbom-url: "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/sbom.cdx.json"
+        account.lab/sbom-sha256: "95d554e528a8297461160e3835435d4eda7f19c5cb9d83b63a76c71cda60f1af"
+    spec:
+      restartPolicy: Never
+      serviceAccountName: backend
+      automountServiceAccountToken: false
+      securityContext: 
+        fsGroup: 10001
+        runAsGroup: 10001
+        runAsNonRoot: true
+        runAsUser: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      imagePullSecrets: 
+        - name: registry-backend-pull
+      containers:
+        - name: migrate
+          image: "ghcr.io/syuhei0519/backend-app:d29a390c09f8667316569e1bb599bf690b00313d@sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d"
+          imagePullPolicy: IfNotPresent
+          args: ["migrate"]
+          env:
+            - {name: PGHOST, value: "postgresql"}
+            - {name: PGPORT, value: "5432"}
+            - {name: PGDATABASE, value: "account"}
+            - {name: PGSSLMODE, value: "disable"}
+            - {name: LOG_LEVEL, value: "info"}
+            - {name: OTEL_EXPORTER_OTLP_ENDPOINT, value: "http://otel-collector.observability.svc.cluster.local:4318"}
+            - {name: DEPLOYMENT_ENVIRONMENT, value: "local"}
+            - name: POD_NAMESPACE
+              valueFrom: {fieldRef: {fieldPath: metadata.namespace}}
+            - name: POD_UID
+              valueFrom: {fieldRef: {fieldPath: metadata.uid}}
+            - name: PGUSER
+              valueFrom: {secretKeyRef: {name: account-db, key: app-username}}
+            - name: PGPASSWORD
+              valueFrom: {secretKeyRef: {name: account-db, key: app-password}}
+          volumeMounts: [{name: tmp, mountPath: /tmp}]
+          securityContext: 
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            readOnlyRootFilesystem: true
+          resources: 
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+      volumes: [{name: tmp, emptyDir: {}}]

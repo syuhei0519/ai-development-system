@@ -1,0 +1,166 @@
+---
+# Source: frontend/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: frontend
+  labels:
+    app.kubernetes.io/name: frontend
+    app.kubernetes.io/instance: frontend
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/part-of: account
+    app.kubernetes.io/managed-by: Helm
+automountServiceAccountToken: false
+
+---
+# Source: frontend/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-config
+  labels:
+    app.kubernetes.io/name: frontend
+    app.kubernetes.io/instance: frontend
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/part-of: account
+    app.kubernetes.io/managed-by: Helm
+data:
+  default.conf: |
+    server {
+      listen 8080;
+      root /usr/share/nginx/html;
+      client_body_temp_path /tmp/client;
+      proxy_temp_path /tmp/proxy;
+      location = /livez { access_log off; return 200 'ok\n'; }
+      location = /readyz { access_log off; return 200 'ok\n'; }
+      location /api/ {
+        proxy_pass http://backend.account.svc.cluster.local:8080;
+        proxy_connect_timeout 5s;
+        proxy_read_timeout 5s;
+        proxy_send_timeout 5s;
+        proxy_set_header X-Request-ID $request_id;
+        proxy_intercept_errors off;
+      }
+      location / { try_files $uri $uri/ /index.html; }
+    }
+
+---
+# Source: frontend/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  labels:
+    app.kubernetes.io/name: frontend
+    app.kubernetes.io/instance: frontend
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/part-of: account
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: frontend
+    app.kubernetes.io/instance: frontend
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+
+---
+# Source: frontend/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app.kubernetes.io/name: frontend
+    app.kubernetes.io/instance: frontend
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/part-of: account
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  progressDeadlineSeconds: 300
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: {maxUnavailable: 0, maxSurge: 1}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: frontend
+      app.kubernetes.io/instance: frontend
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: frontend
+        app.kubernetes.io/instance: frontend
+        app.kubernetes.io/component: frontend
+        app.kubernetes.io/part-of: account
+        app.kubernetes.io/managed-by: Helm
+      annotations:
+        checksum/config: 1bcac951cf3483345ae5119088a2acfed11f2b07edc53d87f883cadf32dbc1df
+        account.lab/image-digest: "sha256:9f46c61c19918e6f9e8e9a1def2504ed61ec835af098673de44223025f8b3a66"
+        account.lab/release-schema-version: "github-v1"
+        account.lab/source-repository: "syuhei0519/frontend-app"
+        account.lab/source-commit: "ef5d8e4ace7a2e82be3aba97744bec712b3a0d3a"
+        account.lab/github-run-id: "37808152036"
+        account.lab/github-run-attempt: "1"
+        account.lab/release-record-url: "https://github.com/syuhei0519/frontend-app/releases/download/gha-ef5d8e4ace7a2e82be3aba97744bec712b3a0d3a-37808152036-1/release-record.json"
+        account.lab/release-record-sha256: "d36926c4ea8a340721a831481d436772d94c6c8884657a88816ae9bf1cb37fe1"
+        account.lab/sbom-url: "https://github.com/syuhei0519/frontend-app/releases/download/gha-ef5d8e4ace7a2e82be3aba97744bec712b3a0d3a-37808152036-1/sbom.cdx.json"
+        account.lab/sbom-sha256: "7d9041d489f466ac63a44b462700a116caa2dad74e0382023521e533407daa9a"
+        account.lab/restart-nonce: ""
+    spec:
+      serviceAccountName: frontend
+      automountServiceAccountToken: false
+      securityContext: 
+        fsGroup: 10001
+        runAsGroup: 10001
+        runAsNonRoot: true
+        runAsUser: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      imagePullSecrets: 
+        - name: registry-frontend-pull
+      containers:
+        - name: frontend
+          image: "ghcr.io/syuhei0519/frontend-app:ef5d8e4ace7a2e82be3aba97744bec712b3a0d3a@sha256:9f46c61c19918e6f9e8e9a1def2504ed61ec835af098673de44223025f8b3a66"
+          imagePullPolicy: IfNotPresent
+          securityContext: 
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            readOnlyRootFilesystem: true
+          resources: 
+            limits:
+              cpu: 250m
+              memory: 128Mi
+            requests:
+              cpu: 50m
+              memory: 64Mi
+          ports: [{name: http, containerPort: 8080, protocol: TCP}]
+          volumeMounts:
+            - {name: nginx-config, mountPath: /etc/nginx/conf.d}
+            - {name: tmp, mountPath: /tmp}
+          startupProbe:
+            httpGet: {path: /livez, port: http}
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 30
+          livenessProbe:
+            httpGet: {path: /livez, port: http}
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
+          readinessProbe:
+            httpGet: {path: /readyz, port: http}
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 2
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - name: nginx-config
+          configMap: {name: frontend-config}
+        - name: tmp
+          emptyDir: {}

@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "trivyVersion": "0.75.0",
+  "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+  "scannedAt": "2026-10-11T17:16:02.026933076Z",
+  "findings": [
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": "all.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": "all.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-01010",
+      "path": "all.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0109",
+      "path": "all.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0110",
+      "path": "all.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0110",
+      "path": "all.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0110",
+      "path": "all.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0110",
+      "path": "all.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "all.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "all.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "all.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "all.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-01010",
+      "path": "backend.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0110",
+      "path": "backend.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0110",
+      "path": "backend.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "backend.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "backend.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0110",
+      "path": "frontend.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "frontend.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": "postgresql.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": "postgresql.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0109",
+      "path": "postgresql.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0110",
+      "path": "postgresql.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "postgresql.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": "synthetic-order/order-postgresql.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": "synthetic-order/order-postgresql.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0109",
+      "path": "synthetic-order/order-postgresql.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0110",
+      "path": "synthetic-order/order-postgresql.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "synthetic-order/order-postgresql.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-01010",
+      "path": "synthetic-order/order.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0110",
+      "path": "synthetic-order/order.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0110",
+      "path": "synthetic-order/order.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "synthetic-order/order.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "synthetic-order/order.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    }
+  ],
+  "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+}

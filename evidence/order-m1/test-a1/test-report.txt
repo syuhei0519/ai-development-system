@@ -1,0 +1,156 @@
+Independent M1 preparation Test — order-m1-test-a1
+Role test; scope application-manifest#backend-app-2/M1; epoch1 attempt1.
+Outcome: FAILED. No application changes, PR changes, merge or deployment performed.
+
+This is a new independent Test, not Implementation attempt3. Immutable Implementation
+attempt1 remains blocked and reporting attempt2 remains completed with retry_of.
+AC-3 is the assigned engineering responsibility; no product AC is met here.
+AC-1/2 are outside assignment and unverified; AC-3 product outcome is also unverified.
+No Manager Readiness assessment or final_assessment is issued.
+
+Fixed subjects and measurement validity are in measurement.json. All observations
+were made against e0f79a61643d31a29de73ffc54bb6a31c320f0df, base
+bc6adaedcd645a4663c23284b977a3dd36c0796d, tree
+1e3618e2f3467ba639ba52c7531c2923c4d85505. Fixed System contract revision is
+4693887fa79c2b4a291c555b8bd27b6903eb4199; platform read basis is
+b989e29b8addbd6396c5c2b4833b969bc15fc8fa. No AGENTS.md/SKILL.md exists in those
+fixed source trees. Relevant Test, workflow, Handoff, Delivery1.2, Readiness1.1,
+Issue Completion and task/delivery templates were inspected.
+The supplied context/config exact byte pins and all four raw Git template artifact
+size/hashes matched. context.json is schema-valid. Policy times are preserved, not
+refreshed: observation 2026-10-11T17:05:55Z, expiry 2026-10-11T17:50:55Z.
+Fixed measurements expire after 24 hours, or earlier on relevant source/config
+changes or new failures. Security DB freshness is a separate, potentially earlier
+constraint; DB observation is retained in source-scan.json/render-scan.json.
+
+INPUT / HISTORY
+Canonical consume_delivery.py freshly fetched and verified 36 explicit objects,
+6 tree blobs and 52 structural bindings before upstream evidence was used. The
+original/public derivative distinctions and historical publication-approval
+uncertainty are retained. Current input Consumer use was separately authorized;
+no Consumer authority was self-issued. Authorization and Consumption Receipt
+remain private. Upstream original Handoff bytes were not reconstructed or edited.
+Independent reconciliation matched AC originals, assignment, attempt1 blocked,
+attempt2 completed and retry_of. CI and Implementation self-tests were treated only
+as upstream claims, never counted as the independent executions below.
+The separately requested private retry-history mechanical check is reported only
+to Manager; no private ledger, its hashes, identifiers or authorization is published.
+
+M1-S1 — VERIFIED for fixed desired resources; not live data measurement.
+All 28 existing chart files plus four existing environment files match byte-for-byte.
+Frontend/backend/PostgreSQL renders match baseline byte-for-byte. Both new charts
+render empty with defaults and local values (four empty-render observations).
+Fixed GitOps workloads render exactly the three old Applications and old chart/
+value references, all in account; no Order Application. No new active Secret,
+Namespace, AppProject or workload is introduced. trusted-render.py was executed
+with fixed baseline verifier in isolated Docker, --test-only/producer-job-id 0:
+provenanceRequired=false; eligibleForAuthenticatedVerification=false; existing
+inventory unchanged. This supports deployment_effect=none at the fixed P revision;
+it neither proves current live state nor authorizes later enabling.
+
+M1-S2 — FAILED adverse security-render rejection requirement.
+Positive structural checks passed: five Order and six database resources, dedicated
+names/DB selectors and orders/order_app identity, common migration/Deployment
+synthetic tag@digest, /livez and /readyz, app-only Order Secret references, existing
+admin-password reference for DB, init-only script/PGDATA semantics, fixed waves,
+deadline180/backoff1/Never and migrate args, dedicated 2Gi standard PVC with
+Prune=false/Delete=false and StatefulSet confirmation protection. No Secret value
+or resource is generated. Actual image entrypoint, init/runtime operation, migration
+execution and API behavior were not run and are not claimed.
+Schema tests reject required-key removal, nonboolean enabled, unknown values,
+security overrides and invalid enabled release/digest/source/run data. Disabled
+Order placeholders intentionally allow arbitrary string tag/digest/release fields;
+these are neither release validation nor active resources. Disabled safety objects
+remain const-constrained. Existing tests also cover container overrides, app/DB
+classification, unknown and hidden PodSpecs, PVC identity/protection, image/release
+mismatches and checksum behavior.
+
+Blocking finding F1 (three independently generated synthetic mutations): add
+hostNetwork:true, hostPID:true or hostIPC:true to the Order Deployment PodSpec.
+All three are accepted by the unchanged inventory parser (exit0), with EXACTLY THE
+SAME inventorySha256 as the positive render, although raw render bytes differ.
+The local structural scan accepts them. Pinned Trivy detects KSV-0009/KSV-0010/
+KSV-0008 at HIGH severity, but the unchanged scan-gate records WARNING and returns
+pass=true, also when invoked with -rendered to include structural checks.
+Strict Kubeconform accepts all 33 resources in these three synthetic inputs.
+Thus the required malicious security render rejection is not enforced for the new
+Order application PodSpec. This is an inherited application-image policy gap,
+not a claim that the 29-file patch weakens a previously rejecting validator or that
+the fixed chart currently enables host namespaces. Chart value overrides are
+rejected; the bypass concerns injected rendered/template PodSpec fields.
+Root causes visible in fixed source: tools/inventory/platform.go returns early for
+non-DB application images before its host namespace checks; tools/scan-gate/render.go
+checks privileged/plaintext-secret boundaries but not host namespaces; the scanner
+policy categorizes these findings as warnings. A future source mutation could
+therefore remain invisible to the image inventory comparison. No real deployment
+or exploit was attempted. Responsible Implementation/policy owner must close or
+explicitly resolve this acceptance gap with Manager; independent Test must retest
+a new authorized revision. Do not mark M1-S2/S3 covered using existing green CI.
+
+Boundary observation F2: moving the synthetic Order Deployment to kube-system is
+accepted by inventory and changes its inventory digest. This is NOT the same
+invisible bypass as F1 and is not independently claimed to bypass the downstream
+provenance/GitOps gates. The direct-parser negative expectation failed; it is
+retained as a boundary limitation requiring explicit namespace-scope checking.
+No namespace change exists in the fixed chart; fixed GitOps destination is account.
+
+M1-S3 — FAILED overall because F1 violates required negative rejection.
+Existing policy/validator sources are byte-identical to baseline; ci/github/test.sh
+only appends the new Order test invocation. All other 28 changes are additions.
+The following independent executions passed after environment-only setup:
+- ci/github/test.sh: Go inventory/release-record/scan-gate suites, docs14, trusted
+  identity3/contract10/registry8/premerge6/attempts13/render4, namespace boundary3,
+  GitHub release19, Order strict lint/render, 11-resource Kubeconform, 10 malicious
+  inventory mutations. See actual retained summary for authoritative test counts.
+- checksum binary: all existing and new Order tests passed (checksum.txt).
+- All remaining ci/*_test.py suites passed; two historical modules require normal
+  script import paths rather than python -I. Their initial import failures and
+  successful correct invocation are reported, not attributed to application bugs.
+- ci/validate.sh strict lint and all expected renders passed; strict Kubeconform
+  found 15 existing valid resources and 11 enabled synthetic valid resources.
+- Fixed source and complete rendered Trivy/scan-gate checks passed with all warnings
+  preserved. The complete render set includes synthetic Order resources.
+Independent harness: 202 assertions, 198 pass and four failed expectations (F1
+three host-namespace cases and F2 namespace-parser boundary). Test files/results
+are delivered unmodified with these failures, not relabeled successful.
+The 29 changed files and four pinned context artifacts are mapped in
+change-coverage.json; raw artifacts are preserved under artifacts/.
+
+ENVIRONMENT LIMITATIONS AND RECOVERY
+Initial host 'go' was a different executable; the exact Go1.27.1 Docker image was
+used to obtain the Go toolchain. Initial read-only default cache failed; writable
+scratch GOCACHE/GOPATH fixed it. No application file was changed. Initial scanner/
+Kubeconform HTTPS failed from missing runner trust and proxy resolution. Existing
+CA trust and proxy routing were passed only to network-dependent scanner/schema
+containers; offline Helm/userns/trusted-render isolation remained unchanged.
+No TLS verification was disabled. Final full CI, schema and source/render scans
+passed. Raw infrastructure diagnostics remain private. Public summaries preserve
+these unsuccessful setup observations and final commands/results. Trivy used its
+pinned embedded checks after remote checks retrieval failed; this fallback was
+observed during attack scanning. Its fixed policy still accepted HIGH host-namespace
+findings as warnings. Database metadata and scanner image digests remain recorded.
+
+M1-S4 — VERIFIED handoff boundary/documentation only.
+The fixed guide, Research design/addendum, Implementation reports and current
+context distinguish synthetic fixtures from actual B2 release evidence. No real
+B2 Order image/publication was verified by this Test. No kind/Argo/live cluster,
+Secrets, actual imageID, API/Account CRUD, restart persistence or M2/P1/T7 was run.
+B2 owner must publish/verify the real release; M2 owner selects its fixed trusted
+digest; independent Test runs migration, API, Account regression, restart persistence,
+Synced/Healthy/imageID in authorized isolated kind with fixed M/P candidates.
+Deployment owner confirms Secret metadata, capacity, pull, context and backup/restore
+before P1; T7 repeats actual final integrated revision/digest measurements. On
+failure stop affected merge/enable/deploy, preserve Account data and Order PVC,
+retain safe failure evidence, forward-fix and independently retest. No known-good
+Order rollback or manual successful migration marking is invented.
+
+DELIVERY / DECISIONS
+Business result is failed, independent Review remains Manager-owned and pending.
+Issue/product ACs remain unverified, aggregate_required; final_assessment omitted.
+Public deliverables contain synthetic data, public source/config and test evidence.
+Four Helm templates start with '{{' and are raw source, not typed JSON/text delivery
+objects: they are carried through a complete Delivery1.2 source-tree snapshot via
+an optional knowledge candidate, preserving original bytes and context-relative
+paths. This does not infer knowledge adoption or raw-template document validation.
+Publication and record preparation are separate from future Manager Consumer
+approval and fresh canonical consumption, which remain pending.
