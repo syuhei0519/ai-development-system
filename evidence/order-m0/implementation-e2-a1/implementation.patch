@@ -1,0 +1,139 @@
+diff --git a/docs/order-trusted-manifest-m0.md b/docs/order-trusted-manifest-m0.md
+index 2d658d3..594b6c6 100644
+--- a/docs/order-trusted-manifest-m0.md
++++ b/docs/order-trusted-manifest-m0.md
+@@ -75,6 +75,13 @@ fixture workload is installed by M0.
+ 
+ PostgreSQL uses the separate platform allowlist:
+ `docker.io/library/postgres:17.10-bookworm@sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f`.
++The reserved workload names `postgresql` and `order-postgresql` are bound before
++image-family classification, in every namespace. Substituting any application or
++other registry image cannot opt either identity out of platform policy. Conversely,
++the fixed PostgreSQL image is rejected under an unknown workload or container
++identity. Namespace handling is unchanged: omitted namespaces use the render
++namespace (`account`); an explicit namespace still requires the fixed PVC in that
++same namespace. This policy does not grant namespace or deployment authority.
+ Both DB names use StatefulSets, UID/GID/fsGroup 999, non-root, RuntimeDefault,
+ read-only root filesystem, no privilege escalation, ALL capabilities dropped,
+ no host namespaces/hostPath, and no service-account token automount. A same-render
+diff --git a/tools/inventory/platform.go b/tools/inventory/platform.go
+index 6a5594b..6a017fb 100644
+--- a/tools/inventory/platform.go
++++ b/tools/inventory/platform.go
+@@ -10,11 +10,14 @@ const postgresDigest = "sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5
+ func platformPolicy(r, spec, c map[string]any, repo, tag, digest, containerType string) error {
+ 	meta := object(r["metadata"])
+ 	name := str(meta, "name")
+-	if repo != postgresRepository && name != "order-postgresql" {
++	// Bind both reserved workload names before classifying the image family.
++	// Changing a DB image must never route that identity into app provenance.
++	fixedDB := name == "postgresql" || name == "order-postgresql"
++	if !fixedDB && repo != postgresRepository {
+ 		return nil
+ 	}
+ 	if repo != postgresRepository || tag != postgresTag || digest != postgresDigest ||
+-		str(r, "kind") != "StatefulSet" || (name != "postgresql" && name != "order-postgresql") ||
++		str(r, "kind") != "StatefulSet" || !fixedDB ||
+ 		containerType != "containers" || str(c, "name") != name {
+ 		return fmt.Errorf("platform image identity rejected")
+ 	}
+diff --git a/tools/inventory/platform_test.go b/tools/inventory/platform_test.go
+index d43f69a..302ef75 100644
+--- a/tools/inventory/platform_test.go
++++ b/tools/inventory/platform_test.go
+@@ -127,3 +127,95 @@ func TestPlatformContainerRoles(t *testing.T) {
+ 		}
+ 	}
+ }
++
++// Synthetic image/identity cross-product: neither reserved DB name may escape
++// through any image family, and the platform image cannot acquire an app name.
++func TestPlatformIdentityBeforeImageFamily(t *testing.T) {
++	pgImage := postgresRepository + ":" + postgresTag + "@" + postgresDigest
++	appImages := []string{
++		"ghcr.io/syuhei0519/backend-app",
++		"ghcr.io/syuhei0519/backend-app-order",
++		"ghcr.io/syuhei0519/frontend-app",
++		"registry.gitlab.com/syuhei-platform-engineering-lab/backend-app",
++		"example.invalid/unknown",
++	}
++	for _, name := range []string{"postgresql", "order-postgresql"} {
++		base := strings.ReplaceAll(platformFixture, "order-postgresql", name)
++		for _, namespace := range []string{"", "account", "synthetic-other"} {
++			input := base
++			if namespace != "" {
++				input = strings.ReplaceAll(input, "metadata:\n", "metadata:\n  namespace: "+namespace+"\n")
++			}
++			t.Run(name+"/"+namespace+"/fixed", func(t *testing.T) {
++				out, err := inventory([]byte(input), "account")
++				if err != nil || len(out.Entries) != 1 {
++					t.Fatalf("fixed identity rejected: %v", err)
++				}
++			})
++			for _, repo := range appImages {
++				t.Run(name+"/"+namespace+"/"+repo, func(t *testing.T) {
++					image := repo + ":" + strings.Repeat("a", 40) + "@sha256:" + strings.Repeat("b", 64)
++					if _, err := inventory([]byte(strings.Replace(input, pgImage, image, 1)), "account"); err == nil {
++						t.Fatal("DB identity escaped through another image family")
++					}
++				})
++			}
++		}
++		for _, change := range [][2]string{
++			{postgresTag, "17.9-bookworm"},
++			{postgresDigest, "sha256:" + strings.Repeat("b", 64)},
++			{"name: " + name + "\n", "name: unknown\n"},
++			{"- name: " + name + "\n", "- name: unknown\n"},
++			{"kind: StatefulSet", "kind: Deployment"},
++			{"apiVersion: apps/v1", "apiVersion: unknown/v1"},
++			{"      containers:", "      initContainers:"},
++			{"      containers:", "      ephemeralContainers:"},
++			{"claimName: " + name + "-data", "claimName: unknown-data"},
++			{"kind: PersistentVolumeClaim\nmetadata:", "kind: PersistentVolumeClaim\nmetadata:\n  namespace: synthetic-other"},
++		} {
++			t.Run(name+"/binding/"+change[0], func(t *testing.T) {
++				if _, err := inventory([]byte(strings.Replace(base, change[0], change[1], 1)), "account"); err == nil {
++					t.Fatal("accepted invalid platform binding")
++				}
++			})
++		}
++		// Extra application containers also cannot escape DB policy, regardless
++		// of the container list in which they appear.
++		for _, role := range []string{"containers", "initContainers", "ephemeralContainers"} {
++			added := "      - name: app\n        image: " + appImages[0] + ":" + strings.Repeat("a", 40) + "@sha256:" + strings.Repeat("b", 64) + "\n"
++			if role != "containers" {
++				added = "      " + role + ":\n" + added
++			}
++			t.Run(name+"/"+role+"/app-sidecar", func(t *testing.T) {
++				input := strings.Replace(base, "      volumes:", added+"      volumes:", 1)
++				if _, err := inventory([]byte(input), "account"); err == nil {
++					t.Fatal("accepted application sidecar on fixed DB")
++				}
++			})
++		}
++	}
++	for _, kind := range []string{"Pod", "Deployment", "StatefulSet", "DaemonSet", "ReplicaSet", "ReplicationController", "Job", "CronJob"} {
++		for _, repo := range appImages {
++			image := repo + ":" + strings.Repeat("a", 40) + "@sha256:" + strings.Repeat("b", 64)
++			base := strings.Replace(fixture(kind), img, image, 1)
++			t.Run(kind+"/"+repo+"/app", func(t *testing.T) {
++				if _, err := inventory([]byte(base), "account"); err != nil {
++					t.Fatalf("ordinary app handling changed: %v", err)
++				}
++			})
++			for _, name := range []string{"postgresql", "order-postgresql"} {
++				t.Run(kind+"/"+repo+"/"+name, func(t *testing.T) {
++					input := strings.Replace(base, "name: fixture", "name: "+name, 1)
++					if _, err := inventory([]byte(input), "account"); err == nil {
++						t.Fatal("reserved DB workload entered app inventory")
++					}
++				})
++			}
++		}
++		t.Run(kind+"/platform-under-app-identity", func(t *testing.T) {
++			if _, err := inventory([]byte(strings.Replace(fixture(kind), img, pgImage, 1)), "account"); err == nil {
++				t.Fatal("platform image accepted under app identity")
++			}
++		})
++	}
++}

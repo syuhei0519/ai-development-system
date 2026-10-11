@@ -1,0 +1,137 @@
+{
+  "repository": "syuhei0519/application-manifest",
+  "head": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+  "base": "e039945a90625262f91382e6f71149d046e31b34",
+  "pr": 18,
+  "draft": true,
+  "run_url": "https://github.com/syuhei0519/application-manifest/actions/runs/38125716138",
+  "run_id": 38125716138,
+  "status": "completed",
+  "conclusion": "success",
+  "observed_at": "2026-10-11 08:44:27 UTC",
+  "jobs": [
+    {
+      "name": "classify",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python3 -I ci/github/classify.py",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Policy and boundary tests",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Render, policy and checksum checks",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Kubernetes schema checks",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Source and rendered security checks",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "name": "docs",
+      "status": "completed",
+      "conclusion": "skipped",
+      "steps": []
+    },
+    {
+      "name": "ci-result",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Required check",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "independent_test": false
+}

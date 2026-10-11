@@ -1,0 +1,97 @@
+Order M0 F-2 repair — implementation epoch2 attempt1
+
+Scope: application-manifest#backend-app-2/M0, assigned AC-3 verification
+infrastructure only. This is implementation self-verification, not independent
+Test/Review or product AC acceptance. All product ACs remain unverified.
+AC-3 earliest phase remains premerge; Issue integration is aggregate_required.
+
+Fixed System: 0083151aa2f6b2aaf0e1db64ada3f196ed766e48.
+Application base: e039945a90625262f91382e6f71149d046e31b34.
+Prior implementation: 82505fce911c1dbbe75fe8226a06665e582e1ff9.
+Repaired head: e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4.
+Existing Draft: https://github.com/syuhei0519/application-manifest/pull/18.
+Related issue: https://github.com/syuhei0519/backend-app/issues/2.
+
+Input verification
+The independently supplied Manager authorization size and digest matched.
+Canonical consume_delivery.py from fixed System accepted the full 101-object
+Test2 closure using fresh isolated Git and the independently supplied pin.
+Private authorization, receipt, originals and their hashes are excluded here.
+Test2 public Handoff: 9977949f20d2d1f129d28a152c7a6dc056914228,
+evidence/order-m0/test-a2/handoff.json, 11690 bytes,
+sha256 823b1f717883610aa830abed7b0f6e4bbbd7c447b3208ca815e8efdb7e52b97e.
+Prior implementation and all historical upstream bytes remain unchanged.
+Epoch2 attempt1 has dependencies, no retry_of within this epoch. Prior completed
+implementation, failed Test2, blocked executions and terminal history are retained.
+No recursive dispatch or independent agents were started.
+
+Diagnosis and change
+Before repair, verified security-boundaries.py passed 115/116 expectations,
+failing postgresql/app-image-as-db. Verified f2-trusted.py accepted the synthetic
+Account substitution, with four inventory entries, provenanceRequired=true and
+eligible=false. This was an image classification policy bypass, not evidence of
+an authenticated release or deployed workload.
+platformPolicy now binds both reserved workload names before image-family
+classification. A name substitution cannot legitimize the fixed PostgreSQL image,
+and an image substitution cannot move either fixed DB name into app provenance.
+Only platform.go, platform_test.go and the existing M0 contract document changed
+in this commit. No sandbox, Secret, PVC, workflow or release policy was weakened.
+The existing namespace behavior is preserved: implicit account, or explicit
+namespace with a same-namespace PVC. No new namespace allowlist is invented.
+The new 190-subtest matrix covers both names; five non-platform repositories;
+implicit/account/other namespace; fixed image/tag/digest; unknown workload and
+container identities; wrong API/kind; container roles; PVC name/namespace; and all
+eight supported PodSpec kinds. Ordinary application handling stays accepted.
+Inventory acceptance of ordinary app entries is not authenticated release approval.
+
+Verification
+See self-test-results.json, render-comparison.json and ci-observations.json.
+Existing ci/github/test.sh passed, including docs 14, all Go inventory/release/
+scan tests, checksum compilation, trusted_identity 3, trusted_contract 10,
+trusted_registry 8, pre_merge_check 6, trusted_attempts 13, trusted_render 4,
+Docker namespace_boundary 3, release 19. Inventory totals 272 tests/subtests.
+Additional trusted_binary 1, trusted_consumer_failure 1, trusted_phase2 2,
+Helm lint/render, checksum tests and structural render scan passed.
+Historical F-1 replay: 138 observations, no failing expectation (generic scan-only
+observations remain non-gating observations). Security boundaries: 116/116 pass.
+An initial extra-suite invocation with Python -I failed local module discovery;
+the documented normal invocations above passed. This was invocation correction,
+not a changed test or policy waiver.
+Prepared Cloud Go 1.27.1 and Helm 4.2.4 were activated; pinned Docker images and
+the original bounded trusted renderer were used. No environment/credential
+configuration or live service start was needed.
+
+Deployment impact
+All 28 chart files and 4 environment files equal base byte-for-byte.
+Frontend/backend/postgresql render bytes and parsed YAML are identical to base,
+with per-file and per-render SHA256 evidence. The repair's only three files are
+verifier source, regression tests and documentation. No Order chart, DB, PVC,
+Secret or Application was added or enabled. Existing Account values and PR17
+were not modified. Thus the static rendered workload change is none; this is
+not a live Argo observation or permission to merge. Manifest main remains a
+GitOps sync input. Deployment/Merge readiness is not asserted.
+
+Decisions and remaining work
+Binding reserved identities centrally before image classification is preferred
+to a one-image blacklist or a duplicated policy in scan-gate. All image families
+are covered without changing legitimate application processing or F-1 security.
+The service/source/image mappings, schemas and synthetic B2 fixture bytes are
+unchanged; their contract remains in docs/order-trusted-manifest-m0.md. The B2
+producer is still a separate dependency; real producer/consumer interoperability,
+Order image publication and runtime digest/Argo/CRUD observations are unverified.
+M1 disabled defaults and enabled CI fixtures remain future work; this repair only
+tests disposable synthetic Git fixtures through the existing renderer.
+Manager must dispatch independent Test/Review against the new fixed head and
+evaluate current Readiness separately. No final_assessment is issued.
+
+Artifact derivation and delivery
+Four Python reproducers are explicitly edited derivatives of verified Test2:
+only the fixed target SHA and the self-test description changed. They are not
+claimed byte-identical to the originals. Original scripts/results/Handoffs are
+retained at their fixed upstream references. Newly measured results are separate
+artifacts; synthetic fixtures do not authorize real releases.
+Public payload excludes internal raw logs, private authorization/receipts, real
+task/thread/message IDs and private original hashes. The closure keeps typed
+structural dependencies and original slots; no source bytes or old status change.
+Publication verification is separate from Consumer approval. No new Consumer
+authorization is issued. Manager must independently authorize future consumption.
