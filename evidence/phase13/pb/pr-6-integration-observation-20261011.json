@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "document_type": "pr_integration_observation",
+  "publication": "public_safe",
+  "observed_at": "2026-10-11T04:29:39.600474+00:00",
+  "repository": "syuhei0519/ai-development-system",
+  "scope": "system/phase1-3/P-B",
+  "pr": {
+    "number": 6,
+    "url": "https://github.com/syuhei0519/ai-development-system/pull/6",
+    "state": "open",
+    "draft": true,
+    "head_ref": "feat/knowledge-collector-state",
+    "head_sha": "29b87fd1014c66c0368e4aad231846b17b53707b",
+    "base_ref": "main",
+    "base_sha": "b1e606544174481b7b6904f811e857f80978c287",
+    "test_merge_sha": "32266557cdfdbfe57c918b55b3806e7c6a200b6b",
+    "mergeable": true,
+    "auto_merge_enabled": false
+  },
+  "dependency": {
+    "commit": "5345303db8c5208859ed741b98f119882de7a973",
+    "tree": "10a4b8ccf7a8d10d991bef2cbe714afc35709b48",
+    "main_tree": "10a4b8ccf7a8d10d991bef2cbe714afc35709b48",
+    "trees_identical": true,
+    "main_parents": [
+      "df400018057735b7cb6a9c6ea4619508f0e6ba3a",
+      "5345303db8c5208859ed741b98f119882de7a973"
+    ],
+    "feature_parent": "5345303db8c5208859ed741b98f119882de7a973",
+    "merge_base": "5345303db8c5208859ed741b98f119882de7a973"
+  },
+  "test_merge": {
+    "commit": "32266557cdfdbfe57c918b55b3806e7c6a200b6b",
+    "parents": [
+      "b1e606544174481b7b6904f811e857f80978c287",
+      "29b87fd1014c66c0368e4aad231846b17b53707b"
+    ],
+    "tree": "07f815ef5fe584aa84f817ccb67501563c405ea5",
+    "feature_tree": "07f815ef5fe584aa84f817ccb67501563c405ea5",
+    "trees_identical": true,
+    "local_merge_tree_matches": true
+  },
+  "ci": {
+    "run_id": 38111684239,
+    "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38111684239",
+    "event": "pull_request",
+    "head_sha": "29b87fd1014c66c0368e4aad231846b17b53707b",
+    "status": "completed",
+    "conclusion": "success",
+    "verification": "GitHub Actions run API confirms success for the unchanged feature head. Job log retrieval was unavailable, so no log-derived checkout assertion is made."
+  },
+  "previous_evidence": {
+    "payload_commit": "4041215a61921c66548e598c463ee59769b2a56a",
+    "records_commit": "bb5fedf3f2034c5f65c374721f2248436054159d",
+    "unchanged": true
+  },
+  "actions": {
+    "draft_pr_created": true,
+    "rebase": false,
+    "code_changed": false,
+    "feature_head_changed": false,
+    "merged": false,
+    "main_pushed": false,
+    "deployed": false
+  },
+  "independent_test": "Manager reports fixed-head Test in progress; result not inferred from CI",
+  "independent_review": "pending Manager gate; not performed by Implementation",
+  "safety": "Public Git/PR/CI coordinates and observed metadata only; no private original, operational authorization, runtime identity, secret or raw internal log. Supplemental observation only; existing evidence is not overwritten.",
+  "authority_granted": false
+}
