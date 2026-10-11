@@ -1,0 +1,183 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "system-readiness-prerequisite",
+    "source": "https://github.com/syuhei0519/ai-development-system",
+    "title": "Add bounded readiness for dependency preparation pull requests",
+    "acceptance_criteria": [
+      {
+        "id": "AC-S1",
+        "verbatim": "通常PRの既存マージ条件を維持し、依存準備PRだけを明示的に区分して空の製品AC集合を許容する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S2",
+        "verbatim": "依存準備PRは非空の工程受入条件と関連製品AC、固定成果物、独立TestとReview、後続検証責任を必須とし、工程達成を製品AC達成へ変換しない。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S3",
+        "verbatim": "配備影響noneとaggregate_requiredに限定し、CI、保護ルール、権限、依存、証跡鮮度、Issue Completionの既存fail-closed条件を維持する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S4",
+        "verbatim": "JSON Schema、CLI、正常・異常回帰テスト、サンプル、役割・workflow・テンプレート・READMEが整合し、既存全テストと新規テストが成功する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S5",
+        "verbatim": "変更と検証成果物を固定Git revisionとbytes/hashで取得でき、既存PRを重複作成せずSystem専用feature branchのDraft PRとして提示する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      }
+    ]
+  },
+  "role": "review",
+  "task_id": "readiness-prerequisite-review-a1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "readiness-prerequisite-test-a3",
+      "attempt": 3,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/d2c6b9780ac0645651028032e5132cd30eabed6b/evidence/readiness-prerequisite/test-a3/handoff.json",
+      "revision": "sha256:d6a822a31001cc9df764817a1a7868b480826a3c741087304fd8186eb3d3d288",
+      "relationship": "dependency"
+    },
+    {
+      "role": "implementation",
+      "task_id": "readiness-prerequisite-implementation-a2",
+      "attempt": 2,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/cc1076ba6a9c79e60e50fdf7b19ba7cc96dfff64/evidence/readiness-prerequisite/implementation-a2/handoff.json",
+      "revision": "sha256:38fec6cd5f71e9652a7c8f219ef75b219404769a011c23554435bceb3c62dab4",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Independent Review completed at fixed cdaad5a0d7437a9abc24481e4849b89a9e112401 with no blocking findings. AC-S1–S5 covered for assigned review only; no live Readiness, product verdict, required GitHub approval or operation authority.",
+  "artifacts": [
+    {
+      "id": "review-report",
+      "kind": "review",
+      "locator": "review-report.md",
+      "revision": "sha256:56aa2fea2a6fd85d465efa45a1e0bd98aaa4a5ca0ad9dc5410913b95385cfdd0",
+      "summary": "Independent all-diff contract and safety review; no blocking findings."
+    },
+    {
+      "id": "review-measurements",
+      "kind": "test-report",
+      "locator": "measurements.json",
+      "revision": "sha256:af0aa268f819d597972047188ff28019270f8755fe480b0f62ba8853c94698cc",
+      "summary": "Fresh Review executions and public GitHub metadata; synthetic observations remain separate."
+    },
+    {
+      "id": "review-pins",
+      "kind": "other",
+      "locator": "pins.json",
+      "revision": "sha256:ddac116627be6693a25df9621e253e0778b20c06690dbb700f5f799358240db0",
+      "summary": "Fixed subject, changed-file bytes, configuration digest, completion and 24-hour expiry."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "review-observation",
+      "claim": "All assigned code/contract/evidence review responsibilities completed without blocking findings at fixed subject.",
+      "artifact_ids": [
+        "review-report",
+        "review-measurements",
+        "review-pins"
+      ],
+      "locator": "review-report.md",
+      "observation": "Full 29-file diff reviewed; baseline280/head309 OK, original237/237, samples26, additional163/163, old F1/F2 reproduced and typed/bounded corrections confirmed. Upstream Test3/Implementation2 and preserved failures reviewed after canonical fresh112-artifact closure verification. Linux synthetic boundaries and live metadata limitations are explicit."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-S1",
+      "disposition": "covered",
+      "scope": "Independent System review of AC-S1 at the fixed subject; see report AC section and limits. Not a final product/Issue judgment.",
+      "artifact_ids": [
+        "review-report",
+        "review-measurements",
+        "review-pins"
+      ],
+      "evidence_ids": [
+        "review-observation"
+      ]
+    },
+    {
+      "ac_id": "AC-S2",
+      "disposition": "covered",
+      "scope": "Independent System review of AC-S2 at the fixed subject; see report AC section and limits. Not a final product/Issue judgment.",
+      "artifact_ids": [
+        "review-report",
+        "review-measurements",
+        "review-pins"
+      ],
+      "evidence_ids": [
+        "review-observation"
+      ]
+    },
+    {
+      "ac_id": "AC-S3",
+      "disposition": "covered",
+      "scope": "Independent System review of AC-S3 at the fixed subject; see report AC section and limits. Not a final product/Issue judgment.",
+      "artifact_ids": [
+        "review-report",
+        "review-measurements",
+        "review-pins"
+      ],
+      "evidence_ids": [
+        "review-observation"
+      ]
+    },
+    {
+      "ac_id": "AC-S4",
+      "disposition": "covered",
+      "scope": "Independent System review of AC-S4 at the fixed subject; see report AC section and limits. Not a final product/Issue judgment.",
+      "artifact_ids": [
+        "review-report",
+        "review-measurements",
+        "review-pins"
+      ],
+      "evidence_ids": [
+        "review-observation"
+      ]
+    },
+    {
+      "ac_id": "AC-S5",
+      "disposition": "covered",
+      "scope": "Independent System review of AC-S5 at the fixed subject; see report AC section and limits. Not a final product/Issue judgment.",
+      "artifact_ids": [
+        "review-report",
+        "review-measurements",
+        "review-pins"
+      ],
+      "evidence_ids": [
+        "review-observation"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe",
+  "assignment": {
+    "scope": "ai-development-system#readiness-prerequisite-support",
+    "ac_ids": [
+      "AC-S1",
+      "AC-S2",
+      "AC-S3",
+      "AC-S4",
+      "AC-S5"
+    ],
+    "completion_criteria": [
+      "通常PRの既存マージ条件を維持し、依存準備PRだけを明示的に区分して空の製品AC集合を許容する。",
+      "依存準備PRは非空の工程受入条件と関連製品AC、固定成果物、独立TestとReview、後続検証責任を必須とし、工程達成を製品AC達成へ変換しない。",
+      "配備影響noneとaggregate_requiredに限定し、CI、保護ルール、権限、依存、証跡鮮度、Issue Completionの既存fail-closed条件を維持する。",
+      "JSON Schema、CLI、正常・異常回帰テスト、サンプル、役割・workflow・テンプレート・READMEが整合し、既存全テストと新規テストが成功する。",
+      "変更と検証成果物を固定Git revisionとbytes/hashで取得でき、既存PRを重複作成せずSystem専用feature branchのDraft PRとして提示する。"
+    ]
+  }
+}

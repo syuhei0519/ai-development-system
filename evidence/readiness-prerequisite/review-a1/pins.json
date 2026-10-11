@@ -1,0 +1,159 @@
+{
+  "document_type": "fixed_review_pins",
+  "repository": "syuhei0519/ai-development-system",
+  "pr_number": 8,
+  "base": "0083151aa2f6b2aaf0e1db64ada3f196ed766e48",
+  "head": "cdaad5a0d7437a9abc24481e4849b89a9e112401",
+  "tree": "bd6db38a828be65062b7cf0bd8044765190b0cc1",
+  "completed_at": "2026-10-11T15:22:05.198458+00:00",
+  "valid_until": "2026-10-12T15:22:05.198458+00:00",
+  "invalidation": "Any head/base/relevant config change or new failure immediately invalidates; mutable GitHub snapshots have separate short windows; no authority granted",
+  "review_configuration_sha256": "af0aa268f819d597972047188ff28019270f8755fe480b0f62ba8853c94698cc",
+  "changed_file_inventory": [
+    {
+      "path": "README.md",
+      "size": 16233,
+      "sha256": "6f983190d6f93b392c2d76e9409fb5a992d0b4571135515599254fc54c24bff9"
+    },
+    {
+      "path": "agents/implementation.md",
+      "size": 5839,
+      "sha256": "a1a04b13f366d964ffa48b4083ecd40ea6d26fedee3af2a4035b605ed4bda94d"
+    },
+    {
+      "path": "agents/manager.md",
+      "size": 7822,
+      "sha256": "ae76f99d4994f3af2cdf860c2321292435fd4f349cc62cbc39d1de89275d148b"
+    },
+    {
+      "path": "agents/research-design.md",
+      "size": 5634,
+      "sha256": "8e9cda143a2688ab0b0f0086217aa500eaba3c677d57236774f154ae2a321ae5"
+    },
+    {
+      "path": "agents/review.md",
+      "size": 5906,
+      "sha256": "762d4a637b92e1e2658964f2a96ea26e221367500530e0dc784e5d71e1e62238"
+    },
+    {
+      "path": "agents/test.md",
+      "size": 5995,
+      "sha256": "c332458195da91df2b4fd5f32a9817e94a62d35b1c5216b4a0d48f4e700e2efc"
+    },
+    {
+      "path": "contracts/README.md",
+      "size": 12657,
+      "sha256": "3731c1870aa68755c57270127cffb351f82ed7109035f68bbe7ab0c4e409e83e"
+    },
+    {
+      "path": "contracts/issue-completion-context-v1.1.schema.json",
+      "size": 25721,
+      "sha256": "fd12064bd06c81f222b169433a7b8cc3fd17e12cf40e15858c9aa298846bcc10"
+    },
+    {
+      "path": "contracts/issue-completion-v1.1.schema.json",
+      "size": 24419,
+      "sha256": "1791662f31c092b034ce294f739fdc20305656016edfb049440b048fafb451df"
+    },
+    {
+      "path": "contracts/issue-completion.md",
+      "size": 14052,
+      "sha256": "7330322aedee419a554d95bda65e01446bfc3ac54046b2fe0df6e67d2051d929"
+    },
+    {
+      "path": "contracts/readiness-context.schema.json",
+      "size": 10123,
+      "sha256": "3a2dd8dc1ea307725c9e2fde99e91e29a20dd26907692e3a4d6c4fb7dded4c65"
+    },
+    {
+      "path": "contracts/readiness.md",
+      "size": 17562,
+      "sha256": "4a373c0578b201d234a52a38aefccbe588f625ede3ca14916ba5ad42118db73c"
+    },
+    {
+      "path": "contracts/readiness.schema.json",
+      "size": 20244,
+      "sha256": "5c322fe48a1aaf8c14c6a0f9b54dc67ee566bf376ad1bb986826a49961f54ff4"
+    },
+    {
+      "path": "examples/README.md",
+      "size": 3031,
+      "sha256": "84a3196e8f4f83ebc33556c3de7a664bc249ea1bb6081a117d9aafefb3030b32"
+    },
+    {
+      "path": "examples/issue-completion/README.md",
+      "size": 2657,
+      "sha256": "b1e19dd76c291a06de061a5c74efac17709434a76a2d03b7ebc906acc6a891f0"
+    },
+    {
+      "path": "examples/issue-completion/preparation-example.py",
+      "size": 701,
+      "sha256": "4a98fb60bb50c186c645389720afb568c59bf72a5d674bf8bfd200a01de64730"
+    },
+    {
+      "path": "examples/readiness/README.md",
+      "size": 3694,
+      "sha256": "e3230b20312abb039f68b0fc3b2cb8c597f87435b8eb802fec2173ec92a87724"
+    },
+    {
+      "path": "examples/readiness/preparation-artifact.txt",
+      "size": 55,
+      "sha256": "0726a907aee40484a2b1b94e55b85d7b6003f6d25109691470e750b663955475"
+    },
+    {
+      "path": "examples/readiness/preparation-context.json",
+      "size": 3010,
+      "sha256": "7193b9a041c6f655feff5e3a03962887240225d4c929d2e26de2f84dd8305899"
+    },
+    {
+      "path": "examples/readiness/preparation-ready.json",
+      "size": 23806,
+      "sha256": "400324ec829df98232fa2c1396a44949395c7e2c83bd9855004b53d492e7503a"
+    },
+    {
+      "path": "scripts/regular_file.py",
+      "size": 3505,
+      "sha256": "3acac6caabc5796f7a704a18ca708e3bd10ec5d4c6e4a7b45663bb6d7c2c58b0"
+    },
+    {
+      "path": "scripts/validate_issue_completion.py",
+      "size": 38255,
+      "sha256": "868ae4b7762bf943ccd6b06d191e37ac36209a7eabaaa00abbf38d21d56955c1"
+    },
+    {
+      "path": "scripts/validate_readiness.py",
+      "size": 18321,
+      "sha256": "b1059084f8c519417290f762c8ea57c378770cdddcd30d79fefe7ecbde120f8d"
+    },
+    {
+      "path": "templates/task-input.md",
+      "size": 7983,
+      "sha256": "90b6f06bf069d772fb095dee2624a8568f1f99d059dcc3842ac125ef9436fbe1"
+    },
+    {
+      "path": "tests/preparation_completion_fixture.py",
+      "size": 2468,
+      "sha256": "42c6d02708457efe723d518cceef635b120644b60a8ed33dce5e6eddc65a3673"
+    },
+    {
+      "path": "tests/test_preparation_completion.py",
+      "size": 7585,
+      "sha256": "2d1c4ec4b993a0081083f74949905c3af05db496f22b429f877a10a68f9a7c93"
+    },
+    {
+      "path": "tests/test_readiness_preparation.py",
+      "size": 7937,
+      "sha256": "cd8495f64f06db61588d7609e5ca419303d6a0d198e3f3641fbb0395b8eba768"
+    },
+    {
+      "path": "tests/test_regular_file.py",
+      "size": 3217,
+      "sha256": "2e8a78c0a27f374d71e8043daa009332bf9b0eb470ef0a41c2b5c7fe7c6ef518"
+    },
+    {
+      "path": "workflows/single-issue.md",
+      "size": 17129,
+      "sha256": "b757c2e6c567ac0b71a5516ebf4a3d2a5101a7b0c58742f60105b939845c7673"
+    }
+  ]
+}
