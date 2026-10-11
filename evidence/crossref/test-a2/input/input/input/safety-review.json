@@ -1,0 +1,18 @@
+{
+  "record_type": "public_alias_candidate_safety_review",
+  "classification": "public_safe_candidate",
+  "publication_state": "local_unpublished",
+  "publication_approval": "not_requested_by_this_agent",
+  "inspection": "Independent Test inspected new report, normalized observations, synthetic script/results and exact already-public dependency closure. Whole-candidate scans exclude new private Manager authorization bytes/pins, private receipt hashes, runtime thread/task identifiers, internal logs and private original digests.",
+  "new_artifacts": "Public alias only. Synthetic test data is explicitly synthetic. CI entries are public repository observations. delivery-observation.json is a separate edited derivative and is not a Consumption Receipt.",
+  "dependencies": "27 copied dependency files remain exact authorized public bytes. The historical public synthetic P-A receipt inside the dependency closure is retained unchanged; its public synthetic authorization hash is not either current private Manager pin.",
+  "original_comparison": "Independent byte comparison only for the supplied public dependency bytes; no claim to independently inspect private Producer originals.",
+  "excluded": [
+    "Both current Manager authorization JSONs and independent pins",
+    "Full current Consumption Receipts and their hashes",
+    "Raw local/CI internal logs",
+    "Private harness intermediate history and real runtime identifiers",
+    "Private original files and hashes"
+  ],
+  "limitations": "Classification and this review do not authorize publication. Manager must approve the actual candidate bytes and destination before publication. No application code execution or product safety certification."
+}

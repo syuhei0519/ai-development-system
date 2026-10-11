@@ -1,0 +1,318 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "SYSTEM-CROSSREF-DELIVERY",
+    "source": "assignment-requirements.json",
+    "title": "System fixed cross-repository artifact delivery implementation",
+    "acceptance_criteria": [
+      {
+        "id": "X-1",
+        "verbatim": "Delivery明示version拡張（推奨1.2）と外側slot-binding契約。ownerdocumentの固定ref、構造上slot（artifact ID/upstream identity/Knowledge source等）と原locator/revisionとtypedtargetを一意結合。欠落/余剰/重複/曖昧/競合は拒否。旧1.0/1.1は新型を拒否し以前の意味と正常系維持。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-2",
+        "verbatim": "blobはrepository/fullcommit/path/size/sha256で取得。canonical GitHub fixed blob URLと元revisionを厳密一致させ、同repo別commit/別repoを安全に解決。任意URL追跡や浮動ref/redirect/外部HTTP自動取得は禁止。列挙された全依存を取得して型/schema/hash/role/task/attempt/retryIssueも検証。暗黙locator削除やコピーによる偽装をしない。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-3",
+        "verbatim": "kind=commitにはblobと別typed git-commit-objectを定義。repo/fullOID/rawcommitobject size/SHA256、canonicalcommitURL/revision一致、cat-file type=commitと取得SHA一致、rawobject全byteshash、出力/receiptへtyped記録。commitobject存在だけでtree内容/build/製品AC合格を認定しない。必要なソースblob証跡は別で取得。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-4",
+        "verbatim": "全manifest/publication/consumption/authorizationの版と承認bindings整合。Manager独立pin、用途consumer/scope/expiry必須、receipt権限なし。全必要artifact実体検証前に利用しない。source truthfulness/意味妥当性/IssueCompletionは別ゲート。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-5",
+        "verbatim": "正常/異常tests: 固定crossrepo blob/Handoff/commit、URL/OID/path/objecttype/size/hash不一致、missingdependency/privateonly/duplicate slot/downgrade、symlink/gitlink/JSON型偽装、retryidentity、承認、旧128testsを含む回帰。新旧validator双方で期待動作確認。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-6",
+        "verbatim": "実B1公開Handoffを一切書換えず固定codecommit/upstreamの正式bundle検証を可能にし、CLI実取得で証明。公開ソースだけを使い、B1Test/Review/Issue合格や実装再開をこのSystemtaskから主張しない。",
+        "source": "assignment-requirements.json"
+      }
+    ]
+  },
+  "assignment": {
+    "scope": "system/artifact-delivery/cross-reference",
+    "ac_ids": [
+      "X-1",
+      "X-2",
+      "X-3",
+      "X-4",
+      "X-5",
+      "X-6"
+    ],
+    "completion_criteria": [
+      "Independently verify all original X-1 through X-6 against fixed implementation head; preserve exact Issue/AC text and prior history.",
+      "X-7: 厳格な knowledge-candidates-v1 profile と版付き外側 candidate_bindings を実装する。原文書にschema_version等を追加せず、document_type・必要field・型・余剰field禁止・候補ID一意性を検証する。producer Handoff固定実体・artifact ID・raw_locator・候補ID集合・原source文字列とtyped targetを一意結合し、欠落/余剰/重複/曖昧/競合を拒否する。pending_manager_reviewを承認へ読み替えず、未知Knowledge型の降格拒否を維持する。blob sourceの全bytes・size/hash・固定URL/OID/pathを検証し、provenance-onlyへ緩和しない。",
+      "X-8: 固定tree sourceの版付き完全snapshotを検証する。固定repo/full commit/directoryとcanonical tree URLを照合し、対象祖先および配下treeを完全列挙する。全通常blobのpath/mode/OID/size/SHA-256と実体を照合し、欠落/余剰/重複/改変/不正祖先/symlink/gitlink/非通常object/部分列挙を拒否する。tree/commit objectの存在だけで配下内容やbuild/製品ACを認定せず、件数/bytes上限超過時は切り詰めずfail closedとする。",
+      "X-9: 実B1公開Handoffとknowledge_candidates原bytesを変更せず、固定code commit・Research依存・候補producer binding・blob source・tree配下の全必要実体をCLI実取得で検証する。旧128testsを含む現149testsを維持し、新旧validatorで版・型・URL/OID/path/mode/size/hash・candidate集合・producer・承認・依存欠落・private_only・symlink/gitlink・JSON偽装・retryidentity・再取得の正常/否定系を検証する。System自己検証、独立Test/Review、B1製品AC、実装再開、IssueCompletionを分離して報告する。",
+      "Preserve independent Review attempt 1 separately from Test attempt 1 and Implementation attempt 2. Independently evaluate the fixed diff, reproduce 173 regressions and the independent Test cases, run additional Review probes and actual B1 CLI/fresh recheck, record separate CI/integration observations, determine whether blocking findings remain, and provide private receipts plus an unpublished safe dependency-closed candidate."
+    ]
+  },
+  "role": "review",
+  "task_id": "PUBLIC-CROSSREF-REVIEW-A1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "PUBLIC-CROSSREF-TEST-A1",
+      "attempt": 1,
+      "relationship": "dependency",
+      "handoff_locator": "input/handoff.public.json",
+      "revision": "sha256:14a235ddb722f581e2a4079dac891ccd725bdbda81640a286e6630ce84ebbb7e"
+    }
+  ],
+  "system_status": "completed",
+  "status": "failed",
+  "summary": "Independent Review attempt 1 FAILED at fixed head: R-1 (P2) in prepare_crossref_bundle.py:110 misclassifies valid blob URLs containing /tree/. Reproduced with real local synthetic Git objects; no production fix. Existing 173 regressions, 245 Test reruns and first 43 Review cases pass; final three preparation cases have one pass and two failures. Actual B1 CLI/fresh recheck still passes 17 objects / 89071 bytes. Original Issue/history preserved; Manager must return the finding to Implementation.",
+  "artifacts": [
+    {
+      "id": "REPORT",
+      "kind": "review",
+      "locator": "review-report.json",
+      "revision": "sha256:ce2793c1454151c9c8c203f4c608048e41a89f3f15b33becb0f8ae61945c9b85",
+      "summary": "Independent Review evidence or exact original requirements; local unpublished public-alias candidate."
+    },
+    {
+      "id": "REGRESSION",
+      "kind": "test-report",
+      "locator": "regression-summary.json",
+      "revision": "sha256:b30f9645e4e8b5b133eb586c45f09f3decf7a9b9cbb9a0e3cbe1205b83e5588d",
+      "summary": "Independent Review evidence or exact original requirements; local unpublished public-alias candidate."
+    },
+    {
+      "id": "TEST-RERUN",
+      "kind": "test-report",
+      "locator": "test245-rerun.json",
+      "revision": "sha256:5e0aa32d620cfd0bc47f9b184c2e18a2eab503055d159b7233fc774d70ed57cf",
+      "summary": "Independent Review evidence or exact original requirements; local unpublished public-alias candidate."
+    },
+    {
+      "id": "REVIEW-PROBES",
+      "kind": "other",
+      "locator": "review_probe.py",
+      "revision": "sha256:7c29076903fd02dc20becffaace10709654f7efda0fee97cf2db00da285ca4b6",
+      "summary": "Independent Review evidence or exact original requirements; local unpublished public-alias candidate."
+    },
+    {
+      "id": "REVIEW-RESULTS",
+      "kind": "test-report",
+      "locator": "review-probe-results.json",
+      "revision": "sha256:22edf2e3ac73c27214d2bceaac62299b9be9f8249dcd6d724a9f8f27739144ed",
+      "summary": "Independent Review evidence or exact original requirements; local unpublished public-alias candidate."
+    },
+    {
+      "id": "DELIVERY",
+      "kind": "test-report",
+      "locator": "delivery-observation.json",
+      "revision": "sha256:7664cc0f056d14fd3b00de57c715fc21eddae30dadda555797636a944f39d4a7",
+      "summary": "Independent Review evidence or exact original requirements; local unpublished public-alias candidate."
+    },
+    {
+      "id": "INTEGRATION",
+      "kind": "test-report",
+      "locator": "integration-observation.json",
+      "revision": "sha256:f31ea5488c3bf6e5413d9de62071ea4620195908afa873ffa77640dfdd85d903",
+      "summary": "Independent Review evidence or exact original requirements; local unpublished public-alias candidate."
+    },
+    {
+      "id": "ASSIGNMENT",
+      "kind": "document",
+      "locator": "assignment-adoption.json",
+      "revision": "sha256:9068db3986e8337f725ac4f108c9fa963f9c5568b11a76bcaa19fb13fc49905d",
+      "summary": "Independent Review evidence or exact original requirements; local unpublished public-alias candidate."
+    },
+    {
+      "id": "REPRODUCTION",
+      "kind": "document",
+      "locator": "reproduction.md",
+      "revision": "sha256:1652986494d08f869499d31aeabd8a170953887ea63dcdd95e061f311cef4960",
+      "summary": "Independent Review evidence or exact original requirements; local unpublished public-alias candidate."
+    },
+    {
+      "id": "SAFETY",
+      "kind": "document",
+      "locator": "safety-review.json",
+      "revision": "sha256:2cd589e285e164a91c722d9f4140fd8c4a35dbc4da58731010dc69fd97d1f008",
+      "summary": "Independent Review evidence or exact original requirements; local unpublished public-alias candidate."
+    },
+    {
+      "id": "REQUIREMENTS",
+      "kind": "document",
+      "locator": "assignment-requirements.json",
+      "revision": "sha256:f3d9d8e0f58a85325487bffe17aa336f90294f782bb44ebb3a4a69a2c2564ea2",
+      "summary": "Independent Review evidence or exact original requirements; local unpublished public-alias candidate."
+    },
+    {
+      "id": "PREPARATION-PROBE",
+      "kind": "other",
+      "locator": "preparation_probe.py",
+      "revision": "sha256:6c6fa0aa166ad1a112255ef7b731ec6b1564594f533794901fac7cb2d0fa177d",
+      "summary": "Independent Review R-1 reproduction; synthetic local Git, no production fix."
+    },
+    {
+      "id": "PREPARATION-RESULTS",
+      "kind": "test-report",
+      "locator": "preparation-probe-results.json",
+      "revision": "sha256:3d716b099c0648d1a1eafdedafe1fa0b065fbd0f1de7f69c1e77e5096d7581fb",
+      "summary": "One control passes; two valid blob preparation cases fail; Consumer oracle accepts all three."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-REVIEW",
+      "claim": "Fixed diff independently reviewed; blocking R-1 reproduced.",
+      "artifact_ids": [
+        "REPORT",
+        "REGRESSION",
+        "TEST-RERUN",
+        "REVIEW-PROBES",
+        "REVIEW-RESULTS",
+        "PREPARATION-PROBE",
+        "PREPARATION-RESULTS",
+        "ASSIGNMENT"
+      ],
+      "locator": "review-report.json",
+      "observation": "173 regressions, 245 Test reruns and initial 43 Review cases pass. Additional preparation controls: one pass and two expected-success failures. R-1 blocks clean independent Review; no production patch applied."
+    },
+    {
+      "id": "E-DELIVERY",
+      "claim": "Actual B1 formal CLI and fresh recheck independently reproduced.",
+      "artifact_ids": [
+        "DELIVERY",
+        "REPRODUCTION"
+      ],
+      "locator": "delivery-observation.json",
+      "observation": "17 objects / 89071 bytes identical; separate private approvals/pins/receipts. No application execution or product/source-truth acceptance."
+    },
+    {
+      "id": "E-INTEGRATION",
+      "claim": "Fixed PR/base/test-merge/CI relationships independently observed.",
+      "artifact_ids": [
+        "INTEGRATION"
+      ],
+      "locator": "integration-observation.json",
+      "observation": "Base and prior dependency trees equal; test-merge parents correct and tree equals head; CI log confirms test-merge checkout and 173 tests. Not GitHub required review or Readiness."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "X-1",
+      "disposition": "covered",
+      "scope": "Independent Review of fixed System delivery implementation only. See report for exact code/evidence and additional X-7/X-8/X-9 mapping. Not product acceptance, publication/merge authority or IssueCompletion.",
+      "artifact_ids": [
+        "REPORT",
+        "REGRESSION",
+        "REVIEW-RESULTS",
+        "DELIVERY",
+        "INTEGRATION"
+      ],
+      "evidence_ids": [
+        "E-REVIEW",
+        "E-DELIVERY",
+        "E-INTEGRATION"
+      ]
+    },
+    {
+      "ac_id": "X-2",
+      "disposition": "not_met",
+      "scope": "Consumer integrity checks pass, but R-1 blocks complete Review of the supported fixed-blob preparation path and its normal-case test coverage. X-7 is also affected as an additional completion condition.",
+      "artifact_ids": [
+        "REPORT",
+        "REGRESSION",
+        "REVIEW-RESULTS",
+        "DELIVERY",
+        "INTEGRATION",
+        "PREPARATION-PROBE",
+        "PREPARATION-RESULTS"
+      ],
+      "evidence_ids": [
+        "E-REVIEW",
+        "E-DELIVERY",
+        "E-INTEGRATION"
+      ]
+    },
+    {
+      "ac_id": "X-3",
+      "disposition": "covered",
+      "scope": "Independent Review of fixed System delivery implementation only. See report for exact code/evidence and additional X-7/X-8/X-9 mapping. Not product acceptance, publication/merge authority or IssueCompletion.",
+      "artifact_ids": [
+        "REPORT",
+        "REGRESSION",
+        "REVIEW-RESULTS",
+        "DELIVERY",
+        "INTEGRATION"
+      ],
+      "evidence_ids": [
+        "E-REVIEW",
+        "E-DELIVERY",
+        "E-INTEGRATION"
+      ]
+    },
+    {
+      "ac_id": "X-4",
+      "disposition": "covered",
+      "scope": "Independent Review of fixed System delivery implementation only. See report for exact code/evidence and additional X-7/X-8/X-9 mapping. Not product acceptance, publication/merge authority or IssueCompletion.",
+      "artifact_ids": [
+        "REPORT",
+        "REGRESSION",
+        "REVIEW-RESULTS",
+        "DELIVERY",
+        "INTEGRATION"
+      ],
+      "evidence_ids": [
+        "E-REVIEW",
+        "E-DELIVERY",
+        "E-INTEGRATION"
+      ]
+    },
+    {
+      "ac_id": "X-5",
+      "disposition": "not_met",
+      "scope": "Consumer integrity checks pass, but R-1 blocks complete Review of the supported fixed-blob preparation path and its normal-case test coverage. X-7 is also affected as an additional completion condition.",
+      "artifact_ids": [
+        "REPORT",
+        "REGRESSION",
+        "REVIEW-RESULTS",
+        "DELIVERY",
+        "INTEGRATION",
+        "PREPARATION-PROBE",
+        "PREPARATION-RESULTS"
+      ],
+      "evidence_ids": [
+        "E-REVIEW",
+        "E-DELIVERY",
+        "E-INTEGRATION"
+      ]
+    },
+    {
+      "ac_id": "X-6",
+      "disposition": "covered",
+      "scope": "Independent Review of fixed System delivery implementation only. See report for exact code/evidence and additional X-7/X-8/X-9 mapping. Not product acceptance, publication/merge authority or IssueCompletion.",
+      "artifact_ids": [
+        "REPORT",
+        "REGRESSION",
+        "REVIEW-RESULTS",
+        "DELIVERY",
+        "INTEGRATION"
+      ],
+      "evidence_ids": [
+        "E-REVIEW",
+        "E-DELIVERY",
+        "E-INTEGRATION"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [
+    "R-1 P2: canonical blob sources with repository name tree or a tree path segment are rejected by preparation because URL kind is inferred using a whole-string substring. See REPORT and PREPARATION-RESULTS for reproduction, expected/actual, impact and fix conditions."
+  ],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

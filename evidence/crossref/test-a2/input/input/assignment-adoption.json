@@ -1,0 +1,28 @@
+{
+  "record_type": "independent_review_assignment_adoption",
+  "role": "review",
+  "attempt": 1,
+  "scope": "system/artifact-delivery/cross-reference",
+  "issue_policy": "Original Issue and X-1 through X-6 are unchanged. X-7 through X-9 remain additional completion conditions. Only the Test-specific final completion condition is replaced with the Manager-assigned independent Review condition.",
+  "assignment": {
+    "scope": "system/artifact-delivery/cross-reference",
+    "ac_ids": [
+      "X-1",
+      "X-2",
+      "X-3",
+      "X-4",
+      "X-5",
+      "X-6"
+    ],
+    "completion_criteria": [
+      "Independently verify all original X-1 through X-6 against fixed implementation head; preserve exact Issue/AC text and prior history.",
+      "X-7: 厳格な knowledge-candidates-v1 profile と版付き外側 candidate_bindings を実装する。原文書にschema_version等を追加せず、document_type・必要field・型・余剰field禁止・候補ID一意性を検証する。producer Handoff固定実体・artifact ID・raw_locator・候補ID集合・原source文字列とtyped targetを一意結合し、欠落/余剰/重複/曖昧/競合を拒否する。pending_manager_reviewを承認へ読み替えず、未知Knowledge型の降格拒否を維持する。blob sourceの全bytes・size/hash・固定URL/OID/pathを検証し、provenance-onlyへ緩和しない。",
+      "X-8: 固定tree sourceの版付き完全snapshotを検証する。固定repo/full commit/directoryとcanonical tree URLを照合し、対象祖先および配下treeを完全列挙する。全通常blobのpath/mode/OID/size/SHA-256と実体を照合し、欠落/余剰/重複/改変/不正祖先/symlink/gitlink/非通常object/部分列挙を拒否する。tree/commit objectの存在だけで配下内容やbuild/製品ACを認定せず、件数/bytes上限超過時は切り詰めずfail closedとする。",
+      "X-9: 実B1公開Handoffとknowledge_candidates原bytesを変更せず、固定code commit・Research依存・候補producer binding・blob source・tree配下の全必要実体をCLI実取得で検証する。旧128testsを含む現149testsを維持し、新旧validatorで版・型・URL/OID/path/mode/size/hash・candidate集合・producer・承認・依存欠落・private_only・symlink/gitlink・JSON偽装・retryidentity・再取得の正常/否定系を検証する。System自己検証、独立Test/Review、B1製品AC、実装再開、IssueCompletionを分離して報告する。",
+      "Preserve independent Review attempt 1 separately from Test attempt 1 and Implementation attempt 2. Independently evaluate the fixed diff, reproduce 173 regressions and the independent Test cases, run additional Review probes and actual B1 CLI/fresh recheck, record separate CI/integration observations, determine whether blocking findings remain, and provide private receipts plus an unpublished safe dependency-closed candidate."
+    ]
+  },
+  "source": "input/handoff.public.json",
+  "prior_adoption": "input/input/assignment-adoption.json",
+  "history": "Review 1, Test 1 and Implementation 2 are distinct stages. Prior Implementation 1 blocked status and same-attempt result transition records are retained verbatim; no budget reset or B1 restart."
+}

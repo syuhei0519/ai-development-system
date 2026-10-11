@@ -1,0 +1,54 @@
+{
+  "record_type": "review_regression_observation",
+  "head": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+  "base": "b1e606544174481b7b6904f811e857f80978c287",
+  "command": "python -m unittest discover -s tests -v",
+  "head_tests": 173,
+  "head_result": "PASS",
+  "base_tests": 128,
+  "base_result": "PASS",
+  "legacy128": "All eight preexisting test files are byte-identical to fixed base. Base suite independently rerun.",
+  "prior21": {
+    "source": "verified immutable prior implementation.patch new-file hunk",
+    "path": "tests/test_crossref_delivery.py",
+    "bytes": 22763,
+    "sha256": "ea5b21f0efff887a8d2f0d9764f06915cfcb6b844d273a07f1ae68f463621510",
+    "equal": true
+  },
+  "test_harness": {
+    "command": "python input/independent_probe.py HEAD RESULTS LEGACY10 LEGACY11",
+    "total": 245,
+    "passed": 245,
+    "failed": 0,
+    "source_sha256": "042a1dc032bbeefaa5c6853b0ce85fe8c28ce1296b7395b0522e51c445488acc",
+    "note": "Four deliberate CLI rejection messages are expected; harness asserts exit 1 and absent output/staging."
+  },
+  "review_probes": {
+    "command": "python review_probe.py HEAD RESULTS",
+    "total": 43,
+    "passed": 43,
+    "failed": 0,
+    "note": "New Review fixture and object-store oracle; no Implementation tests or Test harness imported."
+  },
+  "other_checks": [
+    "Delivery record schemas and sample bindings PASS",
+    "5 Handoff examples PASS",
+    "6 Knowledge examples PASS",
+    "3 Readiness examples PASS as explicit historical fixture replay only",
+    "git diff --check PASS"
+  ],
+  "environment": {
+    "python": "3.12.14",
+    "git": "git version 2.52.0"
+  },
+  "limitation": "No application build or tests; no assertion of current Readiness.",
+  "preparation_probes": {
+    "command": "python preparation_probe.py HEAD RESULTS",
+    "total": 3,
+    "passed": 1,
+    "failed": 2,
+    "result": "R-1 reproduced; expected successful normal blob preparations rejected",
+    "consumer_oracle": "All three explicit canonical blob manifests pass unchanged Consumer"
+  },
+  "overall_review": "failed due to R-1; earlier passing tests are preserved and do not supersede the finding"
+}

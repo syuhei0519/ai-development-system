@@ -1,0 +1,54 @@
+{
+  "command": "python -m unittest discover -s tests -v",
+  "exit_code": 0,
+  "total_tests": 149,
+  "unchanged_legacy_tests": 128,
+  "new_test_methods": 21,
+  "result": "OK",
+  "evidence_level": "Implementation self-verification only",
+  "other_checks": [
+    {
+      "command": "python scripts/validate_delivery_records.py",
+      "exit_code": 0,
+      "result": "All twelve delivery schemas and legacy offline fixtures valid"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "pass"
+    }
+  ],
+  "version_probes": [
+    {
+      "validator": "fixed base 5345303db8c5208859ed741b98f119882de7a973",
+      "profile": "1.0",
+      "result": "Original B1 candidates accepted as generic JSON only; no Knowledge guarantees"
+    },
+    {
+      "validator": "fixed base 5345303db8c5208859ed741b98f119882de7a973",
+      "profile": "1.1",
+      "result": "Original B1 candidates rejected: Knowledge must use explicit Knowledge format"
+    },
+    {
+      "validator": "fixed base 5345303db8c5208859ed741b98f119882de7a973",
+      "profile": "1.2",
+      "result": "unsupported delivery version"
+    },
+    {
+      "validator": "partial implementation e758614f876e45914332016045d336d52ec109ff",
+      "profile": "1.0/1.1",
+      "result": "Same original B1 candidates behavior as fixed base"
+    },
+    {
+      "validator": "partial implementation e758614f876e45914332016045d336d52ec109ff",
+      "profile": "1.2",
+      "result": "Full B1 CLI rejected; unknown Knowledge type defense preserved"
+    }
+  ],
+  "limits": [
+    "No independent Test/Review",
+    "No CI run for local head",
+    "No completed real B1 Consumption Receipt",
+    "No application code execution"
+  ]
+}

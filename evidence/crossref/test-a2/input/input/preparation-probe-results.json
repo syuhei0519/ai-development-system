@@ -1,0 +1,44 @@
+{
+  "report_type": "independent_review_preparation_reproducer",
+  "finding": "R-1",
+  "cases": [
+    {
+      "case": "control",
+      "source_repository": "synthetic/source",
+      "source_path": "docs/note.txt",
+      "expected_preparation": "accepted",
+      "actual_preparation": "accepted",
+      "error": null,
+      "consumer_with_explicit_canonical_blob_manifest": "PASS",
+      "objects": 3,
+      "passed": true
+    },
+    {
+      "case": "nested-tree",
+      "source_repository": "synthetic/source",
+      "source_path": "docs/tree/note.txt",
+      "expected_preparation": "accepted",
+      "actual_preparation": "rejected",
+      "error": "canonical fixed Git URL required",
+      "consumer_with_explicit_canonical_blob_manifest": "PASS",
+      "objects": 3,
+      "passed": false
+    },
+    {
+      "case": "repository-tree",
+      "source_repository": "synthetic/tree",
+      "source_path": "docs/note.txt",
+      "expected_preparation": "accepted",
+      "actual_preparation": "rejected",
+      "error": "canonical fixed Git URL required",
+      "consumer_with_explicit_canonical_blob_manifest": "PASS",
+      "objects": 3,
+      "passed": false
+    }
+  ],
+  "total": 3,
+  "passed": 1,
+  "failed": 2,
+  "production_modified": false,
+  "limits": "Synthetic local Git fetch routing only; no application source execution or public operation."
+}

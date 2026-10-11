@@ -1,0 +1,284 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "SYSTEM-CROSSREF-DELIVERY",
+    "source": "assignment-requirements.json",
+    "title": "System fixed cross-repository artifact delivery implementation",
+    "acceptance_criteria": [
+      {
+        "id": "X-1",
+        "verbatim": "Delivery明示version拡張（推奨1.2）と外側slot-binding契約。ownerdocumentの固定ref、構造上slot（artifact ID/upstream identity/Knowledge source等）と原locator/revisionとtypedtargetを一意結合。欠落/余剰/重複/曖昧/競合は拒否。旧1.0/1.1は新型を拒否し以前の意味と正常系維持。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-2",
+        "verbatim": "blobはrepository/fullcommit/path/size/sha256で取得。canonical GitHub fixed blob URLと元revisionを厳密一致させ、同repo別commit/別repoを安全に解決。任意URL追跡や浮動ref/redirect/外部HTTP自動取得は禁止。列挙された全依存を取得して型/schema/hash/role/task/attempt/retryIssueも検証。暗黙locator削除やコピーによる偽装をしない。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-3",
+        "verbatim": "kind=commitにはblobと別typed git-commit-objectを定義。repo/fullOID/rawcommitobject size/SHA256、canonicalcommitURL/revision一致、cat-file type=commitと取得SHA一致、rawobject全byteshash、出力/receiptへtyped記録。commitobject存在だけでtree内容/build/製品AC合格を認定しない。必要なソースblob証跡は別で取得。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-4",
+        "verbatim": "全manifest/publication/consumption/authorizationの版と承認bindings整合。Manager独立pin、用途consumer/scope/expiry必須、receipt権限なし。全必要artifact実体検証前に利用しない。source truthfulness/意味妥当性/IssueCompletionは別ゲート。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-5",
+        "verbatim": "正常/異常tests: 固定crossrepo blob/Handoff/commit、URL/OID/path/objecttype/size/hash不一致、missingdependency/privateonly/duplicate slot/downgrade、symlink/gitlink/JSON型偽装、retryidentity、承認、旧128testsを含む回帰。新旧validator双方で期待動作確認。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-6",
+        "verbatim": "実B1公開Handoffを一切書換えず固定codecommit/upstreamの正式bundle検証を可能にし、CLI実取得で証明。公開ソースだけを使い、B1Test/Review/Issue合格や実装再開をこのSystemtaskから主張しない。",
+        "source": "assignment-requirements.json"
+      }
+    ]
+  },
+  "assignment": {
+    "scope": "system/artifact-delivery/cross-reference",
+    "ac_ids": [
+      "X-1",
+      "X-2",
+      "X-3",
+      "X-4",
+      "X-5",
+      "X-6"
+    ],
+    "completion_criteria": [
+      "Independently verify all original X-1 through X-6 against fixed implementation head; preserve exact Issue/AC text and prior history.",
+      "X-7: 厳格な knowledge-candidates-v1 profile と版付き外側 candidate_bindings を実装する。原文書にschema_version等を追加せず、document_type・必要field・型・余剰field禁止・候補ID一意性を検証する。producer Handoff固定実体・artifact ID・raw_locator・候補ID集合・原source文字列とtyped targetを一意結合し、欠落/余剰/重複/曖昧/競合を拒否する。pending_manager_reviewを承認へ読み替えず、未知Knowledge型の降格拒否を維持する。blob sourceの全bytes・size/hash・固定URL/OID/pathを検証し、provenance-onlyへ緩和しない。",
+      "X-8: 固定tree sourceの版付き完全snapshotを検証する。固定repo/full commit/directoryとcanonical tree URLを照合し、対象祖先および配下treeを完全列挙する。全通常blobのpath/mode/OID/size/SHA-256と実体を照合し、欠落/余剰/重複/改変/不正祖先/symlink/gitlink/非通常object/部分列挙を拒否する。tree/commit objectの存在だけで配下内容やbuild/製品ACを認定せず、件数/bytes上限超過時は切り詰めずfail closedとする。",
+      "X-9: 実B1公開Handoffとknowledge_candidates原bytesを変更せず、固定code commit・Research依存・候補producer binding・blob source・tree配下の全必要実体をCLI実取得で検証する。旧128testsを含む現149testsを維持し、新旧validatorで版・型・URL/OID/path/mode/size/hash・candidate集合・producer・承認・依存欠落・private_only・symlink/gitlink・JSON偽装・retryidentity・再取得の正常/否定系を検証する。System自己検証、独立Test/Review、B1製品AC、実装再開、IssueCompletionを分離して報告する。",
+      "修正実装/自己検証/固定head成果物提出。Preserve Implementation attempts 1 and 2, Test attempt 1 and failed Review attempt 1 separately; bind Implementation attempt 3 retry_of to the fixed attempt-2 Handoff. Reproduce R-1 before repair, make the minimal canonical-route fix without relaxing URL validation, rerun 173 regressions, Test 245, Review 43, original preparation 3 and blob/tree/owner/repository/path/query/encoded/malformed boundaries. Verify CLI/legacy/schema/docs, real B1 CLI and fresh recheck under separate Manager authorization; retain private receipts and provide an unpublished safe dependency-closed candidate. Push only the existing feature branch, preserve PR7 Draft and observe new-head push/PR CI. Independent Test/Review are assigned separately by Manager."
+    ]
+  },
+  "role": "implementation",
+  "task_id": "PUBLIC-CROSSREF-IMPLEMENTATION-A3",
+  "attempt": 3,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "PUBLIC-CROSSREF-IMPLEMENTATION-A2",
+      "attempt": 2,
+      "relationship": "retry_of",
+      "handoff_locator": "input/input/input/handoff.public.json",
+      "revision": "sha256:fe8df85097f5711b5173fe651e3c40dbea89439a37bc57341fbc4f3ce52e422e"
+    },
+    {
+      "role": "review",
+      "task_id": "PUBLIC-CROSSREF-REVIEW-A1",
+      "attempt": 1,
+      "relationship": "dependency",
+      "handoff_locator": "input/handoff.public.json",
+      "revision": "sha256:fd2f89b7a920bf23f91b62b0ceaffef06bf522278b0f6278538e9e55b3bc757f"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Implementation attempt 3: R-1 canonical URL route-kind repair completed and self-verified at 520ef1e7a59662fe3e58d49d5510350ee08c3160. Existing feature push and Draft PR preserved; new-head push/PR CI success. Independent Test/Review, main integration, B1 product acceptance/restart and IssueCompletion remain separate pending/unverified gates. Unpublished candidate only.",
+  "artifacts": [
+    {
+      "id": "ASSIGNMENT-REQUIREMENTS",
+      "kind": "document",
+      "locator": "assignment-requirements.json",
+      "revision": "sha256:f3d9d8e0f58a85325487bffe17aa336f90294f782bb44ebb3a4a69a2c2564ea2",
+      "summary": "Implementation attempt 3 assignment-requirements.json"
+    },
+    {
+      "id": "ASSIGNMENT-ADOPTION",
+      "kind": "document",
+      "locator": "assignment-adoption.json",
+      "revision": "sha256:a60f932b7a6efaab528a1e185096125118449ce522727e180083ddcfed395e9a",
+      "summary": "Implementation attempt 3 assignment-adoption.json"
+    },
+    {
+      "id": "REPAIR",
+      "kind": "patch",
+      "locator": "repair.patch",
+      "revision": "sha256:f8ef9ff419238674fc0f2dd9bd03e362be3201a173c3ba967a04dad4de29f42c",
+      "summary": "Implementation attempt 3 repair.patch"
+    },
+    {
+      "id": "IMPLEMENTATION-REPORT",
+      "kind": "document",
+      "locator": "implementation-report.json",
+      "revision": "sha256:f9b4a9c13a145adad78a641991f454606501f755450ada6a5695dd1c2937f4ea",
+      "summary": "Implementation attempt 3 implementation-report.json"
+    },
+    {
+      "id": "SELF-VERIFICATION",
+      "kind": "test-report",
+      "locator": "self-verification.json",
+      "revision": "sha256:e1678c3b6bbf2a7adcd4809f09760e5f2674b6548603f9f3250df7f9e1ca37e6",
+      "summary": "Implementation attempt 3 self-verification.json"
+    },
+    {
+      "id": "DELIVERY-OBSERVATION",
+      "kind": "document",
+      "locator": "delivery-observation.json",
+      "revision": "sha256:bc4d5bd18913b5b05472e05e82e38638ac56fd37a339ddcb5ae9bb278f07291e",
+      "summary": "Implementation attempt 3 delivery-observation.json"
+    },
+    {
+      "id": "INTEGRATION-OBSERVATION",
+      "kind": "document",
+      "locator": "integration-observation.json",
+      "revision": "sha256:c64540b9d922d7981572c5ec8f5193641c621611d3014bfda30c77ec2f0ee1d1",
+      "summary": "Implementation attempt 3 integration-observation.json"
+    },
+    {
+      "id": "REPRODUCTION",
+      "kind": "document",
+      "locator": "reproduction.txt",
+      "revision": "sha256:9b069a9ff01ad90d63d9d60893b30ea112a9e9baee2dc926d65677aabf85b8a8",
+      "summary": "Implementation attempt 3 reproduction.txt"
+    },
+    {
+      "id": "SAFETY-REVIEW",
+      "kind": "document",
+      "locator": "safety-review.json",
+      "revision": "sha256:1e08a70f2b96d2bee195ea475c7ae53e53351f4b6dd0caaafecabadec300c020",
+      "summary": "Implementation attempt 3 safety-review.json"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-REPAIR",
+      "claim": "R-1 repaired at fixed new head with no URL safety relaxation.",
+      "artifact_ids": [
+        "REPAIR",
+        "IMPLEMENTATION-REPORT",
+        "SELF-VERIFICATION"
+      ],
+      "locator": "repair.patch",
+      "observation": "Before 1 PASS/2 FAIL; after 3 PASS; canonical route/blob/tree and malformed boundary regressions pass at 520ef1e7a59662fe3e58d49d5510350ee08c3160"
+    },
+    {
+      "id": "E-SELFTEST",
+      "claim": "Original requirements and extra conditions self-verified with compatibility retained.",
+      "artifact_ids": [
+        "SELF-VERIFICATION",
+        "ASSIGNMENT-ADOPTION"
+      ],
+      "locator": "self-verification.json",
+      "observation": "176 regression methods, fixed base 128, Test 245 and Review 43 self-reruns PASS. Independent follow-up stages remain pending."
+    },
+    {
+      "id": "E-DELIVERY",
+      "claim": "Fixed unchanged public inputs and actual B1 closure retrieved and verified.",
+      "artifact_ids": [
+        "DELIVERY-OBSERVATION"
+      ],
+      "locator": "delivery-observation.json",
+      "observation": "Initial 52 files/661892 bytes; real B1 twice 17 objects/89071 bytes including fresh receipt recheck. Full receipts/authorizations held privately."
+    },
+    {
+      "id": "E-CI",
+      "claim": "Authorized existing branch push and Draft PR observed separately from local self-tests.",
+      "artifact_ids": [
+        "INTEGRATION-OBSERVATION"
+      ],
+      "locator": "integration-observation.json",
+      "observation": "New head remote equality, Draft=true, push/PR CI success; synthetic merge-ref tree equality. CI log download Forbidden; no merge or product acceptance."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "X-1",
+      "disposition": "covered",
+      "scope": "Explicit 1.2 records, exact structural owner/slot/target and original locator/revision bindings; 1.0/1.1 behavior retained. Implementation scope only; no final product/Issue acceptance.",
+      "artifact_ids": [
+        "IMPLEMENTATION-REPORT",
+        "SELF-VERIFICATION",
+        "DELIVERY-OBSERVATION"
+      ],
+      "evidence_ids": [
+        "E-REPAIR",
+        "E-SELFTEST",
+        "E-DELIVERY"
+      ]
+    },
+    {
+      "ac_id": "X-2",
+      "disposition": "covered",
+      "scope": "Canonical fixed repo/OID/path acquisition and bytes validation retained; R-1 preparation now derives kind only from the route position. Implementation scope only; no final product/Issue acceptance.",
+      "artifact_ids": [
+        "IMPLEMENTATION-REPORT",
+        "SELF-VERIFICATION",
+        "DELIVERY-OBSERVATION"
+      ],
+      "evidence_ids": [
+        "E-REPAIR",
+        "E-SELFTEST",
+        "E-DELIVERY"
+      ]
+    },
+    {
+      "ac_id": "X-3",
+      "disposition": "covered",
+      "scope": "Separate typed raw commit object; exact URL/OID/type/size/hash and receipt/output namespace. Existence grants no source/build claim. Implementation scope only; no final product/Issue acceptance.",
+      "artifact_ids": [
+        "IMPLEMENTATION-REPORT",
+        "SELF-VERIFICATION",
+        "DELIVERY-OBSERVATION"
+      ],
+      "evidence_ids": [
+        "E-REPAIR",
+        "E-SELFTEST",
+        "E-DELIVERY"
+      ]
+    },
+    {
+      "ac_id": "X-4",
+      "disposition": "covered",
+      "scope": "Independent current Manager pins and separate outer/B1 authorizations, exact purpose/scope/consumer/expiry/record versions, full verification before output; no receipt authority. Implementation scope only; no final product/Issue acceptance.",
+      "artifact_ids": [
+        "IMPLEMENTATION-REPORT",
+        "SELF-VERIFICATION",
+        "DELIVERY-OBSERVATION"
+      ],
+      "evidence_ids": [
+        "E-REPAIR",
+        "E-SELFTEST",
+        "E-DELIVERY"
+      ]
+    },
+    {
+      "ac_id": "X-5",
+      "disposition": "covered",
+      "scope": "Existing 173 regressions unchanged, base 128 rerun, three added methods and original Review reproducer; actual legacy10/11 rejection and documented CLI/schema checks. Implementation scope only; no final product/Issue acceptance.",
+      "artifact_ids": [
+        "IMPLEMENTATION-REPORT",
+        "SELF-VERIFICATION",
+        "DELIVERY-OBSERVATION"
+      ],
+      "evidence_ids": [
+        "E-REPAIR",
+        "E-SELFTEST",
+        "E-DELIVERY"
+      ]
+    },
+    {
+      "ac_id": "X-6",
+      "disposition": "covered",
+      "scope": "Original public B1 Handoff/code commit/Research dependencies preserved and formally fetched. Implementation scope only; no final product/Issue acceptance.",
+      "artifact_ids": [
+        "IMPLEMENTATION-REPORT",
+        "SELF-VERIFICATION",
+        "DELIVERY-OBSERVATION"
+      ],
+      "evidence_ids": [
+        "E-REPAIR",
+        "E-SELFTEST",
+        "E-DELIVERY"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}
