@@ -1,0 +1,32 @@
+{
+  "document_type": "producer_delivery_verification",
+  "public_alias": "order-p0-test-a2",
+  "execution_epoch": 1,
+  "execution_attempt": 2,
+  "delivery_epoch": 2,
+  "delivery_attempt": 2,
+  "observed_at": "2026-10-11T18:41:39.398678+00:00",
+  "payload_commit": "ccdd1fe2f2249eb2ba1436bafe0a8141523e89a4",
+  "prefix": "evidence/order-p0/test-a2/",
+  "canonical_consumer_exit": 0,
+  "explicit_artifacts": 96,
+  "objects": 175,
+  "bytes": 2515966,
+  "original_execution_preserved": true,
+  "private_records_published": false,
+  "prior_attempts": [
+    {
+      "epoch": 1,
+      "delivery_attempts": "failed(type), failed(503), succeeded; retained unchanged"
+    },
+    {
+      "epoch": 2,
+      "delivery_attempt": 1,
+      "result": "failed",
+      "reason": "Local preparation rejected unsupported .github/workflows tree root; no push at that stage."
+    }
+  ],
+  "records_stage": "Payload freshly consumed and validated. This records commit will be fetched separately after publication; that later observation belongs to final producer report.",
+  "authorization_boundary": "Producer-only verification, not downstream Consumer approval. Manager issues separately pinned authorization.",
+  "readiness_boundary": "Original policy deadline2026-10-11T19:08:48Z unchanged; no product acceptance/merge/deploy authority."
+}
