@@ -1,0 +1,201 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "app-order-service",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "test",
+  "task_id": "order-m0-test-a1",
+  "attempt": 1,
+  "assignment": {
+    "scope": "application-manifest#backend-app-2/M0",
+    "ac_ids": [
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "既存ci/github/test.sh、既存全tests、release19、trusted/sandbox/security/inventory/checksum/render suites等を独立再実行し自己報告と区別。コード変更せずtestoverlay/一時fixtureのみ。",
+      "v1backend/frontend正常互換、v2Order固定service/source/image/schema全binding。未知service、偽装backend、wrongsource/image/run/attempt/ref/workflow/digest/SBOM/record/config/archive、期限、latestmain/tag移動、matrix欠落/一方失敗、zip単一record/path攻撃を正負両側で独立試験。",
+      "v1処理を緩和しない。token付きHTTPがregistryへ漏れない、PR内容をtrusted側で実行しない、shell/path/zip/symlink/JSON/key/型境界を試験。Secret不要syntheticfixturesだけ。必要以上のsandbox機能制限を正常系成功で隠さない。",
+      "trustedfixedinventory:既存3chart維持、未来Order/order-postgresqlが両方未存在なら許容、chart/values片欠け/未知chart/既存削除/PodSpec未走査拒否。既定disabledとCIenabledfixture両方の境界。現livechart28files/environments4filesの不変とbaseline/headのbyte+semanticrender一致を自分で確認。",
+      "PostgreSQL専用固定image allowlist、security/PVC保持が既存Account含め正しく適用される。DBimageをappreleaseと混同しない。",
+      "premergeCIの実対象head/base/Workflowを観測。CIと独立Testを分離。B2実producerは未実装で、syntheticagreementを実release通過としない。",
+      "実cluster/Argo/syncを一切操作しない。M0diffdeploymentnoneのstaticproofを検証し、live観測と区別。PR17/既存Accountvaluesを変更しない。不合格は再現と期待/実際/位置/重大度を早期報告。Test自身で実装修正しない。",
+      "Handoffv2とtestreport/reproducers/results/固定revisions/環境/観測時刻/限界を返す。元upstreamstatus/bytesを変えずcanonical外側参照で閉包し、schema/typedclosure/freshGit/PublicationReceiptを確認する。新Consumer認可の自己発行禁止。"
+    ]
+  },
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "order-m0-implementation-a1",
+      "attempt": 1,
+      "relationship": "dependency",
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/9c7718fbd4b5c1650c30bb36706d14c5df96f1fc/evidence/order-m0/implementation-a1/handoff.json",
+      "revision": "sha256:a1db0e439a6c5fe4088bf3e547c51a2db1825698839721afb12ef066b5f81c66"
+    }
+  ],
+  "system_status": "completed",
+  "status": "failed",
+  "summary": "Independent M0 Test found HIGH F-1: Account and Order PostgreSQL container security overrides bypass fixed security policy and trusted render provenance signal. Existing suites pass but assignment fails. Upstream Implementation attempt1 historical blocked is unchanged; separate publication recovery is acknowledged only for transport. Product ACs remain unverified.",
+  "artifacts": [
+    {
+      "id": "independent-results.json",
+      "kind": "test-report",
+      "locator": "independent-results.json",
+      "revision": "sha256:a2cf1c592bba057c53c22e4202ade62b658c1344d0bc0a24a7fb76399fe21ee7",
+      "summary": "Independent synthetic Test evidence; no live deployment or release authorization."
+    },
+    {
+      "id": "observations.json",
+      "kind": "test-report",
+      "locator": "observations.json",
+      "revision": "sha256:eb87a6ce7be45020d99814c11c5187b81e8475f742c7118148d4e61769b05320",
+      "summary": "Independent synthetic Test evidence; no live deployment or release authorization."
+    },
+    {
+      "id": "render-comparison.json",
+      "kind": "test-report",
+      "locator": "render-comparison.json",
+      "revision": "sha256:688f20069b0b9cc4378b18c067b96c2a372f26e0d65cdb08697233b0ae97b18b",
+      "summary": "Independent synthetic Test evidence; no live deployment or release authorization."
+    },
+    {
+      "id": "render-fixture-results.json",
+      "kind": "test-report",
+      "locator": "render-fixture-results.json",
+      "revision": "sha256:ccf2f6cd5aa64c340024236a3ca0e1f5c2d43837ca44c9b500149da2fbf725d5",
+      "summary": "Independent synthetic Test evidence; no live deployment or release authorization."
+    },
+    {
+      "id": "reproduce-render.py",
+      "kind": "other",
+      "locator": "reproduce-render.py",
+      "revision": "sha256:12286e93200c078869294feaf8a7528d5858564bf4d9b8570bed452bfbc89c21",
+      "summary": "Independent synthetic Test evidence; no live deployment or release authorization."
+    },
+    {
+      "id": "reproduce.py",
+      "kind": "other",
+      "locator": "reproduce.py",
+      "revision": "sha256:6b363174f3f25daad75af7e9679653e966cc50ac0a838724d3a03f911aa4ad62",
+      "summary": "Independent synthetic Test evidence; no live deployment or release authorization."
+    },
+    {
+      "id": "reproduce.sh",
+      "kind": "other",
+      "locator": "reproduce.sh",
+      "revision": "sha256:031544aa12bec2f682ba35685d2b5faab8063851fac41ed66df118e814b51200",
+      "summary": "Independent synthetic Test evidence; no live deployment or release authorization."
+    },
+    {
+      "id": "test-report.txt",
+      "kind": "test-report",
+      "locator": "test-report.txt",
+      "revision": "sha256:454a3ee7ebc79f993bbafee0199e3dd8838180d56e4e370d487a068d674812cb",
+      "summary": "Independent synthetic Test evidence; no live deployment or release authorization."
+    },
+    {
+      "id": "upstream-publication-recovery",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/9c7718fbd4b5c1650c30bb36706d14c5df96f1fc/evidence/order-m0/implementation-a1/publication-recovery.json",
+      "revision": "sha256:74464032f130f85aa8a476d30c3457d83db8249d5c80dfad97fdcaf27703e876",
+      "summary": "Separate historical transport recovery; does not rewrite blocked Implementation Handoff."
+    },
+    {
+      "id": "publication-safety.txt",
+      "kind": "document",
+      "locator": "publication-safety.txt",
+      "revision": "sha256:255a5701420fb8195bf7512b21b1191350e6a707cc696bca0b4f12f4bdaf3d05",
+      "summary": "Separate public-content review and existing publication-authority scope. Does not grant Consumer authority."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-FAIL",
+      "claim": "M0 fixed PostgreSQL security requirement fails on both DB identities.",
+      "artifact_ids": [
+        "test-report.txt",
+        "independent-results.json",
+        "reproduce.py",
+        "render-fixture-results.json",
+        "reproduce-render.py"
+      ],
+      "locator": "test-report.txt",
+      "observation": "Expected rejection, actual inventory and scan accept eight security override cases; bounded trusted renderer also accepts dangerous override with provenanceRequired=false. No real deployment."
+    },
+    {
+      "id": "E-REGRESSION",
+      "claim": "Existing suites independently rerun; static existing renders unchanged.",
+      "artifact_ids": [
+        "test-report.txt",
+        "render-comparison.json",
+        "reproduce.sh"
+      ],
+      "locator": "render-comparison.json",
+      "observation": "Go/Helm/Docker suites pass after toolchain activation; 28 chart and 4 environment files unchanged; three charts byte/semantic render equality. Does not eliminate F-1."
+    },
+    {
+      "id": "E-CI",
+      "claim": "Remote CI metadata is successful but separate from failed independent Test.",
+      "artifact_ids": [
+        "observations.json"
+      ],
+      "locator": "observations.json",
+      "observation": "Fixed head/base and CI workflow verified via API. Raw Actions log endpoint Forbidden; actual PR merge checkout remains unresolved, no merge-group/current Manager policy asserted."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "not_assigned",
+      "scope": "Application persistence not tested in M0.",
+      "artifact_ids": [],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "not_assigned",
+      "scope": "Application input/CRUD not tested in M0.",
+      "artifact_ids": [],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "not_met",
+      "scope": "M0 evidence-verification infrastructure failed F-1. Product Synced/Healthy/digest unverified; earliest premerge/deferred null; aggregate_required unchanged.",
+      "artifact_ids": [
+        "test-report.txt",
+        "independent-results.json",
+        "render-fixture-results.json"
+      ],
+      "evidence_ids": [
+        "E-FAIL",
+        "E-REGRESSION",
+        "E-CI"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [
+    "F-1 HIGH: platformPolicy checks pod-level security but accepts container overrides to root, unconfined seccomp, wrong UID/GID for Account and Order PostgreSQL; trusted renderer accepts without provenance change."
+  ],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}
