@@ -1,0 +1,12 @@
+Reproduction guide (no authorization included)
+1. Use System commit 2e3acadabe67cbc336e032077dcc14cbeffde2a5.
+2. Fetch fixed records ce5457ba092ee80458a9d4131e4aabf1faf24627:
+   evidence/order-b1/test-e2-a1/manifest.json and publication-receipt.json.
+3. Check the size/SHA-256 pins in review-report.txt.
+4. Inspect artifact representation declarations without consuming payload.
+5. With the separately delivered Manager authorization and its independently held
+   pin, invoke scripts/consume_delivery.py using exact consumer/scope/purpose and a
+   fresh private output. Never publish authorization or Consumption Receipt.
+6. A policy excluding a declared representation must fail before payload fetch.
+   Do not change policy, manifest, receipt, or code to bypass rejection.
+7. A new attempt needs Manager control. This guide does not authorize a retry.

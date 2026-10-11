@@ -1,0 +1,117 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "app-order-service",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "review",
+  "task_id": "order-b1-review-e2-a1",
+  "attempt": 1,
+  "upstream": [],
+  "system_status": "completed",
+  "status": "blocked",
+  "summary": "Required input consumption denied by representation-policy mismatch; substantive B1 review not started.",
+  "assignment": {
+    "scope": "backend-app#2/B1",
+    "ac_ids": [
+      "AC-1",
+      "AC-2"
+    ],
+    "completion_criteria": [
+      "Independently assess fixed PR31 code/design/test evidence for B1 API, separate persistence and isolated integration; report severity, location, reproduction and correction conditions without application edits.",
+      "Independently evaluate Implementation, Merge and Deployment Readiness, earliest AC phases, merge effects and GitHub protection requirements.",
+      "Deliver Handoff v2 and reviewed public evidence with fixed revisions, residual risks and Delivery 1.2 integrity; preserve retry history and keep out-of-scope ACs unverified."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "review-report",
+      "kind": "review",
+      "locator": "review-report.txt",
+      "revision": "sha256:dc7bd63cee7bd1ce714e1c21b19560b06c99bae17186183f3b1a0e25ca1bbaaa",
+      "summary": "Blocked review prerequisite findings and remaining scope"
+    },
+    {
+      "id": "reproduction",
+      "kind": "document",
+      "locator": "reproduction.txt",
+      "revision": "sha256:8fb63b050339a42bb67b738579ea88b551de80b9c19a4c12b7e918bb28656f0f",
+      "summary": "Reproduction instructions without private authorization"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "input-gate",
+      "claim": "Required delivery was rejected before usable upstream material was produced.",
+      "artifact_ids": [
+        "review-report",
+        "reproduction"
+      ],
+      "locator": "review-report.txt",
+      "observation": "One canonical consumer invocation exited 1; local output absent. Fixed records size/hash/schema/bindings checked. Six manifest artifacts are edited derivatives not permitted by the separate consumer policy. No payload or typed closure pass asserted."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "unverified",
+      "scope": "B1 review not performed because input consumption is blocked.",
+      "artifact_ids": [
+        "review-report"
+      ],
+      "evidence_ids": [
+        "input-gate"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "unverified",
+      "scope": "B1 review not performed because input consumption is blocked.",
+      "artifact_ids": [
+        "review-report"
+      ],
+      "evidence_ids": [
+        "input-gate"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "not_assigned",
+      "scope": "AC-3, Helm, kind, Argo, digest, aggregate integration and deployment are out of scope and unverified.",
+      "artifact_ids": [
+        "review-report"
+      ],
+      "evidence_ids": [
+        "input-gate"
+      ]
+    }
+  ],
+  "block_reasons": [
+    {
+      "code": "ACCESS_DENIED",
+      "detail": "The supplied consumer policy does not authorize every representation in the fixed manifest; canonical Delivery 1.2 rejected it.",
+      "required_action": "Manager must supply explicit compatible consumer-use authorization or a compatible fixed bundle and control any next delivery attempt. Preserve all previous attempts and terminal history."
+    }
+  ],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}
