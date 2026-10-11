@@ -1,0 +1,228 @@
+{
+  "document_type": "review_github_observations",
+  "observed_at": "2026-10-11T06:45:42.615Z",
+  "repository": "syuhei0519/backend-app",
+  "pr": {
+    "number": 31,
+    "state": "open",
+    "draft": true,
+    "head": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+    "base": "d29a390c09f8667316569e1bb599bf690b00313d",
+    "merged": false,
+    "mergeable": true,
+    "mergeable_state": "clean",
+    "auto_merge": null
+  },
+  "branch": {
+    "name": "main",
+    "sha": "d29a390c09f8667316569e1bb599bf690b00313d",
+    "protected": true,
+    "summary_protection": {
+      "enabled": false,
+      "required_status_checks": {
+        "enforcement_level": "off",
+        "contexts": [],
+        "checks": []
+      }
+    }
+  },
+  "ruleset": {
+    "id": 24733411,
+    "name": "main-ci-and-pr",
+    "enforcement": "active",
+    "conditions": {
+      "ref_name": {
+        "exclude": [],
+        "include": [
+          "refs/heads/main"
+        ]
+      }
+    },
+    "rules": [
+      {
+        "type": "deletion"
+      },
+      {
+        "type": "non_fast_forward"
+      },
+      {
+        "type": "pull_request",
+        "parameters": {
+          "required_approving_review_count": 0,
+          "dismiss_stale_reviews_on_push": true,
+          "required_reviewers": [],
+          "require_code_owner_review": false,
+          "require_last_push_approval": false,
+          "required_review_thread_resolution": true,
+          "require_extra_approval_for_unattributed_changes": true,
+          "allowed_merge_methods": [
+            "merge",
+            "squash",
+            "rebase"
+          ]
+        }
+      },
+      {
+        "type": "required_status_checks",
+        "parameters": {
+          "strict_required_status_checks_policy": true,
+          "do_not_enforce_on_create": false,
+          "required_status_checks": [
+            {
+              "context": "ci-result"
+            }
+          ]
+        }
+      }
+    ],
+    "bypass_actors": [],
+    "current_user_can_bypass": "never"
+  },
+  "review_count": 0,
+  "review_threads": [],
+  "checks": [
+    {
+      "id": 114372640977,
+      "name": "propose",
+      "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://github.com/syuhei0519/backend-app/actions/runs/38106093354/job/114372640977"
+    },
+    {
+      "id": 114372640522,
+      "name": "publish",
+      "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://github.com/syuhei0519/backend-app/actions/runs/38106093354/job/114372640522"
+    },
+    {
+      "id": 114372639981,
+      "name": "ci-result",
+      "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/syuhei0519/backend-app/actions/runs/38106093354/job/114372639981"
+    },
+    {
+      "id": 114372562156,
+      "name": "propose",
+      "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://github.com/syuhei0519/backend-app/actions/runs/38106075234/job/114372562156"
+    },
+    {
+      "id": 114372562149,
+      "name": "publish",
+      "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://github.com/syuhei0519/backend-app/actions/runs/38106075234/job/114372562149"
+    },
+    {
+      "id": 114372561090,
+      "name": "ci-result",
+      "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/syuhei0519/backend-app/actions/runs/38106075234/job/114372561090"
+    },
+    {
+      "id": 114372189797,
+      "name": "image",
+      "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/syuhei0519/backend-app/actions/runs/38106093354/job/114372189797"
+    },
+    {
+      "id": 114372126851,
+      "name": "image",
+      "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/syuhei0519/backend-app/actions/runs/38106075234/job/114372126851"
+    },
+    {
+      "id": 114371849450,
+      "name": "docs",
+      "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://github.com/syuhei0519/backend-app/actions/runs/38106093354/job/114371849450"
+    },
+    {
+      "id": 114371848504,
+      "name": "validate",
+      "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/syuhei0519/backend-app/actions/runs/38106093354/job/114371848504"
+    },
+    {
+      "id": 114371834268,
+      "name": "classify",
+      "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/syuhei0519/backend-app/actions/runs/38106093354/job/114371834268"
+    },
+    {
+      "id": 114371791416,
+      "name": "docs",
+      "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://github.com/syuhei0519/backend-app/actions/runs/38106075234/job/114371791416"
+    },
+    {
+      "id": 114371790785,
+      "name": "validate",
+      "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/syuhei0519/backend-app/actions/runs/38106075234/job/114371790785"
+    },
+    {
+      "id": 114371777439,
+      "name": "classify",
+      "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/syuhei0519/backend-app/actions/runs/38106075234/job/114371777439"
+    }
+  ],
+  "runs": [
+    {
+      "id": 38106093354,
+      "event": "pull_request",
+      "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "head_branch": "feat/issue-2-order-api-foundation",
+      "status": "completed",
+      "conclusion": "success",
+      "path": ".github/workflows/ci.yml",
+      "run_attempt": 1,
+      "url": "https://github.com/syuhei0519/backend-app/actions/runs/38106093354"
+    },
+    {
+      "id": 38106075234,
+      "event": "push",
+      "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "head_branch": "feat/issue-2-order-api-foundation",
+      "status": "completed",
+      "conclusion": "success",
+      "path": ".github/workflows/ci.yml",
+      "run_attempt": 1,
+      "url": "https://github.com/syuhei0519/backend-app/actions/runs/38106075234"
+    }
+  ],
+  "limits": [
+    "Branch protection administration endpoint not retried.",
+    "rules/branches/main rejected by connector URL allowlist; no bypass attempted.",
+    "Secrets and current variables/environment approvals not inspected.",
+    "checkout raw logs not acquired; run/check head binding and workflow checkout semantics distinguished.",
+    "This is a Review observation, not a Manager readiness context or merge authorization."
+  ]
+}

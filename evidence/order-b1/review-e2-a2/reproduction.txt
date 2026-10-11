@@ -1,0 +1,31 @@
+B1 Review reproduction (public-safe instructions)
+
+Acquire a clean backend-app checkout at 7b54f55cf1a652ee127528877b3bb9034b75b311.
+Use Go1.27.1 and a writable Go cache. The review used a preinstalled module cache after the default module-cache path proved read-only. Set PATH/GOCACHE/GOMODCACHE/GOPATH to suitable sandbox locations without editing application files.
+Run:
+  go test -count=1 ./...
+  go test -race -count=1 ./...
+  go vet ./...
+  go build ./...
+  gofmt -l .
+  bash ci/github/test.sh
+  git diff --check d29a390c09f8667316569e1bb599bf690b00313d HEAD
+Expected: exit0; gofmt output empty. Disposable tests skipped without opt-in are not Integration evidence.
+
+Inspect internal/ordertest/disposable.go and all tests first. Use only an authorized disposable Cloud sandbox with local unix:///var/run/docker.sock and preloaded postgres@sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f. No live database/cluster parameters. Helpers create unique fresh engines/anonymous volumes, random transient credentials, loopback ports, and clean up only their own containers with volumes.
+  ORDER_DISPOSABLE_TEST=1 go test -race -v ./internal/store/orderpostgres ./tests/orderintegration -count=1
+Expected: migration/target guard/constraints and HTTP persistence/Account tests PASS. Verify changed process PIDs, identical persisted Order across process and DB restarts, unchanged Account sentinel/history and zero invalid-input writes.
+
+Consume the fixed upstream Test bundle under separate Manager authorization before using its helpers. Its reproduce.py and supplement_test.go are immutable bytes at System commit f5a93108cdbbce934a0838c280bdf0a18ba32429, prefix evidence/order-b1/test-e2-a1/. Then:
+  python3 reproduce.py /path/to/clean/backend-checkout
+Expected: all three TestIndependent tests PASS with race detector. Helper is external Go overlay, not an app edit.
+
+Place this Review's reproduce-review.py and review_boundary_test.go together outside the checkout:
+  python3 reproduce-review.py /path/to/clean/backend-checkout
+Expected: TestReviewBoundedPoolFailureAndRecovery PASS. The test occupies five fixture pool connections; HTTP ready/read/create fail503 under deadlines and live stays200. No failed POST commits. Release connections and verify recovery; test-owned table rename yields sanitized500 and restoring the table recovers. Timing assertions allow2s/4s for configured1s/3s deadlines.
+
+Readiness caveat: helpers prove only assigned B1 behavior in disposable PostgreSQL. They do not execute kind/Argo, images, release publication, merge or real deployment. Final cleanup should find no containers labeled order-b1-disposable=true. Do not remove pre-existing resources. Verify git status --porcelain is empty afterward.
+
+Input transport reproduction: fixed System consume_delivery.py, records ce5457ba092ee80458a9d4131e4aabf1faf24627 for Test; records2027da832d6d1bb9a72fb1894a4fb95c6e70db2b for prior Review. Use separately supplied Manager authorizations and independent pins; never infer them from this file. No authorization is bundled here. Reuse requires fresh Git retrieval and a new private output directory.
+
+Output integrity reproduction: use the published fixed manifest/publication pins in the delivery result, obtain separate Manager Consumer authorization, run canonical consume_delivery.py for all closure bytes, then validate_handoff.py. Review observations are not Manager readiness_assessment; canonical readiness validation awaits the independently established Manager context/assessment pair.

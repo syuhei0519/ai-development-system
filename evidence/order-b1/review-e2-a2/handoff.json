@@ -1,0 +1,414 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "app-order-service",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "assignment": {
+    "scope": "backend-app#2/B1",
+    "ac_ids": [
+      "AC-1",
+      "AC-2"
+    ],
+    "completion_criteria": [
+      "Independently assess fixed PR31 code/design/test evidence for B1 API, separate persistence and isolated integration; report severity, location, reproduction and correction conditions without application edits.",
+      "Independently evaluate Implementation, Merge and Deployment Readiness, earliest AC phases, merge effects and GitHub protection requirements.",
+      "Deliver Handoff v2 and reviewed public evidence with fixed revisions, residual risks and Delivery 1.2 integrity; preserve retry history and keep out-of-scope ACs unverified."
+    ]
+  },
+  "role": "review",
+  "task_id": "order-b1-review-e2-a2",
+  "attempt": 2,
+  "upstream": [
+    {
+      "role": "review",
+      "task_id": "order-b1-review-e2-a1",
+      "attempt": 1,
+      "relationship": "retry_of",
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/0023d1b1448fa453c18ac1a3e7175f7f9d7bf0b8/evidence/order-b1/review-e2-a1/handoff.json",
+      "revision": "sha256:79d822d80e56832e0b5272aeeeedf25f7403a6e79887859630b2c2697e1915f5"
+    },
+    {
+      "role": "test",
+      "task_id": "order-b1-test-e2-a1",
+      "attempt": 1,
+      "relationship": "dependency",
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/f5a93108cdbbce934a0838c280bdf0a18ba32429/evidence/order-b1/test-e2-a1/handoff.json",
+      "revision": "sha256:4cc00afcad190f144e9299a89dcef9604ec74a2733da05b605730061bbcebaa3"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Independent fixed-head B1 code/design/test review and isolated reproduction completed without blocking product findings. Implementation Ready recommended for B1; Merge/Deployment blocked; AC3 and integrated deployment unverified. Manager assessment and new downstream Consumer authorization remain separate.",
+  "artifacts": [
+    {
+      "id": "github-observations",
+      "kind": "other",
+      "locator": "github-observations.json",
+      "revision": "sha256:a6c46e125270edcfdcb35f6e0bb269cf002f6b2c62b03ff84c5bb31465351a72",
+      "summary": "Review authored evidence or byte-identical public source: github-observations.json"
+    },
+    {
+      "id": "readiness-review",
+      "kind": "other",
+      "locator": "readiness-review.json",
+      "revision": "sha256:e108b5bd3a77696dce3e05926dc21b4e9ed59fba628015840f3af445437f1b33",
+      "summary": "Review authored evidence or byte-identical public source: readiness-review.json"
+    },
+    {
+      "id": "review-artifact-2",
+      "kind": "document",
+      "locator": "reproduce-review.py",
+      "revision": "sha256:2449637fc292d11b08320935a3be80cae1dceb9da8b9ee4c6d2515d4ef17660a",
+      "summary": "Review authored evidence or byte-identical public source: reproduce-review.py"
+    },
+    {
+      "id": "reproduction",
+      "kind": "document",
+      "locator": "reproduction.txt",
+      "revision": "sha256:06c31f96a1cb60ced5f8d701bb32d5d17a3c0fa4c01211b41e734fd8d60dfb83",
+      "summary": "Review authored evidence or byte-identical public source: reproduction.txt"
+    },
+    {
+      "id": "review-report",
+      "kind": "review",
+      "locator": "review-report.txt",
+      "revision": "sha256:8b48321d9f01f5ee572c0ef8fcfebaa29b6007817d92709ca5031f9ce5237e68",
+      "summary": "Review authored evidence or byte-identical public source: review-report.txt"
+    },
+    {
+      "id": "review-artifact-5",
+      "kind": "document",
+      "locator": "review_boundary_test.go",
+      "revision": "sha256:f09283c78c36179fe1548e9957096b032ea2d13b65f7a29e7a932c4c9e397e68",
+      "summary": "Review authored evidence or byte-identical public source: review_boundary_test.go"
+    },
+    {
+      "id": "source-inventory",
+      "kind": "other",
+      "locator": "source-inventory.json",
+      "revision": "sha256:a9882b741eb4e9f66d2f095ad0900575f74d740445e1014486092f20b8aeb200",
+      "summary": "Review authored evidence or byte-identical public source: source-inventory.json"
+    },
+    {
+      "id": "review-artifact-11",
+      "kind": "document",
+      "locator": "sources/application-manifest/ci/github/release.py",
+      "revision": "sha256:6b99527cd83ec329b160391e2fc898793635be4d66bf185b33bf688b1f6c848a",
+      "summary": "Review authored evidence or byte-identical public source: sources/application-manifest/ci/github/release.py"
+    },
+    {
+      "id": "review-artifact-14",
+      "kind": "document",
+      "locator": "sources/application-manifest/environments/local/backend.yaml",
+      "revision": "sha256:be7b8212ea066e0a601396398310505cb5870c3c7d1c67619b1a421a308c71f8",
+      "summary": "Review authored evidence or byte-identical public source: sources/application-manifest/environments/local/backend.yaml"
+    },
+    {
+      "id": "review-artifact-17",
+      "kind": "document",
+      "locator": "sources/application-manifest/github/workflows/ci.yml",
+      "revision": "sha256:33f7d7f9cedf9eb6160baabbc90b65d37458838d7b9a1125871590d4370fb7ee",
+      "summary": "Review authored evidence or byte-identical public source: sources/application-manifest/github/workflows/ci.yml"
+    },
+    {
+      "id": "review-artifact-18",
+      "kind": "document",
+      "locator": "sources/application-manifest/github/workflows/trusted-manifest.yml",
+      "revision": "sha256:f6d3b59facf48c57e700db1b61a53f29e1a7f6eab73ed2b386974e8c9fefeecf",
+      "summary": "Review authored evidence or byte-identical public source: sources/application-manifest/github/workflows/trusted-manifest.yml"
+    },
+    {
+      "id": "review-artifact-20",
+      "kind": "document",
+      "locator": "sources/backend-app/Dockerfile",
+      "revision": "sha256:b5ae8439bfc39b7e830fc6e4966c36a80b2ef3d4078724a427066c72db32e327",
+      "summary": "Review authored evidence or byte-identical public source: sources/backend-app/Dockerfile"
+    },
+    {
+      "id": "review-artifact-23",
+      "kind": "document",
+      "locator": "sources/backend-app/ci/github/release.py",
+      "revision": "sha256:c8f92abc23bb783086858195968e30b81a4f52c375892ff0a96e56dede676e37",
+      "summary": "Review authored evidence or byte-identical public source: sources/backend-app/ci/github/release.py"
+    },
+    {
+      "id": "review-artifact-26",
+      "kind": "document",
+      "locator": "sources/backend-app/github/workflows/ci.yml",
+      "revision": "sha256:1153c02681a7adfa690a8ed6319a77f56c80d4085605b3a964661f620ac1e475",
+      "summary": "Review authored evidence or byte-identical public source: sources/backend-app/github/workflows/ci.yml"
+    },
+    {
+      "id": "review-artifact-29",
+      "kind": "document",
+      "locator": "sources/platform-gitops/bootstrap/root-application.yaml",
+      "revision": "sha256:f41b2036a1e5be25ad5dcb219cbdf88882134b149877dd4d9a60f4379027ec6f",
+      "summary": "Review authored evidence or byte-identical public source: sources/platform-gitops/bootstrap/root-application.yaml"
+    },
+    {
+      "id": "review-artifact-33",
+      "kind": "document",
+      "locator": "sources/platform-gitops/charts/workloads/templates/applications.yaml",
+      "revision": "sha256:6bc92483833f169a0f19fb7349f9105f410007328069b25d24509e5c1c58a7ee",
+      "summary": "Review authored evidence or byte-identical public source: sources/platform-gitops/charts/workloads/templates/applications.yaml"
+    },
+    {
+      "id": "review-artifact-34",
+      "kind": "document",
+      "locator": "sources/platform-gitops/charts/workloads/values.yaml",
+      "revision": "sha256:2ec0f1e8ea8bde4fbe0151d1a72b40742e987d34277f6eefdbf45e5fcfa2f5da",
+      "summary": "Review authored evidence or byte-identical public source: sources/platform-gitops/charts/workloads/values.yaml"
+    },
+    {
+      "id": "review-artifact-37",
+      "kind": "document",
+      "locator": "sources/platform-gitops/github/workflows/ci.yml",
+      "revision": "sha256:f967a83ea057f8d9acad44f3873351d3981a3dea0d8dfbea5cf68b4cd7c31b24",
+      "summary": "Review authored evidence or byte-identical public source: sources/platform-gitops/github/workflows/ci.yml"
+    },
+    {
+      "id": "backend-source-1",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/README.md",
+      "revision": "sha256:120cd1cfb7acc6a17e8876a83375ce5bf3af27aa7d73d81256daa208e3fb79b8",
+      "summary": "Unmodified reviewed source README.md"
+    },
+    {
+      "id": "backend-source-2",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/cmd/order-server/main.go",
+      "revision": "sha256:fe0dd9fa60cde091c260e2771815fbb4496d5a34423cf546c81c93ae3396536f",
+      "summary": "Unmodified reviewed source cmd/order-server/main.go"
+    },
+    {
+      "id": "backend-source-3",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/cmd/order-server/main_test.go",
+      "revision": "sha256:5fb33c452a0d342d661595b6af29d2330cfef3a963cee8a05713aa3940dfd262",
+      "summary": "Unmodified reviewed source cmd/order-server/main_test.go"
+    },
+    {
+      "id": "backend-source-4",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/docs/order-api.md",
+      "revision": "sha256:d33fd8907049f840dd3925c586150d5dcc655594d1c8772a1b469dba02c22f5b",
+      "summary": "Unmodified reviewed source docs/order-api.md"
+    },
+    {
+      "id": "backend-source-5",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/docs/order-openapi.yaml",
+      "revision": "sha256:3557ae065c4486895ee043c9344a874fcef0da0faceffa71a69a18af0f976231",
+      "summary": "Unmodified reviewed source docs/order-openapi.yaml"
+    },
+    {
+      "id": "backend-source-6",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/order/order.go",
+      "revision": "sha256:6d5f53ac458c359e646fba68eb58cfba685c14fac02c4d216081fc781a77551c",
+      "summary": "Unmodified reviewed source internal/order/order.go"
+    },
+    {
+      "id": "backend-source-7",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/order/order_test.go",
+      "revision": "sha256:e5ea564ae3e770a1714fd56311d07acacc6d513cbf8c3c1ffb235006ae561010",
+      "summary": "Unmodified reviewed source internal/order/order_test.go"
+    },
+    {
+      "id": "backend-source-8",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/orderconfig/config.go",
+      "revision": "sha256:cad3d5bc123d9360b6157e65400b83ded0dcc06564c2a4a0e4749eafdeb2f8de",
+      "summary": "Unmodified reviewed source internal/orderconfig/config.go"
+    },
+    {
+      "id": "backend-source-9",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/orderconfig/config_test.go",
+      "revision": "sha256:b628e83ffcdae0ca90d75bfa647a285a11a5ee43472d34ce58e4e6916ab96c46",
+      "summary": "Unmodified reviewed source internal/orderconfig/config_test.go"
+    },
+    {
+      "id": "backend-source-10",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/orderhttp/server.go",
+      "revision": "sha256:a1c1faee56d2dcbce52c41def4b14d61459b63dc27ed6a31bd3fe9bae94a0332",
+      "summary": "Unmodified reviewed source internal/orderhttp/server.go"
+    },
+    {
+      "id": "backend-source-11",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/orderhttp/server_test.go",
+      "revision": "sha256:0a93c78c83ada9bfbc91b32290233014b9e0028d8edace50768cab2846a69688",
+      "summary": "Unmodified reviewed source internal/orderhttp/server_test.go"
+    },
+    {
+      "id": "backend-source-12",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/ordertest/disposable.go",
+      "revision": "sha256:470442497265bdcb329d33e4b14e58a5cad1d346e6e0cfcda3c95dbb07fd3bf9",
+      "summary": "Unmodified reviewed source internal/ordertest/disposable.go"
+    },
+    {
+      "id": "backend-source-13",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/store/orderpostgres/migrate.go",
+      "revision": "sha256:070cd8ca5f7be0ac938c6283a3163ad054e6de368fb92c24b23bb9a0021f76e3",
+      "summary": "Unmodified reviewed source internal/store/orderpostgres/migrate.go"
+    },
+    {
+      "id": "backend-source-14",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/store/orderpostgres/migrate_integration_test.go",
+      "revision": "sha256:6091cf2e397434782898006b61a2b85681fdb8ef78cb4bdb8c6d1fc69bfc7ea1",
+      "summary": "Unmodified reviewed source internal/store/orderpostgres/migrate_integration_test.go"
+    },
+    {
+      "id": "backend-source-15",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/store/orderpostgres/store.go",
+      "revision": "sha256:66464105dab9626688cf5e7706a967c0ed99258e7f6e9341ffa5ed7c766ea9eb",
+      "summary": "Unmodified reviewed source internal/store/orderpostgres/store.go"
+    },
+    {
+      "id": "backend-source-16",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/store/orderpostgres/store_test.go",
+      "revision": "sha256:bc12ddb6756b6adc18882bf86553ebd005633821df740205a5caaa92ea01e0d5",
+      "summary": "Unmodified reviewed source internal/store/orderpostgres/store_test.go"
+    },
+    {
+      "id": "backend-source-17",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/store/orderpostgres/wait.go",
+      "revision": "sha256:29c46daa3451f0dcd1bdaade93c55d960bc1f6b9bdc5dc0e0aa73cd079d435d4",
+      "summary": "Unmodified reviewed source internal/store/orderpostgres/wait.go"
+    },
+    {
+      "id": "backend-source-18",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/store/orderpostgres/wait_test.go",
+      "revision": "sha256:c7729a49f92bcaf8d6abcae32bab4790f7e7ebbd3404c7d5c8f660e89096e34d",
+      "summary": "Unmodified reviewed source internal/store/orderpostgres/wait_test.go"
+    },
+    {
+      "id": "backend-source-19",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/order-migrations/0001_create_orders.sql",
+      "revision": "sha256:5aaaec9539a55a607be7f83ed10afda742d34658a6512aafaf79e94985ad46b6",
+      "summary": "Unmodified reviewed source order-migrations/0001_create_orders.sql"
+    },
+    {
+      "id": "backend-source-20",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/order-migrations/embed.go",
+      "revision": "sha256:630160178e2dcad9c0d963ef66df3d8dcfb518b2ed8bbc44d551ae80cd359643",
+      "summary": "Unmodified reviewed source order-migrations/embed.go"
+    },
+    {
+      "id": "backend-source-21",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/tests/orderintegration/order_test.go",
+      "revision": "sha256:b32da8aa4e99342a00603fb3bfb93ea6f73ad43ef67b9f2afebf3493c0c0524f",
+      "summary": "Unmodified reviewed source tests/orderintegration/order_test.go"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "reviewed-b1",
+      "claim": "Assigned code/design/real-test review completed with no blocking product finding.",
+      "artifact_ids": [
+        "review-report",
+        "reproduction"
+      ],
+      "locator": "review-report.txt",
+      "observation": "Exact head reviewed independently; race/unit/vet/build/format/policy, real HTTP/PostgreSQL restart/Account/migration, immutable Test supplement and separate Review pool-failure/error-sanitization overlay all passed. AC3/deployment excluded."
+    },
+    {
+      "id": "readiness-observation",
+      "claim": "Implementation Ready B1 recommended; Merge/Deployment blocked, Issue unverified.",
+      "artifact_ids": [
+        "readiness-review",
+        "github-observations",
+        "source-inventory",
+        "review-report"
+      ],
+      "locator": "readiness-review.json",
+      "observation": "Live allowed GitHub metadata plus fixed source traces distinguish image/proposal from later Argo sync. Unknown external linkage/settings retained. No Manager formal assessment/context manufactured."
+    },
+    {
+      "id": "delivery-history",
+      "claim": "Both Manager-authorized input bundles passed canonical fresh-Git consumption; retry continuity preserved.",
+      "artifact_ids": [
+        "review-report"
+      ],
+      "locator": "review-report.txt",
+      "observation": "Prior attempt1 blocked ACCESS_DENIED remains execution1; this attempt2 inherits exact Issue/assignment. No private originals, authorization or receipts published; upstream fixed references and six edited-derivative distinctions retained."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "covered",
+      "scope": "B1 independent review and disposable Integration only; real deployment and aggregate integration unverified.",
+      "artifact_ids": [
+        "review-report",
+        "readiness-review"
+      ],
+      "evidence_ids": [
+        "reviewed-b1",
+        "readiness-observation"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "covered",
+      "scope": "B1 independent review and disposable Integration only; real deployment and aggregate integration unverified.",
+      "artifact_ids": [
+        "review-report",
+        "readiness-review"
+      ],
+      "evidence_ids": [
+        "reviewed-b1",
+        "readiness-observation"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "not_assigned",
+      "scope": "Outside assignment: no Helm/kind/Argo/Order image digest/deployment verification.",
+      "artifact_ids": [
+        "review-report",
+        "readiness-review"
+      ],
+      "evidence_ids": [
+        "reviewed-b1",
+        "readiness-observation"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

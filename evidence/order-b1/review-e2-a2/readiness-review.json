@@ -1,0 +1,84 @@
+{
+  "document_type": "review_readiness_observations",
+  "producer_alias": "order-b1-review-e2-a2",
+  "formal_manager_assessment": false,
+  "subject": {
+    "repository": "syuhei0519/backend-app",
+    "pr_number": 31,
+    "head_sha": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+    "base_sha": "d29a390c09f8667316569e1bb599bf690b00313d",
+    "target_revision": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+    "merge_group_sha": null
+  },
+  "observed_at": "2026-10-11T06:50:19.942534+00:00",
+  "review_evidence_expires_at": "2026-10-12T06:11:00Z",
+  "expiry_limit": "Earlier revision/config/environment changes invalidate this observation. This is not Manager policy expiry.",
+  "implementation_readiness": {
+    "recommendation": "ready",
+    "scope": "B1 only",
+    "basis": "Verified mandatory design and fixed dependencies; assigned implementation/review authorization; independent tests and code review passed."
+  },
+  "deployment_readiness": {
+    "recommendation": "blocked",
+    "basis": "No actual deployment environment/rollback authority/capability/credential metadata/image dependency verification."
+  },
+  "merge_readiness": {
+    "recommendation": "blocked",
+    "basis": "Draft; missing independently established Manager context/config/expiry/final authorization; complete deployment effect unknown and Deployment Ready blocked."
+  },
+  "deployment_effect": {
+    "recommendation": "unknown",
+    "visible_flow": "Conditional Account image publication and Manifest PR proposal only; no auto-merge/apply in inspected repo code. Separate Manifest main merge is Argo automatic-sync input.",
+    "unknowns": [
+      "ENABLE_GHCR_PUBLISH and ENABLE_MANIFEST_PR current values",
+      "ghcr-publish/manifest-update current Environment approval settings",
+      "Existing token metadata/validity (values not read)",
+      "External apps/webhooks/operator auto-merge or deploy integration"
+    ]
+  },
+  "github": {
+    "required_check": "ci-result",
+    "ci_result": "success on exact head",
+    "approving_reviews_count": 0,
+    "required_ordinary_approvals": 0,
+    "review_threads_count": 0,
+    "required_thread_resolution": true,
+    "queue_rule_observed": false,
+    "conditional_extra_approval_for_unattributed_changes": true,
+    "branch_protection_admin_api": "not retried",
+    "ruleset": 24733411,
+    "final_eligibility": "Manager must refresh and verify; AI review is separate from GitHub requirements"
+  },
+  "ac_observations": [
+    {
+      "id": "AC-1",
+      "verbatim": "作成したOrderが再起動後も取得できる",
+      "earliest_phase": "premerge",
+      "review_scope": "covered B1 only",
+      "deferred": null
+    },
+    {
+      "id": "AC-2",
+      "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+      "earliest_phase": "premerge",
+      "review_scope": "covered B1 only",
+      "deferred": null
+    },
+    {
+      "id": "AC-3",
+      "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+      "earliest_phase": "premerge",
+      "review_scope": "not assigned; unverified",
+      "deferred": null
+    }
+  ],
+  "issue_integration_scope": "aggregate_required",
+  "issue_completion": "unverified",
+  "canonical_readiness_validation": "not performed: schema requires assessor_role=manager; no Manager current context/assessment supplied; this observation is not a substitute",
+  "supporting_files": [
+    "review-report.txt",
+    "github-observations.json",
+    "source-inventory.json",
+    "reproduction.txt"
+  ]
+}

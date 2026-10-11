@@ -1,0 +1,94 @@
+{
+  "document_type": "review_source_inventory",
+  "note": "Byte-identical copies of public fixed Git files. No claims about live settings or deployment.",
+  "files": [
+    {
+      "repository": "syuhei0519/backend-app",
+      "commit": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "path": ".github/workflows/ci.yml",
+      "copy": "sources/backend-app/github/workflows/ci.yml",
+      "size": 7252,
+      "sha256": "1153c02681a7adfa690a8ed6319a77f56c80d4085605b3a964661f620ac1e475"
+    },
+    {
+      "repository": "syuhei0519/backend-app",
+      "commit": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "path": "ci/github/release.py",
+      "copy": "sources/backend-app/ci/github/release.py",
+      "size": 23695,
+      "sha256": "c8f92abc23bb783086858195968e30b81a4f52c375892ff0a96e56dede676e37"
+    },
+    {
+      "repository": "syuhei0519/backend-app",
+      "commit": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "path": "Dockerfile",
+      "copy": "sources/backend-app/Dockerfile",
+      "size": 1315,
+      "sha256": "b5ae8439bfc39b7e830fc6e4966c36a80b2ef3d4078724a427066c72db32e327"
+    },
+    {
+      "repository": "syuhei0519/application-manifest",
+      "commit": "e039945a90625262f91382e6f71149d046e31b34",
+      "path": ".github/workflows/ci.yml",
+      "copy": "sources/application-manifest/github/workflows/ci.yml",
+      "size": 3680,
+      "sha256": "33f7d7f9cedf9eb6160baabbc90b65d37458838d7b9a1125871590d4370fb7ee"
+    },
+    {
+      "repository": "syuhei0519/application-manifest",
+      "commit": "e039945a90625262f91382e6f71149d046e31b34",
+      "path": ".github/workflows/trusted-manifest.yml",
+      "copy": "sources/application-manifest/github/workflows/trusted-manifest.yml",
+      "size": 1749,
+      "sha256": "f6d3b59facf48c57e700db1b61a53f29e1a7f6eab73ed2b386974e8c9fefeecf"
+    },
+    {
+      "repository": "syuhei0519/application-manifest",
+      "commit": "e039945a90625262f91382e6f71149d046e31b34",
+      "path": "ci/github/release.py",
+      "copy": "sources/application-manifest/ci/github/release.py",
+      "size": 24009,
+      "sha256": "6b99527cd83ec329b160391e2fc898793635be4d66bf185b33bf688b1f6c848a"
+    },
+    {
+      "repository": "syuhei0519/application-manifest",
+      "commit": "e039945a90625262f91382e6f71149d046e31b34",
+      "path": "environments/local/backend.yaml",
+      "copy": "sources/application-manifest/environments/local/backend.yaml",
+      "size": 1574,
+      "sha256": "be7b8212ea066e0a601396398310505cb5870c3c7d1c67619b1a421a308c71f8"
+    },
+    {
+      "repository": "syuhei0519/platform-gitops",
+      "commit": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+      "path": ".github/workflows/ci.yml",
+      "copy": "sources/platform-gitops/github/workflows/ci.yml",
+      "size": 4735,
+      "sha256": "f967a83ea057f8d9acad44f3873351d3981a3dea0d8dfbea5cf68b4cd7c31b24"
+    },
+    {
+      "repository": "syuhei0519/platform-gitops",
+      "commit": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+      "path": "charts/workloads/templates/applications.yaml",
+      "copy": "sources/platform-gitops/charts/workloads/templates/applications.yaml",
+      "size": 1233,
+      "sha256": "6bc92483833f169a0f19fb7349f9105f410007328069b25d24509e5c1c58a7ee"
+    },
+    {
+      "repository": "syuhei0519/platform-gitops",
+      "commit": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+      "path": "charts/workloads/values.yaml",
+      "copy": "sources/platform-gitops/charts/workloads/values.yaml",
+      "size": 99,
+      "sha256": "2ec0f1e8ea8bde4fbe0151d1a72b40742e987d34277f6eefdbf45e5fcfa2f5da"
+    },
+    {
+      "repository": "syuhei0519/platform-gitops",
+      "commit": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+      "path": "bootstrap/root-application.yaml",
+      "copy": "sources/platform-gitops/bootstrap/root-application.yaml",
+      "size": 856,
+      "sha256": "f41b2036a1e5be25ad5dcb219cbdf88882134b149877dd4d9a60f4379027ec6f"
+    }
+  ]
+}

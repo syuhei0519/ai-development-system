@@ -1,0 +1,23 @@
+# local配備のbackend values。platform-gitops/charts/workloads/templates/applications.yamlのArgo Applicationが読む。
+# source/build/scan/digestとrecord/SBOMのURL/checksumを同一commitで選択する。
+# この固定配備版は現在アプリmainと同一とは限らない。注釈は由来の記録であり、現在のscan有効期限を延長しない。
+telemetry:
+  enabled: true
+  endpoint: "http://otel-collector.observability.svc.cluster.local:4318"
+  environment: local
+image:
+  repository: "ghcr.io/syuhei0519/backend-app"
+  tag: "d29a390c09f8667316569e1bb599bf690b00313d"
+  digest: "sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d"
+# schemaVersion=2は元buildと今回scanを分離する。recordSha256はrecord本文の外側に置く自己参照回避のchecksum。
+# SBOM checksumはファイルbytes、image digestはOCI manifestのhashで、異なる対象の識別子。
+release:
+  schemaVersion: "github-v1"
+  sourceRepository: "syuhei0519/backend-app"
+  sourceCommit: "d29a390c09f8667316569e1bb599bf690b00313d"
+  runId: "37806373099"
+  runAttempt: "1"
+  recordUrl: "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/release-record.json"
+  recordSha256: "dbea54fc2a4531790fbec5d47ca44b1ec079176376d294371652b1ba93e25cbd"
+  sbomUrl: "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/sbom.cdx.json"
+  sbomSha256: "95d554e528a8297461160e3835435d4eda7f19c5cb9d83b63a76c71cda60f1af"
