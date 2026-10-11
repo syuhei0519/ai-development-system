@@ -38,7 +38,7 @@
 
 Implementation Ready が満たされた担当範囲を実装し、Deployment Ready が blocked という理由だけで実装可能な範囲を一律停止しない。未解決の必須設計・実装承認は迂回しない。対象 head/base/revision/config、配備影響と変更後の検証対象を引き渡す。自分のテストを独立 Test/Review とみなさない。 詳細は [Readiness 契約](../contracts/readiness.md) と [ワークフロー](../workflows/single-issue.md#readiness-と-issue-completion-の運用) に従う。
 
-Issue全体の統合完了はPRのreadinessとは別条件。全AC metでも未マージ/統合待ちは最終achievedにせず、複数PR・repoは集約契約と証跡の後続依存を明記する。Readiness成果物はartifact_id・ローカル実体・sha256 digestを照合して配送する。全AC met・統合待ちではHandoff final_assessmentを省略してReadinessで追跡する。
+Issue全体の統合完了はPRのreadinessとは別条件。全AC metでも未マージ/統合待ちは最終achievedにせず、複数PR・repoは独立[Issue Completion契約](../contracts/issue-completion.md)のcontext・全必要集合・実測証跡を引き渡す。Readiness成果物はartifact_id・ローカル実体・sha256 digestを照合して配送する。全AC met・統合待ちではHandoff final_assessmentを省略してReadinessで追跡する。
 
 ## Artifact Delivery の責務
 

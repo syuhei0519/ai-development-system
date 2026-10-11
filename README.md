@@ -107,7 +107,7 @@ JSON Schema は構造、CLI の追加検査はローカル ID の参照整合性
 [判定 schema](contracts/readiness.schema.json)、[現在 context schema](contracts/readiness-context.schema.json)、[CLI](scripts/validate_readiness.py)、[架空サンプルと再現手順](examples/readiness/README.md) を参照してください。Handoff v2.0 と Knowledge v1.0 は後方互換を維持し、新契約を artifact で配送します。schema/CLI は記録整合性のみで、証拠の真偽や live GitHub のマージ可否は保証しません。この仕様追加は merge/auto-merge や環境・保護設定の変更許可を与えません。
 
 
-Issue Completionには全AC実測に加えて必要な統合完了が必要。全premerge ACがmetでも未マージならunverified。Readiness/contextのissue_integration_scopeで単一PRと集約待ちを分離し、複数PR・repo/範囲不明は単一PRからachievedにしない。集約契約と証跡の検証は後続依存として明示する。全AC met・統合待ちの中間Handoffではfinal_assessmentを省略し、Readiness artifactで追跡する。
+Issue Completionには全AC実測に加えて必要な統合完了が必要。全premerge ACがmetでも未マージならunverified。Readiness/contextのissue_integration_scopeで単一PRと集約待ちを分離し、複数PR・repo/範囲不明は単一PRからachievedにしない。複数PR・repoは独立[Issue Completion契約](contracts/issue-completion.md)で全必要集合と固定証跡を検証する。全AC met・統合待ちの中間Handoffではfinal_assessmentを省略し、Readiness artifactで追跡する。
 
 Readinessの配送にはartifact_id、Handoff基準のローカルlocator、実体bytesのsha256 digest revisionを使用する。`validate_readiness.py --handoff`は実体の読み取り・評価対象ファイルとの同一性・digestを照合する。旧DraftのReadinessは追加必須項目を確認して移行する。詳細と限界はReadiness契約を参照。
 

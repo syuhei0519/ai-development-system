@@ -1,0 +1,198 @@
+{
+  "schema_version": "1.0",
+  "document_type": "issue_completion_assessment",
+  "artifact_id": "SYNTHETIC-COMPLETION",
+  "assessor_role": "manager",
+  "evaluated_at": "2030-01-03T12:00:00Z",
+  "context_sha256": "8943ce6030f4335adb8cfab5f7338670b2c45b3d24bd3114e92fab5c1cd8d5ff",
+  "issue_id": "SYNTHETIC-ISSUE",
+  "acceptance_criteria": [
+    {
+      "id": "SYNTHETIC-AC-1",
+      "verbatim": "synthetic sample: local contract tests pass",
+      "source": "synthetic sample request",
+      "verification_phase": "premerge"
+    },
+    {
+      "id": "SYNTHETIC-AC-2",
+      "verbatim": "synthetic sample: observe the deployed service",
+      "source": "synthetic sample request",
+      "verification_phase": "postdeploy"
+    }
+  ],
+  "scope_revision": "5ab7d53af079dfbab944f5fc567b59a8df55f56cbd9880f931e5fe257d43967d",
+  "member_results": [
+    {
+      "member_id": "app",
+      "readiness_ref": null,
+      "readiness_context_ref": null,
+      "readiness_handoff_ref": null,
+      "gate_checked_at": null,
+      "approved_head_sha": null,
+      "actual_merge_sha": null,
+      "merged_at": null,
+      "merge_binding": {
+        "verdict": "pending",
+        "evidence_ids": [],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      },
+      "historical_merge_gate": {
+        "verdict": "pending",
+        "evidence_ids": [],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      }
+    },
+    {
+      "member_id": "config",
+      "readiness_ref": null,
+      "readiness_context_ref": null,
+      "readiness_handoff_ref": null,
+      "gate_checked_at": null,
+      "approved_head_sha": null,
+      "actual_merge_sha": null,
+      "merged_at": null,
+      "merge_binding": {
+        "verdict": "pending",
+        "evidence_ids": [],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      },
+      "historical_merge_gate": {
+        "verdict": "pending",
+        "evidence_ids": [],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      }
+    },
+    {
+      "member_id": "client",
+      "readiness_ref": null,
+      "readiness_context_ref": null,
+      "readiness_handoff_ref": null,
+      "gate_checked_at": null,
+      "approved_head_sha": null,
+      "actual_merge_sha": null,
+      "merged_at": null,
+      "merge_binding": {
+        "verdict": "pending",
+        "evidence_ids": [],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      },
+      "historical_merge_gate": {
+        "verdict": "pending",
+        "evidence_ids": [],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      }
+    }
+  ],
+  "deployment_results": [
+    {
+      "deployment_id": "staging",
+      "status": "blocked",
+      "evidence_ids": [],
+      "reason": "synthetic sample: fictional record, no product result or authority"
+    }
+  ],
+  "evidence": [],
+  "verification_results": [
+    {
+      "verification_id": "app-pre",
+      "outcome": "unverified",
+      "evidence_ids": [],
+      "reason": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "verification_id": "config-pre",
+      "outcome": "unverified",
+      "evidence_ids": [],
+      "reason": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "verification_id": "client-pre",
+      "outcome": "unverified",
+      "evidence_ids": [],
+      "reason": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "verification_id": "runtime-response",
+      "outcome": "unverified",
+      "evidence_ids": [],
+      "reason": "synthetic sample: fictional record, no product result or authority"
+    },
+    {
+      "verification_id": "runtime-persistence",
+      "outcome": "unverified",
+      "evidence_ids": [],
+      "reason": "synthetic sample: fictional record, no product result or authority"
+    }
+  ],
+  "ac_results": [
+    {
+      "ac_id": "SYNTHETIC-AC-1",
+      "outcome": "unverified",
+      "verification_ids": [
+        "app-pre",
+        "config-pre",
+        "client-pre"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "SYNTHETIC-AC-2",
+      "outcome": "unverified",
+      "verification_ids": [
+        "runtime-response",
+        "runtime-persistence"
+      ],
+      "evidence_ids": []
+    }
+  ],
+  "integration_readiness": {
+    "status": "blocked",
+    "checks": {
+      "scope": {
+        "verdict": "pending",
+        "evidence_ids": [],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      },
+      "required_merges": {
+        "verdict": "pending",
+        "evidence_ids": [],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      },
+      "deployment": {
+        "verdict": "pending",
+        "evidence_ids": [],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      },
+      "compatibility": {
+        "verdict": "pending",
+        "evidence_ids": [],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      },
+      "measurement_coverage": {
+        "verdict": "pending",
+        "evidence_ids": [],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      },
+      "current_evidence": {
+        "verdict": "pending",
+        "evidence_ids": [],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      },
+      "authorizations": {
+        "verdict": "pending",
+        "evidence_ids": [],
+        "reason": "synthetic sample: fictional record, no product result or authority"
+      }
+    },
+    "evidence_ids": [],
+    "reason": "synthetic sample: fictional record, no product result or authority"
+  },
+  "issue_completion": "unverified",
+  "reasons": [
+    "synthetic sample: fictional record, no product result or authority"
+  ],
+  "history": {
+    "previous_ref": null,
+    "events": []
+  }
+}

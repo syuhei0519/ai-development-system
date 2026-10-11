@@ -48,3 +48,9 @@ jobs:
           examples/readiness/postdeploy-achieved.json
           --context examples/readiness/context.json
           --at 2030-01-01T12:00:00Z
+      - name: Aggregate synthetic-achieved replay
+        run: >-
+          python scripts/validate_issue_completion.py examples/issue-completion/synthetic-achieved/completion.json --context examples/issue-completion/synthetic-achieved/context.json --context-sha256 951048815ca07294e13e6df297272e719e121d81a8e1c523c3958e4ba97742ac --handoff examples/issue-completion/synthetic-achieved/handoff.json --at 2030-01-03T12:00:00Z
+      - name: Aggregate synthetic-pending replay
+        run: >-
+          python scripts/validate_issue_completion.py examples/issue-completion/synthetic-pending/completion.json --context examples/issue-completion/synthetic-pending/context.json --context-sha256 8943ce6030f4335adb8cfab5f7338670b2c45b3d24bd3114e92fab5c1cd8d5ff --handoff examples/issue-completion/synthetic-pending/handoff.json --at 2030-01-03T12:00:00Z
