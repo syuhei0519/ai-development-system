@@ -1,0 +1,26 @@
+{
+  "document_type": "delivery_completion",
+  "public_alias": "order-p0-test-a1",
+  "epoch": 1,
+  "execution_attempt": 1,
+  "delivery_attempt": 2,
+  "status": "verified",
+  "observed_at": "2026-10-11T17:51:08.201930+00:00",
+  "prior_history": {
+    "payload_commit": "ea233f16b427bea3818c7e898f46267685006cb3",
+    "path": "evidence/order-p0/test-a1/delivery-history.json",
+    "sha256": "cad067f9ef3404a412809e49bace1b1db289cb6ad75136970860c17feef023e8"
+  },
+  "append_event": {
+    "delivery_attempt": 2,
+    "status": "verified",
+    "physical_objects": 107,
+    "physical_bytes": 650125,
+    "canonical_full_byte_type_slot_candidate_tree_validation": "passed"
+  },
+  "manifest_sha256": "2c9844b8c92e5c8fa60c4b139dfb94657cd75f90e66d9c51388a794b2c35e8e0",
+  "publication_receipt_sha256": "89993a0084215da492b5ceac067c2c0502511d4fb0c625792119c166f914f493",
+  "consumer_use": "pending independent Manager authorization and fresh canonical consume_delivery.py validation; no Consumer approval issued",
+  "authority_granted": false,
+  "prior_attempts_preserved": true
+}

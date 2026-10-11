@@ -1,0 +1,23 @@
+{
+  "document_type": "publisher_verification",
+  "public_alias": "order-p0-test-a1",
+  "observed_at": "2026-10-11T17:51:08.201930+00:00",
+  "system_revision": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+  "payload_commit": "ea233f16b427bea3818c7e898f46267685006cb3",
+  "manifest_sha256": "2c9844b8c92e5c8fa60c4b139dfb94657cd75f90e66d9c51388a794b2c35e8e0",
+  "publication_receipt_sha256": "89993a0084215da492b5ceac067c2c0502511d4fb0c625792119c166f914f493",
+  "explicit_artifacts": 50,
+  "physical_objects": 107,
+  "physical_bytes": 650125,
+  "canonical_type_slot_candidate_tree_validation": "passed",
+  "preserved_upstream_entries": 42,
+  "preserved_edited_derivatives": 5,
+  "publication_safety": "Original 10-file whitelist plus the corrected Handoff, pending candidate and delivery history read and reviewed; contains public technical evidence and generated synthetic fixtures only. No credentials/private identifiers/private original hashes/authorization/Consumption Receipt/internal logs included. Existing upstream references remain immutable; historical public-original equivalence is not expanded.",
+  "authority_granted": false,
+  "consumer_authorization": "not_created; Manager must issue separately",
+  "delivery_attempt": 2,
+  "prior_delivery_failure": "Attempt 1 retained at cd17d0c5d07fd2f451538c778c721dd081b234b7: standalone Helm text rejected by canonical JSON-looking content rule; complete artifact tree used on attempt 2 without byte changes.",
+  "execution_attempt": 1,
+  "epoch": 1,
+  "retry_history": "Prior immutable upstream Handoffs and all dependency/retry bindings retained; no counter reset or new Agent."
+}
