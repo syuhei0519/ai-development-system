@@ -107,7 +107,10 @@ class Preparation:
                      producer=deepcopy(producer['reference']),producer_artifact_id=artifact['id'],
                      candidate_ids=[c['id'] for c in data['candidates']],sources=[])
         for c in data['candidates']:
-            kind='tree' if '/tree/' in c['source'] else 'blob'
+            parts = c['source'].split('/')
+            require(len(parts) > 5 and parts[5] in ('blob', 'tree'),
+                    'canonical fixed Git source URL required')
+            kind = parts[5]
             repo,commit,path=fixed_url(c['source'],kind)
             if kind=='blob':target=dict(kind=kind,reference=self.add(repo,commit,path)['reference'])
             else:

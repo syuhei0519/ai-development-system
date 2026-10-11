@@ -26,6 +26,10 @@ No production result, operational Knowledge adoption or B1 acceptance is asserte
    It creates no authorization or verified Consumer output and is not formal
    delivery success. The helper supports Handoff dependencies and this candidate
    profile; it is not a universal Knowledge-input/context manifest builder.
+   Candidate source kind is the `blob` or `tree` route segment immediately after
+   owner/repository. Those words in an owner, repository or nested path do not
+   change the kind. Fixed OID, canonical URL and safe path checks still apply;
+   unknown routes, query strings and encoded paths are rejected.
 5. Obtain a separate current Manager authorization with version `1.2`, manifest
    and publication raw pins, exact consumer/scope/purpose/expiry and `original`
    representation allowed. Supply its independent pin directly to the CLI:
