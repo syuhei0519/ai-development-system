@@ -1,0 +1,295 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "SYSTEM-CROSSREF-DELIVERY",
+    "source": "assignment-requirements.json",
+    "title": "System fixed cross-repository artifact delivery implementation",
+    "acceptance_criteria": [
+      {
+        "id": "X-1",
+        "verbatim": "Delivery明示version拡張（推奨1.2）と外側slot-binding契約。ownerdocumentの固定ref、構造上slot（artifact ID/upstream identity/Knowledge source等）と原locator/revisionとtypedtargetを一意結合。欠落/余剰/重複/曖昧/競合は拒否。旧1.0/1.1は新型を拒否し以前の意味と正常系維持。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-2",
+        "verbatim": "blobはrepository/fullcommit/path/size/sha256で取得。canonical GitHub fixed blob URLと元revisionを厳密一致させ、同repo別commit/別repoを安全に解決。任意URL追跡や浮動ref/redirect/外部HTTP自動取得は禁止。列挙された全依存を取得して型/schema/hash/role/task/attempt/retryIssueも検証。暗黙locator削除やコピーによる偽装をしない。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-3",
+        "verbatim": "kind=commitにはblobと別typed git-commit-objectを定義。repo/fullOID/rawcommitobject size/SHA256、canonicalcommitURL/revision一致、cat-file type=commitと取得SHA一致、rawobject全byteshash、出力/receiptへtyped記録。commitobject存在だけでtree内容/build/製品AC合格を認定しない。必要なソースblob証跡は別で取得。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-4",
+        "verbatim": "全manifest/publication/consumption/authorizationの版と承認bindings整合。Manager独立pin、用途consumer/scope/expiry必須、receipt権限なし。全必要artifact実体検証前に利用しない。source truthfulness/意味妥当性/IssueCompletionは別ゲート。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-5",
+        "verbatim": "正常/異常tests: 固定crossrepo blob/Handoff/commit、URL/OID/path/objecttype/size/hash不一致、missingdependency/privateonly/duplicate slot/downgrade、symlink/gitlink/JSON型偽装、retryidentity、承認、旧128testsを含む回帰。新旧validator双方で期待動作確認。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "X-6",
+        "verbatim": "実B1公開Handoffを一切書換えず固定codecommit/upstreamの正式bundle検証を可能にし、CLI実取得で証明。公開ソースだけを使い、B1Test/Review/Issue合格や実装再開をこのSystemtaskから主張しない。",
+        "source": "assignment-requirements.json"
+      }
+    ]
+  },
+  "assignment": {
+    "scope": "system/artifact-delivery/cross-reference",
+    "ac_ids": [
+      "X-1",
+      "X-2",
+      "X-3",
+      "X-4",
+      "X-5",
+      "X-6"
+    ],
+    "completion_criteria": [
+      "Independently verify all original X-1 through X-6 against fixed implementation head; preserve exact Issue/AC text and prior history.",
+      "X-7: 厳格な knowledge-candidates-v1 profile と版付き外側 candidate_bindings を実装する。原文書にschema_version等を追加せず、document_type・必要field・型・余剰field禁止・候補ID一意性を検証する。producer Handoff固定実体・artifact ID・raw_locator・候補ID集合・原source文字列とtyped targetを一意結合し、欠落/余剰/重複/曖昧/競合を拒否する。pending_manager_reviewを承認へ読み替えず、未知Knowledge型の降格拒否を維持する。blob sourceの全bytes・size/hash・固定URL/OID/pathを検証し、provenance-onlyへ緩和しない。",
+      "X-8: 固定tree sourceの版付き完全snapshotを検証する。固定repo/full commit/directoryとcanonical tree URLを照合し、対象祖先および配下treeを完全列挙する。全通常blobのpath/mode/OID/size/SHA-256と実体を照合し、欠落/余剰/重複/改変/不正祖先/symlink/gitlink/非通常object/部分列挙を拒否する。tree/commit objectの存在だけで配下内容やbuild/製品ACを認定せず、件数/bytes上限超過時は切り詰めずfail closedとする。",
+      "X-9: 実B1公開Handoffとknowledge_candidates原bytesを変更せず、固定code commit・Research依存・候補producer binding・blob source・tree配下の全必要実体をCLI実取得で検証する。旧128testsを含む現149testsを維持し、新旧validatorで版・型・URL/OID/path/mode/size/hash・candidate集合・producer・承認・依存欠落・private_only・symlink/gitlink・JSON偽装・retryidentity・再取得の正常/否定系を検証する。System自己検証、独立Test/Review、B1製品AC、実装再開、IssueCompletionを分離して報告する。",
+      "Preserve Test attempt 1 separately from Implementation attempt 2. Verify 173 regressions, independent negative cases, actual B1 CLI/fresh recheck, separate CI/integration observation, and provide private receipts plus an unpublished safe dependency-closed candidate."
+    ]
+  },
+  "role": "test",
+  "task_id": "PUBLIC-CROSSREF-TEST-A1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "PUBLIC-CROSSREF-IMPLEMENTATION-A2",
+      "attempt": 2,
+      "relationship": "dependency",
+      "handoff_locator": "input/handoff.public.json",
+      "revision": "sha256:fe8df85097f5711b5173fe651e3c40dbea89439a37bc57341fbc4f3ce52e422e"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Independent Test attempt 1 completed for fixed head: 173 existing tests and 245 independent cases pass; real B1 formal Delivery 1.2 plus fresh receipt recheck preserve 17 objects / 89071 bytes. X-7 through X-9 are additional assignment conditions, not Issue edits. Original base retained; later new-main and PR test-merge/CI independently observed. No implementation defect found in assigned tests. Independent Review, Manager integration gates and publication remain separate.",
+  "artifacts": [
+    {
+      "id": "REPORT",
+      "kind": "test-report",
+      "locator": "test-report.json",
+      "revision": "sha256:af3a802497eb2007495e47be9088bbc5b1275382b892ecdd41b486fd58fd8613",
+      "summary": "Independent Test attempt 1 evidence; local public-alias candidate, no authority granted."
+    },
+    {
+      "id": "REGRESSION",
+      "kind": "test-report",
+      "locator": "regression-summary.json",
+      "revision": "sha256:60e1b039e5e6afe325689a49005e3103c437523a45335455b855f6ab21c9217b",
+      "summary": "Independent Test attempt 1 evidence; local public-alias candidate, no authority granted."
+    },
+    {
+      "id": "INDEPENDENT",
+      "kind": "test-report",
+      "locator": "independent-results.json",
+      "revision": "sha256:36bc1be49402a3f7124c6d5886ba254afe430b52f88aa8b6e6d94711e31fd2f4",
+      "summary": "Independent Test attempt 1 evidence; local public-alias candidate, no authority granted."
+    },
+    {
+      "id": "PROBE",
+      "kind": "other",
+      "locator": "independent_probe.py",
+      "revision": "sha256:042a1dc032bbeefaa5c6853b0ce85fe8c28ce1296b7395b0522e51c445488acc",
+      "summary": "Independent Test attempt 1 evidence; local public-alias candidate, no authority granted."
+    },
+    {
+      "id": "DELIVERY",
+      "kind": "test-report",
+      "locator": "delivery-observation.json",
+      "revision": "sha256:7a38304f884e985f05ddf4a297eef30bdd61d277d73e4932019d46598622ac55",
+      "summary": "Independent Test attempt 1 evidence; local public-alias candidate, no authority granted."
+    },
+    {
+      "id": "CI",
+      "kind": "test-report",
+      "locator": "ci-observation.json",
+      "revision": "sha256:c9bc4f8def23ec94201d5d5703c6a55cb0d52b739fa80a9b77628aaba197d438",
+      "summary": "Independent Test attempt 1 evidence; local public-alias candidate, no authority granted."
+    },
+    {
+      "id": "ASSIGNMENT",
+      "kind": "document",
+      "locator": "test-assignment-adoption.json",
+      "revision": "sha256:f5b8b2555d8a2bd19bfaf148ee457fb7ce20b4b43445b411235c5b38b4d2fad5",
+      "summary": "Independent Test attempt 1 evidence; local public-alias candidate, no authority granted."
+    },
+    {
+      "id": "REPRODUCTION",
+      "kind": "document",
+      "locator": "reproduction.md",
+      "revision": "sha256:2bd77c7948843fe317c1ef62447c5e4bbccbcb511938c3761b957fd00302eea0",
+      "summary": "Independent Test attempt 1 evidence; local public-alias candidate, no authority granted."
+    },
+    {
+      "id": "SAFETY",
+      "kind": "document",
+      "locator": "safety-review.json",
+      "revision": "sha256:7ad3d4b057085bf47151f909d3b0bfc837659ca1cd0467612df7174fd0bdfdb7",
+      "summary": "Independent Test attempt 1 evidence; local public-alias candidate, no authority granted."
+    },
+    {
+      "id": "REQUIREMENTS",
+      "kind": "document",
+      "locator": "assignment-requirements.json",
+      "revision": "sha256:f3d9d8e0f58a85325487bffe17aa336f90294f782bb44ebb3a4a69a2c2564ea2",
+      "summary": "Exact original X-1 through X-6 and original Issue source; unchanged bytes."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-TEST",
+      "claim": "All assigned original criteria and adopted additional conditions independently verified at fixed head.",
+      "artifact_ids": [
+        "REPORT",
+        "REGRESSION",
+        "INDEPENDENT",
+        "PROBE",
+        "ASSIGNMENT"
+      ],
+      "locator": "test-report.json",
+      "observation": "173 existing regressions and 245 independent cases pass; full X-1 through X-9 mapping retained. No implementation modifications or defect findings."
+    },
+    {
+      "id": "E-DELIVERY",
+      "claim": "Separate immutable real B1 Delivery 1.2 CLI and fresh receipt recheck succeeded.",
+      "artifact_ids": [
+        "DELIVERY",
+        "REPRODUCTION"
+      ],
+      "locator": "delivery-observation.json",
+      "observation": "17 objects / 89071 bytes identical, size/SHA256 and raw commit/tree blob OIDs checked; full receipts and authorization remain private. Not B1 product acceptance."
+    },
+    {
+      "id": "E-INTEGRATION",
+      "claim": "Original-base tests remain separate from later main/PR integration and CI observations.",
+      "artifact_ids": [
+        "CI",
+        "REPORT"
+      ],
+      "locator": "ci-observation.json",
+      "observation": "New main tree equals original base; test-merge parents and tree verified; CI checkout merge SHA and 173 tests independently observed. No Readiness decision."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "X-1",
+      "disposition": "covered",
+      "scope": "Independent System Test scope at fixed head only. Full results and limits in report; X-7/X-8/X-9 tracked as adopted additional completion conditions. No product acceptance, implementation restart, Review, Readiness or IssueCompletion.",
+      "artifact_ids": [
+        "REPORT",
+        "REGRESSION",
+        "INDEPENDENT",
+        "DELIVERY",
+        "ASSIGNMENT",
+        "CI"
+      ],
+      "evidence_ids": [
+        "E-TEST",
+        "E-DELIVERY",
+        "E-INTEGRATION"
+      ]
+    },
+    {
+      "ac_id": "X-2",
+      "disposition": "covered",
+      "scope": "Independent System Test scope at fixed head only. Full results and limits in report; X-7/X-8/X-9 tracked as adopted additional completion conditions. No product acceptance, implementation restart, Review, Readiness or IssueCompletion.",
+      "artifact_ids": [
+        "REPORT",
+        "REGRESSION",
+        "INDEPENDENT",
+        "DELIVERY",
+        "ASSIGNMENT",
+        "CI"
+      ],
+      "evidence_ids": [
+        "E-TEST",
+        "E-DELIVERY",
+        "E-INTEGRATION"
+      ]
+    },
+    {
+      "ac_id": "X-3",
+      "disposition": "covered",
+      "scope": "Independent System Test scope at fixed head only. Full results and limits in report; X-7/X-8/X-9 tracked as adopted additional completion conditions. No product acceptance, implementation restart, Review, Readiness or IssueCompletion.",
+      "artifact_ids": [
+        "REPORT",
+        "REGRESSION",
+        "INDEPENDENT",
+        "DELIVERY",
+        "ASSIGNMENT",
+        "CI"
+      ],
+      "evidence_ids": [
+        "E-TEST",
+        "E-DELIVERY",
+        "E-INTEGRATION"
+      ]
+    },
+    {
+      "ac_id": "X-4",
+      "disposition": "covered",
+      "scope": "Independent System Test scope at fixed head only. Full results and limits in report; X-7/X-8/X-9 tracked as adopted additional completion conditions. No product acceptance, implementation restart, Review, Readiness or IssueCompletion.",
+      "artifact_ids": [
+        "REPORT",
+        "REGRESSION",
+        "INDEPENDENT",
+        "DELIVERY",
+        "ASSIGNMENT",
+        "CI"
+      ],
+      "evidence_ids": [
+        "E-TEST",
+        "E-DELIVERY",
+        "E-INTEGRATION"
+      ]
+    },
+    {
+      "ac_id": "X-5",
+      "disposition": "covered",
+      "scope": "Independent System Test scope at fixed head only. Full results and limits in report; X-7/X-8/X-9 tracked as adopted additional completion conditions. No product acceptance, implementation restart, Review, Readiness or IssueCompletion.",
+      "artifact_ids": [
+        "REPORT",
+        "REGRESSION",
+        "INDEPENDENT",
+        "DELIVERY",
+        "ASSIGNMENT",
+        "CI"
+      ],
+      "evidence_ids": [
+        "E-TEST",
+        "E-DELIVERY",
+        "E-INTEGRATION"
+      ]
+    },
+    {
+      "ac_id": "X-6",
+      "disposition": "covered",
+      "scope": "Independent System Test scope at fixed head only. Full results and limits in report; X-7/X-8/X-9 tracked as adopted additional completion conditions. No product acceptance, implementation restart, Review, Readiness or IssueCompletion.",
+      "artifact_ids": [
+        "REPORT",
+        "REGRESSION",
+        "INDEPENDENT",
+        "DELIVERY",
+        "ASSIGNMENT",
+        "CI"
+      ],
+      "evidence_ids": [
+        "E-TEST",
+        "E-DELIVERY",
+        "E-INTEGRATION"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

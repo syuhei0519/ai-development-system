@@ -1,0 +1,26 @@
+{
+  "record_type": "same_attempt_result_revision_history",
+  "scope": "system/artifact-delivery/cross-reference",
+  "attempt": 2,
+  "prior_public_alias_handoff": {
+    "size": 12751,
+    "sha256": "dcd567fe8d9bf04791fb6956e8dda2f66e0ee3c4484af25ba1767c9a1f1ec8c4"
+  },
+  "prior_public_alias_report": {
+    "size": 4006,
+    "sha256": "f2527a15b3d3588dfb8413a10d2dc8593c91df9026612ec89c59c11b38459573"
+  },
+  "prior_status": "blocked",
+  "prior_reason": "New Manager Consumer authorization absent at that observation.",
+  "current_status": "completed",
+  "transition_reason": "Manager subsequently supplied a new exact Delivery 1.2 authorization/pin. Formal CLI and fresh receipt recheck passed without editing manifest, publication receipt or approval fields.",
+  "immutable_prior_record": "Prior public-alias candidate files preserved separately and never overwritten. Pins here identify already-produced safe public-alias candidates, not private original artifacts.",
+  "implementation_head": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+  "no_new_execution_attempt": true,
+  "no_budget_reset": true,
+  "public_edit_map": [
+    "New result revision only; original B1/Research bytes and prior blocked candidates unchanged.",
+    "Formal observation omits private authorization bytes/pin, private receipt digest, runtime identifiers and raw internal logs.",
+    "Exact Consumption Receipts remain private; observation is explicitly a derivative and is not typed or advertised as a Consumption Receipt."
+  ]
+}
