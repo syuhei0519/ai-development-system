@@ -1,0 +1,14 @@
+{
+  "document_type": "knowledge_candidates",
+  "publication_status": "pending_manager_review",
+  "candidates": [
+    {
+      "id": "K-POD-HOST-BOUNDARY",
+      "domain": "render-security",
+      "summary": "Enforce PodSpec host namespace boundaries before image-family early returns, and separately enforce the supplied render destination.",
+      "evidence": "Original host attacks preserved the inventory digest and passed combined gate; the new common check rejects them independently of scanner severity. Namespace movement was a distinct changed-digest observation.",
+      "source": "https://github.com/syuhei0519/application-manifest/blob/41a7e9632102a8c30ff7fa57570fd85aea19adf1/tools/inventory/pod_boundary_test.go",
+      "scope": "Pending candidate from synthetic M1 self-validation; not product or independent Test acceptance."
+    }
+  ]
+}

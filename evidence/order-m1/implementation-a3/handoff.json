@@ -1,0 +1,191 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "syuhei0519/backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "implementation",
+  "task_id": "order-m1-implementation-a3",
+  "attempt": 3,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "order-m1-implementation-a2",
+      "attempt": 2,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/c50af45ceb871d82734b2c4efa5319205c420cd6/evidence/order-m1/implementation-a2/handoff.json",
+      "revision": "sha256:1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473",
+      "relationship": "retry_of"
+    },
+    {
+      "role": "test",
+      "task_id": "order-m1-test-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/aaf099bd157a4113f1f28ea09259bc7964e78450/evidence/order-m1/test-a1/handoff.json",
+      "revision": "sha256:b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "M1 Implementation attempt3 repaired F1 host namespace rejection and F2 render destination boundary at new head. Assigned self-validation passed; old failures retained. New independent Test/Review and Manager context pending; all product ACs unverified.",
+  "assignment": {
+    "scope": "application-manifest#backend-app-2/M1",
+    "ac_ids": [
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "M1-S1: Orderと専用PostgreSQL chartをdisabled既定で追加し、既存Account chart/values/render、Namespace/AppProject/Secret/既存DBデータを変えない。",
+      "M1-S2: 独立名/selector、同じimage digestのmigration JobとDeployment、health/security/Secret参照、DB/PVC保護を設計通りに表現し正常異常fixtureで検証する。",
+      "M1-S3: 既存trusted inventory/security/PVC検証を弱めず、両disabled/有効synthetic fixtureのlint/schema/render/全PodSpec検証に成功する。",
+      "M1-S4: 合成fixtureと実公開releaseを区別し、実イメージ・kind・M2/P1/T7の未検証と担当/方法/失敗時対応を引き継ぐ。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-REPORT",
+      "kind": "test-report",
+      "locator": "report.txt",
+      "revision": "sha256:ed4959d23b356919490deaf044206e2f542a96507f75623132b9fc742a0b4e5e",
+      "summary": "Implementation self-validation, F1/F2 decisions, environment limitations and product follow-up."
+    },
+    {
+      "id": "A-RESULTS",
+      "kind": "other",
+      "locator": "results.json",
+      "revision": "sha256:7fa0c80f505736a6cbbdbff02e73a64062411a68ae50e13d42d883a63f9fcb29",
+      "summary": "New-head measurements, original failed pin replay and separate passing pin-updated replay; not independent Test."
+    },
+    {
+      "id": "A-PATCH",
+      "kind": "patch",
+      "locator": "implementation.patch",
+      "revision": "sha256:eec51cb9519782eb25f24327b1e21d00bcab1d7221a9c50697c11232083714ba",
+      "summary": "Seven-file minimal repair against previous head."
+    },
+    {
+      "id": "A-REPLAY",
+      "kind": "other",
+      "locator": "implementation-replay.py",
+      "revision": "sha256:e6f7ac66e2f4d1c7f4df9cad710ac2e7cda0be2d033773be94b04dc656426a04",
+      "summary": "Derivative of original independent harness changing only head/tree pins and header."
+    },
+    {
+      "id": "A-KNOWLEDGE",
+      "kind": "knowledge",
+      "locator": "knowledge-candidates.json",
+      "revision": "sha256:c8dff9a00aa58f247a5aef7ad97c82e7e2d1993b00fee497290e690c8a8beb8f",
+      "summary": "Pending optional candidate; no adoption claim."
+    },
+    {
+      "id": "A-COMMIT",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/application-manifest/commit/41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+      "revision": "41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+      "summary": "Feature branch repair; PR19 remains Draft."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-S1",
+      "claim": "M1-S1 fixed desired resources unchanged",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-RESULTS"
+      ],
+      "locator": "report.txt",
+      "observation": "32 old files, three old renders and four disabled outputs unchanged; fixed GitOps three Apps unchanged; no live data measurement."
+    },
+    {
+      "id": "E-S2S3",
+      "claim": "M1-S2/S3 implemented rejection and regression gates",
+      "artifact_ids": [
+        "A-COMMIT",
+        "A-PATCH",
+        "A-REPORT",
+        "A-RESULTS",
+        "A-REPLAY"
+      ],
+      "locator": "report.txt",
+      "observation": "Original F1 accepted before with unchanged digest, rejected after inventory/structural/combined. F2 changed-digest acceptance before, explicit destination rejection after. Full existing suites and pin-updated202 assertions pass. Original harness replay retains two old-pin failures; prior independent Test remains failed."
+    },
+    {
+      "id": "E-S4",
+      "claim": "M1-S4 synthetic and real product responsibility boundary retained",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-RESULTS"
+      ],
+      "locator": "report.txt",
+      "observation": "B2/M2/independent kind/P1/T7 owner/environment/method/failure response explicit. No real release, API, persistence, Synced/Healthy/imageID measurement or final assessment."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "unverified",
+      "scope": "Outside assignment; product outcome unverified.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-RESULTS"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "unverified",
+      "scope": "Outside assignment; product outcome unverified.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-RESULTS"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "covered",
+      "scope": "M1 Implementation duties only; actual Service/Synced/Healthy/digest product outcome remains unverified.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-RESULTS"
+      ],
+      "evidence_ids": [
+        "E-S1",
+        "E-S2S3",
+        "E-S4"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [
+    {
+      "id": "K-POD-HOST-BOUNDARY",
+      "domain": "render-security",
+      "summary": "Check host namespace fields before image classification and enforce the explicit render destination.",
+      "evidence_ids": [
+        "E-S2S3"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "safe_synthetic"
+    }
+  ],
+  "publication": "public_safe"
+}

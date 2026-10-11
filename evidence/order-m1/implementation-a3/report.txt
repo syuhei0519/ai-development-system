@@ -1,0 +1,113 @@
+M1 Implementation attempt3 — order-m1-implementation-a3
+Scope: application-manifest#backend-app-2/M1; epoch1, final allowed Implementation execution.
+Implementation self-validation completed. New independent Test/Review remain Manager-owned and pending.
+
+SUBJECT / HISTORY
+Head 41a7e9632102a8c30ff7fa57570fd85aea19adf1; tree 47ea076ac6f481fdf6a1588abcfd0aaf07c4e25d.
+Base bc6adaedcd645a4663c23284b977a3dd36c0796d; before e0f79a61643d31a29de73ffc54bb6a31c320f0df.
+System 4693887fa79c2b4a291c555b8bd27b6903eb4199. No AGENTS.md/SKILL.md in fixed target/System trees.
+Implementation, Handoff, Delivery1.2, Readiness1.1, Issue Completion, workflow and task/delivery templates inspected.
+Current input freshly consumed by canonical consume_delivery.py: all 87 explicit objects,
+10 tree blobs and 103 bindings verified before use. Input original/edited-derivative classifications
+retained. Separate Manager authorization and Consumption Receipt remain private. No history event
+was created. Implementation attempt1 blocked, attempt2 completed and independent Test attempt1
+failed remain immutable. This attempt has retry_of Implementation a2 and dependency Test a1.
+
+FIX / DECISION
+F1 reproduced with the original three attack fixtures against the before binary: each inventory
+exit0, same inventorySha256 as positive render. Structural gate also exit0. A newly measured pinned
+Trivy report detected host findings but the old combined gate returned pass=true. The same report,
+DB and unchanged severity policy with the new structural gate returned pass=false/exit1.
+Inventory now validates hostNetwork/hostPID/hostIPC on each supported PodSpec before classifying
+container image families. Omitted and boolean false pass; true and nonboolean values fail closed.
+The structural scanner recursively rejects unsafe host fields even in unknown/hidden PodSpecs,
+using LOCAL-HOST-NAMESPACE/decision=fail. No host exception or severity relaxation is introduced.
+The old DB-only check is removed because the common check now executes before all container paths.
+
+F2 reproduced separately: namespace escape was accepted with a changed inventory digest. It is
+not relabeled an invisible bypass or a proven final GitOps bypass. No existing explicit parser
+namespace check was found; --namespace account used for Helm was only a rendering input, and
+inventory used its namespace argument only as a default. Adopted Research explicitly fixes account.
+Inventory now requires every admitted resource's namespace to match the caller's destination
+(or be omitted/empty). CLI passes account. Null/non-string namespace fails. This covers Order,
+both DB/PVC identities and auxiliary resources before their early returns. Generic callers can
+supply another destination explicitly. M0's synthetic-other DB identity tests now pass that matching
+destination to preserve image-family coverage; mismatch rejection has dedicated tests. This is an
+intentional destination contract strengthening, not a claim of historical rejection by an upper gate.
+
+VALIDATION AT NEW HEAD (implementation self-checks)
+- Both Go validator suites, all supported PodSpec kinds, both DB profiles, false/omitted/true,
+  null/string/number/array/object, unknown/hidden PodSpecs and namespace boundaries: PASS.
+- ci/github/test.sh: PASS including existing M0 F1/F2 identity/container/PVC regressions, all Go
+  modules, documentation14, trusted identity/contract/registry/premerge/attempt/render, Linux-userns
+  boundary, GitHub release19, strict Order Helm/render/schema and 10 existing adverse mutations.
+- Remaining ci/*_test.py using normal script imports: PASS. Checksum tests: PASS.
+- ci/validate.sh strict lint and renders: PASS. Kubeconform strict1.36.0:26 valid/0 invalid/0 errors,
+  consisting of 15 existing resources and 11 synthetic enabled Order/DB resources.
+- Source and complete rendered Trivy/scan-gate: PASS, warnings retained, unchanged policy.
+- Original host fixtures and original namespace escape now rejected by inventory; original host
+  mutations rejected by structural and combined gate. Positive inventory passes.
+- Original independent.py rerun UNMODIFIED at new head:202 assertions,200 pass,2 fail. Those two
+  are its intentionally old fixed-head/tree pins. These results remain recorded, not changed to PASS.
+- Separate implementation-replay.py changes only those pins and its descriptive header:
+  202/202 PASS. It is a derivative self-test, not a new independent Test. The original failed Test
+  remains failed; its raw fixtures/scripts/results stay at their original immutable Git references.
+
+M1-S1: all32 old chart/environment files and frontend/backend/PostgreSQL renders match base bytes.
+Both new charts render empty for defaults and local values (four checks). Fixed platform revision
+b989e29b8addbd6396c5c2b4833b969bc15fc8fa renders exactly the same three old Applications in account;
+new render raw bytes match the original Test render. No Namespace/AppProject/Secret or active
+Order resource is added. Live data is not measured. New-head trusted-render in isolated Docker,
+--test-only/producer-job-id0, shows no inventory diff; provenanceRequired=false and
+eligibleForAuthenticatedVerification=false. This is desired-resource none evidence only.
+M1-S2/S3: positive chart structure and the required adverse checks pass with the repaired validators.
+M1-S4: synthetic preparation and real release/product validation boundaries remain explicit.
+Seven files change from the prior head: three validator files, three test files and M1 guide.
+Charts/values, scanner severity, CI workflows and other repositories' code are unchanged.
+
+ENVIRONMENT
+The host default go executable was not the compiler; existing Go1.27.1 was selected with writable
+scratch caches. Initial Kubeconform/Trivy containers lacked runner CA trust; those attempts failed.
+Existing CA was mounted read-only and existing proxy/host routing passed only to network-dependent
+schema/scanner containers. TLS verification stayed enabled; offline Helm/userns isolation unchanged.
+Full CI/schema/scans then passed. Internal diagnostics are private; only safe measured summaries
+are published. Trivy attack scan observed a remote-checks failure and embedded pinned-checks
+fallback. Source/render safe summaries retain DB observation time and warning findings.
+
+REMOTE / BOUNDARIES
+Feature remote head equals local head; existing PR19 remains Draft, base as above. Same-head GitHub
+CI PR run38160370112 completed success, recorded separately in results.json. Local PASS is not
+independent Test/Review PASS.
+No new PR, main push, merge/auto-merge, cluster/kind, enabled environment, Secret/Ruleset/permission
+change, extra API billing or デプロイ occurred. Previous Manager context is for the old head and is
+not transferred. Manager must issue a new fixed context/config and independently dispatch Test/Review.
+All product ACs unverified; AC1/2 outside assignment, AC3 covered only for M1 Implementation duties.
+All earliest phases remain premerge with deferred=null; aggregate_required. No final_assessment.
+
+FOLLOW-UP OWNERS / METHODS / FAILURE RESPONSE
+B2 owner: publish/verify the real Order release and immutable source/run/digest/record/SBOM bindings.
+M2 owner: select that trusted real digest and rerun inventory/provenance/security at fixed candidates.
+Independent Test owner: authorized isolated kind-core-platform-order-acceptance, fixed B/M/P source
+and images, migration success, Order normal/invalid requests, Account CRUD, restart persistence,
+Argo Synced/Healthy/revision and runtime imageID. No such product evidence was obtained here.
+Deployment owner before P1: verify Secret metadata, pull/capacity/context and backup/restore using
+existing authority. T7 owner: repeat final integrated revision/digest measurements after necessary
+integration. Failure: stop affected merge/enable/デプロイ, preserve Account data and Order PVC,
+retain safe evidence, forward-fix and obtain independent retest. Do not invent rollback images or
+mark migration successful manually. No further epoch1 Implementation execution is authorized.
+
+REPRODUCTION
+Use the fixed System consumer and a separate Manager-issued authorization to freshly retrieve the
+whole delivery. Use Go1.27.1 and the image digests in application CI. Run the commands in results.json;
+prepare a base source directory with git archive BASE. Run implementation-replay.py HEAD_CHECKOUT
+BASE_DIRECTORY NEW_OUTPUT. The original harness and attack fixtures are linked by the Test handoff
+closure. Build inventory/scan-gate separately from BEFORE and HEAD, feed the same original fixtures,
+and run scan-gate -check-render-only MUTATIONS. For combined before/after comparison, generate one
+pinned Trivy misconfig report, then invoke each binary with unchanged -policy, fresh -db, -report,
+-scanner-exit 0 and -rendered MUTATIONS. Expect old0/new1. Never execute/deploy the synthetic YAML.
+
+DELIVERY
+Public content safety review covers only public source/diffs, synthetic results and public aliases.
+Private authorization, Consumption Receipt, private histories/hashes, real task IDs and raw internal
+logs are excluded. Prior input representations and immutable references are retained rather than
+copied under new paths. New Consumer approval is Manager-owned; Producer validation grants none.

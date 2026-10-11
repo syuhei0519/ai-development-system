@@ -1,0 +1,3625 @@
+{
+  "document_type": "implementation_measurement",
+  "producer": "order-m1-implementation-a3",
+  "independent": false,
+  "synthetic_only": true,
+  "observed_at": "2026-10-11T17:38:14.397555+00:00",
+  "subject": {
+    "repository": "syuhei0519/application-manifest",
+    "pr": 19,
+    "head": "41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+    "base": "bc6adaedcd645a4663c23284b977a3dd36c0796d",
+    "before": "e0f79a61643d31a29de73ffc54bb6a31c320f0df",
+    "tree": "47ea076ac6f481fdf6a1588abcfd0aaf07c4e25d",
+    "system": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+    "platform": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa"
+  },
+  "before": {
+    "inventory-positive": {
+      "exit": 0,
+      "inventorySha256": "edf751742cc148ea6ad1aa7ac96b93004e0ea008599357258bf11918bc8d748c"
+    },
+    "pod-hostNetwork": {
+      "exit": 0,
+      "inventorySha256": "edf751742cc148ea6ad1aa7ac96b93004e0ea008599357258bf11918bc8d748c"
+    },
+    "pod-hostPID": {
+      "exit": 0,
+      "inventorySha256": "edf751742cc148ea6ad1aa7ac96b93004e0ea008599357258bf11918bc8d748c"
+    },
+    "pod-hostIPC": {
+      "exit": 0,
+      "inventorySha256": "edf751742cc148ea6ad1aa7ac96b93004e0ea008599357258bf11918bc8d748c"
+    },
+    "namespace-escape": {
+      "exit": 0,
+      "inventorySha256": "3460cf6eab5b3bf827d1febe6099206f98eb47194ccec3522d6afbc9ec900d0c"
+    },
+    "structural": {
+      "exit": 0
+    }
+  },
+  "after": {
+    "inventory-positive": {
+      "exit": 0,
+      "error": ""
+    },
+    "pod-hostNetwork": {
+      "exit": 1,
+      "error": "host namespace rejected: hostNetwork"
+    },
+    "pod-hostPID": {
+      "exit": 1,
+      "error": "host namespace rejected: hostPID"
+    },
+    "pod-hostIPC": {
+      "exit": 1,
+      "error": "host namespace rejected: hostIPC"
+    },
+    "namespace-escape": {
+      "exit": 1,
+      "error": "resource namespace outside render destination"
+    },
+    "structural": {
+      "exit": 1
+    }
+  },
+  "combined_before_after": {
+    "before": {
+      "exit": 0,
+      "pass": true
+    },
+    "after": {
+      "exit": 1,
+      "pass": false
+    }
+  },
+  "structural": {
+    "check": "render-structural-boundary",
+    "pass": false,
+    "findings": [
+      {
+        "kind": "misconfiguration",
+        "rule": "LOCAL-HOST-NAMESPACE",
+        "path": "rendered/pod-hostIPC.yaml",
+        "severity": "HIGH",
+        "decision": "fail"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "LOCAL-HOST-NAMESPACE",
+        "path": "rendered/pod-hostNetwork.yaml",
+        "severity": "HIGH",
+        "decision": "fail"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "LOCAL-HOST-NAMESPACE",
+        "path": "rendered/pod-hostPID.yaml",
+        "severity": "HIGH",
+        "decision": "fail"
+      }
+    ]
+  },
+  "combined": {
+    "schemaVersion": 1,
+    "pass": false,
+    "trivyVersion": "0.75.0",
+    "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+    "scannedAt": "2026-10-11T17:36:00.436926754Z",
+    "findings": [
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0008",
+        "path": "pod-hostIPC.yaml",
+        "severity": "HIGH",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0020",
+        "path": "pod-hostIPC.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0021",
+        "path": "pod-hostIPC.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-01010",
+        "path": "pod-hostIPC.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0109",
+        "path": "pod-hostIPC.yaml",
+        "severity": "HIGH",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0110",
+        "path": "pod-hostIPC.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0110",
+        "path": "pod-hostIPC.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0110",
+        "path": "pod-hostIPC.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0125",
+        "path": "pod-hostIPC.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0125",
+        "path": "pod-hostIPC.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0125",
+        "path": "pod-hostIPC.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0009",
+        "path": "pod-hostNetwork.yaml",
+        "severity": "HIGH",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0020",
+        "path": "pod-hostNetwork.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0021",
+        "path": "pod-hostNetwork.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-01010",
+        "path": "pod-hostNetwork.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0109",
+        "path": "pod-hostNetwork.yaml",
+        "severity": "HIGH",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0110",
+        "path": "pod-hostNetwork.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0110",
+        "path": "pod-hostNetwork.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0110",
+        "path": "pod-hostNetwork.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0125",
+        "path": "pod-hostNetwork.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0125",
+        "path": "pod-hostNetwork.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0125",
+        "path": "pod-hostNetwork.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0010",
+        "path": "pod-hostPID.yaml",
+        "severity": "HIGH",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0020",
+        "path": "pod-hostPID.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0021",
+        "path": "pod-hostPID.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-01010",
+        "path": "pod-hostPID.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0109",
+        "path": "pod-hostPID.yaml",
+        "severity": "HIGH",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0110",
+        "path": "pod-hostPID.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0110",
+        "path": "pod-hostPID.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0110",
+        "path": "pod-hostPID.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0125",
+        "path": "pod-hostPID.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0125",
+        "path": "pod-hostPID.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0125",
+        "path": "pod-hostPID.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "LOCAL-HOST-NAMESPACE",
+        "path": "rendered/pod-hostIPC.yaml",
+        "severity": "HIGH",
+        "decision": "fail"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "LOCAL-HOST-NAMESPACE",
+        "path": "rendered/pod-hostNetwork.yaml",
+        "severity": "HIGH",
+        "decision": "fail"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "LOCAL-HOST-NAMESPACE",
+        "path": "rendered/pod-hostPID.yaml",
+        "severity": "HIGH",
+        "decision": "fail"
+      }
+    ],
+    "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+  },
+  "source_scan": {
+    "schemaVersion": 1,
+    "pass": true,
+    "trivyVersion": "0.75.0",
+    "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+    "scannedAt": "2026-10-11T17:35:23.852163139Z",
+    "findings": [
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0109",
+        "path": "charts/postgresql/templates/init-configmap.yaml",
+        "severity": "HIGH",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0020",
+        "path": "charts/postgresql/templates/statefulset.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0021",
+        "path": "charts/postgresql/templates/statefulset.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0110",
+        "path": "charts/postgresql/templates/statefulset.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0125",
+        "path": "charts/postgresql/templates/statefulset.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      }
+    ],
+    "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+  },
+  "render_scan": {
+    "schemaVersion": 1,
+    "pass": true,
+    "trivyVersion": "0.75.0",
+    "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+    "scannedAt": "2026-10-11T17:35:23.837217049Z",
+    "findings": [
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0020",
+        "path": "all.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0021",
+        "path": "all.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-01010",
+        "path": "all.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0109",
+        "path": "all.yaml",
+        "severity": "HIGH",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0110",
+        "path": "all.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0110",
+        "path": "all.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0110",
+        "path": "all.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0110",
+        "path": "all.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0125",
+        "path": "all.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0125",
+        "path": "all.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0125",
+        "path": "all.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0125",
+        "path": "all.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-01010",
+        "path": "backend.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0110",
+        "path": "backend.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0110",
+        "path": "backend.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0125",
+        "path": "backend.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0125",
+        "path": "backend.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0110",
+        "path": "frontend.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0125",
+        "path": "frontend.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0020",
+        "path": "postgresql.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0021",
+        "path": "postgresql.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0109",
+        "path": "postgresql.yaml",
+        "severity": "HIGH",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0110",
+        "path": "postgresql.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0125",
+        "path": "postgresql.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0020",
+        "path": "synthetic-order/order-postgresql.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0021",
+        "path": "synthetic-order/order-postgresql.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0109",
+        "path": "synthetic-order/order-postgresql.yaml",
+        "severity": "HIGH",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0110",
+        "path": "synthetic-order/order-postgresql.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0125",
+        "path": "synthetic-order/order-postgresql.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-01010",
+        "path": "synthetic-order/order.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0110",
+        "path": "synthetic-order/order.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0110",
+        "path": "synthetic-order/order.yaml",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0125",
+        "path": "synthetic-order/order.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "KSV-0125",
+        "path": "synthetic-order/order.yaml",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      }
+    ],
+    "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+  },
+  "trusted_render": {
+    "binarySha256": "b4a5fff5454fed87a757508446ad2e775ccbd595ff9b6db4d158cf263e1b34be",
+    "candidateTree": "47ea076ac6f481fdf6a1588abcfd0aaf07c4e25d",
+    "diff": {
+      "added": [],
+      "changed": [],
+      "removed": []
+    },
+    "eligibleForAuthenticatedVerification": false,
+    "goImage": "golang:1.27.1-bookworm@sha256:648f440f42a0958804efb24df176f806f9d353b41f1c0627f666428e40310f6b",
+    "helmImage": "alpine/helm:4.2.4@sha256:76c375eed56144c68d6197c55bc5a4552fb42002190b796729901cbab3ae6e51",
+    "producerJobId": "0",
+    "provenanceRequired": false,
+    "renders": {
+      "before": {
+        "inputSha256": "f2112105cf49b38b1ce5105a4ed384865e55f934755934c8841d2c4b53e4e223",
+        "inputs": {
+          "charts/README.md": {
+            "sha256": "7cf38640ab82f1c929fd653995450ff81ed31f8e02effe450447a36c721e5bb3",
+            "size": 215
+          },
+          "charts/backend/Chart.yaml": {
+            "sha256": "509335b49eb7058bb4a736a904a52c572aa4d4ef990795b5efcfaca4e197973f",
+            "size": 136
+          },
+          "charts/backend/templates/_helpers.tpl": {
+            "sha256": "c0969159e809a92e68a8e83d82fa3419239887a3d56a552e724a0ce261388253",
+            "size": 1704
+          },
+          "charts/backend/templates/configmap.yaml": {
+            "sha256": "28a99832e9ec20431b783ee055f384943d9be9dc5aeef206302ddf4192e31f2c",
+            "size": 877
+          },
+          "charts/backend/templates/deployment.yaml": {
+            "sha256": "5417e6c5fecf93049fd809996e32bbd7f94ee6e321a482882e8edde293450e52",
+            "size": 5128
+          },
+          "charts/backend/templates/migration-job.yaml": {
+            "sha256": "0784e69a70a8c73afd62c532d2a411fcd3d3d9682286c36a8d7b9fec65e87a81",
+            "size": 3956
+          },
+          "charts/backend/templates/service.yaml": {
+            "sha256": "84b0d208c354936fa46404a1b2c179dc72fbe0365d3b7cdc201aa14c9c2a03c6",
+            "size": 556
+          },
+          "charts/backend/templates/serviceaccount.yaml": {
+            "sha256": "efaa2ac575ce0da638a9f151282365ff7b6337de87a28c7a8680920b3be191a1",
+            "size": 418
+          },
+          "charts/backend/values.schema.json": {
+            "sha256": "ac517fe1e9643c430e82f33a3ff486f9c2a9176563ebd4189a53b58c18ad521e",
+            "size": 6267
+          },
+          "charts/backend/values.yaml": {
+            "sha256": "e5c74d65e00b1bcb98bb214648041c8ac227e4ce352872c08ac3788cc2a77e8b",
+            "size": 1797
+          },
+          "charts/frontend/Chart.yaml": {
+            "sha256": "3d24f55af5013e502a37552fc8c8bd87a7a3dda28bec6778b9fa45ae4d558a44",
+            "size": 115
+          },
+          "charts/frontend/templates/_helpers.tpl": {
+            "sha256": "b55dde6cf348d4572704105e844e3052bdab95947745589a592bba5eb751cfcf",
+            "size": 354
+          },
+          "charts/frontend/templates/configmap.yaml": {
+            "sha256": "58e886c4bd117b8aa87bea58f02d3bafe18ed1a585099792678ff75882d1a3a5",
+            "size": 1037
+          },
+          "charts/frontend/templates/deployment.yaml": {
+            "sha256": "5579aa0510d20de312c44600b146a8e7f31fbb839d3035d03f2967e7953f7d0e",
+            "size": 5749
+          },
+          "charts/frontend/templates/service.yaml": {
+            "sha256": "6523f5c436ea8d010603e932c2ed1572af6cb8fde696c4e0402384ffe1815fbb",
+            "size": 546
+          },
+          "charts/frontend/templates/serviceaccount.yaml": {
+            "sha256": "44e9b26646e023bf08e84c332d1af0a46674f246e3c992228205bd239164843d",
+            "size": 445
+          },
+          "charts/frontend/values.schema.json": {
+            "sha256": "f7e002e0792242386e57d39b6603729597dea3111278184d526aa9df90c1c301",
+            "size": 5721
+          },
+          "charts/frontend/values.yaml": {
+            "sha256": "624b3632a4ffee71d6fd48ff67543d7dfdc92139bc318a019093e3359bbf76e9",
+            "size": 1209
+          },
+          "charts/postgresql/Chart.yaml": {
+            "sha256": "28482b084bfef71451ce5cec279e7fcaf24069a004ddaca4a80a5c6bdc16e9fd",
+            "size": 145
+          },
+          "charts/postgresql/templates/_helpers.tpl": {
+            "sha256": "f06eefd7b39fdfe886ef97035b42175c1ef31f8004a6e913f878df015d566dfd",
+            "size": 383
+          },
+          "charts/postgresql/templates/headless-service.yaml": {
+            "sha256": "618c865b632a1c8b9ebb8e0d5e94108096dd59d6ab9fd21c02ec64a20a5cdf1e",
+            "size": 518
+          },
+          "charts/postgresql/templates/init-configmap.yaml": {
+            "sha256": "849c3800f17ef9de07964bcf3a1e1d2a5ff629ab5bfe39f11cd50895f6ef5050",
+            "size": 1137
+          },
+          "charts/postgresql/templates/pvc.yaml": {
+            "sha256": "e2b0f7b3114cf86cc5a58cbcba82eea29785dbf341d6b90c20e602b656eb2480",
+            "size": 682
+          },
+          "charts/postgresql/templates/service.yaml": {
+            "sha256": "f5c8e493e720322450e74cbd9cd7356500896a962570330579279a88a8e4e016",
+            "size": 475
+          },
+          "charts/postgresql/templates/serviceaccount.yaml": {
+            "sha256": "e446ea511c47f989fa3977ee0c89111597d3def0f0d87c1171e8aa43a12d943b",
+            "size": 318
+          },
+          "charts/postgresql/templates/statefulset.yaml": {
+            "sha256": "9aeeff20485e3ce9b4dfb6cd57ce897e07d764e438028bbf2206e2eaeb0f2f3e",
+            "size": 4067
+          },
+          "charts/postgresql/values.schema.json": {
+            "sha256": "a8f3d07d2a8be525b7868a75cbada86b5a27699e8a5e12844bbd7f6117219cae",
+            "size": 1092
+          },
+          "charts/postgresql/values.yaml": {
+            "sha256": "16cdbaa74161d5d822199627311b1f0a4957a2685848b2190b6337bd076d7be4",
+            "size": 1257
+          },
+          "environments/local/README.md": {
+            "sha256": "451d5e6a066b6dba79424bea539345aedfcb7b0260d577b28a3c59355b95f4d4",
+            "size": 184
+          },
+          "environments/local/backend.yaml": {
+            "sha256": "be7b8212ea066e0a601396398310505cb5870c3c7d1c67619b1a421a308c71f8",
+            "size": 1574
+          },
+          "environments/local/frontend.yaml": {
+            "sha256": "57f193504ba28f801c6fe72ec0def62739fe9fb1efd5f853fed8beffd9471a4f",
+            "size": 1458
+          },
+          "environments/local/postgresql.yaml": {
+            "sha256": "376c3ebdc39a5fdf1f2a32724c2821cd56dee79b0bf264b03b4a3fa00d9a7088",
+            "size": 281
+          }
+        },
+        "inventory": {
+          "entries": [
+            {
+              "containerName": "backend",
+              "containerType": "containers",
+              "digest": "sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d",
+              "kind": "Deployment",
+              "name": "backend",
+              "namespace": "account",
+              "podSpecPath": "spec.template.spec",
+              "release": {
+                "account.lab/github-run-attempt": "1",
+                "account.lab/github-run-id": "37806373099",
+                "account.lab/image-digest": "sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d",
+                "account.lab/release-record-sha256": "dbea54fc2a4531790fbec5d47ca44b1ec079176376d294371652b1ba93e25cbd",
+                "account.lab/release-record-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/release-record.json",
+                "account.lab/release-schema-version": "github-v1",
+                "account.lab/sbom-sha256": "95d554e528a8297461160e3835435d4eda7f19c5cb9d83b63a76c71cda60f1af",
+                "account.lab/sbom-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/sbom.cdx.json",
+                "account.lab/source-commit": "d29a390c09f8667316569e1bb599bf690b00313d",
+                "account.lab/source-repository": "syuhei0519/backend-app"
+              },
+              "repository": "ghcr.io/syuhei0519/backend-app",
+              "tag": "d29a390c09f8667316569e1bb599bf690b00313d"
+            },
+            {
+              "containerName": "frontend",
+              "containerType": "containers",
+              "digest": "sha256:9f46c61c19918e6f9e8e9a1def2504ed61ec835af098673de44223025f8b3a66",
+              "kind": "Deployment",
+              "name": "frontend",
+              "namespace": "account",
+              "podSpecPath": "spec.template.spec",
+              "release": {
+                "account.lab/github-run-attempt": "1",
+                "account.lab/github-run-id": "37808152036",
+                "account.lab/image-digest": "sha256:9f46c61c19918e6f9e8e9a1def2504ed61ec835af098673de44223025f8b3a66",
+                "account.lab/release-record-sha256": "d36926c4ea8a340721a831481d436772d94c6c8884657a88816ae9bf1cb37fe1",
+                "account.lab/release-record-url": "https://github.com/syuhei0519/frontend-app/releases/download/gha-ef5d8e4ace7a2e82be3aba97744bec712b3a0d3a-37808152036-1/release-record.json",
+                "account.lab/release-schema-version": "github-v1",
+                "account.lab/sbom-sha256": "7d9041d489f466ac63a44b462700a116caa2dad74e0382023521e533407daa9a",
+                "account.lab/sbom-url": "https://github.com/syuhei0519/frontend-app/releases/download/gha-ef5d8e4ace7a2e82be3aba97744bec712b3a0d3a-37808152036-1/sbom.cdx.json",
+                "account.lab/source-commit": "ef5d8e4ace7a2e82be3aba97744bec712b3a0d3a",
+                "account.lab/source-repository": "syuhei0519/frontend-app"
+              },
+              "repository": "ghcr.io/syuhei0519/frontend-app",
+              "tag": "ef5d8e4ace7a2e82be3aba97744bec712b3a0d3a"
+            },
+            {
+              "containerName": "migrate",
+              "containerType": "containers",
+              "digest": "sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d",
+              "kind": "Job",
+              "name": "backend-migration",
+              "namespace": "account",
+              "podSpecPath": "spec.template.spec",
+              "release": {
+                "account.lab/github-run-attempt": "1",
+                "account.lab/github-run-id": "37806373099",
+                "account.lab/image-digest": "sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d",
+                "account.lab/release-record-sha256": "dbea54fc2a4531790fbec5d47ca44b1ec079176376d294371652b1ba93e25cbd",
+                "account.lab/release-record-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/release-record.json",
+                "account.lab/release-schema-version": "github-v1",
+                "account.lab/sbom-sha256": "95d554e528a8297461160e3835435d4eda7f19c5cb9d83b63a76c71cda60f1af",
+                "account.lab/sbom-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/sbom.cdx.json",
+                "account.lab/source-commit": "d29a390c09f8667316569e1bb599bf690b00313d",
+                "account.lab/source-repository": "syuhei0519/backend-app"
+              },
+              "repository": "ghcr.io/syuhei0519/backend-app",
+              "tag": "d29a390c09f8667316569e1bb599bf690b00313d"
+            },
+            {
+              "containerName": "postgresql",
+              "containerType": "containers",
+              "digest": "sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f",
+              "kind": "StatefulSet",
+              "name": "postgresql",
+              "namespace": "account",
+              "podSpecPath": "spec.template.spec",
+              "release": {},
+              "repository": "docker.io/library/postgres",
+              "tag": "17.10-bookworm"
+            }
+          ],
+          "inventorySha256": "5cdc95741cb1fea328519bd62da13bae117a1a434e3ffc232cdc6d9ce52cbe59",
+          "renderSha256": "4e2569d700f06c147ca36fd18e2e30e5b724b2be2bea3a87e35e428893d4d61a",
+          "schema": "core-platform/image-inventory/v1"
+        }
+      },
+      "candidate": {
+        "inputSha256": "3226c4e7ceaec2dc0f1a04afd9fb0c1d59fc1ad9938f622a4a94ceb367b0ad65",
+        "inputs": {
+          "charts/README.md": {
+            "sha256": "7cf38640ab82f1c929fd653995450ff81ed31f8e02effe450447a36c721e5bb3",
+            "size": 215
+          },
+          "charts/backend/Chart.yaml": {
+            "sha256": "509335b49eb7058bb4a736a904a52c572aa4d4ef990795b5efcfaca4e197973f",
+            "size": 136
+          },
+          "charts/backend/templates/_helpers.tpl": {
+            "sha256": "c0969159e809a92e68a8e83d82fa3419239887a3d56a552e724a0ce261388253",
+            "size": 1704
+          },
+          "charts/backend/templates/configmap.yaml": {
+            "sha256": "28a99832e9ec20431b783ee055f384943d9be9dc5aeef206302ddf4192e31f2c",
+            "size": 877
+          },
+          "charts/backend/templates/deployment.yaml": {
+            "sha256": "5417e6c5fecf93049fd809996e32bbd7f94ee6e321a482882e8edde293450e52",
+            "size": 5128
+          },
+          "charts/backend/templates/migration-job.yaml": {
+            "sha256": "0784e69a70a8c73afd62c532d2a411fcd3d3d9682286c36a8d7b9fec65e87a81",
+            "size": 3956
+          },
+          "charts/backend/templates/service.yaml": {
+            "sha256": "84b0d208c354936fa46404a1b2c179dc72fbe0365d3b7cdc201aa14c9c2a03c6",
+            "size": 556
+          },
+          "charts/backend/templates/serviceaccount.yaml": {
+            "sha256": "efaa2ac575ce0da638a9f151282365ff7b6337de87a28c7a8680920b3be191a1",
+            "size": 418
+          },
+          "charts/backend/values.schema.json": {
+            "sha256": "ac517fe1e9643c430e82f33a3ff486f9c2a9176563ebd4189a53b58c18ad521e",
+            "size": 6267
+          },
+          "charts/backend/values.yaml": {
+            "sha256": "e5c74d65e00b1bcb98bb214648041c8ac227e4ce352872c08ac3788cc2a77e8b",
+            "size": 1797
+          },
+          "charts/frontend/Chart.yaml": {
+            "sha256": "3d24f55af5013e502a37552fc8c8bd87a7a3dda28bec6778b9fa45ae4d558a44",
+            "size": 115
+          },
+          "charts/frontend/templates/_helpers.tpl": {
+            "sha256": "b55dde6cf348d4572704105e844e3052bdab95947745589a592bba5eb751cfcf",
+            "size": 354
+          },
+          "charts/frontend/templates/configmap.yaml": {
+            "sha256": "58e886c4bd117b8aa87bea58f02d3bafe18ed1a585099792678ff75882d1a3a5",
+            "size": 1037
+          },
+          "charts/frontend/templates/deployment.yaml": {
+            "sha256": "5579aa0510d20de312c44600b146a8e7f31fbb839d3035d03f2967e7953f7d0e",
+            "size": 5749
+          },
+          "charts/frontend/templates/service.yaml": {
+            "sha256": "6523f5c436ea8d010603e932c2ed1572af6cb8fde696c4e0402384ffe1815fbb",
+            "size": 546
+          },
+          "charts/frontend/templates/serviceaccount.yaml": {
+            "sha256": "44e9b26646e023bf08e84c332d1af0a46674f246e3c992228205bd239164843d",
+            "size": 445
+          },
+          "charts/frontend/values.schema.json": {
+            "sha256": "f7e002e0792242386e57d39b6603729597dea3111278184d526aa9df90c1c301",
+            "size": 5721
+          },
+          "charts/frontend/values.yaml": {
+            "sha256": "624b3632a4ffee71d6fd48ff67543d7dfdc92139bc318a019093e3359bbf76e9",
+            "size": 1209
+          },
+          "charts/order-postgresql/Chart.yaml": {
+            "sha256": "14088b2ba1aa49b4f5733cad9d7f98ebeb09ba1b0eb3507369ae79a8eb91a011",
+            "size": 166
+          },
+          "charts/order-postgresql/templates/_helpers.tpl": {
+            "sha256": "c37f6c5503944a87066b6291905fd3547806f2c5331321927af4af9f726a5c98",
+            "size": 247
+          },
+          "charts/order-postgresql/templates/headless-service.yaml": {
+            "sha256": "80cab3be0828b535062d704ff869698633135fd39846b8b92db5a84c699993ce",
+            "size": 406
+          },
+          "charts/order-postgresql/templates/init-configmap.yaml": {
+            "sha256": "af5e2d1d5e93238f51b8763f1c4432dbd4f7d73941044d0f4f6f489b64913bfd",
+            "size": 927
+          },
+          "charts/order-postgresql/templates/pvc.yaml": {
+            "sha256": "91d4e572d1b9ef46dcc0c319f200d8dc4c9541db70c2cb70a341fc411a8c76cd",
+            "size": 472
+          },
+          "charts/order-postgresql/templates/service.yaml": {
+            "sha256": "5eacbb9743edf2c4cc878dee54fca184fa9746fcf567748a781b7722f39bc814",
+            "size": 364
+          },
+          "charts/order-postgresql/templates/serviceaccount.yaml": {
+            "sha256": "7bed1885ef9405b20568de1b104de6521ba5803a76dbe23f4c2d2e6c15b55ec6",
+            "size": 213
+          },
+          "charts/order-postgresql/templates/statefulset.yaml": {
+            "sha256": "cec752347fd3d208ddb15dfb71dd73c75ca60219f08a9de4d2affc47f70cffcc",
+            "size": 3517
+          },
+          "charts/order-postgresql/values.schema.json": {
+            "sha256": "30384e4896aa20a05e2e627885b9b015ee27807e227a9455b0baea9da26adb6c",
+            "size": 2363
+          },
+          "charts/order-postgresql/values.yaml": {
+            "sha256": "d823097ce9776da0fb5e39dd9d14c96f3d2a6b8a432f0cb96e7c5106a5bc1a6f",
+            "size": 1153
+          },
+          "charts/order/Chart.yaml": {
+            "sha256": "f5100b5b3c8801922993f4446b171b1fad1690a48bc4aeb94bc152dd51f3a96d",
+            "size": 155
+          },
+          "charts/order/templates/_helpers.tpl": {
+            "sha256": "c617f3355a65fb2d3a2e53a015ab51800afb99b1cc00d63bb6e6f10ef8160b32",
+            "size": 1622
+          },
+          "charts/order/templates/configmap.yaml": {
+            "sha256": "ec67ad6c8ffb36af9c2d70e606784c913c8dee91840774eca0832a1a695b768f",
+            "size": 456
+          },
+          "charts/order/templates/deployment.yaml": {
+            "sha256": "8df6db56f3c51d9d4c8aa64ed2d1e363f0c448175df86e7cc3e3d503998f8ba6",
+            "size": 2062
+          },
+          "charts/order/templates/migration-job.yaml": {
+            "sha256": "d4c3ce246c26cdf515b0859cdd75abf1912e12d0a96c0a7f4dc133ef10b6fcee",
+            "size": 1410
+          },
+          "charts/order/templates/service.yaml": {
+            "sha256": "778752d19c5892fd64e1b457162cb0f191e3ad5f57f2b7794f82dfe280765d50",
+            "size": 372
+          },
+          "charts/order/templates/serviceaccount.yaml": {
+            "sha256": "c6c8630e683f4a4093f3d666a4830e633856ff58e33bf27e44a3838d4b05e2a7",
+            "size": 244
+          },
+          "charts/order/templates/validate.yaml": {
+            "sha256": "9f1c93bb7a64291062b344342318d484a9fd564eaac356b0b5debabe4a5d8302",
+            "size": 561
+          },
+          "charts/order/values.schema.json": {
+            "sha256": "f203f7f97c367bd200111edafa8f0d8d38e0d79580fe6caf12ad42052c4f468e",
+            "size": 6246
+          },
+          "charts/order/values.yaml": {
+            "sha256": "1dca0b18716e781f5b0ada55d50bcfc9fcd86c13674bc869c97feb0e5cacf1b6",
+            "size": 1457
+          },
+          "charts/postgresql/Chart.yaml": {
+            "sha256": "28482b084bfef71451ce5cec279e7fcaf24069a004ddaca4a80a5c6bdc16e9fd",
+            "size": 145
+          },
+          "charts/postgresql/templates/_helpers.tpl": {
+            "sha256": "f06eefd7b39fdfe886ef97035b42175c1ef31f8004a6e913f878df015d566dfd",
+            "size": 383
+          },
+          "charts/postgresql/templates/headless-service.yaml": {
+            "sha256": "618c865b632a1c8b9ebb8e0d5e94108096dd59d6ab9fd21c02ec64a20a5cdf1e",
+            "size": 518
+          },
+          "charts/postgresql/templates/init-configmap.yaml": {
+            "sha256": "849c3800f17ef9de07964bcf3a1e1d2a5ff629ab5bfe39f11cd50895f6ef5050",
+            "size": 1137
+          },
+          "charts/postgresql/templates/pvc.yaml": {
+            "sha256": "e2b0f7b3114cf86cc5a58cbcba82eea29785dbf341d6b90c20e602b656eb2480",
+            "size": 682
+          },
+          "charts/postgresql/templates/service.yaml": {
+            "sha256": "f5c8e493e720322450e74cbd9cd7356500896a962570330579279a88a8e4e016",
+            "size": 475
+          },
+          "charts/postgresql/templates/serviceaccount.yaml": {
+            "sha256": "e446ea511c47f989fa3977ee0c89111597d3def0f0d87c1171e8aa43a12d943b",
+            "size": 318
+          },
+          "charts/postgresql/templates/statefulset.yaml": {
+            "sha256": "9aeeff20485e3ce9b4dfb6cd57ce897e07d764e438028bbf2206e2eaeb0f2f3e",
+            "size": 4067
+          },
+          "charts/postgresql/values.schema.json": {
+            "sha256": "a8f3d07d2a8be525b7868a75cbada86b5a27699e8a5e12844bbd7f6117219cae",
+            "size": 1092
+          },
+          "charts/postgresql/values.yaml": {
+            "sha256": "16cdbaa74161d5d822199627311b1f0a4957a2685848b2190b6337bd076d7be4",
+            "size": 1257
+          },
+          "environments/local/README.md": {
+            "sha256": "451d5e6a066b6dba79424bea539345aedfcb7b0260d577b28a3c59355b95f4d4",
+            "size": 184
+          },
+          "environments/local/backend.yaml": {
+            "sha256": "be7b8212ea066e0a601396398310505cb5870c3c7d1c67619b1a421a308c71f8",
+            "size": 1574
+          },
+          "environments/local/frontend.yaml": {
+            "sha256": "57f193504ba28f801c6fe72ec0def62739fe9fb1efd5f853fed8beffd9471a4f",
+            "size": 1458
+          },
+          "environments/local/order-postgresql.yaml": {
+            "sha256": "4b81b3b5ee7ec7ca8b050171426d7dcd08ccb94dd8a03e1c2840dd16db01c457",
+            "size": 106
+          },
+          "environments/local/order.yaml": {
+            "sha256": "62f0d7de6e83c799098cdd704a768076436b41738115c834c1c216d4636725fc",
+            "size": 424
+          },
+          "environments/local/postgresql.yaml": {
+            "sha256": "376c3ebdc39a5fdf1f2a32724c2821cd56dee79b0bf264b03b4a3fa00d9a7088",
+            "size": 281
+          }
+        },
+        "inventory": {
+          "entries": [
+            {
+              "containerName": "backend",
+              "containerType": "containers",
+              "digest": "sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d",
+              "kind": "Deployment",
+              "name": "backend",
+              "namespace": "account",
+              "podSpecPath": "spec.template.spec",
+              "release": {
+                "account.lab/github-run-attempt": "1",
+                "account.lab/github-run-id": "37806373099",
+                "account.lab/image-digest": "sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d",
+                "account.lab/release-record-sha256": "dbea54fc2a4531790fbec5d47ca44b1ec079176376d294371652b1ba93e25cbd",
+                "account.lab/release-record-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/release-record.json",
+                "account.lab/release-schema-version": "github-v1",
+                "account.lab/sbom-sha256": "95d554e528a8297461160e3835435d4eda7f19c5cb9d83b63a76c71cda60f1af",
+                "account.lab/sbom-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/sbom.cdx.json",
+                "account.lab/source-commit": "d29a390c09f8667316569e1bb599bf690b00313d",
+                "account.lab/source-repository": "syuhei0519/backend-app"
+              },
+              "repository": "ghcr.io/syuhei0519/backend-app",
+              "tag": "d29a390c09f8667316569e1bb599bf690b00313d"
+            },
+            {
+              "containerName": "frontend",
+              "containerType": "containers",
+              "digest": "sha256:9f46c61c19918e6f9e8e9a1def2504ed61ec835af098673de44223025f8b3a66",
+              "kind": "Deployment",
+              "name": "frontend",
+              "namespace": "account",
+              "podSpecPath": "spec.template.spec",
+              "release": {
+                "account.lab/github-run-attempt": "1",
+                "account.lab/github-run-id": "37808152036",
+                "account.lab/image-digest": "sha256:9f46c61c19918e6f9e8e9a1def2504ed61ec835af098673de44223025f8b3a66",
+                "account.lab/release-record-sha256": "d36926c4ea8a340721a831481d436772d94c6c8884657a88816ae9bf1cb37fe1",
+                "account.lab/release-record-url": "https://github.com/syuhei0519/frontend-app/releases/download/gha-ef5d8e4ace7a2e82be3aba97744bec712b3a0d3a-37808152036-1/release-record.json",
+                "account.lab/release-schema-version": "github-v1",
+                "account.lab/sbom-sha256": "7d9041d489f466ac63a44b462700a116caa2dad74e0382023521e533407daa9a",
+                "account.lab/sbom-url": "https://github.com/syuhei0519/frontend-app/releases/download/gha-ef5d8e4ace7a2e82be3aba97744bec712b3a0d3a-37808152036-1/sbom.cdx.json",
+                "account.lab/source-commit": "ef5d8e4ace7a2e82be3aba97744bec712b3a0d3a",
+                "account.lab/source-repository": "syuhei0519/frontend-app"
+              },
+              "repository": "ghcr.io/syuhei0519/frontend-app",
+              "tag": "ef5d8e4ace7a2e82be3aba97744bec712b3a0d3a"
+            },
+            {
+              "containerName": "migrate",
+              "containerType": "containers",
+              "digest": "sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d",
+              "kind": "Job",
+              "name": "backend-migration",
+              "namespace": "account",
+              "podSpecPath": "spec.template.spec",
+              "release": {
+                "account.lab/github-run-attempt": "1",
+                "account.lab/github-run-id": "37806373099",
+                "account.lab/image-digest": "sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d",
+                "account.lab/release-record-sha256": "dbea54fc2a4531790fbec5d47ca44b1ec079176376d294371652b1ba93e25cbd",
+                "account.lab/release-record-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/release-record.json",
+                "account.lab/release-schema-version": "github-v1",
+                "account.lab/sbom-sha256": "95d554e528a8297461160e3835435d4eda7f19c5cb9d83b63a76c71cda60f1af",
+                "account.lab/sbom-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/sbom.cdx.json",
+                "account.lab/source-commit": "d29a390c09f8667316569e1bb599bf690b00313d",
+                "account.lab/source-repository": "syuhei0519/backend-app"
+              },
+              "repository": "ghcr.io/syuhei0519/backend-app",
+              "tag": "d29a390c09f8667316569e1bb599bf690b00313d"
+            },
+            {
+              "containerName": "postgresql",
+              "containerType": "containers",
+              "digest": "sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f",
+              "kind": "StatefulSet",
+              "name": "postgresql",
+              "namespace": "account",
+              "podSpecPath": "spec.template.spec",
+              "release": {},
+              "repository": "docker.io/library/postgres",
+              "tag": "17.10-bookworm"
+            }
+          ],
+          "inventorySha256": "5cdc95741cb1fea328519bd62da13bae117a1a434e3ffc232cdc6d9ce52cbe59",
+          "renderSha256": "eefb2faa1b5b4b18bdbd6e0ff597da745025b113820a9011649bcf27889d9a62",
+          "schema": "core-platform/image-inventory/v1"
+        }
+      }
+    },
+    "runtime": "docker",
+    "runtimeTools": {},
+    "schema": "core-platform/render-binding/v1",
+    "sourceSha": "41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+    "targetSha": "bc6adaedcd645a4663c23284b977a3dd36c0796d",
+    "trustedInputs": {
+      "tools/inventory/go.mod": {
+        "sha256": "adef085f5da4a548681313608cdf00209e98d109080b4ec7b7860292b2daefd5",
+        "size": 81
+      },
+      "tools/inventory/go.sum": {
+        "sha256": "e42794fa9b56301ad073de55cac1dea683b320ed951454d8709ffc7156088dd2",
+        "size": 360
+      },
+      "tools/inventory/main.go": {
+        "sha256": "cddbc20767b6a7457be6851f8e26862628339465cc6bcfdbaaf71590dc966de6",
+        "size": 8505
+      },
+      "tools/inventory/main_test.go": {
+        "sha256": "9d1cf8331152a75d413c6e095c22ebaeb0ed12b4b4f6e9d4b0c2140f56ed4ff8",
+        "size": 3208
+      },
+      "tools/inventory/platform.go": {
+        "sha256": "c8c57ae4705434ae57225b97fe7fa3a7a50b1eca6b939ff0a58d873c52df244c",
+        "size": 4040
+      },
+      "tools/inventory/platform_test.go": {
+        "sha256": "87c2b1dc91d7afd4b5f5b95705a4b1ed9ddc337e708704e51e0341ad017929ee",
+        "size": 9944
+      },
+      "tools/inventory/pod_boundary_test.go": {
+        "sha256": "2ad72195585f59c157d201ac7652da6d8214f94eebeb8fd1f8ef1ddebd0aff15",
+        "size": 3443
+      },
+      "tools/inventory/vendor/gopkg.in/yaml.v3/LICENSE": {
+        "sha256": "d18f6323b71b0b768bb5e9616e36da390fbd39369a81807cca352de4e4e6aa0b",
+        "size": 2151
+      },
+      "tools/inventory/vendor/gopkg.in/yaml.v3/NOTICE": {
+        "sha256": "f6c2dd3a67b576eafb89b80200b8b1627230bf3821a0c14cb99a22ac19107d00",
+        "size": 560
+      },
+      "tools/inventory/vendor/gopkg.in/yaml.v3/README.md": {
+        "sha256": "f9e5f315e32751d29512482b3ba6417b5a0b3808e9ace434286096072b428fab",
+        "size": 3453
+      },
+      "tools/inventory/vendor/gopkg.in/yaml.v3/apic.go": {
+        "sha256": "53051cabd9cd9e98d49dea201a11475a11e6cc436b32a54e7d46bebdce88cdc3",
+        "size": 21999
+      },
+      "tools/inventory/vendor/gopkg.in/yaml.v3/decode.go": {
+        "sha256": "a66a783addb0f9cdb45f9e87deb0e51c2aca6bf81e46d4e822136993ba81505d",
+        "size": 24953
+      },
+      "tools/inventory/vendor/gopkg.in/yaml.v3/emitterc.go": {
+        "sha256": "5ce8fbd8a664831adb58c1c82280fd3568d14fab38868142a765d1eb1e05d3a3",
+        "size": 55187
+      },
+      "tools/inventory/vendor/gopkg.in/yaml.v3/encode.go": {
+        "sha256": "be13ba7293fb7a39157b58e304de89d81c46c0332b97bbc4152273515b61ee86",
+        "size": 14789
+      },
+      "tools/inventory/vendor/gopkg.in/yaml.v3/parserc.go": {
+        "sha256": "4ca0ff93c79c32592106e3c44a7a6dedd41f6d55d88809aaa3b28fd675b0aa82",
+        "size": 40822
+      },
+      "tools/inventory/vendor/gopkg.in/yaml.v3/readerc.go": {
+        "sha256": "7693311b8e90eebf81d8468cb5a312725491002c5c6061c49a5488435069c7a3",
+        "size": 14089
+      },
+      "tools/inventory/vendor/gopkg.in/yaml.v3/resolve.go": {
+        "sha256": "69b6069012fef0a518e379222007f6ea7622cb1c235a35b1355bb5641ab16d26",
+        "size": 8514
+      },
+      "tools/inventory/vendor/gopkg.in/yaml.v3/scannerc.go": {
+        "sha256": "730400aff4d8033ea29e472fe29f63aa9d78068dc3a2f719385dc2a612ccf884",
+        "size": 87960
+      },
+      "tools/inventory/vendor/gopkg.in/yaml.v3/sorter.go": {
+        "sha256": "111f911a8095798fda2a7c708e20a931d2c228e637ff82de3ff44794d2d0ae92",
+        "size": 3345
+      },
+      "tools/inventory/vendor/gopkg.in/yaml.v3/writerc.go": {
+        "sha256": "ebf6b56361527f081803c4067263ea97f44637ce2cc329168fb17e4e193fc40d",
+        "size": 1834
+      },
+      "tools/inventory/vendor/gopkg.in/yaml.v3/yaml.go": {
+        "sha256": "447f1c34c1851298028e561e8aaefde8c9c3ebcc2f965ff81f9a603f2d9e4fc5",
+        "size": 20084
+      },
+      "tools/inventory/vendor/gopkg.in/yaml.v3/yamlh.go": {
+        "sha256": "013b8e96cde431fcacb828c6ea5de97d02f659ac02f42bb2310b7ad173897ff5",
+        "size": 29046
+      },
+      "tools/inventory/vendor/gopkg.in/yaml.v3/yamlprivateh.go": {
+        "sha256": "5e29848cb6ddbfe90bea82fd2c26e507de666833a1ff45dfd545a4bf5bb6254d",
+        "size": 6129
+      },
+      "tools/inventory/vendor/modules.txt": {
+        "sha256": "727892575872abcf6d59322e9de658417880efa42503f77350678aa307492850",
+        "size": 55
+      },
+      "tools/release-record/README.md": {
+        "sha256": "d0055530d87dae8c05ffb0db7e4a4ad3ea6250478e451cb09107e5fbbf0a1156",
+        "size": 5021
+      },
+      "tools/release-record/backend_inspection_test.go": {
+        "sha256": "e7dce679bc1e671ec5615d821878cbea48243c4814bd9a2f9dfeb88cdc0c0f50",
+        "size": 2831
+      },
+      "tools/release-record/cmd/consumer-scan/main.go": {
+        "sha256": "987c87f7cdea988537331f7876252756fed430bc783ac84c0cabdea66619d6cc",
+        "size": 1812
+      },
+      "tools/release-record/cmd/package-contract/main.go": {
+        "sha256": "afeab99075460385c67db0cd356e30567f3f1cdb4f51ad07ad939011c10dab4b",
+        "size": 1492
+      },
+      "tools/release-record/cmd/package-read-contract/main.go": {
+        "sha256": "656dcdce6826e57c4b53086c35e6de45e1d8aad743a69e4db647bd25303d15d8",
+        "size": 4761
+      },
+      "tools/release-record/cmd/package-read-release/main.go": {
+        "sha256": "b6d6854a61070d4ef9ad67d5488c83281cc4186020ac3b523e0b15b758cfbb06",
+        "size": 2412
+      },
+      "tools/release-record/cmd/record-check/main.go": {
+        "sha256": "f4fca9d2a2871521058c7046b09efa231b1d0ea7b86782c3f71aafc6c344d335",
+        "size": 760
+      },
+      "tools/release-record/consumer.go": {
+        "sha256": "ea6f8b424076d3a37bda1db4e0aeb23ae0475fd8ece838ad5e81088e732c099b",
+        "size": 8944
+      },
+      "tools/release-record/consumer_test.go": {
+        "sha256": "f05a8c8ed96d565a92cf8b2077b4db5d7055c9e5c662279712795fccd0ddbb9c",
+        "size": 6071
+      },
+      "tools/release-record/consumer_writer_test.go": {
+        "sha256": "d5f4f43a7b142ae99115f26cfbb11b76e06ee59020c63801f99f916154711c9c",
+        "size": 3504
+      },
+      "tools/release-record/go.mod": {
+        "sha256": "d7edd4c3cfcdd3b1057698f3e153356f3ba0b1b094515602b9764dec8f1ba9dd",
+        "size": 151
+      },
+      "tools/release-record/go.sum": {
+        "sha256": "eda25c805108c8087ac00beabbc3a7811871634ad34af5f76f617ddb3e1278e2",
+        "size": 682
+      },
+      "tools/release-record/inspection_consumer.go": {
+        "sha256": "764133132e7bd9d55a3edbd644aada41cfc8726050084b5c1c0191806e533711",
+        "size": 8191
+      },
+      "tools/release-record/inspection_consumer_test.go": {
+        "sha256": "b9160fbca757041bba85a57c208be77b7a55608b02a71de194a939e860d94ef0",
+        "size": 9312
+      },
+      "tools/release-record/legacy_registry.go": {
+        "sha256": "e0defcb6f92054eefd34190570528d6d59becb1f95f15cfca6df9f12baae6236",
+        "size": 5342
+      },
+      "tools/release-record/legacy_registry_test.go": {
+        "sha256": "eab50a75ed5616d2a0c6084c27f75982e7cad7ab54e81acbebbad3f80d4563eb",
+        "size": 4032
+      },
+      "tools/release-record/oci_identity.go": {
+        "sha256": "4e996c02c171a6907a34316809da7906e4b708297123be81e307c22a1e0815db",
+        "size": 4529
+      },
+      "tools/release-record/oci_identity_test.go": {
+        "sha256": "6d3bdd922084f3b98f4119421040c53abff5a26f4fbea24cfe0dd5b948479eb9",
+        "size": 2416
+      },
+      "tools/release-record/package.go": {
+        "sha256": "e4cedcc55fafeb20dfb9f6ff861ea0637bd2843b6197f790b0b65496a2c947ed",
+        "size": 6295
+      },
+      "tools/release-record/package_test.go": {
+        "sha256": "b7e8e24be30d7e394b283d9280b93efbbeaa242008a3503333e67c09e16685f9",
+        "size": 4478
+      },
+      "tools/release-record/publication.go": {
+        "sha256": "3f143352b7b15ce56b11c469517925ce61b34750617f1c14cd0e840ef4882917",
+        "size": 1496
+      },
+      "tools/release-record/publication_test.go": {
+        "sha256": "59380bf812fb0926e98ddd0be03a593a2706bd979d6fb05e66b71cd741a2d55e",
+        "size": 6092
+      },
+      "tools/release-record/read_release.go": {
+        "sha256": "9931ab904b3be690f9d5cd307223925a2b2c4bcdaf1d72e479a95abe96642b67",
+        "size": 3704
+      },
+      "tools/release-record/read_release_test.go": {
+        "sha256": "b47695268db8c98bfa89c2a013b71bc7e55dcd1ad02374862cb0337140c623dd",
+        "size": 3872
+      },
+      "tools/release-record/record.go": {
+        "sha256": "0546d53af7b316df7eb25c6029e643843864b22519317f9a2e5842b34a5881df",
+        "size": 10957
+      },
+      "tools/release-record/record_test.go": {
+        "sha256": "336fbdc29f12c101249b3293c0ad619e93152f045845c211ecce44bcf7e99290",
+        "size": 5944
+      },
+      "tools/release-record/registry_failure_test.go": {
+        "sha256": "397b2cc897890685dbb8996c3e602972e07def8fe2ef0616aa56ece5cfc0ebbf",
+        "size": 1487
+      },
+      "tools/release-record/registry_identity.go": {
+        "sha256": "4b49a732d7564a96c4b5306d775edeb15c5439da7bbe2fb682f88d38b28fe466",
+        "size": 2217
+      },
+      "tools/release-record/registry_identity_test.go": {
+        "sha256": "a50b43c90db1106ce793e742545a296ddf992e3f59811943721411677ebfc814",
+        "size": 4326
+      },
+      "tools/release-record/registry_request.go": {
+        "sha256": "7706bc0d0429a256b4b704f833e8708446f9d931cbce48c243203d0ea490f096",
+        "size": 3635
+      },
+      "tools/release-record/registry_request_test.go": {
+        "sha256": "1d6d11b819fff9c38e12dbf3ce2ec7facf5ca0d689f25c48992125ad09a392a5",
+        "size": 5458
+      },
+      "tools/release-record/rescan.go": {
+        "sha256": "8dd92aafa4522e315783b4f20d4cc36ef173caaafbf4ae8df0bc40b93cfebb78",
+        "size": 2892
+      },
+      "tools/release-record/rescan_test.go": {
+        "sha256": "c0d28887abb9015e37ed458db6cef175da59a01535c9caf72053d51754a41ce1",
+        "size": 2268
+      },
+      "tools/release-record/retention.go": {
+        "sha256": "a6cd798f96de08040f2e4052acb4559ef902e6d4cb342f86afd7a53f6bb8537f",
+        "size": 2803
+      },
+      "tools/release-record/retention_test.go": {
+        "sha256": "8a6b3210b0de459a15fd82475960dea40a8ec402e9c50c02be40113ef971cfcd",
+        "size": 2236
+      },
+      "tools/release-record/sbom.go": {
+        "sha256": "6c8236003ab8333defb2dc7ba3fc3e1be1489c2dee44fa5822c377cca388c34c",
+        "size": 6949
+      },
+      "tools/release-record/sbom_test.go": {
+        "sha256": "a184dbbff923d52fb26c383b8f328d896a52a1cbd3fb000ebacf306c8dd6b81c",
+        "size": 4032
+      },
+      "tools/release-record/scan_record.go": {
+        "sha256": "e9a49943c573aaec9f457fd627aebcc8150adc2fb3f1f6fb576ec750e37f470d",
+        "size": 7937
+      },
+      "tools/release-record/scan_record_test.go": {
+        "sha256": "7a60c5d057fdc0c4bc9541fca0b048f14d1a28b5efa06840b1bd2acd02a97239",
+        "size": 4895
+      },
+      "tools/release-record/schemas/LICENSE": {
+        "sha256": "6c29f22a4a7385285c6f579ec9f33c5e989f00739d6b257243a0b082ec9447ae",
+        "size": 11341
+      },
+      "tools/release-record/schemas/README.md": {
+        "sha256": "fbcaded01a4bba8050c79a1440ca852e7998a9067a5b34a32fe8ab9b6cfc4912",
+        "size": 1326
+      },
+      "tools/release-record/schemas/bom-1.7.schema.json": {
+        "sha256": "df472ef4aaf593904c479293723a1a5c191d6672715c93b3c0b5c318f3914221",
+        "size": 315607
+      },
+      "tools/release-record/schemas/cryptography-defs.schema.json": {
+        "sha256": "018ea7f78b5208ec647cfd10f669cc9c26aba6aceb79c4da7f9c0ef4c99b60de",
+        "size": 16855
+      },
+      "tools/release-record/schemas/jsf-0.82.schema.json": {
+        "sha256": "8bae002c25e723db7ee1f26afde680ae1a2b1a8f6b4b4b0fd65dc3becb090aae",
+        "size": 8058
+      },
+      "tools/release-record/schemas/spdx.schema.json": {
+        "sha256": "54a6288292bc6c90b0d3952f5f939f17436fa76704ffe68a46e5b78539c7cc1b",
+        "size": 15883
+      },
+      "tools/release-record/source_api.go": {
+        "sha256": "accf7b0a84b07f08dc06df0dbd72f3e5e35efd91016cc660dd03bff399b8d0b1",
+        "size": 8063
+      },
+      "tools/release-record/source_api_test.go": {
+        "sha256": "fa7cc7bb66ebdbd7dd2987df5698e3adb804673318503fde632e4b5261369e91",
+        "size": 2789
+      },
+      "tools/release-record/storage_contract.go": {
+        "sha256": "79e00ad606e257cceef66faa580513504efdd570d8a7656209c54d77d7df08b8",
+        "size": 3953
+      },
+      "tools/release-record/storage_contract_test.go": {
+        "sha256": "7d1f87230a6c16819f52e385d0064a4dd9c9299da0bbaec75a9c4fa0c2df60a1",
+        "size": 1397
+      },
+      "tools/release-record/store_bundle.go": {
+        "sha256": "15628895669578f036e188ea8710df866388a97c51afd10d81429e5f00a98532",
+        "size": 5787
+      },
+      "tools/release-record/store_bundle_test.go": {
+        "sha256": "8df04e395c5307097498c457ad5fd81a0417dbf7edf1b7e87228e03f40c4d6ff",
+        "size": 5614
+      }
+    },
+    "verifierSha": "41a7e9632102a8c30ff7fa57570fd85aea19adf1"
+  },
+  "pin_updated_replay": {
+    "synthetic_only": true,
+    "observed_at": "2026-10-11T17:34:21.249096+00:00",
+    "results": [
+      {
+        "case": "fixed-head",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "fixed-tree",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "32-existing-files",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "unchanged:charts/README.md",
+        "pass": true,
+        "detail": "7cf38640ab82f1c929fd653995450ff81ed31f8e02effe450447a36c721e5bb3"
+      },
+      {
+        "case": "unchanged:charts/backend/Chart.yaml",
+        "pass": true,
+        "detail": "509335b49eb7058bb4a736a904a52c572aa4d4ef990795b5efcfaca4e197973f"
+      },
+      {
+        "case": "unchanged:charts/backend/templates/_helpers.tpl",
+        "pass": true,
+        "detail": "c0969159e809a92e68a8e83d82fa3419239887a3d56a552e724a0ce261388253"
+      },
+      {
+        "case": "unchanged:charts/backend/templates/configmap.yaml",
+        "pass": true,
+        "detail": "28a99832e9ec20431b783ee055f384943d9be9dc5aeef206302ddf4192e31f2c"
+      },
+      {
+        "case": "unchanged:charts/backend/templates/deployment.yaml",
+        "pass": true,
+        "detail": "5417e6c5fecf93049fd809996e32bbd7f94ee6e321a482882e8edde293450e52"
+      },
+      {
+        "case": "unchanged:charts/backend/templates/migration-job.yaml",
+        "pass": true,
+        "detail": "0784e69a70a8c73afd62c532d2a411fcd3d3d9682286c36a8d7b9fec65e87a81"
+      },
+      {
+        "case": "unchanged:charts/backend/templates/service.yaml",
+        "pass": true,
+        "detail": "84b0d208c354936fa46404a1b2c179dc72fbe0365d3b7cdc201aa14c9c2a03c6"
+      },
+      {
+        "case": "unchanged:charts/backend/templates/serviceaccount.yaml",
+        "pass": true,
+        "detail": "efaa2ac575ce0da638a9f151282365ff7b6337de87a28c7a8680920b3be191a1"
+      },
+      {
+        "case": "unchanged:charts/backend/values.schema.json",
+        "pass": true,
+        "detail": "ac517fe1e9643c430e82f33a3ff486f9c2a9176563ebd4189a53b58c18ad521e"
+      },
+      {
+        "case": "unchanged:charts/backend/values.yaml",
+        "pass": true,
+        "detail": "e5c74d65e00b1bcb98bb214648041c8ac227e4ce352872c08ac3788cc2a77e8b"
+      },
+      {
+        "case": "unchanged:charts/frontend/Chart.yaml",
+        "pass": true,
+        "detail": "3d24f55af5013e502a37552fc8c8bd87a7a3dda28bec6778b9fa45ae4d558a44"
+      },
+      {
+        "case": "unchanged:charts/frontend/templates/_helpers.tpl",
+        "pass": true,
+        "detail": "b55dde6cf348d4572704105e844e3052bdab95947745589a592bba5eb751cfcf"
+      },
+      {
+        "case": "unchanged:charts/frontend/templates/configmap.yaml",
+        "pass": true,
+        "detail": "58e886c4bd117b8aa87bea58f02d3bafe18ed1a585099792678ff75882d1a3a5"
+      },
+      {
+        "case": "unchanged:charts/frontend/templates/deployment.yaml",
+        "pass": true,
+        "detail": "5579aa0510d20de312c44600b146a8e7f31fbb839d3035d03f2967e7953f7d0e"
+      },
+      {
+        "case": "unchanged:charts/frontend/templates/service.yaml",
+        "pass": true,
+        "detail": "6523f5c436ea8d010603e932c2ed1572af6cb8fde696c4e0402384ffe1815fbb"
+      },
+      {
+        "case": "unchanged:charts/frontend/templates/serviceaccount.yaml",
+        "pass": true,
+        "detail": "44e9b26646e023bf08e84c332d1af0a46674f246e3c992228205bd239164843d"
+      },
+      {
+        "case": "unchanged:charts/frontend/values.schema.json",
+        "pass": true,
+        "detail": "f7e002e0792242386e57d39b6603729597dea3111278184d526aa9df90c1c301"
+      },
+      {
+        "case": "unchanged:charts/frontend/values.yaml",
+        "pass": true,
+        "detail": "624b3632a4ffee71d6fd48ff67543d7dfdc92139bc318a019093e3359bbf76e9"
+      },
+      {
+        "case": "unchanged:charts/postgresql/Chart.yaml",
+        "pass": true,
+        "detail": "28482b084bfef71451ce5cec279e7fcaf24069a004ddaca4a80a5c6bdc16e9fd"
+      },
+      {
+        "case": "unchanged:charts/postgresql/templates/_helpers.tpl",
+        "pass": true,
+        "detail": "f06eefd7b39fdfe886ef97035b42175c1ef31f8004a6e913f878df015d566dfd"
+      },
+      {
+        "case": "unchanged:charts/postgresql/templates/headless-service.yaml",
+        "pass": true,
+        "detail": "618c865b632a1c8b9ebb8e0d5e94108096dd59d6ab9fd21c02ec64a20a5cdf1e"
+      },
+      {
+        "case": "unchanged:charts/postgresql/templates/init-configmap.yaml",
+        "pass": true,
+        "detail": "849c3800f17ef9de07964bcf3a1e1d2a5ff629ab5bfe39f11cd50895f6ef5050"
+      },
+      {
+        "case": "unchanged:charts/postgresql/templates/pvc.yaml",
+        "pass": true,
+        "detail": "e2b0f7b3114cf86cc5a58cbcba82eea29785dbf341d6b90c20e602b656eb2480"
+      },
+      {
+        "case": "unchanged:charts/postgresql/templates/service.yaml",
+        "pass": true,
+        "detail": "f5c8e493e720322450e74cbd9cd7356500896a962570330579279a88a8e4e016"
+      },
+      {
+        "case": "unchanged:charts/postgresql/templates/serviceaccount.yaml",
+        "pass": true,
+        "detail": "e446ea511c47f989fa3977ee0c89111597d3def0f0d87c1171e8aa43a12d943b"
+      },
+      {
+        "case": "unchanged:charts/postgresql/templates/statefulset.yaml",
+        "pass": true,
+        "detail": "9aeeff20485e3ce9b4dfb6cd57ce897e07d764e438028bbf2206e2eaeb0f2f3e"
+      },
+      {
+        "case": "unchanged:charts/postgresql/values.schema.json",
+        "pass": true,
+        "detail": "a8f3d07d2a8be525b7868a75cbada86b5a27699e8a5e12844bbd7f6117219cae"
+      },
+      {
+        "case": "unchanged:charts/postgresql/values.yaml",
+        "pass": true,
+        "detail": "16cdbaa74161d5d822199627311b1f0a4957a2685848b2190b6337bd076d7be4"
+      },
+      {
+        "case": "unchanged:environments/local/README.md",
+        "pass": true,
+        "detail": "451d5e6a066b6dba79424bea539345aedfcb7b0260d577b28a3c59355b95f4d4"
+      },
+      {
+        "case": "unchanged:environments/local/backend.yaml",
+        "pass": true,
+        "detail": "be7b8212ea066e0a601396398310505cb5870c3c7d1c67619b1a421a308c71f8"
+      },
+      {
+        "case": "unchanged:environments/local/frontend.yaml",
+        "pass": true,
+        "detail": "57f193504ba28f801c6fe72ec0def62739fe9fb1efd5f853fed8beffd9471a4f"
+      },
+      {
+        "case": "unchanged:environments/local/postgresql.yaml",
+        "pass": true,
+        "detail": "376c3ebdc39a5fdf1f2a32724c2821cd56dee79b0bf264b03b4a3fa00d9a7088"
+      },
+      {
+        "case": "unchanged-render:frontend",
+        "pass": true,
+        "detail": "16ce7b984d0bfa86d110ed2c9757e565a9ada6056f7cbd583de32aa04a3866de"
+      },
+      {
+        "case": "unchanged-render:backend",
+        "pass": true,
+        "detail": "98f9ee0a34d05ffdce403e6b22ea28fd84aa9e9eb508a0872d95b50067f22d88"
+      },
+      {
+        "case": "unchanged-render:postgresql",
+        "pass": true,
+        "detail": "108bffe412325d4155c964fcf7ca30b58f23d636f1407b0466d84ec4528f8d38"
+      },
+      {
+        "case": "empty:order:None",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "empty:order:environments/local/order.yaml",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-positive:order:False",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:enabled",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:replicaCount",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:image",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:imagePullSecrets",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:release",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:serviceAccount",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:service",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:config",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:secrets",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:resources",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:podSecurityContext",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:securityContext",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:probes",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:migration",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:False:'false'",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:False:0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:False:1",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:False:None",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:False:[]",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:False:{}",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-positive:order:True",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:enabled",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:replicaCount",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:image",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:imagePullSecrets",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:release",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:serviceAccount",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:service",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:config",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:secrets",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:resources",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:podSecurityContext",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:securityContext",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:probes",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:migration",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:True:'false'",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:True:0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:True:1",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:True:None",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:True:[]",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:True:{}",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:false:enabled=null",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:true:enabled=null",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:false:enabled=oops",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:true:enabled=oops",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:false:securityContext.allowPrivilegeEscalation=true",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:true:securityContext.allowPrivilegeEscalation=true",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:false:podSecurityContext.seccompProfile.type=Unconfined",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:true:podSecurityContext.seccompProfile.type=Unconfined",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:false:serviceAccount.name=backend",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:true:serviceAccount.name=backend",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:false:imagePullSecrets[0].name=secret",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:true:imagePullSecrets[0].name=secret",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:false:config.dbName=account",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:true:config.dbName=account",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:false:secrets.existingSecret=account-db",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:true:secrets.existingSecret=account-db",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:false:replicaCount=0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:true:replicaCount=0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:false:securityContext.capabilities.add[0]=SYS_ADMIN",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:true:securityContext.capabilities.add[0]=SYS_ADMIN",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "enabled-render:order",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "empty:order-postgresql:None",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "empty:order-postgresql:environments/local/order-postgresql.yaml",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-positive:order-postgresql:False",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:enabled",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:replicaCount",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:image",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:imagePullSecrets",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:serviceAccount",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:service",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:config",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:secrets",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:persistence",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:resources",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:podSecurityContext",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:securityContext",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:False:'false'",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:False:0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:False:1",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:False:None",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:False:[]",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:False:{}",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-positive:order-postgresql:True",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:enabled",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:replicaCount",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:image",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:imagePullSecrets",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:serviceAccount",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:service",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:config",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:secrets",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:persistence",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:resources",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:podSecurityContext",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:securityContext",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:True:'false'",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:True:0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:True:1",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:True:None",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:True:[]",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:True:{}",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:false:enabled=null",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:true:enabled=null",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:false:enabled=oops",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:true:enabled=oops",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:false:securityContext.allowPrivilegeEscalation=true",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:true:securityContext.allowPrivilegeEscalation=true",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:false:podSecurityContext.seccompProfile.type=Unconfined",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:true:podSecurityContext.seccompProfile.type=Unconfined",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:false:serviceAccount.name=backend",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:true:serviceAccount.name=backend",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:false:imagePullSecrets[0].name=secret",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:true:imagePullSecrets[0].name=secret",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:false:config.dbName=account",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:true:config.dbName=account",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:false:secrets.existingSecret=account-db",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:true:secrets.existingSecret=account-db",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:false:replicaCount=0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:true:replicaCount=0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:false:securityContext.capabilities.add[0]=SYS_ADMIN",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:true:securityContext.capabilities.add[0]=SYS_ADMIN",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "enabled-render:order-postgresql",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "release-reject:image.digest=sha256:bad",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "release-reject:image.tag=latest",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "release-reject:release.sourceCommit=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "release-reject:release.runId=0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "release-reject:release.runAttempt=0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "release-reject:release.recordSha256=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "release-reject:release.service=backend",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "release-reject:migration.activeDeadlineSeconds=179",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "release-reject:migration.backoffLimit=0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "release-reject:probes.readiness.path=/livez",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "disabled-placeholder-digest",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "11-resources",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "no-extra-sensitive-resource",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "migration-image-equality",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "migration-command",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "selector:Deployment",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "selector:StatefulSet",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "service-selector:order",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "service-selector:order-postgresql",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "service-selector:order-postgresql-headless",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "app-db-distinct",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "startupProbe",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "livenessProbe",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "readinessProbe",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "pvc-retained",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "sts-protected",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "inventory-positive",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "extra-Secret",
+        "pass": true,
+        "detail": "unclassified resource kind v1/Secret; review required"
+      },
+      {
+        "case": "extra-Namespace",
+        "pass": true,
+        "detail": "unclassified resource kind v1/Namespace; review required"
+      },
+      {
+        "case": "extra-AppProject",
+        "pass": true,
+        "detail": "unclassified resource kind v1/AppProject; review required"
+      },
+      {
+        "case": "extra-initContainers",
+        "pass": true,
+        "detail": "account/apps/v1/Deployment/order/injected: image must contain fixed SHA256 digest"
+      },
+      {
+        "case": "extra-ephemeralContainers",
+        "pass": true,
+        "detail": "account/apps/v1/Deployment/order/injected: image must contain fixed SHA256 digest"
+      },
+      {
+        "case": "pod-hostNetwork",
+        "pass": true,
+        "detail": "host namespace rejected: hostNetwork"
+      },
+      {
+        "case": "pod-hostPID",
+        "pass": true,
+        "detail": "host namespace rejected: hostPID"
+      },
+      {
+        "case": "pod-hostIPC",
+        "pass": true,
+        "detail": "host namespace rejected: hostIPC"
+      },
+      {
+        "case": "namespace-escape",
+        "pass": true,
+        "detail": "resource namespace outside render destination"
+      },
+      {
+        "case": "account-pvc",
+        "pass": true,
+        "detail": "fixed platform PVC required"
+      },
+      {
+        "case": "pvc-no-protection",
+        "pass": true,
+        "detail": "platform PVC retention rejected"
+      }
+    ]
+  },
+  "unmodified_harness_replay": {
+    "synthetic_only": true,
+    "observed_at": "2026-10-11T17:37:04.849602+00:00",
+    "results": [
+      {
+        "case": "fixed-head",
+        "pass": false,
+        "detail": ""
+      },
+      {
+        "case": "fixed-tree",
+        "pass": false,
+        "detail": ""
+      },
+      {
+        "case": "32-existing-files",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "unchanged:charts/README.md",
+        "pass": true,
+        "detail": "7cf38640ab82f1c929fd653995450ff81ed31f8e02effe450447a36c721e5bb3"
+      },
+      {
+        "case": "unchanged:charts/backend/Chart.yaml",
+        "pass": true,
+        "detail": "509335b49eb7058bb4a736a904a52c572aa4d4ef990795b5efcfaca4e197973f"
+      },
+      {
+        "case": "unchanged:charts/backend/templates/_helpers.tpl",
+        "pass": true,
+        "detail": "c0969159e809a92e68a8e83d82fa3419239887a3d56a552e724a0ce261388253"
+      },
+      {
+        "case": "unchanged:charts/backend/templates/configmap.yaml",
+        "pass": true,
+        "detail": "28a99832e9ec20431b783ee055f384943d9be9dc5aeef206302ddf4192e31f2c"
+      },
+      {
+        "case": "unchanged:charts/backend/templates/deployment.yaml",
+        "pass": true,
+        "detail": "5417e6c5fecf93049fd809996e32bbd7f94ee6e321a482882e8edde293450e52"
+      },
+      {
+        "case": "unchanged:charts/backend/templates/migration-job.yaml",
+        "pass": true,
+        "detail": "0784e69a70a8c73afd62c532d2a411fcd3d3d9682286c36a8d7b9fec65e87a81"
+      },
+      {
+        "case": "unchanged:charts/backend/templates/service.yaml",
+        "pass": true,
+        "detail": "84b0d208c354936fa46404a1b2c179dc72fbe0365d3b7cdc201aa14c9c2a03c6"
+      },
+      {
+        "case": "unchanged:charts/backend/templates/serviceaccount.yaml",
+        "pass": true,
+        "detail": "efaa2ac575ce0da638a9f151282365ff7b6337de87a28c7a8680920b3be191a1"
+      },
+      {
+        "case": "unchanged:charts/backend/values.schema.json",
+        "pass": true,
+        "detail": "ac517fe1e9643c430e82f33a3ff486f9c2a9176563ebd4189a53b58c18ad521e"
+      },
+      {
+        "case": "unchanged:charts/backend/values.yaml",
+        "pass": true,
+        "detail": "e5c74d65e00b1bcb98bb214648041c8ac227e4ce352872c08ac3788cc2a77e8b"
+      },
+      {
+        "case": "unchanged:charts/frontend/Chart.yaml",
+        "pass": true,
+        "detail": "3d24f55af5013e502a37552fc8c8bd87a7a3dda28bec6778b9fa45ae4d558a44"
+      },
+      {
+        "case": "unchanged:charts/frontend/templates/_helpers.tpl",
+        "pass": true,
+        "detail": "b55dde6cf348d4572704105e844e3052bdab95947745589a592bba5eb751cfcf"
+      },
+      {
+        "case": "unchanged:charts/frontend/templates/configmap.yaml",
+        "pass": true,
+        "detail": "58e886c4bd117b8aa87bea58f02d3bafe18ed1a585099792678ff75882d1a3a5"
+      },
+      {
+        "case": "unchanged:charts/frontend/templates/deployment.yaml",
+        "pass": true,
+        "detail": "5579aa0510d20de312c44600b146a8e7f31fbb839d3035d03f2967e7953f7d0e"
+      },
+      {
+        "case": "unchanged:charts/frontend/templates/service.yaml",
+        "pass": true,
+        "detail": "6523f5c436ea8d010603e932c2ed1572af6cb8fde696c4e0402384ffe1815fbb"
+      },
+      {
+        "case": "unchanged:charts/frontend/templates/serviceaccount.yaml",
+        "pass": true,
+        "detail": "44e9b26646e023bf08e84c332d1af0a46674f246e3c992228205bd239164843d"
+      },
+      {
+        "case": "unchanged:charts/frontend/values.schema.json",
+        "pass": true,
+        "detail": "f7e002e0792242386e57d39b6603729597dea3111278184d526aa9df90c1c301"
+      },
+      {
+        "case": "unchanged:charts/frontend/values.yaml",
+        "pass": true,
+        "detail": "624b3632a4ffee71d6fd48ff67543d7dfdc92139bc318a019093e3359bbf76e9"
+      },
+      {
+        "case": "unchanged:charts/postgresql/Chart.yaml",
+        "pass": true,
+        "detail": "28482b084bfef71451ce5cec279e7fcaf24069a004ddaca4a80a5c6bdc16e9fd"
+      },
+      {
+        "case": "unchanged:charts/postgresql/templates/_helpers.tpl",
+        "pass": true,
+        "detail": "f06eefd7b39fdfe886ef97035b42175c1ef31f8004a6e913f878df015d566dfd"
+      },
+      {
+        "case": "unchanged:charts/postgresql/templates/headless-service.yaml",
+        "pass": true,
+        "detail": "618c865b632a1c8b9ebb8e0d5e94108096dd59d6ab9fd21c02ec64a20a5cdf1e"
+      },
+      {
+        "case": "unchanged:charts/postgresql/templates/init-configmap.yaml",
+        "pass": true,
+        "detail": "849c3800f17ef9de07964bcf3a1e1d2a5ff629ab5bfe39f11cd50895f6ef5050"
+      },
+      {
+        "case": "unchanged:charts/postgresql/templates/pvc.yaml",
+        "pass": true,
+        "detail": "e2b0f7b3114cf86cc5a58cbcba82eea29785dbf341d6b90c20e602b656eb2480"
+      },
+      {
+        "case": "unchanged:charts/postgresql/templates/service.yaml",
+        "pass": true,
+        "detail": "f5c8e493e720322450e74cbd9cd7356500896a962570330579279a88a8e4e016"
+      },
+      {
+        "case": "unchanged:charts/postgresql/templates/serviceaccount.yaml",
+        "pass": true,
+        "detail": "e446ea511c47f989fa3977ee0c89111597d3def0f0d87c1171e8aa43a12d943b"
+      },
+      {
+        "case": "unchanged:charts/postgresql/templates/statefulset.yaml",
+        "pass": true,
+        "detail": "9aeeff20485e3ce9b4dfb6cd57ce897e07d764e438028bbf2206e2eaeb0f2f3e"
+      },
+      {
+        "case": "unchanged:charts/postgresql/values.schema.json",
+        "pass": true,
+        "detail": "a8f3d07d2a8be525b7868a75cbada86b5a27699e8a5e12844bbd7f6117219cae"
+      },
+      {
+        "case": "unchanged:charts/postgresql/values.yaml",
+        "pass": true,
+        "detail": "16cdbaa74161d5d822199627311b1f0a4957a2685848b2190b6337bd076d7be4"
+      },
+      {
+        "case": "unchanged:environments/local/README.md",
+        "pass": true,
+        "detail": "451d5e6a066b6dba79424bea539345aedfcb7b0260d577b28a3c59355b95f4d4"
+      },
+      {
+        "case": "unchanged:environments/local/backend.yaml",
+        "pass": true,
+        "detail": "be7b8212ea066e0a601396398310505cb5870c3c7d1c67619b1a421a308c71f8"
+      },
+      {
+        "case": "unchanged:environments/local/frontend.yaml",
+        "pass": true,
+        "detail": "57f193504ba28f801c6fe72ec0def62739fe9fb1efd5f853fed8beffd9471a4f"
+      },
+      {
+        "case": "unchanged:environments/local/postgresql.yaml",
+        "pass": true,
+        "detail": "376c3ebdc39a5fdf1f2a32724c2821cd56dee79b0bf264b03b4a3fa00d9a7088"
+      },
+      {
+        "case": "unchanged-render:frontend",
+        "pass": true,
+        "detail": "16ce7b984d0bfa86d110ed2c9757e565a9ada6056f7cbd583de32aa04a3866de"
+      },
+      {
+        "case": "unchanged-render:backend",
+        "pass": true,
+        "detail": "98f9ee0a34d05ffdce403e6b22ea28fd84aa9e9eb508a0872d95b50067f22d88"
+      },
+      {
+        "case": "unchanged-render:postgresql",
+        "pass": true,
+        "detail": "108bffe412325d4155c964fcf7ca30b58f23d636f1407b0466d84ec4528f8d38"
+      },
+      {
+        "case": "empty:order:None",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "empty:order:environments/local/order.yaml",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-positive:order:False",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:enabled",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:replicaCount",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:image",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:imagePullSecrets",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:release",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:serviceAccount",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:service",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:config",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:secrets",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:resources",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:podSecurityContext",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:securityContext",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:probes",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:False:migration",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:False:'false'",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:False:0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:False:1",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:False:None",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:False:[]",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:False:{}",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-positive:order:True",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:enabled",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:replicaCount",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:image",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:imagePullSecrets",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:release",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:serviceAccount",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:service",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:config",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:secrets",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:resources",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:podSecurityContext",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:securityContext",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:probes",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order:True:migration",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:True:'false'",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:True:0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:True:1",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:True:None",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:True:[]",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order:True:{}",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:false:enabled=null",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:true:enabled=null",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:false:enabled=oops",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:true:enabled=oops",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:false:securityContext.allowPrivilegeEscalation=true",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:true:securityContext.allowPrivilegeEscalation=true",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:false:podSecurityContext.seccompProfile.type=Unconfined",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:true:podSecurityContext.seccompProfile.type=Unconfined",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:false:serviceAccount.name=backend",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:true:serviceAccount.name=backend",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:false:imagePullSecrets[0].name=secret",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:true:imagePullSecrets[0].name=secret",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:false:config.dbName=account",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:true:config.dbName=account",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:false:secrets.existingSecret=account-db",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:true:secrets.existingSecret=account-db",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:false:replicaCount=0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:true:replicaCount=0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:false:securityContext.capabilities.add[0]=SYS_ADMIN",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order:true:securityContext.capabilities.add[0]=SYS_ADMIN",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "enabled-render:order",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "empty:order-postgresql:None",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "empty:order-postgresql:environments/local/order-postgresql.yaml",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-positive:order-postgresql:False",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:enabled",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:replicaCount",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:image",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:imagePullSecrets",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:serviceAccount",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:service",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:config",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:secrets",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:persistence",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:resources",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:podSecurityContext",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:False:securityContext",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:False:'false'",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:False:0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:False:1",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:False:None",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:False:[]",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:False:{}",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-positive:order-postgresql:True",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:enabled",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:replicaCount",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:image",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:imagePullSecrets",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:serviceAccount",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:service",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:config",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:secrets",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:persistence",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:resources",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:podSecurityContext",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-missing:order-postgresql:True:securityContext",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:True:'false'",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:True:0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:True:1",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:True:None",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:True:[]",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "schema-enabled-type:order-postgresql:True:{}",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:false:enabled=null",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:true:enabled=null",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:false:enabled=oops",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:true:enabled=oops",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:false:securityContext.allowPrivilegeEscalation=true",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:true:securityContext.allowPrivilegeEscalation=true",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:false:podSecurityContext.seccompProfile.type=Unconfined",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:true:podSecurityContext.seccompProfile.type=Unconfined",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:false:serviceAccount.name=backend",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:true:serviceAccount.name=backend",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:false:imagePullSecrets[0].name=secret",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:true:imagePullSecrets[0].name=secret",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:false:config.dbName=account",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:true:config.dbName=account",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:false:secrets.existingSecret=account-db",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:true:secrets.existingSecret=account-db",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:false:replicaCount=0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:true:replicaCount=0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:false:securityContext.capabilities.add[0]=SYS_ADMIN",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "helm-reject:order-postgresql:true:securityContext.capabilities.add[0]=SYS_ADMIN",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "enabled-render:order-postgresql",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "release-reject:image.digest=sha256:bad",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "release-reject:image.tag=latest",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "release-reject:release.sourceCommit=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "release-reject:release.runId=0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "release-reject:release.runAttempt=0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "release-reject:release.recordSha256=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "release-reject:release.service=backend",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "release-reject:migration.activeDeadlineSeconds=179",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "release-reject:migration.backoffLimit=0",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "release-reject:probes.readiness.path=/livez",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "disabled-placeholder-digest",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "11-resources",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "no-extra-sensitive-resource",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "migration-image-equality",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "migration-command",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "selector:Deployment",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "selector:StatefulSet",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "service-selector:order",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "service-selector:order-postgresql",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "service-selector:order-postgresql-headless",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "app-db-distinct",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "startupProbe",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "livenessProbe",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "readinessProbe",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "pvc-retained",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "sts-protected",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "inventory-positive",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "case": "extra-Secret",
+        "pass": true,
+        "detail": "unclassified resource kind v1/Secret; review required"
+      },
+      {
+        "case": "extra-Namespace",
+        "pass": true,
+        "detail": "unclassified resource kind v1/Namespace; review required"
+      },
+      {
+        "case": "extra-AppProject",
+        "pass": true,
+        "detail": "unclassified resource kind v1/AppProject; review required"
+      },
+      {
+        "case": "extra-initContainers",
+        "pass": true,
+        "detail": "account/apps/v1/Deployment/order/injected: image must contain fixed SHA256 digest"
+      },
+      {
+        "case": "extra-ephemeralContainers",
+        "pass": true,
+        "detail": "account/apps/v1/Deployment/order/injected: image must contain fixed SHA256 digest"
+      },
+      {
+        "case": "pod-hostNetwork",
+        "pass": true,
+        "detail": "host namespace rejected: hostNetwork"
+      },
+      {
+        "case": "pod-hostPID",
+        "pass": true,
+        "detail": "host namespace rejected: hostPID"
+      },
+      {
+        "case": "pod-hostIPC",
+        "pass": true,
+        "detail": "host namespace rejected: hostIPC"
+      },
+      {
+        "case": "namespace-escape",
+        "pass": true,
+        "detail": "resource namespace outside render destination"
+      },
+      {
+        "case": "account-pvc",
+        "pass": true,
+        "detail": "fixed platform PVC required"
+      },
+      {
+        "case": "pvc-no-protection",
+        "pass": true,
+        "detail": "platform PVC retention rejected"
+      }
+    ]
+  },
+  "local_suites": [
+    {
+      "command": "bash ci/github/test.sh",
+      "result": "pass",
+      "environment": "Go 1.27.1; pinned Docker images. Only kubeconform container receives existing CA read-only and proxy/host network; offline Helm and namespace isolation unchanged."
+    },
+    {
+      "command": "sh ci/validate.sh",
+      "result": "pass"
+    },
+    {
+      "command": "cd tools/checksum && ../../.build/checksum-test -test.v",
+      "result": "pass"
+    },
+    {
+      "command": "python3 ci/*_test.py -v (normal script import paths; namespace/order suites executed by CI entrypoint)",
+      "result": "pass"
+    },
+    {
+      "command": "kubeconform -strict -summary -kubernetes-version 1.36.0 (pinned image; 5 render files)",
+      "result": "pass",
+      "valid": 26,
+      "invalid": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "command": "SECURITY_RENDER_REQUIRED=true sh ci/source-scan.sh (pinned Trivy container with existing CA/proxy)",
+      "result": "pass"
+    },
+    {
+      "command": "trusted-render.py --target BASE --source HEAD --verifier HEAD --producer-job-id 0 --test-only --runtime docker",
+      "result": "pass",
+      "limitation": "provenanceRequired=false; eligibleForAuthenticatedVerification=false; not authenticated production verification"
+    }
+  ],
+  "environment_observations": [
+    "Initial default go executable was not Go compiler; existing prepared Go 1.27.1 toolchain used.",
+    "Initial CI Kubeconform and scanner failed HTTPS trust. Corrected only container CA/proxy routing; no TLS bypass, credentials, persistent settings or repository CI changes.",
+    "Trivy attack scan remote checks retrieval failed; pinned embedded checks fallback observed. Same scanner report/DB/policy used for before/after combined gate."
+  ],
+  "fixed_gitops": {
+    "same_as_upstream_raw": true,
+    "sha256": "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5",
+    "applications": [
+      "lab-local-postgresql",
+      "lab-local-backend",
+      "lab-local-frontend"
+    ],
+    "namespace": "account",
+    "deployment_effect": "none",
+    "limitation": "Fixed desired resources only; no live data/state measurement."
+  },
+  "change_files": [
+    "docs/order-disabled-charts-m1.md",
+    "tools/inventory/main.go",
+    "tools/inventory/platform.go",
+    "tools/inventory/platform_test.go",
+    "tools/inventory/pod_boundary_test.go",
+    "tools/scan-gate/host_namespace_test.go",
+    "tools/scan-gate/render.go"
+  ],
+  "product_outcomes": {
+    "AC-1": "unverified",
+    "AC-2": "unverified",
+    "AC-3": "unverified"
+  },
+  "independent_test": "pending_manager_dispatch",
+  "independent_review": "pending_manager_dispatch",
+  "manager_context": "new_head_context_required",
+  "issue_integration_scope": "aggregate_required",
+  "github_ci": {
+    "head": "41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+    "run_id": 38160370112,
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/syuhei0519/application-manifest/actions/runs/38160370112"
+  },
+  "remote_head": "41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+  "draft_pr": true
+}

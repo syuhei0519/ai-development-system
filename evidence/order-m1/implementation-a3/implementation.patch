@@ -1,0 +1,286 @@
+diff --git a/docs/order-disabled-charts-m1.md b/docs/order-disabled-charts-m1.md
+index 1e8701a..2ee866c 100644
+--- a/docs/order-disabled-charts-m1.md
++++ b/docs/order-disabled-charts-m1.md
+@@ -78,3 +78,39 @@ and Order PVC, retain failed Job and nonsecret status, and fix/retest with forwa
+ migration. No known-good Order rollback target exists yet. Only an authorized
+ operator may suspend/disable Order sync; retry the whole Application after repair.
+ Do not mark migration history successful by hand or reuse stale release evidence.
++
++## M1 attempt3: rendered PodSpec boundaries
++
++Independent Test at `e0f79a61643d31a29de73ffc54bb6a31c320f0df` found that
++injected Order `hostNetwork`, `hostPID`, and `hostIPC` values of `true` passed
++inventory and the structural/full security gate. The inventory digest was
++unchanged. This was an inherited application-image early-return gap; the fixed
++charts did not set these fields. The original failed Test remains failed.
++
++Inventory now checks these fields on every supported PodSpec before container
++image classification. Omitted or boolean false is accepted; true, null, strings,
++numbers, arrays and objects are rejected. Unknown kinds and hidden PodSpec paths
++remain rejected. The structural scanner independently walks every mapping,
++including unknown/hidden PodSpecs, and emits the blocking `LOCAL-HOST-NAMESPACE`
++finding for the same unsafe values. Scanner severity policy is unchanged.
++
++The separate namespace observation changed the inventory digest and was not a
++proven complete GitOps bypass. The adopted design requires the existing `account`
++namespace. Inventory's namespace argument now defines the render destination:
++all supported namespaced resources must omit namespace, specify an empty string,
++or match that destination. The CLI destination remains `account`; non-string
++namespace values and explicit escapes fail before resource dispatch. This covers
++Order, both fixed DB/PVC identities, and auxiliary resources. The M0 identity
++cross-product still tests other destinations by supplying that same destination
++to the parser, so image-family checks remain exercised rather than short-circuited
++by a namespace mismatch. No downstream GitOps bypass or live enforcement is claimed.
++
++Run `go test ./...` in `tools/inventory` and `tools/scan-gate`, then
++`bash ci/github/test.sh`, `sh ci/validate.sh`, the checksum tests and the existing
++security scan against complete renders. The new tests cover every supported
++PodSpec kind, Account/Order DB profiles, true/false/omitted/malformed fields,
++unknown/hidden PodSpecs and workload/auxiliary namespace boundaries.
++These are Implementation self-checks; a new independent Test and Review must
++assess the resulting head. Previous Readiness and PASS records do not transfer.
++Real image, kind, API/persistence, Synced/Healthy and imageID remain unverified;
++the existing B2/M2/P1/T7 follow-up responsibilities still apply. No デプロイ occurs.
+diff --git a/tools/inventory/main.go b/tools/inventory/main.go
+index 9336028..57a5850 100644
+--- a/tools/inventory/main.go
++++ b/tools/inventory/main.go
+@@ -98,9 +98,15 @@ func inventory(data []byte, namespace string) (Output, error) {
+ 		api := str(r, "apiVersion")
+ 		meta := object(r["metadata"])
+ 		name := str(meta, "name")
+-		ns := str(meta, "namespace")
+-		if ns == "" {
+-			ns = namespace
++		// The caller supplies the render destination, not merely a default.
++		// All admitted resources are namespaced; reject explicit escapes and
++		// malformed namespace values before workload/non-workload dispatch.
++		ns := namespace
++		if value, exists := meta["namespace"]; exists {
++			given, ok := value.(string)
++			if !ok || (given != "" && given != namespace) {
++				return result, fmt.Errorf("resource namespace outside render destination")
++			}
+ 		}
+ 		if name == "" || api == "" {
+ 			return result, fmt.Errorf("resource identity missing")
+@@ -147,6 +153,15 @@ func inventory(data []byte, namespace string) (Output, error) {
+ 		if spec == nil {
+ 			return result, fmt.Errorf("PodSpec missing at %s %s", resourceKey, specPath)
+ 		}
++		// Apply to every supported PodSpec, before image-family classification.
++		for _, key := range []string{"hostNetwork", "hostPID", "hostIPC"} {
++			if value, exists := spec[key]; exists {
++				allowed, ok := value.(bool)
++				if !ok || allowed {
++					return result, fmt.Errorf("host namespace rejected: %s", key)
++				}
++			}
++		}
+ 		annotations := object(podMeta["annotations"])
+ 		release := map[string]string{}
+ 		for k, v := range annotations {
+diff --git a/tools/inventory/platform.go b/tools/inventory/platform.go
+index 6a017fb..a65dd00 100644
+--- a/tools/inventory/platform.go
++++ b/tools/inventory/platform.go
+@@ -40,11 +40,6 @@ func platformPolicy(r, spec, c map[string]any, repo, tag, digest, containerType
+ 	if value, exists := security["seccompProfile"]; exists && str(object(value), "type") != "RuntimeDefault" {
+ 		return fmt.Errorf("platform container seccomp override rejected")
+ 	}
+-	for _, key := range []string{"hostNetwork", "hostPID", "hostIPC"} {
+-		if v, ok := spec[key]; ok && v != false {
+-			return fmt.Errorf("host namespace rejected")
+-		}
+-	}
+ 	if v, ok := security["privileged"]; ok && v != false {
+ 		return fmt.Errorf("privileged platform rejected")
+ 	}
+diff --git a/tools/inventory/platform_test.go b/tools/inventory/platform_test.go
+index 302ef75..9017c98 100644
+--- a/tools/inventory/platform_test.go
++++ b/tools/inventory/platform_test.go
+@@ -146,8 +146,12 @@ func TestPlatformIdentityBeforeImageFamily(t *testing.T) {
+ 			if namespace != "" {
+ 				input = strings.ReplaceAll(input, "metadata:\n", "metadata:\n  namespace: "+namespace+"\n")
+ 			}
++			destination := namespace
++			if destination == "" {
++				destination = "account"
++			}
+ 			t.Run(name+"/"+namespace+"/fixed", func(t *testing.T) {
+-				out, err := inventory([]byte(input), "account")
++				out, err := inventory([]byte(input), destination)
+ 				if err != nil || len(out.Entries) != 1 {
+ 					t.Fatalf("fixed identity rejected: %v", err)
+ 				}
+@@ -155,7 +159,7 @@ func TestPlatformIdentityBeforeImageFamily(t *testing.T) {
+ 			for _, repo := range appImages {
+ 				t.Run(name+"/"+namespace+"/"+repo, func(t *testing.T) {
+ 					image := repo + ":" + strings.Repeat("a", 40) + "@sha256:" + strings.Repeat("b", 64)
+-					if _, err := inventory([]byte(strings.Replace(input, pgImage, image, 1)), "account"); err == nil {
++					if _, err := inventory([]byte(strings.Replace(input, pgImage, image, 1)), destination); err == nil {
+ 						t.Fatal("DB identity escaped through another image family")
+ 					}
+ 				})
+diff --git a/tools/inventory/pod_boundary_test.go b/tools/inventory/pod_boundary_test.go
+new file mode 100644
+index 0000000..fecb197
+--- /dev/null
++++ b/tools/inventory/pod_boundary_test.go
+@@ -0,0 +1,85 @@
++package main
++
++import (
++	"strings"
++	"testing"
++)
++
++func TestHostNamespaceBoundary(t *testing.T) {
++	bases := map[string]string{}
++	for _, kind := range []string{"Pod", "Deployment", "StatefulSet", "DaemonSet", "ReplicaSet", "ReplicationController", "Job", "CronJob"} {
++		bases[kind] = fixture(kind)
++	}
++	for _, name := range []string{"postgresql", "order-postgresql"} {
++		bases[name] = strings.ReplaceAll(platformFixture, "order-postgresql", name)
++	}
++	for name, base := range bases {
++		for _, field := range []string{"hostNetwork", "hostPID", "hostIPC"} {
++			for _, value := range []string{"", "false", "False", "FALSE", "true", "null", "'false'", "'true'", "0", "[]", "{}"} {
++				t.Run(name+"/"+field+"/"+value, func(t *testing.T) {
++					input := base
++					if value != "" {
++						lines := strings.Split(base, "\n")
++						for i, line := range lines {
++							if strings.TrimSpace(line) == "containers:" {
++								prefix := line[:len(line)-len(strings.TrimLeft(line, " "))]
++								lines[i] = prefix + field + ": " + value + "\n" + line
++								break
++							}
++						}
++						input = strings.Join(lines, "\n")
++					}
++					out, err := inventory([]byte(input), "account")
++					allowed := value == "" || strings.EqualFold(value, "false")
++					if (err == nil) != allowed {
++						t.Fatalf("allowed=%v error=%v", allowed, err)
++					}
++					if allowed {
++						original, e := inventory([]byte(base), "account")
++						if e != nil || original.InventorySHA256 != out.InventorySHA256 {
++							t.Fatal("safe settings changed inventory")
++						}
++					}
++				})
++			}
++		}
++	}
++	// Unsupported and hidden PodSpecs remain fail-closed even with false/omitted host settings.
++	for _, v := range []string{"", "hostNetwork: false\n", "hostPID: true\n", "hostIPC: null\n"} {
++		for _, kind := range []string{"CustomWorkload", "ConfigMap"} {
++			input := "apiVersion: v1\nkind: " + kind + "\nmetadata: {name: hidden}\nspec:\n  " + strings.ReplaceAll(v, "\n", "\n  ") + "containers: [{name: app, image: '" + img + "'}]\n"
++			if _, err := inventory([]byte(input), "account"); err == nil {
++				t.Fatal("hidden PodSpec accepted")
++			}
++		}
++	}
++}
++
++func TestRenderDestinationBoundary(t *testing.T) {
++	for _, kind := range []string{"Pod", "Deployment", "StatefulSet", "DaemonSet", "ReplicaSet", "ReplicationController", "Job", "CronJob", "ConfigMap", "Service", "ServiceAccount", "PersistentVolumeClaim", "NetworkPolicy", "PodDisruptionBudget", "HorizontalPodAutoscaler"} {
++		for _, ns := range []string{"account", "''", "kube-system", "null", "false", "[]", "{}"} {
++			t.Run(kind+"/"+ns, func(t *testing.T) {
++				base := fixture(kind)
++				switch kind {
++				case "ConfigMap", "Service", "ServiceAccount", "PersistentVolumeClaim", "NetworkPolicy", "PodDisruptionBudget", "HorizontalPodAutoscaler":
++					api := "v1"
++					if kind == "NetworkPolicy" {
++						api = "networking.k8s.io/v1"
++					}
++					if kind == "PodDisruptionBudget" {
++						api = "policy/v1"
++					}
++					if kind == "HorizontalPodAutoscaler" {
++						api = "autoscaling/v2"
++					}
++					base = "apiVersion: " + api + "\nkind: " + kind + "\nmetadata:\n  name: auxiliary\n"
++				}
++				input := strings.Replace(base, "metadata:\n", "metadata:\n  namespace: "+ns+"\n", 1) + "---\n" + strings.Replace(fixture("Pod"), "name: fixture", "name: companion", 1)
++				_, err := inventory([]byte(input), "account")
++				if (err == nil) != (ns == "account" || ns == "''") {
++					t.Fatalf("unexpected destination result: %v", err)
++				}
++			})
++		}
++	}
++}
+diff --git a/tools/scan-gate/host_namespace_test.go b/tools/scan-gate/host_namespace_test.go
+new file mode 100644
+index 0000000..1df2718
+--- /dev/null
++++ b/tools/scan-gate/host_namespace_test.go
+@@ -0,0 +1,45 @@
++package main
++
++import (
++	"strings"
++	"testing"
++)
++
++func TestHostNamespaceStructuralBoundary(t *testing.T) {
++	for _, kind := range []string{"Pod", "Deployment", "StatefulSet", "DaemonSet", "ReplicaSet", "ReplicationController", "Job", "CronJob", "UnknownWorkload", "ConfigMap"} {
++		for _, field := range []string{"hostNetwork", "hostPID", "hostIPC"} {
++			for _, value := range []string{"", "false", "False", "FALSE", "true", "null", "'false'", "'true'", "0", "[]", "{}"} {
++				t.Run(kind+"/"+field+"/"+value, func(t *testing.T) {
++					spec := "containers: [{name: app, image: synthetic}]\n"
++					if value != "" {
++						spec = field + ": " + value + "\n" + spec
++					}
++					prefix := "spec:\n"
++					indent := "  "
++					if kind == "CronJob" {
++						prefix = "spec:\n  jobTemplate:\n    spec:\n      template:\n        spec:\n"
++						indent = "          "
++					} else if kind != "Pod" {
++						prefix = "spec:\n  template:\n    spec:\n"
++						indent = "      "
++					}
++					data := "apiVersion: v1\nkind: " + kind + "\nmetadata: {name: synthetic}\n" + prefix + indent + strings.ReplaceAll(strings.TrimSuffix(spec, "\n"), "\n", "\n"+indent) + "\n"
++					findings, err := inspectYAML([]byte(data), "rendered/synthetic.yaml")
++					if err != nil {
++						t.Fatal(err)
++					}
++					want := 0
++					if value != "" && !strings.EqualFold(value, "false") {
++						want = 1
++					}
++					if len(findings) != want {
++						t.Fatalf("expected %d findings, got %+v", want, findings)
++					}
++					if want == 1 && (findings[0].Rule != "LOCAL-HOST-NAMESPACE" || findings[0].Decision != "fail") {
++						t.Fatal("host finding did not fail")
++					}
++				})
++			}
++		}
++	}
++}
+diff --git a/tools/scan-gate/render.go b/tools/scan-gate/render.go
+index e77a629..a447517 100644
+--- a/tools/scan-gate/render.go
++++ b/tools/scan-gate/render.go
+@@ -117,6 +117,13 @@ func inspectYAML(data []byte, file string) ([]Finding, error) {
+ 					}
+ 				}
+ 			}
++			// Walk every mapping, including unknown/hidden PodSpecs. Like the
++			// privileged boundary, this does not rely on workload kind or image.
++			for _, key := range []string{"hostNetwork", "hostPID", "hostIPC"} {
++				if v := m[key]; v != nil && (v.Kind != yaml.ScalarNode || v.Tag != "!!bool" || !strings.EqualFold(v.Value, "false")) {
++					add("LOCAL-HOST-NAMESPACE")
++				}
++			}
+ 			if v := m["privileged"]; v != nil && v.Tag == "!!bool" && v.Value == "true" {
+ 				add("LOCAL-PRIVILEGED")
+ 			}
