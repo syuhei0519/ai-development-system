@@ -1,0 +1,81 @@
+{
+  "document_type": "system_capacity_publication_safety_observation",
+  "scope": "system-artifact-capacity",
+  "reviewer": "PUBLIC-SYSTEM-CAPACITY-IMPLEMENTATION",
+  "independent_review": false,
+  "classification": "public_safe",
+  "files": [
+    {
+      "path": "artifact-delivery-v1.3.schema.json",
+      "sha256": "ca7f1a27e9e65b8d1ad85be189edfd2e67dccc307a01680d14f0b27f6689c942",
+      "size": 30892
+    },
+    {
+      "path": "blocker-metadata.json",
+      "sha256": "cd67d6031852b8fba09f8094cfd57915f1dc166d01de406068953078871f681e",
+      "size": 735
+    },
+    {
+      "path": "candidate-profile.json",
+      "sha256": "d302414c9f5421c13a8ac28019284169418aeec287a7fdbd03392c38e32bb5af",
+      "size": 1746
+    },
+    {
+      "path": "ci-observation.json",
+      "sha256": "31bfcfc310eda33e065200a6fc36f025953c02f3ae7d045d21b14534728a1659",
+      "size": 676
+    },
+    {
+      "path": "consumption-receipt-v1.3.schema.json",
+      "sha256": "7e8f84bc368b7256923970e0dc001e5042a624bf85c9ca5115fea927778f7934",
+      "size": 29207
+    },
+    {
+      "path": "delivery-authorization-v1.3.schema.json",
+      "sha256": "3c483bf1c0c6f001ea79e7eae88cb35ce69e77c80ecbc5839bd68ced64d0bef6",
+      "size": 2353
+    },
+    {
+      "path": "handoff.json",
+      "sha256": "89230623e89c7dc4d24ebebaaaa8acb46f0ad3e7781010fa643c05a9f99fc17f",
+      "size": 8582
+    },
+    {
+      "path": "implementation-report.md",
+      "sha256": "b970f3758b2ac74036508350bbd76585df8655281d6b44a0b3b55cb18ebccd00",
+      "size": 5277
+    },
+    {
+      "path": "implementation.patch",
+      "sha256": "a9b9b91891809d0181c1b66eb7e2fa614d5bd863be7f9fae521987c215d6c1b3",
+      "size": 107084
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "abf93cf8c6aa1d1312955817f03e4426d0566cb152e2de7ba223a1688266d536",
+      "size": 18302
+    },
+    {
+      "path": "publication-receipt-v1.3.schema.json",
+      "sha256": "70df0c82bf604c0947f01e20dd87054c4aa9ff9c22d906c2df23d0b0c1b9b70f",
+      "size": 7423
+    },
+    {
+      "path": "publication-receipt.json",
+      "sha256": "e27bb916b290eb998e643de8ad2e70bea202a747ddbf92299436ef4f52bec5ab",
+      "size": 6873
+    },
+    {
+      "path": "test-results.json",
+      "sha256": "3145ddbeb00d88d203472e3ea816eb763d4667cb0ffad6f749025df202d861ea",
+      "size": 6132
+    }
+  ],
+  "checks": [
+    "Purpose-made public aliases only; no runtime task/thread IDs, private source originals, authorization documents, credential material or internal operational logs.",
+    "Original candidate schema copies and complete patch match the public feature commit; test summaries are measured synthetic results.",
+    "Blocker observation cites fixed public metadata only. No application payload execution or adoption.",
+    "Separate publication authority is the task operator authorization; this safety observation does not grant publication or Consumer authority."
+  ],
+  "consumer_authorization": "Not included. Manager must issue and pin separately for each downstream Consumer."
+}
