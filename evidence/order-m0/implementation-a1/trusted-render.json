@@ -1,0 +1,762 @@
+{
+  "binarySha256": "27f3f64fa28bce866e5cb3192c0ac30fdbc0f3f74eefa214036fdf036e8aaaa4",
+  "candidateTree": "53f6b56b8fe0d93f135d4f7cc8befcc606e7131a",
+  "diff": {
+    "added": [],
+    "changed": [],
+    "removed": []
+  },
+  "eligibleForAuthenticatedVerification": false,
+  "goImage": "golang:1.27.1-bookworm@sha256:648f440f42a0958804efb24df176f806f9d353b41f1c0627f666428e40310f6b",
+  "helmImage": "alpine/helm:4.2.4@sha256:76c375eed56144c68d6197c55bc5a4552fb42002190b796729901cbab3ae6e51",
+  "producerJobId": "0",
+  "provenanceRequired": false,
+  "renders": {
+    "before": {
+      "inputSha256": "f2112105cf49b38b1ce5105a4ed384865e55f934755934c8841d2c4b53e4e223",
+      "inputs": {
+        "charts/README.md": {
+          "sha256": "7cf38640ab82f1c929fd653995450ff81ed31f8e02effe450447a36c721e5bb3",
+          "size": 215
+        },
+        "charts/backend/Chart.yaml": {
+          "sha256": "509335b49eb7058bb4a736a904a52c572aa4d4ef990795b5efcfaca4e197973f",
+          "size": 136
+        },
+        "charts/backend/templates/_helpers.tpl": {
+          "sha256": "c0969159e809a92e68a8e83d82fa3419239887a3d56a552e724a0ce261388253",
+          "size": 1704
+        },
+        "charts/backend/templates/configmap.yaml": {
+          "sha256": "28a99832e9ec20431b783ee055f384943d9be9dc5aeef206302ddf4192e31f2c",
+          "size": 877
+        },
+        "charts/backend/templates/deployment.yaml": {
+          "sha256": "5417e6c5fecf93049fd809996e32bbd7f94ee6e321a482882e8edde293450e52",
+          "size": 5128
+        },
+        "charts/backend/templates/migration-job.yaml": {
+          "sha256": "0784e69a70a8c73afd62c532d2a411fcd3d3d9682286c36a8d7b9fec65e87a81",
+          "size": 3956
+        },
+        "charts/backend/templates/service.yaml": {
+          "sha256": "84b0d208c354936fa46404a1b2c179dc72fbe0365d3b7cdc201aa14c9c2a03c6",
+          "size": 556
+        },
+        "charts/backend/templates/serviceaccount.yaml": {
+          "sha256": "efaa2ac575ce0da638a9f151282365ff7b6337de87a28c7a8680920b3be191a1",
+          "size": 418
+        },
+        "charts/backend/values.schema.json": {
+          "sha256": "ac517fe1e9643c430e82f33a3ff486f9c2a9176563ebd4189a53b58c18ad521e",
+          "size": 6267
+        },
+        "charts/backend/values.yaml": {
+          "sha256": "e5c74d65e00b1bcb98bb214648041c8ac227e4ce352872c08ac3788cc2a77e8b",
+          "size": 1797
+        },
+        "charts/frontend/Chart.yaml": {
+          "sha256": "3d24f55af5013e502a37552fc8c8bd87a7a3dda28bec6778b9fa45ae4d558a44",
+          "size": 115
+        },
+        "charts/frontend/templates/_helpers.tpl": {
+          "sha256": "b55dde6cf348d4572704105e844e3052bdab95947745589a592bba5eb751cfcf",
+          "size": 354
+        },
+        "charts/frontend/templates/configmap.yaml": {
+          "sha256": "58e886c4bd117b8aa87bea58f02d3bafe18ed1a585099792678ff75882d1a3a5",
+          "size": 1037
+        },
+        "charts/frontend/templates/deployment.yaml": {
+          "sha256": "5579aa0510d20de312c44600b146a8e7f31fbb839d3035d03f2967e7953f7d0e",
+          "size": 5749
+        },
+        "charts/frontend/templates/service.yaml": {
+          "sha256": "6523f5c436ea8d010603e932c2ed1572af6cb8fde696c4e0402384ffe1815fbb",
+          "size": 546
+        },
+        "charts/frontend/templates/serviceaccount.yaml": {
+          "sha256": "44e9b26646e023bf08e84c332d1af0a46674f246e3c992228205bd239164843d",
+          "size": 445
+        },
+        "charts/frontend/values.schema.json": {
+          "sha256": "f7e002e0792242386e57d39b6603729597dea3111278184d526aa9df90c1c301",
+          "size": 5721
+        },
+        "charts/frontend/values.yaml": {
+          "sha256": "624b3632a4ffee71d6fd48ff67543d7dfdc92139bc318a019093e3359bbf76e9",
+          "size": 1209
+        },
+        "charts/postgresql/Chart.yaml": {
+          "sha256": "28482b084bfef71451ce5cec279e7fcaf24069a004ddaca4a80a5c6bdc16e9fd",
+          "size": 145
+        },
+        "charts/postgresql/templates/_helpers.tpl": {
+          "sha256": "f06eefd7b39fdfe886ef97035b42175c1ef31f8004a6e913f878df015d566dfd",
+          "size": 383
+        },
+        "charts/postgresql/templates/headless-service.yaml": {
+          "sha256": "618c865b632a1c8b9ebb8e0d5e94108096dd59d6ab9fd21c02ec64a20a5cdf1e",
+          "size": 518
+        },
+        "charts/postgresql/templates/init-configmap.yaml": {
+          "sha256": "849c3800f17ef9de07964bcf3a1e1d2a5ff629ab5bfe39f11cd50895f6ef5050",
+          "size": 1137
+        },
+        "charts/postgresql/templates/pvc.yaml": {
+          "sha256": "e2b0f7b3114cf86cc5a58cbcba82eea29785dbf341d6b90c20e602b656eb2480",
+          "size": 682
+        },
+        "charts/postgresql/templates/service.yaml": {
+          "sha256": "f5c8e493e720322450e74cbd9cd7356500896a962570330579279a88a8e4e016",
+          "size": 475
+        },
+        "charts/postgresql/templates/serviceaccount.yaml": {
+          "sha256": "e446ea511c47f989fa3977ee0c89111597d3def0f0d87c1171e8aa43a12d943b",
+          "size": 318
+        },
+        "charts/postgresql/templates/statefulset.yaml": {
+          "sha256": "9aeeff20485e3ce9b4dfb6cd57ce897e07d764e438028bbf2206e2eaeb0f2f3e",
+          "size": 4067
+        },
+        "charts/postgresql/values.schema.json": {
+          "sha256": "a8f3d07d2a8be525b7868a75cbada86b5a27699e8a5e12844bbd7f6117219cae",
+          "size": 1092
+        },
+        "charts/postgresql/values.yaml": {
+          "sha256": "16cdbaa74161d5d822199627311b1f0a4957a2685848b2190b6337bd076d7be4",
+          "size": 1257
+        },
+        "environments/local/README.md": {
+          "sha256": "451d5e6a066b6dba79424bea539345aedfcb7b0260d577b28a3c59355b95f4d4",
+          "size": 184
+        },
+        "environments/local/backend.yaml": {
+          "sha256": "be7b8212ea066e0a601396398310505cb5870c3c7d1c67619b1a421a308c71f8",
+          "size": 1574
+        },
+        "environments/local/frontend.yaml": {
+          "sha256": "57f193504ba28f801c6fe72ec0def62739fe9fb1efd5f853fed8beffd9471a4f",
+          "size": 1458
+        },
+        "environments/local/postgresql.yaml": {
+          "sha256": "376c3ebdc39a5fdf1f2a32724c2821cd56dee79b0bf264b03b4a3fa00d9a7088",
+          "size": 281
+        }
+      },
+      "inventory": {
+        "entries": [
+          {
+            "containerName": "backend",
+            "containerType": "containers",
+            "digest": "sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d",
+            "kind": "Deployment",
+            "name": "backend",
+            "namespace": "account",
+            "podSpecPath": "spec.template.spec",
+            "release": {
+              "account.lab/github-run-attempt": "1",
+              "account.lab/github-run-id": "37806373099",
+              "account.lab/image-digest": "sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d",
+              "account.lab/release-record-sha256": "dbea54fc2a4531790fbec5d47ca44b1ec079176376d294371652b1ba93e25cbd",
+              "account.lab/release-record-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/release-record.json",
+              "account.lab/release-schema-version": "github-v1",
+              "account.lab/sbom-sha256": "95d554e528a8297461160e3835435d4eda7f19c5cb9d83b63a76c71cda60f1af",
+              "account.lab/sbom-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/sbom.cdx.json",
+              "account.lab/source-commit": "d29a390c09f8667316569e1bb599bf690b00313d",
+              "account.lab/source-repository": "syuhei0519/backend-app"
+            },
+            "repository": "ghcr.io/syuhei0519/backend-app",
+            "tag": "d29a390c09f8667316569e1bb599bf690b00313d"
+          },
+          {
+            "containerName": "frontend",
+            "containerType": "containers",
+            "digest": "sha256:9f46c61c19918e6f9e8e9a1def2504ed61ec835af098673de44223025f8b3a66",
+            "kind": "Deployment",
+            "name": "frontend",
+            "namespace": "account",
+            "podSpecPath": "spec.template.spec",
+            "release": {
+              "account.lab/github-run-attempt": "1",
+              "account.lab/github-run-id": "37808152036",
+              "account.lab/image-digest": "sha256:9f46c61c19918e6f9e8e9a1def2504ed61ec835af098673de44223025f8b3a66",
+              "account.lab/release-record-sha256": "d36926c4ea8a340721a831481d436772d94c6c8884657a88816ae9bf1cb37fe1",
+              "account.lab/release-record-url": "https://github.com/syuhei0519/frontend-app/releases/download/gha-ef5d8e4ace7a2e82be3aba97744bec712b3a0d3a-37808152036-1/release-record.json",
+              "account.lab/release-schema-version": "github-v1",
+              "account.lab/sbom-sha256": "7d9041d489f466ac63a44b462700a116caa2dad74e0382023521e533407daa9a",
+              "account.lab/sbom-url": "https://github.com/syuhei0519/frontend-app/releases/download/gha-ef5d8e4ace7a2e82be3aba97744bec712b3a0d3a-37808152036-1/sbom.cdx.json",
+              "account.lab/source-commit": "ef5d8e4ace7a2e82be3aba97744bec712b3a0d3a",
+              "account.lab/source-repository": "syuhei0519/frontend-app"
+            },
+            "repository": "ghcr.io/syuhei0519/frontend-app",
+            "tag": "ef5d8e4ace7a2e82be3aba97744bec712b3a0d3a"
+          },
+          {
+            "containerName": "migrate",
+            "containerType": "containers",
+            "digest": "sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d",
+            "kind": "Job",
+            "name": "backend-migration",
+            "namespace": "account",
+            "podSpecPath": "spec.template.spec",
+            "release": {
+              "account.lab/github-run-attempt": "1",
+              "account.lab/github-run-id": "37806373099",
+              "account.lab/image-digest": "sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d",
+              "account.lab/release-record-sha256": "dbea54fc2a4531790fbec5d47ca44b1ec079176376d294371652b1ba93e25cbd",
+              "account.lab/release-record-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/release-record.json",
+              "account.lab/release-schema-version": "github-v1",
+              "account.lab/sbom-sha256": "95d554e528a8297461160e3835435d4eda7f19c5cb9d83b63a76c71cda60f1af",
+              "account.lab/sbom-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/sbom.cdx.json",
+              "account.lab/source-commit": "d29a390c09f8667316569e1bb599bf690b00313d",
+              "account.lab/source-repository": "syuhei0519/backend-app"
+            },
+            "repository": "ghcr.io/syuhei0519/backend-app",
+            "tag": "d29a390c09f8667316569e1bb599bf690b00313d"
+          },
+          {
+            "containerName": "postgresql",
+            "containerType": "containers",
+            "digest": "sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f",
+            "kind": "StatefulSet",
+            "name": "postgresql",
+            "namespace": "account",
+            "podSpecPath": "spec.template.spec",
+            "release": {},
+            "repository": "docker.io/library/postgres",
+            "tag": "17.10-bookworm"
+          }
+        ],
+        "inventorySha256": "5cdc95741cb1fea328519bd62da13bae117a1a434e3ffc232cdc6d9ce52cbe59",
+        "renderSha256": "4e2569d700f06c147ca36fd18e2e30e5b724b2be2bea3a87e35e428893d4d61a",
+        "schema": "core-platform/image-inventory/v1"
+      }
+    },
+    "candidate": {
+      "inputSha256": "f2112105cf49b38b1ce5105a4ed384865e55f934755934c8841d2c4b53e4e223",
+      "inputs": {
+        "charts/README.md": {
+          "sha256": "7cf38640ab82f1c929fd653995450ff81ed31f8e02effe450447a36c721e5bb3",
+          "size": 215
+        },
+        "charts/backend/Chart.yaml": {
+          "sha256": "509335b49eb7058bb4a736a904a52c572aa4d4ef990795b5efcfaca4e197973f",
+          "size": 136
+        },
+        "charts/backend/templates/_helpers.tpl": {
+          "sha256": "c0969159e809a92e68a8e83d82fa3419239887a3d56a552e724a0ce261388253",
+          "size": 1704
+        },
+        "charts/backend/templates/configmap.yaml": {
+          "sha256": "28a99832e9ec20431b783ee055f384943d9be9dc5aeef206302ddf4192e31f2c",
+          "size": 877
+        },
+        "charts/backend/templates/deployment.yaml": {
+          "sha256": "5417e6c5fecf93049fd809996e32bbd7f94ee6e321a482882e8edde293450e52",
+          "size": 5128
+        },
+        "charts/backend/templates/migration-job.yaml": {
+          "sha256": "0784e69a70a8c73afd62c532d2a411fcd3d3d9682286c36a8d7b9fec65e87a81",
+          "size": 3956
+        },
+        "charts/backend/templates/service.yaml": {
+          "sha256": "84b0d208c354936fa46404a1b2c179dc72fbe0365d3b7cdc201aa14c9c2a03c6",
+          "size": 556
+        },
+        "charts/backend/templates/serviceaccount.yaml": {
+          "sha256": "efaa2ac575ce0da638a9f151282365ff7b6337de87a28c7a8680920b3be191a1",
+          "size": 418
+        },
+        "charts/backend/values.schema.json": {
+          "sha256": "ac517fe1e9643c430e82f33a3ff486f9c2a9176563ebd4189a53b58c18ad521e",
+          "size": 6267
+        },
+        "charts/backend/values.yaml": {
+          "sha256": "e5c74d65e00b1bcb98bb214648041c8ac227e4ce352872c08ac3788cc2a77e8b",
+          "size": 1797
+        },
+        "charts/frontend/Chart.yaml": {
+          "sha256": "3d24f55af5013e502a37552fc8c8bd87a7a3dda28bec6778b9fa45ae4d558a44",
+          "size": 115
+        },
+        "charts/frontend/templates/_helpers.tpl": {
+          "sha256": "b55dde6cf348d4572704105e844e3052bdab95947745589a592bba5eb751cfcf",
+          "size": 354
+        },
+        "charts/frontend/templates/configmap.yaml": {
+          "sha256": "58e886c4bd117b8aa87bea58f02d3bafe18ed1a585099792678ff75882d1a3a5",
+          "size": 1037
+        },
+        "charts/frontend/templates/deployment.yaml": {
+          "sha256": "5579aa0510d20de312c44600b146a8e7f31fbb839d3035d03f2967e7953f7d0e",
+          "size": 5749
+        },
+        "charts/frontend/templates/service.yaml": {
+          "sha256": "6523f5c436ea8d010603e932c2ed1572af6cb8fde696c4e0402384ffe1815fbb",
+          "size": 546
+        },
+        "charts/frontend/templates/serviceaccount.yaml": {
+          "sha256": "44e9b26646e023bf08e84c332d1af0a46674f246e3c992228205bd239164843d",
+          "size": 445
+        },
+        "charts/frontend/values.schema.json": {
+          "sha256": "f7e002e0792242386e57d39b6603729597dea3111278184d526aa9df90c1c301",
+          "size": 5721
+        },
+        "charts/frontend/values.yaml": {
+          "sha256": "624b3632a4ffee71d6fd48ff67543d7dfdc92139bc318a019093e3359bbf76e9",
+          "size": 1209
+        },
+        "charts/postgresql/Chart.yaml": {
+          "sha256": "28482b084bfef71451ce5cec279e7fcaf24069a004ddaca4a80a5c6bdc16e9fd",
+          "size": 145
+        },
+        "charts/postgresql/templates/_helpers.tpl": {
+          "sha256": "f06eefd7b39fdfe886ef97035b42175c1ef31f8004a6e913f878df015d566dfd",
+          "size": 383
+        },
+        "charts/postgresql/templates/headless-service.yaml": {
+          "sha256": "618c865b632a1c8b9ebb8e0d5e94108096dd59d6ab9fd21c02ec64a20a5cdf1e",
+          "size": 518
+        },
+        "charts/postgresql/templates/init-configmap.yaml": {
+          "sha256": "849c3800f17ef9de07964bcf3a1e1d2a5ff629ab5bfe39f11cd50895f6ef5050",
+          "size": 1137
+        },
+        "charts/postgresql/templates/pvc.yaml": {
+          "sha256": "e2b0f7b3114cf86cc5a58cbcba82eea29785dbf341d6b90c20e602b656eb2480",
+          "size": 682
+        },
+        "charts/postgresql/templates/service.yaml": {
+          "sha256": "f5c8e493e720322450e74cbd9cd7356500896a962570330579279a88a8e4e016",
+          "size": 475
+        },
+        "charts/postgresql/templates/serviceaccount.yaml": {
+          "sha256": "e446ea511c47f989fa3977ee0c89111597d3def0f0d87c1171e8aa43a12d943b",
+          "size": 318
+        },
+        "charts/postgresql/templates/statefulset.yaml": {
+          "sha256": "9aeeff20485e3ce9b4dfb6cd57ce897e07d764e438028bbf2206e2eaeb0f2f3e",
+          "size": 4067
+        },
+        "charts/postgresql/values.schema.json": {
+          "sha256": "a8f3d07d2a8be525b7868a75cbada86b5a27699e8a5e12844bbd7f6117219cae",
+          "size": 1092
+        },
+        "charts/postgresql/values.yaml": {
+          "sha256": "16cdbaa74161d5d822199627311b1f0a4957a2685848b2190b6337bd076d7be4",
+          "size": 1257
+        },
+        "environments/local/README.md": {
+          "sha256": "451d5e6a066b6dba79424bea539345aedfcb7b0260d577b28a3c59355b95f4d4",
+          "size": 184
+        },
+        "environments/local/backend.yaml": {
+          "sha256": "be7b8212ea066e0a601396398310505cb5870c3c7d1c67619b1a421a308c71f8",
+          "size": 1574
+        },
+        "environments/local/frontend.yaml": {
+          "sha256": "57f193504ba28f801c6fe72ec0def62739fe9fb1efd5f853fed8beffd9471a4f",
+          "size": 1458
+        },
+        "environments/local/postgresql.yaml": {
+          "sha256": "376c3ebdc39a5fdf1f2a32724c2821cd56dee79b0bf264b03b4a3fa00d9a7088",
+          "size": 281
+        }
+      },
+      "inventory": {
+        "entries": [
+          {
+            "containerName": "backend",
+            "containerType": "containers",
+            "digest": "sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d",
+            "kind": "Deployment",
+            "name": "backend",
+            "namespace": "account",
+            "podSpecPath": "spec.template.spec",
+            "release": {
+              "account.lab/github-run-attempt": "1",
+              "account.lab/github-run-id": "37806373099",
+              "account.lab/image-digest": "sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d",
+              "account.lab/release-record-sha256": "dbea54fc2a4531790fbec5d47ca44b1ec079176376d294371652b1ba93e25cbd",
+              "account.lab/release-record-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/release-record.json",
+              "account.lab/release-schema-version": "github-v1",
+              "account.lab/sbom-sha256": "95d554e528a8297461160e3835435d4eda7f19c5cb9d83b63a76c71cda60f1af",
+              "account.lab/sbom-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/sbom.cdx.json",
+              "account.lab/source-commit": "d29a390c09f8667316569e1bb599bf690b00313d",
+              "account.lab/source-repository": "syuhei0519/backend-app"
+            },
+            "repository": "ghcr.io/syuhei0519/backend-app",
+            "tag": "d29a390c09f8667316569e1bb599bf690b00313d"
+          },
+          {
+            "containerName": "frontend",
+            "containerType": "containers",
+            "digest": "sha256:9f46c61c19918e6f9e8e9a1def2504ed61ec835af098673de44223025f8b3a66",
+            "kind": "Deployment",
+            "name": "frontend",
+            "namespace": "account",
+            "podSpecPath": "spec.template.spec",
+            "release": {
+              "account.lab/github-run-attempt": "1",
+              "account.lab/github-run-id": "37808152036",
+              "account.lab/image-digest": "sha256:9f46c61c19918e6f9e8e9a1def2504ed61ec835af098673de44223025f8b3a66",
+              "account.lab/release-record-sha256": "d36926c4ea8a340721a831481d436772d94c6c8884657a88816ae9bf1cb37fe1",
+              "account.lab/release-record-url": "https://github.com/syuhei0519/frontend-app/releases/download/gha-ef5d8e4ace7a2e82be3aba97744bec712b3a0d3a-37808152036-1/release-record.json",
+              "account.lab/release-schema-version": "github-v1",
+              "account.lab/sbom-sha256": "7d9041d489f466ac63a44b462700a116caa2dad74e0382023521e533407daa9a",
+              "account.lab/sbom-url": "https://github.com/syuhei0519/frontend-app/releases/download/gha-ef5d8e4ace7a2e82be3aba97744bec712b3a0d3a-37808152036-1/sbom.cdx.json",
+              "account.lab/source-commit": "ef5d8e4ace7a2e82be3aba97744bec712b3a0d3a",
+              "account.lab/source-repository": "syuhei0519/frontend-app"
+            },
+            "repository": "ghcr.io/syuhei0519/frontend-app",
+            "tag": "ef5d8e4ace7a2e82be3aba97744bec712b3a0d3a"
+          },
+          {
+            "containerName": "migrate",
+            "containerType": "containers",
+            "digest": "sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d",
+            "kind": "Job",
+            "name": "backend-migration",
+            "namespace": "account",
+            "podSpecPath": "spec.template.spec",
+            "release": {
+              "account.lab/github-run-attempt": "1",
+              "account.lab/github-run-id": "37806373099",
+              "account.lab/image-digest": "sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d",
+              "account.lab/release-record-sha256": "dbea54fc2a4531790fbec5d47ca44b1ec079176376d294371652b1ba93e25cbd",
+              "account.lab/release-record-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/release-record.json",
+              "account.lab/release-schema-version": "github-v1",
+              "account.lab/sbom-sha256": "95d554e528a8297461160e3835435d4eda7f19c5cb9d83b63a76c71cda60f1af",
+              "account.lab/sbom-url": "https://github.com/syuhei0519/backend-app/releases/download/gha-d29a390c09f8667316569e1bb599bf690b00313d-37806373099-1/sbom.cdx.json",
+              "account.lab/source-commit": "d29a390c09f8667316569e1bb599bf690b00313d",
+              "account.lab/source-repository": "syuhei0519/backend-app"
+            },
+            "repository": "ghcr.io/syuhei0519/backend-app",
+            "tag": "d29a390c09f8667316569e1bb599bf690b00313d"
+          },
+          {
+            "containerName": "postgresql",
+            "containerType": "containers",
+            "digest": "sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f",
+            "kind": "StatefulSet",
+            "name": "postgresql",
+            "namespace": "account",
+            "podSpecPath": "spec.template.spec",
+            "release": {},
+            "repository": "docker.io/library/postgres",
+            "tag": "17.10-bookworm"
+          }
+        ],
+        "inventorySha256": "5cdc95741cb1fea328519bd62da13bae117a1a434e3ffc232cdc6d9ce52cbe59",
+        "renderSha256": "4e2569d700f06c147ca36fd18e2e30e5b724b2be2bea3a87e35e428893d4d61a",
+        "schema": "core-platform/image-inventory/v1"
+      }
+    }
+  },
+  "runtime": "docker",
+  "runtimeTools": {},
+  "schema": "core-platform/render-binding/v1",
+  "sourceSha": "2d45e35a2aaeee7eacb9a121d92b34a7f291ea76",
+  "targetSha": "e039945a90625262f91382e6f71149d046e31b34",
+  "trustedInputs": {
+    "tools/inventory/go.mod": {
+      "sha256": "adef085f5da4a548681313608cdf00209e98d109080b4ec7b7860292b2daefd5",
+      "size": 81
+    },
+    "tools/inventory/go.sum": {
+      "sha256": "e42794fa9b56301ad073de55cac1dea683b320ed951454d8709ffc7156088dd2",
+      "size": 360
+    },
+    "tools/inventory/main.go": {
+      "sha256": "2d775e4dd4b9a289f9786ff8e202abc26e642f8ed346c5ffba4df6d2b8a73762",
+      "size": 7796
+    },
+    "tools/inventory/main_test.go": {
+      "sha256": "9d1cf8331152a75d413c6e095c22ebaeb0ed12b4b4f6e9d4b0c2140f56ed4ff8",
+      "size": 3208
+    },
+    "tools/inventory/platform.go": {
+      "sha256": "97c7f1e98a62415fd9eb9a1148375fe0266e42cbc1b52b6d78d8466e2dbe5e26",
+      "size": 3411
+    },
+    "tools/inventory/platform_test.go": {
+      "sha256": "46f5bb16fcd55cb18c325c62a0b9edd6230a0e019afdb19ca31fa4c69b144f34",
+      "size": 2711
+    },
+    "tools/inventory/vendor/gopkg.in/yaml.v3/LICENSE": {
+      "sha256": "d18f6323b71b0b768bb5e9616e36da390fbd39369a81807cca352de4e4e6aa0b",
+      "size": 2151
+    },
+    "tools/inventory/vendor/gopkg.in/yaml.v3/NOTICE": {
+      "sha256": "f6c2dd3a67b576eafb89b80200b8b1627230bf3821a0c14cb99a22ac19107d00",
+      "size": 560
+    },
+    "tools/inventory/vendor/gopkg.in/yaml.v3/README.md": {
+      "sha256": "f9e5f315e32751d29512482b3ba6417b5a0b3808e9ace434286096072b428fab",
+      "size": 3453
+    },
+    "tools/inventory/vendor/gopkg.in/yaml.v3/apic.go": {
+      "sha256": "53051cabd9cd9e98d49dea201a11475a11e6cc436b32a54e7d46bebdce88cdc3",
+      "size": 21999
+    },
+    "tools/inventory/vendor/gopkg.in/yaml.v3/decode.go": {
+      "sha256": "a66a783addb0f9cdb45f9e87deb0e51c2aca6bf81e46d4e822136993ba81505d",
+      "size": 24953
+    },
+    "tools/inventory/vendor/gopkg.in/yaml.v3/emitterc.go": {
+      "sha256": "5ce8fbd8a664831adb58c1c82280fd3568d14fab38868142a765d1eb1e05d3a3",
+      "size": 55187
+    },
+    "tools/inventory/vendor/gopkg.in/yaml.v3/encode.go": {
+      "sha256": "be13ba7293fb7a39157b58e304de89d81c46c0332b97bbc4152273515b61ee86",
+      "size": 14789
+    },
+    "tools/inventory/vendor/gopkg.in/yaml.v3/parserc.go": {
+      "sha256": "4ca0ff93c79c32592106e3c44a7a6dedd41f6d55d88809aaa3b28fd675b0aa82",
+      "size": 40822
+    },
+    "tools/inventory/vendor/gopkg.in/yaml.v3/readerc.go": {
+      "sha256": "7693311b8e90eebf81d8468cb5a312725491002c5c6061c49a5488435069c7a3",
+      "size": 14089
+    },
+    "tools/inventory/vendor/gopkg.in/yaml.v3/resolve.go": {
+      "sha256": "69b6069012fef0a518e379222007f6ea7622cb1c235a35b1355bb5641ab16d26",
+      "size": 8514
+    },
+    "tools/inventory/vendor/gopkg.in/yaml.v3/scannerc.go": {
+      "sha256": "730400aff4d8033ea29e472fe29f63aa9d78068dc3a2f719385dc2a612ccf884",
+      "size": 87960
+    },
+    "tools/inventory/vendor/gopkg.in/yaml.v3/sorter.go": {
+      "sha256": "111f911a8095798fda2a7c708e20a931d2c228e637ff82de3ff44794d2d0ae92",
+      "size": 3345
+    },
+    "tools/inventory/vendor/gopkg.in/yaml.v3/writerc.go": {
+      "sha256": "ebf6b56361527f081803c4067263ea97f44637ce2cc329168fb17e4e193fc40d",
+      "size": 1834
+    },
+    "tools/inventory/vendor/gopkg.in/yaml.v3/yaml.go": {
+      "sha256": "447f1c34c1851298028e561e8aaefde8c9c3ebcc2f965ff81f9a603f2d9e4fc5",
+      "size": 20084
+    },
+    "tools/inventory/vendor/gopkg.in/yaml.v3/yamlh.go": {
+      "sha256": "013b8e96cde431fcacb828c6ea5de97d02f659ac02f42bb2310b7ad173897ff5",
+      "size": 29046
+    },
+    "tools/inventory/vendor/gopkg.in/yaml.v3/yamlprivateh.go": {
+      "sha256": "5e29848cb6ddbfe90bea82fd2c26e507de666833a1ff45dfd545a4bf5bb6254d",
+      "size": 6129
+    },
+    "tools/inventory/vendor/modules.txt": {
+      "sha256": "727892575872abcf6d59322e9de658417880efa42503f77350678aa307492850",
+      "size": 55
+    },
+    "tools/release-record/README.md": {
+      "sha256": "d0055530d87dae8c05ffb0db7e4a4ad3ea6250478e451cb09107e5fbbf0a1156",
+      "size": 5021
+    },
+    "tools/release-record/backend_inspection_test.go": {
+      "sha256": "e7dce679bc1e671ec5615d821878cbea48243c4814bd9a2f9dfeb88cdc0c0f50",
+      "size": 2831
+    },
+    "tools/release-record/cmd/consumer-scan/main.go": {
+      "sha256": "987c87f7cdea988537331f7876252756fed430bc783ac84c0cabdea66619d6cc",
+      "size": 1812
+    },
+    "tools/release-record/cmd/package-contract/main.go": {
+      "sha256": "afeab99075460385c67db0cd356e30567f3f1cdb4f51ad07ad939011c10dab4b",
+      "size": 1492
+    },
+    "tools/release-record/cmd/package-read-contract/main.go": {
+      "sha256": "656dcdce6826e57c4b53086c35e6de45e1d8aad743a69e4db647bd25303d15d8",
+      "size": 4761
+    },
+    "tools/release-record/cmd/package-read-release/main.go": {
+      "sha256": "b6d6854a61070d4ef9ad67d5488c83281cc4186020ac3b523e0b15b758cfbb06",
+      "size": 2412
+    },
+    "tools/release-record/cmd/record-check/main.go": {
+      "sha256": "f4fca9d2a2871521058c7046b09efa231b1d0ea7b86782c3f71aafc6c344d335",
+      "size": 760
+    },
+    "tools/release-record/consumer.go": {
+      "sha256": "ea6f8b424076d3a37bda1db4e0aeb23ae0475fd8ece838ad5e81088e732c099b",
+      "size": 8944
+    },
+    "tools/release-record/consumer_test.go": {
+      "sha256": "f05a8c8ed96d565a92cf8b2077b4db5d7055c9e5c662279712795fccd0ddbb9c",
+      "size": 6071
+    },
+    "tools/release-record/consumer_writer_test.go": {
+      "sha256": "d5f4f43a7b142ae99115f26cfbb11b76e06ee59020c63801f99f916154711c9c",
+      "size": 3504
+    },
+    "tools/release-record/go.mod": {
+      "sha256": "d7edd4c3cfcdd3b1057698f3e153356f3ba0b1b094515602b9764dec8f1ba9dd",
+      "size": 151
+    },
+    "tools/release-record/go.sum": {
+      "sha256": "eda25c805108c8087ac00beabbc3a7811871634ad34af5f76f617ddb3e1278e2",
+      "size": 682
+    },
+    "tools/release-record/inspection_consumer.go": {
+      "sha256": "764133132e7bd9d55a3edbd644aada41cfc8726050084b5c1c0191806e533711",
+      "size": 8191
+    },
+    "tools/release-record/inspection_consumer_test.go": {
+      "sha256": "b9160fbca757041bba85a57c208be77b7a55608b02a71de194a939e860d94ef0",
+      "size": 9312
+    },
+    "tools/release-record/legacy_registry.go": {
+      "sha256": "e0defcb6f92054eefd34190570528d6d59becb1f95f15cfca6df9f12baae6236",
+      "size": 5342
+    },
+    "tools/release-record/legacy_registry_test.go": {
+      "sha256": "eab50a75ed5616d2a0c6084c27f75982e7cad7ab54e81acbebbad3f80d4563eb",
+      "size": 4032
+    },
+    "tools/release-record/oci_identity.go": {
+      "sha256": "4e996c02c171a6907a34316809da7906e4b708297123be81e307c22a1e0815db",
+      "size": 4529
+    },
+    "tools/release-record/oci_identity_test.go": {
+      "sha256": "6d3bdd922084f3b98f4119421040c53abff5a26f4fbea24cfe0dd5b948479eb9",
+      "size": 2416
+    },
+    "tools/release-record/package.go": {
+      "sha256": "e4cedcc55fafeb20dfb9f6ff861ea0637bd2843b6197f790b0b65496a2c947ed",
+      "size": 6295
+    },
+    "tools/release-record/package_test.go": {
+      "sha256": "b7e8e24be30d7e394b283d9280b93efbbeaa242008a3503333e67c09e16685f9",
+      "size": 4478
+    },
+    "tools/release-record/publication.go": {
+      "sha256": "3f143352b7b15ce56b11c469517925ce61b34750617f1c14cd0e840ef4882917",
+      "size": 1496
+    },
+    "tools/release-record/publication_test.go": {
+      "sha256": "59380bf812fb0926e98ddd0be03a593a2706bd979d6fb05e66b71cd741a2d55e",
+      "size": 6092
+    },
+    "tools/release-record/read_release.go": {
+      "sha256": "9931ab904b3be690f9d5cd307223925a2b2c4bcdaf1d72e479a95abe96642b67",
+      "size": 3704
+    },
+    "tools/release-record/read_release_test.go": {
+      "sha256": "b47695268db8c98bfa89c2a013b71bc7e55dcd1ad02374862cb0337140c623dd",
+      "size": 3872
+    },
+    "tools/release-record/record.go": {
+      "sha256": "0546d53af7b316df7eb25c6029e643843864b22519317f9a2e5842b34a5881df",
+      "size": 10957
+    },
+    "tools/release-record/record_test.go": {
+      "sha256": "336fbdc29f12c101249b3293c0ad619e93152f045845c211ecce44bcf7e99290",
+      "size": 5944
+    },
+    "tools/release-record/registry_failure_test.go": {
+      "sha256": "397b2cc897890685dbb8996c3e602972e07def8fe2ef0616aa56ece5cfc0ebbf",
+      "size": 1487
+    },
+    "tools/release-record/registry_identity.go": {
+      "sha256": "4b49a732d7564a96c4b5306d775edeb15c5439da7bbe2fb682f88d38b28fe466",
+      "size": 2217
+    },
+    "tools/release-record/registry_identity_test.go": {
+      "sha256": "a50b43c90db1106ce793e742545a296ddf992e3f59811943721411677ebfc814",
+      "size": 4326
+    },
+    "tools/release-record/registry_request.go": {
+      "sha256": "7706bc0d0429a256b4b704f833e8708446f9d931cbce48c243203d0ea490f096",
+      "size": 3635
+    },
+    "tools/release-record/registry_request_test.go": {
+      "sha256": "1d6d11b819fff9c38e12dbf3ce2ec7facf5ca0d689f25c48992125ad09a392a5",
+      "size": 5458
+    },
+    "tools/release-record/rescan.go": {
+      "sha256": "8dd92aafa4522e315783b4f20d4cc36ef173caaafbf4ae8df0bc40b93cfebb78",
+      "size": 2892
+    },
+    "tools/release-record/rescan_test.go": {
+      "sha256": "c0d28887abb9015e37ed458db6cef175da59a01535c9caf72053d51754a41ce1",
+      "size": 2268
+    },
+    "tools/release-record/retention.go": {
+      "sha256": "a6cd798f96de08040f2e4052acb4559ef902e6d4cb342f86afd7a53f6bb8537f",
+      "size": 2803
+    },
+    "tools/release-record/retention_test.go": {
+      "sha256": "8a6b3210b0de459a15fd82475960dea40a8ec402e9c50c02be40113ef971cfcd",
+      "size": 2236
+    },
+    "tools/release-record/sbom.go": {
+      "sha256": "6c8236003ab8333defb2dc7ba3fc3e1be1489c2dee44fa5822c377cca388c34c",
+      "size": 6949
+    },
+    "tools/release-record/sbom_test.go": {
+      "sha256": "a184dbbff923d52fb26c383b8f328d896a52a1cbd3fb000ebacf306c8dd6b81c",
+      "size": 4032
+    },
+    "tools/release-record/scan_record.go": {
+      "sha256": "e9a49943c573aaec9f457fd627aebcc8150adc2fb3f1f6fb576ec750e37f470d",
+      "size": 7937
+    },
+    "tools/release-record/scan_record_test.go": {
+      "sha256": "7a60c5d057fdc0c4bc9541fca0b048f14d1a28b5efa06840b1bd2acd02a97239",
+      "size": 4895
+    },
+    "tools/release-record/schemas/LICENSE": {
+      "sha256": "6c29f22a4a7385285c6f579ec9f33c5e989f00739d6b257243a0b082ec9447ae",
+      "size": 11341
+    },
+    "tools/release-record/schemas/README.md": {
+      "sha256": "fbcaded01a4bba8050c79a1440ca852e7998a9067a5b34a32fe8ab9b6cfc4912",
+      "size": 1326
+    },
+    "tools/release-record/schemas/bom-1.7.schema.json": {
+      "sha256": "df472ef4aaf593904c479293723a1a5c191d6672715c93b3c0b5c318f3914221",
+      "size": 315607
+    },
+    "tools/release-record/schemas/cryptography-defs.schema.json": {
+      "sha256": "018ea7f78b5208ec647cfd10f669cc9c26aba6aceb79c4da7f9c0ef4c99b60de",
+      "size": 16855
+    },
+    "tools/release-record/schemas/jsf-0.82.schema.json": {
+      "sha256": "8bae002c25e723db7ee1f26afde680ae1a2b1a8f6b4b4b0fd65dc3becb090aae",
+      "size": 8058
+    },
+    "tools/release-record/schemas/spdx.schema.json": {
+      "sha256": "54a6288292bc6c90b0d3952f5f939f17436fa76704ffe68a46e5b78539c7cc1b",
+      "size": 15883
+    },
+    "tools/release-record/source_api.go": {
+      "sha256": "accf7b0a84b07f08dc06df0dbd72f3e5e35efd91016cc660dd03bff399b8d0b1",
+      "size": 8063
+    },
+    "tools/release-record/source_api_test.go": {
+      "sha256": "fa7cc7bb66ebdbd7dd2987df5698e3adb804673318503fde632e4b5261369e91",
+      "size": 2789
+    },
+    "tools/release-record/storage_contract.go": {
+      "sha256": "79e00ad606e257cceef66faa580513504efdd570d8a7656209c54d77d7df08b8",
+      "size": 3953
+    },
+    "tools/release-record/storage_contract_test.go": {
+      "sha256": "7d1f87230a6c16819f52e385d0064a4dd9c9299da0bbaec75a9c4fa0c2df60a1",
+      "size": 1397
+    },
+    "tools/release-record/store_bundle.go": {
+      "sha256": "15628895669578f036e188ea8710df866388a97c51afd10d81429e5f00a98532",
+      "size": 5787
+    },
+    "tools/release-record/store_bundle_test.go": {
+      "sha256": "8df04e395c5307097498c457ad5fd81a0417dbf7edf1b7e87228e03f40c4d6ff",
+      "size": 5614
+    }
+  },
+  "verifierSha": "2d45e35a2aaeee7eacb9a121d92b34a7f291ea76"
+}

@@ -1,0 +1,159 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "app-order-service",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "implementation",
+  "task_id": "order-m0-implementation-a1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "research-design",
+      "task_id": "research-order-design-a3",
+      "attempt": 3,
+      "relationship": "dependency",
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332/delivery-verification/20261011/research-public/handoff.json",
+      "revision": "sha256:2c1876c21567399ca6ecf1d8afaed96c062da5a154b01d165f42a3e0f3afbc7d"
+    }
+  ],
+  "system_status": "completed",
+  "status": "blocked",
+  "summary": "Local M0 implementation/self-tests complete; remote publication and mandatory fresh Git delivery blocked by Cloud Git access failure. Product ACs unverified.",
+  "assignment": {
+    "scope": "application-manifest#backend-app-2/M0",
+    "ac_ids": [
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "最小変更feature branch feat/order-trusted-manifest-m0（既存があれば重複せず状態確認）に実装、許可scopeのみ。",
+      "既存ci/github/test.shと関連既存全tests、新v2正常・異常境界回帰、rendererinventory/セキュリティテストが成功。",
+      "main baselineと変更headの既存live render byte/semantic比較、chart/values/Secret/PVC不変と配備影響noneを根拠付き報告。証明不能なら無理にnoneとしない。",
+      "source/commit/fixture/schema/README整合、後続B2へ渡す共通仕様と不採用案/リスクを記録。",
+      "feature pushとDraft PRをapplication-manifestへ作成可。Issue2には通常リンクのみ、Closes/Fixesは禁止。main push/merge/auto-merge/実環境deploy/既存PR17操作は禁止。CI結果は対象headとともに報告、自己testと独立Test/Reviewを区別する。",
+      "Handoffv2、implementation report、test再現手順、knowledge候補任意、固定commit/artifact全pinsを作成。System専用evidence/order-m0-implementation-a1 branch、prefixevidence/order-m0/implementation-a1/へ公開安全性点検後に保存可。privateorig/hash、runtime実ID、認可/私的receipt、秘密/internal生ログは除外。元upstream bytesは不変の固定参照を使う。Delivery1.2の全closure freshGit検証とPublicationReceiptを返す。新Consumer認可を自己発行しない。型/拡張子/JSON-looking textの問題は安全な明示派生版として別shaで記録し、旧sourceを書換えない。",
+      "independentTest/ReviewはManagerが後で別Cloudタスクを起動。あなたが自己起動しない。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "implementation.patch",
+      "kind": "patch",
+      "locator": "implementation.patch",
+      "revision": "sha256:ee9c456f7088c472a2266d328cb512f97e811cfd2513370241d38a7be4cc99f9",
+      "summary": "Local fixed M0 result; not remote publication or independent verification."
+    },
+    {
+      "id": "implementation.bundle",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/application-manifest/commit/2d45e35a2aaeee7eacb9a121d92b34a7f291ea76",
+      "revision": "2d45e35a2aaeee7eacb9a121d92b34a7f291ea76",
+      "summary": "Public derivative replaces private local binary bundle transport with the identical published implementation commit; historical artifact ID retained."
+    },
+    {
+      "id": "implementation-report.txt",
+      "kind": "document",
+      "locator": "implementation-report.txt",
+      "revision": "sha256:499fa90c090142349b310e46986dddd45e3f396ed036a14af4dfc945c184e9ea",
+      "summary": "Local fixed M0 result; not remote publication or independent verification."
+    },
+    {
+      "id": "reproduce.sh",
+      "kind": "other",
+      "locator": "reproduce.sh",
+      "revision": "sha256:68e23b40c924384b7add1cafb4f0cc3a11ccb258b8f8e109e9a60c4151d5d11f",
+      "summary": "Local fixed M0 result; not remote publication or independent verification."
+    },
+    {
+      "id": "render-comparison.json",
+      "kind": "test-report",
+      "locator": "render-comparison.json",
+      "revision": "sha256:7da00869cd803d3a5c4c009315d566fa91193a92f85011b1b7b1505ca05b62a0",
+      "summary": "Local fixed M0 result; not remote publication or independent verification."
+    },
+    {
+      "id": "trusted-render.json",
+      "kind": "test-report",
+      "locator": "trusted-render.json",
+      "revision": "sha256:d79cab3356aa455dac53daab241127cb8bf3f5701a950a3c988fe5c9928afaf8",
+      "summary": "Local fixed M0 result; not remote publication or independent verification."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "local-implementation",
+      "claim": "M0 local implementation and self-validation verified; full assignment delivery blocked.",
+      "artifact_ids": [
+        "implementation.patch",
+        "implementation-report.txt",
+        "trusted-render.json",
+        "render-comparison.json"
+      ],
+      "locator": "implementation-report.txt",
+      "observation": "Fixed head 2d45e35a2aaeee7eacb9a121d92b34a7f291ea76; tests and unchanged live render verified. GitHub CLI HTTP401 and canonical fresh Git preflight failed; no remote publication."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "not_assigned",
+      "scope": "Outside M0 assignment; product behavior not measured.",
+      "artifact_ids": [
+        "implementation-report.txt"
+      ],
+      "evidence_ids": [
+        "local-implementation"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "not_assigned",
+      "scope": "Outside M0 assignment; product behavior not measured.",
+      "artifact_ids": [
+        "implementation-report.txt"
+      ],
+      "evidence_ids": [
+        "local-implementation"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "unverified",
+      "scope": "AC-3 evidence infrastructure implemented and self-tested locally, but required remote delivery remains blocked; real Service/Argo/digest not measured. Earliest phase premerge.",
+      "artifact_ids": [
+        "implementation-report.txt"
+      ],
+      "evidence_ids": [
+        "local-implementation"
+      ]
+    }
+  ],
+  "block_reasons": [
+    {
+      "code": "ACCESS_DENIED",
+      "detail": "Cloud GitHub CLI returns HTTP401 Bad credentials and canonical isolated fresh Git retrieval fails. Connector read works but cannot substitute for mandatory fresh Git closure verification.",
+      "required_action": "Restore authorized Cloud Git access; preserve local fixed commit and attempt1, then complete feature publication, Draft PR, CI and Delivery1.2 using fresh Git. Manager decides subsequent budgeting."
+    }
+  ],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

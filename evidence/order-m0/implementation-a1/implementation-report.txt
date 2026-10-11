@@ -1,0 +1,93 @@
+Public edited derivative of the historical attempt1 report. Original execution status and measurements are preserved. Current publication recovery is recorded separately. No equivalence to the private original is claimed.
+
+Order M0 implementation attempt1 — local result, remote delivery blocked
+
+Repository: syuhei0519/application-manifest
+Branch: feat/order-trusted-manifest-m0
+Base: e039945a90625262f91382e6f71149d046e31b34
+Local head: 2d45e35a2aaeee7eacb9a121d92b34a7f291ea76
+Tree: 53f6b56b8fe0d93f135d4f7cc8befcc606e7131a
+System: syuhei0519/ai-development-system@0083151aa2f6b2aaf0e1db64ada3f196ed766e48
+Scope: application-manifest#backend-app-2/M0; implementation; AC-3 infrastructure only.
+Public alias: order-m0-implementation-a1. No real execution identifiers are included.
+
+Outcome
+Local implementation and self-validation verified. Assignment status blocked because
+feature publication/Draft PR/remote CI and mandatory Delivery 1.2 fresh Git closure
+cannot be completed with the current Cloud Git connection. No publication receipt
+or new consumer authorization is issued. No Issue final_assessment is issued.
+
+Input delivery
+Canonical fixed-System consume_delivery.py completed successfully before using the
+Research/Test/B1 inputs. Records commit ce5457ba092ee80458a9d4131e4aabf1faf24627,
+prefix evidence/order-b1/test-e2-a1/. Manifest 37017 bytes, SHA256
+6c596434432a04a332f08d2eebd6f4901691b54bb52eacfc508aa956987c2e5e.
+Publication receipt 11264 bytes, SHA256
+4619ebc17d071596351d099648d77533f6a2e7741507d3cd01ea9117b019093f.
+All explicit objects, slots, candidates, source trees, types and Handoff/retry
+bindings passed. Manager's separate authorization and consumption receipt remain
+private and are excluded here. Historical publication approval remains unverified;
+the separate implementation-purpose use approval was applied. Six edited Test
+representations were accepted as derivatives, never claimed identical to originals.
+No AGENTS.md or related .agents/skills were present in the target checkout or
+fixed System checkout; empty workspace .agents/.codex were checked. Fixed workflow,
+Handoff2.0, Delivery1.2, Readiness1.0, Issue Completion and task input were read.
+
+Implementation
+Explicit backend/frontend v1 and Order v2 source/service/image mapping; strict
+Order schema/annotations; matching main/workflow/run/attempt and matrix evidence;
+service-specific canonical record ZIPs; release Git tag/SBOM/scan/config/registry
+bindings; peer Account source-scan binding; fail-closed expiry and single amd64
+manifest. Proposal helper has fixed Order values/branch routing. Anonymous registry
+reads strip reader tokens. Trusted inventory includes optional future Order charts,
+rejects unknown/incomplete/removed baseline entries and unscanned PodSpec paths.
+PostgreSQL has a separate immutable allowlist/security/PVC retention policy.
+Shared synthetic fixtures and contract/reproduction docs are committed.
+
+Self-validation (not independent Test/Review)
+PASS bash ci/github/test.sh: docs regression (14 cases), all included Go modules,
+checksum binary compilation, five existing trust suites, new render inventory
+suite (4), isolated Linux namespace boundary (3), GitHub release suite (19).
+PASS additional trusted_binary (1), trusted_consumer_failure (1), trusted_phase2 (2).
+PASS Helm lint/template via ci/validate.sh, tools/checksum go test ./...,
+rendered scan-gate structural check, and inventory parse of all live renders.
+PASS trusted-render.py --test-only with fixed base/head/verifier in bounded,
+networkless Docker: provenanceRequired=false; eligible=false.
+PASS git diff --check. Source changes committed; working tree clean.
+Initial regression invocation was interrupted by an in-flight script update and
+was rerun successfully after editing stopped. Two extra legacy suites initially
+used incompatible -I import isolation; they passed using their normal entrypoints.
+No failed run has been represented as a pass.
+
+Deployment impact
+All charts (28 files) and environments (4 files) are byte-identical to base.
+Existing per-chart rendered bytes and the trusted render/inventory are identical.
+Render hashes/sizes are in render-comparison.json; trusted report records fixed
+base/head/tree and before/candidate inputs. No new chart/DB/PVC/Secret/Application,
+workflow or live values are added or enabled. Therefore this exact diff has no
+rendered deployment effect. This is a static proof, not an observation of live Argo.
+No cluster, Account data, migration, Secrets, permissions, rules, environment
+approval, PR17 or main branch was modified. Deployment Ready is not established.
+
+Remote access failure and remaining work
+After local tests/commit, gh API returned HTTP 401 Bad credentials; git ls-remote
+returned 'could not read Username for https://github.com'. An isolated fresh
+canonical GitSource retrieval also failed ('Git retrieval failed'). A read-only
+GitHub connector remained usable and confirmed main still at the fixed base.
+No feature push, connector write, Draft PR, workflow dispatch or evidence branch
+publication was attempted. Local main/base have not been silently advanced.
+The connector read does not prove fresh Git transport recovery. Stop the required
+remote delivery until Cloud Git access is restored; do not replace canonical
+fresh Git validation with reconstructed bytes or a self-issued authorization.
+
+Manager continuation
+Recover this exact bundle/patch; verify pins and base, then resume authorized
+feature push/Draft PR and evidence publication after canonical fresh Git works.
+Preserve attempt1 and the unchanged prior B1/Review attempt/terminal histories;
+Manager controls any new dispatch/execution/delivery budgeting. No self-restart.
+Independent Test/Review must be separate Manager tasks. B2 producer is absent:
+its actual job/artifact names and same-archive publication need fixture agreement
+and real producer/consumer verification. Fixtures are not release approval.
+All product ACs remain unverified; AC-3 earliest phase remains premerge and Issue
+integration remains aggregate_required. No formal Manager readiness context was
+supplied/generated; this report provides inputs, not a readiness assessment.
