@@ -1,0 +1,213 @@
+Independent Order M0 Review attempt1
+
+Result: COMPLETED for the assigned AC-3 evidence-verification infrastructure.
+No blocking finding was found in the fixed diff and finite executed review scope.
+This is an AI Review result, not a GitHub required review, Merge Ready, deployment
+permission, real release acceptance, or product AC met. No implementation repair
+was performed. AC-1/2 are not assigned. All product ACs remain unverified.
+
+Fixed subject and scope
+System: syuhei0519/ai-development-system@0083151aa2f6b2aaf0e1db64ada3f196ed766e48
+PR: https://github.com/syuhei0519/application-manifest/pull/18
+Head/executed revision: e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4
+Head tree: 92b867efc6e9163b0cbfd4713b82d0c65e24f769
+Base: e039945a90625262f91382e6f71149d046e31b34
+Base tree: 7c9c8d52bf014f54fe2212b0ef4374c53d9700a3
+Scope: application-manifest#backend-app-2/M0; role review; public alias
+order-m0-review-a1; attempt1; no retry_of. Dependencies are Test3 attempt3 and
+Implementation epoch2 attempt1. No dispatch, execution or delivery history reset.
+CI file config digest: sha256:6f3ec88dc9ef058156a7ecb43915dc51b066fab93740f9d7a0a7970fb63286b9
+This digest covers the sorted 49 CI/workflow path/raw-hash entries from Test3,
+independently recomputed; it does NOT cover current GitHub protection settings.
+
+Input integrity and independent provenance
+The fixed System workflow, task/delivery templates, Handoff2.0 schema/README,
+Delivery1.2, Readiness and Issue Completion contracts were read and applied.
+No AGENTS.md exists in the target/System fixed trees or workspace parent.
+Canonical consume_delivery.py freshly fetched the complete input closure:
+117 explicit objects plus six tree members, 123 total; size/hash/type/slot,
+candidate/source/tree, upstream and retry checks passed before evidence use.
+The exact independently pinned Manager authorization and Consumer receipt are
+private. Input manifest/publication pins are recorded in observations.json.
+No authorization was inferred from public availability, receipts or Producer text.
+
+Research design.txt/addendum.txt at public commit
+10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332 were read as edited derivatives.
+Unavailable private Research originals were not inspected. Their historical
+blocked/completed statuses, Implementation1 blocked and separate publication
+recovery, Test1/2 failed, and all other upstream statuses remain unchanged.
+No private original identity/hash is included in this output. Research supplies
+design, not measured acceptance. Implementation claims, Test3 measurements, CI
+metadata and this Review's measurements are distinct evidence producers.
+
+Diff and contract review
+All 18 changed files were read: README and M0 contract documentation; six JSON
+fixtures; v2 schema; release.py/release_test.py/test.sh; trusted-render.py and its
+tests; validate.sh; inventory main.go/platform.go/platform_test.go. The fixed
+surrounding workflow, renderer, inventory and release execution paths were also
+read. git diff --check passes. No workflow, chart, environment or live values
+file is changed by the PR.
+
+The service table explicitly maps backend and frontend to their existing v1
+source/image pair, and order to backend-app/backend-app-order/v2. v1 record and
+proposal positives remain accepted. Order requires a closed field set and exact
+service/schema/source/image/workflow/main reference/run/attempt agreement. The
+source repo is not derived from the image suffix. Run IDs reject booleans and
+non-integer records; annotation IDs are canonical positive decimal strings.
+Record policy booleans, hash syntax, fresh timestamps and bounded validUntil
+are enforced. Order annotation keys and record/SBOM URLs/checksums are matched.
+Mutable release target_commitish is not used as the Git tag binding: the Order
+tag resolves to the expected commit (including one annotated tag indirection).
+Latest successful main run and current source main are checked and rechecked.
+
+Order's attempt-specific matrix requires validate, image (backend), image (order)
+and ci-result success, plus four unique unexpired same-run/head artifacts. Both
+canonical record artifacts are fetched and bound to their server artifact digest;
+Account and Order share sourceScanSha256 and have distinct archive/image digests.
+Order scan/SBOM assets bind to record hashes; config bytes bind to configDigest,
+OCI labels to source/revision, manifest config descriptor to configDigest, and
+linux/amd64 plus /order-server are required. Index manifests are refused.
+Archive identity remains attested by the protected producer's canonical record;
+M0 does not re-download/rebuild the checked OCI tar. This matches the documented
+M0/B2 boundary. Synthetic producer/consumer agreement is not real B2 integration.
+Proposals select a fixed Order values path/service branch; M0 record/publish
+remain v1. B2's real producer and publication are still separate dependencies.
+
+F1/F2 independent diagnosis and verification
+F1 was the Pod-default-only security check: container UID/GID/nonroot/seccomp
+could override it. platform.go now requires the fixed Pod settings and accepts
+container overrides only if equivalent. Null/malformed/conflicting values reject.
+F2 was the image-family early return that protected only Order's name after an
+image substitution. Both reserved names now bind before image classification.
+Account/Order PostgreSQL cannot enter app provenance by changing repositories;
+the fixed PostgreSQL image cannot acquire an unrelated workload/container name.
+These are fail-closed policy checks, not statements about exploit or deployment.
+
+Both DBs enforce the fixed PostgreSQL repository/tag/digest, StatefulSet and
+container identity, UID/GID/fsGroup999, nonroot, RuntimeDefault, read-only root,
+no escalation/privilege/host namespaces/hostPath/token automount, drop ALL, fixed
+same-namespace PVC presence and retention, and StatefulSet retention. Additional
+DB init/ephemeral/sidecar containers reject. Omitted namespace defaults to account;
+explicit namespaces remain accepted with their matching PVC. No new namespace
+allowlist or namespace permission is inferred. The policy is not a complete
+Kubernetes admission controller or a proof of runtime storage behavior.
+
+Trusted active frontend/backend/postgresql inventory remains required. Optional
+Order/DB chart pairs may be absent only before baseline introduction; partial
+pairs, removal from baseline, unknown names/resources and hidden PodSpecs reject.
+The fixed executed list, not a PR inventory file, controls rendering. Both present
+optional charts are rendered, including disabled output. Live M1 charts are not
+introduced by this PR.
+
+Executed review evidence
+See observations.json and reproduce.sh; no internal raw logs are published.
+bash ci/github/test.sh passed (docs14, Go inventory/release-record/scan-gate,
+checksum compilation, trusted_identity3, trusted_contract10, trusted_registry8,
+pre_merge_check6, trusted_attempts13, trusted_render4, namespace_boundary3,
+release19). Additional trusted_binary1, trusted_consumer_failure1 and
+trusted_phase2 2 passed. Helm lint/render, checksum tests and render-only scan
+passed. Commands used the prepared Cloud Go1.27.1/Helm4.2.4 and pinned Docker
+images. No database/API/cluster/service was started.
+
+Verified upstream reproducer bytes were read before being executed unchanged:
+F1/contract replay138 observations (128 gating, ten generic scan observations),
+security116 and additional38 all matched expectations. The generic scanner's
+acceptance is not substituted for platform inventory checks. Bounded renderer
+fixtures rejected F1 effective-security and F2 Account app-image substitution;
+optional-disabled accepted four entries, optional-enabled accepted six, and bad
+enabled PVC retention rejected. Positive render cases establish that rejection
+was not merely an unavailable sandbox. Baseline fixed render passed with equal
+inventory, provenanceRequired=false and authenticated eligibility=false.
+This Review did not rerun the old vulnerable commits; their historical outcomes
+are Test1/2 testimony with immutable bytes, while current-head fixes were measured.
+
+Security/publication boundaries
+Token-bearing synthetic tests confirmed removal of GH_TOKEN, GITHUB_TOKEN,
+EVIDENCE_READ_TOKEN and ACTIONS_RUNTIME_TOKEN from registry subprocesses and an
+empty Docker credential directory. GitHub artifact retrieval uses its reader
+token only for the API hop; signed storage downloads omit it and refuse another
+redirect. ZIPs require exactly one regular bounded release-record.json, rejecting
+duplicate/path/symlink/nonregular members. JSON duplicate keys, nonfinite values,
+trailing syntax and relevant record types reject. Git snapshots reject nonregular
+chart inputs; unknown and shell-metacharacter chart names do not enter rendering.
+
+Authenticated production verification selects protected-main workflow code,
+requires verifier==current main, fetches the PR SHA, and renders candidate
+charts/values as data using inventory compiled from the fixed verifier. PR scripts
+are not selected for privileged execution. The bounded renderer isolates network,
+filesystem, environment, CPU/memory/PIDs/time/output. Review locally executing
+the assigned PR tests is distinct from that production trust boundary. Synthetic
+--test-only output does not authorize protected-main or real release acceptance.
+No credential, actual agent/task/thread ID, private original/hash, authorization,
+private receipt or internal raw log is included in the public deliverables.
+
+Static deployment effect versus operational policy
+Independent fixed-tree comparison found identical sets and raw bytes for all
+28 chart and four environment files. All three Helm outputs are byte-identical
+and parsed-YAML equal. Per-file/per-render sizes/hashes are in observations.json.
+Existing Secret references, PVC definitions and Account values are unchanged.
+For this exact static diff, rendered workload effect=none is supported by the
+Research M0 exception and measured unchanged inputs/output; no Order is enabled.
+
+Separately, fixed platform-gitops b989e29b8addbd6396c5c2b4833b969bc15fc8fa
+charts/workloads templates/values have targetRevision main and automated
+prune/selfHeal for existing apps. Main remains a GitOps input; equal desired
+resources do not prove absence of reconciliation or live effects. No live Argo
+state was observed. Manager must confirm effective tracked paths/current config
+and policy before adopting none. If merge-triggered deployment is classified
+automatic, scope/config is unknown, or policy requires deployment readiness,
+the fixed contract requires Deployment Ready even with equal render bytes.
+This review does not weaken that gate or assert deployment permission.
+
+CI, readiness and remaining conditions
+Independent read-only GitHub observation confirms PR18 open Draft/unmerged at
+the fixed head/base, and CI runs38125716138 (pull_request) and38125713889 (push),
+attempt1, ci.yml, completed/success. Both have classify/validate/ci-result success,
+docs skipped. These metadata are distinct from the local independent review.
+The event-default PR checkout's historical merge SHA is not established by run
+head_sha or a current candidate. Known Forbidden raw logs were not retried or
+bypassed; no new raw-log gate, failure or workflow rerun is invented.
+
+Test3 is completed at the same head/base/config, but its record's valid_until is
+2026-10-11T09:15:10.837624Z. It was still current at the 09:10 UTC local observation;
+its expiry must be checked at Manager assessment and again before any operation.
+The historical test result is retained, not rewritten or extended. Manager must
+resolve freshness under the unchanged Test budget (attempt3 was its final
+execution). This Review does not renew budgets or relabel itself as Test4.
+Manager's 09:04 protection observation is separately attributed: protected main,
+classic protection disabled, active main-ci-and-pr ruleset, no PR reviews/comments,
+mergeable clean. It is not an independently refreshed ruleset evaluation here.
+
+Implementation Ready for M0 has design/authorization/dependency evidence, but
+formal assessment belongs to Manager. Deployment Ready is unverified: no live
+environment, rollback capability, operational authorization or dependency
+measurements were obtained. Merge Ready is not asserted: Manager must create a
+current context including protection-config digest, required checks/reviews/queue,
+authorization/dependencies and valid separate CI/Test/Review evidence. AI Review
+cannot replace required GitHub review. Subject/config changes or expired evidence
+require reassessment. No formal readiness/context was supplied, so this report
+does not fabricate a Manager assessment or claim validate_readiness --handoff.
+
+AC-3 earliest=premerge and deferred=null remain unchanged. M0 covered means only
+the assigned verification infrastructure review. Real B2 release interoperability,
+Order Service Synced/Healthy/runtime digest, AC-1/2 functionality, real deployment
+and three-repository integration remain unverified. issue_integration_scope stays
+aggregate_required. M0 merge cannot establish Issue achieved. Manager alone may
+perform the eventual whole-Issue final assessment with the complete integration
+and real measurement evidence. No final_assessment is emitted here.
+
+Execution/delivery limits
+Finite fixtures and code inspection are not exhaustive fuzzing or a runtime
+security guarantee. Cloud setup guidance was discovered after the detached review
+worktree had been created; it discourages worktrees. No further worktrees were
+created and original checkouts/tracked implementation stayed unchanged. Synthetic
+fixtures used temporary local clones. An auxiliary diff check first used the
+System repository and failed object lookup; the check against the app passed.
+These command issues are not hidden as product results or new Agent attempts.
+
+Only the authorized System evidence/order-m0-review-a1 branch/prefix is used.
+No main push, PR17 change, merge/auto-merge, Issue edit, deploy, Secret/permission/
+ruleset/environment change, extra OpenAI API, scheduler or other Agent occurred.
+History is referenced at original Git locations without duplicate copies. Fresh
+publication closure and Publication Receipt are delivery evidence only. Consumer
+approval must come separately from Manager; this Review issues none.

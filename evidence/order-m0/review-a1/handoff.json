@@ -1,0 +1,149 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "app-order-service",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "review",
+  "task_id": "order-m0-review-a1",
+  "attempt": 1,
+  "assignment": {
+    "scope": "application-manifest#backend-app-2/M0",
+    "ac_ids": [
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "全 diff と固定 Research の M0 設計を照合し、v1 backend/frontend 互換と v2 Order の service/source/image/workflow/run/attempt/ref/digest/SBOM/record/config/archive/期限/matrix 契約の整合性を確認する。",
+      "F1/F2 の原因と修正を独立に読み、両 DB workload identity、image allowlist、container security/PVC、namespace 正常系、固定 inventory/optional chart と欠落・未知リソース拒否を確認する。必要な再現を sandbox で実行し、未実施と実測を区別する。",
+      "token-free registry、trusted verifier の選択、PR コード非実行、ZIP/path/symlink/型の境界と公開安全性を確認する。",
+      "既存28 chart files、4 environment files、3 render の byte/semantic 不変を根拠で確認し、配備影響 none が静的差分について妥当か判断する。Argo のライブ状態を確認済みとしない。",
+      "CI と独立 Test を分離し、head/base/config と対象が一致するか確認する。CI raw logs の既知 Forbidden は再試行・迂回せず、historical checkout を観測できない限界を正直に残す。追加の raw-log 必須ゲートを発明しない。",
+      "M0 の merge と Issue 全体の完了を分離する。B2 の実 release、Order Service の Synced/Healthy/runtime digest、三 repository 統合は未検証。Merge Readiness と Deployment Ready、GitHub 保護条件、依存関係について Manager が後で判断できる根拠と残条件を返す。AI review は required GitHub review を代替しない。",
+      "阻害指摘があれば重大度・場所・再現・期待/実際・修正条件を示し failed。必要な実行不能は blocked。問題なしなら固定 revision、確認範囲、有限試験の残留リスクを記して completed。今回あなたはコードを修正しない。"
+    ]
+  },
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "order-m0-test-a3",
+      "attempt": 3,
+      "relationship": "dependency",
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/406164b1a69ebf4fe2f0e676c11038f08fff5724/evidence/order-m0/test-a3/handoff.json",
+      "revision": "sha256:5012ad21c781056f6f17c16c9403e4637abb73bff981bbd9a85e14d435c79db2"
+    },
+    {
+      "role": "implementation",
+      "task_id": "order-m0-implementation-e2-a1",
+      "attempt": 1,
+      "relationship": "dependency",
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/b231aa38653333bd86f293a13458f4bf955970f3/evidence/order-m0/implementation-e2-a1/handoff.json",
+      "revision": "sha256:19185748874b350e924c5ec5dd7c468fdb2cb231dd97aea71fb0fcd3b86c7214"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Independent fixed-head M0 review completed without blocking findings. AC-3 verification infrastructure only; product ACs, deployment, Merge Ready and integration unverified. Test freshness and current GitHub policy remain Manager gates.",
+  "artifacts": [
+    {
+      "id": "review-report.txt",
+      "kind": "review",
+      "locator": "review-report.txt",
+      "revision": "sha256:88df59c7b60477279af5ff35b45e068c350eaaf666a17c6a663781fd52f49349",
+      "summary": "Independent full-diff review and remaining readiness boundaries."
+    },
+    {
+      "id": "observations.json",
+      "kind": "test-report",
+      "locator": "observations.json",
+      "revision": "sha256:d3189430ca9c83ea96bd294f882df9e7341495f4ed336d7d5acfe2ad8999eace",
+      "summary": "Compact independent observations, fixed subject and static comparisons."
+    },
+    {
+      "id": "reproduce.sh",
+      "kind": "other",
+      "locator": "reproduce.sh",
+      "revision": "sha256:b169f0a210a83882df3b6779ce487aa813a3bd291e0f8f62f93d5bc7fcd3e35d",
+      "summary": "Synthetic reproduction using unchanged verified upstream scripts."
+    },
+    {
+      "id": "publication-safety.txt",
+      "kind": "document",
+      "locator": "publication-safety.txt",
+      "revision": "sha256:aa65fc0ec871885d165175b7d2210b18e528362ec3de382a957f9bfce32de2bd",
+      "summary": "Public safety review and separate publication/consumer authority boundaries."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "independent-review",
+      "claim": "All assigned M0 review responsibilities completed at fixed revision without a blocking finding.",
+      "artifact_ids": [
+        "review-report.txt",
+        "observations.json",
+        "reproduce.sh"
+      ],
+      "locator": "observations.json",
+      "observation": "Read all18 changed files and fixed design; independently ran existing suite, extra trust/Helm checks, F1 138 observations/security116/additional38 and bounded F1/F2/optional fixtures; verified32 source files and3 render outputs unchanged. CI and Test3 are separate; no real release/deployment or Issue acceptance asserted."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "not_assigned",
+      "scope": "Outside M0 review assignment; application behavior unverified.",
+      "artifact_ids": [
+        "review-report.txt",
+        "observations.json"
+      ],
+      "evidence_ids": [
+        "independent-review"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "not_assigned",
+      "scope": "Outside M0 review assignment; application behavior unverified.",
+      "artifact_ids": [
+        "review-report.txt",
+        "observations.json"
+      ],
+      "evidence_ids": [
+        "independent-review"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "covered",
+      "scope": "AC-3 M0 evidence-verification infrastructure review only; earliest premerge/deferred=null; aggregate_required; actual Service/Argo/runtime digest unverified.",
+      "artifact_ids": [
+        "review-report.txt",
+        "observations.json"
+      ],
+      "evidence_ids": [
+        "independent-review"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

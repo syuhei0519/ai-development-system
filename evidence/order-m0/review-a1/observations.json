@@ -1,0 +1,664 @@
+{
+  "document_type": "independent_review_observations",
+  "producer": "order-m0-review-a1",
+  "observed_at": "2026-10-11T09:12:16.759243+00:00",
+  "valid_until": "2026-10-11T09:27:16.759243+00:00",
+  "subject": {
+    "repository": "syuhei0519/application-manifest",
+    "pr_number": 18,
+    "head_sha": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+    "base_sha": "e039945a90625262f91382e6f71149d046e31b34",
+    "target_revision": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+    "head_tree": "92b867efc6e9163b0cbfd4713b82d0c65e24f769",
+    "base_tree": "7c9c8d52bf014f54fe2212b0ef4374c53d9700a3",
+    "config_revision": "sha256:6f3ec88dc9ef058156a7ecb43915dc51b066fab93740f9d7a0a7970fb63286b9",
+    "merge_group_sha": null
+  },
+  "config_definition": "SHA256 of sorted CI/workflow path+raw hash list, compact JSON sort_keys=true, UTF8 no trailing LF; policy settings not included or inferred.",
+  "config_files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "33f7d7f9cedf9eb6160baabbc90b65d37458838d7b9a1125871590d4370fb7ee"
+    },
+    {
+      "path": ".github/workflows/trusted-manifest.yml",
+      "sha256": "f6d3b59facf48c57e700db1b61a53f29e1a7f6eab73ed2b386974e8c9fefeecf"
+    },
+    {
+      "path": "ci/RELEASE-READER.md",
+      "sha256": "5712bed7870d8f83ead4c11c0c154e2eda9d833e83a13856a8ff00d1e3cd928a"
+    },
+    {
+      "path": "ci/docs-check.sh",
+      "sha256": "511bd139b097e06c5d258a607e55471d0e30426a8c3a13161540d766d40ec187"
+    },
+    {
+      "path": "ci/fixtures/inventory.json",
+      "sha256": "bbc1a446bd03601da2a512c765793889d37f6e0a123ee81a25121a4086234ffb"
+    },
+    {
+      "path": "ci/github/classify.py",
+      "sha256": "273e330670158c26fe99946cc039c21d0d0151ff38a0608cf5cd0bf868415a1c"
+    },
+    {
+      "path": "ci/github/fixtures/backend-record.json",
+      "sha256": "00f2602021a21c553b546083352a50936b10b923b03c39c8218c210d3c8bc4a7"
+    },
+    {
+      "path": "ci/github/fixtures/image-scan.json",
+      "sha256": "63b684854bd4961bcb515b09823ea700dda69135486c5e11352bb1d7850f534e"
+    },
+    {
+      "path": "ci/github/fixtures/order-config.json",
+      "sha256": "8bd06c0e86671a7e7f8d56d6ff80bf56db6e753ff45357ca5d1a21e5a8f680ea"
+    },
+    {
+      "path": "ci/github/fixtures/order-manifest.json",
+      "sha256": "0578ef8eb4991f3b8db3ad3bfe3bb58501962e0ea97449d5feec6cd346d82768"
+    },
+    {
+      "path": "ci/github/fixtures/order-record.json",
+      "sha256": "a3a2b0472fe51d96614406d85fd89748eb8c255c45ebbfd21cfdde57e0968eb5"
+    },
+    {
+      "path": "ci/github/fixtures/sbom.cdx.json",
+      "sha256": "b9104ba1eba76b6b080694eb4eb1717e38d5d9b7dbe4469e50acbfd756c5ca56"
+    },
+    {
+      "path": "ci/github/order-release.schema.json",
+      "sha256": "2bdc572d5e2ac6f694a1658b27d36ead6abdb44bcfb9eb284b47f74979468f92"
+    },
+    {
+      "path": "ci/github/release.py",
+      "sha256": "ed2630b8b3fe3a18a6de2c0ce55dcbe494f7d20414d672326d7e524b30903867"
+    },
+    {
+      "path": "ci/github/release_test.py",
+      "sha256": "c23078874ec77fb06a54525a4cb4f2a702a7758fe833f396174fc53fd77a4d86"
+    },
+    {
+      "path": "ci/github/source-scan.sh",
+      "sha256": "83316619b510fdb53f7f25f0b07994d130c8813b832c6a2c63fc305ea0fd98b0"
+    },
+    {
+      "path": "ci/github/test.sh",
+      "sha256": "4c074da8b78aefec90e15a004101ee6983d82940e1eaea08249086b44b5c2b75"
+    },
+    {
+      "path": "ci/includes/docs.yml",
+      "sha256": "57b6105faaa3ca2726da50925573020d1590b7f12a91b59030e61000328bb1e1"
+    },
+    {
+      "path": "ci/includes/full-pipeline.yml",
+      "sha256": "4d40d30359427606b3906ecd1f8c584342dbd48798cac6fd91d9c59f64653332"
+    },
+    {
+      "path": "ci/includes/security.yml",
+      "sha256": "c0b2c4239ab01258e0d319cd06400b8f4a6bd89a59ea83eb87b7d8385153366a"
+    },
+    {
+      "path": "ci/namespace_boundary_test.py",
+      "sha256": "bcd45b2c3cc916b0972986efff4d0cb764f7f83f78e6f4d481e2e3efde0010f0"
+    },
+    {
+      "path": "ci/namespace_sandbox.py",
+      "sha256": "b6c367acf5e835bbbe153b57ef8c9ece23bf37b1b9af40344bb62764bcb6f115"
+    },
+    {
+      "path": "ci/pre-merge-check.sh",
+      "sha256": "df0ad0e8e3f2338a2924a41d0a3946123cbb593e9df73013472908e8e4fc1062"
+    },
+    {
+      "path": "ci/pre_merge_check.py",
+      "sha256": "4a1e60b2b5cfcea918ab50ec9038c36899923279c62daf711e16a4482f738dd3"
+    },
+    {
+      "path": "ci/pre_merge_check_test.py",
+      "sha256": "41b96a6bd11efcaa59e85cccfcc6194bd740254fb8df1b747772f39ec8e82328"
+    },
+    {
+      "path": "ci/release-record.schema.json",
+      "sha256": "bd9f2a7c8bd58c7a2ffc819e97d5fc0884dc7505bf785733005407bd4739e518"
+    },
+    {
+      "path": "ci/source-scan.sh",
+      "sha256": "b3c1ab1bed5e8fccfd566fb3931d2071b0c0d8cdb4a1164f899b3ee33336cae0"
+    },
+    {
+      "path": "ci/test-docs-check.sh",
+      "sha256": "aa1c614816de21cc2d0967b09e68ec70cd6657c5d5f75eb8b57a6dc41dd954ea"
+    },
+    {
+      "path": "ci/trusted-consumer.py",
+      "sha256": "4b9e68efd123f804d8fc82781cae1979fca579d4f3018e7b314e267e142a16b5"
+    },
+    {
+      "path": "ci/trusted-producer.py",
+      "sha256": "2c2add44df7e7beea7a0575996c37511ca97c7b924a5171a7e4f995b9df1cfa6"
+    },
+    {
+      "path": "ci/trusted-registry.py",
+      "sha256": "1b10834896f192b3fa327bc4ff8a20944d04010d2aeb2b0940d2ca1117382e61"
+    },
+    {
+      "path": "ci/trusted-render.py",
+      "sha256": "0530550423ff2ee8d3e5d2fdd88d0e57892d59bcc5e125e6f0502acd19e75339"
+    },
+    {
+      "path": "ci/trusted_api.py",
+      "sha256": "fd35d12777a56dad51644b48965484ce6128847ee7423d8c786abe31014d093c"
+    },
+    {
+      "path": "ci/trusted_attempts.py",
+      "sha256": "284ef6e2fa5d6503f262ddfda28afa3494e7e4b888038098ba8de3d773ab7928"
+    },
+    {
+      "path": "ci/trusted_attempts_test.py",
+      "sha256": "f7c9e3bb00588d339ee219c677b4af79b45b7cc2b1b342f9199bfb6d812c82c9"
+    },
+    {
+      "path": "ci/trusted_binary.py",
+      "sha256": "28363f6403cd5af7ff49dfbc3a8f380e353ce6e6d393cdb1dd4bdb0bbdf1a638"
+    },
+    {
+      "path": "ci/trusted_binary_test.py",
+      "sha256": "7b68a7e5689559dd83fc2576bf698f922d410570d4db4f7dfce349c081c8bf10"
+    },
+    {
+      "path": "ci/trusted_consumer_failure_test.py",
+      "sha256": "120f2e997760c91af9d9c6bc9e328e5c4d292b5e1f73170afdb22432b0c8e9f7"
+    },
+    {
+      "path": "ci/trusted_contract.py",
+      "sha256": "4cc723e843bde82e0f8f9728a7f9beab2a070015f24e39165ca66be4035776f4"
+    },
+    {
+      "path": "ci/trusted_contract_test.py",
+      "sha256": "4cbad2776d23fd118ee79a8d2feeda403cf9beef29949083d9e603e8ecd39ef1"
+    },
+    {
+      "path": "ci/trusted_identity_test.py",
+      "sha256": "5684fb6f348bc3e7b5e54ed3bfc0c3f168759deeb6653a5c0dc0662d819ad7fc"
+    },
+    {
+      "path": "ci/trusted_phase2.py",
+      "sha256": "b1bbeb2372250c6d88c924c6a2326f2fdb62d2734bd2eac38e687ef8148e5fd3"
+    },
+    {
+      "path": "ci/trusted_phase2_test.py",
+      "sha256": "1967899585e25877bf800fb7cefc6f5ee943a965f5e02c055a4380ab9c3f0336"
+    },
+    {
+      "path": "ci/trusted_registry_test.py",
+      "sha256": "483a49af74435f57f71e5ce026b3ef16536d1a82c370a8a9623baad893537e3c"
+    },
+    {
+      "path": "ci/trusted_render_test.py",
+      "sha256": "c36ff79d0f25d398be9f8f9e827162ca0a1d22e467ad730f4125a20c41c12031"
+    },
+    {
+      "path": "ci/validate-image-update.sh",
+      "sha256": "49afd71f400361d7b66503e405cb9b76c7a3f84b759251bf867d7b3c78cb79d1"
+    },
+    {
+      "path": "ci/validate.sh",
+      "sha256": "b9ede5104bc656418ea2914f7aadb02a20adc7b6a52a24ba240d5a81336e0240"
+    },
+    {
+      "path": "ci/verify-release-image.sh",
+      "sha256": "f4debb25e5312b5250ae1ddf5e7efd8de888c51b25fe2f47cc06f5db32104ebd"
+    },
+    {
+      "path": "ci/verify-release-provenance.sh",
+      "sha256": "8daff3f2cdd03a31eda2d3b8a7bf733d1616760a8c2e2b281ed4756aa029c46a"
+    }
+  ],
+  "input_delivery": {
+    "records_commit": "8ff9d8b45f7b280db8bc6fdda334225aeb68a60d",
+    "manifest_size": 172119,
+    "manifest_sha256": "eaaa7eacb3de044ea87be292ca8b961e101a50f3513ac93ecaf6ac7ae22bf586",
+    "publication_size": 61738,
+    "publication_sha256": "7fcb5344b8a91c3367b18fe9bab47a65d51768f7f8079dff359e9648f9d6855e",
+    "canonical_consumer_exit": 0,
+    "explicit_objects": 117,
+    "tree_members": 6,
+    "total_objects": 123,
+    "authorization_and_receipt": "private; not included"
+  },
+  "review": {
+    "status": "completed",
+    "blocking_findings": [],
+    "changed_files": 18,
+    "full_diff_read": true,
+    "private_originals_inspected": false
+  },
+  "executed": {
+    "existing_suite_exit": 0,
+    "extra_trust_suites_exit": 0,
+    "helm_checksum_render_scan_exit": 0,
+    "f1_contract_replay": {
+      "observations": 138,
+      "gating": 128,
+      "failures": [],
+      "non_gating": 10
+    },
+    "security": {
+      "observations": 116,
+      "gating": 116,
+      "failures": [],
+      "non_gating": 0
+    },
+    "additional": {
+      "observations": 38,
+      "gating": 38,
+      "failures": [],
+      "non_gating": 0
+    },
+    "bounded_f2": [
+      {
+        "case": "account-db-app-image-substitution",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "synthetic": true
+      }
+    ],
+    "bounded_fixtures": [
+      {
+        "case": "effective-security-bypass",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "synthetic": true
+      },
+      {
+        "case": "optional-disabled",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true,
+        "synthetic": true,
+        "provenanceRequired": false,
+        "eligible": false,
+        "entries": 4
+      },
+      {
+        "case": "optional-enabled",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true,
+        "synthetic": true,
+        "provenanceRequired": true,
+        "eligible": false,
+        "entries": 6
+      },
+      {
+        "case": "enabled-invalid-pvc",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "synthetic": true
+      }
+    ],
+    "baseline_render": {
+      "exit_code": 0,
+      "candidate_tree": "92b867efc6e9163b0cbfd4713b82d0c65e24f769",
+      "provenanceRequired": false,
+      "eligibleForAuthenticatedVerification": false,
+      "entries": 4
+    },
+    "diff_check_exit": 0
+  },
+  "static_comparison": {
+    "base": "e039945a90625262f91382e6f71149d046e31b34",
+    "head": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+    "base_tree": "7c9c8d52bf014f54fe2212b0ef4374c53d9700a3",
+    "head_tree": "92b867efc6e9163b0cbfd4713b82d0c65e24f769",
+    "files": [
+      {
+        "path": "charts/README.md",
+        "size": 215,
+        "sha256": "7cf38640ab82f1c929fd653995450ff81ed31f8e02effe450447a36c721e5bb3",
+        "equal": true
+      },
+      {
+        "path": "charts/backend/Chart.yaml",
+        "size": 136,
+        "sha256": "509335b49eb7058bb4a736a904a52c572aa4d4ef990795b5efcfaca4e197973f",
+        "equal": true
+      },
+      {
+        "path": "charts/backend/templates/_helpers.tpl",
+        "size": 1704,
+        "sha256": "c0969159e809a92e68a8e83d82fa3419239887a3d56a552e724a0ce261388253",
+        "equal": true
+      },
+      {
+        "path": "charts/backend/templates/configmap.yaml",
+        "size": 877,
+        "sha256": "28a99832e9ec20431b783ee055f384943d9be9dc5aeef206302ddf4192e31f2c",
+        "equal": true
+      },
+      {
+        "path": "charts/backend/templates/deployment.yaml",
+        "size": 5128,
+        "sha256": "5417e6c5fecf93049fd809996e32bbd7f94ee6e321a482882e8edde293450e52",
+        "equal": true
+      },
+      {
+        "path": "charts/backend/templates/migration-job.yaml",
+        "size": 3956,
+        "sha256": "0784e69a70a8c73afd62c532d2a411fcd3d3d9682286c36a8d7b9fec65e87a81",
+        "equal": true
+      },
+      {
+        "path": "charts/backend/templates/service.yaml",
+        "size": 556,
+        "sha256": "84b0d208c354936fa46404a1b2c179dc72fbe0365d3b7cdc201aa14c9c2a03c6",
+        "equal": true
+      },
+      {
+        "path": "charts/backend/templates/serviceaccount.yaml",
+        "size": 418,
+        "sha256": "efaa2ac575ce0da638a9f151282365ff7b6337de87a28c7a8680920b3be191a1",
+        "equal": true
+      },
+      {
+        "path": "charts/backend/values.schema.json",
+        "size": 6267,
+        "sha256": "ac517fe1e9643c430e82f33a3ff486f9c2a9176563ebd4189a53b58c18ad521e",
+        "equal": true
+      },
+      {
+        "path": "charts/backend/values.yaml",
+        "size": 1797,
+        "sha256": "e5c74d65e00b1bcb98bb214648041c8ac227e4ce352872c08ac3788cc2a77e8b",
+        "equal": true
+      },
+      {
+        "path": "charts/frontend/Chart.yaml",
+        "size": 115,
+        "sha256": "3d24f55af5013e502a37552fc8c8bd87a7a3dda28bec6778b9fa45ae4d558a44",
+        "equal": true
+      },
+      {
+        "path": "charts/frontend/templates/_helpers.tpl",
+        "size": 354,
+        "sha256": "b55dde6cf348d4572704105e844e3052bdab95947745589a592bba5eb751cfcf",
+        "equal": true
+      },
+      {
+        "path": "charts/frontend/templates/configmap.yaml",
+        "size": 1037,
+        "sha256": "58e886c4bd117b8aa87bea58f02d3bafe18ed1a585099792678ff75882d1a3a5",
+        "equal": true
+      },
+      {
+        "path": "charts/frontend/templates/deployment.yaml",
+        "size": 5749,
+        "sha256": "5579aa0510d20de312c44600b146a8e7f31fbb839d3035d03f2967e7953f7d0e",
+        "equal": true
+      },
+      {
+        "path": "charts/frontend/templates/service.yaml",
+        "size": 546,
+        "sha256": "6523f5c436ea8d010603e932c2ed1572af6cb8fde696c4e0402384ffe1815fbb",
+        "equal": true
+      },
+      {
+        "path": "charts/frontend/templates/serviceaccount.yaml",
+        "size": 445,
+        "sha256": "44e9b26646e023bf08e84c332d1af0a46674f246e3c992228205bd239164843d",
+        "equal": true
+      },
+      {
+        "path": "charts/frontend/values.schema.json",
+        "size": 5721,
+        "sha256": "f7e002e0792242386e57d39b6603729597dea3111278184d526aa9df90c1c301",
+        "equal": true
+      },
+      {
+        "path": "charts/frontend/values.yaml",
+        "size": 1209,
+        "sha256": "624b3632a4ffee71d6fd48ff67543d7dfdc92139bc318a019093e3359bbf76e9",
+        "equal": true
+      },
+      {
+        "path": "charts/postgresql/Chart.yaml",
+        "size": 145,
+        "sha256": "28482b084bfef71451ce5cec279e7fcaf24069a004ddaca4a80a5c6bdc16e9fd",
+        "equal": true
+      },
+      {
+        "path": "charts/postgresql/templates/_helpers.tpl",
+        "size": 383,
+        "sha256": "f06eefd7b39fdfe886ef97035b42175c1ef31f8004a6e913f878df015d566dfd",
+        "equal": true
+      },
+      {
+        "path": "charts/postgresql/templates/headless-service.yaml",
+        "size": 518,
+        "sha256": "618c865b632a1c8b9ebb8e0d5e94108096dd59d6ab9fd21c02ec64a20a5cdf1e",
+        "equal": true
+      },
+      {
+        "path": "charts/postgresql/templates/init-configmap.yaml",
+        "size": 1137,
+        "sha256": "849c3800f17ef9de07964bcf3a1e1d2a5ff629ab5bfe39f11cd50895f6ef5050",
+        "equal": true
+      },
+      {
+        "path": "charts/postgresql/templates/pvc.yaml",
+        "size": 682,
+        "sha256": "e2b0f7b3114cf86cc5a58cbcba82eea29785dbf341d6b90c20e602b656eb2480",
+        "equal": true
+      },
+      {
+        "path": "charts/postgresql/templates/service.yaml",
+        "size": 475,
+        "sha256": "f5c8e493e720322450e74cbd9cd7356500896a962570330579279a88a8e4e016",
+        "equal": true
+      },
+      {
+        "path": "charts/postgresql/templates/serviceaccount.yaml",
+        "size": 318,
+        "sha256": "e446ea511c47f989fa3977ee0c89111597d3def0f0d87c1171e8aa43a12d943b",
+        "equal": true
+      },
+      {
+        "path": "charts/postgresql/templates/statefulset.yaml",
+        "size": 4067,
+        "sha256": "9aeeff20485e3ce9b4dfb6cd57ce897e07d764e438028bbf2206e2eaeb0f2f3e",
+        "equal": true
+      },
+      {
+        "path": "charts/postgresql/values.schema.json",
+        "size": 1092,
+        "sha256": "a8f3d07d2a8be525b7868a75cbada86b5a27699e8a5e12844bbd7f6117219cae",
+        "equal": true
+      },
+      {
+        "path": "charts/postgresql/values.yaml",
+        "size": 1257,
+        "sha256": "16cdbaa74161d5d822199627311b1f0a4957a2685848b2190b6337bd076d7be4",
+        "equal": true
+      },
+      {
+        "path": "environments/local/README.md",
+        "size": 184,
+        "sha256": "451d5e6a066b6dba79424bea539345aedfcb7b0260d577b28a3c59355b95f4d4",
+        "equal": true
+      },
+      {
+        "path": "environments/local/backend.yaml",
+        "size": 1574,
+        "sha256": "be7b8212ea066e0a601396398310505cb5870c3c7d1c67619b1a421a308c71f8",
+        "equal": true
+      },
+      {
+        "path": "environments/local/frontend.yaml",
+        "size": 1458,
+        "sha256": "57f193504ba28f801c6fe72ec0def62739fe9fb1efd5f853fed8beffd9471a4f",
+        "equal": true
+      },
+      {
+        "path": "environments/local/postgresql.yaml",
+        "size": 281,
+        "sha256": "376c3ebdc39a5fdf1f2a32724c2821cd56dee79b0bf264b03b4a3fa00d9a7088",
+        "equal": true
+      }
+    ],
+    "renders": [
+      {
+        "chart": "frontend",
+        "size": 5555,
+        "sha256": "16ce7b984d0bfa86d110ed2c9757e565a9ada6056f7cbd583de32aa04a3866de",
+        "byte_equal": true,
+        "semantic_equal": true
+      },
+      {
+        "chart": "backend",
+        "size": 9681,
+        "sha256": "98f9ee0a34d05ffdce403e6b22ea28fd84aa9e9eb508a0872d95b50067f22d88",
+        "byte_equal": true,
+        "semantic_equal": true
+      },
+      {
+        "chart": "postgresql",
+        "size": 6966,
+        "sha256": "108bffe412325d4155c964fcf7ca30b58f23d636f1407b0466d84ec4528f8d38",
+        "byte_equal": true,
+        "semantic_equal": true
+      }
+    ]
+  },
+  "github": {
+    "pr": {
+      "base": "e039945a90625262f91382e6f71149d046e31b34",
+      "draft": true,
+      "head": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+      "mergeable": true,
+      "mergeable_state": "clean",
+      "merged": false,
+      "number": 18,
+      "state": "open"
+    },
+    "runs": [
+      {
+        "conclusion": "success",
+        "created_at": "2026-10-11T08:41:50Z",
+        "event": "pull_request",
+        "head_sha": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+        "id": 38125716138,
+        "path": ".github/workflows/ci.yml",
+        "run_attempt": 1,
+        "status": "completed",
+        "updated_at": "2026-10-11T08:43:09Z"
+      },
+      {
+        "conclusion": "success",
+        "created_at": "2026-10-11T08:41:48Z",
+        "event": "push",
+        "head_sha": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+        "id": 38125713889,
+        "path": ".github/workflows/ci.yml",
+        "run_attempt": 1,
+        "status": "completed",
+        "updated_at": "2026-10-11T08:43:19Z"
+      }
+    ],
+    "pr_jobs": [
+      {
+        "conclusion": "success",
+        "head_sha": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+        "name": "classify",
+        "run_id": 38125716138
+      },
+      {
+        "conclusion": "success",
+        "head_sha": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+        "name": "validate",
+        "run_id": 38125716138
+      },
+      {
+        "conclusion": "skipped",
+        "head_sha": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+        "name": "docs",
+        "run_id": 38125716138
+      },
+      {
+        "conclusion": "success",
+        "head_sha": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+        "name": "ci-result",
+        "run_id": 38125716138
+      }
+    ],
+    "push_jobs": [
+      {
+        "conclusion": "success",
+        "head_sha": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+        "name": "classify",
+        "run_id": 38125713889
+      },
+      {
+        "conclusion": "success",
+        "head_sha": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+        "name": "validate",
+        "run_id": 38125713889
+      },
+      {
+        "conclusion": "skipped",
+        "head_sha": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+        "name": "docs",
+        "run_id": 38125713889
+      },
+      {
+        "conclusion": "success",
+        "head_sha": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+        "name": "ci-result",
+        "run_id": 38125713889
+      }
+    ],
+    "raw_logs": "not requested; known Forbidden not retried or bypassed",
+    "historical_pr_checkout": "unverified; run head_sha is not proof of event-default checkout"
+  },
+  "test3": {
+    "task_alias": "order-m0-test-a3",
+    "attempt": 3,
+    "status": "completed",
+    "subject_matches": true,
+    "valid_until": "2026-10-11T09:15:10.837624Z",
+    "current_at_observation": true,
+    "reuse": "Manager must check expiry/current subject; no renewal or new budget inferred"
+  },
+  "manager_protection_observation": {
+    "observed_at": "2026-10-11T09:04:00Z",
+    "producer": "Manager supplied observation; not independently refreshed here",
+    "protected": true,
+    "classic_protection_enabled": false,
+    "active_ruleset": "main-ci-and-pr (24733406)",
+    "reviews": 0,
+    "review_comments": 0
+  },
+  "readiness": {
+    "implementation": "M0 design/authority/dependency evidence supplied; Manager assessment remains separate",
+    "deployment": "unverified",
+    "merge": "not asserted; current policy/authority/dependencies/fresh separate CI Test Review required",
+    "static_rendered_effect": "none",
+    "operational_effect": "Manager must evaluate current main tracking and policy; automatic/unknown requires Deployment Ready",
+    "earliest_phase": "premerge",
+    "deferred": null,
+    "issue_integration_scope": "aggregate_required",
+    "product_ac_outcome": "unverified",
+    "formal_assessment": "not created; no Manager context supplied"
+  },
+  "limitations": [
+    "Finite synthetic tests; no exhaustive fuzzing",
+    "No real B2 release, Order Service/Argo/runtime digest, AC1/2 or three-repository integration",
+    "No live Argo state observed",
+    "No actual protected-main verification dispatched",
+    "Old vulnerable commits not reexecuted; original Test1/2 observations retained",
+    "Private Research originals not inspected",
+    "Review does not replace Test3 or GitHub required review"
+  ],
+  "implementation_changed": false
+}
