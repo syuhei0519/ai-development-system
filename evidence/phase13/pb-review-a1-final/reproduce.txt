@@ -1,0 +1,9 @@
+Review attempt 1 final integration, fixed head 5e1980eff37107bca7089aca7c457180d00ff020; canonical base 2e3acadabe67cbc336e032077dcc14cbeffde2a5.
+Set PB_HEAD to that detached checkout, PB_BASE to canonical checkout, PB_BUNDLE to this directory. Use private temporary output parents.
+python -m unittest discover -s tests -v (cwd PB_HEAD): 280; same command on PB_BASE:229.
+PB_PRIOR_CASES=$PB_BUNDLE/prior-test/input/input/input/upstream/independent_cases.py
+python $PB_PRIOR_CASES (21); python $PB_BUNDLE/prior-test/input/input/extra_cases.py (15); PB_BEFORE=fixed-50cf6aa52f64c45961a354281169064cd2c75e20-checkout python $PB_BUNDLE/prior-test/attempt3_probes.py (5); python $PB_BUNDLE/review_boundaries.py (5). Export variables.
+cli-schema.json contains exact eight commands (cwd PB_HEAD) and all schema paths; validate each with Draft202012Validator.check_schema.
+PB_PRIVATE=new-private-parent python $PB_BUNDLE/live_final_fixture.py: bounded synthetic Git-only operations; obtain current scoped authorization before replay after its synthetic expiry. No dispatch.
+PB_BASE=canonical-checkout python $PB_BUNDLE/verify_bundle.py checks full local bytes and typed dependency closure; no authority granted.
+Historical reports are unchanged and apply only to their original targets. Current Test3 full125-file delivery verified. Run PB_PREVIOUS=the detached d3f8f582caef99a0e004c29ad3a430efe7df98bc checkout python $PB_BUNDLE/final_probes.py for four final integration probes.

@@ -1,0 +1,452 @@
+{
+  "ac_coverage": {
+    "PB-1": "Unchanged versioned contracts and event identity; same-identity collision and distinct-source evidence regressions pass.",
+    "PB-2": "F1 checks every retained (event, source) membership; duplicate source cannot mask disappearance. F3 resolves every Git ancestor and rejects symlink/gitlink/blob before enumeration; genuine missing paths remain empty. Cursors and payload history preserved.",
+    "PB-3": "F2 fsyncs private temporary files and publishes with no-replace hard links; partial object/stage/snapshot writes and link-boundary process exits recover against unchanged state. Existing valid object bytes and inodes preserved.",
+    "PB-4": "Existing three-counter limits, terminal history, start-unknown, output delivery recovery and fixed Git commit acknowledgement tests pass. F1 additionally preserves terminal batch ledgers.",
+    "PB-5": "All five mechanical CLI operations exercised with synthetic inputs; plan/replay leave store bytes unchanged. No Agent, schedule, API, deployment or development-gate mutation.",
+    "PB-6": "178 repository tests (all prior 172 plus 6 added methods), unchanged independent 21 cases, six validator CLI commands, all 19 schemas, fixed HTTPS scan/reconcile/plan/replay/record, feature and PR CI pass."
+  },
+  "after": {
+    "all_schemas_unchanged": [
+      {
+        "path": "contracts/artifact-delivery-v1.1.schema.json",
+        "sha256": "4338f69dbdac36af4c7a861b3f7201720de6e3025a580528030e5182eb0d6056",
+        "size": 5051
+      },
+      {
+        "path": "contracts/artifact-delivery.schema.json",
+        "sha256": "480ba09256cb5b947d8b2df380a12a7ab9ff5fd3c777653e056eacb2541b655c",
+        "size": 2490
+      },
+      {
+        "path": "contracts/consumption-receipt-v1.1.schema.json",
+        "sha256": "0c8c4294162584b4fe1bc6576304507c8b79f70fe4fa02aa19a6393bbcb04364",
+        "size": 3566
+      },
+      {
+        "path": "contracts/consumption-receipt.schema.json",
+        "sha256": "f4d005cb0c806fb02989662b3df9e97902850f0304eec5e49308b1927da7a661",
+        "size": 3439
+      },
+      {
+        "path": "contracts/delivery-authorization-v1.1.schema.json",
+        "sha256": "4e13e3d04b954c04261dff1a215865dd6b41eb1a6dcdfc07ae3a589d0d5d447c",
+        "size": 2353
+      },
+      {
+        "path": "contracts/delivery-authorization.schema.json",
+        "sha256": "2a0955ed47b7f75e7a80b93f945dce1b2a6f8b07eb43806ae5c42176494c43b3",
+        "size": 2348
+      },
+      {
+        "path": "contracts/handoff.schema.json",
+        "sha256": "3df669f230c3f1d65ddaaa9e7de5f713f70b9e8440512403f6ea309eb70b3ae1",
+        "size": 15093
+      },
+      {
+        "path": "contracts/knowledge-collection-authorization.schema.json",
+        "sha256": "3b9f8a1919b60be75d9887b7f075ebfec38da07d3e5f79981998d0182ea48065",
+        "size": 1236
+      },
+      {
+        "path": "contracts/knowledge-collection-record.schema.json",
+        "sha256": "8442a00d8b26ae1cb8af77a4ce602c6fd185bbc1dde06f8f53835a7d70626ee8",
+        "size": 28409
+      },
+      {
+        "path": "contracts/knowledge-collection-state.schema.json",
+        "sha256": "c30e6664b93aebc7245d7aa986a63e9d0d593c722176328f3d908378863198cc",
+        "size": 24340
+      },
+      {
+        "path": "contracts/knowledge-context.schema.json",
+        "sha256": "458b15686bc2be28cc4a6b6b6b4e370b3334cf5ad91300c7d84e8c6f1e4a052a",
+        "size": 2097
+      },
+      {
+        "path": "contracts/knowledge-event.schema.json",
+        "sha256": "a1c985ee57f8a9702df27ee83cfad08d6adaddda34afe8c54546224f2898dd86",
+        "size": 3957
+      },
+      {
+        "path": "contracts/knowledge-handoff.schema.json",
+        "sha256": "e36d8a4fd6bc4f2fa4f8d6d234f9dd04dd01ad71f69364c369b664996188c420",
+        "size": 11347
+      },
+      {
+        "path": "contracts/knowledge-input.schema.json",
+        "sha256": "9af62e3b2a63b82445cf7114487b8b07eaf96ec22c63a373183aad4c96c181ae",
+        "size": 5598
+      },
+      {
+        "path": "contracts/knowledge-source-registry.schema.json",
+        "sha256": "ee376f8f758df2222947261b29a2cab9a7944df5c044dbc4816aa611df9fc0bc",
+        "size": 5989
+      },
+      {
+        "path": "contracts/publication-receipt-v1.1.schema.json",
+        "sha256": "78b0acf4e25f65357d7074ce1a51b1bc2fcbfbf6d061f472fe21884e5bb84441",
+        "size": 2941
+      },
+      {
+        "path": "contracts/publication-receipt.schema.json",
+        "sha256": "ca67a9513341975bafa6ff80e4c4010aedac3180835787de9d602b05fd41bd62",
+        "size": 2824
+      },
+      {
+        "path": "contracts/readiness-context.schema.json",
+        "sha256": "e10a8069441a17b447819b0bec9cb145b7a7f91f8d758a6f3dbdcc44361a2f4d",
+        "size": 4425
+      },
+      {
+        "path": "contracts/readiness.schema.json",
+        "sha256": "bfb1589b2cc0fce39b9b098dc72265796aa79053dd6c3f3131d28aa43d341693",
+        "size": 12251
+      }
+    ],
+    "checks": [
+      {
+        "command": [
+          "python",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python",
+          "scripts/validate_delivery_records.py"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python",
+          "scripts/validate_handoff.py",
+          "examples/research-to-test/research.handoff.json",
+          "examples/research-to-test/test.blocked.handoff.json",
+          "examples/research-to-test/test.handoff.json",
+          "examples/failed.handoff.json",
+          "examples/partial-assignment.handoff.json"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python",
+          "scripts/validate_knowledge.py",
+          "examples/knowledge/input.json",
+          "examples/knowledge/handoff.json",
+          "examples/knowledge/context.json",
+          "examples/knowledge-delivery/input.json",
+          "examples/knowledge-delivery/handoff.json",
+          "examples/knowledge-delivery/context.json",
+          "examples/knowledge-collector/input.json",
+          "examples/knowledge-collector/handoff.json",
+          "examples/knowledge-collector/context.json"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python",
+          "scripts/validate_readiness.py",
+          "examples/readiness/pr-ready-issue-unverified.json",
+          "--context",
+          "examples/readiness/context.json",
+          "--handoff",
+          "examples/readiness/manager.handoff.json",
+          "--at",
+          "2030-01-01T12:00:00Z"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python",
+          "scripts/validate_readiness.py",
+          "examples/readiness/implementation-only.json",
+          "--context",
+          "examples/readiness/automatic-context.json",
+          "--at",
+          "2030-01-01T12:00:00Z"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python",
+          "scripts/validate_readiness.py",
+          "examples/readiness/postdeploy-achieved.json",
+          "--context",
+          "examples/readiness/context.json",
+          "--at",
+          "2030-01-01T12:00:00Z"
+        ],
+        "exit_code": 0
+      }
+    ],
+    "existing_tests": 172,
+    "fixed_https": {
+      "agent_launched": false,
+      "document_type": "synthetic_collector_observation",
+      "head": "50cf6aa52f64c45961a354281169064cd2c75e20",
+      "operations": [
+        {
+          "exit_code": 0,
+          "observation": {
+            "authority_granted": false,
+            "counts": {
+              "blocked": 0,
+              "commit_pending": 0,
+              "committed": 0,
+              "context_available": 0,
+              "dispatch_unknown": 0,
+              "dispatching": 0,
+              "output_received": 0,
+              "pending": 0,
+              "quarantined": 0,
+              "reserved": 0,
+              "started": 0,
+              "terminal": 0,
+              "validated": 0,
+              "verified": 2
+            },
+            "development_gate_changed": false,
+            "document_type": "knowledge_collection_observation",
+            "schema_version": "1.0"
+          },
+          "operation": "scan",
+          "read_only_unchanged": null
+        },
+        {
+          "exit_code": 0,
+          "observation": {
+            "authority_granted": false,
+            "counts": {
+              "blocked": 0,
+              "commit_pending": 0,
+              "committed": 0,
+              "context_available": 0,
+              "dispatch_unknown": 0,
+              "dispatching": 0,
+              "output_received": 0,
+              "pending": 0,
+              "quarantined": 0,
+              "reserved": 0,
+              "started": 0,
+              "terminal": 0,
+              "validated": 0,
+              "verified": 2
+            },
+            "development_gate_changed": false,
+            "document_type": "knowledge_collection_observation",
+            "schema_version": "1.0"
+          },
+          "operation": "reconcile",
+          "read_only_unchanged": null
+        },
+        {
+          "exit_code": 0,
+          "observation": {
+            "authority_granted": false,
+            "counts": {
+              "blocked": 0,
+              "commit_pending": 0,
+              "committed": 0,
+              "context_available": 0,
+              "dispatch_unknown": 0,
+              "dispatching": 0,
+              "output_received": 0,
+              "pending": 0,
+              "quarantined": 0,
+              "reserved": 0,
+              "started": 0,
+              "terminal": 0,
+              "validated": 0,
+              "verified": 2
+            },
+            "development_gate_changed": false,
+            "document_type": "knowledge_collection_observation",
+            "schema_version": "1.0"
+          },
+          "operation": "plan",
+          "read_only_unchanged": true
+        },
+        {
+          "exit_code": 0,
+          "observation": {
+            "authority_granted": false,
+            "counts": {
+              "blocked": 0,
+              "commit_pending": 0,
+              "committed": 0,
+              "context_available": 0,
+              "dispatch_unknown": 0,
+              "dispatching": 0,
+              "output_received": 0,
+              "pending": 0,
+              "quarantined": 0,
+              "reserved": 0,
+              "started": 0,
+              "terminal": 0,
+              "validated": 0,
+              "verified": 2
+            },
+            "development_gate_changed": false,
+            "document_type": "knowledge_collection_observation",
+            "schema_version": "1.0"
+          },
+          "operation": "replay",
+          "read_only_unchanged": true
+        },
+        {
+          "exit_code": 0,
+          "observation": {
+            "authority_granted": false,
+            "counts": {
+              "blocked": 0,
+              "commit_pending": 0,
+              "committed": 0,
+              "context_available": 0,
+              "dispatch_unknown": 0,
+              "dispatching": 0,
+              "output_received": 0,
+              "pending": 0,
+              "quarantined": 0,
+              "reserved": 2,
+              "started": 0,
+              "terminal": 0,
+              "validated": 0,
+              "verified": 0
+            },
+            "development_gate_changed": false,
+            "document_type": "knowledge_collection_observation",
+            "schema_version": "1.0"
+          },
+          "operation": "record",
+          "read_only_unchanged": null
+        }
+      ],
+      "schedule_activated": false,
+      "synthetic_only": true
+    },
+    "head": "50cf6aa52f64c45961a354281169064cd2c75e20",
+    "independent_cases": 21,
+    "independent_exit_code": 0,
+    "independent_passed": 21,
+    "new_test_methods": 6,
+    "regression_tests": 178,
+    "script_and_expectations_unchanged": true
+  },
+  "attempt": 2,
+  "before": {
+    "cases": 21,
+    "errors": 1,
+    "failures": 3,
+    "findings": [
+      "F1",
+      "F2",
+      "F3"
+    ],
+    "head": "29b87fd1014c66c0368e4aad231846b17b53707b",
+    "independent_script_sha256": "87e7a52005dc31cfad71e033f30bd71196b5d46e6ad9b4d2aa7b22c65d661430",
+    "passed": 17,
+    "script_and_expectations_unchanged": true
+  },
+  "branch": "feat/knowledge-collector-state",
+  "changed_files": [
+    "scripts/knowledge_collector.py",
+    "tests/test_knowledge_collector.py",
+    "contracts/knowledge-collection.md"
+  ],
+  "document_type": "implementation_repair_report",
+  "fixes": {
+    "F1": "Per-source historical membership, including removed registry sources, quarantines disappearances without cursor advance or payload replacement.",
+    "F2": "Atomic no-replace publication of fsynced objects/staged states/snapshots; retries use fresh temporary paths after partial-write crashes.",
+    "F3": "Every fixed Git inbox ancestor must be tree mode 040000; symlink/gitlink/blob explicitly rejected."
+  },
+  "head": "50cf6aa52f64c45961a354281169064cd2c75e20",
+  "history_reset": false,
+  "input_verification": {
+    "bytes": 341585,
+    "checks": "Manager independent pin, full bytes/size/hash/type and complete dependencies; private receipt kept separate",
+    "consumer": "Unmodified pinned main consume_delivery.py",
+    "files": 23,
+    "result": "passed"
+  },
+  "integration": {
+    "base": "b1e606544174481b7b6904f811e857f80978c287",
+    "ci": [
+      {
+        "conclusion": "success",
+        "databaseId": 38112442297,
+        "event": "pull_request",
+        "headSha": "50cf6aa52f64c45961a354281169064cd2c75e20",
+        "status": "completed",
+        "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38112442297"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 38112440169,
+        "event": "push",
+        "headSha": "50cf6aa52f64c45961a354281169064cd2c75e20",
+        "status": "completed",
+        "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38112440169"
+      }
+    ],
+    "cli_log_download": "gh archive download was Forbidden; connector job log read succeeded",
+    "conflicts": false,
+    "draft": true,
+    "head": "50cf6aa52f64c45961a354281169064cd2c75e20",
+    "head_and_merge_tree": "b13d0fc644a90e45735bc6e621daae8f77e9af30",
+    "main_and_dependency_tree": "10a4b8ccf7a8d10d991bef2cbe714afc35709b48",
+    "main_moved": false,
+    "merge_target": "ce100cc00f5536e29ddfff9afe59f7c1e5a0912a",
+    "mergeable": true,
+    "normal_main_merge": "unnecessary: main and original dependency trees identical; PR merge target tree equals repaired head",
+    "pr": "https://github.com/syuhei0519/ai-development-system/pull/6",
+    "pr_ci_checkout": {
+      "checkout": "ce100cc00f5536e29ddfff9afe59f7c1e5a0912a",
+      "evidence": "GitHub connector job log shows checkout of PR merge target and Ran 178 tests; raw log excluded",
+      "job_id": 114390627174,
+      "result": "success",
+      "tests": 178
+    },
+    "remote_head_verified": true,
+    "state": "open"
+  },
+  "limitations": [
+    "Implementation self-verification only. Executing the supplied independent Test script is not a new independent Test/Review gate; Manager must dispatch those on this head.",
+    "POSIX local filesystem, trusted single writer, external latest-state and authorization pins; no physical power-loss or distributed-filesystem certification.",
+    "Crash leftovers under .pending-* are ignored and retained, not automatically promoted or garbage-collected.",
+    "Pre-existing corrupted final digest files created by the old writer remain fail-closed; automatic destructive repair is not provided. New interrupted writes do not poison final paths.",
+    "No schema changes; prior valid states and raw objects remain compatible. Existing P-A URL-binding limits remain unchanged.",
+    "No P-C/P-D, Knowledge/Consumer launch, scheduler activation, merge/readiness or Issue-completion claim.",
+    "Public candidate is not published and grants no publication or consumption authority. New private authorization, pins, runtime identities and raw operational logs are excluded."
+  ],
+  "limits": {
+    "delivery": 3,
+    "dispatch": 3,
+    "execution": 3
+  },
+  "main": "b1e606544174481b7b6904f811e857f80978c287",
+  "observed_at": "2026-10-11T04:45:46.588560+00:00",
+  "original_dependency": "5345303db8c5208859ed741b98f119882de7a973",
+  "previous_head": "29b87fd1014c66c0368e4aad231846b17b53707b",
+  "publication": "public_safe",
+  "publication_status": "sealed candidate only; not published",
+  "repository": "syuhei0519/ai-development-system",
+  "role": "implementation",
+  "safety": "Producer inspection of new report, Handoff, patch and reproduction; public aliases/synthetic data/public Git coordinates only. All 23 previously approved public inputs retained byte-for-byte. Existing synthetic receipt within upstream closure retained; no new private receipt, authorization, original digest or operational log included.",
+  "schema_change": false,
+  "schema_version": "1.0",
+  "scope": "system/phase1-3/P-B",
+  "status": "completed"
+}

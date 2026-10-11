@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "status": "candidate_only_not_published",
+  "input_files": 48,
+  "input_total_bytes": 497391,
+  "input_preservation": "Every original delivered file retains exact bytes, path under input/, size and SHA256. Historical failed attempts remain unchanged.",
+  "inspection": "All candidate files decoded and scanned across full bytes for actual task/thread UUID patterns, credential patterns, signed URLs and this run private authorization pin. New reports/scripts reviewed for public alias and synthetic-only content. Original supplied public evidence is retained as public input; private original comparison remains unverified.",
+  "excluded": [
+    "This run Manager authorization and digest pin",
+    "Consumption Receipt and private Git metadata/log downloads",
+    "Private collector authorizations/state/objects/plans and pins",
+    "Runtime identifiers and internal execution logs",
+    "Private originals and hashes"
+  ],
+  "historical_synthetic_receipt": "The already-public input closure includes one SYNTHETIC-PA-SELFTEST fixture-consumption-receipt.json. It is preserved unchanged as supplied public synthetic evidence; it is not this run private Consumption Receipt and grants no authority.",
+  "closure": "Unchanged BASE Consumer verify_handoffs checks every candidate typed Handoff artifact and transitive dependency/retry reference offline. No new Publication Receipt or published Git reference is claimed.",
+  "publication_approval": "not_requested; Manager must independently review and approve any future publication.",
+  "limits": "Pattern scanning and review do not prove absent unknown secrets; no private-original verification or publication authority is asserted."
+}

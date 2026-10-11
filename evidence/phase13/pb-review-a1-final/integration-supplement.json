@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0",
+  "document_type": "independent_test_integration_supplement",
+  "role": "test",
+  "attempt": 3,
+  "scope": "system/phase1-3/P-B",
+  "status": "completed",
+  "relationship": "Append-only final Delivery1.2 integration within original Test attempt3. No new attempt, retry or history reset.",
+  "head": "5e1980eff37107bca7089aca7c457180d00ff020",
+  "base": "2e3acadabe67cbc336e032077dcc14cbeffde2a5",
+  "tree": "a2d446ed7f9cb6d5cd5a9838776a556cb51e469a",
+  "previous_head": "d3f8f582caef99a0e004c29ad3a430efe7df98bc",
+  "bindings": {
+    "original_test_handoff": {
+      "path": "prior-test/handoff.json",
+      "size": 13615,
+      "sha256": "89092ecf7a2f5b3935b07ecd709e9cbd4a8b3a38e700f79ab6f8e302fb11c67f"
+    },
+    "producer_integration_report": {
+      "path": "producer/integration-report.json",
+      "size": 10429,
+      "sha256": "9d52686a11d58df4908e27e4722c588e5e4798aa68ad113973f2cfe8211e3b5b"
+    },
+    "independent_verification": {
+      "path": "verification-report.json",
+      "size": 54102,
+      "sha256": "8943472da27eec6a3cefd03e01528d81d3f00a8d52ee449011aeb8720cf36942"
+    }
+  },
+  "history": {
+    "original_test_payload": "cb3462988120ba0a147d61d549c52f520676536a",
+    "previous_test_integration_payload": "c4517cef3d081180358ca6591784ee2f8ed1e41b",
+    "previous_integration_path": "evidence/phase13/pb-test-a3-integration/integration-supplement.json",
+    "previous_integration_sha256": "e21780ff29e0925098044cf4e397aa2e3b51405f731412cbd53c53b2c9b1541a",
+    "policy": "All prior result files and public commits remain unchanged. Original Test59 and current Producer58 files copied verbatim to preserve typed Handoff/retry source closure; previous integration remains pinned historical provenance, not current qualification."
+  },
+  "producer_consumption": {
+    "result": "pass",
+    "canonical_main": "2e3acadabe67cbc336e032077dcc14cbeffde2a5",
+    "records_commit": "2c4b6f027ef8bdb57dbefc4bdb72762f9e2447a9",
+    "payload_commit": "e010b7c8e7d8cf1cc7ce59ff5f757d6ecf5bc708",
+    "manifest_sha256": "1d3f23b112980eee7fe54675c0cff776bb007eba8aaed06fea1afec268acd3ba",
+    "publication_receipt_sha256": "dc7c7d15c7156d80b2d0643710e62c3f03745047e42842d450da026ff1081177",
+    "files": 58,
+    "bytes": 546826,
+    "method": "Unchanged canonical Consumer CLI with exact Manager UTF-8 authorization and independently retained pin; all bytes/types/schema/Handoff/retry closure verified before report use. Authorization/pin/Consumption Receipt remain private."
+  },
+  "results": {
+    "combined": 280,
+    "base": 229,
+    "original21": 21,
+    "extra15": 15,
+    "previous_probes": 5,
+    "new_probes": 4,
+    "cli": 8,
+    "schemas": 26,
+    "all_pass": true,
+    "live": "all5 operations; fixed newhead inbox; no dispatch",
+    "ci_push": 38117166964,
+    "ci_pr": 38117170216,
+    "ci": "both success with independent actual-checkout observations"
+  },
+  "pb_results": [
+    {
+      "ac_id": "PB-1",
+      "disposition": "covered",
+      "scope": "Final head-specific independent integration recheck of original PB assignment. Prior F1-F4 regression coverage retained; shared Consumer changes and document conflict resolutions tested. Not Manager final assessment."
+    },
+    {
+      "ac_id": "PB-2",
+      "disposition": "covered",
+      "scope": "Final head-specific independent integration recheck of original PB assignment. Prior F1-F4 regression coverage retained; shared Consumer changes and document conflict resolutions tested. Not Manager final assessment."
+    },
+    {
+      "ac_id": "PB-3",
+      "disposition": "covered",
+      "scope": "Final head-specific independent integration recheck of original PB assignment. Prior F1-F4 regression coverage retained; shared Consumer changes and document conflict resolutions tested. Not Manager final assessment."
+    },
+    {
+      "ac_id": "PB-4",
+      "disposition": "covered",
+      "scope": "Final head-specific independent integration recheck of original PB assignment. Prior F1-F4 regression coverage retained; shared Consumer changes and document conflict resolutions tested. Not Manager final assessment."
+    },
+    {
+      "ac_id": "PB-5",
+      "disposition": "covered",
+      "scope": "Final head-specific independent integration recheck of original PB assignment. Prior F1-F4 regression coverage retained; shared Consumer changes and document conflict resolutions tested. Not Manager final assessment."
+    },
+    {
+      "ac_id": "PB-6",
+      "disposition": "covered",
+      "scope": "Final head-specific independent integration recheck of original PB assignment. Prior F1-F4 regression coverage retained; shared Consumer changes and document conflict resolutions tested. Not Manager final assessment."
+    }
+  ],
+  "remaining": "Independent new-head Review and Manager adoption; P-C/P-D and periodic execution remain unverified.",
+  "authority_granted": false
+}

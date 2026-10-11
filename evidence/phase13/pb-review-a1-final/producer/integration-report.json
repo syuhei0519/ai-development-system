@@ -1,0 +1,314 @@
+{
+  "document_type": "implementation_integration_supplement",
+  "role": "implementation",
+  "attempt": 3,
+  "scope": "system/phase1-3/P-B",
+  "relationship": "Final cross-PR integration within same attempt3; no retry, reset or new Agent",
+  "head": "5e1980eff37107bca7089aca7c457180d00ff020",
+  "tree": "a2d446ed7f9cb6d5cd5a9838776a556cb51e469a",
+  "parents": [
+    "d3f8f582caef99a0e004c29ad3a430efe7df98bc",
+    "2e3acadabe67cbc336e032077dcc14cbeffde2a5"
+  ],
+  "base": "2e3acadabe67cbc336e032077dcc14cbeffde2a5",
+  "base_tree": "8c57b1a49781424d3b1be5af52b3d7d02727ae77",
+  "base_parents": [
+    "8afe6044857783dbf6d6ae7ac9459ae5e890a744",
+    "a7fdcd3df53260f67a9040878a131d101fb5b32b"
+  ],
+  "merge_method": "normal --no-ff merge",
+  "conflicts": {
+    "files": [
+      "README.md",
+      "contracts/README.md"
+    ],
+    "resolution": "Retained approved P-B implemented-scope text and collector section; appended main Delivery 1.2 links/section. Incoming stale P-B-unimplemented text was unchanged main ancestry, not a new requirement. No behavioral conflict or runtime resolution.",
+    "semantic_expansion": false
+  },
+  "results": {
+    "commands": [
+      {
+        "name": "combined",
+        "command": [
+          "python",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "exit": 0,
+        "test_counts": [
+          "280"
+        ]
+      },
+      {
+        "name": "prior21",
+        "command": [
+          "python",
+          "$BUNDLE/prior/prior/input/input/upstream/independent_cases.py"
+        ],
+        "exit": 0,
+        "test_counts": [
+          "21"
+        ]
+      },
+      {
+        "name": "extra15",
+        "command": [
+          "python",
+          "$BUNDLE/prior/prior/input/extra_cases.py"
+        ],
+        "exit": 0,
+        "test_counts": [
+          "15"
+        ]
+      },
+      {
+        "name": "live",
+        "command": [
+          "python",
+          "$BUNDLE/prior/prior/input/live_fixture.py"
+        ],
+        "exit": 0,
+        "test_counts": []
+      },
+      {
+        "name": "cli0",
+        "command": [
+          "python",
+          "scripts/validate_delivery_records.py"
+        ],
+        "exit": 0,
+        "test_counts": []
+      },
+      {
+        "name": "cli1",
+        "command": [
+          "python",
+          "scripts/validate_handoff.py",
+          "examples/research-to-test/research.handoff.json",
+          "examples/research-to-test/test.blocked.handoff.json",
+          "examples/research-to-test/test.handoff.json",
+          "examples/failed.handoff.json",
+          "examples/partial-assignment.handoff.json"
+        ],
+        "exit": 0,
+        "test_counts": []
+      },
+      {
+        "name": "cli2",
+        "command": [
+          "python",
+          "scripts/validate_knowledge.py",
+          "examples/knowledge/input.json",
+          "examples/knowledge/handoff.json",
+          "examples/knowledge/context.json",
+          "examples/knowledge-delivery/input.json",
+          "examples/knowledge-delivery/handoff.json",
+          "examples/knowledge-delivery/context.json",
+          "examples/knowledge-collector/input.json",
+          "examples/knowledge-collector/handoff.json",
+          "examples/knowledge-collector/context.json"
+        ],
+        "exit": 0,
+        "test_counts": []
+      },
+      {
+        "name": "cli3",
+        "command": [
+          "python",
+          "scripts/validate_readiness.py",
+          "examples/readiness/pr-ready-issue-unverified.json",
+          "--context",
+          "examples/readiness/context.json",
+          "--handoff",
+          "examples/readiness/manager.handoff.json",
+          "--at",
+          "2030-01-01T12:00:00Z"
+        ],
+        "exit": 0,
+        "test_counts": []
+      },
+      {
+        "name": "cli4",
+        "command": [
+          "python",
+          "scripts/validate_readiness.py",
+          "examples/readiness/implementation-only.json",
+          "--context",
+          "examples/readiness/automatic-context.json",
+          "--at",
+          "2030-01-01T12:00:00Z"
+        ],
+        "exit": 0,
+        "test_counts": []
+      },
+      {
+        "name": "cli5",
+        "command": [
+          "python",
+          "scripts/validate_readiness.py",
+          "examples/readiness/postdeploy-achieved.json",
+          "--context",
+          "examples/readiness/context.json",
+          "--at",
+          "2030-01-01T12:00:00Z"
+        ],
+        "exit": 0,
+        "test_counts": []
+      },
+      {
+        "name": "aggregate10",
+        "command": [
+          "python",
+          "scripts/validate_issue_completion.py",
+          "examples/issue-completion/synthetic-achieved/completion.json",
+          "--context",
+          "examples/issue-completion/synthetic-achieved/context.json",
+          "--context-sha256",
+          "951048815ca07294e13e6df297272e719e121d81a8e1c523c3958e4ba97742ac",
+          "--handoff",
+          "examples/issue-completion/synthetic-achieved/handoff.json",
+          "--at",
+          "2030-01-03T12:00:00Z"
+        ],
+        "exit": 0,
+        "test_counts": []
+      },
+      {
+        "name": "aggregate11",
+        "command": [
+          "python",
+          "scripts/validate_issue_completion.py",
+          "examples/issue-completion/synthetic-pending/completion.json",
+          "--context",
+          "examples/issue-completion/synthetic-pending/context.json",
+          "--context-sha256",
+          "8943ce6030f4335adb8cfab5f7338670b2c45b3d24bd3114e92fab5c1cd8d5ff",
+          "--handoff",
+          "examples/issue-completion/synthetic-pending/handoff.json",
+          "--at",
+          "2030-01-03T12:00:00Z"
+        ],
+        "exit": 0,
+        "test_counts": []
+      }
+    ],
+    "schemas": [
+      "contracts/artifact-delivery-v1.1.schema.json",
+      "contracts/artifact-delivery-v1.2.schema.json",
+      "contracts/artifact-delivery.schema.json",
+      "contracts/consumption-receipt-v1.1.schema.json",
+      "contracts/consumption-receipt-v1.2.schema.json",
+      "contracts/consumption-receipt.schema.json",
+      "contracts/delivery-authorization-v1.1.schema.json",
+      "contracts/delivery-authorization-v1.2.schema.json",
+      "contracts/delivery-authorization.schema.json",
+      "contracts/handoff.schema.json",
+      "contracts/issue-completion-context.schema.json",
+      "contracts/issue-completion.schema.json",
+      "contracts/knowledge-candidates-v1.schema.json",
+      "contracts/knowledge-collection-authorization.schema.json",
+      "contracts/knowledge-collection-record.schema.json",
+      "contracts/knowledge-collection-state.schema.json",
+      "contracts/knowledge-context.schema.json",
+      "contracts/knowledge-event.schema.json",
+      "contracts/knowledge-handoff.schema.json",
+      "contracts/knowledge-input.schema.json",
+      "contracts/knowledge-source-registry.schema.json",
+      "contracts/publication-receipt-v1.1.schema.json",
+      "contracts/publication-receipt-v1.2.schema.json",
+      "contracts/publication-receipt.schema.json",
+      "contracts/readiness-context.schema.json",
+      "contracts/readiness.schema.json"
+    ],
+    "schema_count": 26,
+    "legacy_unchanged": true,
+    "pb_runtime_unchanged": true,
+    "nonoverlap_main_bytes_equal": true,
+    "auto_merged_overlap": [
+      "README.md",
+      "contracts/README.md",
+      "contracts/artifact-delivery.md"
+    ],
+    "manual_conflicts": [
+      "README.md",
+      "contracts/README.md"
+    ],
+    "documentation_files": 14,
+    "local_link_targets": 99
+  },
+  "prior_payload": {
+    "repository": "syuhei0519/ai-development-system",
+    "commit": "4b51d2ca4aa7de7f829a423d4f04f626e83eded3",
+    "prefix": "evidence/phase13/pb-a3-integration/",
+    "files": 53,
+    "bytes": 520619,
+    "local_copy": "prior/",
+    "preservation": "All prior integration files copied byte-for-byte, including nested 48-file original attempt3 bundle and full earlier Handoff history."
+  },
+  "prior_records": {
+    "commit": "06148e941e85682f8305e4d8b4dd40325e747d8f",
+    "manifest_sha256": "c4e48b64d58e42c2884fedc39bfdb4043f2376685836f8930bdd3d48e0c85646",
+    "publication_receipt_sha256": "141c111d41bf9a84d361a062e82a3377dc2c22ffa6a590c3d34c8c5826dc2781"
+  },
+  "scope_observation": "Approved Delivery1.2 additions merged. Collector runtime, P-B regression file and P-B contract bytes unchanged. Incoming Delivery code equals canonical main. Legacy regression/schema compatibility and full combined suite pass.",
+  "gates": {
+    "local": "verified",
+    "remote": "verified",
+    "ci": "verified",
+    "independent_test": "new-head integration recheck pending",
+    "independent_review": "new-head integration recheck pending",
+    "pr_merge": "not_requested",
+    "draft_pr": "verified"
+  },
+  "limits": [
+    "Implementation self-verification only; no old-head Test/Review result relabelled.",
+    "P-C/P-D, periodic features and real Agent operation remain deferred.",
+    "No app build/run, deployment, API, Secrets or scheduler changes.",
+    "Synthetic live replay uses merged code with fixed 50cf6aa52f64c45961a354281169064cd2c75e20 fixture snapshot; no dispatch.",
+    "Only existing feature and explicitly authorized evidence branch updated."
+  ],
+  "pr": {
+    "baseRefName": "main",
+    "headRefOid": "5e1980eff37107bca7089aca7c457180d00ff020",
+    "isDraft": true,
+    "state": "OPEN",
+    "url": "https://github.com/syuhei0519/ai-development-system/pull/6"
+  },
+  "ci": [
+    {
+      "run_id": 38117170216,
+      "event": "pull_request",
+      "head": "5e1980eff37107bca7089aca7c457180d00ff020",
+      "conclusion": "success",
+      "tests": 280,
+      "checkout": "f6795e4b69087349a8aac40437e48a38ef20bdd1",
+      "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38117170216"
+    },
+    {
+      "run_id": 38117166964,
+      "event": "push",
+      "head": "5e1980eff37107bca7089aca7c457180d00ff020",
+      "conclusion": "success",
+      "tests": 280,
+      "checkout": "5e1980eff37107bca7089aca7c457180d00ff020",
+      "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38117166964"
+    }
+  ],
+  "preservation_checks": {
+    "main_only_equal": 19,
+    "feature_only_equal": 27,
+    "overlap": [
+      "README.md",
+      "contracts/README.md",
+      "contracts/artifact-delivery.md"
+    ],
+    "manual_resolution_files": [
+      "README.md",
+      "contracts/README.md"
+    ]
+  }
+}
