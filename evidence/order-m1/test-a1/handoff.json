@@ -215,8 +215,8 @@
     {
       "id": "A-24",
       "kind": "other",
-      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/measurement.json",
-      "revision": "sha256:96ca84c9237be4e981c8708693f576ce1e442fd2a5258e92272c14f0f0e9607e",
+      "locator": "measurement.json",
+      "revision": "sha256:b53fae57bc043d1cc758c48b3261cbea886226b50a2f3f34ad49c62aa03828b1",
       "summary": "measurement.json; independent synthetic preparation evidence, not actual release/product acceptance."
     },
     {
@@ -393,6 +393,13 @@
       "locator": "knowledge-candidates.json",
       "revision": "sha256:38057f3d30949b9c7c07e460f6c1298f1e5d009b36f447284a25f0d359f2648a",
       "summary": "Pending optional raw-source delivery knowledge candidate; full four-template tree closure."
+    },
+    {
+      "id": "A-SAFETY",
+      "kind": "other",
+      "locator": "publication-safety.json",
+      "revision": "sha256:ddc7873e23ffcbbf243d74c08de405f8d483a6ef0ae9020cae94e5d0c9a5f089",
+      "summary": "Independent public content review and existing publication permission boundary."
     }
   ],
   "evidence": [
