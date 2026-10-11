@@ -1,0 +1,17 @@
+{
+  "document_type": "publisher_integrity_verification",
+  "system_revision": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+  "public_alias": "order-p0-review-a1",
+  "observed_at": "2026-10-11T18:04:13.841848+00:00",
+  "result": "verified",
+  "delivery_attempt": 1,
+  "manifest_sha256": "49ba54db29ee659b3eb91cf6c8312753d60968ec59a0e553c4995e60d3a275f8",
+  "publication_receipt_sha256": "2920ab194e3fe7d442348c6d8c457a1d8f81babea38d2644c7dd4dac169e4739",
+  "explicit_artifacts": 57,
+  "physical_objects": 117,
+  "physical_bytes": 732681,
+  "verification": "Fresh isolated GitSource.read and canonical verify_handoffs: full bytes/size/hash/type/strict JSON/Handoff/slot/candidate/tree; all pins and ancestors checked. No skipped closure or reserialized original files.",
+  "authority_granted": false,
+  "consumer_receipt": "not_requested: this is publisher integrity validation, not a separate Manager Consumer authorization. Manager must authorize and run consume_delivery.py for its own new output.",
+  "business_outcome": "failed Review remains failed; successful delivery cannot override R1/R2."
+}

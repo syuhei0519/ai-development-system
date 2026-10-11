@@ -1,0 +1,25 @@
+{
+  "document_type": "review_delivery_history",
+  "public_alias": "order-p0-review-a1",
+  "scope": "platform-gitops#backend-app-2/P0",
+  "epoch": 1,
+  "execution_attempt": 1,
+  "limits": {
+    "dispatch": 3,
+    "execution": 3,
+    "delivery": 3
+  },
+  "observed_dispatch": "This Review invocation is confirmed started; Manager owns the private dispatch ledger. No redispatch performed.",
+  "execution_result": "failed",
+  "delivery_events": [
+    {
+      "attempt": 1,
+      "result": "verified",
+      "evidence": "publisher-verification.json",
+      "observed_at": "2026-10-11T18:04:13.841848+00:00",
+      "note": "57 explicit / 117 physical / 732681 bytes fetched and verified through pinned canonical functions after payload publication. Incoming Test bundle consumption separately succeeded once."
+    }
+  ],
+  "prior_history": "All prior Implementation/Test/B1 attempts, failure histories and terminal states retained through immutable fixed upstream closure. No renaming or retry reclassification.",
+  "authority_granted": false
+}
