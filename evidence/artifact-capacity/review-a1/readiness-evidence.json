@@ -1,0 +1,54 @@
+{
+  "document_type": "independent_review_evidence",
+  "artifact_id": "readiness-evidence",
+  "subject": {
+    "repository": "syuhei0519/ai-development-system",
+    "pr_number": 9,
+    "head_sha": "4e38376404d9486daae93829735f11166a01e062",
+    "base_sha": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+    "target_revision": "4e38376404d9486daae93829735f11166a01e062",
+    "config_revision": "sha256:f02d090639034d8882e827dfbc9da4a181c3a6218a4d389a46e62c69f30eb1ad",
+    "merge_group_sha": null
+  },
+  "context_sha256": "8e9114ea1ff3d95fb2475382ca8bfed7ecdf0aa79967748dfc7169ca07445b68",
+  "config_sha256": "f02d090639034d8882e827dfbc9da4a181c3a6218a4d389a46e62c69f30eb1ad",
+  "evidence": [
+    {
+      "id": "independent-capacity-review",
+      "kind": "ai_review",
+      "subject": {
+        "repository": "syuhei0519/ai-development-system",
+        "pr_number": 9,
+        "head_sha": "4e38376404d9486daae93829735f11166a01e062",
+        "base_sha": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+        "target_revision": "4e38376404d9486daae93829735f11166a01e062",
+        "config_revision": "sha256:f02d090639034d8882e827dfbc9da4a181c3a6218a4d389a46e62c69f30eb1ad",
+        "merge_group_sha": null
+      },
+      "observed_at": "2026-10-11T19:52:51.117415+00:00",
+      "valid_until": "2026-10-12T19:52:51.117415+00:00",
+      "locator": "review-report.md",
+      "observation": "Independent review of all 18 changed files; 356 suite tests, eight workflow commands and 67 independently authored CLI/schema checks passed. No blocking findings. Fixed-source scope, no operation authority.",
+      "producer": "PUBLIC-SYSTEM-CAPACITY-REVIEW-E1-A1",
+      "independent": true,
+      "ac_ids": [
+        "AC-C1",
+        "AC-C2",
+        "AC-C3",
+        "AC-C4"
+      ]
+    }
+  ],
+  "validity_basis": "Maximum 24 hours for immutable source and reproducible offline observations, immediately invalidated by any head/base/target/config change or contradictory evidence. Live GitHub observations and Manager policy must be refreshed independently immediately before action.",
+  "policy_observed_at": "2026-10-11T19:37:16Z",
+  "policy_valid_until": "2026-10-11T20:22:16Z",
+  "policy_source": "Manager supplied pinned context, not refreshed by this review.",
+  "deployment_effect": "none",
+  "deployment_basis": "Fixed 18-file System-only diff; only GitHub workflow validates contracts with contents:read. No deployment jobs. External deployment absence relies on supplied Owner attestation.",
+  "remaining_gates": [
+    "Manager current policy/context and readiness aggregation",
+    "Authorized integration and independent integration observation"
+  ],
+  "issue_completion": "unverified",
+  "merge_group": "null; no merge-group executed"
+}

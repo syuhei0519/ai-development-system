@@ -1,0 +1,101 @@
+{
+  "changed_files": [
+    {
+      "path": ".github/workflows/validate.yml",
+      "size": 2891,
+      "sha256": "0143141860b7c9b62a16a0382b0361946474230c052ae0dca7e3c93d008855ce"
+    },
+    {
+      "path": "README.md",
+      "size": 16775,
+      "sha256": "b9363f874127851cf7826b72bdf6f6c593098e7310ef64a524d387fe84ce549c"
+    },
+    {
+      "path": "contracts/README.md",
+      "size": 13189,
+      "sha256": "af229c5a3adf0cabad2dcc9c2e318b515fd4dcbb7d1bc4d7f93f16a924d3e2fc"
+    },
+    {
+      "path": "contracts/artifact-capacity.md",
+      "size": 4028,
+      "sha256": "44885db9e3a8a1d96e1eb3bcc236f74661c9f91961f61457808d9cd9dfa444b3"
+    },
+    {
+      "path": "contracts/artifact-delivery-v1.3.schema.json",
+      "size": 30892,
+      "sha256": "ca7f1a27e9e65b8d1ad85be189edfd2e67dccc307a01680d14f0b27f6689c942"
+    },
+    {
+      "path": "contracts/artifact-delivery.md",
+      "size": 19042,
+      "sha256": "a4653c14599604d87c8011be00629939849bab198d25f17e0ac1a417e4264edb"
+    },
+    {
+      "path": "contracts/consumption-receipt-v1.3.schema.json",
+      "size": 29207,
+      "sha256": "7e8f84bc368b7256923970e0dc001e5042a624bf85c9ca5115fea927778f7934"
+    },
+    {
+      "path": "contracts/cross-reference-delivery.md",
+      "size": 8309,
+      "sha256": "f5edb6dd1949e07fbdbe0b7fbd973f538aacafa3f8e96d824d70a751c636f8ca"
+    },
+    {
+      "path": "contracts/delivery-authorization-v1.3.schema.json",
+      "size": 2353,
+      "sha256": "3c483bf1c0c6f001ea79e7eae88cb35ce69e77c80ecbc5839bd68ced64d0bef6"
+    },
+    {
+      "path": "contracts/publication-receipt-v1.3.schema.json",
+      "size": 7423,
+      "sha256": "70df0c82bf604c0947f01e20dd87054c4aa9ff9c22d906c2df23d0b0c1b9b70f"
+    },
+    {
+      "path": "examples/crossref-delivery/README.md",
+      "size": 3636,
+      "sha256": "542f4e9a332961ef64c67d5a631bd146b04054258bb05fcb9df98fc42e654a0a"
+    },
+    {
+      "path": "scripts/consume_delivery.py",
+      "size": 27567,
+      "sha256": "a6dde534894c4f62fe69a9dba5ad8a4e1ba79f2c552169e569a6376dee889fb0"
+    },
+    {
+      "path": "scripts/prepare_crossref_bundle.py",
+      "size": 8254,
+      "sha256": "8ceb453c6e40b675a454c5c0e85c52ff4a3301f3299554086dc53842d8068614"
+    },
+    {
+      "path": "scripts/validate_delivery_records.py",
+      "size": 2774,
+      "sha256": "d84626a093b880ac6653fe7e3998a97297c8ca278a93c0bb1bcaafc570c40446"
+    },
+    {
+      "path": "templates/artifact-delivery.md",
+      "size": 2973,
+      "sha256": "0116c14299bdb60cbd8f6213ef73d63f1304509f6661e8532c7366c13dbe44b6"
+    },
+    {
+      "path": "tests/test_artifact_capacity.py",
+      "size": 10410,
+      "sha256": "13a9110249e65cb6efde5ad2dbdebde21c6a1cb1ba8dce59d1edaaa5df8cf96d"
+    },
+    {
+      "path": "tests/test_crossref_delivery.py",
+      "size": 22815,
+      "sha256": "7d91d242f25c0c3c65249c7ef9848e41ce7033af2ed68420669881ae955b6d2a"
+    },
+    {
+      "path": "workflows/single-issue.md",
+      "size": 17674,
+      "sha256": "2465469ef9c2c5b7b2ea1d1db50401cab92e94d705b0ca64e988eb11d5dd6467"
+    }
+  ],
+  "count": 18,
+  "unchanged_security_paths": [
+    "scripts/delivery_candidates.py",
+    "scripts/validate_retry.py",
+    "contracts/handoff.schema.json",
+    "contracts/readiness.schema.json"
+  ]
+}

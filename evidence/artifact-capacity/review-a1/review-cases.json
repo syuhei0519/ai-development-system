@@ -1,0 +1,276 @@
+{
+  "observed_at": "2026-10-11T19:50:22.112230+00:00",
+  "completed_at": "2026-10-11T19:51:32.469297+00:00",
+  "cases": [
+    {
+      "name": "prepare-default128",
+      "passed": true
+    },
+    {
+      "name": "prepare129",
+      "passed": true
+    },
+    {
+      "name": "prepare256",
+      "passed": true
+    },
+    {
+      "name": "prepare129-legacy-rejected",
+      "passed": true
+    },
+    {
+      "name": "prepare-unknown-rejected",
+      "passed": true
+    },
+    {
+      "name": "consume128",
+      "passed": true
+    },
+    {
+      "name": "consume129",
+      "passed": true
+    },
+    {
+      "name": "original128-byte-equality",
+      "passed": true
+    },
+    {
+      "name": "consume256",
+      "passed": true
+    },
+    {
+      "name": "receipt-fresh",
+      "passed": true
+    },
+    {
+      "name": "old-consumer-rejects13",
+      "passed": true
+    },
+    {
+      "name": "old-consumer-accepts12",
+      "passed": true
+    },
+    {
+      "name": "receipt12-cannot-authorize13",
+      "passed": true
+    },
+    {
+      "name": "receipt-cannot-grant-authority",
+      "passed": true
+    },
+    {
+      "name": "dangling-output-symlink",
+      "passed": true
+    },
+    {
+      "name": "authorization-version-1.0",
+      "passed": true
+    },
+    {
+      "name": "publication-version-1.0",
+      "passed": true
+    },
+    {
+      "name": "authorization-version-1.1",
+      "passed": true
+    },
+    {
+      "name": "publication-version-1.1",
+      "passed": true
+    },
+    {
+      "name": "authorization-version-1.2",
+      "passed": true
+    },
+    {
+      "name": "publication-version-1.2",
+      "passed": true
+    },
+    {
+      "name": "authorization-version-1.4",
+      "passed": true
+    },
+    {
+      "name": "publication-version-1.4",
+      "passed": true
+    },
+    {
+      "name": "manifest-downgrade",
+      "passed": true
+    },
+    {
+      "name": "257",
+      "passed": true
+    },
+    {
+      "name": "missing-closure",
+      "passed": true
+    },
+    {
+      "name": "missing-slot",
+      "passed": true
+    },
+    {
+      "name": "extra-slot",
+      "passed": true
+    },
+    {
+      "name": "duplicate-blob",
+      "passed": true
+    },
+    {
+      "name": "wrong-owner-size",
+      "passed": true
+    },
+    {
+      "name": "wrong-target-type",
+      "passed": true
+    },
+    {
+      "name": "tamper",
+      "passed": true
+    },
+    {
+      "name": "wrong-handoff-format",
+      "passed": true
+    },
+    {
+      "name": "type-partial.data",
+      "passed": true
+    },
+    {
+      "name": "type-candidate.data",
+      "passed": true
+    },
+    {
+      "name": "type-identity.data",
+      "passed": true
+    },
+    {
+      "name": "type-nan.data",
+      "passed": true
+    },
+    {
+      "name": "type-dupe.data",
+      "passed": true
+    },
+    {
+      "name": "type-bom.data",
+      "passed": true
+    },
+    {
+      "name": "type-null.data",
+      "passed": true
+    },
+    {
+      "name": "type-cut.data",
+      "passed": true
+    },
+    {
+      "name": "symlink-blob",
+      "passed": true
+    },
+    {
+      "name": "auth-consumer_use_approval",
+      "passed": true
+    },
+    {
+      "name": "auth-scope",
+      "passed": true
+    },
+    {
+      "name": "auth-purpose",
+      "passed": true
+    },
+    {
+      "name": "auth-allowed_representations",
+      "passed": true
+    },
+    {
+      "name": "auth-valid_until",
+      "passed": true
+    },
+    {
+      "name": "publication-artifact-order",
+      "passed": true
+    },
+    {
+      "name": "artifact-delivery-256",
+      "passed": true
+    },
+    {
+      "name": "artifact-delivery-exact-delta",
+      "passed": true
+    },
+    {
+      "name": "artifact-delivery-unchanged",
+      "passed": true
+    },
+    {
+      "name": "artifact-delivery-v1.1-unchanged",
+      "passed": true
+    },
+    {
+      "name": "artifact-delivery-v1.2-unchanged",
+      "passed": true
+    },
+    {
+      "name": "publication-receipt-256",
+      "passed": true
+    },
+    {
+      "name": "publication-receipt-exact-delta",
+      "passed": true
+    },
+    {
+      "name": "publication-receipt-unchanged",
+      "passed": true
+    },
+    {
+      "name": "publication-receipt-v1.1-unchanged",
+      "passed": true
+    },
+    {
+      "name": "publication-receipt-v1.2-unchanged",
+      "passed": true
+    },
+    {
+      "name": "consumption-receipt-256",
+      "passed": true
+    },
+    {
+      "name": "consumption-receipt-exact-delta",
+      "passed": true
+    },
+    {
+      "name": "consumption-receipt-unchanged",
+      "passed": true
+    },
+    {
+      "name": "consumption-receipt-v1.1-unchanged",
+      "passed": true
+    },
+    {
+      "name": "consumption-receipt-v1.2-unchanged",
+      "passed": true
+    },
+    {
+      "name": "delivery-authorization-exact-delta",
+      "passed": true
+    },
+    {
+      "name": "delivery-authorization-unchanged",
+      "passed": true
+    },
+    {
+      "name": "delivery-authorization-v1.1-unchanged",
+      "passed": true
+    },
+    {
+      "name": "delivery-authorization-v1.2-unchanged",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "transport": "Synthetic local repository adapter; no network. Incoming public delivery verified separately."
+}

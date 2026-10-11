@@ -1,0 +1,56 @@
+{
+  "document_type": "public_evidence_safety_review",
+  "observed_at": "2026-10-11T19:53:08.170170+00:00",
+  "reviewer": "PUBLIC-SYSTEM-CAPACITY-REVIEW-E1-A1",
+  "result": "safe_for_authorized_publication",
+  "files": [
+    {
+      "path": "ci-replay.json",
+      "size": 2451,
+      "sha256": "791d3117f020d078bc64fbb92666f637fb34c8b0c38ff39975237ec01368daf3"
+    },
+    {
+      "path": "github-observation.json",
+      "size": 931,
+      "sha256": "96bd1367617bd752e8f0af252da7b68e98139706c852a539720889d4c46c7b00"
+    },
+    {
+      "path": "handoff.json",
+      "size": 8294,
+      "sha256": "8716abb8ed984a4b94f957bdc10a402ae3b4b4e82dd7787c81235b31922dcee7"
+    },
+    {
+      "path": "measurements.json",
+      "size": 912,
+      "sha256": "8d8f9c59a0c8d8c58c3c8e084caa00f3c7a01848556358c072f85a49a69a9968"
+    },
+    {
+      "path": "readiness-evidence.json",
+      "size": 2734,
+      "sha256": "64108e6355bb9649ada508388ff8c0bc5d777b477f29de33321c30a9387d1d30"
+    },
+    {
+      "path": "reproducer.py",
+      "size": 10261,
+      "sha256": "6eb9c01ecf59d1f9d4b98ad68e1eb20b5efd21fbe9e3723807a47fb3906b57d8"
+    },
+    {
+      "path": "review-cases.json",
+      "size": 5179,
+      "sha256": "1afd3e0b244a9c27568390f00ee2145e880071a610f43be18c1416eb261370da"
+    },
+    {
+      "path": "review-report.md",
+      "size": 7507,
+      "sha256": "1452924881028786cabc4d10850ac4b051b0b102b0957a6d0ca134e58d5493e1"
+    },
+    {
+      "path": "source-inventory.json",
+      "size": 3237,
+      "sha256": "d1a1d029784d13e2dfc8405b490ecfad1411ecc443b6149cd1d1fcfb42fa0a11"
+    }
+  ],
+  "basis": "Manually inspected report, JSON measurements, public aliases and purpose-made synthetic reproducer. No private authorization/Consumption Receipt, actual runtime task identity, secret, private conversation or internal log included. Upstream references preserve already public bytes; private-original equivalence not claimed.",
+  "publication_authorization": "Existing Owner authorization permits safety-reviewed Test/Review evidence on a dedicated branch in this System repository for this phase. No PR operations, implementation edits or merge authorized.",
+  "consumer_use": "No downstream Consumer authorization is granted by this record."
+}

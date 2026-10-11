@@ -1,0 +1,30 @@
+{
+  "observed_at": "2026-10-11T19:52:51.117415+00:00",
+  "review_independent": true,
+  "suite": {
+    "command": "python -m unittest discover -s tests -v",
+    "exit_code": 0,
+    "tests": 356,
+    "seconds": 45.422
+  },
+  "own_cases": 67,
+  "ci_commands": 8,
+  "incoming": {
+    "canonical": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+    "version": "1.2",
+    "fresh_https_fetch": true,
+    "artifacts": 20,
+    "manifest_sha256": "19970c4d822bfb5fa2f5f83e0224150c2d98ad4e205c19cb1fc2ed2fd10113ae",
+    "publication_sha256": "93652b0ef220a2cbe5ca73534d0b445ba31afec36b834701c1bb85a6d43d4362",
+    "handoff_sha256": "cc96975c94efaa778b9d4757fe959c4ddbb410f534a79c8a8b84968dd0dbd8f5"
+  },
+  "test_producer_claims": {
+    "suite": 356,
+    "independent_cases": 59,
+    "not_counted_as_review_measurements": true
+  },
+  "implementation_selftests": {
+    "suite": 356,
+    "not_independent_acceptance": true
+  }
+}

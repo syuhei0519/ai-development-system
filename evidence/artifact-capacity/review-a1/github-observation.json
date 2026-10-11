@@ -1,0 +1,29 @@
+{
+  "observed_at": "2026-10-11T19:52:49.551752+00:00",
+  "pr": {
+    "state": "open",
+    "draft": true,
+    "merged": false,
+    "head_sha": "4e38376404d9486daae93829735f11166a01e062",
+    "base_sha": "4693887fa79c2b4a291c555b8bd27b6903eb4199"
+  },
+  "runs": [
+    {
+      "id": 38168394077,
+      "event": "pull_request",
+      "head_sha": "4e38376404d9486daae93829735f11166a01e062",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38168394077"
+    },
+    {
+      "id": 38168383783,
+      "event": "push",
+      "head_sha": "4e38376404d9486daae93829735f11166a01e062",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38168383783"
+    }
+  ],
+  "limitation": "Read-only PR/CI observation, not current ruleset or operation authorization."
+}
