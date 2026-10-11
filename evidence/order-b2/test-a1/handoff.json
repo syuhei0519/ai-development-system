@@ -60,7 +60,7 @@
       "id": "A-REPORT",
       "kind": "test-report",
       "locator": "test-report.txt",
-      "revision": "sha256:6d28aecb693c3afd84d443b3eccacd96dd62ee3f5b20f3e3b4bd96f6f2e73eed",
+      "revision": "sha256:072ec8c8e142a54dc45c6cfd2512a3268491c5364823fa0566795db6f1e1260e",
       "summary": "Public fixed Test artifact; see report for measured scope and limitations."
     },
     {
@@ -211,24 +211,17 @@
       "summary": "Exact public fixed source executed or inspected independently."
     },
     {
-      "id": "A-SOURCE-13",
-      "kind": "document",
-      "locator": "https://github.com/syuhei0519/platform-gitops/blob/b989e29b8addbd6396c5c2b4833b969bc15fc8fa/charts/workloads/templates/applications.yaml",
-      "revision": "sha256:6bc92483833f169a0f19fb7349f9105f410007328069b25d24509e5c1c58a7ee",
-      "summary": "Exact public fixed source executed or inspected independently."
-    },
-    {
       "id": "A-SAFETY",
       "kind": "other",
       "locator": "bundle-review.json",
-      "revision": "sha256:06bd3ed6497dffe09563a6a9a5301b7565662a1cfe68ffa74a30fe268ecfce8d",
+      "revision": "sha256:86a71c4880fe17d5d38739da7c28f1d362c4c28911b2a7da292ea8ab62195343",
       "summary": "Public derivative full-text review and nonrecursive inventory; no Consumer approval."
     },
     {
       "id": "A-DELIVERY-HISTORY",
       "kind": "other",
       "locator": "delivery-attempts.json",
-      "revision": "sha256:9f9389ca8b56c640854c361a390b9f8b5f056a6ddbf13f260d9f8d6f1885caef",
+      "revision": "sha256:16dd3c9489843c9418e79cd0afee5b4a85131a2b1cd27fd50626c828f960687f",
       "summary": "Bounded outgoing delivery candidate1 failure and candidate2 correction. Execution attempt1 and blocked status unchanged."
     },
     {
@@ -237,6 +230,27 @@
       "locator": "https://github.com/syuhei0519/ai-development-system/commit/9271d8ae81eb29e5ce9e71cb069b433ddf7334a3",
       "revision": "9271d8ae81eb29e5ce9e71cb069b433ddf7334a3",
       "summary": "Historical first payload commit preserved; its incomplete transport closure is not Consumer-approved."
+    },
+    {
+      "id": "A-FAILED2-MANIFEST",
+      "kind": "other",
+      "locator": "failed-delivery-2-manifest.json",
+      "revision": "sha256:2a2b4f9e09eb68ce1bec0761d028df8222a57916d92c6ff2f77cf1ab89955c1b",
+      "summary": "Unchanged failed candidate2 transport record; not successful Consumer delivery."
+    },
+    {
+      "id": "A-FAILED2-PUB",
+      "kind": "other",
+      "locator": "failed-delivery-2-publication-receipt.json",
+      "revision": "sha256:1ad8966c373d9931ce0325daf1a911caf241e2481b4941371f5465b6f9021d27",
+      "summary": "Unchanged failed candidate2 transport record; not successful Consumer delivery."
+    },
+    {
+      "id": "A-SECOND-PAYLOAD",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/ai-development-system/commit/2911eb77f27d48c77a290517e3b8ac37c393a1ba",
+      "revision": "2911eb77f27d48c77a290517e3b8ac37c393a1ba",
+      "summary": "Historical candidate2 payload commit preserved; its transport failed canonical type verification."
     }
   ],
   "evidence": [

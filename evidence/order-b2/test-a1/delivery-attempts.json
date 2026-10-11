@@ -14,8 +14,17 @@
     },
     {
       "attempt": 2,
+      "result": "failed",
+      "reason": "Helm applications.yaml begins with {{ and cannot be declared text under strict JSON-looking content rules. Original template already exists in inherited immutable tree snapshot.",
+      "stage": "fresh canonical producer byte/type verification",
+      "payload_commit": "2911eb77f27d48c77a290517e3b8ac37c393a1ba",
+      "manifest_sha256": "2a2b4f9e09eb68ce1bec0761d028df8222a57916d92c6ff2f77cf1ab89955c1b",
+      "publication_receipt_sha256": "1ad8966c373d9931ce0325daf1a911caf241e2481b4941371f5465b6f9021d27"
+    },
+    {
+      "attempt": 3,
       "result": "prepared",
-      "reason": "Use unchanged public workflow bytes under sources/backend-ci.yml and explicitly preserve original source provenance; canonical fresh validation required."
+      "reason": "Remove only duplicate typed template blob declaration; preserve exact template bytes in the upstream canonical tree snapshot. Preserve failed candidate2 records; do not relax validators. This is the final delivery budget."
     }
   ],
   "history_preserved": "Initial payload commit and incoming B2 Implementation failed1/success2 and B1/M0/M1 histories are unchanged. Business status and execution attempt unchanged.",

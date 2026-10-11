@@ -170,3 +170,11 @@ is preserved. Candidate2 copies exactly those public workflow bytes to the safe
 sources/backend-ci.yml path with explicit original provenance and unchanged hash.
 No System validator or source implementation was changed; execution attempt and
 blocked status remain unchanged. See delivery-attempts.json.
+
+Candidate2 fresh verification refused Helm template applications.yaml as invalid
+JSON-looking text. Its unchanged manifest/publication candidate are retained as
+failed-delivery-2-* files. Candidate3 removes only the duplicate typed blob slot;
+the same original template bytes remain in the inherited immutable workload tree
+snapshot. No original template change, type disguise or validator relaxation.
+This is the third and final outgoing delivery attempt; business status blocked
+and execution attempt1 remain unchanged. Final outcome is recorded separately.
