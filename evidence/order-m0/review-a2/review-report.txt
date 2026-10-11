@@ -1,0 +1,622 @@
+Independent Order M0 Review attempt2
+
+Result: COMPLETED for AC-3 M0 preparation infrastructure review. No blocking
+finding in the fixed 18-file diff, delivered evidence, or finite new measurements.
+This is neither product AC met nor formal Merge/Deployment Ready nor a GitHub
+required review. No implementation repair, deployment or merge was performed.
+
+Identity, scope and immutable history
+Public alias order-m0-review-a2, role review, attempt2.
+Scope application-manifest#backend-app-2/M0; assigned AC-3 infrastructure only.
+System 4693887fa79c2b4a291c555b8bd27b6903eb4199; workflow/contracts/templates and
+review role read at that exact checkout. No AGENTS.md was found in the fixed
+System/application trees or workspace parent. Handoff2.0/Delivery1.2/Readiness1.1/
+IssueCompletion1.1 applied; schema success is not business success.
+PR https://github.com/syuhei0519/application-manifest/pull/18
+Head/target e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4
+Head tree 92b867efc6e9163b0cbfd4713b82d0c65e24f769
+Base e039945a90625262f91382e6f71149d046e31b34
+Base tree 7c9c8d52bf014f54fe2212b0ef4374c53d9700a3
+Current Manager config revision:
+sha256:e0a3ca35aafdd35088a3edda32993e9860c33b11b62ecd7ca31948e94c46c39f
+App CI/test-input revision, separately recomputed over all 49 sorted path/hash
+entries, compact sort_keys JSON without LF:
+sha256:6f3ec88dc9ef058156a7ecb43915dc51b066fab93740f9d7a0a7970fb63286b9
+These hashes describe different scopes; they are not falsely declared equal.
+
+Dependencies: Test order-m0-test-e2-a1 attempt1 and Implementation
+order-m0-implementation-e2-a1 attempt1. Review order-m0-review-a1 attempt1 is
+retry_of, remains completed but expired. Old Test1/2 failures and Test3 completed
+expiry, Research blocked history and separate recovery, Implementation history,
+B1 individual success, all bytes/statuses and previous budget limits are retained.
+No epoch reset, recursive Agent, scheduler, or new Consumer authorization issued.
+Dispatch/execution/delivery each remain at most three; Manager owns their ledger.
+
+Input integrity
+A/B were separately fetched and consumed by the fixed System canonical CLI,
+with the two independently supplied Manager authorization pins. Both exited 0.
+A: records75247bb7e4a21c70d7d034e7607526f099c9f3aa,
+manifest181970bytes/45ec79a98b62cdeb0cbe56feded9ef408d33f7deeb348d506b235bf3ad6760c7;
+publication63976bytes/bc673a2a018d17ca3ad8cad5d4a2870b57fdd3ff339fefbe28ac4c7a770be525.
+B: records180186a76446095f3284e475003d9ea242a3f0cc,
+manifest181204bytes/3e1abefa430a443364acfb13db78768b6a804ba903c29359aa842c85aeb62c15;
+publication64457bytes/0f8bdc0f11ff8e471d826dbdc45d8400a201899d0a1668edde55182c377cf42e.
+121 and 122 explicit objects respectively; shared fixed references deduplicate
+to126. All raw bytes/size/SHA256/type, typed slots, upstream/retry and complete
+candidate source trees were freshly verified before use. Private authorization,
+context and Consumer receipts are not published. No receipt grants permission.
+Research design.txt/addendum.txt at
+https://github.com/syuhei0519/ai-development-system/tree/10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332/delivery-verification/20261011/research-public
+were read as edited public derivatives. Private originals were not inspected;
+Producer testimony about their origin is distinct from this byte inspection.
+
+Readiness1.1 preparation applicability and complete condition mapping
+The independently pinned Manager context raw bytes (5471) and config raw bytes
+(1945) match their supplied pins. Context schema passes. Full preparation,
+pr_kind=preparation, empty product pr_ac_ids, related_ac_ids=[AC-3], all four
+conditions, all three fixed artifacts, followup and all product outcomes were
+inspected without altering the context. No condition is added as an Issue AC.
+Handoff's AC-3 assignment/covered denotes the existing role responsibility;
+Readiness product pr_ac_ids remains empty. They are different contracts.
+Research sections5/8 explicitly designed M0 as verifier/inventory infrastructure
+before B2 with unchanged live renders; PR18 implements no Order workload. Thus
+preparation is appropriate from inception, not a reclassification hiding a failed
+product gate. F1/F2 were infrastructure defects fixed at this head. Historical
+failures stay recorded and independent Test epoch2 supplies new passing measures.
+
+M0-S1: met for the assigned preparation responsibility. release-verifier plus
+inventory-scanner/database-policy were reviewed together with all changed files.
+Release19, v1/backend/frontend positives, v2 synthetic bindings, canonical ZIP,
+API/registry boundary and existing trusted suites passed anew. Test epoch2
+results.suite_counts, observations.f1 and its report independently measured these
+same code paths. The 49 app CI/test-config hashes and head/base match exactly.
+M0-S2: met. inventory-scanner/database-policy enforce both DB workload identities
+before image classification; release-verifier keeps the platform allowlist apart.
+New F1 138 observations (128 gating plus10 scan observations), security116,
+independent38, inventory272 and bounded F1/F2 render reproductions all pass.
+Test epoch2 results.observations and report contain the corresponding independent
+F1/F2/security/namespace/PVC/optional-inventory measurements at the same head.
+M0-S3: met for static desired-resource effect none. New comparison confirms all
+28 chart and4 environment files byte-identical with identical path sets; three
+Helm renders are byte/parsed-YAML identical. Baseline bounded renderer has no
+added/removed/changed inventory, four entries, provenanceRequired=false and
+eligibleForAuthenticatedVerification=false. All three artifacts change verification
+only; they do not enable Order. Test epoch2 has the same file/render measures.
+M0-S4: met for evidence and handoff responsibility. Whole diff, fixed Research,
+all typed upstreams, new Test, old Review, complete preparation artifacts and
+B2/M1/P0/M2/P1/T7 responsibilities were inspected. Test epoch2 explicitly preserves
+all product AC unverified/premerge/deferred=null/aggregate_required and documents
+real-release and historical-checkout limitations. This Review adds current
+contract/applicability analysis, not a substitute independent Test execution.
+
+All three fixed raw Git blobs were independently materialized in the requested
+artifact layout and verified before assessment:
+release-verifier = ci/github/release.py,30677bytes,
+ed2630b8b3fe3a18a6de2c0ce55dcbe494f7d20414d672326d7e524b30903867
+inventory-scanner = tools/inventory/main.go,7796bytes,
+2d775e4dd4b9a289f9786ff8e202abc26e642f8ed346c5ffba4df6d2b8a73762
+database-policy = tools/inventory/platform.go,4208bytes,
+d31f2314eadd52a1774edb0545e0c30d6746158c16c0e43e648802adf82afefb
+Revision for every blob is the assigned head. All four conditions and all three
+artifacts are covered by this Review, not merely the representative release file.
+Manager must materialize these same pinned bytes beside its formal Readiness and
+bind all condition_ids/artifact_ids for both independent Test and AI Review.
+
+Contract transition versus Test evidence
+Test epoch2 used System0083151aa2f6b2aaf0e1db64ada3f196ed766e48, not System4693887.
+The System diff adds preparation Readiness, typed aggregate members and regular
+file validation; it does not change app verifier/input bytes or Delivery1.2/
+Handoff2.0 semantics. No measured code, expected security result, fixture, render,
+app workflow or test config changed. The new condition-to-original-evidence mapping
+above supports retaining the fixed Test measurements through their original
+2026-10-12T09:25:28.207449Z expiry, subject to changes/new failures. It does not
+rewrite their system/config subject or pretend they originally ran Readiness1.1.
+No app re-test is required solely because of this contract transition. Formal
+Manager context/Readiness validation is still new work under System4693887;
+Review measurements cannot fill missing independent Test coverage. If the Manager
+changes any condition or relevant code/config, obtain the affected independent
+remeasurement. Old Test3 and Review1 expirations are not extended.
+
+Diff review and release trust contract
+All18 changed files were reviewed: README.md; six ci/github/fixtures JSON files;
+order-release.schema.json; release.py/release_test.py/test.sh; trusted-render.py;
+trusted_render_test.py; validate.sh; docs/order-trusted-manifest-m0.md; inventory
+main.go/platform.go/platform_test.go. git diff --check passed; no implementation
+tracked bytes were changed by Review. Surrounding trusted workflow, renderer and
+inventory paths were inspected in full; fixture claims remain synthetic.
+Explicit service/source/image mapping retains backend/frontend v1 and adds only
+order -> backend-app -> backend-app-order/v2. Unknown service, backend spoofing,
+missing/extra Order record fields, wrong source/ref/workflow/run/attempt/types,
+hashes and stale times fail. Annotation run IDs are positive canonical decimals.
+Order annotation set, record/SBOM/scan bytes and URLs, immutable Git tag commit,
+latest main/run/attempt, protected producer canonical record digest, config raw
+hash, OCI source/revision labels and manifest config digest must agree. Order
+requires a single linux/amd64 image with /order-server; index manifests refuse.
+Matrix verification requires unique successful validate/image(backend)/image(order)/
+ci-result and four same-head/run unexpired checked/canonical artifacts. Both
+canonical records bind shared sourceScanSha256 and distinct archive/image digests.
+Archive provenance is attested by the protected producer's canonical record;
+M0 does not download/rebuild the complete checked OCI tar. B2 must validate and
+publish that exact tar. Synthetic agreement is not actual producer interoperability.
+Order proposal path/branch is fixed and PR-only. Local record/publish remain v1;
+no B2 implementation is falsely claimed.
+
+F1/F2, inventory and safety diagnosis
+F1: Pod defaults alone permitted effective container overrides. Fixed policy
+requires UID/GID/fsGroup999/nonroot/RuntimeDefault at Pod scope and absent or
+equivalent container overrides. Null, malformed and conflicting overrides reject.
+F2: early image-family return could let Account DB enter app provenance. Both
+postgresql and order-postgresql names now bind before repository classification,
+in every namespace. App image substitutions reject; fixed PostgreSQL image under
+an unrelated name/kind/container role rejects. Legitimate inheritance/namespace
+positives pass. Historical vulnerable revisions were not rerun in this Review;
+old failures are fixed-byte Test history, current-head repair behavior is new.
+DB policy also requires pinned repository/tag/digest, StatefulSet/container name,
+no token automount, no host namespace/hostPath/privilege/escalation, read-only root,
+drop ALL, no volumeClaimTemplates, fixed same-namespace PVC and retention annotations.
+Extra DB sidecar/init/ephemeral roles refuse. Omitted namespace defaults to account;
+explicit namespace with matching PVC remains allowed, not a namespace permission.
+Active frontend/backend/postgresql chart pairs are required; optional order and
+order-postgresql may be absent only before baseline introduction. Unknown/partial/
+removed pairs and unknown resources/hidden PodSpecs fail. PR data cannot supply
+its own trusted inventory list. Present disabled charts are still rendered.
+This is a bounded verifier, not a complete admission controller or runtime proof.
+
+Registry subprocesses remove GH_TOKEN/GITHUB_TOKEN/EVIDENCE_READ_TOKEN/
+ACTIONS_RUNTIME_TOKEN and use an empty Docker credential directory. Synthetic
+token-bearing positive tests passed. GitHub artifact reader credentials stay on
+the API hop; signed storage reads have no Authorization and refuse further redirects.
+ZIP accepts exactly one regular bounded release-record.json; path/duplicate/
+symlink/directory/FIFO/encrypted-member boundaries refuse. Duplicate JSON keys,
+nonfinite/invalid/trailing JSON and relevant wrong types refuse. Snapshot rejects
+nonregular Git files; fixed chart names prevent PR-controlled shell interpolation.
+Protected-main workflow and verifier==main select executable code; PR charts/
+values are data inside the original bounded networkless read-only sandbox. The
+reviewer executes PR tests locally in an isolated review checkout, not as an
+authenticated production verifier. Test-only output never authorizes a release.
+
+New measurement commands and results
+Prepared Cloud Linux amd64, Go1.27.1/Helm4.2.4/Python3.12.14; repository-pinned Docker
+images and unchanged renderer limits. No database/API/cluster or live release run.
+After activating the existing prepared toolchain, execute the verified original:
+https://github.com/syuhei0519/ai-development-system/blob/406164b1a69ebf4fe2f0e676c11038f08fff5724/evidence/order-m0/test-a3/reproduce.sh
+bash <verified-Test3>/reproduce.sh <fixed-app-checkout> <A-consumed> <fresh-output>
+This invokes ci/github/test.sh, trusted_binary/consumer_failure/phase2 tests,
+ci/validate.sh, checksum, inventory build, render-only scan, fixed upstream F1/
+security/F2/bounded-render/comparison/independent probes, and baseline trusted
+renderer --test-only with fixed base/source/verifier and synthetic job ID0.
+Then in every tools/*/go.mod directory run go test -count=1 -json ./...
+Reproduction exited0. Documentation14; trusted_identity3/contract10/registry8/
+pre_merge_check6/attempts13/render4/namespace_boundary3/release19; additional
+trusted_binary1/consumer_failure1/phase2 2 passed. Uncached Go inventory272,
+release-record207, checksum20, scan-gate7 passed, no failed/skipped test cases.
+Five release-record command packages have no test files, not test successes.
+F1/security/independent and bounded results are appended below with expectations;
+positive render success rules out an unavailable sandbox masquerading as rejection.
+Helm lint/render, checksum, render-only scan and baseline bounded render passed.
+No internal raw log is published. New compact measured facts are embedded here
+rather than duplicating unused upstream files or relaxing the128-object limit.
+
+An initial command stopped after docs14 because the default PATH selected a
+non-Go executable; prepared toolchain activation fixed the command environment.
+That partial run is not counted as suite success. No test/source was modified.
+A context schema lookup initially used a nonexistent versioned filename; using
+the actual readiness-context.schema.json validated the unchanged pinned bytes.
+Cloud guidance discouraging worktrees was discovered after one detached review
+worktree had already been created. No further worktree was created; original
+checkouts and tracked implementation bytes remain unchanged. These are execution
+limitations, not hidden product failures or resets of Agent attempt counters.
+
+Static effect, live uncertainty, policy and remaining responsibilities
+Fixed platform-gitops b989e29b8addbd6396c5c2b4833b969bc15fc8fa
+charts/workloads/templates/applications.yaml and values.yaml select only existing
+postgresql/backend/frontend charts and corresponding local values, targetRevision
+main, automated prune/selfHeal. Those tracked inputs and desired renders are
+unchanged. This supports deployment_effect=none for the exact static M0 change.
+Main reconciliation may nevertheless occur; no Argo live state, runtime behavior
+or absence of reconciliation was observed. No existing Account/Secret/PVC data
+change is implied. A changed effective path/config or unknown/automatic effect
+requires reassessment and Deployment Ready per contract.
+Read-only GitHub inspection found PR18 open/Draft/unmerged with exact head/base.
+The exact-head pull_request CI lookup returned run38125716138 completed/success;
+job/step metadata confirms classify/validate/ci-result success and docs skipped.
+This is separate from Test and Review. Workflow checkout uses the event-default
+ref: head_sha/current merge candidate does not prove historical PR merge checkout.
+Known Forbidden raw logs were neither retried nor bypassed. No extra raw-log gate
+is invented and no workflow rerun was requested.
+Manager-provided policy observation is 2026-10-11T15:37:56Z through16:22:56Z:
+strict ci-result, PR, zero required approvals, thread resolution, no queue, no bypass.
+Its independent policy truth is Manager testimony, not this Review's new ruleset
+query. AI review never substitutes for required GitHub review. Manager must refresh
+current head/base/config/checks/reviews/threads/ruleset/queue immediately before
+operation and handle Draft status. This Review issues no merge permission.
+Implementation Ready has M0 design/authorization/dependency support; formal
+assessment remains Manager's responsibility. Deployment Ready is unverified:
+environment, operational permission, rollback capability and live dependencies
+were not measured. Merge Ready requires Manager's complete current checks and
+Readiness1.1 assessment/context with unchanged preparation and exact local bytes.
+No Manager assessment/final_assessment or validate_readiness --handoff success
+is fabricated; context schema and independent semantic review are distinct.
+All product AC1/2/3 remain unverified, earliest premerge, deferred=null;
+aggregate_required is retained. Preparation success is no product postponement.
+B2 must build/publish real Order image/release after M0; M1 adds disabled Order/DB/
+migration charts, P0 disabled GitOps; M2 selects actual digest and isolated-kind
+integration; P1 requires Deployment Ready before enablement; T7 aggregates all
+required merges, real deployment and product measurements. Independent Test owns
+final product measurement under Manager coordination, first authorized isolated
+kind and actual target only with required authorization. On failure stop affected
+merge/deployment, retain unverified or real failure, repair/retest without Account
+data changes or gate bypass. Actual Order Synced/Healthy/runtime digest, API/DB
+AC1/2 and three-repository integration were not established. IssueCompletion1.1
+must keep M0 as a typed required preparation member with empty product ac_ids,
+related AC/artifact BlobRefs rooted at historical Readiness's parent; all standard
+product measurements and all required merge members remain mandatory. No Issue
+completion or B1 prior-success rewrite follows from this review.
+
+Publication safety and delivery boundary
+Content review excludes private context/authorization/original hashes, private
+receipts, actual task/thread/runtime identifiers, credentials and internal logs.
+Public aliases, public Git references and synthetic case values are intentional.
+Only the two new artifacts, handoff.json and this report, are payload additions.
+Existing public derivatives/history remain original bytes at original references.
+Explicit Owner/Manager publication scope authorizes safety-reviewed reports and
+delivery records on System evidence/order-m0-review-a2 under this prefix. It does
+not authorize PR comments, main push, implementation edits, merge, deployment,
+Secrets/permissions/Ruleset/Environment changes or additional APIs. None occurred.
+Post-publication fixed Git preparation and fresh typed closure inspection must
+produce manifest/PublicationReceipt and all pins. That Producer inspection grants
+no Consumer authority; Manager must issue separate authorization and use canonical
+consume_delivery with fresh whole-byte verification. No authorization self-issued.
+Finite tests and code review are not exhaustive fuzzing, live security proof,
+real B2 interoperability or a warranty of all future chart inputs.
+
+New fixed-review assessment time: 2026-10-11T15:49:50.554378+00:00
+Valid until: 2026-10-12T15:49:50.554378+00:00
+Immediate invalidation on head/base/relevant-config change or new failure.
+Mutable policy has its separate shorter lifetime; no old timestamp was edited.
+
+NEW FILE/RENDER MEASUREMENTS (base=head raw bytes; SHA256)
+charts/README.md | 215 | 7cf38640ab82f1c929fd653995450ff81ed31f8e02effe450447a36c721e5bb3 | equal
+charts/backend/Chart.yaml | 136 | 509335b49eb7058bb4a736a904a52c572aa4d4ef990795b5efcfaca4e197973f | equal
+charts/backend/templates/_helpers.tpl | 1704 | c0969159e809a92e68a8e83d82fa3419239887a3d56a552e724a0ce261388253 | equal
+charts/backend/templates/configmap.yaml | 877 | 28a99832e9ec20431b783ee055f384943d9be9dc5aeef206302ddf4192e31f2c | equal
+charts/backend/templates/deployment.yaml | 5128 | 5417e6c5fecf93049fd809996e32bbd7f94ee6e321a482882e8edde293450e52 | equal
+charts/backend/templates/migration-job.yaml | 3956 | 0784e69a70a8c73afd62c532d2a411fcd3d3d9682286c36a8d7b9fec65e87a81 | equal
+charts/backend/templates/service.yaml | 556 | 84b0d208c354936fa46404a1b2c179dc72fbe0365d3b7cdc201aa14c9c2a03c6 | equal
+charts/backend/templates/serviceaccount.yaml | 418 | efaa2ac575ce0da638a9f151282365ff7b6337de87a28c7a8680920b3be191a1 | equal
+charts/backend/values.schema.json | 6267 | ac517fe1e9643c430e82f33a3ff486f9c2a9176563ebd4189a53b58c18ad521e | equal
+charts/backend/values.yaml | 1797 | e5c74d65e00b1bcb98bb214648041c8ac227e4ce352872c08ac3788cc2a77e8b | equal
+charts/frontend/Chart.yaml | 115 | 3d24f55af5013e502a37552fc8c8bd87a7a3dda28bec6778b9fa45ae4d558a44 | equal
+charts/frontend/templates/_helpers.tpl | 354 | b55dde6cf348d4572704105e844e3052bdab95947745589a592bba5eb751cfcf | equal
+charts/frontend/templates/configmap.yaml | 1037 | 58e886c4bd117b8aa87bea58f02d3bafe18ed1a585099792678ff75882d1a3a5 | equal
+charts/frontend/templates/deployment.yaml | 5749 | 5579aa0510d20de312c44600b146a8e7f31fbb839d3035d03f2967e7953f7d0e | equal
+charts/frontend/templates/service.yaml | 546 | 6523f5c436ea8d010603e932c2ed1572af6cb8fde696c4e0402384ffe1815fbb | equal
+charts/frontend/templates/serviceaccount.yaml | 445 | 44e9b26646e023bf08e84c332d1af0a46674f246e3c992228205bd239164843d | equal
+charts/frontend/values.schema.json | 5721 | f7e002e0792242386e57d39b6603729597dea3111278184d526aa9df90c1c301 | equal
+charts/frontend/values.yaml | 1209 | 624b3632a4ffee71d6fd48ff67543d7dfdc92139bc318a019093e3359bbf76e9 | equal
+charts/postgresql/Chart.yaml | 145 | 28482b084bfef71451ce5cec279e7fcaf24069a004ddaca4a80a5c6bdc16e9fd | equal
+charts/postgresql/templates/_helpers.tpl | 383 | f06eefd7b39fdfe886ef97035b42175c1ef31f8004a6e913f878df015d566dfd | equal
+charts/postgresql/templates/headless-service.yaml | 518 | 618c865b632a1c8b9ebb8e0d5e94108096dd59d6ab9fd21c02ec64a20a5cdf1e | equal
+charts/postgresql/templates/init-configmap.yaml | 1137 | 849c3800f17ef9de07964bcf3a1e1d2a5ff629ab5bfe39f11cd50895f6ef5050 | equal
+charts/postgresql/templates/pvc.yaml | 682 | e2b0f7b3114cf86cc5a58cbcba82eea29785dbf341d6b90c20e602b656eb2480 | equal
+charts/postgresql/templates/service.yaml | 475 | f5c8e493e720322450e74cbd9cd7356500896a962570330579279a88a8e4e016 | equal
+charts/postgresql/templates/serviceaccount.yaml | 318 | e446ea511c47f989fa3977ee0c89111597d3def0f0d87c1171e8aa43a12d943b | equal
+charts/postgresql/templates/statefulset.yaml | 4067 | 9aeeff20485e3ce9b4dfb6cd57ce897e07d764e438028bbf2206e2eaeb0f2f3e | equal
+charts/postgresql/values.schema.json | 1092 | a8f3d07d2a8be525b7868a75cbada86b5a27699e8a5e12844bbd7f6117219cae | equal
+charts/postgresql/values.yaml | 1257 | 16cdbaa74161d5d822199627311b1f0a4957a2685848b2190b6337bd076d7be4 | equal
+environments/local/README.md | 184 | 451d5e6a066b6dba79424bea539345aedfcb7b0260d577b28a3c59355b95f4d4 | equal
+environments/local/backend.yaml | 1574 | be7b8212ea066e0a601396398310505cb5870c3c7d1c67619b1a421a308c71f8 | equal
+environments/local/frontend.yaml | 1458 | 57f193504ba28f801c6fe72ec0def62739fe9fb1efd5f853fed8beffd9471a4f | equal
+environments/local/postgresql.yaml | 281 | 376c3ebdc39a5fdf1f2a32724c2821cd56dee79b0bf264b03b4a3fa00d9a7088 | equal
+render/frontend | 5555 | 16ce7b984d0bfa86d110ed2c9757e565a9ada6056f7cbd583de32aa04a3866de | byte_equal=True, semantic_equal=True
+render/backend | 9681 | 98f9ee0a34d05ffdce403e6b22ea28fd84aa9e9eb508a0872d95b50067f22d88 | byte_equal=True, semantic_equal=True
+render/postgresql | 6966 | 108bffe412325d4155c964fcf7ca30b58f23d636f1407b0466d84ec4528f8d38 | byte_equal=True, semantic_equal=True
+
+NEW SYNTHETIC EXPECTATIONS (not live observations)
+
+f1.json
+v2-positive | expected=accept actual=accept PASS
+v1-backend-positive | expected=accept actual=accept PASS
+v1-frontend-positive | expected=accept actual=accept PASS
+record-missing-archiveSha256 | expected=reject actual=reject PASS
+record-missing-configDigest | expected=reject actual=reject PASS
+record-missing-createdAt | expected=reject actual=reject PASS
+record-missing-dbUpdatedAt | expected=reject actual=reject PASS
+record-missing-deploymentAuthorized | expected=reject actual=reject PASS
+record-missing-imageDigest | expected=reject actual=reject PASS
+record-missing-imagePolicyPassed | expected=reject actual=reject PASS
+record-missing-imageRepository | expected=reject actual=reject PASS
+record-missing-imageScanSha256 | expected=reject actual=reject PASS
+record-missing-isolatedRuntimePassed | expected=reject actual=reject PASS
+record-missing-protectedMain | expected=reject actual=reject PASS
+record-missing-published | expected=reject actual=reject PASS
+record-missing-repository | expected=reject actual=reject PASS
+record-missing-runAttempt | expected=reject actual=reject PASS
+record-missing-runId | expected=reject actual=reject PASS
+record-missing-sbomSha256 | expected=reject actual=reject PASS
+record-missing-sbomValidated | expected=reject actual=reject PASS
+record-missing-scannedAt | expected=reject actual=reject PASS
+record-missing-schema | expected=reject actual=reject PASS
+record-missing-service | expected=reject actual=reject PASS
+record-missing-sourceCommit | expected=reject actual=reject PASS
+record-missing-sourcePolicyPassed | expected=reject actual=reject PASS
+record-missing-sourceScanSha256 | expected=reject actual=reject PASS
+record-missing-validUntil | expected=reject actual=reject PASS
+record-missing-workflowRef | expected=reject actual=reject PASS
+record-invalid-schema-core-platform/github-release/v1 | expected=reject actual=reject PASS
+record-invalid-service-backend | expected=reject actual=reject PASS
+record-invalid-service-unknown | expected=reject actual=reject PASS
+record-invalid-repository-syuhei0519/backend-app-order | expected=reject actual=reject PASS
+record-invalid-sourceCommit-0000000000000000000000000000000000000000 | expected=reject actual=reject PASS
+record-invalid-runId-124 | expected=reject actual=reject PASS
+record-invalid-runId-True | expected=reject actual=reject PASS
+record-invalid-runId-123 | expected=reject actual=reject PASS
+record-invalid-runAttempt-1 | expected=reject actual=reject PASS
+record-invalid-runAttempt-2.0 | expected=reject actual=reject PASS
+record-invalid-workflowRef-syuhei0519/backend-app/.github/workflows/ci.yml@refs/heads/feature | expected=reject actual=reject PASS
+record-invalid-workflowRef-syuhei0519/backend-app/.github/workflows/evil.yml@refs/heads/main | expected=reject actual=reject PASS
+record-invalid-imageRepository-ghcr.io/syuhei0519/backend-app | expected=reject actual=reject PASS
+record-invalid-imageDigest-sha256:bad | expected=reject actual=reject PASS
+record-invalid-configDigest-bad | expected=reject actual=reject PASS
+record-invalid-archiveSha256-bad | expected=reject actual=reject PASS
+record-invalid-sbomSha256-bad | expected=reject actual=reject PASS
+record-invalid-sourceScanSha256-bad | expected=reject actual=reject PASS
+record-invalid-imageScanSha256-bad | expected=reject actual=reject PASS
+record-invalid-scannedAt-2030-01-01T01:00:01Z | expected=reject actual=reject PASS
+record-invalid-createdAt-2029-12-30T00:00:00Z | expected=reject actual=reject PASS
+record-invalid-dbUpdatedAt-2030-01-01T00:00:00 | expected=reject actual=reject PASS
+record-invalid-validUntil-2030-01-01T01:00:00Z | expected=reject actual=reject PASS
+record-invalid-validUntil-2030-01-02T00:00:01Z | expected=reject actual=reject PASS
+record-invalid-published-1 | expected=reject actual=reject PASS
+record-invalid-protectedMain-true | expected=reject actual=reject PASS
+record-invalid-deploymentAuthorized-True | expected=reject actual=reject PASS
+record-invalid-unknown-True | expected=reject actual=reject PASS
+v1-service-spoof-backend | expected=reject actual=reject PASS
+v1-service-spoof-frontend | expected=reject actual=reject PASS
+JSON-b'{"a":1,"a":2}' | expected=reject actual=reject PASS
+JSON-b'{"a":{"x":1,"\\u0078":2}}' | expected=reject actual=reject PASS
+JSON-b'{"x":NaN}' | expected=reject actual=reject PASS
+JSON-b'{"x":Infinity}' | expected=reject actual=reject PASS
+JSON-b'{}junk' | expected=reject actual=reject PASS
+JSON-b'{' | expected=reject actual=reject PASS
+ZIP-['release-record.json'] | expected=accept actual=accept PASS
+ZIP-['../release-record.json'] | expected=reject actual=reject PASS
+ZIP-['/release-record.json'] | expected=reject actual=reject PASS
+ZIP-['dir/release-record.json'] | expected=reject actual=reject PASS
+ZIP-['release-record.json', 'extra'] | expected=reject actual=reject PASS
+ZIP-['release-record.json', 'release-record.json'] | expected=reject actual=reject PASS
+ZIP-mode-40960 | expected=reject actual=reject PASS
+ZIP-mode-16384 | expected=reject actual=reject PASS
+ZIP-mode-4096 | expected=reject actual=reject PASS
+ZIP-mode-32768 | expected=accept actual=accept PASS
+matrix-positive | expected=accept actual=accept PASS
+matrix-missing-job-0 | expected=reject actual=reject PASS
+matrix-missing-artifact-0 | expected=reject actual=reject PASS
+matrix-failed-job-0 | expected=reject actual=reject PASS
+matrix-expired-artifact-0 | expected=reject actual=reject PASS
+matrix-missing-job-1 | expected=reject actual=reject PASS
+matrix-missing-artifact-1 | expected=reject actual=reject PASS
+matrix-failed-job-1 | expected=reject actual=reject PASS
+matrix-expired-artifact-1 | expected=reject actual=reject PASS
+matrix-missing-job-2 | expected=reject actual=reject PASS
+matrix-missing-artifact-2 | expected=reject actual=reject PASS
+matrix-failed-job-2 | expected=reject actual=reject PASS
+matrix-expired-artifact-2 | expected=reject actual=reject PASS
+matrix-missing-job-3 | expected=reject actual=reject PASS
+matrix-missing-artifact-3 | expected=reject actual=reject PASS
+matrix-failed-job-3 | expected=reject actual=reject PASS
+matrix-expired-artifact-3 | expected=reject actual=reject PASS
+matrix-duplicate-job | expected=reject actual=reject PASS
+matrix-duplicate-artifact | expected=reject actual=reject PASS
+inventory-optional-absent | expected=accept actual=accept PASS
+inventory-optional-present-order | expected=accept actual=accept PASS
+inventory-missing-values-order | expected=reject actual=reject PASS
+inventory-missing-chart-order | expected=reject actual=reject PASS
+inventory-removed-baseline-order | expected=reject actual=reject PASS
+inventory-optional-present-order-postgresql | expected=accept actual=accept PASS
+inventory-missing-values-order-postgresql | expected=reject actual=reject PASS
+inventory-missing-chart-order-postgresql | expected=reject actual=reject PASS
+inventory-removed-baseline-order-postgresql | expected=reject actual=reject PASS
+inventory-unknown-chart | expected=reject actual=reject PASS
+inventory-active-removed-frontend | expected=reject actual=reject PASS
+inventory-active-removed-backend | expected=reject actual=reject PASS
+inventory-active-removed-postgresql | expected=reject actual=reject PASS
+postgresql-baseline | expected=accept actual=accept PASS
+postgresql-baseline-scan-observation | scan-only exit=0; not a platform gate verdict
+postgresql-root-override | expected=reject actual=reject PASS
+postgresql-root-override-scan-observation | scan-only exit=0; not a platform gate verdict
+postgresql-seccomp-override | expected=reject actual=reject PASS
+postgresql-seccomp-override-scan-observation | scan-only exit=0; not a platform gate verdict
+postgresql-uid-override | expected=reject actual=reject PASS
+postgresql-uid-override-scan-observation | scan-only exit=0; not a platform gate verdict
+postgresql-gid-override | expected=reject actual=reject PASS
+postgresql-gid-override-scan-observation | scan-only exit=0; not a platform gate verdict
+postgresql-pod-root | expected=reject actual=reject PASS
+postgresql-writable-root | expected=reject actual=reject PASS
+postgresql-pvc-retention | expected=reject actual=reject PASS
+postgresql-stateful-retention | expected=reject actual=reject PASS
+postgresql-wrong-image | expected=reject actual=reject PASS
+postgresql-hidden-podspec | expected=reject actual=reject PASS
+order-postgresql-baseline | expected=accept actual=accept PASS
+order-postgresql-baseline-scan-observation | scan-only exit=0; not a platform gate verdict
+order-postgresql-root-override | expected=reject actual=reject PASS
+order-postgresql-root-override-scan-observation | scan-only exit=0; not a platform gate verdict
+order-postgresql-seccomp-override | expected=reject actual=reject PASS
+order-postgresql-seccomp-override-scan-observation | scan-only exit=0; not a platform gate verdict
+order-postgresql-uid-override | expected=reject actual=reject PASS
+order-postgresql-uid-override-scan-observation | scan-only exit=0; not a platform gate verdict
+order-postgresql-gid-override | expected=reject actual=reject PASS
+order-postgresql-gid-override-scan-observation | scan-only exit=0; not a platform gate verdict
+order-postgresql-pod-root | expected=reject actual=reject PASS
+order-postgresql-writable-root | expected=reject actual=reject PASS
+order-postgresql-pvc-retention | expected=reject actual=reject PASS
+order-postgresql-stateful-retention | expected=reject actual=reject PASS
+order-postgresql-wrong-image | expected=reject actual=reject PASS
+order-postgresql-hidden-podspec | expected=reject actual=reject PASS
+
+security.json
+postgresql/inherit | expected=accept actual=accept PASS
+postgresql/all-equivalent | expected=accept actual=accept PASS
+postgresql/partial-runAsUser | expected=accept actual=accept PASS
+postgresql/partial-runAsGroup | expected=accept actual=accept PASS
+postgresql/partial-runAsNonRoot | expected=accept actual=accept PASS
+postgresql/partial-seccompProfile | expected=accept actual=accept PASS
+postgresql/runAsUser/null | expected=reject actual=reject PASS
+postgresql/runAsUser/list | expected=reject actual=reject PASS
+postgresql/runAsUser/object | expected=reject actual=reject PASS
+postgresql/runAsUser/string | expected=reject actual=reject PASS
+postgresql/runAsUser/unknown | expected=reject actual=reject PASS
+postgresql/runAsUser/float | expected=reject actual=reject PASS
+postgresql/runAsGroup/null | expected=reject actual=reject PASS
+postgresql/runAsGroup/list | expected=reject actual=reject PASS
+postgresql/runAsGroup/object | expected=reject actual=reject PASS
+postgresql/runAsGroup/string | expected=reject actual=reject PASS
+postgresql/runAsGroup/unknown | expected=reject actual=reject PASS
+postgresql/runAsGroup/float | expected=reject actual=reject PASS
+postgresql/runAsNonRoot/null | expected=reject actual=reject PASS
+postgresql/runAsNonRoot/list | expected=reject actual=reject PASS
+postgresql/runAsNonRoot/object | expected=reject actual=reject PASS
+postgresql/runAsNonRoot/string | expected=reject actual=reject PASS
+postgresql/runAsNonRoot/unknown | expected=reject actual=reject PASS
+postgresql/runAsNonRoot/float | expected=reject actual=reject PASS
+postgresql/seccompProfile/null | expected=reject actual=reject PASS
+postgresql/seccompProfile/list | expected=reject actual=reject PASS
+postgresql/seccompProfile/object | expected=reject actual=reject PASS
+postgresql/seccompProfile/string | expected=reject actual=reject PASS
+postgresql/seccompProfile/unknown | expected=reject actual=reject PASS
+postgresql/seccompProfile/float | expected=reject actual=reject PASS
+postgresql/nonroot/False | expected=reject actual=reject PASS
+postgresql/nonroot/0 | expected=reject actual=reject PASS
+postgresql/nonroot/1 | expected=reject actual=reject PASS
+postgresql/nonroot/'true' | expected=reject actual=reject PASS
+postgresql/seccomp/{'type': None} | expected=reject actual=reject PASS
+postgresql/seccomp/{'type': []} | expected=reject actual=reject PASS
+postgresql/seccomp/{'type': 'Unknown'} | expected=reject actual=reject PASS
+postgresql/seccomp/{'type': 'Localhost', 'localhostProfile': 'synthetic'} | expected=reject actual=reject PASS
+postgresql/seccomp/{'type': 'Unconfined'} | expected=reject actual=reject PASS
+postgresql/containers/pg-sidecar/False | expected=reject actual=reject PASS
+postgresql/containers/pg-sidecar/True | expected=reject actual=reject PASS
+postgresql/initContainers/pg-sidecar/False | expected=reject actual=reject PASS
+postgresql/initContainers/pg-sidecar/True | expected=reject actual=reject PASS
+postgresql/ephemeralContainers/pg-sidecar/False | expected=reject actual=reject PASS
+postgresql/ephemeralContainers/pg-sidecar/True | expected=reject actual=reject PASS
+postgresql/containers/type/None | expected=reject actual=reject PASS
+postgresql/containers/type/{} | expected=reject actual=reject PASS
+postgresql/containers/type/'invalid' | expected=reject actual=reject PASS
+postgresql/initContainers/type/None | expected=reject actual=reject PASS
+postgresql/initContainers/type/{} | expected=reject actual=reject PASS
+postgresql/initContainers/type/'invalid' | expected=reject actual=reject PASS
+postgresql/ephemeralContainers/type/None | expected=reject actual=reject PASS
+postgresql/ephemeralContainers/type/{} | expected=reject actual=reject PASS
+postgresql/ephemeralContainers/type/'invalid' | expected=reject actual=reject PASS
+postgresql/missing-pvc | expected=reject actual=reject PASS
+postgresql/unknown-resource | expected=reject actual=reject PASS
+postgresql/unscanned-podspec | expected=reject actual=reject PASS
+postgresql/app-image-as-db | expected=reject actual=reject PASS
+order-postgresql/inherit | expected=accept actual=accept PASS
+order-postgresql/all-equivalent | expected=accept actual=accept PASS
+order-postgresql/partial-runAsUser | expected=accept actual=accept PASS
+order-postgresql/partial-runAsGroup | expected=accept actual=accept PASS
+order-postgresql/partial-runAsNonRoot | expected=accept actual=accept PASS
+order-postgresql/partial-seccompProfile | expected=accept actual=accept PASS
+order-postgresql/runAsUser/null | expected=reject actual=reject PASS
+order-postgresql/runAsUser/list | expected=reject actual=reject PASS
+order-postgresql/runAsUser/object | expected=reject actual=reject PASS
+order-postgresql/runAsUser/string | expected=reject actual=reject PASS
+order-postgresql/runAsUser/unknown | expected=reject actual=reject PASS
+order-postgresql/runAsUser/float | expected=reject actual=reject PASS
+order-postgresql/runAsGroup/null | expected=reject actual=reject PASS
+order-postgresql/runAsGroup/list | expected=reject actual=reject PASS
+order-postgresql/runAsGroup/object | expected=reject actual=reject PASS
+order-postgresql/runAsGroup/string | expected=reject actual=reject PASS
+order-postgresql/runAsGroup/unknown | expected=reject actual=reject PASS
+order-postgresql/runAsGroup/float | expected=reject actual=reject PASS
+order-postgresql/runAsNonRoot/null | expected=reject actual=reject PASS
+order-postgresql/runAsNonRoot/list | expected=reject actual=reject PASS
+order-postgresql/runAsNonRoot/object | expected=reject actual=reject PASS
+order-postgresql/runAsNonRoot/string | expected=reject actual=reject PASS
+order-postgresql/runAsNonRoot/unknown | expected=reject actual=reject PASS
+order-postgresql/runAsNonRoot/float | expected=reject actual=reject PASS
+order-postgresql/seccompProfile/null | expected=reject actual=reject PASS
+order-postgresql/seccompProfile/list | expected=reject actual=reject PASS
+order-postgresql/seccompProfile/object | expected=reject actual=reject PASS
+order-postgresql/seccompProfile/string | expected=reject actual=reject PASS
+order-postgresql/seccompProfile/unknown | expected=reject actual=reject PASS
+order-postgresql/seccompProfile/float | expected=reject actual=reject PASS
+order-postgresql/nonroot/False | expected=reject actual=reject PASS
+order-postgresql/nonroot/0 | expected=reject actual=reject PASS
+order-postgresql/nonroot/1 | expected=reject actual=reject PASS
+order-postgresql/nonroot/'true' | expected=reject actual=reject PASS
+order-postgresql/seccomp/{'type': None} | expected=reject actual=reject PASS
+order-postgresql/seccomp/{'type': []} | expected=reject actual=reject PASS
+order-postgresql/seccomp/{'type': 'Unknown'} | expected=reject actual=reject PASS
+order-postgresql/seccomp/{'type': 'Localhost', 'localhostProfile': 'synthetic'} | expected=reject actual=reject PASS
+order-postgresql/seccomp/{'type': 'Unconfined'} | expected=reject actual=reject PASS
+order-postgresql/containers/pg-sidecar/False | expected=reject actual=reject PASS
+order-postgresql/containers/pg-sidecar/True | expected=reject actual=reject PASS
+order-postgresql/initContainers/pg-sidecar/False | expected=reject actual=reject PASS
+order-postgresql/initContainers/pg-sidecar/True | expected=reject actual=reject PASS
+order-postgresql/ephemeralContainers/pg-sidecar/False | expected=reject actual=reject PASS
+order-postgresql/ephemeralContainers/pg-sidecar/True | expected=reject actual=reject PASS
+order-postgresql/containers/type/None | expected=reject actual=reject PASS
+order-postgresql/containers/type/{} | expected=reject actual=reject PASS
+order-postgresql/containers/type/'invalid' | expected=reject actual=reject PASS
+order-postgresql/initContainers/type/None | expected=reject actual=reject PASS
+order-postgresql/initContainers/type/{} | expected=reject actual=reject PASS
+order-postgresql/initContainers/type/'invalid' | expected=reject actual=reject PASS
+order-postgresql/ephemeralContainers/type/None | expected=reject actual=reject PASS
+order-postgresql/ephemeralContainers/type/{} | expected=reject actual=reject PASS
+order-postgresql/ephemeralContainers/type/'invalid' | expected=reject actual=reject PASS
+order-postgresql/missing-pvc | expected=reject actual=reject PASS
+order-postgresql/unknown-resource | expected=reject actual=reject PASS
+order-postgresql/unscanned-podspec | expected=reject actual=reject PASS
+order-postgresql/app-image-as-db | expected=reject actual=reject PASS
+
+independent-probes.json
+postgresql/None/fixed-db | expected=accept actual=accept PASS
+postgresql/None/wrong-pvc-namespace | expected=reject actual=reject PASS
+postgresql/None/ghcr.io/syuhei0519/backend-app/db-substitution | expected=reject actual=reject PASS
+postgresql/None/ghcr.io/syuhei0519/backend-app-order/db-substitution | expected=reject actual=reject PASS
+postgresql/None/ghcr.io/syuhei0519/frontend-app/db-substitution | expected=reject actual=reject PASS
+postgresql/account/fixed-db | expected=accept actual=accept PASS
+postgresql/account/wrong-pvc-namespace | expected=reject actual=reject PASS
+postgresql/account/ghcr.io/syuhei0519/backend-app/db-substitution | expected=reject actual=reject PASS
+postgresql/account/ghcr.io/syuhei0519/backend-app-order/db-substitution | expected=reject actual=reject PASS
+postgresql/account/ghcr.io/syuhei0519/frontend-app/db-substitution | expected=reject actual=reject PASS
+postgresql/synthetic-other/fixed-db | expected=accept actual=accept PASS
+postgresql/synthetic-other/wrong-pvc-namespace | expected=reject actual=reject PASS
+postgresql/synthetic-other/ghcr.io/syuhei0519/backend-app/db-substitution | expected=reject actual=reject PASS
+postgresql/synthetic-other/ghcr.io/syuhei0519/backend-app-order/db-substitution | expected=reject actual=reject PASS
+postgresql/synthetic-other/ghcr.io/syuhei0519/frontend-app/db-substitution | expected=reject actual=reject PASS
+order-postgresql/None/fixed-db | expected=accept actual=accept PASS
+order-postgresql/None/wrong-pvc-namespace | expected=reject actual=reject PASS
+order-postgresql/None/ghcr.io/syuhei0519/backend-app/db-substitution | expected=reject actual=reject PASS
+order-postgresql/None/ghcr.io/syuhei0519/backend-app-order/db-substitution | expected=reject actual=reject PASS
+order-postgresql/None/ghcr.io/syuhei0519/frontend-app/db-substitution | expected=reject actual=reject PASS
+order-postgresql/account/fixed-db | expected=accept actual=accept PASS
+order-postgresql/account/wrong-pvc-namespace | expected=reject actual=reject PASS
+order-postgresql/account/ghcr.io/syuhei0519/backend-app/db-substitution | expected=reject actual=reject PASS
+order-postgresql/account/ghcr.io/syuhei0519/backend-app-order/db-substitution | expected=reject actual=reject PASS
+order-postgresql/account/ghcr.io/syuhei0519/frontend-app/db-substitution | expected=reject actual=reject PASS
+order-postgresql/synthetic-other/fixed-db | expected=accept actual=accept PASS
+order-postgresql/synthetic-other/wrong-pvc-namespace | expected=reject actual=reject PASS
+order-postgresql/synthetic-other/ghcr.io/syuhei0519/backend-app/db-substitution | expected=reject actual=reject PASS
+order-postgresql/synthetic-other/ghcr.io/syuhei0519/backend-app-order/db-substitution | expected=reject actual=reject PASS
+order-postgresql/synthetic-other/ghcr.io/syuhei0519/frontend-app/db-substitution | expected=reject actual=reject PASS
+ordinary-app-inventory | expected=accept actual=accept PASS
+token-bearing-github-environment-anonymous-registry | expected=accept actual=accept PASS
+git-symlink-chart-rejected | expected=reject actual=reject PASS
+chart-name/order;false | expected=reject actual=reject PASS
+chart-name/order$(false) | expected=reject actual=reject PASS
+chart-name/order`false` | expected=reject actual=reject PASS
+chart-name/../order | expected=reject actual=reject PASS
+chart-name/unknown | expected=reject actual=reject PASS
+
+f2/render-fixture-results.json
+account-db-app-image-substitution | expected=reject actual=reject PASS
+
+render-fixtures/render-fixture-results.json
+effective-security-bypass | expected=reject actual=reject PASS
+optional-disabled | expected=accept actual=accept PASS entries=4 provenanceRequired=False authenticatedEligible=False
+optional-enabled | expected=accept actual=accept PASS entries=6 provenanceRequired=True authenticatedEligible=False
+enabled-invalid-pvc | expected=reject actual=reject PASS

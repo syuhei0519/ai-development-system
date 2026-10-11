@@ -1,0 +1,129 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "app-order-service",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "review",
+  "task_id": "order-m0-review-a2",
+  "attempt": 2,
+  "assignment": {
+    "scope": "application-manifest#backend-app-2/M0",
+    "ac_ids": [
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "既存v1互換を保ちOrder v2の固定service/source/image/release証跡を厳密に検証する。",
+      "固定inventoryと両PostgreSQLのimage/security/PVC境界をfail-closedで検証する。",
+      "既存chart・環境値・renderを変更せず新workloadを有効化しない。",
+      "設計・文書・成果物・独立証跡を固定revisionで引き継ぎ、製品ACの未検証と後続責任を保持する。",
+      "全18ファイルdiff、固定Research、新Testと旧Review、全3固定artifactと条件M0-S1..S4を独立確認し、必要な試験を実行する。製品ACは全件unverified、premerge/deferred=null、aggregate_requiredを保持し、公開安全性と全typed closureを確認する。"
+    ]
+  },
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "order-m0-test-e2-a1",
+      "attempt": 1,
+      "relationship": "dependency",
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/a43ece7c39c1c7af923da55bff43d0ee246b1cdb/evidence/order-m0/test-e2-a1/handoff.json",
+      "revision": "sha256:0d6caf22102dccf4ec7f616249e38ea8c048c6d21d28593b74720cbdb7cc79ec"
+    },
+    {
+      "role": "implementation",
+      "task_id": "order-m0-implementation-e2-a1",
+      "attempt": 1,
+      "relationship": "dependency",
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/b231aa38653333bd86f293a13458f4bf955970f3/evidence/order-m0/implementation-e2-a1/handoff.json",
+      "revision": "sha256:19185748874b350e924c5ec5dd7c468fdb2cb231dd97aea71fb0fcd3b86c7214"
+    },
+    {
+      "role": "review",
+      "task_id": "order-m0-review-a1",
+      "attempt": 1,
+      "relationship": "retry_of",
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/af9538e302ca776ab8ae5e6317e593ebb9782544/evidence/order-m0/review-a1/handoff.json",
+      "revision": "sha256:c4b2ce9b93c74be12fab19d6c4c1fc5502bb9d887496737fa5fd2d7b239464f7"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Independent Review attempt2 completed for fixed PR18 M0 preparation infrastructure under System4693887. All M0-S1..S4 and all three fixed artifacts reviewed; no blocking finding in finite new measurements. AC-3 covered is preparation-role responsibility only; all product ACs remain unverified. Old history and expirations preserved.",
+  "artifacts": [
+    {
+      "id": "review-report",
+      "kind": "review",
+      "locator": "review-report.txt",
+      "revision": "sha256:394cef398485f803252397cfac0c420956d59a605b9872059a46f3bc21a9601a",
+      "summary": "New measurements, complete condition/artifact mapping, reproduction, code and preparation review, Test compatibility, publication safety and remaining limits."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "preparation-review",
+      "claim": "M0-S1..S4 role responsibilities and all fixed artifacts independently reviewed; no blocking finding.",
+      "artifact_ids": [
+        "review-report"
+      ],
+      "locator": "review-report.txt",
+      "observation": "New fixed-head review at 2026-10-11T15:49:50.554378+00:00, expires 2026-10-12T15:49:50.554378+00:00 or earlier on head/base/relevant-config change/new failure. 18-file diff; three pinned blobs match; independent Test mapping; complete suite and F1/F2/security116/independent38/bounded renders pass. 28 chart/4 environment/3 render bytes/semantics unchanged. Current config sha256:e0a3ca35aafdd35088a3edda32993e9860c33b11b62ecd7ca31948e94c46c39f; app CI config sha256:6f3ec88dc9ef058156a7ecb43915dc51b066fab93740f9d7a0a7970fb63286b9 unchanged. Actual product, release, Argo and integration unverified; mutable policy refresh remains Manager responsibility."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "not_assigned",
+      "scope": "Outside M0 preparation assignment; product AC unverified.",
+      "artifact_ids": [
+        "review-report"
+      ],
+      "evidence_ids": [
+        "preparation-review"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "not_assigned",
+      "scope": "Outside M0 preparation assignment; product AC unverified.",
+      "artifact_ids": [
+        "review-report"
+      ],
+      "evidence_ids": [
+        "preparation-review"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "covered",
+      "scope": "M0 AC-3 preparation infrastructure review only; product AC unverified/premerge/deferred=null; Readiness product pr_ac_ids=[]; aggregate_required.",
+      "artifact_ids": [
+        "review-report"
+      ],
+      "evidence_ids": [
+        "preparation-review"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}
