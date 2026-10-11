@@ -13,7 +13,7 @@ except ImportError:
 def main():
     try:
         for name in ('artifact-delivery','delivery-authorization','publication-receipt','consumption-receipt'):
-            for suffix in ('', '-v1.1', '-v1.2'):
+            for suffix in ('', '-v1.1', '-v1.2', '-v1.3'):
                 Draft202012Validator.check_schema(parse((ROOT/f'contracts/{name}{suffix}.schema.json').read_bytes()))
         Draft202012Validator.check_schema(parse((ROOT/'contracts/knowledge-candidates-v1.schema.json').read_bytes()))
         for name in ('synthetic','research-public'):

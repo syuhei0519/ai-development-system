@@ -1,0 +1,111 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.3"
+    },
+    "document_type": {
+      "const": "delivery_authorization"
+    },
+    "authority": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048,
+      "pattern": "\\S"
+    },
+    "consumer": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048,
+      "pattern": "\\S"
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048,
+      "pattern": "\\S"
+    },
+    "purpose": {
+      "enum": [
+        "contract-review",
+        "implementation"
+      ]
+    },
+    "manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "valid_until": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048,
+      "pattern": "\\S"
+    },
+    "public_safety_review": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048,
+      "pattern": "\\S"
+    },
+    "publication_approval": {
+      "enum": [
+        "approved",
+        "unverified"
+      ]
+    },
+    "publication_approval_evidence": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048,
+      "pattern": "\\S"
+    },
+    "consumer_use_approval": {
+      "enum": [
+        "approved",
+        "pending"
+      ]
+    },
+    "consumer_use_evidence": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048,
+      "pattern": "\\S"
+    },
+    "allowed_representations": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "original",
+          "edited_derivative"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 128,
+      "uniqueItems": true
+    },
+    "publication_receipt_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "document_type",
+    "authority",
+    "consumer",
+    "scope",
+    "purpose",
+    "manifest_sha256",
+    "valid_until",
+    "public_safety_review",
+    "publication_approval",
+    "publication_approval_evidence",
+    "consumer_use_approval",
+    "consumer_use_evidence",
+    "allowed_representations",
+    "publication_receipt_sha256"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/ai-development-system/delivery-authorization-v1.3.schema.json"
+}

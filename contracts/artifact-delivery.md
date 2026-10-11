@@ -211,3 +211,12 @@ P-A 単体は inbox/state を提供しない。P-B は別の [collector 契約](
 ## Delivery 1.2
 
 [Fixed cross-reference and candidate/tree extension](cross-reference-delivery.md) adds explicit typed bindings without rewriting original documents. Legacy 1.0/1.1 semantics remain unchanged.
+
+## Bounded capacity (Delivery 1.3)
+
+[Capacity and compatibility contract](artifact-capacity.md): explicitly select 1.3 for up to
+256 artifacts; legacy 1.0/1.1/1.2 retain 128. All four delivery records must match.
+Per-file 16 MiB, bundle 64 MiB, tree/slot/candidate limits and all approval gates
+remain unchanged. Preserve originals and complete closure; never overwrite old
+delivery outputs. Dispatch/execution/delivery remain each at most 3. Candidate
+1.3 requires System CI and independent Review before merge and canonical use.
