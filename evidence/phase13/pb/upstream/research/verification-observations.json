@@ -1,0 +1,35 @@
+{
+  "document_type": "research_verification_observations",
+  "repository": "syuhei0519/ai-development-system",
+  "revision": "df400018057735b7cb6a9c6ea4619508f0e6ba3a",
+  "observed_on": "2026-10-11",
+  "evidence_level": "Research agent direct observations; not independent Test/Review and not CI",
+  "baseline": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -q",
+    "exit_code": 0,
+    "test_count": 107,
+    "result": "OK"
+  },
+  "typed_delivery_probe": {
+    "method": "Call validate_knowledge.validate(parsed example) then consume_delivery.verify_handoffs with original example bytes and format=json; no remote delivery invoked",
+    "input": {
+      "knowledge_schema": "pass",
+      "delivery_type": "reject: Handoff must be typed handoff-v2"
+    },
+    "handoff": {
+      "knowledge_schema": "pass",
+      "delivery_type": "reject: Handoff must be typed handoff-v2"
+    },
+    "context": {
+      "knowledge_schema": "pass",
+      "delivery_type": "pass; does not establish semantic article binding"
+    }
+  },
+  "limits": [
+    "No code changes, commits, pushes, PRs, merges, scheduler registration, deployment or agent launches",
+    "Existing baseline tests do not prove new implementation or actual periodic operation",
+    "Private consultation links were supplied by Manager; not independently fetched",
+    "No applicable repository/local AGENTS.md or .agents skill files were found"
+  ],
+  "source_worktree_status": "clean after observations"
+}
