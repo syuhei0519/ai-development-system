@@ -1,0 +1,36 @@
+{
+  "verification": "canonical producer raw bytes/size/hash/object/type/slot/tree validation",
+  "result": "passed",
+  "explicit": 121,
+  "new_explicit": 8,
+  "objects": 130,
+  "bytes": 1943701,
+  "payload_commit": "61571179b9ae25747244c889b34758a177d3c3e1",
+  "handoff_sha256": "f3338f701626d40c234cf81bbd6979a5765c8becda5fc921b6441fb29f2e41c0",
+  "manifest_sha256": "7a3d3a1d454a6d2b7713c755661deb9c14d00d5dc2674b56d2a9a1f1dc14241a",
+  "publication_receipt_sha256": "204e2336d5473f9c6bacac89342ca317fcbd37c6a63cf95a04fafb5349aac19a",
+  "consumer_authorization_issued": false,
+  "consumer_receipt_issued": false,
+  "source": "all fresh fixed public Git",
+  "historical_representations_preserved": true,
+  "previous_input_full_closure_retained": true,
+  "observed_at": "2026-10-11T19:00:52.183465+00:00",
+  "epoch": 2,
+  "execution_attempt": 2,
+  "delivery_attempt": 2,
+  "limits": {
+    "dispatch": 3,
+    "execution": 3,
+    "delivery": 3
+  },
+  "previous_history": "All epoch1/terminal and epoch2 attempt1 blocked/existing delivery success remain unchanged.",
+  "policy_valid_until": "2026-10-11T19:27:15Z",
+  "business_status": "completed for assigned B2 Test scope only",
+  "independent_consumer_authorization": "Manager must issue separately; none issued by Test",
+  "safety": "Eight new files inspected; private authorization, receipts, identifiers, raw logs, custom trust and proxy values excluded.",
+  "remote_pr": {
+    "head": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+    "base": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+    "draft": true
+  }
+}
