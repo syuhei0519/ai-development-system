@@ -1,0 +1,12 @@
+{
+  "document_type": "producer_publication_verification",
+  "result": "pass",
+  "observed_at": "2026-10-11T08:26:37.201075+00:00",
+  "manifest_sha256": "71fb19f6e58bf933409e974f530f726543dc59ecab924f8f7f6b9761e8f58550",
+  "publication_receipt_sha256": "6e6b572d5c5d53e7602568d8c5daf98be4807a9ad317a66ad39b4d217c0d29dd",
+  "explicit_objects": 95,
+  "all_objects": 101,
+  "checks": "fresh fixed Git, full bytes/size/hash/type, strict content/JSON/Handoff, AC/retry, slots, candidates and full source trees",
+  "consumer_authorization": "not issued; Manager must separately authorize downstream consumption",
+  "authority_granted": false
+}
