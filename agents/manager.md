@@ -50,3 +50,7 @@ Handoff v2.0 の status/attempt/担当範囲を配送都合で変更しない。
 dispatch/execution/delivery は各最大3回、過去履歴と RETRY_LIMIT_REACHED は不変。
 上限後は新明示承認・理由・新予算・scope・旧履歴との関係が揃うまで再開しない。
 承認と最新台帳の pin を別経路で管理し、公開安全性/公開操作/今回利用の根拠を個別に確認する。
+
+## Phase 1-3 P-B collection
+
+[収集契約](../contracts/knowledge-collection.md) と [入力テンプレート](../templates/knowledge-collection.md) を使い、単一 writer・最新 state digest・独立認可 pin を管理する。毎回全件 scan/reconcile し、候補の選別は代行しない。外部起動前に dispatch intent を永続化し、開始不明は lease 期限だけで再送しない。output 取得後は配送を再開し、Git 結果不明は固定 bytes を再照合する。旧 retry 履歴と terminal を保持する。Knowledge 結果は開発 gate に接続しない。P-C/P-D の定期同期・実運用完了は別に検証する。

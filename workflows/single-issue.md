@@ -73,7 +73,7 @@ Manager は候補の配送と進捗のみ管理し、取得済み根拠を Knowl
 
 公開前には内容を読み、実際の非公開 task/thread/message ID、私的会話、個人情報、内部メモ、認証情報、運用ログを除外する。公開サンプルは架空の識別子・プレースホルダーのみとし `synthetic sample` を明記する。知識候補やメタデータの public_safe 自己申告だけで公開を承認しない。
 
-Knowledge の非同期収集・定期同期を実行する基盤は Phase 1-3 の対象。このフェーズでは専用 schema・手動配送可能な入力仕様・架空サンプルと検証を提供し、スケジューラーや自動トリガーは実装・起動しない。後続役割への知識配送は knowledge-context と取得済み記事実体を初回入力に渡し、固定 revision・適用条件・例外・出典・状態を確認する。
+Phase 1-3 P-B では [collector](../contracts/knowledge-collection.md) の scan/reconcile を節目に実行し、全件検証後に inbox/event/cursor を一括保存する。Manager は最新 state pin と別経路認可を保持し、plan を確認して reserve/dispatch intent を永続化してから独立 Knowledge を起動する。開始不明は照合まで停止し、取得済み output は delivery から再開する。Git 確定後の中断は固定 commit の全 bytes 照合で追認する。collector 自身は Agent を起動せず、schedule 登録・有効化、P-C context/ack と P-D 実運用実証は含まない。後続役割への知識配送は knowledge-context と取得済み記事実体を初回入力に渡し、固定 revision・適用条件・例外・出典・状態を確認する。
 
 
 Issue Completionには全AC実測に加えて必要な統合完了が必要。全premerge ACがmetでも未マージならunverified。Readiness/contextのissue_integration_scopeで単一PRと集約待ちを分離し、複数PR・repo/範囲不明は単一PRからachievedにしない。集約契約と証跡の検証は後続依存として明示する。全AC met・統合待ちの中間Handoffではfinal_assessmentを省略し、Readiness artifactで追跡する。

@@ -1,0 +1,61 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "document_type": {
+      "const": "knowledge_collection_authorization"
+    },
+    "writer": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048,
+      "pattern": "\\S"
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048,
+      "pattern": "\\S"
+    },
+    "operation": {
+      "enum": [
+        "scan",
+        "reconcile",
+        "record"
+      ]
+    },
+    "request_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "valid_until": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "approval": {
+      "const": "approved"
+    },
+    "authority": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048,
+      "pattern": "\\S"
+    }
+  },
+  "required": [
+    "schema_version",
+    "document_type",
+    "writer",
+    "scope",
+    "operation",
+    "request_sha256",
+    "valid_until",
+    "approval",
+    "authority"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/ai-development-system/knowledge-collection-authorization.schema.json"
+}

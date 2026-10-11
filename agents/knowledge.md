@@ -33,11 +33,11 @@
 
 ## Execution Boundary
 
-非同期収集・定期同期の実行基盤は Phase 1-3 の対象。Phase 1-1 では契約・手動配送可能な仕様・架空サンプル・検証のみを定義し、スケジューラーや常駐処理を実装・起動しない。
+Phase 1-1 は契約・手動配送仕様を定義した。Phase 1-3 P-B は [機械的 collector](../contracts/knowledge-collection.md) を提供する。意味的な選別・記事化は引き続き独立 Knowledge の責務。collector 自身は Agent/API を起動せず、定期同期・schedule 有効化・実運用実証は P-C/P-D の未実施範囲。
 
 ## Readiness の責務
 
-Readiness と Issue Completion の判定責任は持たない。知識候補・収集未完了を readiness の必須依存にしない。Knowledge v1.0 と非同期基盤の実装・起動対象外という境界を維持する。 詳細は [Readiness 契約](../contracts/readiness.md) と [ワークフロー](../workflows/single-issue.md#readiness-と-issue-completion-の運用) に従う。
+Readiness と Issue Completion の判定責任は持たない。知識候補・収集未完了を readiness の必須依存にしない。Knowledge v1.0 の意味と、collector が Agent を起動しない境界を維持する。 詳細は [Readiness 契約](../contracts/readiness.md) と [ワークフロー](../workflows/single-issue.md#readiness-と-issue-completion-の運用) に従う。
 
 ## Artifact Delivery の責務
 

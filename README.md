@@ -90,7 +90,7 @@ JSON Schema は構造、CLI の追加検査はローカル ID の参照整合性
 
 候補 → Raw Findings（原根拠・観測）→ Knowledge Agent の採否判断 → Curated Knowledge（人間向け Markdown）→ 適用条件・例外・陳腐化の再評価、という流れです。重要判断、失敗、不採用案、出典、更新日と後継リンクを保持します。AI メタデータは本文の補助です。記事には「理解を深めるための問い」を含めます。複数 Issue の知識を集約でき、後続は knowledge-context の固定 revision・適用条件・例外・出典を確認して利用します。
 
-初期領域は orchestration と validation で、raw / curated の索引を分離しています。非同期収集・定期同期の実行基盤は Phase 1-3 で扱い、このフェーズでは実装・起動しません。詳細は [Knowledge index](knowledge/README.md)。1 Issue=1 PR や repo ごとの知識分割は絶対条件にせず、権限とレビュー範囲に応じて選びます。
+初期領域は orchestration と validation で、raw / curated の索引を分離しています。Phase 1-3 P-B は機械的な非同期収集 CLI と永続 inbox/state を提供します。定期同期・スケジュール有効化・実運用実証は後続 P-C/P-D の未実施範囲です。詳細は [Knowledge index](knowledge/README.md)。1 Issue=1 PR や repo ごとの知識分割は絶対条件にせず、権限とレビュー範囲に応じて選びます。
 
 ## Phase 1-1 の補完判断と制約
 
@@ -131,4 +131,12 @@ Readinessの配送にはartifact_id、Handoff基準のローカルlocator、実�
 [Delivery 1.1](contracts/artifact-delivery.md#knowledge-typed-delivery-v11-phase1-3-p-a)で
 Knowledge1.0の型付き配送と入力/出力・source/記事の実体照合を提供する。
 [固定Gitのsynthetic再現手順](examples/knowledge-delivery/README.md)を参照。
-非同期inbox/state、context生成/ack/periodic、実Knowledge/Consumer運用実証はP-B/C/Dの未実施範囲。
+P-B の非同期 inbox/state は下記 CLI で実装。context生成/ack/periodic と実Knowledge/Consumer運用実証は P-C/P-D の未実施範囲。
+
+### Phase 1-3 P-B: 非同期収集と永続 state
+
+[collector 契約](contracts/knowledge-collection.md)、[CLI](scripts/knowledge_collector.py)、
+[Manager 入力](templates/knowledge-collection.md)、[synthetic 再現](examples/knowledge-collector/README.md)。
+固定 Git 全件照合、event identity、CAS/atomic transaction、raw 履歴、有限 retry/crash 復旧を扱います。
+collector は Agent/API を起動せず、schedule を登録・有効化しません。Knowledge の失敗は開発 gate を変更しません。
+state・認可・runtime ID は非公開。stdout は安全な状態件数のみです。

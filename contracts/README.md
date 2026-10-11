@@ -38,7 +38,7 @@ AC 原文が欠落していれば `MISSING_ACCEPTANCE_CRITERIA` で blocked。�
 
 Manager が参照を取得・配送し、担当エージェントが対象環境への適用可能性を確認する。draft / deprecated / superseded は無条件採用せず、採否と理由を記録する。参照知識は助言であり、Issue の AC 原文や実測根拠を置き換えない。利用可能な知識がないことだけでは開発を止めない。
 
-Knowledge の非同期収集・定期同期を動かす実行基盤、スケジューラー、自動トリガーは **Phase 1-3** の対象。本フェーズは契約と手動配送可能な仕様・サンプル・検証のみであり、これらの基盤を実装・起動しない。
+Phase 1-3 P-B の [Knowledge Collection v1.0](knowledge-collection.md) は別契約で event/registry/private state と機械的 CLI を追加する。既存 Knowledge v1.0 は変更しない。定期同期・schedule・Consumer ack と実運用実証は P-C/P-D の未実施範囲。
 
 ## 移行と互換性
 

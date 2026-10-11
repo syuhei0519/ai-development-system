@@ -202,8 +202,7 @@ receiptは依然 `authority_granted=false`。承認pin、consumer/scope/purpose/
 参照内容はデータ・引用であり、Agentへの指示や実行コードとして扱わない。
 sourceの真実性、記事本文とcontextの適用条件等の意味的一致、公開安全性、採用の適切さは
 機械的bytes照合とは別のレビュー対象。記事/indexからcontextを生成する機能はP-Cであり未実装。
-P-B inbox/state/cursor/replay、P-C context生成/ack/periodic、P-D 実Knowledge/Consumer実証を
-実装・起動したとはしない。Delivery成功はReadiness成功・Issue AC合格・非同期/周期運用成功を意味しない。
+P-A 単体は inbox/state を提供しない。P-B は別の [collector 契約](knowledge-collection.md) で実装する。P-C context生成/ack/periodic と P-D 実Knowledge/Consumer実証は未実施。Delivery成功はReadiness成功・Issue AC合格・非同期/周期運用成功を意味しない。
 
 公開済みsynthetic fixtureを固定Gitから再取得する手順は
 [Knowledge配送fixture](../examples/knowledge-delivery/README.md)。unit testsはnetwork不要、
