@@ -1,0 +1,126 @@
+{
+  "schema_version": "1.0",
+  "document_type": "publication_receipt",
+  "manifest_sha256": "dd9d86795690e26c9940b8c4bc86a8858e6402a69ddb81c4542f47fb3cc26c64",
+  "github_state": "published",
+  "artifacts": [
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "651c55a22b89a5dd3b671e07adeae122979449ae",
+        "path": "evidence/issue-completion/implementation-a1/design/handoff.json",
+        "size": 8152,
+        "sha256": "f2a2bc68c696cdf691786bee798006fe24a2c0bcd1e3d38e44d29a57ab5c76bf"
+      },
+      "representation": "edited_derivative",
+      "format": "handoff-v2",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-AGGREGATE-IMPLEMENTATION"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "651c55a22b89a5dd3b671e07adeae122979449ae",
+        "path": "evidence/issue-completion/implementation-a1/design/report.md",
+        "size": 30484,
+        "sha256": "059b4eb96e142e1038072ff3d8a635b7f03bcb751b67874dafbabea1d677bff7"
+      },
+      "representation": "edited_derivative",
+      "format": "text",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-AGGREGATE-IMPLEMENTATION"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "651c55a22b89a5dd3b671e07adeae122979449ae",
+        "path": "evidence/issue-completion/implementation-a1/design/requirements.md",
+        "size": 1897,
+        "sha256": "6b811a1f49c4825fcab10636251033f1dfcb4c1809d8f356077ce536ae809cbf"
+      },
+      "representation": "edited_derivative",
+      "format": "text",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-AGGREGATE-IMPLEMENTATION"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "651c55a22b89a5dd3b671e07adeae122979449ae",
+        "path": "evidence/issue-completion/implementation-a1/design/sources.md",
+        "size": 5693,
+        "sha256": "874c764d999fffc04d30459310818799dc42ff33430998284dd1ae6ef1723988"
+      },
+      "representation": "edited_derivative",
+      "format": "text",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-AGGREGATE-IMPLEMENTATION"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "651c55a22b89a5dd3b671e07adeae122979449ae",
+        "path": "evidence/issue-completion/implementation-a1/design/validation-summary.md",
+        "size": 2385,
+        "sha256": "3d542dc42a6925d8c5cac63bbcf78f8c49e35578af763e8f86c345955c4df5be"
+      },
+      "representation": "edited_derivative",
+      "format": "text",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-AGGREGATE-IMPLEMENTATION"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "651c55a22b89a5dd3b671e07adeae122979449ae",
+        "path": "evidence/issue-completion/implementation-a1/handoff.json",
+        "size": 7678,
+        "sha256": "c00bde4f00154e2d5c8c6b8b7d734fef23810db01e0126d1a5b51efc660976a9"
+      },
+      "representation": "edited_derivative",
+      "format": "handoff-v2",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-AGGREGATE-IMPLEMENTATION"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "651c55a22b89a5dd3b671e07adeae122979449ae",
+        "path": "evidence/issue-completion/implementation-a1/report.md",
+        "size": 3645,
+        "sha256": "39bac8884112c3781a0dc8eaef56c978d22f8cb3bf908c058258bd70583bc970"
+      },
+      "representation": "edited_derivative",
+      "format": "text",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-AGGREGATE-IMPLEMENTATION"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "651c55a22b89a5dd3b671e07adeae122979449ae",
+        "path": "evidence/issue-completion/implementation-a1/requirements.md",
+        "size": 1897,
+        "sha256": "6b811a1f49c4825fcab10636251033f1dfcb4c1809d8f356077ce536ae809cbf"
+      },
+      "representation": "edited_derivative",
+      "format": "text",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-AGGREGATE-IMPLEMENTATION"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "651c55a22b89a5dd3b671e07adeae122979449ae",
+        "path": "evidence/issue-completion/implementation-a1/validation-summary.md",
+        "size": 2278,
+        "sha256": "f9a6e197b1cf6972017074191bba738606aadc30d8111c84ef2e07bb049c377d"
+      },
+      "representation": "edited_derivative",
+      "format": "text",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-AGGREGATE-IMPLEMENTATION"
+    }
+  ],
+  "observation": "Fresh isolated Git retrieval verified all nine payload files against sealed raw bytes, sizes and SHA-256, plus JSON types and Handoff v2 dependency bindings. Published design copies retain the bytes and hashes from source commit 9f4264d43b8de7db27792e63fd6e91470adefc4f. This receipt records publication observations only; it is neither publication approval nor Consumer use authorization. No Consumer authorization or Consumption Receipt is generated."
+}
