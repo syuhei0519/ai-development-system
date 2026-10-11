@@ -70,9 +70,13 @@
       "repository": "syuhei0519/platform-gitops",
       "commit": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
       "path": "charts/workloads/templates/applications.yaml",
-      "copy": "sources/platform-gitops/charts/workloads/templates/applications.yaml",
+      "copy": "sources/platform-gitops/charts/workloads/templates/applications-template.txt",
       "size": 1233,
-      "sha256": "6bc92483833f169a0f19fb7349f9105f410007328069b25d24509e5c1c58a7ee"
+      "sha256": "6bc92483833f169a0f19fb7349f9105f410007328069b25d24509e5c1c58a7ee",
+      "representation": "edited_derivative",
+      "transformation": "Added public prose wrapper before the unchanged fixed source body to avoid misclassifying Helm template syntax as a JSON document. Original source size/hash remain in size/sha256.",
+      "copy_size": 1443,
+      "copy_sha256": "7a6a3be802d4d5b4b135d77be29b19309bb231f9df679958da320b88b2c5ff11"
     },
     {
       "repository": "syuhei0519/platform-gitops",
