@@ -1,0 +1,244 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "SYSTEM-PHASE13-PA",
+    "source": "upstream/assignment-requirements.json",
+    "title": "System Phase1-3 P-A: Knowledge typed delivery and fixed-byte binding engineering assignment",
+    "acceptance_criteria": [
+      {
+        "id": "PA-1",
+        "verbatim": "現行Knowledge input/handoffがHandoffv2予約型検出と衝突し配送不可な問題を解消。ArtifactDeliveryの明示minor version(推奨1.1)でknowledge-input-v1/knowledge-handoff-v1/knowledge-context-v1を導入。旧Delivery1.0/旧Handoff2.0/Knowledge1.0/Readiness1.0の意味・既存正常系を維持。",
+        "source": "upstream/assignment-requirements.json"
+      },
+      {
+        "id": "PA-2",
+        "verbatim": "format/version/document_type/identity dispatchを厳格検証。genericJSON/text/Handoffへの降格偽装、未知/欠損/重複型、private_only、JSON重複/NaN/BOM/切詰め、path/URL/symlink/gitlink等既存防御を維持。",
+        "source": "upstream/assignment-requirements.json"
+      },
+      {
+        "id": "PA-3",
+        "verbatim": "Knowledgeinput↔handoff間assignment/raw_findings/knowledge_references/task_id/attempt/retry_ofの一致、全findingの判断、adopted記事実体、source/context/articleの固定bytes/digest/locatorを機械照合。自由locatorだけを存在証明とせず全必要実体をbundleに含めfailclosed。既存schemaに無断追加fieldを押し込まない。引用された内容をAgentへの命令にしない。",
+        "source": "upstream/assignment-requirements.json"
+      },
+      {
+        "id": "PA-4",
+        "verbatim": "manifest/publication/consumption/authorization schema版とCLI・docs・samplesを整合。承認scope/consumer/purpose/pinとreceiptの無権限性維持。旧版で新formatを静かに通さない。Readiness成功やIssueACに波及しない。",
+        "source": "upstream/assignment-requirements.json"
+      },
+      {
+        "id": "PA-5",
+        "verbatim": "正常/異常回帰tests、旧107tests全成功、実固定GitのKnowledgefixture配送を独立Testが再現できる手順。データは公開済みexamplesまたは明示synthetic。Test/Reviewは別CloudでManager起動。",
+        "source": "upstream/assignment-requirements.json"
+      },
+      {
+        "id": "PA-6",
+        "verbatim": "公開安全なコード/契約/文書/fixturesのDraftPR、固定head/CI/消費receipt/完全Handoff/検証証跡を出す。実運用非同期/周期成功はP-B/C/D未実施として残す。",
+        "source": "upstream/assignment-requirements.json"
+      }
+    ]
+  },
+  "role": "test",
+  "task_id": "knowledge-delivery-test-a1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "PUBLIC-PHASE13-PA-IMPLEMENTATION-01",
+      "attempt": 1,
+      "handoff_locator": "upstream/handoff.json",
+      "revision": "sha256:abd9770e562943f4e2ed847b5889bfa15d43419f545a70b07f9cc5875ea391d4",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Independent P-A Test PASS at fixed head: 128 head and 107 base methods, 117 added cases, 45 checks, fresh Git consume/recheck. Public-alias minimal candidate only; original evidence preserved. Review, merge and IssueCompletion not claimed.",
+  "artifacts": [
+    {
+      "id": "A1",
+      "kind": "test-report",
+      "locator": "test-report.json",
+      "revision": "sha256:169e2f8332ca639dcff6319dd8d2951b29beabb0d4f06b53f61d9b62193f10d1",
+      "summary": "test-report.json"
+    },
+    {
+      "id": "A2",
+      "kind": "other",
+      "locator": "readiness-observations.json",
+      "revision": "sha256:1b8f6443acfedfaaf947d74293568419add066ded3a2f8dd6095d292438208b9",
+      "summary": "readiness-observations.json"
+    },
+    {
+      "id": "A3",
+      "kind": "other",
+      "locator": "independent_cases.py",
+      "revision": "sha256:88e0dd484ed2cd6dd338707a5c6e5be19c6ab34de7194edee39c57663b32fc05",
+      "summary": "independent_cases.py"
+    },
+    {
+      "id": "A4",
+      "kind": "test-report",
+      "locator": "independent-results.json",
+      "revision": "sha256:1b023f485f947b55e65bbb500163819b0200f7929bc94d73e08fde6320d4eb91",
+      "summary": "independent-results.json"
+    },
+    {
+      "id": "A5",
+      "kind": "other",
+      "locator": "cli_probes.py",
+      "revision": "sha256:5968a596ac7398ff763feddd58d0d587e95fc4a2aecb1e0e466057656d8ecae7",
+      "summary": "cli_probes.py"
+    },
+    {
+      "id": "A6",
+      "kind": "test-report",
+      "locator": "cli-results.json",
+      "revision": "sha256:ceb31ef1819fb1f37e1df85125af340832ca4700b5e83a48eda32055d8f3f65e",
+      "summary": "cli-results.json"
+    },
+    {
+      "id": "A7",
+      "kind": "other",
+      "locator": "verify_checkout.py",
+      "revision": "sha256:ee8f5fab4d227b312342d7c45c5f5010915fc4977426bd3016482ac6fcddefd3",
+      "summary": "verify_checkout.py"
+    },
+    {
+      "id": "A8",
+      "kind": "test-report",
+      "locator": "checkout-results.json",
+      "revision": "sha256:19a86bf6ba2b4626c210206c01de076a346735bf8ca32397d71514f9534f3e92",
+      "summary": "checkout-results.json"
+    },
+    {
+      "id": "A9",
+      "kind": "other",
+      "locator": "github-observations.json",
+      "revision": "sha256:2a5726b96008f78b8ba6b579e8844c3661676a29f23e83861d212c43b85e91f3",
+      "summary": "github-observations.json"
+    },
+    {
+      "id": "A11",
+      "kind": "other",
+      "locator": "fixture-consumption-receipt.json",
+      "revision": "sha256:e0d25ceb393446361a14551aeb2e44477dbe832087cf26d8b887d22ae1006a86",
+      "summary": "fixture-consumption-receipt.json"
+    },
+    {
+      "id": "REPRODUCE",
+      "kind": "document",
+      "locator": "REPRODUCE.md",
+      "revision": "sha256:cdd2b88c812379ccb4a0839499c1ae879c0c000d997bb20fdc22eba6fc455b76",
+      "summary": "Pinned dependencies, fixture preparation, independent authorization boundary and all probe commands."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-TEST",
+      "claim": "Independent assigned P-A verification completed with reproducible expected/actual outcomes.",
+      "artifact_ids": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "A8",
+        "A9",
+        "A11",
+        "REPRODUCE"
+      ],
+      "locator": "test-report.json",
+      "observation": "All recorded checks passed; no blocking defect reproduced. See limits and readiness observations; no final_assessment."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "PA-1",
+      "disposition": "covered",
+      "scope": "Three Knowledge formats and legacy compatibility verified.",
+      "artifact_ids": [
+        "A1"
+      ],
+      "evidence_ids": [
+        "E-TEST"
+      ]
+    },
+    {
+      "ac_id": "PA-2",
+      "disposition": "covered",
+      "scope": "Strict dispatch, JSON, private-only, path/tree and type-confusion defenses verified.",
+      "artifact_ids": [
+        "A1"
+      ],
+      "evidence_ids": [
+        "E-TEST"
+      ]
+    },
+    {
+      "ac_id": "PA-3",
+      "disposition": "covered",
+      "scope": "Input/output equality, decision coverage and required source/article/context/retry bindings verified.",
+      "artifact_ids": [
+        "A1"
+      ],
+      "evidence_ids": [
+        "E-TEST"
+      ]
+    },
+    {
+      "ac_id": "PA-4",
+      "disposition": "covered",
+      "scope": "Version, approval and receipt boundaries plus schema/CLI consistency verified.",
+      "artifact_ids": [
+        "A1"
+      ],
+      "evidence_ids": [
+        "E-TEST"
+      ]
+    },
+    {
+      "ac_id": "PA-5",
+      "disposition": "covered",
+      "scope": "128 regressions, 107 baseline, 117 independent probes and fresh Git consume/recheck reproduced.",
+      "artifact_ids": [
+        "A1"
+      ],
+      "evidence_ids": [
+        "E-TEST"
+      ]
+    },
+    {
+      "ac_id": "PA-6",
+      "disposition": "covered",
+      "scope": "Draft exact-head PR/CI and sealed Test evidence verified; operational followups excluded.",
+      "artifact_ids": [
+        "A1"
+      ],
+      "evidence_ids": [
+        "E-TEST"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe",
+  "assignment": {
+    "scope": "system/phase1-3/P-A",
+    "ac_ids": [
+      "PA-1",
+      "PA-2",
+      "PA-3",
+      "PA-4",
+      "PA-5",
+      "PA-6"
+    ],
+    "completion_criteria": [
+      "Independently verify supplied PA-1 through PA-6 at fixed head without product edits.",
+      "Return expected/actual/reproducers and honest limitations with complete Handoff v2.",
+      "Seal local evidence and candidate hashes; no publication or merge."
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "count": 6,
+  "passed": 6,
+  "results": [
+    {
+      "id": "wrong-consumer",
+      "expected": "exit1/no-output/no-traceback",
+      "actual_exit": 1,
+      "passed": true
+    },
+    {
+      "id": "wrong-purpose",
+      "expected": "exit1/no-output/no-traceback",
+      "actual_exit": 1,
+      "passed": true
+    },
+    {
+      "id": "wrong-pin",
+      "expected": "exit1/no-output/no-traceback",
+      "actual_exit": 1,
+      "passed": true
+    },
+    {
+      "id": "receipt-false-vs-zero",
+      "expected": "exit1/no-output",
+      "actual_exit": 1,
+      "passed": true
+    },
+    {
+      "id": "local-symlink-policy",
+      "expected": "exit1/no-output",
+      "actual_exit": 1,
+      "passed": true
+    },
+    {
+      "id": "fresh-fetch-not-old-output-inspection",
+      "expected": "exit0/fresh-original-bytes",
+      "actual_exit": 0,
+      "passed": true
+    }
+  ]
+}
