@@ -1,0 +1,95 @@
+{
+  "record_type": "public_candidate_inventory",
+  "state": "unpublished, producer-inspected; Manager publication gate pending",
+  "scope": "Blocked attempt 1 delivery preparation only",
+  "base_consumer_commit": "df400018057735b7cb6a9c6ea4619508f0e6ba3a",
+  "files": [
+    {
+      "path": "assignment-requirements.json",
+      "size": 2862,
+      "sha256": "f3d9d8e0f58a85325487bffe17aa336f90294f782bb44ebb3a4a69a2c2564ea2"
+    },
+    {
+      "path": "b1-consumer-observation.public.json",
+      "size": 5620,
+      "sha256": "7e4b3b7bebf18cc7a0e46202d3d127e4c22a84753fed6d3d0ede382c6c6fa88b"
+    },
+    {
+      "path": "design-supplement.md",
+      "size": 7120,
+      "sha256": "bcb779c4c8926627e410e34ba5caf900a261be65548497734bdc8f743aac72e2"
+    },
+    {
+      "path": "editing-map.json",
+      "size": 8202,
+      "sha256": "9d9787fda4ccdab834b0e6ee3fb19fac0567c8004244a16c9f25bc11d5965a33"
+    },
+    {
+      "path": "handoff.public.json",
+      "size": 10063,
+      "sha256": "3aa90aedc0469c14c7ec457a3f01af21b9bc566f3ea4855336cd2925ffe05e87"
+    },
+    {
+      "path": "implementation-report.public.json",
+      "size": 6599,
+      "sha256": "29d2ef67748681c07dd456e5a0618be91ede5a9f81feb331ff826ee63f258e03"
+    },
+    {
+      "path": "implementation.patch",
+      "size": 90015,
+      "sha256": "c65dc1e4f5fc848ea995a9cc6807d381cab1862cedc6521e1627c9ddf8cdb817"
+    },
+    {
+      "path": "pa/assignment-requirements.json",
+      "size": 2567,
+      "sha256": "7f145ee60b28e14828cf775513747d3e00ee77f3976b90903304e487ba85660c"
+    },
+    {
+      "path": "pa/fixture-consumption-receipt.json",
+      "size": 3591,
+      "sha256": "0d0267237ab2f6cb4f5511a3df7323a684e0122a34593ff5c93a3e1c4c6ae538"
+    },
+    {
+      "path": "pa/handoff.json",
+      "size": 8235,
+      "sha256": "abd9770e562943f4e2ed847b5889bfa15d43419f545a70b07f9cc5875ea391d4"
+    },
+    {
+      "path": "pa/implementation-report.json",
+      "size": 9117,
+      "sha256": "b66153dd07d4dd587a996f0c1a4a0165db19e67a91179fe9083303ddbe0e7701"
+    },
+    {
+      "path": "pa/research/assignment-requirements.json",
+      "size": 2204,
+      "sha256": "de34bda253a2ca7df0d17a039d4d710c450c984e2226b60920bae5cda3017760"
+    },
+    {
+      "path": "pa/research/design.md",
+      "size": 36689,
+      "sha256": "3bc5071ca6ab336d17ef10fde5c5e7b6b931bc3d16d4850dca946e5766caee46"
+    },
+    {
+      "path": "pa/research/handoff.json",
+      "size": 7829,
+      "sha256": "ba69683794ee6ccea5f29ba277c1a8f13adcfd9308b17fe8f86ad6e65c2398af"
+    },
+    {
+      "path": "pa/research/source-inventory.json",
+      "size": 6159,
+      "sha256": "3b70f0a86ad864e6d8682f312a66aabe1036ffa09e3243afc8480806961dec6a"
+    },
+    {
+      "path": "pa/research/verification-observations.json",
+      "size": 1494,
+      "sha256": "8be71756b79529a3317968ff6ec04d79ec47579e3e2f4a33f37208dd139d13b1"
+    },
+    {
+      "path": "self-verification.json",
+      "size": 1702,
+      "sha256": "05b668f8d051ec62db79ef089fec270c26f96293302645c60d0f7eb25510d130"
+    }
+  ],
+  "own_digest_policy": "This inventory excludes itself; the separate outer manifest/seal pins its raw bytes.",
+  "authorization_policy": "No authorization JSON is included. Original P-A copies may contain historical public receipt pins; those observations grant no rights."
+}
