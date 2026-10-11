@@ -1,0 +1,1178 @@
+{
+  "suite": "independent synthetic CLI cases",
+  "cases": [
+    {
+      "case": "positive_achieved",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_output": "integration=ready; issue_completion=achieved",
+      "passed": true,
+      "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+      "stderr": ""
+    },
+    {
+      "case": "positive_pending",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_output": "integration=blocked; issue_completion=unverified",
+      "passed": true,
+      "stdout": "PASS REPLAY: integration=blocked; issue_completion=unverified; record consistency only; no authority granted",
+      "stderr": ""
+    },
+    {
+      "case": "a_member_results_missing",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "a_member_results_duplicate",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "a_member_results_extra",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "a_deployment_results_missing",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "a_deployment_results_duplicate",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "a_deployment_results_extra",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "a_verification_results_missing",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "a_verification_results_duplicate",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "a_verification_results_extra",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "a_ac_results_missing",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "a_ac_results_duplicate",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "a_ac_results_extra",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "c_required_prs_missing",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "c_required_prs_duplicate",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "c_required_prs_extra",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "c_current_members_missing",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "c_current_members_duplicate",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "c_current_members_extra",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "c_required_verifications_missing",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "c_required_verifications_duplicate",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "c_required_verifications_extra",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "c_required_deployments_missing",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "c_required_deployments_duplicate",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "c_required_deployments_extra",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "c_scope_decisions_missing",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "c_scope_decisions_duplicate",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "c_scope_decisions_extra",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+      "stderr": ""
+    },
+    {
+      "case": "old_member_head_sha",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "old_member_base_sha",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "old_member_target_revision",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "old_member_merge_group_sha",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "old_member_config_revision",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "old_member_merge_sha",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "old_member_state",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "approval_actor",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "approval_member_ids",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "approval_deployment_ids",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "approval_status",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "approval_valid_until",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "approval_allowed_actions",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "approval_decision_kind",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "deployment_sources",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "deployment_images",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "deployment_config_sha256",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "deployment_environment_id",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "deployment_workload_id",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "deployment_state",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "context_time_valid_until",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "context_time_observed_at",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "measurement_valid_until",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "measurement_observed_at",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "measurement_phase",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "measurement_kind",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "measurement_producer",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "measurement_method",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "measurement_workload_id",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "context_pin_independent",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "context_pin_matching_self_claim",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "source_receipt_substitution",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "source_knowledge_substitution",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "source_observation_rewritten",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "completion.json_duplicate",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "completion.json_escaped_duplicate",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "completion.json_nan",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "completion.json_infinity",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "completion.json_bom",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "completion.json_truncated",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "completion.json_trailing",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "context.json_duplicate",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "context.json_escaped_duplicate",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "context.json_nan",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "context.json_infinity",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "context.json_bom",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "context.json_truncated",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "context.json_trailing",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "handoff.json_duplicate",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "handoff.json_escaped_duplicate",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "handoff.json_nan",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "handoff.json_infinity",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "handoff.json_bom",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "handoff.json_truncated",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "handoff.json_trailing",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "source_rehashed_duplicate",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "source_rehashed_nan",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "source_rehashed_truncated",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "blob_byte",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "blob_size",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "blob_hash",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "blob_missing",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "blob_escape",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "blob_absolute",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "blob_url",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "blob_symlink",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "handoff_role",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "handoff_issue",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "handoff_original",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "handoff_digest",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "handoff_final_missing",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "handoff_same_bytes_other_path",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "handoff_measurement_other_path",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "previous_valid",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_output": "achieved",
+      "passed": true,
+      "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+      "stderr": ""
+    },
+    {
+      "case": "previous_pin_wrong",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "previous_pin_missing",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "history_prefix_replaced",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "all_ac_met_integration_pending",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_output": "unverified",
+      "passed": true,
+      "stdout": "PASS REPLAY: integration=blocked; issue_completion=unverified; record consistency only; no authority granted",
+      "stderr": ""
+    },
+    {
+      "case": "honest_reverted",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_output": "not_achieved",
+      "passed": true,
+      "stdout": "PASS REPLAY: integration=blocked; issue_completion=not_achieved; record consistency only; no authority granted",
+      "stderr": ""
+    },
+    {
+      "case": "hidden_reverted",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "honest_rolled_back",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_output": "not_achieved",
+      "passed": true,
+      "stdout": "PASS REPLAY: integration=blocked; issue_completion=not_achieved; record consistency only; no authority granted",
+      "stderr": ""
+    },
+    {
+      "case": "hidden_rolled_back",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "honest_failed",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_output": "not_achieved",
+      "passed": true,
+      "stdout": "PASS REPLAY: integration=blocked; issue_completion=not_achieved; record consistency only; no authority granted",
+      "stderr": ""
+    },
+    {
+      "case": "hidden_failed",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "required_subcheck_removed_without_change_event",
+      "expected_exit": 1,
+      "actual_exit": 0,
+      "expected_output": null,
+      "passed": false,
+      "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+      "stderr": ""
+    },
+    {
+      "case": "pr_handoff_symlink_locator",
+      "expected_exit": 1,
+      "actual_exit": 0,
+      "expected_output": null,
+      "passed": false,
+      "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+      "stderr": ""
+    },
+    {
+      "case": "positive_merge_mode_merge",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_output": "achieved",
+      "passed": true,
+      "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+      "stderr": ""
+    },
+    {
+      "case": "positive_merge_mode_squash",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_output": "achieved",
+      "passed": true,
+      "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+      "stderr": ""
+    },
+    {
+      "case": "positive_merge_mode_rebase",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_output": "achieved",
+      "passed": true,
+      "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+      "stderr": ""
+    },
+    {
+      "case": "positive_merge_mode_queue",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_output": "achieved",
+      "passed": true,
+      "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+      "stderr": ""
+    },
+    {
+      "case": "queue_method_without_queue_subject",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "historical_gate_expired_at_merge",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "github_review_replaced_by_ai_review",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "integration_failed_all_ac_met",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_output": "not_achieved",
+      "passed": true,
+      "stdout": "PASS REPLAY: integration=blocked; issue_completion=not_achieved; record consistency only; no authority granted",
+      "stderr": ""
+    },
+    {
+      "case": "integration_failure_event_omitted",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "previous_failure_old_measurements_reused",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "source_freshness_expired",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "source_observed_in_future",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "",
+      "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+    },
+    {
+      "case": "honest_missing_required_subcheck",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_output": "unverified",
+      "passed": true,
+      "stdout": "PASS REPLAY: integration=blocked; issue_completion=unverified; record consistency only; no authority granted",
+      "stderr": ""
+    },
+    {
+      "case": "legacy_single_pr_unverified",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "Legacy record CLI returned 0",
+      "stderr": ""
+    },
+    {
+      "case": "legacy_aggregate_required_achieved",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "expected_output": null,
+      "passed": true,
+      "stdout": "Legacy record CLI returned 1",
+      "stderr": ""
+    }
+  ],
+  "total": 130,
+  "passed": 128,
+  "failed": 2
+}

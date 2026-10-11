@@ -1,0 +1,229 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "PUBLIC-AGGREGATION-DESIGN",
+    "source": "requirements.md",
+    "title": "Issue Completion集約契約設計",
+    "acceptance_criteria": [
+      {
+        "id": "AG-1",
+        "verbatim": "PR単位MergeReadinessとIssue全体Completion分離、単一PRmerge/全premergeACmetだけでachievedにしない。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-2",
+        "verbatim": "必要なPR/repo/mergeSHA/承認済みscope/構成・image digest/実測環境/時刻/証跡期限を集約し、欠落・旧head・未merge・未配備・scope不足・証跡不一致はfailclosed。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-3",
+        "verbatim": "postmerge/postdeployの実測とpremerge試験を区別、全AC原文一致/全体integrationready/全必須実測metの後だけManagerがachieved。製品操作権限をreceipt/記事から推論しない。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-4",
+        "verbatim": "head変更/新必須PR/配備revision変更/失効時の再評価、rollback/失敗/未検証を記録。",
+        "source": "requirements.md"
+      },
+      {
+        "id": "AG-5",
+        "verbatim": "Handoffv2/Readinessv1互換、JSONschema/CLI/正常異常テスト/採用案と境界を具体化。既存GitHub必須check/review/rulesetは迂回禁止。UserapprovalとGitHubauthorityは別。",
+        "source": "requirements.md"
+      }
+    ]
+  },
+  "role": "test",
+  "task_id": "PUBLIC-AGGREGATE-TEST-001",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "PUBLIC-AGGREGATE-IMPLEMENTATION-001",
+      "attempt": 1,
+      "relationship": "dependency",
+      "handoff_locator": "implementation.handoff.json",
+      "revision": "sha256:c00bde4f00154e2d5c8c6b8b7d734fef23810db01e0126d1a5b51efc660976a9"
+    }
+  ],
+  "system_status": "completed",
+  "status": "failed",
+  "summary": "Independent Test completed its execution and found two contract failures: required-subcheck removal without a required-set history event, and PR Handoff symlink acceptance. No product final assessment or operation authority.",
+  "assignment": {
+    "scope": "system/issue-completion/aggregate",
+    "ac_ids": [
+      "AG-1",
+      "AG-2",
+      "AG-3",
+      "AG-4",
+      "AG-5"
+    ],
+    "completion_criteria": [
+      "Independently verify all assigned AG-1 through AG-5 at the pinned head against the pinned base and authorized original requirements.",
+      "Reproduce existing 152 head tests and legacy compatibility; independently test positive, negative and boundary behavior with public synthetic sources only.",
+      "Return Handoff v2, explicit failures and limitations, reproducible independent cases/results and privately retained original ConsumptionReceipt; prepare safe candidate inventory without publication."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "PUBLIC-TEST-REPORT",
+      "kind": "test-report",
+      "locator": "test-report.md",
+      "revision": "sha256:5432783e61a6610835c86b392dc9a07dc483a233da29dfb9454a5f3dd03ac2d1",
+      "summary": "Public alias independent Test material; no operation or publication authority."
+    },
+    {
+      "id": "PUBLIC-TEST-CASES",
+      "kind": "other",
+      "locator": "independent_cases.py",
+      "revision": "sha256:f261f26a92dcdf65ffa2b91480bd4b50b8450bfe31165e6d3bb8577f1bca1dee",
+      "summary": "Public alias independent Test material; no operation or publication authority."
+    },
+    {
+      "id": "PUBLIC-TEST-RESULTS",
+      "kind": "test-report",
+      "locator": "independent-results.json",
+      "revision": "sha256:9fcf56e3bd97e3b7fbaf3ca1ccc2a1a1a26ff70e6da9f222bd9f0d23aa79d335",
+      "summary": "Public alias independent Test material; no operation or publication authority."
+    },
+    {
+      "id": "PUBLIC-VERIFICATION-SUMMARY",
+      "kind": "document",
+      "locator": "verification-summary.md",
+      "revision": "sha256:ef76bbafafdfc05a7674bd19b0348ef3a15f1c0ed752b23439ac2ab53507d060",
+      "summary": "Public alias independent Test material; no operation or publication authority."
+    },
+    {
+      "id": "PUBLIC-REQUIREMENTS",
+      "kind": "document",
+      "locator": "requirements.md",
+      "revision": "sha256:6b811a1f49c4825fcab10636251033f1dfcb4c1809d8f356077ce536ae809cbf",
+      "summary": "Public alias independent Test material; no operation or publication authority."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "PUBLIC-TEST-AG-1",
+      "claim": "AG-1 independent Test result; see exact cases and failures.",
+      "artifact_ids": [
+        "PUBLIC-TEST-REPORT",
+        "PUBLIC-TEST-CASES",
+        "PUBLIC-TEST-RESULTS"
+      ],
+      "locator": "test-report.md",
+      "observation": "Fixed head existing suite 152 passed; base 107 passed; independent 130 cases with 128 expected results and 2 unexpected accepts. AG-4/F-1 and AG-5/F-2 are not_met. Only public synthetic data; remote CI not independently verified."
+    },
+    {
+      "id": "PUBLIC-TEST-AG-2",
+      "claim": "AG-2 independent Test result; see exact cases and failures.",
+      "artifact_ids": [
+        "PUBLIC-TEST-REPORT",
+        "PUBLIC-TEST-CASES",
+        "PUBLIC-TEST-RESULTS"
+      ],
+      "locator": "test-report.md",
+      "observation": "Fixed head existing suite 152 passed; base 107 passed; independent 130 cases with 128 expected results and 2 unexpected accepts. AG-4/F-1 and AG-5/F-2 are not_met. Only public synthetic data; remote CI not independently verified."
+    },
+    {
+      "id": "PUBLIC-TEST-AG-3",
+      "claim": "AG-3 independent Test result; see exact cases and failures.",
+      "artifact_ids": [
+        "PUBLIC-TEST-REPORT",
+        "PUBLIC-TEST-CASES",
+        "PUBLIC-TEST-RESULTS"
+      ],
+      "locator": "test-report.md",
+      "observation": "Fixed head existing suite 152 passed; base 107 passed; independent 130 cases with 128 expected results and 2 unexpected accepts. AG-4/F-1 and AG-5/F-2 are not_met. Only public synthetic data; remote CI not independently verified."
+    },
+    {
+      "id": "PUBLIC-TEST-AG-4",
+      "claim": "AG-4 independent Test result; see exact cases and failures.",
+      "artifact_ids": [
+        "PUBLIC-TEST-REPORT",
+        "PUBLIC-TEST-CASES",
+        "PUBLIC-TEST-RESULTS"
+      ],
+      "locator": "test-report.md",
+      "observation": "Fixed head existing suite 152 passed; base 107 passed; independent 130 cases with 128 expected results and 2 unexpected accepts. AG-4/F-1 and AG-5/F-2 are not_met. Only public synthetic data; remote CI not independently verified."
+    },
+    {
+      "id": "PUBLIC-TEST-AG-5",
+      "claim": "AG-5 independent Test result; see exact cases and failures.",
+      "artifact_ids": [
+        "PUBLIC-TEST-REPORT",
+        "PUBLIC-TEST-CASES",
+        "PUBLIC-TEST-RESULTS"
+      ],
+      "locator": "test-report.md",
+      "observation": "Fixed head existing suite 152 passed; base 107 passed; independent 130 cases with 128 expected results and 2 unexpected accepts. AG-4/F-1 and AG-5/F-2 are not_met. Only public synthetic data; remote CI not independently verified."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AG-1",
+      "disposition": "covered",
+      "scope": "Independent aggregate-contract Test only. Assigned checks completed with documented Manager truth/authority boundaries.",
+      "artifact_ids": [
+        "PUBLIC-TEST-REPORT",
+        "PUBLIC-TEST-RESULTS"
+      ],
+      "evidence_ids": [
+        "PUBLIC-TEST-AG-1"
+      ]
+    },
+    {
+      "ac_id": "AG-2",
+      "disposition": "covered",
+      "scope": "Independent aggregate-contract Test only. Assigned checks completed with documented Manager truth/authority boundaries.",
+      "artifact_ids": [
+        "PUBLIC-TEST-REPORT",
+        "PUBLIC-TEST-RESULTS"
+      ],
+      "evidence_ids": [
+        "PUBLIC-TEST-AG-2"
+      ]
+    },
+    {
+      "ac_id": "AG-3",
+      "disposition": "covered",
+      "scope": "Independent aggregate-contract Test only. Assigned checks completed with documented Manager truth/authority boundaries.",
+      "artifact_ids": [
+        "PUBLIC-TEST-REPORT",
+        "PUBLIC-TEST-RESULTS"
+      ],
+      "evidence_ids": [
+        "PUBLIC-TEST-AG-3"
+      ]
+    },
+    {
+      "ac_id": "AG-4",
+      "disposition": "not_met",
+      "scope": "Independent aggregate-contract Test only. F-1: required-subcheck change history missing.",
+      "artifact_ids": [
+        "PUBLIC-TEST-REPORT",
+        "PUBLIC-TEST-RESULTS"
+      ],
+      "evidence_ids": [
+        "PUBLIC-TEST-AG-4"
+      ]
+    },
+    {
+      "ac_id": "AG-5",
+      "disposition": "not_met",
+      "scope": "Independent aggregate-contract Test only. F-2: historical PR Handoff symlink accepted.",
+      "artifact_ids": [
+        "PUBLIC-TEST-REPORT",
+        "PUBLIC-TEST-RESULTS"
+      ],
+      "evidence_ids": [
+        "PUBLIC-TEST-AG-5"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [
+    "F-1 / AG-4: required_subcheck_removed_without_change_event returns ready/achieved instead of rejecting missing required_set_changed history.",
+    "F-2 / AG-5: pr_handoff_symlink_locator returns ready/achieved instead of enforcing aggregate no-symlink policy."
+  ],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

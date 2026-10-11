@@ -1,0 +1,3670 @@
+{
+  "description": "Independent Test attempt 2; synthetic results, not product acceptance",
+  "observed_at": "2026-10-11T04:52:55.336891+00:00",
+  "fixed_head": "b6d446ceb072e3a6d137318175bb672155d9b206",
+  "fixed_base": "b1e606544174481b7b6904f811e857f80978c287",
+  "unit_head": {
+    "total": 181,
+    "passed": 181,
+    "cases": [
+      {
+        "method": "test_delivery.DeliveryTests.test_approval_scope_representation_and_expiry",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.DeliveryTests.test_cli_fails_without_output_or_leaked_input",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.DeliveryTests.test_dangerous_paths_urls_refs_and_types",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.DeliveryTests.test_duplicate_paths_publication_mismatch_and_schema_version",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.DeliveryTests.test_handoff_mistyped_or_private_or_binding_changed",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.DeliveryTests.test_raw_tamper_truncation_size_hash_and_commit_mismatch",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.DeliveryTests.test_receipts_cannot_authorize_and_tampering_rejected",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.DeliveryTests.test_strict_json_and_handoff",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.DeliveryTests.test_success_preserves_exact_bytes_and_rechecks_receipt",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.DeliveryTests.test_unavailable_and_missing_bound_artifact",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.DeliveryTests.test_upstream_identity_and_retry_binding",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.GitTransportTests.test_real_git_full_blob_no_checkout_and_forbidden_modes",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.GitTransportTests.test_samples_and_schemas",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.GitTransportTests.test_timeout_unavailable_and_commit_identity",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery_content.DeliveryContentTests.test_cli_rejects_disguise_without_output_or_receipt",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery_content.DeliveryContentTests.test_correctly_typed_handoff_at_non_json_path_runs_all_checks",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery_content.DeliveryContentTests.test_disguised_handoff_matrix_with_valid_outer_pins",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery_content.DeliveryContentTests.test_incomplete_json_handoff_is_not_generic_data",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery_content.DeliveryContentTests.test_json_suffix_cannot_claim_invalid_plain_text",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery_content.DeliveryContentTests.test_json_values_and_encoded_wrappers_cannot_claim_text",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery_content.DeliveryContentTests.test_normal_markdown_text_and_generic_json_preserve_raw_bytes",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery_content.DeliveryContentTests.test_strict_json_cannot_fall_back_to_text",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery_content.DeliveryContentTests.test_verify_receipt_checks_new_fetch_not_old_output",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_assignment_rejects_empty_unknown_and_duplicate_ids",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_blank_strings_and_wrong_types_rejected",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_blocked_and_failed_require_explanations",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_cannot_cover_unassigned_or_mislabel_assigned_ac",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_cli_exit_codes_and_working_directory_independence",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_completed_cannot_claim_system_failure_or_unverified_ac",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_completed_requires_every_assigned_ac",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_completed_requires_evidence_artifacts_and_ac_mapping",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_format_cannot_certify_truth",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_integrity_rejects_dangling_references_and_duplicate_ids",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_issue_roles_use_issue_contract",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_manager_final_assessment_requires_all_issue_acs_and_consistency",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_missing_ac_requires_specific_block",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_only_manager_can_make_final_issue_assessment",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_partial_assignment_leaves_other_ac_unverified",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_partial_missing_ac_can_be_reported_without_fabrication",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_retry_chain_validation",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_v1_and_knowledge_role_require_explicit_migration",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_valid_statuses_and_retry",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_approval_scope_actor_action_and_kind",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_cli_replay_and_required_arguments",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_closed_schema_and_boolean_pr",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_dependency_unknown_self_cycle",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_deployment_wrong_source_digest_config_environment_workload",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_expiry_boundary_future_context_approval_evidence",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_failure_history_cannot_be_discarded",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_full_vector_missing_duplicate_or_stale",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_head_base_target_config_group_changes",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_historical_gate_expired_at_merge",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_history_failure_latch_requires_new_measurement_to_clear",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_honest_rollback_revert_and_failed_records",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_honest_unmerged_unmeasured",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_integration_failure_all_ac_met",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_integration_pending_all_ac_met_has_no_final",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_measurement_before_deployment",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_measurement_failure_is_not_unverified",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_measurement_identity_phase_method_producer_environment",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_merge_and_rebase_methods",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_merge_result_and_head_are_not_interchangeable",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_merge_source_metadata_forgery",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_missing_extra_duplicate_collections",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_missing_merge_correspondence",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_one_subcheck_unverified_cannot_be_met",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_original_ac_text_and_source",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_previous_pin_append_only_and_failure_latch",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_queue_distinct_head_target_result",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_rollback_and_revert_cannot_hide_as_unverified",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_same_repo_multiple_prs_squash",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_scope_approval_requires_complete_set",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_synthetic_achieved_three_repos_and_expired_historical_gates",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_unknown_deployment_definition",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion.CompletionTest.test_unknown_scope_not_ready",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion_binding.BindingTest.test_blob_id_identity_collision",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion_binding.BindingTest.test_context_independent_pin_and_raw_whitespace",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion_binding.BindingTest.test_handoff_final_evidence_same_bytes_other_path_rejected",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion_binding.BindingTest.test_handoff_role_issue_originals_artifact_and_final",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion_binding.BindingTest.test_handoff_same_bytes_other_path_rejected",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion_binding.BindingTest.test_no_context_authority_from_assessment_itself",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion_binding.BindingTest.test_pairing_initial_bytes_vs_evaluated_object",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion_binding.BindingTest.test_pr_handoff_cannot_be_issue_final",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion_binding.BindingTest.test_read_time_swap_detected",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion_binding.BindingTest.test_remote_escape_absolute_symlink_refs",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion_binding.BindingTest.test_strict_json_all_entrypoints",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion_binding.BindingTest.test_wrong_hash_size_missing_source_and_one_byte",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion_repairs.RepairTest.test_pr_handoff_locator_rejects_leaf_and_ancestor_symlinks",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion_repairs.RepairTest.test_pr_handoff_locator_rejects_lexical_aliases_and_other_files",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion_repairs.RepairTest.test_pr_handoff_locator_rejects_non_regular_files",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion_repairs.RepairTest.test_pr_handoff_nested_relative_regular_file_is_valid",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion_repairs.RepairTest.test_same_requirements_reordered_and_new_observations_need_no_set_event",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion_repairs.RepairTest.test_set_event_in_old_history_does_not_cover_new_change",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion_repairs.RepairTest.test_subcheck_add_remove_rename_and_ac_reassignment",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_issue_completion_repairs.RepairTest.test_subcheck_semantic_changes_with_matching_current_measurements",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_adoption_requires_article_but_defer_or_reject_can_complete",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_blocked_missing_evidence_does_not_use_missing_ac_code",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_cli_continues_after_unhashable_document_types",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_cli_reports_input_handoff_context_and_bad_input",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_completed_requires_evidence_and_complete_decisions",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_consumer_context_requires_revision_applicability_sources",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_cross_issue_input_and_output_need_no_issue_ac",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_decisions_need_matching_raw_evidence",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_document_type_rejects_all_non_string_json_types",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_duplicate_ids_and_conflicting_decisions_rejected",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_failed_requires_reason",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_knowledge_cannot_claim_final_issue_assessment",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_raw_evidence_requires_sources_and_fixed_revision",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_retry_chain_and_limit",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_schema_cannot_verify_source_truth",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_all_findings_decided_once_with_support_and_adopted_article",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_article_is_nonempty_text_not_another_document",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_blocked_and_failed_remain_partial_not_completed",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_complete_bundle_raw_bytes_and_receipt",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_deferred_rejected_are_supported_without_adopted_article",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_duplicate_document_identity_rejected",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_fixed_locator_digest_and_no_url_fallback",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_input_and_handoff_from_different_pinned_snapshots",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_input_only_and_context_only_are_deliverable",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_input_output_all_immutable_fields_must_match",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_knowledge_cannot_downgrade_even_when_identity_field_missing",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_legacy_context_generic_json_keeps_legacy_semantics",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_missing_source_article_context_or_input_cannot_be_certified",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_retry_chain_identity_assignment_and_required_bytes",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_schema_reference_definitions_stay_in_sync",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_scope_pin_expiry_and_receipt_do_not_grant_authority",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_strict_json_all_knowledge_formats",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_unbound_duplicate_or_wrong_binding_reference",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_unknown_format_and_disguised_partial_knowledge",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_version_matrix_old_schema_rejects_new_types",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_wrong_unknown_missing_or_multiple_identity",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_ai_review_cannot_substitute_github_required_review",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_automatic_and_unknown_deployment_fail_closed",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_ci_success_cannot_override_ai_review_failure",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_cli_exit_codes_replay_and_cwd_independence",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_current_context_invalidates_changed_revisions",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_deferral_requires_all_followup_fields_and_basis",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_each_readiness_has_own_dependencies",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_each_required_merge_gate_blocks_independently",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_expiry_future_observation_and_policy_expiry",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_forged_no_deploy_effect_or_ac_phase_rejected_against_context",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_handoff_pair_prevents_premature_final_achieved",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_implementation_allowed_while_deployment_and_merge_blocked",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_merge_group_cannot_reuse_head_only_test_target",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_missing_deferral_cannot_be_ready",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_no_pr_cannot_be_merge_ready",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_old_evidence_rejected_even_when_assessment_updated",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_pending_gate_is_valid_blocked_record",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_postdeploy_all_measured_can_achieve",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_postdeploy_fake_measurement_before_deploy_rejected",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_postmerge_requires_merge_event",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_premature_achieved_and_premerge_deferral_fixtures_rejected",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_premerge_failed_pending_or_approval_wait_cannot_defer",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_ready_pr_does_not_complete_issue",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_record_validator_does_not_certify_truth",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_required_queue_needs_merge_group_and_its_checks",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_strict_schema_unknown_fields_empty_text_invalid_time",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_test_and_review_must_be_independent",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_unknown_duplicate_missing_and_wrong_ac_evidence",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_unresolved_design_blocks_implementation_and_merge_only",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.ArtifactBindingTests.test_changed_bytes_and_document_rejected",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.ArtifactBindingTests.test_cli_materialized_bundle_from_other_cwd",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.ArtifactBindingTests.test_missing_directory_remote_and_unreadable_locator_rejected",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.ArtifactBindingTests.test_missing_wrong_id_or_wrong_kind_rejected",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.ArtifactBindingTests.test_other_file_even_identical_bytes_is_not_evaluated_artifact",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.ArtifactBindingTests.test_real_readable_artifact_matches",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.InitialBytesRaceTests.test_integer_to_boolean_replacement_after_initial_read",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.InitialBytesRaceTests.test_whitespace_replacement_after_initial_read",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.IntegrationTests.test_all_premerge_met_without_merge_remains_unverified",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.IntegrationTests.test_integration_evidence_required_current_and_complete",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.IntegrationTests.test_integration_fail_is_not_achieved",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.IntegrationTests.test_integration_scope_cannot_be_downgraded",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.IntegrationTests.test_merged_pr_cannot_complete_aggregate_or_unknown_issue",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.IntegrationTests.test_merged_without_integration_evidence_still_unverified",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_retry.RetryTests.test_dispatch_execution_delivery_are_separate",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_retry.RetryTests.test_each_budget_is_three_including_initial_attempt",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_retry.RetryTests.test_explicit_renewal_preserves_old_terminal_history",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_retry.RetryTests.test_no_reclassification_reset_relabel_or_delivery_bypass",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_retry.RetryTests.test_renewal_needs_every_field_and_independent_pin",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_retry.RetryTests.test_successful_third_attempt_does_not_permit_fourth",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_retry.RetryTests.test_trusted_previous_and_no_future_history_mutation",
+        "result": "ok",
+        "passed": true
+      }
+    ],
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ]
+  },
+  "unit_base": {
+    "total": 128,
+    "passed": 128,
+    "cases": [
+      {
+        "method": "test_delivery.DeliveryTests.test_approval_scope_representation_and_expiry",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.DeliveryTests.test_cli_fails_without_output_or_leaked_input",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.DeliveryTests.test_dangerous_paths_urls_refs_and_types",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.DeliveryTests.test_duplicate_paths_publication_mismatch_and_schema_version",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.DeliveryTests.test_handoff_mistyped_or_private_or_binding_changed",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.DeliveryTests.test_raw_tamper_truncation_size_hash_and_commit_mismatch",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.DeliveryTests.test_receipts_cannot_authorize_and_tampering_rejected",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.DeliveryTests.test_strict_json_and_handoff",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.DeliveryTests.test_success_preserves_exact_bytes_and_rechecks_receipt",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.DeliveryTests.test_unavailable_and_missing_bound_artifact",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.DeliveryTests.test_upstream_identity_and_retry_binding",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.GitTransportTests.test_real_git_full_blob_no_checkout_and_forbidden_modes",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.GitTransportTests.test_samples_and_schemas",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery.GitTransportTests.test_timeout_unavailable_and_commit_identity",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery_content.DeliveryContentTests.test_cli_rejects_disguise_without_output_or_receipt",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery_content.DeliveryContentTests.test_correctly_typed_handoff_at_non_json_path_runs_all_checks",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery_content.DeliveryContentTests.test_disguised_handoff_matrix_with_valid_outer_pins",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery_content.DeliveryContentTests.test_incomplete_json_handoff_is_not_generic_data",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery_content.DeliveryContentTests.test_json_suffix_cannot_claim_invalid_plain_text",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery_content.DeliveryContentTests.test_json_values_and_encoded_wrappers_cannot_claim_text",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery_content.DeliveryContentTests.test_normal_markdown_text_and_generic_json_preserve_raw_bytes",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery_content.DeliveryContentTests.test_strict_json_cannot_fall_back_to_text",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_delivery_content.DeliveryContentTests.test_verify_receipt_checks_new_fetch_not_old_output",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_assignment_rejects_empty_unknown_and_duplicate_ids",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_blank_strings_and_wrong_types_rejected",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_blocked_and_failed_require_explanations",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_cannot_cover_unassigned_or_mislabel_assigned_ac",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_cli_exit_codes_and_working_directory_independence",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_completed_cannot_claim_system_failure_or_unverified_ac",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_completed_requires_every_assigned_ac",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_completed_requires_evidence_artifacts_and_ac_mapping",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_format_cannot_certify_truth",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_integrity_rejects_dangling_references_and_duplicate_ids",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_issue_roles_use_issue_contract",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_manager_final_assessment_requires_all_issue_acs_and_consistency",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_missing_ac_requires_specific_block",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_only_manager_can_make_final_issue_assessment",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_partial_assignment_leaves_other_ac_unverified",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_partial_missing_ac_can_be_reported_without_fabrication",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_retry_chain_validation",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_v1_and_knowledge_role_require_explicit_migration",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_handoff.HandoffTests.test_valid_statuses_and_retry",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_adoption_requires_article_but_defer_or_reject_can_complete",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_blocked_missing_evidence_does_not_use_missing_ac_code",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_cli_continues_after_unhashable_document_types",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_cli_reports_input_handoff_context_and_bad_input",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_completed_requires_evidence_and_complete_decisions",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_consumer_context_requires_revision_applicability_sources",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_cross_issue_input_and_output_need_no_issue_ac",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_decisions_need_matching_raw_evidence",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_document_type_rejects_all_non_string_json_types",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_duplicate_ids_and_conflicting_decisions_rejected",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_failed_requires_reason",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_knowledge_cannot_claim_final_issue_assessment",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_raw_evidence_requires_sources_and_fixed_revision",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_retry_chain_and_limit",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge.KnowledgeTests.test_schema_cannot_verify_source_truth",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_all_findings_decided_once_with_support_and_adopted_article",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_article_is_nonempty_text_not_another_document",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_blocked_and_failed_remain_partial_not_completed",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_complete_bundle_raw_bytes_and_receipt",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_deferred_rejected_are_supported_without_adopted_article",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_duplicate_document_identity_rejected",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_fixed_locator_digest_and_no_url_fallback",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_input_and_handoff_from_different_pinned_snapshots",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_input_only_and_context_only_are_deliverable",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_input_output_all_immutable_fields_must_match",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_knowledge_cannot_downgrade_even_when_identity_field_missing",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_legacy_context_generic_json_keeps_legacy_semantics",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_missing_source_article_context_or_input_cannot_be_certified",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_retry_chain_identity_assignment_and_required_bytes",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_schema_reference_definitions_stay_in_sync",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_scope_pin_expiry_and_receipt_do_not_grant_authority",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_strict_json_all_knowledge_formats",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_unbound_duplicate_or_wrong_binding_reference",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_unknown_format_and_disguised_partial_knowledge",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_version_matrix_old_schema_rejects_new_types",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_knowledge_delivery.KnowledgeDeliveryTests.test_wrong_unknown_missing_or_multiple_identity",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_ai_review_cannot_substitute_github_required_review",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_automatic_and_unknown_deployment_fail_closed",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_ci_success_cannot_override_ai_review_failure",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_cli_exit_codes_replay_and_cwd_independence",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_current_context_invalidates_changed_revisions",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_deferral_requires_all_followup_fields_and_basis",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_each_readiness_has_own_dependencies",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_each_required_merge_gate_blocks_independently",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_expiry_future_observation_and_policy_expiry",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_forged_no_deploy_effect_or_ac_phase_rejected_against_context",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_handoff_pair_prevents_premature_final_achieved",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_implementation_allowed_while_deployment_and_merge_blocked",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_merge_group_cannot_reuse_head_only_test_target",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_missing_deferral_cannot_be_ready",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_no_pr_cannot_be_merge_ready",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_old_evidence_rejected_even_when_assessment_updated",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_pending_gate_is_valid_blocked_record",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_postdeploy_all_measured_can_achieve",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_postdeploy_fake_measurement_before_deploy_rejected",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_postmerge_requires_merge_event",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_premature_achieved_and_premerge_deferral_fixtures_rejected",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_premerge_failed_pending_or_approval_wait_cannot_defer",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_ready_pr_does_not_complete_issue",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_record_validator_does_not_certify_truth",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_required_queue_needs_merge_group_and_its_checks",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_strict_schema_unknown_fields_empty_text_invalid_time",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_test_and_review_must_be_independent",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_unknown_duplicate_missing_and_wrong_ac_evidence",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness.ReadinessTests.test_unresolved_design_blocks_implementation_and_merge_only",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.ArtifactBindingTests.test_changed_bytes_and_document_rejected",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.ArtifactBindingTests.test_cli_materialized_bundle_from_other_cwd",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.ArtifactBindingTests.test_missing_directory_remote_and_unreadable_locator_rejected",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.ArtifactBindingTests.test_missing_wrong_id_or_wrong_kind_rejected",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.ArtifactBindingTests.test_other_file_even_identical_bytes_is_not_evaluated_artifact",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.ArtifactBindingTests.test_real_readable_artifact_matches",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.InitialBytesRaceTests.test_integer_to_boolean_replacement_after_initial_read",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.InitialBytesRaceTests.test_whitespace_replacement_after_initial_read",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.IntegrationTests.test_all_premerge_met_without_merge_remains_unverified",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.IntegrationTests.test_integration_evidence_required_current_and_complete",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.IntegrationTests.test_integration_fail_is_not_achieved",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.IntegrationTests.test_integration_scope_cannot_be_downgraded",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.IntegrationTests.test_merged_pr_cannot_complete_aggregate_or_unknown_issue",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_readiness_binding.IntegrationTests.test_merged_without_integration_evidence_still_unverified",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_retry.RetryTests.test_dispatch_execution_delivery_are_separate",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_retry.RetryTests.test_each_budget_is_three_including_initial_attempt",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_retry.RetryTests.test_explicit_renewal_preserves_old_terminal_history",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_retry.RetryTests.test_no_reclassification_reset_relabel_or_delivery_bypass",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_retry.RetryTests.test_renewal_needs_every_field_and_independent_pin",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_retry.RetryTests.test_successful_third_attempt_does_not_permit_fourth",
+        "result": "ok",
+        "passed": true
+      },
+      {
+        "method": "test_retry.RetryTests.test_trusted_previous_and_no_future_history_mutation",
+        "result": "ok",
+        "passed": true
+      }
+    ],
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ]
+  },
+  "independent": {
+    "suite": "independent synthetic CLI cases",
+    "cases": [
+      {
+        "case": "positive_achieved",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "integration=ready; issue_completion=achieved",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "positive_pending",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "integration=blocked; issue_completion=unverified",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=blocked; issue_completion=unverified; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "a_member_results_missing",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "a_member_results_duplicate",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "a_member_results_extra",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "a_deployment_results_missing",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "a_deployment_results_duplicate",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "a_deployment_results_extra",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "a_verification_results_missing",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "a_verification_results_duplicate",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "a_verification_results_extra",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "a_ac_results_missing",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "a_ac_results_duplicate",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "a_ac_results_extra",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "c_required_prs_missing",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "c_required_prs_duplicate",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "c_required_prs_extra",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "c_current_members_missing",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "c_current_members_duplicate",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "c_current_members_extra",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "c_required_verifications_missing",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "c_required_verifications_duplicate",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "c_required_verifications_extra",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "c_required_deployments_missing",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "c_required_deployments_duplicate",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "c_required_deployments_extra",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "c_scope_decisions_missing",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "c_scope_decisions_duplicate",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "c_scope_decisions_extra",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "old_member_head_sha",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "old_member_base_sha",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "old_member_target_revision",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "old_member_merge_group_sha",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "old_member_config_revision",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "old_member_merge_sha",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "old_member_state",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "approval_actor",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "approval_member_ids",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "approval_deployment_ids",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "approval_status",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "approval_valid_until",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "approval_allowed_actions",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "approval_decision_kind",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "deployment_sources",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "deployment_images",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "deployment_config_sha256",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "deployment_environment_id",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "deployment_workload_id",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "deployment_state",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "context_time_valid_until",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "context_time_observed_at",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "measurement_valid_until",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "measurement_observed_at",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "measurement_phase",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "measurement_kind",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "measurement_producer",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "measurement_method",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "measurement_workload_id",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "context_pin_independent",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "context_pin_matching_self_claim",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "source_receipt_substitution",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "source_knowledge_substitution",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "source_observation_rewritten",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "completion.json_duplicate",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "completion.json_escaped_duplicate",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "completion.json_nan",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "completion.json_infinity",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "completion.json_bom",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "completion.json_truncated",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "completion.json_trailing",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "context.json_duplicate",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "context.json_escaped_duplicate",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "context.json_nan",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "context.json_infinity",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "context.json_bom",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "context.json_truncated",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "context.json_trailing",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "handoff.json_duplicate",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "handoff.json_escaped_duplicate",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "handoff.json_nan",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "handoff.json_infinity",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "handoff.json_bom",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "handoff.json_truncated",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "handoff.json_trailing",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "source_rehashed_duplicate",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "source_rehashed_nan",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "source_rehashed_truncated",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "blob_byte",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "blob_size",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "blob_hash",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "blob_missing",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "blob_escape",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "blob_absolute",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "blob_url",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "blob_symlink",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "handoff_role",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "handoff_issue",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "handoff_original",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "handoff_digest",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "handoff_final_missing",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "handoff_same_bytes_other_path",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "handoff_measurement_other_path",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "previous_valid",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "achieved",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "previous_pin_wrong",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "previous_pin_missing",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "history_prefix_replaced",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "all_ac_met_integration_pending",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "unverified",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=blocked; issue_completion=unverified; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "honest_reverted",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "not_achieved",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=blocked; issue_completion=not_achieved; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "hidden_reverted",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "honest_rolled_back",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "not_achieved",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=blocked; issue_completion=not_achieved; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "hidden_rolled_back",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "honest_failed",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "not_achieved",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=blocked; issue_completion=not_achieved; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "hidden_failed",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "required_subcheck_removed_without_change_event",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "pr_handoff_symlink_locator",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "positive_merge_mode_merge",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "achieved",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "positive_merge_mode_squash",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "achieved",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "positive_merge_mode_rebase",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "achieved",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "positive_merge_mode_queue",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "achieved",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "queue_method_without_queue_subject",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "historical_gate_expired_at_merge",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "github_review_replaced_by_ai_review",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "integration_failed_all_ac_met",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "not_achieved",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=blocked; issue_completion=not_achieved; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "integration_failure_event_omitted",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "previous_failure_old_measurements_reused",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "source_freshness_expired",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "source_observed_in_future",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "honest_missing_required_subcheck",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "unverified",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=blocked; issue_completion=unverified; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "legacy_single_pr_unverified",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "Legacy record CLI returned 0",
+        "stderr": ""
+      },
+      {
+        "case": "legacy_aggregate_required_achieved",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "Legacy record CLI returned 1",
+        "stderr": ""
+      }
+    ],
+    "total": 130,
+    "passed": 130,
+    "failed": 0
+  },
+  "additional_boundaries": {
+    "suite": "additional independent boundaries",
+    "baseline": false,
+    "total": 38,
+    "passed": 38,
+    "cases": [
+      {
+        "case": "F1_original_required_subcheck_removed_without_change_event",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "F2_original_pr_handoff_symlink_locator",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "removed_subcheck_with_new_event",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "achieved",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "measured_method_change_no_event",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "measured_method_change_with_event",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "achieved",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "old_event_cannot_cover_new_change",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "reordering_is_not_requirement_change",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "achieved",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "documented_limit_failure_action",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "achieved",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "scope_bump_requires_history_failure_action",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "manager_scope_and_history_failure_action",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "achieved",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "documented_limit_method",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "unverified",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=blocked; issue_completion=unverified; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "scope_bump_requires_history_method",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "manager_scope_and_history_method",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "unverified",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=blocked; issue_completion=unverified; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "documented_limit_owner",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "unverified",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=blocked; issue_completion=unverified; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "scope_bump_requires_history_owner",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "manager_scope_and_history_owner",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "unverified",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=blocked; issue_completion=unverified; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "documented_limit_expected_result",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "unverified",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=blocked; issue_completion=unverified; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "scope_bump_requires_history_expected_result",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "manager_scope_and_history_expected_result",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "unverified",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=blocked; issue_completion=unverified; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "pr_locator_ancestor",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "pr_locator_fifo",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "pr_locator_directory",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "pr_locator_copy",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "pr_locator_nested",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "expected_output": "achieved",
+        "passed": true,
+        "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "pr_locator_dot",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "pr_locator_empty",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "pr_locator_parent",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "pr_locator_absolute",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "pr_locator_backslash",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "pr_locator_missing",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "input_symlink_completion.json",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "input_symlink_context.json",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "input_symlink_handoff.json",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "source_ancestor_symlink",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "dependency_cycle",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "current_deployment_image_mismatch",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "current_source_revision_mismatch",
+        "expected_exit": 1,
+        "actual_exit": 1,
+        "expected_output": null,
+        "passed": true,
+        "stdout": "",
+        "stderr": "FAIL: aggregate record rejected; no completion or authority granted"
+      },
+      {
+        "case": "measurement_mutation_before_finish",
+        "expected_rejection": "bytes changed during validation",
+        "passed": true
+      }
+    ]
+  },
+  "original_bug_baseline": {
+    "suite": "original regression baseline",
+    "baseline": true,
+    "total": 2,
+    "passed": 0,
+    "cases": [
+      {
+        "case": "F1_original_required_subcheck_removed_without_change_event",
+        "expected_exit": 1,
+        "actual_exit": 0,
+        "expected_output": null,
+        "passed": false,
+        "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+        "stderr": ""
+      },
+      {
+        "case": "F2_original_pr_handoff_symlink_locator",
+        "expected_exit": 1,
+        "actual_exit": 0,
+        "expected_output": null,
+        "passed": false,
+        "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted",
+        "stderr": ""
+      }
+    ],
+    "original_bugs_confirmed": true
+  },
+  "cli": [
+    {
+      "command": [
+        "python",
+        "scripts/validate_delivery_records.py"
+      ],
+      "exit": 0,
+      "stdout": "PASS: delivery schemas and sample bindings only; no live approval certified\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_handoff.py",
+        "examples/research-to-test/research.handoff.json",
+        "examples/research-to-test/test.blocked.handoff.json",
+        "examples/research-to-test/test.handoff.json",
+        "examples/failed.handoff.json",
+        "examples/partial-assignment.handoff.json"
+      ],
+      "exit": 0,
+      "stdout": "PASS examples/research-to-test/research.handoff.json (shape + local references only; not business approval)\nPASS examples/research-to-test/test.blocked.handoff.json (shape + local references only; not business approval)\nPASS examples/research-to-test/test.handoff.json (shape + local references only; not business approval)\nPASS examples/failed.handoff.json (shape + local references only; not business approval)\nPASS examples/partial-assignment.handoff.json (shape + local references only; not business approval)\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_knowledge.py",
+        "examples/knowledge/input.json",
+        "examples/knowledge/handoff.json",
+        "examples/knowledge/context.json"
+      ],
+      "exit": 0,
+      "stdout": "PASS examples/knowledge/input.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge/handoff.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge/context.json (shape + local references only; not knowledge approval)\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_readiness.py",
+        "examples/readiness/pr-ready-issue-unverified.json",
+        "--context",
+        "examples/readiness/context.json",
+        "--handoff",
+        "examples/readiness/manager.handoff.json",
+        "--at",
+        "2030-01-01T12:00:00Z"
+      ],
+      "exit": 0,
+      "stdout": "PASS examples/readiness/pr-ready-issue-unverified.json (record consistency only; not evidence truth or live GitHub permission)\nREPLAY: explicit historical time; not current readiness\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_readiness.py",
+        "examples/readiness/implementation-only.json",
+        "--context",
+        "examples/readiness/automatic-context.json",
+        "--at",
+        "2030-01-01T12:00:00Z"
+      ],
+      "exit": 0,
+      "stdout": "PASS examples/readiness/implementation-only.json (record consistency only; not evidence truth or live GitHub permission)\nREPLAY: explicit historical time; not current readiness\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_readiness.py",
+        "examples/readiness/postdeploy-achieved.json",
+        "--context",
+        "examples/readiness/context.json",
+        "--at",
+        "2030-01-01T12:00:00Z"
+      ],
+      "exit": 0,
+      "stdout": "PASS examples/readiness/postdeploy-achieved.json (record consistency only; not evidence truth or live GitHub permission)\nREPLAY: explicit historical time; not current readiness\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_issue_completion.py",
+        "examples/issue-completion/synthetic-achieved/completion.json",
+        "--context",
+        "examples/issue-completion/synthetic-achieved/context.json",
+        "--context-sha256",
+        "951048815ca07294e13e6df297272e719e121d81a8e1c523c3958e4ba97742ac",
+        "--handoff",
+        "examples/issue-completion/synthetic-achieved/handoff.json",
+        "--at",
+        "2030-01-03T12:00:00Z"
+      ],
+      "exit": 0,
+      "stdout": "PASS REPLAY: integration=ready; issue_completion=achieved; record consistency only; no authority granted\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_issue_completion.py",
+        "examples/issue-completion/synthetic-pending/completion.json",
+        "--context",
+        "examples/issue-completion/synthetic-pending/context.json",
+        "--context-sha256",
+        "8943ce6030f4335adb8cfab5f7338670b2c45b3d24bd3114e92fab5c1cd8d5ff",
+        "--handoff",
+        "examples/issue-completion/synthetic-pending/handoff.json",
+        "--at",
+        "2030-01-03T12:00:00Z"
+      ],
+      "exit": 0,
+      "stdout": "PASS REPLAY: integration=blocked; issue_completion=unverified; record consistency only; no authority granted\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_knowledge.py",
+        "examples/knowledge-delivery/input.json",
+        "examples/knowledge-delivery/handoff.json",
+        "examples/knowledge-delivery/context.json"
+      ],
+      "exit": 0,
+      "stdout": "PASS examples/knowledge-delivery/input.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge-delivery/handoff.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge-delivery/context.json (shape + local references only; not knowledge approval)\n",
+      "stderr": "",
+      "passed": true
+    }
+  ],
+  "preservation": {
+    "fixed_base": "b1e606544174481b7b6904f811e857f80978c287",
+    "fixed_head": "b6d446ceb072e3a6d137318175bb672155d9b206",
+    "tree": "1c7b003edd88407af2e8ae34524992f4d2b54324",
+    "parents": [
+      "2f1c1900aaacf85870742ee989357d9a2b20bfea",
+      "b1e606544174481b7b6904f811e857f80978c287"
+    ],
+    "pa_preservation": [
+      {
+        "path": ".github/workflows/validate.yml",
+        "identical_to_main": false
+      },
+      {
+        "path": "README.md",
+        "identical_to_main": false
+      },
+      {
+        "path": "contracts/README.md",
+        "identical_to_main": false
+      },
+      {
+        "path": "contracts/artifact-delivery-v1.1.schema.json",
+        "identical_to_main": true
+      },
+      {
+        "path": "contracts/artifact-delivery.md",
+        "identical_to_main": true
+      },
+      {
+        "path": "contracts/consumption-receipt-v1.1.schema.json",
+        "identical_to_main": true
+      },
+      {
+        "path": "contracts/delivery-authorization-v1.1.schema.json",
+        "identical_to_main": true
+      },
+      {
+        "path": "contracts/publication-receipt-v1.1.schema.json",
+        "identical_to_main": true
+      },
+      {
+        "path": "examples/knowledge-delivery/README.md",
+        "identical_to_main": true
+      },
+      {
+        "path": "examples/knowledge-delivery/article.md",
+        "identical_to_main": true
+      },
+      {
+        "path": "examples/knowledge-delivery/authorization.template.json",
+        "identical_to_main": true
+      },
+      {
+        "path": "examples/knowledge-delivery/context.json",
+        "identical_to_main": true
+      },
+      {
+        "path": "examples/knowledge-delivery/handoff.json",
+        "identical_to_main": true
+      },
+      {
+        "path": "examples/knowledge-delivery/input.json",
+        "identical_to_main": true
+      },
+      {
+        "path": "examples/knowledge-delivery/source-1.md",
+        "identical_to_main": true
+      },
+      {
+        "path": "examples/knowledge-delivery/source-2.md",
+        "identical_to_main": true
+      },
+      {
+        "path": "scripts/consume_delivery.py",
+        "identical_to_main": true
+      },
+      {
+        "path": "scripts/prepare_knowledge_fixture.py",
+        "identical_to_main": true
+      },
+      {
+        "path": "scripts/validate_delivery_records.py",
+        "identical_to_main": true
+      },
+      {
+        "path": "templates/artifact-delivery.md",
+        "identical_to_main": true
+      },
+      {
+        "path": "tests/test_knowledge_delivery.py",
+        "identical_to_main": true
+      }
+    ],
+    "repair_preservation": [
+      {
+        "path": "scripts/validate_issue_completion.py",
+        "identical_to_repaired_head": true
+      },
+      {
+        "path": "tests/test_issue_completion_repairs.py",
+        "identical_to_repaired_head": true
+      },
+      {
+        "path": "tests/test_issue_completion.py",
+        "identical_to_repaired_head": true
+      },
+      {
+        "path": "contracts/issue-completion.md",
+        "identical_to_repaired_head": true
+      }
+    ],
+    "legacy_preservation": [
+      {
+        "path": "contracts/artifact-delivery-v1.1.schema.json",
+        "identical": true
+      },
+      {
+        "path": "contracts/artifact-delivery.schema.json",
+        "identical": true
+      },
+      {
+        "path": "contracts/consumption-receipt-v1.1.schema.json",
+        "identical": true
+      },
+      {
+        "path": "contracts/consumption-receipt.schema.json",
+        "identical": true
+      },
+      {
+        "path": "contracts/delivery-authorization-v1.1.schema.json",
+        "identical": true
+      },
+      {
+        "path": "contracts/delivery-authorization.schema.json",
+        "identical": true
+      },
+      {
+        "path": "contracts/handoff.schema.json",
+        "identical": true
+      },
+      {
+        "path": "contracts/knowledge-context.schema.json",
+        "identical": true
+      },
+      {
+        "path": "contracts/knowledge-handoff.schema.json",
+        "identical": true
+      },
+      {
+        "path": "contracts/knowledge-input.schema.json",
+        "identical": true
+      },
+      {
+        "path": "contracts/publication-receipt-v1.1.schema.json",
+        "identical": true
+      },
+      {
+        "path": "contracts/publication-receipt.schema.json",
+        "identical": true
+      },
+      {
+        "path": "contracts/readiness-context.schema.json",
+        "identical": true
+      },
+      {
+        "path": "contracts/readiness.schema.json",
+        "identical": true
+      },
+      {
+        "path": "scripts/consume_delivery.py",
+        "identical": true
+      },
+      {
+        "path": "scripts/prepare_knowledge_fixture.py",
+        "identical": true
+      },
+      {
+        "path": "scripts/validate_delivery_records.py",
+        "identical": true
+      },
+      {
+        "path": "scripts/validate_handoff.py",
+        "identical": true
+      },
+      {
+        "path": "scripts/validate_knowledge.py",
+        "identical": true
+      },
+      {
+        "path": "scripts/validate_readiness.py",
+        "identical": true
+      },
+      {
+        "path": "scripts/validate_retry.py",
+        "identical": true
+      },
+      {
+        "path": "tests/test_delivery.py",
+        "identical": true
+      },
+      {
+        "path": "tests/test_delivery_content.py",
+        "identical": true
+      },
+      {
+        "path": "tests/test_handoff.py",
+        "identical": true
+      },
+      {
+        "path": "tests/test_knowledge.py",
+        "identical": true
+      },
+      {
+        "path": "tests/test_knowledge_delivery.py",
+        "identical": true
+      },
+      {
+        "path": "tests/test_readiness.py",
+        "identical": true
+      },
+      {
+        "path": "tests/test_readiness_binding.py",
+        "identical": true
+      },
+      {
+        "path": "tests/test_retry.py",
+        "identical": true
+      }
+    ],
+    "environment": {
+      "python": "3.12.14",
+      "jsonschema": "4.26.0",
+      "os": "Linux"
+    },
+    "tracked_clean": true
+  },
+  "ci": [
+    {
+      "run_id": 38111782731,
+      "event": "push",
+      "api_head_sha": "b6d446ceb072e3a6d137318175bb672155d9b206",
+      "checkout_sha": "b6d446ceb072e3a6d137318175bb672155d9b206",
+      "tree": "1c7b003edd88407af2e8ae34524992f4d2b54324",
+      "conclusion": "success",
+      "observed_test_count": 181,
+      "observed_tests_ok": true,
+      "observed_aggregate_replays_ok": true,
+      "observed_pa_cli_ok": true,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python -m pip install -r requirements-dev.txt",
+          "conclusion": "success"
+        },
+        {
+          "name": "All contracts and delivery/retry regressions",
+          "conclusion": "success"
+        },
+        {
+          "name": "Delivery schema and pinned sample consistency",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python scripts/validate_handoff.py examples/research-to-test/research.handoff.json examples/research-to-test/test.blocked.handoff.json examples/research-to-test/test.handoff.json examples/failed.handoff.json examples/partial-assignment.handoff.json",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python scripts/validate_knowledge.py examples/knowledge/input.json examples/knowledge/handoff.json examples/knowledge/context.json examples/knowledge-delivery/input.json examples/knowledge-delivery/handoff.json examples/knowledge-delivery/context.json",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python scripts/validate_readiness.py examples/readiness/pr-ready-issue-unverified.json --context examples/readiness/context.json --handoff examples/readiness/manager.handoff.json --at 2030-01-01T12:00:00Z",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python scripts/validate_readiness.py examples/readiness/implementation-only.json --context examples/readiness/automatic-context.json --at 2030-01-01T12:00:00Z",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python scripts/validate_readiness.py examples/readiness/postdeploy-achieved.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+          "conclusion": "success"
+        },
+        {
+          "name": "Aggregate synthetic-achieved replay",
+          "conclusion": "success"
+        },
+        {
+          "name": "Aggregate synthetic-pending replay",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ],
+      "log_route": "GitHub connector succeeded; gh run log route Forbidden",
+      "raw_logs": "retained privately; not part of candidate"
+    },
+    {
+      "run_id": 38111785804,
+      "event": "pull_request",
+      "api_head_sha": "b6d446ceb072e3a6d137318175bb672155d9b206",
+      "checkout_sha": "d3746526b52e0ed50e6e3a52f45b2ffc476bdd8f",
+      "tree": "1c7b003edd88407af2e8ae34524992f4d2b54324",
+      "conclusion": "success",
+      "observed_test_count": 181,
+      "observed_tests_ok": true,
+      "observed_aggregate_replays_ok": true,
+      "observed_pa_cli_ok": true,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python -m pip install -r requirements-dev.txt",
+          "conclusion": "success"
+        },
+        {
+          "name": "All contracts and delivery/retry regressions",
+          "conclusion": "success"
+        },
+        {
+          "name": "Delivery schema and pinned sample consistency",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python scripts/validate_handoff.py examples/research-to-test/research.handoff.json examples/research-to-test/test.blocked.handoff.json examples/research-to-test/test.handoff.json examples/failed.handoff.json examples/partial-assignment.handoff.json",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python scripts/validate_knowledge.py examples/knowledge/input.json examples/knowledge/handoff.json examples/knowledge/context.json examples/knowledge-delivery/input.json examples/knowledge-delivery/handoff.json examples/knowledge-delivery/context.json",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python scripts/validate_readiness.py examples/readiness/pr-ready-issue-unverified.json --context examples/readiness/context.json --handoff examples/readiness/manager.handoff.json --at 2030-01-01T12:00:00Z",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python scripts/validate_readiness.py examples/readiness/implementation-only.json --context examples/readiness/automatic-context.json --at 2030-01-01T12:00:00Z",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python scripts/validate_readiness.py examples/readiness/postdeploy-achieved.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+          "conclusion": "success"
+        },
+        {
+          "name": "Aggregate synthetic-achieved replay",
+          "conclusion": "success"
+        },
+        {
+          "name": "Aggregate synthetic-pending replay",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ],
+      "log_route": "GitHub connector succeeded; gh run log route Forbidden",
+      "raw_logs": "retained privately; not part of candidate"
+    }
+  ],
+  "authority_granted": false
+}
