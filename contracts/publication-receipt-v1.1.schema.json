@@ -1,0 +1,118 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.1"
+    },
+    "document_type": {
+      "const": "publication_receipt"
+    },
+    "manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "github_state": {
+      "const": "published"
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "reference": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+              },
+              "commit": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{40}$"
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
+              },
+              "size": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 16777216
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "required": [
+              "repository",
+              "commit",
+              "path",
+              "size",
+              "sha256"
+            ]
+          },
+          "representation": {
+            "enum": [
+              "original",
+              "edited_derivative"
+            ]
+          },
+          "format": {
+            "enum": [
+              "text",
+              "json",
+              "handoff-v2",
+              "knowledge-input-v1",
+              "knowledge-handoff-v1",
+              "knowledge-context-v1"
+            ]
+          },
+          "public_classification": {
+            "enum": [
+              "synthetic_sample",
+              "public_safe"
+            ]
+          },
+          "source_alias": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048,
+            "pattern": "\\S"
+          }
+        },
+        "required": [
+          "reference",
+          "representation",
+          "format",
+          "public_classification",
+          "source_alias"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 128,
+      "uniqueItems": true
+    },
+    "observation": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048,
+      "pattern": "\\S"
+    }
+  },
+  "required": [
+    "schema_version",
+    "document_type",
+    "manifest_sha256",
+    "github_state",
+    "artifacts",
+    "observation"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/ai-development-system/publication-receipt-v1.1.schema.json"
+}

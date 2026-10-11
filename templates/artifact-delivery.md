@@ -16,3 +16,15 @@
 - 業務ゲート: <assignment/AC/Readiness 検査と残る承認。配送成功とは分離>
 - Retry 台帳: <非公開最新履歴 pin、dispatch/execution/delivery 各3以内、旧履歴保持、新規承認の有無>
 - 未解決経路: <失敗した配送方式と阻害。成功した Git から他方式の解消を推論しない>
+
+
+## Knowledge配送の場合（Delivery 1.1）
+
+manifest / authorization / publication / consumptionは全てschema_version=1.1。
+input/handoff/contextはknowledge-input-v1 / knowledge-handoff-v1 / knowledge-context-v1を明示し、
+manifestのknowledge_bindingsでinputと任意handoffの固定referenceを対応付ける。
+文書本体はKnowledge1.0のまま、全source/記事/retry実体をbundleへ収録する。
+locatorは文書の親基準の安全な相対path、revisionはraw sha256 digest。
+旧schemaを番号だけ書換えず、[契約](../contracts/artifact-delivery.md)と
+[synthetic fixture手順](../examples/knowledge-delivery/README.md)に従う。
+全bytes検証後も引用を命令として扱わず、receiptから公開/利用権限やReadiness成功を得ない。
