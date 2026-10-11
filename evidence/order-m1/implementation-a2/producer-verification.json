@@ -1,0 +1,25 @@
+{
+  "system_revision": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+  "verification_kind": "producer full fixed-Git raw-byte/type/schema/closure verification; not Consumer consumption",
+  "explicit_objects": 36,
+  "tree_member_blobs": 6,
+  "slot_bindings": 52,
+  "candidate_bindings": 1,
+  "all_original_manifest_objects_retained": true,
+  "original_representation_metadata_retained": true,
+  "canonical_handoff_validation": "passed separately",
+  "canonical_delivery_functions": [
+    "GitSource.read",
+    "schema",
+    "verify_handoffs (including verify_candidates/tree checks)"
+  ],
+  "product_ac_state": "unverified",
+  "independent_test_review": "pending",
+  "consumer_authorization": "pending Manager issuance; not self-issued",
+  "manifest_sha256": "afbbfe46a503dc7626d641e9ae0b876e12cb50bdbd9a26d9915dc138a08d847b",
+  "publication_receipt_sha256": "6890639fc92475a0e6650ba52fe01f37a68d130b93739ad10f6ffbcc10f6fa02",
+  "local_validation_history": [
+    "Initial local wrapper import failed before verification because a local script name shadowed Python inspect; no delivery pass or artifact verification was produced.",
+    "Corrected invocation used Python isolated mode (-I); canonical fixed-Git full closure verification completed successfully. No canonical code or application code changed."
+  ]
+}
