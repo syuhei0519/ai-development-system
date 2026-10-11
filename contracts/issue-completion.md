@@ -55,7 +55,7 @@ BlobRef は `id, locator, sha256, size`。locator は **assessment ディレク�
 Handoff artifact の locator のみ従来どおり Handoff ディレクトリ基準。
 歴史的 PR Handoff の Readiness locator にも集約入口で同じ通常ファイル・祖先検査を適用する。
 同じ正当な実体を指す symlink、絶対 path、空要素、`.` / `..`、backslash も受理しない。
-通常の入れ子ディレクトリ内の相対 locator は使用できる。既存 Readiness CLI 自体は変更しない。
+通常の入れ子ディレクトリ内の相対 locator は使用できる。1.0 の説明時点では既存 Readiness CLI 自体は変更しない。1.1 の通常ファイル境界は末尾参照。
 同じ ref ID を異なる path/bytes に使わない。読み取った全ファイルを成功前に再読照合する。
 ローカルの悪意ある writer が検査終了後に変更することまでは防がないので、配送時の pin を保全する。
 
@@ -136,3 +136,36 @@ workload/method/expected_result、明示的 merge mapping、構造化 source obs
 3 repo、同 repo 複数 PR、squash/rebase/queue、過去期限切れ gate、現在実測、欠落/重複、scope/pin/expiry、
 source fake、path/bytes、履歴、失敗と Handoff 境界を検証する。全既存回帰も維持する。
 実製品の Order3 AC は未実測のため unverified。schema 実装・synthetic 成功を製品 Issue 達成や配備許可にしない。
+
+## Issue Completion 1.1: 準備依存メンバー
+
+1.0 schema は変更しない。新 CLI は assessment/context とも明示的 1.1 の場合に
+`issue-completion-v1.1.schema.json` / `issue-completion-context-v1.1.schema.json` を使用する。
+通常の 1.0 は従来どおり受理し、版混在・未知版は拒否する。旧 Consumer は 1.1 を拒否する。
+履歴は元 bytes の 1.0/1.1 を保持し、既存の最新 previous pin と append-only 条件を維持する。
+
+1.1 の全 required_prs は `pr_kind` と `preparation` が必須。
+standard は非空 `ac_ids` と preparation=null、preparation は空 `ac_ids` と非 null の
+`related_ac_ids` / `artifact_refs` を要求する。関連 AC は製品担当集合ではない。
+歴史的 Readiness の pr_kind/pr_ac_ids/related_ac_ids と関連 AC 原文・最早段階を照合する。
+準備は Readiness 1.1 の none + aggregate_required 制約、工程条件、独立 Test/Review、
+後続責任、既知製品失敗、merge 当時の期限・全保護ゲートをすべて通す。
+
+`artifact_refs` は `{artifact_id, ref: BlobRef}` の非空集合。歴史的準備成果物の全 ID と
+完全一致し、各 ref は独立 pin された aggregate context 内に置く。root は自由指定せず、
+配送済み歴史的 Readiness ファイルの親ディレクトリに固定する。その root + 元 locator と
+BlobRef の assessment-root 相対 path が同一で、size/raw SHA-256 が一致することを検査する。
+全成果物は bundle の通常ファイル検査と成功前の全 bytes 再検査の対象になる。
+
+準備メンバーも required/current/result、依存 DAG、merge 認可、歴史的 gate、merge binding、
+全 merge vector、統合チェックから除かない。`measurement_coverage` の対象集合だけは
+非空の standard メンバー集合とし、全製品 AC と全 required subcheck の実測を要求する。
+製品 verification の member_ids に準備メンバーを指定して製品カバレッジに使うことはできない。
+その他の集約チェックは準備を含む全必要集合を維持する。準備だけの achieved は不可。
+デプロイの必要集合・source/config/image/environment/workload と全測定条件も維持する。
+
+固定ファイルは descriptor 相対の no-follow traversal、通常ファイル型・16 MiB 上限、
+Linux O_PATH で I/O 前に型を固定した descriptor の nonblocking open、読取前後の inode/size/mtime/ctime と祖先対応の照合で検査する。
+FIFO/device/socket/directory/symlink と読取中の差替え・増大は拒否する。
+検査後の悪意ある変更やネットワーク filesystem 自体の停止を防ぐ sandbox ではない。
+Manager は配送 pin と検証済み materialization を保全し、変更後は再検査する。

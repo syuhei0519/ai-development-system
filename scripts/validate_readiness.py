@@ -12,6 +12,10 @@ from jsonschema import Draft202012Validator, FormatChecker
 
 ROOT = Path(__file__).resolve().parents[1]
 FORMATS = FormatChecker()
+try:
+    from .regular_file import read_regular, artifact_path
+except ImportError:
+    from regular_file import read_regular, artifact_path
 
 
 @FORMATS.checks('date-time', raises=(ValueError, OverflowError))
@@ -39,7 +43,7 @@ def instant(value):
     return datetime.fromisoformat(value.upper().replace('Z', '+00:00'))
 
 
-def validate(data, context, now=None):
+def validate(data, context, now=None, *, artifact_root=None):
     errors = []
     for label, document, check in [('assessment', data, VALIDATOR),
                                     ('context', context, CONTEXT_VALIDATOR)]:
@@ -54,6 +58,9 @@ def validate(data, context, now=None):
     for field in ('subject', 'issue_id', 'acceptance_criteria', 'pr_ac_ids', 'deployment_effect',
                   'issue_integration_scope'):
         if data[field] != context[field]:
+            errors.append(f'{field}: does not match current context; revalidate')
+    for field in ('schema_version', 'pr_kind', 'preparation'):
+        if data.get(field) != context.get(field):
             errors.append(f'{field}: does not match current context; revalidate')
     subject = data['subject']
     if subject['merge_group_sha'] is not None and subject['target_revision'] != subject['merge_group_sha']:
@@ -150,6 +157,54 @@ def validate(data, context, now=None):
         if ac_id in scope and not (outcome == 'met' or (
                 outcome == 'unverified' and phase != 'premerge' and deferred is not None)):
             scoped_acs_ok = False
+    if data.get('pr_kind') == 'preparation':
+        preparation = data['preparation']
+        related = set(preparation['related_ac_ids'])
+        if not related <= set(criteria):
+            errors.append('preparation: unknown related product AC')
+        conditions = index(preparation['conditions'], 'id', 'preparation conditions')
+        measurements = index(data['preparation_results'], 'condition_id', 'preparation results')
+        artifacts = index(preparation['artifacts'], 'id', 'preparation artifacts')
+        followup = index(preparation['followup'], 'ac_id', 'preparation followup')
+        baseline = index(preparation['product_outcomes'], 'ac_id', 'product outcomes')
+        if set(conditions) & set(criteria):
+            errors.append('preparation conditions must not be product ACs')
+        if set(measurements) != set(conditions):
+            errors.append('preparation results must cover exactly all conditions')
+        if set(followup) != related:
+            errors.append('preparation followup must cover exactly related product ACs')
+        if set(baseline) != set(criteria) or any(
+                r['outcome'] != baseline.get(aid, {}).get('outcome') for aid, r in results.items()):
+            errors.append('preparation must preserve all Manager product outcomes')
+        # Conservative boundary: any known product failure blocks preparation merge,
+        # including failures outside the related subset. No reclassification/deferral.
+        scoped_acs_ok = not any(r['outcome'] == 'not_met' for r in results.values())
+        for aid, artifact in artifacts.items():
+            if artifact['revision'] != subject['target_revision']:
+                errors.append(f'preparation artifact {aid}: revision differs from target')
+            try:
+                if artifact_root is None:
+                    raise ValueError('materialized artifact root required')
+                target = artifact_path(artifact_root, artifact['locator'])
+                payload = read_regular(target, limit=artifact['size_bytes'])
+                if len(payload) != artifact['size_bytes'] or hashlib.sha256(payload).hexdigest() != artifact['sha256']:
+                    raise ValueError('artifact bytes/size/digest mismatch')
+            except (OSError, ValueError, RuntimeError) as exc:
+                errors.append(f'preparation artifact {aid}: {exc}')
+        for cid, measurement in measurements.items():
+            if measurement['outcome'] != 'met':
+                scoped_acs_ok = False
+            for item in proofs(measurement['evidence_ids'], 'preparation_measurement'):
+                if cid not in item.get('condition_ids', []) or set(item.get('artifact_ids', [])) != set(artifacts):
+                    errors.append('preparation measurement must bind condition and all fixed artifacts')
+        for kind in ('independent_test', 'ai_review'):
+            check = data['merge_readiness']['checks'][kind]
+            for item in proofs(check['evidence_ids'], kind):
+                if set(item.get('condition_ids', [])) != set(conditions) or set(item.get('artifact_ids', [])) != set(artifacts):
+                    errors.append(f'{kind}: must cover all preparation conditions and fixed artifacts')
+        for item in evidence.values():
+            if not set(item.get('condition_ids', [])) <= set(conditions) or not set(item.get('artifact_ids', [])) <= set(artifacts):
+                errors.append('preparation evidence has unknown condition/artifact')
     outcomes = {r['outcome'] for r in results.values()}
     integration = data['issue_integration']
     integrated = False
@@ -245,6 +300,7 @@ def main():
     parser.add_argument('file', type=Path)
     parser.add_argument('--context', type=Path, required=True,
                         help='Manager-supplied current revision, AC scope and policy snapshot')
+    parser.add_argument('--context-sha256', help='independently supplied Manager context pin; required for v1.1')
     parser.add_argument('--handoff', type=Path, help='also cross-check an Issue handoff v2.0')
     parser.add_argument('--at', help='explicit replay time (not current merge authorization)')
     args = parser.parse_args()
@@ -254,8 +310,13 @@ def main():
             raise ValueError('--at must include a timezone')
         readiness_bytes = args.file.read_bytes()
         data = json.loads(readiness_bytes)
-        context = json.loads(args.context.read_text(encoding='utf-8'))
-        errors = validate(data, context, now)
+        context_bytes = args.context.read_bytes()
+        context = json.loads(context_bytes)
+        if data.get('schema_version') == '1.1' and not args.context_sha256:
+            raise ValueError('v1.1 requires independent Manager --context-sha256')
+        if args.context_sha256 and hashlib.sha256(context_bytes).hexdigest() != args.context_sha256:
+            raise ValueError('Manager context digest mismatch')
+        errors = validate(data, context, now, artifact_root=args.file.absolute().parent)
         if args.handoff and not errors:
             errors += validate_handoff_pair(
                 data, json.loads(args.handoff.read_text(encoding='utf-8')),

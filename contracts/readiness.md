@@ -1,4 +1,4 @@
-# Readiness v1.0 と Issue Completion
+# Readiness v1.0 / v1.1 と Issue Completion
 
 [readiness.schema.json](readiness.schema.json) は PR ごとの判定記録、[readiness-context.schema.json](readiness-context.schema.json) は Manager が取得した現在の対象・AC・保護設定の照合用スナップショット。Issue handoff v2.0 と Knowledge v1.0 は変更しない。readiness は独立した v1.0 の artifact として locator・固定 revision/digest を handoff に記録し、実体を配送する。単に handoff のバージョンを置き換えない。
 
@@ -71,3 +71,61 @@ assessmentの`artifact_id`に一致するHandoff artifactsの1件を要求する
 digestはJSONを整形し直して計算するのではなく、そのままのファイルbytesから計算する。参照ID・locator・digestも含む配送元Handoffの真正性はManagerが別途確認する。実体と参照を一緒に偽装した場合の真偽や署名認証まで保証するものではない。
 
 今回のDraft内改訂ではReadiness v1.0の必須項目を追加する。旧DraftのReadiness/contextはそのまま受理せず、Managerが統合scope・状態・証跡を確認して追加し、artifact_idと実体digestを配送する。バージョンは未リリースのv1.0を維持し、Handoff v2.0 / Knowledge v1.0の互換性は維持する。
+
+## 依存準備 PR（Readiness 1.1）
+
+通常 PR の 1.0 形式と必須 AC 条件を維持する。1.1 は assessment と Manager context の両方に
+`pr_kind=standard|preparation` と `preparation` を必須とする。standard は preparation=null、
+pr_ac_ids は非空。preparation だけ pr_ac_ids=[] とし、deployment_effect=none、
+issue_integration_scope=aggregate_required に限定する。単なる AC 集合の縮小ではない。
+旧 1.0 Consumer は 1.1 と追加フィールドを拒否するため、黙って通常 PR と解釈しない。
+
+Manager は準備のみという scope_reason、非空 related_ac_ids、製品 AC と異なる ID の非空
+conditions（原文、method、expected_result）、固定 artifacts、followup、全製品 product_outcomes を確定する。
+同じ preparation 全体を assessment に記録し、配列順も含め context と完全一致させる。
+followup は各関連 AC に owner/environment/method/dependencies/failure_action を必須とする。
+依存がないという判断も dependencies に明記する。工程条件を acceptance_criteria に登録しない。
+
+preparation_results は各条件を一度ずつ測定し、met だけを Merge Ready の候補とする。
+preparation_measurement の evidence は condition_ids と全 artifact_ids を参照する。
+独立 Test と AI Review も全条件・全固定成果物を同じフィールドで対象にする。
+既存の producer/independent/subject/期限検査と全 merge checks を維持する。
+artifact は id、assessment 基準のローカル locator、target_revision と等しい40桁 revision、
+size_bytes、raw sha256 を持ち、CLI は全 bytes を読み照合する。証跡本文の真実性や実際の独立性は
+Manager が固定成果物・起動来歴と照合する。schema の pass はその代替ではない。
+
+全製品 AC の原文・最早段階・実測状態は保持する。product_outcomes は Manager の既知状態を
+全件固定し、ac_results との差を拒否する。保守的な境界として、関連外を含む一つでも既知の
+not_met があれば準備 PR の merge は blocked。既知失敗を unverified に戻さない。
+準備のみの PR が未実装の製品 premerge AC を unverified のまま残すことは延期ではない。
+その製品を実装する通常 PR の premerge ゲートは引き続き必須であり、deferred や段階変更で逃がさない。
+Manager は既存 PR を準備へ分類し直して失敗・未承認・未実行の通常ゲートを回避してはならない。
+準備のマージは Issue 達成を示さず、全製品実測と全必要統合を独立 Issue Completion で確認する。
+
+1.1 CLI は認可済み別経路で Manager が固定した `--context-sha256` を必須とする。
+ダウンロードした receipt や assessment 自身の hash はこの信頼の起点にならない。
+認証・署名サービスではなく、正しい独立 pin と最新状態の取得は Manager の責任。
+新形式も操作権限や Consumer 利用承認を与えない。Handoff 2.0 / Knowledge 1.0 / Delivery 1.2 は変更しない。
+
+```sh
+python scripts/validate_readiness.py readiness.json --context current-context.json \
+  --context-sha256 MANAGER_INDEPENDENT_CONTEXT_PIN --handoff handoff.json
+```
+
+### 証跡期限の選択
+
+固定コードに対する測定と可変 GitHub policy の観測は別の寿命を持つ。Manager は測定対象と
+保護条件の変化頻度に応じて各 evidence.valid_until と policy_valid_until を選ぶ。
+固定コードだから無期限とはしない。全証跡について既存の時刻不等式を維持し、subject/config の
+変更は期限内でも即失効する。旧期限を書き換えず、新たな確認と新記録を作る。
+1.1 は期限検査を緩和しない。
+
+Issue Completion 1.1 は準備 PR を型付き required メンバーとして保持する。
+空の製品担当 ac_ids と関連 AC を分離し、歴史的 Readiness の親を成果物 root として
+context の固定 BlobRef と照合する。全必要 merge 集合と後続 standard PR の全製品実測を要求し、
+工程合格を製品達成へ変換しない。版互換・配送・検証手順は
+[Issue Completion 契約](../contracts/issue-completion.md) と [合成例](../examples/issue-completion/README.md) を参照。
+
+準備の固定成果物は通常ファイルのみ、各16 MiB以内。symlink を祖先を含め拒否し、
+Linux O_PATH による I/O 前の inode 固定、no-follow/nonblocking open と descriptor の型・size・読取前後の同一性を検査する。
+CLI では assessment の親が artifact_root。ライブラリ利用でも同じ境界と raw hash を維持する。

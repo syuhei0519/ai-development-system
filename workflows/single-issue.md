@@ -98,3 +98,13 @@ Readinessの配送にはartifact_id、Handoff基準のローカルlocator、実�
 PR 前に要求した場合、その確認と後続指示まで PR を作成しない。
 
 Consumer は format/拡張子だけで内容検査を省略しない。再利用では全 bytes を新規取得・再検査した出力を使い、`--verify-receipt` が旧出力の改変を検査したとは扱わない。
+
+## 依存準備 PR の追加契約
+
+[Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。
+
+Issue Completion 1.1 は準備 PR を型付き required メンバーとして保持する。
+空の製品担当 ac_ids と関連 AC を分離し、歴史的 Readiness の親を成果物 root として
+context の固定 BlobRef と照合する。全必要 merge 集合と後続 standard PR の全製品実測を要求し、
+工程合格を製品達成へ変換しない。版互換・配送・検証手順は
+[Issue Completion 契約](../contracts/issue-completion.md) と [合成例](../examples/issue-completion/README.md) を参照。

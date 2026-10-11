@@ -18,3 +18,17 @@ python scripts/validate_issue_completion.py examples/issue-completion/synthetic-
 ```
 
 再生成は `tests/completion_fixture.py` の build（テスト専用）。実体、全 hash、Handoff binding、CI の固定 pin を一緒に更新する。構造化 observation は元観測の真実性を保証しない。公開前に全 bytes を安全点検する。
+
+## Preparation → standard product measurements → integration (1.1)
+
+`tests/preparation_completion_fixture.py` は synthetic-achieved の準備依存版を生成する。
+準備の製品結果は unverified のまま、後続通常 PR が全製品実測を提供する。
+全3メンバーの merge、デプロイ、統合証跡は維持する。以下は合成 replay 専用。
+
+```sh
+python examples/issue-completion/preparation-example.py /tmp/synthetic-preparation
+```
+
+生成した context pin は合成例にのみ使用する。実運用の認可や独立 Manager pin の代用ではない。
+後方互換の通常 aggregate control と異常系は `test_issue_completion*.py`、
+新しい型・scope・root・測定と統合の異常系は `test_preparation_completion.py` を参照。

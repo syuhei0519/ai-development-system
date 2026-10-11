@@ -1,0 +1,96 @@
+{
+  "document_type": "readiness_context",
+  "schema_version": "1.1",
+  "subject": {
+    "repository": "example/synthetic-service",
+    "pr_number": 42,
+    "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "target_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "config_revision": "synthetic-policy-and-environment-v1",
+    "merge_group_sha": null
+  },
+  "issue_id": "SYNTHETIC-ISSUE",
+  "acceptance_criteria": [
+    {
+      "id": "SYNTHETIC-AC-1",
+      "verbatim": "synthetic sample: local contract tests pass",
+      "source": "synthetic sample request",
+      "verification_phase": "premerge"
+    },
+    {
+      "id": "SYNTHETIC-AC-2",
+      "verbatim": "synthetic sample: observe the deployed service",
+      "source": "synthetic sample request",
+      "verification_phase": "postdeploy"
+    }
+  ],
+  "pr_ac_ids": [],
+  "deployment_effect": "none",
+  "policy_observed_at": "2030-01-01T08:00:00Z",
+  "policy_valid_until": "2030-01-02T08:00:00Z",
+  "policy_evidence": "https://example.invalid/synthetic-policy-snapshot",
+  "github_requirements": {
+    "checks": true,
+    "reviews": true,
+    "queue": false
+  },
+  "issue_integration_scope": "aggregate_required",
+  "pr_kind": "preparation",
+  "preparation": {
+    "scope_reason": "synthetic sample: validation scaffold required before product implementation; no product behavior in this PR",
+    "related_ac_ids": [
+      "SYNTHETIC-AC-1",
+      "SYNTHETIC-AC-2"
+    ],
+    "conditions": [
+      {
+        "id": "PREP-1",
+        "verbatim": "Synthetic scaffold validates dependency evidence",
+        "method": "Run scaffold synthetic checks",
+        "expected_result": "All scaffold checks pass"
+      }
+    ],
+    "artifacts": [
+      {
+        "id": "scaffold",
+        "locator": "preparation-artifact.txt",
+        "revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sha256": "0726a907aee40484a2b1b94e55b85d7b6003f6d25109691470e750b663955475",
+        "size_bytes": 55
+      }
+    ],
+    "followup": [
+      {
+        "ac_id": "SYNTHETIC-AC-1",
+        "owner": "synthetic-product-test",
+        "environment": "synthetic-integration",
+        "method": "Measure original product AC at its unchanged earliest phase",
+        "dependencies": [
+          "subsequent product implementation PR"
+        ],
+        "failure_action": "Keep Issue incomplete and repair"
+      },
+      {
+        "ac_id": "SYNTHETIC-AC-2",
+        "owner": "synthetic-product-test",
+        "environment": "synthetic-integration",
+        "method": "Measure original product AC at its unchanged earliest phase",
+        "dependencies": [
+          "subsequent product implementation PR"
+        ],
+        "failure_action": "Keep Issue incomplete and repair"
+      }
+    ],
+    "product_outcomes": [
+      {
+        "ac_id": "SYNTHETIC-AC-1",
+        "outcome": "unverified"
+      },
+      {
+        "ac_id": "SYNTHETIC-AC-2",
+        "outcome": "unverified"
+      }
+    ]
+  }
+}
