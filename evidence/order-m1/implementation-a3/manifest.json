@@ -1,0 +1,4580 @@
+{
+  "schema_version": "1.2",
+  "document_type": "artifact_delivery",
+  "artifacts": [
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "format": "handoff-v2",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+        "path": "evidence/order-m1/implementation-a2/handoff.json",
+        "size": 15115,
+        "sha256": "1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473"
+      },
+      "format": "handoff-v2",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/test-report.txt",
+        "size": 7993,
+        "sha256": "e62912ed6aa1880e593ab5b5f261a156007c7f93da66e6b2610cf18c1aa7a7b0"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "order-m1-implementation-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/implementation.patch",
+        "size": 48003,
+        "sha256": "a24507a747ff85ac4690a103cf5398905a02c519e1a562add23dc1df05289dbc"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "order-m1-implementation-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/baseline-comparison.json",
+        "size": 5531,
+        "sha256": "80d01d2b694918983669dba37971df278df2b5e2c3ff9bb644adcee635df170c"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "order-m1-implementation-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/trusted-render.json",
+        "size": 38786,
+        "sha256": "3a3c85dd584561d6f50534b0fec4847a424a5ec6a212ef85fa23774738df25e7"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "order-m1-implementation-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/implementation-guide.md",
+        "size": 4877,
+        "sha256": "7d6126209524a87fdc1a16d80ed2ec87cfe3c14d472e379a9a86c5f15ff06d49"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "order-m1-implementation-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/reproduce.py",
+        "size": 1745,
+        "sha256": "6ec39a433ed402821d0981ffc77bbf0c34f182e29d5cd71909e336c2bf4ce154"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "order-m1-implementation-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/order-synthetic-inventory.json",
+        "size": 3053,
+        "sha256": "879e8b6ac82c844e66e988d448e290dc05dc3528a9b326adf715a0743617464f"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "order-m1-implementation-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/order-synthetic-security.json",
+        "size": 78,
+        "sha256": "b8ec3809269593fe04a606ea0167ecc905fd551b31897906051a4a2f5b7a3b22"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "order-m1-implementation-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/source-scan.json",
+        "size": 1222,
+        "sha256": "895475581dbd4808aa38e3c3e260670a0c87ddbd9ded0063de3d3e049b2df17b"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "order-m1-implementation-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/render-scan.json",
+        "size": 5791,
+        "sha256": "8211ed4df8f3076a45be98f12205f9796b47952840595443976d936c24694203"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "order-m1-implementation-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-commit-object",
+        "repository": "syuhei0519/application-manifest",
+        "commit": "e0f79a61643d31a29de73ffc54bb6a31c320f0df",
+        "size": 287,
+        "sha256": "1ff15f6c281879e2ffc928da7d0973515726a2edebadb4d7fa57d536b5b99ff4"
+      },
+      "format": "git-commit-object",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "order-m1-implementation-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/ci-observations.json",
+        "size": 662,
+        "sha256": "edad080fd9c9fe967f572158465d02f161009f31a102168e27c13b3e135ad320"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "order-m1-implementation-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+        "path": "evidence/order-m1/implementation-a2/report.txt",
+        "size": 7921,
+        "sha256": "2acc06876ed706f2956a487f6d27f9fccf1aec2c7cfdf35f91e4d06bd21f9ca0"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+        "path": "evidence/order-m1/implementation-a2/reconciliation.json",
+        "size": 1670,
+        "sha256": "2da393f0a74dbcd42090dd7650e498e909f2aa4d165216d9296b4f5f9160eb3b"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+        "path": "evidence/order-b1/test-e2-a1/handoff.json",
+        "size": 9040,
+        "sha256": "4cc00afcad190f144e9299a89dcef9604ec74a2733da05b605730061bbcebaa3"
+      },
+      "format": "handoff-v2",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "order-b1-test-e2-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+        "path": "delivery-verification/20261011/research-public/handoff.json",
+        "size": 5973,
+        "sha256": "2c1876c21567399ca6ecf1d8afaed96c062da5a154b01d165f42a3e0f3afbc7d"
+      },
+      "format": "handoff-v2",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/handoff.json",
+        "size": 9493,
+        "sha256": "d1d706e4494ddb5ada98068cb102019de4faa35233c53fe884d5570447ed45bb"
+      },
+      "format": "handoff-v2",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "order-m1-implementation-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+        "path": "evidence/order-b1/test-e2-a1/test-report.txt",
+        "size": 12661,
+        "sha256": "74a70df32299564acfd6f4992e989f6b403553f089b17a1131d4a6bf7e086391"
+      },
+      "format": "text",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "order-b1-test-e2-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+        "path": "evidence/order-b1/test-e2-a1/test-observations.json",
+        "size": 11965,
+        "sha256": "a512da83f5ea1fcf117fd58895f165c77b2e82a377b4e07ca9ad1ec870812d11"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "order-b1-test-e2-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+        "path": "evidence/order-b1/test-e2-a1/supplement_test.go",
+        "size": 14804,
+        "sha256": "1d3c045f97890a931faaf29f6aa140205ff88e3c55f8a2c7d8a0bc28d0391dad"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "order-b1-test-e2-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+        "path": "evidence/order-b1/test-e2-a1/reproduce.py",
+        "size": 1580,
+        "sha256": "4afc0f90bb5d8242dbf429b0d1476b28dda047d2d3363dcf78548232c39c3e7b"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "order-b1-test-e2-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+        "path": "evidence/order-b1/test-e2-a1/upstream-manifest.json",
+        "size": 22789,
+        "sha256": "5a1e3edfcdc1751c7a02ece0a2962b208f1285dc974e80889e58e42aedff1ae3"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "order-b1-test-e2-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+        "path": "evidence/order-b1/test-e2-a1/README.txt",
+        "size": 2970,
+        "sha256": "1e44e53fe5af66549d05a6118ee1364a48fef3f29b177b30a607c2493f256517"
+      },
+      "format": "text",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "order-b1-test-e2-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+        "path": "evidence/order-b1/test-e2-a1/bundle-review.json",
+        "size": 12154,
+        "sha256": "a21e628a4b7aa7a3f675575da202bbb3ad01332d50e9ca04a03d54e85215e82f"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "order-b1-test-e2-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f794cf63a8379f06b9bb770b2fac4ba1fb0951fa",
+        "path": "evidence/order-b1/e2-a1/handoff.json",
+        "size": 5744,
+        "sha256": "3c3ba9cfec83cfbed18c34853d62d833f859df79acb2fbc2bfa2fd8486e40100"
+      },
+      "format": "handoff-v2",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+        "path": "delivery-verification/20261011/research-public/history.txt",
+        "size": 1578,
+        "sha256": "dbdcd75a5fbf91e3cde6d983def2226d2d15d7e7aa07b226cdc0514f20f9cc74"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+        "path": "delivery-verification/20261011/research-public/design.txt",
+        "size": 29180,
+        "sha256": "44ab0b6be4f709f5bfcb4750250d94bb1781a4083a52082df62b366647b5b8e8"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+        "path": "delivery-verification/20261011/research-public/addendum.txt",
+        "size": 3864,
+        "sha256": "73f02dc92f940ade0213e65dedd44fbc6972d61994f7045f3cd10ba8731be697"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+        "path": "delivery-verification/20261011/research-public/attempt2-handoff.json",
+        "size": 5892,
+        "sha256": "73bed3bf2610822723e41f6a99d1154d2629932b7433bc72f2c8812694a91405"
+      },
+      "format": "handoff-v2",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-commit-object",
+        "repository": "syuhei0519/backend-app",
+        "commit": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+        "size": 283,
+        "sha256": "dd53f3e25c16f8fccc95bf4e6329b04d771c36e09e1e92d16a57826a8beb07df"
+      },
+      "format": "git-commit-object",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f794cf63a8379f06b9bb770b2fac4ba1fb0951fa",
+        "path": "evidence/order-b1/e2-a1/test-report.txt",
+        "size": 6247,
+        "sha256": "6328ca0720740ba82d971669d53fff6deee5c53a03d88a805aeed2c63f868741"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f794cf63a8379f06b9bb770b2fac4ba1fb0951fa",
+        "path": "evidence/order-b1/e2-a1/knowledge-candidates.json",
+        "size": 1546,
+        "sha256": "e93d2066e3d3b1bab6753ba2eef9f28edaf33f9d3f0fb710eebfdcc7282748b8"
+      },
+      "format": "knowledge-candidates-v1",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/backend-app",
+        "commit": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+        "path": "internal/ordertest/disposable.go",
+        "size": 4510,
+        "sha256": "470442497265bdcb329d33e4b14e58a5cad1d346e6e0cfcda3c95dbb07fd3bf9"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+        "path": "delivery-verification/20261011/research-public/attempt1-handoff.json",
+        "size": 5172,
+        "sha256": "3ebef4d803e39ef6ae23943f229518fce6d85dff82a5214c1324b98ddd864681"
+      },
+      "format": "handoff-v2",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/bundle-review.json",
+        "size": 4140,
+        "sha256": "3a0abca85f715d7c8bb0ae1c3082374a401fbe3e65f5424b37aa9826430c6884"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "order-m1-implementation-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/account-pvc.yaml",
+        "size": 15757,
+        "sha256": "986f00b580d1581f1cda72bdcfc69fba8a937068fa311f59f36516a6823f4c20"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/attack-inventory-comparison.json",
+        "size": 19759,
+        "sha256": "08a3e2fa1ee47a0a6660c88acba8586158c1d6881a051492ce3f4c5c7d4f87b1"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/backend-baseline.yaml",
+        "size": 9681,
+        "sha256": "98f9ee0a34d05ffdce403e6b22ea28fd84aa9e9eb508a0872d95b50067f22d88"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/change-coverage.json",
+        "size": 11557,
+        "sha256": "e005067de12a17582d55f86a092473abbf356255b4f8075fd5c90a2dc41dfc94"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/checksum.txt",
+        "size": 12043,
+        "sha256": "83ba94eb438fc736f99632752d3b4b0c3c233dec9d1935fffcb426b5e3f90861"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/ci-test-network-summary.txt",
+        "size": 557,
+        "sha256": "1b9c253bc223831e4fbf05236bc27f191c71e6b6742081217caa00c3267ffb9c"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/config.json",
+        "size": 1972,
+        "sha256": "15e9442185754fad17f2444d88b9b8570956c035415ef995af709785aa6bd77e"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/context.json",
+        "size": 5710,
+        "sha256": "86caa984b7811d47e7062b05ddcfc04f65684936c3099d9b58692768fe986c40"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/extra-AppProject.yaml",
+        "size": 15837,
+        "sha256": "31c90b61f13fa8a4cef2d4e7184cf85d00e4f4a305248b99e492d8be5dc0d941"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/extra-Namespace.yaml",
+        "size": 15836,
+        "sha256": "e881ea249bdfd7dbd81d69cf5828a239de92753f3d1b2706fef59e25d1dd8f6d"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/extra-Secret.yaml",
+        "size": 15833,
+        "sha256": "26d5efe6d0b4899b7b7b416ae87c783a67b8fcf75aab6fe2fb563073d014f420"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/extra-ephemeralContainers.yaml",
+        "size": 15845,
+        "sha256": "b5a06228854639ac7907ce69d4d06ce74cbc4ff4f5292ca0a545854d2bc1b2b4"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/extra-initContainers.yaml",
+        "size": 15840,
+        "sha256": "6591187c8ae16141179686a9e08eb6d60865eeb5e926297c89b1fd84c98a0a00"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/frontend-baseline.yaml",
+        "size": 5555,
+        "sha256": "16ce7b984d0bfa86d110ed2c9757e565a9ada6056f7cbd583de32aa04a3866de"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/gitops-workloads.yaml",
+        "size": 2196,
+        "sha256": "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/host-mutation-combined-security.json",
+        "size": 5644,
+        "sha256": "4bdadc40cf428a16ced332c452c749a85c8367db3ec5cbe6cfa1b34072070432"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/host-mutation-full-security.json",
+        "size": 5644,
+        "sha256": "4eda46af540139ae1809de850d69325d23b68b050273c3d1dad9498f01e1bc19"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/host-mutation-security.json",
+        "size": 78,
+        "sha256": "b8ec3809269593fe04a606ea0167ecc905fd551b31897906051a4a2f5b7a3b22"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/independent-results.json",
+        "size": 25212,
+        "sha256": "52fdbfb5a4077c6f8d1205d07766c6c0066af6f0e9d8dd45fed6f096f59fc6cd"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/independent-summary.txt",
+        "size": 260,
+        "sha256": "ac7e84b637cb23157fce4fa63663fd3ea927b07d44b21c3295c5e68c4322790f"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/independent.py",
+        "size": 7712,
+        "sha256": "e5b5bde80471a93caa51f70b574548416a624e06efd10ac4a761ec8afc1dd749"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/inventory-positive.yaml",
+        "size": 15763,
+        "sha256": "906e6045384a8e5139001cc572f5087ebdd6559c7b7842d75bea3573601a01fa"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/kubeconform-network-summary.txt",
+        "size": 85,
+        "sha256": "d676921453e6d2b6125257de69243e2b22e282e24b15eb34b22c12d9a815d273"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/measurement.json",
+        "size": 1143,
+        "sha256": "b53fae57bc043d1cc758c48b3261cbea886226b50a2f3f34ad49c62aa03828b1"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/mutation-kubeconform-summary.txt",
+        "size": 86,
+        "sha256": "f122cab2144509c2cf76341f7feabd310ab75f5ee86261f2a7908fdac3189a28"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/mutations/pod-hostIPC.yaml",
+        "size": 15783,
+        "sha256": "aab6108314a26a3291d8b3390429ee03bd0caa6b0d559bbfac98abf1b64f8990"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/mutations/pod-hostNetwork.yaml",
+        "size": 15787,
+        "sha256": "55ca32450e887721ffa5ad8f567c861ca7a852aed18f3dd1c8d4ace474016543"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/mutations/pod-hostPID.yaml",
+        "size": 15783,
+        "sha256": "15b049a589770ea885cfbfdfbb6515ae95bac7a921059cdfd5407ac1c6736bd4"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/namespace-escape.yaml",
+        "size": 15788,
+        "sha256": "3426ab852f2a352213b0045a5e79e722efb964ae4407806dd5a71b6b726a1822"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/order-postgresql-synthetic.yaml",
+        "size": 7231,
+        "sha256": "bde99d33ad53ecff9d23e6075dc18b27ee9817d5a82a97c3696cb11b0b5a7a0a"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/order-synthetic-inventory.json",
+        "size": 3053,
+        "sha256": "879e8b6ac82c844e66e988d448e290dc05dc3528a9b326adf715a0743617464f"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/order-synthetic-security.json",
+        "size": 78,
+        "sha256": "b8ec3809269593fe04a606ea0167ecc905fd551b31897906051a4a2f5b7a3b22"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/order-synthetic.yaml",
+        "size": 8672,
+        "sha256": "7045a91abe4cb68b69890099f799745a9cea5bb90d9efb9b542903358ea28901"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/pod-hostIPC.yaml",
+        "size": 15783,
+        "sha256": "aab6108314a26a3291d8b3390429ee03bd0caa6b0d559bbfac98abf1b64f8990"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/pod-hostNetwork.yaml",
+        "size": 15787,
+        "sha256": "55ca32450e887721ffa5ad8f567c861ca7a852aed18f3dd1c8d4ace474016543"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/pod-hostPID.yaml",
+        "size": 15783,
+        "sha256": "15b049a589770ea885cfbfdfbb6515ae95bac7a921059cdfd5407ac1c6736bd4"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/postgresql-baseline.yaml",
+        "size": 6966,
+        "sha256": "108bffe412325d4155c964fcf7ca30b58f23d636f1407b0466d84ec4528f8d38"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/pvc-no-protection.yaml",
+        "size": 15704,
+        "sha256": "6457b7037bc68e6056747854f57cc85eb43cf45e8586921a9b1c1b68dbd88855"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/render-scan.json",
+        "size": 5791,
+        "sha256": "1b29386d006786ca28fa06ae510b3c7882c1ffca213605e05196cf82f4b443cd"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/reproduce-attack.sh",
+        "size": 1338,
+        "sha256": "299763fb57fffc1f844f9a7a8be55181a98e0dff1cf6e1f59205bd06be817c40"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/reproduce.sh",
+        "size": 1067,
+        "sha256": "b91e765bb785dc4266dbd76d65601a2ef606941c5f9876b6909fbe67fee93a8a"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/source-scan.json",
+        "size": 1222,
+        "sha256": "bae64d1dd02bb8855d70c5acbdb2188fef500acffa3073a70426fa949864ba92"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/strict-helm.txt",
+        "size": 531,
+        "sha256": "801af776c92044bef4bc8e5d6882c690e83ec0a905fe6c22015441c4ba5e8fc1"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/test-report.txt",
+        "size": 11210,
+        "sha256": "49c350ffaac8dd111bd1885c07f84d3e3725698a6693fbac26e427b4989dbadb"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/tool-source-pins.json",
+        "size": 1218,
+        "sha256": "708f68eef02c0713742bb076a78d92523772ee049051d4085904b937cbfe3685"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/trusted-binary.txt",
+        "size": 211,
+        "sha256": "d8ddace3dadd2216371a328058940821af3e2d0c8ed5dae814b1ee192cad0db8"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/trusted-phase2.txt",
+        "size": 364,
+        "sha256": "0f4a7a0388656b5f555c55b53680bb389733352647463c78d4ab91868a2f1e55"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+        "path": "evidence/order-m1/test-a1/trusted-render.json",
+        "size": 38786,
+        "sha256": "3a3c85dd584561d6f50534b0fec4847a424a5ec6a212ef85fa23774738df25e7"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/knowledge-candidates.json",
+        "size": 899,
+        "sha256": "38057f3d30949b9c7c07e460f6c1298f1e5d009b36f447284a25f0d359f2648a"
+      },
+      "format": "knowledge-candidates-v1",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/publication-safety.json",
+        "size": 783,
+        "sha256": "ddc7873e23ffcbbf243d74c08de405f8d483a6ef0ae9020cae94e5d0c9a5f089"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f",
+        "path": "evidence/order-m1/implementation-a3/handoff.json",
+        "size": 7402,
+        "sha256": "543e0fe833c0bbfe828724b83e347d4e8aa81a1640c13b8839f43c2000954f16"
+      },
+      "format": "handoff-v2",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f",
+        "path": "evidence/order-m1/implementation-a3/report.txt",
+        "size": 9303,
+        "sha256": "ed4959d23b356919490deaf044206e2f542a96507f75623132b9fc742a0b4e5e"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f",
+        "path": "evidence/order-m1/implementation-a3/results.json",
+        "size": 115744,
+        "sha256": "7fa0c80f505736a6cbbdbff02e73a64062411a68ae50e13d42d883a63f9fcb29"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f",
+        "path": "evidence/order-m1/implementation-a3/implementation.patch",
+        "size": 13027,
+        "sha256": "eec51cb9519782eb25f24327b1e21d00bcab1d7221a9c50697c11232083714ba"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f",
+        "path": "evidence/order-m1/implementation-a3/implementation-replay.py",
+        "size": 7725,
+        "sha256": "e6f7ac66e2f4d1c7f4df9cad710ac2e7cda0be2d033773be94b04dc656426a04"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f",
+        "path": "evidence/order-m1/implementation-a3/knowledge-candidates.json",
+        "size": 852,
+        "sha256": "c8dff9a00aa58f247a5aef7ad97c82e7e2d1993b00fee497290e690c8a8beb8f"
+      },
+      "format": "knowledge-candidates-v1",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/application-manifest",
+        "commit": "41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+        "path": "tools/inventory/pod_boundary_test.go",
+        "size": 3443,
+        "sha256": "2ad72195585f59c157d201ac7652da6d8214f94eebeb8fd1f8ef1ddebd0aff15"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-commit-object",
+        "repository": "syuhei0519/application-manifest",
+        "commit": "41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+        "size": 283,
+        "sha256": "b65585d3e3532bf1c1e9e7094dff3dc3b74c86a8fee880700f70e5bea65eaaa3"
+      },
+      "format": "git-commit-object",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SOURCE"
+    }
+  ],
+  "knowledge_bindings": [],
+  "slot_bindings": [
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-1"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/account-pvc.yaml",
+      "revision": "sha256:986f00b580d1581f1cda72bdcfc69fba8a937068fa311f59f36516a6823f4c20",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/account-pvc.yaml",
+          "size": 15757,
+          "sha256": "986f00b580d1581f1cda72bdcfc69fba8a937068fa311f59f36516a6823f4c20"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-2"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/attack-inventory-comparison.json",
+      "revision": "sha256:08a3e2fa1ee47a0a6660c88acba8586158c1d6881a051492ce3f4c5c7d4f87b1",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/attack-inventory-comparison.json",
+          "size": 19759,
+          "sha256": "08a3e2fa1ee47a0a6660c88acba8586158c1d6881a051492ce3f4c5c7d4f87b1"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-3"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/backend-baseline.yaml",
+      "revision": "sha256:98f9ee0a34d05ffdce403e6b22ea28fd84aa9e9eb508a0872d95b50067f22d88",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/backend-baseline.yaml",
+          "size": 9681,
+          "sha256": "98f9ee0a34d05ffdce403e6b22ea28fd84aa9e9eb508a0872d95b50067f22d88"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-4"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/change-coverage.json",
+      "revision": "sha256:e005067de12a17582d55f86a092473abbf356255b4f8075fd5c90a2dc41dfc94",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/change-coverage.json",
+          "size": 11557,
+          "sha256": "e005067de12a17582d55f86a092473abbf356255b4f8075fd5c90a2dc41dfc94"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-5"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/checksum.txt",
+      "revision": "sha256:83ba94eb438fc736f99632752d3b4b0c3c233dec9d1935fffcb426b5e3f90861",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/checksum.txt",
+          "size": 12043,
+          "sha256": "83ba94eb438fc736f99632752d3b4b0c3c233dec9d1935fffcb426b5e3f90861"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-6"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/ci-test-network-summary.txt",
+      "revision": "sha256:1b9c253bc223831e4fbf05236bc27f191c71e6b6742081217caa00c3267ffb9c",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/ci-test-network-summary.txt",
+          "size": 557,
+          "sha256": "1b9c253bc223831e4fbf05236bc27f191c71e6b6742081217caa00c3267ffb9c"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-7"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/config.json",
+      "revision": "sha256:15e9442185754fad17f2444d88b9b8570956c035415ef995af709785aa6bd77e",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/config.json",
+          "size": 1972,
+          "sha256": "15e9442185754fad17f2444d88b9b8570956c035415ef995af709785aa6bd77e"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-8"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/context.json",
+      "revision": "sha256:86caa984b7811d47e7062b05ddcfc04f65684936c3099d9b58692768fe986c40",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/context.json",
+          "size": 5710,
+          "sha256": "86caa984b7811d47e7062b05ddcfc04f65684936c3099d9b58692768fe986c40"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-9"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/extra-AppProject.yaml",
+      "revision": "sha256:31c90b61f13fa8a4cef2d4e7184cf85d00e4f4a305248b99e492d8be5dc0d941",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/extra-AppProject.yaml",
+          "size": 15837,
+          "sha256": "31c90b61f13fa8a4cef2d4e7184cf85d00e4f4a305248b99e492d8be5dc0d941"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-10"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/extra-Namespace.yaml",
+      "revision": "sha256:e881ea249bdfd7dbd81d69cf5828a239de92753f3d1b2706fef59e25d1dd8f6d",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/extra-Namespace.yaml",
+          "size": 15836,
+          "sha256": "e881ea249bdfd7dbd81d69cf5828a239de92753f3d1b2706fef59e25d1dd8f6d"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-11"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/extra-Secret.yaml",
+      "revision": "sha256:26d5efe6d0b4899b7b7b416ae87c783a67b8fcf75aab6fe2fb563073d014f420",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/extra-Secret.yaml",
+          "size": 15833,
+          "sha256": "26d5efe6d0b4899b7b7b416ae87c783a67b8fcf75aab6fe2fb563073d014f420"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-12"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/extra-ephemeralContainers.yaml",
+      "revision": "sha256:b5a06228854639ac7907ce69d4d06ce74cbc4ff4f5292ca0a545854d2bc1b2b4",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/extra-ephemeralContainers.yaml",
+          "size": 15845,
+          "sha256": "b5a06228854639ac7907ce69d4d06ce74cbc4ff4f5292ca0a545854d2bc1b2b4"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-13"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/extra-initContainers.yaml",
+      "revision": "sha256:6591187c8ae16141179686a9e08eb6d60865eeb5e926297c89b1fd84c98a0a00",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/extra-initContainers.yaml",
+          "size": 15840,
+          "sha256": "6591187c8ae16141179686a9e08eb6d60865eeb5e926297c89b1fd84c98a0a00"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-14"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/frontend-baseline.yaml",
+      "revision": "sha256:16ce7b984d0bfa86d110ed2c9757e565a9ada6056f7cbd583de32aa04a3866de",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/frontend-baseline.yaml",
+          "size": 5555,
+          "sha256": "16ce7b984d0bfa86d110ed2c9757e565a9ada6056f7cbd583de32aa04a3866de"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-15"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/gitops-workloads.yaml",
+      "revision": "sha256:9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/gitops-workloads.yaml",
+          "size": 2196,
+          "sha256": "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-16"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/host-mutation-combined-security.json",
+      "revision": "sha256:4bdadc40cf428a16ced332c452c749a85c8367db3ec5cbe6cfa1b34072070432",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/host-mutation-combined-security.json",
+          "size": 5644,
+          "sha256": "4bdadc40cf428a16ced332c452c749a85c8367db3ec5cbe6cfa1b34072070432"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-17"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/host-mutation-full-security.json",
+      "revision": "sha256:4eda46af540139ae1809de850d69325d23b68b050273c3d1dad9498f01e1bc19",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/host-mutation-full-security.json",
+          "size": 5644,
+          "sha256": "4eda46af540139ae1809de850d69325d23b68b050273c3d1dad9498f01e1bc19"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-18"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/host-mutation-security.json",
+      "revision": "sha256:b8ec3809269593fe04a606ea0167ecc905fd551b31897906051a4a2f5b7a3b22",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/host-mutation-security.json",
+          "size": 78,
+          "sha256": "b8ec3809269593fe04a606ea0167ecc905fd551b31897906051a4a2f5b7a3b22"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-19"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/independent-results.json",
+      "revision": "sha256:52fdbfb5a4077c6f8d1205d07766c6c0066af6f0e9d8dd45fed6f096f59fc6cd",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/independent-results.json",
+          "size": 25212,
+          "sha256": "52fdbfb5a4077c6f8d1205d07766c6c0066af6f0e9d8dd45fed6f096f59fc6cd"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-20"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/independent-summary.txt",
+      "revision": "sha256:ac7e84b637cb23157fce4fa63663fd3ea927b07d44b21c3295c5e68c4322790f",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/independent-summary.txt",
+          "size": 260,
+          "sha256": "ac7e84b637cb23157fce4fa63663fd3ea927b07d44b21c3295c5e68c4322790f"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-21"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/independent.py",
+      "revision": "sha256:e5b5bde80471a93caa51f70b574548416a624e06efd10ac4a761ec8afc1dd749",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/independent.py",
+          "size": 7712,
+          "sha256": "e5b5bde80471a93caa51f70b574548416a624e06efd10ac4a761ec8afc1dd749"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-22"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/inventory-positive.yaml",
+      "revision": "sha256:906e6045384a8e5139001cc572f5087ebdd6559c7b7842d75bea3573601a01fa",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/inventory-positive.yaml",
+          "size": 15763,
+          "sha256": "906e6045384a8e5139001cc572f5087ebdd6559c7b7842d75bea3573601a01fa"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-23"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/kubeconform-network-summary.txt",
+      "revision": "sha256:d676921453e6d2b6125257de69243e2b22e282e24b15eb34b22c12d9a815d273",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/kubeconform-network-summary.txt",
+          "size": 85,
+          "sha256": "d676921453e6d2b6125257de69243e2b22e282e24b15eb34b22c12d9a815d273"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-24"
+      },
+      "locator": "measurement.json",
+      "revision": "sha256:b53fae57bc043d1cc758c48b3261cbea886226b50a2f3f34ad49c62aa03828b1",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+          "path": "evidence/order-m1/test-a1/measurement.json",
+          "size": 1143,
+          "sha256": "b53fae57bc043d1cc758c48b3261cbea886226b50a2f3f34ad49c62aa03828b1"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-25"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/mutation-kubeconform-summary.txt",
+      "revision": "sha256:f122cab2144509c2cf76341f7feabd310ab75f5ee86261f2a7908fdac3189a28",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/mutation-kubeconform-summary.txt",
+          "size": 86,
+          "sha256": "f122cab2144509c2cf76341f7feabd310ab75f5ee86261f2a7908fdac3189a28"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-26"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/mutations/pod-hostIPC.yaml",
+      "revision": "sha256:aab6108314a26a3291d8b3390429ee03bd0caa6b0d559bbfac98abf1b64f8990",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/mutations/pod-hostIPC.yaml",
+          "size": 15783,
+          "sha256": "aab6108314a26a3291d8b3390429ee03bd0caa6b0d559bbfac98abf1b64f8990"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-27"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/mutations/pod-hostNetwork.yaml",
+      "revision": "sha256:55ca32450e887721ffa5ad8f567c861ca7a852aed18f3dd1c8d4ace474016543",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/mutations/pod-hostNetwork.yaml",
+          "size": 15787,
+          "sha256": "55ca32450e887721ffa5ad8f567c861ca7a852aed18f3dd1c8d4ace474016543"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-28"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/mutations/pod-hostPID.yaml",
+      "revision": "sha256:15b049a589770ea885cfbfdfbb6515ae95bac7a921059cdfd5407ac1c6736bd4",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/mutations/pod-hostPID.yaml",
+          "size": 15783,
+          "sha256": "15b049a589770ea885cfbfdfbb6515ae95bac7a921059cdfd5407ac1c6736bd4"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-29"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/namespace-escape.yaml",
+      "revision": "sha256:3426ab852f2a352213b0045a5e79e722efb964ae4407806dd5a71b6b726a1822",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/namespace-escape.yaml",
+          "size": 15788,
+          "sha256": "3426ab852f2a352213b0045a5e79e722efb964ae4407806dd5a71b6b726a1822"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-30"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/order-postgresql-synthetic.yaml",
+      "revision": "sha256:bde99d33ad53ecff9d23e6075dc18b27ee9817d5a82a97c3696cb11b0b5a7a0a",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/order-postgresql-synthetic.yaml",
+          "size": 7231,
+          "sha256": "bde99d33ad53ecff9d23e6075dc18b27ee9817d5a82a97c3696cb11b0b5a7a0a"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-31"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/order-synthetic-inventory.json",
+      "revision": "sha256:879e8b6ac82c844e66e988d448e290dc05dc3528a9b326adf715a0743617464f",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/order-synthetic-inventory.json",
+          "size": 3053,
+          "sha256": "879e8b6ac82c844e66e988d448e290dc05dc3528a9b326adf715a0743617464f"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-32"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/order-synthetic-security.json",
+      "revision": "sha256:b8ec3809269593fe04a606ea0167ecc905fd551b31897906051a4a2f5b7a3b22",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/order-synthetic-security.json",
+          "size": 78,
+          "sha256": "b8ec3809269593fe04a606ea0167ecc905fd551b31897906051a4a2f5b7a3b22"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-33"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/order-synthetic.yaml",
+      "revision": "sha256:7045a91abe4cb68b69890099f799745a9cea5bb90d9efb9b542903358ea28901",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/order-synthetic.yaml",
+          "size": 8672,
+          "sha256": "7045a91abe4cb68b69890099f799745a9cea5bb90d9efb9b542903358ea28901"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-34"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/pod-hostIPC.yaml",
+      "revision": "sha256:aab6108314a26a3291d8b3390429ee03bd0caa6b0d559bbfac98abf1b64f8990",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/pod-hostIPC.yaml",
+          "size": 15783,
+          "sha256": "aab6108314a26a3291d8b3390429ee03bd0caa6b0d559bbfac98abf1b64f8990"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-35"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/pod-hostNetwork.yaml",
+      "revision": "sha256:55ca32450e887721ffa5ad8f567c861ca7a852aed18f3dd1c8d4ace474016543",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/pod-hostNetwork.yaml",
+          "size": 15787,
+          "sha256": "55ca32450e887721ffa5ad8f567c861ca7a852aed18f3dd1c8d4ace474016543"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-36"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/pod-hostPID.yaml",
+      "revision": "sha256:15b049a589770ea885cfbfdfbb6515ae95bac7a921059cdfd5407ac1c6736bd4",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/pod-hostPID.yaml",
+          "size": 15783,
+          "sha256": "15b049a589770ea885cfbfdfbb6515ae95bac7a921059cdfd5407ac1c6736bd4"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-37"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/postgresql-baseline.yaml",
+      "revision": "sha256:108bffe412325d4155c964fcf7ca30b58f23d636f1407b0466d84ec4528f8d38",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/postgresql-baseline.yaml",
+          "size": 6966,
+          "sha256": "108bffe412325d4155c964fcf7ca30b58f23d636f1407b0466d84ec4528f8d38"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-38"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/pvc-no-protection.yaml",
+      "revision": "sha256:6457b7037bc68e6056747854f57cc85eb43cf45e8586921a9b1c1b68dbd88855",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/pvc-no-protection.yaml",
+          "size": 15704,
+          "sha256": "6457b7037bc68e6056747854f57cc85eb43cf45e8586921a9b1c1b68dbd88855"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-39"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/render-scan.json",
+      "revision": "sha256:1b29386d006786ca28fa06ae510b3c7882c1ffca213605e05196cf82f4b443cd",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/render-scan.json",
+          "size": 5791,
+          "sha256": "1b29386d006786ca28fa06ae510b3c7882c1ffca213605e05196cf82f4b443cd"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-40"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/reproduce-attack.sh",
+      "revision": "sha256:299763fb57fffc1f844f9a7a8be55181a98e0dff1cf6e1f59205bd06be817c40",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/reproduce-attack.sh",
+          "size": 1338,
+          "sha256": "299763fb57fffc1f844f9a7a8be55181a98e0dff1cf6e1f59205bd06be817c40"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-41"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/reproduce.sh",
+      "revision": "sha256:b91e765bb785dc4266dbd76d65601a2ef606941c5f9876b6909fbe67fee93a8a",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/reproduce.sh",
+          "size": 1067,
+          "sha256": "b91e765bb785dc4266dbd76d65601a2ef606941c5f9876b6909fbe67fee93a8a"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-42"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/source-scan.json",
+      "revision": "sha256:bae64d1dd02bb8855d70c5acbdb2188fef500acffa3073a70426fa949864ba92",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/source-scan.json",
+          "size": 1222,
+          "sha256": "bae64d1dd02bb8855d70c5acbdb2188fef500acffa3073a70426fa949864ba92"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-43"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/strict-helm.txt",
+      "revision": "sha256:801af776c92044bef4bc8e5d6882c690e83ec0a905fe6c22015441c4ba5e8fc1",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/strict-helm.txt",
+          "size": 531,
+          "sha256": "801af776c92044bef4bc8e5d6882c690e83ec0a905fe6c22015441c4ba5e8fc1"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-44"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/test-report.txt",
+      "revision": "sha256:49c350ffaac8dd111bd1885c07f84d3e3725698a6693fbac26e427b4989dbadb",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/test-report.txt",
+          "size": 11210,
+          "sha256": "49c350ffaac8dd111bd1885c07f84d3e3725698a6693fbac26e427b4989dbadb"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-45"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/tool-source-pins.json",
+      "revision": "sha256:708f68eef02c0713742bb076a78d92523772ee049051d4085904b937cbfe3685",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/tool-source-pins.json",
+          "size": 1218,
+          "sha256": "708f68eef02c0713742bb076a78d92523772ee049051d4085904b937cbfe3685"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-46"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/trusted-binary.txt",
+      "revision": "sha256:d8ddace3dadd2216371a328058940821af3e2d0c8ed5dae814b1ee192cad0db8",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/trusted-binary.txt",
+          "size": 211,
+          "sha256": "d8ddace3dadd2216371a328058940821af3e2d0c8ed5dae814b1ee192cad0db8"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-47"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/trusted-phase2.txt",
+      "revision": "sha256:0f4a7a0388656b5f555c55b53680bb389733352647463c78d4ab91868a2f1e55",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/trusted-phase2.txt",
+          "size": 364,
+          "sha256": "0f4a7a0388656b5f555c55b53680bb389733352647463c78d4ab91868a2f1e55"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-48"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/trusted-render.json",
+      "revision": "sha256:3a3c85dd584561d6f50534b0fec4847a424a5ec6a212ef85fa23774738df25e7",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+          "path": "evidence/order-m1/test-a1/trusted-render.json",
+          "size": 38786,
+          "sha256": "3a3c85dd584561d6f50534b0fec4847a424a5ec6a212ef85fa23774738df25e7"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-KNOWLEDGE"
+      },
+      "locator": "knowledge-candidates.json",
+      "revision": "sha256:38057f3d30949b9c7c07e460f6c1298f1e5d009b36f447284a25f0d359f2648a",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+          "path": "evidence/order-m1/test-a1/knowledge-candidates.json",
+          "size": 899,
+          "sha256": "38057f3d30949b9c7c07e460f6c1298f1e5d009b36f447284a25f0d359f2648a"
+        },
+        "format": "knowledge-candidates-v1"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-SAFETY"
+      },
+      "locator": "publication-safety.json",
+      "revision": "sha256:ddc7873e23ffcbbf243d74c08de405f8d483a6ef0ae9020cae94e5d0c9a5f089",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+          "path": "evidence/order-m1/test-a1/publication-safety.json",
+          "size": 783,
+          "sha256": "ddc7873e23ffcbbf243d74c08de405f8d483a6ef0ae9020cae94e5d0c9a5f089"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "slot": {
+        "kind": "upstream",
+        "role": "implementation",
+        "task_id": "order-m1-implementation-a2",
+        "attempt": 2,
+        "relationship": "dependency"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/c50af45ceb871d82734b2c4efa5319205c420cd6/evidence/order-m1/implementation-a2/handoff.json",
+      "revision": "sha256:1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+          "path": "evidence/order-m1/implementation-a2/handoff.json",
+          "size": 15115,
+          "sha256": "1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473"
+        },
+        "format": "handoff-v2"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+        "path": "evidence/order-m1/implementation-a2/handoff.json",
+        "size": 15115,
+        "sha256": "1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-REPORT"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/test-report.txt",
+      "revision": "sha256:e62912ed6aa1880e593ab5b5f261a156007c7f93da66e6b2610cf18c1aa7a7b0",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/test-report.txt",
+          "size": 7993,
+          "sha256": "e62912ed6aa1880e593ab5b5f261a156007c7f93da66e6b2610cf18c1aa7a7b0"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+        "path": "evidence/order-m1/implementation-a2/handoff.json",
+        "size": 15115,
+        "sha256": "1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-PATCH"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/implementation.patch",
+      "revision": "sha256:a24507a747ff85ac4690a103cf5398905a02c519e1a562add23dc1df05289dbc",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/implementation.patch",
+          "size": 48003,
+          "sha256": "a24507a747ff85ac4690a103cf5398905a02c519e1a562add23dc1df05289dbc"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+        "path": "evidence/order-m1/implementation-a2/handoff.json",
+        "size": 15115,
+        "sha256": "1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-BASELINE"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/baseline-comparison.json",
+      "revision": "sha256:80d01d2b694918983669dba37971df278df2b5e2c3ff9bb644adcee635df170c",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/baseline-comparison.json",
+          "size": 5531,
+          "sha256": "80d01d2b694918983669dba37971df278df2b5e2c3ff9bb644adcee635df170c"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+        "path": "evidence/order-m1/implementation-a2/handoff.json",
+        "size": 15115,
+        "sha256": "1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-TRUSTED"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/trusted-render.json",
+      "revision": "sha256:3a3c85dd584561d6f50534b0fec4847a424a5ec6a212ef85fa23774738df25e7",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/trusted-render.json",
+          "size": 38786,
+          "sha256": "3a3c85dd584561d6f50534b0fec4847a424a5ec6a212ef85fa23774738df25e7"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+        "path": "evidence/order-m1/implementation-a2/handoff.json",
+        "size": 15115,
+        "sha256": "1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-GUIDE"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/implementation-guide.md",
+      "revision": "sha256:7d6126209524a87fdc1a16d80ed2ec87cfe3c14d472e379a9a86c5f15ff06d49",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/implementation-guide.md",
+          "size": 4877,
+          "sha256": "7d6126209524a87fdc1a16d80ed2ec87cfe3c14d472e379a9a86c5f15ff06d49"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+        "path": "evidence/order-m1/implementation-a2/handoff.json",
+        "size": 15115,
+        "sha256": "1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-REPRO"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/reproduce.py",
+      "revision": "sha256:6ec39a433ed402821d0981ffc77bbf0c34f182e29d5cd71909e336c2bf4ce154",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/reproduce.py",
+          "size": 1745,
+          "sha256": "6ec39a433ed402821d0981ffc77bbf0c34f182e29d5cd71909e336c2bf4ce154"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+        "path": "evidence/order-m1/implementation-a2/handoff.json",
+        "size": 15115,
+        "sha256": "1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-INVENTORY"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/order-synthetic-inventory.json",
+      "revision": "sha256:879e8b6ac82c844e66e988d448e290dc05dc3528a9b326adf715a0743617464f",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/order-synthetic-inventory.json",
+          "size": 3053,
+          "sha256": "879e8b6ac82c844e66e988d448e290dc05dc3528a9b326adf715a0743617464f"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+        "path": "evidence/order-m1/implementation-a2/handoff.json",
+        "size": 15115,
+        "sha256": "1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-STRUCTURAL"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/order-synthetic-security.json",
+      "revision": "sha256:b8ec3809269593fe04a606ea0167ecc905fd551b31897906051a4a2f5b7a3b22",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/order-synthetic-security.json",
+          "size": 78,
+          "sha256": "b8ec3809269593fe04a606ea0167ecc905fd551b31897906051a4a2f5b7a3b22"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+        "path": "evidence/order-m1/implementation-a2/handoff.json",
+        "size": 15115,
+        "sha256": "1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-SOURCE-SCAN"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/source-scan.json",
+      "revision": "sha256:895475581dbd4808aa38e3c3e260670a0c87ddbd9ded0063de3d3e049b2df17b",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/source-scan.json",
+          "size": 1222,
+          "sha256": "895475581dbd4808aa38e3c3e260670a0c87ddbd9ded0063de3d3e049b2df17b"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+        "path": "evidence/order-m1/implementation-a2/handoff.json",
+        "size": 15115,
+        "sha256": "1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-RENDER-SCAN"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/render-scan.json",
+      "revision": "sha256:8211ed4df8f3076a45be98f12205f9796b47952840595443976d936c24694203",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/render-scan.json",
+          "size": 5791,
+          "sha256": "8211ed4df8f3076a45be98f12205f9796b47952840595443976d936c24694203"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+        "path": "evidence/order-m1/implementation-a2/handoff.json",
+        "size": 15115,
+        "sha256": "1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-COMMIT"
+      },
+      "locator": "https://github.com/syuhei0519/application-manifest/commit/e0f79a61643d31a29de73ffc54bb6a31c320f0df",
+      "revision": "e0f79a61643d31a29de73ffc54bb6a31c320f0df",
+      "target": {
+        "reference": {
+          "object_type": "git-commit-object",
+          "repository": "syuhei0519/application-manifest",
+          "commit": "e0f79a61643d31a29de73ffc54bb6a31c320f0df",
+          "size": 287,
+          "sha256": "1ff15f6c281879e2ffc928da7d0973515726a2edebadb4d7fa57d536b5b99ff4"
+        },
+        "format": "git-commit-object"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+        "path": "evidence/order-m1/implementation-a2/handoff.json",
+        "size": 15115,
+        "sha256": "1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-CI"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/ci-observations.json",
+      "revision": "sha256:edad080fd9c9fe967f572158465d02f161009f31a102168e27c13b3e135ad320",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/ci-observations.json",
+          "size": 662,
+          "sha256": "edad080fd9c9fe967f572158465d02f161009f31a102168e27c13b3e135ad320"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+        "path": "evidence/order-m1/implementation-a2/handoff.json",
+        "size": 15115,
+        "sha256": "1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-A2-REPORT"
+      },
+      "locator": "report.txt",
+      "revision": "sha256:2acc06876ed706f2956a487f6d27f9fccf1aec2c7cfdf35f91e4d06bd21f9ca0",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+          "path": "evidence/order-m1/implementation-a2/report.txt",
+          "size": 7921,
+          "sha256": "2acc06876ed706f2956a487f6d27f9fccf1aec2c7cfdf35f91e4d06bd21f9ca0"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+        "path": "evidence/order-m1/implementation-a2/handoff.json",
+        "size": 15115,
+        "sha256": "1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-A2-RECONCILIATION"
+      },
+      "locator": "reconciliation.json",
+      "revision": "sha256:2da393f0a74dbcd42090dd7650e498e909f2aa4d165216d9296b4f5f9160eb3b",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+          "path": "evidence/order-m1/implementation-a2/reconciliation.json",
+          "size": 1670,
+          "sha256": "2da393f0a74dbcd42090dd7650e498e909f2aa4d165216d9296b4f5f9160eb3b"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+        "path": "evidence/order-m1/implementation-a2/handoff.json",
+        "size": 15115,
+        "sha256": "1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473"
+      },
+      "slot": {
+        "kind": "upstream",
+        "role": "test",
+        "task_id": "order-b1-test-e2-a1",
+        "attempt": 1,
+        "relationship": "dependency"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/f5a93108cdbbce934a0838c280bdf0a18ba32429/evidence/order-b1/test-e2-a1/handoff.json",
+      "revision": "sha256:4cc00afcad190f144e9299a89dcef9604ec74a2733da05b605730061bbcebaa3",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+          "path": "evidence/order-b1/test-e2-a1/handoff.json",
+          "size": 9040,
+          "sha256": "4cc00afcad190f144e9299a89dcef9604ec74a2733da05b605730061bbcebaa3"
+        },
+        "format": "handoff-v2"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+        "path": "evidence/order-m1/implementation-a2/handoff.json",
+        "size": 15115,
+        "sha256": "1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473"
+      },
+      "slot": {
+        "kind": "upstream",
+        "role": "research-design",
+        "task_id": "research-order-design-a3",
+        "attempt": 3,
+        "relationship": "dependency"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332/delivery-verification/20261011/research-public/handoff.json",
+      "revision": "sha256:2c1876c21567399ca6ecf1d8afaed96c062da5a154b01d165f42a3e0f3afbc7d",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+          "path": "delivery-verification/20261011/research-public/handoff.json",
+          "size": 5973,
+          "sha256": "2c1876c21567399ca6ecf1d8afaed96c062da5a154b01d165f42a3e0f3afbc7d"
+        },
+        "format": "handoff-v2"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+        "path": "evidence/order-m1/implementation-a2/handoff.json",
+        "size": 15115,
+        "sha256": "1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473"
+      },
+      "slot": {
+        "kind": "upstream",
+        "role": "implementation",
+        "task_id": "order-m1-implementation-a1",
+        "attempt": 1,
+        "relationship": "retry_of"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/0d596964bf351ac59fdacb2e208e0b9bdb828db1/evidence/order-m1/implementation-a1/handoff.json",
+      "revision": "sha256:d1d706e4494ddb5ada98068cb102019de4faa35233c53fe884d5570447ed45bb",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/handoff.json",
+          "size": 9493,
+          "sha256": "d1d706e4494ddb5ada98068cb102019de4faa35233c53fe884d5570447ed45bb"
+        },
+        "format": "handoff-v2"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+        "path": "evidence/order-b1/test-e2-a1/handoff.json",
+        "size": 9040,
+        "sha256": "4cc00afcad190f144e9299a89dcef9604ec74a2733da05b605730061bbcebaa3"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-REPORT"
+      },
+      "locator": "test-report.txt",
+      "revision": "sha256:74a70df32299564acfd6f4992e989f6b403553f089b17a1131d4a6bf7e086391",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+          "path": "evidence/order-b1/test-e2-a1/test-report.txt",
+          "size": 12661,
+          "sha256": "74a70df32299564acfd6f4992e989f6b403553f089b17a1131d4a6bf7e086391"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+        "path": "evidence/order-b1/test-e2-a1/handoff.json",
+        "size": 9040,
+        "sha256": "4cc00afcad190f144e9299a89dcef9604ec74a2733da05b605730061bbcebaa3"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-OBS"
+      },
+      "locator": "test-observations.json",
+      "revision": "sha256:a512da83f5ea1fcf117fd58895f165c77b2e82a377b4e07ca9ad1ec870812d11",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+          "path": "evidence/order-b1/test-e2-a1/test-observations.json",
+          "size": 11965,
+          "sha256": "a512da83f5ea1fcf117fd58895f165c77b2e82a377b4e07ca9ad1ec870812d11"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+        "path": "evidence/order-b1/test-e2-a1/handoff.json",
+        "size": 9040,
+        "sha256": "4cc00afcad190f144e9299a89dcef9604ec74a2733da05b605730061bbcebaa3"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-HELPER"
+      },
+      "locator": "supplement_test.go",
+      "revision": "sha256:1d3c045f97890a931faaf29f6aa140205ff88e3c55f8a2c7d8a0bc28d0391dad",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+          "path": "evidence/order-b1/test-e2-a1/supplement_test.go",
+          "size": 14804,
+          "sha256": "1d3c045f97890a931faaf29f6aa140205ff88e3c55f8a2c7d8a0bc28d0391dad"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+        "path": "evidence/order-b1/test-e2-a1/handoff.json",
+        "size": 9040,
+        "sha256": "4cc00afcad190f144e9299a89dcef9604ec74a2733da05b605730061bbcebaa3"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-REPRO"
+      },
+      "locator": "reproduce.py",
+      "revision": "sha256:4afc0f90bb5d8242dbf429b0d1476b28dda047d2d3363dcf78548232c39c3e7b",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+          "path": "evidence/order-b1/test-e2-a1/reproduce.py",
+          "size": 1580,
+          "sha256": "4afc0f90bb5d8242dbf429b0d1476b28dda047d2d3363dcf78548232c39c3e7b"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+        "path": "evidence/order-b1/test-e2-a1/handoff.json",
+        "size": 9040,
+        "sha256": "4cc00afcad190f144e9299a89dcef9604ec74a2733da05b605730061bbcebaa3"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-INPUT"
+      },
+      "locator": "upstream-manifest.json",
+      "revision": "sha256:5a1e3edfcdc1751c7a02ece0a2962b208f1285dc974e80889e58e42aedff1ae3",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+          "path": "evidence/order-b1/test-e2-a1/upstream-manifest.json",
+          "size": 22789,
+          "sha256": "5a1e3edfcdc1751c7a02ece0a2962b208f1285dc974e80889e58e42aedff1ae3"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+        "path": "evidence/order-b1/test-e2-a1/handoff.json",
+        "size": 9040,
+        "sha256": "4cc00afcad190f144e9299a89dcef9604ec74a2733da05b605730061bbcebaa3"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-DELIVERY-README"
+      },
+      "locator": "README.txt",
+      "revision": "sha256:1e44e53fe5af66549d05a6118ee1364a48fef3f29b177b30a607c2493f256517",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+          "path": "evidence/order-b1/test-e2-a1/README.txt",
+          "size": 2970,
+          "sha256": "1e44e53fe5af66549d05a6118ee1364a48fef3f29b177b30a607c2493f256517"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+        "path": "evidence/order-b1/test-e2-a1/handoff.json",
+        "size": 9040,
+        "sha256": "4cc00afcad190f144e9299a89dcef9604ec74a2733da05b605730061bbcebaa3"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-SAFETY"
+      },
+      "locator": "bundle-review.json",
+      "revision": "sha256:a21e628a4b7aa7a3f675575da202bbb3ad01332d50e9ca04a03d54e85215e82f",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+          "path": "evidence/order-b1/test-e2-a1/bundle-review.json",
+          "size": 12154,
+          "sha256": "a21e628a4b7aa7a3f675575da202bbb3ad01332d50e9ca04a03d54e85215e82f"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+        "path": "evidence/order-b1/test-e2-a1/handoff.json",
+        "size": 9040,
+        "sha256": "4cc00afcad190f144e9299a89dcef9604ec74a2733da05b605730061bbcebaa3"
+      },
+      "slot": {
+        "kind": "upstream",
+        "role": "implementation",
+        "task_id": "order-b1-implementation-e2-a1",
+        "attempt": 1,
+        "relationship": "dependency"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/f794cf63a8379f06b9bb770b2fac4ba1fb0951fa/evidence/order-b1/e2-a1/handoff.json",
+      "revision": "sha256:3c3ba9cfec83cfbed18c34853d62d833f859df79acb2fbc2bfa2fd8486e40100",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "f794cf63a8379f06b9bb770b2fac4ba1fb0951fa",
+          "path": "evidence/order-b1/e2-a1/handoff.json",
+          "size": 5744,
+          "sha256": "3c3ba9cfec83cfbed18c34853d62d833f859df79acb2fbc2bfa2fd8486e40100"
+        },
+        "format": "handoff-v2"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+        "path": "evidence/order-b1/test-e2-a1/handoff.json",
+        "size": 9040,
+        "sha256": "4cc00afcad190f144e9299a89dcef9604ec74a2733da05b605730061bbcebaa3"
+      },
+      "slot": {
+        "kind": "upstream",
+        "role": "research-design",
+        "task_id": "research-order-design-a3",
+        "attempt": 3,
+        "relationship": "dependency"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332/delivery-verification/20261011/research-public/handoff.json",
+      "revision": "sha256:2c1876c21567399ca6ecf1d8afaed96c062da5a154b01d165f42a3e0f3afbc7d",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+          "path": "delivery-verification/20261011/research-public/handoff.json",
+          "size": 5973,
+          "sha256": "2c1876c21567399ca6ecf1d8afaed96c062da5a154b01d165f42a3e0f3afbc7d"
+        },
+        "format": "handoff-v2"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+        "path": "delivery-verification/20261011/research-public/handoff.json",
+        "size": 5973,
+        "sha256": "2c1876c21567399ca6ecf1d8afaed96c062da5a154b01d165f42a3e0f3afbc7d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-HISTORY"
+      },
+      "locator": "history.txt",
+      "revision": "sha256:dbdcd75a5fbf91e3cde6d983def2226d2d15d7e7aa07b226cdc0514f20f9cc74",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+          "path": "delivery-verification/20261011/research-public/history.txt",
+          "size": 1578,
+          "sha256": "dbdcd75a5fbf91e3cde6d983def2226d2d15d7e7aa07b226cdc0514f20f9cc74"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+        "path": "delivery-verification/20261011/research-public/handoff.json",
+        "size": 5973,
+        "sha256": "2c1876c21567399ca6ecf1d8afaed96c062da5a154b01d165f42a3e0f3afbc7d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-DESIGN"
+      },
+      "locator": "design.txt",
+      "revision": "sha256:44ab0b6be4f709f5bfcb4750250d94bb1781a4083a52082df62b366647b5b8e8",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+          "path": "delivery-verification/20261011/research-public/design.txt",
+          "size": 29180,
+          "sha256": "44ab0b6be4f709f5bfcb4750250d94bb1781a4083a52082df62b366647b5b8e8"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+        "path": "delivery-verification/20261011/research-public/handoff.json",
+        "size": 5973,
+        "sha256": "2c1876c21567399ca6ecf1d8afaed96c062da5a154b01d165f42a3e0f3afbc7d"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-ADDENDUM"
+      },
+      "locator": "addendum.txt",
+      "revision": "sha256:73f02dc92f940ade0213e65dedd44fbc6972d61994f7045f3cd10ba8731be697",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+          "path": "delivery-verification/20261011/research-public/addendum.txt",
+          "size": 3864,
+          "sha256": "73f02dc92f940ade0213e65dedd44fbc6972d61994f7045f3cd10ba8731be697"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+        "path": "delivery-verification/20261011/research-public/handoff.json",
+        "size": 5973,
+        "sha256": "2c1876c21567399ca6ecf1d8afaed96c062da5a154b01d165f42a3e0f3afbc7d"
+      },
+      "slot": {
+        "kind": "upstream",
+        "role": "research-design",
+        "task_id": "research-order-design-a2",
+        "attempt": 2,
+        "relationship": "retry_of"
+      },
+      "locator": "attempt2-handoff.json",
+      "revision": "sha256:73bed3bf2610822723e41f6a99d1154d2629932b7433bc72f2c8812694a91405",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+          "path": "delivery-verification/20261011/research-public/attempt2-handoff.json",
+          "size": 5892,
+          "sha256": "73bed3bf2610822723e41f6a99d1154d2629932b7433bc72f2c8812694a91405"
+        },
+        "format": "handoff-v2"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/handoff.json",
+        "size": 9493,
+        "sha256": "d1d706e4494ddb5ada98068cb102019de4faa35233c53fe884d5570447ed45bb"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-REPORT"
+      },
+      "locator": "test-report.txt",
+      "revision": "sha256:e62912ed6aa1880e593ab5b5f261a156007c7f93da66e6b2610cf18c1aa7a7b0",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/test-report.txt",
+          "size": 7993,
+          "sha256": "e62912ed6aa1880e593ab5b5f261a156007c7f93da66e6b2610cf18c1aa7a7b0"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/handoff.json",
+        "size": 9493,
+        "sha256": "d1d706e4494ddb5ada98068cb102019de4faa35233c53fe884d5570447ed45bb"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-PATCH"
+      },
+      "locator": "implementation.patch",
+      "revision": "sha256:a24507a747ff85ac4690a103cf5398905a02c519e1a562add23dc1df05289dbc",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/implementation.patch",
+          "size": 48003,
+          "sha256": "a24507a747ff85ac4690a103cf5398905a02c519e1a562add23dc1df05289dbc"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/handoff.json",
+        "size": 9493,
+        "sha256": "d1d706e4494ddb5ada98068cb102019de4faa35233c53fe884d5570447ed45bb"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-BASELINE"
+      },
+      "locator": "baseline-comparison.json",
+      "revision": "sha256:80d01d2b694918983669dba37971df278df2b5e2c3ff9bb644adcee635df170c",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/baseline-comparison.json",
+          "size": 5531,
+          "sha256": "80d01d2b694918983669dba37971df278df2b5e2c3ff9bb644adcee635df170c"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/handoff.json",
+        "size": 9493,
+        "sha256": "d1d706e4494ddb5ada98068cb102019de4faa35233c53fe884d5570447ed45bb"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-TRUSTED"
+      },
+      "locator": "trusted-render.json",
+      "revision": "sha256:3a3c85dd584561d6f50534b0fec4847a424a5ec6a212ef85fa23774738df25e7",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/trusted-render.json",
+          "size": 38786,
+          "sha256": "3a3c85dd584561d6f50534b0fec4847a424a5ec6a212ef85fa23774738df25e7"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/handoff.json",
+        "size": 9493,
+        "sha256": "d1d706e4494ddb5ada98068cb102019de4faa35233c53fe884d5570447ed45bb"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-GUIDE"
+      },
+      "locator": "implementation-guide.md",
+      "revision": "sha256:7d6126209524a87fdc1a16d80ed2ec87cfe3c14d472e379a9a86c5f15ff06d49",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/implementation-guide.md",
+          "size": 4877,
+          "sha256": "7d6126209524a87fdc1a16d80ed2ec87cfe3c14d472e379a9a86c5f15ff06d49"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/handoff.json",
+        "size": 9493,
+        "sha256": "d1d706e4494ddb5ada98068cb102019de4faa35233c53fe884d5570447ed45bb"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-REPRO"
+      },
+      "locator": "reproduce.py",
+      "revision": "sha256:6ec39a433ed402821d0981ffc77bbf0c34f182e29d5cd71909e336c2bf4ce154",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/reproduce.py",
+          "size": 1745,
+          "sha256": "6ec39a433ed402821d0981ffc77bbf0c34f182e29d5cd71909e336c2bf4ce154"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/handoff.json",
+        "size": 9493,
+        "sha256": "d1d706e4494ddb5ada98068cb102019de4faa35233c53fe884d5570447ed45bb"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-INVENTORY"
+      },
+      "locator": "order-synthetic-inventory.json",
+      "revision": "sha256:879e8b6ac82c844e66e988d448e290dc05dc3528a9b326adf715a0743617464f",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/order-synthetic-inventory.json",
+          "size": 3053,
+          "sha256": "879e8b6ac82c844e66e988d448e290dc05dc3528a9b326adf715a0743617464f"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/handoff.json",
+        "size": 9493,
+        "sha256": "d1d706e4494ddb5ada98068cb102019de4faa35233c53fe884d5570447ed45bb"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-STRUCTURAL"
+      },
+      "locator": "order-synthetic-security.json",
+      "revision": "sha256:b8ec3809269593fe04a606ea0167ecc905fd551b31897906051a4a2f5b7a3b22",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/order-synthetic-security.json",
+          "size": 78,
+          "sha256": "b8ec3809269593fe04a606ea0167ecc905fd551b31897906051a4a2f5b7a3b22"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/handoff.json",
+        "size": 9493,
+        "sha256": "d1d706e4494ddb5ada98068cb102019de4faa35233c53fe884d5570447ed45bb"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-SOURCE-SCAN"
+      },
+      "locator": "source-scan.json",
+      "revision": "sha256:895475581dbd4808aa38e3c3e260670a0c87ddbd9ded0063de3d3e049b2df17b",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/source-scan.json",
+          "size": 1222,
+          "sha256": "895475581dbd4808aa38e3c3e260670a0c87ddbd9ded0063de3d3e049b2df17b"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/handoff.json",
+        "size": 9493,
+        "sha256": "d1d706e4494ddb5ada98068cb102019de4faa35233c53fe884d5570447ed45bb"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-RENDER-SCAN"
+      },
+      "locator": "render-scan.json",
+      "revision": "sha256:8211ed4df8f3076a45be98f12205f9796b47952840595443976d936c24694203",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/render-scan.json",
+          "size": 5791,
+          "sha256": "8211ed4df8f3076a45be98f12205f9796b47952840595443976d936c24694203"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/handoff.json",
+        "size": 9493,
+        "sha256": "d1d706e4494ddb5ada98068cb102019de4faa35233c53fe884d5570447ed45bb"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-COMMIT"
+      },
+      "locator": "https://github.com/syuhei0519/application-manifest/commit/e0f79a61643d31a29de73ffc54bb6a31c320f0df",
+      "revision": "e0f79a61643d31a29de73ffc54bb6a31c320f0df",
+      "target": {
+        "reference": {
+          "object_type": "git-commit-object",
+          "repository": "syuhei0519/application-manifest",
+          "commit": "e0f79a61643d31a29de73ffc54bb6a31c320f0df",
+          "size": 287,
+          "sha256": "1ff15f6c281879e2ffc928da7d0973515726a2edebadb4d7fa57d536b5b99ff4"
+        },
+        "format": "git-commit-object"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/handoff.json",
+        "size": 9493,
+        "sha256": "d1d706e4494ddb5ada98068cb102019de4faa35233c53fe884d5570447ed45bb"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-CI"
+      },
+      "locator": "ci-observations.json",
+      "revision": "sha256:edad080fd9c9fe967f572158465d02f161009f31a102168e27c13b3e135ad320",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+          "path": "evidence/order-m1/implementation-a1/ci-observations.json",
+          "size": 662,
+          "sha256": "edad080fd9c9fe967f572158465d02f161009f31a102168e27c13b3e135ad320"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/handoff.json",
+        "size": 9493,
+        "sha256": "d1d706e4494ddb5ada98068cb102019de4faa35233c53fe884d5570447ed45bb"
+      },
+      "slot": {
+        "kind": "upstream",
+        "role": "test",
+        "task_id": "order-b1-test-e2-a1",
+        "attempt": 1,
+        "relationship": "dependency"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/f5a93108cdbbce934a0838c280bdf0a18ba32429/evidence/order-b1/test-e2-a1/handoff.json",
+      "revision": "sha256:4cc00afcad190f144e9299a89dcef9604ec74a2733da05b605730061bbcebaa3",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "f5a93108cdbbce934a0838c280bdf0a18ba32429",
+          "path": "evidence/order-b1/test-e2-a1/handoff.json",
+          "size": 9040,
+          "sha256": "4cc00afcad190f144e9299a89dcef9604ec74a2733da05b605730061bbcebaa3"
+        },
+        "format": "handoff-v2"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "0d596964bf351ac59fdacb2e208e0b9bdb828db1",
+        "path": "evidence/order-m1/implementation-a1/handoff.json",
+        "size": 9493,
+        "sha256": "d1d706e4494ddb5ada98068cb102019de4faa35233c53fe884d5570447ed45bb"
+      },
+      "slot": {
+        "kind": "upstream",
+        "role": "research-design",
+        "task_id": "research-order-design-a3",
+        "attempt": 3,
+        "relationship": "dependency"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332/delivery-verification/20261011/research-public/handoff.json",
+      "revision": "sha256:2c1876c21567399ca6ecf1d8afaed96c062da5a154b01d165f42a3e0f3afbc7d",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+          "path": "delivery-verification/20261011/research-public/handoff.json",
+          "size": 5973,
+          "sha256": "2c1876c21567399ca6ecf1d8afaed96c062da5a154b01d165f42a3e0f3afbc7d"
+        },
+        "format": "handoff-v2"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f794cf63a8379f06b9bb770b2fac4ba1fb0951fa",
+        "path": "evidence/order-b1/e2-a1/handoff.json",
+        "size": 5744,
+        "sha256": "3c3ba9cfec83cfbed18c34853d62d833f859df79acb2fbc2bfa2fd8486e40100"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-CODE"
+      },
+      "locator": "https://github.com/syuhei0519/backend-app/commit/7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "revision": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+      "target": {
+        "reference": {
+          "object_type": "git-commit-object",
+          "repository": "syuhei0519/backend-app",
+          "commit": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+          "size": 283,
+          "sha256": "dd53f3e25c16f8fccc95bf4e6329b04d771c36e09e1e92d16a57826a8beb07df"
+        },
+        "format": "git-commit-object"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f794cf63a8379f06b9bb770b2fac4ba1fb0951fa",
+        "path": "evidence/order-b1/e2-a1/handoff.json",
+        "size": 5744,
+        "sha256": "3c3ba9cfec83cfbed18c34853d62d833f859df79acb2fbc2bfa2fd8486e40100"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-TEST"
+      },
+      "locator": "test-report.txt",
+      "revision": "sha256:6328ca0720740ba82d971669d53fff6deee5c53a03d88a805aeed2c63f868741",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "f794cf63a8379f06b9bb770b2fac4ba1fb0951fa",
+          "path": "evidence/order-b1/e2-a1/test-report.txt",
+          "size": 6247,
+          "sha256": "6328ca0720740ba82d971669d53fff6deee5c53a03d88a805aeed2c63f868741"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f794cf63a8379f06b9bb770b2fac4ba1fb0951fa",
+        "path": "evidence/order-b1/e2-a1/handoff.json",
+        "size": 5744,
+        "sha256": "3c3ba9cfec83cfbed18c34853d62d833f859df79acb2fbc2bfa2fd8486e40100"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-KNOWLEDGE"
+      },
+      "locator": "knowledge-candidates.json",
+      "revision": "sha256:e93d2066e3d3b1bab6753ba2eef9f28edaf33f9d3f0fb710eebfdcc7282748b8",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "f794cf63a8379f06b9bb770b2fac4ba1fb0951fa",
+          "path": "evidence/order-b1/e2-a1/knowledge-candidates.json",
+          "size": 1546,
+          "sha256": "e93d2066e3d3b1bab6753ba2eef9f28edaf33f9d3f0fb710eebfdcc7282748b8"
+        },
+        "format": "knowledge-candidates-v1"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f794cf63a8379f06b9bb770b2fac4ba1fb0951fa",
+        "path": "evidence/order-b1/e2-a1/handoff.json",
+        "size": 5744,
+        "sha256": "3c3ba9cfec83cfbed18c34853d62d833f859df79acb2fbc2bfa2fd8486e40100"
+      },
+      "slot": {
+        "kind": "upstream",
+        "role": "research-design",
+        "task_id": "research-order-design-a3",
+        "attempt": 3,
+        "relationship": "dependency"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332/delivery-verification/20261011/research-public/handoff.json",
+      "revision": "sha256:2c1876c21567399ca6ecf1d8afaed96c062da5a154b01d165f42a3e0f3afbc7d",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+          "path": "delivery-verification/20261011/research-public/handoff.json",
+          "size": 5973,
+          "sha256": "2c1876c21567399ca6ecf1d8afaed96c062da5a154b01d165f42a3e0f3afbc7d"
+        },
+        "format": "handoff-v2"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+        "path": "delivery-verification/20261011/research-public/attempt2-handoff.json",
+        "size": 5892,
+        "sha256": "73bed3bf2610822723e41f6a99d1154d2629932b7433bc72f2c8812694a91405"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-HISTORY"
+      },
+      "locator": "history.txt",
+      "revision": "sha256:dbdcd75a5fbf91e3cde6d983def2226d2d15d7e7aa07b226cdc0514f20f9cc74",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+          "path": "delivery-verification/20261011/research-public/history.txt",
+          "size": 1578,
+          "sha256": "dbdcd75a5fbf91e3cde6d983def2226d2d15d7e7aa07b226cdc0514f20f9cc74"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+        "path": "delivery-verification/20261011/research-public/attempt2-handoff.json",
+        "size": 5892,
+        "sha256": "73bed3bf2610822723e41f6a99d1154d2629932b7433bc72f2c8812694a91405"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-DESIGN"
+      },
+      "locator": "design.txt",
+      "revision": "sha256:44ab0b6be4f709f5bfcb4750250d94bb1781a4083a52082df62b366647b5b8e8",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+          "path": "delivery-verification/20261011/research-public/design.txt",
+          "size": 29180,
+          "sha256": "44ab0b6be4f709f5bfcb4750250d94bb1781a4083a52082df62b366647b5b8e8"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+        "path": "delivery-verification/20261011/research-public/attempt2-handoff.json",
+        "size": 5892,
+        "sha256": "73bed3bf2610822723e41f6a99d1154d2629932b7433bc72f2c8812694a91405"
+      },
+      "slot": {
+        "kind": "upstream",
+        "role": "research-design",
+        "task_id": "research-order-design-a1",
+        "attempt": 1,
+        "relationship": "retry_of"
+      },
+      "locator": "attempt1-handoff.json",
+      "revision": "sha256:3ebef4d803e39ef6ae23943f229518fce6d85dff82a5214c1324b98ddd864681",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+          "path": "delivery-verification/20261011/research-public/attempt1-handoff.json",
+          "size": 5172,
+          "sha256": "3ebef4d803e39ef6ae23943f229518fce6d85dff82a5214c1324b98ddd864681"
+        },
+        "format": "handoff-v2"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+        "path": "delivery-verification/20261011/research-public/attempt1-handoff.json",
+        "size": 5172,
+        "sha256": "3ebef4d803e39ef6ae23943f229518fce6d85dff82a5214c1324b98ddd864681"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-HISTORY"
+      },
+      "locator": "history.txt",
+      "revision": "sha256:dbdcd75a5fbf91e3cde6d983def2226d2d15d7e7aa07b226cdc0514f20f9cc74",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "10eadfdf3d2f3b4de9d0c4ca5d6ac1fb296ca332",
+          "path": "delivery-verification/20261011/research-public/history.txt",
+          "size": 1578,
+          "sha256": "dbdcd75a5fbf91e3cde6d983def2226d2d15d7e7aa07b226cdc0514f20f9cc74"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f",
+        "path": "evidence/order-m1/implementation-a3/handoff.json",
+        "size": 7402,
+        "sha256": "543e0fe833c0bbfe828724b83e347d4e8aa81a1640c13b8839f43c2000954f16"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-REPORT"
+      },
+      "locator": "report.txt",
+      "revision": "sha256:ed4959d23b356919490deaf044206e2f542a96507f75623132b9fc742a0b4e5e",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f",
+          "path": "evidence/order-m1/implementation-a3/report.txt",
+          "size": 9303,
+          "sha256": "ed4959d23b356919490deaf044206e2f542a96507f75623132b9fc742a0b4e5e"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f",
+        "path": "evidence/order-m1/implementation-a3/handoff.json",
+        "size": 7402,
+        "sha256": "543e0fe833c0bbfe828724b83e347d4e8aa81a1640c13b8839f43c2000954f16"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-RESULTS"
+      },
+      "locator": "results.json",
+      "revision": "sha256:7fa0c80f505736a6cbbdbff02e73a64062411a68ae50e13d42d883a63f9fcb29",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f",
+          "path": "evidence/order-m1/implementation-a3/results.json",
+          "size": 115744,
+          "sha256": "7fa0c80f505736a6cbbdbff02e73a64062411a68ae50e13d42d883a63f9fcb29"
+        },
+        "format": "json"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f",
+        "path": "evidence/order-m1/implementation-a3/handoff.json",
+        "size": 7402,
+        "sha256": "543e0fe833c0bbfe828724b83e347d4e8aa81a1640c13b8839f43c2000954f16"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-PATCH"
+      },
+      "locator": "implementation.patch",
+      "revision": "sha256:eec51cb9519782eb25f24327b1e21d00bcab1d7221a9c50697c11232083714ba",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f",
+          "path": "evidence/order-m1/implementation-a3/implementation.patch",
+          "size": 13027,
+          "sha256": "eec51cb9519782eb25f24327b1e21d00bcab1d7221a9c50697c11232083714ba"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f",
+        "path": "evidence/order-m1/implementation-a3/handoff.json",
+        "size": 7402,
+        "sha256": "543e0fe833c0bbfe828724b83e347d4e8aa81a1640c13b8839f43c2000954f16"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-REPLAY"
+      },
+      "locator": "implementation-replay.py",
+      "revision": "sha256:e6f7ac66e2f4d1c7f4df9cad710ac2e7cda0be2d033773be94b04dc656426a04",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f",
+          "path": "evidence/order-m1/implementation-a3/implementation-replay.py",
+          "size": 7725,
+          "sha256": "e6f7ac66e2f4d1c7f4df9cad710ac2e7cda0be2d033773be94b04dc656426a04"
+        },
+        "format": "text"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f",
+        "path": "evidence/order-m1/implementation-a3/handoff.json",
+        "size": 7402,
+        "sha256": "543e0fe833c0bbfe828724b83e347d4e8aa81a1640c13b8839f43c2000954f16"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-KNOWLEDGE"
+      },
+      "locator": "knowledge-candidates.json",
+      "revision": "sha256:c8dff9a00aa58f247a5aef7ad97c82e7e2d1993b00fee497290e690c8a8beb8f",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f",
+          "path": "evidence/order-m1/implementation-a3/knowledge-candidates.json",
+          "size": 852,
+          "sha256": "c8dff9a00aa58f247a5aef7ad97c82e7e2d1993b00fee497290e690c8a8beb8f"
+        },
+        "format": "knowledge-candidates-v1"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f",
+        "path": "evidence/order-m1/implementation-a3/handoff.json",
+        "size": 7402,
+        "sha256": "543e0fe833c0bbfe828724b83e347d4e8aa81a1640c13b8839f43c2000954f16"
+      },
+      "slot": {
+        "kind": "artifact",
+        "id": "A-COMMIT"
+      },
+      "locator": "https://github.com/syuhei0519/application-manifest/commit/41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+      "revision": "41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+      "target": {
+        "reference": {
+          "object_type": "git-commit-object",
+          "repository": "syuhei0519/application-manifest",
+          "commit": "41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+          "size": 283,
+          "sha256": "b65585d3e3532bf1c1e9e7094dff3dc3b74c86a8fee880700f70e5bea65eaaa3"
+        },
+        "format": "git-commit-object"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f",
+        "path": "evidence/order-m1/implementation-a3/handoff.json",
+        "size": 7402,
+        "sha256": "543e0fe833c0bbfe828724b83e347d4e8aa81a1640c13b8839f43c2000954f16"
+      },
+      "slot": {
+        "kind": "upstream",
+        "role": "implementation",
+        "task_id": "order-m1-implementation-a2",
+        "attempt": 2,
+        "relationship": "retry_of"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/c50af45ceb871d82734b2c4efa5319205c420cd6/evidence/order-m1/implementation-a2/handoff.json",
+      "revision": "sha256:1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "c50af45ceb871d82734b2c4efa5319205c420cd6",
+          "path": "evidence/order-m1/implementation-a2/handoff.json",
+          "size": 15115,
+          "sha256": "1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473"
+        },
+        "format": "handoff-v2"
+      }
+    },
+    {
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f",
+        "path": "evidence/order-m1/implementation-a3/handoff.json",
+        "size": 7402,
+        "sha256": "543e0fe833c0bbfe828724b83e347d4e8aa81a1640c13b8839f43c2000954f16"
+      },
+      "slot": {
+        "kind": "upstream",
+        "role": "test",
+        "task_id": "order-m1-test-a1",
+        "attempt": 1,
+        "relationship": "dependency"
+      },
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/aaf099bd157a4113f1f28ea09259bc7964e78450/evidence/order-m1/test-a1/handoff.json",
+      "revision": "sha256:b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d",
+      "target": {
+        "reference": {
+          "object_type": "git-blob",
+          "repository": "syuhei0519/ai-development-system",
+          "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+          "path": "evidence/order-m1/test-a1/handoff.json",
+          "size": 28483,
+          "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+        },
+        "format": "handoff-v2"
+      }
+    }
+  ],
+  "candidate_bindings": [
+    {
+      "profile": "knowledge-candidates-v1",
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/knowledge-candidates.json",
+        "size": 899,
+        "sha256": "38057f3d30949b9c7c07e460f6c1298f1e5d009b36f447284a25f0d359f2648a"
+      },
+      "producer": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "aaf099bd157a4113f1f28ea09259bc7964e78450",
+        "path": "evidence/order-m1/test-a1/handoff.json",
+        "size": 28483,
+        "sha256": "b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d"
+      },
+      "producer_artifact_id": "A-KNOWLEDGE",
+      "candidate_ids": [
+        "K-RAW-HELM-DELIVERY"
+      ],
+      "sources": [
+        {
+          "candidate_id": "K-RAW-HELM-DELIVERY",
+          "source": "https://github.com/syuhei0519/ai-development-system/tree/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/artifacts",
+          "target": {
+            "kind": "tree",
+            "snapshot": {
+              "profile": "git-tree-snapshot-v1",
+              "repository": "syuhei0519/ai-development-system",
+              "commit": "37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e",
+              "path": "evidence/order-m1/test-a1/artifacts",
+              "oid": "608a0c38595da02b8c397af39ca5daee05316780",
+              "trees": [],
+              "files": [
+                {
+                  "path": "deployment",
+                  "mode": "100644",
+                  "oid": "94c19555ae2bee4ffd7707f68c964d9c12b45bae",
+                  "size": 2062,
+                  "sha256": "8df6db56f3c51d9d4c8aa64ed2d1e363f0c448175df86e7cc3e3d503998f8ba6"
+                },
+                {
+                  "path": "migration-job",
+                  "mode": "100644",
+                  "oid": "741864fa2696ea9bd143bdca2ea77be4fec014d5",
+                  "size": 1410,
+                  "sha256": "d4c3ce246c26cdf515b0859cdd75abf1912e12d0a96c0a7f4dc133ef10b6fcee"
+                },
+                {
+                  "path": "pvc",
+                  "mode": "100644",
+                  "oid": "7dd259fde1af8b0ebc4560fb3bf8030397b80bf1",
+                  "size": 472,
+                  "sha256": "91d4e572d1b9ef46dcc0c319f200d8dc4c9541db70c2cb70a341fc411a8c76cd"
+                },
+                {
+                  "path": "statefulset",
+                  "mode": "100644",
+                  "oid": "2e2d39ad316ed7fc193124eee9b0d4213adef5c1",
+                  "size": 3517,
+                  "sha256": "cec752347fd3d208ddb15dfb71dd73c75ca60219f08a9de4d2affc47f70cffcc"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "profile": "knowledge-candidates-v1",
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f794cf63a8379f06b9bb770b2fac4ba1fb0951fa",
+        "path": "evidence/order-b1/e2-a1/knowledge-candidates.json",
+        "size": 1546,
+        "sha256": "e93d2066e3d3b1bab6753ba2eef9f28edaf33f9d3f0fb710eebfdcc7282748b8"
+      },
+      "producer": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "f794cf63a8379f06b9bb770b2fac4ba1fb0951fa",
+        "path": "evidence/order-b1/e2-a1/handoff.json",
+        "size": 5744,
+        "sha256": "3c3ba9cfec83cfbed18c34853d62d833f859df79acb2fbc2bfa2fd8486e40100"
+      },
+      "producer_artifact_id": "A-KNOWLEDGE",
+      "candidate_ids": [
+        "K-disposable-port",
+        "K-order-isolation"
+      ],
+      "sources": [
+        {
+          "candidate_id": "K-disposable-port",
+          "source": "https://github.com/syuhei0519/backend-app/blob/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/ordertest/disposable.go",
+          "target": {
+            "kind": "blob",
+            "reference": {
+              "object_type": "git-blob",
+              "repository": "syuhei0519/backend-app",
+              "commit": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+              "path": "internal/ordertest/disposable.go",
+              "size": 4510,
+              "sha256": "470442497265bdcb329d33e4b14e58a5cad1d346e6e0cfcda3c95dbb07fd3bf9"
+            }
+          }
+        },
+        {
+          "candidate_id": "K-order-isolation",
+          "source": "https://github.com/syuhei0519/backend-app/tree/7b54f55cf1a652ee127528877b3bb9034b75b311/internal/store/orderpostgres",
+          "target": {
+            "kind": "tree",
+            "snapshot": {
+              "profile": "git-tree-snapshot-v1",
+              "repository": "syuhei0519/backend-app",
+              "commit": "7b54f55cf1a652ee127528877b3bb9034b75b311",
+              "path": "internal/store/orderpostgres",
+              "oid": "798a8810324baff8a44224f3fe8c1bc3e9d580af",
+              "trees": [],
+              "files": [
+                {
+                  "path": "migrate.go",
+                  "mode": "100644",
+                  "oid": "e7ba1476aa1ec198e714314bcb4781b104b25a00",
+                  "size": 4783,
+                  "sha256": "070cd8ca5f7be0ac938c6283a3163ad054e6de368fb92c24b23bb9a0021f76e3"
+                },
+                {
+                  "path": "migrate_integration_test.go",
+                  "mode": "100644",
+                  "oid": "d8b012ff3b0b521d10f4e00e84a1265ea5faed5e",
+                  "size": 4736,
+                  "sha256": "6091cf2e397434782898006b61a2b85681fdb8ef78cb4bdb8c6d1fc69bfc7ea1"
+                },
+                {
+                  "path": "store.go",
+                  "mode": "100644",
+                  "oid": "e21643dd112f3191dfcb2a5e20d90e37906b2d49",
+                  "size": 4607,
+                  "sha256": "66464105dab9626688cf5e7706a967c0ed99258e7f6e9341ffa5ed7c766ea9eb"
+                },
+                {
+                  "path": "store_test.go",
+                  "mode": "100644",
+                  "oid": "6550e38b672e07dcbd01afc598bd9bd9cc9037e7",
+                  "size": 1008,
+                  "sha256": "bc12ddb6756b6adc18882bf86553ebd005633821df740205a5caaa92ea01e0d5"
+                },
+                {
+                  "path": "wait.go",
+                  "mode": "100644",
+                  "oid": "695cbef74d585da06fbe8ef07208c7c8a14a82ba",
+                  "size": 1487,
+                  "sha256": "29c46daa3451f0dcd1bdaade93c55d960bc1f6b9bdc5dc0e0aa73cd079d435d4"
+                },
+                {
+                  "path": "wait_test.go",
+                  "mode": "100644",
+                  "oid": "602e0bd004cc94d07719d6dfa048f7bbee8cf7d8",
+                  "size": 2461,
+                  "sha256": "c7729a49f92bcaf8d6abcae32bab4790f7e7ebbd3404c7d5c8f660e89096e34d"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "profile": "knowledge-candidates-v1",
+      "owner": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f",
+        "path": "evidence/order-m1/implementation-a3/knowledge-candidates.json",
+        "size": 852,
+        "sha256": "c8dff9a00aa58f247a5aef7ad97c82e7e2d1993b00fee497290e690c8a8beb8f"
+      },
+      "producer": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f",
+        "path": "evidence/order-m1/implementation-a3/handoff.json",
+        "size": 7402,
+        "sha256": "543e0fe833c0bbfe828724b83e347d4e8aa81a1640c13b8839f43c2000954f16"
+      },
+      "producer_artifact_id": "A-KNOWLEDGE",
+      "candidate_ids": [
+        "K-POD-HOST-BOUNDARY"
+      ],
+      "sources": [
+        {
+          "candidate_id": "K-POD-HOST-BOUNDARY",
+          "source": "https://github.com/syuhei0519/application-manifest/blob/41a7e9632102a8c30ff7fa57570fd85aea19adf1/tools/inventory/pod_boundary_test.go",
+          "target": {
+            "kind": "blob",
+            "reference": {
+              "object_type": "git-blob",
+              "repository": "syuhei0519/application-manifest",
+              "commit": "41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+              "path": "tools/inventory/pod_boundary_test.go",
+              "size": 3443,
+              "sha256": "2ad72195585f59c157d201ac7652da6d8214f94eebeb8fd1f8ef1ddebd0aff15"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
