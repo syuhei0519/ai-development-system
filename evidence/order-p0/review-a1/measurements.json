@@ -1,0 +1,331 @@
+{
+  "document_type": "independent_review_measurements",
+  "public_alias": "order-p0-review-a1",
+  "epoch": 1,
+  "attempt": 1,
+  "status": "failed",
+  "subject": {
+    "repository": "syuhei0519/platform-gitops",
+    "pr_number": 58,
+    "head_sha": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+    "base_sha": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+    "target_revision": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+    "config_revision": "sha256:3ba80361940bcb0423db220d3fbc13ec1c0acb791e10b71d3327e160936fc969",
+    "merge_group_sha": null
+  },
+  "system_revision": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+  "manifest_revision": "bc6adaedcd645a4663c23284b977a3dd36c0796d",
+  "context_sha256": "a6bd128794d1a3130a43e1a6274ccda5c3e200c9300d970d8ad3023b67dc63b9",
+  "measurement_window": {
+    "earliest_conservative_bound": "2026-10-11T17:55:00Z",
+    "observed_at": "2026-10-11T18:02:00Z",
+    "valid_until": "2026-10-12T17:55:00Z",
+    "invalidation": "Any change in head/base/target/config/artifacts, new contradictory evidence, or expiry requires fresh independent review. Failure remains blocking until fixed and re-reviewed; expiry never turns failure into pass. Manager must refresh mutable policy separately."
+  },
+  "policy_observed_at": "2026-10-11T17:37:33Z",
+  "policy_valid_until": "2026-10-11T18:22:33Z",
+  "input_delivery": {
+    "canonical_consume_delivery_exit": 0,
+    "explicit_artifacts": 50,
+    "physical_objects": 107,
+    "bytes": 650125,
+    "manifest_sha256": "2c9844b8c92e5c8fa60c4b139dfb94657cd75f90e66d9c51388a794b2c35e8e0",
+    "publication_receipt_sha256": "89993a0084215da492b5ceac067c2c0502511d4fb0c625792119c166f914f493",
+    "verification": "full-raw-bytes-size-sha256-json-handoff-knowledge-slots-git-objects-candidates-trees",
+    "limits": "Fresh Consumer authorization and Consumption Receipt private. Historical publication approval unverified; current Consumer use authorized. Original public representations and edited derivatives preserved; no claim of private-original equivalence."
+  },
+  "artifacts": [
+    {
+      "id": "order-applications",
+      "locator": "artifacts/order-applications",
+      "revision": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+      "sha256": "de513a9849e81ea479076027461d0542aea4104b75fe4db39988aadb4fffbcfd",
+      "size_bytes": 1274
+    },
+    {
+      "id": "workloads-schema",
+      "locator": "artifacts/workloads-schema",
+      "revision": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+      "sha256": "24c6cf3632e199a1c7b4b3cdfe93798741fd4ac11839d8bfbd4cba32b1f62e3c",
+      "size_bytes": 864
+    },
+    {
+      "id": "bootstrap-observer",
+      "locator": "artifacts/bootstrap-observer",
+      "revision": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+      "sha256": "9f5bd6f950d0bf5fa4c11939b1c205826511b3e81bb36b33526e789476682af2",
+      "size_bytes": 6662
+    }
+  ],
+  "findings": [
+    {
+      "id": "R1",
+      "severity": "P2",
+      "blocking": true,
+      "condition_ids": [
+        "P0-S3",
+        "P0-S4"
+      ],
+      "title": "Order readiness is not bound to the expected Application configuration",
+      "path": "tools/bootstrap/main.go",
+      "lines": [
+        110,
+        116
+      ],
+      "trigger": "Either enabled Order Application has its project, destination, repo/path or Helm overrides changed while its previous Synced/Healthy status and successful operation remain. Git targetRevision can remain identical.",
+      "observation": "The fixed binary returns exit 0 for wrong project, namespace, cluster, source path, repository and changed Helm parameters in each of the two Order leaves: 12 unexpected successes. A wrong project or cluster can also remain a settled healthy configuration. Status resource namespace alone does not bind destination cluster/project.",
+      "impact": "The new observer can authorize progress using an unrelated or unreconciled configuration despite a matching commit. P0-S3 only-complete-correct-observations requirement is not met. This is an observer gate defect, not evidence of real deployment or unauthorized access.",
+      "fix_condition": "Bind Order readiness to expected project, destination server/namespace and complete expected source configuration; reject unapproved multi-source/Helm overrides. Require compared/operation source evidence to agree with the intended effective configuration, or explicitly verify an equivalent trusted configuration fingerprint. Add both Order leaf negative tests including same-revision spec drift. Preserve intended legacy three-leaf behavior."
+    },
+    {
+      "id": "R2",
+      "severity": "P2",
+      "blocking": true,
+      "condition_ids": [
+        "P0-S3",
+        "P0-S4"
+      ],
+      "title": "Deleting Order Applications are accepted as ready",
+      "path": "tools/bootstrap/main.go",
+      "lines": [
+        99,
+        101
+      ],
+      "trigger": "An enabled Order Application has metadata.deletionTimestamp and an Argo resources finalizer while its last status is still Synced/Healthy with a successful operation.",
+      "observation": "Both order-postgresql/deleting-application and order/deleting-application return exit 0. Metadata is entirely ignored by the decoder.",
+      "impact": "The observer reports successful readiness for a leaf undergoing teardown; it may disappear or cascade-delete its workload immediately afterward. This is not the unavoidable race after observation: the deletion signal is already in the returned JSON.",
+      "fix_condition": "Reject or keep waiting on nonempty deletionTimestamp before declaring readiness, and cover finalizer-delayed deletion of each new Order leaf with a finite timeout test. Consider the same safe guard for legacy leaves explicitly rather than silently changing compatibility."
+    }
+  ],
+  "condition_results": [
+    {
+      "id": "P0-S1",
+      "outcome": "met",
+      "basis": "Six independent base/head render byte comparisons and five fixed existing boundary sources equal; three main-tracking leaves; default/local Order disabled."
+    },
+    {
+      "id": "P0-S2",
+      "outcome": "met",
+      "basis": "Helm normal/invalid boundaries, fixed synthetically enabled two-App topology and semantic regression passed. No real chart existence inferred."
+    },
+    {
+      "id": "P0-S3",
+      "outcome": "not_met",
+      "basis": "R1/R2: 14 unexpected successes across two Order leaves. Ordinary revision, unknown operation, unhealthy/wrong-namespace resource and failed hook cases correctly reject."
+    },
+    {
+      "id": "P0-S4",
+      "outcome": "not_met",
+      "basis": "Existing test/render suites pass but independent adversarial preparation checks reveal R1/R2. Documentation, scope and dependency handoff reviewed; all required preparation checks cannot be claimed passed."
+    }
+  ],
+  "file_coverage": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "condition_ids": [
+        "P0-S4"
+      ],
+      "review": "New semantic render test included; required aggregate job unchanged; no deployment command added."
+    },
+    {
+      "path": "charts/workloads/templates/order-applications.yaml",
+      "condition_ids": [
+        "P0-S1",
+        "P0-S2"
+      ],
+      "review": "False produces no bytes; fixed source, wave -10/0, existing project/namespace, existing safety sync options."
+    },
+    {
+      "path": "charts/workloads/values.schema.json",
+      "condition_ids": [
+        "P0-S1",
+        "P0-S2"
+      ],
+      "review": "Required boolean and string, conditional 40 lowercase hex, no extra keys; disabled staged fixed SHA permitted intentionally."
+    },
+    {
+      "path": "charts/workloads/values.yaml",
+      "condition_ids": [
+        "P0-S1"
+      ],
+      "review": "Live defaults false and empty revision."
+    },
+    {
+      "path": "ci/fixtures/order-p0/README.md",
+      "condition_ids": [
+        "P0-S4"
+      ],
+      "review": "Synthetic SHA distinction and fixed base snapshot origin accurate."
+    },
+    {
+      "path": "ci/fixtures/order-p0/enabled.yaml",
+      "condition_ids": [
+        "P0-S2",
+        "P0-S4"
+      ],
+      "review": "Fabricated SHA only; not live values."
+    },
+    {
+      "path": "ci/fixtures/order-p0/workloads-before.yaml",
+      "condition_ids": [
+        "P0-S1",
+        "P0-S4"
+      ],
+      "review": "Raw independent base render matches snapshot."
+    },
+    {
+      "path": "ci/includes/full-pipeline.yml",
+      "condition_ids": [
+        "P0-S4"
+      ],
+      "review": "GitLab matching render test integration; fixture outputs only schema validation inputs."
+    },
+    {
+      "path": "ci/test-order-workloads.sh",
+      "condition_ids": [
+        "P0-S1",
+        "P0-S2",
+        "P0-S4"
+      ],
+      "review": "Snapshots/normal/negative schema checks rerun; does not test observer R1/R2."
+    },
+    {
+      "path": "ci/validate.sh",
+      "condition_ids": [
+        "P0-S4"
+      ],
+      "review": "Invokes fixture checks; duplicate existing Application docs in schema bundle are validation fixtures, not apply input."
+    },
+    {
+      "path": "docs/operations/initial-leaf-readiness.md",
+      "condition_ids": [
+        "P0-S1",
+        "P0-S3",
+        "P0-S4"
+      ],
+      "review": "Preparation/product limits and recovery responsibilities retained; complete correct readiness claim requires R1/R2 fixes."
+    },
+    {
+      "path": "environments/local/workloads.yaml",
+      "condition_ids": [
+        "P0-S1"
+      ],
+      "review": "Local false and empty revision; full render unchanged."
+    },
+    {
+      "path": "tools/bootstrap/main.go",
+      "condition_ids": [
+        "P0-S3"
+      ],
+      "review": "Independent 27 synthetic cases: 14 unexpected successes in R1/R2; other new revision/resource/hook/unknown guards reject."
+    },
+    {
+      "path": "tools/bootstrap/order_render_test.go",
+      "condition_ids": [
+        "P0-S2",
+        "P0-S4"
+      ],
+      "review": "Semantic test rerun with real Helm fixture and no skip."
+    },
+    {
+      "path": "tools/bootstrap/order_test.go",
+      "condition_ids": [
+        "P0-S3",
+        "P0-S4"
+      ],
+      "review": "Existing new tests rerun; contain finite timeouts and earlier-leaf recheck; omit current configuration and deletion signals."
+    }
+  ],
+  "unchanged_boundaries": [
+    {
+      "path": "bootstrap/namespaces.yaml",
+      "size": 1010,
+      "sha256": "9c8f5981bffa444cad3ec4b0d64f533b1bdffdfe9e4f46fc090dda9824b54764",
+      "equal": true
+    },
+    {
+      "path": "bootstrap/root-project.yaml",
+      "size": 576,
+      "sha256": "dc7cc172cb0cd74ee6520a0751f727d47f95cf9010af8bc5ccd95b2bd3620969",
+      "equal": true
+    },
+    {
+      "path": "bootstrap/argocd-values.yaml",
+      "size": 3119,
+      "sha256": "5a869b06a8d067b5bbd326508aad45ea76f9bafa16260849be35e8c93daf7d2a",
+      "equal": true
+    },
+    {
+      "path": "charts/root/templates/projects.yaml",
+      "size": 2855,
+      "sha256": "e41ca9a79479ee1e1b41f55cf343e006769828191e7c8be76844c1d2b6388c02",
+      "equal": true
+    },
+    {
+      "path": "charts/workloads/templates/applications.yaml",
+      "size": 1233,
+      "sha256": "6bc92483833f169a0f19fb7349f9105f410007328069b25d24509e5c1c58a7ee",
+      "equal": true
+    }
+  ],
+  "classification": {
+    "pr_kind": "preparation",
+    "deployment_effect": "none",
+    "issue_integration_scope": "aggregate_required",
+    "supported": true,
+    "basis": "No desired-resource delta in six renders or existing namespace/project/Account source. Root/workloads/platform main tracking is unchanged and CI fixture render has no apply path. None means no desired-resource delta from this fixed PR, not proof of live state invariance or immunity to independent Manifest main changes. Observer defects block review without reclassifying this disabled preparation as activation."
+  },
+  "regression": {
+    "commands": [
+      "go test -count=1 ./... (tools/bootstrap)",
+      "bash ci/github/test.sh",
+      "sh ci/test-order-workloads.sh",
+      "PE_OBSERVABILITY_RENDER_DIR=.rendered .build/bootstrap-test -test.run ^TestOrderWorkloadsContract$ -test.v"
+    ],
+    "result": "All passed; docs checker 14 cases, bootstrap and scan-gate modules, Helm snapshots/schema fixtures, one Order semantic render test with zero skips.",
+    "upstream_only": "143 Test fixtures, race/vet, full Helm pipeline, Kubeconform 57 resources and security results freshly consumed and reviewed, not counted as this Review execution. CI is separately supplied Manager evidence, not reobserved or used as independent Review."
+  },
+  "compatibility": "Default three leaves remain; Account non-hook operation revision intentionally keeps prior behavior while unknown phase rejection tightens safely. Order source/status/operation mismatch, missing/unhealthy resources and failed hook reject. Existing tests exercise re-polling earlier leaves. Observations are sequential, not an atomic whole-cluster snapshot. No live kubectl used.",
+  "issue_identity": "Historical specialized Handoff ID syuhei0519/backend-app#2 and canonical Manager backend-app#2 have identical source URL and full AC text. Exact-ID formal pairing is Manager responsibility; no irresolvable semantic mismatch found; historical bytes not altered.",
+  "followup": [
+    {
+      "ac_id": "AC-3",
+      "owner": "Manager coordinates M2/P1; independent Test measures real Argo/runtime acceptance.",
+      "environment": "Approved isolated kind first, then actual target only with Deployment Ready and required owner/environment approval.",
+      "method": "Use genuine B2 image digest, merged M2 revision and fixed P1 candidate, check migration/DB/Service/ArgoSyncedHealthy/runtimeimageID and AccountOrder regressions, then repeat final integrated main state.",
+      "dependencies": [
+        "B2 actual Order release",
+        "M1 disabled charts and M2 realdigest selection",
+        "P1 fixed final Manifestrevision",
+        "Authorized kind/context/Secret/PVC/rollback readiness",
+        "T7 final integrated measurement"
+      ],
+      "failure_action": "Stop affected merge/enable/deploy, retain Account data and OrderPVC, record safe failure evidence, forward-fix and independently retest."
+    }
+  ],
+  "product_outcomes": [
+    {
+      "ac_id": "AC-1",
+      "outcome": "unverified"
+    },
+    {
+      "ac_id": "AC-2",
+      "outcome": "unverified"
+    },
+    {
+      "ac_id": "AC-3",
+      "outcome": "unverified"
+    }
+  ],
+  "remaining_unverified": [
+    "actual Argo/Service/image digest",
+    "kind",
+    "P1",
+    "T6",
+    "T7",
+    "all product ACs",
+    "real cluster unchanged after merge",
+    "GitHub mutable policy refresh and final Manager Readiness"
+  ],
+  "constraints": "No app code edits, enablement, merge/main push, cluster operation, Secret/permissions/Ruleset changes, external comments or Knowledge Agent dispatch. Review failure halts dependent progression."
+}

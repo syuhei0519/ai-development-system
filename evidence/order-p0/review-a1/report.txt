@@ -1,0 +1,28 @@
+Independent P0 Review / order-p0-review-a1 / epoch 1 attempt 1
+
+判定: failed。阻害指摘 R1/R2 があり、Manager は修正工程へ戻す。AC-3 not_met は今回の準備レビュー工程だけの不合格で、製品 AC-3 の実測不合格を意味しない。全製品 AC は unverified。Merge/Deployment Ready、最終 Issue Completion、GitHub review approval を発行しない。
+
+R1 (P2, blocking) tools/bootstrap/main.go:110-116
+期待する Application の設定と観測 status が結合されていない。Order 2 leaf の spec.project、destination.namespace/server、source.repoURL/path、Helm override を変え、同じ targetRevision と以前の正常 status を残すと全12ケースで exit 0。project を default に変えた正常 Application や別 cluster の同名 workload も、resource の namespace だけでは区別できない。特に同一 Git SHA の Helm parameter 変更は revision 比較では検出できない。期待する project/配備先/source と実効 Helm 設定を検査し、comparison/operation がその設定に対応した証拠を要求すること。既存3 leafの互換性は明示的に維持する。
+
+R2 (P2, blocking) tools/bootstrap/main.go:99-101
+削除中の Order Application を成功化する。metadata.deletionTimestamp と resources-finalizer.argocd.argoproj.io が存在する合成入力でも、以前の Healthy/Synced/operation Succeeded が残ると2 leafとも exit 0。観測後に起きる不可避な競合ではなく、取得した JSON に既に現れた終了状態の見落とし。ready の前に deletionTimestamp を拒否し、各 leaf の finalizer 待ち削除ケースで有限待機・非0終了を検証すること。従来デコーダも metadata を読まないが、新規 Order ready 経路にもこの不足を持ち込んでいる。
+
+再現: Go 1.27.1 / Helm 4.2.4 / Python 3。
+(cd HEAD/tools/bootstrap && CGO_ENABLED=0 go build -trimpath -o /tmp/order-review-observer .)
+python3 reproduce.py HEAD BASE /tmp/order-review-observer /tmp/review-reproductions.json
+HEAD=e01882d8a2c4ac4eadad5b081c1b5c69e5599776、BASE=b989e29b8addbd6396c5c2b4833b969bc15fc8fa の各 checkout。合成 fake kubectl のみを使用し実 cluster へ接続しない。reproductions.json の期待値と実際の exit、入力の変更箇所、呼出し leaf、合成 stdout/stderr を参照。再現スクリプトの成功終了は不具合解消を意味しない。各 matched を評価する。
+
+全15変更ファイルは measurements.json の file_coverage に記録。P0-S1 met: root/platform/workloads の default/local 全6 render は raw byte 一致、既存 namespace/root project/Argo health/AppProject/Account template の5境界も同一。default/local Order無効、既存3App main追跡不変。P0-S2 met: enabled は合成SHAのみ、DB→Order waves、namespace/project、安全sync設定、正常/異常schemaと実render意味検査に合格。disabledに将来の有効固定SHAを置くschemaは許容されるが生成は無効のまま。CLIのdisabled+order-revision引数拒否とは別境界。P0-S3 not_met: 上記阻害2件。通常のsource/operation revision不一致、未知phase、resource不健康/namespace違い、failed hookは期待通り拒否。P0-S4 not_met: docs14ケース・両Go module・既存bootstrap・Order Helm fixture・実render意味テストは成功したが、新たな独立悪性ケースが不合格。TestのPASSをReviewのPASSに転記しない。
+
+preparation / none / aggregate_required の分類自体は固定差分で支持できる。none はこのPRがdesired resourcesを変えない範囲の判断で、実cluster状態不変や別途進むManifest mainの不変を保証しない。fixtureをCIでschema検証する経路はapply経路ではない。新Orderは有効にしていない。固定Manifest bc6adaedcd645a4663c23284b977a3dd36c0796d にはOrder chartsがなく、将来依存は未達。R1/R2があるため分類妥当性から工程合格は推論しない。
+
+固定System 4693887fa79c2b4a291c555b8bd27b6903eb4199 のReview/契約/templatesを読んだ。対象checkoutsに適用AGENTS.mdは存在しなかった。canonical consume_delivery.pyでTest配送の50 explicit/107物体/650125bytesを新規Git取得し、size/hash/type/slot/candidate/treeを全件検証した。認可・Consumption Receiptは非公開に保持。公開済み、過去公開承認unverified、今回Consumer利用承認は別概念。public original/edited derivativeを維持し、非公開原本との同一性は未検証。Testの143ケース・Kubeconform57件・securityなどは取得して内容を確認した上流根拠で、本Reviewによる同一測定の再実行とはしない。CIも別証拠である。
+
+context/configは既存raw bytesを検査し、再生成していない。3 artifactは固定Git raw bytesをartifacts/に保存し、size/SHA一致。ai-review-evidence.json はReadiness1.1 evidence項目に採用できる測定片で、ai_review verdictはfail。正式Readinessの発行やManagerの判定を代行しない。測定期限・失効条件はmeasurements.jsonに記録し、元policy 2026-10-11T18:22:33Zは延長しない。期限切れでも既知findingは解消扱いにせず、修正revisionを独立Test/Reviewで再検証する。
+
+歴史的専門Issue ID syuhei0519/backend-app#2 とManager canonical backend-app#2は同一source URL/全AC原文。歴史的bytesは保持し、正式Readiness/Manager Handoffの文字列一致はManagerが担当する。解決不能な意味的不一致は認めなかった。
+
+後続責任: ManagerがB2実image digest、M1/M2採用Manifest、P1固定候補、承認済みkind/context/Secret metadata/PVC容量/backup/復旧担当を揃える。独立Testと承認済み運用者がT6で実migration・DB・Service・Argo Synced/Healthy・Pod imageIDとAccount/Order CRUD・永続性を測る。T7は全必要統合後の最終SHA/digestで再測定する。失敗時は後続merge/enable/deploy停止、AccountデータとOrderPVC保持、非秘密障害証拠保存、許可された停止/無効化、forward修正と独立再検証。実Argo/Service/digest、kind/P1/T6/T7、全製品ACはunverified。準備完了を製品metや操作許可へ変換しない。
+
+公開物は公開alias、合成入力/出力、固定公開コード、今回の技術所見のみ。私的認可、Consumption Receipt、非公開原本hash、実task識別子、秘密、内部生ログは含めない。独立Consumerへの次の認可はManagerが別途発行する。dispatch/execution/delivery各最大3、epoch1/attempt1を保持し、過去TestやB1の履歴を付け替えない。実装変更、main push、merge、cluster操作、権限/Secret/Ruleset変更、外部コメント、Knowledge Agent起動なし。

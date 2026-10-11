@@ -1,0 +1,33 @@
+{
+  "id": "E-P0-INDEPENDENT-REVIEW",
+  "kind": "ai_review",
+  "subject": {
+    "repository": "syuhei0519/platform-gitops",
+    "pr_number": 58,
+    "head_sha": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+    "base_sha": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+    "target_revision": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+    "config_revision": "sha256:3ba80361940bcb0423db220d3fbc13ec1c0acb791e10b71d3327e160936fc969",
+    "merge_group_sha": null
+  },
+  "observed_at": "2026-10-11T18:02:00Z",
+  "valid_until": "2026-10-12T17:55:00Z",
+  "locator": "measurements.json",
+  "observation": "FAIL: R1 current Application configuration is not bound to readiness; R2 deleting Order Application succeeds. 15 changed files and existing boundaries reviewed; six renders equal, all three fixed artifact bytes verified. 27 independent observer cases yielded 14 unexpected successes; seven independent schema cases passed. Existing regressions passed. All product outcomes unverified. Use with ai_review verdict=fail, never pass. See measurements.json and reproductions.json.",
+  "producer": "order-p0-review-a1",
+  "independent": true,
+  "ac_ids": [
+    "AC-3"
+  ],
+  "condition_ids": [
+    "P0-S1",
+    "P0-S2",
+    "P0-S3",
+    "P0-S4"
+  ],
+  "artifact_ids": [
+    "order-applications",
+    "workloads-schema",
+    "bootstrap-observer"
+  ]
+}
