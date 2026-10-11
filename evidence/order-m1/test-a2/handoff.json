@@ -1,0 +1,299 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "syuhei0519/backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "test",
+  "task_id": "order-m1-test-a2",
+  "attempt": 2,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "order-m1-test-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/aaf099bd157a4113f1f28ea09259bc7964e78450/evidence/order-m1/test-a1/handoff.json",
+      "revision": "sha256:b9c41bf9506fc20ac30083468daf0f87d7101acccd1d3a43a3a3018e2361618d",
+      "relationship": "retry_of"
+    },
+    {
+      "role": "implementation",
+      "task_id": "order-m1-implementation-a3",
+      "attempt": 3,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/edcfd3a0356634c0b8f03c9fd7520be0d4bebb1f/evidence/order-m1/implementation-a3/handoff.json",
+      "revision": "sha256:543e0fe833c0bbfe828724b83e347d4e8aa81a1640c13b8839f43c2000954f16",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Independent Test completes M1-S1-S4 at repaired head:202 replay and394 additional boundary cases pass; full regressions and original F1/F2 retests pass. Old Test1 remains failed. Product ACs unverified. Exact Issue-ID Readiness pairing incompatibility explicitly reported; no Manager assessment or merge performed.",
+  "assignment": {
+    "scope": "application-manifest#backend-app-2/M1",
+    "ac_ids": [
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "M1-S1: Orderと専用PostgreSQL chartをdisabled既定で追加し、既存Account chart/values/render、Namespace/AppProject/Secret/既存DBデータを変えない。",
+      "M1-S2: 独立名/selector、同じimage digestのmigration JobとDeployment、health/security/Secret参照、DB/PVC保護を設計通りに表現し正常異常fixtureで検証する。",
+      "M1-S3: 既存trusted inventory/security/PVC検証を弱めず、両disabled/有効synthetic fixtureのlint/schema/render/全PodSpec検証に成功する。",
+      "M1-S4: 合成fixtureと実公開releaseを区別し、実イメージ・kind・M2/P1/T7の未検証と担当/方法/失敗時対応を引き継ぐ。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-REPORT",
+      "kind": "test-report",
+      "locator": "report.txt",
+      "revision": "sha256:885c4412e6e19d6f00ef7f02b321fa557f0aa1c1d71804f33e966d4500a674e8",
+      "summary": "Independent condition-by-condition result and limitations."
+    },
+    {
+      "id": "A-RESULTS",
+      "kind": "other",
+      "locator": "results.json",
+      "revision": "sha256:1da8e9289abff3ad621afc4082fccad8f348cb757b9cfc5363717c3963eadb26",
+      "summary": "Fresh measurements; original failures and incomplete/failed local commands retained."
+    },
+    {
+      "id": "A-COMMANDS",
+      "kind": "other",
+      "locator": "commands.json",
+      "revision": "sha256:1b2e4c2f0450aa3c4b625abba45975595679d6aff0c7ded188771fd4cdfb0848",
+      "summary": "Commands, times, environment and limits."
+    },
+    {
+      "id": "A-MEASUREMENT",
+      "kind": "other",
+      "locator": "measurement.json",
+      "revision": "sha256:62627a2a3ca4def558e945dab542cabfba4572f39f069cc47dbda609e173551f",
+      "summary": "Readiness1.1 input only: exact subject/config/preparation and7 artifact pins; not Manager assessment."
+    },
+    {
+      "id": "A-CONTEXT",
+      "kind": "other",
+      "locator": "context.json",
+      "revision": "sha256:98c3d5be98ee65a3f054c1670a8092830b7707a72bf75ebf45dbca1331221cc7",
+      "summary": "Exact Manager-pinned input bytes."
+    },
+    {
+      "id": "A-CONFIG",
+      "kind": "other",
+      "locator": "config.json",
+      "revision": "sha256:178d8cae2b1d7665aaeeb965ef5eb445d09c34171fe8e4ce81e2aad08a676ad6",
+      "summary": "Exact Manager-pinned configuration bytes."
+    },
+    {
+      "id": "A-CI",
+      "kind": "other",
+      "locator": "remote-ci.json",
+      "revision": "sha256:9eda50789d7294c3392003f189d89633966c711e1acc61d472fd4901b32047b3",
+      "summary": "Separate exact-head GitHub CI and Draft observation."
+    },
+    {
+      "id": "A-REPLAY",
+      "kind": "other",
+      "locator": "independent-replay.py",
+      "revision": "sha256:a487bfa359caf52a9ab5b30be60f6f162bed488d16a1847ce3cc15ef7dfa8489",
+      "summary": "Original harness derivative updates only head/tree pins."
+    },
+    {
+      "id": "A-BOUNDARIES",
+      "kind": "other",
+      "locator": "boundary-tests.py",
+      "revision": "sha256:157f81d8e2c9c4fce6631ee6f25c0a21f27d2267fa3825ace1db184fe6978755",
+      "summary": "Additional394 synthetic boundary cases."
+    },
+    {
+      "id": "A-ORIGINAL-RETEST",
+      "kind": "other",
+      "locator": "retest-original.py",
+      "revision": "sha256:d8efb38132637cbd2a4f2c1c30880342921fc85a2d496482aa4aa6463a85b073",
+      "summary": "Unmodified original fixture before/new binary comparison."
+    },
+    {
+      "id": "A-CONTRACT-CHECKS",
+      "kind": "other",
+      "locator": "contract-checks.py",
+      "revision": "sha256:c64bd46e522788c605dced780c4c11f54c67223dfc682aa717f7f53be0cb7ecf",
+      "summary": "Canonical schema/raw-pin checks and exact Issue-ID incompatibility diagnostic."
+    },
+    {
+      "id": "A-PLATFORM",
+      "kind": "other",
+      "locator": "platform-render.yaml",
+      "revision": "sha256:9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5",
+      "summary": "New render at fixed platform: existing3 Applications."
+    },
+    {
+      "id": "A-TRUSTED",
+      "kind": "other",
+      "locator": "trusted-render.json",
+      "revision": "sha256:336c53e450bab442cf930d54ec53c369cd9f10cdc183149bdc7fcaa8cbede3fa",
+      "summary": "New test-only sandbox trusted render; no authenticated eligibility."
+    },
+    {
+      "id": "A-SCOPE",
+      "kind": "other",
+      "locator": "changed-files.txt",
+      "revision": "sha256:a6c13ca41827a6afac9c7fa54408e4818e326c0eedde01fd61e108e4969a2588",
+      "summary": "All35 changed files."
+    },
+    {
+      "id": "A-SAFETY",
+      "kind": "other",
+      "locator": "publication-safety.json",
+      "revision": "sha256:dba826b6093f48fc8b488833c64bcf204c79cecf1bcf7e7017ba6ecdc16dc093",
+      "summary": "Public content safety review and exclusions."
+    },
+    {
+      "id": "A-KNOWLEDGE",
+      "kind": "knowledge",
+      "locator": "knowledge-candidates.json",
+      "revision": "sha256:1f8ef3b04106c25bad0720e2d3394e595236b554207a9c7cad7d55e20db2405a",
+      "summary": "Pending optional candidates; typed source-tree provenance."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-S1",
+      "claim": "M1-S1: Fixed desired resources unchanged; none holds",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-RESULTS",
+        "A-MEASUREMENT",
+        "A-COMMANDS"
+      ],
+      "locator": "report.txt",
+      "observation": "32 existing source files and3renders unchanged;4disabled outputs empty;fixed platform3Apps;trusted no diff."
+    },
+    {
+      "id": "E-S2",
+      "claim": "M1-S2: Dedicated Order/DB/migration structural preparation",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-RESULTS",
+        "A-MEASUREMENT",
+        "A-COMMANDS"
+      ],
+      "locator": "report.txt",
+      "observation": "Independent release/schema/security/Secret/PVC tests and synthetic202 replay pass; no actual release or DB observation."
+    },
+    {
+      "id": "E-S3",
+      "claim": "M1-S3: Independent original F1/F2 repair and full regressions",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-RESULTS",
+        "A-MEASUREMENT",
+        "A-COMMANDS"
+      ],
+      "locator": "report.txt",
+      "observation": "Original host fixtures:old accepted same digest,new rejected;namespace changed-digest old acceptance,new rejection;combinedold0/new1;additional394 pass;1317Go test/subtest passes;26Kubeconform valid;securitywarningsretained."
+    },
+    {
+      "id": "E-S4",
+      "claim": "M1-S4: Synthetic/product boundary and follow-up retained",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-RESULTS",
+        "A-MEASUREMENT",
+        "A-COMMANDS"
+      ],
+      "locator": "report.txt",
+      "observation": "All product ACs unverified;B2/M2/kind/P1/T7 responsible roles,environments,methods and failure actions explicit."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "unverified",
+      "scope": "Outside assignment; product outcome unverified.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASUREMENT"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "unverified",
+      "scope": "Outside assignment; product outcome unverified.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASUREMENT"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "covered",
+      "scope": "Independent M1 preparation Test duties only; product AC-3 unverified.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASUREMENT"
+      ],
+      "evidence_ids": [
+        "E-S1",
+        "E-S2",
+        "E-S3",
+        "E-S4"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [
+    {
+      "id": "K-HOST-NAMESPACE",
+      "domain": "render-security",
+      "summary": "Apply host namespace checks before image-family classification and enforce explicit render destination.",
+      "evidence_ids": [
+        "E-S3"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "safe_synthetic"
+    },
+    {
+      "id": "K-DISABLED-SCOPE",
+      "domain": "preparation-verification",
+      "summary": "Prove deployment none with unchanged active bytes/renders and fixed GitOps registration, while retaining product gates.",
+      "evidence_ids": [
+        "E-S1",
+        "E-S4"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "safe_synthetic"
+    },
+    {
+      "id": "K-TYPED-SOURCE",
+      "domain": "artifact-delivery",
+      "summary": "Keep raw Helm and validator source under typed complete source trees; preserve historical Issue identities separately from canonical assessment identity.",
+      "evidence_ids": [
+        "E-S1",
+        "E-S4"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "safe_synthetic"
+    }
+  ],
+  "publication": "public_safe"
+}

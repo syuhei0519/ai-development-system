@@ -1,0 +1,30 @@
+{
+  "document_type": "knowledge_candidates",
+  "publication_status": "pending_manager_review",
+  "candidates": [
+    {
+      "id": "K-HOST-NAMESPACE",
+      "domain": "render-security",
+      "summary": "Apply host namespace checks before image-family classification and enforce explicit render destination.",
+      "evidence": "Independent original fixture replay and394 synthetic boundary cases; old combined host acceptance versus repaired rejection.",
+      "source": "https://github.com/syuhei0519/application-manifest/tree/41a7e9632102a8c30ff7fa57570fd85aea19adf1/tools/inventory",
+      "scope": "Structural preparation validation; not a claim of live cluster enforcement."
+    },
+    {
+      "id": "K-DISABLED-SCOPE",
+      "domain": "preparation-verification",
+      "summary": "Prove deployment none with unchanged active bytes/renders and fixed GitOps registration, while retaining product gates.",
+      "evidence": "32 unchanged files,3 unchanged active renders,4 empty Order renders,3 fixed registered Applications; synthetic202 replay passes.",
+      "source": "https://github.com/syuhei0519/application-manifest/tree/41a7e9632102a8c30ff7fa57570fd85aea19adf1/charts",
+      "scope": "Fixed head/base/platform only; mutable policy refresh remains required."
+    },
+    {
+      "id": "K-TYPED-SOURCE",
+      "domain": "artifact-delivery",
+      "summary": "Keep raw Helm and validator source under typed complete source trees; preserve historical Issue identities separately from canonical assessment identity.",
+      "evidence": "Seven independently pinned raw source files; canonical exact Issue-ID pairing diagnostic.",
+      "source": "https://github.com/syuhei0519/ai-development-system/tree/6727c1d9b3a494892e1875643df9fca914a42d43/evidence/order-m1/test-a2/artifacts",
+      "scope": "Pending candidate only; no automatic adoption, authority or Readiness outcome."
+    }
+  ]
+}

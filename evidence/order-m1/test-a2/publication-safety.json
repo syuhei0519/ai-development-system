@@ -1,0 +1,16 @@
+{
+  "public_alias": "order-m1-test-a2",
+  "reviewed_at": "2026-10-11T18:00:21.058822+00:00",
+  "scope": "Public code and raw source, synthetic fixtures/results, public-alias reports/reproduction and delivery records only",
+  "excluded": [
+    "Consumer authorization",
+    "Consumption Receipt",
+    "private histories and private pins",
+    "real task/thread/message identifiers",
+    "private original equivalence claims",
+    "credentials",
+    "raw internal diagnostic logs"
+  ],
+  "authorization_basis": "Existing explicit Owner approval for Phase1-2/1-3 test/review/fix evidence on dedicated ai-development-system branches; no new authority inferred",
+  "content_review": "Inspected reports, scripts, safe scan summaries, source pins and synthetic outputs. Git source contains Secret references only, no Secret values. Warnings and historical failures retained."
+}

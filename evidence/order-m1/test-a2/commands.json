@@ -1,0 +1,89 @@
+{
+  "environment": "Fresh isolated Linux amd64 checkouts; Docker28.4.0; Go1.27.1; Helm4.2.4; Python3.12; no Kubernetes context accessed",
+  "commands": [
+    {
+      "command": "bash ci/github/test.sh",
+      "result": "pass",
+      "observation": "All modules; trusted identity/contract/registry/premerge/attempt/render; isolated Linux-userns; release19; strict enabled/disabled Helm; inventory10 adverse checks",
+      "observed_at": "2026-10-11T17:55:59.303198+00:00",
+      "valid_until": "2026-10-12T18:00:21.058822+00:00"
+    },
+    {
+      "command": "sh ci/validate.sh",
+      "result": "pass",
+      "observation": "Five charts strict lint; active output unchanged; Order disabled",
+      "observed_at": "2026-10-11T17:53:33.396956+00:00",
+      "valid_until": "2026-10-12T18:00:21.058822+00:00"
+    },
+    {
+      "command": "go test -count=1 -json ./... in every tools module",
+      "result": "pass",
+      "observation": "1317 test/subtest pass events; zero failed or skipped tests. Five command packages report no test files; not counted as test passes.",
+      "observed_at": "2026-10-11T17:58:26.594474+00:00",
+      "valid_until": "2026-10-12T18:00:21.058822+00:00"
+    },
+    {
+      "command": "python3 ci/*_test.py -v (namespace in pinned Docker; inventory in full CI)",
+      "result": "pass",
+      "observation": "All related existing Python suites",
+      "observed_at": "2026-10-11T17:53:35.688925+00:00",
+      "valid_until": "2026-10-12T18:00:21.058822+00:00"
+    },
+    {
+      "command": "kubeconform -strict -summary -kubernetes-version 1.36.0 existing-three-renders synthetic-order",
+      "result": "pass",
+      "observation": "26 valid,0 invalid,0 errors; pinned0.7.0",
+      "observed_at": "2026-10-11T17:55:59.303198+00:00",
+      "valid_until": "2026-10-12T18:00:21.058822+00:00"
+    },
+    {
+      "command": "SECURITY_RENDER_REQUIRED=true bash ci/github/source-scan.sh",
+      "result": "pass",
+      "observation": "Pinned Trivy0.75.0 source+full rendered security, warnings retained",
+      "observed_at": "2026-10-11T17:56:42.222636+00:00",
+      "valid_until": "2026-10-12T18:00:21.058822+00:00"
+    },
+    {
+      "command": "python ci/trusted-render.py --repo CHECKOUT --target BASE --source HEAD --verifier HEAD --producer-job-id 0 --test-only --output trusted-render.json",
+      "result": "pass",
+      "observation": "Isolated offline Docker; no inventory diff; eligibleForAuthenticatedVerification=false",
+      "observed_at": "2026-10-11T17:57:28.738032+00:00",
+      "valid_until": "2026-10-12T18:00:21.058822+00:00"
+    },
+    {
+      "command": "python independent.py HEAD_CHECKOUT BASE_CHECKOUT ORIGINAL_OUTPUT",
+      "result": "expected_failure",
+      "observation": "202 assertions; fixed old head/tree fail",
+      "observed_at": "2026-10-11T17:53:55.042643+00:00",
+      "valid_until": "2026-10-12T18:00:21.058822+00:00"
+    },
+    {
+      "command": "python independent-replay.py HEAD_CHECKOUT BASE_CHECKOUT NEW_OUTPUT",
+      "result": "pass",
+      "observation": "202 assertions; new head/tree",
+      "observed_at": "2026-10-11T17:53:55.042643+00:00",
+      "valid_until": "2026-10-12T18:00:21.058822+00:00"
+    },
+    {
+      "command": "python boundary-tests.py HEAD_CHECKOUT NEW_OUTPUT BOUNDARY_OUTPUT",
+      "result": "pass",
+      "observation": "394 independent cases, including namespace omission/empty/same/foreign/malformed, PodSpec shapes and host values",
+      "observed_at": "2026-10-11T18:00:21.058822+00:00",
+      "valid_until": "2026-10-12T18:00:21.058822+00:00"
+    },
+    {
+      "command": "python retest-original.py ORIGINAL_TEST1_DIRECTORY HEAD_CHECKOUT OLD_BINARY_DIRECTORY RESULTS",
+      "result": "pass",
+      "observation": "Original F1/F2 fixtures preserved; before accepted, new rejected",
+      "observed_at": "2026-10-11T18:00:21.058822+00:00",
+      "valid_until": "2026-10-12T18:00:21.058822+00:00"
+    },
+    {
+      "command": "trivy fs --scanners misconfig ORIGINAL_HOST_FIXTURES; old/new scan-gate -policy unchanged-policy -db current-db -report same-new-report -scanner-exit 0 -rendered ORIGINAL_HOST_FIXTURES",
+      "result": "pass",
+      "observation": "Scanner0; old combined0/pass; repaired combined1/fail",
+      "observed_at": "2026-10-11T17:57:06.689232+00:00",
+      "valid_until": "2026-10-12T18:00:21.058822+00:00"
+    }
+  ]
+}

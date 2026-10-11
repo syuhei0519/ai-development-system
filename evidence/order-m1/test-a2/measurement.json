@@ -1,0 +1,269 @@
+{
+  "document_type": "independent_preparation_measurement",
+  "artifact_id": "A-MEASUREMENT",
+  "readiness_compatible_version": "1.1",
+  "issue_id": "backend-app#2",
+  "acceptance_criteria": [
+    {
+      "id": "AC-1",
+      "verbatim": "作成したOrderが再起動後も取得できる",
+      "source": "https://github.com/syuhei0519/backend-app/issues/2",
+      "verification_phase": "premerge"
+    },
+    {
+      "id": "AC-2",
+      "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+      "source": "https://github.com/syuhei0519/backend-app/issues/2",
+      "verification_phase": "premerge"
+    },
+    {
+      "id": "AC-3",
+      "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+      "source": "https://github.com/syuhei0519/backend-app/issues/2",
+      "verification_phase": "premerge"
+    }
+  ],
+  "subject": {
+    "repository": "syuhei0519/application-manifest",
+    "pr_number": 19,
+    "head_sha": "41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+    "base_sha": "bc6adaedcd645a4663c23284b977a3dd36c0796d",
+    "target_revision": "41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+    "config_revision": "sha256:178d8cae2b1d7665aaeeb965ef5eb445d09c34171fe8e4ce81e2aad08a676ad6",
+    "merge_group_sha": null
+  },
+  "system_revision": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+  "tree": "47ea076ac6f481fdf6a1588abcfd0aaf07c4e25d",
+  "platform_revision": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+  "context_sha256": "98c3d5be98ee65a3f054c1670a8092830b7707a72bf75ebf45dbca1331221cc7",
+  "pr_kind": "preparation",
+  "pr_ac_ids": [],
+  "deployment_effect": "none",
+  "issue_integration_scope": "aggregate_required",
+  "preparation": {
+    "scope_reason": "M1 is disabled chart preparation from the adopted Research plan; no Order Application is registered and existing desired resources must remain unchanged. This is not relabeling a failed product feature. Product AC measurements remain with later standard integration/deploy scopes.",
+    "related_ac_ids": [
+      "AC-3"
+    ],
+    "conditions": [
+      {
+        "id": "M1-S1",
+        "verbatim": "Orderと専用PostgreSQL chartをdisabled既定で追加し、既存Account chart/values/render、Namespace/AppProject/Secret/既存DBデータを変えない。",
+        "method": "Compare existing32files/3renders, newdisabledrenders and fixedGitOps references; run whole related suites.",
+        "expected_result": "No existing resource changes or new active workload; disabled defaults/localvalues."
+      },
+      {
+        "id": "M1-S2",
+        "verbatim": "独立名/selector、同じimage digestのmigration JobとDeployment、health/security/Secret参照、DB/PVC保護を設計通りに表現し正常異常fixtureで検証する。",
+        "method": "Execute independent schema/Helm/resource/security/PVC positive and malicious mutations against fixed source, migration/Deployment image equality and dedicated DB identity.",
+        "expected_result": "Valid dedicated Order/DB/migration resources accepted; wrong digest, security override, Secret generation or PVC destruction rejected."
+      },
+      {
+        "id": "M1-S3",
+        "verbatim": "既存trusted inventory/security/PVC検証を弱めず、両disabled/有効synthetic fixtureのlint/schema/render/全PodSpec検証に成功する。",
+        "method": "Run existing trusted inventory, whole PodSpec validation, lint/schema/Kubeconform and existing suites; verify no policy downgrade.",
+        "expected_result": "All expected valid cases pass, invalid cases reject, existing Account behavior/render preserved."
+      },
+      {
+        "id": "M1-S4",
+        "verbatim": "合成fixtureと実公開releaseを区別し、実イメージ・kind・M2/P1/T7の未検証と担当/方法/失敗時対応を引き継ぐ。",
+        "method": "Read original fixed guides/provenance/followup; verify synthetic evidence never presented as actual release/AC measurement.",
+        "expected_result": "All remaining B2/M2/kind/P1/T7 gates, responsible role/environment/method/failure actions explicit; product AC unverified."
+      }
+    ],
+    "artifacts": [
+      {
+        "id": "deployment",
+        "locator": "artifacts/deployment",
+        "revision": "41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+        "sha256": "8df6db56f3c51d9d4c8aa64ed2d1e363f0c448175df86e7cc3e3d503998f8ba6",
+        "size_bytes": 2062
+      },
+      {
+        "id": "migration-job",
+        "locator": "artifacts/migration-job",
+        "revision": "41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+        "sha256": "d4c3ce246c26cdf515b0859cdd75abf1912e12d0a96c0a7f4dc133ef10b6fcee",
+        "size_bytes": 1410
+      },
+      {
+        "id": "statefulset",
+        "locator": "artifacts/statefulset",
+        "revision": "41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+        "sha256": "cec752347fd3d208ddb15dfb71dd73c75ca60219f08a9de4d2affc47f70cffcc",
+        "size_bytes": 3517
+      },
+      {
+        "id": "pvc",
+        "locator": "artifacts/pvc",
+        "revision": "41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+        "sha256": "91d4e572d1b9ef46dcc0c319f200d8dc4c9541db70c2cb70a341fc411a8c76cd",
+        "size_bytes": 472
+      },
+      {
+        "id": "inventory-main",
+        "locator": "artifacts/inventory-main",
+        "revision": "41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+        "sha256": "cddbc20767b6a7457be6851f8e26862628339465cc6bcfdbaaf71590dc966de6",
+        "size_bytes": 8505
+      },
+      {
+        "id": "inventory-platform",
+        "locator": "artifacts/inventory-platform",
+        "revision": "41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+        "sha256": "c8c57ae4705434ae57225b97fe7fa3a7a50b1eca6b939ff0a58d873c52df244c",
+        "size_bytes": 4040
+      },
+      {
+        "id": "render-security",
+        "locator": "artifacts/render-security",
+        "revision": "41a7e9632102a8c30ff7fa57570fd85aea19adf1",
+        "sha256": "2382a5cbba198111db4a3aaafbb6abc7a7a66a6bbae01ee8dac953eb7f7a6e3c",
+        "size_bytes": 6665
+      }
+    ],
+    "followup": [
+      {
+        "ac_id": "AC-3",
+        "owner": "Manager coordinates B2/M2/P1; independent Test measures actual product acceptance.",
+        "environment": "Authorized isolated kind with fixed candidate M/P revisions first; actual deployment only after Deployment Ready and required owner/environment approval.",
+        "method": "Consume actual B2 image/release, select fixed trusted digest, run migration/API/Account regressions and Argo Synced/Healthy/imageID checks, then repeat against final integrated main revisions.",
+        "dependencies": [
+          "B2 actual Order image and release",
+          "M2 trusted digest selection",
+          "P0/P1 fixed GitOps candidates",
+          "Authorized isolated kind acceptance and Deployment Ready",
+          "T7 final integrated measurements"
+        ],
+        "failure_action": "Stop affected merge/enable/deploy; preserve Account data and Order PVC, retain failure evidence, forward-fix and independently retest."
+      }
+    ],
+    "product_outcomes": [
+      {
+        "ac_id": "AC-1",
+        "outcome": "unverified"
+      },
+      {
+        "ac_id": "AC-2",
+        "outcome": "unverified"
+      },
+      {
+        "ac_id": "AC-3",
+        "outcome": "unverified"
+      }
+    ]
+  },
+  "producer": "order-m1-test-a2",
+  "independent": true,
+  "observed_at": "2026-10-11T18:00:21.058822+00:00",
+  "valid_until": "2026-10-12T18:00:21.058822+00:00",
+  "policy_observed_at": "2026-10-11T17:48:14Z",
+  "policy_valid_until": "2026-10-11T18:33:14Z",
+  "policy_refreshed": false,
+  "invalidated_by": [
+    "subject/config/source changes",
+    "new relevant failure"
+  ],
+  "product_outcomes": [
+    {
+      "ac_id": "AC-1",
+      "outcome": "unverified"
+    },
+    {
+      "ac_id": "AC-2",
+      "outcome": "unverified"
+    },
+    {
+      "ac_id": "AC-3",
+      "outcome": "unverified"
+    }
+  ],
+  "conditions": [
+    {
+      "condition_id": "M1-S1",
+      "outcome": "met",
+      "observed_at": "2026-10-11T18:00:21.058822+00:00",
+      "valid_until": "2026-10-12T18:00:21.058822+00:00",
+      "artifact_ids": [
+        "deployment",
+        "migration-job",
+        "statefulset",
+        "pvc",
+        "inventory-main",
+        "inventory-platform",
+        "render-security"
+      ],
+      "evidence": [
+        "report.txt",
+        "results.json",
+        "commands.json"
+      ]
+    },
+    {
+      "condition_id": "M1-S2",
+      "outcome": "met",
+      "observed_at": "2026-10-11T18:00:21.058822+00:00",
+      "valid_until": "2026-10-12T18:00:21.058822+00:00",
+      "artifact_ids": [
+        "deployment",
+        "migration-job",
+        "statefulset",
+        "pvc",
+        "inventory-main",
+        "inventory-platform",
+        "render-security"
+      ],
+      "evidence": [
+        "report.txt",
+        "results.json",
+        "commands.json"
+      ]
+    },
+    {
+      "condition_id": "M1-S3",
+      "outcome": "met",
+      "observed_at": "2026-10-11T18:00:21.058822+00:00",
+      "valid_until": "2026-10-12T18:00:21.058822+00:00",
+      "artifact_ids": [
+        "deployment",
+        "migration-job",
+        "statefulset",
+        "pvc",
+        "inventory-main",
+        "inventory-platform",
+        "render-security"
+      ],
+      "evidence": [
+        "report.txt",
+        "results.json",
+        "commands.json"
+      ]
+    },
+    {
+      "condition_id": "M1-S4",
+      "outcome": "met",
+      "observed_at": "2026-10-11T18:00:21.058822+00:00",
+      "valid_until": "2026-10-12T18:00:21.058822+00:00",
+      "artifact_ids": [
+        "deployment",
+        "migration-job",
+        "statefulset",
+        "pvc",
+        "inventory-main",
+        "inventory-platform",
+        "render-security"
+      ],
+      "evidence": [
+        "report.txt",
+        "results.json",
+        "commands.json"
+      ]
+    }
+  ],
+  "limitations": [
+    "No Manager Readiness decision or final assessment",
+    "Product AC1/2/3 unverified; no live image/kind/API/persistence/Argo/imageID measurement",
+    "Historical Handoff qualified Issue ID differs from canonical Manager ID: pairing helper rejects exact string mismatch",
+    "Policy TTL unchanged; Manager refresh required before operation"
+  ]
+}
