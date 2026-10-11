@@ -1,0 +1,4069 @@
+diff --git a/.github/workflows/validate.yml b/.github/workflows/validate.yml
+index 4c0aea4..e914e18 100644
+--- a/.github/workflows/validate.yml
++++ b/.github/workflows/validate.yml
+@@ -16,7 +16,7 @@ jobs:
+           cache: pip
+           cache-dependency-path: requirements-dev.txt
+       - run: python -m pip install -r requirements-dev.txt
+-      - name: All contracts and delivery/retry regressions
++      - name: All contracts, delivery/retry and collector crash regressions
+         run: python -m unittest discover -s tests -v
+       - name: Delivery schema and pinned sample consistency
+         run: python scripts/validate_delivery_records.py
+diff --git a/README.md b/README.md
+index 28f4c6a..38780d0 100644
+--- a/README.md
++++ b/README.md
+@@ -90,7 +90,7 @@ JSON Schema は構造、CLI の追加検査はローカル ID の参照整合性
+ 
+ 候補 → Raw Findings（原根拠・観測）→ Knowledge Agent の採否判断 → Curated Knowledge（人間向け Markdown）→ 適用条件・例外・陳腐化の再評価、という流れです。重要判断、失敗、不採用案、出典、更新日と後継リンクを保持します。AI メタデータは本文の補助です。記事には「理解を深めるための問い」を含めます。複数 Issue の知識を集約でき、後続は knowledge-context の固定 revision・適用条件・例外・出典を確認して利用します。
+ 
+-初期領域は orchestration と validation で、raw / curated の索引を分離しています。非同期収集・定期同期の実行基盤は Phase 1-3 で扱い、このフェーズでは実装・起動しません。詳細は [Knowledge index](knowledge/README.md)。1 Issue=1 PR や repo ごとの知識分割は絶対条件にせず、権限とレビュー範囲に応じて選びます。
++初期領域は orchestration と validation で、raw / curated の索引を分離しています。Phase 1-3 P-B は機械的な非同期収集 CLI と永続 inbox/state を提供します。定期同期・スケジュール有効化・実運用実証は後続 P-C/P-D の未実施範囲です。詳細は [Knowledge index](knowledge/README.md)。1 Issue=1 PR や repo ごとの知識分割は絶対条件にせず、権限とレビュー範囲に応じて選びます。
+ 
+ ## Phase 1-1 の補完判断と制約
+ 
+@@ -131,4 +131,12 @@ Readinessの配送にはartifact_id、Handoff基準のローカルlocator、実
+ [Delivery 1.1](contracts/artifact-delivery.md#knowledge-typed-delivery-v11-phase1-3-p-a)で
+ Knowledge1.0の型付き配送と入力/出力・source/記事の実体照合を提供する。
+ [固定Gitのsynthetic再現手順](examples/knowledge-delivery/README.md)を参照。
+-非同期inbox/state、context生成/ack/periodic、実Knowledge/Consumer運用実証はP-B/C/Dの未実施範囲。
++P-B の非同期 inbox/state は下記 CLI で実装。context生成/ack/periodic と実Knowledge/Consumer運用実証は P-C/P-D の未実施範囲。
++
++### Phase 1-3 P-B: 非同期収集と永続 state
++
++[collector 契約](contracts/knowledge-collection.md)、[CLI](scripts/knowledge_collector.py)、
++[Manager 入力](templates/knowledge-collection.md)、[synthetic 再現](examples/knowledge-collector/README.md)。
++固定 Git 全件照合、event identity、CAS/atomic transaction、raw 履歴、有限 retry/crash 復旧を扱います。
++collector は Agent/API を起動せず、schedule を登録・有効化しません。Knowledge の失敗は開発 gate を変更しません。
++state・認可・runtime ID は非公開。stdout は安全な状態件数のみです。
+diff --git a/agents/knowledge.md b/agents/knowledge.md
+index c78e981..03463b3 100644
+--- a/agents/knowledge.md
++++ b/agents/knowledge.md
+@@ -33,11 +33,11 @@
+ 
+ ## Execution Boundary
+ 
+-非同期収集・定期同期の実行基盤は Phase 1-3 の対象。Phase 1-1 では契約・手動配送可能な仕様・架空サンプル・検証のみを定義し、スケジューラーや常駐処理を実装・起動しない。
++Phase 1-1 は契約・手動配送仕様を定義した。Phase 1-3 P-B は [機械的 collector](../contracts/knowledge-collection.md) を提供する。意味的な選別・記事化は引き続き独立 Knowledge の責務。collector 自身は Agent/API を起動せず、定期同期・schedule 有効化・実運用実証は P-C/P-D の未実施範囲。
+ 
+ ## Readiness の責務
+ 
+-Readiness と Issue Completion の判定責任は持たない。知識候補・収集未完了を readiness の必須依存にしない。Knowledge v1.0 と非同期基盤の実装・起動対象外という境界を維持する。 詳細は [Readiness 契約](../contracts/readiness.md) と [ワークフロー](../workflows/single-issue.md#readiness-と-issue-completion-の運用) に従う。
++Readiness と Issue Completion の判定責任は持たない。知識候補・収集未完了を readiness の必須依存にしない。Knowledge v1.0 の意味と、collector が Agent を起動しない境界を維持する。 詳細は [Readiness 契約](../contracts/readiness.md) と [ワークフロー](../workflows/single-issue.md#readiness-と-issue-completion-の運用) に従う。
+ 
+ ## Artifact Delivery の責務
+ 
+diff --git a/agents/manager.md b/agents/manager.md
+index 9e80835..74fc627 100644
+--- a/agents/manager.md
++++ b/agents/manager.md
+@@ -50,3 +50,7 @@ Handoff v2.0 の status/attempt/担当範囲を配送都合で変更しない。
+ dispatch/execution/delivery は各最大3回、過去履歴と RETRY_LIMIT_REACHED は不変。
+ 上限後は新明示承認・理由・新予算・scope・旧履歴との関係が揃うまで再開しない。
+ 承認と最新台帳の pin を別経路で管理し、公開安全性/公開操作/今回利用の根拠を個別に確認する。
++
++## Phase 1-3 P-B collection
++
++[収集契約](../contracts/knowledge-collection.md) と [入力テンプレート](../templates/knowledge-collection.md) を使い、単一 writer・最新 state digest・独立認可 pin を管理する。毎回全件 scan/reconcile し、候補の選別は代行しない。外部起動前に dispatch intent を永続化し、開始不明は lease 期限だけで再送しない。output 取得後は配送を再開し、Git 結果不明は固定 bytes を再照合する。旧 retry 履歴と terminal を保持する。Knowledge 結果は開発 gate に接続しない。P-C/P-D の定期同期・実運用完了は別に検証する。
+diff --git a/contracts/README.md b/contracts/README.md
+index ae4e742..ec2b896 100644
+--- a/contracts/README.md
++++ b/contracts/README.md
+@@ -38,7 +38,7 @@ AC 原文が欠落していれば `MISSING_ACCEPTANCE_CRITERIA` で blocked。
+ 
+ Manager が参照を取得・配送し、担当エージェントが対象環境への適用可能性を確認する。draft / deprecated / superseded は無条件採用せず、採否と理由を記録する。参照知識は助言であり、Issue の AC 原文や実測根拠を置き換えない。利用可能な知識がないことだけでは開発を止めない。
+ 
+-Knowledge の非同期収集・定期同期を動かす実行基盤、スケジューラー、自動トリガーは **Phase 1-3** の対象。本フェーズは契約と手動配送可能な仕様・サンプル・検証のみであり、これらの基盤を実装・起動しない。
++Phase 1-3 P-B の [Knowledge Collection v1.0](knowledge-collection.md) は別契約で event/registry/private state と機械的 CLI を追加する。既存 Knowledge v1.0 は変更しない。定期同期・schedule・Consumer ack と実運用実証は P-C/P-D の未実施範囲。
+ 
+ ## 移行と互換性
+ 
+diff --git a/contracts/artifact-delivery.md b/contracts/artifact-delivery.md
+index 246c903..61a665f 100644
+--- a/contracts/artifact-delivery.md
++++ b/contracts/artifact-delivery.md
+@@ -202,8 +202,7 @@ receiptは依然 `authority_granted=false`。承認pin、consumer/scope/purpose/
+ 参照内容はデータ・引用であり、Agentへの指示や実行コードとして扱わない。
+ sourceの真実性、記事本文とcontextの適用条件等の意味的一致、公開安全性、採用の適切さは
+ 機械的bytes照合とは別のレビュー対象。記事/indexからcontextを生成する機能はP-Cであり未実装。
+-P-B inbox/state/cursor/replay、P-C context生成/ack/periodic、P-D 実Knowledge/Consumer実証を
+-実装・起動したとはしない。Delivery成功はReadiness成功・Issue AC合格・非同期/周期運用成功を意味しない。
++P-A 単体は inbox/state を提供しない。P-B は別の [collector 契約](knowledge-collection.md) で実装する。P-C context生成/ack/periodic と P-D 実Knowledge/Consumer実証は未実施。Delivery成功はReadiness成功・Issue AC合格・非同期/周期運用成功を意味しない。
+ 
+ 公開済みsynthetic fixtureを固定Gitから再取得する手順は
+ [Knowledge配送fixture](../examples/knowledge-delivery/README.md)。unit testsはnetwork不要、
+diff --git a/contracts/knowledge-collection-authorization.schema.json b/contracts/knowledge-collection-authorization.schema.json
+new file mode 100644
+index 0000000..64f1d9e
+--- /dev/null
++++ b/contracts/knowledge-collection-authorization.schema.json
+@@ -0,0 +1,61 @@
++{
++  "type": "object",
++  "additionalProperties": false,
++  "properties": {
++    "schema_version": {
++      "const": "1.0"
++    },
++    "document_type": {
++      "const": "knowledge_collection_authorization"
++    },
++    "writer": {
++      "type": "string",
++      "minLength": 1,
++      "maxLength": 2048,
++      "pattern": "\\S"
++    },
++    "scope": {
++      "type": "string",
++      "minLength": 1,
++      "maxLength": 2048,
++      "pattern": "\\S"
++    },
++    "operation": {
++      "enum": [
++        "scan",
++        "reconcile",
++        "record"
++      ]
++    },
++    "request_sha256": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{64}$"
++    },
++    "valid_until": {
++      "type": "string",
++      "format": "date-time"
++    },
++    "approval": {
++      "const": "approved"
++    },
++    "authority": {
++      "type": "string",
++      "minLength": 1,
++      "maxLength": 2048,
++      "pattern": "\\S"
++    }
++  },
++  "required": [
++    "schema_version",
++    "document_type",
++    "writer",
++    "scope",
++    "operation",
++    "request_sha256",
++    "valid_until",
++    "approval",
++    "authority"
++  ],
++  "$schema": "https://json-schema.org/draft/2020-12/schema",
++  "$id": "https://example.invalid/ai-development-system/knowledge-collection-authorization.schema.json"
++}
+diff --git a/contracts/knowledge-collection-record.schema.json b/contracts/knowledge-collection-record.schema.json
+new file mode 100644
+index 0000000..7458dd1
+--- /dev/null
++++ b/contracts/knowledge-collection-record.schema.json
+@@ -0,0 +1,1032 @@
++{
++  "oneOf": [
++    {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "action": {
++          "const": "reserve"
++        },
++        "event_ids": {
++          "type": "array",
++          "items": {
++            "type": "string",
++            "pattern": "^[0-9a-f]{64}$"
++          },
++          "minItems": 1,
++          "maxItems": 1024
++        },
++        "input_sha256": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "lease_until": {
++          "type": "string",
++          "format": "date-time"
++        },
++        "prior_ledger_sha256": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        }
++      },
++      "required": [
++        "action",
++        "event_ids",
++        "input_sha256",
++        "lease_until"
++      ]
++    },
++    {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "action": {
++          "const": "dispatch"
++        },
++        "batch_id": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        }
++      },
++      "required": [
++        "action",
++        "batch_id"
++      ]
++    },
++    {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "action": {
++          "const": "dispatch_unknown"
++        },
++        "batch_id": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        }
++      },
++      "required": [
++        "action",
++        "batch_id"
++      ]
++    },
++    {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "action": {
++          "const": "delivery_start"
++        },
++        "batch_id": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        }
++      },
++      "required": [
++        "action",
++        "batch_id"
++      ]
++    },
++    {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "action": {
++          "const": "commit_pending"
++        },
++        "batch_id": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        }
++      },
++      "required": [
++        "action",
++        "batch_id"
++      ]
++    },
++    {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "action": {
++          "const": "started"
++        },
++        "batch_id": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "runtime_id": {
++          "anyOf": [
++            {
++              "type": "string",
++              "minLength": 1,
++              "maxLength": 2048,
++              "pattern": "\\S"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "evidence_sha256": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "next_eligible_at": {
++          "anyOf": [
++            {
++              "type": "string",
++              "format": "date-time"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        }
++      },
++      "required": [
++        "action",
++        "batch_id",
++        "runtime_id",
++        "evidence_sha256",
++        "next_eligible_at"
++      ]
++    },
++    {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "action": {
++          "const": "dispatch_failed"
++        },
++        "batch_id": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "runtime_id": {
++          "anyOf": [
++            {
++              "type": "string",
++              "minLength": 1,
++              "maxLength": 2048,
++              "pattern": "\\S"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "evidence_sha256": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "next_eligible_at": {
++          "anyOf": [
++            {
++              "type": "string",
++              "format": "date-time"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        }
++      },
++      "required": [
++        "action",
++        "batch_id",
++        "runtime_id",
++        "evidence_sha256",
++        "next_eligible_at"
++      ]
++    },
++    {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "action": {
++          "const": "execution_failed"
++        },
++        "batch_id": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "runtime_id": {
++          "anyOf": [
++            {
++              "type": "string",
++              "minLength": 1,
++              "maxLength": 2048,
++              "pattern": "\\S"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "evidence_sha256": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "next_eligible_at": {
++          "anyOf": [
++            {
++              "type": "string",
++              "format": "date-time"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        }
++      },
++      "required": [
++        "action",
++        "batch_id",
++        "runtime_id",
++        "evidence_sha256",
++        "next_eligible_at"
++      ]
++    },
++    {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "action": {
++          "const": "output_received"
++        },
++        "batch_id": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "runtime_id": {
++          "anyOf": [
++            {
++              "type": "string",
++              "minLength": 1,
++              "maxLength": 2048,
++              "pattern": "\\S"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "evidence_sha256": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "next_eligible_at": {
++          "anyOf": [
++            {
++              "type": "string",
++              "format": "date-time"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        }
++      },
++      "required": [
++        "action",
++        "batch_id",
++        "runtime_id",
++        "evidence_sha256",
++        "next_eligible_at"
++      ]
++    },
++    {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "action": {
++          "const": "delivery_failed"
++        },
++        "batch_id": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "evidence_sha256": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "next_eligible_at": {
++          "anyOf": [
++            {
++              "type": "string",
++              "format": "date-time"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        }
++      },
++      "required": [
++        "action",
++        "batch_id",
++        "evidence_sha256",
++        "next_eligible_at"
++      ]
++    },
++    {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "action": {
++          "const": "validated"
++        },
++        "batch_id": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "manifest": {
++          "type": "object",
++          "additionalProperties": false,
++          "properties": {
++            "schema_version": {
++              "const": "1.1"
++            },
++            "document_type": {
++              "const": "artifact_delivery"
++            },
++            "artifacts": {
++              "type": "array",
++              "items": {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "reference": {
++                    "type": "object",
++                    "additionalProperties": false,
++                    "properties": {
++                      "repository": {
++                        "type": "string",
++                        "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                      },
++                      "commit": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{40}$"
++                      },
++                      "path": {
++                        "type": "string",
++                        "minLength": 1,
++                        "maxLength": 512,
++                        "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++                      },
++                      "size": {
++                        "type": "integer",
++                        "minimum": 0,
++                        "maximum": 16777216
++                      },
++                      "sha256": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{64}$"
++                      }
++                    },
++                    "required": [
++                      "repository",
++                      "commit",
++                      "path",
++                      "size",
++                      "sha256"
++                    ]
++                  },
++                  "representation": {
++                    "enum": [
++                      "original",
++                      "edited_derivative"
++                    ]
++                  },
++                  "format": {
++                    "enum": [
++                      "text",
++                      "json",
++                      "handoff-v2",
++                      "knowledge-input-v1",
++                      "knowledge-handoff-v1",
++                      "knowledge-context-v1"
++                    ]
++                  },
++                  "public_classification": {
++                    "enum": [
++                      "synthetic_sample",
++                      "public_safe"
++                    ]
++                  },
++                  "source_alias": {
++                    "type": "string",
++                    "minLength": 1,
++                    "maxLength": 2048,
++                    "pattern": "\\S"
++                  }
++                },
++                "required": [
++                  "reference",
++                  "representation",
++                  "format",
++                  "public_classification",
++                  "source_alias"
++                ]
++              },
++              "minItems": 1,
++              "maxItems": 128,
++              "uniqueItems": true
++            },
++            "knowledge_bindings": {
++              "type": "array",
++              "maxItems": 128,
++              "uniqueItems": true,
++              "items": {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "input": {
++                    "type": "object",
++                    "additionalProperties": false,
++                    "properties": {
++                      "repository": {
++                        "type": "string",
++                        "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                      },
++                      "commit": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{40}$"
++                      },
++                      "path": {
++                        "type": "string",
++                        "minLength": 1,
++                        "maxLength": 512,
++                        "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++                      },
++                      "size": {
++                        "type": "integer",
++                        "minimum": 0,
++                        "maximum": 16777216
++                      },
++                      "sha256": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{64}$"
++                      }
++                    },
++                    "required": [
++                      "repository",
++                      "commit",
++                      "path",
++                      "size",
++                      "sha256"
++                    ]
++                  },
++                  "handoff": {
++                    "type": "object",
++                    "additionalProperties": false,
++                    "properties": {
++                      "repository": {
++                        "type": "string",
++                        "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                      },
++                      "commit": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{40}$"
++                      },
++                      "path": {
++                        "type": "string",
++                        "minLength": 1,
++                        "maxLength": 512,
++                        "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++                      },
++                      "size": {
++                        "type": "integer",
++                        "minimum": 0,
++                        "maximum": 16777216
++                      },
++                      "sha256": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{64}$"
++                      }
++                    },
++                    "required": [
++                      "repository",
++                      "commit",
++                      "path",
++                      "size",
++                      "sha256"
++                    ]
++                  }
++                },
++                "required": [
++                  "input"
++                ]
++              }
++            }
++          },
++          "required": [
++            "schema_version",
++            "document_type",
++            "artifacts",
++            "knowledge_bindings"
++          ]
++        }
++      },
++      "required": [
++        "action",
++        "batch_id",
++        "manifest"
++      ]
++    },
++    {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "action": {
++          "const": "prepare_retry"
++        },
++        "batch_id": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "input_sha256": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "manifest": {
++          "type": "object",
++          "additionalProperties": false,
++          "properties": {
++            "schema_version": {
++              "const": "1.1"
++            },
++            "document_type": {
++              "const": "artifact_delivery"
++            },
++            "artifacts": {
++              "type": "array",
++              "items": {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "reference": {
++                    "type": "object",
++                    "additionalProperties": false,
++                    "properties": {
++                      "repository": {
++                        "type": "string",
++                        "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                      },
++                      "commit": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{40}$"
++                      },
++                      "path": {
++                        "type": "string",
++                        "minLength": 1,
++                        "maxLength": 512,
++                        "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++                      },
++                      "size": {
++                        "type": "integer",
++                        "minimum": 0,
++                        "maximum": 16777216
++                      },
++                      "sha256": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{64}$"
++                      }
++                    },
++                    "required": [
++                      "repository",
++                      "commit",
++                      "path",
++                      "size",
++                      "sha256"
++                    ]
++                  },
++                  "representation": {
++                    "enum": [
++                      "original",
++                      "edited_derivative"
++                    ]
++                  },
++                  "format": {
++                    "enum": [
++                      "text",
++                      "json",
++                      "handoff-v2",
++                      "knowledge-input-v1",
++                      "knowledge-handoff-v1",
++                      "knowledge-context-v1"
++                    ]
++                  },
++                  "public_classification": {
++                    "enum": [
++                      "synthetic_sample",
++                      "public_safe"
++                    ]
++                  },
++                  "source_alias": {
++                    "type": "string",
++                    "minLength": 1,
++                    "maxLength": 2048,
++                    "pattern": "\\S"
++                  }
++                },
++                "required": [
++                  "reference",
++                  "representation",
++                  "format",
++                  "public_classification",
++                  "source_alias"
++                ]
++              },
++              "minItems": 1,
++              "maxItems": 128,
++              "uniqueItems": true
++            },
++            "knowledge_bindings": {
++              "type": "array",
++              "maxItems": 128,
++              "uniqueItems": true,
++              "items": {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "input": {
++                    "type": "object",
++                    "additionalProperties": false,
++                    "properties": {
++                      "repository": {
++                        "type": "string",
++                        "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                      },
++                      "commit": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{40}$"
++                      },
++                      "path": {
++                        "type": "string",
++                        "minLength": 1,
++                        "maxLength": 512,
++                        "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++                      },
++                      "size": {
++                        "type": "integer",
++                        "minimum": 0,
++                        "maximum": 16777216
++                      },
++                      "sha256": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{64}$"
++                      }
++                    },
++                    "required": [
++                      "repository",
++                      "commit",
++                      "path",
++                      "size",
++                      "sha256"
++                    ]
++                  },
++                  "handoff": {
++                    "type": "object",
++                    "additionalProperties": false,
++                    "properties": {
++                      "repository": {
++                        "type": "string",
++                        "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                      },
++                      "commit": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{40}$"
++                      },
++                      "path": {
++                        "type": "string",
++                        "minLength": 1,
++                        "maxLength": 512,
++                        "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++                      },
++                      "size": {
++                        "type": "integer",
++                        "minimum": 0,
++                        "maximum": 16777216
++                      },
++                      "sha256": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{64}$"
++                      }
++                    },
++                    "required": [
++                      "repository",
++                      "commit",
++                      "path",
++                      "size",
++                      "sha256"
++                    ]
++                  }
++                },
++                "required": [
++                  "input"
++                ]
++              }
++            }
++          },
++          "required": [
++            "schema_version",
++            "document_type",
++            "artifacts",
++            "knowledge_bindings"
++          ]
++        }
++      },
++      "required": [
++        "action",
++        "batch_id",
++        "input_sha256",
++        "manifest"
++      ]
++    },
++    {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "action": {
++          "const": "committed"
++        },
++        "batch_id": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "committed_output_pin": {
++          "type": "array",
++          "items": {
++            "type": "object",
++            "additionalProperties": false,
++            "properties": {
++              "repository": {
++                "type": "string",
++                "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++              },
++              "commit": {
++                "type": "string",
++                "pattern": "^[0-9a-f]{40}$"
++              },
++              "path": {
++                "type": "string",
++                "minLength": 1,
++                "maxLength": 512,
++                "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++              },
++              "size": {
++                "type": "integer",
++                "minimum": 0,
++                "maximum": 16777216
++              },
++              "sha256": {
++                "type": "string",
++                "pattern": "^[0-9a-f]{64}$"
++              }
++            },
++            "required": [
++              "repository",
++              "commit",
++              "path",
++              "size",
++              "sha256"
++            ]
++          },
++          "minItems": 1,
++          "maxItems": 128
++        }
++      },
++      "required": [
++        "action",
++        "batch_id",
++        "committed_output_pin"
++      ]
++    },
++    {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "action": {
++          "const": "context_available"
++        },
++        "batch_id": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "context_ref": {
++          "type": "object",
++          "additionalProperties": false,
++          "properties": {
++            "repository": {
++              "type": "string",
++              "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++            },
++            "commit": {
++              "type": "string",
++              "pattern": "^[0-9a-f]{40}$"
++            },
++            "path": {
++              "type": "string",
++              "minLength": 1,
++              "maxLength": 512,
++              "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++            },
++            "size": {
++              "type": "integer",
++              "minimum": 0,
++              "maximum": 16777216
++            },
++            "sha256": {
++              "type": "string",
++              "pattern": "^[0-9a-f]{64}$"
++            }
++          },
++          "required": [
++            "repository",
++            "commit",
++            "path",
++            "size",
++            "sha256"
++          ]
++        }
++      },
++      "required": [
++        "action",
++        "batch_id",
++        "context_ref"
++      ]
++    },
++    {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "action": {
++          "const": "blocked"
++        },
++        "batch_id": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "evidence_sha256": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        }
++      },
++      "required": [
++        "action",
++        "batch_id",
++        "evidence_sha256"
++      ]
++    },
++    {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "action": {
++          "const": "renew"
++        },
++        "batch_id": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "ledger": {
++          "type": "object",
++          "additionalProperties": false,
++          "properties": {
++            "version": {
++              "const": "1.0"
++            },
++            "scope": {
++              "type": "string",
++              "minLength": 1,
++              "maxLength": 2048,
++              "pattern": "\\S"
++            },
++            "epochs": {
++              "type": "array",
++              "items": {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "id": {
++                    "type": "integer",
++                    "minimum": 1
++                  },
++                  "limits": {
++                    "type": "object",
++                    "additionalProperties": false,
++                    "properties": {
++                      "dispatch": {
++                        "type": "integer",
++                        "minimum": 1,
++                        "maximum": 3
++                      },
++                      "execution": {
++                        "type": "integer",
++                        "minimum": 1,
++                        "maximum": 3
++                      },
++                      "delivery": {
++                        "type": "integer",
++                        "minimum": 1,
++                        "maximum": 3
++                      }
++                    },
++                    "required": [
++                      "dispatch",
++                      "execution",
++                      "delivery"
++                    ]
++                  },
++                  "events": {
++                    "type": "array",
++                    "items": {
++                      "type": "object",
++                      "additionalProperties": false,
++                      "properties": {
++                        "kind": {
++                          "enum": [
++                            "dispatch",
++                            "execution",
++                            "delivery"
++                          ]
++                        },
++                        "result": {
++                          "enum": [
++                            "succeeded",
++                            "failed",
++                            "blocked"
++                          ]
++                        },
++                        "evidence": {
++                          "type": "string",
++                          "minLength": 1,
++                          "maxLength": 2048,
++                          "pattern": "\\S"
++                        }
++                      },
++                      "required": [
++                        "kind",
++                        "result",
++                        "evidence"
++                      ]
++                    },
++                    "minItems": 0,
++                    "maxItems": 1024
++                  },
++                  "terminal": {
++                    "enum": [
++                      "open",
++                      "RETRY_LIMIT_REACHED"
++                    ]
++                  },
++                  "grant_sha256": {
++                    "anyOf": [
++                      {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{64}$"
++                      },
++                      {
++                        "type": "null"
++                      }
++                    ]
++                  }
++                },
++                "required": [
++                  "id",
++                  "limits",
++                  "events",
++                  "terminal",
++                  "grant_sha256"
++                ]
++              },
++              "minItems": 1,
++              "maxItems": 1024
++            }
++          },
++          "required": [
++            "version",
++            "scope",
++            "epochs"
++          ]
++        },
++        "resume_state": {
++          "enum": [
++            "reserved",
++            "output_received"
++          ]
++        }
++      },
++      "required": [
++        "action",
++        "batch_id",
++        "ledger",
++        "resume_state"
++      ]
++    }
++  ],
++  "$schema": "https://json-schema.org/draft/2020-12/schema",
++  "$id": "https://example.invalid/ai-development-system/knowledge-collection-record.schema.json"
++}
+diff --git a/contracts/knowledge-collection-state.schema.json b/contracts/knowledge-collection-state.schema.json
+new file mode 100644
+index 0000000..a4de411
+--- /dev/null
++++ b/contracts/knowledge-collection-state.schema.json
+@@ -0,0 +1,827 @@
++{
++  "type": "object",
++  "additionalProperties": false,
++  "properties": {
++    "schema_version": {
++      "const": "1.0"
++    },
++    "document_type": {
++      "const": "knowledge_collection_state"
++    },
++    "writer": {
++      "type": "string",
++      "minLength": 1,
++      "maxLength": 2048,
++      "pattern": "\\S"
++    },
++    "scope": {
++      "type": "string",
++      "minLength": 1,
++      "maxLength": 2048,
++      "pattern": "\\S"
++    },
++    "sequence": {
++      "type": "integer",
++      "minimum": 0
++    },
++    "previous_state_sha256": {
++      "anyOf": [
++        {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        {
++          "type": "null"
++        }
++      ]
++    },
++    "registry_sha256": {
++      "anyOf": [
++        {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        {
++          "type": "null"
++        }
++      ]
++    },
++    "cursors": {
++      "type": "object",
++      "additionalProperties": {
++        "type": "string",
++        "pattern": "^[0-9a-f]{40}$"
++      }
++    },
++    "events": {
++      "type": "object",
++      "propertyNames": {
++        "type": "string",
++        "pattern": "^[0-9a-f]{64}$"
++      },
++      "additionalProperties": {
++        "type": "object",
++        "additionalProperties": false,
++        "properties": {
++          "event_sha256": {
++            "type": "string",
++            "pattern": "^[0-9a-f]{64}$"
++          },
++          "event": {
++            "anyOf": [
++              {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "schema_version": {
++                    "const": "1.0"
++                  },
++                  "document_type": {
++                    "const": "knowledge_event"
++                  },
++                  "event_id": {
++                    "type": "string",
++                    "pattern": "^[0-9a-f]{64}$"
++                  },
++                  "event_kind": {
++                    "enum": [
++                      "candidate",
++                      "correction",
++                      "invalidation"
++                    ]
++                  },
++                  "source_ref": {
++                    "type": "object",
++                    "additionalProperties": false,
++                    "properties": {
++                      "repository": {
++                        "type": "string",
++                        "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                      },
++                      "commit": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{40}$"
++                      },
++                      "path": {
++                        "type": "string",
++                        "minLength": 1,
++                        "maxLength": 512,
++                        "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++                      },
++                      "size": {
++                        "type": "integer",
++                        "minimum": 0,
++                        "maximum": 16777216
++                      },
++                      "sha256": {
++                        "type": "string",
++                        "pattern": "^[0-9a-f]{64}$"
++                      }
++                    },
++                    "required": [
++                      "repository",
++                      "commit",
++                      "path",
++                      "size",
++                      "sha256"
++                    ]
++                  },
++                  "candidate_id": {
++                    "type": "string",
++                    "minLength": 1,
++                    "maxLength": 2048,
++                    "pattern": "\\S"
++                  },
++                  "producer_role": {
++                    "enum": [
++                      "research-design",
++                      "implementation",
++                      "test",
++                      "review",
++                      "knowledge"
++                    ]
++                  },
++                  "observation_kind": {
++                    "enum": [
++                      "decision",
++                      "research",
++                      "failure",
++                      "test_observation",
++                      "invalidation"
++                    ]
++                  },
++                  "finding_refs": {
++                    "type": "array",
++                    "items": {
++                      "type": "object",
++                      "additionalProperties": false,
++                      "properties": {
++                        "repository": {
++                          "type": "string",
++                          "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                        },
++                        "commit": {
++                          "type": "string",
++                          "pattern": "^[0-9a-f]{40}$"
++                        },
++                        "path": {
++                          "type": "string",
++                          "minLength": 1,
++                          "maxLength": 512,
++                          "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++                        },
++                        "size": {
++                          "type": "integer",
++                          "minimum": 0,
++                          "maximum": 16777216
++                        },
++                        "sha256": {
++                          "type": "string",
++                          "pattern": "^[0-9a-f]{64}$"
++                        }
++                      },
++                      "required": [
++                        "repository",
++                        "commit",
++                        "path",
++                        "size",
++                        "sha256"
++                      ]
++                    },
++                    "minItems": 1,
++                    "maxItems": 128
++                  },
++                  "occurred_at": {
++                    "type": "string",
++                    "format": "date-time"
++                  },
++                  "collected_at": {
++                    "type": "string",
++                    "format": "date-time"
++                  },
++                  "representation": {
++                    "enum": [
++                      "original",
++                      "edited_derivative"
++                    ]
++                  },
++                  "classification": {
++                    "enum": [
++                      "synthetic_sample",
++                      "public_safe"
++                    ]
++                  },
++                  "issue_refs": {
++                    "type": "array",
++                    "items": {
++                      "type": "string",
++                      "minLength": 1,
++                      "maxLength": 2048,
++                      "pattern": "\\S"
++                    },
++                    "minItems": 0,
++                    "maxItems": 1024
++                  },
++                  "supersedes": {
++                    "type": "array",
++                    "items": {
++                      "type": "string",
++                      "pattern": "^[0-9a-f]{64}$"
++                    },
++                    "minItems": 0,
++                    "maxItems": 1024
++                  }
++                },
++                "required": [
++                  "schema_version",
++                  "document_type",
++                  "event_id",
++                  "event_kind",
++                  "source_ref",
++                  "candidate_id",
++                  "producer_role",
++                  "observation_kind",
++                  "finding_refs",
++                  "occurred_at",
++                  "collected_at",
++                  "representation",
++                  "classification",
++                  "issue_refs",
++                  "supersedes"
++                ],
++                "$schema": "https://json-schema.org/draft/2020-12/schema",
++                "$id": "https://example.invalid/ai-development-system/knowledge-event.schema.json"
++              },
++              {
++                "type": "null"
++              }
++            ]
++          },
++          "source_ids": {
++            "type": "array",
++            "items": {
++              "type": "string",
++              "minLength": 1,
++              "maxLength": 2048,
++              "pattern": "\\S"
++            },
++            "minItems": 1,
++            "maxItems": 1024
++          },
++          "status": {
++            "enum": [
++              "pending",
++              "verified",
++              "reserved",
++              "dispatching",
++              "started",
++              "output_received",
++              "validated",
++              "commit_pending",
++              "committed",
++              "context_available",
++              "blocked",
++              "quarantined",
++              "dispatch_unknown",
++              "terminal"
++            ]
++          },
++          "batch_id": {
++            "anyOf": [
++              {
++                "type": "string",
++                "pattern": "^[0-9a-f]{64}$"
++              },
++              {
++                "type": "null"
++              }
++            ]
++          },
++          "history": {
++            "type": "array",
++            "items": {
++              "type": "object",
++              "additionalProperties": false,
++              "properties": {
++                "sequence": {
++                  "type": "integer",
++                  "minimum": 0
++                },
++                "status": {
++                  "enum": [
++                    "pending",
++                    "verified",
++                    "reserved",
++                    "dispatching",
++                    "started",
++                    "output_received",
++                    "validated",
++                    "commit_pending",
++                    "committed",
++                    "context_available",
++                    "blocked",
++                    "quarantined",
++                    "dispatch_unknown",
++                    "terminal"
++                  ]
++                },
++                "reason": {
++                  "enum": [
++                    "discovered",
++                    "verified",
++                    "reserved",
++                    "dispatch",
++                    "unknown",
++                    "started",
++                    "dispatch_failed",
++                    "execution_failed",
++                    "output_received",
++                    "delivery_start",
++                    "delivery_failed",
++                    "validated",
++                    "commit_pending",
++                    "committed",
++                    "context_available",
++                    "blocked",
++                    "renewed",
++                    "collision",
++                    "missing",
++                    "poison"
++                  ]
++                },
++                "evidence_sha256": {
++                  "anyOf": [
++                    {
++                      "type": "string",
++                      "pattern": "^[0-9a-f]{64}$"
++                    },
++                    {
++                      "type": "null"
++                    }
++                  ]
++                }
++              },
++              "required": [
++                "sequence",
++                "status",
++                "reason",
++                "evidence_sha256"
++              ]
++            },
++            "minItems": 0,
++            "maxItems": 1024
++          }
++        },
++        "required": [
++          "event_sha256",
++          "event",
++          "source_ids",
++          "status",
++          "batch_id",
++          "history"
++        ]
++      }
++    },
++    "batches": {
++      "type": "object",
++      "propertyNames": {
++        "type": "string",
++        "pattern": "^[0-9a-f]{64}$"
++      },
++      "additionalProperties": {
++        "type": "object",
++        "additionalProperties": false,
++        "properties": {
++          "event_ids": {
++            "type": "array",
++            "items": {
++              "type": "string",
++              "pattern": "^[0-9a-f]{64}$"
++            },
++            "minItems": 1,
++            "maxItems": 1024
++          },
++          "input_sha256": {
++            "type": "string",
++            "pattern": "^[0-9a-f]{64}$"
++          },
++          "ledger": {
++            "type": "object",
++            "additionalProperties": false,
++            "properties": {
++              "version": {
++                "const": "1.0"
++              },
++              "scope": {
++                "type": "string",
++                "minLength": 1,
++                "maxLength": 2048,
++                "pattern": "\\S"
++              },
++              "epochs": {
++                "type": "array",
++                "items": {
++                  "type": "object",
++                  "additionalProperties": false,
++                  "properties": {
++                    "id": {
++                      "type": "integer",
++                      "minimum": 1
++                    },
++                    "limits": {
++                      "type": "object",
++                      "additionalProperties": false,
++                      "properties": {
++                        "dispatch": {
++                          "type": "integer",
++                          "minimum": 1,
++                          "maximum": 3
++                        },
++                        "execution": {
++                          "type": "integer",
++                          "minimum": 1,
++                          "maximum": 3
++                        },
++                        "delivery": {
++                          "type": "integer",
++                          "minimum": 1,
++                          "maximum": 3
++                        }
++                      },
++                      "required": [
++                        "dispatch",
++                        "execution",
++                        "delivery"
++                      ]
++                    },
++                    "events": {
++                      "type": "array",
++                      "items": {
++                        "type": "object",
++                        "additionalProperties": false,
++                        "properties": {
++                          "kind": {
++                            "enum": [
++                              "dispatch",
++                              "execution",
++                              "delivery"
++                            ]
++                          },
++                          "result": {
++                            "enum": [
++                              "succeeded",
++                              "failed",
++                              "blocked"
++                            ]
++                          },
++                          "evidence": {
++                            "type": "string",
++                            "minLength": 1,
++                            "maxLength": 2048,
++                            "pattern": "\\S"
++                          }
++                        },
++                        "required": [
++                          "kind",
++                          "result",
++                          "evidence"
++                        ]
++                      },
++                      "minItems": 0,
++                      "maxItems": 1024
++                    },
++                    "terminal": {
++                      "enum": [
++                        "open",
++                        "RETRY_LIMIT_REACHED"
++                      ]
++                    },
++                    "grant_sha256": {
++                      "anyOf": [
++                        {
++                          "type": "string",
++                          "pattern": "^[0-9a-f]{64}$"
++                        },
++                        {
++                          "type": "null"
++                        }
++                      ]
++                    }
++                  },
++                  "required": [
++                    "id",
++                    "limits",
++                    "events",
++                    "terminal",
++                    "grant_sha256"
++                  ]
++                },
++                "minItems": 1,
++                "maxItems": 1024
++              }
++            },
++            "required": [
++              "version",
++              "scope",
++              "epochs"
++            ]
++          },
++          "ledger_sha256": {
++            "type": "string",
++            "pattern": "^[0-9a-f]{64}$"
++          },
++          "pending": {
++            "enum": [
++              null,
++              "dispatch",
++              "execution",
++              "delivery"
++            ]
++          },
++          "runtime_id": {
++            "anyOf": [
++              {
++                "type": "string",
++                "minLength": 1,
++                "maxLength": 2048,
++                "pattern": "\\S"
++              },
++              {
++                "type": "null"
++              }
++            ]
++          },
++          "lease_until": {
++            "anyOf": [
++              {
++                "type": "string",
++                "format": "date-time"
++              },
++              {
++                "type": "null"
++              }
++            ]
++          },
++          "output_sha256": {
++            "anyOf": [
++              {
++                "type": "string",
++                "pattern": "^[0-9a-f]{64}$"
++              },
++              {
++                "type": "null"
++              }
++            ]
++          },
++          "validated_artifacts": {
++            "type": "array",
++            "items": {
++              "type": "object",
++              "additionalProperties": false,
++              "properties": {
++                "reference": {
++                  "type": "object",
++                  "additionalProperties": false,
++                  "properties": {
++                    "repository": {
++                      "type": "string",
++                      "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                    },
++                    "commit": {
++                      "type": "string",
++                      "pattern": "^[0-9a-f]{40}$"
++                    },
++                    "path": {
++                      "type": "string",
++                      "minLength": 1,
++                      "maxLength": 512,
++                      "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++                    },
++                    "size": {
++                      "type": "integer",
++                      "minimum": 0,
++                      "maximum": 16777216
++                    },
++                    "sha256": {
++                      "type": "string",
++                      "pattern": "^[0-9a-f]{64}$"
++                    }
++                  },
++                  "required": [
++                    "repository",
++                    "commit",
++                    "path",
++                    "size",
++                    "sha256"
++                  ]
++                },
++                "representation": {
++                  "enum": [
++                    "original",
++                    "edited_derivative"
++                  ]
++                },
++                "format": {
++                  "enum": [
++                    "text",
++                    "json",
++                    "handoff-v2",
++                    "knowledge-input-v1",
++                    "knowledge-handoff-v1",
++                    "knowledge-context-v1"
++                  ]
++                },
++                "public_classification": {
++                  "enum": [
++                    "synthetic_sample",
++                    "public_safe"
++                  ]
++                },
++                "source_alias": {
++                  "type": "string",
++                  "minLength": 1,
++                  "maxLength": 2048,
++                  "pattern": "\\S"
++                }
++              },
++              "required": [
++                "reference",
++                "representation",
++                "format",
++                "public_classification",
++                "source_alias"
++              ]
++            },
++            "minItems": 0,
++            "maxItems": 128
++          },
++          "committed_output_pin": {
++            "type": "array",
++            "items": {
++              "type": "object",
++              "additionalProperties": false,
++              "properties": {
++                "repository": {
++                  "type": "string",
++                  "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                },
++                "commit": {
++                  "type": "string",
++                  "pattern": "^[0-9a-f]{40}$"
++                },
++                "path": {
++                  "type": "string",
++                  "minLength": 1,
++                  "maxLength": 512,
++                  "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++                },
++                "size": {
++                  "type": "integer",
++                  "minimum": 0,
++                  "maximum": 16777216
++                },
++                "sha256": {
++                  "type": "string",
++                  "pattern": "^[0-9a-f]{64}$"
++                }
++              },
++              "required": [
++                "repository",
++                "commit",
++                "path",
++                "size",
++                "sha256"
++              ]
++            },
++            "minItems": 0,
++            "maxItems": 128
++          },
++          "next_eligible_at": {
++            "anyOf": [
++              {
++                "type": "string",
++                "format": "date-time"
++              },
++              {
++                "type": "null"
++              }
++            ]
++          },
++          "new_input_required": {
++            "type": "boolean"
++          }
++        },
++        "required": [
++          "event_ids",
++          "input_sha256",
++          "ledger",
++          "ledger_sha256",
++          "pending",
++          "runtime_id",
++          "lease_until",
++          "output_sha256",
++          "validated_artifacts",
++          "committed_output_pin",
++          "next_eligible_at",
++          "new_input_required"
++        ]
++      }
++    },
++    "scans": {
++      "type": "array",
++      "items": {
++        "type": "object",
++        "additionalProperties": false,
++        "properties": {
++          "registry_sha256": {
++            "type": "string",
++            "pattern": "^[0-9a-f]{64}$"
++          },
++          "mode": {
++            "const": "full"
++          },
++          "result": {
++            "enum": [
++              "verified",
++              "quarantined"
++            ]
++          },
++          "event_digests": {
++            "type": "array",
++            "items": {
++              "type": "string",
++              "pattern": "^[0-9a-f]{64}$"
++            },
++            "minItems": 0,
++            "maxItems": 1024
++          },
++          "source_snapshots": {
++            "type": "array",
++            "items": {
++              "type": "object",
++              "additionalProperties": false,
++              "properties": {
++                "source_id": {
++                  "type": "string",
++                  "minLength": 1,
++                  "maxLength": 2048,
++                  "pattern": "\\S"
++                },
++                "repository": {
++                  "type": "string",
++                  "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++                },
++                "commit": {
++                  "type": "string",
++                  "pattern": "^[0-9a-f]{40}$"
++                },
++                "inbox_path": {
++                  "type": "string",
++                  "minLength": 1,
++                  "maxLength": 512,
++                  "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++                }
++              },
++              "required": [
++                "source_id",
++                "repository",
++                "commit",
++                "inbox_path"
++              ]
++            },
++            "minItems": 1,
++            "maxItems": 128
++          }
++        },
++        "required": [
++          "registry_sha256",
++          "mode",
++          "result",
++          "event_digests",
++          "source_snapshots"
++        ]
++      },
++      "minItems": 0,
++      "maxItems": 100000
++    },
++    "publication": {
++      "const": "private_only"
++    }
++  },
++  "required": [
++    "schema_version",
++    "document_type",
++    "writer",
++    "scope",
++    "sequence",
++    "previous_state_sha256",
++    "registry_sha256",
++    "cursors",
++    "events",
++    "batches",
++    "scans",
++    "publication"
++  ],
++  "$schema": "https://json-schema.org/draft/2020-12/schema",
++  "$id": "https://example.invalid/ai-development-system/knowledge-collection-state.schema.json"
++}
+diff --git a/contracts/knowledge-collection.md b/contracts/knowledge-collection.md
+new file mode 100644
+index 0000000..3a3b6a6
+--- /dev/null
++++ b/contracts/knowledge-collection.md
+@@ -0,0 +1,165 @@
++# Knowledge Collection v1.0 — Phase 1-3 P-B
++
++P-B provides mechanical collection and durable bookkeeping. The collector never launches
++an Agent, calls an LLM, writes Git, creates a PR, generates semantic knowledge, registers a
++schedule, or changes development readiness. Manager remains the single writer and performs
++external actions only after the corresponding reservation has been persisted. P-C context
++production/ack/periodic adapters and P-D real Knowledge/Consumer operation remain unimplemented.
++
++## Contracts and authority
++
++All new contracts are closed Draft 2020-12 objects, version 1.0:
++
++- [KnowledgeEvent](knowledge-event.schema.json): public-safe or explicitly synthetic candidate,
++  correction, or invalidation; producer role, observation kind, source and finding pins,
++  timestamps, representation, optional Issue aliases, supersedes. No runtime identity field.
++- [source registry](knowledge-source-registry.schema.json): all approved fixed inbox snapshots,
++  typed artifact inventory and Delivery 1.1 Knowledge bindings. Each source ID and repository/path
++  pair is unique; overlapping inbox prefixes are rejected. Source IDs remain stable on updates.
++- [KnowledgeCollectionState](knowledge-collection-state.schema.json): **private_only**, writer/scope,
++  predecessor digest, cursors, immutable original event digest, event state/history, stable batches,
++  retry ledgers/pins, runtime observations, output digest, validated artifact set, committed pins,
++  leases/backoff and full scan history.
++- [record requests](knowledge-collection-record.schema.json): closed action-specific Manager inputs.
++- [operation authorization](knowledge-collection-authorization.schema.json): private, independently
++  supplied SHA256 pin, exact writer/scope/operation/request digest and expiration. Approval is
++  external authority, never inferred from a receipt, event classification, replay, or public file.
++
++`scan` and `reconcile` use the registry's **raw bytes** as the request. `record` uses the raw
++closed action JSON. Manager confirms read/use permission and public safety for every fixed
++snapshot and dependency before authorizing that request. Authorizing a scan does not authorize
++a dispatch or a later record. Expired authorization cannot mutate state. The API is not a
++signature system: trusted Manager code, current pins, local private storage and OS are the
++trust boundary. Anyone controlling the independent CLI pins or private store can fabricate
++observations; collection does not independently prove that an external Agent started.
++
++The identity is SHA256 of UTF-8 JSON, sorted keys, compact separators, `ensure_ascii=False`,
++plus LF, containing exactly `version="1.0", repository, commit, path, sha256, candidate_id,
++event_kind`. The repository/path/hash come from `source_ref`; event ID is lowercase 64 hex.
++Time, size, delivery attempt and runtime task identity do not enter this identity. Raw event
++payloads are hashed without normalization. Same identity with any different payload bytes
++(including a changed timestamp/whitespace) is a collision and quarantined. Corrections use a
++new fixed source/candidate identity and `supersedes`; similar content is never deduplicated.
++
++## Scan and reconciliation
++
++`SnapshotSource` uses P-A's isolated HTTPS Git environment and raw blob reader. No checkout,
++hooks, filters, submodule execution, arbitrary URLs or floating revisions are permitted. A
++snapshot is a full 40-hex commit. All tree entries beneath the inbox prefix are enumerated,
++including entries that must fail validation; only regular blobs are accepted. Expected event
++path is `<inbox_path>/<event_id>.json`. UTF-8/strict JSON rejects duplicate keys, NaN and BOM.
++Missing prefix is an empty inbox and still participates in historical disappearance checks.
++
++Every scan is a **full reconciliation**, even for a repeated commit. There is no ancestry,
++diff, updated_at, notification-order or shallow-history optimization. Registry changes,
++missing history, force pushes and old nonancestor cursors therefore follow exactly the same
++complete path. Every declared source/dependency is read and size/SHA256 checked, and P-A
++`verify_handoffs(..., '1.1', bindings)` verifies the entire typed dependency bundle before use.
++Event references must exactly match that inventory. Handoff artifacts/upstream and Knowledge
++source/article/retry dependencies remain subject to P-A local-path rules. Cross-reference
++extensions are outside P-B; no URL reinterpretation or original-byte rewrite is performed.
++
++A network/read/partial blob/hash failure aborts the entire scan transaction: no event/cursor
++change. Complete but malformed events or events lacking an inventory reference are individually
++quarantined, with original bytes retained; valid events remain processable. An already recorded
++event that disappears or changes payload is quarantined, the scan is marked `quarantined`,
++and cursors do not advance. Terminal/retry history and original bytes remain intact. A clean
++scan advances every source cursor together with event registration. Cursor means enumerated,
++not processed successfully. A poisoned event can coexist with a successful enumeration.
++
++Resource limits: 1024 event files/source, 128 sources, 128 dependencies, 16 MiB/blob,
++64 MiB total scan/bundle payload; inherited 120 second Git command timeout. No implicit retries.
++Git pack transfer size and tree listing size are not bounded by blob limits; only trusted,
++authorized repositories and a bounded execution environment should be used. State must fit
++16 MiB for subsequent reading; archive growth needs Manager capacity planning. No automatic
++history deletion, compaction, private-store backup or remote-storage provisioning is included.
++
++## Durable transaction and recovery
++
++Private POSIX local storage uses directory mode 0700 and files 0600. The parent is Manager
++controlled; NFS/distributed locks and adversarial local writers are unsupported. The stable
++`writer.lock` uses nonblocking `flock`, so overlap is rejected. Under the lock the writer and
++scope must match, and `--previous-sha256` must match exact current `state.json` bytes. Use
++`absent` only for first initialization. Retain the latest successful digest outside this store;
++a digest supplied by an old snapshot cannot replace the current file. Whole-store rollback
++by its owner is detectable only against that independently retained latest pin.
++
++Transaction order: verify all reads → content-addressed raw objects + previous state, fsync →
++complete candidate in `staging/`, fsync → immutable `snapshots/<digest>`, fsync → atomic replace
++`state.json`, directory fsync. Scan/event/cursor updates share this one commit point. No raw
++history is overwritten. After failure, staging/snapshots are retained for inspection and never
++automatically promoted. Before state replacement, repeat the authorized operation against the
++old pin; after replacement, reload/verify the new state and update the Manager pin. Never blindly
++repeat an external dispatch when a CLI result was lost. `plan`/`replay` do not recover or mutate
++staging. Power-loss guarantees depend on the filesystem honoring fsync and atomic rename.
++
++## Batch, transition and retry protocol
++
++`reserve` seals a nonempty explicit set of verified event IDs and a Knowledge v1 input digest.
++Raw-finding IDs must exactly equal those event IDs, and each finding must preserve all its
++event source digests. Batch ID = SHA256 of sorted event-ID JSON + LF. Each event is claimed only
++once; regrouping, input changes and new batches cannot reset that event's ledger. The raw input
++is retained in objects. A lease is informational; expiry never releases the claim or restarts an
++Agent. Backoff is enforced at dispatch and delivery reservation.
++
++| Record action | Required state / effect |
++| --- | --- |
++| reserve | verified → reserved; immutable membership and initial retry ledger |
++| dispatch | reserved → dispatching; reserve dispatch and check execution budget **before** external launch |
++| dispatch_unknown | dispatching → dispatch_unknown; retains pending dispatch reservation |
++| started | dispatching/dispatch_unknown → started; pinned observation + runtime ID, dispatch success, reserve execution |
++| dispatch_failed | same source states → reserved; pinned proof of **not started**, dispatch failure |
++| execution_failed | started → reserved; matching runtime observation, execution failure |
++| prepare_retry | reserved only; fresh P-A typed bundle for next input, same assignment/findings/context, prior attempt binding |
++| output_received | started → output_received; matching runtime, durable output bytes, execution success |
++| delivery_start | output_received; persist a delivery reservation before fetch/validation |
++| delivery_failed | pending delivery → output_received; consume attempt, preserve output and optional backoff |
++| validated | pending delivery → validated; re-fetch complete typed bundle, exact sealed input/output, completed Knowledge handoff |
++| commit_pending | validated → commit_pending **before** external Git work |
++| committed | commit_pending → committed; freshly verify exact bytes in one fixed output snapshot |
++| context_available | committed → context_available; records an already validated, committed context (does not generate or sync it) |
++| blocked | reserved/validated → blocked with pinned evidence; no automatic release or retry |
++| renew | terminal only; existing retry validator requires separately pinned explicit grant and empty new epoch |
++
++`pending` and `verified` are separately recorded during scan; poison/history anomalies use
++`quarantined`. Blocked/quarantined states are intentionally not automatically reset. Manager
++can correct source evidence through a new superseding event; it must preserve its relationship
++to the old failed work rather than relabeling identical work to obtain a fresh budget.
++
++The existing append-only retry validator owns dispatch/execution/delivery budgets (each at most
++3 including success). A persisted pending reservation cannot be reserved again after a crash.
++A result consumes that reservation once. Failure on the last allowed attempt preserves
++`RETRY_LIMIT_REACHED` and moves to terminal. Even a fully used successful counter cannot be
++used a fourth time. Original scope/history/limits are not rewritten. `prior_ledger_sha256` on
++reserve imports an independently pinned existing ledger with the exact batch scope; terminal
++imports remain terminal. Manager must map previous logical work before initial ingestion.
++
++After an execution failure, dispatch rejects stale input attempts. `prepare_retry` verifies a
++complete Delivery 1.1 bundle including the new input and its typed prior handoff dependencies;
++the new task identity and next attempt are required. After an explicitly authorized new epoch,
++a new attempt-1 input is allowed while old epochs remain. `renew` uses the existing grant shape
++and separate `--grant-sha256`; ordinary record authorization alone cannot renew. It cannot discard
++an acquired output: renewal resumes delivery if output exists. Receipt/replay cannot supply a grant.
++
++Output-received crash: recover the same raw output and resume its delivery reservation; do not
++launch Knowledge again. Git-commit-before-state crash: record `committed` with fixed repository,
++commit, paths, sizes and hashes for **all** validated bundle bytes, and fetch them again. This
++acknowledges exact bytes only, not merge approval, article quality, readiness or operational use.
++The CLI neither creates nor retries a commit. Manager reconciles external Git outcomes first.
++
++## CLI and public/private boundary
++
++See [synthetic reproduction](../examples/knowledge-collector/README.md) and
++[Manager input template](../templates/knowledge-collection.md). `plan` and `replay` are the same
++read-only deterministic calculation against an exact state digest. They do not confer authority,
++reserve a batch, use a past authorization, or read live sources. Private plan output can be saved
++with `--private-plan`; state remains unchanged. Suggestions require current authorization and
++all record preconditions, including budgets, retry-input replacement and backoff, before action.
++
++`scan`, `reconcile`, `record` require independently pinned current authorization and CAS. Public
++stdout contains only closed status counts, `authority_granted=false`, and
++`development_gate_changed=false`; stderr is a fixed error message. No request, runtime ID,
++source content/path, authorization, private digest or internal exception is emitted. Exit 0
++means the bookkeeping transaction succeeded, including individual quarantines; exit 1 means
++rejection, exit 2 argument error. Inspect counts and private state, never infer all events passed
++from exit 0. These are **Knowledge-only** results; do not add the collector to a development gate.
+diff --git a/contracts/knowledge-event.schema.json b/contracts/knowledge-event.schema.json
+new file mode 100644
+index 0000000..5232397
+--- /dev/null
++++ b/contracts/knowledge-event.schema.json
+@@ -0,0 +1,183 @@
++{
++  "type": "object",
++  "additionalProperties": false,
++  "properties": {
++    "schema_version": {
++      "const": "1.0"
++    },
++    "document_type": {
++      "const": "knowledge_event"
++    },
++    "event_id": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{64}$"
++    },
++    "event_kind": {
++      "enum": [
++        "candidate",
++        "correction",
++        "invalidation"
++      ]
++    },
++    "source_ref": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "repository": {
++          "type": "string",
++          "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++        },
++        "commit": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{40}$"
++        },
++        "path": {
++          "type": "string",
++          "minLength": 1,
++          "maxLength": 512,
++          "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++        },
++        "size": {
++          "type": "integer",
++          "minimum": 0,
++          "maximum": 16777216
++        },
++        "sha256": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        }
++      },
++      "required": [
++        "repository",
++        "commit",
++        "path",
++        "size",
++        "sha256"
++      ]
++    },
++    "candidate_id": {
++      "type": "string",
++      "minLength": 1,
++      "maxLength": 2048,
++      "pattern": "\\S"
++    },
++    "producer_role": {
++      "enum": [
++        "research-design",
++        "implementation",
++        "test",
++        "review",
++        "knowledge"
++      ]
++    },
++    "observation_kind": {
++      "enum": [
++        "decision",
++        "research",
++        "failure",
++        "test_observation",
++        "invalidation"
++      ]
++    },
++    "finding_refs": {
++      "type": "array",
++      "items": {
++        "type": "object",
++        "additionalProperties": false,
++        "properties": {
++          "repository": {
++            "type": "string",
++            "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++          },
++          "commit": {
++            "type": "string",
++            "pattern": "^[0-9a-f]{40}$"
++          },
++          "path": {
++            "type": "string",
++            "minLength": 1,
++            "maxLength": 512,
++            "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++          },
++          "size": {
++            "type": "integer",
++            "minimum": 0,
++            "maximum": 16777216
++          },
++          "sha256": {
++            "type": "string",
++            "pattern": "^[0-9a-f]{64}$"
++          }
++        },
++        "required": [
++          "repository",
++          "commit",
++          "path",
++          "size",
++          "sha256"
++        ]
++      },
++      "minItems": 1,
++      "maxItems": 128
++    },
++    "occurred_at": {
++      "type": "string",
++      "format": "date-time"
++    },
++    "collected_at": {
++      "type": "string",
++      "format": "date-time"
++    },
++    "representation": {
++      "enum": [
++        "original",
++        "edited_derivative"
++      ]
++    },
++    "classification": {
++      "enum": [
++        "synthetic_sample",
++        "public_safe"
++      ]
++    },
++    "issue_refs": {
++      "type": "array",
++      "items": {
++        "type": "string",
++        "minLength": 1,
++        "maxLength": 2048,
++        "pattern": "\\S"
++      },
++      "minItems": 0,
++      "maxItems": 1024
++    },
++    "supersedes": {
++      "type": "array",
++      "items": {
++        "type": "string",
++        "pattern": "^[0-9a-f]{64}$"
++      },
++      "minItems": 0,
++      "maxItems": 1024
++    }
++  },
++  "required": [
++    "schema_version",
++    "document_type",
++    "event_id",
++    "event_kind",
++    "source_ref",
++    "candidate_id",
++    "producer_role",
++    "observation_kind",
++    "finding_refs",
++    "occurred_at",
++    "collected_at",
++    "representation",
++    "classification",
++    "issue_refs",
++    "supersedes"
++  ],
++  "$schema": "https://json-schema.org/draft/2020-12/schema",
++  "$id": "https://example.invalid/ai-development-system/knowledge-event.schema.json"
++}
+diff --git a/contracts/knowledge-source-registry.schema.json b/contracts/knowledge-source-registry.schema.json
+new file mode 100644
+index 0000000..4b5ed85
+--- /dev/null
++++ b/contracts/knowledge-source-registry.schema.json
+@@ -0,0 +1,226 @@
++{
++  "type": "object",
++  "additionalProperties": false,
++  "properties": {
++    "schema_version": {
++      "const": "1.0"
++    },
++    "document_type": {
++      "const": "knowledge_source_registry"
++    },
++    "sources": {
++      "type": "array",
++      "items": {
++        "type": "object",
++        "additionalProperties": false,
++        "properties": {
++          "source_id": {
++            "type": "string",
++            "minLength": 1,
++            "maxLength": 2048,
++            "pattern": "\\S"
++          },
++          "repository": {
++            "type": "string",
++            "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++          },
++          "commit": {
++            "type": "string",
++            "pattern": "^[0-9a-f]{40}$"
++          },
++          "inbox_path": {
++            "type": "string",
++            "minLength": 1,
++            "maxLength": 512,
++            "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++          }
++        },
++        "required": [
++          "source_id",
++          "repository",
++          "commit",
++          "inbox_path"
++        ]
++      },
++      "minItems": 1,
++      "maxItems": 128
++    },
++    "artifacts": {
++      "type": "array",
++      "items": {
++        "type": "object",
++        "additionalProperties": false,
++        "properties": {
++          "reference": {
++            "type": "object",
++            "additionalProperties": false,
++            "properties": {
++              "repository": {
++                "type": "string",
++                "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++              },
++              "commit": {
++                "type": "string",
++                "pattern": "^[0-9a-f]{40}$"
++              },
++              "path": {
++                "type": "string",
++                "minLength": 1,
++                "maxLength": 512,
++                "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++              },
++              "size": {
++                "type": "integer",
++                "minimum": 0,
++                "maximum": 16777216
++              },
++              "sha256": {
++                "type": "string",
++                "pattern": "^[0-9a-f]{64}$"
++              }
++            },
++            "required": [
++              "repository",
++              "commit",
++              "path",
++              "size",
++              "sha256"
++            ]
++          },
++          "representation": {
++            "enum": [
++              "original",
++              "edited_derivative"
++            ]
++          },
++          "format": {
++            "enum": [
++              "text",
++              "json",
++              "handoff-v2",
++              "knowledge-input-v1",
++              "knowledge-handoff-v1",
++              "knowledge-context-v1"
++            ]
++          },
++          "public_classification": {
++            "enum": [
++              "synthetic_sample",
++              "public_safe"
++            ]
++          },
++          "source_alias": {
++            "type": "string",
++            "minLength": 1,
++            "maxLength": 2048,
++            "pattern": "\\S"
++          }
++        },
++        "required": [
++          "reference",
++          "representation",
++          "format",
++          "public_classification",
++          "source_alias"
++        ]
++      },
++      "minItems": 0,
++      "maxItems": 128
++    },
++    "knowledge_bindings": {
++      "type": "array",
++      "maxItems": 128,
++      "uniqueItems": true,
++      "items": {
++        "type": "object",
++        "additionalProperties": false,
++        "properties": {
++          "input": {
++            "type": "object",
++            "additionalProperties": false,
++            "properties": {
++              "repository": {
++                "type": "string",
++                "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++              },
++              "commit": {
++                "type": "string",
++                "pattern": "^[0-9a-f]{40}$"
++              },
++              "path": {
++                "type": "string",
++                "minLength": 1,
++                "maxLength": 512,
++                "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++              },
++              "size": {
++                "type": "integer",
++                "minimum": 0,
++                "maximum": 16777216
++              },
++              "sha256": {
++                "type": "string",
++                "pattern": "^[0-9a-f]{64}$"
++              }
++            },
++            "required": [
++              "repository",
++              "commit",
++              "path",
++              "size",
++              "sha256"
++            ]
++          },
++          "handoff": {
++            "type": "object",
++            "additionalProperties": false,
++            "properties": {
++              "repository": {
++                "type": "string",
++                "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
++              },
++              "commit": {
++                "type": "string",
++                "pattern": "^[0-9a-f]{40}$"
++              },
++              "path": {
++                "type": "string",
++                "minLength": 1,
++                "maxLength": 512,
++                "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
++              },
++              "size": {
++                "type": "integer",
++                "minimum": 0,
++                "maximum": 16777216
++              },
++              "sha256": {
++                "type": "string",
++                "pattern": "^[0-9a-f]{64}$"
++              }
++            },
++            "required": [
++              "repository",
++              "commit",
++              "path",
++              "size",
++              "sha256"
++            ]
++          }
++        },
++        "required": [
++          "input"
++        ]
++      }
++    }
++  },
++  "required": [
++    "schema_version",
++    "document_type",
++    "sources",
++    "artifacts",
++    "knowledge_bindings"
++  ],
++  "$schema": "https://json-schema.org/draft/2020-12/schema",
++  "$id": "https://example.invalid/ai-development-system/knowledge-source-registry.schema.json"
++}
+diff --git a/examples/knowledge-collector/README.md b/examples/knowledge-collector/README.md
+new file mode 100644
+index 0000000..ef15aeb
+--- /dev/null
++++ b/examples/knowledge-collector/README.md
+@@ -0,0 +1,46 @@
++# Synthetic Knowledge collector fixture
++
++All events, Issue aliases and Knowledge documents here are synthetic sample data. There was no
++Agent execution or actual curation. Event sources point to the two synthetic source files at the
++fixed P-A commit. The checked-in registry uses a fictional inbox snapshot and grants no authority.
++
++Offline full regression (includes real local Git tree tests, crash points and legacy suites):
++
++```bash
++python -m unittest discover -s tests -v
++python scripts/validate_delivery_records.py
++```
++
++For a real fixed HTTPS Git scan, obtain the **pushed P-B head** from Manager. Generate a registry
++outside the checkout; the two source references remain fixed to P-A, while inbox events are read
++from that P-B head. Do not substitute a floating ref.
++
++```bash
++python scripts/prepare_collector_fixture.py \
++  --repository syuhei0519/ai-development-system --commit <FIXED_PB_HEAD> \
++  --output <PRIVATE_DIRECTORY>/registry.json
++```
++
++Manager then prepares a private authorization according to
++[the template](../../templates/knowledge-collection.md), with operation=scan and the exact
++registry digest, supplies its independent pin, and runs the scan command. No fixture or CLI
++creates the approval. Expected counts: two verified events, other states zero. Reconcile with a
++fresh operation=reconcile authorization against the same registry and new current state digest;
++there must still be exactly two events. The scan history grows, while original event bytes and
++retry history remain unchanged. State is never an acceptable public artifact.
++
++Read the private current state SHA256, retain it independently, and reproduce the plan without
++mutating that state or acquiring any permission:
++
++```bash
++python scripts/knowledge_collector.py replay --store <PRIVATE_STORE> \
++  --previous-sha256 <CURRENT_STATE_SHA256> --private-plan <NEW_PRIVATE_PLAN_PATH>
++```
++
++`input.json` has one raw finding per event; source files, article, context and handoff support
++unit-test typed bundle checks. They are deliberately simulated output, not operational evidence.
++Tests also use artificial commit IDs only through an in-memory source adapter. Git tree tests
++create local fixed commits and test the production reader without network access. The production
++CLI has no file:// adapter, local-source bypass, pretend-clock option or mock authority flag.
++
++No schedule, Agent, API, Git write, PR, deployment or development gate is exercised by this fixture.
+diff --git a/examples/knowledge-collector/article.md b/examples/knowledge-collector/article.md
+new file mode 100644
+index 0000000..bb5565d
+--- /dev/null
++++ b/examples/knowledge-collector/article.md
+@@ -0,0 +1,34 @@
++---
++id: SYNTHETIC-ARTICLE-1
++title: "synthetic sample: 空文字と空白のみのケースを分ける"
++domain: validation
++status: draft
++updated: "2000-01-01"
++review_after: "異なる runtime への適用前"
++tags: [synthetic, test-plan]
++raw_sources: [input.json]
++supersedes: []
++superseded_by: []
++publication: synthetic_sample
++---
++
++# synthetic sample: 空文字と空白のみのケースを分ける
++
++すべて架空の資料・判断であり、実行実績ではない。2件の架空の Issue の Raw Findings は [input.json](input.json) に固定 revision の出典付きで同梱する。
++
++## 要点・適用条件
++
++架空の2資料は、空文字と空白のみを別ケースとして扱う設計を示す。非空白文字を要求する文字列の検証計画では、両者を分けるという限定的な知識候補を抽出できる。製品テストの成功は示さない。
++
++## 根拠・判断・例外
++
++SYNTHETIC-RAW-1 と SYNTHETIC-RAW-2 の比較からの架空の推論。採用理由は2資料で同じ区別が現れるため。不採用案は長さだけの検査で、空白を通す可能性がある。実際の失敗は観測していない。Unicode と runtime 固有の動作は未検証であり、別途確認が必要。
++
++## 陳腐化・更新
++
++異なる runtime に適用する前に再検証する。現時点は draft。実運用記事としては採用しない。
++
++## 理解を深めるための問い
++
++- 長さだけの検査では、どの入力を誤って受理し得るか？
++- 対象 runtime が変わると、どの前提を再検証すべきか？
+diff --git a/examples/knowledge-collector/context.json b/examples/knowledge-collector/context.json
+new file mode 100644
+index 0000000..1542cf2
+--- /dev/null
++++ b/examples/knowledge-collector/context.json
+@@ -0,0 +1,27 @@
++{
++  "schema_version": "1.0",
++  "document_type": "knowledge_context",
++  "knowledge_references": [
++    {
++      "id": "SYNTHETIC-ARTICLE-1",
++      "locator": "article.md",
++      "revision": "sha256:4252b7f4d71cede5e78b9e540b0e9440c4cdaa6e36ca5afdc9374f4978e3fb72",
++      "applicability": "synthetic sample: test-plan reviews for string fields requiring a non-whitespace character.",
++      "exceptions": [
++        "synthetic sample: Unicode/runtime behavior requires separate verification."
++      ],
++      "sources": [
++        {
++          "locator": "source-1.md",
++          "revision": "sha256:63e7f46bea8e25dddc6016e99a5234895f58b6f25c6fe3a8fc9981117d3cce3f"
++        },
++        {
++          "locator": "source-2.md",
++          "revision": "sha256:7455b6565f9ac4801a6aa19dc5923c81889f743e76d7a001b237c73fe5717b39"
++        }
++      ],
++      "lifecycle": "draft",
++      "review_trigger": "synthetic sample: re-evaluate before using a different runtime or promoting to active."
++    }
++  ]
++}
+diff --git a/examples/knowledge-collector/events/97c9bbd57d6cf8ad3c308a3c30281ce21a0c2494d6e607263a8e3ac05e7ca7c7.json b/examples/knowledge-collector/events/97c9bbd57d6cf8ad3c308a3c30281ce21a0c2494d6e607263a8e3ac05e7ca7c7.json
+new file mode 100644
+index 0000000..cba8c48
+--- /dev/null
++++ b/examples/knowledge-collector/events/97c9bbd57d6cf8ad3c308a3c30281ce21a0c2494d6e607263a8e3ac05e7ca7c7.json
+@@ -0,0 +1 @@
++{"candidate_id":"SYNTHETIC-CANDIDATE-2","classification":"synthetic_sample","collected_at":"2026-10-11T00:00:00Z","document_type":"knowledge_event","event_id":"97c9bbd57d6cf8ad3c308a3c30281ce21a0c2494d6e607263a8e3ac05e7ca7c7","event_kind":"candidate","finding_refs":[{"commit":"5345303db8c5208859ed741b98f119882de7a973","path":"examples/knowledge-delivery/source-2.md","repository":"syuhei0519/ai-development-system","sha256":"7455b6565f9ac4801a6aa19dc5923c81889f743e76d7a001b237c73fe5717b39","size":176}],"issue_refs":["SYNTHETIC-ISSUE-2"],"observation_kind":"test_observation","occurred_at":"2026-10-11T00:00:00Z","producer_role":"test","representation":"original","schema_version":"1.0","source_ref":{"commit":"5345303db8c5208859ed741b98f119882de7a973","path":"examples/knowledge-delivery/source-2.md","repository":"syuhei0519/ai-development-system","sha256":"7455b6565f9ac4801a6aa19dc5923c81889f743e76d7a001b237c73fe5717b39","size":176},"supersedes":[]}
+diff --git a/examples/knowledge-collector/events/a5b7e21e9919d42d8a88f4b246274162ed046d2746f0d36528765c82c1d6c628.json b/examples/knowledge-collector/events/a5b7e21e9919d42d8a88f4b246274162ed046d2746f0d36528765c82c1d6c628.json
+new file mode 100644
+index 0000000..922f537
+--- /dev/null
++++ b/examples/knowledge-collector/events/a5b7e21e9919d42d8a88f4b246274162ed046d2746f0d36528765c82c1d6c628.json
+@@ -0,0 +1 @@
++{"candidate_id":"SYNTHETIC-CANDIDATE-1","classification":"synthetic_sample","collected_at":"2026-10-11T00:00:00Z","document_type":"knowledge_event","event_id":"a5b7e21e9919d42d8a88f4b246274162ed046d2746f0d36528765c82c1d6c628","event_kind":"candidate","finding_refs":[{"commit":"5345303db8c5208859ed741b98f119882de7a973","path":"examples/knowledge-delivery/source-1.md","repository":"syuhei0519/ai-development-system","sha256":"63e7f46bea8e25dddc6016e99a5234895f58b6f25c6fe3a8fc9981117d3cce3f","size":176}],"issue_refs":["SYNTHETIC-ISSUE-1"],"observation_kind":"research","occurred_at":"2026-10-11T00:00:00Z","producer_role":"research-design","representation":"original","schema_version":"1.0","source_ref":{"commit":"5345303db8c5208859ed741b98f119882de7a973","path":"examples/knowledge-delivery/source-1.md","repository":"syuhei0519/ai-development-system","sha256":"63e7f46bea8e25dddc6016e99a5234895f58b6f25c6fe3a8fc9981117d3cce3f","size":176},"supersedes":[]}
+diff --git a/examples/knowledge-collector/handoff.json b/examples/knowledge-collector/handoff.json
+new file mode 100644
+index 0000000..112ef89
+--- /dev/null
++++ b/examples/knowledge-collector/handoff.json
+@@ -0,0 +1 @@
++{"artifacts":[{"id":"SYNTHETIC-KNOWLEDGE-ARTIFACT","kind":"knowledge","locator":"article.md","revision":"sha256:4252b7f4d71cede5e78b9e540b0e9440c4cdaa6e36ca5afdc9374f4978e3fb72","summary":"synthetic sample: draft reusable lesson from two fictional sources."}],"assignment":{"completion_criteria":["Record a supported adoption/defer/reject decision for each supplied finding."],"scope":"synthetic sample: compare two fictional raw findings and document a reusable test-plan lesson."},"attempt":1,"block_reasons":[],"decisions":[{"article_artifact_ids":["SYNTHETIC-KNOWLEDGE-ARTIFACT"],"evidence_ids":["SYNTHETIC-KNOWLEDGE-EVIDENCE"],"outcome":"adopted","raw_finding_ids":["a5b7e21e9919d42d8a88f4b246274162ed046d2746f0d36528765c82c1d6c628","97c9bbd57d6cf8ad3c308a3c30281ce21a0c2494d6e607263a8e3ac05e7ca7c7"],"reason":"synthetic sample: generalize only to test-plan review within the documented applicability."}],"document_type":"knowledge_handoff","evidence":[{"artifact_ids":["SYNTHETIC-KNOWLEDGE-ARTIFACT"],"claim":"synthetic sample: both supplied fictional findings distinguish empty from whitespace-only cases.","id":"SYNTHETIC-KNOWLEDGE-EVIDENCE","locator":"article.md","observation":"Fictional comparison only. No actual product behavior is certified.","raw_finding_ids":["a5b7e21e9919d42d8a88f4b246274162ed046d2746f0d36528765c82c1d6c628","97c9bbd57d6cf8ad3c308a3c30281ce21a0c2494d6e607263a8e3ac05e7ca7c7"]}],"failure_reasons":[],"knowledge_references":[{"applicability":"synthetic sample: test-plan reviews for string fields requiring a non-whitespace character.","exceptions":["synthetic sample: Unicode/runtime behavior requires separate verification."],"id":"SYNTHETIC-ARTICLE-1","lifecycle":"draft","locator":"article.md","review_trigger":"synthetic sample: re-evaluate before using a different runtime or promoting to active.","revision":"sha256:4252b7f4d71cede5e78b9e540b0e9440c4cdaa6e36ca5afdc9374f4978e3fb72","sources":[{"locator":"source-1.md","revision":"sha256:63e7f46bea8e25dddc6016e99a5234895f58b6f25c6fe3a8fc9981117d3cce3f"},{"locator":"source-2.md","revision":"sha256:7455b6565f9ac4801a6aa19dc5923c81889f743e76d7a001b237c73fe5717b39"}]}],"publication":"synthetic_sample","raw_findings":[{"domain":"validation","id":"a5b7e21e9919d42d8a88f4b246274162ed046d2746f0d36528765c82c1d6c628","issue_refs":[{"id":"SYNTHETIC-ISSUE-1","source":"https://example.invalid/synthetic/issues/1"}],"observation":"synthetic sample: fictional design 1 separates an empty-string case from a whitespace-only case.","sources":[{"locator":"source-1.md","revision":"sha256:63e7f46bea8e25dddc6016e99a5234895f58b6f25c6fe3a8fc9981117d3cce3f"}]},{"domain":"validation","id":"97c9bbd57d6cf8ad3c308a3c30281ce21a0c2494d6e607263a8e3ac05e7ca7c7","issue_refs":[{"id":"SYNTHETIC-ISSUE-2","source":"https://example.invalid/synthetic/issues/2"}],"observation":"synthetic sample: fictional design 2 separates an empty-string case from a whitespace-only case.","sources":[{"locator":"source-2.md","revision":"sha256:7455b6565f9ac4801a6aa19dc5923c81889f743e76d7a001b237c73fe5717b39"}]}],"retry_of":[],"role":"knowledge","schema_version":"1.0","status":"completed","summary":"synthetic sample: fictional cross-Issue curation; no actual task execution.","system_status":"completed","task_id":"SYNTHETIC-KNOWLEDGE-TASK-1"}
+diff --git a/examples/knowledge-collector/input.json b/examples/knowledge-collector/input.json
+new file mode 100644
+index 0000000..ed633f7
+--- /dev/null
++++ b/examples/knowledge-collector/input.json
+@@ -0,0 +1 @@
++{"assignment":{"completion_criteria":["Record a supported adoption/defer/reject decision for each supplied finding."],"scope":"synthetic sample: compare two fictional raw findings and document a reusable test-plan lesson."},"attempt":1,"document_type":"knowledge_input","knowledge_references":[{"applicability":"synthetic sample: test-plan reviews for string fields requiring a non-whitespace character.","exceptions":["synthetic sample: Unicode/runtime behavior requires separate verification."],"id":"SYNTHETIC-ARTICLE-1","lifecycle":"draft","locator":"article.md","review_trigger":"synthetic sample: re-evaluate before using a different runtime or promoting to active.","revision":"sha256:4252b7f4d71cede5e78b9e540b0e9440c4cdaa6e36ca5afdc9374f4978e3fb72","sources":[{"locator":"source-1.md","revision":"sha256:63e7f46bea8e25dddc6016e99a5234895f58b6f25c6fe3a8fc9981117d3cce3f"},{"locator":"source-2.md","revision":"sha256:7455b6565f9ac4801a6aa19dc5923c81889f743e76d7a001b237c73fe5717b39"}]}],"permissions":["synthetic sample: read supplied findings and write Knowledge artifacts only."],"publication":"synthetic_sample","raw_findings":[{"domain":"validation","id":"a5b7e21e9919d42d8a88f4b246274162ed046d2746f0d36528765c82c1d6c628","issue_refs":[{"id":"SYNTHETIC-ISSUE-1","source":"https://example.invalid/synthetic/issues/1"}],"observation":"synthetic sample: fictional design 1 separates an empty-string case from a whitespace-only case.","sources":[{"locator":"source-1.md","revision":"sha256:63e7f46bea8e25dddc6016e99a5234895f58b6f25c6fe3a8fc9981117d3cce3f"}]},{"domain":"validation","id":"97c9bbd57d6cf8ad3c308a3c30281ce21a0c2494d6e607263a8e3ac05e7ca7c7","issue_refs":[{"id":"SYNTHETIC-ISSUE-2","source":"https://example.invalid/synthetic/issues/2"}],"observation":"synthetic sample: fictional design 2 separates an empty-string case from a whitespace-only case.","sources":[{"locator":"source-2.md","revision":"sha256:7455b6565f9ac4801a6aa19dc5923c81889f743e76d7a001b237c73fe5717b39"}]}],"retry_of":[],"role":"knowledge","schema_version":"1.0","task_id":"SYNTHETIC-KNOWLEDGE-TASK-1"}
+diff --git a/examples/knowledge-collector/registry.template.json b/examples/knowledge-collector/registry.template.json
+new file mode 100644
+index 0000000..dd8734a
+--- /dev/null
++++ b/examples/knowledge-collector/registry.template.json
+@@ -0,0 +1 @@
++{"artifacts":[{"format":"text","public_classification":"synthetic_sample","reference":{"commit":"5345303db8c5208859ed741b98f119882de7a973","path":"examples/knowledge-delivery/source-1.md","repository":"syuhei0519/ai-development-system","sha256":"63e7f46bea8e25dddc6016e99a5234895f58b6f25c6fe3a8fc9981117d3cce3f","size":176},"representation":"original","source_alias":"SYNTHETIC-SOURCE-1"},{"format":"text","public_classification":"synthetic_sample","reference":{"commit":"5345303db8c5208859ed741b98f119882de7a973","path":"examples/knowledge-delivery/source-2.md","repository":"syuhei0519/ai-development-system","sha256":"7455b6565f9ac4801a6aa19dc5923c81889f743e76d7a001b237c73fe5717b39","size":176},"representation":"original","source_alias":"SYNTHETIC-SOURCE-2"}],"document_type":"knowledge_source_registry","knowledge_bindings":[],"schema_version":"1.0","sources":[{"commit":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","inbox_path":"examples/knowledge-collector/events","repository":"example/repo","source_id":"SYNTHETIC-INBOX"}]}
+diff --git a/examples/knowledge-collector/source-1.md b/examples/knowledge-collector/source-1.md
+new file mode 100644
+index 0000000..3fff027
+--- /dev/null
++++ b/examples/knowledge-collector/source-1.md
+@@ -0,0 +1,4 @@
++# Synthetic source 1
++
++Fictional design 1: test the empty string and whitespace-only string separately.
++This is synthetic evidence, not an observation of a running application.
+diff --git a/examples/knowledge-collector/source-2.md b/examples/knowledge-collector/source-2.md
+new file mode 100644
+index 0000000..12a374f
+--- /dev/null
++++ b/examples/knowledge-collector/source-2.md
+@@ -0,0 +1,4 @@
++# Synthetic source 2
++
++Fictional design 2: test the empty string and whitespace-only string separately.
++This is synthetic evidence, not an observation of a running application.
+diff --git a/knowledge/README.md b/knowledge/README.md
+index 9dfc27a..849116f 100644
+--- a/knowledge/README.md
++++ b/knowledge/README.md
+@@ -11,7 +11,7 @@
+ 
+ 1. 開発工程が任意の知識候補と根拠を渡す。Knowledge 専用入力には複数 Issue または Issue を持たない Raw Findings を出典と固定 revision 付きで同梱し、AC 原文は要求しない。Manager は非同期配送し、開発の終了条件にしない。
+ 2. Knowledge Agent が公開安全性を確認して raw に観測事実と出典を保存する。非公開の原根拠は非公開の認可済み領域に残し、public repo には安全な情報のみを記す。
+-3. Knowledge Agent が重複・矛盾・汎用性を評価し、accepted / deferred / rejected と理由・日付を raw の判断欄に残す。採用する場合は [記事テンプレート](../templates/knowledge-article.md) で curated 記事を作る。
++3. Knowledge Agent が重複・矛盾・汎用性を評価し、adopted / deferred / rejected と理由・日付を raw の判断欄に残す。採用する場合は [記事テンプレート](../templates/knowledge-article.md) で curated 記事を作る。
+ 4. curated には適用条件・例外・重要判断・失敗・不採用案・出典を記す。観測からの推論はその旨を明示する。
+ 5. 技術領域の索引とこの索引を更新する。新しい領域は raw と curated の双方に作る。
+ 6. バージョン変更、反例、出典の失効、review_after 到来で再評価する。draft → active → deprecated/superseded を記録し、後継リンクと変更理由を残す。Git 履歴と raw の出典を保全する。
+@@ -22,4 +22,4 @@
+ 
+ [専用入力](../templates/knowledge-input.md) と [契約説明](../contracts/README.md) を使用する。根拠・出典不足は MISSING_INPUT とし、Issue AC がないだけで blocked にしない。後続は knowledge-context と記事実体の固定 revision・適用条件・例外・出典・状態を照合し、採否を記録する。知識で AC 原文や実測を置き換えない。
+ 
+-非同期収集・定期同期の実行基盤は Phase 1-3 の対象。このフェーズでは契約・手動配送可能な仕様・架空サンプル・検証のみを提供し、常駐処理やスケジューラーは実装・起動しない。
++Phase 1-3 P-B の [collector](../contracts/knowledge-collection.md) は許可済み固定 Git inbox を全件照合し、非公開 state と raw bytes を保持する。常駐処理・Agent 起動・schedule 有効化は行わない。P-C/P-D の同期・実運用実証は未実施。
+diff --git a/scripts/knowledge_collector.py b/scripts/knowledge_collector.py
+new file mode 100644
+index 0000000..9f577da
+--- /dev/null
++++ b/scripts/knowledge_collector.py
+@@ -0,0 +1,652 @@
++#!/usr/bin/env python3
++"""Mechanical Knowledge collector. No Agent, scheduler, API or Git write operations."""
++import argparse
++from collections import Counter
++from contextlib import contextmanager
++from copy import deepcopy
++from datetime import datetime, timezone
++import fcntl
++import json
++import os
++from pathlib import Path
++import re
++import subprocess
++import sys
++import tempfile
++
++from jsonschema import Draft202012Validator, FormatChecker
++try:
++    from .consume_delivery import (ROOT, MAX_FILE, MAX_BUNDLE, GitSource, check_reference,
++        digest, parse, read_local, require, safe_path, verify_handoffs)
++    from .validate_retry import validate_ledger, transition as retry_transition, LIMITS
++    from .validate_knowledge import validate as validate_knowledge
++except ImportError:
++    from consume_delivery import (ROOT, MAX_FILE, MAX_BUNDLE, GitSource, check_reference,
++        digest, parse, read_local, require, safe_path, verify_handoffs)
++    from validate_retry import validate_ledger, transition as retry_transition, LIMITS
++    from validate_knowledge import validate as validate_knowledge
++
++STATES = ('pending', 'verified', 'reserved', 'dispatching', 'started', 'output_received',
++          'validated', 'commit_pending', 'committed', 'context_available', 'blocked',
++          'quarantined', 'dispatch_unknown', 'terminal')
++
++
++def encode(data):
++    return (json.dumps(data, ensure_ascii=False, sort_keys=True, separators=(',', ':'),
++                       allow_nan=False) + '\n').encode('utf-8')
++
++
++def validate(name, data):
++    spec = json.loads((ROOT / 'contracts' / (name + '.schema.json')).read_text())
++    require(Draft202012Validator(spec, format_checker=FormatChecker()).is_valid(data),
++            'invalid collector contract')
++
++
++def fields(data, names):
++    require(isinstance(data, dict) and set(data) == set(names.split()), 'invalid operation fields')
++
++
++def stamp(value):
++    parsed = datetime.fromisoformat(value.replace('Z', '+00:00'))
++    require(parsed.tzinfo is not None, 'timezone required')
++    return parsed
++
++
++def event_id(event):
++    ref = event['source_ref']
++    identity = dict(version='1.0', repository=ref['repository'], commit=ref['commit'],
++                    path=ref['path'], sha256=ref['sha256'], candidate_id=event['candidate_id'],
++                    event_kind=event['event_kind'])
++    return digest(encode(identity))
++
++
++def refkey(ref):
++    check_reference(ref)
++    return ref['repository'], ref['commit'], ref['path']
++
++
++def validate_event(event):
++    validate('knowledge-event', event)
++    require(event['event_id'] == event_id(event), 'identity mismatch')
++    for ref in [event['source_ref'], *event['finding_refs']]:
++        check_reference(ref)
++    require(len({refkey(r) for r in event['finding_refs']}) == len(event['finding_refs']),
++            'duplicate finding reference')
++    require(event['event_id'] not in event['supersedes'], 'self correction')
++    require(event['event_kind'] != 'correction' or event['supersedes'], 'correction needs predecessor')
++
++
++def authorize(raw, pin, request_raw, operation, writer, scope, now=None):
++    require(digest(raw) == pin, 'authorization pin mismatch')
++    auth = parse(raw)
++    validate('knowledge-collection-authorization', auth)
++    require((auth['writer'], auth['scope'], auth['operation'], auth['request_sha256']) ==
++            (writer, scope, operation, digest(request_raw)), 'authorization mismatch')
++    require((now or datetime.now(timezone.utc)) < stamp(auth['valid_until']), 'authorization expired')
++
++
++class SnapshotSource(GitSource):
++    """All inbox entries from an immutable tree, including unsafe entries (then reject)."""
++    def snapshot(self, repository, commit):
++        check_reference(dict(repository=repository, commit=commit, path='probe'))
++        key = repository, commit
++        if key not in self.repositories:
++            directory = self.directory / str(len(self.repositories))
++            directory.mkdir()
++            self.git(directory, 'init', '--bare', '--template=')
++            self.git(directory, 'fetch', '--no-tags', '--depth=1',
++                     'https://github.com/' + repository + '.git', commit)
++            require(self.git(directory, 'cat-file', '-t', commit).strip() == b'commit', 'not commit')
++            require(self.git(directory, 'rev-parse', 'FETCH_HEAD').decode().strip() == commit,
++                    'snapshot mismatch')
++            self.repositories[key] = directory
++        return self.repositories[key]
++
++    def enumerate(self, item):
++        safe_path(item['inbox_path'])
++        directory = self.snapshot(item['repository'], item['commit'])
++        # Missing prefix means empty inbox, not missing scan: retained history detects disappearances.
++        entries = self.git(directory, 'ls-tree', '-r', '-z', item['commit'], '--', item['inbox_path'])
++        result = []
++        for entry in entries.split(b'\0'):
++            if not entry:
++                continue
++            header, name = entry.split(b'\t', 1)
++            mode, kind, oid = header.split()
++            path = name.decode('utf-8')
++            require(path.startswith(item['inbox_path'] + '/') and
++                    mode in (b'100644', b'100755') and kind == b'blob', 'unsafe inbox tree')
++            safe_path(path)
++            size = int(self.git(directory, 'cat-file', '-s', oid.decode()))
++            require(size <= MAX_FILE and len(result) < 1024, 'inbox resource limit')
++            result.append(dict(repository=item['repository'], commit=item['commit'], path=path,
++                               size=size, sha256='0' * 64))
++        return result
++
++
++def initial(writer, scope):
++    return dict(schema_version='1.0', document_type='knowledge_collection_state', writer=writer,
++                scope=scope, sequence=0, previous_state_sha256=None, registry_sha256=None,
++                cursors={}, events={}, batches={}, scans=[], publication='private_only')
++
++
++def validate_state(state):
++    validate('knowledge-collection-state', state)
++    for identity, event in state['events'].items():
++        if event['event'] is not None:
++            validate_event(event['event'])
++            require(identity == event['event']['event_id'], 'state identity mismatch')
++        require(event['history'] and event['history'][-1]['status'] == event['status'], 'state history mismatch')
++        if event['batch_id'] is not None:
++            require(event['batch_id'] in state['batches'] and
++                    identity in state['batches'][event['batch_id']]['event_ids'], 'orphan batch')
++    for identity, batch in state['batches'].items():
++        validate_ledger(batch['ledger'])
++        require(batch['ledger_sha256'] == digest(encode(batch['ledger'])), 'ledger pin mismatch')
++        require(identity == digest(encode(sorted(batch['event_ids']))) and
++                len(set(batch['event_ids'])) == len(batch['event_ids']), 'batch identity mismatch')
++        require(batch['ledger']['scope'] == state['scope'] + '/' + identity, 'retry scope mismatch')
++        require(all(e in state['events'] and state['events'][e]['batch_id'] == identity
++                    for e in batch['event_ids']), 'batch binding mismatch')
++
++
++def move(state, identities, status, reason, evidence=None):
++    for identity in identities:
++        item = state['events'][identity]
++        item['status'] = status
++        item['history'].append(dict(sequence=state['sequence'] + 1, status=status,
++                                    reason=reason, evidence_sha256=evidence))
++
++
++def scan(state, registry_raw, source):
++    registry = parse(registry_raw)
++    validate('knowledge-source-registry', registry)
++    require(len({s['source_id'] for s in registry['sources']}) == len(registry['sources']),
++            'duplicate source')
++    require(len({(s['repository'], s['inbox_path']) for s in registry['sources']}) ==
++            len(registry['sources']), 'overlapping source snapshot')
++    for a in registry['sources']:
++        safe_path(a['inbox_path'])
++        for b in registry['sources']:
++            require(a is b or a['repository'] != b['repository'] or
++                    not a['inbox_path'].startswith(b['inbox_path'] + '/'), 'overlapping inbox')
++    blobs, archive = {}, {digest(registry_raw): registry_raw}
++    total = 0
++    # Fetch ALL dependencies first. Any missing/partial/tampered bytes abort the scan transaction.
++    for artifact in registry['artifacts']:
++        ref = artifact['reference']; key = refkey(ref)
++        require(key not in blobs, 'duplicate dependency')
++        raw = source.read(ref)
++        require(len(raw) == ref['size'] and digest(raw) == ref['sha256'], 'source bytes changed')
++        total += len(raw); require(total <= MAX_BUNDLE, 'scan resource limit')
++        blobs[key] = raw; archive[digest(raw)] = raw
++    verify_handoffs(registry['artifacts'], blobs, '1.1', registry['knowledge_bindings'])
++    inventory = {refkey(a['reference']): a['reference'] for a in registry['artifacts']}
++    observations = []
++    for item in registry['sources']:
++        entries = source.enumerate(item)
++        require(len(entries) <= 1024 and len({r['path'] for r in entries}) == len(entries),
++                'incomplete or duplicate enumeration')
++        for ref in entries:
++            require(ref['repository'] == item['repository'] and ref['commit'] == item['commit'] and
++                    ref['path'].startswith(item['inbox_path'] + '/'), 'snapshot mismatch')
++            raw = source.read(ref)
++            require(len(raw) == ref['size'], 'partial inbox read')
++            total += len(raw); require(total <= MAX_BUNDLE, 'scan resource limit')
++            raw_hash = digest(raw); archive[raw_hash] = raw
++            try:
++                event = parse(raw); validate_event(event)
++                require(ref['path'] == item['inbox_path'] + '/' + event['event_id'] + '.json',
++                        'event filename mismatch')
++                for dependency in [event['source_ref'], *event['finding_refs']]:
++                    require(inventory.get(refkey(dependency)) == dependency, 'unlisted dependency')
++                observations.append((event['event_id'], raw_hash, event, item['source_id']))
++            except (ValueError, UnicodeError, RecursionError):
++                # Poison bytes are retained, never executed, never interpolated in public logs.
++                observations.append((digest(encode(dict(source=item['source_id'], path=ref['path'],
++                                                        sha256=raw_hash))), raw_hash, None, item['source_id']))
++    candidate = deepcopy(state)
++    seen, anomaly = set(), False
++    for identity, raw_hash, event, source_id in observations:
++        seen.add(identity)
++        old = candidate['events'].get(identity)
++        if old:
++            if source_id not in old['source_ids']:
++                old['source_ids'].append(source_id)
++            if old['event_sha256'] != raw_hash:
++                move(candidate, [identity], 'quarantined', 'collision', raw_hash); anomaly = True
++            continue
++        candidate['events'][identity] = dict(event_sha256=raw_hash, event=event,
++            source_ids=[source_id], status='pending', batch_id=None, history=[])
++        move(candidate, [identity], 'pending', 'discovered', raw_hash)
++        move(candidate, [identity], 'verified' if event else 'quarantined',
++             'verified' if event else 'poison', raw_hash)
++    for identity in state['events'].keys() - seen:
++        move(candidate, [identity], 'quarantined', 'missing')
++        anomaly = True
++    # Missing/colliding historical events cannot be reported as successful scan progress.
++    if not anomaly:
++        candidate['cursors'] = {s['source_id']: s['commit'] for s in registry['sources']}
++    candidate['registry_sha256'] = digest(registry_raw)
++    candidate['scans'].append(dict(registry_sha256=digest(registry_raw), mode='full',
++        result='quarantined' if anomaly else 'verified', event_digests=[x[1] for x in observations],
++        source_snapshots=registry['sources']))
++    return candidate, archive
++
++
++def append_retry(batch, kind, result, evidence):
++    before = encode(batch['ledger'])
++    after = deepcopy(batch['ledger'])
++    epoch = after['epochs'][-1]
++    epoch['events'].append(dict(kind=kind, result=result, evidence=evidence))
++    if result != 'succeeded' and sum(e['kind'] == kind for e in epoch['events']) == epoch['limits'][kind]:
++        epoch['terminal'] = 'RETRY_LIMIT_REACHED'
++    batch['ledger'] = retry_transition(before, encode(after), batch['ledger_sha256'])
++    batch['ledger_sha256'] = digest(encode(batch['ledger']))
++
++
++def budget(batch, kind):
++    epoch = batch['ledger']['epochs'][-1]
++    require(epoch['terminal'] == 'open' and
++            sum(e['kind'] == kind for e in epoch['events']) < epoch['limits'][kind], 'RETRY_LIMIT_REACHED')
++
++
++def verify_bundle(manifest, source):
++    # Exact bundle is authorized by the independently pinned record request.
++    from_schema = json.loads((ROOT / 'contracts/artifact-delivery-v1.1.schema.json').read_text())
++    require(Draft202012Validator(from_schema).is_valid(manifest), 'invalid typed bundle')
++    blobs, archive, total = {}, {}, 0
++    for a in manifest['artifacts']:
++        ref = a['reference']; key = refkey(ref)
++        require(key not in blobs, 'duplicate reference')
++        raw = source.read(ref)
++        require(len(raw) == ref['size'] and digest(raw) == ref['sha256'], 'bundle bytes mismatch')
++        total += len(raw); require(total <= MAX_BUNDLE, 'bundle resource limit')
++        blobs[key] = raw; archive[digest(raw)] = raw
++    verify_handoffs(manifest['artifacts'], blobs, '1.1', manifest['knowledge_bindings'])
++    return blobs, archive
++
++
++def record(state, request, object_read, source, grant_raw=None, grant_pin=None, now=None):
++    """Only Manager observations; external actions always happen AFTER persisted reservations."""
++    validate('knowledge-collection-record', request)
++    candidate = deepcopy(state); archive = {}
++    action = request.get('action')
++    now = now or datetime.now(timezone.utc)
++    if action == 'reserve':
++        fields(request, 'action event_ids input_sha256 lease_until' +
++               (' prior_ledger_sha256' if 'prior_ledger_sha256' in request else ''))
++        ids = request['event_ids']
++        require(isinstance(ids, list) and ids and len(ids) == len(set(ids)), 'empty/duplicate batch')
++        require(all(e in candidate['events'] and candidate['events'][e]['status'] == 'verified' and
++                    candidate['events'][e]['batch_id'] is None for e in ids), 'event already claimed')
++        identity = digest(encode(sorted(ids)))
++        require(identity not in candidate['batches'], 'batch cannot reset retry history')
++        raw = object_read(request['input_sha256']); data = parse(raw)
++        require(digest(raw) == request['input_sha256'] and not validate_knowledge(data) and
++                data['document_type'] == 'knowledge_input', 'invalid sealed input')
++        require(stamp(request['lease_until']) > now, 'invalid lease')
++        # One mechanical raw finding per event; supplied input must retain the exact source digests.
++        require({f['id'] for f in data['raw_findings']} == set(ids), 'input event coverage mismatch')
++        for finding in data['raw_findings']:
++            event = candidate['events'][finding['id']]['event']
++            expected = {r['sha256'] for r in [event['source_ref'], *event['finding_refs']]}
++            require({s['revision'] for s in finding['sources']} == {'sha256:' + h for h in expected},
++                    'input source coverage mismatch')
++        ledger = dict(version='1.0', scope=state['scope'] + '/' + identity,
++                      epochs=[dict(id=1, limits=LIMITS.copy(), events=[], terminal='open', grant_sha256=None)])
++        if 'prior_ledger_sha256' in request:
++            prior_raw = object_read(request['prior_ledger_sha256'])
++            require(digest(prior_raw) == request['prior_ledger_sha256'], 'legacy history pin mismatch')
++            ledger = parse(prior_raw); validate_ledger(ledger)
++            require(ledger['scope'] == state['scope'] + '/' + identity, 'legacy scope mismatch')
++            archive[digest(prior_raw)] = prior_raw
++        candidate['batches'][identity] = dict(event_ids=sorted(ids), input_sha256=digest(raw),
++            ledger=ledger, ledger_sha256=digest(encode(ledger)), pending=None, runtime_id=None,
++            lease_until=request['lease_until'], output_sha256=None, validated_artifacts=[],
++            committed_output_pin=[], next_eligible_at=None, new_input_required=False)
++        for e in ids: candidate['events'][e]['batch_id'] = identity
++        move(candidate, ids, 'terminal' if ledger['epochs'][-1]['terminal'] == 'RETRY_LIMIT_REACHED'
++             else 'reserved', 'reserved', digest(raw)); archive[digest(raw)] = raw
++        return candidate, archive
++    require(isinstance(request.get('batch_id'), str) and request['batch_id'] in candidate['batches'],
++            'unknown batch')
++    batch = candidate['batches'][request['batch_id']]; ids = batch['event_ids']
++    states = {candidate['events'][e]['status'] for e in ids}
++    require(len(states) == 1, 'batch interrupted by quarantine')
++    status = next(iter(states))
++    proof = digest(encode(request))
++    if action == 'dispatch':
++        fields(request, 'action batch_id')
++        require(status == 'reserved' and batch['pending'] is None and batch['output_sha256'] is None,
++                'dispatch not allowed')
++        require(not batch['new_input_required'], 'new sealed retry input required')
++        require(batch['next_eligible_at'] is None or now >= stamp(batch['next_eligible_at']), 'backoff active')
++        budget(batch, 'dispatch'); budget(batch, 'execution')
++        input_data = parse(object_read(batch['input_sha256']))
++        executions = sum(e['kind'] == 'execution' for e in batch['ledger']['epochs'][-1]['events'])
++        require(input_data['attempt'] == executions + 1, 'new sealed retry input required')
++        batch['pending'] = 'dispatch'
++        move(candidate, ids, 'dispatching', 'dispatch', proof)
++    elif action == 'prepare_retry':
++        fields(request, 'action batch_id input_sha256 manifest')
++        require(status == 'reserved' and batch['pending'] is None and batch['output_sha256'] is None,
++                'cannot replace active input/output')
++        _, archive = verify_bundle(request['manifest'], source)
++        require(any(a['format'] == 'knowledge-input-v1' and
++                    a['reference']['sha256'] == request['input_sha256']
++                    for a in request['manifest']['artifacts']), 'retry input missing')
++        new = parse(archive[request['input_sha256']])
++        old = parse(object_read(batch['input_sha256']))
++        epoch = batch['ledger']['epochs'][-1]
++        executions = sum(e['kind'] == 'execution' for e in epoch['events'])
++        require(new['attempt'] == executions + 1 and new['task_id'] != old['task_id'] and
++                all(new[k] == old[k] for k in ('assignment', 'raw_findings', 'knowledge_references')),
++                'retry input identity/scope mismatch')
++        if executions:
++            require(new['attempt'] == old['attempt'] + 1 and
++                    any(r['task_id'] == old['task_id'] and r['attempt'] == old['attempt']
++                        for r in new['retry_of']), 'previous execution missing')
++            require(any(pair['input']['sha256'] == batch['input_sha256'] and
++                        pair.get('handoff', {}).get('sha256') in
++                            {r['revision'].removeprefix('sha256:') for r in new['retry_of']} and
++                        parse(archive[pair['handoff']['sha256']])['status'] in ('failed', 'blocked')
++                        for pair in request['manifest']['knowledge_bindings']),
++                    'retry must preserve failed previous input/output binding')
++        else:
++            require(epoch['id'] > 1 and new['attempt'] == 1 and not new['retry_of'],
++                    'new epoch requires separate grant')
++        batch['input_sha256'] = request['input_sha256']
++        batch['new_input_required'] = False
++        move(candidate, ids, status, 'reserved', proof)
++    elif action == 'dispatch_unknown':
++        fields(request, 'action batch_id')
++        require(status == 'dispatching' and batch['pending'] == 'dispatch', 'not dispatching')
++        move(candidate, ids, 'dispatch_unknown', 'unknown', proof)
++    elif action in ('started', 'dispatch_failed'):
++        fields(request, 'action batch_id runtime_id evidence_sha256 next_eligible_at')
++        require(status in ('dispatching', 'dispatch_unknown') and batch['pending'] == 'dispatch',
++                'no pending dispatch')
++        evidence = object_read(request['evidence_sha256'])
++        require(digest(evidence) == request['evidence_sha256'], 'observation mismatch')
++        archive[digest(evidence)] = evidence
++        require((isinstance(request['runtime_id'], str) and bool(request['runtime_id'].strip()))
++                if action == 'started' else request['runtime_id'] is None, 'invalid runtime observation')
++        append_retry(batch, 'dispatch', 'succeeded' if action == 'started' else 'failed', proof)
++        batch['pending'] = 'execution' if action == 'started' else None
++        batch['runtime_id'] = request['runtime_id']; batch['next_eligible_at'] = request['next_eligible_at']
++        move(candidate, ids, 'started' if action == 'started' else 'reserved', action, proof)
++    elif action in ('execution_failed', 'output_received'):
++        fields(request, 'action batch_id runtime_id evidence_sha256 next_eligible_at')
++        require(status == 'started' and batch['pending'] == 'execution' and
++                request['runtime_id'] == batch['runtime_id'], 'execution identity mismatch')
++        raw = object_read(request['evidence_sha256'])
++        require(digest(raw) == request['evidence_sha256'], 'output observation mismatch')
++        archive[digest(raw)] = raw
++        append_retry(batch, 'execution', 'succeeded' if action == 'output_received' else 'failed', proof)
++        batch['pending'] = None; batch['next_eligible_at'] = request['next_eligible_at']
++        if action == 'output_received': batch['output_sha256'] = digest(raw)
++        else: batch['new_input_required'] = True
++        move(candidate, ids, 'output_received' if action == 'output_received' else 'reserved', action, proof)
++    elif action == 'delivery_start':
++        fields(request, 'action batch_id')
++        require(status == 'output_received' and batch['pending'] is None, 'delivery not allowed')
++        require(batch['next_eligible_at'] is None or now >= stamp(batch['next_eligible_at']), 'backoff active')
++        budget(batch, 'delivery'); batch['pending'] = 'delivery'
++        move(candidate, ids, 'output_received', action, proof)
++    elif action == 'delivery_failed':
++        fields(request, 'action batch_id evidence_sha256 next_eligible_at')
++        require(status == 'output_received' and batch['pending'] == 'delivery', 'no pending delivery')
++        raw = object_read(request['evidence_sha256']); require(digest(raw) == request['evidence_sha256'], 'bad evidence')
++        archive[digest(raw)] = raw
++        append_retry(batch, 'delivery', 'failed', proof); batch['pending'] = None
++        batch['next_eligible_at'] = request['next_eligible_at']
++        move(candidate, ids, status, action, proof)
++    elif action == 'validated':
++        fields(request, 'action batch_id manifest')
++        require(status == 'output_received' and batch['pending'] == 'delivery', 'no pending delivery')
++        blobs, archive = verify_bundle(request['manifest'], source)
++        pairs = request['manifest']['knowledge_bindings']
++        require(any(p['input']['sha256'] == batch['input_sha256'] and
++                    p.get('handoff', {}).get('sha256') == batch['output_sha256'] for p in pairs),
++                'sealed input/output mismatch')
++        output = parse(archive[batch['output_sha256']])
++        require(output['status'] == 'completed', 'Knowledge output incomplete')
++        append_retry(batch, 'delivery', 'succeeded', proof); batch['pending'] = None
++        batch['validated_artifacts'] = request['manifest']['artifacts']
++        move(candidate, ids, 'validated', action, proof)
++    elif action == 'commit_pending':
++        fields(request, 'action batch_id')
++        require(status == 'validated', 'not validated')
++        move(candidate, ids, 'commit_pending', action, proof)
++    elif action == 'committed':
++        fields(request, 'action batch_id committed_output_pin')
++        require(status == 'commit_pending', 'not commit pending')
++        refs = request['committed_output_pin']
++        require(isinstance(refs, list) and refs and len({refkey(r) for r in refs}) == len(refs), 'invalid commit pins')
++        # Retain ALL validated bytes, including source evidence. New snapshot must contain the same
++        # path->size/hash set. This is byte acknowledgement, never a merge/readiness claim.
++        expected = Counter((a['reference']['path'], a['reference']['size'], a['reference']['sha256'])
++                           for a in batch['validated_artifacts'])
++        require(Counter((r['path'], r['size'], r['sha256']) for r in refs) == expected,
++                'committed output set mismatch')
++        require(len({(r['repository'], r['commit']) for r in refs}) == 1, 'one committed snapshot required')
++        for ref in refs:
++            raw = source.read(ref)
++            require(len(raw) == ref['size'] and digest(raw) == ref['sha256'], 'commit bytes mismatch')
++            archive[digest(raw)] = raw
++        batch['committed_output_pin'] = refs
++        move(candidate, ids, 'committed', action, proof)
++    elif action == 'context_available':
++        fields(request, 'action batch_id context_ref')
++        require(status == 'committed', 'not committed')
++        ref = request['context_ref']
++        require(ref in batch['committed_output_pin'], 'context must be committed')
++        require(any(a['format'] == 'knowledge-context-v1' and a['reference']['path'] == ref['path'] and
++                    a['reference']['sha256'] == ref['sha256'] for a in batch['validated_artifacts']), 'unvalidated context')
++        move(candidate, ids, 'context_available', action, proof)
++    elif action == 'blocked':
++        fields(request, 'action batch_id evidence_sha256')
++        require(status in ('reserved', 'validated') and batch['pending'] is None, 'unsafe block')
++        raw = object_read(request['evidence_sha256']); require(digest(raw) == request['evidence_sha256'], 'bad evidence')
++        archive[digest(raw)] = raw; move(candidate, ids, 'blocked', action, proof)
++    elif action == 'renew':
++        fields(request, 'action batch_id ledger resume_state')
++        require(status == 'terminal' and batch['pending'] is None, 'not terminal')
++        before = encode(batch['ledger'])
++        batch['ledger'] = retry_transition(before, encode(request['ledger']), batch['ledger_sha256'], grant_raw, grant_pin)
++        batch['ledger_sha256'] = digest(encode(batch['ledger']))
++        target = 'output_received' if batch['output_sha256'] else 'reserved'
++        require(request['resume_state'] == target, 'cannot discard output')
++        archive[digest(grant_raw)] = grant_raw
++        if target == 'reserved' and any(e['kind'] == 'execution'
++                for epoch in batch['ledger']['epochs'][:-1] for e in epoch['events']):
++            batch['new_input_required'] = True
++        move(candidate, ids, target, 'renewed', proof)
++    else:
++        raise ValueError('unknown record action')
++    if batch['ledger']['epochs'][-1]['terminal'] == 'RETRY_LIMIT_REACHED':
++        move(candidate, ids, 'terminal', action, proof)
++    return candidate, archive
++
++
++def plan(state):
++    """Private, deterministic suggestions only. Lease expiry does not change any action."""
++    validate_state(state)
++    result = []
++    for identity, item in sorted(state['events'].items()):
++        status = item['status']
++        action = {'verified': 'reserve', 'reserved': 'dispatch', 'dispatching': 'reconcile_start',
++                  'dispatch_unknown': 'reconcile_start', 'started': 'recover_output',
++                  'output_received': 'resume_delivery', 'validated': 'commit_pending',
++                  'commit_pending': 'verify_fixed_commit'}.get(status, 'none')
++        if item['batch_id'] is not None:
++            batch = state['batches'][item['batch_id']]
++            if status == 'reserved':
++                if batch['new_input_required']: action = 'prepare_retry'
++                try:
++                    budget(batch, 'dispatch'); budget(batch, 'execution')
++                except ValueError:
++                    action = 'none'
++        result.append(dict(event_id=identity, status=status, action=action))
++    return dict(schema_version='1.0', authority_granted=False, actions=result)
++
++
++def public_observation(state):
++    counts = Counter(e['status'] for e in state['events'].values())
++    return dict(schema_version='1.0', document_type='knowledge_collection_observation',
++                counts={s: counts[s] for s in STATES}, development_gate_changed=False,
++                authority_granted=False)
++
++
++def fsync_dir(path):
++    fd = os.open(path, os.O_RDONLY | os.O_DIRECTORY)
++    try: os.fsync(fd)
++    finally: os.close(fd)
++
++
++def durable(path, raw):
++    fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600)
++    with os.fdopen(fd, 'wb') as stream:
++        stream.write(raw); stream.flush(); os.fsync(stream.fileno())
++
++
++class Store:
++    """POSIX local filesystem, single trusted Manager, advisory lock + digest CAS + fsync.
++
++    Caller supplies an independently retained latest state pin. Rollback of the entire
++    private store by its owner cannot be detected without that external pin.
++    """
++    def __init__(self, directory):
++        self.directory = Path(directory)
++        require(not self.directory.is_symlink(), 'unsafe store')
++        if not self.directory.exists():
++            self.directory.mkdir(mode=0o700)
++            fsync_dir(self.directory.parent)
++        require(self.directory.stat().st_mode & 0o077 == 0, 'store must be private')
++        for name in ('objects', 'snapshots', 'staging'):
++            path = self.directory / name
++            require(not path.is_symlink(), 'unsafe store child')
++            path.mkdir(mode=0o700, exist_ok=True)
++        fsync_dir(self.directory)
++
++    @contextmanager
++    def lock(self):
++        fd = os.open(self.directory / 'writer.lock', os.O_RDWR | os.O_CREAT | os.O_NOFOLLOW, 0o600)
++        try:
++            try: fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
++            except BlockingIOError: raise ValueError('overlapping writer') from None
++            yield
++        finally:
++            os.close(fd)
++
++    def load(self, expected, writer=None, scope=None):
++        path = self.directory / 'state.json'
++        if expected == 'absent':
++            require(not path.exists(), 'stale initialization')
++            require(writer and scope, 'initial writer/scope required')
++            return initial(writer, scope), None
++        raw = read_local(path)
++        require(digest(raw) == expected, 'stale state digest')
++        data = parse(raw); validate_state(data)
++        if writer is not None: require(data['writer'] == writer and data['scope'] == scope, 'wrong writer')
++        return data, raw
++
++    def read_object(self, sha256):
++        require(isinstance(sha256, str) and re.fullmatch('[0-9a-f]{64}', sha256), 'invalid object digest')
++        raw = read_local(self.directory / 'objects' / sha256)
++        require(digest(raw) == sha256, 'object corrupted')
++        return raw
++
++    def put(self, raw):
++        require(len(raw) <= MAX_FILE, 'object too large')
++        path = self.directory / 'objects' / digest(raw)
++        if path.exists(): require(read_local(path) == raw, 'object collision')
++        else: durable(path, raw)
++        return digest(raw)
++
++    def _commit(self, previous_raw, candidate, archive, crash=lambda point: None):
++        candidate = deepcopy(candidate)
++        candidate['sequence'] += 1
++        candidate['previous_state_sha256'] = digest(previous_raw) if previous_raw else None
++        validate_state(candidate)
++        # Retain exact previous state and all raw bytes before publishing a cursor.
++        if previous_raw: self.put(previous_raw)
++        for key, raw in archive.items():
++            require(digest(raw) == key, 'archive digest mismatch'); self.put(raw)
++        fsync_dir(self.directory / 'objects'); crash('after_objects')
++        raw = encode(candidate); pin = digest(raw)
++        staged = self.directory / 'staging' / pin
++        if staged.exists(): require(read_local(staged) == raw, 'stage collision')
++        else: durable(staged, raw)
++        fsync_dir(staged.parent); crash('after_stage')
++        snapshot = self.directory / 'snapshots' / pin
++        if snapshot.exists(): require(read_local(snapshot) == raw, 'snapshot collision')
++        else: durable(snapshot, raw)
++        fsync_dir(snapshot.parent); crash('after_snapshot')
++        # Candidate is complete; state pointer replacement is the single commit point.
++        os.replace(staged, self.directory / 'state.json')
++        crash('after_rename')
++        fsync_dir(self.directory); crash('after_replace')
++        return candidate, pin
++
++    def mutate(self, expected, writer, scope, transform, crash=lambda point: None):
++        with self.lock():
++            state, raw = self.load(expected, writer, scope)
++            candidate, archive = transform(state)
++            return self._commit(raw, candidate, archive, crash)
++
++
++def main():
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument('operation', choices=('scan', 'reconcile', 'record', 'plan', 'replay'))
++    parser.add_argument('--store', type=Path, required=True)
++    parser.add_argument('--previous-sha256', required=True)
++    parser.add_argument('--writer'); parser.add_argument('--scope')
++    parser.add_argument('--request', type=Path)
++    parser.add_argument('--authorization', type=Path); parser.add_argument('--authorization-sha256')
++    parser.add_argument('--grant', type=Path); parser.add_argument('--grant-sha256')
++    parser.add_argument('--objects', type=Path, help='private directory of input/output/evidence bytes keyed by SHA256')
++    parser.add_argument('--private-plan', type=Path)
++    args = parser.parse_args()
++    try:
++        if args.operation in ('plan', 'replay'):
++            # No mkdir, lock, staging recovery, receipt acceptance or network on read-only replay.
++            raw = read_local(args.store / 'state.json')
++            require(digest(raw) == args.previous_sha256, 'stale replay state')
++            state = parse(raw); private_plan = plan(state)
++            if args.private_plan: durable(args.private_plan, encode(private_plan))
++            print(json.dumps(public_observation(state), sort_keys=True)); return 0
++        require(args.request and args.authorization and args.authorization_sha256 and args.writer and args.scope,
++                'mutation requires independent authority')
++        request_raw = read_local(args.request)
++        authorize(read_local(args.authorization), args.authorization_sha256, request_raw, args.operation,
++                  args.writer, args.scope)
++        store = Store(args.store)
++        def object_read(pin):
++            if args.objects:
++                require(re.fullmatch('[0-9a-f]{64}', pin), 'invalid object pin')
++                raw = read_local(args.objects / pin); require(digest(raw) == pin, 'object pin mismatch')
++                return raw
++            return store.read_object(pin)
++        with tempfile.TemporaryDirectory(prefix='collector-git-') as temp:
++            source = SnapshotSource(temp)
++            def transform(state):
++                if args.operation in ('scan', 'reconcile'):
++                    changed, archive = scan(state, request_raw, source)
++                else:
++                    changed, archive = record(state, parse(request_raw), object_read, source,
++                        read_local(args.grant) if args.grant else None, args.grant_sha256)
++                # Private audit only; never put request/auth/runtime IDs into stdout.
++                archive[digest(request_raw)] = request_raw
++                return changed, archive
++            state, _ = store.mutate(args.previous_sha256, args.writer, args.scope, transform)
++        print(json.dumps(public_observation(state), sort_keys=True))
++        return 0
++    except (OSError, ValueError, TypeError, KeyError, UnicodeError, RecursionError, subprocess.SubprocessError):
++        print('FAIL: Knowledge collection rejected; development gate unchanged', file=sys.stderr)
++        return 1
++
++
++if __name__ == '__main__':
++    sys.exit(main())
+diff --git a/scripts/prepare_collector_fixture.py b/scripts/prepare_collector_fixture.py
+new file mode 100644
+index 0000000..1efc0d6
+--- /dev/null
++++ b/scripts/prepare_collector_fixture.py
+@@ -0,0 +1,25 @@
++#!/usr/bin/env python3
++"""Prepare a synthetic registry for an explicit fixed Git inbox commit. Grants no authority."""
++import argparse
++from pathlib import Path
++try:
++    from .knowledge_collector import ROOT, encode, parse, check_reference, validate
++except ImportError:
++    from knowledge_collector import ROOT, encode, parse, check_reference, validate
++
++
++def registry(repository, commit):
++    check_reference(dict(repository=repository, commit=commit, path='probe'))
++    data = parse((ROOT / 'examples/knowledge-collector/registry.template.json').read_bytes())
++    data['sources'][0].update(repository=repository, commit=commit)
++    validate('knowledge-source-registry', data)
++    return data
++
++
++if __name__ == '__main__':
++    p = argparse.ArgumentParser(description=__doc__)
++    p.add_argument('--repository', required=True); p.add_argument('--commit', required=True)
++    p.add_argument('--output', required=True, type=Path)
++    args = p.parse_args()
++    with args.output.open('xb') as stream:
++        stream.write(encode(registry(args.repository, args.commit)))
+diff --git a/templates/knowledge-collection.md b/templates/knowledge-collection.md
+new file mode 100644
+index 0000000..305252b
+--- /dev/null
++++ b/templates/knowledge-collection.md
+@@ -0,0 +1,41 @@
++# Manager Knowledge collection input (P-B)
++
++Use a Manager-owned private POSIX directory; never commit state, grants, runtime IDs or logs.
++Collector performs no semantic curation or Agent launch. Acquire fresh authorization for each
++mutation; the following are placeholders, not approval.
++
++1. Read fixed registry JSON and every selected public source's approval. Supply registry raw bytes
++   as the scan/reconcile request. Current authorization fields: schema_version=1.0,
++   document_type=knowledge_collection_authorization, writer, scope, operation, request_sha256,
++   valid_until (timezone), approval=approved, authority. Deliver the authorization SHA256 by an
++   independent trusted channel. Do not copy a pin from an untrusted request/receipt.
++2. Supply `--previous-sha256` from the latest private state pin, or `absent` for first scan.
++   `--writer` and `--scope` must equal the established state owner/scope.
++3. Prepare one record using [closed action schema](../contracts/knowledge-collection-record.schema.json).
++   Obtain a new operation=record authorization pinned to those exact raw request bytes.
++4. Input/output/evidence objects are exact files named by SHA256 in `--objects <private-dir>`;
++   later records may reuse the durable store's objects. No original bytes are regenerated.
++5. Reserve batch and dispatch intent durably before external Agent launch. A lost response,
++   expired lease or dispatch_unknown requires Manager start/not-started evidence, never an
++   automatic retry. After output receipt, resume delivery. Before Git changes record commit_pending;
++   after uncertain Git outcome, fetch the fixed committed snapshot and acknowledge exact bytes.
++6. For existing work supply reserve's `prior_ledger_sha256`; preserve exact scope and all history.
++   For renewed terminal work supply the existing retry grant and independent pin, with old history,
++   reason, new epoch/limits and relationship. A receipt is not a grant. No attempt exceeds three.
++7. Keep private plans/history and public status counts separate. Knowledge failure does not change
++   development gates. Record P-C/P-D, independent Test/Review, PR and merge as separate pending work.
++
++```bash
++python scripts/knowledge_collector.py scan \
++  --store <PRIVATE_STORE> --previous-sha256 <PIN_OR_absent> \
++  --writer <MANAGER> --scope <SCOPE> --request <REGISTRY> \
++  --authorization <PRIVATE_AUTHORIZATION> --authorization-sha256 <INDEPENDENT_PIN>
++python scripts/knowledge_collector.py record \
++  --store <PRIVATE_STORE> --previous-sha256 <CURRENT_PIN> \
++  --writer <MANAGER> --scope <SCOPE> --request <RECORD_JSON> \
++  --authorization <PRIVATE_AUTHORIZATION> --authorization-sha256 <INDEPENDENT_PIN> \
++  --objects <PRIVATE_INPUT_OUTPUT_OBSERVATIONS>
++```
++
++See [transition/recovery contract](../contracts/knowledge-collection.md). Never publish this
++filled-in template, private snapshots, operational authorizations or Manager identity mappings.
+diff --git a/templates/knowledge-input.md b/templates/knowledge-input.md
+index 4280e50..d7aed22 100644
+--- a/templates/knowledge-input.md
++++ b/templates/knowledge-input.md
+@@ -16,4 +16,4 @@ Dots / Manager は `agents/knowledge.md` と Knowledge の契約・workflow、
+ 
+ 返却は [knowledge-handoff.schema.json](../contracts/knowledge-handoff.schema.json)。入力 raw_findings と assignment のスナップショットを保持し、全 finding の根拠付き採否・保留判断を返す。成果物と出典を取得して照合するまで形式成功だけで知識を採用しない。Knowledge の待ち・失敗は開発のゲートにしない。
+ 
+-非同期収集・定期同期の実行基盤は Phase 1-3。ここでは契約の準備と手動配送を扱い、常駐処理やスケジュールを起動しない。
++Phase 1-3 P-B の [収集入力](knowledge-collection.md) で event/input digest・永続 state・有限 retry を管理する。collector は機械処理のみで、常駐処理・Knowledge Agent・スケジュールを起動しない。P-C/P-D は未実施。
+diff --git a/templates/raw-finding.md b/templates/raw-finding.md
+index 0f73bd8..f109b06 100644
+--- a/templates/raw-finding.md
++++ b/templates/raw-finding.md
+@@ -12,4 +12,4 @@
+ <適用環境、確認していないこと。>
+ 
+ ## Curated 判断への参照
+-<Knowledge Agent が accepted / deferred / rejected と理由、判断日、記事リンクを追記する。これは観測事実とは分離する。>
++<Knowledge Agent が adopted / deferred / rejected と理由、判断日、記事リンクを追記する。これは観測事実とは分離する。>
+diff --git a/tests/test_knowledge_collector.py b/tests/test_knowledge_collector.py
+new file mode 100644
+index 0000000..c3ef7cb
+--- /dev/null
++++ b/tests/test_knowledge_collector.py
+@@ -0,0 +1,468 @@
++"""Synthetic P-B regression matrix. No Knowledge Agent or scheduler is used."""
++from copy import deepcopy
++from datetime import datetime, timezone
++import fcntl
++import json
++import os
++from pathlib import Path
++import subprocess
++import sys
++import tempfile
++import unittest
++
++from scripts import knowledge_collector as c
++
++NOW = datetime(2026, 10, 11, tzinfo=timezone.utc)
++FIXTURE = c.ROOT / 'examples/knowledge-collector'
++
++
++class Source:
++    def __init__(self):
++        self.registry = c.parse((FIXTURE / 'registry.template.json').read_bytes())
++        self.files = {}
++        for a in self.registry['artifacts']:
++            r = a['reference']; self.files[c.refkey(r)] = (c.ROOT / r['path']).read_bytes()
++        for p in (FIXTURE / 'events').glob('*.json'):
++            self.files['example/repo', 'a'*40, 'examples/knowledge-collector/events/' + p.name] = p.read_bytes()
++        self.reads = []
++
++    def read(self, ref):
++        self.reads.append(c.refkey(ref))
++        return self.files[c.refkey(ref)]
++
++    def enumerate(self, item):
++        return [dict(repository=k[0], commit=k[1], path=k[2], size=len(v), sha256='0'*64)
++                for k,v in sorted(self.files.items()) if k[:2] == (item['repository'], item['commit'])
++                and k[2].startswith(item['inbox_path'] + '/')]
++
++    def bundle(self):
++        artifacts = []
++        for name in ('input.json','handoff.json','context.json','article.md','source-1.md','source-2.md'):
++            raw = (FIXTURE/name).read_bytes(); path = 'examples/knowledge-collector/' + name
++            kind = 'knowledge-' + name[:-5] + '-v1' if name.endswith('.json') else 'text'
++            ref = dict(repository='example/repo', commit='b'*40, path=path, size=len(raw), sha256=c.digest(raw))
++            self.files[c.refkey(ref)] = raw
++            artifacts.append(dict(reference=ref,format=kind,representation='original',public_classification='synthetic_sample',source_alias='SYNTHETIC'))
++        return dict(schema_version='1.1',document_type='artifact_delivery',artifacts=artifacts,
++                    knowledge_bindings=[dict(input=artifacts[0]['reference'],handoff=artifacts[1]['reference'])])
++
++
++class CollectorTests(unittest.TestCase):
++    def setUp(self):
++        self.temp = tempfile.TemporaryDirectory(); self.addCleanup(self.temp.cleanup)
++        self.source = Source(); self.registry = self.source.registry
++        self.state = c.initial('SYNTHETIC-MANAGER', 'synthetic/knowledge')
++        self.objects = {}
++        self.input_raw = (FIXTURE/'input.json').read_bytes()
++        self.output_raw = (FIXTURE/'handoff.json').read_bytes()
++        for raw in (self.input_raw,self.output_raw,b'synthetic observation'):
++            self.objects[c.digest(raw)] = raw
++        self.evidence = c.digest(b'synthetic observation')
++
++    def scan(self):
++        self.state, archive = c.scan(self.state,c.encode(self.registry),self.source)
++        self.objects.update(archive); c.validate_state(self.state)
++        return self.state
++
++    def record(self, action, **kwargs):
++        req=dict(action=action,**kwargs)
++        if action != 'reserve': req['batch_id'] = self.batch
++        self.state, archive=c.record(self.state,req,self.objects.__getitem__,self.source,now=NOW)
++        self.objects.update(archive); c.validate_state(self.state)
++
++    def reserve(self):
++        self.scan()
++        ids=sorted(self.state['events']); self.batch=c.digest(c.encode(ids))
++        self.record('reserve',event_ids=ids,input_sha256=c.digest(self.input_raw),lease_until='2026-10-12T00:00:00Z')
++
++    def start(self):
++        self.reserve(); self.record('dispatch')
++        self.record('started',runtime_id='SYNTHETIC-RUNTIME',evidence_sha256=self.evidence,next_eligible_at=None)
++
++    def output(self):
++        self.start()
++        self.record('output_received',runtime_id='SYNTHETIC-RUNTIME',evidence_sha256=c.digest(self.output_raw),next_eligible_at=None)
++
++    def validated(self):
++        self.output(); self.record('delivery_start'); self.manifest=self.source.bundle()
++        self.record('validated',manifest=self.manifest)
++
++    def status(self):
++        statuses={e['status'] for e in self.state['events'].values()}
++        self.assertEqual(len(statuses),1); return statuses.pop()
++
++    def test_full_scan_duplicate_noop_retains_raw(self):
++        self.scan(); first=deepcopy(self.state['events']); self.scan()
++        self.assertEqual(first,self.state['events']); self.assertEqual(len(first),2)
++        self.assertEqual(self.state['cursors'],{'SYNTHETIC-INBOX':'a'*40})
++        self.assertTrue(all(e['event_sha256'] in self.objects for e in first.values()))
++
++    def test_identity_ignores_time_but_payload_collision_quarantines(self):
++        self.scan(); key=next(k for k in self.source.files if '/events/' in k[2])
++        event=c.parse(self.source.files[key]); identity=c.event_id(event)
++        event['collected_at']='2026-10-12T00:00:00Z'; self.assertEqual(identity,c.event_id(event))
++        old=self.source.files[key]; self.source.files[key]=c.encode(event); self.scan()
++        self.assertEqual(self.state['events'][identity]['status'],'quarantined')
++        self.assertEqual(self.state['events'][identity]['event_sha256'],c.digest(old))
++        self.assertIn(c.digest(self.source.files[key]),self.objects)
++        self.assertEqual(self.state['scans'][-1]['result'],'quarantined')
++
++    def test_similar_content_different_candidate_keeps_two_sources(self):
++        keys=[k for k in self.source.files if '/events/' in k[2]]
++        event=c.parse(self.source.files[keys[0]]); event['candidate_id']='SYNTHETIC-OTHER'
++        event['event_id']=c.event_id(event)
++        self.source.files[keys[0][:2]+('examples/knowledge-collector/events/'+event['event_id']+'.json',)]=c.encode(event)
++        self.scan(); self.assertEqual(len(self.state['events']),3)
++
++    def test_partial_source_read_never_advances_cursor(self):
++        self.scan(); before=deepcopy(self.state)
++        k=c.refkey(self.registry['artifacts'][0]['reference']); self.source.files[k]=self.source.files[k][:-1]
++        with self.assertRaises(ValueError): self.scan()
++        self.assertEqual(self.state,before)
++
++    def test_interrupted_enumeration_never_commits(self):
++        before=deepcopy(self.state)
++        def broken(item): raise OSError('synthetic interruption')
++        self.source.enumerate=broken
++        with self.assertRaises(OSError): self.scan()
++        self.assertEqual(self.state,before)
++
++    def test_partial_event_read(self):
++        original=self.source.read
++        self.source.read=lambda r: original(r)[:-1] if '/events/' in r['path'] else original(r)
++        with self.assertRaises(ValueError): self.scan()
++        self.assertEqual(self.state['cursors'],{})
++
++    def test_registry_change_force_push_missing_history_full_reconcile(self):
++        self.scan(); prior=deepcopy(self.state['events'])
++        self.registry['sources'][0]['commit']='c'*40
++        self.scan()
++        self.assertEqual(self.state['cursors'],{'SYNTHETIC-INBOX':'a'*40})
++        self.assertEqual(self.status(),'quarantined')
++        self.assertEqual(self.state['scans'][-1]['mode'],'full')
++        for k in prior: self.assertEqual(prior[k]['event_sha256'],self.state['events'][k]['event_sha256'])
++
++    def test_removed_registry_source_not_forgotten(self):
++        self.scan(); self.registry['sources'][0].update(source_id='SYNTHETIC-NEW',inbox_path='empty')
++        self.scan(); self.assertEqual(self.status(),'quarantined')
++
++    def test_poison_event_does_not_stop_other_events(self):
++        self.source.files['example/repo','a'*40,'examples/knowledge-collector/events/poison.json']=b'{"x":NaN}'
++        self.scan(); counts=c.public_observation(self.state)['counts']
++        self.assertEqual(counts['quarantined'],1); self.assertEqual(counts['verified'],2)
++        self.assertEqual(len([a for a in c.plan(self.state)['actions'] if a['action']=='reserve']),2)
++
++    def test_unknown_fields_versions_private_and_strict_json(self):
++        key=next(k for k in self.source.files if '/events/' in k[2]); original=self.source.files[key]
++        variants=[dict(c.parse(original),schema_version='2.0'),dict(c.parse(original),runtime_id='SECRET'),dict(c.parse(original),classification='private_only')]
++        for raw in [*[c.encode(v) for v in variants],b'\xef\xbb\xbf'+original,b'{"a":1,"a":2}',b'{"x":Infinity}',b'\xff']:
++            with self.subTest(raw=raw[:15]):
++                self.state=c.initial('SYNTHETIC-MANAGER','synthetic/knowledge'); self.source.files[key]=raw
++                self.scan(); self.assertEqual(c.public_observation(self.state)['counts']['quarantined'],1)
++
++    def test_unlisted_dependency_quarantined(self):
++        self.registry['artifacts'].pop(); self.scan()
++        self.assertEqual(c.public_observation(self.state)['counts']['quarantined'],1)
++
++    def test_typed_dependency_cannot_downgrade(self):
++        self.registry['artifacts'][0]['format']='json'
++        with self.assertRaises(ValueError): self.scan()
++
++    def test_authority_pin_request_expiry_and_receipt_rejected(self):
++        req=c.encode(self.registry)
++        auth=dict(schema_version='1.0',document_type='knowledge_collection_authorization',writer='SYNTHETIC-MANAGER',scope='synthetic/knowledge',operation='scan',request_sha256=c.digest(req),valid_until='2026-10-12T00:00:00Z',approval='approved',authority='synthetic test authority')
++        raw=c.encode(auth); c.authorize(raw,c.digest(raw),req,'scan','SYNTHETIC-MANAGER','synthetic/knowledge',NOW)
++        for pin,request,now in [('0'*64,req,NOW),(c.digest(raw),req+b' ',NOW),(c.digest(raw),req,datetime(2027,1,1,tzinfo=timezone.utc))]:
++            with self.assertRaises(ValueError): c.authorize(raw,pin,request,'scan','SYNTHETIC-MANAGER','synthetic/knowledge',now)
++        with self.assertRaises(ValueError): c.authorize(b'{}',c.digest(b'{}'),req,'scan','SYNTHETIC-MANAGER','synthetic/knowledge',NOW)
++
++    def test_illegal_transition_and_overlap(self):
++        self.reserve()
++        for action in ('started','output_received','validated','committed','context_available','delivery_start','renew'):
++            with self.subTest(action=action),self.assertRaises(ValueError): self.record(action)
++        with self.assertRaises(ValueError): self.record('reserve',event_ids=list(self.state['events']),input_sha256=c.digest(self.input_raw),lease_until='2026-10-12T00:00:00Z')
++
++    def test_dispatch_unknown_lease_expiry_never_restarts(self):
++        self.reserve(); self.record('dispatch'); self.record('dispatch_unknown')
++        self.state['batches'][self.batch]['lease_until']='2020-01-01T00:00:00Z'
++        self.assertTrue(all(a['action']=='reconcile_start' for a in c.plan(self.state)['actions']))
++        with self.assertRaises(ValueError): self.record('dispatch')
++        self.record('started',runtime_id='SYNTHETIC-RUNTIME',evidence_sha256=self.evidence,next_eligible_at=None)
++        self.assertEqual(self.status(),'started')
++
++    def test_observation_runtime_mismatch(self):
++        self.start()
++        with self.assertRaises(ValueError): self.record('output_received',runtime_id='OTHER',evidence_sha256=c.digest(self.output_raw),next_eligible_at=None)
++
++    def test_output_crash_resumes_delivery_never_execution(self):
++        self.output(); frozen=c.encode(self.state); self.state=c.parse(frozen)
++        self.assertEqual(self.status(),'output_received')
++        self.assertTrue(all(a['action']=='resume_delivery' for a in c.plan(self.state)['actions']))
++        with self.assertRaises(ValueError): self.record('dispatch')
++        self.record('delivery_start')
++        # Crash while fetching: persisted pending delivery cannot reserve another attempt.
++        with self.assertRaises(ValueError): self.record('delivery_start')
++        self.record('delivery_failed',evidence_sha256=self.evidence,next_eligible_at=None)
++        self.record('delivery_start'); self.record('validated',manifest=self.source.bundle())
++        self.assertEqual(self.status(),'validated')
++
++    def test_input_output_binding_rejected(self):
++        self.output(); self.record('delivery_start'); manifest=self.source.bundle()
++        self.state['batches'][self.batch]['input_sha256']='0'*64
++        with self.assertRaises(ValueError): self.record('validated',manifest=manifest)
++
++    def test_commit_after_external_git_crash_requires_fixed_bytes(self):
++        self.validated(); self.record('commit_pending')
++        refs=[dict(a['reference'],commit='d'*40) for a in self.manifest['artifacts']]
++        for a,r in zip(self.manifest['artifacts'],refs): self.source.files[c.refkey(r)]=self.source.files[c.refkey(a['reference'])]
++        self.state=c.parse(c.encode(self.state))
++        self.assertTrue(all(a['action']=='verify_fixed_commit' for a in c.plan(self.state)['actions']))
++        self.record('committed',committed_output_pin=refs); self.assertEqual(self.status(),'committed')
++        self.record('context_available',context_ref=refs[2]); self.assertEqual(self.status(),'context_available')
++        with self.assertRaises(ValueError): self.record('committed',committed_output_pin=refs)
++
++    def test_commit_missing_tampered_or_floating_rejected(self):
++        self.validated(); self.record('commit_pending')
++        refs=[a['reference'] for a in self.manifest['artifacts']]
++        with self.assertRaises(ValueError): self.record('committed',committed_output_pin=refs[:-1])
++        bad=deepcopy(refs); bad[0]['commit']='main'
++        with self.assertRaises(ValueError): self.record('committed',committed_output_pin=bad)
++        self.source.files[c.refkey(refs[0])]+=b'changed'
++        with self.assertRaises(ValueError): self.record('committed',committed_output_pin=refs)
++
++    def prepare_retry(self):
++        batch=self.state['batches'][self.batch]
++        old=c.parse(self.objects[batch['input_sha256']]); attempt=old['attempt']
++        if not hasattr(self,'retry_docs'): self.retry_docs={}
++        prior=c.parse(self.output_raw)
++        for key in ('assignment','raw_findings','knowledge_references','task_id','attempt','retry_of'):
++            prior[key]=old[key]
++        prior.update(status='failed',system_status='failed',artifacts=[],evidence=[],decisions=[],failure_reasons=['synthetic failure'])
++        self.retry_docs[f'input-{attempt}.json']=c.encode(old)
++        self.retry_docs[f'handoff-{attempt}.json']=c.encode(prior)
++        new=deepcopy(old); new.update(task_id=f'SYNTHETIC-KNOWLEDGE-TASK-{attempt+1}',attempt=attempt+1,
++            retry_of=[dict(task_id=old['task_id'],attempt=attempt,handoff_locator=f'handoff-{attempt}.json',revision='sha256:'+c.digest(c.encode(prior)))])
++        self.retry_docs[f'input-{attempt+1}.json']=c.encode(new)
++        manifest=self.source.bundle()
++        manifest['artifacts']=[a for a in manifest['artifacts'] if a['format'] not in ('knowledge-input-v1','knowledge-handoff-v1')]
++        manifest['knowledge_bindings']=[]; refs={}
++        for name,raw in self.retry_docs.items():
++            ref=dict(repository='example/repo',commit='b'*40,path='examples/knowledge-collector/'+name,size=len(raw),sha256=c.digest(raw))
++            self.source.files[c.refkey(ref)]=raw; refs[name]=ref
++            kind='knowledge-input-v1' if name.startswith('input') else 'knowledge-handoff-v1'
++            manifest['artifacts'].append(dict(reference=ref,format=kind,representation='original',public_classification='synthetic_sample',source_alias='SYNTHETIC'))
++        for n in range(1,attempt+2):
++            binding=dict(input=refs[f'input-{n}.json'])
++            if n<=attempt: binding['handoff']=refs[f'handoff-{n}.json']
++            manifest['knowledge_bindings'].append(binding)
++        self.record('prepare_retry',input_sha256=c.digest(c.encode(new)),manifest=manifest)
++
++    def exhaust(self,kind):
++        if kind=='dispatch': self.reserve()
++        elif kind=='execution': self.reserve()
++        else: self.output()
++        for i in range(3):
++            if kind in ('dispatch','execution'):
++                if kind=='execution' and i: self.prepare_retry()
++                self.record('dispatch')
++                if kind=='execution': self.record('started',runtime_id='SYNTHETIC-RUNTIME',evidence_sha256=self.evidence,next_eligible_at=None)
++                self.record(kind+'_failed',runtime_id='SYNTHETIC-RUNTIME' if kind=='execution' else None,evidence_sha256=self.evidence,next_eligible_at=None)
++            else:
++                self.record('delivery_start'); self.record('delivery_failed',evidence_sha256=self.evidence,next_eligible_at=None)
++        self.assertEqual(self.status(),'terminal')
++        self.assertEqual(self.state['batches'][self.batch]['ledger']['epochs'][-1]['terminal'],'RETRY_LIMIT_REACHED')
++
++    def test_three_dispatch_failure_budget(self): self.exhaust('dispatch')
++    def test_three_execution_failure_budget(self): self.exhaust('execution')
++    def test_three_delivery_failure_budget(self): self.exhaust('delivery')
++
++    def test_terminal_survives_scan_and_replay(self):
++        self.exhaust('dispatch'); before=deepcopy(self.state['batches']); self.scan(); c.plan(self.state)
++        self.assertEqual(self.status(),'terminal'); self.assertEqual(before,self.state['batches'])
++        with self.assertRaises(ValueError): self.record('dispatch')
++
++    def test_renewal_requires_separate_grant_keeps_history_and_output(self):
++        self.exhaust('delivery'); b=self.state['batches'][self.batch]; before=deepcopy(b['ledger'])
++        grant=dict(approval='approved',authority='synthetic Manager',reason='synthetic new budget',scope=before['scope'],prior_history_sha256=b['ledger_sha256'],new_epoch=2,limits=dict(dispatch=1,execution=1,delivery=1),relationship='synthetic preserves original three attempts')
++        raw=c.encode(grant); after=deepcopy(before)
++        after['epochs'].append(dict(id=2,limits=grant['limits'],events=[],terminal='open',grant_sha256=c.digest(raw)))
++        request=dict(action='renew',batch_id=self.batch,ledger=after,resume_state='output_received')
++        with self.assertRaises(ValueError): c.record(self.state,request,self.objects.__getitem__,self.source,now=NOW)
++        self.state,_=c.record(self.state,request,self.objects.__getitem__,self.source,raw,c.digest(raw),NOW)
++        self.assertEqual(self.state['batches'][self.batch]['ledger']['epochs'][0],before['epochs'][0])
++        self.assertEqual(self.status(),'output_received')
++        with self.assertRaises(ValueError): self.record('dispatch')
++
++    def test_retry_history_reset_and_budget_over_three_rejected(self):
++        self.exhaust('dispatch'); ledger=deepcopy(self.state['batches'][self.batch]['ledger'])
++        ledger['epochs'][0]['events']=[]
++        with self.assertRaises(ValueError): self.record('renew',ledger=ledger,resume_state='reserved')
++
++    def test_import_pinned_legacy_terminal_keeps_all_attempts(self):
++        self.exhaust('dispatch'); ledger=self.state['batches'][self.batch]['ledger']
++        raw=c.encode(ledger); self.objects[c.digest(raw)]=raw
++        self.state=c.initial('SYNTHETIC-MANAGER','synthetic/knowledge'); self.scan()
++        self.record('reserve',event_ids=sorted(self.state['events']),input_sha256=c.digest(self.input_raw),
++                    lease_until='2026-10-12T00:00:00Z',prior_ledger_sha256=c.digest(raw))
++        self.assertEqual(self.status(),'terminal')
++        self.assertEqual(self.state['batches'][self.batch]['ledger'],ledger)
++        with self.assertRaises(ValueError): self.record('dispatch')
++
++    def test_execution_retry_cannot_reuse_attempt_one_input(self):
++        self.start(); self.record('execution_failed',runtime_id='SYNTHETIC-RUNTIME',evidence_sha256=self.evidence,next_eligible_at=None)
++        with self.assertRaises(ValueError): self.record('dispatch')
++        self.prepare_retry(); self.record('dispatch')
++        self.assertEqual(self.status(),'dispatching')
++
++    def test_backoff_not_bypassed(self):
++        self.reserve(); self.record('dispatch')
++        self.record('dispatch_failed',runtime_id=None,evidence_sha256=self.evidence,next_eligible_at='2026-10-13T00:00:00Z')
++        with self.assertRaises(ValueError): self.record('dispatch')
++
++    def test_public_output_omits_runtime_authority_bytes_paths(self):
++        self.start(); public=c.encode(c.public_observation(self.state))
++        for secret in (b'SYNTHETIC-RUNTIME',b'SYNTHETIC-MANAGER',b'synthetic/knowledge',b'input_sha256',b'authorization'):
++            self.assertNotIn(secret,public)
++        self.assertFalse(c.public_observation(self.state)['development_gate_changed'])
++
++    def test_empty_scan_and_plan_noop(self):
++        self.source.files={k:v for k,v in self.source.files.items() if '/events/' not in k[2]}
++        self.scan(); self.assertEqual(c.plan(self.state)['actions'],[])
++        with self.assertRaises(ValueError): self.record('reserve',event_ids=[],input_sha256=c.digest(self.input_raw),lease_until='2026-10-12T00:00:00Z')
++
++    def store(self): return c.Store(Path(self.temp.name)/'private')
++
++    def test_atomic_cas_stale_and_wrong_writer(self):
++        store=self.store(); transform=lambda s:c.scan(s,c.encode(self.registry),self.source)
++        state,pin=store.mutate('absent','SYNTHETIC-MANAGER','synthetic/knowledge',transform)
++        self.assertEqual(c.digest((store.directory/'state.json').read_bytes()),pin)
++        for expected,writer in [('absent','SYNTHETIC-MANAGER'),('0'*64,'SYNTHETIC-MANAGER'),(pin,'OTHER')]:
++            with self.assertRaises(ValueError): store.mutate(expected,writer,'synthetic/knowledge',transform)
++        self.assertEqual(store.load(pin)[0],state)
++
++    def test_overlap_lock_and_release(self):
++        store=self.store()
++        with store.lock():
++            with self.assertRaises(ValueError):
++                with store.lock(): pass
++        with store.lock(): pass
++
++    def test_each_persistence_crash_point_recovery(self):
++        for point in ('after_objects','after_stage','after_snapshot','after_rename','after_replace'):
++            with self.subTest(point=point):
++                store=c.Store(Path(self.temp.name)/point)
++                def crash(p):
++                    if p==point: raise RuntimeError('synthetic crash')
++                with self.assertRaises(RuntimeError):
++                    store.mutate('absent','SYNTHETIC-MANAGER','synthetic/knowledge',lambda s:c.scan(s,c.encode(self.registry),self.source),crash)
++                if point in ('after_rename','after_replace'):
++                    raw=(store.directory/'state.json').read_bytes(); state,_=store.load(c.digest(raw)); self.assertEqual(len(state['events']),2)
++                    with self.assertRaises(ValueError): store.mutate('absent','SYNTHETIC-MANAGER','synthetic/knowledge',lambda s:(s,{}))
++                else:
++                    self.assertFalse((store.directory/'state.json').exists())
++                    state,pin=store.mutate('absent','SYNTHETIC-MANAGER','synthetic/knowledge',lambda s:c.scan(s,c.encode(self.registry),self.source))
++                    self.assertEqual(len(state['events']),2)
++                for e in state['events'].values(): self.assertEqual(c.digest(store.read_object(e['event_sha256'])),e['event_sha256'])
++
++    def test_process_exit_leaves_old_cursor_and_releases_writer_lock(self):
++        store=self.store(); transform=lambda s:c.scan(s,c.encode(self.registry),self.source)
++        state,pin=store.mutate('absent','SYNTHETIC-MANAGER','synthetic/knowledge',transform)
++        child=os.fork()
++        if child==0:
++            def crash(point):
++                if point=='after_stage': os._exit(73)
++            store.mutate(pin,'SYNTHETIC-MANAGER','synthetic/knowledge',transform,crash)
++            os._exit(74)
++        _,status=os.waitpid(child,0)
++        self.assertEqual(os.waitstatus_to_exitcode(status),73)
++        self.assertEqual(store.load(pin)[0],state)
++        recovered,newpin=store.mutate(pin,'SYNTHETIC-MANAGER','synthetic/knowledge',transform)
++        self.assertEqual(recovered['sequence'],state['sequence']+1)
++        self.assertNotEqual(pin,newpin)
++
++    def test_cli_unapproved_request_does_not_create_store_or_leak_bytes(self):
++        req=Path(self.temp.name)/'request'; req.write_bytes(c.encode(self.registry))
++        auth=Path(self.temp.name)/'auth'; auth.write_bytes(b'{"secret":"SYNTHETIC-SECRET"}')
++        target=Path(self.temp.name)/'not-created'
++        result=subprocess.run([sys.executable,str(c.ROOT/'scripts/knowledge_collector.py'),'scan',
++            '--store',str(target),'--previous-sha256','absent','--writer','SYNTHETIC-MANAGER',
++            '--scope','synthetic/knowledge','--request',str(req),'--authorization',str(auth),
++            '--authorization-sha256',c.digest(auth.read_bytes())],capture_output=True)
++        self.assertEqual(result.returncode,1); self.assertFalse(target.exists())
++        self.assertNotIn(b'SYNTHETIC-SECRET',result.stdout+result.stderr)
++
++    def test_append_only_private_snapshots_and_raw_history(self):
++        store=self.store(); transform=lambda s:c.scan(s,c.encode(self.registry),self.source)
++        state,pin=store.mutate('absent','SYNTHETIC-MANAGER','synthetic/knowledge',transform)
++        raw=(store.directory/'state.json').read_bytes()
++        second,newpin=store.mutate(pin,'SYNTHETIC-MANAGER','synthetic/knowledge',transform)
++        self.assertEqual(second['previous_state_sha256'],pin); self.assertEqual(store.read_object(pin),raw)
++        self.assertTrue((store.directory/'snapshots'/pin).exists())
++        self.assertNotEqual(pin,newpin)
++
++    def test_cli_replay_has_no_store_mutation_and_no_authority(self):
++        store=self.store(); state,pin=store.mutate('absent','SYNTHETIC-MANAGER','synthetic/knowledge',lambda s:c.scan(s,c.encode(self.registry),self.source))
++        before={str(p):p.read_bytes() for p in store.directory.rglob('*') if p.is_file()}
++        result=subprocess.run([sys.executable,str(c.ROOT/'scripts/knowledge_collector.py'),'replay','--store',str(store.directory),'--previous-sha256',pin],capture_output=True)
++        self.assertEqual(result.returncode,0,result.stderr); self.assertFalse(json.loads(result.stdout)['authority_granted'])
++        self.assertEqual(before,{str(p):p.read_bytes() for p in store.directory.rglob('*') if p.is_file()})
++
++    def test_store_symlink_and_nonprivate_rejected(self):
++        public=Path(self.temp.name)/'public'; public.mkdir(mode=0o755); public.chmod(0o755)
++        with self.assertRaises(ValueError): c.Store(public)
++        alias=Path(self.temp.name)/'alias'; alias.symlink_to(public)
++        with self.assertRaises(ValueError): c.Store(alias)
++
++    def test_schema_closed_and_legacy_files_still_validate(self):
++        self.scan(); bad=deepcopy(self.state); bad['scheduler']='enabled'
++        with self.assertRaises(ValueError): c.validate_state(bad)
++        # Legacy suites run alongside these; new collector does not mutate legacy schemas.
++        for p in c.ROOT.joinpath('contracts').glob('knowledge-*.schema.json'):
++            c.Draft202012Validator.check_schema(json.loads(p.read_text()))
++
++
++class GitTreeTests(unittest.TestCase):
++    """Actual Git object/tree reads; only fetch transport is replaced with a local fixture."""
++    def setUp(self):
++        self.temp=tempfile.TemporaryDirectory(); self.addCleanup(self.temp.cleanup)
++        self.repo=Path(self.temp.name)/'repo'; self.repo.mkdir()
++        self.git('init','-q'); self.git('config','user.name','Synthetic'); self.git('config','user.email','synthetic@example.invalid')
++        inbox=self.repo/'inbox'; inbox.mkdir(); (inbox/'event.json').write_bytes(b'synthetic bytes\n')
++        self.git('add','.'); self.git('commit','-qm','synthetic fixture')
++        self.commit=self.git('rev-parse','HEAD').decode().strip()
++        self.source=c.SnapshotSource(Path(self.temp.name)/'cache')
++        self.source.repositories['example/repo',self.commit]=self.repo
++        self.item=dict(source_id='SYNTHETIC',repository='example/repo',commit=self.commit,inbox_path='inbox')
++
++    def git(self,*args):
++        return subprocess.run(['git','-C',str(self.repo),*args],check=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE).stdout
++
++    def newcommit(self):
++        self.git('add','.'); self.git('commit','-qm','synthetic unsafe fixture')
++        self.commit=self.git('rev-parse','HEAD').decode().strip()
++        self.source.repositories['example/repo',self.commit]=self.repo; self.item['commit']=self.commit
++
++    def test_real_tree_full_bytes_and_size(self):
++        refs=self.source.enumerate(self.item); self.assertEqual(len(refs),1)
++        self.assertEqual(self.source.read(refs[0]),b'synthetic bytes\n')
++        refs[0]['size']+=1
++        with self.assertRaises(ValueError): self.source.read(refs[0])
++
++    def test_symlink_leaf_and_prefix_fail_closed(self):
++        (self.repo/'inbox'/'link').symlink_to('event.json'); self.newcommit()
++        with self.assertRaises(ValueError): self.source.enumerate(self.item)
++        (self.repo/'alias').symlink_to('inbox'); self.newcommit(); self.item['inbox_path']='alias'
++        with self.assertRaises(ValueError): self.source.enumerate(self.item)
++
++    def test_gitlink_rejected(self):
++        self.git('update-index','--add','--cacheinfo','160000',self.commit,'inbox/submodule')
++        self.git('commit','-qm','synthetic gitlink')
++        commit=self.git('rev-parse','HEAD').decode().strip(); self.source.repositories['example/repo',commit]=self.repo
++        self.item['commit']=commit
++        with self.assertRaises(ValueError): self.source.enumerate(self.item)
++
++    def test_path_traversal_floating_and_missing(self):
++        for path in ('../inbox','inbox/../inbox','/inbox','inbox//bad'):
++            with self.subTest(path=path),self.assertRaises(ValueError): self.source.enumerate(dict(self.item,inbox_path=path))
++        with self.assertRaises(ValueError): self.source.snapshot('example/repo','main')
++        self.assertEqual(self.source.enumerate(dict(self.item,inbox_path='missing')),[])
+diff --git a/workflows/single-issue.md b/workflows/single-issue.md
+index dcf5c3e..da70ada 100644
+--- a/workflows/single-issue.md
++++ b/workflows/single-issue.md
+@@ -73,7 +73,7 @@ Manager は候補の配送と進捗のみ管理し、取得済み根拠を Knowl
+ 
+ 公開前には内容を読み、実際の非公開 task/thread/message ID、私的会話、個人情報、内部メモ、認証情報、運用ログを除外する。公開サンプルは架空の識別子・プレースホルダーのみとし `synthetic sample` を明記する。知識候補やメタデータの public_safe 自己申告だけで公開を承認しない。
+ 
+-Knowledge の非同期収集・定期同期を実行する基盤は Phase 1-3 の対象。このフェーズでは専用 schema・手動配送可能な入力仕様・架空サンプルと検証を提供し、スケジューラーや自動トリガーは実装・起動しない。後続役割への知識配送は knowledge-context と取得済み記事実体を初回入力に渡し、固定 revision・適用条件・例外・出典・状態を確認する。
++Phase 1-3 P-B では [collector](../contracts/knowledge-collection.md) の scan/reconcile を節目に実行し、全件検証後に inbox/event/cursor を一括保存する。Manager は最新 state pin と別経路認可を保持し、plan を確認して reserve/dispatch intent を永続化してから独立 Knowledge を起動する。開始不明は照合まで停止し、取得済み output は delivery から再開する。Git 確定後の中断は固定 commit の全 bytes 照合で追認する。collector 自身は Agent を起動せず、schedule 登録・有効化、P-C context/ack と P-D 実運用実証は含まない。後続役割への知識配送は knowledge-context と取得済み記事実体を初回入力に渡し、固定 revision・適用条件・例外・出典・状態を確認する。
+ 
+ 
+ Issue Completionには全AC実測に加えて必要な統合完了が必要。全premerge ACがmetでも未マージならunverified。Readiness/contextのissue_integration_scopeで単一PRと集約待ちを分離し、複数PR・repo/範囲不明は単一PRからachievedにしない。集約契約と証跡の検証は後続依存として明示する。全AC met・統合待ちの中間Handoffではfinal_assessmentを省略し、Readiness artifactで追跡する。

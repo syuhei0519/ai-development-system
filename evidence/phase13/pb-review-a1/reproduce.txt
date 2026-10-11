@@ -1,0 +1,45 @@
+Independent Review attempt 1, scope system/phase1-3/P-B; local public-alias candidate, not publication approval.
+No product edits, external dispatch, scheduler, merge, push or deployment.
+
+Use immutable detached checkouts with requirements-dev.txt:
+BASE=b1e606544174481b7b6904f811e857f80978c287
+INITIAL=b79f98d3cb3bd58059a12b543df1d187b284fe35
+BEFORE_F4=50cf6aa52f64c45961a354281169064cd2c75e20
+MAIN=8afe6044857783dbf6d6ae7ac9459ae5e890a744
+INTEGRATED=d3f8f582caef99a0e004c29ad3a430efe7df98bc
+BUNDLE=this extracted candidate directory
+
+At BASE: python -m unittest discover -s tests -v -> 128 pass.
+At INITIAL: same -> 179 pass.
+At INTEGRATED: same -> 232 pass.
+For PB_HEAD=INITIAL and again PB_HEAD=INTEGRATED:
+  python "$BUNDLE/prior-test/input/input/input/upstream/independent_cases.py" -> 21 pass
+  PB_PRIOR_CASES="$BUNDLE/prior-test/input/input/input/upstream/independent_cases.py" python "$BUNDLE/prior-test/input/input/extra_cases.py" -> 15 pass
+  PB_BEFORE=BEFORE_F4 python "$BUNDLE/prior-test/attempt3_probes.py" -> 5 pass
+  PB_PRIOR_CASES="$BUNDLE/prior-test/input/input/input/upstream/independent_cases.py" python "$BUNDLE/review_boundaries.py" -> 5 pass
+With PB_HEAD=BEFORE_F4 run Extra.test_documented_pb_scope_is_consistent from extra_cases.py -> expected single failure.
+Set environment variables to checkout paths, not literal names above.
+
+Run the six command arrays in initial-review.json cli.cli at INITIAL.
+Run the eight command arrays in integration-review.json cli.cli at INTEGRATED.
+All exit 0; aggregate/readiness replay is historical synthetic consistency, not live readiness.
+Check all schemas with Draft202012Validator.check_schema: INITIAL=19, INTEGRATED=21.
+Compare every BASE contracts/*.schema.json and tests/test*.py file to INITIAL/INTEGRATED: unchanged.
+
+Current explicit bounded synthetic test authority is required for live fixture helpers; receipts confer none.
+PB_HEAD=INITIAL PB_PRIVATE=new_private_parent python "$BUNDLE/prior-test/input/input/live_fixture.py"
+PB_HEAD=INITIAL PB_PRIVATE=another_new_private_parent python "$BUNDLE/prior-test/live_head_fixture.py"
+PB_HEAD=INTEGRATED PB_PRIVATE=third_new_private_parent python "$BUNDLE/live_integrated_fixture.py"
+These read fixed HTTPS snapshots and exercise scan/reconcile/plan/replay/reserve only, never dispatch.
+Helpers expire 2026-10-12; later reproduction needs fresh explicit authority and a separately named derivative helper.
+All generated auth/state/objects/plans/digests/logs remain private; do not modify existing published helper bytes.
+
+Git parents for INTEGRATED must be INITIAL and MAIN, in that order.
+git merge-tree --write-tree INITIAL MAIN -> 7a7a945c8a2913f43b9df59bdf13c924f7db7779.
+The five shared document/workflow changes retain both scopes; P-B runtime/schema/test fixtures unchanged.
+Original reports and Handoffs preserve their historical revisions and failed retry chain.
+Consumer CLI and Handoff validators remain unchanged across BASE and MAIN.
+Validate candidate inventory/closure with PB_BASE=BASE python "$BUNDLE/verify_bundle.py".
+No CLI success certifies Manager final judgment, GitHub required review, public release or product AC.
+
+Current-head independent Test evidence is integration-supplement.json and its six exact size/hash bindings. Check each binding after full input Consumer verification. The independent pre-consumption report remains historical; the appended supplement records verified consumption. Candidate omits only unbound optional duplicate Test harness/inventory files; complete verified Test126 input remains privately retained.

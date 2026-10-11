@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "status": "candidate_only_not_published",
+  "inspection": "All candidate bytes decoded and scanned for runtime UUIDs, credential/token/private-key patterns, signed URLs, this Review private authorization pins and private receipt digests; no matches. New Review reports and scripts reviewed as structured public aliases and synthetic probes. Upstream immutable public input retains Producer public-safety provenance; private originals are unverified.",
+  "excluded": [
+    "This Review authorizations and independent pins",
+    "New Consumption Receipts and their private hashes",
+    "Private state, objects, private plans and mapping",
+    "Raw runner/API responses and internal execution logs",
+    "Actual runtime IDs and private originals"
+  ],
+  "historical_receipt": "An already-public SYNTHETIC-PA-SELFTEST fixture-consumption-receipt is part of upstream transitive closure and retained unchanged. It is not this Review private receipt and grants no authority.",
+  "input_preservation": "59 initial input and 53 Implementation-integration supplement files copied from verified Consumer output with exact bytes unchanged. Historical failed attempts and Handoff pins are not relabelled.",
+  "closure": "Inventory plus unchanged Consumer verify_handoffs checks raw size/hash/type and every Handoff artifact/upstream/retry dependency offline using synthetic local keys. This does not create a Git publication receipt or approval.",
+  "publication_approval": "not_requested; publication prohibited in this Review task",
+  "limits": "Full-byte pattern checks and new-content review do not prove absence of unknown secrets. Private upstream original comparison is not asserted.",
+  "current_test": "126 files verified privately. Candidate retains exact integration-supplement.json plus all six bound dependencies, including full original59 and Producer53 closures already present. Optional duplicate Test harness/inventory files are not required by the supplement bindings and are omitted from this candidate without changing original bytes."
+}

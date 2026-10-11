@@ -1,0 +1,46 @@
+{
+  "repository": "syuhei0519/ai-development-system",
+  "pr": 6,
+  "head": "d3f8f582caef99a0e004c29ad3a430efe7df98bc",
+  "base": "8afe6044857783dbf6d6ae7ac9459ae5e890a744",
+  "test_merge": "003f8149be38cc7561655e9640828fe960fdc67c",
+  "test_merge_parents": [
+    "8afe6044857783dbf6d6ae7ac9459ae5e890a744",
+    "d3f8f582caef99a0e004c29ad3a430efe7df98bc"
+  ],
+  "head_tree": "7a7a945c8a2913f43b9df59bdf13c924f7db7779",
+  "test_merge_tree": "7a7a945c8a2913f43b9df59bdf13c924f7db7779",
+  "observed_at": "2026-10-11T05:40:04.540357+00:00",
+  "validity": "Point-in-time independent observation; reobserve after any head/base/config change and before adoption or merge.",
+  "config_revision": "d3f8f582caef99a0e004c29ad3a430efe7df98bc",
+  "workflow": ".github/workflows/validate.yml",
+  "draft": true,
+  "merged": false,
+  "runs": [
+    {
+      "run_id": 38115255006,
+      "job_id": 114398772173,
+      "event": "push",
+      "api_head": "d3f8f582caef99a0e004c29ad3a430efe7df98bc",
+      "checkout": "d3f8f582caef99a0e004c29ad3a430efe7df98bc",
+      "status": "completed",
+      "conclusion": "success",
+      "tests_observed": 232,
+      "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38115255006",
+      "evidence": "Independently fetched GitHub run/job metadata and checkout/git log -1 lines; internal logs held privately."
+    },
+    {
+      "run_id": 38115257524,
+      "job_id": 114398779250,
+      "event": "pull_request",
+      "api_head": "d3f8f582caef99a0e004c29ad3a430efe7df98bc",
+      "checkout": "003f8149be38cc7561655e9640828fe960fdc67c",
+      "status": "completed",
+      "conclusion": "success",
+      "tests_observed": 232,
+      "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38115257524",
+      "evidence": "Independently fetched GitHub run/job metadata and checkout/git log -1 lines; internal logs held privately."
+    }
+  ],
+  "merge_readiness": "not assessed; independent Review and Manager/GitHub authorization gates remain separate"
+}

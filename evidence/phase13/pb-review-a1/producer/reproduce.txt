@@ -1,0 +1,9 @@
+Same P-B Implementation attempt 3 integration supplement; no new execution attempt.
+Use a clean checkout of head d3f8f582caef99a0e004c29ad3a430efe7df98bc and requirements-dev.txt.
+python reproduce.py /path/to/checkout
+This runs combined 232 tests, supplied 21 and 15 probes, eight validator CLI commands, all 21 schemas and document link checks. Historical synthetic aggregate --at dates do not establish current readiness.
+Optional authorized bounded live synthetic test: PB_HEAD=/path/to/head PB_PRIVATE=/new/private/parent python prior/input/live_fixture.py
+Keep outputs/auth/state/plans/logs private. Existing helper expiry 2026-10-12; later execution requires fresh explicit authority and private authorization, never a receipt-derived grant. It reads fixed fixture snapshot 50cf6aa52f64c45961a354281169064cd2c75e20 and runs merged code, scan/reconcile/plan/replay/reserve only.
+Inspect git show --format=fuller --stat HEAD, and both parents. No manual resolution; first-parent changes equal main additions; overlap is documents/workflow only.
+prior/ retains all 48 published attempt3 files byte-for-byte. Their preparation status and old-head results are historical and must not be relabelled as merged-head independent Test/Review approval.
+Manager must request integration Test/Review at the new head/base. No PR merge or new Agent is authorized by this supplement.

@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0",
+  "document_type": "independent_test_integration_supplement",
+  "role": "test",
+  "attempt": 3,
+  "scope": "system/phase1-3/P-B",
+  "status": "completed",
+  "relationship": "Append-only integration supplement to original Test attempt3; not a new attempt, retry, reset or replacement Handoff.",
+  "head": "d3f8f582caef99a0e004c29ad3a430efe7df98bc",
+  "base": "8afe6044857783dbf6d6ae7ac9459ae5e890a744",
+  "tree": "7a7a945c8a2913f43b9df59bdf13c924f7db7779",
+  "old_head": "b79f98d3cb3bd58059a12b543df1d187b284fe35",
+  "bindings": {
+    "original_test_handoff": {
+      "path": "prior-test/handoff.json",
+      "size": 13615,
+      "sha256": "89092ecf7a2f5b3935b07ecd709e9cbd4a8b3a38e700f79ab6f8e302fb11c67f"
+    },
+    "producer_integration_report": {
+      "path": "producer/integration-report.json",
+      "size": 9822,
+      "sha256": "2f72d4bfca6243ee8f3a96acdb820962a178bd9d430df059f7b97763f3c08cf3"
+    },
+    "independent_report": {
+      "path": "independent/integration-verification.json",
+      "size": 33466,
+      "sha256": "6d68e8b46d34d09ddfcb939466f547b2c15d096f038bb09dbf0ff06d4de51719"
+    },
+    "cli_schema": {
+      "path": "independent/cli-schema-results.json",
+      "size": 7268,
+      "sha256": "2ff052a669a747e72c2f8bd0d5e16d76ae7c16c1291855e1a3522fa2c9a8a1c0"
+    },
+    "ci": {
+      "path": "independent/ci-observation.json",
+      "size": 2008,
+      "sha256": "cf4134b4f0c8d51ca43f49f0f02d9493856b3a207b337f3517724de682ecc665"
+    },
+    "live": {
+      "path": "independent/live-observation.json",
+      "size": 4350,
+      "sha256": "ed0f49f1b7f918a696e17a29db2b203168180b2da420c4ce801b7fa3a93276e0"
+    }
+  },
+  "producer_consumption": {
+    "result": "pass",
+    "canonical_main": "8afe6044857783dbf6d6ae7ac9459ae5e890a744",
+    "records_commit": "06148e941e85682f8305e4d8b4dd40325e747d8f",
+    "payload_commit": "4b51d2ca4aa7de7f829a423d4f04f626e83eded3",
+    "manifest_sha256": "c4e48b64d58e42c2884fedc39bfdb4043f2376685836f8930bdd3d48e0c85646",
+    "publication_receipt_sha256": "141c111d41bf9a84d361a062e82a3377dc2c22ffa6a590c3d34c8c5826dc2781",
+    "files": 53,
+    "bytes": 520619,
+    "method": "Unmodified new-main Consumer CLI with independently pinned exact Manager authorization, full raw bytes/type/size/hash/Handoff/retry closure. Authorization/pin/Consumption Receipt retained privately."
+  },
+  "independent_results": {
+    "combined": 232,
+    "newbase": 181,
+    "prior21": 21,
+    "extra15": 15,
+    "probe5": 5,
+    "cli": 8,
+    "schemas": 21,
+    "all_pass": true,
+    "ci_push": 38115255006,
+    "ci_pr": 38115257524,
+    "ci_status": "both success; actual checkout independently observed",
+    "test_merge": "003f8149be38cc7561655e9640828fe960fdc67c",
+    "live": "five operations at new head inbox; two verified then reserved, no dispatch"
+  },
+  "producer_comparison": "Fixed head/base/tree/parents, combined232/prior21/extra15, eight CLI checks,21 schemas, unchanged PB runtime and CI checkout reports agree with this independently executed verification. Producer self-report is not substituted for independent evidence. Producer live fixture uses old snapshot; independent live check additionally uses new fixed head inbox.",
+  "merge_comparison": {
+    "feature_only": 25,
+    "main_only": 45,
+    "overlap": [
+      ".github/workflows/validate.yml",
+      "README.md",
+      "agents/manager.md",
+      "contracts/README.md",
+      "workflows/single-issue.md"
+    ],
+    "nonoverlap_bytes_equal": true
+  },
+  "pb_results": [
+    {
+      "ac_id": "PB-1",
+      "disposition": "covered",
+      "scope": "Same-attempt independent integration recheck; prior PB contract coverage and F1-F4 fixes retained. See original Handoff and new named test evidence."
+    },
+    {
+      "ac_id": "PB-2",
+      "disposition": "covered",
+      "scope": "Same-attempt independent integration recheck; prior PB contract coverage and F1-F4 fixes retained. See original Handoff and new named test evidence."
+    },
+    {
+      "ac_id": "PB-3",
+      "disposition": "covered",
+      "scope": "Same-attempt independent integration recheck; prior PB contract coverage and F1-F4 fixes retained. See original Handoff and new named test evidence."
+    },
+    {
+      "ac_id": "PB-4",
+      "disposition": "covered",
+      "scope": "Same-attempt independent integration recheck; prior PB contract coverage and F1-F4 fixes retained. See original Handoff and new named test evidence."
+    },
+    {
+      "ac_id": "PB-5",
+      "disposition": "covered",
+      "scope": "Same-attempt independent integration recheck; prior PB contract coverage and F1-F4 fixes retained. See original Handoff and new named test evidence."
+    },
+    {
+      "ac_id": "PB-6",
+      "disposition": "covered",
+      "scope": "Same-attempt independent integration recheck; prior PB contract coverage and F1-F4 fixes retained. See original Handoff and new named test evidence."
+    }
+  ],
+  "history": "All original Test3 59 files and Producer integration53 files retained byte-identically. Independent pre-consumption report is also immutable; its not_received_yet statement records earlier chronology and is superseded only by this appended consumption observation. Old Review and Test results are not relabelled.",
+  "limitations": [
+    "P-C/P-D, periodic Knowledge and two-cycle real operation remain deferred/unverified, not this Test completion condition.",
+    "Existing POSIX storage/independent pin/legacy-corruption fail-closed limitations remain.",
+    "Current head Review and Manager adoption remain separate.",
+    "No fixes, push, merge, deployment, application run or scheduler action performed."
+  ],
+  "publication": "Manager-authorized bounded evidence publication only; no Consumer authority or merge permission is granted.",
+  "observed_at": "2026-10-11T05:45:13.535438+00:00"
+}

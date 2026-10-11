@@ -1,0 +1,176 @@
+{
+  "role": "implementation",
+  "attempt": 3,
+  "scope": "system/phase1-3/P-B",
+  "head": "b79f98d3cb3bd58059a12b543df1d187b284fe35",
+  "base": "b1e606544174481b7b6904f811e857f80978c287",
+  "previous_head": "50cf6aa52f64c45961a354281169064cd2c75e20",
+  "changed_files": [
+    "contracts/README.md",
+    "tests/test_knowledge_collector.py"
+  ],
+  "f4": {
+    "before": {
+      "test": "Extra.test_documented_pb_scope_is_consistent",
+      "exit": 1,
+      "failures": 1
+    },
+    "after": {
+      "exit": 0,
+      "additional_cases": 15
+    },
+    "repair": "P-B mechanical collector/inbox/state implemented; P-C context/ack and P-D real Agent/periodic operation unfulfilled. Operational completion not claimed."
+  },
+  "tests": {
+    "repository": 179,
+    "prior_supplied": 21,
+    "additional_supplied": 15,
+    "base": 128,
+    "all_pass": true
+  },
+  "checks": {
+    "cli": [
+      {
+        "command": [
+          "python",
+          "scripts/validate_delivery_records.py"
+        ],
+        "exit": 0
+      },
+      {
+        "command": [
+          "python",
+          "scripts/validate_handoff.py",
+          "examples/research-to-test/research.handoff.json",
+          "examples/research-to-test/test.blocked.handoff.json",
+          "examples/research-to-test/test.handoff.json",
+          "examples/failed.handoff.json",
+          "examples/partial-assignment.handoff.json"
+        ],
+        "exit": 0
+      },
+      {
+        "command": [
+          "python",
+          "scripts/validate_knowledge.py",
+          "examples/knowledge/input.json",
+          "examples/knowledge/handoff.json",
+          "examples/knowledge/context.json",
+          "examples/knowledge-delivery/input.json",
+          "examples/knowledge-delivery/handoff.json",
+          "examples/knowledge-delivery/context.json",
+          "examples/knowledge-collector/input.json",
+          "examples/knowledge-collector/handoff.json",
+          "examples/knowledge-collector/context.json"
+        ],
+        "exit": 0
+      },
+      {
+        "command": [
+          "python",
+          "scripts/validate_readiness.py",
+          "examples/readiness/pr-ready-issue-unverified.json",
+          "--context",
+          "examples/readiness/context.json",
+          "--handoff",
+          "examples/readiness/manager.handoff.json",
+          "--at",
+          "2030-01-01T12:00:00Z"
+        ],
+        "exit": 0
+      },
+      {
+        "command": [
+          "python",
+          "scripts/validate_readiness.py",
+          "examples/readiness/implementation-only.json",
+          "--context",
+          "examples/readiness/automatic-context.json",
+          "--at",
+          "2030-01-01T12:00:00Z"
+        ],
+        "exit": 0
+      },
+      {
+        "command": [
+          "python",
+          "scripts/validate_readiness.py",
+          "examples/readiness/postdeploy-achieved.json",
+          "--context",
+          "examples/readiness/context.json",
+          "--at",
+          "2030-01-01T12:00:00Z"
+        ],
+        "exit": 0
+      }
+    ],
+    "schema_count": 19,
+    "schemas": [
+      "contracts/artifact-delivery-v1.1.schema.json",
+      "contracts/artifact-delivery.schema.json",
+      "contracts/consumption-receipt-v1.1.schema.json",
+      "contracts/consumption-receipt.schema.json",
+      "contracts/delivery-authorization-v1.1.schema.json",
+      "contracts/delivery-authorization.schema.json",
+      "contracts/handoff.schema.json",
+      "contracts/knowledge-collection-authorization.schema.json",
+      "contracts/knowledge-collection-record.schema.json",
+      "contracts/knowledge-collection-state.schema.json",
+      "contracts/knowledge-context.schema.json",
+      "contracts/knowledge-event.schema.json",
+      "contracts/knowledge-handoff.schema.json",
+      "contracts/knowledge-input.schema.json",
+      "contracts/knowledge-source-registry.schema.json",
+      "contracts/publication-receipt-v1.1.schema.json",
+      "contracts/publication-receipt.schema.json",
+      "contracts/readiness-context.schema.json",
+      "contracts/readiness.schema.json"
+    ],
+    "legacy_tests_and_schemas_unchanged": true,
+    "documentation_files_checked": 12,
+    "local_link_targets_checked": 85
+  },
+  "ac_coverage": {
+    "PB-1": "Unchanged closed contracts and identity; 179 repository, supplied 21 and 15 cases cover collision and distinct evidence.",
+    "PB-2": "Unchanged F1/F3 repairs; disappearance/source membership, full snapshot verification and every Git ancestor remain covered.",
+    "PB-3": "Unchanged F2 durability/CAS; crash probes, immutable object preservation and legacy corrupt-object fail-closed case pass. No automatic corrupt-object overwrite.",
+    "PB-4": "Existing retry limits/history, unknown-start stop, output delivery resume, commit acknowledgement and unauthorized-renewal cases pass. Final execution attempt 3; no reset or recursive execution.",
+    "PB-5": "Five mechanical CLI operations pass synthetic verification. Collector remains unchanged; no Agent launch, scheduler activation, deployment or development gate changes.",
+    "PB-6": "F4 reproduced before repair; one current documentation sentence corrected and one regression added. 179+21+15 cases, 128 base cases, 19 schemas, six CLI commands and 85 documentation link targets pass. Independent gates remain pending."
+  },
+  "input_verification": {
+    "consumer": "unchanged canonical Consumer CLI",
+    "files": 40,
+    "bytes": 459012,
+    "result": "PASS: complete bytes, size/hash, type, transitive artifacts and Handoff retry bindings",
+    "history": "40 original public input files copied byte-for-byte; attempts 1/2 and failed Test 2 unchanged"
+  },
+  "live": {
+    "code_head": "b79f98d3cb3bd58059a12b543df1d187b284fe35",
+    "fixture_snapshot": "50cf6aa52f64c45961a354281169064cd2c75e20",
+    "helper": "input/live_fixture.py",
+    "self_verification": true,
+    "operations": [
+      "scan",
+      "reconcile",
+      "plan",
+      "replay",
+      "record reserve"
+    ],
+    "events": 2,
+    "plan_replay_identical": true,
+    "read_only_store_unchanged": true,
+    "dispatch": false
+  },
+  "environment": {
+    "python": "3.12.14",
+    "jsonschema": "4.26.0"
+  },
+  "limits": [
+    "Implementation self-verification only; independent Test/Review and Manager final assessment pending.",
+    "P-C/P-D and real periodic operation not completed.",
+    "Corrupt legacy final objects still fail closed and require separate authorized recovery.",
+    "Candidate bundle not published; no operational authorization, pins, new consumption receipts, raw execution logs or private-original digests included.",
+    "Historical approved public fixture-consumption-receipt remains unchanged solely because the original Handoff dependency closure requires it. It is not current authority."
+  ]
+}

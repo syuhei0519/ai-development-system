@@ -1,0 +1,256 @@
+{
+  "schema_version": "1.0",
+  "runs": [
+    {
+      "run_id": 38113979618,
+      "event": "pull_request",
+      "run_head": "b79f98d3cb3bd58059a12b543df1d187b284fe35",
+      "check_suite_id": 103265376482,
+      "conclusion": "success",
+      "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38113979618",
+      "jobs": [
+        {
+          "job_id": 114395083132,
+          "head_sha": "b79f98d3cb3bd58059a12b543df1d187b284fe35",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python -m pip install -r requirements-dev.txt",
+              "conclusion": "success"
+            },
+            {
+              "name": "All contracts, delivery/retry and collector crash regressions",
+              "conclusion": "success"
+            },
+            {
+              "name": "Delivery schema and pinned sample consistency",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_handoff.py examples/research-to-test/research.handoff.json examples/research-to-test/test.blocked.handoff.json examples/research-to-test/test.handoff.json examples/failed.handoff.json examples/partial-assignment.handoff.json",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_knowledge.py examples/knowledge/input.json examples/knowledge/handoff.json examples/knowledge/context.json examples/knowledge-delivery/input.json examples/knowledge-delivery/handoff.json examples/knowledge-delivery/context.json",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/pr-ready-issue-unverified.json --context examples/readiness/context.json --handoff examples/readiness/manager.handoff.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/implementation-only.json --context examples/readiness/automatic-context.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/postdeploy-achieved.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ],
+      "checkout_commit": "fa7d724ac51d0e892faf37d2d7751145ef33e093",
+      "checkout_evidence": "Directly observed successful authorized connector job-log response and git log -1 %H output; not inferred solely from workflow defaults.",
+      "test_count": 179,
+      "log_publication": "Raw runner logs and private API originals excluded.",
+      "workflow_semantics": "Fixed workflow uses actions/checkout@v4 with no ref override. PR log checkout is a test merge; push log checkout is branch head. No scheduler or live collector action."
+    },
+    {
+      "run_id": 38115255006,
+      "event": "push",
+      "run_head": "d3f8f582caef99a0e004c29ad3a430efe7df98bc",
+      "check_suite_id": 103268728173,
+      "conclusion": "success",
+      "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38115255006",
+      "jobs": [
+        {
+          "job_id": 114398772173,
+          "head_sha": "d3f8f582caef99a0e004c29ad3a430efe7df98bc",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python -m pip install -r requirements-dev.txt",
+              "conclusion": "success"
+            },
+            {
+              "name": "All contracts, delivery/retry and collector crash regressions",
+              "conclusion": "success"
+            },
+            {
+              "name": "Delivery schema and pinned sample consistency",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_handoff.py examples/research-to-test/research.handoff.json examples/research-to-test/test.blocked.handoff.json examples/research-to-test/test.handoff.json examples/failed.handoff.json examples/partial-assignment.handoff.json",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_knowledge.py examples/knowledge/input.json examples/knowledge/handoff.json examples/knowledge/context.json examples/knowledge-delivery/input.json examples/knowledge-delivery/handoff.json examples/knowledge-delivery/context.json",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/pr-ready-issue-unverified.json --context examples/readiness/context.json --handoff examples/readiness/manager.handoff.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/implementation-only.json --context examples/readiness/automatic-context.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/postdeploy-achieved.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Aggregate synthetic-achieved replay",
+              "conclusion": "success"
+            },
+            {
+              "name": "Aggregate synthetic-pending replay",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ],
+      "checkout_commit": "d3f8f582caef99a0e004c29ad3a430efe7df98bc",
+      "checkout_evidence": "Directly observed successful authorized connector job-log response and git log -1 %H output; not inferred solely from workflow defaults.",
+      "test_count": 232,
+      "log_publication": "Raw runner logs and private API originals excluded.",
+      "workflow_semantics": "Fixed workflow uses actions/checkout@v4 with no ref override. PR log checkout is a test merge; push log checkout is branch head. No scheduler or live collector action."
+    },
+    {
+      "run_id": 38115257524,
+      "event": "pull_request",
+      "run_head": "d3f8f582caef99a0e004c29ad3a430efe7df98bc",
+      "check_suite_id": 103268735195,
+      "conclusion": "success",
+      "url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38115257524",
+      "jobs": [
+        {
+          "job_id": 114398779250,
+          "head_sha": "d3f8f582caef99a0e004c29ad3a430efe7df98bc",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python -m pip install -r requirements-dev.txt",
+              "conclusion": "success"
+            },
+            {
+              "name": "All contracts, delivery/retry and collector crash regressions",
+              "conclusion": "success"
+            },
+            {
+              "name": "Delivery schema and pinned sample consistency",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_handoff.py examples/research-to-test/research.handoff.json examples/research-to-test/test.blocked.handoff.json examples/research-to-test/test.handoff.json examples/failed.handoff.json examples/partial-assignment.handoff.json",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_knowledge.py examples/knowledge/input.json examples/knowledge/handoff.json examples/knowledge/context.json examples/knowledge-delivery/input.json examples/knowledge-delivery/handoff.json examples/knowledge-delivery/context.json",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/pr-ready-issue-unverified.json --context examples/readiness/context.json --handoff examples/readiness/manager.handoff.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/implementation-only.json --context examples/readiness/automatic-context.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run python scripts/validate_readiness.py examples/readiness/postdeploy-achieved.json --context examples/readiness/context.json --at 2030-01-01T12:00:00Z",
+              "conclusion": "success"
+            },
+            {
+              "name": "Aggregate synthetic-achieved replay",
+              "conclusion": "success"
+            },
+            {
+              "name": "Aggregate synthetic-pending replay",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ],
+      "checkout_commit": "003f8149be38cc7561655e9640828fe960fdc67c",
+      "checkout_evidence": "Directly observed successful authorized connector job-log response and git log -1 %H output; not inferred solely from workflow defaults.",
+      "test_count": 232,
+      "log_publication": "Raw runner logs and private API originals excluded.",
+      "workflow_semantics": "Fixed workflow uses actions/checkout@v4 with no ref override. PR log checkout is a test merge; push log checkout is branch head. No scheduler or live collector action."
+    }
+  ],
+  "limitations": "Job/suite detail URL shapes were rejected by connector allowlist; approved run/jobs and commit/check-suites collections directly supplied the same metadata. No Forbidden log denial occurred and no restricted log route was bypassed. Required review/protection compliance is a separate Manager check."
+}

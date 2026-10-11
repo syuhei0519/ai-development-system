@@ -1,0 +1,31 @@
+Independent Test attempt 2; public alias candidate only, not publication approval.
+Use Python 3.12 and requirements-dev.txt. No product edits, Agent launches or schedule.
+Set BUNDLE to this directory. Obtain detached checkouts of syuhei0519/ai-development-system:
+BEFORE=29b87fd1014c66c0368e4aad231846b17b53707b
+HEAD=50cf6aa52f64c45961a354281169064cd2c75e20
+BASE=b1e606544174481b7b6904f811e857f80978c287
+
+PB_HEAD=/path/to/before python "$BUNDLE/input/upstream/independent_cases.py"
+Expected: exit 1; 21 cases, 3 failures + 1 error, F1/F2/F3.
+PB_HEAD=/path/to/head python "$BUNDLE/input/upstream/independent_cases.py"
+Expected: exit 0; 21 pass. This supplied script is unchanged (SHA256 87e7a52005dc31cfad71e033f30bd71196b5d46e6ad9b4d2aa7b22c65d661430).
+In head and base: python -m unittest discover -s tests -v
+Expected respectively 178 and 128 pass; all base test files remain unchanged.
+PB_HEAD=/path/to/head PB_PRIOR_CASES="$BUNDLE/input/upstream/independent_cases.py" python "$BUNDLE/extra_cases.py"
+Expected: 15 methods, 14 pass, one failure F4 at contracts/README.md:76.
+Execute the six commands in cli-schema-observation.json at fixed head; all exit 0.
+Check Draft202012Validator.check_schema for all 19 contracts/*.schema.json.
+
+For bounded authorized synthetic HTTPS reproduction only:
+PB_HEAD=/path/to/head PB_PRIVATE=/new/private/parent python "$BUNDLE/live_fixture.py"
+Requires the same explicit Manager test permission. The example expiry is 2026-10-12;
+a later reproduction requires fresh explicit authority and private authorization, not a receipt.
+This test helper runs scan/reconcile/plan/replay and synthetic reserve, never dispatch.
+Expected two verified then two reserved events; plan/replay identical and store bytes unchanged.
+Authorization, state, objects, private plan, receipt and raw execution logs must remain private.
+
+Validate handoff.json with unchanged scripts/validate_handoff.py; every artifact and upstream
+locator/digest must resolve inside this bundle. inventory.json lists all other files; it has no
+self-hash. The outer Manager delivery envelope must pin inventory.json separately if delivered.
+Existing input/ tree retains all 28 original public bundle files, including full transitive closure.
+A new publication requires a distinct approval; no publication or push was performed here.

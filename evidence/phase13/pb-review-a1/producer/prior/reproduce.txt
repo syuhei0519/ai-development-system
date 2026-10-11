@@ -1,0 +1,14 @@
+Implementation attempt 3 self-verification; public alias candidate, no publication approval.
+Target: b79f98d3cb3bd58059a12b543df1d187b284fe35
+Base: b1e606544174481b7b6904f811e857f80978c287
+Before: 50cf6aa52f64c45961a354281169064cd2c75e20
+Use Python and requirements-dev.txt from fixed target. Let BUNDLE be this directory.
+At BEFORE, PB_HEAD=/path/to/before PB_PRIOR_CASES="$BUNDLE/input/input/upstream/independent_cases.py" python "$BUNDLE/input/extra_cases.py" Extra.test_documented_pb_scope_is_consistent => 1 failure.
+At TARGET, python -m unittest discover -s tests -v => 179 pass.
+PB_HEAD=/path/to/target python "$BUNDLE/input/input/upstream/independent_cases.py" => 21 pass.
+PB_HEAD=/path/to/target PB_PRIOR_CASES="$BUNDLE/input/input/upstream/independent_cases.py" python "$BUNDLE/input/extra_cases.py" => 15 pass.
+At BASE, python -m unittest discover -s tests -v => 128 pass. All base test/schema bytes are unchanged at target.
+Run six commands in implementation-report.json checks.cli at target. Draft202012Validator.check_schema on all 19 contracts/*.schema.json passes.
+Review README.md and contracts/workflows/templates/*.md scope boundaries and existing local Markdown targets (12 documents, 85 targets). Source design and immutable history retain original bytes.
+Live bounded synthetic verification: PB_HEAD=/path/to/target PB_PRIVATE=/new/private/parent python "$BUNDLE/input/live_fixture.py". Existing helper retains fixed snapshot 50cf6aa and 2026-10-12 expiry. Require current explicit bounded-test permission; do not treat helper or receipt as authority. Later runs require fresh private authorization. Expect 2 events, all five CLI operations, identical plan/replay, no store mutation by read-only calls, then reserved. No dispatch. Keep auth/state/objects/plans/logs private.
+Validate handoff with unchanged base scripts/validate_handoff.py. Inventory lists every payload file except itself; outer bundle index separately pins inventory. Preserve all input/ bytes and previous attempts. No reset or further recursive execution.
