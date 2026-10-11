@@ -1,0 +1,508 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "syuhei0519/backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "test",
+  "task_id": "order-m1-test-a1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "order-m1-implementation-a2",
+      "attempt": 2,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/c50af45ceb871d82734b2c4efa5319205c420cd6/evidence/order-m1/implementation-a2/handoff.json",
+      "revision": "sha256:1ce2ed797e5b127803c4f6976e119b40efaa5e35ec93cf8fc5cc67f431ccf473",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "failed",
+  "summary": "Independent M1 Test failed: hostNetwork/hostPID/hostIPC Order PodSpec attack fixtures pass inventory and combined security gate, with unchanged inventory digest. M1-S1/S4 verified at fixed scope; M1-S2/S3 adverse rejection unmet. All product ACs remain unverified. Implementation history unchanged.",
+  "assignment": {
+    "scope": "application-manifest#backend-app-2/M1",
+    "ac_ids": [
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "M1-S1: Orderと専用PostgreSQL chartをdisabled既定で追加し、既存Account chart/values/render、Namespace/AppProject/Secret/既存DBデータを変えない。",
+      "M1-S2: 独立名/selector、同じimage digestのmigration JobとDeployment、health/security/Secret参照、DB/PVC保護を設計通りに表現し正常異常fixtureで検証する。",
+      "M1-S3: 既存trusted inventory/security/PVC検証を弱めず、両disabled/有効synthetic fixtureのlint/schema/render/全PodSpec検証に成功する。",
+      "M1-S4: 合成fixtureと実公開releaseを区別し、実イメージ・kind・M2/P1/T7の未検証と担当/方法/失敗時対応を引き継ぐ。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-1",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/account-pvc.yaml",
+      "revision": "sha256:986f00b580d1581f1cda72bdcfc69fba8a937068fa311f59f36516a6823f4c20",
+      "summary": "account-pvc.yaml; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-2",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/attack-inventory-comparison.json",
+      "revision": "sha256:08a3e2fa1ee47a0a6660c88acba8586158c1d6881a051492ce3f4c5c7d4f87b1",
+      "summary": "attack-inventory-comparison.json; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-3",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/backend-baseline.yaml",
+      "revision": "sha256:98f9ee0a34d05ffdce403e6b22ea28fd84aa9e9eb508a0872d95b50067f22d88",
+      "summary": "backend-baseline.yaml; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-4",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/change-coverage.json",
+      "revision": "sha256:e005067de12a17582d55f86a092473abbf356255b4f8075fd5c90a2dc41dfc94",
+      "summary": "change-coverage.json; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-5",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/checksum.txt",
+      "revision": "sha256:83ba94eb438fc736f99632752d3b4b0c3c233dec9d1935fffcb426b5e3f90861",
+      "summary": "checksum.txt; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-6",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/ci-test-network-summary.txt",
+      "revision": "sha256:1b9c253bc223831e4fbf05236bc27f191c71e6b6742081217caa00c3267ffb9c",
+      "summary": "ci-test-network-summary.txt; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-7",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/config.json",
+      "revision": "sha256:15e9442185754fad17f2444d88b9b8570956c035415ef995af709785aa6bd77e",
+      "summary": "config.json; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-8",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/context.json",
+      "revision": "sha256:86caa984b7811d47e7062b05ddcfc04f65684936c3099d9b58692768fe986c40",
+      "summary": "context.json; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-9",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/extra-AppProject.yaml",
+      "revision": "sha256:31c90b61f13fa8a4cef2d4e7184cf85d00e4f4a305248b99e492d8be5dc0d941",
+      "summary": "extra-AppProject.yaml; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-10",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/extra-Namespace.yaml",
+      "revision": "sha256:e881ea249bdfd7dbd81d69cf5828a239de92753f3d1b2706fef59e25d1dd8f6d",
+      "summary": "extra-Namespace.yaml; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-11",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/extra-Secret.yaml",
+      "revision": "sha256:26d5efe6d0b4899b7b7b416ae87c783a67b8fcf75aab6fe2fb563073d014f420",
+      "summary": "extra-Secret.yaml; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-12",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/extra-ephemeralContainers.yaml",
+      "revision": "sha256:b5a06228854639ac7907ce69d4d06ce74cbc4ff4f5292ca0a545854d2bc1b2b4",
+      "summary": "extra-ephemeralContainers.yaml; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-13",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/extra-initContainers.yaml",
+      "revision": "sha256:6591187c8ae16141179686a9e08eb6d60865eeb5e926297c89b1fd84c98a0a00",
+      "summary": "extra-initContainers.yaml; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-14",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/frontend-baseline.yaml",
+      "revision": "sha256:16ce7b984d0bfa86d110ed2c9757e565a9ada6056f7cbd583de32aa04a3866de",
+      "summary": "frontend-baseline.yaml; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-15",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/gitops-workloads.yaml",
+      "revision": "sha256:9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5",
+      "summary": "gitops-workloads.yaml; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-16",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/host-mutation-combined-security.json",
+      "revision": "sha256:4bdadc40cf428a16ced332c452c749a85c8367db3ec5cbe6cfa1b34072070432",
+      "summary": "host-mutation-combined-security.json; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-17",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/host-mutation-full-security.json",
+      "revision": "sha256:4eda46af540139ae1809de850d69325d23b68b050273c3d1dad9498f01e1bc19",
+      "summary": "host-mutation-full-security.json; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-18",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/host-mutation-security.json",
+      "revision": "sha256:b8ec3809269593fe04a606ea0167ecc905fd551b31897906051a4a2f5b7a3b22",
+      "summary": "host-mutation-security.json; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-19",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/independent-results.json",
+      "revision": "sha256:52fdbfb5a4077c6f8d1205d07766c6c0066af6f0e9d8dd45fed6f096f59fc6cd",
+      "summary": "independent-results.json; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-20",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/independent-summary.txt",
+      "revision": "sha256:ac7e84b637cb23157fce4fa63663fd3ea927b07d44b21c3295c5e68c4322790f",
+      "summary": "independent-summary.txt; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-21",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/independent.py",
+      "revision": "sha256:e5b5bde80471a93caa51f70b574548416a624e06efd10ac4a761ec8afc1dd749",
+      "summary": "independent.py; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-22",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/inventory-positive.yaml",
+      "revision": "sha256:906e6045384a8e5139001cc572f5087ebdd6559c7b7842d75bea3573601a01fa",
+      "summary": "inventory-positive.yaml; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-23",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/kubeconform-network-summary.txt",
+      "revision": "sha256:d676921453e6d2b6125257de69243e2b22e282e24b15eb34b22c12d9a815d273",
+      "summary": "kubeconform-network-summary.txt; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-24",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/measurement.json",
+      "revision": "sha256:96ca84c9237be4e981c8708693f576ce1e442fd2a5258e92272c14f0f0e9607e",
+      "summary": "measurement.json; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-25",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/mutation-kubeconform-summary.txt",
+      "revision": "sha256:f122cab2144509c2cf76341f7feabd310ab75f5ee86261f2a7908fdac3189a28",
+      "summary": "mutation-kubeconform-summary.txt; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-26",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/mutations/pod-hostIPC.yaml",
+      "revision": "sha256:aab6108314a26a3291d8b3390429ee03bd0caa6b0d559bbfac98abf1b64f8990",
+      "summary": "mutations/pod-hostIPC.yaml; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-27",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/mutations/pod-hostNetwork.yaml",
+      "revision": "sha256:55ca32450e887721ffa5ad8f567c861ca7a852aed18f3dd1c8d4ace474016543",
+      "summary": "mutations/pod-hostNetwork.yaml; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-28",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/mutations/pod-hostPID.yaml",
+      "revision": "sha256:15b049a589770ea885cfbfdfbb6515ae95bac7a921059cdfd5407ac1c6736bd4",
+      "summary": "mutations/pod-hostPID.yaml; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-29",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/namespace-escape.yaml",
+      "revision": "sha256:3426ab852f2a352213b0045a5e79e722efb964ae4407806dd5a71b6b726a1822",
+      "summary": "namespace-escape.yaml; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-30",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/order-postgresql-synthetic.yaml",
+      "revision": "sha256:bde99d33ad53ecff9d23e6075dc18b27ee9817d5a82a97c3696cb11b0b5a7a0a",
+      "summary": "order-postgresql-synthetic.yaml; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-31",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/order-synthetic-inventory.json",
+      "revision": "sha256:879e8b6ac82c844e66e988d448e290dc05dc3528a9b326adf715a0743617464f",
+      "summary": "order-synthetic-inventory.json; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-32",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/order-synthetic-security.json",
+      "revision": "sha256:b8ec3809269593fe04a606ea0167ecc905fd551b31897906051a4a2f5b7a3b22",
+      "summary": "order-synthetic-security.json; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-33",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/order-synthetic.yaml",
+      "revision": "sha256:7045a91abe4cb68b69890099f799745a9cea5bb90d9efb9b542903358ea28901",
+      "summary": "order-synthetic.yaml; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-34",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/pod-hostIPC.yaml",
+      "revision": "sha256:aab6108314a26a3291d8b3390429ee03bd0caa6b0d559bbfac98abf1b64f8990",
+      "summary": "pod-hostIPC.yaml; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-35",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/pod-hostNetwork.yaml",
+      "revision": "sha256:55ca32450e887721ffa5ad8f567c861ca7a852aed18f3dd1c8d4ace474016543",
+      "summary": "pod-hostNetwork.yaml; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-36",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/pod-hostPID.yaml",
+      "revision": "sha256:15b049a589770ea885cfbfdfbb6515ae95bac7a921059cdfd5407ac1c6736bd4",
+      "summary": "pod-hostPID.yaml; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-37",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/postgresql-baseline.yaml",
+      "revision": "sha256:108bffe412325d4155c964fcf7ca30b58f23d636f1407b0466d84ec4528f8d38",
+      "summary": "postgresql-baseline.yaml; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-38",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/pvc-no-protection.yaml",
+      "revision": "sha256:6457b7037bc68e6056747854f57cc85eb43cf45e8586921a9b1c1b68dbd88855",
+      "summary": "pvc-no-protection.yaml; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-39",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/render-scan.json",
+      "revision": "sha256:1b29386d006786ca28fa06ae510b3c7882c1ffca213605e05196cf82f4b443cd",
+      "summary": "render-scan.json; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-40",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/reproduce-attack.sh",
+      "revision": "sha256:299763fb57fffc1f844f9a7a8be55181a98e0dff1cf6e1f59205bd06be817c40",
+      "summary": "reproduce-attack.sh; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-41",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/reproduce.sh",
+      "revision": "sha256:b91e765bb785dc4266dbd76d65601a2ef606941c5f9876b6909fbe67fee93a8a",
+      "summary": "reproduce.sh; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-42",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/source-scan.json",
+      "revision": "sha256:bae64d1dd02bb8855d70c5acbdb2188fef500acffa3073a70426fa949864ba92",
+      "summary": "source-scan.json; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-43",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/strict-helm.txt",
+      "revision": "sha256:801af776c92044bef4bc8e5d6882c690e83ec0a905fe6c22015441c4ba5e8fc1",
+      "summary": "strict-helm.txt; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-44",
+      "kind": "test-report",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/test-report.txt",
+      "revision": "sha256:49c350ffaac8dd111bd1885c07f84d3e3725698a6693fbac26e427b4989dbadb",
+      "summary": "test-report.txt; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-45",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/tool-source-pins.json",
+      "revision": "sha256:708f68eef02c0713742bb076a78d92523772ee049051d4085904b937cbfe3685",
+      "summary": "tool-source-pins.json; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-46",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/trusted-binary.txt",
+      "revision": "sha256:d8ddace3dadd2216371a328058940821af3e2d0c8ed5dae814b1ee192cad0db8",
+      "summary": "trusted-binary.txt; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-47",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/trusted-phase2.txt",
+      "revision": "sha256:0f4a7a0388656b5f555c55b53680bb389733352647463c78d4ab91868a2f1e55",
+      "summary": "trusted-phase2.txt; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-48",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/trusted-render.json",
+      "revision": "sha256:3a3c85dd584561d6f50534b0fec4847a424a5ec6a212ef85fa23774738df25e7",
+      "summary": "trusted-render.json; independent synthetic preparation evidence, not actual release/product acceptance."
+    },
+    {
+      "id": "A-KNOWLEDGE",
+      "kind": "knowledge",
+      "locator": "knowledge-candidates.json",
+      "revision": "sha256:38057f3d30949b9c7c07e460f6c1298f1e5d009b36f447284a25f0d359f2648a",
+      "summary": "Pending optional raw-source delivery knowledge candidate; full four-template tree closure."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-S1",
+      "claim": "M1-S1 fixed desired resources unchanged",
+      "artifact_ids": [
+        "A-19",
+        "A-48",
+        "A-15",
+        "A-4"
+      ],
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/test-report.txt",
+      "observation": "All 32 old files and three renders unchanged; four empty default/local renders. Fixed GitOps only registers old three Apps. No live measurement."
+    },
+    {
+      "id": "E-S2",
+      "claim": "M1-S2 malicious security rejection failed",
+      "artifact_ids": [
+        "A-2",
+        "A-16",
+        "A-19",
+        "A-44"
+      ],
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/test-report.txt",
+      "observation": "Three injected host namespace fields accepted, unchanged inventory digest and full scanner warning/pass. Fixed chart has no host namespace fields; schema overrides reject. Synthetic attack, not deployment."
+    },
+    {
+      "id": "E-S3",
+      "claim": "M1-S3 positive suites pass but required malicious gate fails",
+      "artifact_ids": [
+        "A-6",
+        "A-5",
+        "A-42",
+        "A-39",
+        "A-23",
+        "A-16"
+      ],
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/test-report.txt",
+      "observation": "Pinned local suites/scans completed; no policy source downgrade, but host namespace attack not rejected. Four direct-parser negative expectations failed; namespace shift separately changes inventory digest."
+    },
+    {
+      "id": "E-S4",
+      "claim": "M1-S4 synthetic and product followup boundary preserved",
+      "artifact_ids": [
+        "A-44",
+        "A-8"
+      ],
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/test-report.txt",
+      "observation": "B2/M2/kind/P1/T7 owners/method/environment/failure response explicit; all product outcomes unverified."
+    },
+    {
+      "id": "E-RAW",
+      "claim": "Four exact context template raw bytes preserved",
+      "artifact_ids": [
+        "A-8",
+        "A-4",
+        "A-44"
+      ],
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/test-report.txt",
+      "observation": "Raw Git bytes matched all four required size/hash pins; complete tree snapshot provides original source files."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "unverified",
+      "scope": "Outside assignment; product outcome unverified.",
+      "artifact_ids": [
+        "A-44"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "unverified",
+      "scope": "Outside assignment; product outcome unverified.",
+      "artifact_ids": [
+        "A-44"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "not_met",
+      "scope": "Assigned M1 preparation Test responsibility failed on malicious security rejection; not a product AC not_met assessment. Product AC-3 remains unverified.",
+      "artifact_ids": [
+        "A-44"
+      ],
+      "evidence_ids": [
+        "E-S2",
+        "E-S3"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [
+    "M1-S2/M1-S3: three malicious Order Deployment host namespace mutations accepted by inventory and combined scanner/structural security gate; inventorySha256 unchanged. Required malicious rejection unmet."
+  ],
+  "knowledge_candidates": [
+    {
+      "id": "K-RAW-HELM-DELIVERY",
+      "domain": "artifact-delivery",
+      "summary": "Raw Helm templates beginning with {{ are source bytes, not JSON documents; preserve them with the complete Git-tree delivery profile rather than changing bytes or misclassifying text.",
+      "evidence_ids": [
+        "E-RAW"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "approved_public"
+    }
+  ],
+  "publication": "public_safe"
+}

@@ -1,0 +1,14 @@
+{
+  "document_type": "knowledge_candidates",
+  "publication_status": "pending_manager_review",
+  "candidates": [
+    {
+      "id": "K-RAW-HELM-DELIVERY",
+      "domain": "artifact-delivery",
+      "summary": "Raw Helm templates beginning with {{ are source bytes, not JSON documents; preserve them with the complete Git-tree delivery profile rather than changing bytes or misclassifying text.",
+      "evidence": "Four pinned context templates begin with Helm actions and are copied byte-for-byte with size/SHA-256 checked. Delivery1.2 full tree snapshot retains them without document reinterpretation.",
+      "source": "https://github.com/syuhei0519/ai-development-system/tree/37722a9fa8f1204b83dcca4f30b0f0ff352ddd6e/evidence/order-m1/test-a1/artifacts",
+      "scope": "Fixed Delivery1.2 contract and four M1 preparation templates; not an authorization or product acceptance claim."
+    }
+  ]
+}
