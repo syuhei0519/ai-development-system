@@ -1,0 +1,19 @@
+{
+  "document_type": "test_publication_safety",
+  "observed_at": "2026-10-11T19:45:27.361604+00:00",
+  "scope": "system-artifact-capacity",
+  "representation": "original public-safe Test artifacts; upstream public originals retained at fixed commits",
+  "content_review": "Manually reviewed report, reproducer and curated results. Automated checks exclude private pin, runtime IDs and common credential patterns. No authorization, Consumption Receipt, internal raw logs or private conversation is included.",
+  "publication_approval": "Existing explicit authorization covers this System dedicated evidence branch after safety review; no additional permission inferred from receipt.",
+  "consumer_authority": "Manager must separately authorize downstream use. Producer fresh validation does not grant downstream authority.",
+  "candidate_profile": "Delivery 1.3 schemas are generic JSON review artifacts validated by canonical 1.2; not transport trust root.",
+  "counters": {
+    "epoch": 1,
+    "execution_attempt": 1,
+    "delivery_attempt": 1,
+    "dispatch_max": 3,
+    "execution_max": 3,
+    "delivery_max": 3
+  },
+  "history": "New System scope; existing B2/retry histories and terminal states unchanged."
+}
