@@ -1,0 +1,435 @@
+{
+  "schema_version": "1.0",
+  "document_type": "artifact_delivery",
+  "artifacts": [
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/assignment-adoption.json",
+        "size": 3304,
+        "sha256": "8acc4334bbb37be31dce8b0acfa4efb662aa65a41c909d2ed32e873ef2f9dabf"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A2"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/assignment-requirements.json",
+        "size": 2862,
+        "sha256": "f3d9d8e0f58a85325487bffe17aa336f90294f782bb44ebb3a4a69a2c2564ea2"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A2"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/b1-cli-observation.public.json",
+        "size": 2805,
+        "sha256": "f472ad92c1f2ab4b864e82336519f2e4e556a13f50d2701c23785058456fa140"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A2"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/b1-manifest.json",
+        "size": 22789,
+        "sha256": "5a1e3edfcdc1751c7a02ece0a2962b208f1285dc974e80889e58e42aedff1ae3"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A2"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/b1-publication-receipt.json",
+        "size": 6164,
+        "sha256": "0cb6488dd3b1faa0d069489fb0e24036287cca4fe4de728bce40821e472c068d"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A2"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/delivery-guide.md",
+        "size": 3430,
+        "sha256": "a2814302076094eabeca37692e37f25201367ad8382110ec71945e97e36c0420"
+      },
+      "format": "text",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A2"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/design-supplement.md",
+        "size": 7120,
+        "sha256": "bcb779c4c8926627e410e34ba5caf900a261be65548497734bdc8f743aac72e2"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A2"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/editing-map.json",
+        "size": 7617,
+        "sha256": "96eb4046d4587a2da174e5626933a8b0ec5c17c0615932083b56baa5b7d589fc"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A2"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/handoff.public.json",
+        "size": 14463,
+        "sha256": "fe8df85097f5711b5173fe651e3c40dbea89439a37bc57341fbc4f3ce52e422e"
+      },
+      "format": "handoff-v2",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A2"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/implementation-report.public.json",
+        "size": 4401,
+        "sha256": "47e4461fc6006f65369304b4448715ebdd2bb76cb800156376f8fd5b93963e79"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A2"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/implementation.patch",
+        "size": 180430,
+        "sha256": "f2f3906526b98e71ee512a01ee2190c378a9be667a294ca353f5f8631429022a"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A2"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/inventory.public.json",
+        "size": 5637,
+        "sha256": "a4fa6b0ccee29a67dc38ef2c614433212032c771129cb89085f3ea2fc7969a7d"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A2"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/prior/assignment-requirements.json",
+        "size": 2862,
+        "sha256": "f3d9d8e0f58a85325487bffe17aa336f90294f782bb44ebb3a4a69a2c2564ea2"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A1"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/prior/b1-consumer-observation.public.json",
+        "size": 5620,
+        "sha256": "7e4b3b7bebf18cc7a0e46202d3d127e4c22a84753fed6d3d0ede382c6c6fa88b"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A1"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/prior/design-supplement.md",
+        "size": 7120,
+        "sha256": "bcb779c4c8926627e410e34ba5caf900a261be65548497734bdc8f743aac72e2"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A1"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/prior/editing-map.json",
+        "size": 8202,
+        "sha256": "9d9787fda4ccdab834b0e6ee3fb19fac0567c8004244a16c9f25bc11d5965a33"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A1"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/prior/handoff.public.json",
+        "size": 10063,
+        "sha256": "3aa90aedc0469c14c7ec457a3f01af21b9bc566f3ea4855336cd2925ffe05e87"
+      },
+      "format": "handoff-v2",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A1"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/prior/implementation-report.public.json",
+        "size": 6599,
+        "sha256": "29d2ef67748681c07dd456e5a0618be91ede5a9f81feb331ff826ee63f258e03"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A1"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/prior/implementation.patch",
+        "size": 90015,
+        "sha256": "c65dc1e4f5fc848ea995a9cc6807d381cab1862cedc6521e1627c9ddf8cdb817"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A1"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/prior/inventory.public.json",
+        "size": 3294,
+        "sha256": "9c7d5112a736a10e96491ad878d2c7fa2ab46acd81e2aa9cece12f0999f31503"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A1"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/prior/pa/assignment-requirements.json",
+        "size": 2567,
+        "sha256": "7f145ee60b28e14828cf775513747d3e00ee77f3976b90903304e487ba85660c"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-PA-IMPLEMENTATION-01"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/prior/pa/fixture-consumption-receipt.json",
+        "size": 3591,
+        "sha256": "0d0267237ab2f6cb4f5511a3df7323a684e0122a34593ff5c93a3e1c4c6ae538"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-PA-IMPLEMENTATION-01"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/prior/pa/handoff.json",
+        "size": 8235,
+        "sha256": "abd9770e562943f4e2ed847b5889bfa15d43419f545a70b07f9cc5875ea391d4"
+      },
+      "format": "handoff-v2",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-PA-IMPLEMENTATION-01"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/prior/pa/implementation-report.json",
+        "size": 9117,
+        "sha256": "b66153dd07d4dd587a996f0c1a4a0165db19e67a91179fe9083303ddbe0e7701"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-PA-IMPLEMENTATION-01"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/prior/pa/research/assignment-requirements.json",
+        "size": 2204,
+        "sha256": "de34bda253a2ca7df0d17a039d4d710c450c984e2226b60920bae5cda3017760"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-RESEARCH-01"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/prior/pa/research/design.md",
+        "size": 36689,
+        "sha256": "3bc5071ca6ab336d17ef10fde5c5e7b6b931bc3d16d4850dca946e5766caee46"
+      },
+      "format": "text",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-RESEARCH-01"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/prior/pa/research/handoff.json",
+        "size": 7829,
+        "sha256": "ba69683794ee6ccea5f29ba277c1a8f13adcfd9308b17fe8f86ad6e65c2398af"
+      },
+      "format": "handoff-v2",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-RESEARCH-01"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/prior/pa/research/source-inventory.json",
+        "size": 6159,
+        "sha256": "3b70f0a86ad864e6d8682f312a66aabe1036ffa09e3243afc8480806961dec6a"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-RESEARCH-01"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/prior/pa/research/verification-observations.json",
+        "size": 1494,
+        "sha256": "8be71756b79529a3317968ff6ec04d79ec47579e3e2f4a33f37208dd139d13b1"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-PHASE13-RESEARCH-01"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/prior/self-verification.json",
+        "size": 1702,
+        "sha256": "05b668f8d051ec62db79ef089fec270c26f96293302645c60d0f7eb25510d130"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A1"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/result-history.public.json",
+        "size": 1508,
+        "sha256": "f2e44a168c31d368d4fdbcf906e7a567885cbf015efc00f46d17dba518571ecd"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A2"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/safety-review.json",
+        "size": 3493,
+        "sha256": "bf6e2f276045acbc04d4d6e59f03355c24c18c9c35542f54f1af69a72c686761"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A2"
+    },
+    {
+      "reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fb940d5d45dfd07ba0872708097684fb61da0734",
+        "path": "evidence/crossref/a2-test-input/self-verification.json",
+        "size": 2417,
+        "sha256": "1a4ef9455b12387a79cccc139428df4a23593559485360b80b95c568561ccacb"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-CROSSREF-IMPLEMENTATION-A2"
+    }
+  ]
+}
