@@ -1,0 +1,68 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "SYNTHETIC-ISSUE-COLOR",
+    "source": "https://example.invalid/synthetic/issues/COLOR",
+    "title": "synthetic sample: 架空の星色ラベル設計",
+    "acceptance_criteria": [
+      {
+        "id": "SYNTHETIC-AC-COLOR",
+        "verbatim": "synthetic sample: propose a Unicode label representation.",
+        "source": "https://example.invalid/synthetic/issues/COLOR#ac-color"
+      }
+    ]
+  },
+  "role": "research-design",
+  "task_id": "SYNTHETIC-TASK-COLOR-DESIGN",
+  "attempt": 1,
+  "upstream": [],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "synthetic sample: fictional completed design record; not actual Research success or product acceptance.",
+  "assignment": {
+    "scope": "synthetic sample: fictional Unicode label design only; no real research completion, implementation or acceptance result.",
+    "ac_ids": [
+      "SYNTHETIC-AC-COLOR"
+    ],
+    "completion_criteria": [
+      "synthetic sample: document the fictional label representation and its limitations."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "SYNTHETIC-DESIGN-COLOR",
+      "kind": "document",
+      "locator": "source.md",
+      "revision": "sha256:6d0a7e5c76863850725981240655248892f233f64b7d1d12ed0221cde8a004c5",
+      "summary": "synthetic sample: proposed representation and fictional padding."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "SYNTHETIC-EVIDENCE-COLOR",
+      "claim": "synthetic sample: fictional design coverage only.",
+      "artifact_ids": [
+        "SYNTHETIC-DESIGN-COLOR"
+      ],
+      "locator": "source.md#proposed-representation",
+      "observation": "synthetic sample: the illustrative text proposes UTF-8 labels and explicit JSON type distinctions; no actual business outcome is asserted."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "SYNTHETIC-AC-COLOR",
+      "disposition": "covered",
+      "scope": "synthetic sample: fictional Unicode label design only; no real research completion, implementation or acceptance result.",
+      "artifact_ids": [
+        "SYNTHETIC-DESIGN-COLOR"
+      ],
+      "evidence_ids": [
+        "SYNTHETIC-EVIDENCE-COLOR"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "synthetic_sample"
+}

@@ -1,0 +1,26 @@
+{
+  "synthetic": true,
+  "description": "synthetic sample: 架空の型・Unicode配送データ",
+  "integer_one": 1,
+  "boolean_true": true,
+  "string_one": "1",
+  "string_true": "true",
+  "null_value": null,
+  "unicode": [
+    "日本語",
+    "🌌",
+    "é",
+    "é",
+    "Ω"
+  ],
+  "escaped": "\"quoted\" \\backslash\nembedded LF\tembedded tab",
+  "literal_escape": "\\n is two characters",
+  "negative_zero": -0.0,
+  "array": [
+    1,
+    true,
+    "1",
+    "true"
+  ],
+  "sentinel": "SYNTHETIC-END-JSON-20261011-終端"
+}

@@ -1,0 +1,62 @@
+{
+  "document_type": "synthetic_delivery_producer_receipt",
+  "operational_role": "Producer",
+  "sample_content": "synthetic sample; no actual Research or product success",
+  "repository": "syuhei0519/ai-development-system",
+  "branch": "test/artifact-delivery-20261011",
+  "config_base": "5ca00d89f97ebc597d214fd8f046e4cc98d781fb",
+  "observed_remote_main": "5ca00d89f97ebc597d214fd8f046e4cc98d781fb",
+  "base_vs_observed_main": {
+    "ahead": 0,
+    "behind": 0,
+    "changed_files": []
+  },
+  "collision_check": {
+    "remote_branch_absent_before_creation": true,
+    "target_path_absent_at_base_and_observed_main": true
+  },
+  "instructions": {
+    "applicable_AGENTS_md": [],
+    "applicable_agents_skills": [],
+    "consulted": [
+      "README.md",
+      "workflows/single-issue.md",
+      "agents/research-design.md",
+      "contracts/README.md",
+      "contracts/handoff.schema.json",
+      "scripts/validate_handoff.py"
+    ]
+  },
+  "json_validation": {
+    "command": "python3 scripts/validate_handoff.py delivery-verification/20261011/synthetic/handoff.json",
+    "exit_code": 0,
+    "result": "PASS (shape + local references only; not business approval)",
+    "python": "3.12.14",
+    "jsonschema": "4.26.0",
+    "config_base": "5ca00d89f97ebc597d214fd8f046e4cc98d781fb",
+    "validator_git_blob": "164d477795a4e54ce7c6cf8b9ff46d4a18d32fda",
+    "schema_git_blob": "2282039541de477c9b842f5c0e7e9c2fc83d6993"
+  },
+  "source_byte_checks": {
+    "original_snapshot_vs_worktree_vs_staged_blob": "identical for source.md, source.json, handoff.json",
+    "encoding": "UTF-8",
+    "line_endings": "LF with final LF; no CR",
+    "attributes": "text/eol/filter/working-tree-encoding all unspecified",
+    "git_conversion_config": "core.autocrlf/core.eol/core.safecrlf/core.attributesfile and filter.* unset"
+  },
+  "delivery_state_at_sealing": {
+    "local_source_bytes": "verified",
+    "remote_push": "pending at sealing; consult separate fixed-commit response",
+    "independent_consumer": "pending; Manager must start separately",
+    "github_api_read": "verified for fixed configuration files",
+    "git_blob_api_source_retrieval": "unverified",
+    "inline_reformatted_transfer": "unverified",
+    "library_transfer": "unverified; previous failure not assumed resolved"
+  },
+  "public_safety_scope": "Only synthetic authored source and sanitized public delivery metadata; excludes real task/Cloud identifiers, conversations, operational logs, personal information and credentials.",
+  "limits": [
+    "No real Research completion claim.",
+    "No independent Test/Review claim.",
+    "No actual Issue final assessment."
+  ]
+}
