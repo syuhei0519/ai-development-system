@@ -1,0 +1,351 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "system-readiness-prerequisite",
+    "source": "https://github.com/syuhei0519/ai-development-system",
+    "title": "Add bounded readiness for dependency preparation pull requests",
+    "acceptance_criteria": [
+      {
+        "id": "AC-S1",
+        "verbatim": "通常PRの既存マージ条件を維持し、依存準備PRだけを明示的に区分して空の製品AC集合を許容する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S2",
+        "verbatim": "依存準備PRは非空の工程受入条件と関連製品AC、固定成果物、独立TestとReview、後続検証責任を必須とし、工程達成を製品AC達成へ変換しない。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S3",
+        "verbatim": "配備影響noneとaggregate_requiredに限定し、CI、保護ルール、権限、依存、証跡鮮度、Issue Completionの既存fail-closed条件を維持する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S4",
+        "verbatim": "JSON Schema、CLI、正常・異常回帰テスト、サンプル、役割・workflow・テンプレート・READMEが整合し、既存全テストと新規テストが成功する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S5",
+        "verbatim": "変更と検証成果物を固定Git revisionとbytes/hashで取得でき、既存PRを重複作成せずSystem専用feature branchのDraft PRとして提示する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      }
+    ]
+  },
+  "assignment": {
+    "scope": "ai-development-system#readiness-prerequisite-support",
+    "ac_ids": [
+      "AC-S1",
+      "AC-S2",
+      "AC-S3",
+      "AC-S4",
+      "AC-S5"
+    ],
+    "completion_criteria": [
+      "通常PRの既存マージ条件を維持し、依存準備PRだけを明示的に区分して空の製品AC集合を許容する。",
+      "依存準備PRは非空の工程受入条件と関連製品AC、固定成果物、独立TestとReview、後続検証責任を必須とし、工程達成を製品AC達成へ変換しない。",
+      "配備影響noneとaggregate_requiredに限定し、CI、保護ルール、権限、依存、証跡鮮度、Issue Completionの既存fail-closed条件を維持する。",
+      "JSON Schema、CLI、正常・異常回帰テスト、サンプル、役割・workflow・テンプレート・READMEが整合し、既存全テストと新規テストが成功する。",
+      "変更と検証成果物を固定Git revisionとbytes/hashで取得でき、既存PRを重複作成せずSystem専用feature branchのDraft PRとして提示する。"
+    ]
+  },
+  "role": "test",
+  "task_id": "readiness-prerequisite-test-a3",
+  "attempt": 3,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "readiness-prerequisite-implementation-a2",
+      "attempt": 2,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/cc1076ba6a9c79e60e50fdf7b19ba7cc96dfff64/evidence/readiness-prerequisite/implementation-a2/handoff.json",
+      "revision": "sha256:38fec6cd5f71e9652a7c8f219ef75b219404769a011c23554435bceb3c62dab4",
+      "relationship": "dependency"
+    },
+    {
+      "role": "test",
+      "task_id": "readiness-prerequisite-test-a2",
+      "attempt": 2,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/466553e293b955c2c51f2253e580d0f3c15a6c2f/evidence/readiness-prerequisite/test-a2/handoff.json",
+      "revision": "sha256:c023ac4a4be583766c5e5aae15b7a9fe747dcd4af69ecb3b14815b308a30ddec",
+      "relationship": "retry_of"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Fresh independent Test attempt3 completed at fixed PR8 head cdaad5a0d7437a9abc24481e4849b89a9e112401: baseline280/head309, original237, samples26, additional163 checks and original/derived F1/F2 verification. Historical failures retained; F1/F2 resolved for this head only. No live Merge Ready or final Issue assessment.",
+  "artifacts": [
+    {
+      "id": "additional-results.json",
+      "kind": "test-report",
+      "locator": "additional-results.json",
+      "revision": "sha256:86d21aa94709f0013386ed176c25166822c2ef504d54253c04dc8a8a6262c05e",
+      "summary": "Independent attempt3 test source, measurement or traceability: additional-results.json"
+    },
+    {
+      "id": "additional_cases.py",
+      "kind": "other",
+      "locator": "additional_cases.py",
+      "revision": "sha256:e340903742b14a5792376103b1ebadf0ffd2f9f43f64df4e7a560bf68cb37a30",
+      "summary": "Independent attempt3 test source, measurement or traceability: additional_cases.py"
+    },
+    {
+      "id": "baseline-suite.txt",
+      "kind": "test-report",
+      "locator": "baseline-suite.txt",
+      "revision": "sha256:15fb0f2579fffae6063e2e29e80330da391bb17550208d4eafe2d1bd4292a587",
+      "summary": "Independent attempt3 test source, measurement or traceability: baseline-suite.txt"
+    },
+    {
+      "id": "execution-results.json",
+      "kind": "test-report",
+      "locator": "execution-results.json",
+      "revision": "sha256:bb314eafe57ea00bee74a81d11e5a280d8c791b25797fd34812c6c47fc0807ef",
+      "summary": "Independent attempt3 test source, measurement or traceability: execution-results.json"
+    },
+    {
+      "id": "generated-example.txt",
+      "kind": "test-report",
+      "locator": "generated-example.txt",
+      "revision": "sha256:cde13f446bad3bd5a632c1739459231a1a5785810ebba2ab0cd14f844de36607",
+      "summary": "Independent attempt3 test source, measurement or traceability: generated-example.txt"
+    },
+    {
+      "id": "github-observations.json",
+      "kind": "other",
+      "locator": "github-observations.json",
+      "revision": "sha256:c992601ef4dbe781449fea43bfe5d639c96c203faca0e4dd5b19fc1e5ae6cf85",
+      "summary": "Independent attempt3 test source, measurement or traceability: github-observations.json"
+    },
+    {
+      "id": "harness-provenance.json",
+      "kind": "other",
+      "locator": "harness-provenance.json",
+      "revision": "sha256:3f02eef78197cd51f02ddc6f9a7d1550ee0a364a2e4ae4021f4616d9424367da",
+      "summary": "Independent attempt3 test source, measurement or traceability: harness-provenance.json"
+    },
+    {
+      "id": "head-suite.txt",
+      "kind": "test-report",
+      "locator": "head-suite.txt",
+      "revision": "sha256:087fdb7e9fcfccda2e3934581e80db8c52c449a7712d6a7006f4c590f1811892",
+      "summary": "Independent attempt3 test source, measurement or traceability: head-suite.txt"
+    },
+    {
+      "id": "input-delivery-summary.json",
+      "kind": "other",
+      "locator": "input-delivery-summary.json",
+      "revision": "sha256:42c6d9badf0180e0c74acc01c897ec2ed9e7b142181dec9d6736b36f688b178e",
+      "summary": "Independent attempt3 test source, measurement or traceability: input-delivery-summary.json"
+    },
+    {
+      "id": "pins.json",
+      "kind": "other",
+      "locator": "pins.json",
+      "revision": "sha256:21d2bfbc82565f83092138357cd1913f6fcf5d1d1467bd53a823ff6e054211f7",
+      "summary": "Independent attempt3 test source, measurement or traceability: pins.json"
+    },
+    {
+      "id": "public-safety-review.md",
+      "kind": "other",
+      "locator": "public-safety-review.md",
+      "revision": "sha256:7d450b6bbc06e6fdd5f688662813dfd0d7ff5e8fdfe9c9e42fb66a1eb7159b5e",
+      "summary": "Independent attempt3 test source, measurement or traceability: public-safety-review.md"
+    },
+    {
+      "id": "reproducers/aggregate_reproducer.py",
+      "kind": "other",
+      "locator": "reproducers/aggregate_reproducer.py",
+      "revision": "sha256:52a8acac5bb28cd919386de3a7dd986b03cce5a263e61d04bedb021823713c30",
+      "summary": "Independent attempt3 test source, measurement or traceability: reproducers/aggregate_reproducer.py"
+    },
+    {
+      "id": "reproducers/aggregate_reproducer_v2.py",
+      "kind": "other",
+      "locator": "reproducers/aggregate_reproducer_v2.py",
+      "revision": "sha256:056d6092bb54838bb11ec83ca643d7265528d82168b7f874f0635f70d79daee1",
+      "summary": "Independent attempt3 test source, measurement or traceability: reproducers/aggregate_reproducer_v2.py"
+    },
+    {
+      "id": "reproducers/fifo_reproducer.py",
+      "kind": "other",
+      "locator": "reproducers/fifo_reproducer.py",
+      "revision": "sha256:0fcef14da5a49e4ddb6a24737645b02c7fe210674d617dcc90fb555bad06dc0f",
+      "summary": "Independent attempt3 test source, measurement or traceability: reproducers/fifo_reproducer.py"
+    },
+    {
+      "id": "reproducers/fifo_reproducer_v2.py",
+      "kind": "other",
+      "locator": "reproducers/fifo_reproducer_v2.py",
+      "revision": "sha256:17084896724cd98d9614c3f1d3a95c3a7658c38821f148db7fe10c9572df4ad3",
+      "summary": "Independent attempt3 test source, measurement or traceability: reproducers/fifo_reproducer_v2.py"
+    },
+    {
+      "id": "reproducers/independent_cases.py",
+      "kind": "other",
+      "locator": "reproducers/independent_cases.py",
+      "revision": "sha256:43e7edb573cf0f6e34556a11eae9483d51d5c83b4b50f82f4c2e66cb0bce2068",
+      "summary": "Independent attempt3 test source, measurement or traceability: reproducers/independent_cases.py"
+    },
+    {
+      "id": "reproducers/sample_checks.py",
+      "kind": "other",
+      "locator": "reproducers/sample_checks.py",
+      "revision": "sha256:4218b4dd4680bbea18d84ad2da1c5a9b1e618ee81f1c44d40169b684c552d176",
+      "summary": "Independent attempt3 test source, measurement or traceability: reproducers/sample_checks.py"
+    },
+    {
+      "id": "run_reproducers.py",
+      "kind": "other",
+      "locator": "run_reproducers.py",
+      "revision": "sha256:54cf1b1ec4bbf292a35b087bc47f65ef9483cbeb895c8c860efba849f6ea830e",
+      "summary": "Independent attempt3 test source, measurement or traceability: run_reproducers.py"
+    },
+    {
+      "id": "test-config.json",
+      "kind": "other",
+      "locator": "test-config.json",
+      "revision": "sha256:31bcbe6d0202dd51b9bd3469b4666a487b7460b6517feaf67cb4f23e2a0fdcaa",
+      "summary": "Independent attempt3 test source, measurement or traceability: test-config.json"
+    },
+    {
+      "id": "test-report.md",
+      "kind": "test-report",
+      "locator": "test-report.md",
+      "revision": "sha256:9c889f126a13e3a7dafec18e172068342b636f8d9e4b8a39359e7d1ee086d67b",
+      "summary": "Independent attempt3 test source, measurement or traceability: test-report.md"
+    },
+    {
+      "id": "verify_publication.py",
+      "kind": "other",
+      "locator": "verify_publication.py",
+      "revision": "sha256:dafe4ff29733ffdb0786d55d3a11a9bae83ba3594e768b9494f13f6c39a5cdc9",
+      "summary": "Independent attempt3 test source, measurement or traceability: verify_publication.py"
+    },
+    {
+      "id": "tested-head-commit",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/ai-development-system/commit/cdaad5a0d7437a9abc24481e4849b89a9e112401",
+      "revision": "cdaad5a0d7437a9abc24481e4849b89a9e112401",
+      "summary": "Exact tested implementation head; tree bd6db38a828be65062b7cf0bd8044765190b0cc1 independently checked."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "suite-results",
+      "claim": "Fresh baseline280/head309 repository tests and original237/samples26 executed successfully; Implementation/Test2 results not reused.",
+      "artifact_ids": [
+        "baseline-suite.txt",
+        "head-suite.txt",
+        "execution-results.json"
+      ],
+      "locator": "test-report.md",
+      "observation": "Fresh baseline280/head309 repository tests and original237/samples26 executed successfully; Implementation/Test2 results not reused."
+    },
+    {
+      "id": "f1-f2-results",
+      "claim": "Old F1/F2 reproduced; typed aggregate normal/negative and prompt nonregular-file rejection independently verified on new head. Original harness limitations and test-overlay corrections preserved.",
+      "artifact_ids": [
+        "execution-results.json",
+        "additional-results.json",
+        "additional_cases.py",
+        "harness-provenance.json"
+      ],
+      "locator": "test-report.md",
+      "observation": "Old F1/F2 reproduced; typed aggregate normal/negative and prompt nonregular-file rejection independently verified on new head. Original harness limitations and test-overlay corrections preserved."
+    },
+    {
+      "id": "boundaries",
+      "claim": "Ordinary gates, preparation evidence/context/artifact boundaries, aggregate complete required set, permissions, deployment/measurement and freshness negative cases verified. Fixed-code responsibility only.",
+      "artifact_ids": [
+        "execution-results.json",
+        "additional-results.json",
+        "test-report.md"
+      ],
+      "locator": "test-report.md",
+      "observation": "Ordinary gates, preparation evidence/context/artifact boundaries, aggregate complete required set, permissions, deployment/measurement and freshness negative cases verified. Fixed-code responsibility only."
+    },
+    {
+      "id": "pins-delivery",
+      "claim": "Exact source/tree/testconfig and validity recorded; pinned input90 artifacts/71 slots/1928316 bytes freshly consumed. Existing PR8 is Draft/unmerged; head-bound pull_request CI metadata succeeds. Output publication closure is separately recorded; Consumer permission not issued.",
+      "artifact_ids": [
+        "pins.json",
+        "test-config.json",
+        "github-observations.json",
+        "input-delivery-summary.json",
+        "public-safety-review.md"
+      ],
+      "locator": "test-report.md",
+      "observation": "Exact source/tree/testconfig and validity recorded; pinned input90 artifacts/71 slots/1928316 bytes freshly consumed. Existing PR8 is Draft/unmerged; head-bound pull_request CI metadata succeeds. Output publication closure is separately recorded; Consumer permission not issued."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-S1",
+      "disposition": "covered",
+      "scope": "Assigned independent Test completed for fixed head cdaad5a0d7437a9abc24481e4849b89a9e112401; see report for exact synthetic execution, trust boundaries and unmeasured live/product operations. Historical statuses unchanged; not Manager final assessment.",
+      "artifact_ids": [
+        "test-report.md",
+        "pins.json"
+      ],
+      "evidence_ids": [
+        "suite-results",
+        "boundaries"
+      ]
+    },
+    {
+      "ac_id": "AC-S2",
+      "disposition": "covered",
+      "scope": "Assigned independent Test completed for fixed head cdaad5a0d7437a9abc24481e4849b89a9e112401; see report for exact synthetic execution, trust boundaries and unmeasured live/product operations. Historical statuses unchanged; not Manager final assessment.",
+      "artifact_ids": [
+        "test-report.md",
+        "pins.json"
+      ],
+      "evidence_ids": [
+        "f1-f2-results",
+        "boundaries"
+      ]
+    },
+    {
+      "ac_id": "AC-S3",
+      "disposition": "covered",
+      "scope": "Assigned independent Test completed for fixed head cdaad5a0d7437a9abc24481e4849b89a9e112401; see report for exact synthetic execution, trust boundaries and unmeasured live/product operations. Historical statuses unchanged; not Manager final assessment.",
+      "artifact_ids": [
+        "test-report.md",
+        "pins.json"
+      ],
+      "evidence_ids": [
+        "boundaries"
+      ]
+    },
+    {
+      "ac_id": "AC-S4",
+      "disposition": "covered",
+      "scope": "Assigned independent Test completed for fixed head cdaad5a0d7437a9abc24481e4849b89a9e112401; see report for exact synthetic execution, trust boundaries and unmeasured live/product operations. Historical statuses unchanged; not Manager final assessment.",
+      "artifact_ids": [
+        "test-report.md",
+        "pins.json"
+      ],
+      "evidence_ids": [
+        "suite-results",
+        "f1-f2-results",
+        "boundaries"
+      ]
+    },
+    {
+      "ac_id": "AC-S5",
+      "disposition": "covered",
+      "scope": "Assigned independent Test completed for fixed head cdaad5a0d7437a9abc24481e4849b89a9e112401; see report for exact synthetic execution, trust boundaries and unmeasured live/product operations. Historical statuses unchanged; not Manager final assessment.",
+      "artifact_ids": [
+        "test-report.md",
+        "pins.json"
+      ],
+      "evidence_ids": [
+        "pins-delivery"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

@@ -1,0 +1,57 @@
+{
+  "platform": "Linux",
+  "architecture": "x86_64",
+  "python": "3.12.14",
+  "jsonschema": "4.26.0",
+  "git": "git version 2.52.0",
+  "baseline": "0083151aa2f6b2aaf0e1db64ada3f196ed766e48",
+  "old_head": "3f41a0470fd0b7a2199be0b947bb22284e993e2f",
+  "head": "cdaad5a0d7437a9abc24481e4849b89a9e112401",
+  "tree": "bd6db38a828be65062b7cf0bd8044765190b0cc1",
+  "workflow_sha256": "f17ba4f6a20ee572f7c0fde05a1e8bab93efcbb7698efb08747dd1aae838ce95",
+  "requirements_dev_sha256": "756cc9e506ae4ee1a6f6c0507088b5cfc0dc8ba350fb2d2d46f1ffa72033adb6",
+  "test_overlay": {
+    "additional_cases.py": {
+      "size": 14317,
+      "sha256": "e340903742b14a5792376103b1ebadf0ffd2f9f43f64df4e7a560bf68cb37a30"
+    },
+    "reproducers/aggregate_reproducer.py": {
+      "size": 3531,
+      "sha256": "52a8acac5bb28cd919386de3a7dd986b03cce5a263e61d04bedb021823713c30"
+    },
+    "reproducers/aggregate_reproducer_v2.py": {
+      "size": 4498,
+      "sha256": "056d6092bb54838bb11ec83ca643d7265528d82168b7f874f0635f70d79daee1"
+    },
+    "reproducers/fifo_reproducer.py": {
+      "size": 1846,
+      "sha256": "0fcef14da5a49e4ddb6a24737645b02c7fe210674d617dcc90fb555bad06dc0f"
+    },
+    "reproducers/fifo_reproducer_v2.py": {
+      "size": 1963,
+      "sha256": "17084896724cd98d9614c3f1d3a95c3a7658c38821f148db7fe10c9572df4ad3"
+    },
+    "reproducers/independent_cases.py": {
+      "size": 12863,
+      "sha256": "43e7edb573cf0f6e34556a11eae9483d51d5c83b4b50f82f4c2e66cb0bce2068"
+    },
+    "reproducers/sample_checks.py": {
+      "size": 4151,
+      "sha256": "4218b4dd4680bbea18d84ad2da1c5a9b1e618ee81f1c44d40169b684c552d176"
+    },
+    "run_reproducers.py": {
+      "size": 1879,
+      "sha256": "54cf1b1ec4bbf292a35b087bc47f65ef9483cbeb895c8c860efba849f6ea830e"
+    },
+    "verify_publication.py": {
+      "size": 2052,
+      "sha256": "dafe4ff29733ffdb0786d55d3a11a9bae83ba3594e768b9494f13f6c39a5cdc9"
+    }
+  },
+  "synthetic_replay_times": [
+    "2030-01-01T12:00:00Z",
+    "2030-01-01T13:00:00Z",
+    "2030-01-03T12:00:00Z"
+  ],
+  "limits": "Linux O_PATH and /proc/self/fd available and exercised. Missing O_PATH/proc simulated fail-closed; no claim of native execution on another OS. Character device /dev/null was rejected before data open; no device creation or read. No live product/merge/deploy operations."
+}

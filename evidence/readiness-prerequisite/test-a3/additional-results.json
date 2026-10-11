@@ -1,0 +1,1156 @@
+{
+  "subject": "cdaad5a0d7437a9abc24481e4849b89a9e112401",
+  "synthetic": true,
+  "completed_at": "2026-10-11T15:04:49.737319+00:00",
+  "total": 163,
+  "passed": 163,
+  "cases": [
+    {
+      "case": "typed_preparation_full_product_merge_deploy_achieved",
+      "expected": [
+        "ready",
+        "achieved"
+      ],
+      "actual": [
+        "ready",
+        "achieved"
+      ],
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "old_aggregate_consumer_rejects_v11",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "FAIL: aggregate record rejected; no completion or authority granted\n"
+    },
+    {
+      "case": "aggregate_context_pin_missing",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: untrusted current context pin"
+    },
+    {
+      "case": "aggregate_context_pin_wrong",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: untrusted current context pin"
+    },
+    {
+      "case": "aggregate_context_pin_tamper",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: untrusted current context pin"
+    },
+    {
+      "case": "aggregate_invalid_version_1.0",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: context: invalid schema"
+    },
+    {
+      "case": "aggregate_invalid_version_1.2",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: assessment: invalid schema"
+    },
+    {
+      "case": "aggregate_invalid_version_unknown",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: assessment: invalid schema"
+    },
+    {
+      "case": "aggregate_invalid_version_True",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: assessment: invalid schema"
+    },
+    {
+      "case": "aggregate_invalid_version_None",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: assessment: invalid schema"
+    },
+    {
+      "case": "missing_required_collection_required_prs",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: required PR set mismatch"
+    },
+    {
+      "case": "missing_required_collection_current_members",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: required PR set mismatch"
+    },
+    {
+      "case": "missing_required_collection_required_verifications",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: verification set mismatch"
+    },
+    {
+      "case": "missing_required_collection_current_deployments",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: deployment set mismatch"
+    },
+    {
+      "case": "missing_required_collection_scope_decisions",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: scope: unsupported pass"
+    },
+    {
+      "case": "missing_result_member_results",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: required PR set mismatch"
+    },
+    {
+      "case": "missing_result_verification_results",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: verification set mismatch"
+    },
+    {
+      "case": "missing_result_deployment_results",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: deployment set mismatch"
+    },
+    {
+      "case": "historical_original_verbatim",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: historical AC originals mismatch"
+    },
+    {
+      "case": "historical_original_source",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: historical AC originals mismatch"
+    },
+    {
+      "case": "historical_original_verification_phase",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: verification precedes AC phase"
+    },
+    {
+      "case": "historical_subject_head_sha",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: stale merge/head result"
+    },
+    {
+      "case": "historical_subject_base_sha",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: historical PR identity/head/base mismatch"
+    },
+    {
+      "case": "historical_subject_target_revision",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: historical PR identity/head/base mismatch"
+    },
+    {
+      "case": "historical_subject_config_revision",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: historical PR identity/head/base mismatch"
+    },
+    {
+      "case": "historical_subject_merge_group_sha",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: historical PR identity/head/base mismatch"
+    },
+    {
+      "case": "historical_scope_mismatch",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: verification outside member AC scope"
+    },
+    {
+      "case": "historical_kind_mismatch",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: historical PR kind mismatch"
+    },
+    {
+      "case": "historical_failed_gate_ci",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: invalid historical Readiness at actual merge"
+    },
+    {
+      "case": "historical_failed_gate_independent_test",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: invalid historical Readiness at actual merge"
+    },
+    {
+      "case": "historical_failed_gate_ai_review",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: invalid historical Readiness at actual merge"
+    },
+    {
+      "case": "historical_failed_gate_github_checks",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: invalid historical Readiness at actual merge"
+    },
+    {
+      "case": "historical_failed_gate_github_reviews",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: invalid historical Readiness at actual merge"
+    },
+    {
+      "case": "historical_failed_gate_github_ruleset",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: invalid historical Readiness at actual merge"
+    },
+    {
+      "case": "historical_failed_gate_github_queue",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: invalid historical Readiness at actual merge"
+    },
+    {
+      "case": "historical_failed_gate_authorization",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: invalid historical Readiness at actual merge"
+    },
+    {
+      "case": "historical_failed_gate_dependencies",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: invalid historical Readiness at actual merge"
+    },
+    {
+      "case": "historical_context_condition_mismatch",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: invalid historical Readiness at actual merge"
+    },
+    {
+      "case": "historical_expired_policy",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: invalid historical Readiness at actual merge"
+    },
+    {
+      "case": "historical_expired_test",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: invalid historical Readiness at actual merge"
+    },
+    {
+      "case": "preparation_product_target",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: verification outside member AC scope"
+    },
+    {
+      "case": "preparation_merge_merge_actor",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: authorizations: unsupported pass"
+    },
+    {
+      "case": "preparation_merge_state",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: unverified merge cannot pass"
+    },
+    {
+      "case": "preparation_merge_merge_sha",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: context: invalid schema"
+    },
+    {
+      "case": "preparation_merge_permission_missing",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: integration check misses required members"
+    },
+    {
+      "case": "preparation_required_scope_permission_missing",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: integration check misses required members"
+    },
+    {
+      "case": "delivery_approval_not_merge_permission",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: authorizations: unsupported pass"
+    },
+    {
+      "case": "deploy_permission_missing",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: authorizations: unsupported pass"
+    },
+    {
+      "case": "operation_permission_expired",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: active observation future-dated or expired"
+    },
+    {
+      "case": "merge_binding_wrong",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: merge result correspondence mismatch"
+    },
+    {
+      "case": "full_merge_vector_cannot_omit_preparation",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: full merge vector required"
+    },
+    {
+      "case": "integration_coverage_cannot_omit_preparation_scope",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: integration check misses required members"
+    },
+    {
+      "case": "integration_coverage_cannot_omit_preparation_authorization",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: integration check misses required members"
+    },
+    {
+      "case": "integration_coverage_cannot_omit_preparation_deployment",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: integration check misses required members"
+    },
+    {
+      "case": "integration_coverage_cannot_omit_preparation_compatibility",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: integration check misses required members"
+    },
+    {
+      "case": "integration_coverage_cannot_omit_preparation_integration",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: integration check misses required members"
+    },
+    {
+      "case": "deployment_state_failed",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: deployment status contradicts observation"
+    },
+    {
+      "case": "deployment_state_pending",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: deployment status contradicts observation"
+    },
+    {
+      "case": "deployment_deploy_actor_synthetic-unapproved",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: authorizations: unsupported pass"
+    },
+    {
+      "case": "deployment_config_sha256_0000000000000000000000000000000000000000000000000000000000000000",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: deployment status contradicts observation"
+    },
+    {
+      "case": "deployment_environment_id_synthetic-other",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: wrong deployment environment/workload"
+    },
+    {
+      "case": "deployment_workload_id_synthetic-other",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: wrong deployment environment/workload"
+    },
+    {
+      "case": "deployment_sources_missing",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: deployment status contradicts observation"
+    },
+    {
+      "case": "deployment_image_wrong",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: deployment status contradicts observation"
+    },
+    {
+      "case": "product_measurement_producer",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: measurement identity/phase/target/method/producer mismatch"
+    },
+    {
+      "case": "product_measurement_result",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: measurement outcome mismatch"
+    },
+    {
+      "case": "product_measurement_kind",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: assessment: invalid schema"
+    },
+    {
+      "case": "product_measurement_phase",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: premerge needs validated historical subject"
+    },
+    {
+      "case": "product_measurement_environment_id",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: measurement identity/phase/target/method/producer mismatch"
+    },
+    {
+      "case": "product_measurement_method",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: measurement identity/phase/target/method/producer mismatch"
+    },
+    {
+      "case": "product_measurement_missing",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: assessment: invalid schema"
+    },
+    {
+      "case": "only_preparation_cannot_achieve",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: verification outside member AC scope"
+    },
+    {
+      "case": "aggregate_artifact_missing",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: context: invalid schema"
+    },
+    {
+      "case": "aggregate_artifact_wrong_root",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: preparation artifact root/path mismatch"
+    },
+    {
+      "case": "aggregate_artifact_size",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: reference size/digest mismatch"
+    },
+    {
+      "case": "aggregate_artifact_digest",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: reference size/digest mismatch"
+    },
+    {
+      "case": "aggregate_artifact_duplicate",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: artifact_id: duplicate identity"
+    },
+    {
+      "case": "aggregate_artifact_unknown",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: preparation artifact set mismatch"
+    },
+    {
+      "case": "aggregate_artifact_bytes",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: reference size/digest mismatch"
+    },
+    {
+      "case": "aggregate_artifact_symlink",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: symlink rejected"
+    },
+    {
+      "case": "linux_regular_reader",
+      "expected": "6669786564",
+      "actual": "6669786564",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "reader_fifo",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: ordinary file within size limit required"
+    },
+    {
+      "case": "reader_no_data_open_fifo",
+      "expected": false,
+      "actual": false,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "reader_socket",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: ordinary file within size limit required"
+    },
+    {
+      "case": "reader_no_data_open_socket",
+      "expected": false,
+      "actual": false,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "reader_directory",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: ordinary file within size limit required"
+    },
+    {
+      "case": "reader_no_data_open_directory",
+      "expected": false,
+      "actual": false,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "reader_symlink",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: ordinary file within size limit required"
+    },
+    {
+      "case": "reader_no_data_open_symlink",
+      "expected": false,
+      "actual": false,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "reader_ancestor_symlink",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "NotADirectoryError: [Errno 20] Not a directory: 'ancestor'"
+    },
+    {
+      "case": "reader_no_data_open_ancestor_symlink",
+      "expected": false,
+      "actual": false,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "reader_device",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: ordinary file within size limit required"
+    },
+    {
+      "case": "reader_no_data_open_device",
+      "expected": false,
+      "actual": false,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "containment_'../regular'",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: unsafe relative artifact locator"
+    },
+    {
+      "case": "containment_'/tmp/outside'",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: unsafe relative artifact locator"
+    },
+    {
+      "case": "containment_'a/../regular'",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: unsafe relative artifact locator"
+    },
+    {
+      "case": "containment_'./regular'",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: unsafe relative artifact locator"
+    },
+    {
+      "case": "containment_'a//b'",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: unsafe relative artifact locator"
+    },
+    {
+      "case": "containment_'a\\\\b'",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: unsafe relative artifact locator"
+    },
+    {
+      "case": "containment_'https://example.invalid/a'",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: unsafe relative artifact locator"
+    },
+    {
+      "case": "containment_''",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: unsafe relative artifact locator"
+    },
+    {
+      "case": "bundle_root_escape",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: file escapes bundle root"
+    },
+    {
+      "case": "16MiB_inclusive",
+      "expected": 16777216,
+      "actual": 16777216,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "16MiB_plus_one",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: ordinary file within size limit required"
+    },
+    {
+      "case": "declared_bound",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: ordinary file within size limit required"
+    },
+    {
+      "case": "caller_cannot_raise_hard_limit",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: unsafe path or file size limit"
+    },
+    {
+      "case": "bounded_infinite_source",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: file exceeded size limit or changed during read"
+    },
+    {
+      "case": "bounded_read_requested_bytes",
+      "expected": 6,
+      "actual": 6,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "during_read_replace",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: file changed during read"
+    },
+    {
+      "case": "during_read_grow",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: file exceeded size limit or changed during read"
+    },
+    {
+      "case": "during_read_same_size",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: file changed during read"
+    },
+    {
+      "case": "during_read_ancestor",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: directory changed during read"
+    },
+    {
+      "case": "stat_to_open_fifo_swap",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: file changed before read or is nonregular"
+    },
+    {
+      "case": "unsupported_O_PATH_fail_closed_simulated",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "AttributeError: module 'os' has no attribute 'O_PATH'"
+    },
+    {
+      "case": "unsupported_proc_fail_closed_simulated",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "FileNotFoundError: synthetic missing proc filesystem"
+    },
+    {
+      "case": "aggregate_final_reread_preparation_artifact",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "detail": "ValueError: bytes changed during validation"
+    },
+    {
+      "case": "schema_artifact-delivery-v1.1.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_artifact-delivery-v1.2.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_artifact-delivery.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_consumption-receipt-v1.1.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_consumption-receipt-v1.2.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_consumption-receipt.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_delivery-authorization-v1.1.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_delivery-authorization-v1.2.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_delivery-authorization.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_handoff.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_issue-completion-context-v1.1.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_issue-completion-context.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_issue-completion-v1.1.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_issue-completion.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_knowledge-candidates-v1.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_knowledge-collection-authorization.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_knowledge-collection-record.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_knowledge-collection-state.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_knowledge-context.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_knowledge-event.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_knowledge-handoff.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_knowledge-input.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_knowledge-source-registry.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_publication-receipt-v1.1.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_publication-receipt-v1.2.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_publication-receipt.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_readiness-context.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "schema_readiness.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "compatibility_bytes_contracts/artifact-delivery-v1.2.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "compatibility_bytes_contracts/consumption-receipt-v1.2.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "compatibility_bytes_contracts/delivery-authorization-v1.2.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "compatibility_bytes_contracts/handoff.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "compatibility_bytes_contracts/issue-completion-context.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "compatibility_bytes_contracts/issue-completion.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "compatibility_bytes_contracts/knowledge-candidates-v1.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "compatibility_bytes_contracts/knowledge-collection-authorization.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "compatibility_bytes_contracts/knowledge-collection-record.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "compatibility_bytes_contracts/knowledge-collection-state.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "compatibility_bytes_contracts/knowledge-context.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "compatibility_bytes_contracts/knowledge-event.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "compatibility_bytes_contracts/knowledge-handoff.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "compatibility_bytes_contracts/knowledge-input.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "compatibility_bytes_contracts/knowledge-source-registry.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "compatibility_bytes_contracts/publication-receipt-v1.2.schema.json",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "compatibility_bytes_scripts/consume_delivery.py",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "compatibility_bytes_scripts/validate_handoff.py",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "case": "compatibility_bytes_scripts/validate_knowledge.py",
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "detail": ""
+    }
+  ]
+}

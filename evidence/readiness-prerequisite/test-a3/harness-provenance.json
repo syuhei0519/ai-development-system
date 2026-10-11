@@ -1,0 +1,1187 @@
+{
+  "note": "Test-overlay corrections within this one independent task; no Agent restart, implementation edit, budget reset, or historical result rewrite. Prior overlay versions and outcomes are preserved. Only final complete 163/163 is counted as final additional verification.",
+  "variants": [
+    {
+      "name": "additional_cases_initial.py",
+      "size": 14194,
+      "sha256": "4d8ae3ebbd483913ef99efd374fd274238a54fc08d9528c17628f78d5899caa6",
+      "source_text": "\"\"\"Attempt3 independent synthetic tests. Usage: python additional_cases.py HEAD BASE OUT.\nUses fixture construction only; assertions and fault injections belong to Test3.\nNo implementation edits, product operations, or authority claims.\n\"\"\"\nimport copy, datetime, hashlib, importlib.metadata, json, os, pathlib, socket, subprocess, sys, tempfile\nfrom unittest.mock import patch\nR,B,OUT=map(lambda x:pathlib.Path(x).resolve(),sys.argv[1:])\nsys.path[:0]=[str(R),str(R/'tests')]\nfrom preparation_completion_fixture import build_preparation\nfrom completion_fixture import build,save,write,handoff,NOW\nfrom scripts import regular_file as rf\nfrom scripts import validate_issue_completion as agg\nfrom jsonschema import Draft202012Validator\nrows=[]\ndef record(name,expected,actual,detail=''):\n rows.append(dict(case=name,expected=expected,actual=actual,passed=expected==actual,detail=detail))\ndef rejection(name,fn):\n try: value=fn();record(name,'reject','accept',str(value))\n except (OSError,ValueError,AttributeError) as e:record(name,'reject','reject',type(e).__name__+': '+str(e))\ndef rewrite(p,a,c):\n ar=write(p,'completion.json',a);ar['id']=a['artifact_id']\n write(p,'handoff.json',handoff(c['issue'],ar,a['issue_completion'] if a['issue_completion']=='achieved' else None,[e for e in a['evidence'] if e['kind']=='ac_measurement']))\ndef history_edit(p,a,c,fn):\n d=json.loads((p/'app-readiness.json').read_bytes());rc=json.loads((p/'app-context.json').read_bytes())\n fn(d,rc)\n rr=write(p,'app-readiness.json',d);rr['id']=d['artifact_id']\n a['member_results'][0].update(readiness_ref={**rr,'id':'app-readiness'},readiness_context_ref=write(p,'app-context.json',rc),readiness_handoff_ref=write(p,'app-handoff.json',handoff(c['issue'],rr)))\ndef case(name,mut=lambda p,a,c:None,expected=('ready','achieved'),after=None,old=False,pin_mode=None):\n with tempfile.TemporaryDirectory(prefix='test3-synthetic-') as t:\n  p=pathlib.Path(t);a,c=build_preparation(p);mut(p,a,c);pin=save(p,a,c)\n  if after:after(p,a,c);rewrite(p,a,c)\n  if pin_mode=='missing':pin=None\n  if pin_mode=='wrong':pin='0'*64\n  if pin_mode=='tamper':(p/'context.json').write_bytes((p/'context.json').read_bytes()+b'\\n')\n  try:\n   if old:\n    cmd=[sys.executable,str(B/'scripts/validate_issue_completion.py'),str(p/'completion.json'),'--context',str(p/'context.json'),'--context-sha256',pin,'--handoff',str(p/'handoff.json'),'--at',NOW]\n    res=subprocess.run(cmd,capture_output=True,text=True,timeout=15);actual='reject' if res.returncode else 'accept';detail=res.stdout+res.stderr\n   else:actual=agg.validate_files(p/'completion.json',p/'context.json',pin,p/'handoff.json',now=agg.instant(NOW));detail=''\n  except (ValueError,OSError) as e:actual='reject';detail=type(e).__name__+': '+str(e)\n  record(name,expected,actual,detail.replace(t,'<SYNTHETIC_ROOT>'))\ndef hist(fn):return lambda p,a,c:history_edit(p,a,c,fn)\ncase('typed_preparation_full_product_merge_deploy_achieved')\ncase('old_aggregate_consumer_rejects_v11',expected='reject',old=True)\nfor mode in ('missing','wrong','tamper'):case('aggregate_context_pin_'+mode,expected='reject',pin_mode=mode)\nfor version in ('1.0','1.2','unknown',True,None):\n case('aggregate_invalid_version_'+str(version),lambda p,a,c,v=version:(a.update(schema_version=v),c.update(schema_version=v)),expected='reject')\nfor field in ('required_prs','current_members','required_verifications','current_deployments','scope_decisions'):\n case('missing_required_collection_'+field,lambda p,a,c,k=field:c[k].pop(0),expected='reject')\nfor field in ('member_results','verification_results','deployment_results'):\n case('missing_result_'+field,lambda p,a,c,k=field:a[k].pop(0),expected='reject')\nfor field in ('verbatim','source','verification_phase'):\n def changed_original(p,a,c,k=field):\n  c['issue']['acceptance_criteria'][0][k]='postmerge' if k=='verification_phase' else 'synthetic changed'\n  a['acceptance_criteria']=copy.deepcopy(c['issue']['acceptance_criteria'])\n case('historical_original_'+field,changed_original,expected='reject')\nfor field in ('head_sha','base_sha','target_revision','config_revision','merge_group_sha'):\n case('historical_subject_'+field,lambda p,a,c,k=field:c['current_members'][0].update({k:'9'*40}),expected='reject')\ncase('historical_scope_mismatch',lambda p,a,c:c['required_prs'][1].update(ac_ids=['SYNTHETIC-AC-2']),expected='reject')\ncase('historical_kind_mismatch',lambda p,a,c:c['required_prs'][0].update(pr_kind='standard',preparation=None,ac_ids=['SYNTHETIC-AC-1']),expected='reject')\nfor key in ('ci','independent_test','ai_review','github_checks','github_reviews','github_ruleset','github_queue','authorization','dependencies'):\n case('historical_failed_gate_'+key,hist(lambda d,rc,k=key:d['merge_readiness']['checks'][k].update(verdict='fail')),expected='reject')\ncase('historical_context_condition_mismatch',hist(lambda d,rc:rc['preparation']['conditions'][0].update(verbatim='changed synthetic condition')),expected='reject')\ncase('historical_expired_policy',hist(lambda d,rc:rc.update(policy_valid_until='2030-01-01T13:00:00Z')),expected='reject')\ncase('historical_expired_test',hist(lambda d,rc:next(e for e in d['evidence'] if e['kind']=='independent_test').update(valid_until='2030-01-01T13:00:00Z')),expected='reject')\ncase('preparation_product_target',lambda p,a,c:c['required_verifications'][-1].update(member_ids=['app']),expected='reject')\nfor field in ('merge_actor','state','merge_sha'):\n value={'merge_actor':'synthetic-unapproved','state':'open','merge_sha':None}[field]\n case('preparation_merge_'+field,lambda p,a,c,k=field,v=value:c['current_members'][0].update({k:v}),expected='reject')\ncase('preparation_merge_permission_missing',lambda p,a,c:c['scope_decisions'][1]['member_ids'].remove('app'),expected='reject')\ncase('preparation_required_scope_permission_missing',lambda p,a,c:c['scope_decisions'][0]['member_ids'].remove('app'),expected='reject')\ncase('delivery_approval_not_merge_permission',lambda p,a,c:c['scope_decisions'][1].update(decision_kind='delivery',allowed_actions=['publish','consume']),expected='reject')\ncase('deploy_permission_missing',lambda p,a,c:c['scope_decisions'][1]['allowed_actions'].remove('deploy'),expected='reject')\ncase('operation_permission_expired',lambda p,a,c:c['scope_decisions'][1].update(valid_until=NOW),expected='reject')\ncase('merge_binding_wrong',lambda p,a,c:next(e for e in a['evidence'] if e['id']=='app-merge')['merge'].update(merge_sha='9'*40),expected='reject')\ndef missing_vector(p,a,c):\n e=next(e for e in a['evidence'] if e['id']=='integration');e['binding']['merged_members'].pop(0)\n e['source_ref']=write(p,e['id']+'-observation.json',dict(document_type='issue_completion_observation',schema_version='1.0',observation={k:v for k,v in e.items() if k!='source_ref'}))\ncase('full_merge_vector_cannot_omit_preparation',expected='reject',after=missing_vector)\nfor kind in ('scope','authorization','deployment','compatibility','integration'):\n case('integration_coverage_cannot_omit_preparation_'+kind,lambda p,a,c,k=kind:next(e for e in a['evidence'] if e['kind']==k)['member_ids'].remove('app'),expected='reject')\nfor field,value in [('state','failed'),('state','pending'),('deploy_actor','synthetic-unapproved'),('config_sha256','0'*64),('environment_id','synthetic-other'),('workload_id','synthetic-other')]:\n case('deployment_'+field+'_'+str(value),lambda p,a,c,k=field,v=value:c['current_deployments'][0].update({k:v}),expected='reject')\ncase('deployment_sources_missing',lambda p,a,c:c['current_deployments'][0]['sources'].pop(),expected='reject')\ncase('deployment_image_wrong',lambda p,a,c:c['current_deployments'][0]['images'][0].update(digest='sha256:'+'0'*64),expected='reject')\nfor field,value in [('producer','synthetic-other'),('result','fail'),('kind','ci'),('phase','premerge'),('environment_id','synthetic-other'),('method','synthetic-other')]:\n case('product_measurement_'+field,lambda p,a,c,k=field,v=value:next(e for e in a['evidence'] if e['id']=='runtime-response').update({k:v}),expected='reject')\ncase('product_measurement_missing',lambda p,a,c:a['verification_results'][-1].update(evidence_ids=[]),expected='reject')\ncase('only_preparation_cannot_achieve',lambda p,a,c:[r.update(pr_kind='preparation',ac_ids=[],preparation=copy.deepcopy(c['required_prs'][0]['preparation'])) for r in c['required_prs']],expected='reject')\nfor mode in ('missing','wrong_root','size','digest','duplicate','unknown','bytes','symlink'):\n def artifact(p,a,c,mode=mode):\n  refs=c['required_prs'][0]['preparation']['artifact_refs'];ref=refs[0]['ref'];f=p/'preparation-artifact.txt'\n  if mode=='missing':refs.clear()\n  elif mode=='wrong_root':refs[0]['ref']=write(p,'wrong.txt',f.read_bytes())\n  elif mode=='size':ref['size']+=1\n  elif mode=='digest':ref['sha256']='0'*64\n  elif mode=='duplicate':refs.append(copy.deepcopy(refs[0]))\n  elif mode=='unknown':refs[0]['artifact_id']='UNKNOWN'\n  elif mode=='bytes':f.write_bytes(b'changed synthetic bytes')\n  else:f.rename(p/'real.txt');f.symlink_to(p/'real.txt')\n case('aggregate_artifact_'+mode,artifact,expected='reject')\nwith tempfile.TemporaryDirectory(prefix='test3-reader-') as t:\n p=pathlib.Path(t);f=p/'regular';f.write_bytes(b'fixed')\n record('linux_regular_reader','6669786564',rf.read_regular(f).hex())\n fifo=p/'fifo';os.mkfifo(fifo);sock=socket.socket(socket.AF_UNIX);sock.bind(str(p/'socket'))\n (p/'link').symlink_to(f);(p/'ancestor').symlink_to(p,target_is_directory=True)\n for name,path in [('fifo',fifo),('socket',p/'socket'),('directory',p),('symlink',p/'link'),('ancestor_symlink',p/'ancestor'/'regular'),('device',pathlib.Path('/dev/null'))]:\n  calls=[];realopen=os.open\n  def spy(path,flags,*args,**kwargs):calls.append(str(path));return realopen(path,flags,*args,**kwargs)\n  with patch.object(rf.os,'open',side_effect=spy):rejection('reader_'+name,lambda q=path:rf.read_regular(q))\n  record('reader_no_data_open_'+name,False,any(x.startswith('/proc/self/fd/') for x in calls))\n sock.close()\n for loc in ('../regular','/tmp/outside','a/../regular','./regular','a//b','a\\\\b','https://example.invalid/a',''):\n  rejection('containment_'+repr(loc),lambda loc=loc:rf.artifact_path(p,loc))\n rejection('bundle_root_escape',lambda:agg.Bundle(p).read(R/'README.md'))\n f.write_bytes(b'x'*rf.MAX_FILE)\n record('16MiB_inclusive',rf.MAX_FILE,len(rf.read_regular(f)))\n with f.open('ab') as fh:fh.write(b'x')\n rejection('16MiB_plus_one',lambda:rf.read_regular(f))\n f.write_bytes(b'fixed')\n rejection('declared_bound',lambda:rf.read_regular(f,limit=4))\n rejection('caller_cannot_raise_hard_limit',lambda:rf.read_regular(f,limit=rf.MAX_FILE+1))\n # Deterministic adversarial reads: file grew immediately after stat/open. Byte\n # requests remain <= declared bound+1 even if an injected source never EOFs.\n counts=[]\n def endless(fd,n):counts.append(n);return b'x'*n\n with patch.object(rf.os,'read',side_effect=endless):rejection('bounded_infinite_source',lambda:rf.read_regular(f,limit=5))\n record('bounded_read_requested_bytes',6,sum(counts))\n realread=os.read\n for mode in ('replace','grow','same_size','ancestor'):\n  sub=p/mode;sub.mkdir();g=sub/'artifact';g.write_bytes(b'fixed');done=[False]\n  def mutate(fd,n):\n   raw=realread(fd,n)\n   if not done[0]:\n    done[0]=True\n    if mode=='replace':(sub/'new').write_bytes(b'fixed');(sub/'new').replace(g)\n    elif mode=='ancestor':sub.rename(p/(mode+'-old'));sub.mkdir();g.write_bytes(b'fixed')\n    else:g.write_bytes(b'grown payload' if mode=='grow' else b'other')\n   return raw\n  with patch.object(rf.os,'read',side_effect=mutate):rejection('during_read_'+mode,lambda:rf.read_regular(g,limit=5))\n realopen=os.open;swapped=[False]\n def swap(path,flags,*args,**kwargs):\n  if path=='regular' and not swapped[0]:swapped[0]=True;f.unlink();os.mkfifo(f)\n  return realopen(path,flags,*args,**kwargs)\n with patch.object(rf.os,'open',side_effect=swap):rejection('stat_to_open_fifo_swap',lambda:rf.read_regular(f))\n f.unlink();f.write_bytes(b'fixed')\n opath=os.O_PATH\n try:\n  del os.O_PATH\n  rejection('unsupported_O_PATH_fail_closed_simulated',lambda:rf.read_regular(f))\n finally:os.O_PATH=opath\n def no_proc(path,flags,*args,**kwargs):\n  if str(path).startswith('/proc/self/fd/'):raise FileNotFoundError('synthetic missing proc filesystem')\n  return realopen(path,flags,*args,**kwargs)\n with patch.object(rf.os,'open',side_effect=no_proc):rejection('unsupported_proc_fail_closed_simulated',lambda:rf.read_regular(f))\n # Mutation after semantic validation, immediately before final all-file reread.\n a,c=build_preparation(p);pin=save(p,a,c);realfinish=agg.Bundle.finish\n def finish_changed(bundle):\n  artifact=p/'preparation-artifact.txt';original=artifact.read_bytes();artifact.write_bytes(b'X'+original[1:]);return realfinish(bundle)\n with patch.object(agg.Bundle,'finish',finish_changed):\n  rejection('aggregate_final_reread_preparation_artifact',lambda:agg.validate_files(p/'completion.json',p/'context.json',pin,p/'handoff.json',now=agg.instant(NOW)))\nfor schema in sorted((R/'contracts').glob('*.schema.json')):\n try:Draft202012Validator.check_schema(json.loads(schema.read_bytes()));record('schema_'+schema.name,True,True)\n except Exception as e:record('schema_'+schema.name,True,False,str(e))\nprotected=['contracts/handoff.schema.json','scripts/validate_handoff.py','scripts/consume_delivery.py','scripts/validate_knowledge.py','contracts/issue-completion.schema.json','contracts/issue-completion-context.schema.json']\nprotected += [str(p.relative_to(R)) for p in (R/'contracts').glob('*v1.2.schema.json')]+[str(p.relative_to(R)) for p in (R/'contracts').glob('knowledge*.schema.json')]\nfor name in sorted(set(protected)):record('compatibility_bytes_'+name,(B/name).read_bytes()==(R/name).read_bytes(),True)\nresult=dict(subject=subprocess.check_output(['git','rev-parse','HEAD'],cwd=R,text=True).strip(),synthetic=True,completed_at=datetime.datetime.now(datetime.timezone.utc).isoformat(),total=len(rows),passed=sum(r['passed'] for r in rows),cases=rows)\nOUT.write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\\n')\nprint(json.dumps(dict(total=len(rows),passed=result['passed'],deviations=[r for r in rows if not r['passed']]),ensure_ascii=False))\nsys.exit(int(result['passed']!=len(rows)))\n",
+      "explanation": "Test-overlay defect: temporary ancestor symlink name collided with mutation directory. Interrupted before writing case report; no completed case count claimed."
+    },
+    {
+      "name": "additional_cases_alias.py",
+      "size": 14208,
+      "sha256": "d3cd6cd5513d88bb90a2705d9d5eed84ea77cc438206ed12568fe35c1ddda5d0",
+      "source_text": "\"\"\"Attempt3 independent synthetic tests. Usage: python additional_cases.py HEAD BASE OUT.\nUses fixture construction only; assertions and fault injections belong to Test3.\nNo implementation edits, product operations, or authority claims.\n\"\"\"\nimport copy, datetime, hashlib, importlib.metadata, json, os, pathlib, socket, subprocess, sys, tempfile\nfrom unittest.mock import patch\nR,B,OUT=map(lambda x:pathlib.Path(x).resolve(),sys.argv[1:])\nsys.path[:0]=[str(R),str(R/'tests')]\nfrom preparation_completion_fixture import build_preparation\nfrom completion_fixture import build,save,write,handoff,NOW\nfrom scripts import regular_file as rf\nfrom scripts import validate_issue_completion as agg\nfrom jsonschema import Draft202012Validator\nrows=[]\ndef record(name,expected,actual,detail=''):\n rows.append(dict(case=name,expected=expected,actual=actual,passed=expected==actual,detail=detail))\ndef rejection(name,fn):\n try: value=fn();record(name,'reject','accept',str(value))\n except (OSError,ValueError,AttributeError) as e:record(name,'reject','reject',type(e).__name__+': '+str(e))\ndef rewrite(p,a,c):\n ar=write(p,'completion.json',a);ar['id']=a['artifact_id']\n write(p,'handoff.json',handoff(c['issue'],ar,a['issue_completion'] if a['issue_completion']=='achieved' else None,[e for e in a['evidence'] if e['kind']=='ac_measurement']))\ndef history_edit(p,a,c,fn):\n d=json.loads((p/'app-readiness.json').read_bytes());rc=json.loads((p/'app-context.json').read_bytes())\n fn(d,rc)\n rr=write(p,'app-readiness.json',d);rr['id']=d['artifact_id']\n a['member_results'][0].update(readiness_ref={**rr,'id':'app-readiness'},readiness_context_ref=write(p,'app-context.json',rc),readiness_handoff_ref=write(p,'app-handoff.json',handoff(c['issue'],rr)))\ndef case(name,mut=lambda p,a,c:None,expected=('ready','achieved'),after=None,old=False,pin_mode=None):\n with tempfile.TemporaryDirectory(prefix='test3-synthetic-') as t:\n  p=pathlib.Path(t);a,c=build_preparation(p);mut(p,a,c);pin=save(p,a,c)\n  if after:after(p,a,c);rewrite(p,a,c)\n  if pin_mode=='missing':pin=None\n  if pin_mode=='wrong':pin='0'*64\n  if pin_mode=='tamper':(p/'context.json').write_bytes((p/'context.json').read_bytes()+b'\\n')\n  try:\n   if old:\n    cmd=[sys.executable,str(B/'scripts/validate_issue_completion.py'),str(p/'completion.json'),'--context',str(p/'context.json'),'--context-sha256',pin,'--handoff',str(p/'handoff.json'),'--at',NOW]\n    res=subprocess.run(cmd,capture_output=True,text=True,timeout=15);actual='reject' if res.returncode else 'accept';detail=res.stdout+res.stderr\n   else:actual=agg.validate_files(p/'completion.json',p/'context.json',pin,p/'handoff.json',now=agg.instant(NOW));detail=''\n  except (ValueError,OSError) as e:actual='reject';detail=type(e).__name__+': '+str(e)\n  record(name,expected,actual,detail.replace(t,'<SYNTHETIC_ROOT>'))\ndef hist(fn):return lambda p,a,c:history_edit(p,a,c,fn)\ncase('typed_preparation_full_product_merge_deploy_achieved')\ncase('old_aggregate_consumer_rejects_v11',expected='reject',old=True)\nfor mode in ('missing','wrong','tamper'):case('aggregate_context_pin_'+mode,expected='reject',pin_mode=mode)\nfor version in ('1.0','1.2','unknown',True,None):\n case('aggregate_invalid_version_'+str(version),lambda p,a,c,v=version:(a.update(schema_version=v),c.update(schema_version=v)),expected='reject')\nfor field in ('required_prs','current_members','required_verifications','current_deployments','scope_decisions'):\n case('missing_required_collection_'+field,lambda p,a,c,k=field:c[k].pop(0),expected='reject')\nfor field in ('member_results','verification_results','deployment_results'):\n case('missing_result_'+field,lambda p,a,c,k=field:a[k].pop(0),expected='reject')\nfor field in ('verbatim','source','verification_phase'):\n def changed_original(p,a,c,k=field):\n  c['issue']['acceptance_criteria'][0][k]='postmerge' if k=='verification_phase' else 'synthetic changed'\n  a['acceptance_criteria']=copy.deepcopy(c['issue']['acceptance_criteria'])\n case('historical_original_'+field,changed_original,expected='reject')\nfor field in ('head_sha','base_sha','target_revision','config_revision','merge_group_sha'):\n case('historical_subject_'+field,lambda p,a,c,k=field:c['current_members'][0].update({k:'9'*40}),expected='reject')\ncase('historical_scope_mismatch',lambda p,a,c:c['required_prs'][1].update(ac_ids=['SYNTHETIC-AC-2']),expected='reject')\ncase('historical_kind_mismatch',lambda p,a,c:c['required_prs'][0].update(pr_kind='standard',preparation=None,ac_ids=['SYNTHETIC-AC-1']),expected='reject')\nfor key in ('ci','independent_test','ai_review','github_checks','github_reviews','github_ruleset','github_queue','authorization','dependencies'):\n case('historical_failed_gate_'+key,hist(lambda d,rc,k=key:d['merge_readiness']['checks'][k].update(verdict='fail')),expected='reject')\ncase('historical_context_condition_mismatch',hist(lambda d,rc:rc['preparation']['conditions'][0].update(verbatim='changed synthetic condition')),expected='reject')\ncase('historical_expired_policy',hist(lambda d,rc:rc.update(policy_valid_until='2030-01-01T13:00:00Z')),expected='reject')\ncase('historical_expired_test',hist(lambda d,rc:next(e for e in d['evidence'] if e['kind']=='independent_test').update(valid_until='2030-01-01T13:00:00Z')),expected='reject')\ncase('preparation_product_target',lambda p,a,c:c['required_verifications'][-1].update(member_ids=['app']),expected='reject')\nfor field in ('merge_actor','state','merge_sha'):\n value={'merge_actor':'synthetic-unapproved','state':'open','merge_sha':None}[field]\n case('preparation_merge_'+field,lambda p,a,c,k=field,v=value:c['current_members'][0].update({k:v}),expected='reject')\ncase('preparation_merge_permission_missing',lambda p,a,c:c['scope_decisions'][1]['member_ids'].remove('app'),expected='reject')\ncase('preparation_required_scope_permission_missing',lambda p,a,c:c['scope_decisions'][0]['member_ids'].remove('app'),expected='reject')\ncase('delivery_approval_not_merge_permission',lambda p,a,c:c['scope_decisions'][1].update(decision_kind='delivery',allowed_actions=['publish','consume']),expected='reject')\ncase('deploy_permission_missing',lambda p,a,c:c['scope_decisions'][1]['allowed_actions'].remove('deploy'),expected='reject')\ncase('operation_permission_expired',lambda p,a,c:c['scope_decisions'][1].update(valid_until=NOW),expected='reject')\ncase('merge_binding_wrong',lambda p,a,c:next(e for e in a['evidence'] if e['id']=='app-merge')['merge'].update(merge_sha='9'*40),expected='reject')\ndef missing_vector(p,a,c):\n e=next(e for e in a['evidence'] if e['id']=='integration');e['binding']['merged_members'].pop(0)\n e['source_ref']=write(p,e['id']+'-observation.json',dict(document_type='issue_completion_observation',schema_version='1.0',observation={k:v for k,v in e.items() if k!='source_ref'}))\ncase('full_merge_vector_cannot_omit_preparation',expected='reject',after=missing_vector)\nfor kind in ('scope','authorization','deployment','compatibility','integration'):\n case('integration_coverage_cannot_omit_preparation_'+kind,lambda p,a,c,k=kind:next(e for e in a['evidence'] if e['kind']==k)['member_ids'].remove('app'),expected='reject')\nfor field,value in [('state','failed'),('state','pending'),('deploy_actor','synthetic-unapproved'),('config_sha256','0'*64),('environment_id','synthetic-other'),('workload_id','synthetic-other')]:\n case('deployment_'+field+'_'+str(value),lambda p,a,c,k=field,v=value:c['current_deployments'][0].update({k:v}),expected='reject')\ncase('deployment_sources_missing',lambda p,a,c:c['current_deployments'][0]['sources'].pop(),expected='reject')\ncase('deployment_image_wrong',lambda p,a,c:c['current_deployments'][0]['images'][0].update(digest='sha256:'+'0'*64),expected='reject')\nfor field,value in [('producer','synthetic-other'),('result','fail'),('kind','ci'),('phase','premerge'),('environment_id','synthetic-other'),('method','synthetic-other')]:\n case('product_measurement_'+field,lambda p,a,c,k=field,v=value:next(e for e in a['evidence'] if e['id']=='runtime-response').update({k:v}),expected='reject')\ncase('product_measurement_missing',lambda p,a,c:a['verification_results'][-1].update(evidence_ids=[]),expected='reject')\ncase('only_preparation_cannot_achieve',lambda p,a,c:[r.update(pr_kind='preparation',ac_ids=[],preparation=copy.deepcopy(c['required_prs'][0]['preparation'])) for r in c['required_prs']],expected='reject')\nfor mode in ('missing','wrong_root','size','digest','duplicate','unknown','bytes','symlink'):\n def artifact(p,a,c,mode=mode):\n  refs=c['required_prs'][0]['preparation']['artifact_refs'];ref=refs[0]['ref'];f=p/'preparation-artifact.txt'\n  if mode=='missing':refs.clear()\n  elif mode=='wrong_root':refs[0]['ref']=write(p,'wrong.txt',f.read_bytes())\n  elif mode=='size':ref['size']+=1\n  elif mode=='digest':ref['sha256']='0'*64\n  elif mode=='duplicate':refs.append(copy.deepcopy(refs[0]))\n  elif mode=='unknown':refs[0]['artifact_id']='UNKNOWN'\n  elif mode=='bytes':f.write_bytes(b'changed synthetic bytes')\n  else:f.rename(p/'real.txt');f.symlink_to(p/'real.txt')\n case('aggregate_artifact_'+mode,artifact,expected='reject')\nwith tempfile.TemporaryDirectory(prefix='test3-reader-') as t:\n p=pathlib.Path(t);f=p/'regular';f.write_bytes(b'fixed')\n record('linux_regular_reader','6669786564',rf.read_regular(f).hex())\n fifo=p/'fifo';os.mkfifo(fifo);sock=socket.socket(socket.AF_UNIX);sock.bind(str(p/'socket'))\n (p/'link').symlink_to(f);(p/'ancestor').symlink_to(p,target_is_directory=True)\n for name,path in [('fifo',fifo),('socket',p/'socket'),('directory',p),('symlink',p/'link'),('ancestor_symlink',p/'ancestor'/'regular'),('device',pathlib.Path('/dev/null'))]:\n  calls=[];realopen=os.open\n  def spy(path,flags,*args,**kwargs):calls.append(str(path));return realopen(path,flags,*args,**kwargs)\n  with patch.object(rf.os,'open',side_effect=spy):rejection('reader_'+name,lambda q=path:rf.read_regular(q))\n  record('reader_no_data_open_'+name,False,any(x.startswith('/proc/self/fd/') for x in calls))\n sock.close()\n for loc in ('../regular','/tmp/outside','a/../regular','./regular','a//b','a\\\\b','https://example.invalid/a',''):\n  rejection('containment_'+repr(loc),lambda loc=loc:rf.artifact_path(p,loc))\n rejection('bundle_root_escape',lambda:agg.Bundle(p).read(R/'README.md'))\n f.write_bytes(b'x'*rf.MAX_FILE)\n record('16MiB_inclusive',rf.MAX_FILE,len(rf.read_regular(f)))\n with f.open('ab') as fh:fh.write(b'x')\n rejection('16MiB_plus_one',lambda:rf.read_regular(f))\n f.write_bytes(b'fixed')\n rejection('declared_bound',lambda:rf.read_regular(f,limit=4))\n rejection('caller_cannot_raise_hard_limit',lambda:rf.read_regular(f,limit=rf.MAX_FILE+1))\n # Deterministic adversarial reads: file grew immediately after stat/open. Byte\n # requests remain <= declared bound+1 even if an injected source never EOFs.\n counts=[]\n def endless(fd,n):counts.append(n);return b'x'*n\n with patch.object(rf.os,'read',side_effect=endless):rejection('bounded_infinite_source',lambda:rf.read_regular(f,limit=5))\n record('bounded_read_requested_bytes',6,sum(counts))\n realread=os.read\n for mode in ('replace','grow','same_size','ancestor'):\n  sub=p/('mutation-'+mode);sub.mkdir();g=sub/'artifact';g.write_bytes(b'fixed');done=[False]\n  def mutate(fd,n):\n   raw=realread(fd,n)\n   if not done[0]:\n    done[0]=True\n    if mode=='replace':(sub/'new').write_bytes(b'fixed');(sub/'new').replace(g)\n    elif mode=='ancestor':sub.rename(p/(mode+'-old'));sub.mkdir();g.write_bytes(b'fixed')\n    else:g.write_bytes(b'grown payload' if mode=='grow' else b'other')\n   return raw\n  with patch.object(rf.os,'read',side_effect=mutate):rejection('during_read_'+mode,lambda:rf.read_regular(g,limit=5))\n realopen=os.open;swapped=[False]\n def swap(path,flags,*args,**kwargs):\n  if path=='regular' and not swapped[0]:swapped[0]=True;f.unlink();os.mkfifo(f)\n  return realopen(path,flags,*args,**kwargs)\n with patch.object(rf.os,'open',side_effect=swap):rejection('stat_to_open_fifo_swap',lambda:rf.read_regular(f))\n f.unlink();f.write_bytes(b'fixed')\n opath=os.O_PATH\n try:\n  del os.O_PATH\n  rejection('unsupported_O_PATH_fail_closed_simulated',lambda:rf.read_regular(f))\n finally:os.O_PATH=opath\n def no_proc(path,flags,*args,**kwargs):\n  if str(path).startswith('/proc/self/fd/'):raise FileNotFoundError('synthetic missing proc filesystem')\n  return realopen(path,flags,*args,**kwargs)\n with patch.object(rf.os,'open',side_effect=no_proc):rejection('unsupported_proc_fail_closed_simulated',lambda:rf.read_regular(f))\n # Mutation after semantic validation, immediately before final all-file reread.\n a,c=build_preparation(p);pin=save(p,a,c);realfinish=agg.Bundle.finish\n def finish_changed(bundle):\n  artifact=p/'preparation-artifact.txt';original=artifact.read_bytes();artifact.write_bytes(b'X'+original[1:]);return realfinish(bundle)\n with patch.object(agg.Bundle,'finish',finish_changed):\n  rejection('aggregate_final_reread_preparation_artifact',lambda:agg.validate_files(p/'completion.json',p/'context.json',pin,p/'handoff.json',now=agg.instant(NOW)))\nfor schema in sorted((R/'contracts').glob('*.schema.json')):\n try:Draft202012Validator.check_schema(json.loads(schema.read_bytes()));record('schema_'+schema.name,True,True)\n except Exception as e:record('schema_'+schema.name,True,False,str(e))\nprotected=['contracts/handoff.schema.json','scripts/validate_handoff.py','scripts/consume_delivery.py','scripts/validate_knowledge.py','contracts/issue-completion.schema.json','contracts/issue-completion-context.schema.json']\nprotected += [str(p.relative_to(R)) for p in (R/'contracts').glob('*v1.2.schema.json')]+[str(p.relative_to(R)) for p in (R/'contracts').glob('knowledge*.schema.json')]\nfor name in sorted(set(protected)):record('compatibility_bytes_'+name,(B/name).read_bytes()==(R/name).read_bytes(),True)\nresult=dict(subject=subprocess.check_output(['git','rev-parse','HEAD'],cwd=R,text=True).strip(),synthetic=True,completed_at=datetime.datetime.now(datetime.timezone.utc).isoformat(),total=len(rows),passed=sum(r['passed'] for r in rows),cases=rows)\nOUT.write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\\n')\nprint(json.dumps(dict(total=len(rows),passed=result['passed'],deviations=[r for r in rows if not r['passed']]),ensure_ascii=False))\nsys.exit(int(result['passed']!=len(rows)))\n",
+      "explanation": "Test-overlay defect: upstream fixture shares expected/current source and image Python objects. Two mutations changed both expected and actual values; acceptance was correct for those constructed inputs. Final overlay assigns separate actual lists."
+    }
+  ],
+  "initial_failure": "Traceback (most recent call last):\n  File \"<TEST_OVERLAY>/additional_cases.py\", line 131, in <module>\n    sub=p/mode;sub.mkdir();g=sub/'artifact';g.write_bytes(b'fixed');done=[False]\n               ^^^^^^^^^^^\n  File \"<PYTHON>/lib/python3.12/pathlib.py\", line 1311, in mkdir\n    os.mkdir(self, mode)\nFileExistsError: [Errno 17] File exists: '<SYNTHETIC_ROOT>/ancestor'\n",
+  "intermediate_results": {
+    "subject": "cdaad5a0d7437a9abc24481e4849b89a9e112401",
+    "synthetic": true,
+    "completed_at": "2026-10-11T15:04:09.458281+00:00",
+    "total": 163,
+    "passed": 161,
+    "cases": [
+      {
+        "case": "typed_preparation_full_product_merge_deploy_achieved",
+        "expected": [
+          "ready",
+          "achieved"
+        ],
+        "actual": [
+          "ready",
+          "achieved"
+        ],
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "old_aggregate_consumer_rejects_v11",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "FAIL: aggregate record rejected; no completion or authority granted\n"
+      },
+      {
+        "case": "aggregate_context_pin_missing",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: untrusted current context pin"
+      },
+      {
+        "case": "aggregate_context_pin_wrong",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: untrusted current context pin"
+      },
+      {
+        "case": "aggregate_context_pin_tamper",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: untrusted current context pin"
+      },
+      {
+        "case": "aggregate_invalid_version_1.0",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: context: invalid schema"
+      },
+      {
+        "case": "aggregate_invalid_version_1.2",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: assessment: invalid schema"
+      },
+      {
+        "case": "aggregate_invalid_version_unknown",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: assessment: invalid schema"
+      },
+      {
+        "case": "aggregate_invalid_version_True",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: assessment: invalid schema"
+      },
+      {
+        "case": "aggregate_invalid_version_None",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: assessment: invalid schema"
+      },
+      {
+        "case": "missing_required_collection_required_prs",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: required PR set mismatch"
+      },
+      {
+        "case": "missing_required_collection_current_members",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: required PR set mismatch"
+      },
+      {
+        "case": "missing_required_collection_required_verifications",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: verification set mismatch"
+      },
+      {
+        "case": "missing_required_collection_current_deployments",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: deployment set mismatch"
+      },
+      {
+        "case": "missing_required_collection_scope_decisions",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: scope: unsupported pass"
+      },
+      {
+        "case": "missing_result_member_results",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: required PR set mismatch"
+      },
+      {
+        "case": "missing_result_verification_results",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: verification set mismatch"
+      },
+      {
+        "case": "missing_result_deployment_results",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: deployment set mismatch"
+      },
+      {
+        "case": "historical_original_verbatim",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: historical AC originals mismatch"
+      },
+      {
+        "case": "historical_original_source",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: historical AC originals mismatch"
+      },
+      {
+        "case": "historical_original_verification_phase",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: verification precedes AC phase"
+      },
+      {
+        "case": "historical_subject_head_sha",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: stale merge/head result"
+      },
+      {
+        "case": "historical_subject_base_sha",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: historical PR identity/head/base mismatch"
+      },
+      {
+        "case": "historical_subject_target_revision",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: historical PR identity/head/base mismatch"
+      },
+      {
+        "case": "historical_subject_config_revision",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: historical PR identity/head/base mismatch"
+      },
+      {
+        "case": "historical_subject_merge_group_sha",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: historical PR identity/head/base mismatch"
+      },
+      {
+        "case": "historical_scope_mismatch",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: verification outside member AC scope"
+      },
+      {
+        "case": "historical_kind_mismatch",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: historical PR kind mismatch"
+      },
+      {
+        "case": "historical_failed_gate_ci",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid historical Readiness at actual merge"
+      },
+      {
+        "case": "historical_failed_gate_independent_test",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid historical Readiness at actual merge"
+      },
+      {
+        "case": "historical_failed_gate_ai_review",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid historical Readiness at actual merge"
+      },
+      {
+        "case": "historical_failed_gate_github_checks",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid historical Readiness at actual merge"
+      },
+      {
+        "case": "historical_failed_gate_github_reviews",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid historical Readiness at actual merge"
+      },
+      {
+        "case": "historical_failed_gate_github_ruleset",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid historical Readiness at actual merge"
+      },
+      {
+        "case": "historical_failed_gate_github_queue",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid historical Readiness at actual merge"
+      },
+      {
+        "case": "historical_failed_gate_authorization",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid historical Readiness at actual merge"
+      },
+      {
+        "case": "historical_failed_gate_dependencies",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid historical Readiness at actual merge"
+      },
+      {
+        "case": "historical_context_condition_mismatch",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid historical Readiness at actual merge"
+      },
+      {
+        "case": "historical_expired_policy",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid historical Readiness at actual merge"
+      },
+      {
+        "case": "historical_expired_test",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: invalid historical Readiness at actual merge"
+      },
+      {
+        "case": "preparation_product_target",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: verification outside member AC scope"
+      },
+      {
+        "case": "preparation_merge_merge_actor",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: authorizations: unsupported pass"
+      },
+      {
+        "case": "preparation_merge_state",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: unverified merge cannot pass"
+      },
+      {
+        "case": "preparation_merge_merge_sha",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: context: invalid schema"
+      },
+      {
+        "case": "preparation_merge_permission_missing",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: integration check misses required members"
+      },
+      {
+        "case": "preparation_required_scope_permission_missing",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: integration check misses required members"
+      },
+      {
+        "case": "delivery_approval_not_merge_permission",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: authorizations: unsupported pass"
+      },
+      {
+        "case": "deploy_permission_missing",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: authorizations: unsupported pass"
+      },
+      {
+        "case": "operation_permission_expired",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: active observation future-dated or expired"
+      },
+      {
+        "case": "merge_binding_wrong",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: merge result correspondence mismatch"
+      },
+      {
+        "case": "full_merge_vector_cannot_omit_preparation",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: full merge vector required"
+      },
+      {
+        "case": "integration_coverage_cannot_omit_preparation_scope",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: integration check misses required members"
+      },
+      {
+        "case": "integration_coverage_cannot_omit_preparation_authorization",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: integration check misses required members"
+      },
+      {
+        "case": "integration_coverage_cannot_omit_preparation_deployment",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: integration check misses required members"
+      },
+      {
+        "case": "integration_coverage_cannot_omit_preparation_compatibility",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: integration check misses required members"
+      },
+      {
+        "case": "integration_coverage_cannot_omit_preparation_integration",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: integration check misses required members"
+      },
+      {
+        "case": "deployment_state_failed",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: deployment status contradicts observation"
+      },
+      {
+        "case": "deployment_state_pending",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: deployment status contradicts observation"
+      },
+      {
+        "case": "deployment_deploy_actor_synthetic-unapproved",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: authorizations: unsupported pass"
+      },
+      {
+        "case": "deployment_config_sha256_0000000000000000000000000000000000000000000000000000000000000000",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: deployment status contradicts observation"
+      },
+      {
+        "case": "deployment_environment_id_synthetic-other",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: wrong deployment environment/workload"
+      },
+      {
+        "case": "deployment_workload_id_synthetic-other",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: wrong deployment environment/workload"
+      },
+      {
+        "case": "deployment_sources_missing",
+        "expected": "reject",
+        "actual": [
+          "ready",
+          "achieved"
+        ],
+        "passed": false,
+        "detail": ""
+      },
+      {
+        "case": "deployment_image_wrong",
+        "expected": "reject",
+        "actual": [
+          "ready",
+          "achieved"
+        ],
+        "passed": false,
+        "detail": ""
+      },
+      {
+        "case": "product_measurement_producer",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: measurement identity/phase/target/method/producer mismatch"
+      },
+      {
+        "case": "product_measurement_result",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: measurement outcome mismatch"
+      },
+      {
+        "case": "product_measurement_kind",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: assessment: invalid schema"
+      },
+      {
+        "case": "product_measurement_phase",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: premerge needs validated historical subject"
+      },
+      {
+        "case": "product_measurement_environment_id",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: measurement identity/phase/target/method/producer mismatch"
+      },
+      {
+        "case": "product_measurement_method",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: measurement identity/phase/target/method/producer mismatch"
+      },
+      {
+        "case": "product_measurement_missing",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: assessment: invalid schema"
+      },
+      {
+        "case": "only_preparation_cannot_achieve",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: verification outside member AC scope"
+      },
+      {
+        "case": "aggregate_artifact_missing",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: context: invalid schema"
+      },
+      {
+        "case": "aggregate_artifact_wrong_root",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: preparation artifact root/path mismatch"
+      },
+      {
+        "case": "aggregate_artifact_size",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: reference size/digest mismatch"
+      },
+      {
+        "case": "aggregate_artifact_digest",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: reference size/digest mismatch"
+      },
+      {
+        "case": "aggregate_artifact_duplicate",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: artifact_id: duplicate identity"
+      },
+      {
+        "case": "aggregate_artifact_unknown",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: preparation artifact set mismatch"
+      },
+      {
+        "case": "aggregate_artifact_bytes",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: reference size/digest mismatch"
+      },
+      {
+        "case": "aggregate_artifact_symlink",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: symlink rejected"
+      },
+      {
+        "case": "linux_regular_reader",
+        "expected": "6669786564",
+        "actual": "6669786564",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "reader_fifo",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: ordinary file within size limit required"
+      },
+      {
+        "case": "reader_no_data_open_fifo",
+        "expected": false,
+        "actual": false,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "reader_socket",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: ordinary file within size limit required"
+      },
+      {
+        "case": "reader_no_data_open_socket",
+        "expected": false,
+        "actual": false,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "reader_directory",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: ordinary file within size limit required"
+      },
+      {
+        "case": "reader_no_data_open_directory",
+        "expected": false,
+        "actual": false,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "reader_symlink",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: ordinary file within size limit required"
+      },
+      {
+        "case": "reader_no_data_open_symlink",
+        "expected": false,
+        "actual": false,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "reader_ancestor_symlink",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "NotADirectoryError: [Errno 20] Not a directory: 'ancestor'"
+      },
+      {
+        "case": "reader_no_data_open_ancestor_symlink",
+        "expected": false,
+        "actual": false,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "reader_device",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: ordinary file within size limit required"
+      },
+      {
+        "case": "reader_no_data_open_device",
+        "expected": false,
+        "actual": false,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "containment_'../regular'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: unsafe relative artifact locator"
+      },
+      {
+        "case": "containment_'/tmp/outside'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: unsafe relative artifact locator"
+      },
+      {
+        "case": "containment_'a/../regular'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: unsafe relative artifact locator"
+      },
+      {
+        "case": "containment_'./regular'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: unsafe relative artifact locator"
+      },
+      {
+        "case": "containment_'a//b'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: unsafe relative artifact locator"
+      },
+      {
+        "case": "containment_'a\\\\b'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: unsafe relative artifact locator"
+      },
+      {
+        "case": "containment_'https://example.invalid/a'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: unsafe relative artifact locator"
+      },
+      {
+        "case": "containment_''",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: unsafe relative artifact locator"
+      },
+      {
+        "case": "bundle_root_escape",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: file escapes bundle root"
+      },
+      {
+        "case": "16MiB_inclusive",
+        "expected": 16777216,
+        "actual": 16777216,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "16MiB_plus_one",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: ordinary file within size limit required"
+      },
+      {
+        "case": "declared_bound",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: ordinary file within size limit required"
+      },
+      {
+        "case": "caller_cannot_raise_hard_limit",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: unsafe path or file size limit"
+      },
+      {
+        "case": "bounded_infinite_source",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: file exceeded size limit or changed during read"
+      },
+      {
+        "case": "bounded_read_requested_bytes",
+        "expected": 6,
+        "actual": 6,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "during_read_replace",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: file changed during read"
+      },
+      {
+        "case": "during_read_grow",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: file exceeded size limit or changed during read"
+      },
+      {
+        "case": "during_read_same_size",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: file changed during read"
+      },
+      {
+        "case": "during_read_ancestor",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: directory changed during read"
+      },
+      {
+        "case": "stat_to_open_fifo_swap",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: file changed before read or is nonregular"
+      },
+      {
+        "case": "unsupported_O_PATH_fail_closed_simulated",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "AttributeError: module 'os' has no attribute 'O_PATH'"
+      },
+      {
+        "case": "unsupported_proc_fail_closed_simulated",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "FileNotFoundError: synthetic missing proc filesystem"
+      },
+      {
+        "case": "aggregate_final_reread_preparation_artifact",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "detail": "ValueError: bytes changed during validation"
+      },
+      {
+        "case": "schema_artifact-delivery-v1.1.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_artifact-delivery-v1.2.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_artifact-delivery.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_consumption-receipt-v1.1.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_consumption-receipt-v1.2.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_consumption-receipt.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_delivery-authorization-v1.1.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_delivery-authorization-v1.2.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_delivery-authorization.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_handoff.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_issue-completion-context-v1.1.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_issue-completion-context.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_issue-completion-v1.1.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_issue-completion.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_knowledge-candidates-v1.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_knowledge-collection-authorization.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_knowledge-collection-record.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_knowledge-collection-state.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_knowledge-context.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_knowledge-event.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_knowledge-handoff.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_knowledge-input.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_knowledge-source-registry.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_publication-receipt-v1.1.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_publication-receipt-v1.2.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_publication-receipt.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_readiness-context.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "schema_readiness.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "compatibility_bytes_contracts/artifact-delivery-v1.2.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "compatibility_bytes_contracts/consumption-receipt-v1.2.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "compatibility_bytes_contracts/delivery-authorization-v1.2.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "compatibility_bytes_contracts/handoff.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "compatibility_bytes_contracts/issue-completion-context.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "compatibility_bytes_contracts/issue-completion.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "compatibility_bytes_contracts/knowledge-candidates-v1.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "compatibility_bytes_contracts/knowledge-collection-authorization.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "compatibility_bytes_contracts/knowledge-collection-record.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "compatibility_bytes_contracts/knowledge-collection-state.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "compatibility_bytes_contracts/knowledge-context.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "compatibility_bytes_contracts/knowledge-event.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "compatibility_bytes_contracts/knowledge-handoff.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "compatibility_bytes_contracts/knowledge-input.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "compatibility_bytes_contracts/knowledge-source-registry.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "compatibility_bytes_contracts/publication-receipt-v1.2.schema.json",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "compatibility_bytes_scripts/consume_delivery.py",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "compatibility_bytes_scripts/validate_handoff.py",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "case": "compatibility_bytes_scripts/validate_knowledge.py",
+        "expected": true,
+        "actual": true,
+        "passed": true,
+        "detail": ""
+      }
+    ]
+  },
+  "final_summary": {
+    "total": 163,
+    "passed": 163,
+    "deviations": []
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "observations": [
+    {
+      "kind": "pr-metadata.json",
+      "observed_at": "2026-10-11T15:05:29.730090+00:00",
+      "valid_until": "2026-10-11T15:10:29.730090+00:00",
+      "method": "gh api read-only metadata; file timestamp after successful fetch",
+      "data": {
+        "auto_merge": null,
+        "base": {
+          "ref": "main",
+          "sha": "0083151aa2f6b2aaf0e1db64ada3f196ed766e48"
+        },
+        "draft": true,
+        "head": {
+          "ref": "feat/readiness-prerequisite-gate",
+          "sha": "cdaad5a0d7437a9abc24481e4849b89a9e112401"
+        },
+        "html_url": "https://github.com/syuhei0519/ai-development-system/pull/8",
+        "merged": false,
+        "merged_at": null,
+        "number": 8,
+        "state": "open"
+      }
+    },
+    {
+      "kind": "ci-metadata.json",
+      "observed_at": "2026-10-11T15:03:42.863995+00:00",
+      "valid_until": "2026-10-11T15:08:42.863995+00:00",
+      "method": "gh api read-only metadata; file timestamp after successful fetch",
+      "data": {
+        "conclusion": "success",
+        "created_at": "2026-10-11T09:57:20Z",
+        "event": "pull_request",
+        "head_branch": "feat/readiness-prerequisite-gate",
+        "head_sha": "cdaad5a0d7437a9abc24481e4849b89a9e112401",
+        "html_url": "https://github.com/syuhei0519/ai-development-system/actions/runs/38130204297",
+        "id": 38130204297,
+        "path": ".github/workflows/validate.yml",
+        "run_started_at": "2026-10-11T09:57:20Z",
+        "status": "completed",
+        "updated_at": "2026-10-11T09:58:05Z"
+      }
+    }
+  ],
+  "limits": [
+    "Raw logs were not requested, retried or obtained; known rawlogsForbidden respected.",
+    "The CI run binds head, pull_request event and .github/workflows/validate.yml. CI is not independent Test or Review.",
+    "Live Ruleset, actor permissions, required checks/reviews, queue and merge-group were not certified. Manager must re-fetch before an operation. No live Merge Ready is issued."
+  ]
+}

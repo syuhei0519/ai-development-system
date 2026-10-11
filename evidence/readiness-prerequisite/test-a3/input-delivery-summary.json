@@ -1,0 +1,25 @@
+{
+  "baseline": "0083151aa2f6b2aaf0e1db64ada3f196ed766e48",
+  "consumer": "readiness-prerequisite-test-a3",
+  "result": "pass",
+  "exit_code": 0,
+  "records_commit": "ec427396abd3333b604368677b024b54dcbe6fc2",
+  "manifest": {
+    "size": 123823,
+    "sha256": "2a8a0f7766a1ad309c7c7edb410f7e033c10a30a658bb45ef616c6b6a68469f5"
+  },
+  "publication_receipt": {
+    "size": 48159,
+    "sha256": "7998ac471c1b15af9f3264e7cc1944162aa6f60a1682687b0c898196ad2f82e8"
+  },
+  "prior_handoff": {
+    "size": 8546,
+    "sha256": "c023ac4a4be583766c5e5aae15b7a9fe747dcd4af69ecb3b14815b308a30ddec"
+  },
+  "artifacts": 90,
+  "slots": 71,
+  "payload_bytes": 1928316,
+  "verification": "Baseline consume_delivery.py with independently supplied Manager authorization pin; fresh isolated Git full bytes/type/size/hash/upstream/retry closure verified. Private authorization and Consumption Receipt excluded. Published derivatives do not prove private-original comparison.",
+  "candidate_bindings": 0,
+  "knowledge_bindings": 0
+}
