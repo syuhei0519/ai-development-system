@@ -90,7 +90,8 @@ Input provenance and immutable history
 The exact provided one-line authorization was kept privately with its independent
 pin. Canonical consume_delivery.py completed fresh Git full-byte/size/hash/type,
 slot, candidate/tree/source and Handoff/retry closure checks before input use.
-The original 55 explicit objects and resulting receipt are private local inputs;
+The 49 explicit objects plus six tree members (55 total) and resulting receipt
+are private local inputs;
 public fixed upstream references are preserved without byte regeneration.
 Implementation order-m0-implementation-a1 attempt1 remains historical blocked.
 Its separate publication-recovery.json was read; current PR/CI API observations
