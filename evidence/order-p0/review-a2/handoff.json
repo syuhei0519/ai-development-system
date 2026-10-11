@@ -1,0 +1,280 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "syuhei0519/backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "review",
+  "task_id": "order-p0-review-a2",
+  "attempt": 2,
+  "upstream": [
+    {
+      "role": "review",
+      "task_id": "order-p0-review-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/18d603cbd4e9f8dc398de99bdb1e430c7cb09030/evidence/order-p0/review-a1/handoff.json",
+      "revision": "sha256:5fce14e80335280a66124fc282edfc86fb85df6fb61ff67a9c91f26b0792b50b",
+      "relationship": "retry_of"
+    },
+    {
+      "role": "implementation",
+      "task_id": "order-p0-implementation-a2",
+      "attempt": 2,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/dcd7744f66b83f5dd4c8ac5db7f06e240238a9c2/evidence/order-p0/implementation-a2/handoff.json",
+      "revision": "sha256:7633b8f9452d5a65b2537a848bbfc97024847352212cd1b30c2eaae4f49a75b2",
+      "relationship": "dependency"
+    },
+    {
+      "role": "test",
+      "task_id": "order-p0-test-a2",
+      "attempt": 2,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/ccdd1fe2f2249eb2ba1436bafe0a8141523e89a4/evidence/order-p0/test-a2/handoff.json",
+      "revision": "sha256:371e01eb96111a26c613fe23c449d43f48574099ad0fb861fa8fd7e8f5d9102f",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Independent epoch1 Review2 completed on repaired fixed PR58. P0-S1..S4 pass; no blocking findings.1655 independent CLI cases pass; original14 reproduce old/reject repaired; current merged M1 registered resources unchanged. All product AC remain unverified. Prior failed Review1 and delivery history retained.",
+  "assignment": {
+    "scope": "platform-gitops#backend-app-2/P0",
+    "ac_ids": [
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "P0-S1: orderEnabled=false既定で、新Order関連Applicationを生成しない。既存3Application/namespace/AppProject/既存Account main追跡とdefault/local renderを不変に保つ。",
+      "P0-S2: 将来有効化時のOrder専用40桁Manifest revisionと独立DB→OrderのApplication定義を用意し、欠落/浮動revision/不正値をfail-closedに検証する。trueは合成render fixtureだけで、live valuesはfalse。",
+      "P0-S3: bootstrap observerのleaf/hook対象をoptionalに拡張し、disabledでは既存3Appだけ、enabledではOrder DB/Orderの欠落・進行・失敗・revision/health/migration状態を正しく扱う。未知状態を成功化せず、既存observer動作を回帰検証する。",
+      "P0-S4: 全既存関連testsと新schema/render/observer正常異常境界試験を実行し、設定とドキュメント整合、デプロイ影響noneの根拠、P1/T6/T7と必要承認/環境/失敗対応を引き渡す。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-REPORT",
+      "kind": "document",
+      "locator": "report.txt",
+      "revision": "sha256:25088eb39b6bf383357555f0d8c86dbefa405c670257145e6e0fccf13af72ce8",
+      "summary": "report.txt"
+    },
+    {
+      "id": "A-MEASURE",
+      "kind": "test-report",
+      "locator": "measurements.json",
+      "revision": "sha256:4580348d928484e3a490e1d526d1098b47379d65110e2df75cefa66a80437c37",
+      "summary": "measurements.json"
+    },
+    {
+      "id": "A-AI-REVIEW",
+      "kind": "other",
+      "locator": "ai-review-evidence.json",
+      "revision": "sha256:49767cb0f7d5fc9a9b3cffa62420a981023abcb3ce012bfd231c6c6dabbd90d8",
+      "summary": "ai-review-evidence.json"
+    },
+    {
+      "id": "A-COVERAGE",
+      "kind": "test-report",
+      "locator": "coverage.json",
+      "revision": "sha256:a21cd8e0fc6e795c43ede0e450bb598c47a20bdef2e065d35a70170f7ce971a9",
+      "summary": "coverage.json"
+    },
+    {
+      "id": "A-OBSERVER",
+      "kind": "test-report",
+      "locator": "results/observer.json",
+      "revision": "sha256:48bd7eb36ad7ed5b1465529aaccd1730dc5777e340abf27e3467b2f3f845f678",
+      "summary": "results/observer.json"
+    },
+    {
+      "id": "A-RENDER",
+      "kind": "test-report",
+      "locator": "results/render.json",
+      "revision": "sha256:f78a33cc1078bea6d286d428f35a27d47dab0d61c394df87ead1814e6d090549",
+      "summary": "results/render.json"
+    },
+    {
+      "id": "A-OLD",
+      "kind": "test-report",
+      "locator": "results/original-old.json",
+      "revision": "sha256:ae6e55cc6542f6ea5e86db24918375a81ebe8b5afc220dfab5b4c8d5f6050746",
+      "summary": "results/original-old.json"
+    },
+    {
+      "id": "A-NEW",
+      "kind": "test-report",
+      "locator": "results/original-new-binary.json",
+      "revision": "sha256:b4ef155ceaba3d766a2eb5b099d43d921b927306fe71a89323c1d458fc6ee0ed",
+      "summary": "results/original-new-binary.json"
+    },
+    {
+      "id": "A-REPRO",
+      "kind": "other",
+      "locator": "review-observer.py",
+      "revision": "sha256:8d33b9e4017c4b766eabedb8076b73169629728ae78fae8fff4a4faecc44bbb7",
+      "summary": "review-observer.py"
+    },
+    {
+      "id": "A-RENDER-REPRO",
+      "kind": "other",
+      "locator": "review-render.py",
+      "revision": "sha256:6495f89b6947b2e657c5f2ba14a5571fd88cf97ab632116be8ee52909c539396",
+      "summary": "review-render.py"
+    },
+    {
+      "id": "A-TESTS",
+      "kind": "test-report",
+      "locator": "test-results.json",
+      "revision": "sha256:a90f2df39ec8f5de7961782bd3bd3903e88e1a9803d95f76f7b674d534938251",
+      "summary": "test-results.json"
+    },
+    {
+      "id": "A-SOURCE-SCAN",
+      "kind": "test-report",
+      "locator": "results/source-scan.json",
+      "revision": "sha256:649976c7249fc0312e418f4da571c8aab716713eeee16416e3c1b66af96bc387",
+      "summary": "results/source-scan.json"
+    },
+    {
+      "id": "A-RENDER-SCAN",
+      "kind": "test-report",
+      "locator": "results/render-scan.json",
+      "revision": "sha256:989aec5864197205fc3789082c1451c157f51511a6611bf2857c8fd4e44477b5",
+      "summary": "results/render-scan.json"
+    },
+    {
+      "id": "A-FIXED",
+      "kind": "test-report",
+      "locator": "results/fixed-artifacts.json",
+      "revision": "sha256:306bbbb23c1a5b49154d7c1730b24e717b87e1c99ac93462e0142374bf8fa122",
+      "summary": "results/fixed-artifacts.json"
+    },
+    {
+      "id": "A-CONTEXT",
+      "kind": "other",
+      "locator": "context.json",
+      "revision": "sha256:17a53be660510e495be2fde174863dca46fa2a1f6afbc79731c7424000010153",
+      "summary": "context.json"
+    },
+    {
+      "id": "A-CONFIG",
+      "kind": "other",
+      "locator": "config.json",
+      "revision": "sha256:2307e0e0bc59910bb975ac006df55b1029aa0e210de99b8b6b757934c770b3f2",
+      "summary": "config.json"
+    },
+    {
+      "id": "A-GITHUB",
+      "kind": "other",
+      "locator": "github-observations.json",
+      "revision": "sha256:139510678014ed5f498063f60f80a9e577e00646abb7c94b3596fd08f68e3479",
+      "summary": "github-observations.json"
+    },
+    {
+      "id": "A-KNOWLEDGE",
+      "kind": "knowledge",
+      "locator": "knowledge-candidates.json",
+      "revision": "sha256:848782b40b0a9b38ad720fd3b579ffbdbdd37d34d83a0c5e1f791162ff8fa20e",
+      "summary": "knowledge-candidates.json"
+    },
+    {
+      "id": "A-SAFETY",
+      "kind": "other",
+      "locator": "publication-safety.json",
+      "revision": "sha256:e69f6fcb4a38a622b5dc1df219cb199158d34235074bf71d0a90569a333c302d",
+      "summary": "publication-safety.json"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-REVIEW",
+      "claim": "All assigned preparation Review conditions pass with no remaining blocking finding.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE",
+        "A-AI-REVIEW",
+        "A-COVERAGE",
+        "A-OBSERVER",
+        "A-RENDER",
+        "A-OLD",
+        "A-NEW",
+        "A-TESTS"
+      ],
+      "locator": "measurements.json",
+      "observation": "Independent exact-head/config/four-artifact review; preparation only, current Manifest compatibility separately measured."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "unverified",
+      "scope": "Product acceptance outside assigned preparation Review.",
+      "artifact_ids": [
+        "A-REPORT"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "unverified",
+      "scope": "Product acceptance outside assigned preparation Review.",
+      "artifact_ids": [
+        "A-REPORT"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "covered",
+      "scope": "Assigned P0 preparation Review only; product AC-3 remains unverified.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE"
+      ],
+      "evidence_ids": [
+        "E-REVIEW"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [
+    {
+      "id": "K-review-neutral-snapshots",
+      "domain": "gitops-review",
+      "summary": "Use actual rendered configuration as an independent observation baseline and challenge every current/comparison/operation snapshot separately, including typed neutral forms.",
+      "evidence_ids": [
+        "E-REVIEW"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "approved_public"
+    },
+    {
+      "id": "K-disabled-dependency-compatibility",
+      "domain": "gitops-dependency-review",
+      "summary": "A newly merged disabled chart can preserve a preparation-only impact judgment when registered source/value bytes and their actual local renders are independently unchanged.",
+      "evidence_ids": [
+        "E-REVIEW"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "approved_public"
+    }
+  ],
+  "publication": "public_safe"
+}

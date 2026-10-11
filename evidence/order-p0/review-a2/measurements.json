@@ -1,0 +1,199 @@
+{
+  "document_type": "independent_review_measurements",
+  "public_alias": "order-p0-review-a2",
+  "role": "review",
+  "epoch": 1,
+  "attempt": 2,
+  "subject": {
+    "repository": "syuhei0519/platform-gitops",
+    "pr_number": 58,
+    "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+    "base_sha": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+    "target_revision": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+    "config_revision": "sha256:2307e0e0bc59910bb975ac006df55b1029aa0e210de99b8b6b757934c770b3f2",
+    "merge_group_sha": null
+  },
+  "system_revision": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+  "root_tree": "566f72d09bbbd567f2ebfefdde6d353587a9d4c6",
+  "observed_at": "2026-10-11T18:55:00.522150+00:00",
+  "valid_until": "2026-10-12T18:55:00.522150+00:00",
+  "validity_basis": "24h bounded fixed-source measurement; changes in head/base/config/target/dependency applicability, contradictory evidence or expiry invalidate reuse. No policy/Test expiry extension.",
+  "policy_observed_at": "2026-10-11T18:23:48Z",
+  "policy_valid_until": "2026-10-11T19:08:48Z",
+  "original_test_valid_until": "2026-10-11T19:08:48Z",
+  "context_sha256": "17a53be660510e495be2fde174863dca46fa2a1f6afbc79731c7424000010153",
+  "config_sha256": "2307e0e0bc59910bb975ac006df55b1029aa0e210de99b8b6b757934c770b3f2",
+  "fixed_artifacts": [
+    {
+      "id": "order-applications",
+      "locator": "artifacts/order-applications",
+      "revision": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "sha256": "de513a9849e81ea479076027461d0542aea4104b75fe4db39988aadb4fffbcfd",
+      "size_bytes": 1274
+    },
+    {
+      "id": "workloads-schema",
+      "locator": "artifacts/workloads-schema",
+      "revision": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "sha256": "24c6cf3632e199a1c7b4b3cdfe93798741fd4ac11839d8bfbd4cba32b1f62e3c",
+      "size_bytes": 864
+    },
+    {
+      "id": "bootstrap-observer",
+      "locator": "artifacts/bootstrap-observer",
+      "revision": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "sha256": "299878ff1104c0c9adeed1a27ac731f803c641e3495bf2afa21a6bc529aee676",
+      "size_bytes": 7138
+    },
+    {
+      "id": "order-configuration",
+      "locator": "artifacts/order-configuration",
+      "revision": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "sha256": "45ef1bd43f31706bee0ca69b8464bf4e655fd74e0ce34e269447b41235aa014f",
+      "size_bytes": 3839
+    }
+  ],
+  "conditions": [
+    {
+      "id": "P0-S1",
+      "outcome": "passed",
+      "review": "orderEnabled=false既定で、新Order関連Applicationを生成しない。既存3Application/namespace/AppProject/既存Account main追跡とdefault/local renderを不変に保つ。",
+      "evidence": [
+        "results/render.json"
+      ]
+    },
+    {
+      "id": "P0-S2",
+      "outcome": "passed",
+      "review": "将来有効化時のOrder専用40桁Manifest revisionと独立DB→OrderのApplication定義を用意し、欠落/浮動revision/不正値をfail-closedに検証する。trueは合成render fixtureだけで、live valuesはfalse。",
+      "evidence": [
+        "results/render.json"
+      ]
+    },
+    {
+      "id": "P0-S3",
+      "outcome": "passed",
+      "review": "bootstrap observerのleaf/hook対象をoptionalに拡張し、disabledでは既存3Appだけ、enabledではOrder DB/Orderの欠落・進行・失敗・revision/health/migration状態を正しく扱う。未知状態を成功化せず、既存observer動作を回帰検証する。",
+      "evidence": [
+        "results/observer.json",
+        "results/original-old.json",
+        "results/original-new-binary.json"
+      ]
+    },
+    {
+      "id": "P0-S4",
+      "outcome": "passed",
+      "review": "全既存関連testsと新schema/render/observer正常異常境界試験を実行し、設定とドキュメント整合、デプロイ影響noneの根拠、P1/T6/T7と必要承認/環境/失敗対応を引き渡す。",
+      "evidence": [
+        "coverage.json",
+        "test-results.json",
+        "results/source-scan.json",
+        "results/render-scan.json"
+      ]
+    }
+  ],
+  "ai_review": {
+    "id": "order-p0-review-a2-ai-review",
+    "kind": "ai_review",
+    "subject": {
+      "repository": "syuhei0519/platform-gitops",
+      "pr_number": 58,
+      "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "base_sha": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+      "target_revision": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "config_revision": "sha256:2307e0e0bc59910bb975ac006df55b1029aa0e210de99b8b6b757934c770b3f2",
+      "merge_group_sha": null
+    },
+    "observed_at": "2026-10-11T18:55:00.522150+00:00",
+    "valid_until": "2026-10-12T18:55:00.522150+00:00",
+    "locator": "measurements.json",
+    "observation": "Independent fixed-source P0-S1..S4 review passes; all17 differences read,1655 new CLI cases, original14 reproduced old/rejected repaired, new-head renders/schema and current M1 compatibility measured. No blocking findings; products unverified.",
+    "producer": "order-p0-review-a2",
+    "independent": true,
+    "ac_ids": [],
+    "condition_ids": [
+      "P0-S1",
+      "P0-S2",
+      "P0-S3",
+      "P0-S4"
+    ],
+    "artifact_ids": [
+      "order-applications",
+      "workloads-schema",
+      "bootstrap-observer",
+      "order-configuration"
+    ]
+  },
+  "findings": [],
+  "observer": {
+    "new_review_cases": 1655,
+    "matched": 1655,
+    "original_old_false_successes": 14,
+    "original_repaired_matched": 27,
+    "old_script_render_scope": "e01882d old checkout; new-head renders independently measured",
+    "timeout_block_seconds": 0.4038,
+    "timeout_regressed_db_seconds": 2.4041
+  },
+  "manifest": {
+    "historical_config_baseline": "bc6adaedcd645a4663c23284b977a3dd36c0796d",
+    "supplemental_revision": "df8c8b5d93e48bc1f0e5ced1678bba2e27d6a1f9",
+    "tree": "47ea076ac6f481fdf6a1588abcfd0aaf07c4e25d",
+    "registered_three_sources_values_local_renders": "unchanged",
+    "new_order_default_local": "false and zero resource documents",
+    "historical_test_applicability": "P0 registered-resource/none evidence remains applicable on independently verified unchanged boundaries; no Test validity renewal"
+  },
+  "input_delivery": {
+    "canonical_consumer_exit": 0,
+    "explicit": 96,
+    "objects": 175,
+    "bytes": 2515966,
+    "manifest_sha256": "9786976a65828efb1dfc949379ccae22d28a7e9d56fcdd3cff36befe48071e1d",
+    "publication_receipt_sha256": "08452771e9183c7e4af5800baf70e8cba885c60c8394d9b0a712ccf4c6d6a3dc",
+    "historical_publication_approval": "unverified",
+    "current_consumer_use_approval": "approved",
+    "private_original_equivalence": "unverified"
+  },
+  "product_outcomes": [
+    {
+      "ac_id": "AC-1",
+      "outcome": "unverified"
+    },
+    {
+      "ac_id": "AC-2",
+      "outcome": "unverified"
+    },
+    {
+      "ac_id": "AC-3",
+      "outcome": "unverified"
+    }
+  ],
+  "followup": [
+    {
+      "ac_id": "AC-3",
+      "owner": "Manager coordinates M2/P1; independent Test measures real Argo/runtime acceptance.",
+      "environment": "Approved isolated kind first, then actual target only with Deployment Ready and required owner/environment approval.",
+      "method": "Use genuine B2 image digest, merged M2 revision and fixed P1 candidate, check migration/DB/Service/ArgoSyncedHealthy/runtimeimageID and AccountOrder regressions, then repeat final integrated main state.",
+      "dependencies": [
+        "B2 actual Order release",
+        "M1 disabled charts and M2 realdigest selection",
+        "P1 fixed final Manifestrevision",
+        "Authorized kind/context/Secret/PVC/rollback readiness",
+        "T7 final integrated measurement"
+      ],
+      "failure_action": "Stop affected merge/enable/deploy, retain Account data and OrderPVC, record safe failure evidence, forward-fix and independently retest."
+    }
+  ],
+  "classification": {
+    "pr_kind": "preparation",
+    "deployment_effect": "none",
+    "issue_integration_scope": "aggregate_required"
+  },
+  "manager_readiness": "not_assessed",
+  "residual_risks": [
+    "Sequential snapshots are not atomic; correct-looking old bytes cannot prove controller freshness or operation-time project/destination.",
+    "Runtime Service/imageID/migration/CRUD/persistence and all product AC remain unverified.",
+    "Account main tracking is intentionally unchanged; later Manifest changes require applicability review.",
+    "Operator must align optional observer flags with approved values; disabled CLI does not discover enabled Order.",
+    "Specialist qualified issue identity is retained; direct pairing to canonical Manager context is not claimed."
+  ]
+}

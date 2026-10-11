@@ -1,0 +1,16 @@
+{
+  "document_type": "publication_safety_review",
+  "public_alias": "order-p0-review-a2",
+  "scope": "Reviewed Review2 report, synthetic fixture generators/results, exact public context/config, tests/security summaries and pending candidates.",
+  "representation": "original public-safe Review evidence; received private execution originals not inspected or claimed equivalent",
+  "excluded": [
+    "private authorization and Consumption Receipt",
+    "actual task/thread identifiers",
+    "private originals and their digests",
+    "credentials",
+    "internal operational logs"
+  ],
+  "authorization_boundary": "Existing Owner authorization covers safe same-purpose evidence on a dedicated branch; no downstream Consumer authority issued.",
+  "classification": "public_safe",
+  "reviewed_at": "2026-10-11T18:55:00.522150+00:00"
+}

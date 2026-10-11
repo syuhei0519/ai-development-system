@@ -1,0 +1,698 @@
+{
+  "document_type": "review_reproductions",
+  "synthetic_sample": true,
+  "started_at": "2026-10-11T18:49:18.048172+00:00",
+  "renders": [
+    {
+      "chart": "root",
+      "values": "default",
+      "equal": true,
+      "sizes": [
+        2619,
+        2619
+      ],
+      "sha256": [
+        "c69faea1649252f4495606f271cbbff5cebf8b98cae6cde6d103a7fb2c6e8e1c",
+        "c69faea1649252f4495606f271cbbff5cebf8b98cae6cde6d103a7fb2c6e8e1c"
+      ]
+    },
+    {
+      "chart": "root",
+      "values": "local",
+      "equal": true,
+      "sizes": [
+        4331,
+        4331
+      ],
+      "sha256": [
+        "8518d5f7e12d5cff1be0274b41ee38fcbced4ec0bc84d06aa87cb7c7deecda83",
+        "8518d5f7e12d5cff1be0274b41ee38fcbced4ec0bc84d06aa87cb7c7deecda83"
+      ]
+    },
+    {
+      "chart": "platform",
+      "values": "default",
+      "equal": true,
+      "sizes": [
+        1608,
+        1608
+      ],
+      "sha256": [
+        "38f4d485c94f37f76ce70b3d8fd7c755716e9192977b06c7c0ced20fb369193e",
+        "38f4d485c94f37f76ce70b3d8fd7c755716e9192977b06c7c0ced20fb369193e"
+      ]
+    },
+    {
+      "chart": "platform",
+      "values": "local",
+      "equal": true,
+      "sizes": [
+        4800,
+        4800
+      ],
+      "sha256": [
+        "4c022b9aac2fbb0cd9ccc733847cbe52afb2d1d664fa7d33bbbec253d75a26ed",
+        "4c022b9aac2fbb0cd9ccc733847cbe52afb2d1d664fa7d33bbbec253d75a26ed"
+      ]
+    },
+    {
+      "chart": "workloads",
+      "values": "default",
+      "equal": true,
+      "sizes": [
+        2196,
+        2196
+      ],
+      "sha256": [
+        "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5",
+        "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5"
+      ]
+    },
+    {
+      "chart": "workloads",
+      "values": "local",
+      "equal": true,
+      "sizes": [
+        2196,
+        2196
+      ],
+      "sha256": [
+        "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5",
+        "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5"
+      ]
+    }
+  ],
+  "observer": [
+    {
+      "case": "baseline-enabled",
+      "mutation": null,
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "elapsed_seconds": 0.107,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql",
+        "lab-local-order"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:18Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:18Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:18Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:18Z lab-local-order-postgresql READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=\n2026-10-11T18:49:18Z lab-local-order READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=order-migration\n",
+      "synthetic_stderr": ""
+    },
+    {
+      "case": "baseline-disabled",
+      "mutation": null,
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "elapsed_seconds": 0.065,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:18Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:18Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:18Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n",
+      "synthetic_stderr": ""
+    },
+    {
+      "case": "order-postgresql/wrong-project",
+      "mutation": {
+        "application": "lab-local-order-postgresql",
+        "path": "spec.project",
+        "value": "default"
+      },
+      "expected_exit": 1,
+      "actual_exit": 0,
+      "matched": false,
+      "elapsed_seconds": 0.104,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql",
+        "lab-local-order"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:18Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:18Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:18Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:19Z lab-local-order-postgresql READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=\n2026-10-11T18:49:19Z lab-local-order READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=order-migration\n",
+      "synthetic_stderr": ""
+    },
+    {
+      "case": "order-postgresql/wrong-namespace",
+      "mutation": {
+        "application": "lab-local-order-postgresql",
+        "path": "spec.destination.namespace",
+        "value": "other"
+      },
+      "expected_exit": 1,
+      "actual_exit": 0,
+      "matched": false,
+      "elapsed_seconds": 0.104,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql",
+        "lab-local-order"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:19Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:19Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:19Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:19Z lab-local-order-postgresql READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=\n2026-10-11T18:49:19Z lab-local-order READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=order-migration\n",
+      "synthetic_stderr": ""
+    },
+    {
+      "case": "order-postgresql/wrong-cluster",
+      "mutation": {
+        "application": "lab-local-order-postgresql",
+        "path": "spec.destination.server",
+        "value": "https://example.invalid"
+      },
+      "expected_exit": 1,
+      "actual_exit": 0,
+      "matched": false,
+      "elapsed_seconds": 0.093,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql",
+        "lab-local-order"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:19Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:19Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:19Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:19Z lab-local-order-postgresql READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=\n2026-10-11T18:49:19Z lab-local-order READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=order-migration\n",
+      "synthetic_stderr": ""
+    },
+    {
+      "case": "order-postgresql/wrong-source-path",
+      "mutation": {
+        "application": "lab-local-order-postgresql",
+        "path": "spec.source.path",
+        "value": "charts/other"
+      },
+      "expected_exit": 1,
+      "actual_exit": 0,
+      "matched": false,
+      "elapsed_seconds": 0.109,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql",
+        "lab-local-order"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:19Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:19Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:19Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:19Z lab-local-order-postgresql READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=\n2026-10-11T18:49:19Z lab-local-order READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=order-migration\n",
+      "synthetic_stderr": ""
+    },
+    {
+      "case": "order-postgresql/wrong-repository",
+      "mutation": {
+        "application": "lab-local-order-postgresql",
+        "path": "spec.source.repoURL",
+        "value": "https://github.com/example/other.git"
+      },
+      "expected_exit": 1,
+      "actual_exit": 0,
+      "matched": false,
+      "elapsed_seconds": 0.121,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql",
+        "lab-local-order"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:19Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:19Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:19Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:19Z lab-local-order-postgresql READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=\n2026-10-11T18:49:19Z lab-local-order READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=order-migration\n",
+      "synthetic_stderr": ""
+    },
+    {
+      "case": "order-postgresql/changed-helm-values",
+      "mutation": {
+        "application": "lab-local-order-postgresql",
+        "path": "spec.source.helm.parameters",
+        "value": [
+          {
+            "name": "enabled",
+            "value": "false"
+          }
+        ]
+      },
+      "expected_exit": 1,
+      "actual_exit": 0,
+      "matched": false,
+      "elapsed_seconds": 0.107,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql",
+        "lab-local-order"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:19Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:19Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:19Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:19Z lab-local-order-postgresql READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=\n2026-10-11T18:49:19Z lab-local-order READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=order-migration\n",
+      "synthetic_stderr": ""
+    },
+    {
+      "case": "order-postgresql/deleting-application",
+      "mutation": {
+        "application": "lab-local-order-postgresql",
+        "path": "metadata.deletionTimestamp",
+        "value": "2026-10-11T00:00:00Z"
+      },
+      "expected_exit": 1,
+      "actual_exit": 0,
+      "matched": false,
+      "elapsed_seconds": 0.105,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql",
+        "lab-local-order"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:19Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:19Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:19Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:19Z lab-local-order-postgresql READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=\n2026-10-11T18:49:19Z lab-local-order READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=order-migration\n",
+      "synthetic_stderr": ""
+    },
+    {
+      "case": "order-postgresql/source-drift",
+      "mutation": {
+        "application": "lab-local-order-postgresql",
+        "path": "spec.source.targetRevision",
+        "value": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "matched": true,
+      "elapsed_seconds": 0.603,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:19Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:19Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:19Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:19Z lab-local-order-postgresql WAIT Order source/operation revision does not match the fixed Manifest commit\n",
+      "synthetic_stderr": "leaf readiness timeout; preserve failed Job diagnostics and perform explicit whole-Application sync after repair\n"
+    },
+    {
+      "case": "order-postgresql/operation-drift",
+      "mutation": {
+        "application": "lab-local-order-postgresql",
+        "path": "status.operationState.syncResult.revision",
+        "value": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "matched": true,
+      "elapsed_seconds": 0.602,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:20Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:20Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:20Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:20Z lab-local-order-postgresql WAIT Order source/operation revision does not match the fixed Manifest commit\n",
+      "synthetic_stderr": "leaf readiness timeout; preserve failed Job diagnostics and perform explicit whole-Application sync after repair\n"
+    },
+    {
+      "case": "order-postgresql/unknown-phase",
+      "mutation": {
+        "application": "lab-local-order-postgresql",
+        "path": "status.operationState.phase",
+        "value": "NewUnknownState"
+      },
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "matched": true,
+      "elapsed_seconds": 0.602,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:20Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:20Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:20Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:20Z lab-local-order-postgresql WAIT operation phase=NewUnknownState\n",
+      "synthetic_stderr": "leaf readiness timeout; preserve failed Job diagnostics and perform explicit whole-Application sync after repair\n"
+    },
+    {
+      "case": "order-postgresql/unhealthy-resource",
+      "mutation": {
+        "application": "lab-local-order-postgresql",
+        "path": "status.resources.0.health",
+        "value": {
+          "status": "Degraded"
+        }
+      },
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "matched": true,
+      "elapsed_seconds": 0.602,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:21Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:21Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:21Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:21Z lab-local-order-postgresql WAIT Synced/Healthy StatefulSet order-postgresql observation missing\n",
+      "synthetic_stderr": "leaf readiness timeout; preserve failed Job diagnostics and perform explicit whole-Application sync after repair\n"
+    },
+    {
+      "case": "order-postgresql/wrong-resource-namespace",
+      "mutation": {
+        "application": "lab-local-order-postgresql",
+        "path": "status.resources.0.namespace",
+        "value": "other"
+      },
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "matched": true,
+      "elapsed_seconds": 0.604,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:22Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:22Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:22Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:22Z lab-local-order-postgresql WAIT Synced/Healthy StatefulSet order-postgresql observation missing\n",
+      "synthetic_stderr": "leaf readiness timeout; preserve failed Job diagnostics and perform explicit whole-Application sync after repair\n"
+    },
+    {
+      "case": "order/wrong-project",
+      "mutation": {
+        "application": "lab-local-order",
+        "path": "spec.project",
+        "value": "default"
+      },
+      "expected_exit": 1,
+      "actual_exit": 0,
+      "matched": false,
+      "elapsed_seconds": 0.099,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql",
+        "lab-local-order"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:22Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:22Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:22Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:22Z lab-local-order-postgresql READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=\n2026-10-11T18:49:22Z lab-local-order READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=order-migration\n",
+      "synthetic_stderr": ""
+    },
+    {
+      "case": "order/wrong-namespace",
+      "mutation": {
+        "application": "lab-local-order",
+        "path": "spec.destination.namespace",
+        "value": "other"
+      },
+      "expected_exit": 1,
+      "actual_exit": 0,
+      "matched": false,
+      "elapsed_seconds": 0.1,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql",
+        "lab-local-order"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:22Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:22Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:22Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:22Z lab-local-order-postgresql READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=\n2026-10-11T18:49:22Z lab-local-order READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=order-migration\n",
+      "synthetic_stderr": ""
+    },
+    {
+      "case": "order/wrong-cluster",
+      "mutation": {
+        "application": "lab-local-order",
+        "path": "spec.destination.server",
+        "value": "https://example.invalid"
+      },
+      "expected_exit": 1,
+      "actual_exit": 0,
+      "matched": false,
+      "elapsed_seconds": 0.105,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql",
+        "lab-local-order"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:22Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:22Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:22Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:22Z lab-local-order-postgresql READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=\n2026-10-11T18:49:22Z lab-local-order READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=order-migration\n",
+      "synthetic_stderr": ""
+    },
+    {
+      "case": "order/wrong-source-path",
+      "mutation": {
+        "application": "lab-local-order",
+        "path": "spec.source.path",
+        "value": "charts/other"
+      },
+      "expected_exit": 1,
+      "actual_exit": 0,
+      "matched": false,
+      "elapsed_seconds": 0.109,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql",
+        "lab-local-order"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:23Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:23Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:23Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:23Z lab-local-order-postgresql READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=\n2026-10-11T18:49:23Z lab-local-order READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=order-migration\n",
+      "synthetic_stderr": ""
+    },
+    {
+      "case": "order/wrong-repository",
+      "mutation": {
+        "application": "lab-local-order",
+        "path": "spec.source.repoURL",
+        "value": "https://github.com/example/other.git"
+      },
+      "expected_exit": 1,
+      "actual_exit": 0,
+      "matched": false,
+      "elapsed_seconds": 0.095,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql",
+        "lab-local-order"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:23Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:23Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:23Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:23Z lab-local-order-postgresql READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=\n2026-10-11T18:49:23Z lab-local-order READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=order-migration\n",
+      "synthetic_stderr": ""
+    },
+    {
+      "case": "order/changed-helm-values",
+      "mutation": {
+        "application": "lab-local-order",
+        "path": "spec.source.helm.parameters",
+        "value": [
+          {
+            "name": "enabled",
+            "value": "false"
+          }
+        ]
+      },
+      "expected_exit": 1,
+      "actual_exit": 0,
+      "matched": false,
+      "elapsed_seconds": 0.094,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql",
+        "lab-local-order"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:23Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:23Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:23Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:23Z lab-local-order-postgresql READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=\n2026-10-11T18:49:23Z lab-local-order READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=order-migration\n",
+      "synthetic_stderr": ""
+    },
+    {
+      "case": "order/deleting-application",
+      "mutation": {
+        "application": "lab-local-order",
+        "path": "metadata.deletionTimestamp",
+        "value": "2026-10-11T00:00:00Z"
+      },
+      "expected_exit": 1,
+      "actual_exit": 0,
+      "matched": false,
+      "elapsed_seconds": 0.097,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql",
+        "lab-local-order"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:23Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:23Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:23Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:23Z lab-local-order-postgresql READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=\n2026-10-11T18:49:23Z lab-local-order READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=order-migration\n",
+      "synthetic_stderr": ""
+    },
+    {
+      "case": "order/source-drift",
+      "mutation": {
+        "application": "lab-local-order",
+        "path": "spec.source.targetRevision",
+        "value": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "matched": true,
+      "elapsed_seconds": 0.603,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql",
+        "lab-local-order"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:23Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:23Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:23Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:23Z lab-local-order-postgresql READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=\n2026-10-11T18:49:23Z lab-local-order WAIT Order source/operation revision does not match the fixed Manifest commit\n",
+      "synthetic_stderr": "leaf readiness timeout; preserve failed Job diagnostics and perform explicit whole-Application sync after repair\n"
+    },
+    {
+      "case": "order/operation-drift",
+      "mutation": {
+        "application": "lab-local-order",
+        "path": "status.operationState.syncResult.revision",
+        "value": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "matched": true,
+      "elapsed_seconds": 0.603,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql",
+        "lab-local-order"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:24Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:24Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:24Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:24Z lab-local-order-postgresql READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=\n2026-10-11T18:49:24Z lab-local-order WAIT migration sync evidence is not from expected revision; explicit whole-Application sync required\n",
+      "synthetic_stderr": "leaf readiness timeout; preserve failed Job diagnostics and perform explicit whole-Application sync after repair\n"
+    },
+    {
+      "case": "order/unknown-phase",
+      "mutation": {
+        "application": "lab-local-order",
+        "path": "status.operationState.phase",
+        "value": "NewUnknownState"
+      },
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "matched": true,
+      "elapsed_seconds": 0.603,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql",
+        "lab-local-order"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:24Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:24Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:24Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:24Z lab-local-order-postgresql READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=\n2026-10-11T18:49:24Z lab-local-order WAIT operation phase=NewUnknownState\n",
+      "synthetic_stderr": "leaf readiness timeout; preserve failed Job diagnostics and perform explicit whole-Application sync after repair\n"
+    },
+    {
+      "case": "order/unhealthy-resource",
+      "mutation": {
+        "application": "lab-local-order",
+        "path": "status.resources.0.health",
+        "value": {
+          "status": "Degraded"
+        }
+      },
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "matched": true,
+      "elapsed_seconds": 0.603,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql",
+        "lab-local-order"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:25Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:25Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:25Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:25Z lab-local-order-postgresql READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=\n2026-10-11T18:49:25Z lab-local-order WAIT Synced/Healthy Deployment order observation missing\n",
+      "synthetic_stderr": "leaf readiness timeout; preserve failed Job diagnostics and perform explicit whole-Application sync after repair\n"
+    },
+    {
+      "case": "order/wrong-resource-namespace",
+      "mutation": {
+        "application": "lab-local-order",
+        "path": "status.resources.0.namespace",
+        "value": "other"
+      },
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "matched": true,
+      "elapsed_seconds": 0.604,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql",
+        "lab-local-order"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:25Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:25Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:25Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:25Z lab-local-order-postgresql READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=\n2026-10-11T18:49:25Z lab-local-order WAIT Synced/Healthy Deployment order observation missing\n",
+      "synthetic_stderr": "leaf readiness timeout; preserve failed Job diagnostics and perform explicit whole-Application sync after repair\n"
+    },
+    {
+      "case": "order/failed-hook",
+      "mutation": {
+        "application": "lab-local-order",
+        "path": "status.operationState.syncResult.resources.0.hookPhase",
+        "value": "Failed"
+      },
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "matched": true,
+      "elapsed_seconds": 0.602,
+      "calls": [
+        "lab-local-postgresql",
+        "lab-local-backend",
+        "lab-local-frontend",
+        "lab-local-order-postgresql",
+        "lab-local-order"
+      ],
+      "synthetic_stdout": "2026-10-11T18:49:26Z lab-local-postgresql READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:26Z lab-local-backend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=backend-migration\n2026-10-11T18:49:26Z lab-local-frontend READY revision=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb hook=\n2026-10-11T18:49:26Z lab-local-order-postgresql READY revision=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hook=\n2026-10-11T18:49:26Z lab-local-order WAIT successful Sync hook order-migration missing\n",
+      "synthetic_stderr": "leaf readiness timeout; preserve failed Job diagnostics and perform explicit whole-Application sync after repair\n"
+    }
+  ],
+  "schema": [
+    {
+      "case": "default",
+      "exit": 0,
+      "expected": 0,
+      "matched": true
+    },
+    {
+      "case": "enabled",
+      "exit": 0,
+      "expected": 0,
+      "matched": true
+    },
+    {
+      "case": "enabled-empty",
+      "exit": 1,
+      "expected": 1,
+      "matched": true
+    },
+    {
+      "case": "enabled-floating",
+      "exit": 1,
+      "expected": 1,
+      "matched": true
+    },
+    {
+      "case": "flag-string",
+      "exit": 1,
+      "expected": 1,
+      "matched": true
+    },
+    {
+      "case": "unknown-key",
+      "exit": 1,
+      "expected": 1,
+      "matched": true
+    },
+    {
+      "case": "disabled-staged",
+      "exit": 0,
+      "expected": 0,
+      "matched": true
+    }
+  ],
+  "completed_at": "2026-10-11T18:49:27.006197+00:00"
+}

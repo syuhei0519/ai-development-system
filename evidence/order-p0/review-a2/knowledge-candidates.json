@@ -1,0 +1,22 @@
+{
+  "document_type": "knowledge_candidates",
+  "publication_status": "pending_manager_review",
+  "candidates": [
+    {
+      "id": "K-review-neutral-snapshots",
+      "domain": "gitops-review",
+      "summary": "Use actual rendered configuration as an independent observation baseline and challenge every current/comparison/operation snapshot separately, including typed neutral forms.",
+      "evidence": "Review2 1655 CLI cases and original14 old/new reproductions. Argo v3.5.2 snapshots do not expose operation destination/project.",
+      "source": "https://github.com/syuhei0519/platform-gitops/tree/5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e/tools/bootstrap",
+      "scope": "Preparation-only static observer Review; not runtime freshness proof."
+    },
+    {
+      "id": "K-disabled-dependency-compatibility",
+      "domain": "gitops-dependency-review",
+      "summary": "A newly merged disabled chart can preserve a preparation-only impact judgment when registered source/value bytes and their actual local renders are independently unchanged.",
+      "evidence": "Manifest df8c8b5 versus bc6adae: existing3 local renders equal; new Order default/local renders empty. Historical config and Test expiry retained.",
+      "source": "https://github.com/syuhei0519/application-manifest/tree/df8c8b5d93e48bc1f0e5ced1678bba2e27d6a1f9/charts/order",
+      "scope": "Specific fixed revisions and existing registration boundaries only; no future M2/P1/runtime assumption."
+    }
+  ]
+}

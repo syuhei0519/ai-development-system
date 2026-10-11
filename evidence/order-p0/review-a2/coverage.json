@@ -1,0 +1,109 @@
+{
+  "document_type": "review_diff_coverage",
+  "head": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+  "base": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+  "files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "reviewed": true,
+      "sha256": "996404ab8df03ae66113256b1426a7a8827dcc4fa054bfc23034262ffda94701",
+      "assessment": "Actual-render Order contract included in GitHub render step; app CRD aggregation includes synthetic Order definitions."
+    },
+    {
+      "path": "charts/workloads/templates/order-applications.yaml",
+      "reviewed": true,
+      "sha256": "de513a9849e81ea479076027461d0542aea4104b75fe4db39988aadb4fffbcfd",
+      "assessment": "False guard, required lowercase fixed SHA, independent DB then Order names/source/Helm/waves, same namespace/project and prune protections."
+    },
+    {
+      "path": "charts/workloads/values.schema.json",
+      "reviewed": true,
+      "sha256": "24c6cf3632e199a1c7b4b3cdfe93798741fd4ac11839d8bfbd4cba32b1f62e3c",
+      "assessment": "Closed keys and boolean typing; empty-or-fixed SHA while disabled, fixed SHA required when enabled; 26 independent schema cases."
+    },
+    {
+      "path": "charts/workloads/values.yaml",
+      "reviewed": true,
+      "sha256": "579456ac99e497ad4e5c94b1c2d65d7d4627400073d835f2207353c85b07054e",
+      "assessment": "False default, empty revision; all six P0 render comparisons identical."
+    },
+    {
+      "path": "ci/fixtures/order-p0/README.md",
+      "reviewed": true,
+      "sha256": "c419e148b4960e284138a518462164a7cfdc2f22d1bb6dec3c1a8cce0a170a17",
+      "assessment": "Truthful old-base raw fixture and synthetic enabled-source limitations."
+    },
+    {
+      "path": "ci/fixtures/order-p0/enabled.yaml",
+      "reviewed": true,
+      "sha256": "97d092410f67c1aadac6449c9062313d18dc974b9ed0811a01bc4be9c57c4703",
+      "assessment": "Fabricated SHA is synthetic only; not deployed."
+    },
+    {
+      "path": "ci/fixtures/order-p0/workloads-before.yaml",
+      "reviewed": true,
+      "sha256": "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5",
+      "assessment": "Independently regenerated old/base default and local outputs are byte-identical."
+    },
+    {
+      "path": "ci/includes/full-pipeline.yml",
+      "reviewed": true,
+      "sha256": "f6f8d1e368c0d0b2dc13fafd65ca37d19eb78ff2bedfed2ef2c7af52af1bb118",
+      "assessment": "GitLab render step also runs semantic Order contract."
+    },
+    {
+      "path": "ci/test-order-workloads.sh",
+      "reviewed": true,
+      "sha256": "3fa2e231c42f5c863d4d4c032cb89f11c2e56e450fc0d026e7097abffb2d5eaa",
+      "assessment": "Executed; raw prefix equality and negative schema defense, including skip-schema required/floating checks."
+    },
+    {
+      "path": "ci/validate.sh",
+      "reviewed": true,
+      "sha256": "ebeb8c94db40c4e8561108be032dfd4eba7e1288d07ec6b3d9c49943cc6be7a5",
+      "assessment": "Executed complete checksums, renders and Order test; CRD aggregation includes enabled synthetic Applications."
+    },
+    {
+      "path": "docs/operations/initial-leaf-readiness.md",
+      "reviewed": true,
+      "sha256": "1d923732046e714bb115cc52cb43b693dd1e2e73c73be2750652d4967f84f186",
+      "assessment": "P0/none limits and P1/M2/T6/T7 responsibilities, actual Argo snapshot limits, deletion/legacy difference accurately disclosed."
+    },
+    {
+      "path": "environments/local/workloads.yaml",
+      "reviewed": true,
+      "sha256": "30b9ed7c5b9b1c4e04f889e8b895c32f02250b268ff47ca2919f1d21e1757819",
+      "assessment": "Explicit false and empty SHA; existing Account main reference remains unchanged."
+    },
+    {
+      "path": "tools/bootstrap/main.go",
+      "reviewed": true,
+      "sha256": "299878ff1104c0c9adeed1a27ac731f803c641e3495bf2afa21a6bc529aee676",
+      "assessment": "Read-only finite leaf ordering and repeated earlier-leaf checks; deletion veto before ready; optional Order leaves/resources/hooks."
+    },
+    {
+      "path": "tools/bootstrap/order_configuration.go",
+      "reviewed": true,
+      "sha256": "45ef1bd43f31706bee0ca69b8464bf4e655fd74e0ce34e269447b41235aa014f",
+      "assessment": "Three exact source contracts, two destinations and current identity/project; closed neutral allowlists; missing data never filled from current spec."
+    },
+    {
+      "path": "tools/bootstrap/order_configuration_test.go",
+      "reviewed": true,
+      "sha256": "ee93b5effeaf86e81bcfb15e356debe01ccff2c8a0c0360dc2601883bd5768ce",
+      "assessment": "Read and run all generated mutation and neutral tests; independent CLI mutations additionally executed."
+    },
+    {
+      "path": "tools/bootstrap/order_render_test.go",
+      "reviewed": true,
+      "sha256": "d6b1a8fdcedbe63c317e22e23d41b7a4b5c975f47f40721ac572e09dad6ef09b",
+      "assessment": "Read and actually executed with real renders; fixed topology and existing-prefix semantics."
+    },
+    {
+      "path": "tools/bootstrap/order_test.go",
+      "reviewed": true,
+      "sha256": "1f2ea96279c22b554283e3887cc243e37559c1860a49242658305806123db303",
+      "assessment": "Read and run leaf/state/hook/CLI tests; synthetic only; regressions and finite timeout independently retested."
+    }
+  ]
+}

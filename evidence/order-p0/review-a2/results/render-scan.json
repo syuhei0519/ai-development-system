@@ -1,0 +1,1382 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "trivyVersion": "0.75.0",
+  "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+  "scannedAt": "2026-10-11T18:51:06.616858516Z",
+  "findings": [
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0044",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/clusterrole.yaml",
+      "severity": "CRITICAL",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0046",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/clusterrole.yaml",
+      "severity": "CRITICAL",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0113",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/role.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0011",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/statefulset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0015",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/statefulset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0016",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/statefulset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0018",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/statefulset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/statefulset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/statefulset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0118",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/statefulset.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-application-controller/statefulset.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0011",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-applicationset/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0015",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-applicationset/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0016",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-applicationset/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0018",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-applicationset/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-applicationset/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-applicationset/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0118",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-applicationset/deployment.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-applicationset/deployment.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0049",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-applicationset/role.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0113",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-applicationset/role.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-01010",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-configs/argocd-cm.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0041",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/clusterrole.yaml",
+      "severity": "CRITICAL",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0041",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/clusterrole.yaml",
+      "severity": "CRITICAL",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0011",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0015",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0016",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0018",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0118",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/deployment.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/deployment.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0113",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/role.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0113",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-notifications/role.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0011",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0011",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0015",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0015",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0016",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0016",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0018",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0018",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0118",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-repo-server/deployment.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0046",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/clusterrole.yaml",
+      "severity": "CRITICAL",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0048",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/clusterrole.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0011",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0015",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0016",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0018",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0118",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/deployment.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/deployment.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0049",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/role.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0113",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/argocd-server/role.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0011",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0011",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0015",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0015",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0016",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0016",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0018",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0018",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0118",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/deployment.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0113",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/dex/role.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0011",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/redis/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0015",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/redis/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0016",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/redis/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0018",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/redis/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/redis/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/redis/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": ".charts/argo-cd-10.8.2.tgz/templates/redis/deployment.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0011",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/alertmanager/templates/statefulset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0011",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/alertmanager/templates/statefulset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0015",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/alertmanager/templates/statefulset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0015",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/alertmanager/templates/statefulset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0016",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/alertmanager/templates/statefulset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0016",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/alertmanager/templates/statefulset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0018",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/alertmanager/templates/statefulset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0018",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/alertmanager/templates/statefulset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/alertmanager/templates/statefulset.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/alertmanager/templates/statefulset.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0011",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/kube-state-metrics/templates/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0015",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/kube-state-metrics/templates/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0016",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/kube-state-metrics/templates/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0018",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/kube-state-metrics/templates/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/kube-state-metrics/templates/deployment.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0041",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/kube-state-metrics/templates/role.yaml",
+      "severity": "CRITICAL",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0003",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0004",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0009",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0010",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0011",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0015",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0016",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0018",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0023",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0030",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0104",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0106",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0121",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-node-exporter/templates/daemonset.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0001",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0003",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0004",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0011",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0014",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0015",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0016",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0018",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0030",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0104",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0106",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": ".charts/prometheus-29.35.0.tgz/charts/prometheus-pushgateway/templates/deployment.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0001",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0001",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0003",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0003",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0004",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0004",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0011",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0011",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0014",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0014",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0015",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0015",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0016",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0016",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0018",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0018",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0030",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0030",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0104",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0104",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0106",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0106",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": ".charts/prometheus-29.35.0.tgz/templates/deploy.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": "argocd-pods.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": "argocd-pods.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": "argocd-pods.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": "argocd-pods.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": "argocd-pods.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": "argocd-pods.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": "argocd-pods.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": "argocd-pods.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": "argocd-pods.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": "argocd-pods.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": "argocd-pods.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": "argocd-pods.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": "argocd-pods.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": "argocd-pods.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0118",
+      "path": "argocd-pods.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0118",
+      "path": "argocd-pods.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0118",
+      "path": "argocd-pods.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0118",
+      "path": "argocd-pods.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0118",
+      "path": "argocd-pods.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "argocd-pods.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "argocd-pods.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "argocd-pods.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "argocd-pods.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "argocd-pods.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "argocd-pods.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "argocd-pods.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-01010",
+      "path": "collector-disabled.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "collector-disabled.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-01010",
+      "path": "collector-enabled.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "collector-enabled.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0014",
+      "path": "gitlab-runner.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0020",
+      "path": "gitlab-runner.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0021",
+      "path": "gitlab-runner.yaml",
+      "severity": "LOW",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-01010",
+      "path": "gitlab-runner.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0109",
+      "path": "gitlab-runner.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "gitlab-runner.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "grafana.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0047",
+      "path": "observability-foundation.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "prometheus.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "prometheus.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "prometheus.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0048",
+      "path": "runner-foundation.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0053",
+      "path": "runner-foundation.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0056",
+      "path": "runner-foundation.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0113",
+      "path": "runner-foundation.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    }
+  ],
+  "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+}

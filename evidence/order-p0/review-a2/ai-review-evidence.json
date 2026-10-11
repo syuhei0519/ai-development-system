@@ -1,0 +1,32 @@
+{
+  "id": "order-p0-review-a2-ai-review",
+  "kind": "ai_review",
+  "subject": {
+    "repository": "syuhei0519/platform-gitops",
+    "pr_number": 58,
+    "head_sha": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+    "base_sha": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+    "target_revision": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+    "config_revision": "sha256:2307e0e0bc59910bb975ac006df55b1029aa0e210de99b8b6b757934c770b3f2",
+    "merge_group_sha": null
+  },
+  "observed_at": "2026-10-11T18:55:00.522150+00:00",
+  "valid_until": "2026-10-12T18:55:00.522150+00:00",
+  "locator": "measurements.json",
+  "observation": "Independent fixed-source P0-S1..S4 review passes; all17 differences read,1655 new CLI cases, original14 reproduced old/rejected repaired, new-head renders/schema and current M1 compatibility measured. No blocking findings; products unverified.",
+  "producer": "order-p0-review-a2",
+  "independent": true,
+  "ac_ids": [],
+  "condition_ids": [
+    "P0-S1",
+    "P0-S2",
+    "P0-S3",
+    "P0-S4"
+  ],
+  "artifact_ids": [
+    "order-applications",
+    "workloads-schema",
+    "bootstrap-observer",
+    "order-configuration"
+  ]
+}

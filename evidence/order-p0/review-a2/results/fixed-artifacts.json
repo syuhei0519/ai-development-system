@@ -1,0 +1,47 @@
+{
+  "document_type": "review_fixed_artifact_verification",
+  "head": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+  "root_tree": "566f72d09bbbd567f2ebfefdde6d353587a9d4c6",
+  "context_size": 5956,
+  "context_sha256": "17a53be660510e495be2fde174863dca46fa2a1f6afbc79731c7424000010153",
+  "config_size": 2019,
+  "config_sha256": "2307e0e0bc59910bb975ac006df55b1029aa0e210de99b8b6b757934c770b3f2",
+  "artifacts": [
+    {
+      "id": "order-applications",
+      "locator": "artifacts/order-applications",
+      "revision": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "sha256": "de513a9849e81ea479076027461d0542aea4104b75fe4db39988aadb4fffbcfd",
+      "size_bytes": 1274,
+      "source_path": "charts/workloads/templates/order-applications.yaml",
+      "verified": true
+    },
+    {
+      "id": "workloads-schema",
+      "locator": "artifacts/workloads-schema",
+      "revision": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "sha256": "24c6cf3632e199a1c7b4b3cdfe93798741fd4ac11839d8bfbd4cba32b1f62e3c",
+      "size_bytes": 864,
+      "source_path": "charts/workloads/values.schema.json",
+      "verified": true
+    },
+    {
+      "id": "bootstrap-observer",
+      "locator": "artifacts/bootstrap-observer",
+      "revision": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "sha256": "299878ff1104c0c9adeed1a27ac731f803c641e3495bf2afa21a6bc529aee676",
+      "size_bytes": 7138,
+      "source_path": "tools/bootstrap/main.go",
+      "verified": true
+    },
+    {
+      "id": "order-configuration",
+      "locator": "artifacts/order-configuration",
+      "revision": "5c7ed4c53d1fa05534987dc3c08b8dfbd2c6645e",
+      "sha256": "45ef1bd43f31706bee0ca69b8464bf4e655fd74e0ce34e269447b41235aa014f",
+      "size_bytes": 3839,
+      "source_path": "tools/bootstrap/order_configuration.go",
+      "verified": true
+    }
+  ]
+}
