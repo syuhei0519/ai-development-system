@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "document_type": "knowledge_context",
+  "knowledge_references": [
+    {
+      "id": "K-DELIVERY-001",
+      "locator": "knowledge/curated/validation/delivery-evidence-boundaries.md",
+      "revision": "sha256:efde077ec14efb1991c1393f637be020f036f5e048f888eca75976156aea66f8",
+      "applicability": "固定Git配送の完全性・承認・内容評価を分離する読取り用途。Delivery 1.0/1.2の版を区別する。",
+      "exceptions": [
+        "未公開draft候補。Managerと独立確認前にactive扱いしない。",
+        "製品AC、Readiness、最新独立合格を認定しない。",
+        "後続Consumerの実利用・周期実行は未検証。"
+      ],
+      "sources": [
+        {
+          "locator": "knowledge/raw/validation/evidence/test-report.json",
+          "revision": "sha256:af3a802497eb2007495e47be9088bbc5b1275382b892ecdd41b486fd58fd8613"
+        }
+      ],
+      "lifecycle": "draft",
+      "review_trigger": "修正headの独立Test/Review確定、契約版更新、反例発見、または2026-11-11。"
+    },
+    {
+      "id": "K-VALIDATION-002",
+      "locator": "knowledge/curated/validation/boundary-tests-and-contract-evolution.md",
+      "revision": "sha256:b6784558c0a6131fa0e9f68b89f7861bc63a135076cc5004c446223b8f79d1bd",
+      "applicability": "固定Git URLを扱う準備処理とConsumerの正常境界検査、および元bytesを保つ型付き契約拡張。",
+      "exceptions": [
+        "未公開draft候補。Managerと独立確認前にactive扱いしない。",
+        "製品AC、Readiness、最新独立合格を認定しない。",
+        "後続Consumerの実利用・周期実行は未検証。"
+      ],
+      "sources": [
+        {
+          "locator": "knowledge/raw/validation/evidence/test-report.json",
+          "revision": "sha256:af3a802497eb2007495e47be9088bbc5b1275382b892ecdd41b486fd58fd8613"
+        },
+        {
+          "locator": "knowledge/raw/validation/evidence/review-report.json",
+          "revision": "sha256:ce2793c1454151c9c8c203f4c608048e41a89f3f15b33becb0f8ae61945c9b85"
+        },
+        {
+          "locator": "knowledge/raw/validation/evidence/preparation_probe.py",
+          "revision": "sha256:6c6fa0aa166ad1a112255ef7b731ec6b1564594f533794901fac7cb2d0fa177d"
+        },
+        {
+          "locator": "knowledge/raw/validation/evidence/implementation-blocked.json",
+          "revision": "sha256:29d2ef67748681c07dd456e5a0618be91ede5a9f81feb331ff826ee63f258e03"
+        },
+        {
+          "locator": "knowledge/raw/validation/evidence/implementation-completed.json",
+          "revision": "sha256:47e4461fc6006f65369304b4448715ebdd2bb76cb800156376f8fd5b93963e79"
+        },
+        {
+          "locator": "knowledge/raw/validation/evidence/implementation-repair.json",
+          "revision": "sha256:f9b4a9c13a145adad78a641991f454606501f755450ada6a5695dd1c2937f4ea"
+        }
+      ],
+      "lifecycle": "draft",
+      "review_trigger": "修正headの独立Test/Review確定、契約版更新、反例発見、または2026-11-11。"
+    }
+  ]
+}

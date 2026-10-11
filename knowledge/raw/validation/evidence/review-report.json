@@ -1,0 +1,144 @@
+{
+  "report_type": "independent_review_attempt_1",
+  "role": "review",
+  "attempt": 1,
+  "status": "failed",
+  "verdict": "Blocking R-1 (P2): preparation misclassifies valid blob URLs containing /tree/. No implementation fix applied.",
+  "head": "4b4e9c249451881f1e5eef82efb3a3b111cacbdb",
+  "base": "b1e606544174481b7b6904f811e857f80978c287",
+  "scope": "system/artifact-delivery/cross-reference",
+  "findings": [
+    {
+      "id": "R-1",
+      "severity": "P2",
+      "blocking": true,
+      "title": "Valid blob sources containing /tree/ are misclassified by the preparation CLI",
+      "location": {
+        "path": "scripts/prepare_crossref_bundle.py",
+        "line": 110,
+        "url": "https://github.com/syuhei0519/ai-development-system/blob/4b4e9c249451881f1e5eef82efb3a3b111cacbdb/scripts/prepare_crossref_bundle.py#L110"
+      },
+      "trigger": "A canonical fixed blob URL whose repository is named tree, or whose blob path contains a tree directory, enters the tree branch because the helper searches the entire URL string.",
+      "reproduction": {
+        "command": "python preparation_probe.py HEAD_CHECKOUT RESULTS_JSON",
+        "fixture": "Real local synthetic Git commits with normal blob docs/note.txt and docs/tree/note.txt, immutable candidate and producer Handoff. Only Git fetch routing is replaced for the local fixture.",
+        "control": "synthetic/source + docs/note.txt: helper accepts and formal Consumer accepts.",
+        "failures": [
+          "synthetic/source + docs/tree/note.txt: helper rejects",
+          "synthetic/tree + docs/note.txt: helper rejects"
+        ]
+      },
+      "expected": "All three canonical fixed blob sources prepare successfully with kind=blob, preserving original source strings and fixed bytes.",
+      "actual": "Two supported blob URLs raise ValueError: canonical fixed Git URL required at fixed_url(..., kind=tree). The unchanged Consumer accepts all three when the canonical blob target is explicitly declared in an independent manifest oracle.",
+      "impact": "Documented prepare_crossref_bundle.py workflow cannot produce delivery records for valid ordinary source layouts/repository names. No unsafe acceptance or data execution was observed; this is a deterministic normal-path failure, currently missed by 173/245 tests and the B1 fixture.",
+      "affected_requirements": [
+        "X-2 normal fixed blob resolution in preparation workflow",
+        "X-5 normal/negative coverage",
+        "X-7 additional condition: candidate blob source delivery"
+      ],
+      "fix_conditions": [
+        "Derive blob/tree kind from the canonical GitHub route segment after owner/repository, not from a substring anywhere in the URL. Preserve all current full-commit/path/URL safety checks.",
+        "Add regression cases for repository name tree, blob path containing /tree/, regular blob sources, and actual tree sources; both helper preparation and Consumer should accept the intended valid cases.",
+        "Run required regression and independent verification on the new fixed implementation head. Current Test/Review/B1 evidence must not be automatically reused as a clean review of a changed head."
+      ],
+      "production_fix_applied": false
+    }
+  ],
+  "coverage": [
+    {
+      "id": "X-1",
+      "result": "covered in independent Review scope",
+      "assessment": "Explicit four-record 1.2 dispatch; exact full owner and typed target; structural slot identity, original locator/revision, one-use and finish checks; legacy schema files unchanged.",
+      "code": "scripts/consume_delivery.py:53,178,230; contracts/*-v1.2.schema.json",
+      "evidence": "173 regression; 245 rerun; Review outer-field/type cases"
+    },
+    {
+      "id": "X-2",
+      "result": "not_met in complete Review scope: blocking R-1",
+      "assessment": "Canonical generated GitHub HTTPS repo URL; no redirects or ambient credentials/config; fixed commit type/FETCH_HEAD; safe ancestors, ordinary blob only, full size/hash/Git OID. Full dependency typing and retry identity/Issue checks. Consumer checks passed, but preparation normal-path coverage is blocked by R-1.",
+      "code": "scripts/consume_delivery.py:72,80,119,301",
+      "evidence": "Actual B1; source URL/path/OID/JSON/retry cases; Review Git environment probe; preparation_probe.py / preparation-probe-results.json"
+    },
+    {
+      "id": "X-3",
+      "result": "covered in independent Review scope",
+      "assessment": "Distinct raw commit object namespace, path forbidden; kind/format/URL/revision match; raw size/SHA256 and Git header SHA1 check. No tree/build inference.",
+      "code": "scripts/consume_delivery.py:119,156,161,210,478",
+      "evidence": "Actual B1 raw commit; raw commit faults in 173/245; independent output OID oracle"
+    },
+    {
+      "id": "X-4",
+      "result": "covered in independent Review scope",
+      "assessment": "Independent Manager pin, exact consumer/scope/purpose/expiry/representations, four versions, receipt equality with authority_granted=false. All checks before staged output; failure leaves no new verified output.",
+      "code": "scripts/consume_delivery.py:414,478,494",
+      "evidence": "Private initial/B1 approvals and receipts; 245 four CLI failure cases; Review expiry/representation/output probes"
+    },
+    {
+      "id": "X-5",
+      "result": "not_met in complete Review scope: blocking R-1",
+      "assessment": "173 regressions pass; unchanged 128 verified with fixed-base execution; prior 21 byte-matched from verified immutable patch. Independent Test 245 cases reproduced and Review 43 cases added. Consumer checks passed, but preparation normal-path coverage is blocked by R-1.",
+      "code": "tests/; regression-summary.json; input/independent_probe.py; review_probe.py",
+      "evidence": "All PASS; actual legacy10 and legacy11 rejection tested; preparation_probe.py / preparation-probe-results.json"
+    },
+    {
+      "id": "X-6",
+      "result": "covered in independent Review scope",
+      "assessment": "Immutable actual B1 code commit, Handoff and Research dependencies fetched by new CLI; source bytes retained without rewriting any original document.",
+      "code": "scripts/consume_delivery.py; delivery-observation.json",
+      "evidence": "17 objects/89071 bytes in each actual CLI run, fresh equality and independent hash/OID oracle PASS"
+    },
+    {
+      "id": "X-7",
+      "result": "not_met in complete Review scope: blocking R-1",
+      "assessment": "Strict externally selected candidates profile; no new original fields; exact producer artifact/raw_locator, candidate ID/domain set, original source strings and typed targets; duplicate/extra/missing/unknown type rejected. Pending is not approval. Consumer checks passed, but preparation normal-path coverage is blocked by R-1.",
+      "code": "contracts/knowledge-candidates-v1.schema.json; scripts/delivery_candidates.py:101; scripts/consume_delivery.py:265",
+      "evidence": "173/245 candidate cases; Review second producer, absolute owner locator, same-source multiple candidates, fields and types; preparation_probe.py / preparation-probe-results.json"
+    },
+    {
+      "id": "X-8",
+      "result": "covered in independent Review scope",
+      "assessment": "Complete raw commit/tree traversal with root/ancestor safety, object type/size/OID checks, sorted full descendant inventory and every regular blob. Explicit bounds fail closed and combined bytes checked.",
+      "code": "scripts/delivery_candidates.py:9,26,46,156",
+      "evidence": "173/245 tree oracle/faults; Review independently assembled raw trees, duplicate names, modes, omitted empty subtree, combined limit, changed recheck leaf"
+    },
+    {
+      "id": "X-9",
+      "result": "covered in independent Review scope",
+      "assessment": "Actual B1 candidate/source/tree bytes and Research retry chain validated; System self-test, independent Test, Review, CI and product/integration gates are separated.",
+      "code": "delivery-observation.json; integration-observation.json; assignment-adoption.json",
+      "evidence": "Formal 1.2 CLI and fresh recheck PASS; X-7/X-8 probes; unchanged original Issue and history"
+    }
+  ],
+  "reviewed": [
+    "21-file PR diff, all new schemas/contracts/helpers/tests and compatibility of unchanged validators",
+    "Fixed base agents/review.md, single-issue workflow, contracts and templates",
+    "Strict JSON, source typing, owner/slot and candidate/producer binding, commit and complete trees",
+    "Read-only Git fetch boundaries, no checkout/application execution, staging and error paths",
+    "Original/derivative distinction, retry identity/history and authority boundaries",
+    "Preparation helper control and two real-local-Git source-layout regressions: control passes; two expected accepts fail."
+  ],
+  "residual_risks": [
+    "Manager remains responsible for authorization provenance and trusted local Python/Git/config/proxy/CA. Pins/receipts are not signatures or permission grants.",
+    "Fetch pack network/disk totals and total wall time are not globally capped by payload limits. The contract documents trusted repositories and environment resource isolation; 120-second limits apply per Git call.",
+    "Opaque text, prose citations and binary tree members receive no semantic truth or embedded-document approval. A later typed use requires separate explicit delivery and authorization.",
+    "Fresh receipt verification retrieves new fixed bytes; it does not verify an older output directory. Use only the new successful output.",
+    "Published aliases and derivatives are inspected as supplied; private Producer originals were not available and are not independently certified.",
+    "Historical local attempt-1 commit was not offered by remote. Its original 21-test file was recovered for exact comparison from the already verified published patch; no original source bytes were regenerated.",
+    "Repository metadata/CI are observations, not Merge Readiness. Required human/GitHub review, branch protections, queue, current authorization and Manager IssueCompletion remain separate."
+  ],
+  "gate_states": {
+    "implementation_self_verification": "upstream claim; independent reproduction separately recorded",
+    "independent_test": "upstream Test attempt 1 retained; 245 cases rerun by Review",
+    "independent_review": "failed; blocking R-1 at fixed head",
+    "ci": "observed success at fixed PR test-merge",
+    "github_required_review": "not certified; AI Review is not a substitute",
+    "implementation_ready": "not issued; return R-1 to Implementation",
+    "merge_ready": "not issued",
+    "deployment_ready": "not issued; no app/config deployment changes in the 21-file System diff",
+    "b1_product_ac": "unverified",
+    "b1_implementation_restart": "not authorized",
+    "issue_completion": "Manager only; unverified",
+    "publication": "local unpublished candidate only"
+  },
+  "changes": "No implementation or application changes. No push, PR mutation, comments, merge, deployment, additional API usage, secrets/ruleset changes or subagents."
+}
