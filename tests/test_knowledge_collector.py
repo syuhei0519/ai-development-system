@@ -9,6 +9,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from scripts import knowledge_collector as c
 
@@ -145,6 +146,35 @@ class CollectorTests(unittest.TestCase):
     def test_removed_registry_source_not_forgotten(self):
         self.scan(); self.registry['sources'][0].update(source_id='SYNTHETIC-NEW',inbox_path='empty')
         self.scan(); self.assertEqual(self.status(),'quarantined')
+
+    def test_duplicate_inbox_cannot_hide_source_disappearance(self):
+        first = self.registry['sources'][0]
+        second = dict(first, source_id='SYNTHETIC-SECOND', inbox_path='second')
+        self.registry['sources'].append(second)
+        for key, raw in list(self.source.files.items()):
+            if '/events/' in key[2]:
+                self.source.files[key[:2] + ('second/' + key[2].split('/')[-1],)] = raw
+        self.exhaust('dispatch')
+        before = deepcopy(self.state)
+        # An identical copy remains, but the first source's history is missing.
+        for key in list(self.source.files):
+            if key[2].startswith(first['inbox_path'] + '/'):
+                del self.source.files[key]
+        first['commit'] = 'f' * 40
+        for remove_source in (False, True):
+            if remove_source:
+                self.registry['sources'].remove(first)
+            self.scan()
+            self.assertEqual(self.state['cursors'], before['cursors'])
+            self.assertEqual(self.state['scans'][-1]['result'], 'quarantined')
+            self.assertEqual(self.state['batches'], before['batches'])
+            for identity, old in before['events'].items():
+                event = self.state['events'][identity]
+                self.assertEqual(event['status'], 'quarantined')
+                for field in ('source_ids', 'event', 'event_sha256'):
+                    self.assertEqual(event[field], old[field])
+                self.assertEqual(event['history'][:len(old['history'])], old['history'])
+                self.assertIn(old['event_sha256'], self.objects)
 
     def test_poison_event_does_not_stop_other_events(self):
         self.source.files['example/repo','a'*40,'examples/knowledge-collector/events/poison.json']=b'{"x":NaN}'
@@ -380,6 +410,105 @@ class CollectorTests(unittest.TestCase):
         self.assertEqual(recovered['sequence'],state['sequence']+1)
         self.assertNotEqual(pin,newpin)
 
+    def test_partial_immutable_write_process_restart(self):
+        # Exercise writes inside durable(), before the five transaction hooks.
+        for destination in ('objects', 'staging', 'snapshots'):
+            with self.subTest(destination=destination):
+                store = c.Store(Path(self.temp.name) / destination)
+                transform = lambda s: c.scan(s, c.encode(self.registry), self.source)
+                state, pin = store.mutate('absent', self.state['writer'], self.state['scope'], transform)
+                payload = b'SYNTHETIC newly received raw bytes\n'
+                key = c.digest(payload)
+                previous = {p.name: (p.read_bytes(), p.stat().st_ino)
+                            for p in (store.directory / 'objects').iterdir() if p.is_file()}
+                child = os.fork()
+                if child == 0:
+                    original = c.durable
+                    def partial(path, raw):
+                        if destination in path.relative_to(store.directory).parts:
+                            fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+                            os.write(fd, raw[:7]); os.fsync(fd); os._exit(73)
+                        original(path, raw)
+                    c.durable = partial
+                    store.mutate(pin, state['writer'], state['scope'], lambda s: (s, {key: payload}))
+                    os._exit(74)
+                self.assertEqual(os.waitstatus_to_exitcode(os.waitpid(child, 0)[1]), 73)
+                fresh = c.Store(store.directory)
+                self.assertEqual(fresh.load(pin)[0], state)
+                recovered, newpin = fresh.mutate(pin, state['writer'], state['scope'],
+                                                lambda s: (s, {key: payload}))
+                self.assertEqual(recovered['cursors'], state['cursors'])
+                self.assertEqual(recovered['sequence'], state['sequence'] + 1)
+                self.assertEqual(fresh.read_object(key), payload)
+                self.assertEqual(fresh.load(newpin)[0], recovered)
+                for name, (raw, inode) in previous.items():
+                    path = store.directory / 'objects' / name
+                    self.assertEqual((path.read_bytes(), path.stat().st_ino), (raw, inode))
+
+    def test_object_publication_process_crash_before_and_after_link(self):
+        for after_link in (False, True):
+            with self.subTest(after_link=after_link):
+                store = c.Store(Path(self.temp.name) / str(after_link))
+                state, pin = store.mutate('absent', self.state['writer'], self.state['scope'],
+                                          lambda s: (s, {}))
+                payload = b'SYNTHETIC atomic publication\n'; key = c.digest(payload)
+                child = os.fork()
+                if child == 0:
+                    original = c.os.link
+                    def link(source, target):
+                        if target.name == key:
+                            if after_link:
+                                original(source, target)
+                            os._exit(73)
+                        return original(source, target)
+                    c.os.link = link
+                    store.mutate(pin, state['writer'], state['scope'], lambda s: (s, {key: payload}))
+                    os._exit(74)
+                self.assertEqual(os.waitstatus_to_exitcode(os.waitpid(child, 0)[1]), 73)
+                self.assertEqual(store.load(pin)[0], state)
+                path = store.directory / 'objects' / key
+                self.assertEqual(path.exists(), after_link)
+                if after_link:
+                    self.assertEqual(path.read_bytes(), payload)
+                    inode = path.stat().st_ino
+                fresh = c.Store(store.directory)
+                fresh.mutate(pin, state['writer'], state['scope'], lambda s: (s, {key: payload}))
+                self.assertEqual(fresh.read_object(key), payload)
+                if after_link:
+                    self.assertEqual(path.stat().st_ino, inode)
+
+    def test_existing_objects_never_replaced_or_repaired_implicitly(self):
+        store = self.store(); raw = b'SYNTHETIC valid object\n'; key = store.put(raw)
+        path = store.directory / 'objects' / key
+        inode = path.stat().st_ino
+        store.put(raw)
+        self.assertEqual(path.stat().st_ino, inode)
+        # Even a damaged final file from an older writer requires explicit repair.
+        path.write_bytes(raw[:7])
+        with self.assertRaises(ValueError): store.put(raw)
+        self.assertEqual(path.read_bytes(), raw[:7])
+        self.assertEqual(path.stat().st_ino, inode)
+        path.unlink(); target = Path(self.temp.name) / 'external'; target.write_bytes(raw)
+        path.symlink_to(target)
+        with self.assertRaises(ValueError): store.put(raw)
+        self.assertTrue(path.is_symlink()); self.assertEqual(target.read_bytes(), raw)
+
+    def test_publication_does_not_overwrite_file_appearing_at_link(self):
+        store = self.store(); raw = b'SYNTHETIC expected bytes\n'; key = c.digest(raw)
+        path = store.directory / 'objects' / key
+        original = c.os.link
+        for existing in (raw, b'SYNTHETIC conflicting bytes\n'):
+            def race(source, target):
+                target.write_bytes(existing)
+                return original(source, target)
+            with patch.object(c.os, 'link', race):
+                if existing == raw:
+                    store.put(raw)
+                else:
+                    with self.assertRaises(ValueError): store.put(raw)
+            self.assertEqual(path.read_bytes(), existing)
+            path.unlink()
+
     def test_cli_unapproved_request_does_not_create_store_or_leak_bytes(self):
         req=Path(self.temp.name)/'request'; req.write_bytes(c.encode(self.registry))
         auth=Path(self.temp.name)/'auth'; auth.write_bytes(b'{"secret":"SYNTHETIC-SECRET"}')
@@ -460,6 +589,27 @@ class GitTreeTests(unittest.TestCase):
         commit=self.git('rev-parse','HEAD').decode().strip(); self.source.repositories['example/repo',commit]=self.repo
         self.item['commit']=commit
         with self.assertRaises(ValueError): self.source.enumerate(self.item)
+
+    def test_all_inbox_ancestor_types_checked(self):
+        original_commit = self.commit
+        (self.repo / 'nested').mkdir()
+        (self.repo / 'nested' / 'alias').symlink_to('../inbox')
+        (self.repo / 'alias').symlink_to('inbox')
+        (self.repo / 'nested' / 'file').write_bytes(b'SYNTHETIC ordinary blob')
+        self.newcommit()
+        self.git('update-index', '--add', '--cacheinfo', '160000', self.commit, 'nested/module')
+        self.git('commit', '-qm', 'synthetic gitlink ancestor')
+        commit = self.git('rev-parse', 'HEAD').decode().strip()
+        self.source.repositories['example/repo', commit] = self.repo
+        for path in ('alias/events', 'nested/alias/events', 'nested/module/events',
+                     'nested/file/events', 'nested/file'):
+            with self.subTest(path=path), self.assertRaises(ValueError):
+                self.source.enumerate(dict(self.item, commit=commit, inbox_path=path))
+        for path in ('missing/events', 'nested/missing/events'):
+            self.assertEqual(self.source.enumerate(dict(self.item, commit=commit, inbox_path=path)), [])
+        # Resolution stays pinned even though the working tree now has unsafe aliases.
+        self.assertEqual(self.source.enumerate(dict(self.item, commit=original_commit,
+                                                   inbox_path='nested/alias/events')), [])
 
     def test_path_traversal_floating_and_missing(self):
         for path in ('../inbox','inbox/../inbox','/inbox','inbox//bad'):

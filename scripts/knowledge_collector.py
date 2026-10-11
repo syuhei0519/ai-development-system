@@ -105,6 +105,19 @@ class SnapshotSource(GitSource):
     def enumerate(self, item):
         safe_path(item['inbox_path'])
         directory = self.snapshot(item['repository'], item['commit'])
+        # Resolve every edge before recursive listing: ls-tree -r on a path below
+        # a symlink/gitlink returns no entries, just like a genuinely absent path.
+        parts = item['inbox_path'].split('/')
+        for index in range(len(parts)):
+            prefix = '/'.join(parts[:index + 1])
+            entry = self.git(directory, 'ls-tree', '-z', item['commit'], '--', prefix)
+            if not entry:
+                return []
+            require(entry.count(b'\0') == 1, 'ambiguous inbox ancestor')
+            header, name = entry[:-1].split(b'\t', 1)
+            mode, kind, _ = header.split()
+            require(name.decode('utf-8') == prefix and mode == b'040000' and kind == b'tree',
+                    'unsafe inbox ancestor')
         # Missing prefix means empty inbox, not missing scan: retained history detects disappearances.
         entries = self.git(directory, 'ls-tree', '-r', '-z', item['commit'], '--', item['inbox_path'])
         result = []
@@ -208,7 +221,7 @@ def scan(state, registry_raw, source):
     candidate = deepcopy(state)
     seen, anomaly = set(), False
     for identity, raw_hash, event, source_id in observations:
-        seen.add(identity)
+        seen.add((identity, source_id))
         old = candidate['events'].get(identity)
         if old:
             if source_id not in old['source_ids']:
@@ -221,9 +234,10 @@ def scan(state, registry_raw, source):
         move(candidate, [identity], 'pending', 'discovered', raw_hash)
         move(candidate, [identity], 'verified' if event else 'quarantined',
              'verified' if event else 'poison', raw_hash)
-    for identity in state['events'].keys() - seen:
-        move(candidate, [identity], 'quarantined', 'missing')
-        anomaly = True
+    for identity, old in state['events'].items():
+        if any((identity, source_id) not in seen for source_id in old['source_ids']):
+            move(candidate, [identity], 'quarantined', 'missing')
+            anomaly = True
     # Missing/colliding historical events cannot be reported as successful scan progress.
     if not anomaly:
         candidate['cursors'] = {s['source_id']: s['commit'] for s in registry['sources']}
@@ -511,6 +525,25 @@ def durable(path, raw):
         stream.write(raw); stream.flush(); os.fsync(stream.fileno())
 
 
+def publish(path, raw):
+    """Publish complete immutable bytes without replacing any existing final file.
+
+    A killed writer may leave a private temporary directory. A retry starts a new
+    one; partial bytes never occupy the digest name used by readers/recovery.
+    """
+    if path.exists() or path.is_symlink():
+        require(read_local(path) == raw, 'object collision')
+        return
+    with tempfile.TemporaryDirectory(prefix='.pending-', dir=path.parent) as temp:
+        staged = Path(temp) / path.name
+        durable(staged, raw)
+        try:
+            os.link(staged, path)
+        except FileExistsError:
+            require(read_local(path) == raw, 'object collision')
+        fsync_dir(path.parent)
+
+
 class Store:
     """POSIX local filesystem, single trusted Manager, advisory lock + digest CAS + fsync.
 
@@ -561,8 +594,7 @@ class Store:
     def put(self, raw):
         require(len(raw) <= MAX_FILE, 'object too large')
         path = self.directory / 'objects' / digest(raw)
-        if path.exists(): require(read_local(path) == raw, 'object collision')
-        else: durable(path, raw)
+        publish(path, raw)
         return digest(raw)
 
     def _commit(self, previous_raw, candidate, archive, crash=lambda point: None):
@@ -577,12 +609,10 @@ class Store:
         fsync_dir(self.directory / 'objects'); crash('after_objects')
         raw = encode(candidate); pin = digest(raw)
         staged = self.directory / 'staging' / pin
-        if staged.exists(): require(read_local(staged) == raw, 'stage collision')
-        else: durable(staged, raw)
+        publish(staged, raw)
         fsync_dir(staged.parent); crash('after_stage')
         snapshot = self.directory / 'snapshots' / pin
-        if snapshot.exists(): require(read_local(snapshot) == raw, 'snapshot collision')
-        else: durable(snapshot, raw)
+        publish(snapshot, raw)
         fsync_dir(snapshot.parent); crash('after_snapshot')
         # Candidate is complete; state pointer replacement is the single commit point.
         os.replace(staged, self.directory / 'state.json')

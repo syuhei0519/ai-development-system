@@ -48,7 +48,9 @@ hooks, filters, submodule execution, arbitrary URLs or floating revisions are pe
 snapshot is a full 40-hex commit. All tree entries beneath the inbox prefix are enumerated,
 including entries that must fail validation; only regular blobs are accepted. Expected event
 path is `<inbox_path>/<event_id>.json`. UTF-8/strict JSON rejects duplicate keys, NaN and BOM.
-Missing prefix is an empty inbox and still participates in historical disappearance checks.
+Every ancestor through the inbox prefix must be a Git tree; symlink, gitlink and ordinary
+blob ancestors are rejected before recursive enumeration. A genuinely missing prefix below
+verified tree ancestors is an empty inbox and still participates in disappearance checks.
 
 Every scan is a **full reconciliation**, even for a repeated commit. There is no ancestry,
 diff, updated_at, notification-order or shallow-history optimization. Registry changes,
@@ -62,7 +64,9 @@ extensions are outside P-B; no URL reinterpretation or original-byte rewrite is 
 A network/read/partial blob/hash failure aborts the entire scan transaction: no event/cursor
 change. Complete but malformed events or events lacking an inventory reference are individually
 quarantined, with original bytes retained; valid events remain processable. An already recorded
-event that disappears or changes payload is quarantined, the scan is marked `quarantined`,
+event that disappears from **any previously observed source** or changes payload is quarantined,
+even when another inbox still supplies the same event bytes. Historical source membership is
+retained, including sources removed from the registry. The scan is marked `quarantined`,
 and cursors do not advance. Terminal/retry history and original bytes remain intact. A clean
 scan advances every source cursor together with event registration. Cursor means enumerated,
 not processed successfully. A poisoned event can coexist with a successful enumeration.
@@ -92,6 +96,16 @@ automatically promoted. Before state replacement, repeat the authorized operatio
 old pin; after replacement, reload/verify the new state and update the Manager pin. Never blindly
 repeat an external dispatch when a CLI result was lost. `plan`/`replay` do not recover or mutate
 staging. Power-loss guarantees depend on the filesystem honoring fsync and atomic rename.
+
+Objects, staged states and snapshots are first written and fsynced inside a fresh private
+temporary directory on the same filesystem. A hard link publishes the complete file at its
+digest name without overwriting an existing name, then the destination directory is fsynced.
+An existing final file must contain exactly the expected bytes and is never replaced. A killed
+writer may leave `.pending-*` directories; retries ignore these incomplete files and use fresh
+temporary paths. They are not automatically promoted or garbage-collected. This also covers
+crashes inside the raw write, before the transaction crash hooks. Corrupted final files already
+created by an older writer remain fail-closed and require explicit Manager repair; retry does
+not silently overwrite historical evidence. No schema or retry-budget migration is required.
 
 ## Batch, transition and retry protocol
 
