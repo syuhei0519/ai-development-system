@@ -1,0 +1,286 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "acceptance_criteria": [
+      {
+        "id": "PB-1",
+        "source": "assignment-requirements.json",
+        "verbatim": "KnowledgeEvent、source registry、KnowledgeCollectionStateの閉じた版付き契約を実装する。event identityは固定repo/commit/path/source SHA256/candidate ID/event kindから決まり、時刻・配送試行・実task IDに依存しない。同identity別payloadを拒否し、類似内容だけで根拠を失う重複排除をしない。"
+      },
+      {
+        "id": "PB-2",
+        "source": "assignment-requirements.json",
+        "verbatim": "許可済み固定Git snapshotのinboxを全件列挙し全source bytesと必要依存を検証するscan/reconcileを実装する。partial readや改変時にcursorを先行させず、registry変更・履歴欠落・force push・旧cursor非ancestorでは全照合する。過去event消失を成功扱いせず隔離し、raw historyを保持する。"
+      },
+      {
+        "id": "PB-3",
+        "source": "assignment-requirements.json",
+        "verbatim": "single Manager writer、previous-state digest CAS、atomic保存、durable staging、scan/event/cursorのtransactionを実装する。pending/verified/reserved/dispatching/started/output_received/validated/commit_pending/committed/context_available、blocked/quarantined/dispatch_unknown/terminalを区別し、不正遷移・stale writer・overlapを拒否する。"
+      },
+      {
+        "id": "PB-4",
+        "source": "assignment-requirements.json",
+        "verbatim": "既存retry契約と連携しdispatch/execution/delivery各3上限・過去履歴・RETRY_LIMIT_REACHEDを保持する。開始不明をlease期限だけで再起動せず、取得済みoutputはdeliveryから再開し、Git確定後state更新前crashは固定commit検証で追認する。再開承認をreceiptやreplayから作らず、無限再試行を拒否する。"
+      },
+      {
+        "id": "PB-5",
+        "source": "assignment-requirements.json",
+        "verbatim": "collector自体はLLM/API/専門Agentを起動せず、scan/plan/record/reconcile/replayの機械的CLIとsynthetic fixturesを提供する。Knowledge失敗で開発gateを止めない。private stateとpublic-safe観測を分離し、runtime ID/認可/秘密/内部ログをpublic出力しない。scheduleは登録・有効化しない。"
+      },
+      {
+        "id": "PB-6",
+        "source": "assignment-requirements.json",
+        "verbatim": "正常系、重複・衝突、scan中断、source変更、CAS競合、各crash点、poison event、no-op、retry上限、未承認再開、legacy互換の回帰を実装し全128既存テストを維持する。schema/CLI/docs/README/workflow/templatesを整合させ、独立Testが再現できる固定head・自己検証根拠・Handoff v2を提出する。P-C/P-Dや定期実運用完了を主張しない。"
+      }
+    ],
+    "id": "SYSTEM-PHASE13-PB",
+    "source": "assignment-requirements.json",
+    "title": "System Phase 1-3 P-B asynchronous collection and durable inbox/state"
+  },
+  "assignment": {
+    "scope": "system/phase1-3/P-B",
+    "ac_ids": [
+      "PB-1",
+      "PB-2",
+      "PB-3",
+      "PB-4",
+      "PB-5",
+      "PB-6"
+    ],
+    "completion_criteria": [
+      "Independently assess all supplied PB-1 through PB-6 at fixed head without product modifications.",
+      "Return reproducible cases, observed results, findings, Handoff v2 and private Consumption Receipt; preserve untested P-C/P-D/operation boundaries.",
+      "Preserve upstream public bytes and verify complete old-consumer closure before any publication."
+    ]
+  },
+  "role": "test",
+  "task_id": "PUBLIC-PHASE13-PB-TEST-01",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "PUBLIC-PHASE13-PB-IMPLEMENTATION-01",
+      "attempt": 1,
+      "handoff_locator": "upstream/handoff.json",
+      "revision": "sha256:ae53e6da0a7ea7c671c1b638ee26bdaf2a4e21438a23067f3d326ac228ea2a82",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "failed",
+  "summary": "Independent P-B Test failed: source-history masking, partial object-write crash recovery, and unsafe inbox ancestor handling. Base 128/head 172 regression pass; independent 21 cases include four failing cases across three findings. No product edits or remote writes.",
+  "artifacts": [
+    {
+      "id": "REPORT",
+      "kind": "test-report",
+      "locator": "verification-summary.json",
+      "revision": "sha256:bb1b6dac67b2a3f010d51ce45aeeb578a848af8599e407453d6bdfe5fe67aa73",
+      "summary": "verification-summary.json"
+    },
+    {
+      "id": "FINDINGS",
+      "kind": "test-report",
+      "locator": "findings.json",
+      "revision": "sha256:da913eb8f899214eaf97f086d68888f9d6339ec7df2438eb4a56ccd92cef32e7",
+      "summary": "findings.json"
+    },
+    {
+      "id": "CASES",
+      "kind": "other",
+      "locator": "independent_cases.py",
+      "revision": "sha256:87e7a52005dc31cfad71e033f30bd71196b5d46e6ad9b4d2aa7b22c65d661430",
+      "summary": "independent_cases.py"
+    },
+    {
+      "id": "REPRODUCE",
+      "kind": "document",
+      "locator": "reproduce.txt",
+      "revision": "sha256:e00809d31e4a468d98f67515a4d04a1dfec691917b462c6664c0f1d3aae2dfde",
+      "summary": "reproduce.txt"
+    },
+    {
+      "id": "SCHEMAS",
+      "kind": "test-report",
+      "locator": "legacy-schemas.json",
+      "revision": "sha256:975072c16e075272e26444d152cf660be318f87b201e016b99e7a0728d2a9552",
+      "summary": "legacy-schemas.json"
+    },
+    {
+      "id": "REQUIREMENTS",
+      "kind": "document",
+      "locator": "assignment-requirements.json",
+      "revision": "sha256:6d4a8c980760381fb33e93da19a05d6af2c3b0edddafb667cc3a9b16b942fbec",
+      "summary": "assignment-requirements.json"
+    },
+    {
+      "id": "INTEGRATION",
+      "kind": "test-report",
+      "locator": "integration-observation.json",
+      "revision": "sha256:ea1f7a84d69c64c3c70d98b84561ca952482a65680d973693a6ebbea4a82d4f3",
+      "summary": "Separate post-P-A-merge tree, PR6 target and CI observation; fixed local test head/base unchanged."
+    },
+    {
+      "id": "CLOSURE",
+      "kind": "test-report",
+      "locator": "closure-observation.json",
+      "revision": "sha256:07fa1f9b813b995f8fbe19c2e9ff27495d0fe92a4973cdf223d0b05128c686d8",
+      "summary": "Unchanged canonical consumer local closure; fourteen upstream files preserved."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-PB-1",
+      "claim": "Independent PB-1 result: pass",
+      "artifact_ids": [
+        "REPORT",
+        "FINDINGS",
+        "CASES"
+      ],
+      "locator": "verification-summary.json#ac_coverage/PB-1",
+      "observation": "{\"result\": \"pass\", \"evidence\": [\"identity_exact_canonical_and_time_independence\", \"identical_content_distinct_source_preserved\", \"same_id_payload_collision_retains_both_raw\", \"strict_poison_matrix\", \"closed_registry_state_and_record\"], \"limits\": \"Schema/type/identity and synthetic cases; no semantic curation.\"}"
+    },
+    {
+      "id": "E-PB-2",
+      "claim": "Independent PB-2 result: fail",
+      "artifact_ids": [
+        "REPORT",
+        "FINDINGS",
+        "CASES"
+      ],
+      "locator": "verification-summary.json#ac_coverage/PB-2",
+      "observation": "{\"result\": \"fail\", \"findings\": [\"F1\", \"F3\"], \"evidence\": [\"dependency_missing_modified_partial_no_cursor\", \"dependency_every_entry_read_even_unused\", \"catchup_after_interruption_and_full_nonancestor\", \"disappearance_quarantine_and_raw_history\", \"fixed HTTPS scan/reconcile\"], \"limits\": \"Force-push/nonancestor behavior exercised as unrelated fixed snapshots; no remote force push performed. Source contents and actual tree modes exercised with synthetic Git fixtures.\"}"
+    },
+    {
+      "id": "E-PB-3",
+      "claim": "Independent PB-3 result: fail",
+      "artifact_ids": [
+        "REPORT",
+        "FINDINGS",
+        "CASES"
+      ],
+      "locator": "verification-summary.json#ac_coverage/PB-3",
+      "observation": "{\"result\": \"fail\", \"findings\": [\"F2\"], \"evidence\": [\"CAS_process_lock_and_fsync_order\", \"all_five_crash_points_real_process_restart\", \"unknown_no_evidence_expired_lease\", \"existing transition regression suite\"], \"limits\": \"All five published crash hooks passed with child process exits/reload. Additional crash inside raw-file write fails recovery. fsync order observed; no physical power-loss test or distributed filesystem certification.\"}"
+    },
+    {
+      "id": "E-PB-4",
+      "claim": "Independent PB-4 result: pass",
+      "artifact_ids": [
+        "REPORT",
+        "FINDINGS",
+        "CASES"
+      ],
+      "locator": "verification-summary.json#ac_coverage/PB-4",
+      "observation": "{\"result\": \"pass\", \"evidence\": [\"three_dispatch_terminal_next_scan_no_reset\", \"delivery_terminal_and_renew_grant_negative_matrix\", \"unknown_no_evidence_expired_lease\", \"head regression: execution limit/retry input/legacy terminal/committed bytes recovery\"], \"limits\": \"Three execution attempts and Git-confirmation recovery are production regression cases independently executed, not newly authored independent scenarios. No real Agent dispatch or remote write.\"}"
+    },
+    {
+      "id": "E-PB-5",
+      "claim": "Independent PB-5 result: pass",
+      "artifact_ids": [
+        "REPORT",
+        "FINDINGS",
+        "CASES"
+      ],
+      "locator": "verification-summary.json#ac_coverage/PB-5",
+      "observation": "{\"result\": \"pass\", \"evidence\": [\"replay_readonly_public_closed\", \"noop_and_unapproved_cli\", \"fixed Git public observations\", \"static review of collector entrypoints\"], \"limits\": \"Collector only uses Git reads for sources, local filesystem bookkeeping and validation. No Agent/LLM/additional service/schedule calls exist in inspected implementation. No operational Knowledge/Consumer run was performed.\"}"
+    },
+    {
+      "id": "E-PB-6",
+      "claim": "Independent PB-6 result: fail",
+      "artifact_ids": [
+        "REPORT",
+        "FINDINGS",
+        "CASES"
+      ],
+      "locator": "verification-summary.json#ac_coverage/PB-6",
+      "observation": "{\"result\": \"fail\", \"findings\": [\"F1\", \"F2\", \"F3\"], \"evidence\": [\"base 128/head 172 passed\", \"14 schema bytes unchanged\", \"6 CLI checks passed\", \"21 independent probes: 17 pass, 3 failure, 1 error\"], \"limits\": \"Existing regression success does not establish the omitted adversarial cases. P-C/P-D/real periodic operation/article use remain unperformed.\"}"
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "PB-1",
+      "disposition": "covered",
+      "scope": "Schema/type/identity and synthetic cases; no semantic curation.",
+      "artifact_ids": [
+        "REPORT",
+        "FINDINGS",
+        "CASES"
+      ],
+      "evidence_ids": [
+        "E-PB-1"
+      ]
+    },
+    {
+      "ac_id": "PB-2",
+      "disposition": "not_met",
+      "scope": "Force-push/nonancestor behavior exercised as unrelated fixed snapshots; no remote force push performed. Source contents and actual tree modes exercised with synthetic Git fixtures.",
+      "artifact_ids": [
+        "REPORT",
+        "FINDINGS",
+        "CASES"
+      ],
+      "evidence_ids": [
+        "E-PB-2"
+      ]
+    },
+    {
+      "ac_id": "PB-3",
+      "disposition": "not_met",
+      "scope": "All five published crash hooks passed with child process exits/reload. Additional crash inside raw-file write fails recovery. fsync order observed; no physical power-loss test or distributed filesystem certification.",
+      "artifact_ids": [
+        "REPORT",
+        "FINDINGS",
+        "CASES"
+      ],
+      "evidence_ids": [
+        "E-PB-3"
+      ]
+    },
+    {
+      "ac_id": "PB-4",
+      "disposition": "covered",
+      "scope": "Three execution attempts and Git-confirmation recovery are production regression cases independently executed, not newly authored independent scenarios. No real Agent dispatch or remote write.",
+      "artifact_ids": [
+        "REPORT",
+        "FINDINGS",
+        "CASES"
+      ],
+      "evidence_ids": [
+        "E-PB-4"
+      ]
+    },
+    {
+      "ac_id": "PB-5",
+      "disposition": "covered",
+      "scope": "Collector only uses Git reads for sources, local filesystem bookkeeping and validation. No Agent/LLM/additional service/schedule calls exist in inspected implementation. No operational Knowledge/Consumer run was performed.",
+      "artifact_ids": [
+        "REPORT",
+        "FINDINGS",
+        "CASES"
+      ],
+      "evidence_ids": [
+        "E-PB-5"
+      ]
+    },
+    {
+      "ac_id": "PB-6",
+      "disposition": "not_met",
+      "scope": "Existing regression success does not establish the omitted adversarial cases. P-C/P-D/real periodic operation/article use remain unperformed.",
+      "artifact_ids": [
+        "REPORT",
+        "FINDINGS",
+        "CASES"
+      ],
+      "evidence_ids": [
+        "E-PB-6"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [
+    "F1: Per-source disappearance is masked by duplicate event in another inbox",
+    "F2: Crash during first write poisons the content-addressed object path and blocks restart",
+    "F3: Symlink/gitlink ancestor of inbox is accepted as empty"
+  ],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

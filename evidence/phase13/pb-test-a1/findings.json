@@ -1,0 +1,52 @@
+{
+  "document_type": "independent_test_findings",
+  "schema_version": "1.0",
+  "head": "29b87fd1014c66c0368e4aad231846b17b53707b",
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "medium",
+      "ac_ids": [
+        "PB-2",
+        "PB-6"
+      ],
+      "title": "Per-source disappearance is masked by duplicate event in another inbox",
+      "location": "scripts/knowledge_collector.py:208-238",
+      "expected": "Reconcile previously observed source/event membership; quarantine disappearance and retain old cursor, even when another inbox still supplies identical event bytes.",
+      "actual": "Removing all events from the first inbox after observing the same events in two sources leaves both events verified, records result=verified and advances first cursor.",
+      "reproduce": "PB_HEAD=/path/to/fixed-head python independent_cases.py Cases.test_F1_per_source_disappearance_must_not_be_masked",
+      "impact": "Source removal/history rewrite can be reported as a clean full scan. Original event bytes survive; this is a source-history detection gap, not demonstrated data loss.",
+      "basis": "PB-2 source disappearance/full reconciliation plus source registry historical membership. Current implementation compares a global identity union, not each retained source membership. Manager should confirm desired per-source semantics."
+    },
+    {
+      "id": "F2",
+      "severity": "high",
+      "ac_ids": [
+        "PB-3",
+        "PB-6"
+      ],
+      "title": "Crash during first write poisons the content-addressed object path and blocks restart",
+      "location": "scripts/knowledge_collector.py:510-514,560-565",
+      "expected": "A process crash before publishing state leaves prior state usable and permits the documented retry with old pin and the same authorized bytes.",
+      "actual": "A truncated file exists under its final digest name. After process restart, retry raises ValueError(object collision) before staging; the same operation cannot complete.",
+      "reproduce": "PB_HEAD=/path/to/fixed-head python independent_cases.py Cases.test_F2_crash_during_raw_write_then_retry_recovers",
+      "impact": "Knowledge delivery or scanning can become permanently blocked by a partial raw-object write until manual repair. No cursor corruption or development gate change was observed.",
+      "basis": "Real child process exits after a partial write and fsync, before state replacement. Fault injection substitutes only the raw-file write boundary. Product code is unchanged; normal restart uses production Store. Published five crash hooks all pass, but do not cover writes inside durable()."
+    },
+    {
+      "id": "F3",
+      "severity": "medium",
+      "ac_ids": [
+        "PB-2",
+        "PB-6"
+      ],
+      "title": "Symlink/gitlink ancestor of inbox is accepted as empty",
+      "location": "scripts/knowledge_collector.py:101-119",
+      "expected": "Reject unsafe Git ancestor modes while resolving the configured inbox prefix, including a symlink or gitlink above the final component.",
+      "actual": "Actual local fixed Git trees containing alias/events through a symlink ancestor, or module/events through a gitlink ancestor, return [] without rejection.",
+      "reproduce": "PB_HEAD=/path/to/fixed-head python independent_cases.py Cases.test_F3_real_git_ancestor_symlink_rejected Cases.test_gitlink_ancestor_rejected",
+      "impact": "A first scan can treat an unsafe configured source as empty and advance its cursor. The links were not followed and no external content execution or disclosure was observed.",
+      "basis": "PB-2 fixed-source verification; supplied design section 8 expressly requires symlink/gitlink rejection. Existing tests cover leaf/exact-prefix links, but not ancestors."
+    }
+  ]
+}
