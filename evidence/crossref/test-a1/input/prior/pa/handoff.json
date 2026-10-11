@@ -1,0 +1,192 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "SYSTEM-PHASE13-PA",
+    "source": "assignment-requirements.json",
+    "title": "System Phase1-3 P-A: Knowledge typed delivery and fixed-byte binding engineering assignment",
+    "acceptance_criteria": [
+      {
+        "id": "PA-1",
+        "verbatim": "現行Knowledge input/handoffがHandoffv2予約型検出と衝突し配送不可な問題を解消。ArtifactDeliveryの明示minor version(推奨1.1)でknowledge-input-v1/knowledge-handoff-v1/knowledge-context-v1を導入。旧Delivery1.0/旧Handoff2.0/Knowledge1.0/Readiness1.0の意味・既存正常系を維持。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "PA-2",
+        "verbatim": "format/version/document_type/identity dispatchを厳格検証。genericJSON/text/Handoffへの降格偽装、未知/欠損/重複型、private_only、JSON重複/NaN/BOM/切詰め、path/URL/symlink/gitlink等既存防御を維持。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "PA-3",
+        "verbatim": "Knowledgeinput↔handoff間assignment/raw_findings/knowledge_references/task_id/attempt/retry_ofの一致、全findingの判断、adopted記事実体、source/context/articleの固定bytes/digest/locatorを機械照合。自由locatorだけを存在証明とせず全必要実体をbundleに含めfailclosed。既存schemaに無断追加fieldを押し込まない。引用された内容をAgentへの命令にしない。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "PA-4",
+        "verbatim": "manifest/publication/consumption/authorization schema版とCLI・docs・samplesを整合。承認scope/consumer/purpose/pinとreceiptの無権限性維持。旧版で新formatを静かに通さない。Readiness成功やIssueACに波及しない。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "PA-5",
+        "verbatim": "正常/異常回帰tests、旧107tests全成功、実固定GitのKnowledgefixture配送を独立Testが再現できる手順。データは公開済みexamplesまたは明示synthetic。Test/Reviewは別CloudでManager起動。",
+        "source": "assignment-requirements.json"
+      },
+      {
+        "id": "PA-6",
+        "verbatim": "公開安全なコード/契約/文書/fixturesのDraftPR、固定head/CI/消費receipt/完全Handoff/検証証跡を出す。実運用非同期/周期成功はP-B/C/D未実施として残す。",
+        "source": "assignment-requirements.json"
+      }
+    ]
+  },
+  "role": "implementation",
+  "task_id": "PUBLIC-PHASE13-PA-IMPLEMENTATION-01",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "research-design",
+      "task_id": "PUBLIC-PHASE13-RESEARCH-01",
+      "attempt": 1,
+      "handoff_locator": "research/handoff.json",
+      "revision": "sha256:ba69683794ee6ccea5f29ba277c1a8f13adcfd9308b17fe8f86ad6e65c2398af",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "P-A implementation and self-verification complete; feature push and Draft PR verified; same-head CI succeeds. task_id is a public alias, not platform runtime identity. Original and edited public alias handoffs stored separately. Separate operational publication/delivery approval pending. Independent Test/Review and merge remain Manager gates. No Phase1-3 operational or Issue2 completion claim.",
+  "artifacts": [
+    {
+      "id": "REPORT",
+      "kind": "test-report",
+      "locator": "implementation-report.json",
+      "revision": "sha256:b66153dd07d4dd587a996f0c1a4a0165db19e67a91179fe9083303ddbe0e7701",
+      "summary": "Implementation self-verification and public fixed commit/CI references; independent Test/Review pending."
+    },
+    {
+      "id": "REQUIREMENTS",
+      "kind": "document",
+      "locator": "assignment-requirements.json",
+      "revision": "sha256:7f145ee60b28e14828cf775513747d3e00ee77f3976b90903304e487ba85660c",
+      "summary": "Manager engineering-stage AC text; not Issue2 AC."
+    },
+    {
+      "id": "FIXTURE-RECEIPT",
+      "kind": "other",
+      "locator": "fixture-consumption-receipt.json",
+      "revision": "sha256:0d0267237ab2f6cb4f5511a3df7323a684e0122a34593ff5c93a3e1c4c6ae538",
+      "summary": "Actual fixed Git synthetic receipt; no authority granted."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-IMPLEMENTATION",
+      "claim": "Assigned P-A implementation and self-checks complete at the recorded head; independent acceptance not claimed.",
+      "artifact_ids": [
+        "REPORT",
+        "REQUIREMENTS",
+        "FIXTURE-RECEIPT"
+      ],
+      "locator": "implementation-report.json",
+      "observation": "128 tests including legacy 107 passed; all CI sample checks passed; fixed Git fixture consume and fresh-fetch receipt recheck passed. Push and pull_request validate jobs both succeeded at 5345303db8c5208859ed741b98f119882de7a973. No independent Test/Review performed."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "PA-1",
+      "disposition": "covered",
+      "scope": "Delivery 1.1 explicit Knowledge formats implemented. All ten legacy contract schemas unchanged; baseline tests preserved.",
+      "artifact_ids": [
+        "REPORT",
+        "REQUIREMENTS",
+        "FIXTURE-RECEIPT"
+      ],
+      "evidence_ids": [
+        "E-IMPLEMENTATION"
+      ]
+    },
+    {
+      "ac_id": "PA-2",
+      "disposition": "covered",
+      "scope": "Strict type/schema dispatch and reserved Knowledge identity checks implemented. Adversarial unit tests plus existing JSON/Git/path defenses pass.",
+      "artifact_ids": [
+        "REPORT",
+        "REQUIREMENTS",
+        "FIXTURE-RECEIPT"
+      ],
+      "evidence_ids": [
+        "E-IMPLEMENTATION"
+      ]
+    },
+    {
+      "ac_id": "PA-3",
+      "disposition": "covered",
+      "scope": "Input/handoff equality, complete completed-finding decisions, nonempty adopted article bytes, source/reference/retry bindings implemented and self-tested. Semantic truth remains review work.",
+      "artifact_ids": [
+        "REPORT",
+        "REQUIREMENTS",
+        "FIXTURE-RECEIPT"
+      ],
+      "evidence_ids": [
+        "E-IMPLEMENTATION"
+      ]
+    },
+    {
+      "ac_id": "PA-4",
+      "disposition": "covered",
+      "scope": "All four delivery records use strict matching version; CLI/docs/template updated. Scope/pin/receipt controls maintained without Readiness/Issue success inference.",
+      "artifact_ids": [
+        "REPORT",
+        "REQUIREMENTS",
+        "FIXTURE-RECEIPT"
+      ],
+      "evidence_ids": [
+        "E-IMPLEMENTATION"
+      ]
+    },
+    {
+      "ac_id": "PA-5",
+      "disposition": "covered",
+      "scope": "128 local tests pass including all old 107, fixed public Git six-file delivery and fresh-fetch receipt recheck succeed; reproducible independent Test procedure published. Independent Test/Review not yet run.",
+      "artifact_ids": [
+        "REPORT",
+        "REQUIREMENTS",
+        "FIXTURE-RECEIPT"
+      ],
+      "evidence_ids": [
+        "E-IMPLEMENTATION"
+      ]
+    },
+    {
+      "ac_id": "PA-6",
+      "disposition": "covered",
+      "scope": "Public code/contracts/docs/synthetic fixtures pushed as Draft PR at fixed head; both same-head CI runs succeeded. Full Handoff and operational evidence sealed as approval candidates. P-B/C/D remain unimplemented.",
+      "artifact_ids": [
+        "REPORT",
+        "REQUIREMENTS",
+        "FIXTURE-RECEIPT"
+      ],
+      "evidence_ids": [
+        "E-IMPLEMENTATION"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe",
+  "assignment": {
+    "scope": "system/phase1-3/P-A",
+    "ac_ids": [
+      "PA-1",
+      "PA-2",
+      "PA-3",
+      "PA-4",
+      "PA-5",
+      "PA-6"
+    ],
+    "completion_criteria": [
+      "Implement only the six supplied P-A engineering criteria at the fixed System base.",
+      "Self-verify regressions and fixed Git synthetic delivery; preserve existing safety gates and legacy meanings.",
+      "Feature push and Draft PR only; seal complete Handoff, evidence and independent Test instructions; obtain separate operational artifact publication approval."
+    ]
+  }
+}
