@@ -1,0 +1,66 @@
+{
+  "document_type": "public_delivery_pins",
+  "payload_commit": "406164b1a69ebf4fe2f0e676c11038f08fff5724",
+  "system_commit": "0083151aa2f6b2aaf0e1db64ada3f196ed766e48",
+  "application_head": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+  "application_head_tree": "92b867efc6e9163b0cbfd4713b82d0c65e24f769",
+  "application_base": "e039945a90625262f91382e6f71149d046e31b34",
+  "application_base_tree": "7c9c8d52bf014f54fe2212b0ef4374c53d9700a3",
+  "items": [
+    {
+      "path": "evidence/order-m0/test-a3/handoff.json",
+      "size": 5778,
+      "sha256": "5012ad21c781056f6f17c16c9403e4637abb73bff981bbd9a85e14d435c79db2",
+      "location": "payload"
+    },
+    {
+      "path": "evidence/order-m0/test-a3/independent-probes.py",
+      "size": 4389,
+      "sha256": "da3b35549af247c4464379ca0ebdfe576d348bee7f9191a25a82a9d63d282258",
+      "location": "payload"
+    },
+    {
+      "path": "evidence/order-m0/test-a3/publication-safety.txt",
+      "size": 1261,
+      "sha256": "3d887f1a3add646eeee4bf1e587dfacac84a77d4c5adf60054aa4315d9220997",
+      "location": "payload"
+    },
+    {
+      "path": "evidence/order-m0/test-a3/reproduce.sh",
+      "size": 1682,
+      "sha256": "89577bd23afa32e3af06dff57f3fd331dcf0b54676ceda9e8e8f9ab70b8b1103",
+      "location": "payload"
+    },
+    {
+      "path": "evidence/order-m0/test-a3/results.json",
+      "size": 140593,
+      "sha256": "5c59f40aa1baa6a6e44532b8cccaeee91ca6609860a07f00918a01853e0d979e",
+      "location": "payload"
+    },
+    {
+      "path": "evidence/order-m0/test-a3/test-report.txt",
+      "size": 9194,
+      "sha256": "0d1ace371b80d0bb44985678221ba3cc2f2957430d7473c24d0799121345ad6f",
+      "location": "payload"
+    },
+    {
+      "path": "evidence/order-m0/test-a3/fresh-closure-verification.json",
+      "size": 827,
+      "sha256": "9c7f8990418f30559b4f35f825f0a631d03be97c321f1c7804c1c0e9e34546bf",
+      "location": "records"
+    },
+    {
+      "path": "evidence/order-m0/test-a3/manifest.json",
+      "size": 172119,
+      "sha256": "eaaa7eacb3de044ea87be292ca8b961e101a50f3513ac93ecaf6ac7ae22bf586",
+      "location": "records"
+    },
+    {
+      "path": "evidence/order-m0/test-a3/publication-receipt.json",
+      "size": 61738,
+      "sha256": "7fcb5344b8a91c3367b18fe9bab47a65d51768f7f8079dff359e9648f9d6855e",
+      "location": "records"
+    }
+  ],
+  "consumer_authorization": "not issued; Manager must independently pin and authorize any new Consumer"
+}
