@@ -1,0 +1,4570 @@
+{
+  "document_type": "independent_test_results",
+  "producer": "order-m0-test-a3",
+  "observed_at": "2026-10-11T09:00:10.837624Z",
+  "valid_until": "2026-10-11T09:15:10.837624Z",
+  "expiry_note": "Manager must refresh current readiness policy; invalidate on head/base/config change. This evidence grants no operation permission.",
+  "subject": {
+    "repository": "syuhei0519/application-manifest",
+    "pr_number": 18,
+    "head_sha": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+    "base_sha": "e039945a90625262f91382e6f71149d046e31b34",
+    "target_revision": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+    "head_tree": "92b867efc6e9163b0cbfd4713b82d0c65e24f769",
+    "base_tree": "7c9c8d52bf014f54fe2212b0ef4374c53d9700a3",
+    "config_revision": "sha256:6f3ec88dc9ef058156a7ecb43915dc51b066fab93740f9d7a0a7970fb63286b9",
+    "merge_group_sha": null
+  },
+  "config_definition": "SHA256 of sorted CI/workflow path+raw hash list, compact JSON sort_keys=true, UTF8 no trailing LF; policy settings not included or inferred.",
+  "config_files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "33f7d7f9cedf9eb6160baabbc90b65d37458838d7b9a1125871590d4370fb7ee"
+    },
+    {
+      "path": ".github/workflows/trusted-manifest.yml",
+      "sha256": "f6d3b59facf48c57e700db1b61a53f29e1a7f6eab73ed2b386974e8c9fefeecf"
+    },
+    {
+      "path": "ci/RELEASE-READER.md",
+      "sha256": "5712bed7870d8f83ead4c11c0c154e2eda9d833e83a13856a8ff00d1e3cd928a"
+    },
+    {
+      "path": "ci/docs-check.sh",
+      "sha256": "511bd139b097e06c5d258a607e55471d0e30426a8c3a13161540d766d40ec187"
+    },
+    {
+      "path": "ci/fixtures/inventory.json",
+      "sha256": "bbc1a446bd03601da2a512c765793889d37f6e0a123ee81a25121a4086234ffb"
+    },
+    {
+      "path": "ci/github/classify.py",
+      "sha256": "273e330670158c26fe99946cc039c21d0d0151ff38a0608cf5cd0bf868415a1c"
+    },
+    {
+      "path": "ci/github/fixtures/backend-record.json",
+      "sha256": "00f2602021a21c553b546083352a50936b10b923b03c39c8218c210d3c8bc4a7"
+    },
+    {
+      "path": "ci/github/fixtures/image-scan.json",
+      "sha256": "63b684854bd4961bcb515b09823ea700dda69135486c5e11352bb1d7850f534e"
+    },
+    {
+      "path": "ci/github/fixtures/order-config.json",
+      "sha256": "8bd06c0e86671a7e7f8d56d6ff80bf56db6e753ff45357ca5d1a21e5a8f680ea"
+    },
+    {
+      "path": "ci/github/fixtures/order-manifest.json",
+      "sha256": "0578ef8eb4991f3b8db3ad3bfe3bb58501962e0ea97449d5feec6cd346d82768"
+    },
+    {
+      "path": "ci/github/fixtures/order-record.json",
+      "sha256": "a3a2b0472fe51d96614406d85fd89748eb8c255c45ebbfd21cfdde57e0968eb5"
+    },
+    {
+      "path": "ci/github/fixtures/sbom.cdx.json",
+      "sha256": "b9104ba1eba76b6b080694eb4eb1717e38d5d9b7dbe4469e50acbfd756c5ca56"
+    },
+    {
+      "path": "ci/github/order-release.schema.json",
+      "sha256": "2bdc572d5e2ac6f694a1658b27d36ead6abdb44bcfb9eb284b47f74979468f92"
+    },
+    {
+      "path": "ci/github/release.py",
+      "sha256": "ed2630b8b3fe3a18a6de2c0ce55dcbe494f7d20414d672326d7e524b30903867"
+    },
+    {
+      "path": "ci/github/release_test.py",
+      "sha256": "c23078874ec77fb06a54525a4cb4f2a702a7758fe833f396174fc53fd77a4d86"
+    },
+    {
+      "path": "ci/github/source-scan.sh",
+      "sha256": "83316619b510fdb53f7f25f0b07994d130c8813b832c6a2c63fc305ea0fd98b0"
+    },
+    {
+      "path": "ci/github/test.sh",
+      "sha256": "4c074da8b78aefec90e15a004101ee6983d82940e1eaea08249086b44b5c2b75"
+    },
+    {
+      "path": "ci/includes/docs.yml",
+      "sha256": "57b6105faaa3ca2726da50925573020d1590b7f12a91b59030e61000328bb1e1"
+    },
+    {
+      "path": "ci/includes/full-pipeline.yml",
+      "sha256": "4d40d30359427606b3906ecd1f8c584342dbd48798cac6fd91d9c59f64653332"
+    },
+    {
+      "path": "ci/includes/security.yml",
+      "sha256": "c0b2c4239ab01258e0d319cd06400b8f4a6bd89a59ea83eb87b7d8385153366a"
+    },
+    {
+      "path": "ci/namespace_boundary_test.py",
+      "sha256": "bcd45b2c3cc916b0972986efff4d0cb764f7f83f78e6f4d481e2e3efde0010f0"
+    },
+    {
+      "path": "ci/namespace_sandbox.py",
+      "sha256": "b6c367acf5e835bbbe153b57ef8c9ece23bf37b1b9af40344bb62764bcb6f115"
+    },
+    {
+      "path": "ci/pre-merge-check.sh",
+      "sha256": "df0ad0e8e3f2338a2924a41d0a3946123cbb593e9df73013472908e8e4fc1062"
+    },
+    {
+      "path": "ci/pre_merge_check.py",
+      "sha256": "4a1e60b2b5cfcea918ab50ec9038c36899923279c62daf711e16a4482f738dd3"
+    },
+    {
+      "path": "ci/pre_merge_check_test.py",
+      "sha256": "41b96a6bd11efcaa59e85cccfcc6194bd740254fb8df1b747772f39ec8e82328"
+    },
+    {
+      "path": "ci/release-record.schema.json",
+      "sha256": "bd9f2a7c8bd58c7a2ffc819e97d5fc0884dc7505bf785733005407bd4739e518"
+    },
+    {
+      "path": "ci/source-scan.sh",
+      "sha256": "b3c1ab1bed5e8fccfd566fb3931d2071b0c0d8cdb4a1164f899b3ee33336cae0"
+    },
+    {
+      "path": "ci/test-docs-check.sh",
+      "sha256": "aa1c614816de21cc2d0967b09e68ec70cd6657c5d5f75eb8b57a6dc41dd954ea"
+    },
+    {
+      "path": "ci/trusted-consumer.py",
+      "sha256": "4b9e68efd123f804d8fc82781cae1979fca579d4f3018e7b314e267e142a16b5"
+    },
+    {
+      "path": "ci/trusted-producer.py",
+      "sha256": "2c2add44df7e7beea7a0575996c37511ca97c7b924a5171a7e4f995b9df1cfa6"
+    },
+    {
+      "path": "ci/trusted-registry.py",
+      "sha256": "1b10834896f192b3fa327bc4ff8a20944d04010d2aeb2b0940d2ca1117382e61"
+    },
+    {
+      "path": "ci/trusted-render.py",
+      "sha256": "0530550423ff2ee8d3e5d2fdd88d0e57892d59bcc5e125e6f0502acd19e75339"
+    },
+    {
+      "path": "ci/trusted_api.py",
+      "sha256": "fd35d12777a56dad51644b48965484ce6128847ee7423d8c786abe31014d093c"
+    },
+    {
+      "path": "ci/trusted_attempts.py",
+      "sha256": "284ef6e2fa5d6503f262ddfda28afa3494e7e4b888038098ba8de3d773ab7928"
+    },
+    {
+      "path": "ci/trusted_attempts_test.py",
+      "sha256": "f7c9e3bb00588d339ee219c677b4af79b45b7cc2b1b342f9199bfb6d812c82c9"
+    },
+    {
+      "path": "ci/trusted_binary.py",
+      "sha256": "28363f6403cd5af7ff49dfbc3a8f380e353ce6e6d393cdb1dd4bdb0bbdf1a638"
+    },
+    {
+      "path": "ci/trusted_binary_test.py",
+      "sha256": "7b68a7e5689559dd83fc2576bf698f922d410570d4db4f7dfce349c081c8bf10"
+    },
+    {
+      "path": "ci/trusted_consumer_failure_test.py",
+      "sha256": "120f2e997760c91af9d9c6bc9e328e5c4d292b5e1f73170afdb22432b0c8e9f7"
+    },
+    {
+      "path": "ci/trusted_contract.py",
+      "sha256": "4cc723e843bde82e0f8f9728a7f9beab2a070015f24e39165ca66be4035776f4"
+    },
+    {
+      "path": "ci/trusted_contract_test.py",
+      "sha256": "4cbad2776d23fd118ee79a8d2feeda403cf9beef29949083d9e603e8ecd39ef1"
+    },
+    {
+      "path": "ci/trusted_identity_test.py",
+      "sha256": "5684fb6f348bc3e7b5e54ed3bfc0c3f168759deeb6653a5c0dc0662d819ad7fc"
+    },
+    {
+      "path": "ci/trusted_phase2.py",
+      "sha256": "b1bbeb2372250c6d88c924c6a2326f2fdb62d2734bd2eac38e687ef8148e5fd3"
+    },
+    {
+      "path": "ci/trusted_phase2_test.py",
+      "sha256": "1967899585e25877bf800fb7cefc6f5ee943a965f5e02c055a4380ab9c3f0336"
+    },
+    {
+      "path": "ci/trusted_registry_test.py",
+      "sha256": "483a49af74435f57f71e5ce026b3ef16536d1a82c370a8a9623baad893537e3c"
+    },
+    {
+      "path": "ci/trusted_render_test.py",
+      "sha256": "c36ff79d0f25d398be9f8f9e827162ca0a1d22e467ad730f4125a20c41c12031"
+    },
+    {
+      "path": "ci/validate-image-update.sh",
+      "sha256": "49afd71f400361d7b66503e405cb9b76c7a3f84b759251bf867d7b3c78cb79d1"
+    },
+    {
+      "path": "ci/validate.sh",
+      "sha256": "b9ede5104bc656418ea2914f7aadb02a20adc7b6a52a24ba240d5a81336e0240"
+    },
+    {
+      "path": "ci/verify-release-image.sh",
+      "sha256": "f4debb25e5312b5250ae1ddf5e7efd8de888c51b25fe2f47cc06f5db32104ebd"
+    },
+    {
+      "path": "ci/verify-release-provenance.sh",
+      "sha256": "8daff3f2cdd03a31eda2d3b8a7bf733d1616760a8c2e2b281ed4756aa029c46a"
+    }
+  ],
+  "input_verification": {
+    "canonical_cli_exit_code": 0,
+    "explicit_objects": 111,
+    "closure_objects": 117,
+    "fresh_git": true,
+    "manager_independent_pin_used": true,
+    "private_authorization_and_receipt_excluded": true,
+    "records_commit": "fc59610c527fb66dd85ce22e5fdb70f547458966",
+    "manifest": {
+      "size": 161560,
+      "sha256": "d9aec76cbec2cbe7143841aa3249ff2ca30ca173da29fd99e9eda86e20990dc0"
+    },
+    "publication_receipt": {
+      "size": 58766,
+      "sha256": "09bc4d3e04227ab2c44a4757576801b0e4552d5cecdf1d53caf18404820be823"
+    }
+  },
+  "ci": {
+    "id": 38125716138,
+    "event": "pull_request",
+    "head_sha": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+    "path": ".github/workflows/ci.yml",
+    "status": "completed",
+    "conclusion": "success",
+    "run_attempt": 1,
+    "created_at": "2026-10-11T08:41:50Z",
+    "updated_at": "2026-10-11T08:43:09Z",
+    "pull_requests": [
+      {
+        "url": "https://api.github.com/repos/syuhei0519/application-manifest/pulls/18",
+        "id": 4817497439,
+        "number": 18,
+        "head": {
+          "ref": "feat/order-trusted-manifest-m0",
+          "sha": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+          "repo": {
+            "id": 1410556596,
+            "url": "https://api.github.com/repos/syuhei0519/application-manifest",
+            "name": "application-manifest"
+          }
+        },
+        "base": {
+          "ref": "main",
+          "sha": "e039945a90625262f91382e6f71149d046e31b34",
+          "repo": {
+            "id": 1410556596,
+            "url": "https://api.github.com/repos/syuhei0519/application-manifest",
+            "name": "application-manifest"
+          }
+        }
+      }
+    ],
+    "html_url": "https://github.com/syuhei0519/application-manifest/actions/runs/38125716138"
+  },
+  "ci_limits": "Authoritative head/event/path observed. Event-default checkout merge revision not proved by unavailable raw logs; logs not retried.",
+  "ci_github_test": {
+    "command": "bash ci/github/test.sh",
+    "exit_code": 0,
+    "docs_cases": 14,
+    "python_cases": {
+      "trusted_identity": 3,
+      "trusted_contract": 10,
+      "trusted_registry": 8,
+      "pre_merge_check": 6,
+      "trusted_attempts": 13,
+      "trusted_render": 4,
+      "namespace_boundary": 3,
+      "release": 19
+    }
+  },
+  "extra_suites": [
+    {
+      "command": [
+        "python3",
+        "ci/trusted_binary_test.py"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "seconds": 0.07
+    },
+    {
+      "command": [
+        "python3",
+        "ci/trusted_consumer_failure_test.py"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "seconds": 0.07
+    },
+    {
+      "command": [
+        "python3",
+        "ci/trusted_phase2_test.py"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "seconds": 0.1
+    },
+    {
+      "command": [
+        "sh",
+        "ci/validate.sh"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "seconds": 0.33
+    },
+    {
+      "command": [
+        "go",
+        "test",
+        "./..."
+      ],
+      "cwd": "tools/checksum",
+      "exit_code": 0,
+      "seconds": 1.13
+    }
+  ],
+  "go_tests": [
+    {
+      "module": "tools/checksum",
+      "exit_code": 0,
+      "tests": [
+        {
+          "name": "TestBackendInspectedReleaseAnnotations",
+          "action": "pass"
+        },
+        {
+          "name": "TestConfigChangesRollPodTemplate/frontend/config.apiBasePath=/fixture-api",
+          "action": "pass"
+        },
+        {
+          "name": "TestConfigChangesRollPodTemplate/frontend/config.apiUpstream=http://fixture-backend:8080",
+          "action": "pass"
+        },
+        {
+          "name": "TestConfigChangesRollPodTemplate/frontend",
+          "action": "pass"
+        },
+        {
+          "name": "TestConfigChangesRollPodTemplate/backend/config.logLevel=debug",
+          "action": "pass"
+        },
+        {
+          "name": "TestConfigChangesRollPodTemplate/backend/config.dbHost=fixture-db",
+          "action": "pass"
+        },
+        {
+          "name": "TestConfigChangesRollPodTemplate/backend/config.dbPort=5433",
+          "action": "pass"
+        },
+        {
+          "name": "TestConfigChangesRollPodTemplate/backend/config.dbName=fixture",
+          "action": "pass"
+        },
+        {
+          "name": "TestConfigChangesRollPodTemplate/backend/config.sslmode=require",
+          "action": "pass"
+        },
+        {
+          "name": "TestConfigChangesRollPodTemplate/backend",
+          "action": "pass"
+        },
+        {
+          "name": "TestConfigChangesRollPodTemplate",
+          "action": "pass"
+        },
+        {
+          "name": "TestGitHubReleaseAnnotationBoundary/backend/",
+          "action": "pass"
+        },
+        {
+          "name": "TestGitHubReleaseAnnotationBoundary/backend/recordSha256",
+          "action": "pass"
+        },
+        {
+          "name": "TestGitHubReleaseAnnotationBoundary/backend/sourceRepository",
+          "action": "pass"
+        },
+        {
+          "name": "TestGitHubReleaseAnnotationBoundary/backend/runAttempt",
+          "action": "pass"
+        },
+        {
+          "name": "TestGitHubReleaseAnnotationBoundary/frontend/",
+          "action": "pass"
+        },
+        {
+          "name": "TestGitHubReleaseAnnotationBoundary/frontend/recordSha256",
+          "action": "pass"
+        },
+        {
+          "name": "TestGitHubReleaseAnnotationBoundary/frontend/sourceRepository",
+          "action": "pass"
+        },
+        {
+          "name": "TestGitHubReleaseAnnotationBoundary/frontend/runAttempt",
+          "action": "pass"
+        },
+        {
+          "name": "TestGitHubReleaseAnnotationBoundary",
+          "action": "pass"
+        }
+      ]
+    },
+    {
+      "module": "tools/inventory",
+      "exit_code": 0,
+      "tests": [
+        {
+          "name": "TestAllPodSpecKinds/Pod",
+          "action": "pass"
+        },
+        {
+          "name": "TestAllPodSpecKinds/Deployment",
+          "action": "pass"
+        },
+        {
+          "name": "TestAllPodSpecKinds/StatefulSet",
+          "action": "pass"
+        },
+        {
+          "name": "TestAllPodSpecKinds/DaemonSet",
+          "action": "pass"
+        },
+        {
+          "name": "TestAllPodSpecKinds/ReplicaSet",
+          "action": "pass"
+        },
+        {
+          "name": "TestAllPodSpecKinds/ReplicationController",
+          "action": "pass"
+        },
+        {
+          "name": "TestAllPodSpecKinds/Job",
+          "action": "pass"
+        },
+        {
+          "name": "TestAllPodSpecKinds/CronJob",
+          "action": "pass"
+        },
+        {
+          "name": "TestAllPodSpecKinds",
+          "action": "pass"
+        },
+        {
+          "name": "TestAT01ChangeDetection/init-container",
+          "action": "pass"
+        },
+        {
+          "name": "TestAT01ChangeDetection/migration-only",
+          "action": "pass"
+        },
+        {
+          "name": "TestAT01ChangeDetection/template-or-default-image",
+          "action": "pass"
+        },
+        {
+          "name": "TestAT01ChangeDetection/other-repository",
+          "action": "pass"
+        },
+        {
+          "name": "TestAT01ChangeDetection/release-only",
+          "action": "pass"
+        },
+        {
+          "name": "TestAT01ChangeDetection/sidecar",
+          "action": "pass"
+        },
+        {
+          "name": "TestAT01ChangeDetection",
+          "action": "pass"
+        },
+        {
+          "name": "TestFailClosed",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformPolicy/17.10-bookworm",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformPolicy/sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformPolicy/docker.io/library/postgres",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformPolicy/runAsNonRoot:_true",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformPolicy/runAsUser:_999",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformPolicy/RuntimeDefault",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformPolicy/allowPrivilegeEscalation:_false",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformPolicy/readOnlyRootFilesystem:_true",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformPolicy/drop:_[ALL]",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformPolicy/automountServiceAccountToken:_false",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformPolicy/Prune=false,Delete=false",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformPolicy/Prune=confirm,Delete=confirm",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformPolicy/claimName:_order-postgresql-data",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformPolicy/volumes:",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformPolicy",
+          "action": "pass"
+        },
+        {
+          "name": "TestUnscannedPodSpecs",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/postgresql/inherit",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/postgresql/explicit-equivalent",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/postgresql/partial-equivalent",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/postgresql/root",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/postgresql/nonroot-false",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/postgresql/wrong-uid",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/postgresql/root-gid",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/postgresql/unconfined",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/postgresql/localhost",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/postgresql/empty-seccomp",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/postgresql/null-seccomp",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/postgresql/scalar-seccomp",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/postgresql/null-uid",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/postgresql/string-uid",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/postgresql/string-gid",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/postgresql/string-nonroot",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/postgresql/object-uid",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/order-postgresql/inherit",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/order-postgresql/explicit-equivalent",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/order-postgresql/partial-equivalent",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/order-postgresql/root",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/order-postgresql/nonroot-false",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/order-postgresql/wrong-uid",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/order-postgresql/root-gid",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/order-postgresql/unconfined",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/order-postgresql/localhost",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/order-postgresql/empty-seccomp",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/order-postgresql/null-seccomp",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/order-postgresql/scalar-seccomp",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/order-postgresql/null-uid",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/order-postgresql/string-uid",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/order-postgresql/string-gid",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/order-postgresql/string-nonroot",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides/order-postgresql/object-uid",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerOverrides",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerRoles/postgresql/containers/",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerRoles/postgresql/containers/runAsUser:_0,_runAsNonRoot:_false,_",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerRoles/postgresql/initContainers/",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerRoles/postgresql/initContainers/runAsUser:_0,_runAsNonRoot:_false,_",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerRoles/postgresql/ephemeralContainers/",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerRoles/postgresql/ephemeralContainers/runAsUser:_0,_runAsNonRoot:_false,_",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerRoles/order-postgresql/containers/",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerRoles/order-postgresql/containers/runAsUser:_0,_runAsNonRoot:_false,_",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerRoles/order-postgresql/initContainers/",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerRoles/order-postgresql/initContainers/runAsUser:_0,_runAsNonRoot:_false,_",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerRoles/order-postgresql/ephemeralContainers/",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerRoles/order-postgresql/ephemeralContainers/runAsUser:_0,_runAsNonRoot:_false,_",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformContainerRoles",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql//fixed",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql//ghcr.io/syuhei0519/backend-app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql//ghcr.io/syuhei0519/backend-app-order",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql//ghcr.io/syuhei0519/frontend-app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql//registry.gitlab.com/syuhei-platform-engineering-lab/backend-app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql//example.invalid/unknown",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/account/fixed",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/account/ghcr.io/syuhei0519/backend-app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/account/ghcr.io/syuhei0519/backend-app-order",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/account/ghcr.io/syuhei0519/frontend-app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/account/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/account/example.invalid/unknown",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/synthetic-other/fixed",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/synthetic-other/ghcr.io/syuhei0519/backend-app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/synthetic-other/ghcr.io/syuhei0519/backend-app-order",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/synthetic-other/ghcr.io/syuhei0519/frontend-app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/synthetic-other/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/synthetic-other/example.invalid/unknown",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/binding/17.10-bookworm",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/binding/sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/binding/name:_postgresql_",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/binding/-_name:_postgresql_",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/binding/kind:_StatefulSet",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/binding/apiVersion:_apps/v1",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/binding/______containers:",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/binding/______containers:#01",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/binding/claimName:_postgresql-data",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/binding/kind:_PersistentVolumeClaim_metadata:",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/containers/app-sidecar",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/initContainers/app-sidecar",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/postgresql/ephemeralContainers/app-sidecar",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql//fixed",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql//ghcr.io/syuhei0519/backend-app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql//ghcr.io/syuhei0519/backend-app-order",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql//ghcr.io/syuhei0519/frontend-app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql//registry.gitlab.com/syuhei-platform-engineering-lab/backend-app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql//example.invalid/unknown",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/account/fixed",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/account/ghcr.io/syuhei0519/backend-app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/account/ghcr.io/syuhei0519/backend-app-order",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/account/ghcr.io/syuhei0519/frontend-app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/account/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/account/example.invalid/unknown",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/synthetic-other/fixed",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/synthetic-other/ghcr.io/syuhei0519/backend-app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/synthetic-other/ghcr.io/syuhei0519/backend-app-order",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/synthetic-other/ghcr.io/syuhei0519/frontend-app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/synthetic-other/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/synthetic-other/example.invalid/unknown",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/binding/17.10-bookworm",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/binding/sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/binding/name:_order-postgresql_",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/binding/-_name:_order-postgresql_",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/binding/kind:_StatefulSet",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/binding/apiVersion:_apps/v1",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/binding/______containers:",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/binding/______containers:#01",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/binding/claimName:_order-postgresql-data",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/binding/kind:_PersistentVolumeClaim_metadata:",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/containers/app-sidecar",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/initContainers/app-sidecar",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/order-postgresql/ephemeralContainers/app-sidecar",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Pod/ghcr.io/syuhei0519/backend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Pod/ghcr.io/syuhei0519/backend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Pod/ghcr.io/syuhei0519/backend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Pod/ghcr.io/syuhei0519/backend-app-order/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Pod/ghcr.io/syuhei0519/backend-app-order/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Pod/ghcr.io/syuhei0519/backend-app-order/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Pod/ghcr.io/syuhei0519/frontend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Pod/ghcr.io/syuhei0519/frontend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Pod/ghcr.io/syuhei0519/frontend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Pod/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Pod/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Pod/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Pod/example.invalid/unknown/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Pod/example.invalid/unknown/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Pod/example.invalid/unknown/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Pod/platform-under-app-identity",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Deployment/ghcr.io/syuhei0519/backend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Deployment/ghcr.io/syuhei0519/backend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Deployment/ghcr.io/syuhei0519/backend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Deployment/ghcr.io/syuhei0519/backend-app-order/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Deployment/ghcr.io/syuhei0519/backend-app-order/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Deployment/ghcr.io/syuhei0519/backend-app-order/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Deployment/ghcr.io/syuhei0519/frontend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Deployment/ghcr.io/syuhei0519/frontend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Deployment/ghcr.io/syuhei0519/frontend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Deployment/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Deployment/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Deployment/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Deployment/example.invalid/unknown/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Deployment/example.invalid/unknown/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Deployment/example.invalid/unknown/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Deployment/platform-under-app-identity",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/StatefulSet/ghcr.io/syuhei0519/backend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/StatefulSet/ghcr.io/syuhei0519/backend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/StatefulSet/ghcr.io/syuhei0519/backend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/StatefulSet/ghcr.io/syuhei0519/backend-app-order/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/StatefulSet/ghcr.io/syuhei0519/backend-app-order/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/StatefulSet/ghcr.io/syuhei0519/backend-app-order/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/StatefulSet/ghcr.io/syuhei0519/frontend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/StatefulSet/ghcr.io/syuhei0519/frontend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/StatefulSet/ghcr.io/syuhei0519/frontend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/StatefulSet/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/StatefulSet/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/StatefulSet/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/StatefulSet/example.invalid/unknown/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/StatefulSet/example.invalid/unknown/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/StatefulSet/example.invalid/unknown/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/StatefulSet/platform-under-app-identity",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/DaemonSet/ghcr.io/syuhei0519/backend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/DaemonSet/ghcr.io/syuhei0519/backend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/DaemonSet/ghcr.io/syuhei0519/backend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/DaemonSet/ghcr.io/syuhei0519/backend-app-order/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/DaemonSet/ghcr.io/syuhei0519/backend-app-order/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/DaemonSet/ghcr.io/syuhei0519/backend-app-order/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/DaemonSet/ghcr.io/syuhei0519/frontend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/DaemonSet/ghcr.io/syuhei0519/frontend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/DaemonSet/ghcr.io/syuhei0519/frontend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/DaemonSet/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/DaemonSet/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/DaemonSet/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/DaemonSet/example.invalid/unknown/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/DaemonSet/example.invalid/unknown/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/DaemonSet/example.invalid/unknown/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/DaemonSet/platform-under-app-identity",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicaSet/ghcr.io/syuhei0519/backend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicaSet/ghcr.io/syuhei0519/backend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicaSet/ghcr.io/syuhei0519/backend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicaSet/ghcr.io/syuhei0519/backend-app-order/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicaSet/ghcr.io/syuhei0519/backend-app-order/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicaSet/ghcr.io/syuhei0519/backend-app-order/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicaSet/ghcr.io/syuhei0519/frontend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicaSet/ghcr.io/syuhei0519/frontend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicaSet/ghcr.io/syuhei0519/frontend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicaSet/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicaSet/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicaSet/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicaSet/example.invalid/unknown/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicaSet/example.invalid/unknown/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicaSet/example.invalid/unknown/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicaSet/platform-under-app-identity",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicationController/ghcr.io/syuhei0519/backend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicationController/ghcr.io/syuhei0519/backend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicationController/ghcr.io/syuhei0519/backend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicationController/ghcr.io/syuhei0519/backend-app-order/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicationController/ghcr.io/syuhei0519/backend-app-order/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicationController/ghcr.io/syuhei0519/backend-app-order/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicationController/ghcr.io/syuhei0519/frontend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicationController/ghcr.io/syuhei0519/frontend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicationController/ghcr.io/syuhei0519/frontend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicationController/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicationController/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicationController/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicationController/example.invalid/unknown/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicationController/example.invalid/unknown/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicationController/example.invalid/unknown/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/ReplicationController/platform-under-app-identity",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Job/ghcr.io/syuhei0519/backend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Job/ghcr.io/syuhei0519/backend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Job/ghcr.io/syuhei0519/backend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Job/ghcr.io/syuhei0519/backend-app-order/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Job/ghcr.io/syuhei0519/backend-app-order/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Job/ghcr.io/syuhei0519/backend-app-order/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Job/ghcr.io/syuhei0519/frontend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Job/ghcr.io/syuhei0519/frontend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Job/ghcr.io/syuhei0519/frontend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Job/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Job/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Job/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Job/example.invalid/unknown/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Job/example.invalid/unknown/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Job/example.invalid/unknown/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/Job/platform-under-app-identity",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/CronJob/ghcr.io/syuhei0519/backend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/CronJob/ghcr.io/syuhei0519/backend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/CronJob/ghcr.io/syuhei0519/backend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/CronJob/ghcr.io/syuhei0519/backend-app-order/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/CronJob/ghcr.io/syuhei0519/backend-app-order/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/CronJob/ghcr.io/syuhei0519/backend-app-order/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/CronJob/ghcr.io/syuhei0519/frontend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/CronJob/ghcr.io/syuhei0519/frontend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/CronJob/ghcr.io/syuhei0519/frontend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/CronJob/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/CronJob/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/CronJob/registry.gitlab.com/syuhei-platform-engineering-lab/backend-app/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/CronJob/example.invalid/unknown/app",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/CronJob/example.invalid/unknown/postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/CronJob/example.invalid/unknown/order-postgresql",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily/CronJob/platform-under-app-identity",
+          "action": "pass"
+        },
+        {
+          "name": "TestPlatformIdentityBeforeImageFamily",
+          "action": "pass"
+        }
+      ]
+    },
+    {
+      "module": "tools/release-record",
+      "exit_code": 0,
+      "tests": [
+        {
+          "name": "TestBackendInspectionRequiresDatabaseReadinessRefusal/databaseReadinessRefused",
+          "action": "pass"
+        },
+        {
+          "name": "TestBackendInspectionRequiresDatabaseReadinessRefusal/frontendReadyHttp",
+          "action": "pass"
+        },
+        {
+          "name": "TestBackendInspectionRequiresDatabaseReadinessRefusal/sourceDatabaseConnected",
+          "action": "pass"
+        },
+        {
+          "name": "TestBackendInspectionRequiresDatabaseReadinessRefusal/runtimeUid",
+          "action": "pass"
+        },
+        {
+          "name": "TestBackendInspectionRequiresDatabaseReadinessRefusal/runtimeJobId",
+          "action": "pass"
+        },
+        {
+          "name": "TestBackendInspectionRequiresDatabaseReadinessRefusal/sourceProjectId",
+          "action": "pass"
+        },
+        {
+          "name": "TestBackendInspectionRequiresDatabaseReadinessRefusal/frontendLiveHttp",
+          "action": "pass"
+        },
+        {
+          "name": "TestBackendInspectionRequiresDatabaseReadinessRefusal/staticIndexHttp",
+          "action": "pass"
+        },
+        {
+          "name": "TestBackendInspectionRequiresDatabaseReadinessRefusal/network",
+          "action": "pass"
+        },
+        {
+          "name": "TestBackendInspectionRequiresDatabaseReadinessRefusal/backendReadyHttp",
+          "action": "pass"
+        },
+        {
+          "name": "TestBackendInspectionRequiresDatabaseReadinessRefusal/backendLiveHttp",
+          "action": "pass"
+        },
+        {
+          "name": "TestBackendInspectionRequiresDatabaseReadinessRefusal",
+          "action": "pass"
+        },
+        {
+          "name": "TestConsumerRejectsPackageNativeAndAnnotationSwaps",
+          "action": "pass"
+        },
+        {
+          "name": "TestNativeRecordUsesOnlyCompletedJobSafeJSON/#00",
+          "action": "pass"
+        },
+        {
+          "name": "TestNativeRecordUsesOnlyCompletedJobSafeJSON/changed-bytes",
+          "action": "pass"
+        },
+        {
+          "name": "TestNativeRecordUsesOnlyCompletedJobSafeJSON/missing",
+          "action": "pass"
+        },
+        {
+          "name": "TestNativeRecordUsesOnlyCompletedJobSafeJSON/redirect",
+          "action": "pass"
+        },
+        {
+          "name": "TestNativeRecordUsesOnlyCompletedJobSafeJSON/oversized",
+          "action": "pass"
+        },
+        {
+          "name": "TestNativeRecordUsesOnlyCompletedJobSafeJSON/unfinished",
+          "action": "pass"
+        },
+        {
+          "name": "TestNativeRecordUsesOnlyCompletedJobSafeJSON",
+          "action": "pass"
+        },
+        {
+          "name": "TestConsumerRollbackRequiresNewPolicyRunForOldImage",
+          "action": "pass"
+        },
+        {
+          "name": "TestConsumerSelectionRejectsAmbiguousData",
+          "action": "pass"
+        },
+        {
+          "name": "TestReadonlyConsumerRequiresSuccessfulNativeWriterExport/#00",
+          "action": "pass"
+        },
+        {
+          "name": "TestReadonlyConsumerRequiresSuccessfulNativeWriterExport/writer-failed",
+          "action": "pass"
+        },
+        {
+          "name": "TestReadonlyConsumerRequiresSuccessfulNativeWriterExport/writer-ref",
+          "action": "pass"
+        },
+        {
+          "name": "TestReadonlyConsumerRequiresSuccessfulNativeWriterExport/stale-policy",
+          "action": "pass"
+        },
+        {
+          "name": "TestReadonlyConsumerRequiresSuccessfulNativeWriterExport/package-only",
+          "action": "pass"
+        },
+        {
+          "name": "TestReadonlyConsumerRequiresSuccessfulNativeWriterExport/record-bytes",
+          "action": "pass"
+        },
+        {
+          "name": "TestReadonlyConsumerRequiresSuccessfulNativeWriterExport/unproven",
+          "action": "pass"
+        },
+        {
+          "name": "TestReadonlyConsumerRequiresSuccessfulNativeWriterExport/another-run",
+          "action": "pass"
+        },
+        {
+          "name": "TestReadonlyConsumerRequiresSuccessfulNativeWriterExport/duplicate-writer",
+          "action": "pass"
+        },
+        {
+          "name": "TestReadonlyConsumerRequiresSuccessfulNativeWriterExport/redirect",
+          "action": "pass"
+        },
+        {
+          "name": "TestReadonlyConsumerRequiresSuccessfulNativeWriterExport",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/format/expandedBytes",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/format/validationPipelineId",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/format/digest",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/format/validationJobId",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/format/trivyVersion",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/format/fullCraneLayerValidation",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/format/securityGateApplied",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/format/dbUpdatedAt",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/format/sourceCommit",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/format/buildPipelineId",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/format/buildJobId",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/format/archiveSha256",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/format/registryPush",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/format/phase2Adoptable",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/runtime/buildPipelineId",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/runtime/buildJobId",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/runtime/archiveSha256",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/runtime/runtimeUid",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/runtime/frontendReadyHttp",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/runtime/backendLiveHttp",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/runtime/runtimeJobId",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/runtime/sourceDatabaseConnected",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/runtime/sourceCommit",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/runtime/phase2Adoptable",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/runtime/runtimePipelineId",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/runtime/staticIndexHttp",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/runtime/databaseReadinessRefused",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/runtime/network",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/runtime/digest",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/runtime/registryPush",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime/runtime/backendReadyHttp",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionProofRefusesSwappedRunAndUnsafeRuntime",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionAPIRefusesFailedPipelineAndChangedPolicy/#00",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionAPIRefusesFailedPipelineAndChangedPolicy/build-push",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionAPIRefusesFailedPipelineAndChangedPolicy/build-api",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionAPIRefusesFailedPipelineAndChangedPolicy/build-other-pipeline",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionAPIRefusesFailedPipelineAndChangedPolicy/build-wrong-job",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionAPIRefusesFailedPipelineAndChangedPolicy/pipeline-failed",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionAPIRefusesFailedPipelineAndChangedPolicy/push",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionAPIRefusesFailedPipelineAndChangedPolicy/duplicate-job",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionAPIRefusesFailedPipelineAndChangedPolicy/policy-swap",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionAPIRefusesFailedPipelineAndChangedPolicy/main-advanced",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionAPIRefusesFailedPipelineAndChangedPolicy/redirect",
+          "action": "pass"
+        },
+        {
+          "name": "TestInspectionAPIRefusesFailedPipelineAndChangedPolicy",
+          "action": "pass"
+        },
+        {
+          "name": "TestPhase0RegistryOriginRequiresActualBuildNotReusedTag/#00",
+          "action": "pass"
+        },
+        {
+          "name": "TestPhase0RegistryOriginRequiresActualBuildNotReusedTag/reused-empty-metadata",
+          "action": "pass"
+        },
+        {
+          "name": "TestPhase0RegistryOriginRequiresActualBuildNotReusedTag/missing-metadata",
+          "action": "pass"
+        },
+        {
+          "name": "TestPhase0RegistryOriginRequiresActualBuildNotReusedTag/digest-swap",
+          "action": "pass"
+        },
+        {
+          "name": "TestPhase0RegistryOriginRequiresActualBuildNotReusedTag/missing-config",
+          "action": "pass"
+        },
+        {
+          "name": "TestPhase0RegistryOriginRequiresActualBuildNotReusedTag/build-failed",
+          "action": "pass"
+        },
+        {
+          "name": "TestPhase0RegistryOriginRequiresActualBuildNotReusedTag/build-source",
+          "action": "pass"
+        },
+        {
+          "name": "TestPhase0RegistryOriginRequiresActualBuildNotReusedTag/MR-pipeline",
+          "action": "pass"
+        },
+        {
+          "name": "TestPhase0RegistryOriginRequiresActualBuildNotReusedTag/pipeline-failed",
+          "action": "pass"
+        },
+        {
+          "name": "TestPhase0RegistryOriginRequiresActualBuildNotReusedTag/redirect",
+          "action": "pass"
+        },
+        {
+          "name": "TestPhase0RegistryOriginRequiresActualBuildNotReusedTag",
+          "action": "pass"
+        },
+        {
+          "name": "TestLegacyBindingNeverFabricatesPastScan",
+          "action": "pass"
+        },
+        {
+          "name": "TestOCIIdentityUsesActualArchiveAndOriginalBuild/duplicate-build",
+          "action": "pass"
+        },
+        {
+          "name": "TestOCIIdentityUsesActualArchiveAndOriginalBuild/scan-as-build",
+          "action": "pass"
+        },
+        {
+          "name": "TestOCIIdentityUsesActualArchiveAndOriginalBuild/other-pipeline",
+          "action": "pass"
+        },
+        {
+          "name": "TestOCIIdentityUsesActualArchiveAndOriginalBuild/unknown-build",
+          "action": "pass"
+        },
+        {
+          "name": "TestOCIIdentityUsesActualArchiveAndOriginalBuild/source-swap",
+          "action": "pass"
+        },
+        {
+          "name": "TestOCIIdentityUsesActualArchiveAndOriginalBuild",
+          "action": "pass"
+        },
+        {
+          "name": "TestFixedDestinationBeforeAuthentication",
+          "action": "pass"
+        },
+        {
+          "name": "TestRedirectIsNeverFollowed",
+          "action": "pass"
+        },
+        {
+          "name": "TestImmutableRunsAndChecksum",
+          "action": "pass"
+        },
+        {
+          "name": "TestInvalidRunAndMissingArtifact",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublicationRequiresCurrentSuccessfulBytesAndActualOCI/record-hash",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublicationRequiresCurrentSuccessfulBytesAndActualOCI/record-run",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublicationRequiresCurrentSuccessfulBytesAndActualOCI/SBOM",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublicationRequiresCurrentSuccessfulBytesAndActualOCI/archive",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublicationRequiresCurrentSuccessfulBytesAndActualOCI/layout",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublicationRequiresCurrentSuccessfulBytesAndActualOCI/expired",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublicationRequiresCurrentSuccessfulBytesAndActualOCI/failed",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublicationRequiresCurrentSuccessfulBytesAndActualOCI/historical-source",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublicationRequiresCurrentSuccessfulBytesAndActualOCI",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublisherUsesLiveProtectedMainAndCompletedWriter/#00",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublisherUsesLiveProtectedMainAndCompletedWriter/unprotected",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublisherUsesLiveProtectedMainAndCompletedWriter/stale-main",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublisherUsesLiveProtectedMainAndCompletedWriter/MR-pipeline",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublisherUsesLiveProtectedMainAndCompletedWriter/publisher-failed",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublisherUsesLiveProtectedMainAndCompletedWriter/scan-running",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublisherUsesLiveProtectedMainAndCompletedWriter/build-failed",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublisherUsesLiveProtectedMainAndCompletedWriter/writer-failed",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublisherUsesLiveProtectedMainAndCompletedWriter/writer-missing",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublisherUsesLiveProtectedMainAndCompletedWriter/writer-duplicate",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublisherUsesLiveProtectedMainAndCompletedWriter/source-scan-failed",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublisherUsesLiveProtectedMainAndCompletedWriter/format-failed",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublisherUsesLiveProtectedMainAndCompletedWriter/runtime-failed",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublisherUsesLiveProtectedMainAndCompletedWriter/403",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublisherUsesLiveProtectedMainAndCompletedWriter/redirect",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublisherUsesLiveProtectedMainAndCompletedWriter/old-source",
+          "action": "pass"
+        },
+        {
+          "name": "TestPublisherUsesLiveProtectedMainAndCompletedWriter",
+          "action": "pass"
+        },
+        {
+          "name": "TestReleaseReaderActualBytesAndRunSubstitution",
+          "action": "pass"
+        },
+        {
+          "name": "TestReleaseReaderInputAndForbiddenWriteStatus",
+          "action": "pass"
+        },
+        {
+          "name": "TestStrictRecordAndRunBinding",
+          "action": "pass"
+        },
+        {
+          "name": "TestFreshDBAndExceptionAtAdoption",
+          "action": "pass"
+        },
+        {
+          "name": "TestFailedSecondRunNeverAdoptedAsOldSuccess",
+          "action": "pass"
+        },
+        {
+          "name": "TestUnknownBuildOrExpiredInputRetainedOnlyAsFailure",
+          "action": "pass"
+        },
+        {
+          "name": "TestUnavailableRegistryInputHasNoInventedBuildOrAdoption",
+          "action": "pass"
+        },
+        {
+          "name": "TestRegistryRetrievalPreservesBuildWithoutAdoptingOldScan/invalid-policy",
+          "action": "pass"
+        },
+        {
+          "name": "TestRegistryRetrievalPreservesBuildWithoutAdoptingOldScan/wrong-project",
+          "action": "pass"
+        },
+        {
+          "name": "TestRegistryRetrievalPreservesBuildWithoutAdoptingOldScan/wrong-url",
+          "action": "pass"
+        },
+        {
+          "name": "TestRegistryRetrievalPreservesBuildWithoutAdoptingOldScan/build-job-as-scan",
+          "action": "pass"
+        },
+        {
+          "name": "TestRegistryRetrievalPreservesBuildWithoutAdoptingOldScan/old-scan-as-new",
+          "action": "pass"
+        },
+        {
+          "name": "TestRegistryRetrievalPreservesBuildWithoutAdoptingOldScan/missing-pipeline",
+          "action": "pass"
+        },
+        {
+          "name": "TestRegistryRetrievalPreservesBuildWithoutAdoptingOldScan/oversize",
+          "action": "pass"
+        },
+        {
+          "name": "TestRegistryRetrievalPreservesBuildWithoutAdoptingOldScan/external-record-url",
+          "action": "pass"
+        },
+        {
+          "name": "TestRegistryRetrievalPreservesBuildWithoutAdoptingOldScan/other-run-url",
+          "action": "pass"
+        },
+        {
+          "name": "TestRegistryRetrievalPreservesBuildWithoutAdoptingOldScan/record-hash",
+          "action": "pass"
+        },
+        {
+          "name": "TestRegistryRetrievalPreservesBuildWithoutAdoptingOldScan/image-digest",
+          "action": "pass"
+        },
+        {
+          "name": "TestRegistryRetrievalPreservesBuildWithoutAdoptingOldScan/source-label",
+          "action": "pass"
+        },
+        {
+          "name": "TestRegistryRetrievalPreservesBuildWithoutAdoptingOldScan/old-archive-checksum",
+          "action": "pass"
+        },
+        {
+          "name": "TestRegistryRetrievalPreservesBuildWithoutAdoptingOldScan/partial-reader",
+          "action": "pass"
+        },
+        {
+          "name": "TestRegistryRetrievalPreservesBuildWithoutAdoptingOldScan",
+          "action": "pass"
+        },
+        {
+          "name": "TestLegacyResolveChecksLiveActorAndNeverGrantsHistoricalAdoption/#00",
+          "action": "pass"
+        },
+        {
+          "name": "TestLegacyResolveChecksLiveActorAndNeverGrantsHistoricalAdoption/historical-not-enabled",
+          "action": "pass"
+        },
+        {
+          "name": "TestLegacyResolveChecksLiveActorAndNeverGrantsHistoricalAdoption/unprotected",
+          "action": "pass"
+        },
+        {
+          "name": "TestLegacyResolveChecksLiveActorAndNeverGrantsHistoricalAdoption/stale-main",
+          "action": "pass"
+        },
+        {
+          "name": "TestLegacyResolveChecksLiveActorAndNeverGrantsHistoricalAdoption/origin-digest",
+          "action": "pass"
+        },
+        {
+          "name": "TestLegacyResolveChecksLiveActorAndNeverGrantsHistoricalAdoption/missing-metadata",
+          "action": "pass"
+        },
+        {
+          "name": "TestLegacyResolveChecksLiveActorAndNeverGrantsHistoricalAdoption/actor-ref",
+          "action": "pass"
+        },
+        {
+          "name": "TestLegacyResolveChecksLiveActorAndNeverGrantsHistoricalAdoption",
+          "action": "pass"
+        },
+        {
+          "name": "TestRegistryRequestSeparatesOriginsAndRejectsAmbiguousSelectors",
+          "action": "pass"
+        },
+        {
+          "name": "TestRescanModelRetainsBuildAndRejectsRunSubstitutions",
+          "action": "pass"
+        },
+        {
+          "name": "TestRetentionUnionAndLiveRollbackExclusions",
+          "action": "pass"
+        },
+        {
+          "name": "TestUnknownRetentionInputsBlockWholeCleanup",
+          "action": "pass"
+        },
+        {
+          "name": "TestSBOMOfficialSchemaAndInventory/invalid-component-type",
+          "action": "pass"
+        },
+        {
+          "name": "TestSBOMOfficialSchemaAndInventory/missing-inventory",
+          "action": "pass"
+        },
+        {
+          "name": "TestSBOMOfficialSchemaAndInventory/missing-root-graph",
+          "action": "pass"
+        },
+        {
+          "name": "TestSBOMOfficialSchemaAndInventory/config-swapped",
+          "action": "pass"
+        },
+        {
+          "name": "TestSBOMOfficialSchemaAndInventory/duplicate-key",
+          "action": "pass"
+        },
+        {
+          "name": "TestSBOMOfficialSchemaAndInventory/wrong-tool",
+          "action": "pass"
+        },
+        {
+          "name": "TestSBOMOfficialSchemaAndInventory/wrong-format",
+          "action": "pass"
+        },
+        {
+          "name": "TestSBOMOfficialSchemaAndInventory/different-version",
+          "action": "pass"
+        },
+        {
+          "name": "TestSBOMOfficialSchemaAndInventory/dangling-dependency",
+          "action": "pass"
+        },
+        {
+          "name": "TestSBOMOfficialSchemaAndInventory/disconnected-inventory",
+          "action": "pass"
+        },
+        {
+          "name": "TestSBOMOfficialSchemaAndInventory/old-sbom",
+          "action": "pass"
+        },
+        {
+          "name": "TestSBOMOfficialSchemaAndInventory/empty-bom",
+          "action": "pass"
+        },
+        {
+          "name": "TestSBOMOfficialSchemaAndInventory/unknown-field",
+          "action": "pass"
+        },
+        {
+          "name": "TestSBOMOfficialSchemaAndInventory",
+          "action": "pass"
+        },
+        {
+          "name": "TestSBOMSchemaLoaderNeverLoadsExternalInput",
+          "action": "pass"
+        },
+        {
+          "name": "TestCompleteActualByteBindingsAndFailedSecondRun",
+          "action": "pass"
+        },
+        {
+          "name": "TestCompleteScanRejectsSubstitutionsAndKeepsUnknowns/policy-hash",
+          "action": "pass"
+        },
+        {
+          "name": "TestCompleteScanRejectsSubstitutionsAndKeepsUnknowns/raw-secret-field",
+          "action": "pass"
+        },
+        {
+          "name": "TestCompleteScanRejectsSubstitutionsAndKeepsUnknowns/future-db",
+          "action": "pass"
+        },
+        {
+          "name": "TestCompleteScanRejectsSubstitutionsAndKeepsUnknowns",
+          "action": "pass"
+        },
+        {
+          "name": "TestDatabaseFailureDoesNotRefreshOrInventTimestamp",
+          "action": "pass"
+        },
+        {
+          "name": "TestCompletedJobAuthorityRejectsStatusAndIdentitySwaps/#00",
+          "action": "pass"
+        },
+        {
+          "name": "TestCompletedJobAuthorityRejectsStatusAndIdentitySwaps/scan-running",
+          "action": "pass"
+        },
+        {
+          "name": "TestCompletedJobAuthorityRejectsStatusAndIdentitySwaps/scan-source",
+          "action": "pass"
+        },
+        {
+          "name": "TestCompletedJobAuthorityRejectsStatusAndIdentitySwaps/scan-unprotected-ref",
+          "action": "pass"
+        },
+        {
+          "name": "TestCompletedJobAuthorityRejectsStatusAndIdentitySwaps/build-source",
+          "action": "pass"
+        },
+        {
+          "name": "TestCompletedJobAuthorityRejectsStatusAndIdentitySwaps/build-status",
+          "action": "pass"
+        },
+        {
+          "name": "TestCompletedJobAuthorityRejectsStatusAndIdentitySwaps/build-unprotected-ref",
+          "action": "pass"
+        },
+        {
+          "name": "TestCompletedJobAuthorityRejectsStatusAndIdentitySwaps/wrong-project",
+          "action": "pass"
+        },
+        {
+          "name": "TestCompletedJobAuthorityRejectsStatusAndIdentitySwaps/allow-failure",
+          "action": "pass"
+        },
+        {
+          "name": "TestCompletedJobAuthorityRejectsStatusAndIdentitySwaps/redirect",
+          "action": "pass"
+        },
+        {
+          "name": "TestCompletedJobAuthorityRejectsStatusAndIdentitySwaps/403",
+          "action": "pass"
+        },
+        {
+          "name": "TestCompletedJobAuthorityRejectsStatusAndIdentitySwaps",
+          "action": "pass"
+        },
+        {
+          "name": "TestStorageContractProvesServerRefusalAndPreservedBytes",
+          "action": "pass"
+        },
+        {
+          "name": "TestWriterAuthorityBeforeAnyImmutableUpload/#00",
+          "action": "pass"
+        },
+        {
+          "name": "TestWriterAuthorityBeforeAnyImmutableUpload/failed-evidence",
+          "action": "pass"
+        },
+        {
+          "name": "TestWriterAuthorityBeforeAnyImmutableUpload/unprotected",
+          "action": "pass"
+        },
+        {
+          "name": "TestWriterAuthorityBeforeAnyImmutableUpload/stale-main",
+          "action": "pass"
+        },
+        {
+          "name": "TestWriterAuthorityBeforeAnyImmutableUpload/writer-failed",
+          "action": "pass"
+        },
+        {
+          "name": "TestWriterAuthorityBeforeAnyImmutableUpload/source-scan-failed",
+          "action": "pass"
+        },
+        {
+          "name": "TestWriterAuthorityBeforeAnyImmutableUpload/duplicate-allowed",
+          "action": "pass"
+        },
+        {
+          "name": "TestWriterAuthorityBeforeAnyImmutableUpload/duplicate-exception",
+          "action": "pass"
+        },
+        {
+          "name": "TestWriterAuthorityBeforeAnyImmutableUpload/duplicate-auth",
+          "action": "pass"
+        },
+        {
+          "name": "TestWriterAuthorityBeforeAnyImmutableUpload/MR-pipeline",
+          "action": "pass"
+        },
+        {
+          "name": "TestWriterAuthorityBeforeAnyImmutableUpload/scan-running",
+          "action": "pass"
+        },
+        {
+          "name": "TestWriterAuthorityBeforeAnyImmutableUpload/SBOM-swap",
+          "action": "pass"
+        },
+        {
+          "name": "TestWriterAuthorityBeforeAnyImmutableUpload/scan-swap",
+          "action": "pass"
+        },
+        {
+          "name": "TestWriterAuthorityBeforeAnyImmutableUpload",
+          "action": "pass"
+        }
+      ]
+    },
+    {
+      "module": "tools/scan-gate",
+      "exit_code": 0,
+      "tests": [
+        {
+          "name": "TestFixedSeverityDecisions",
+          "action": "pass"
+        },
+        {
+          "name": "TestSecretRedactionAndPrivileged",
+          "action": "pass"
+        },
+        {
+          "name": "TestDBUpdatedAtNotDownloadedAt",
+          "action": "pass"
+        },
+        {
+          "name": "TestStrictExceptionScopeAndExpiry",
+          "action": "pass"
+        },
+        {
+          "name": "TestRenderedPlainSecretAndPrivileged",
+          "action": "pass"
+        },
+        {
+          "name": "TestRenderedCredentialURLAndConfigMap",
+          "action": "pass"
+        },
+        {
+          "name": "TestOnlyReadOnlySecretVolumeFileReferenceAllowed",
+          "action": "pass"
+        }
+      ]
+    }
+  ],
+  "probe_executions": [
+    {
+      "script": "b231aa38653333bd86f293a13458f4bf955970f3/evidence/order-m0/implementation-e2-a1/reproduce.py",
+      "exit_code": 0,
+      "seconds": 0.21
+    },
+    {
+      "script": "9977949f20d2d1f129d28a152c7a6dc056914228/evidence/order-m0/test-a2/security-boundaries.py",
+      "exit_code": 0,
+      "seconds": 0.93
+    },
+    {
+      "script": "b231aa38653333bd86f293a13458f4bf955970f3/evidence/order-m0/implementation-e2-a1/f2-trusted.py",
+      "exit_code": 0,
+      "seconds": 19.47
+    },
+    {
+      "script": "b231aa38653333bd86f293a13458f4bf955970f3/evidence/order-m0/implementation-e2-a1/reproduce-render.py",
+      "exit_code": 0,
+      "seconds": 76.34
+    },
+    {
+      "script": "b231aa38653333bd86f293a13458f4bf955970f3/evidence/order-m0/implementation-e2-a1/fixed-render-comparison.py",
+      "exit_code": 0,
+      "seconds": 0.41
+    }
+  ],
+  "f1": {
+    "target": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+    "synthetic": true,
+    "results": [
+      {
+        "case": "v2-positive",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true
+      },
+      {
+        "case": "v1-backend-positive",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true
+      },
+      {
+        "case": "v1-frontend-positive",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true
+      },
+      {
+        "case": "record-missing-archiveSha256",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-configDigest",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-createdAt",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-dbUpdatedAt",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-deploymentAuthorized",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-imageDigest",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-imagePolicyPassed",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-imageRepository",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-imageScanSha256",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-isolatedRuntimePassed",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-protectedMain",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-published",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-repository",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-runAttempt",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-runId",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-sbomSha256",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-sbomValidated",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-scannedAt",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-schema",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-service",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-sourceCommit",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-sourcePolicyPassed",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-sourceScanSha256",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-validUntil",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-missing-workflowRef",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-schema-core-platform/github-release/v1",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-service-backend",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-service-unknown",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-repository-syuhei0519/backend-app-order",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-sourceCommit-0000000000000000000000000000000000000000",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-runId-124",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-runId-True",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-runId-123",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-runAttempt-1",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-runAttempt-2.0",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-workflowRef-syuhei0519/backend-app/.github/workflows/ci.yml@refs/heads/feature",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-workflowRef-syuhei0519/backend-app/.github/workflows/evil.yml@refs/heads/main",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-imageRepository-ghcr.io/syuhei0519/backend-app",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-imageDigest-sha256:bad",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-configDigest-bad",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-archiveSha256-bad",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-sbomSha256-bad",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-sourceScanSha256-bad",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-imageScanSha256-bad",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-scannedAt-2030-01-01T01:00:01Z",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-createdAt-2029-12-30T00:00:00Z",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-dbUpdatedAt-2030-01-01T00:00:00",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-validUntil-2030-01-01T01:00:00Z",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-validUntil-2030-01-02T00:00:01Z",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-published-1",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-protectedMain-true",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-deploymentAuthorized-True",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "record-invalid-unknown-True",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "v1-service-spoof-backend",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "v1-service-spoof-frontend",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "JSON-b'{\"a\":1,\"a\":2}'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "JSON-b'{\"a\":{\"x\":1,\"\\\\u0078\":2}}'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "JSON-b'{\"x\":NaN}'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "JSON-b'{\"x\":Infinity}'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "JSON-b'{}junk'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "JSON-b'{'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "ZIP-['release-record.json']",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true
+      },
+      {
+        "case": "ZIP-['../release-record.json']",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "ZIP-['/release-record.json']",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "ZIP-['dir/release-record.json']",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "ZIP-['release-record.json', 'extra']",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "ZIP-['release-record.json', 'release-record.json']",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "ZIP-mode-40960",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "ZIP-mode-16384",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "ZIP-mode-4096",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "ZIP-mode-32768",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true
+      },
+      {
+        "case": "matrix-positive",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true
+      },
+      {
+        "case": "matrix-missing-job-0",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "matrix-missing-artifact-0",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "matrix-failed-job-0",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "matrix-expired-artifact-0",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "matrix-missing-job-1",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "matrix-missing-artifact-1",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "matrix-failed-job-1",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "matrix-expired-artifact-1",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "matrix-missing-job-2",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "matrix-missing-artifact-2",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "matrix-failed-job-2",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "matrix-expired-artifact-2",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "matrix-missing-job-3",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "matrix-missing-artifact-3",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "matrix-failed-job-3",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "matrix-expired-artifact-3",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "matrix-duplicate-job",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "matrix-duplicate-artifact",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "inventory-optional-absent",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true
+      },
+      {
+        "case": "inventory-optional-present-order",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true
+      },
+      {
+        "case": "inventory-missing-values-order",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "inventory-missing-chart-order",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "inventory-removed-baseline-order",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "inventory-optional-present-order-postgresql",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true
+      },
+      {
+        "case": "inventory-missing-values-order-postgresql",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "inventory-missing-chart-order-postgresql",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "inventory-removed-baseline-order-postgresql",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "inventory-unknown-chart",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "inventory-active-removed-frontend",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "inventory-active-removed-backend",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "inventory-active-removed-postgresql",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "postgresql-baseline",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true
+      },
+      {
+        "case": "postgresql-baseline-scan-observation",
+        "exit_code": 0,
+        "expectation": "observation only; inventory must enforce fixed effective security"
+      },
+      {
+        "case": "postgresql-root-override",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "postgresql-root-override-scan-observation",
+        "exit_code": 0,
+        "expectation": "observation only; inventory must enforce fixed effective security"
+      },
+      {
+        "case": "postgresql-seccomp-override",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "postgresql-seccomp-override-scan-observation",
+        "exit_code": 0,
+        "expectation": "observation only; inventory must enforce fixed effective security"
+      },
+      {
+        "case": "postgresql-uid-override",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "postgresql-uid-override-scan-observation",
+        "exit_code": 0,
+        "expectation": "observation only; inventory must enforce fixed effective security"
+      },
+      {
+        "case": "postgresql-gid-override",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "postgresql-gid-override-scan-observation",
+        "exit_code": 0,
+        "expectation": "observation only; inventory must enforce fixed effective security"
+      },
+      {
+        "case": "postgresql-pod-root",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "postgresql-writable-root",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "postgresql-pvc-retention",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "postgresql-stateful-retention",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "postgresql-wrong-image",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "postgresql-hidden-podspec",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql-baseline",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql-baseline-scan-observation",
+        "exit_code": 0,
+        "expectation": "observation only; inventory must enforce fixed effective security"
+      },
+      {
+        "case": "order-postgresql-root-override",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql-root-override-scan-observation",
+        "exit_code": 0,
+        "expectation": "observation only; inventory must enforce fixed effective security"
+      },
+      {
+        "case": "order-postgresql-seccomp-override",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql-seccomp-override-scan-observation",
+        "exit_code": 0,
+        "expectation": "observation only; inventory must enforce fixed effective security"
+      },
+      {
+        "case": "order-postgresql-uid-override",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql-uid-override-scan-observation",
+        "exit_code": 0,
+        "expectation": "observation only; inventory must enforce fixed effective security"
+      },
+      {
+        "case": "order-postgresql-gid-override",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql-gid-override-scan-observation",
+        "exit_code": 0,
+        "expectation": "observation only; inventory must enforce fixed effective security"
+      },
+      {
+        "case": "order-postgresql-pod-root",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql-writable-root",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql-pvc-retention",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql-stateful-retention",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql-wrong-image",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql-hidden-podspec",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      }
+    ]
+  },
+  "security": {
+    "synthetic": true,
+    "target": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+    "results": [
+      {
+        "case": "postgresql/inherit",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true,
+        "exit_code": 0
+      },
+      {
+        "case": "postgresql/all-equivalent",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true,
+        "exit_code": 0
+      },
+      {
+        "case": "postgresql/partial-runAsUser",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true,
+        "exit_code": 0
+      },
+      {
+        "case": "postgresql/partial-runAsGroup",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true,
+        "exit_code": 0
+      },
+      {
+        "case": "postgresql/partial-runAsNonRoot",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true,
+        "exit_code": 0
+      },
+      {
+        "case": "postgresql/partial-seccompProfile",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true,
+        "exit_code": 0
+      },
+      {
+        "case": "postgresql/runAsUser/null",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/runAsUser/list",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/runAsUser/object",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/runAsUser/string",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/runAsUser/unknown",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/runAsUser/float",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/runAsGroup/null",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/runAsGroup/list",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/runAsGroup/object",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/runAsGroup/string",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/runAsGroup/unknown",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/runAsGroup/float",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/runAsNonRoot/null",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/runAsNonRoot/list",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/runAsNonRoot/object",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/runAsNonRoot/string",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/runAsNonRoot/unknown",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/runAsNonRoot/float",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/seccompProfile/null",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/seccompProfile/list",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/seccompProfile/object",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/seccompProfile/string",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/seccompProfile/unknown",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/seccompProfile/float",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/nonroot/False",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/nonroot/0",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/nonroot/1",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/nonroot/'true'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/seccomp/{'type': None}",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/seccomp/{'type': []}",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/seccomp/{'type': 'Unknown'}",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/seccomp/{'type': 'Localhost', 'localhostProfile': 'synthetic'}",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/seccomp/{'type': 'Unconfined'}",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/containers/pg-sidecar/False",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/containers/pg-sidecar/True",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/initContainers/pg-sidecar/False",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/initContainers/pg-sidecar/True",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/ephemeralContainers/pg-sidecar/False",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/ephemeralContainers/pg-sidecar/True",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/containers/type/None",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/containers/type/{}",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/containers/type/'invalid'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/initContainers/type/None",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/initContainers/type/{}",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/initContainers/type/'invalid'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/ephemeralContainers/type/None",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/ephemeralContainers/type/{}",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/ephemeralContainers/type/'invalid'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/missing-pvc",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/unknown-resource",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/unscanned-podspec",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "postgresql/app-image-as-db",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/inherit",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true,
+        "exit_code": 0
+      },
+      {
+        "case": "order-postgresql/all-equivalent",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true,
+        "exit_code": 0
+      },
+      {
+        "case": "order-postgresql/partial-runAsUser",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true,
+        "exit_code": 0
+      },
+      {
+        "case": "order-postgresql/partial-runAsGroup",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true,
+        "exit_code": 0
+      },
+      {
+        "case": "order-postgresql/partial-runAsNonRoot",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true,
+        "exit_code": 0
+      },
+      {
+        "case": "order-postgresql/partial-seccompProfile",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true,
+        "exit_code": 0
+      },
+      {
+        "case": "order-postgresql/runAsUser/null",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/runAsUser/list",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/runAsUser/object",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/runAsUser/string",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/runAsUser/unknown",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/runAsUser/float",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/runAsGroup/null",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/runAsGroup/list",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/runAsGroup/object",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/runAsGroup/string",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/runAsGroup/unknown",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/runAsGroup/float",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/runAsNonRoot/null",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/runAsNonRoot/list",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/runAsNonRoot/object",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/runAsNonRoot/string",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/runAsNonRoot/unknown",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/runAsNonRoot/float",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/seccompProfile/null",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/seccompProfile/list",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/seccompProfile/object",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/seccompProfile/string",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/seccompProfile/unknown",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/seccompProfile/float",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/nonroot/False",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/nonroot/0",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/nonroot/1",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/nonroot/'true'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/seccomp/{'type': None}",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/seccomp/{'type': []}",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/seccomp/{'type': 'Unknown'}",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/seccomp/{'type': 'Localhost', 'localhostProfile': 'synthetic'}",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/seccomp/{'type': 'Unconfined'}",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/containers/pg-sidecar/False",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/containers/pg-sidecar/True",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/initContainers/pg-sidecar/False",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/initContainers/pg-sidecar/True",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/ephemeralContainers/pg-sidecar/False",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/ephemeralContainers/pg-sidecar/True",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/containers/type/None",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/containers/type/{}",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/containers/type/'invalid'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/initContainers/type/None",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/initContainers/type/{}",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/initContainers/type/'invalid'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/ephemeralContainers/type/None",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/ephemeralContainers/type/{}",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/ephemeralContainers/type/'invalid'",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/missing-pvc",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/unknown-resource",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/unscanned-podspec",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      },
+      {
+        "case": "order-postgresql/app-image-as-db",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true,
+        "exit_code": 1
+      }
+    ]
+  },
+  "f2": [
+    {
+      "case": "account-db-app-image-substitution",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "synthetic": true
+    }
+  ],
+  "render_fixtures": [
+    {
+      "case": "effective-security-bypass",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "synthetic": true
+    },
+    {
+      "case": "optional-disabled",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true,
+      "synthetic": true,
+      "provenanceRequired": false,
+      "eligible": false,
+      "entries": 4
+    },
+    {
+      "case": "optional-enabled",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true,
+      "synthetic": true,
+      "provenanceRequired": true,
+      "eligible": false,
+      "entries": 6
+    },
+    {
+      "case": "enabled-invalid-pvc",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true,
+      "synthetic": true
+    }
+  ],
+  "render_comparison": {
+    "base": "e039945a90625262f91382e6f71149d046e31b34",
+    "head": "e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4",
+    "base_tree": "7c9c8d52bf014f54fe2212b0ef4374c53d9700a3",
+    "head_tree": "92b867efc6e9163b0cbfd4713b82d0c65e24f769",
+    "files": [
+      {
+        "path": "charts/README.md",
+        "size": 215,
+        "sha256": "7cf38640ab82f1c929fd653995450ff81ed31f8e02effe450447a36c721e5bb3",
+        "equal": true
+      },
+      {
+        "path": "charts/backend/Chart.yaml",
+        "size": 136,
+        "sha256": "509335b49eb7058bb4a736a904a52c572aa4d4ef990795b5efcfaca4e197973f",
+        "equal": true
+      },
+      {
+        "path": "charts/backend/templates/_helpers.tpl",
+        "size": 1704,
+        "sha256": "c0969159e809a92e68a8e83d82fa3419239887a3d56a552e724a0ce261388253",
+        "equal": true
+      },
+      {
+        "path": "charts/backend/templates/configmap.yaml",
+        "size": 877,
+        "sha256": "28a99832e9ec20431b783ee055f384943d9be9dc5aeef206302ddf4192e31f2c",
+        "equal": true
+      },
+      {
+        "path": "charts/backend/templates/deployment.yaml",
+        "size": 5128,
+        "sha256": "5417e6c5fecf93049fd809996e32bbd7f94ee6e321a482882e8edde293450e52",
+        "equal": true
+      },
+      {
+        "path": "charts/backend/templates/migration-job.yaml",
+        "size": 3956,
+        "sha256": "0784e69a70a8c73afd62c532d2a411fcd3d3d9682286c36a8d7b9fec65e87a81",
+        "equal": true
+      },
+      {
+        "path": "charts/backend/templates/service.yaml",
+        "size": 556,
+        "sha256": "84b0d208c354936fa46404a1b2c179dc72fbe0365d3b7cdc201aa14c9c2a03c6",
+        "equal": true
+      },
+      {
+        "path": "charts/backend/templates/serviceaccount.yaml",
+        "size": 418,
+        "sha256": "efaa2ac575ce0da638a9f151282365ff7b6337de87a28c7a8680920b3be191a1",
+        "equal": true
+      },
+      {
+        "path": "charts/backend/values.schema.json",
+        "size": 6267,
+        "sha256": "ac517fe1e9643c430e82f33a3ff486f9c2a9176563ebd4189a53b58c18ad521e",
+        "equal": true
+      },
+      {
+        "path": "charts/backend/values.yaml",
+        "size": 1797,
+        "sha256": "e5c74d65e00b1bcb98bb214648041c8ac227e4ce352872c08ac3788cc2a77e8b",
+        "equal": true
+      },
+      {
+        "path": "charts/frontend/Chart.yaml",
+        "size": 115,
+        "sha256": "3d24f55af5013e502a37552fc8c8bd87a7a3dda28bec6778b9fa45ae4d558a44",
+        "equal": true
+      },
+      {
+        "path": "charts/frontend/templates/_helpers.tpl",
+        "size": 354,
+        "sha256": "b55dde6cf348d4572704105e844e3052bdab95947745589a592bba5eb751cfcf",
+        "equal": true
+      },
+      {
+        "path": "charts/frontend/templates/configmap.yaml",
+        "size": 1037,
+        "sha256": "58e886c4bd117b8aa87bea58f02d3bafe18ed1a585099792678ff75882d1a3a5",
+        "equal": true
+      },
+      {
+        "path": "charts/frontend/templates/deployment.yaml",
+        "size": 5749,
+        "sha256": "5579aa0510d20de312c44600b146a8e7f31fbb839d3035d03f2967e7953f7d0e",
+        "equal": true
+      },
+      {
+        "path": "charts/frontend/templates/service.yaml",
+        "size": 546,
+        "sha256": "6523f5c436ea8d010603e932c2ed1572af6cb8fde696c4e0402384ffe1815fbb",
+        "equal": true
+      },
+      {
+        "path": "charts/frontend/templates/serviceaccount.yaml",
+        "size": 445,
+        "sha256": "44e9b26646e023bf08e84c332d1af0a46674f246e3c992228205bd239164843d",
+        "equal": true
+      },
+      {
+        "path": "charts/frontend/values.schema.json",
+        "size": 5721,
+        "sha256": "f7e002e0792242386e57d39b6603729597dea3111278184d526aa9df90c1c301",
+        "equal": true
+      },
+      {
+        "path": "charts/frontend/values.yaml",
+        "size": 1209,
+        "sha256": "624b3632a4ffee71d6fd48ff67543d7dfdc92139bc318a019093e3359bbf76e9",
+        "equal": true
+      },
+      {
+        "path": "charts/postgresql/Chart.yaml",
+        "size": 145,
+        "sha256": "28482b084bfef71451ce5cec279e7fcaf24069a004ddaca4a80a5c6bdc16e9fd",
+        "equal": true
+      },
+      {
+        "path": "charts/postgresql/templates/_helpers.tpl",
+        "size": 383,
+        "sha256": "f06eefd7b39fdfe886ef97035b42175c1ef31f8004a6e913f878df015d566dfd",
+        "equal": true
+      },
+      {
+        "path": "charts/postgresql/templates/headless-service.yaml",
+        "size": 518,
+        "sha256": "618c865b632a1c8b9ebb8e0d5e94108096dd59d6ab9fd21c02ec64a20a5cdf1e",
+        "equal": true
+      },
+      {
+        "path": "charts/postgresql/templates/init-configmap.yaml",
+        "size": 1137,
+        "sha256": "849c3800f17ef9de07964bcf3a1e1d2a5ff629ab5bfe39f11cd50895f6ef5050",
+        "equal": true
+      },
+      {
+        "path": "charts/postgresql/templates/pvc.yaml",
+        "size": 682,
+        "sha256": "e2b0f7b3114cf86cc5a58cbcba82eea29785dbf341d6b90c20e602b656eb2480",
+        "equal": true
+      },
+      {
+        "path": "charts/postgresql/templates/service.yaml",
+        "size": 475,
+        "sha256": "f5c8e493e720322450e74cbd9cd7356500896a962570330579279a88a8e4e016",
+        "equal": true
+      },
+      {
+        "path": "charts/postgresql/templates/serviceaccount.yaml",
+        "size": 318,
+        "sha256": "e446ea511c47f989fa3977ee0c89111597d3def0f0d87c1171e8aa43a12d943b",
+        "equal": true
+      },
+      {
+        "path": "charts/postgresql/templates/statefulset.yaml",
+        "size": 4067,
+        "sha256": "9aeeff20485e3ce9b4dfb6cd57ce897e07d764e438028bbf2206e2eaeb0f2f3e",
+        "equal": true
+      },
+      {
+        "path": "charts/postgresql/values.schema.json",
+        "size": 1092,
+        "sha256": "a8f3d07d2a8be525b7868a75cbada86b5a27699e8a5e12844bbd7f6117219cae",
+        "equal": true
+      },
+      {
+        "path": "charts/postgresql/values.yaml",
+        "size": 1257,
+        "sha256": "16cdbaa74161d5d822199627311b1f0a4957a2685848b2190b6337bd076d7be4",
+        "equal": true
+      },
+      {
+        "path": "environments/local/README.md",
+        "size": 184,
+        "sha256": "451d5e6a066b6dba79424bea539345aedfcb7b0260d577b28a3c59355b95f4d4",
+        "equal": true
+      },
+      {
+        "path": "environments/local/backend.yaml",
+        "size": 1574,
+        "sha256": "be7b8212ea066e0a601396398310505cb5870c3c7d1c67619b1a421a308c71f8",
+        "equal": true
+      },
+      {
+        "path": "environments/local/frontend.yaml",
+        "size": 1458,
+        "sha256": "57f193504ba28f801c6fe72ec0def62739fe9fb1efd5f853fed8beffd9471a4f",
+        "equal": true
+      },
+      {
+        "path": "environments/local/postgresql.yaml",
+        "size": 281,
+        "sha256": "376c3ebdc39a5fdf1f2a32724c2821cd56dee79b0bf264b03b4a3fa00d9a7088",
+        "equal": true
+      }
+    ],
+    "renders": [
+      {
+        "chart": "frontend",
+        "size": 5555,
+        "sha256": "16ce7b984d0bfa86d110ed2c9757e565a9ada6056f7cbd583de32aa04a3866de",
+        "byte_equal": true,
+        "semantic_equal": true
+      },
+      {
+        "chart": "backend",
+        "size": 9681,
+        "sha256": "98f9ee0a34d05ffdce403e6b22ea28fd84aa9e9eb508a0872d95b50067f22d88",
+        "byte_equal": true,
+        "semantic_equal": true
+      },
+      {
+        "chart": "postgresql",
+        "size": 6966,
+        "sha256": "108bffe412325d4155c964fcf7ca30b58f23d636f1407b0466d84ec4528f8d38",
+        "byte_equal": true,
+        "semantic_equal": true
+      }
+    ]
+  },
+  "additional_independent": {
+    "synthetic": true,
+    "results": [
+      {
+        "case": "postgresql/None/fixed-db",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true
+      },
+      {
+        "case": "postgresql/None/wrong-pvc-namespace",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "postgresql/None/ghcr.io/syuhei0519/backend-app/db-substitution",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "postgresql/None/ghcr.io/syuhei0519/backend-app-order/db-substitution",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "postgresql/None/ghcr.io/syuhei0519/frontend-app/db-substitution",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "postgresql/account/fixed-db",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true
+      },
+      {
+        "case": "postgresql/account/wrong-pvc-namespace",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "postgresql/account/ghcr.io/syuhei0519/backend-app/db-substitution",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "postgresql/account/ghcr.io/syuhei0519/backend-app-order/db-substitution",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "postgresql/account/ghcr.io/syuhei0519/frontend-app/db-substitution",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "postgresql/synthetic-other/fixed-db",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true
+      },
+      {
+        "case": "postgresql/synthetic-other/wrong-pvc-namespace",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "postgresql/synthetic-other/ghcr.io/syuhei0519/backend-app/db-substitution",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "postgresql/synthetic-other/ghcr.io/syuhei0519/backend-app-order/db-substitution",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "postgresql/synthetic-other/ghcr.io/syuhei0519/frontend-app/db-substitution",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql/None/fixed-db",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql/None/wrong-pvc-namespace",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql/None/ghcr.io/syuhei0519/backend-app/db-substitution",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql/None/ghcr.io/syuhei0519/backend-app-order/db-substitution",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql/None/ghcr.io/syuhei0519/frontend-app/db-substitution",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql/account/fixed-db",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql/account/wrong-pvc-namespace",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql/account/ghcr.io/syuhei0519/backend-app/db-substitution",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql/account/ghcr.io/syuhei0519/backend-app-order/db-substitution",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql/account/ghcr.io/syuhei0519/frontend-app/db-substitution",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql/synthetic-other/fixed-db",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql/synthetic-other/wrong-pvc-namespace",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql/synthetic-other/ghcr.io/syuhei0519/backend-app/db-substitution",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql/synthetic-other/ghcr.io/syuhei0519/backend-app-order/db-substitution",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "order-postgresql/synthetic-other/ghcr.io/syuhei0519/frontend-app/db-substitution",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "ordinary-app-inventory",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true
+      },
+      {
+        "case": "token-bearing-github-environment-anonymous-registry",
+        "expected": "accept",
+        "actual": "accept",
+        "passed": true
+      },
+      {
+        "case": "git-symlink-chart-rejected",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "chart-name/order;false",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "chart-name/order$(false)",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "chart-name/order`false`",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "chart-name/../order",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      },
+      {
+        "case": "chart-name/unknown",
+        "expected": "reject",
+        "actual": "reject",
+        "passed": true
+      }
+    ]
+  },
+  "baseline_trusted_render": {
+    "exit_code": 0,
+    "provenanceRequired": false,
+    "eligibleForAuthenticatedVerification": false,
+    "candidate_tree": "92b867efc6e9163b0cbfd4713b82d0c65e24f769",
+    "entries": 4
+  },
+  "render_only_scan": {
+    "exit_code": 0
+  },
+  "tracked_head_unchanged": true,
+  "product_ac_outcome": "unverified",
+  "earliest_phase": "premerge",
+  "deferred": null,
+  "issue_integration_scope": "aggregate_required"
+}

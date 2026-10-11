@@ -1,0 +1,135 @@
+Independent Order M0 Test attempt3 — COMPLETED
+
+Assigned AC-3 verification-infrastructure responsibility passed. This is not a
+product AC met result, real release approval, Merge Ready or deployment approval.
+AC-1/2 are not assigned; actual AC-3 Service/Argo/imageID remains unverified.
+Earliest phase premerge, deferred=null, issue integration aggregate_required.
+
+Fixed subject
+System: syuhei0519/ai-development-system@0083151aa2f6b2aaf0e1db64ada3f196ed766e48
+Application PR18: https://github.com/syuhei0519/application-manifest/pull/18
+Head and independent test revision: e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4
+Head tree: 92b867efc6e9163b0cbfd4713b82d0c65e24f769
+Base: e039945a90625262f91382e6f71149d046e31b34
+Base tree: 7c9c8d52bf014f54fe2212b0ef4374c53d9700a3
+Config: fixed head CI files; per-file SHA-256 and combined digest in results.json.
+Environment: saved PlatformEngineering Cloud, prepared Go1.27.1 / Helm4.2.4,
+Python3/PyYAML, pinned Docker Helm/Go images and original bounded renderer.
+No AGENTS.md was found in the target or System trees or workspace parent.
+Cloud setup guidance was read after a detached test worktree had been created;
+no further worktrees were created. Original checkouts and tracked code unchanged.
+
+Input and independent provenance
+Canonical System consume_delivery.py fetched all 111 explicit objects plus six
+additional tree objects (117 closure objects), checking raw bytes/size/hash,
+type, structural slots, candidate/source/tree, upstream and retry bindings.
+The independent Manager pin was supplied directly; authorization matched exact
+UTF-8 bytes. Authorization and private receipt are retained privately, not here.
+Input records commit fc59610c527fb66dd85ce22e5fdb70f547458966; implementation
+payload b231aa38653333bd86f293a13458f4bf955970f3. Public input pins in results.
+Research design/addendum were read as verified public edited derivatives;
+unavailable private Research originals were not inspected. Implementation
+completed/self-test claims were not accepted as independent test measurements.
+All results below were executed in this Test session against the fixed head.
+Verified upstream scripts are used without rewriting bytes; the implementation
+F2 derivative differs from Test2 only in target and descriptive text. Test2's
+original security-boundaries.py was executed directly. Source references retain
+exact original Git locations; no duplicate history or regenerated input copies.
+
+Results and expected/actual behavior
+PASS bash ci/github/test.sh: documentation 14; all Go inventory/release-record/
+scan-gate packages, checksum compilation, trusted_identity3, trusted_contract10,
+trusted_registry8, pre_merge_check6, trusted_attempts13, trusted_render4,
+Docker namespace_boundary3, release19. Additional trusted_binary1,
+trusted_consumer_failure1, trusted_phase2 2, Helm lint/render, checksum and
+render-only scan all pass. Supplemental structured Go test collection confirms
+inventory272 (including the 190 new identity subcases), checksum20,
+release-record207, scan-gate7; no skipped or failed test events.
+
+F1: 138 observations include 128 gating expectations and ten scan-only
+observations; zero failing expectation. Inherited/equivalent container security
+is accepted for both DBs; root/nonroot/UID/GID/seccomp overrides are rejected.
+The bounded trusted renderer also rejects the historical F1 fixture.
+Security-boundaries: 116/116 expectations pass. Null/list/object/string/numeric
+security types, wrong seccomp, extra/init/ephemeral DB containers, malformed
+container arrays, missing PVC and hidden PodSpec/unknown resource reject.
+F2: Account StatefulSet image replaced by pinned synthetic app image now rejects
+in both inventory and actual bounded trusted renderer. Order substitution also
+rejects. Expected reject equals actual reject. This fixes the previously observed
+inventory classification gap; it is not a test of authenticated release passage.
+No new failing finding was observed in the finite assigned regression scope.
+
+Additional independent38: both DB identities tested with implicit namespace,
+explicit account, and another explicit namespace with matching PVC. All six
+normal cases pass; wrong PVC namespace and all backend/order/frontend app-image
+substitutions reject. Ordinary application inventory remains accepted. Synthetic
+token-bearing GitHub environment still gives the registry subprocess no tokens.
+A symlink chart is rejected during Git snapshot; unknown and shell-metacharacter
+chart names cannot enter the fixed render list. No new namespace allowlist added.
+
+Release19 and supplemental replay exercise v1 backend/frontend positive
+compatibility, v2 fixed Order/service/source/image/schema bindings; unknown
+service and backend impersonation; wrong source/run/attempt/ref/workflow/digest/
+SBOM/record/config/archive; latest-main/moved-tag/expiry boundaries; missing,
+failing, duplicate or expired matrix jobs/artifacts; single-record ZIP integrity,
+path/duplicate/symlink/nonregular entries; duplicate escaped JSON keys/nonfinite/
+trailing syntax/type boundaries. Existing trusted tests exercise fixed verifier
+selection, binary substitution, token-free registry and signed blob redirect,
+source freshness, failure proof removal and sandbox read-only/private/network/
+environment/deadline/output boundaries. PR code is not chosen as trusted verifier;
+charts/values are rendered as data in the original bounded networkless sandbox.
+Positive sandbox/render cases pass, so negative results are not attributed merely
+to unavailable sandbox functionality. No actual Secret or live registry release
+was used. These are finite synthetic tests, not exhaustive fuzzing.
+
+Fixed inventory and static deployment proof
+Existing three charts remain required. Missing optional pair is accepted;
+partial chart/values, unknown chart, existing removal and unscanned PodSpec reject.
+Actual temporary Git fixtures: optional Order+DB disabled accepts four inventory
+entries; enabled accepts six with provenanceRequired=true and authenticated
+eligibility=false. Enabled broken PVC retention rejects. Both fixed DB identities
+use the dedicated PostgreSQL image/security/PVC policy before image classification.
+All 28 chart files and four environment files have equal sets and identical raw
+bytes at base/head. Frontend/backend/postgresql Helm outputs are byte-identical
+and parsed-YAML equal. Per-file/per-render lengths and hashes are in results.json.
+Secret references, PVC definitions and Account live values are unchanged. Head
+M0 changes verifier/tests/docs/fixtures only; static rendered deployment effect
+is none. This does not observe live Argo, sync, health, endpoints or imageID.
+No real cluster/service/DB was started or changed. PR17 was not touched.
+
+CI and readiness limits
+Read-only authoritative GitHub run38125716138: pull_request, completed/success,
+head e5e6de38cf6ee22ba2f10c9f5fcf05c87004a8e4, attempt1,
+.github/workflows/ci.yml, PR18 base e039945a90625262f91382e6f71149d046e31b34.
+PR is open Draft, unmerged, with exact assigned head/base. CI and independent
+Test are separate observations. Workflow checkout uses event-default ref;
+run head_sha alone does not prove its historical PR merge checkout revision.
+Known Forbidden raw logs were not retried or bypassed. The observed current
+merge candidate is not historical CI checkout proof. No new raw-log gate is
+invented and no workflow rerun was dispatched. Required merge-group/current
+protection policy is Manager-owned and was not inferred from successful CI.
+Formal Manager Readiness/context is not fabricated; validate_readiness --handoff
+is not claimed. Results provide fixed subject/config, observation time and expiry
+for Manager assessment. Refresh on any subject/config/policy change.
+
+Unverified and out of scope
+B2 real producer remains unimplemented; synthetic producer/consumer agreement
+is not actual release interoperability. AC1/2 application functionality, actual
+Order Service/Argo Synced+Healthy/runtime digest, deployment and three-repo
+integration were not tested. Product ACs remain unverified. No final_assessment.
+Manager must separately obtain independent Review, current protection/queue/
+authorization/dependencies and later real AC measurements/integration evidence.
+
+History and delivery
+Role test; public alias order-m0-test-a3; attempt3; scope unchanged.
+Dependency order-m0-implementation-e2-a1 attempt1; retry_of order-m0-test-a2
+attempt2 failed. Test1/2 failed and historical Implementation epoch1 terminal
+remain immutable. Implementation epoch2 does not renew Test budget. This is the
+last Test execution in the existing budget, with no Agent/self retry/scheduler.
+No app/System implementation change, main push, PR merge, Issue edit, deployment,
+Secret/permission/ruleset/environment change, extra OpenAI API or local PC use.
+Only the authorized System evidence/order-m0-test-a3 branch is published after
+review. Publication and fresh closure integrity are separate from downstream
+Consumer authorization. No new Consumer authorization is issued by Test.
+Public output excludes private originals/their hashes, authorization/private
+receipts, actual agent identifiers, credentials and internal raw logs.

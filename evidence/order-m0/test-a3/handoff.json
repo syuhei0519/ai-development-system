@@ -1,0 +1,151 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "app-order-service",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "test",
+  "task_id": "order-m0-test-a3",
+  "attempt": 3,
+  "assignment": {
+    "scope": "application-manifest#backend-app-2/M0",
+    "ac_ids": [
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "F1/F2 を含む全担当試験の結果と再現手順、固定 head/base/config、既存28 chart files/4 environment files/3 live renders の byte と意味の不変、正常系と異常系、安全境界の根拠があること。失敗は failed、必要な実行不能は blocked とし未実施を隠さないこと。全製品 AC や B2 実 release、実 Argo 配備は未検証です。"
+    ]
+  },
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "order-m0-implementation-e2-a1",
+      "attempt": 1,
+      "relationship": "dependency",
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/b231aa38653333bd86f293a13458f4bf955970f3/evidence/order-m0/implementation-e2-a1/handoff.json",
+      "revision": "sha256:19185748874b350e924c5ec5dd7c468fdb2cb231dd97aea71fb0fcd3b86c7214"
+    },
+    {
+      "role": "test",
+      "task_id": "order-m0-test-a2",
+      "attempt": 2,
+      "relationship": "retry_of",
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/9977949f20d2d1f129d28a152c7a6dc056914228/evidence/order-m0/test-a2/handoff.json",
+      "revision": "sha256:823b1f717883610aa830abed7b0f6e4bbbd7c447b3208ca815e8efdb7e52b97e"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Independent fixed-head M0 tests pass, including F1/F2, safety boundaries and unchanged live render bytes/semantics. Assigned infrastructure responsibility only; all product ACs remain unverified. Last Test execution in unchanged budget3.",
+  "artifacts": [
+    {
+      "id": "test-report.txt",
+      "kind": "test-report",
+      "locator": "test-report.txt",
+      "revision": "sha256:0d1ace371b80d0bb44985678221ba3cc2f2957430d7473c24d0799121345ad6f",
+      "summary": "Independent fixed-head M0 verification; synthetic scope only."
+    },
+    {
+      "id": "results.json",
+      "kind": "test-report",
+      "locator": "results.json",
+      "revision": "sha256:5c59f40aa1baa6a6e44532b8cccaeee91ca6609860a07f00918a01853e0d979e",
+      "summary": "Independent fixed-head M0 verification; synthetic scope only."
+    },
+    {
+      "id": "reproduce.sh",
+      "kind": "other",
+      "locator": "reproduce.sh",
+      "revision": "sha256:89577bd23afa32e3af06dff57f3fd331dcf0b54676ceda9e8e8f9ab70b8b1103",
+      "summary": "Independent fixed-head M0 verification; synthetic scope only."
+    },
+    {
+      "id": "independent-probes.py",
+      "kind": "other",
+      "locator": "independent-probes.py",
+      "revision": "sha256:da3b35549af247c4464379ca0ebdfe576d348bee7f9191a25a82a9d63d282258",
+      "summary": "Independent fixed-head M0 verification; synthetic scope only."
+    },
+    {
+      "id": "publication-safety.txt",
+      "kind": "document",
+      "locator": "publication-safety.txt",
+      "revision": "sha256:3d887f1a3add646eeee4bf1e587dfacac84a77d4c5adf60054aa4315d9220997",
+      "summary": "Separate public-content review and existing operation authority; no Consumer grant."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "fixed-head-independent",
+      "claim": "Assigned M0 verification responsibilities completed; no failing gating expectation.",
+      "artifact_ids": [
+        "test-report.txt",
+        "results.json",
+        "reproduce.sh",
+        "independent-probes.py"
+      ],
+      "locator": "results.json",
+      "observation": "Executed ci/github/test.sh, all existing modules, extra suites, F1 128 gating +10 observations, security116, F2 renderer rejection, four render fixtures, 38 additional independent boundaries. 28 chart/4 environment files and 3 renders byte/semantic equal. CI observed separately; product/release/deploy unverified."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "not_assigned",
+      "scope": "Outside M0; application behavior unverified.",
+      "artifact_ids": [
+        "test-report.txt",
+        "results.json"
+      ],
+      "evidence_ids": [
+        "fixed-head-independent"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "not_assigned",
+      "scope": "Outside M0; application behavior unverified.",
+      "artifact_ids": [
+        "test-report.txt",
+        "results.json"
+      ],
+      "evidence_ids": [
+        "fixed-head-independent"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "covered",
+      "scope": "AC-3 M0 evidence-verification infrastructure only; earliest premerge/deferred=null; aggregate_required; actual Service/Argo/runtime digest unverified.",
+      "artifact_ids": [
+        "test-report.txt",
+        "results.json"
+      ],
+      "evidence_ids": [
+        "fixed-head-independent"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}
