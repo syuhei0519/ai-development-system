@@ -1,0 +1,29 @@
+Delivery for order-m1-test-a2
+
+Payload ffc4881997f8e926edbb1573cb55f9a7e637f9f7; prefix evidence/order-m1/test-a2.
+Handoff SHA256 e31855d15be891a880bb850feb196bdca506ee70b8d99826be7810dccf8ed2e2.
+manifest.json:237883 bytes; SHA256 b3d575b99b53dd45516ed1e9ff72f370ec5a4213da5c4b5d14c552fbaae413fc.
+publication-receipt.json:58594 bytes; SHA256 495ab32aacea7b2d4fd06f2b3f697840fdbaa525364af45d74566dc320756b34.
+Manifest closure has111 explicit objects (below128),129 structural bindings,5 source-tree slots,89 verified tree members.
+Representations from incoming manifest remain original or edited_derivative; no private-original equivalence asserted.
+
+Manager must independently authorize consumption and run fixed System4693887 consumer against the complete manifest.
+Producer preparation plus canonical GitSource/verify_handoffs/schema checks retrieved every source anew.
+No authorization or Consumption Receipt was invented for outgoing evidence. Producer verification is not Consumer approval.
+The prior outgoing candidate is preserved privately, and the earlier payload remains in Git history.
+The final candidate corrected only prose describing tree-member counts; original Test1 failures are unchanged.
+A premature local verification command before candidate files existed failed with missing file; preserved as local
+preparation failure, then verification of the completed same candidate succeeded. No retry budget was reset.
+
+The seven Readiness artifact bytes are delivered through a typed complete tree rooted at
+6727c1d9b3a494892e1875643df9fca914a42d43:evidence/order-m1/test-a2/artifacts.
+This avoids treating Helm templates as generic JSON/text blobs. The current payload includes identical raw bytes.
+A fresh Consumer output places those bytes under the6727c1d9 source directory and measurement/context/report under
+ffc4881997 source directory. For local context checks, copy both UNCHANGED into a new private working root, preserving
+artifacts/<id> relative paths; do not rewrite the Consumer originals. Verify every size/hash against context before use.
+Then run contract-checks.py FIXED_SYSTEM WORKING_ROOT. It checks the exact independent context/config pins, schema,
+seven artifacts and strict JSON, and demonstrates the expected historical/canonical Issue-ID pairing mismatch.
+Formal Manager Readiness assessment is absent by design; canonical Manager Issue ID is backend-app#2.
+Specialist Handoff retains syuhei0519/backend-app#2 for immutable Test1 retry equality. These resolve to the same source URL,
+but exact canonical pairing rejects the spelling difference; do not claim --handoff pairing success for this specialist record.
+Policy expiry remains2026-10-11T18:33:14Z. Manager refreshes immediately before operation. Product ACs all unverified.

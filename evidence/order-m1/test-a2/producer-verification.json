@@ -1,0 +1,14 @@
+{
+  "document_type": "producer_delivery_verification",
+  "observed_at": "2026-10-11T18:04:48.836038+00:00",
+  "system_revision": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+  "explicit_objects": 111,
+  "tree_member_blobs": 89,
+  "source_tree_slots": 5,
+  "slot_bindings": 129,
+  "passed": true,
+  "verification": "Fresh isolated GitSource.read plus canonical schema/verify_handoffs/full tree verification; representations preserved from incoming manifest",
+  "consumer_authority_granted": false,
+  "consumer_consumption": "pending separate Manager authorization; none generated",
+  "historical_candidate": "Initial outgoing-records candidate retained privately; payload correction only clarified tree-member count versus tree slots, no test history rewritten"
+}
