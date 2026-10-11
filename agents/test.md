@@ -39,3 +39,14 @@
 CI と独立 Test を分離し、head/base/対象 revision/config/必要な merge-group・環境・観測時刻・期限を伴う実測を返す。premerge 不合格/未実行を延期で隠さない。postmerge/deploy 専用 AC は未検証として方法・担当・環境・失敗時対応を確認し、該当イベント後に実測する。 詳細は [Readiness 契約](../contracts/readiness.md) と [ワークフロー](../workflows/single-issue.md#readiness-と-issue-completion-の運用) に従う。
 
 Issue全体の統合完了はPRのreadinessとは別条件。全AC metでも未マージ/統合待ちは最終achievedにせず、複数PR・repoは集約契約と証跡の後続依存を明記する。Readiness成果物はartifact_id・ローカル実体・sha256 digestを照合して配送する。全AC met・統合待ちではHandoff final_assessmentを省略してReadinessで追跡する。
+
+## Artifact Delivery の責務
+
+[配送契約](../contracts/artifact-delivery.md) に従い、原本と公開派生版、公開前安全性/公開操作承認、
+GitHub 反映、Consumer 利用承認と全 bytes 検査を分離する。receipt の自己申告から権限を得ない。
+Handoff v2.0 の status/attempt/担当範囲を配送都合で変更しない。Knowledge 専用契約の判断も変更しない。
+dispatch/execution/delivery は各最大3回、過去履歴と RETRY_LIMIT_REACHED は不変。
+上限後は新明示承認・理由・新予算・scope・旧履歴との関係が揃うまで再開しない。
+公開派生版の検査は非公開原本の直接検査ではない。Producer 証言と自分の観測を区別する。
+
+型/拡張子と内容の矛盾も、外側 hash と承認 pin を整合させて検査する。receipt 再検査は新規 Git 取得が対象で、旧出力の改変検査とは区別する。

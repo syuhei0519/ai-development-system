@@ -16,3 +16,5 @@ Research→Test の例:
 [Knowledge 入力](knowledge/input.json)・[handoff](knowledge/handoff.json)・[後続向け参照](knowledge/context.json) は複数の架空 Issue の raw findings を AC 原文なしで扱う専用 v1.0 の例。[記事](knowledge/curated-example.md) は架空の draft であり実運用知識ではない。
 
 [Readiness の正常・異常例](readiness/README.md) は PR ready と Issue unverified の両立、実装のみ可能・配備 blocked、postdeploy 全 AC 実測、および不正な前倒し achieved / premerge defer を示す独立 v1.0 契約。固定時刻で再生し、現在のマージ許可と区別する。
+
+配送の固定公開参照・synthetic 承認例・未承認拒否例は [delivery/](delivery/README.md) を参照。

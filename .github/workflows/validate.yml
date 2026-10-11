@@ -16,7 +16,10 @@ jobs:
           cache: pip
           cache-dependency-path: requirements-dev.txt
       - run: python -m pip install -r requirements-dev.txt
-      - run: python -m unittest discover -s tests -v
+      - name: All contracts and delivery/retry regressions
+        run: python -m unittest discover -s tests -v
+      - name: Delivery schema and pinned sample consistency
+        run: python scripts/validate_delivery_records.py
       - run: >-
           python scripts/validate_handoff.py
           examples/research-to-test/research.handoff.json

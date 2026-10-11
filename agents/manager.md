@@ -41,3 +41,12 @@ Dots 上でユーザーの依頼、Issue の原文・認可済み出典、固定
 Implementation Ready、Deployment Ready、PR ごとの Merge Ready と Issue Completion を別々に記録する。現在の context・保護設定・証跡対象と期限を検査し、head/base/設定変更時に再検証する。全 AC 実測後だけ final_assessment=achieved とし、未検証を残した Issue の早期 close を防ぐ。 詳細は [Readiness 契約](../contracts/readiness.md) と [ワークフロー](../workflows/single-issue.md#readiness-と-issue-completion-の運用) に従う。
 
 Issue全体の統合完了はPRのreadinessとは別条件。全AC metでも未マージ/統合待ちは最終achievedにせず、複数PR・repoは集約契約と証跡の後続依存を明記する。Readiness成果物はartifact_id・ローカル実体・sha256 digestを照合して配送する。全AC met・統合待ちではHandoff final_assessmentを省略してReadinessで追跡する。
+
+## Artifact Delivery の責務
+
+[配送契約](../contracts/artifact-delivery.md) に従い、原本と公開派生版、公開前安全性/公開操作承認、
+GitHub 反映、Consumer 利用承認と全 bytes 検査を分離する。receipt の自己申告から権限を得ない。
+Handoff v2.0 の status/attempt/担当範囲を配送都合で変更しない。Knowledge 専用契約の判断も変更しない。
+dispatch/execution/delivery は各最大3回、過去履歴と RETRY_LIMIT_REACHED は不変。
+上限後は新明示承認・理由・新予算・scope・旧履歴との関係が揃うまで再開しない。
+承認と最新台帳の pin を別経路で管理し、公開安全性/公開操作/今回利用の根拠を個別に確認する。
