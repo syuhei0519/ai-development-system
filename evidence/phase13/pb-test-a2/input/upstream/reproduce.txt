@@ -1,0 +1,10 @@
+Independent P-B Test attempt 1, synthetic/local only.
+Checkout fixed head 29b87fd1014c66c0368e4aad231846b17b53707b and dependency base 5345303db8c5208859ed741b98f119882de7a973 separately.
+Use Python 3.12 with jsonschema 4.26.0.
+Run baseline and head: python -m unittest discover -s tests -v
+Run independent probes: PB_HEAD=/path/to/fixed-head python independent_cases.py
+Expected on fixed head: 21 cases; 17 pass, 3 assertion failures and 1 recovery error corresponding to findings F1-F3.
+The independent script uses synthetic data, temporary local Git repositories and process crash injection. It performs no network operations, Agent launch, remote mutation or product edits.
+For fixed HTTPS synthetic scan follow examples/knowledge-collector/README.md with bounded test authorization. Never publish private authorization/state/receipt files.
+Remote CI is separately observed and is not a substitute for these independent probes.
+P-C/P-D and actual periodic/article-use operation were not performed.
