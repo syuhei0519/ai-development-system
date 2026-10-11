@@ -1,0 +1,177 @@
+{
+  "record_type": "public_derivative_edit_map",
+  "scope": "delivery preparation for blocked attempt 1",
+  "source_policy": "Only already-public source pins are listed. No unpublished origin path, size, digest or authorization pin is included. Private origin-to-derivative linkage is held separately outside the public payload.",
+  "transformations": [
+    {
+      "destination": "handoff.public.json",
+      "changes": [
+        "Separate derivative only; original seal untouched.",
+        "upstream[0].handoff_locator: https://github.com/syuhei0519/ai-development-system/blob/fda74c8094f16adb506163200cda3ca0c23917f2/evidence/phase13/pa/handoff.json -> pa/handoff.json; role/task_id/attempt/relationship/revision unchanged.",
+        "Artifact/evidence locators and raw digests point to the new public derivatives.",
+        "Excluded authorization documents and redundant historical B1 delivery records from this report-delivery derivative; retained the evidence needed for its blocked engineering result.",
+        "Added DESIGN-SUPPLEMENT artifact for later Manager decision; no new AC coverage or attempt change.",
+        "Summary explicitly marks the derivative and the limits."
+      ]
+    },
+    {
+      "destination": "implementation-report.public.json",
+      "changes": [
+        "Removed initial authorization size/digest; no authorization JSON included.",
+        "Recorded later Manager design decision separately; historical blocked result and local WIP head retained.",
+        "Clarified report-delivery scope and unpublished state."
+      ]
+    },
+    {
+      "destination": "b1-consumer-observation.public.json",
+      "changes": [
+        "Added historical-record and preparation boundaries. Original observed object coordinates/hashes, rejection and counts unchanged."
+      ]
+    },
+    {
+      "destination": "assignment-requirements.json",
+      "changes": [
+        "Byte-identical copy; no regeneration."
+      ]
+    },
+    {
+      "destination": "implementation.patch",
+      "changes": [
+        "Byte-identical copy; no regeneration."
+      ]
+    },
+    {
+      "destination": "self-verification.json",
+      "changes": [
+        "Byte-identical copy; no regeneration."
+      ]
+    }
+  ],
+  "public_pa_copies": [
+    {
+      "source_reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+        "path": "evidence/phase13/pa/assignment-requirements.json",
+        "size": 2567,
+        "sha256": "7f145ee60b28e14828cf775513747d3e00ee77f3976b90903304e487ba85660c"
+      },
+      "destination": "pa/assignment-requirements.json",
+      "transformation": "byte-identical copy of already public artifact; preserve prior original/edited_derivative representation",
+      "representation": "edited_derivative",
+      "format": "json"
+    },
+    {
+      "source_reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+        "path": "evidence/phase13/pa/fixture-consumption-receipt.json",
+        "size": 3591,
+        "sha256": "0d0267237ab2f6cb4f5511a3df7323a684e0122a34593ff5c93a3e1c4c6ae538"
+      },
+      "destination": "pa/fixture-consumption-receipt.json",
+      "transformation": "byte-identical copy of already public artifact; preserve prior original/edited_derivative representation",
+      "representation": "original",
+      "format": "json"
+    },
+    {
+      "source_reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+        "path": "evidence/phase13/pa/handoff.json",
+        "size": 8235,
+        "sha256": "abd9770e562943f4e2ed847b5889bfa15d43419f545a70b07f9cc5875ea391d4"
+      },
+      "destination": "pa/handoff.json",
+      "transformation": "byte-identical copy of already public artifact; preserve prior original/edited_derivative representation",
+      "representation": "edited_derivative",
+      "format": "handoff-v2"
+    },
+    {
+      "source_reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+        "path": "evidence/phase13/pa/implementation-report.json",
+        "size": 9117,
+        "sha256": "b66153dd07d4dd587a996f0c1a4a0165db19e67a91179fe9083303ddbe0e7701"
+      },
+      "destination": "pa/implementation-report.json",
+      "transformation": "byte-identical copy of already public artifact; preserve prior original/edited_derivative representation",
+      "representation": "edited_derivative",
+      "format": "json"
+    },
+    {
+      "source_reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+        "path": "evidence/phase13/pa/research/assignment-requirements.json",
+        "size": 2204,
+        "sha256": "de34bda253a2ca7df0d17a039d4d710c450c984e2226b60920bae5cda3017760"
+      },
+      "destination": "pa/research/assignment-requirements.json",
+      "transformation": "byte-identical copy of already public artifact; preserve prior original/edited_derivative representation",
+      "representation": "edited_derivative",
+      "format": "json"
+    },
+    {
+      "source_reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+        "path": "evidence/phase13/pa/research/design.md",
+        "size": 36689,
+        "sha256": "3bc5071ca6ab336d17ef10fde5c5e7b6b931bc3d16d4850dca946e5766caee46"
+      },
+      "destination": "pa/research/design.md",
+      "transformation": "byte-identical copy of already public artifact; preserve prior original/edited_derivative representation",
+      "representation": "edited_derivative",
+      "format": "text"
+    },
+    {
+      "source_reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+        "path": "evidence/phase13/pa/research/handoff.json",
+        "size": 7829,
+        "sha256": "ba69683794ee6ccea5f29ba277c1a8f13adcfd9308b17fe8f86ad6e65c2398af"
+      },
+      "destination": "pa/research/handoff.json",
+      "transformation": "byte-identical copy of already public artifact; preserve prior original/edited_derivative representation",
+      "representation": "edited_derivative",
+      "format": "handoff-v2"
+    },
+    {
+      "source_reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+        "path": "evidence/phase13/pa/research/source-inventory.json",
+        "size": 6159,
+        "sha256": "3b70f0a86ad864e6d8682f312a66aabe1036ffa09e3243afc8480806961dec6a"
+      },
+      "destination": "pa/research/source-inventory.json",
+      "transformation": "byte-identical copy of already public artifact; preserve prior original/edited_derivative representation",
+      "representation": "edited_derivative",
+      "format": "json"
+    },
+    {
+      "source_reference": {
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "fda74c8094f16adb506163200cda3ca0c23917f2",
+        "path": "evidence/phase13/pa/research/verification-observations.json",
+        "size": 1494,
+        "sha256": "8be71756b79529a3317968ff6ec04d79ec47579e3e2f4a33f37208dd139d13b1"
+      },
+      "destination": "pa/research/verification-observations.json",
+      "transformation": "byte-identical copy of already public artifact; preserve prior original/edited_derivative representation",
+      "representation": "edited_derivative",
+      "format": "json"
+    }
+  ],
+  "new_documents": [
+    "design-supplement.md",
+    "editing-map.json",
+    "inventory.public.json"
+  ],
+  "inventory_policy": "Inventory lists all other public payload files; its own raw digest is bound by the outer delivery manifest/seal to avoid a self-hash cycle.",
+  "original_seal": "Prior sealed originals and prior candidate versions remain unchanged outside this public payload.",
+  "exclusion": "No authorization JSON, unpublished origin digest, private runtime identifiers, raw internal logs, original B1 payloads or rewritten P-A documents."
+}

@@ -1,0 +1,47 @@
+{
+  "record_type": "producer_safety_and_offline_closure_review",
+  "status": "local candidate only; Manager publication approval pending",
+  "review_scope": "Every candidate file decoded and scanned in full without truncation; structured records/prose/source changes reviewed for meaning, identity/authority claims and delivery boundaries. Automated pattern checks supplement, not replace, producer content inspection. No independent Review claimed.",
+  "baseline": {
+    "repository": "syuhei0519/ai-development-system",
+    "commit": "df400018057735b7cb6a9c6ea4619508f0e6ba3a",
+    "consumer_path": "scripts/consume_delivery.py",
+    "consumer_size": 13843,
+    "consumer_sha256": "62df142aa83c5216aae6151f2d21ffffe4bd8aa9db68dd1144502505cce8fcad",
+    "unchanged": true
+  },
+  "closure": {
+    "result": "PASS",
+    "method": "Unmodified base schema() and verify_handoffs() on every candidate raw byte string using an explicitly synthetic all-zero commit coordinate solely for offline same-snapshot resolution. This coordinate is not a published commit or delivery manifest.",
+    "handoffs": 4,
+    "declared_edges": 27,
+    "distinct_dependency_targets": 26,
+    "missing_dependency_negative_cases": 26,
+    "all_missing_dependency_cases_rejected": true,
+    "graph": [
+      "root -> prior/handoff.public.json (retry_of)",
+      "root -> prior/pa/handoff.json (dependency)",
+      "prior/handoff.public.json -> prior/pa/handoff.json",
+      "prior/pa/handoff.json -> prior/pa/research/handoff.json"
+    ],
+    "limitations": "No live public Git input delivery or Consumption Receipt for this candidate before actual publication and new independent Test authorization. Old consumer does not validate nested B1 1.2 cross-reference records."
+  },
+  "safety_checks": {
+    "full_utf8_scan": true,
+    "json_duplicate_key_and_type_checks": "base strict parser and format dispatch",
+    "credential_pattern_hits": 0,
+    "runtime_uuid_hits": 0,
+    "private_workspace_path_hits": 0,
+    "current_private_authorization_pin_hits": 0,
+    "content_scope": "System code/docs/synthetic patches, public-alias reports and already-public immutable prior dependency copies only; no original B1 payloads, app execution, private conversation, new private authorization, or raw internal logs.",
+    "patch_review": "Both full saved patch files contain System contract/validator/docs/synthetic test/fixture code. They are explicitly code publication candidates; no diff was regenerated or substituted.",
+    "historical_public_receipt": "prior/pa/fixture-consumption-receipt.json retains the pre-existing public SYNTHETIC-PA-SELFTEST authorization digest. This historical public value is not either current private Manager pin, not secret source bytes and not authority for this Test. Preserved byte-for-byte as a Handoff dependency.",
+    "hash_policy": "Listed hashes identify public Git bytes or safe public-alias candidates. No private original or exact private Consumption Receipt hash is disclosed."
+  },
+  "preservation": "final-r2, the authorization-wait blocked seal and all previous attempt history remain unchanged. Root derivative preserves identity/status/attempt/Issue/AC/assignment and prior revision; editing map declares locator-only delivery changes and summary annotation.",
+  "proposed_branch": "delivery/crossref-a2-test-input-v1-20261011",
+  "proposed_prefix": "evidence/crossref/a2-test-input",
+  "publication": "not performed",
+  "pr": "not created",
+  "authority_granted": false
+}
