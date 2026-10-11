@@ -22,8 +22,8 @@
     "db": "fresh isolated PostgreSQL containers and anonymous volumes; pinned image"
   },
   "fixed_measurement": {
-    "observed_at": "2026-10-11T17:23:29Z",
-    "valid_until": "2026-10-12T17:23:29Z",
+    "observed_at": "2026-10-11T17:29:38Z",
+    "valid_until": "2026-10-12T17:29:38Z",
     "invalidated_by": [
       "source change",
       "relevant config change",
@@ -221,5 +221,9 @@
     "task_builders": "removed",
     "source_tracked_files": "unchanged"
   },
-  "history": "Existing upstream attempts and failed/successful delivery candidates unchanged."
+  "history": "Existing upstream attempts and failed/successful delivery candidates unchanged.",
+  "measurement_window": [
+    "2026-10-11T17:18:00Z",
+    "2026-10-11T17:29:38Z"
+  ]
 }

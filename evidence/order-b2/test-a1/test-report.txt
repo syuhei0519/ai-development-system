@@ -155,10 +155,18 @@ AC1/2 covered means assigned independent B2 regression only. AC3 unverified beca
 required B2 production-image checks cannot execute; actual deployed AC3 is also
 unverified. No blocking product defect was demonstrated; business status blocked,
 not completed. Execution attempt1 is preserved; no self-dispatch or Review/Knowledge
-started. Fixed measurements observed by 2026-10-11T17:23:29Z, valid at most through
-2026-10-12T17:23:29Z and immediately invalid on source/relevant-config change or new
+started. Fixed measurements reconciled at 2026-10-11T17:29:38Z, valid at most through
+2026-10-12T17:29:38Z and immediately invalid on source/relevant-config change or new
 failure. Separate mutable metadata observation window 17:21-17:23Z has a conservative
 expiry 2026-10-11T17:51:00Z. No original policy expiry extension.
 Implementation edits/push/PR mutations/merge/auto-merge, workflow dispatch, actual
 GHCR publication, cluster/kind, Secrets/Ruleset/security changes: not_requested.
 Public delivery is separately recorded; it cannot promote blocked to completed.
+
+Delivery correction
+Outgoing candidate1 preparation rejected a leading-dot workflow blob path under
+System safe_path. No manifest/receipt was produced. Historical first payload commit
+is preserved. Candidate2 copies exactly those public workflow bytes to the safe
+sources/backend-ci.yml path with explicit original provenance and unchanged hash.
+No System validator or source implementation was changed; execution attempt and
+blocked status remain unchanged. See delivery-attempts.json.

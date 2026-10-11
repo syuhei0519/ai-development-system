@@ -60,14 +60,14 @@
       "id": "A-REPORT",
       "kind": "test-report",
       "locator": "test-report.txt",
-      "revision": "sha256:fbd331dc92fd64a273bcfd0d16489c26b528aab05bca98ef09e859a1656cde2b",
+      "revision": "sha256:6d28aecb693c3afd84d443b3eccacd96dd62ee3f5b20f3e3b4bd96f6f2e73eed",
       "summary": "Public fixed Test artifact; see report for measured scope and limitations."
     },
     {
       "id": "A-OBS",
       "kind": "other",
       "locator": "observations.json",
-      "revision": "sha256:76102c21351b21e492ab8be2c3db1273af52256f0d9ca07449861510bbac2f62",
+      "revision": "sha256:24dc6cb08280cfdc2a58fb9072292c78e13cdf9743fe862c08909fe4f7f39bc5",
       "summary": "Public fixed Test artifact; see report for measured scope and limitations."
     },
     {
@@ -143,9 +143,9 @@
     {
       "id": "A-SOURCE-3",
       "kind": "document",
-      "locator": "https://github.com/syuhei0519/backend-app/blob/65885af3fd648ce7010fa4a06470b273b995d418/.github/workflows/ci.yml",
+      "locator": "sources/backend-ci.yml",
       "revision": "sha256:80c7f6d38e692956c702435250cf0879553d7a409b58cd4ae7d28be04bc4b34a",
-      "summary": "Exact public fixed source executed or inspected independently."
+      "summary": "Unmodified public workflow copy from fixed backend head; original .github path is not accepted by Delivery safe_path. Hash equality verified."
     },
     {
       "id": "A-SOURCE-4",
@@ -221,8 +221,22 @@
       "id": "A-SAFETY",
       "kind": "other",
       "locator": "bundle-review.json",
-      "revision": "sha256:3103b2e28dbdcafd810c736e3de8acd04a0abdbcb67a6b87448e696a286721db",
+      "revision": "sha256:06bd3ed6497dffe09563a6a9a5301b7565662a1cfe68ffa74a30fe268ecfce8d",
       "summary": "Public derivative full-text review and nonrecursive inventory; no Consumer approval."
+    },
+    {
+      "id": "A-DELIVERY-HISTORY",
+      "kind": "other",
+      "locator": "delivery-attempts.json",
+      "revision": "sha256:9f9389ca8b56c640854c361a390b9f8b5f056a6ddbf13f260d9f8d6f1885caef",
+      "summary": "Bounded outgoing delivery candidate1 failure and candidate2 correction. Execution attempt1 and blocked status unchanged."
+    },
+    {
+      "id": "A-FIRST-PAYLOAD",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/ai-development-system/commit/9271d8ae81eb29e5ce9e71cb069b433ddf7334a3",
+      "revision": "9271d8ae81eb29e5ce9e71cb069b433ddf7334a3",
+      "summary": "Historical first payload commit preserved; its incomplete transport closure is not Consumer-approved."
     }
   ],
   "evidence": [

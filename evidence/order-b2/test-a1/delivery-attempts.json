@@ -1,0 +1,30 @@
+{
+  "document_type": "delivery_attempt_history",
+  "public_alias": "order-b2-test-a1",
+  "epoch": 1,
+  "execution_attempt": 1,
+  "delivery_limit": 3,
+  "events": [
+    {
+      "attempt": 1,
+      "result": "failed",
+      "stage": "record preparation",
+      "payload_commit": "9271d8ae81eb29e5ce9e71cb069b433ddf7334a3",
+      "reason": "Canonical safe_path rejects leading-dot .github/workflows/ci.yml direct blob reference; no candidate manifest or publication receipt produced."
+    },
+    {
+      "attempt": 2,
+      "result": "prepared",
+      "reason": "Use unchanged public workflow bytes under sources/backend-ci.yml and explicitly preserve original source provenance; canonical fresh validation required."
+    }
+  ],
+  "history_preserved": "Initial payload commit and incoming B2 Implementation failed1/success2 and B1/M0/M1 histories are unchanged. Business status and execution attempt unchanged.",
+  "workflow_source": {
+    "repository": "syuhei0519/backend-app",
+    "commit": "65885af3fd648ce7010fa4a06470b273b995d418",
+    "original_path": ".github/workflows/ci.yml",
+    "public_copy": "sources/backend-ci.yml",
+    "size": 9101,
+    "sha256": "80c7f6d38e692956c702435250cf0879553d7a409b58cd4ae7d28be04bc4b34a"
+  }
+}
