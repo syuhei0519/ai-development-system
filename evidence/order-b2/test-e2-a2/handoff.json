@@ -1,0 +1,233 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "test",
+  "task_id": "order-b2-test-e2-a2",
+  "attempt": 2,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "order-b2-test-e2-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/5702c37fff594141dcbc5f89ca19176468d9f670/evidence/order-b2/test-e2-a1/handoff.json",
+      "revision": "sha256:d3545fcc0ea0fedaf2f563c7a454330c32364a826d6836a2b1d7d81ae223d9c2",
+      "relationship": "retry_of"
+    },
+    {
+      "role": "implementation",
+      "task_id": "order-b2-implementation-a2",
+      "attempt": 2,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/437cb5b76359a8743613529aa33f7a9dacb88e9c/evidence/order-b2/implementation-a2/handoff.json",
+      "revision": "sha256:751a0130aa37effd18edc57a2af7edc5373cf6ec6ada3914cd458701e00bb8aa",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Independent B2 revalidation passed at exact committed head: fresh HTTP/DB persistence and Account regressions, both pristine production OCI/runtime/scan/SBOM chains, cold optional-CA boundaries, original-OCI publish-input mock binding, M0/M1 and v1/v2 negative regressions. Old ENV-CA-1 and retry history are unchanged. Actual publication/deployment, product AC3, Review, Manager Readiness and aggregate Issue Completion remain unverified.",
+  "assignment": {
+    "scope": "backend-app#2/B2",
+    "ac_ids": [
+      "AC-1",
+      "AC-2",
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "currentheadの全Unit/race/vet/build/関連既存suite、ORDER_DISPOSABLE_TEST=1の実HTTP+PostgreSQL回帰。Order create/get/不正4xx/書込0、プロセスと同一新規volume DB再起動後永続化、migration履歴、誤DB/role、失敗rollback/timeout、AccountCRUDと全sentinel/history不変。既存kind専用skipと実行済みを区別。使い捨てfixtureは新規専用コンテナ/network/volumeだけ、既存環境へ接続しない。",
+      "両イメージDockerfileを独立に検査/実行し、buildonce同一OCI tar→reader/runtime/scan/SBOM→publishが再buildなしで結合することを検証。runtime transport変換でconfig/layers/content同一、loadedID一致、stamp、nonroot/readonly/dropcap、migration/health/restartを検査。既存proxy/CAを正規手順で利用可。新 Secret / 権限変更は禁止。ただし明示承認済み一時 rootless BuildKit の seccomp/systempaths だけは後述の限定範囲で許可。実productionimageの未実行をsynthetic合格で埋めない。",
+      "matrixfailfastfalse、片方failure/missing/skip/別run/attempt/source、artifact名collision、混入checksum、異なるconfig/archive/SBOM、publish前guard、Accountv1互換、Orderv2完全bindingを悪性fixtureで検証。mock公開と実GHCRを分離。",
+      "M0固定consumerへproducer生成recordを実コードで渡し正常異常を突合。未知service/repository/image、zip/path/record個数、期限切れ、tag移動、peer不足、same-source確認を含む。M0/Account既存policyを緩めない。",
+      "全差分と関連sourceを検証し、CI/workflowの保護main専用publish、既存Environment人間承認とtoken最小scope、提案先固定/service別branch/未存在Ordervalues時failclosedを確認。実publish/workflowdispatch/Manifest PR17操作はしない。",
+      "backend-onlydiffのデプロイ影響、固定ManifestdigestとGitOpssourceを検証し、外部automation未観測の限界を残す。変更対象外Accountコード/SQL/lock/history保全。今回はM1が正式マージ済みなので指定した固定df8c8b5を現在consumerとして検証し、元M0互換baselineも別に保持する。",
+      "異常系追加はscratch/テスト成果物のみ。実装の無断修正禁止。阻害findingは重大度/対象fileline/reproducer/期待対実際/修正条件で早期報告しfailed。必要実行不能はblocked。Managerが別Implementationへ戻す。",
+      "同じ正式committedDockerfileをpristine git archive contextから独立build。生成testbinaryがbuildcontextへ混入しない。",
+      "optional build_ca の未指定/正規bundle/空/不正/存在しないpath、引数/環境scope、standardCI no-secret互換。secretはcachekeyでないため信頼比較は隔離workerでsequentialcold/no-cache。共有vertex成功を誤採用しない。",
+      "正規既存CAはdependency RUNのみに供給、TLS/Go checksum保持。CA bytes/secretpath/proxy値がruntime/additionallayers/config/公開物へ漏れないこと。",
+      "unchanged distroless標準SSL_CERT_FILEをカスタムCA漏れと誤認せず、実bundlebytesと標準trustを区別。",
+      "実production両OCIの元tar→reader/transport/loadedconfig/runtime/scan/SBOM→publishinput bindingを実測。変換/rebuild/混入を拒否。CI実行と独立実測を分離。",
+      "元M0のconsumer互換を保ちつつ、現在merged M1のconsumerでも正常異常を確認。M0にはOrdervaluesがない一方M1にはdisabledvaluesがあるので、missing-valuesfailclosedは意図したfixtureで検証し、現main状態を捏造しない。既存Account v1互換も実測。",
+      "全26PR差分と関連既存回帰を対象とし、修正6filesだけに限定しない。",
+      "Handoffv2.0、正確な測定/再現/失敗・未検証/各時刻と期限/実OCIsha,size,descriptor,runtime,scan,SBOM結合/AC1/2結果を返す。旧履歴を保持し、private認可/実taskID/原本hash/秘密/内部ログを公開しない。必要closureを切らず128上限内に配送し、新規explicitを可能なら8以下へまとめる。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-REPORT",
+      "kind": "test-report",
+      "locator": "report.txt",
+      "revision": "sha256:4527830429e6e09e06115f1fd0094e8489d76cf5b25326c1bfc9645e2543e290",
+      "summary": "Independent Test evidence or fixed input; scope and limits in report.txt."
+    },
+    {
+      "id": "A-MEASURE",
+      "kind": "other",
+      "locator": "measurements.json",
+      "revision": "sha256:17099143c7e0cfc8876470a8be102444395fab4e8b09be42091f6e4c57c39551",
+      "summary": "Independent Test evidence or fixed input; scope and limits in report.txt."
+    },
+    {
+      "id": "A-REPRO",
+      "kind": "document",
+      "locator": "reproduce.py",
+      "revision": "sha256:57eb75b37c2694725b1982d66d99b6569b7b7481bab42b74d9d7380eaf0d8cd5",
+      "summary": "Independent Test evidence or fixed input; scope and limits in report.txt."
+    },
+    {
+      "id": "A-BACKEND-SBOM",
+      "kind": "other",
+      "locator": "backend-sbom.cdx.json",
+      "revision": "sha256:afa37d00220af85fd582bcd64e901437ba7967344b9c69fb8f58fa5cae8f4a8c",
+      "summary": "Independent Test evidence or fixed input; scope and limits in report.txt."
+    },
+    {
+      "id": "A-ORDER-SBOM",
+      "kind": "other",
+      "locator": "order-sbom.cdx.json",
+      "revision": "sha256:96cb0df19d404d00feb69013a742812814d1db2a10ebe64086ab2875381b8e6b",
+      "summary": "Independent Test evidence or fixed input; scope and limits in report.txt."
+    },
+    {
+      "id": "A-CONTEXT",
+      "kind": "other",
+      "locator": "readiness-context.json",
+      "revision": "sha256:3c401f2ab7d9c49619bfe4edee9a6009378cdaa4403f2b90093fb66460fa46f5",
+      "summary": "Independent Test evidence or fixed input; scope and limits in report.txt."
+    },
+    {
+      "id": "A-CONFIG",
+      "kind": "other",
+      "locator": "config.json",
+      "revision": "sha256:00ebf0a427c1663b953c2088d9ae7013b3e9c58a8abd24ed49fa0e7d7f4fe573",
+      "summary": "Independent Test evidence or fixed input; scope and limits in report.txt."
+    },
+    {
+      "id": "A-NEGATIVE",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/aa8e6e7622f015c74db9920b14d8a9be4f8b11a5/evidence/order-b2/test-a1/independent-negative.py",
+      "revision": "sha256:bc7b3869bfe76bbc7c84976183650ff8e97845def1e0173f95579a11925ce03e",
+      "summary": "Unchanged canonical-consumed public reproducer, independently rerun; not prior success adoption."
+    },
+    {
+      "id": "A-IMAGE-CHECK",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/437cb5b76359a8743613529aa33f7a9dacb88e9c/evidence/order-b2/implementation-a2/check-image.py",
+      "revision": "sha256:76380118279465f7ad3c4fb5dffa7cabc988baa76a0e0c54413463be6e130b00",
+      "summary": "Unchanged canonical-consumed public reproducer, independently rerun; not prior success adoption."
+    },
+    {
+      "id": "A-SUITE-REPRO",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/437cb5b76359a8743613529aa33f7a9dacb88e9c/evidence/order-b2/implementation-a2/reproduce.sh",
+      "revision": "sha256:19961fd3e8c59e1d8956d6cd020a35c41aa1a4d8a983a370bb9b3dcf3fb333e1",
+      "summary": "Unchanged canonical-consumed public reproducer, independently rerun; not prior success adoption."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-AC12",
+      "claim": "Independent real HTTP/fresh DB regression covers assigned AC1/AC2 responsibilities",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE",
+        "A-SUITE-REPRO"
+      ],
+      "locator": "measurements.json",
+      "observation": "Exact head: 112 disposable/race tests passed, 2 existing kind/Collector skips; persistence, invalid 4xx/zero writes, migration and Account CRUD/sentinel/history assertions passed."
+    },
+    {
+      "id": "E-OCI",
+      "claim": "Both formal production OCI chains and optional trust boundaries independently passed",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE",
+        "A-REPRO",
+        "A-IMAGE-CHECK",
+        "A-BACKEND-SBOM",
+        "A-ORDER-SBOM"
+      ],
+      "locator": "measurements.json",
+      "observation": "213-file pristine archive; actual valid builds and 8 expected negative results; same original tar, descriptors/transport/config/layers/loadedID/runtime/scan/SBOM plus mock publish inputs measured. No real GHCR publication."
+    },
+    {
+      "id": "E-CONTRACT",
+      "claim": "Full B2 CI, consumer and preservation boundaries independently verified within fixed scope",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE",
+        "A-NEGATIVE",
+        "A-CONFIG",
+        "A-CONTEXT"
+      ],
+      "locator": "report.txt",
+      "observation": "26 changed files, unchanged Account/SQL/lock inputs, both fixed consumers, M1 disabled actual values, matrix/release negatives, exact-head CI and existing Environment gates checked. External automation and deployed product AC3 are unverified; original policy expires 2026-10-11T19:27:15Z."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "covered",
+      "scope": "Assigned B2 independent HTTP/fresh disposable DB regression responsibility only; not Issue aggregate acceptance.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE"
+      ],
+      "evidence_ids": [
+        "E-AC12",
+        "E-OCI",
+        "E-CONTRACT"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "covered",
+      "scope": "Assigned B2 independent HTTP/fresh disposable DB regression responsibility only; not Issue aggregate acceptance.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE"
+      ],
+      "evidence_ids": [
+        "E-AC12",
+        "E-OCI",
+        "E-CONTRACT"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "covered",
+      "scope": "Assigned B2 image/CI preparation responsibility only. Real GHCR, Service/Synced/Healthy/imageID remain unverified; this is not product AC3 acceptance.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE"
+      ],
+      "evidence_ids": [
+        "E-OCI",
+        "E-CONTRACT"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

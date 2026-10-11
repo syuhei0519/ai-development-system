@@ -1,0 +1,4720 @@
+{
+  "document_type": "independent_test_measurements",
+  "producer": "order-b2-test-e2-a2",
+  "scope": "backend-app#2/B2",
+  "epoch": 2,
+  "attempt": 2,
+  "subject": {
+    "repository": "syuhei0519/backend-app",
+    "pr_number": 32,
+    "head_sha": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+    "base_sha": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+    "target_revision": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+    "config_revision": "sha256:00ebf0a427c1663b953c2088d9ae7013b3e9c58a8abd24ed49fa0e7d7f4fe573",
+    "merge_group_sha": null
+  },
+  "measured_at": "2026-10-11T18:55:57.662701+00:00",
+  "valid_until": "2026-10-11T19:27:15Z",
+  "expiry_rule": "Original Manager policy expiry is unchanged. Subject/head/base/target/config changes invalidate use immediately. This is independent Test evidence, not a Manager Readiness assessment.",
+  "input_delivery": {
+    "manifest_sha256": "ba2d6232f12fb97b6c107a4fc70cde35f55ef46ef556032a35f8176dd37fcc4b",
+    "publication_receipt_sha256": "1f232393538ed41751cb4d2e1fd6206ace3cb14c4d2690184e482437c1cef0b2",
+    "fresh_canonical_cli": "passed",
+    "explicit": 113,
+    "objects": 122,
+    "bytes": 1596902,
+    "private_original_equivalence": "not asserted",
+    "authorization_and_consumption_receipt": "private, omitted"
+  },
+  "history": {
+    "old_ENV_CA_1": "retained; previous head was blocked; this head tested independently",
+    "epoch1_history_and_terminal": "unchanged; fixed upstream closure retained",
+    "epoch2_previous_execution": "attempt1 blocked",
+    "epoch2_previous_delivery": "attempt1 success",
+    "current_execution": 2,
+    "current_delivery": 2,
+    "limits": {
+      "dispatch": 3,
+      "execution": 3,
+      "delivery": 3
+    },
+    "authoritative_ledger": "Manager private ledger; not reconstructed or reset"
+  },
+  "tests": {
+    "unit": {
+      "command": "go test -json -count=1 ./...",
+      "started_at": "2026-10-11T18:46:13.304669574Z",
+      "ended_at": "2026-10-11T18:46:15.962266238Z",
+      "exit_code": 0,
+      "counts": {
+        "pass": 109,
+        "skip": 5
+      },
+      "tests": [
+        {
+          "Time": "2026-10-11T18:46:13.30858881Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/#00",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.308739684Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/failed",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.312814396Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/wrong-job",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.315145298Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/wrong-source",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.31516056Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/wrong-pipeline",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.31573248Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/wrong-project",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.316227815Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/unprotected-ref",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.317411083Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/allow-failure",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.317419505Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier",
+          "Action": "pass",
+          "Elapsed": 0.01
+        },
+        {
+          "Time": "2026-10-11T18:46:13.317980318Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestProposalAPIRefusesRedirectAndSuppressesResponseBody",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.317994609Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestUpdateChangesOnlyDeclaredKeys",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.318005535Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestUpdateRejectsMissingContractKey",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.318054528Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/#00",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.318114837Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/CI_COMMIT_REF_PROTECTEDfalse",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.31817046Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/CI_COMMIT_BRANCHcodex/fixture",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.318209027Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SOURCE_COMMITcccccccccccccccccccccccccccccccccccccccc",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.318255086Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SOURCE_PROJECT_ID86247025",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.318286202Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/IMAGE_TAGlatest",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.318337548Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/IMAGE_DIGESTsha256:bad",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.318407712Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SCAN_PIPELINE_ID19",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.318436475Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/BUILD_PIPELINE_ID010",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.318562322Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/BUILD_JOB_ID21",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.318570494Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SCAN_JOB_ID0",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.318612076Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/RELEASE_RECORD_URLhttps://outside.invalid/record.json",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.318664924Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/RELEASE_RECORD_URLhttps://gitlab.com/api/v4/projects/86247033/packages/generic/core-platform-backend/sha256-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb/release-record-20-22.json",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.31874267Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SBOM_URLhttps://gitlab.com/api/v4/projects/86247033/packages/generic/core-platform-backend/sha256-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb/sbom-20-22.cdx.json",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.318755859Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SBOM_SHA256bad",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.318760496Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.31878994Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ReleaseAddsRunFieldsAndPreservesOtherValues",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.318824421Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ReleaseRemovesLegacyPipelineAuthorityWithExplicitNull",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:13.768864599Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/cmd/order-server",
+          "Test": "TestInvalidArguments",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.477352823Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/cmd/server",
+          "Test": "TestRuntimeLogLevelAndTimestamp",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.480314382Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/account",
+          "Test": "TestValidation",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.484685819Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig/#00",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.484698347Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig/DEBUG",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.484715733Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig/info",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.48472713Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig/warn",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.484738337Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig/error",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.484743755Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.60319355Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/order",
+          "Test": "TestValidation",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.606037764Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderconfig",
+          "Test": "TestLoad",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609095195Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/0",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609121845Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/1",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609182014Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/2",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609201443Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/3",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609222985Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/4",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609290395Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/5",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609299569Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/6",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609363744Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/7",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609413378Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/8",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609444544Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/9",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609479706Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/10",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609564482Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/11",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609622708Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/12",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609630099Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/13",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609649859Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/14",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609833121Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/15",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609844478Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/16",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609853641Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/17",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609861092Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/18",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609868574Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/19",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.60987997Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/20",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609888663Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/21",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609897426Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/22",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609904777Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/23",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609912769Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/24",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609920791Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/25",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609931187Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/26",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609962523Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/27",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.609992998Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/28",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.610030584Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/29",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.610119186Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/30",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.610157463Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/31",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.610205674Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/32",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.610214247Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/33",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.610222139Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/34",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.610291822Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/35",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.610409136Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/36",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.61043185Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/37",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.610443447Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/38",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.610527412Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/39",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.610563025Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/40",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.610587581Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/41",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.610595533Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/42",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.610655983Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/43",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.610664606Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/44",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.61069446Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/45",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.610756622Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/46",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.610765015Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/47",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.610777473Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/48",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.61085578Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/49",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.610863892Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/50",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.610886666Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/51",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.610901968Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.611286189Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestLimitsAndMedia",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.611542279Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestRoutesAndErrors",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.633011904Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/httpapi",
+          "Test": "TestExactRequestsHistogramPrivacyAndTraceParent",
+          "Action": "pass",
+          "Elapsed": 0.03
+        },
+        {
+          "Time": "2026-10-11T18:46:14.951394467Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestDisposableMigration",
+          "Action": "skip",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.951408588Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestDisposableTargetGuard",
+          "Action": "skip",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.951691458Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestTargetConfiguration",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.951803915Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestErrorClassification",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.951858496Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestWaitExhaustsTenBoundedAttempts",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.951981879Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestWaitRecoversBeforeAttemptLimit",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.951991023Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestWaitCancellationStopsBeforeAnotherConnection",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:14.962212083Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestWaitHonorsShortParentDeadline",
+          "Action": "pass",
+          "Elapsed": 0.01
+        },
+        {
+          "Time": "2026-10-11T18:46:15.284857301Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "Test": "TestMigrationDisposableDatabase",
+          "Action": "skip",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:15.28487009Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "Test": "TestWaitExhaustsTenBoundedAttempts",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:15.284884161Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "Test": "TestWaitRecoversBeforeAttemptLimit",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:15.284893344Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "Test": "TestWaitCancellationStopsBeforeAnotherConnection",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:15.307206077Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "Test": "TestWaitHonorsShortParentDeadline",
+          "Action": "pass",
+          "Elapsed": 0.02
+        },
+        {
+          "Time": "2026-10-11T18:46:15.34522503Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/telemetry",
+          "Test": "TestResourceInstanceAndRestrictedDestination",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:15.405722328Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/telemetry",
+          "Test": "TestQueueDoesNotBlockRequestsAndShutdownIsBounded",
+          "Action": "pass",
+          "Elapsed": 0.06
+        },
+        {
+          "Time": "2026-10-11T18:46:15.405769648Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/telemetry",
+          "Test": "TestSDKCollectorMetricNames",
+          "Action": "skip",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:15.962156951Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/tests/orderintegration",
+          "Test": "TestDisposableHTTPPersistenceAndAccount",
+          "Action": "skip",
+          "Elapsed": 0
+        }
+      ]
+    },
+    "race_disposable": {
+      "command": "ORDER_DISPOSABLE_TEST=1 go test -race -json -count=1 ./...",
+      "started_at": "2026-10-11T18:46:40.541655894Z",
+      "ended_at": "2026-10-11T18:47:32.505295443Z",
+      "exit_code": 0,
+      "counts": {
+        "pass": 112,
+        "skip": 2
+      },
+      "tests": [
+        {
+          "Time": "2026-10-11T18:46:40.56515451Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/#00",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.571129863Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/failed",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.571141761Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/wrong-job",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.571156563Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/wrong-source",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.572298799Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/wrong-pipeline",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.573842491Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/wrong-project",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.574544704Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/unprotected-ref",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.575566722Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier/allow-failure",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.575575285Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalRequiresActualSuccessfulVerifier",
+          "Action": "pass",
+          "Elapsed": 0.02
+        },
+        {
+          "Time": "2026-10-11T18:46:40.579116163Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestProposalAPIRefusesRedirectAndSuppressesResponseBody",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.579128632Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestUpdateChangesOnlyDeclaredKeys",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.579145006Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestUpdateRejectsMissingContractKey",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.579185065Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/#00",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.579239276Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/CI_COMMIT_REF_PROTECTEDfalse",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.579251354Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/CI_COMMIT_BRANCHcodex/fixture",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.57926192Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SOURCE_COMMITcccccccccccccccccccccccccccccccccccccccc",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.579271924Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SOURCE_PROJECT_ID86247025",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.579299575Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/IMAGE_TAGlatest",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.581112137Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/IMAGE_DIGESTsha256:bad",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.5815854Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SCAN_PIPELINE_ID19",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.5823398Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/BUILD_PIPELINE_ID010",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.582658213Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/BUILD_JOB_ID21",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.583392814Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SCAN_JOB_ID0",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.584167625Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/RELEASE_RECORD_URLhttps://outside.invalid/record.json",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.584864419Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/RELEASE_RECORD_URLhttps://gitlab.com/api/v4/projects/86247033/packages/generic/core-platform-backend/sha256-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb/release-record-20-22.json",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.585114901Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SBOM_URLhttps://gitlab.com/api/v4/projects/86247033/packages/generic/core-platform-backend/sha256-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb/sbom-20-22.cdx.json",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.58560564Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites/SBOM_SHA256bad",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.585691908Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ProposalBindsOneCurrentRunBeforeWrites",
+          "Action": "pass",
+          "Elapsed": 0.01
+        },
+        {
+          "Time": "2026-10-11T18:46:40.586017652Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ReleaseAddsRunFieldsAndPreservesOtherValues",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:40.586031082Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/ci",
+          "Test": "TestPhase2ReleaseRemovesLegacyPipelineAuthorityWithExplicitNull",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:43.215195062Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/cmd/order-server",
+          "Test": "TestInvalidArguments",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:56.373836616Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/cmd/server",
+          "Test": "TestRuntimeLogLevelAndTimestamp",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:56.604353179Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/account",
+          "Test": "TestValidation",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:56.664366636Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig/#00",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:56.664561946Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig/DEBUG",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:56.664726531Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig/info",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:56.664883153Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig/warn",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:56.665099024Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig/error",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:56.665220274Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/config",
+          "Test": "TestLogLevelConfig",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:56.751828747Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/httpapi",
+          "Test": "TestExactRequestsHistogramPrivacyAndTraceParent",
+          "Action": "pass",
+          "Elapsed": 0.03
+        },
+        {
+          "Time": "2026-10-11T18:46:57.384105685Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/order",
+          "Test": "TestValidation",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.616249575Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderconfig",
+          "Test": "TestLoad",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679137025Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/0",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679151476Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/1",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679159098Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/2",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679166358Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/3",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679173078Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/4",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679179949Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/5",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679187961Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/6",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679199548Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/7",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679208421Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/8",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679216022Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/9",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679223303Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/10",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679231946Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/11",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679240098Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/12",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679247489Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/13",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.67925466Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/14",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679263553Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/15",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679271855Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/16",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679279787Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/17",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679287839Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/18",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.67929517Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/19",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679323402Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/20",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679331474Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/21",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679338514Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/22",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679388639Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/23",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679629857Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/24",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.679828392Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/25",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.680016752Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/26",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.680226494Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/27",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.680465209Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/28",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.680666298Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/29",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.680961677Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/30",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.681188094Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/31",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.681407129Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/32",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.681671462Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/33",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.681910908Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/34",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.682158336Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/35",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.68239647Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/36",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.68264585Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/37",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.682872147Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/38",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.683129579Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/39",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.683364008Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/40",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.683609973Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/41",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.683804402Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/42",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.68405837Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/43",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.68427346Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/44",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.684505855Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/45",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.684762046Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/46",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.684971647Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/47",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.685167158Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/48",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.685372593Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/49",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.685589576Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/50",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.685772938Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary/51",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.68583438Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestInputBoundary",
+          "Action": "pass",
+          "Elapsed": 0.01
+        },
+        {
+          "Time": "2026-10-11T18:46:57.687194842Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestLimitsAndMedia",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:57.689024612Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/orderhttp",
+          "Test": "TestRoutesAndErrors",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:58.429510635Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "Test": "TestMigrationDisposableDatabase",
+          "Action": "skip",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:58.429653447Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "Test": "TestWaitExhaustsTenBoundedAttempts",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:58.429768388Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "Test": "TestWaitRecoversBeforeAttemptLimit",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:58.429889318Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "Test": "TestWaitCancellationStopsBeforeAnotherConnection",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:58.440376466Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "Test": "TestWaitHonorsShortParentDeadline",
+          "Action": "pass",
+          "Elapsed": 0.01
+        },
+        {
+          "Time": "2026-10-11T18:46:58.631223758Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/telemetry",
+          "Test": "TestResourceInstanceAndRestrictedDestination",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:46:59.051207501Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/telemetry",
+          "Test": "TestQueueDoesNotBlockRequestsAndShutdownIsBounded",
+          "Action": "pass",
+          "Elapsed": 0.42
+        },
+        {
+          "Time": "2026-10-11T18:46:59.051367589Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/telemetry",
+          "Test": "TestSDKCollectorMetricNames",
+          "Action": "skip",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:47:02.613013417Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestDisposableMigration",
+          "Action": "pass",
+          "Elapsed": 4.85
+        },
+        {
+          "Time": "2026-10-11T18:47:07.551196386Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestDisposableTargetGuard",
+          "Action": "pass",
+          "Elapsed": 4.93
+        },
+        {
+          "Time": "2026-10-11T18:47:07.551537293Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestTargetConfiguration",
+          "Action": "pass",
+          "Elapsed": 0.01
+        },
+        {
+          "Time": "2026-10-11T18:47:07.551654587Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestErrorClassification",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:47:07.551849046Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestWaitExhaustsTenBoundedAttempts",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:47:07.551859321Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestWaitRecoversBeforeAttemptLimit",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:47:07.55189231Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestWaitCancellationStopsBeforeAnotherConnection",
+          "Action": "pass",
+          "Elapsed": 0
+        },
+        {
+          "Time": "2026-10-11T18:47:07.562264739Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "Test": "TestWaitHonorsShortParentDeadline",
+          "Action": "pass",
+          "Elapsed": 0.01
+        },
+        {
+          "Time": "2026-10-11T18:47:31.503296661Z",
+          "Package": "gitlab.com/platform-engineering-lab/backend-app/tests/orderintegration",
+          "Test": "TestDisposableHTTPPersistenceAndAccount",
+          "Action": "pass",
+          "Elapsed": 31.63
+        }
+      ]
+    },
+    "go_mod_verify": {
+      "exit_code": 0
+    },
+    "go_vet_root": {
+      "exit_code": 0
+    },
+    "go_build_root": {
+      "exit_code": 0
+    },
+    "ci_github_test_sh": {
+      "exit_code": 0,
+      "suites": [
+        "docs 14 cases",
+        "all tools modules",
+        "manifest-update",
+        "OCI budget",
+        "image scan finalizer",
+        "OCI publication",
+        "OCI reuse",
+        "registry runtime handoff",
+        "release boundary",
+        "producer/M0 interop",
+        "M0 consumer",
+        "optional CA argument/scope"
+      ]
+    },
+    "all_tools_vet_race_build": {
+      "exit_code": 0,
+      "modules": [
+        "tools/oci-input",
+        "tools/release-record",
+        "tools/scan-gate"
+      ]
+    },
+    "gofmt_and_diff_check": {
+      "exit_code": 0
+    },
+    "independent_negative_and_consumers": {
+      "negative-m0": {
+        "exit_code": 0,
+        "test_methods": 7,
+        "measured_at": "2026-10-11T18:46:53.437231+00:00"
+      },
+      "negative-m1": {
+        "exit_code": 0,
+        "test_methods": 7,
+        "measured_at": "2026-10-11T18:46:53.772104+00:00"
+      },
+      "consumer-m0": {
+        "exit_code": 0,
+        "test_methods": 19,
+        "measured_at": "2026-10-11T18:47:36.937255+00:00"
+      },
+      "consumer-m1": {
+        "exit_code": 0,
+        "test_methods": 19,
+        "measured_at": "2026-10-11T18:47:37.265254+00:00"
+      }
+    }
+  },
+  "pristine_build_context": {
+    "head": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+    "tree": "8af1119fde6742666c4e4e43cec1aab15ab36ea7",
+    "files": [
+      {
+        "path": ".dockerignore",
+        "oid": "0814a54a2e2647830b0c15b9bd8c47b3155a9ce6",
+        "size": 244,
+        "sha256": "5980a9d6796def316415bfceadc1c53405ecbf908f01dee93dd4b36dfe28f633"
+      },
+      {
+        "path": ".gitattributes",
+        "oid": "592a376b3fd191084e3761d6846e25d64a1cd37f",
+        "size": 89,
+        "sha256": "3b62ed95ac8aa149a574cb9c2ec853aa717ae00cd6881e37e540d972007a4ca7"
+      },
+      {
+        "path": ".github/MIGRATION.md",
+        "oid": "aab9b8475139d0cd86c82159a3f16632346418e5",
+        "size": 1097,
+        "sha256": "5237ee3827f53b833b2850dd7a19661ba802353867a6e0e625a831574a109f73"
+      },
+      {
+        "path": ".github/workflows/ci.yml",
+        "oid": "9b28de2cc322509c1a90eec3c9aa2dc31e956bef",
+        "size": 9101,
+        "sha256": "80c7f6d38e692956c702435250cf0879553d7a409b58cd4ae7d28be04bc4b34a"
+      },
+      {
+        "path": ".gitignore",
+        "oid": "34883e089ee70ded816246fd0017dec91985e182",
+        "size": 92,
+        "sha256": "a6221dc208ed9a08aa86ab63af5cd24dcb9d95e5c8d49741fa6e906f53e43b6b"
+      },
+      {
+        "path": ".gitlab-ci.yml",
+        "oid": "a8150edeee02a83c073063c3059040ecf5f30995",
+        "size": 273,
+        "sha256": "3425f423be93e7ba08e8dfc3de75aa2bcaf0a7a7cfbdfb7ba02553b11bac0859"
+      },
+      {
+        "path": "Dockerfile",
+        "oid": "6a7def40a31339da38cd22be01991106bcc2aaa5",
+        "size": 1672,
+        "sha256": "dc34d001b4451e4059c89b28861187a87e98875138370b0c2b1dd318c26e19d6"
+      },
+      {
+        "path": "Dockerfile.order",
+        "oid": "8b6ab966b727ec5766e4ebcb650ce5bfd70d4086",
+        "size": 1654,
+        "sha256": "febd4bd227fc7cd520f25b467fbe2820142751f1daec040a1c56585f8e24206f"
+      },
+      {
+        "path": "README.md",
+        "oid": "1e3c720d608bbde1bbaf0994505b04c61edd4cb1",
+        "size": 1661,
+        "sha256": "120cd1cfb7acc6a17e8876a83375ce5bf3af27aa7d73d81256daa208e3fb79b8"
+      },
+      {
+        "path": "ci/IMAGE-SCAN-VALIDATION.md",
+        "oid": "b85e63a44d3cb4341a7213036ea94beaf9e143f9",
+        "size": 3629,
+        "sha256": "41de8b58af37e8535c042a3394f3ad060f7328e9a25f4f40d7aec9fad2ed07b4"
+      },
+      {
+        "path": "ci/OCI-PUBLICATION.md",
+        "oid": "2090bc0539bd2c1cec0cfe7a6a48fdb9bed8438d",
+        "size": 687,
+        "sha256": "4d238247fb7a8fa504e7dbb69098c309da6b7b61e144d75b8c253775d88f1d40"
+      },
+      {
+        "path": "ci/OCI-VALIDATION.md",
+        "oid": "92029c2bc2b06c50ad93cb752b222b328d2bfab8",
+        "size": 4516,
+        "sha256": "6f0974301b5c792a52a5aaf93aaf33ff1883db103feecd68b7cf68299975b66b"
+      },
+      {
+        "path": "ci/REGISTRY-RETRIEVAL.md",
+        "oid": "8884ca5b67fc4334c073db836a03a4cb5c0c7da4",
+        "size": 825,
+        "sha256": "d5abd892bcd5c1f95b054a4f60d2ab418a59805f85e21f63763cadc53e573dc4"
+      },
+      {
+        "path": "ci/build-oci.sh",
+        "oid": "10b6c1c6cb30aa441c405a12411ecba87cd8784d",
+        "size": 3537,
+        "sha256": "8e303ab3d22564afa8a13e76f3fde2fdffce37291d170d0da82fd838e6aa0b87"
+      },
+      {
+        "path": "ci/docs-check.sh",
+        "oid": "f48a8f371ba9aa049400d9efe203a842a8c81857",
+        "size": 4278,
+        "sha256": "511bd139b097e06c5d258a607e55471d0e30426a8c3a13161540d766d40ec187"
+      },
+      {
+        "path": "ci/github/build-ca_test.py",
+        "oid": "c18ccb72eca998c521727271e8265d9c22329e28",
+        "size": 3894,
+        "sha256": "93e4d3f2ae9863eb92e0bacefd060636611eb735436295f419fb504ae444a687"
+      },
+      {
+        "path": "ci/github/classify.py",
+        "oid": "bd9a4c25f83fd96b0d8c438676aa25808fbba780",
+        "size": 1143,
+        "sha256": "273e330670158c26fe99946cc039c21d0d0151ff38a0608cf5cd0bf868415a1c"
+      },
+      {
+        "path": "ci/github/fixtures/m0/SOURCE.json",
+        "oid": "95691f77ae17b7b92e92a29ed63f3ad724bc966a",
+        "size": 1040,
+        "sha256": "6227a28f67b7dad407b91bd60b9a093baebc98d87e80f0cb17bdb588c95e1bb7"
+      },
+      {
+        "path": "ci/github/fixtures/m0/fixtures/backend-record.json",
+        "oid": "c51facab4c116527ee13cd1cfcad1adffad96162",
+        "size": 1121,
+        "sha256": "00f2602021a21c553b546083352a50936b10b923b03c39c8218c210d3c8bc4a7"
+      },
+      {
+        "path": "ci/github/fixtures/m0/fixtures/image-scan.json",
+        "oid": "f849116dc83c9d248a9137efb638b14a8ca0652f",
+        "size": 14,
+        "sha256": "63b684854bd4961bcb515b09823ea700dda69135486c5e11352bb1d7850f534e"
+      },
+      {
+        "path": "ci/github/fixtures/m0/fixtures/order-config.json",
+        "oid": "f1fe2c81d1d78599c8e2bd2afc0ca8f3770e212a",
+        "size": 248,
+        "sha256": "8bd06c0e86671a7e7f8d56d6ff80bf56db6e753ff45357ca5d1a21e5a8f680ea"
+      },
+      {
+        "path": "ci/github/fixtures/m0/fixtures/order-manifest.json",
+        "oid": "0bf274239e6104a9e02adaf03291a0ddae32b733",
+        "size": 153,
+        "sha256": "0578ef8eb4991f3b8db3ad3bfe3bb58501962e0ea97449d5feec6cd346d82768"
+      },
+      {
+        "path": "ci/github/fixtures/m0/fixtures/order-record.json",
+        "oid": "d0d969fe448da65a26f41b820fcf55e1ffa8512f",
+        "size": 1145,
+        "sha256": "a3a2b0472fe51d96614406d85fd89748eb8c255c45ebbfd21cfdde57e0968eb5"
+      },
+      {
+        "path": "ci/github/fixtures/m0/fixtures/sbom.cdx.json",
+        "oid": "bb286d4ee7a3164c8ae91c467e7d200d65f0bf10",
+        "size": 154,
+        "sha256": "b9104ba1eba76b6b080694eb4eb1717e38d5d9b7dbe4469e50acbfd756c5ca56"
+      },
+      {
+        "path": "ci/github/fixtures/m0/order-release.schema.json",
+        "oid": "bc0b9685f8690863fe4f3cc9fd81c946e9a22ca9",
+        "size": 2574,
+        "sha256": "2bdc572d5e2ac6f694a1658b27d36ead6abdb44bcfb9eb284b47f74979468f92"
+      },
+      {
+        "path": "ci/github/fixtures/m0/release.py",
+        "oid": "cb7c450e16062e98bcd0c4212b422e721758cf26",
+        "size": 30677,
+        "sha256": "ed2630b8b3fe3a18a6de2c0ce55dcbe494f7d20414d672326d7e524b30903867"
+      },
+      {
+        "path": "ci/github/fixtures/m0/release_test.py",
+        "oid": "c3a15b34abe38a79170f0d5bf6cb4105accbb223",
+        "size": 18881,
+        "sha256": "c23078874ec77fb06a54525a4cb4f2a702a7758fe833f396174fc53fd77a4d86"
+      },
+      {
+        "path": "ci/github/matrix-result.py",
+        "oid": "ef4429175e59a66db91c58e49f6d06c3e8a4806e",
+        "size": 2437,
+        "sha256": "afd832406c71447168246a07a11f0da7b9fc93c271a7d7123f2707d0e4d368d5"
+      },
+      {
+        "path": "ci/github/oci.sh",
+        "oid": "b551b96819d5fe12cff104faced1cb0bf6f8dcab",
+        "size": 3145,
+        "sha256": "55c2bd3b62f193de7f697154203bc674102433a6fbc872787cfcb6a22da6c4bd"
+      },
+      {
+        "path": "ci/github/order-release.schema.json",
+        "oid": "bc0b9685f8690863fe4f3cc9fd81c946e9a22ca9",
+        "size": 2574,
+        "sha256": "2bdc572d5e2ac6f694a1658b27d36ead6abdb44bcfb9eb284b47f74979468f92"
+      },
+      {
+        "path": "ci/github/order-release_test.py",
+        "oid": "9fe20e9a1add154b1094ca18affb4ecd1fad1486",
+        "size": 11282,
+        "sha256": "6fcf5fa0367d45a130cd19042c601cbb96d20eb588759213e450ed9ec88135f7"
+      },
+      {
+        "path": "ci/github/release.py",
+        "oid": "7c3d7857615d178a480e5a17a3c0bc3e400a74b9",
+        "size": 28113,
+        "sha256": "3219acd417c6f01dd5e67bb6c66ac6f76123d42346fd2776d9c652c0ca0b448c"
+      },
+      {
+        "path": "ci/github/release_test.py",
+        "oid": "1d7a0211d39d2e4d30bdb1dbe5249a8c590b5482",
+        "size": 4701,
+        "sha256": "9035cf5a57a5d6635bc23b980de12abf6ebd1846c769983773138e656a2e7631"
+      },
+      {
+        "path": "ci/github/runtime.py",
+        "oid": "b1cd5ec45b21e8acf917d21c2e038197f0c22fc6",
+        "size": 5393,
+        "sha256": "20078aea273e96aba3152dd7c15fbecfd4e0f3e4d7aeeaff2c8e51ceeabd92e3"
+      },
+      {
+        "path": "ci/github/source-identity.py",
+        "oid": "91351f76319679439f3bcf774a050348cc6af3e1",
+        "size": 598,
+        "sha256": "87f724a7339189fe1d2c8f037a02a4671f4d2a047f9fd83ab65f4e06b033fcec"
+      },
+      {
+        "path": "ci/github/source-scan.sh",
+        "oid": "7973844d2da42a1357b8852fc7a5a646f7313c5c",
+        "size": 449,
+        "sha256": "83316619b510fdb53f7f25f0b07994d130c8813b832c6a2c63fc305ea0fd98b0"
+      },
+      {
+        "path": "ci/github/test.sh",
+        "oid": "33ca6a6469acd8b821d97f6d2cdd00e4cecd42fc",
+        "size": 1583,
+        "sha256": "c0cc44c812f9566423d4bd30f47f19a41f0a3075994a3d261171daecc1f22801"
+      },
+      {
+        "path": "ci/includes/docs.yml",
+        "oid": "de21208c66542759d87a3f63340c10ad5cd7e295",
+        "size": 675,
+        "sha256": "24368d209106973e08e9a58e2b1ddce650354c8f8649157438cd2c47bad17fbf"
+      },
+      {
+        "path": "ci/includes/full-pipeline.yml",
+        "oid": "aa00767fedb511420afc4f6ef0438f263548cc34",
+        "size": 1304,
+        "sha256": "1a9594a20d5fc4cb20e0cfda4d502dc77dfc4d47e9354d2bc780e7143cc39002"
+      },
+      {
+        "path": "ci/includes/oci-delivery.yml",
+        "oid": "1361f4ec708045920bf5d1373f851d243809dec9",
+        "size": 6792,
+        "sha256": "01e847350d2e981a266e183b041b67a7528ebd0ce3b3215df23b201d8400a327"
+      },
+      {
+        "path": "ci/includes/oci-validation.yml",
+        "oid": "4db30c5eb6170dc66f5de8468c6f2e640c2a26cb",
+        "size": 10191,
+        "sha256": "0a7dc307f5ca3faccba3b91118101cc84e0c3b7071c8fbe74f5c762bcb188148"
+      },
+      {
+        "path": "ci/includes/registry-retrieval.yml",
+        "oid": "2db4484108951522bfaa922b60ae4d3a54fab323",
+        "size": 3792,
+        "sha256": "09827880d631e777821fb607246fb09614552c32c8d547b1ce2f493cf9546109"
+      },
+      {
+        "path": "ci/includes/security.yml",
+        "oid": "e2d9292217e2d4abf49ee043b862de76a311a91e",
+        "size": 4165,
+        "sha256": "ab57a4d8c05e440ed76d790a70538655075067796ffb753a766a4fab196614b4"
+      },
+      {
+        "path": "ci/manifest-update.go",
+        "oid": "06f8357ef37a36eb6b0ed48c2a051ff980acf8fc",
+        "size": 15093,
+        "sha256": "78cbbc94e87bdffdb31769c105ba6a663f9bcfa56542ca98a0647bda6627f496"
+      },
+      {
+        "path": "ci/manifest-update_test.go",
+        "oid": "97539526448cf8bb03380f5ef6ccbb23ae501616",
+        "size": 7692,
+        "sha256": "40a38523d2135b963d8222da90ff405c30f02888ccb8f1d1427cfce8fa24afb7"
+      },
+      {
+        "path": "ci/oci-smoke/Dockerfile",
+        "oid": "99fafc61d2e4aa86dc37a59ef013836301ae963f",
+        "size": 307,
+        "sha256": "e3dce640d03ad641b63b29016a485b20fd9c1cb9abbb6ac77a7849293d5d6c9b"
+      },
+      {
+        "path": "ci/oci-smoke/probe.go",
+        "oid": "b85c1129fd5d41b73884ec7e0748f330ce99d987",
+        "size": 1120,
+        "sha256": "240695c3cfe9b2b56c96dfead6141621eb0bee423c01af6bf2fe8a195af32789"
+      },
+      {
+        "path": "ci/propose-manifest-update.sh",
+        "oid": "38674e56ee484cc2f09178db6a19e9b2311ddd1d",
+        "size": 256,
+        "sha256": "071a4a5b6dc5da3c93dcaa5fbf68dbe7fba897b83d179e1aed48e2c9d9b25826"
+      },
+      {
+        "path": "ci/publish-oci.sh",
+        "oid": "4204b03954817316fb74278a56abb9a912f207a4",
+        "size": 3133,
+        "sha256": "20dcc332833ca53cd864db86dab589c2584af6721d7bdf44c245000d72504fd6"
+      },
+      {
+        "path": "ci/registry-digest.sh",
+        "oid": "cdb3856466a9f2df439fdb52501d8ac581141e57",
+        "size": 1300,
+        "sha256": "d37217a5e16ed78cd01da9d997ded2dec4774f53e1578bcfec1c1063da4482c3"
+      },
+      {
+        "path": "ci/release-record.schema.json",
+        "oid": "5ef18766768f0a097613ab63303e20e836c93594",
+        "size": 13598,
+        "sha256": "bd9f2a7c8bd58c7a2ffc819e97d5fc0884dc7505bf785733005407bd4739e518"
+      },
+      {
+        "path": "ci/retrieve-and-inspect-oci.sh",
+        "oid": "5c24dc5f7fd8290e47739f37cbddc3c26208ab69",
+        "size": 1988,
+        "sha256": "b8c38e0d55e27e199e912dc47da17510b78e36b2d2a53807083ad242c9275582"
+      },
+      {
+        "path": "ci/retrieve-and-scan-oci.sh",
+        "oid": "342c2ac5f74c0a9f235e3601438c5ed9d7ae48f1",
+        "size": 1125,
+        "sha256": "64d376caf53725530c26a34ef8a8d7933928ad7114e2bb156170524342332a3b"
+      },
+      {
+        "path": "ci/run-image-scan.sh",
+        "oid": "af6246e10b023e263525742d9110606d216baae0",
+        "size": 1813,
+        "sha256": "9e636d50ea89169731c7dbfc15fe61a770f1ee5362236e2bc01f70a078682d99"
+      },
+      {
+        "path": "ci/run-oci-publication.sh",
+        "oid": "6816a2e7f12a9582a175c1a42a8da34efe536cc9",
+        "size": 924,
+        "sha256": "fb0ea5a35bcae329c0a44e189672efb71fe41b4d931b95382ac0ca8d464d0c71"
+      },
+      {
+        "path": "ci/run-registry-inspection.sh",
+        "oid": "1949fe5923ea9264f9b390c14cb312adbf3101c0",
+        "size": 985,
+        "sha256": "774dacce7521c0d485162331999fd2095b3b23c08b2ea95834cd401ef6849b37"
+      },
+      {
+        "path": "ci/run-with-oci-budget.sh",
+        "oid": "461be8129df89126ee0df646ae022e1f8ab67aaf",
+        "size": 7448,
+        "sha256": "2e0fb6b6c08f18f56d19e248a20dcf20f3b3698e6718cef75c3c5b6fefb34230"
+      },
+      {
+        "path": "ci/source-scan.sh",
+        "oid": "f6540cceb331fda75ea9c5b3a6df77062ba37bd4",
+        "size": 3883,
+        "sha256": "603137a19b5959321e321d87148ed211b9af349a778fdff1301e9ad0ea639705"
+      },
+      {
+        "path": "ci/test-docs-check.sh",
+        "oid": "bdd561bc63f0e294691ce3103a436783bf0f874e",
+        "size": 3320,
+        "sha256": "aa1c614816de21cc2d0967b09e68ec70cd6657c5d5f75eb8b57a6dc41dd954ea"
+      },
+      {
+        "path": "ci/test-image-scan-finalizer.sh",
+        "oid": "8e3db5e44b3c04faa3814b0ae636f8f8c2360e85",
+        "size": 2086,
+        "sha256": "5dc7719c584b04ebd156cbeefc363f26362b927720868195757d965e314731a7"
+      },
+      {
+        "path": "ci/test-oci-budget.sh",
+        "oid": "e19cd7c7522a1390949d18bcf3df7468feb2b3fc",
+        "size": 2465,
+        "sha256": "efdf72241336450d5bef28a7eb7923da22f8f2d401c9d9815ce0bc81dc6186c1"
+      },
+      {
+        "path": "ci/test-oci-publication.sh",
+        "oid": "f5a4025d7b2ba9757d73f9d3d6d2febbfb6a3b68",
+        "size": 4447,
+        "sha256": "59ec33de86fe877700fb4c9b005253b19d784ec7c0314beb094324a7a1de78b8"
+      },
+      {
+        "path": "ci/test-oci-reuse.sh",
+        "oid": "dc7c41d8df3cffe66c477e84672751db202a4beb",
+        "size": 3135,
+        "sha256": "4f87d89337423c4f2b1a17cb5e4c532206fb69f54d845313879dc85a31c6396d"
+      },
+      {
+        "path": "ci/test-registry-runtime-handoff.sh",
+        "oid": "a56bef237ae6d32782bbb62a0f78478e2c250076",
+        "size": 2724,
+        "sha256": "83bc2d0ac385f5621128918659b0969a7fca4de1445cfc0568be986fb93a6c9b"
+      },
+      {
+        "path": "ci/tool-versions.env",
+        "oid": "e0aed373f4298ef63646ebbd2edf2c4ebafb936a",
+        "size": 683,
+        "sha256": "27bf1f8af8f44ad00ee1cabf81e3e946292492a9f91cf5ca52d9db96249416cc"
+      },
+      {
+        "path": "ci/verify-image.sh",
+        "oid": "f11ad46d467ba0e23b2854e5474268701d39a0a2",
+        "size": 1058,
+        "sha256": "f2070a5f8f68488732ed2219f2ccfdaa5985cafb6d503dee0716541cda1bbad7"
+      },
+      {
+        "path": "ci/verify-oci-format.sh",
+        "oid": "a60b68eabb7905b3f16d0dc74f30c5c4e706feb5",
+        "size": 1939,
+        "sha256": "5d04b7516328527aab7bdb8cf510df238eb74601fbaba9baf96e1a00b4962da6"
+      },
+      {
+        "path": "ci/verify-oci-missing-input.sh",
+        "oid": "38aff65a6413ac09c1c269adb98b8c0f72896d27",
+        "size": 1276,
+        "sha256": "f59bf154eee32608819313318526db8b44cc75e70bdce0809b580e3f8f328c12"
+      },
+      {
+        "path": "ci/verify-oci-policy.sh",
+        "oid": "5dbb66fe8f156f010153d24633e5e9fecf58e168",
+        "size": 4296,
+        "sha256": "74b01dd2e034150e8f928932909bff1df947a8f5c3ed47a8a07da9987c4635b6"
+      },
+      {
+        "path": "ci/verify-oci-rescan.sh",
+        "oid": "6cc2fd27bdd32cde26e50437f0be603dcc5c696d",
+        "size": 774,
+        "sha256": "f877c588dde17827e256950394468c38eb7192c105f75920cbe098a63cb0d543"
+      },
+      {
+        "path": "ci/verify-oci-runtime.sh",
+        "oid": "70a97208077aae20d8d9955afab47e3fd6d68f90",
+        "size": 3187,
+        "sha256": "3bba914190decbe2e3e4bddd585048f2958bd90622f0a64a2605bfe79afd61b1"
+      },
+      {
+        "path": "ci/verify-reused-oci.sh",
+        "oid": "45a7762872498b71f9914327519fa3a036299503",
+        "size": 2224,
+        "sha256": "4bf881126247c2060876876e43767e90e0ed202ffbcf202391a18e7ca574cbd7"
+      },
+      {
+        "path": "cmd/order-server/main.go",
+        "oid": "2ccc822872fc69c53902f50bfba62bb39d51d136",
+        "size": 2453,
+        "sha256": "895f647192a4278c6ee394d31a4c999a94e0d84ba8893ef1f121de873083c7df"
+      },
+      {
+        "path": "cmd/order-server/main_test.go",
+        "oid": "f0b5c3d4ba89a23ecbead3f4234d27d72d73b061",
+        "size": 192,
+        "sha256": "5fb33c452a0d342d661595b6af29d2330cfef3a963cee8a05713aa3940dfd262"
+      },
+      {
+        "path": "cmd/server/main.go",
+        "oid": "129f3d0aa87901ec03369b633f33c52e7d817494",
+        "size": 4669,
+        "sha256": "7836f9e629bded448ff6466848293c7206f2b982f5b596943cec0128aff1c5be"
+      },
+      {
+        "path": "cmd/server/main_test.go",
+        "oid": "920148496b47b7921b8c922c12c1f8f7bd8fc470",
+        "size": 853,
+        "sha256": "1cc911be4ac3aa5b7d05a80478f85e9f7e2ee297afd6f7fac50990361b45c706"
+      },
+      {
+        "path": "docs/AT13-permissions.json",
+        "oid": "14d0332f443285cfda729ecbe9025ae346c15b8e",
+        "size": 712,
+        "sha256": "50afe1ec9e6f3d547df59331d5c94d55f2cb0f0f97afe7f9614a5a3e8afcbd53"
+      },
+      {
+        "path": "docs/ci-contract.md",
+        "oid": "c254c21e61b52941f1ea20c0caf37760425793b2",
+        "size": 4499,
+        "sha256": "76d1d4587f482577798a5f6b72b39ed004fb72ba024e1f69f2b31ce8b600d8e0"
+      },
+      {
+        "path": "docs/ci-documentation.md",
+        "oid": "e10f6f230b3a2b044001eb80eb585fc285b904d4",
+        "size": 4068,
+        "sha256": "61a2e0072d7aa851c23f8b125f0b06e068f72e685ed4a62f19a995bf6fe2db5e"
+      },
+      {
+        "path": "docs/github-migration.md",
+        "oid": "c5812b20d514986e8a13eb4a0dde18bc6fc4744e",
+        "size": 9700,
+        "sha256": "8caa9fc53c68706c6acf415d221bba10e4289492408e04844058222bdfd12baf"
+      },
+      {
+        "path": "docs/main-freshness-contract.md",
+        "oid": "14d7ce09f610863bd753aa6726098797e941ae03",
+        "size": 1144,
+        "sha256": "0cf255ba262a433b5cee596040738ccb6e83d8e22e67a92878861ee833fa4ded"
+      },
+      {
+        "path": "docs/migration-contract.md",
+        "oid": "7e94a7c61624d52450bceb66b57938fd2f32e74f",
+        "size": 2570,
+        "sha256": "075ba4ef535d68c16e5f86edcfbaeb9acb33f18de458290b48c52b983a1fd45b"
+      },
+      {
+        "path": "docs/order-api.md",
+        "oid": "959447d76fe87f7adeb1f3cfafcc23de440137d2",
+        "size": 8936,
+        "sha256": "d33fd8907049f840dd3925c586150d5dcc655594d1c8772a1b469dba02c22f5b"
+      },
+      {
+        "path": "docs/order-image-ci.md",
+        "oid": "c850444c461117ea32a457a06d26759260b34338",
+        "size": 7193,
+        "sha256": "0e3e7c6ee3a886bbd5d578a84f85b1f15319d0f05ee52d9caf6ad62082f76c95"
+      },
+      {
+        "path": "docs/order-openapi.yaml",
+        "oid": "35aec77a5808e104a5d78cefa79472b720b49330",
+        "size": 5428,
+        "sha256": "3557ae065c4486895ee043c9344a874fcef0da0faceffa71a69a18af0f976231"
+      },
+      {
+        "path": "docs/telemetry-contract.md",
+        "oid": "bbbbd93e20fff5b1c88eb78b2e43d433cdfc2461",
+        "size": 4121,
+        "sha256": "794522adffa1d72c643f1d5b415c52b77699d6fdf7d2769b2bdf56ec346e8f99"
+      },
+      {
+        "path": "go.mod",
+        "oid": "21573e92042c356991c596f9f3410b030e7a269d",
+        "size": 1576,
+        "sha256": "bb07f3bd8110d2c146a5742a99595b7d38c6d263df483fc556831a896bf81140"
+      },
+      {
+        "path": "go.sum",
+        "oid": "7b5078fe1affc646a3dbba1ebbc4c76263212ce1",
+        "size": 7333,
+        "sha256": "e0d288984834bbef9a45c8954e406ce801a1b0c4b35b77a38076c83f5acc7651"
+      },
+      {
+        "path": "internal/account/account.go",
+        "oid": "48e91c4e453f1adebb3873ef4ca190a198029fda",
+        "size": 2985,
+        "sha256": "0081d9ad136ff1cc8bb2f24d08201ebf5e622a673b6d282264ee20b2dba508b3"
+      },
+      {
+        "path": "internal/account/account_test.go",
+        "oid": "0d2a23920ed14f6ba8f6fbe1ef48b60f1354c8e0",
+        "size": 1163,
+        "sha256": "2f9739f6180ccb1f09f4dcc0310d84490e437d65202028c620ff1adc20354be2"
+      },
+      {
+        "path": "internal/config/config.go",
+        "oid": "c05ab2ca17aa7a2547cba576fd969c6d7d033bb0",
+        "size": 1194,
+        "sha256": "830bc979b75fbb0bca1d2ff1033d38788d3389ec9e38f5993c394f7626d6030a"
+      },
+      {
+        "path": "internal/config/config_test.go",
+        "oid": "f7412849307294455bc3856c9817e801bf317825",
+        "size": 756,
+        "sha256": "13840fcab58b61893c7bfff029e44a0840eb2e63164c09195d61fc64ec401422"
+      },
+      {
+        "path": "internal/httpapi/observation.go",
+        "oid": "860488b5246704a32b58db6f68d6c17bdd7093a7",
+        "size": 3560,
+        "sha256": "9eb898887b6ad445787a33bbfd307da3cc0002e256216fbab68c71051ad82287"
+      },
+      {
+        "path": "internal/httpapi/observation_test.go",
+        "oid": "4fe1a748ffedf43c4a5be16e7ed10c5da35c2f0a",
+        "size": 6712,
+        "sha256": "1720c41e204ceb9ac18666582281c66df45d99d0a95e57bd413515d2b953c614"
+      },
+      {
+        "path": "internal/httpapi/server.go",
+        "oid": "5a6403f02921b5dd29ba1b7484de438e65f5ef44",
+        "size": 7332,
+        "sha256": "588f5e45fbaf691ee2b6008a437e78ec6e5e315d9d642a825cbb15e33752389d"
+      },
+      {
+        "path": "internal/order/order.go",
+        "oid": "8b49795ef3433cb62c4ba2272cd79f1beb19f617",
+        "size": 1574,
+        "sha256": "6d5f53ac458c359e646fba68eb58cfba685c14fac02c4d216081fc781a77551c"
+      },
+      {
+        "path": "internal/order/order_test.go",
+        "oid": "952af5076e7015bf121d5d35d760427dfe1f2bb4",
+        "size": 1190,
+        "sha256": "e5ea564ae3e770a1714fd56311d07acacc6d513cbf8c3c1ffb235006ae561010"
+      },
+      {
+        "path": "internal/orderconfig/config.go",
+        "oid": "4bce9c9392092ba1326b826e4d885026ddc51314",
+        "size": 851,
+        "sha256": "cad3d5bc123d9360b6157e65400b83ded0dcc06564c2a4a0e4749eafdeb2f8de"
+      },
+      {
+        "path": "internal/orderconfig/config_test.go",
+        "oid": "4c27f4602ba1f9f765b47f2956ffcdb7c72bf4d3",
+        "size": 582,
+        "sha256": "b628e83ffcdae0ca90d75bfa647a285a11a5ee43472d34ce58e4e6916ab96c46"
+      },
+      {
+        "path": "internal/orderhttp/server.go",
+        "oid": "e43bae8590e868f2241db9b83488d4d4d3bec457",
+        "size": 4818,
+        "sha256": "a1c1faee56d2dcbce52c41def4b14d61459b63dc27ed6a31bd3fe9bae94a0332"
+      },
+      {
+        "path": "internal/orderhttp/server_test.go",
+        "oid": "80dc5605ff4606af1d95e57320271528dccdfe21",
+        "size": 5721,
+        "sha256": "0a93c78c83ada9bfbc91b32290233014b9e0028d8edace50768cab2846a69688"
+      },
+      {
+        "path": "internal/ordertest/disposable.go",
+        "oid": "5109aa112288aa7ffc24dffe28236e06a81f6c22",
+        "size": 4510,
+        "sha256": "470442497265bdcb329d33e4b14e58a5cad1d346e6e0cfcda3c95dbb07fd3bf9"
+      },
+      {
+        "path": "internal/store/orderpostgres/migrate.go",
+        "oid": "e7ba1476aa1ec198e714314bcb4781b104b25a00",
+        "size": 4783,
+        "sha256": "070cd8ca5f7be0ac938c6283a3163ad054e6de368fb92c24b23bb9a0021f76e3"
+      },
+      {
+        "path": "internal/store/orderpostgres/migrate_integration_test.go",
+        "oid": "d8b012ff3b0b521d10f4e00e84a1265ea5faed5e",
+        "size": 4736,
+        "sha256": "6091cf2e397434782898006b61a2b85681fdb8ef78cb4bdb8c6d1fc69bfc7ea1"
+      },
+      {
+        "path": "internal/store/orderpostgres/store.go",
+        "oid": "e21643dd112f3191dfcb2a5e20d90e37906b2d49",
+        "size": 4607,
+        "sha256": "66464105dab9626688cf5e7706a967c0ed99258e7f6e9341ffa5ed7c766ea9eb"
+      },
+      {
+        "path": "internal/store/orderpostgres/store_test.go",
+        "oid": "6550e38b672e07dcbd01afc598bd9bd9cc9037e7",
+        "size": 1008,
+        "sha256": "bc12ddb6756b6adc18882bf86553ebd005633821df740205a5caaa92ea01e0d5"
+      },
+      {
+        "path": "internal/store/orderpostgres/wait.go",
+        "oid": "695cbef74d585da06fbe8ef07208c7c8a14a82ba",
+        "size": 1487,
+        "sha256": "29c46daa3451f0dcd1bdaade93c55d960bc1f6b9bdc5dc0e0aa73cd079d435d4"
+      },
+      {
+        "path": "internal/store/orderpostgres/wait_test.go",
+        "oid": "602e0bd004cc94d07719d6dfa048f7bbee8cf7d8",
+        "size": 2461,
+        "sha256": "c7729a49f92bcaf8d6abcae32bab4790f7e7ebbd3404c7d5c8f660e89096e34d"
+      },
+      {
+        "path": "internal/store/postgres/migrate.go",
+        "oid": "73bb4ac5c9d67dc17615096f5c7acd7a8dc48301",
+        "size": 4368,
+        "sha256": "e0e40fc311b8f5d333426fd4218d2107a444589e3e42e18e47af5edb4b5c0121"
+      },
+      {
+        "path": "internal/store/postgres/migrate_integration_test.go",
+        "oid": "d4048b66f2fcbbecc1bfaa8c9713095e9b283d94",
+        "size": 4322,
+        "sha256": "fc2be28654c369afdbf6f2e9cc38ca72418bd28f31a054c944392cfba2636149"
+      },
+      {
+        "path": "internal/store/postgres/store.go",
+        "oid": "2e8b4e5423b0b693c3279bbe2f34109280aa0f4f",
+        "size": 6067,
+        "sha256": "9d48332f23768e9bf7d12e65f49dc5e0cac5426c41c9766cb414aacd27dca83c"
+      },
+      {
+        "path": "internal/store/postgres/wait.go",
+        "oid": "8bac7443c29a988235f30a00948e043dd5c329b6",
+        "size": 1482,
+        "sha256": "e66fbf7afc1905c8a5c7d0a7b057087b7d1bec789b1c5c465dba0195ca2f185b"
+      },
+      {
+        "path": "internal/store/postgres/wait_test.go",
+        "oid": "f61b7c27853ff9c05d19bde09e813edb5072c56a",
+        "size": 2456,
+        "sha256": "3b39d743ffa14a6b65b5db789a309b99d9f62365f9b2a70db66cde78ac064188"
+      },
+      {
+        "path": "internal/telemetry/telemetry.go",
+        "oid": "71d4620da2f567bfc035bff77bc52bf16693a3db",
+        "size": 9310,
+        "sha256": "58c69328a5c29d804ab0d146b1d35b3e0e2d65d1b1e1284089dd95843c421c0b"
+      },
+      {
+        "path": "internal/telemetry/telemetry_test.go",
+        "oid": "36bb0e899aa47e59679a5bbb4e9a1e5792040843",
+        "size": 4087,
+        "sha256": "681dbda825578ca57c022ef1094ca16b114930b829781b633a3921909ba62fdb"
+      },
+      {
+        "path": "migrations/0001_create_accounts.sql",
+        "oid": "4861c162e1c26e8253ea2a0078b39bd151626b28",
+        "size": 739,
+        "sha256": "3b408368a59951a917569c7e761f9ee7583056f05516084468b190ebf3547e42"
+      },
+      {
+        "path": "migrations/embed.go",
+        "oid": "8c60393c5c7cd187bd95903d4e41974d7553d260",
+        "size": 337,
+        "sha256": "2463b008e3997ba45f5fc65137f77cde50d013214d982e23c0674f225a92f29c"
+      },
+      {
+        "path": "order-migrations/0001_create_orders.sql",
+        "oid": "46fe9a73aa0e81aba9872204ad4d84abe2607cfe",
+        "size": 363,
+        "sha256": "5aaaec9539a55a607be7f83ed10afda742d34658a6512aafaf79e94985ad46b6"
+      },
+      {
+        "path": "order-migrations/embed.go",
+        "oid": "952bdff26ffe30b3cfedee7544cfb2028b814490",
+        "size": 162,
+        "sha256": "630160178e2dcad9c0d963ef66df3d8dcfb518b2ed8bbc44d551ae80cd359643"
+      },
+      {
+        "path": "security/README.md",
+        "oid": "7dee849135e37d19890771f7cb14898bf798a848",
+        "size": 3033,
+        "sha256": "6cc9b36f3bfc01dfaebb5c2142ae41477b8d224112a89e66b4c6bdae94857dd5"
+      },
+      {
+        "path": "security/scan-policy.json",
+        "oid": "69fa1aaeab8b446dab5abb34b0232610e873389b",
+        "size": 96,
+        "sha256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+      },
+      {
+        "path": "security/scan-policy.schema.json",
+        "oid": "47b4c592282dedfad0af96b22582f1e06b9c9219",
+        "size": 1164,
+        "sha256": "066b0b60d907f5e0cca6fe1f33ae7fc3f62be1761f866ac390e209521147a438"
+      },
+      {
+        "path": "tests/orderintegration/order_test.go",
+        "oid": "894b5999b4779855b5a3990b922109317f8159fc",
+        "size": 11422,
+        "sha256": "b32da8aa4e99342a00603fb3bfb93ea6f73ad43ef67b9f2afebf3493c0c0524f"
+      },
+      {
+        "path": "tools/oci-input/cmd/compat-proof/main.go",
+        "oid": "a454ffefe23f6ea9c00bb75b3705068f5f636381",
+        "size": 5177,
+        "sha256": "d766ca36afd7e78a9d81be516a50cad7b85fadd2d7fdd2e565724774b4034bb4"
+      },
+      {
+        "path": "tools/oci-input/cmd/compat-proof/main_test.go",
+        "oid": "b77ceb79b334bbd7a5e49108635b5b90d079c84b",
+        "size": 4735,
+        "sha256": "ce927255f7c9f659435c9b9e74576c84127b266035dcf79228dc59829b7c6db6"
+      },
+      {
+        "path": "tools/oci-input/cmd/github-oci-check/main.go",
+        "oid": "bfcc164eda4d46767c596742f5ace735cdf967ca",
+        "size": 440,
+        "sha256": "36417732afa667c0d8f63a21950bffc0003b6db84c3af0d3907965a7b67abc11"
+      },
+      {
+        "path": "tools/oci-input/cmd/oci-check/main.go",
+        "oid": "1d4a04bc2e36effa6cca7cda8a902781069ee9e0",
+        "size": 404,
+        "sha256": "b8c317d0ee85ca077640902d646f9f410846e99ddab4a559682d320317b1d05c"
+      },
+      {
+        "path": "tools/oci-input/cmd/oci-crane-check/main.go",
+        "oid": "0d84e3bbf94cbfa67c8062c2a6057cf2b707b85b",
+        "size": 1610,
+        "sha256": "0adb34381867c425a4a0aba5c1310246601c05aa286ebd656033eca3899cd25e"
+      },
+      {
+        "path": "tools/oci-input/cmd/oci-registry-pull/main.go",
+        "oid": "1255292d54729a9265fd4d7d15d6eb2bb7ef5880",
+        "size": 3682,
+        "sha256": "ed763ad7f941065a3838e93aea701f8117b7fab734c2a804075c5f10105552c9"
+      },
+      {
+        "path": "tools/oci-input/cmd/oci-registry-pull/main_test.go",
+        "oid": "cf467d539240efc94f5984162df4e83cacf3026d",
+        "size": 5269,
+        "sha256": "5c46a237c359eb22c61f5f8b040c702d71ef1109d660478e667d62ef79779fc0"
+      },
+      {
+        "path": "tools/oci-input/cmd/oci-runtime-export/main.go",
+        "oid": "8d6064e029a3b90cf97cc017b5ab4917dfc936bf",
+        "size": 1211,
+        "sha256": "90fb22c6b5a61ab1593447cece0c9fe5f47fe5d2715892e8183d086b9b99ea4f"
+      },
+      {
+        "path": "tools/oci-input/cmd/oci-runtime-export/main_test.go",
+        "oid": "28a1c329593cdb3793b6ac4a8839710322c18572",
+        "size": 406,
+        "sha256": "aeb9b91f22c01432e4f32c37ffc658c2d7883772429b53d70aa20768f12a0ec7"
+      },
+      {
+        "path": "tools/oci-input/cmd/oci-tag-state/main.go",
+        "oid": "4a67e3748430a2e5b09debbf316cea1d1241092b",
+        "size": 1282,
+        "sha256": "375f16ae582f0a9b6f20947d07f863bb2ca87db6b499f84c1a17b69e306cfb57"
+      },
+      {
+        "path": "tools/oci-input/github_test.go",
+        "oid": "62e7ef3e99d47a498bac89bab2e7a96f5c081cb9",
+        "size": 763,
+        "sha256": "6cd5346bf36291f6b3919dcd7ee0eca2d07c84c531f5dd7985890b5866b3903b"
+      },
+      {
+        "path": "tools/oci-input/go.mod",
+        "oid": "85bf9070cf9d2781cc98a99c55d838c5a393185c",
+        "size": 600,
+        "sha256": "c6a9868c26a6590e80fe540b3511023db8d112b4f59e677e58661ebc01477a40"
+      },
+      {
+        "path": "tools/oci-input/go.sum",
+        "oid": "96823651fcfc5edd06d5d52ca8fe83a635540373",
+        "size": 2619,
+        "sha256": "92da561a590cbbe2e79d59eac13481f5ba770df3953ee8eb8b0b34e7d9e7ca99"
+      },
+      {
+        "path": "tools/oci-input/layout.go",
+        "oid": "a029bce24f64746b7ec3cd98405f380b3d3927a7",
+        "size": 11603,
+        "sha256": "3e92f7e38a05ee5e3f30d5c0dc95a37e062ffb15912f33678e2b21a5df5fe933"
+      },
+      {
+        "path": "tools/oci-input/layout_test.go",
+        "oid": "8aa66fc64d84bb016e7fb8109064a5be07967f12",
+        "size": 8399,
+        "sha256": "da1c9c66637edb6a9bf267d776e16b101ad6cff69e51ea26d1fdb31ff6cd062f"
+      },
+      {
+        "path": "tools/oci-input/registry_tag.go",
+        "oid": "083f1f0a079ce98aee89e394b140f502e4f791e2",
+        "size": 2513,
+        "sha256": "7a6d452353ab668427cb0f861a1c8d42ea3f1adf8e3f4145c434d188669a7570"
+      },
+      {
+        "path": "tools/oci-input/registry_tag_test.go",
+        "oid": "587b16a67a37d8b6a7b7ad0436b3d82a2e795867",
+        "size": 3190,
+        "sha256": "3760142a05556fede2410149f92b4fc4a778dbcfd08eeb5ee28a2b294da48b3a"
+      },
+      {
+        "path": "tools/oci-input/registry_transport.go",
+        "oid": "95ac3146f27f776b3b2a149e234566d23a9ed1a0",
+        "size": 3729,
+        "sha256": "123e3b5058fd653f9a61a40e397c6854a3dac9b38542cc6fc314c94f29a6cbe0"
+      },
+      {
+        "path": "tools/oci-input/registry_transport_test.go",
+        "oid": "492f3e11cdbdbac9be5c3a450ebac013503c4a54",
+        "size": 5252,
+        "sha256": "66529a4f39344e29ba9050038520e3e8ef065d0326075b565b4b7cf0d242d101"
+      },
+      {
+        "path": "tools/release-record/README.md",
+        "oid": "717f2e5780aceab905496397318e04436585a936",
+        "size": 3807,
+        "sha256": "45d5d84910f9f703c29437f8762005e7cf62a47d12f61610ac40f59366deafeb"
+      },
+      {
+        "path": "tools/release-record/backend_binding_test.go",
+        "oid": "755f9d52fd935301d9e456321ebdfdeda49ce473",
+        "size": 2322,
+        "sha256": "49476414d6dadf8197c42fae5a082eed19385add2e37dd7268f6b21a832c5b16"
+      },
+      {
+        "path": "tools/release-record/backend_inspection_test.go",
+        "oid": "131ea40447f28268841a79dae308d0c6e0b3537d",
+        "size": 2831,
+        "sha256": "e7dce679bc1e671ec5615d821878cbea48243c4814bd9a2f9dfeb88cdc0c0f50"
+      },
+      {
+        "path": "tools/release-record/cmd/consumer-scan/main.go",
+        "oid": "7f3c120901830133ff932860c4fdf86cbbd5f8f2",
+        "size": 1392,
+        "sha256": "aa93ee378c41baa34275cb722cec3ac3a310c27099e5e7365741d0186651581f"
+      },
+      {
+        "path": "tools/release-record/cmd/delivery-check/main.go",
+        "oid": "a767e49960fbe70a59577a7d96dcb29fe0eb9d1f",
+        "size": 3751,
+        "sha256": "46ba5a166edda2e760c84c9c4199efb8fba263704c8bd1d3fc1260fd42ea8d03"
+      },
+      {
+        "path": "tools/release-record/cmd/package-contract/main.go",
+        "oid": "ef94ff267fa24b4ff059bd9cd583a2827db05155",
+        "size": 1492,
+        "sha256": "afeab99075460385c67db0cd356e30567f3f1cdb4f51ad07ad939011c10dab4b"
+      },
+      {
+        "path": "tools/release-record/cmd/publication-check/main.go",
+        "oid": "29a63d4f67946995817d55cbd57255b1c102557c",
+        "size": 3130,
+        "sha256": "d695d49724e96f93849a0cf0721e3caec55a36b5bba22ec6d5a42c8dce762ac0"
+      },
+      {
+        "path": "tools/release-record/cmd/record-check/main.go",
+        "oid": "b9c451dfe664f63bd79d6823333da1cd5cc1f041",
+        "size": 760,
+        "sha256": "f4fca9d2a2871521058c7046b09efa231b1d0ea7b86782c3f71aafc6c344d335"
+      },
+      {
+        "path": "tools/release-record/cmd/record-store/main.go",
+        "oid": "e85db3c7d41b12206f5610468129ce76ecfe6dcc",
+        "size": 2499,
+        "sha256": "1549ab5364f9b3cf29f0b3a43210660130eeb7f03ba0083b2ea8ff804363f4b4"
+      },
+      {
+        "path": "tools/release-record/cmd/record-store/native_permissions.go",
+        "oid": "824148e143a9eacae3f50cc8115f7cfb5dd33f18",
+        "size": 941,
+        "sha256": "b442a866c448eadf40beaff9b0729d466a026b9dcf9b53bf8bdfb8b6df49c6c6"
+      },
+      {
+        "path": "tools/release-record/cmd/record-store/native_permissions_test.go",
+        "oid": "cd3b479059e137260182481adc91a263b911617b",
+        "size": 1459,
+        "sha256": "11c48a9b94dd278ad906a3f403e8b93eb434484d0b5f3a8eeb1d1f0ee161b97c"
+      },
+      {
+        "path": "tools/release-record/cmd/registry-origin/main.go",
+        "oid": "718ab04e9142865ad7d785bee9dc6495b088d1e3",
+        "size": 3958,
+        "sha256": "5b9090684a92eafa5ff306c39d26dec2da4b12f2554ba032559bea03425843e3"
+      },
+      {
+        "path": "tools/release-record/cmd/registry-reuse-check/main.go",
+        "oid": "ee38071fad55b945bcca3d12924d69e6be752eab",
+        "size": 2672,
+        "sha256": "c7a9c50800ac408dd7d8f6b9f3c959710715597b97032912c0e03d454f7c3432"
+      },
+      {
+        "path": "tools/release-record/cmd/sbom-check/main.go",
+        "oid": "50e93408b2091d90bc2fd86b9e6a0e260c8fa754",
+        "size": 1334,
+        "sha256": "cfa2d7d20c0c9da1e58e01900cda40433ebc6279a45bceedb4dec96baaca01bd"
+      },
+      {
+        "path": "tools/release-record/cmd/scan-record/main.go",
+        "oid": "6c626b1d07f9d28d95650b9ce247a63af5100567",
+        "size": 4661,
+        "sha256": "2e7a6d36e64785c7c68d65afc0ac643e17af2899c455d489fd5f80457635a837"
+      },
+      {
+        "path": "tools/release-record/consumer.go",
+        "oid": "44a0dbc4686ae13fa34f95bdfe4b47c69a6ff478",
+        "size": 9548,
+        "sha256": "ab1d29a16e29e753df1f72138464f8feca7f954bc91d4d8309c2b8d8975544b1"
+      },
+      {
+        "path": "tools/release-record/consumer_test.go",
+        "oid": "8507a3cf82d20ddc3d860380f30292a54e219607",
+        "size": 6271,
+        "sha256": "2adcab148945f674116ef66ff99bcba81a94b51353a8a3fef2680dade976d793"
+      },
+      {
+        "path": "tools/release-record/consumer_writer_test.go",
+        "oid": "28cf0db97c3dfdfd8a0b6cb90a2c37d9a1e2401b",
+        "size": 4000,
+        "sha256": "0d5fd4a99ffb3e4823a03baeca347b4be3cf89e8fe427895d37d0045f2a37d07"
+      },
+      {
+        "path": "tools/release-record/delivery.go",
+        "oid": "500f70391f100547d15f27af0325822550449635",
+        "size": 3055,
+        "sha256": "e3d11fec4ad076c81d650f657e41415c9f58b1d7f1b5be67120e5747de3328ff"
+      },
+      {
+        "path": "tools/release-record/delivery_test.go",
+        "oid": "0bf0689faff7531166d7c311b5fceea74dbcc5a7",
+        "size": 3206,
+        "sha256": "29416388b03cfaadc94145e14bcde0278fe372c4fe546b725347a3ddc4039ff1"
+      },
+      {
+        "path": "tools/release-record/go.mod",
+        "oid": "f2f9d9e7ca7abdd5f4e9732d4b4ba0452e5327b8",
+        "size": 151,
+        "sha256": "d7edd4c3cfcdd3b1057698f3e153356f3ba0b1b094515602b9764dec8f1ba9dd"
+      },
+      {
+        "path": "tools/release-record/go.sum",
+        "oid": "f364f904ea5c6372918631096b20bb7eaf017eff",
+        "size": 682,
+        "sha256": "eda25c805108c8087ac00beabbc3a7811871634ad34af5f76f617ddb3e1278e2"
+      },
+      {
+        "path": "tools/release-record/inspection_consumer.go",
+        "oid": "99ee167244980bb6482cb87985c299c05b11a2f0",
+        "size": 11373,
+        "sha256": "38df451fafb268951d528481034f9c959eaf1cf991a2f55ee2a1450d8c31555f"
+      },
+      {
+        "path": "tools/release-record/inspection_consumer_test.go",
+        "oid": "40cb8d377bd4666fd8b955a5d90b4b3c640880b9",
+        "size": 11533,
+        "sha256": "81e99badf07553439e85561fb1644f006781b698405a75a19295684d70891074"
+      },
+      {
+        "path": "tools/release-record/legacy_registry.go",
+        "oid": "b7f76bca8608133330fb87db654d8f1bf854b259",
+        "size": 5670,
+        "sha256": "8d91e177f9e2166571e4c72beb7f8f81e681c6307fd763499cad04fc6e96bb31"
+      },
+      {
+        "path": "tools/release-record/legacy_registry_test.go",
+        "oid": "aef870a41d9c15bf9a9e6aa8278d8daaad548de3",
+        "size": 4960,
+        "sha256": "078c2b2777f077663fb1a65773c5b623237e11f89d4f9e9a0ae4d98dc14b77d4"
+      },
+      {
+        "path": "tools/release-record/native_job_record.go",
+        "oid": "d1e17532e4be4bca2d3d3f5f8576e8d34c2c2438",
+        "size": 1701,
+        "sha256": "e6132be1ce8e7cff72ce25274ff1bc571126202b751a6c2d28f61f1cc8107bb2"
+      },
+      {
+        "path": "tools/release-record/oci_identity.go",
+        "oid": "cb14547e8eec814e99666719d8030a18713b7434",
+        "size": 4529,
+        "sha256": "4e996c02c171a6907a34316809da7906e4b708297123be81e307c22a1e0815db"
+      },
+      {
+        "path": "tools/release-record/oci_identity_test.go",
+        "oid": "fe473a689077c66b74c3dc72a4822b28aedbe4de",
+        "size": 2416,
+        "sha256": "6d3bdd922084f3b98f4119421040c53abff5a26f4fbea24cfe0dd5b948479eb9"
+      },
+      {
+        "path": "tools/release-record/package.go",
+        "oid": "60a9bdd49c3392ebd36c7ec9d6078c3e6b78623e",
+        "size": 6295,
+        "sha256": "e4cedcc55fafeb20dfb9f6ff861ea0637bd2843b6197f790b0b65496a2c947ed"
+      },
+      {
+        "path": "tools/release-record/package_test.go",
+        "oid": "6c2864a3cdfbaafae1022e8afe29e867b0b551e8",
+        "size": 4478,
+        "sha256": "b7e8e24be30d7e394b283d9280b93efbbeaa242008a3503333e67c09e16685f9"
+      },
+      {
+        "path": "tools/release-record/publication.go",
+        "oid": "ed91a9ad5eb16b5e903612650fb6c302c0bb2773",
+        "size": 1329,
+        "sha256": "855e13051384d40a047425187fa49bb3e1a6ab45dc13654d897eec88eae452b3"
+      },
+      {
+        "path": "tools/release-record/publication_test.go",
+        "oid": "1559b497547820a8421969407a0b095bdac7e20f",
+        "size": 6555,
+        "sha256": "2dbca40498c5445143a538ce07f1b5c55291842e703264030fba880c596fa1d4"
+      },
+      {
+        "path": "tools/release-record/record.go",
+        "oid": "e8c1bc5c19760866ff94a5022ccb47d3754fa271",
+        "size": 10957,
+        "sha256": "0546d53af7b316df7eb25c6029e643843864b22519317f9a2e5842b34a5881df"
+      },
+      {
+        "path": "tools/release-record/record_test.go",
+        "oid": "0e6992caacb39956d86fc252a6c6db2a5b5bc98a",
+        "size": 6210,
+        "sha256": "5f15872d7b022a9697dd1fcd02d6feb88f07e3211c67efdaa58808d6de351b4c"
+      },
+      {
+        "path": "tools/release-record/registry_failure_test.go",
+        "oid": "d6675962cf29bf7b9c1eb0aa05c121d81c694f68",
+        "size": 1487,
+        "sha256": "397b2cc897890685dbb8996c3e602972e07def8fe2ef0616aa56ece5cfc0ebbf"
+      },
+      {
+        "path": "tools/release-record/registry_identity.go",
+        "oid": "add3644a50c35622eaa29e139756599ba38a865e",
+        "size": 2217,
+        "sha256": "4b49a732d7564a96c4b5306d775edeb15c5439da7bbe2fb682f88d38b28fe466"
+      },
+      {
+        "path": "tools/release-record/registry_identity_test.go",
+        "oid": "b8c4e7e275648f64441cc123f0e03cf9087d2a8b",
+        "size": 4326,
+        "sha256": "a50b43c90db1106ce793e742545a296ddf992e3f59811943721411677ebfc814"
+      },
+      {
+        "path": "tools/release-record/registry_inspection.go",
+        "oid": "dd545fe406e31bf487bd0a92283195219078b80e",
+        "size": 2585,
+        "sha256": "5859bf7def5c193319bc648dee1d7b3ab5d7167d2d89b3182d4e53ba116976de"
+      },
+      {
+        "path": "tools/release-record/registry_inspection_test.go",
+        "oid": "96efd7604912229393bf564582ec0e66c9329a61",
+        "size": 6566,
+        "sha256": "e52a2824516e4c1944b4253bc2f8b1488b51fd89a40916810218ec9231286a3d"
+      },
+      {
+        "path": "tools/release-record/registry_record_origin_test.go",
+        "oid": "1d1320bd6da7e800e02a69784f4041bf86d583aa",
+        "size": 3838,
+        "sha256": "a84c3853a92936c019bf68b650465fd3c16f8008e0416363428aeb052002ea48"
+      },
+      {
+        "path": "tools/release-record/registry_request.go",
+        "oid": "b86271dfacb28b091471092069dbd655e1ba6b79",
+        "size": 3905,
+        "sha256": "9a684ae842567af2f40c0a588a230fdec0c6ae3a3cc66aeac38c38572cac7454"
+      },
+      {
+        "path": "tools/release-record/registry_request_test.go",
+        "oid": "12c32f203b0b17f60d5654c213511bae77dc4e02",
+        "size": 5567,
+        "sha256": "912b4ee4e9911e035a0813c41ab905b4b68d68e6f7ab587702c68a089bb64ea1"
+      },
+      {
+        "path": "tools/release-record/rescan.go",
+        "oid": "cba9d666db3816d18df3f721886e730d9e33d392",
+        "size": 2892,
+        "sha256": "8dd92aafa4522e315783b4f20d4cc36ef173caaafbf4ae8df0bc40b93cfebb78"
+      },
+      {
+        "path": "tools/release-record/rescan_test.go",
+        "oid": "52ad9116375b2e3d421629c1492e0d7f01c03b9d",
+        "size": 2268,
+        "sha256": "c0d28887abb9015e37ed458db6cef175da59a01535c9caf72053d51754a41ce1"
+      },
+      {
+        "path": "tools/release-record/retention.go",
+        "oid": "100fcdb7e565956b050c2217e418c0e83b36a3b2",
+        "size": 2803,
+        "sha256": "a6cd798f96de08040f2e4052acb4559ef902e6d4cb342f86afd7a53f6bb8537f"
+      },
+      {
+        "path": "tools/release-record/retention_test.go",
+        "oid": "18fa8581cfe4b8d0e36ae5c6b4f88bc74ff2dac3",
+        "size": 2386,
+        "sha256": "4006fbc4e87d0306bcf350043c7701a5daaa7db70aa753943203f8a9d650fc52"
+      },
+      {
+        "path": "tools/release-record/sbom.go",
+        "oid": "8be0ba9ef439d8bbdbec84f785875629eb34e9dd",
+        "size": 8789,
+        "sha256": "c43c2d77a0ce43ebfff1e7f2bd012d96522f51bee08c7c1f911effee65fe9327"
+      },
+      {
+        "path": "tools/release-record/sbom_test.go",
+        "oid": "cecbea9f6c5c204007ac7409c327e5de465d0753",
+        "size": 6162,
+        "sha256": "e04a5bc31edf97debbd54044183a22bffbae6f1426ef6412d0ce8b2e83f86524"
+      },
+      {
+        "path": "tools/release-record/scan_record.go",
+        "oid": "7ac79cec54a89bbbe1d7fb6cca5e214a4b3d0abd",
+        "size": 7807,
+        "sha256": "24f252dd8ceb19ab9987b8c5baa310371817364a8a8dbfab2b9cda1829114c95"
+      },
+      {
+        "path": "tools/release-record/scan_record_test.go",
+        "oid": "60d22936b3756dbed5988dd02bb13bbc7ebfa803",
+        "size": 4895,
+        "sha256": "7a60c5d057fdc0c4bc9541fca0b048f14d1a28b5efa06840b1bd2acd02a97239"
+      },
+      {
+        "path": "tools/release-record/schemas/LICENSE",
+        "oid": "0808751c23d827d483dc3673d6e3f49514e49d1f",
+        "size": 11341,
+        "sha256": "6c29f22a4a7385285c6f579ec9f33c5e989f00739d6b257243a0b082ec9447ae"
+      },
+      {
+        "path": "tools/release-record/schemas/README.md",
+        "oid": "ffe0c55b2169ba906fa2fd4876c3585b4a8eeb94",
+        "size": 1326,
+        "sha256": "fbcaded01a4bba8050c79a1440ca852e7998a9067a5b34a32fe8ab9b6cfc4912"
+      },
+      {
+        "path": "tools/release-record/schemas/bom-1.7.schema.json",
+        "oid": "08d6a3c884614630075dbb841c74397fbd5fc5d2",
+        "size": 315607,
+        "sha256": "df472ef4aaf593904c479293723a1a5c191d6672715c93b3c0b5c318f3914221"
+      },
+      {
+        "path": "tools/release-record/schemas/cryptography-defs.schema.json",
+        "oid": "1f06fdff5a334ec4d0a166d4aaa6d0ed57ce8d57",
+        "size": 16855,
+        "sha256": "018ea7f78b5208ec647cfd10f669cc9c26aba6aceb79c4da7f9c0ef4c99b60de"
+      },
+      {
+        "path": "tools/release-record/schemas/jsf-0.82.schema.json",
+        "oid": "f46bfb1e52731ad1280123ff3e2bd29bd18d4bc2",
+        "size": 8058,
+        "sha256": "8bae002c25e723db7ee1f26afde680ae1a2b1a8f6b4b4b0fd65dc3becb090aae"
+      },
+      {
+        "path": "tools/release-record/schemas/spdx.schema.json",
+        "oid": "1e49a6d9e58dd87f1a03ded4c12f34f37bd991cc",
+        "size": 15883,
+        "sha256": "54a6288292bc6c90b0d3952f5f939f17436fa76704ffe68a46e5b78539c7cc1b"
+      },
+      {
+        "path": "tools/release-record/source_api.go",
+        "oid": "cd06289465349918a35fd402aa69cf76f5840e1e",
+        "size": 8583,
+        "sha256": "536b75c7d97f3816240f520ab9bcd21e197d98a4e52495ba92ff4c9b5ee0c8cb"
+      },
+      {
+        "path": "tools/release-record/source_api_test.go",
+        "oid": "bf8b450a34dc83e067789766db174a5cd8743d20",
+        "size": 2789,
+        "sha256": "fa7cc7bb66ebdbd7dd2987df5698e3adb804673318503fde632e4b5261369e91"
+      },
+      {
+        "path": "tools/release-record/storage_contract.go",
+        "oid": "0f65c18b466fdd98ee5afd17a303fd16c066a3c5",
+        "size": 3953,
+        "sha256": "79e00ad606e257cceef66faa580513504efdd570d8a7656209c54d77d7df08b8"
+      },
+      {
+        "path": "tools/release-record/storage_contract_test.go",
+        "oid": "10aae620ae87d58741a51943394f924e82acedbb",
+        "size": 1397,
+        "sha256": "7d1f87230a6c16819f52e385d0064a4dd9c9299da0bbaec75a9c4fa0c2df60a1"
+      },
+      {
+        "path": "tools/release-record/store_bundle.go",
+        "oid": "fc4cab965c7b8c04f9e97aa95da72aecec16a4f7",
+        "size": 5787,
+        "sha256": "15628895669578f036e188ea8710df866388a97c51afd10d81429e5f00a98532"
+      },
+      {
+        "path": "tools/release-record/store_bundle_test.go",
+        "oid": "0648800e7e30dd9be4f371579823a0a729962f4e",
+        "size": 5825,
+        "sha256": "368663d010f68bfc80285f6e8221b679b258be217fdb6fb3e9526fbc8033f515"
+      },
+      {
+        "path": "tools/scan-gate/go.mod",
+        "oid": "1a5db4f82c659046b94e3a81c0820ac10c1761d2",
+        "size": 75,
+        "sha256": "6feed04638fd2701f4de8cbbed976c49e385a807767378cb062e8404a1024824"
+      },
+      {
+        "path": "tools/scan-gate/go.sum",
+        "oid": "a62c313c5b0c799f83215509f742b13aebbe38e4",
+        "size": 360,
+        "sha256": "e42794fa9b56301ad073de55cac1dea683b320ed951454d8709ffc7156088dd2"
+      },
+      {
+        "path": "tools/scan-gate/image_test.go",
+        "oid": "b7ed40680f38e801eb19532f055be5c5caa2b5e7",
+        "size": 2813,
+        "sha256": "53bd6e24b89236cf95dc942af0f7d81532117f56cc5dc933626d71cb6cefcbc4"
+      },
+      {
+        "path": "tools/scan-gate/main.go",
+        "oid": "a4d130585a8d5f44b17cba378e6466f7660af059",
+        "size": 3143,
+        "sha256": "478d985a02613c31007713121637787067c6b1d2ec03197a130e4e9212422763"
+      },
+      {
+        "path": "tools/scan-gate/policy.go",
+        "oid": "da7eeff58f4188a22478825868f597b389770cc0",
+        "size": 10152,
+        "sha256": "cbe80b9921df709c8a5fb33d52ff113e37bb845cc31a1f844d15d936e12087eb"
+      },
+      {
+        "path": "tools/scan-gate/policy_test.go",
+        "oid": "7f8e53680a9d49d0c0edd866810fa1a8d826b469",
+        "size": 3905,
+        "sha256": "686a434af7fefea0098d33d804053ed6612cdcef1fe4188b2404e9fc729fc453"
+      },
+      {
+        "path": "tools/scan-gate/render.go",
+        "oid": "e77a629beb1f7858e54d77c028b74e9cdf603c05",
+        "size": 6284,
+        "sha256": "1f7907feb2578e7532f60da14175a12825422e76ff6c97913dfa6b04e57a678f"
+      },
+      {
+        "path": "tools/scan-gate/render_test.go",
+        "oid": "5c087b1677a9008a2f830c7e507ad937b5ad370a",
+        "size": 3611,
+        "sha256": "05385394c58fb8fd9600cd72b1564ba6602664b73dd9c05a9209b416f8c0a7dd"
+      }
+    ],
+    "extra_files": [],
+    "test_binaries_present": false
+  },
+  "cold_build_matrix": {
+    "valid": {
+      "separate_new_worker": true,
+      "services_executed_sequentially": true,
+      "no_cache_requested": true,
+      "measurements": [
+        {
+          "service": "backend",
+          "dockerfile": "Dockerfile",
+          "started_at": "2026-10-11T18:46:29Z",
+          "ended_at": "2026-10-11T18:48:03Z",
+          "exit_code": 0,
+          "size": 15378432,
+          "sha256": "03c25df58aa45eaf464c6784cb0ef67481e507502b8220dbcf8d96efe7826798",
+          "expected_exit": 0,
+          "outcome": "pass",
+          "dependency_vertex_cached": false,
+          "reason": "formal committed production OCI exported"
+        },
+        {
+          "service": "order",
+          "dockerfile": "Dockerfile.order",
+          "started_at": "2026-10-11T18:48:03Z",
+          "ended_at": "2026-10-11T18:49:03Z",
+          "exit_code": 0,
+          "size": 8831488,
+          "sha256": "fd7fb2e7b21902a3262b24dc3555f7e96093705db0ec31fb35bbbf45334aedf8",
+          "expected_exit": 0,
+          "outcome": "pass",
+          "dependency_vertex_cached": false,
+          "reason": "formal committed production OCI exported"
+        }
+      ],
+      "boundary": {
+        "network": "bridge",
+        "privileged": false,
+        "cap_add": null,
+        "user": "1000:1000",
+        "apparmor": "",
+        "security_opt": [
+          "seccomp=unconfined"
+        ],
+        "masked_paths": [],
+        "readonly_paths": []
+      }
+    },
+    "missing": {
+      "separate_new_worker": true,
+      "services_executed_sequentially": true,
+      "no_cache_requested": true,
+      "measurements": [
+        {
+          "service": "backend",
+          "dockerfile": "Dockerfile",
+          "started_at": "2026-10-11T18:50:06Z",
+          "ended_at": "2026-10-11T18:50:43Z",
+          "exit_code": 1,
+          "expected_exit": 1,
+          "outcome": "pass",
+          "dependency_vertex_cached": false,
+          "reason": "dependency TLS unknown authority"
+        },
+        {
+          "service": "order",
+          "dockerfile": "Dockerfile.order",
+          "started_at": "2026-10-11T18:50:43Z",
+          "ended_at": "2026-10-11T18:50:46Z",
+          "exit_code": 1,
+          "expected_exit": 1,
+          "outcome": "pass",
+          "dependency_vertex_cached": false,
+          "reason": "dependency TLS unknown authority"
+        }
+      ],
+      "boundary": {
+        "network": "bridge",
+        "privileged": false,
+        "cap_add": null,
+        "user": "1000:1000",
+        "apparmor": "",
+        "security_opt": [
+          "seccomp=unconfined"
+        ],
+        "masked_paths": [],
+        "readonly_paths": []
+      }
+    },
+    "empty": {
+      "separate_new_worker": true,
+      "services_executed_sequentially": true,
+      "no_cache_requested": true,
+      "measurements": [
+        {
+          "service": "backend",
+          "dockerfile": "Dockerfile",
+          "started_at": "2026-10-11T18:50:54Z",
+          "ended_at": "2026-10-11T18:51:42Z",
+          "exit_code": 1,
+          "expected_exit": 1,
+          "outcome": "pass",
+          "dependency_vertex_cached": false,
+          "reason": "explicit empty CA guard"
+        },
+        {
+          "service": "order",
+          "dockerfile": "Dockerfile.order",
+          "started_at": "2026-10-11T18:51:42Z",
+          "ended_at": "2026-10-11T18:51:52Z",
+          "exit_code": 1,
+          "expected_exit": 1,
+          "outcome": "pass",
+          "dependency_vertex_cached": false,
+          "reason": "explicit empty CA guard"
+        }
+      ],
+      "boundary": {
+        "network": "bridge",
+        "privileged": false,
+        "cap_add": null,
+        "user": "1000:1000",
+        "apparmor": "",
+        "security_opt": [
+          "seccomp=unconfined"
+        ],
+        "masked_paths": [],
+        "readonly_paths": []
+      }
+    },
+    "invalid": {
+      "separate_new_worker": true,
+      "services_executed_sequentially": true,
+      "no_cache_requested": true,
+      "measurements": [
+        {
+          "service": "backend",
+          "dockerfile": "Dockerfile",
+          "started_at": "2026-10-11T18:52:00Z",
+          "ended_at": "2026-10-11T18:52:48Z",
+          "exit_code": 1,
+          "expected_exit": 1,
+          "outcome": "pass",
+          "dependency_vertex_cached": false,
+          "reason": "dependency TLS unknown authority"
+        },
+        {
+          "service": "order",
+          "dockerfile": "Dockerfile.order",
+          "started_at": "2026-10-11T18:52:48Z",
+          "ended_at": "2026-10-11T18:52:59Z",
+          "exit_code": 1,
+          "expected_exit": 1,
+          "outcome": "pass",
+          "dependency_vertex_cached": false,
+          "reason": "dependency TLS unknown authority"
+        }
+      ],
+      "boundary": {
+        "network": "bridge",
+        "privileged": false,
+        "cap_add": null,
+        "user": "1000:1000",
+        "apparmor": "",
+        "security_opt": [
+          "seccomp=unconfined"
+        ],
+        "masked_paths": [],
+        "readonly_paths": []
+      }
+    },
+    "nonexistent": {
+      "separate_new_worker": true,
+      "services_executed_sequentially": true,
+      "no_cache_requested": true,
+      "measurements": [
+        {
+          "service": "backend",
+          "dockerfile": "Dockerfile",
+          "started_at": "2026-10-11T18:53:07Z",
+          "ended_at": "2026-10-11T18:53:07Z",
+          "exit_code": 1,
+          "expected_exit": 1,
+          "outcome": "pass",
+          "dependency_vertex_cached": false,
+          "reason": "buildctl refuses nonexistent source path"
+        },
+        {
+          "service": "order",
+          "dockerfile": "Dockerfile.order",
+          "started_at": "2026-10-11T18:53:07Z",
+          "ended_at": "2026-10-11T18:53:07Z",
+          "exit_code": 1,
+          "expected_exit": 1,
+          "outcome": "pass",
+          "dependency_vertex_cached": false,
+          "reason": "buildctl refuses nonexistent source path"
+        }
+      ],
+      "boundary": {
+        "network": "bridge",
+        "privileged": false,
+        "cap_add": null,
+        "user": "1000:1000",
+        "apparmor": "",
+        "security_opt": [
+          "seccomp=unconfined"
+        ],
+        "masked_paths": [],
+        "readonly_paths": []
+      }
+    }
+  },
+  "production_images": {
+    "backend": {
+      "image-inspection": {
+        "service": "backend",
+        "archive_size": 15378432,
+        "archive_sha256": "03c25df58aa45eaf464c6784cb0ef67481e507502b8220dbcf8d96efe7826798",
+        "descriptors": [
+          {
+            "digest": "sha256:130c903356bea600112542d295db58cc2b0a73d04c4ad1549cca38d1ba658222",
+            "size": 2936
+          },
+          {
+            "digest": "sha256:627a98a5f74bf7a4e995b7ac6ef2efee3ddf2647c0d22cf132223d1c54822098",
+            "size": 3888
+          },
+          {
+            "digest": "sha256:a5789fc40e828c4e7467626e3f69ec5dea8e5da22fe660db8ae6d16f777b0bbf",
+            "size": 83900
+          },
+          {
+            "digest": "sha256:990a9c434e5e0f11549a8d4a41a1991e621b04e30cd63269adbc97b1dc38fd7e",
+            "size": 12481
+          },
+          {
+            "digest": "sha256:39dc083afc39bd8dc43d456fe7ff7d39292e593bb2769972c11bb2e5f9119386",
+            "size": 445709
+          },
+          {
+            "digest": "sha256:bf7a4185f01524837d19abde915ffde84e64368b250f5b5e9f6f75aea62a11d4",
+            "size": 29005
+          },
+          {
+            "digest": "sha256:2780920e5dbfbe103d03a583ed75345306e572ec5a48cb10361f046767d9f29a",
+            "size": 67
+          },
+          {
+            "digest": "sha256:7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212",
+            "size": 188
+          },
+          {
+            "digest": "sha256:3214acf345c0cc6bbdb56b698a41ccdefc624a09d6beb0d38b5de0b2303ecaf4",
+            "size": 123
+          },
+          {
+            "digest": "sha256:52630fc75a18675c530ed9eba5f55eca09b03e91bd5bc15307918bbc1a7e7296",
+            "size": 162
+          },
+          {
+            "digest": "sha256:dd64bf2dd177757451a98fcdc999a339c35dee5d9872d8f4dc69c8f3c4dd0112",
+            "size": 80
+          },
+          {
+            "digest": "sha256:b839dfae01f66e15c6a8b63520557ed315bdfe036342fa7a0c537259f10d7a9a",
+            "size": 351
+          },
+          {
+            "digest": "sha256:dcaa5a89b0ccda4b283e16d0b4d0891cd93d5fe05c6798f7806781a6a2d84354",
+            "size": 314
+          },
+          {
+            "digest": "sha256:96ed2737ae312e0bc637b40783f7c2f23416cb72ca957aa01855f1614278e64b",
+            "size": 143347
+          },
+          {
+            "digest": "sha256:c6794531fe33c495d81dc12bee41cdf7f9ca69c63de9e5d34c98ea0a31278e37",
+            "size": 14638646
+          },
+          {
+            "digest": "sha256:c74718b1ab237dcddf287310055f85b0d132a81beba177cf824978eb5629a2ac",
+            "size": 962
+          }
+        ],
+        "runtime_user": "10001:10001",
+        "stamp_present": true,
+        "secret_paths_absent": true,
+        "bundle_bytes_absent": true,
+        "custom_trust_env_absent": true,
+        "application_layer_entries": [
+          [
+            "server"
+          ],
+          [
+            "migrations",
+            "migrations/0001_create_accounts.sql",
+            "migrations/embed.go"
+          ]
+        ]
+      },
+      "transport": {
+        "service": "backend",
+        "config_bytes_equal": true,
+        "layers": [
+          {
+            "compressed_digest": "sha256:a5789fc40e828c4e7467626e3f69ec5dea8e5da22fe660db8ae6d16f777b0bbf",
+            "uncompressed_digest": "sha256:7223ea1323e8c1159ec17f07d35acc27bdd1cc2bc3ed425b44ef21dac9915db0",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:990a9c434e5e0f11549a8d4a41a1991e621b04e30cd63269adbc97b1dc38fd7e",
+            "uncompressed_digest": "sha256:8fa10c0194df9b7c054c90dbe482585f768a54428fc90a5b78a0066a123b1bba",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:39dc083afc39bd8dc43d456fe7ff7d39292e593bb2769972c11bb2e5f9119386",
+            "uncompressed_digest": "sha256:35b5ba6e08cdd034b8d1920f9c7203e5d66f258e1915f164a01de0af14f34710",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:bf7a4185f01524837d19abde915ffde84e64368b250f5b5e9f6f75aea62a11d4",
+            "uncompressed_digest": "sha256:114dde0fefebbca13165d0da9c500a66190e497a82a53dcaabc3172d630be1e9",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:2780920e5dbfbe103d03a583ed75345306e572ec5a48cb10361f046767d9f29a",
+            "uncompressed_digest": "sha256:4d049f83d9cf21d1f5cc0e11deaf36df02790d0e60c1a3829538fb4b61685368",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212",
+            "uncompressed_digest": "sha256:af5aa97ebe6ce1604747ec1e21af7136ded391bcabe4acef882e718a87c86bcc",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:3214acf345c0cc6bbdb56b698a41ccdefc624a09d6beb0d38b5de0b2303ecaf4",
+            "uncompressed_digest": "sha256:6f1cdceb6a3146f0ccb986521156bef8a422cdbb0863396f7f751f575ba308f4",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:52630fc75a18675c530ed9eba5f55eca09b03e91bd5bc15307918bbc1a7e7296",
+            "uncompressed_digest": "sha256:bd3cdfae1d3fdd83a2231d608969b38b82349777c2fff9a7c12d54f8ac5c9b38",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:dd64bf2dd177757451a98fcdc999a339c35dee5d9872d8f4dc69c8f3c4dd0112",
+            "uncompressed_digest": "sha256:4cde6b0bb6f50a5f255eef7b2a42162c661cf776b803225dcac9a659e396bb6b",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:b839dfae01f66e15c6a8b63520557ed315bdfe036342fa7a0c537259f10d7a9a",
+            "uncompressed_digest": "sha256:ad51d0769d16ba578106a177987dfe3d2e02c1668c852b795b2f6b024068242a",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:dcaa5a89b0ccda4b283e16d0b4d0891cd93d5fe05c6798f7806781a6a2d84354",
+            "uncompressed_digest": "sha256:6e7fbcf090d09b73a4aa85f9dce690d0ace73877c150b7c56955487b6e7a822a",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:96ed2737ae312e0bc637b40783f7c2f23416cb72ca957aa01855f1614278e64b",
+            "uncompressed_digest": "sha256:5904c32f457c96a16c8c68f5ccdf518c8138cd9e5971de9ce6d564fc481af222",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:c6794531fe33c495d81dc12bee41cdf7f9ca69c63de9e5d34c98ea0a31278e37",
+            "uncompressed_digest": "sha256:ec6f8770a68751797454522727e6b8990c879a5c9da1a5df2d404ba9a9a67eb1",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:c74718b1ab237dcddf287310055f85b0d132a81beba177cf824978eb5629a2ac",
+            "uncompressed_digest": "sha256:b71e2367783c5053f8adb2d0820cca49acc555be120a19eb4b0234c3a5bf8367",
+            "exact_bytes": true
+          }
+        ],
+        "loaded_id": "sha256:627a98a5f74bf7a4e995b7ac6ef2efee3ddf2647c0d22cf132223d1c54822098",
+        "container_image": "sha256:627a98a5f74bf7a4e995b7ac6ef2efee3ddf2647c0d22cf132223d1c54822098",
+        "read_only": true,
+        "cap_drop": [
+          "ALL"
+        ],
+        "security_opt": [
+          "no-new-privileges"
+        ],
+        "user": "10001:10001",
+        "wrong_digest_rejected": true,
+        "real_runtime_result": {
+          "archiveSha256": "03c25df58aa45eaf464c6784cb0ef67481e507502b8220dbcf8d96efe7826798",
+          "capDrop": "ALL",
+          "configDigest": "sha256:627a98a5f74bf7a4e995b7ac6ef2efee3ddf2647c0d22cf132223d1c54822098",
+          "digest": "sha256:130c903356bea600112542d295db58cc2b0a73d04c4ad1549cca38d1ba658222",
+          "network": "internal",
+          "passed": true,
+          "readOnly": true,
+          "service": "backend"
+        }
+      },
+      "trust-leak": {
+        "service": "backend",
+        "custom_certificates_distinguished_from_standard": true,
+        "custom_pem_material_absent": true,
+        "full_bundle_absent": true,
+        "custom_secret_source_path_absent": true,
+        "standard_path_alias_not_a_leak": true,
+        "secret_target_paths_absent": true,
+        "actual_proxy_values_absent": true,
+        "all_runtime_layer_files_and_config_checked": true,
+        "standard_runtime_trust_retained": true
+      },
+      "publish-binding": {
+        "service": "backend",
+        "identity": "synthetic run 1 attempt 2; not GitHub CI",
+        "real_source_scan": true,
+        "local_record": {
+          "archiveSha256": "03c25df58aa45eaf464c6784cb0ef67481e507502b8220dbcf8d96efe7826798",
+          "configDigest": "sha256:627a98a5f74bf7a4e995b7ac6ef2efee3ddf2647c0d22cf132223d1c54822098",
+          "createdAt": "2026-10-11T18:50:44.922583+00:00",
+          "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+          "deploymentAuthorized": false,
+          "imageDigest": "sha256:130c903356bea600112542d295db58cc2b0a73d04c4ad1549cca38d1ba658222",
+          "imagePolicyPassed": true,
+          "imageRepository": "ghcr.io/syuhei0519/backend-app",
+          "imageScanSha256": "081b2b063c82420d2af780ba15cf467ed44678c838ae5ee3d01b96139a87ed47",
+          "isolatedRuntimePassed": true,
+          "published": false,
+          "repository": "syuhei0519/backend-app",
+          "runAttempt": 2,
+          "runId": 1,
+          "sbomSha256": "afa37d00220af85fd582bcd64e901437ba7967344b9c69fb8f58fa5cae8f4a8c",
+          "sbomValidated": true,
+          "scannedAt": "2026-10-11T18:49:06.104945549Z",
+          "schema": "core-platform/github-release/v1",
+          "sourceCommit": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+          "sourcePolicyPassed": true,
+          "sourceScanSha256": "6ce853b8c31cfb10b8addc144014bab4af53194b081947fc21b2b90364ac51c1",
+          "validUntil": "2026-10-12T13:06:05.155544+00:00",
+          "workflowRef": "syuhei0519/backend-app/.github/workflows/ci.yml@refs/heads/main"
+        },
+        "mocked_published_record": {
+          "archiveSha256": "03c25df58aa45eaf464c6784cb0ef67481e507502b8220dbcf8d96efe7826798",
+          "configDigest": "sha256:627a98a5f74bf7a4e995b7ac6ef2efee3ddf2647c0d22cf132223d1c54822098",
+          "createdAt": "2026-10-11T18:50:44.922583+00:00",
+          "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+          "deploymentAuthorized": false,
+          "imageDigest": "sha256:130c903356bea600112542d295db58cc2b0a73d04c4ad1549cca38d1ba658222",
+          "imagePolicyPassed": true,
+          "imageRepository": "ghcr.io/syuhei0519/backend-app",
+          "imageScanSha256": "081b2b063c82420d2af780ba15cf467ed44678c838ae5ee3d01b96139a87ed47",
+          "isolatedRuntimePassed": true,
+          "protectedMain": true,
+          "published": true,
+          "repository": "syuhei0519/backend-app",
+          "runAttempt": 2,
+          "runId": 1,
+          "sbomSha256": "afa37d00220af85fd582bcd64e901437ba7967344b9c69fb8f58fa5cae8f4a8c",
+          "sbomValidated": true,
+          "scannedAt": "2026-10-11T18:49:06.104945549Z",
+          "schema": "core-platform/github-release/v1",
+          "sourceCommit": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+          "sourcePolicyPassed": true,
+          "sourceScanSha256": "6ce853b8c31cfb10b8addc144014bab4af53194b081947fc21b2b90364ac51c1",
+          "validUntil": "2026-10-12T13:06:05.155544+00:00",
+          "workflowRef": "syuhei0519/backend-app/.github/workflows/ci.yml@refs/heads/main"
+        },
+        "actual_registry_or_github_writes": false,
+        "fixed_consumers": [
+          "M0",
+          "M1"
+        ],
+        "same_original_archive": true,
+        "negative_tampering_rejected": [
+          ".oci/image.tar",
+          ".security/public/sbom.cdx.json",
+          ".security/public/image-scan.json"
+        ],
+        "real_local_validator_calls": 1,
+        "rebuild": false
+      },
+      "chain": {
+        "service": "backend",
+        "head": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+        "archive_sha256": "03c25df58aa45eaf464c6784cb0ef67481e507502b8220dbcf8d96efe7826798",
+        "oci_digest": "sha256:130c903356bea600112542d295db58cc2b0a73d04c4ad1549cca38d1ba658222",
+        "config_digest": "sha256:627a98a5f74bf7a4e995b7ac6ef2efee3ddf2647c0d22cf132223d1c54822098",
+        "reader": "passed",
+        "runtime": "passed",
+        "scan": "passed",
+        "sbom": "passed",
+        "original_archive_unchanged": true,
+        "actual_publish": false
+      },
+      "layout.json": {
+        "bytes": 375,
+        "sha256": "e452fcbde9b9c676127c0ab6a83106c47e3620412b4605c19bbba6b49e883a69",
+        "document": {
+          "schemaVersion": 1,
+          "sourceCommit": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+          "sourceProjectId": 0,
+          "archiveSha256": "03c25df58aa45eaf464c6784cb0ef67481e507502b8220dbcf8d96efe7826798",
+          "archiveBytes": 15378432,
+          "expandedBytes": 15362553,
+          "digest": "sha256:130c903356bea600112542d295db58cc2b0a73d04c4ad1549cca38d1ba658222",
+          "layerCount": 14,
+          "platform": "linux/amd64",
+          "registryPush": false
+        }
+      },
+      "reader.json": {
+        "bytes": 279,
+        "sha256": "ad0ab6fe9028da0a166ad64847df92cd825989be179e3b5b10c09869bdba566f",
+        "document": {
+          "configDigest": "sha256:627a98a5f74bf7a4e995b7ac6ef2efee3ddf2647c0d22cf132223d1c54822098",
+          "digest": "sha256:130c903356bea600112542d295db58cc2b0a73d04c4ad1549cca38d1ba658222",
+          "fullLayerValidation": true,
+          "reader": "crane-v0.21.7-layout-reader",
+          "registryPush": false,
+          "schemaVersion": 1
+        }
+      },
+      "runtime.json": {
+        "bytes": 359,
+        "sha256": "a8740feb29df9bd4b48479572c2de606717bfb5402dc9c50c14337473a628458",
+        "document": {
+          "archiveSha256": "03c25df58aa45eaf464c6784cb0ef67481e507502b8220dbcf8d96efe7826798",
+          "capDrop": "ALL",
+          "configDigest": "sha256:627a98a5f74bf7a4e995b7ac6ef2efee3ddf2647c0d22cf132223d1c54822098",
+          "digest": "sha256:130c903356bea600112542d295db58cc2b0a73d04c4ad1549cca38d1ba658222",
+          "network": "internal",
+          "passed": true,
+          "readOnly": true,
+          "service": "backend"
+        }
+      },
+      "image-scan.json": {
+        "bytes": 5228,
+        "sha256": "081b2b063c82420d2af780ba15cf467ed44678c838ae5ee3d01b96139a87ed47",
+        "document": {
+          "schemaVersion": 1,
+          "pass": true,
+          "trivyVersion": "0.75.0",
+          "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+          "scannedAt": "2026-10-11T18:49:06.104945549Z",
+          "findings": [
+            {
+              "kind": "vulnerability",
+              "rule": "DLA-4792-1",
+              "path": "image/os",
+              "package": "tzdata",
+              "installedVersion": "2026b-0+deb12u1",
+              "fixedVersion": "2026c-0+deb12u1",
+              "severity": "UNKNOWN",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-78669",
+              "path": "server",
+              "package": "golang.org/x/net",
+              "installedVersion": "v0.59.0",
+              "fixedVersion": "0.60.0",
+              "severity": "HIGH",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-78663",
+              "path": "server",
+              "package": "golang.org/x/net",
+              "installedVersion": "v0.59.0",
+              "fixedVersion": "0.60.0",
+              "severity": "MEDIUM",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-97032",
+              "path": "server",
+              "package": "golang.org/x/net",
+              "installedVersion": "v0.59.0",
+              "fixedVersion": "0.60.0",
+              "severity": "MEDIUM",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-78659",
+              "path": "server",
+              "package": "golang.org/x/net",
+              "installedVersion": "v0.59.0",
+              "fixedVersion": "0.60.0",
+              "severity": "UNKNOWN",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-78660",
+              "path": "server",
+              "package": "golang.org/x/net",
+              "installedVersion": "v0.59.0",
+              "fixedVersion": "0.60.0",
+              "severity": "UNKNOWN",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-78667",
+              "path": "server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "HIGH",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-78669",
+              "path": "server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "HIGH",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-97031",
+              "path": "server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "HIGH",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-56866",
+              "path": "server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "MEDIUM",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-78663",
+              "path": "server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "MEDIUM",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-94439",
+              "path": "server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "MEDIUM",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-94448",
+              "path": "server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "MEDIUM",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-97032",
+              "path": "server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "MEDIUM",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-56857",
+              "path": "server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "LOW",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-78659",
+              "path": "server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "UNKNOWN",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-78660",
+              "path": "server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "UNKNOWN",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-94440",
+              "path": "server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "UNKNOWN",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-97030",
+              "path": "server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "UNKNOWN",
+              "decision": "warning"
+            }
+          ],
+          "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+        }
+      },
+      "sbom-proof.json": {
+        "bytes": 253,
+        "sha256": "0083f85fe5f4a29daf815deb79c5e999924ad75222254a178ca8178e49d0ae1c",
+        "document": {
+          "format": "CycloneDX",
+          "specVersion": "1.7",
+          "sha256": "afa37d00220af85fd582bcd64e901437ba7967344b9c69fb8f58fa5cae8f4a8c",
+          "configDigest": "sha256:627a98a5f74bf7a4e995b7ac6ef2efee3ddf2647c0d22cf132223d1c54822098",
+          "componentCount": 38,
+          "scannedPackageCount": 36
+        }
+      },
+      "sbom": {
+        "path": "backend-sbom.cdx.json",
+        "bytes": 69743,
+        "sha256": "afa37d00220af85fd582bcd64e901437ba7967344b9c69fb8f58fa5cae8f4a8c"
+      }
+    },
+    "order": {
+      "image-inspection": {
+        "service": "order",
+        "archive_size": 8831488,
+        "archive_sha256": "fd7fb2e7b21902a3262b24dc3555f7e96093705db0ec31fb35bbbf45334aedf8",
+        "descriptors": [
+          {
+            "digest": "sha256:499ba35f82fc7cad95b1ebe7e25c4edd91bec93a22ac5dc59d12630696263f48",
+            "size": 2747
+          },
+          {
+            "digest": "sha256:679c783caca5cccdab89a5b09dc30bbb48d2e9d6699150bc6b52cec724db323d",
+            "size": 3688
+          },
+          {
+            "digest": "sha256:a5789fc40e828c4e7467626e3f69ec5dea8e5da22fe660db8ae6d16f777b0bbf",
+            "size": 83900
+          },
+          {
+            "digest": "sha256:990a9c434e5e0f11549a8d4a41a1991e621b04e30cd63269adbc97b1dc38fd7e",
+            "size": 12481
+          },
+          {
+            "digest": "sha256:39dc083afc39bd8dc43d456fe7ff7d39292e593bb2769972c11bb2e5f9119386",
+            "size": 445709
+          },
+          {
+            "digest": "sha256:bf7a4185f01524837d19abde915ffde84e64368b250f5b5e9f6f75aea62a11d4",
+            "size": 29005
+          },
+          {
+            "digest": "sha256:2780920e5dbfbe103d03a583ed75345306e572ec5a48cb10361f046767d9f29a",
+            "size": 67
+          },
+          {
+            "digest": "sha256:7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212",
+            "size": 188
+          },
+          {
+            "digest": "sha256:3214acf345c0cc6bbdb56b698a41ccdefc624a09d6beb0d38b5de0b2303ecaf4",
+            "size": 123
+          },
+          {
+            "digest": "sha256:52630fc75a18675c530ed9eba5f55eca09b03e91bd5bc15307918bbc1a7e7296",
+            "size": 162
+          },
+          {
+            "digest": "sha256:dd64bf2dd177757451a98fcdc999a339c35dee5d9872d8f4dc69c8f3c4dd0112",
+            "size": 80
+          },
+          {
+            "digest": "sha256:b839dfae01f66e15c6a8b63520557ed315bdfe036342fa7a0c537259f10d7a9a",
+            "size": 351
+          },
+          {
+            "digest": "sha256:dcaa5a89b0ccda4b283e16d0b4d0891cd93d5fe05c6798f7806781a6a2d84354",
+            "size": 314
+          },
+          {
+            "digest": "sha256:96ed2737ae312e0bc637b40783f7c2f23416cb72ca957aa01855f1614278e64b",
+            "size": 143347
+          },
+          {
+            "digest": "sha256:752349bdcddfa05df064a4141e563c3c8833a3123c7422ea93e069bbbf840a11",
+            "size": 8093561
+          }
+        ],
+        "runtime_user": "10001:10001",
+        "stamp_present": true,
+        "secret_paths_absent": true,
+        "bundle_bytes_absent": true,
+        "custom_trust_env_absent": true,
+        "application_layer_entries": [
+          [
+            "order-server"
+          ]
+        ]
+      },
+      "transport": {
+        "service": "order",
+        "config_bytes_equal": true,
+        "layers": [
+          {
+            "compressed_digest": "sha256:a5789fc40e828c4e7467626e3f69ec5dea8e5da22fe660db8ae6d16f777b0bbf",
+            "uncompressed_digest": "sha256:7223ea1323e8c1159ec17f07d35acc27bdd1cc2bc3ed425b44ef21dac9915db0",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:990a9c434e5e0f11549a8d4a41a1991e621b04e30cd63269adbc97b1dc38fd7e",
+            "uncompressed_digest": "sha256:8fa10c0194df9b7c054c90dbe482585f768a54428fc90a5b78a0066a123b1bba",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:39dc083afc39bd8dc43d456fe7ff7d39292e593bb2769972c11bb2e5f9119386",
+            "uncompressed_digest": "sha256:35b5ba6e08cdd034b8d1920f9c7203e5d66f258e1915f164a01de0af14f34710",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:bf7a4185f01524837d19abde915ffde84e64368b250f5b5e9f6f75aea62a11d4",
+            "uncompressed_digest": "sha256:114dde0fefebbca13165d0da9c500a66190e497a82a53dcaabc3172d630be1e9",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:2780920e5dbfbe103d03a583ed75345306e572ec5a48cb10361f046767d9f29a",
+            "uncompressed_digest": "sha256:4d049f83d9cf21d1f5cc0e11deaf36df02790d0e60c1a3829538fb4b61685368",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212",
+            "uncompressed_digest": "sha256:af5aa97ebe6ce1604747ec1e21af7136ded391bcabe4acef882e718a87c86bcc",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:3214acf345c0cc6bbdb56b698a41ccdefc624a09d6beb0d38b5de0b2303ecaf4",
+            "uncompressed_digest": "sha256:6f1cdceb6a3146f0ccb986521156bef8a422cdbb0863396f7f751f575ba308f4",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:52630fc75a18675c530ed9eba5f55eca09b03e91bd5bc15307918bbc1a7e7296",
+            "uncompressed_digest": "sha256:bd3cdfae1d3fdd83a2231d608969b38b82349777c2fff9a7c12d54f8ac5c9b38",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:dd64bf2dd177757451a98fcdc999a339c35dee5d9872d8f4dc69c8f3c4dd0112",
+            "uncompressed_digest": "sha256:4cde6b0bb6f50a5f255eef7b2a42162c661cf776b803225dcac9a659e396bb6b",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:b839dfae01f66e15c6a8b63520557ed315bdfe036342fa7a0c537259f10d7a9a",
+            "uncompressed_digest": "sha256:ad51d0769d16ba578106a177987dfe3d2e02c1668c852b795b2f6b024068242a",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:dcaa5a89b0ccda4b283e16d0b4d0891cd93d5fe05c6798f7806781a6a2d84354",
+            "uncompressed_digest": "sha256:6e7fbcf090d09b73a4aa85f9dce690d0ace73877c150b7c56955487b6e7a822a",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:96ed2737ae312e0bc637b40783f7c2f23416cb72ca957aa01855f1614278e64b",
+            "uncompressed_digest": "sha256:5904c32f457c96a16c8c68f5ccdf518c8138cd9e5971de9ce6d564fc481af222",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:752349bdcddfa05df064a4141e563c3c8833a3123c7422ea93e069bbbf840a11",
+            "uncompressed_digest": "sha256:fc870f05f6196a74282c9955f813a90f8544dd41699ac47896c78d4b422c1cb4",
+            "exact_bytes": true
+          }
+        ],
+        "loaded_id": "sha256:679c783caca5cccdab89a5b09dc30bbb48d2e9d6699150bc6b52cec724db323d",
+        "container_image": "sha256:679c783caca5cccdab89a5b09dc30bbb48d2e9d6699150bc6b52cec724db323d",
+        "read_only": true,
+        "cap_drop": [
+          "ALL"
+        ],
+        "security_opt": [
+          "no-new-privileges"
+        ],
+        "user": "10001:10001",
+        "wrong_digest_rejected": true,
+        "real_runtime_result": {
+          "archiveSha256": "fd7fb2e7b21902a3262b24dc3555f7e96093705db0ec31fb35bbbf45334aedf8",
+          "capDrop": "ALL",
+          "configDigest": "sha256:679c783caca5cccdab89a5b09dc30bbb48d2e9d6699150bc6b52cec724db323d",
+          "digest": "sha256:499ba35f82fc7cad95b1ebe7e25c4edd91bec93a22ac5dc59d12630696263f48",
+          "network": "internal",
+          "passed": true,
+          "readOnly": true,
+          "service": "order"
+        }
+      },
+      "trust-leak": {
+        "service": "order",
+        "custom_certificates_distinguished_from_standard": true,
+        "custom_pem_material_absent": true,
+        "full_bundle_absent": true,
+        "custom_secret_source_path_absent": true,
+        "standard_path_alias_not_a_leak": true,
+        "secret_target_paths_absent": true,
+        "actual_proxy_values_absent": true,
+        "all_runtime_layer_files_and_config_checked": true,
+        "standard_runtime_trust_retained": true
+      },
+      "publish-binding": {
+        "service": "order",
+        "identity": "synthetic run 1 attempt 2; not GitHub CI",
+        "real_source_scan": true,
+        "local_record": {
+          "archiveSha256": "fd7fb2e7b21902a3262b24dc3555f7e96093705db0ec31fb35bbbf45334aedf8",
+          "configDigest": "sha256:679c783caca5cccdab89a5b09dc30bbb48d2e9d6699150bc6b52cec724db323d",
+          "createdAt": "2026-10-11T18:51:18.461566+00:00",
+          "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+          "deploymentAuthorized": false,
+          "imageDigest": "sha256:499ba35f82fc7cad95b1ebe7e25c4edd91bec93a22ac5dc59d12630696263f48",
+          "imagePolicyPassed": true,
+          "imageRepository": "ghcr.io/syuhei0519/backend-app-order",
+          "imageScanSha256": "caee455e9c1a410b8ad26be3a325698a80c011b3ba5cb80a7805d0527fbadfc4",
+          "isolatedRuntimePassed": true,
+          "published": false,
+          "repository": "syuhei0519/backend-app",
+          "runAttempt": 2,
+          "runId": 1,
+          "sbomSha256": "96cb0df19d404d00feb69013a742812814d1db2a10ebe64086ab2875381b8e6b",
+          "sbomValidated": true,
+          "scannedAt": "2026-10-11T18:50:25.817360442Z",
+          "schema": "core-platform/github-release/v2",
+          "service": "order",
+          "sourceCommit": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+          "sourcePolicyPassed": true,
+          "sourceScanSha256": "6ce853b8c31cfb10b8addc144014bab4af53194b081947fc21b2b90364ac51c1",
+          "validUntil": "2026-10-12T13:06:05.155544+00:00",
+          "workflowRef": "syuhei0519/backend-app/.github/workflows/ci.yml@refs/heads/main"
+        },
+        "mocked_published_record": {
+          "archiveSha256": "fd7fb2e7b21902a3262b24dc3555f7e96093705db0ec31fb35bbbf45334aedf8",
+          "configDigest": "sha256:679c783caca5cccdab89a5b09dc30bbb48d2e9d6699150bc6b52cec724db323d",
+          "createdAt": "2026-10-11T18:51:18.461566+00:00",
+          "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+          "deploymentAuthorized": false,
+          "imageDigest": "sha256:499ba35f82fc7cad95b1ebe7e25c4edd91bec93a22ac5dc59d12630696263f48",
+          "imagePolicyPassed": true,
+          "imageRepository": "ghcr.io/syuhei0519/backend-app-order",
+          "imageScanSha256": "caee455e9c1a410b8ad26be3a325698a80c011b3ba5cb80a7805d0527fbadfc4",
+          "isolatedRuntimePassed": true,
+          "protectedMain": true,
+          "published": true,
+          "repository": "syuhei0519/backend-app",
+          "runAttempt": 2,
+          "runId": 1,
+          "sbomSha256": "96cb0df19d404d00feb69013a742812814d1db2a10ebe64086ab2875381b8e6b",
+          "sbomValidated": true,
+          "scannedAt": "2026-10-11T18:50:25.817360442Z",
+          "schema": "core-platform/github-release/v2",
+          "service": "order",
+          "sourceCommit": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+          "sourcePolicyPassed": true,
+          "sourceScanSha256": "6ce853b8c31cfb10b8addc144014bab4af53194b081947fc21b2b90364ac51c1",
+          "validUntil": "2026-10-12T13:06:05.155544+00:00",
+          "workflowRef": "syuhei0519/backend-app/.github/workflows/ci.yml@refs/heads/main"
+        },
+        "actual_registry_or_github_writes": false,
+        "fixed_consumers": [
+          "M0",
+          "M1"
+        ],
+        "same_original_archive": true,
+        "negative_tampering_rejected": [
+          ".oci/image.tar",
+          ".security/public/sbom.cdx.json",
+          ".security/public/image-scan.json"
+        ],
+        "real_local_validator_calls": 1,
+        "rebuild": false
+      },
+      "chain": {
+        "service": "order",
+        "head": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+        "archive_sha256": "fd7fb2e7b21902a3262b24dc3555f7e96093705db0ec31fb35bbbf45334aedf8",
+        "oci_digest": "sha256:499ba35f82fc7cad95b1ebe7e25c4edd91bec93a22ac5dc59d12630696263f48",
+        "config_digest": "sha256:679c783caca5cccdab89a5b09dc30bbb48d2e9d6699150bc6b52cec724db323d",
+        "reader": "passed",
+        "runtime": "passed",
+        "scan": "passed",
+        "sbom": "passed",
+        "original_archive_unchanged": true,
+        "actual_publish": false
+      },
+      "layout.json": {
+        "bytes": 373,
+        "sha256": "cb7df54489fa4d1647913a69c6598d0c9ce94349cfdb5f9e3d0796ff6e852e9a",
+        "document": {
+          "schemaVersion": 1,
+          "sourceCommit": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+          "sourceProjectId": 0,
+          "archiveSha256": "fd7fb2e7b21902a3262b24dc3555f7e96093705db0ec31fb35bbbf45334aedf8",
+          "archiveBytes": 8831488,
+          "expandedBytes": 8816117,
+          "digest": "sha256:499ba35f82fc7cad95b1ebe7e25c4edd91bec93a22ac5dc59d12630696263f48",
+          "layerCount": 13,
+          "platform": "linux/amd64",
+          "registryPush": false
+        }
+      },
+      "reader.json": {
+        "bytes": 279,
+        "sha256": "f9546dc5676f078d28093a2be3fe06afe1709d66fdb31372164d04e6a3bbb332",
+        "document": {
+          "configDigest": "sha256:679c783caca5cccdab89a5b09dc30bbb48d2e9d6699150bc6b52cec724db323d",
+          "digest": "sha256:499ba35f82fc7cad95b1ebe7e25c4edd91bec93a22ac5dc59d12630696263f48",
+          "fullLayerValidation": true,
+          "reader": "crane-v0.21.7-layout-reader",
+          "registryPush": false,
+          "schemaVersion": 1
+        }
+      },
+      "runtime.json": {
+        "bytes": 357,
+        "sha256": "30fa153e48b9ccc73e841884b011bc8c8b5ebbdfe00703f60b579e8825c31e4a",
+        "document": {
+          "archiveSha256": "fd7fb2e7b21902a3262b24dc3555f7e96093705db0ec31fb35bbbf45334aedf8",
+          "capDrop": "ALL",
+          "configDigest": "sha256:679c783caca5cccdab89a5b09dc30bbb48d2e9d6699150bc6b52cec724db323d",
+          "digest": "sha256:499ba35f82fc7cad95b1ebe7e25c4edd91bec93a22ac5dc59d12630696263f48",
+          "network": "internal",
+          "passed": true,
+          "readOnly": true,
+          "service": "order"
+        }
+      },
+      "image-scan.json": {
+        "bytes": 3996,
+        "sha256": "caee455e9c1a410b8ad26be3a325698a80c011b3ba5cb80a7805d0527fbadfc4",
+        "document": {
+          "schemaVersion": 1,
+          "pass": true,
+          "trivyVersion": "0.75.0",
+          "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+          "scannedAt": "2026-10-11T18:50:25.817360442Z",
+          "findings": [
+            {
+              "kind": "vulnerability",
+              "rule": "DLA-4792-1",
+              "path": "image/os",
+              "package": "tzdata",
+              "installedVersion": "2026b-0+deb12u1",
+              "fixedVersion": "2026c-0+deb12u1",
+              "severity": "UNKNOWN",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-78667",
+              "path": "order-server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "HIGH",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-78669",
+              "path": "order-server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "HIGH",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-97031",
+              "path": "order-server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "HIGH",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-56866",
+              "path": "order-server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "MEDIUM",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-78663",
+              "path": "order-server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "MEDIUM",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-94439",
+              "path": "order-server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "MEDIUM",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-94448",
+              "path": "order-server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "MEDIUM",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-97032",
+              "path": "order-server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "MEDIUM",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-56857",
+              "path": "order-server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "LOW",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-78659",
+              "path": "order-server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "UNKNOWN",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-78660",
+              "path": "order-server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "UNKNOWN",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-94440",
+              "path": "order-server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "UNKNOWN",
+              "decision": "warning"
+            },
+            {
+              "kind": "vulnerability",
+              "rule": "CVE-2026-97030",
+              "path": "order-server",
+              "package": "stdlib",
+              "installedVersion": "v1.27.1",
+              "fixedVersion": "1.26.9, 1.27.2",
+              "severity": "UNKNOWN",
+              "decision": "warning"
+            }
+          ],
+          "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+        }
+      },
+      "sbom-proof.json": {
+        "bytes": 253,
+        "sha256": "03b67524eba507d6b29c19008569c6c044eb8b5362e59bd564080cf55cbc1c7c",
+        "document": {
+          "format": "CycloneDX",
+          "specVersion": "1.7",
+          "sha256": "96cb0df19d404d00feb69013a742812814d1db2a10ebe64086ab2875381b8e6b",
+          "configDigest": "sha256:679c783caca5cccdab89a5b09dc30bbb48d2e9d6699150bc6b52cec724db323d",
+          "componentCount": 15,
+          "scannedPackageCount": 13
+        }
+      },
+      "sbom": {
+        "path": "order-sbom.cdx.json",
+        "bytes": 44714,
+        "sha256": "96cb0df19d404d00feb69013a742812814d1db2a10ebe64086ab2875381b8e6b"
+      }
+    }
+  },
+  "real_source_scan": {
+    "schemaVersion": 1,
+    "pass": true,
+    "trivyVersion": "0.75.0",
+    "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+    "scannedAt": "2026-10-11T18:49:41.110086798Z",
+    "findings": [
+      {
+        "kind": "vulnerability",
+        "rule": "CVE-2026-78669",
+        "path": "go.mod",
+        "package": "golang.org/x/net",
+        "installedVersion": "v0.59.0",
+        "fixedVersion": "0.60.0",
+        "severity": "HIGH",
+        "decision": "warning"
+      },
+      {
+        "kind": "vulnerability",
+        "rule": "CVE-2026-78663",
+        "path": "go.mod",
+        "package": "golang.org/x/net",
+        "installedVersion": "v0.59.0",
+        "fixedVersion": "0.60.0",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "vulnerability",
+        "rule": "CVE-2026-97032",
+        "path": "go.mod",
+        "package": "golang.org/x/net",
+        "installedVersion": "v0.59.0",
+        "fixedVersion": "0.60.0",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "vulnerability",
+        "rule": "CVE-2026-78659",
+        "path": "go.mod",
+        "package": "golang.org/x/net",
+        "installedVersion": "v0.59.0",
+        "fixedVersion": "0.60.0",
+        "severity": "UNKNOWN",
+        "decision": "warning"
+      },
+      {
+        "kind": "vulnerability",
+        "rule": "CVE-2026-78660",
+        "path": "go.mod",
+        "package": "golang.org/x/net",
+        "installedVersion": "v0.59.0",
+        "fixedVersion": "0.60.0",
+        "severity": "UNKNOWN",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "DS-0026",
+        "path": "Dockerfile",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "DS-0026",
+        "path": "Dockerfile.order",
+        "severity": "LOW",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "DS-0001",
+        "path": "ci/oci-smoke/Dockerfile",
+        "severity": "MEDIUM",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "DS-0002",
+        "path": "ci/oci-smoke/Dockerfile",
+        "severity": "HIGH",
+        "decision": "warning"
+      },
+      {
+        "kind": "misconfiguration",
+        "rule": "DS-0026",
+        "path": "ci/oci-smoke/Dockerfile",
+        "severity": "LOW",
+        "decision": "warning"
+      }
+    ],
+    "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+  },
+  "production_matrix": {
+    "status": "passed",
+    "identity": "synthetic run 1 attempt 2",
+    "both_actual_oci_archives": true,
+    "distinct_archive_config_image": true,
+    "same_measured_source_scan": true,
+    "real_ci_execution": false
+  },
+  "consumer_actual_values": {
+    "status": "passed",
+    "producer_to_fixed_consumers": true,
+    "account_v1": true,
+    "m0_order_values_absent": true,
+    "m1_order_values_disabled_preserved": true,
+    "actual_values_checks": [
+      "M0-backend-actual-values",
+      "M1-backend-actual-values",
+      "M1-order-actual-values"
+    ],
+    "external_operations": "none; synthetic release identity"
+  },
+  "source_review": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "size": 9101,
+      "sha256": "80c7f6d38e692956c702435250cf0879553d7a409b58cd4ae7d28be04bc4b34a",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "Dockerfile",
+      "size": 1672,
+      "sha256": "dc34d001b4451e4059c89b28861187a87e98875138370b0c2b1dd318c26e19d6",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "Dockerfile.order",
+      "size": 1654,
+      "sha256": "febd4bd227fc7cd520f25b467fbe2820142751f1daec040a1c56585f8e24206f",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "ci/github/build-ca_test.py",
+      "size": 3894,
+      "sha256": "93e4d3f2ae9863eb92e0bacefd060636611eb735436295f419fb504ae444a687",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "ci/github/fixtures/m0/SOURCE.json",
+      "size": 1040,
+      "sha256": "6227a28f67b7dad407b91bd60b9a093baebc98d87e80f0cb17bdb588c95e1bb7",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "ci/github/fixtures/m0/fixtures/backend-record.json",
+      "size": 1121,
+      "sha256": "00f2602021a21c553b546083352a50936b10b923b03c39c8218c210d3c8bc4a7",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "ci/github/fixtures/m0/fixtures/image-scan.json",
+      "size": 14,
+      "sha256": "63b684854bd4961bcb515b09823ea700dda69135486c5e11352bb1d7850f534e",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "ci/github/fixtures/m0/fixtures/order-config.json",
+      "size": 248,
+      "sha256": "8bd06c0e86671a7e7f8d56d6ff80bf56db6e753ff45357ca5d1a21e5a8f680ea",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "ci/github/fixtures/m0/fixtures/order-manifest.json",
+      "size": 153,
+      "sha256": "0578ef8eb4991f3b8db3ad3bfe3bb58501962e0ea97449d5feec6cd346d82768",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "ci/github/fixtures/m0/fixtures/order-record.json",
+      "size": 1145,
+      "sha256": "a3a2b0472fe51d96614406d85fd89748eb8c255c45ebbfd21cfdde57e0968eb5",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "ci/github/fixtures/m0/fixtures/sbom.cdx.json",
+      "size": 154,
+      "sha256": "b9104ba1eba76b6b080694eb4eb1717e38d5d9b7dbe4469e50acbfd756c5ca56",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "ci/github/fixtures/m0/order-release.schema.json",
+      "size": 2574,
+      "sha256": "2bdc572d5e2ac6f694a1658b27d36ead6abdb44bcfb9eb284b47f74979468f92",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "ci/github/fixtures/m0/release.py",
+      "size": 30677,
+      "sha256": "ed2630b8b3fe3a18a6de2c0ce55dcbe494f7d20414d672326d7e524b30903867",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "ci/github/fixtures/m0/release_test.py",
+      "size": 18881,
+      "sha256": "c23078874ec77fb06a54525a4cb4f2a702a7758fe833f396174fc53fd77a4d86",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "ci/github/matrix-result.py",
+      "size": 2437,
+      "sha256": "afd832406c71447168246a07a11f0da7b9fc93c271a7d7123f2707d0e4d368d5",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "ci/github/oci.sh",
+      "size": 3145,
+      "sha256": "55c2bd3b62f193de7f697154203bc674102433a6fbc872787cfcb6a22da6c4bd",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "ci/github/order-release.schema.json",
+      "size": 2574,
+      "sha256": "2bdc572d5e2ac6f694a1658b27d36ead6abdb44bcfb9eb284b47f74979468f92",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "ci/github/order-release_test.py",
+      "size": 11282,
+      "sha256": "6fcf5fa0367d45a130cd19042c601cbb96d20eb588759213e450ed9ec88135f7",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "ci/github/release.py",
+      "size": 28113,
+      "sha256": "3219acd417c6f01dd5e67bb6c66ac6f76123d42346fd2776d9c652c0ca0b448c",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "ci/github/runtime.py",
+      "size": 5393,
+      "sha256": "20078aea273e96aba3152dd7c15fbecfd4e0f3e4d7aeeaff2c8e51ceeabd92e3",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "ci/github/source-identity.py",
+      "size": 598,
+      "sha256": "87f724a7339189fe1d2c8f037a02a4671f4d2a047f9fd83ab65f4e06b033fcec",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "ci/github/test.sh",
+      "size": 1583,
+      "sha256": "c0cc44c812f9566423d4bd30f47f19a41f0a3075994a3d261171daecc1f22801",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "cmd/order-server/main.go",
+      "size": 2453,
+      "sha256": "895f647192a4278c6ee394d31a4c999a94e0d84ba8893ef1f121de873083c7df",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "docs/order-image-ci.md",
+      "size": 7193,
+      "sha256": "0e3e7c6ee3a886bbd5d578a84f85b1f15319d0f05ee52d9caf6ad62082f76c95",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "tools/oci-input/cmd/oci-runtime-export/main.go",
+      "size": 1211,
+      "sha256": "90fb22c6b5a61ab1593447cece0c9fe5f47fe5d2715892e8183d086b9b99ea4f",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    },
+    {
+      "path": "tools/oci-input/cmd/oci-runtime-export/main_test.go",
+      "size": 406,
+      "sha256": "aeb9b91f22c01432e4f32c37ffc658c2d7883772429b53d70aa20768f12a0ec7",
+      "inspection": "reviewed and relevant executable regressions rerun; fixed fixture bytes compared"
+    }
+  ],
+  "preservation": {
+    "account_code_sql_lock_and_migration_history": "git diff unchanged; real DB sentinel/history assertions passed",
+    "m0": "bc6adaedcd645a4663c23284b977a3dd36c0796d",
+    "m1": "df8c8b5d93e48bc1f0e5ced1678bba2e27d6a1f9",
+    "consumer_release_code_byte_equal_between_m0_m1": true,
+    "m0_order_values": "absent",
+    "m1_order_values": "present and disabled; patch retains disabled",
+    "platform": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+    "gitops_repository": "https://github.com/syuhei0519/application-manifest.git",
+    "gitops_target": "main",
+    "gitops_registered_workloads": [
+      "postgresql",
+      "backend",
+      "frontend"
+    ],
+    "account_manifest_digest": "sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d",
+    "deployment_effect": "none within fixed inspected desired-state sources",
+    "external_automation": "not observed; no claim of universal absence"
+  },
+  "github": {
+    "observed_at": "2026-10-11T18:55:57.662701+00:00",
+    "pr": {
+      "number": 32,
+      "state": "open",
+      "draft": true,
+      "head": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+      "base": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0"
+    },
+    "runs": [
+      {
+        "id": 38163584094,
+        "event": "pull_request",
+        "head_sha": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+        "run_attempt": 1,
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-10-11T18:23:10Z",
+        "updated_at": "2026-10-11T18:28:23Z",
+        "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/38163584094",
+        "jobs": [
+          {
+            "name": "classify",
+            "conclusion": "success",
+            "started_at": "2026-10-11T18:23:12Z",
+            "completed_at": "2026-10-11T18:23:18Z"
+          },
+          {
+            "name": "validate",
+            "conclusion": "success",
+            "started_at": "2026-10-11T18:23:20Z",
+            "completed_at": "2026-10-11T18:25:36Z"
+          },
+          {
+            "name": "docs",
+            "conclusion": "skipped",
+            "started_at": "2026-10-11T18:23:19Z",
+            "completed_at": "2026-10-11T18:23:18Z"
+          },
+          {
+            "name": "image (order)",
+            "conclusion": "success",
+            "started_at": "2026-10-11T18:25:38Z",
+            "completed_at": "2026-10-11T18:28:13Z"
+          },
+          {
+            "name": "image (backend)",
+            "conclusion": "success",
+            "started_at": "2026-10-11T18:25:38Z",
+            "completed_at": "2026-10-11T18:27:47Z"
+          },
+          {
+            "name": "ci-result",
+            "conclusion": "success",
+            "started_at": "2026-10-11T18:28:15Z",
+            "completed_at": "2026-10-11T18:28:22Z"
+          },
+          {
+            "name": "publish",
+            "conclusion": "skipped",
+            "started_at": "2026-10-11T18:28:23Z",
+            "completed_at": "2026-10-11T18:28:23Z"
+          },
+          {
+            "name": "propose",
+            "conclusion": "skipped",
+            "started_at": "2026-10-11T18:28:23Z",
+            "completed_at": "2026-10-11T18:28:23Z"
+          }
+        ]
+      },
+      {
+        "id": 38163580249,
+        "event": "push",
+        "head_sha": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+        "run_attempt": 1,
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-10-11T18:23:06Z",
+        "updated_at": "2026-10-11T18:28:36Z",
+        "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/38163580249",
+        "jobs": [
+          {
+            "name": "classify",
+            "conclusion": "success",
+            "started_at": "2026-10-11T18:23:09Z",
+            "completed_at": "2026-10-11T18:23:14Z"
+          },
+          {
+            "name": "validate",
+            "conclusion": "success",
+            "started_at": "2026-10-11T18:23:16Z",
+            "completed_at": "2026-10-11T18:25:55Z"
+          },
+          {
+            "name": "docs",
+            "conclusion": "skipped",
+            "started_at": "2026-10-11T18:23:15Z",
+            "completed_at": "2026-10-11T18:23:14Z"
+          },
+          {
+            "name": "image (order)",
+            "conclusion": "success",
+            "started_at": "2026-10-11T18:25:58Z",
+            "completed_at": "2026-10-11T18:28:20Z"
+          },
+          {
+            "name": "image (backend)",
+            "conclusion": "success",
+            "started_at": "2026-10-11T18:25:58Z",
+            "completed_at": "2026-10-11T18:28:25Z"
+          },
+          {
+            "name": "ci-result",
+            "conclusion": "success",
+            "started_at": "2026-10-11T18:28:27Z",
+            "completed_at": "2026-10-11T18:28:35Z"
+          },
+          {
+            "name": "publish",
+            "conclusion": "skipped",
+            "started_at": "2026-10-11T18:28:36Z",
+            "completed_at": "2026-10-11T18:28:35Z"
+          },
+          {
+            "name": "propose",
+            "conclusion": "skipped",
+            "started_at": "2026-10-11T18:28:36Z",
+            "completed_at": "2026-10-11T18:28:35Z"
+          }
+        ]
+      }
+    ],
+    "required_check": "ci-result",
+    "strict": true,
+    "required_reviews": 0,
+    "queue": false,
+    "bypass_actors": [],
+    "environment_gates": [
+      {
+        "name": "ghcr-publish",
+        "required_reviewer_count": 1,
+        "allowed_branch": "main"
+      },
+      {
+        "name": "manifest-update",
+        "required_reviewer_count": 1,
+        "allowed_branch": "main"
+      }
+    ],
+    "workflow_permissions": {
+      "default": "contents:read",
+      "publish": [
+        "contents:write",
+        "packages:write"
+      ],
+      "propose": "contents:read with existing scoped Manifest token"
+    },
+    "actual_token_configuration": "not read or changed; workflow use and existing Environment boundaries verified",
+    "artifact_zip": "known 403 path neither retried nor bypassed"
+  },
+  "scratch_harness_correction": {
+    "initial_leak_assertion": "overbroad source path check matched unchanged standard distroless SSL_CERT_FILE path",
+    "resolution": "distinguish standard path alias and standard trust from actual custom certificate bytes; both images passed corrected byte checks",
+    "product_failure": false
+  },
+  "cleanup": {
+    "owned_containers_remaining": 0,
+    "owned_runtime_networks_removed": true,
+    "owned_fixture_volumes_removed": true,
+    "application_tracked_files_unchanged": true
+  },
+  "unverified": [
+    "real GHCR publication",
+    "Service/Synced/Healthy/imageID in a real cluster",
+    "kind deployment",
+    "independent Review",
+    "Manager Readiness",
+    "Issue aggregate completion"
+  ],
+  "failure_reasons": [],
+  "block_reasons": []
+}
