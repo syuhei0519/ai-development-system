@@ -60,7 +60,7 @@ CLI は JSON Schema、参照、対象一致、時刻、状態整合性と AC 実
 
 全premerge ACがmetでも、merged_at=nullならissue_completion=unverified。single_prでもマージ済みだけでは不足し、`issue_integration` のpassと `kind=issue_integration` の証跡が必要。証跡は全Issue ACを対象とし、現在のsubjectと一致し、マージ以後の観測であること。実際のマージ結果と必要な統合完了をManagerが確認する。全AC metと統合passが揃って初めてachievedになる。統合pendingでもPRのMerge Readyは妨げない。
 
-複数PR・複数repoの依存一覧、各マージrevision、統合環境と全体検証を束ねる集約契約・収集検証はPhase 1-2の対象外。本CLIでaggregate_required/unknownを統合passやachievedにすることはできない。Managerは依存を明記し、集約契約と固定証跡による別工程が用意されるまでunverifiedを保持する。単一PRのマージから全体達成を推論しない。
+複数PR・複数repoの依存一覧、各マージrevision、統合環境と全体検証は独立[Issue Completion v1.0](issue-completion.md)で集約する。本CLIでaggregate_required/unknownを統合passやachievedにすることはできない。Managerは依存を明記し、本PR契約ではunverifiedを保持し、別のIssue Completion CLIと最終Issue Handoffで全体を判定する。単一PRのマージから全体達成を推論しない。
 
 Handoff v2.0の既存schema/CLIは変更しない。全AC metでも統合がpending/failの中間報告は、`final_assessment`を省略し、Readiness artifactでpendingはissue_completion=unverified、failはnot_achievedとして追跡する（ACの実測をunverifiedへ偽装しない）。最終achievedの発行は統合完了後だけ。集約待ちも同様に最終判定を保留する。
 

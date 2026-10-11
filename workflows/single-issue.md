@@ -65,7 +65,7 @@ CLI Git と GitHub 連携は別経路。GitHub 連携の成功は CLI の認証�
 3. Implementation の固定成果物を独立 Test/Review に渡す。CI、独立 Test、AI Review、GitHub 必須条件を別証跡として取得し、[readiness CLI](../scripts/validate_readiness.py) を現在の context と実行する。handoff と一緒に配送するときは `--handoff` も指定する。形式検査の成功と ready と実行許可を区別する。
 4. 本当にマージ・配備後にしか確認できない AC は理由・担当・環境・検証方法・失敗時対応・分類根拠を記録し unverified のまま保持する。GitOps 等のマージによる配備がある/影響不明なら Deployment Ready を追加必須条件とする。
 5. 許可されたマージ操作の直前に現状と期限を再確認する。更新で ready を失効させ再検証する。今回の作業に与えられた PR/merge/auto-merge 禁止をこの将来手順で上書きしない。
-6. PR ready やマージ成功では Issue を完了扱いにしない。未検証が残る PR に自動 close キーワードを使わない。マージ・配備後の実測を回収し、Manager だけが全 Issue AC を final_assessment で判定する。全 AC 実測 met のみ achieved。失敗・未確認は未完了で追跡する。
+6. PR ready やマージ成功では Issue を完了扱いにしない。未検証が残る PR に自動 close キーワードを使わない。マージ・配備後の実測を回収し、Manager だけが全 Issue AC を final_assessment で判定する。全 AC 実測 met と必要な統合・配備完了が揃った場合のみ achieved。複数 PR/repo は [集約 CLI](../contracts/issue-completion.md) の独立 context pin、全必要集合、現在証跡、最新履歴 pin と最終 Issue Handoff を照合する。失敗・未確認は未完了で追跡する。
 
 ## Knowledge と変更単位
 
@@ -76,7 +76,7 @@ Manager は候補の配送と進捗のみ管理し、取得済み根拠を Knowl
 Phase 1-3 P-B では [collector](../contracts/knowledge-collection.md) の scan/reconcile を節目に実行し、全件検証後に inbox/event/cursor を一括保存する。Manager は最新 state pin と別経路認可を保持し、plan を確認して reserve/dispatch intent を永続化してから独立 Knowledge を起動する。開始不明は照合まで停止し、取得済み output は delivery から再開する。Git 確定後の中断は固定 commit の全 bytes 照合で追認する。collector 自身は Agent を起動せず、schedule 登録・有効化、P-C context/ack と P-D 実運用実証は含まない。後続役割への知識配送は knowledge-context と取得済み記事実体を初回入力に渡し、固定 revision・適用条件・例外・出典・状態を確認する。
 
 
-Issue Completionには全AC実測に加えて必要な統合完了が必要。全premerge ACがmetでも未マージならunverified。Readiness/contextのissue_integration_scopeで単一PRと集約待ちを分離し、複数PR・repo/範囲不明は単一PRからachievedにしない。集約契約と証跡の検証は後続依存として明示する。全AC met・統合待ちの中間Handoffではfinal_assessmentを省略し、Readiness artifactで追跡する。
+Issue Completionには全AC実測に加えて必要な統合完了が必要。全premerge ACがmetでも未マージならunverified。Readiness/contextのissue_integration_scopeで単一PRと集約待ちを分離し、複数PR・repo/範囲不明は単一PRからachievedにしない。複数PR・repoは独立[Issue Completion契約](../contracts/issue-completion.md)で全必要集合と固定証跡を検証する。全AC met・統合待ちの中間Handoffではfinal_assessmentを省略し、Readiness artifactで追跡する。
 
 Readinessの配送にはartifact_id、Handoff基準のローカルlocator、実体bytesのsha256 digest revisionを使用する。`validate_readiness.py --handoff`は実体の読み取り・評価対象ファイルとの同一性・digestを照合する。旧DraftのReadinessは追加必須項目を確認して移行する。詳細と限界はReadiness契約を参照。
 

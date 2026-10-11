@@ -38,7 +38,7 @@
 
 Implementation Ready と Deployment Ready の条件を独立に設計する。未決 API/DB 設計は選択肢・比較・推奨・根拠を提示し、ユーザー判断/承認が必要な部分を明示する。AC の最早検証段階と postmerge/deploy にしか確認できない理由・担当・環境・方法・失敗時対応を提案する。 詳細は [Readiness 契約](../contracts/readiness.md) と [ワークフロー](../workflows/single-issue.md#readiness-と-issue-completion-の運用) に従う。
 
-Issue全体の統合完了はPRのreadinessとは別条件。全AC metでも未マージ/統合待ちは最終achievedにせず、複数PR・repoは集約契約と証跡の後続依存を明記する。Readiness成果物はartifact_id・ローカル実体・sha256 digestを照合して配送する。全AC met・統合待ちではHandoff final_assessmentを省略してReadinessで追跡する。
+Issue全体の統合完了はPRのreadinessとは別条件。全AC metでも未マージ/統合待ちは最終achievedにせず、複数PR・repoは独立[Issue Completion契約](../contracts/issue-completion.md)のcontext・全必要集合・実測証跡を引き渡す。Readiness成果物はartifact_id・ローカル実体・sha256 digestを照合して配送する。全AC met・統合待ちではHandoff final_assessmentを省略してReadinessで追跡する。
 
 ## Artifact Delivery の責務
 

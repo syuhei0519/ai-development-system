@@ -40,7 +40,7 @@ Dots 上でユーザーの依頼、Issue の原文・認可済み出典、固定
 
 Implementation Ready、Deployment Ready、PR ごとの Merge Ready と Issue Completion を別々に記録する。現在の context・保護設定・証跡対象と期限を検査し、head/base/設定変更時に再検証する。全 AC 実測後だけ final_assessment=achieved とし、未検証を残した Issue の早期 close を防ぐ。 詳細は [Readiness 契約](../contracts/readiness.md) と [ワークフロー](../workflows/single-issue.md#readiness-と-issue-completion-の運用) に従う。
 
-Issue全体の統合完了はPRのreadinessとは別条件。全AC metでも未マージ/統合待ちは最終achievedにせず、複数PR・repoは集約契約と証跡の後続依存を明記する。Readiness成果物はartifact_id・ローカル実体・sha256 digestを照合して配送する。全AC met・統合待ちではHandoff final_assessmentを省略してReadinessで追跡する。
+Issue全体の統合完了はPRのreadinessとは別条件。全AC metでも未マージ/統合待ちは最終achievedにせず、複数PR・repoは独立[Issue Completion契約](../contracts/issue-completion.md)のcontext・全必要集合・実測証跡を引き渡す。Readiness成果物はartifact_id・ローカル実体・sha256 digestを照合して配送する。全AC met・統合待ちではHandoff final_assessmentを省略してReadinessで追跡する。
 
 ## Artifact Delivery の責務
 
