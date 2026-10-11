@@ -1,0 +1,22 @@
+{
+  "document_type": "knowledge_candidates",
+  "publication_status": "pending_manager_review",
+  "candidates": [
+    {
+      "id": "K-observer-effective-config",
+      "domain": "gitops-observer-readiness",
+      "summary": "A fixed source commit and previous Synced/Healthy status do not bind readiness to the current Application configuration or rule out teardown.",
+      "evidence": "Independent fixed-head observer returned success for 12 same-revision configuration drift fixtures and 2 finalizer-delayed deletion fixtures. See R1/R2.",
+      "source": "https://github.com/syuhei0519/ai-development-system/blob/affc6776597ce961394dc821c568d0c3719b19f1/evidence/order-p0/review-a1/reproductions.json",
+      "scope": "Synthetic P0 review only; no real cluster or product acceptance. Pending independent abstraction and Manager review."
+    },
+    {
+      "id": "K-review-fixed-artifacts",
+      "domain": "gitops-preparation-evidence",
+      "summary": "Preserve the exact raw template/schema/observer tree when reviewing a disabled preparation PR; byte-equivalent renders and observer correctness are separate judgments.",
+      "evidence": "All three pinned artifacts matched size/digest, six base/head renders equal, yet independent observer counterexamples blocked P0-S3/S4.",
+      "source": "https://github.com/syuhei0519/ai-development-system/tree/affc6776597ce961394dc821c568d0c3719b19f1/evidence/order-p0/review-a1/artifacts",
+      "scope": "Fixed PR58 P0 preparation at e01882d8a2c4ac4eadad5b081c1b5c69e5599776; not product met or deployment authorization."
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "syuhei0519/backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "review",
+  "task_id": "order-p0-review-a1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "order-p0-test-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/ea233f16b427bea3818c7e898f46267685006cb3/evidence/order-p0/test-a1/handoff.json",
+      "revision": "sha256:88ff01c25b674a0662f9accd7b3a74c43d903b33ef62377758a81a603eefac44",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "failed",
+  "summary": "Independent fixed-head P0 preparation review failed: R1 permits wrong or stale Application configuration; R2 accepts deleting Order leaves. P0-S1/S2 met, S3/S4 not_met. AC-3 not_met means this preparation Review stage only; all product ACs, actual Argo/Service/digest, kind/P1/T6/T7 remain unverified. Manager must return to correction and independently retest/review a new revision.",
+  "assignment": {
+    "scope": "platform-gitops#backend-app-2/P0",
+    "ac_ids": [
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "P0-S1: orderEnabled=false既定で、新Order関連Applicationを生成しない。既存3Application/namespace/AppProject/既存Account main追跡とdefault/local renderを不変に保つ。",
+      "P0-S2: 将来有効化時のOrder専用40桁Manifest revisionと独立DB→OrderのApplication定義を用意し、欠落/浮動revision/不正値をfail-closedに検証する。trueは合成render fixtureだけで、live valuesはfalse。",
+      "P0-S3: bootstrap observerのleaf/hook対象をoptionalに拡張し、disabledでは既存3Appだけ、enabledではOrder DB/Orderの欠落・進行・失敗・revision/health/migration状態を正しく扱う。未知状態を成功化せず、既存observer動作を回帰検証する。",
+      "P0-S4: 全既存関連testsと新schema/render/observer正常異常境界試験を実行し、設定とドキュメント整合、デプロイ影響noneの根拠、P1/T6/T7と必要承認/環境/失敗対応を引き渡す。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-REPORT",
+      "kind": "review",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/affc6776597ce961394dc821c568d0c3719b19f1/evidence/order-p0/review-a1/report.txt",
+      "revision": "sha256:5c94d601c564fc6fd357b8765461f262eee0077232c6443af1cf3a9a2581567c",
+      "summary": "Two blocking findings, scope judgment, reproduction, dependency and recovery responsibilities."
+    },
+    {
+      "id": "A-MEASUREMENTS",
+      "kind": "test-report",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/affc6776597ce961394dc821c568d0c3719b19f1/evidence/order-p0/review-a1/measurements.json",
+      "revision": "sha256:aeff4d37b38c939f3bdcdac1eba4b293ff8ca1d264dc17d6d01bca52c972180b",
+      "summary": "Fixed subject/config/artifact coverage of all 15 files and P0-S1..S4; failed Review."
+    },
+    {
+      "id": "A-REPRODUCTIONS",
+      "kind": "test-report",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/affc6776597ce961394dc821c568d0c3719b19f1/evidence/order-p0/review-a1/reproductions.json",
+      "revision": "sha256:70bdb5791222a3f71455f1ba370e391335faea7a4e0e5db4a416a37229ec10b2",
+      "summary": "27 synthetic observer cases, 14 unexpected successes, six byte-equal renders and seven schema cases."
+    },
+    {
+      "id": "A-REPRO",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/affc6776597ce961394dc821c568d0c3719b19f1/evidence/order-p0/review-a1/reproduce.py",
+      "revision": "sha256:d7910d86cdfcc5ef6e68b38d41cd5ca02ae80c84af6e8b3af8a302a5d90ebe43",
+      "summary": "Independent synthetic fixture generator; fake kubectl only, no cluster operation."
+    },
+    {
+      "id": "A-AI-REVIEW",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/affc6776597ce961394dc821c568d0c3719b19f1/evidence/order-p0/review-a1/ai-review-evidence.json",
+      "revision": "sha256:38a980995af55ff7d9f7976afaa4cbcac72ecdd8184ab077a8b529d15e1030e8",
+      "summary": "Readiness1.1-compatible ai_review evidence item; must be used with verdict fail."
+    },
+    {
+      "id": "A-CANDIDATES",
+      "kind": "knowledge",
+      "locator": "knowledge-candidates.json",
+      "revision": "sha256:f40723209f83a39a05a4ccfa4a566171cfd7e67d2bae364b8b499cfd53aa0e1f",
+      "summary": "Two pending candidates with fixed source and full raw artifact tree bindings."
+    },
+    {
+      "id": "A-CONTEXT",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/cd17d0c5d07fd2f451538c778c721dd081b234b7/evidence/order-p0/test-a1/context.json",
+      "revision": "sha256:a6bd128794d1a3130a43e1a6274ccda5c3e200c9300d970d8ad3023b67dc63b9",
+      "summary": "Unmodified independently pinned Manager classification input; not Merge Ready."
+    },
+    {
+      "id": "A-CONFIG",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/cd17d0c5d07fd2f451538c778c721dd081b234b7/evidence/order-p0/test-a1/config.json",
+      "revision": "sha256:3ba80361940bcb0423db220d3fbc13ec1c0acb791e10b71d3327e160936fc969",
+      "summary": "Unmodified independently pinned public technical configuration."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-S1-S2",
+      "claim": "Disabled desired resources unchanged and synthetic template/schema checks passed.",
+      "artifact_ids": [
+        "A-MEASUREMENTS",
+        "A-REPRODUCTIONS",
+        "A-REPORT",
+        "A-CONTEXT",
+        "A-CONFIG"
+      ],
+      "locator": "measurements.json",
+      "observation": "Six render byte comparisons and five boundary source comparisons equal; enabled-only fixed SHA topology and schema reject cases measured. Classification preparation/none/aggregate_required supported for desired-resource delta only."
+    },
+    {
+      "id": "E-S3-S4",
+      "claim": "Blocking independent observer counterexamples fail preparation Review.",
+      "artifact_ids": [
+        "A-MEASUREMENTS",
+        "A-REPRODUCTIONS",
+        "A-REPRO",
+        "A-REPORT",
+        "A-AI-REVIEW"
+      ],
+      "locator": "reproductions.json",
+      "observation": "Fixed executable: 12 same-revision configuration drift successes and 2 deleting-Application successes violate fail-closed readiness. Standard regressions pass but omit these cases. R1/R2 require correction and fresh independent Test/Review."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "unverified",
+      "scope": "Outside preparation Review assignment; no product/API/persistence/Account CRUD measurement.",
+      "artifact_ids": [
+        "A-MEASUREMENTS",
+        "A-REPORT"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "unverified",
+      "scope": "Outside preparation Review assignment; no product/API/persistence/Account CRUD measurement.",
+      "artifact_ids": [
+        "A-MEASUREMENTS",
+        "A-REPORT"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "not_met",
+      "scope": "P0-S1..S4 independent Review responsibility only: blocking R1/R2; product AC-3 remains unverified.",
+      "artifact_ids": [
+        "A-MEASUREMENTS",
+        "A-REPORT"
+      ],
+      "evidence_ids": [
+        "E-S1-S2",
+        "E-S3-S4"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [
+    "R1 (P2): New Order observer does not bind readiness to the expected current Application project/destination/source/Helm configuration.",
+    "R2 (P2): New Order observer accepts finalizer-delayed deleting Applications as ready."
+  ],
+  "knowledge_candidates": [
+    {
+      "id": "K-observer-effective-config",
+      "domain": "gitops-observer-readiness",
+      "summary": "A fixed source commit and previous Synced/Healthy status do not bind readiness to the current Application configuration or rule out teardown.",
+      "evidence_ids": [
+        "E-S1-S2",
+        "E-S3-S4"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "approved_public"
+    },
+    {
+      "id": "K-review-fixed-artifacts",
+      "domain": "gitops-preparation-evidence",
+      "summary": "Preserve the exact raw template/schema/observer tree when reviewing a disabled preparation PR; byte-equivalent renders and observer correctness are separate judgments.",
+      "evidence_ids": [
+        "E-S1-S2",
+        "E-S3-S4"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "approved_public"
+    }
+  ],
+  "publication": "public_safe"
+}
