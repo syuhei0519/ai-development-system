@@ -1,0 +1,42 @@
+{
+  "system": {
+    "repository": "syuhei0519/ai-development-system",
+    "commit": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+    "tree": "bd6db38a828be65062b7cf0bd8044765190b0cc1"
+  },
+  "implementation": {
+    "repository": "syuhei0519/platform-gitops",
+    "base": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+    "base_tree": "794203ba52ae0888c0e4ad66c70271064b6ebdca",
+    "head": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+    "tree": "e8dec8c8f550b5901d317c5c1b21af65252278c3",
+    "branch": "feat/order-disabled-gitops-p0",
+    "pr": {
+      "auto_merge": null,
+      "base": {
+        "ref": "main",
+        "sha": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa"
+      },
+      "draft": true,
+      "head": {
+        "ref": "feat/order-disabled-gitops-p0",
+        "sha": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776"
+      },
+      "number": 58,
+      "state": "open",
+      "url": "https://github.com/syuhei0519/platform-gitops/pull/58"
+    }
+  },
+  "read_only_dependencies": [
+    {
+      "repository": "syuhei0519/backend-app",
+      "commit": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+      "tree": "a70f84afa45b55c1ba1d6a3230eafb0d9d1cc643"
+    },
+    {
+      "repository": "syuhei0519/application-manifest",
+      "commit": "bc6adaedcd645a4663c23284b977a3dd36c0796d",
+      "tree": "92b867efc6e9163b0cbfd4713b82d0c65e24f769"
+    }
+  ]
+}

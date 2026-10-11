@@ -1,0 +1,146 @@
+{
+  "producer": "order-p0-implementation-a1",
+  "observed_at": "2026-10-11T17:31:26.143336+00:00",
+  "head": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+  "base": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+  "self_validation_only": true,
+  "independent_test_review": "unverified",
+  "conditions": [
+    {
+      "id": "P0-S1",
+      "text": "P0-S1: orderEnabled=false既定で、新Order関連Applicationを生成しない。既存3Application/namespace/AppProject/既存Account main追跡とdefault/local renderを不変に保つ。",
+      "implementation_measurement": "met"
+    },
+    {
+      "id": "P0-S2",
+      "text": "P0-S2: 将来有効化時のOrder専用40桁Manifest revisionと独立DB→OrderのApplication定義を用意し、欠落/浮動revision/不正値をfail-closedに検証する。trueは合成render fixtureだけで、live valuesはfalse。",
+      "implementation_measurement": "met"
+    },
+    {
+      "id": "P0-S3",
+      "text": "P0-S3: bootstrap observerのleaf/hook対象をoptionalに拡張し、disabledでは既存3Appだけ、enabledではOrder DB/Orderの欠落・進行・失敗・revision/health/migration状態を正しく扱う。未知状態を成功化せず、既存observer動作を回帰検証する。",
+      "implementation_measurement": "met"
+    },
+    {
+      "id": "P0-S4",
+      "text": "P0-S4: 全既存関連testsと新schema/render/observer正常異常境界試験を実行し、設定とドキュメント整合、デプロイ影響noneの根拠、P1/T6/T7と必要承認/環境/失敗対応を引き渡す。",
+      "implementation_measurement": "met"
+    }
+  ],
+  "checks": [
+    {
+      "command": "bash ci/github/test.sh",
+      "result": "pass",
+      "details": "Go 1.27.1; docs checker 14 cases; both Go modules; static bootstrap test and scan-gate builds. Render-dependent test skips in normal go test are separately executed using Helm output."
+    },
+    {
+      "command": "cd tools/bootstrap && go test -race ./... && go vet ./...",
+      "result": "pass",
+      "details": "Final fixed-head observer cases: disabled/enabled, missing DB/Order, missing hook, progressing DB, missing/wrong revision, invalid flags exit 2 before read, earlier DB regression on next poll. Boundary state/revision/hook/resource tests and existing tests."
+    },
+    {
+      "command": "cd tools/scan-gate && go test -race ./... && go vet ./...",
+      "result": "pass",
+      "details": "Unchanged module; tested with Go 1.27.1."
+    },
+    {
+      "command": "gofmt -l tools/bootstrap/*.go; git diff --check",
+      "result": "pass",
+      "details": "No unformatted files or whitespace errors."
+    },
+    {
+      "command": "sh ci/validate.sh",
+      "result": "pass",
+      "details": "Pinned Helm 4.2.4 container, existing host CA mounted read-only; existing complete lint/render/checksum/policy suite plus 24 invalid Order values/defence fixtures and synthetic enabled lint/render. No insecure TLS setting."
+    },
+    {
+      "command": "PE_OBSERVABILITY_RENDER_DIR=.rendered .build/bootstrap-test -test.run 'TestObservabilityContract|TestCollectorContract|TestGrafanaProvisioningBoundary|TestOrderWorkloadsContract' -test.v",
+      "result": "pass",
+      "details": "All four render tests executed, no skips. Raw/semantic baseline and exact enabled topology."
+    },
+    {
+      "command": ".security/scan-gate -check-render-only .rendered",
+      "result": "pass",
+      "details": "No structural findings."
+    },
+    {
+      "command": "kubeconform -strict -summary (existing pinned CI image and schema locations)",
+      "result": "pass",
+      "details": "16 Application resources (includes synthetic true fixture), 37 standard resources, 4 AppProjects; zero invalid/errors/skipped."
+    },
+    {
+      "command": "SECURITY_RENDER_REQUIRED=true sh ci/source-scan.sh in pinned Trivy 0.75.0 container",
+      "result": "pass",
+      "details": "Fixed HEAD archived, tracked source only; both source and render gates passed with existing warning policy unchanged. Sanitized gate summaries included."
+    },
+    {
+      "command": "base/head Helm root/platform/workloads, each default and local; source byte comparisons",
+      "result": "pass",
+      "details": "Six raw comparisons, plus Namespace/root/AppProject/bootstrap health sources unchanged. Raw equality implies semantic equality; workload semantic tests also executed."
+    }
+  ],
+  "deployment_effect_proposal": {
+    "value": "none",
+    "scope": "P0 default/local desired resources only",
+    "basis": [
+      "Order is false with empty revision in both live files; no new Applications",
+      "All existing root/platform/workloads default/local rendered bytes unchanged from base",
+      "Namespace/AppProject/Account template/main tracking unchanged",
+      "Observer is read-only CLI; CI fixtures only run helm and fake kubectl"
+    ],
+    "limits": [
+      "No live cluster observation performed",
+      "Manager must confirm final PR diff and independent Test/Review",
+      "Root main automatic sync makes P1 enablement automatic; P0 conclusion must not be reused for P1"
+    ]
+  },
+  "product_results": [
+    {
+      "ac_id": "AC-1",
+      "outcome": "unverified",
+      "verification_phase": "premerge",
+      "deferred": null
+    },
+    {
+      "ac_id": "AC-2",
+      "outcome": "unverified",
+      "verification_phase": "premerge",
+      "deferred": null
+    },
+    {
+      "ac_id": "AC-3",
+      "outcome": "unverified",
+      "verification_phase": "premerge",
+      "deferred": null
+    }
+  ],
+  "issue_integration_scope": "aggregate_required",
+  "preparation_candidate": {
+    "pr_ac_ids": [],
+    "related_ac_ids": [
+      "AC-3"
+    ],
+    "formal_context_assessment": "not_created; Manager responsibility"
+  },
+  "not_executed": [
+    "Independent Test/Review",
+    "Live Service/Synced/Healthy/image digest",
+    "T6 isolated kind acceptance",
+    "T7 integrated target observation",
+    "P1 enablement",
+    "Postmerge existing Application state observation"
+  ],
+  "failures_and_decisions": [
+    "Initial environment go resolved to a non-Go /usr/bin/go; isolated official Go toolchain used. Final tests use CI Go 1.27.1; no repository version was changed.",
+    "Direct Helm binary download returned 403. Existing CI pinned Helm container was used successfully.",
+    "First full Helm validation failed because the container lacked the host trust CA. Rerun passed with existing host CA mounted read-only; no TLS bypass or trust-store write.",
+    "Initial test-file write used the module directory with a repository-relative path and failed before creating a file; path corrected. Initial Go cache default was read-only, so isolated workspace cache used.",
+    "GitHub connector fixed-file fetch returned 404. CLI Git fixed checkout/fetch succeeded; connector recovery not claimed.",
+    "gh pr view baseRefOid is unsupported in this installed CLI; read-only REST PR retrieval verified both actual base/head instead.",
+    "Account and Order revision arguments are separate; a single shared revision argument was rejected by adopted Research addendum.",
+    "Unknown/missing operation phase is now waiting for all leaves. Prior fallback success was not retained because it violated the assigned fail-closed requirement.",
+    "Order additionally requires Synced/Healthy child StatefulSet/Deployment observations; no DB connection, schema success, digest or product AC is inferred from these.",
+    "Enabled with empty revision fails; keeping a fabricated SHA in live disabled values was rejected. Synthetic SHA appears only in fixtures/tests.",
+    "No readiness assessment/context was fabricated. Manager owns formal preparation classification and independent gates."
+  ]
+}

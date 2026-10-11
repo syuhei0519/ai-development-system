@@ -1,0 +1,72 @@
+{
+  "base": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+  "observations": [
+    {
+      "chart": "root",
+      "values": "default",
+      "raw_equal": true,
+      "bytes": 2619,
+      "sha256": "c69faea1649252f4495606f271cbbff5cebf8b98cae6cde6d103a7fb2c6e8e1c"
+    },
+    {
+      "chart": "root",
+      "values": "local",
+      "raw_equal": true,
+      "bytes": 4331,
+      "sha256": "8518d5f7e12d5cff1be0274b41ee38fcbced4ec0bc84d06aa87cb7c7deecda83"
+    },
+    {
+      "chart": "platform",
+      "values": "default",
+      "raw_equal": true,
+      "bytes": 1608,
+      "sha256": "38f4d485c94f37f76ce70b3d8fd7c755716e9192977b06c7c0ced20fb369193e"
+    },
+    {
+      "chart": "platform",
+      "values": "local",
+      "raw_equal": true,
+      "bytes": 4800,
+      "sha256": "4c022b9aac2fbb0cd9ccc733847cbe52afb2d1d664fa7d33bbbec253d75a26ed"
+    },
+    {
+      "chart": "workloads",
+      "values": "default",
+      "raw_equal": true,
+      "bytes": 2196,
+      "sha256": "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5"
+    },
+    {
+      "chart": "workloads",
+      "values": "local",
+      "raw_equal": true,
+      "bytes": 2196,
+      "sha256": "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5"
+    },
+    {
+      "source": "bootstrap/namespaces.yaml",
+      "raw_equal": true,
+      "sha256": "9c8f5981bffa444cad3ec4b0d64f533b1bdffdfe9e4f46fc090dda9824b54764"
+    },
+    {
+      "source": "bootstrap/root-project.yaml",
+      "raw_equal": true,
+      "sha256": "dc7cc172cb0cd74ee6520a0751f727d47f95cf9010af8bc5ccd95b2bd3620969"
+    },
+    {
+      "source": "bootstrap/root-application.yaml",
+      "raw_equal": true,
+      "sha256": "f41b2036a1e5be25ad5dcb219cbdf88882134b149877dd4d9a60f4379027ec6f"
+    },
+    {
+      "source": "bootstrap/argocd-values.yaml",
+      "raw_equal": true,
+      "sha256": "5a869b06a8d067b5bbd326508aad45ea76f9bafa16260849be35e8c93daf7d2a"
+    },
+    {
+      "source": "charts/root/templates/projects.yaml",
+      "raw_equal": true,
+      "sha256": "e41ca9a79479ee1e1b41f55cf343e006769828191e7c8be76844c1d2b6388c02"
+    }
+  ]
+}

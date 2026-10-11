@@ -1,0 +1,92 @@
+{
+  "reviewer": "order-p0-implementation-a1",
+  "scope": "All new payload text and full public-source inventory; existing upstream bytes stay at canonical fixed Git references",
+  "new_payload_inventory": [
+    {
+      "path": "README.txt",
+      "size": 1125,
+      "sha256": "cad06b2c99e58d502da5f8601e1532d0f170cb5d688f44f2cb3a28e623ee08bb"
+    },
+    {
+      "path": "assignment.json",
+      "size": 1086,
+      "sha256": "e92f87021f723cd0b0017e2a24e01d86d18bbf680df1b3bfdfeae365148f31b5"
+    },
+    {
+      "path": "fixed-inputs.json",
+      "size": 1349,
+      "sha256": "20662751a98429949ea60e880522054c963288e94804eefd35becf210a08ddf8"
+    },
+    {
+      "path": "github-observations.json",
+      "size": 1487,
+      "sha256": "af9ad905bc0951dadd6f01c150b8744319855a71c60b03b30776c242f4034ece"
+    },
+    {
+      "path": "implementation.patch",
+      "size": 38108,
+      "sha256": "c0367904206243200b04a08ad3dc507a7a6d3ccde736c45727812ce17a4f3478"
+    },
+    {
+      "path": "knowledge-candidates.json",
+      "size": 1520,
+      "sha256": "2ffbcf5d16dd6249655ad71dfdbc3b22c7cafd73e1ca77729d242d2ed2240fc8"
+    },
+    {
+      "path": "observations.json",
+      "size": 7719,
+      "sha256": "a6e8bc9c976e8cb35d7b4ac73186c819a9e025805219d2cf4e267459cab726ba"
+    },
+    {
+      "path": "render-boundary.json",
+      "size": 78,
+      "sha256": "b8ec3809269593fe04a606ea0167ecc905fd551b31897906051a4a2f5b7a3b22"
+    },
+    {
+      "path": "render-comparison.json",
+      "size": 2096,
+      "sha256": "2a84befff5bd76d71afca08135b4fb1b69845b4c7f19748f8c791a3460229d5a"
+    },
+    {
+      "path": "render-scan.json",
+      "size": 40051,
+      "sha256": "b3ea5ec592aad6b4c17ccf200697bb79bb40284b88fbe48b0db7b482af2f67a0"
+    },
+    {
+      "path": "report.txt",
+      "size": 5862,
+      "sha256": "0b9740e47b3ab5d1a2f35e013f8648f3c72f8c39c70e9ed63b203d38e8ed4117"
+    },
+    {
+      "path": "reproduce.py",
+      "size": 3449,
+      "sha256": "d81e7e6bd731cfb3cb0540c814556784845f74405fdd077aef51d0fe87b33f66"
+    },
+    {
+      "path": "source-scan.json",
+      "size": 1821,
+      "sha256": "0ddaaa14ac255e8bf4080b922357ab157c12e9877a3a4d7148148d127728e4c5"
+    },
+    {
+      "path": "upstream-inventory.json",
+      "size": 7149,
+      "sha256": "3524352564e4c53cd2e722c0324a8512166cbf43d6a6b39a6f3c2f45ca1bfaee"
+    },
+    {
+      "path": "upstream-manifest.json",
+      "size": 37017,
+      "sha256": "6c596434432a04a332f08d2eebd6f4901691b54bb52eacfc508aa956987c2e5e"
+    }
+  ],
+  "public_safety": "reviewed: new reports contain measured technical summaries, fixed public identities and synthetic fixtures; no private authorization, Consumption Receipt, real Cloud identifiers, private-original seals, credential values or internal raw logs",
+  "source_policy": "New code/patch are reviewed. Complete chart/observer trees are existing feature source, including binary vendored Helm chart. All tree blobs must be verified by canonical git-tree-snapshot-v1. Upstream canonical public evidence is byte-preserved; its private-original equivalence and historical publication approval are not claimed.",
+  "publication_basis": "User bounded permission covers safety-reviewed reports, synthetic fixtures, public input references/copies and delivery records on the dedicated System evidence branch. This record does not create downstream Consumer permission.",
+  "exclusions": [
+    "private authorization and its hash",
+    "private Consumption Receipt",
+    "internal raw command logs",
+    "real Cloud/thread/runtime identifiers",
+    "unpublished originals or their hashes"
+  ],
+  "handoff_review": "The final Handoff is separately schema-validated and scanned before committing; no self-referential digest inventory is constructed."
+}

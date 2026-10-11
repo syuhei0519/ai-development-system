@@ -1,0 +1,47 @@
+{
+  "observed_at": "2026-10-11T17:33:41.025954+00:00",
+  "repository": "syuhei0519/platform-gitops",
+  "pr": {
+    "auto_merge": null,
+    "base": {
+      "ref": "main",
+      "sha": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa"
+    },
+    "draft": true,
+    "head": {
+      "ref": "feat/order-disabled-gitops-p0",
+      "sha": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776"
+    },
+    "number": 58,
+    "state": "open",
+    "url": "https://github.com/syuhei0519/platform-gitops/pull/58"
+  },
+  "remote_feature_head": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+  "remote_main": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+  "ci": [
+    {
+      "conclusion": "success",
+      "databaseId": 38159914118,
+      "event": "pull_request",
+      "headSha": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+      "status": "completed",
+      "url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38159914118"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 38159810435,
+      "event": "push",
+      "headSha": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+      "status": "completed",
+      "url": "https://github.com/syuhei0519/platform-gitops/actions/runs/38159810435"
+    }
+  ],
+  "local_implementation": "verified",
+  "remote_reflection": "verified",
+  "draft_pr": "verified",
+  "ci_status": "verified",
+  "independent_test_review": "pending",
+  "merge": "not_requested",
+  "issue_completion": "unverified",
+  "policy_reviews_ruleset_queue": "not_evaluated; Manager gates"
+}

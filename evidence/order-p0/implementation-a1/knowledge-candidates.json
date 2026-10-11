@@ -1,0 +1,22 @@
+{
+  "document_type": "knowledge_candidates",
+  "publication_status": "pending_manager_review",
+  "candidates": [
+    {
+      "id": "K-disabled-registration",
+      "domain": "gitops-preparation",
+      "summary": "Disabled registration can be prepared with an empty live revision and conditional full-commit validation, while retaining byte-identical existing Applications.",
+      "evidence": "P0 default/local raw and semantic render comparisons pass; true uses a synthetic SHA and rejects missing or floating revisions.",
+      "source": "https://github.com/syuhei0519/platform-gitops/tree/e01882d8a2c4ac4eadad5b081c1b5c69e5599776/charts",
+      "scope": "Preparation only; a fixed SHA format does not prove chart existence, image provenance, Git accessibility or permission to enable."
+    },
+    {
+      "id": "K-leaf-revision-boundary",
+      "domain": "gitops-observation",
+      "summary": "Keep independently selected service revisions per leaf, require current migration evidence, and recheck earlier leaves while later leaves wait.",
+      "evidence": "Synthetic state boundaries and real CLI/fake-kubectl regression tests reject missing leaves, wrong revision/source, failed/missing hook, unknown states and DB regression.",
+      "source": "https://github.com/syuhei0519/platform-gitops/tree/e01882d8a2c4ac4eadad5b081c1b5c69e5599776/tools/bootstrap",
+      "scope": "Read-only Application observation; direct DB readiness, real imageID, API CRUD and persistence remain separate measured tests."
+    }
+  ]
+}

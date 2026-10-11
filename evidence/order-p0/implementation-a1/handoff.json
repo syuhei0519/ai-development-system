@@ -1,0 +1,340 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "syuhei0519/backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "implementation",
+  "task_id": "order-p0-implementation-a1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "order-b1-test-e2-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/f5a93108cdbbce934a0838c280bdf0a18ba32429/evidence/order-b1/test-e2-a1/handoff.json",
+      "revision": "sha256:4cc00afcad190f144e9299a89dcef9604ec74a2733da05b605730061bbcebaa3",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "P0 disabled Order GitOps registration and optional observer implementation/self-validation completed. AC-3 covered only for assigned preparation stage; product ACs, actual Service/Synced/Healthy/digest, T6/T7 and aggregate completion remain unverified. Formal preparation Readiness and independent Test/Review belong to Manager.",
+  "assignment": {
+    "scope": "platform-gitops#backend-app-2/P0",
+    "ac_ids": [
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "P0-S1: orderEnabled=false既定で、新Order関連Applicationを生成しない。既存3Application/namespace/AppProject/既存Account main追跡とdefault/local renderを不変に保つ。",
+      "P0-S2: 将来有効化時のOrder専用40桁Manifest revisionと独立DB→OrderのApplication定義を用意し、欠落/浮動revision/不正値をfail-closedに検証する。trueは合成render fixtureだけで、live valuesはfalse。",
+      "P0-S3: bootstrap observerのleaf/hook対象をoptionalに拡張し、disabledでは既存3Appだけ、enabledではOrder DB/Orderの欠落・進行・失敗・revision/health/migration状態を正しく扱う。未知状態を成功化せず、既存observer動作を回帰検証する。",
+      "P0-S4: 全既存関連testsと新schema/render/observer正常異常境界試験を実行し、設定とドキュメント整合、デプロイ影響noneの根拠、P1/T6/T7と必要承認/環境/失敗対応を引き渡す。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-REPORT",
+      "kind": "document",
+      "locator": "report.txt",
+      "revision": "sha256:0b9740e47b3ab5d1a2f35e013f8648f3c72f8c39c70e9ed63b203d38e8ed4117",
+      "summary": "Measured implementation scope, decisions, reproduction and required follow-up."
+    },
+    {
+      "id": "A-OBS",
+      "kind": "test-report",
+      "locator": "observations.json",
+      "revision": "sha256:a6e8bc9c976e8cb35d7b4ac73186c819a9e025805219d2cf4e267459cab726ba",
+      "summary": "Self-validation measurements and exact limits, not independent Test/Review."
+    },
+    {
+      "id": "A-INPUTS",
+      "kind": "other",
+      "locator": "fixed-inputs.json",
+      "revision": "sha256:20662751a98429949ea60e880522054c963288e94804eefd35becf210a08ddf8",
+      "summary": "Fixed head/base/tree, System and read-only dependency revisions."
+    },
+    {
+      "id": "A-GITHUB",
+      "kind": "other",
+      "locator": "github-observations.json",
+      "revision": "sha256:af9ad905bc0951dadd6f01c150b8744319855a71c60b03b30776c242f4034ece",
+      "summary": "Remote reflection, Draft PR and same-head CI observations."
+    },
+    {
+      "id": "A-PATCH",
+      "kind": "patch",
+      "locator": "implementation.patch",
+      "revision": "sha256:c0367904206243200b04a08ad3dc507a7a6d3ccde736c45727812ce17a4f3478",
+      "summary": "Complete 15-file implementation change against fixed base."
+    },
+    {
+      "id": "A-RENDER",
+      "kind": "test-report",
+      "locator": "render-comparison.json",
+      "revision": "sha256:2a84befff5bd76d71afca08135b4fb1b69845b4c7f19748f8c791a3460229d5a",
+      "summary": "Six raw render and five boundary source comparisons."
+    },
+    {
+      "id": "A-REPRO",
+      "kind": "other",
+      "locator": "reproduce.py",
+      "revision": "sha256:d81e7e6bd731cfb3cb0540c814556784845f74405fdd077aef51d0fe87b33f66",
+      "summary": "Reproducible local-only self-validation with pinned tools; no cluster operation."
+    },
+    {
+      "id": "A-KNOWLEDGE",
+      "kind": "knowledge",
+      "locator": "knowledge-candidates.json",
+      "revision": "sha256:2ffbcf5d16dd6249655ad71dfdbc3b22c7cafd73e1ca77729d242d2ed2240fc8",
+      "summary": "Pending candidates bind full current chart and observer source trees."
+    },
+    {
+      "id": "A-UPSTREAM",
+      "kind": "other",
+      "locator": "upstream-manifest.json",
+      "revision": "sha256:6c596434432a04a332f08d2eebd6f4901691b54bb52eacfc508aa956987c2e5e",
+      "summary": "Unmodified input public manifest. Canonical upstream closure remains fully typed."
+    },
+    {
+      "id": "A-UPSTREAM-INVENTORY",
+      "kind": "other",
+      "locator": "upstream-inventory.json",
+      "revision": "sha256:3524352564e4c53cd2e722c0324a8512166cbf43d6a6b39a6f3c2f45ca1bfaee",
+      "summary": "26 original public payload objects, unchanged bytes."
+    },
+    {
+      "id": "A-SOURCE-SCAN",
+      "kind": "test-report",
+      "locator": "source-scan.json",
+      "revision": "sha256:0ddaaa14ac255e8bf4080b922357ab157c12e9877a3a4d7148148d127728e4c5",
+      "summary": "Sanitized fixed-head existing source policy result; warnings retained."
+    },
+    {
+      "id": "A-RENDER-SCAN",
+      "kind": "test-report",
+      "locator": "render-scan.json",
+      "revision": "sha256:b3ea5ec592aad6b4c17ccf200697bb79bb40284b88fbe48b0db7b482af2f67a0",
+      "summary": "Sanitized existing render policy result; warnings retained."
+    },
+    {
+      "id": "A-RENDER-BOUNDARY",
+      "kind": "test-report",
+      "locator": "render-boundary.json",
+      "revision": "sha256:b8ec3809269593fe04a606ea0167ecc905fd551b31897906051a4a2f5b7a3b22",
+      "summary": "Rendered structural boundary result."
+    },
+    {
+      "id": "A-ASSIGNMENT",
+      "kind": "other",
+      "locator": "assignment.json",
+      "revision": "sha256:e92f87021f723cd0b0017e2a24e01d86d18bbf680df1b3bfdfeae365148f31b5",
+      "summary": "Authorized P0 scope, assigned AC-3 and four completion conditions."
+    },
+    {
+      "id": "A-README",
+      "kind": "document",
+      "locator": "README.txt",
+      "revision": "sha256:cad06b2c99e58d502da5f8601e1532d0f170cb5d688f44f2cb3a28e623ee08bb",
+      "summary": "Delivery and Consumer authorization boundaries."
+    },
+    {
+      "id": "A-SAFETY",
+      "kind": "other",
+      "locator": "bundle-review.json",
+      "revision": "sha256:93676cba83d2db8e1b760dc40ab133356c251c3ac19124077a03029e71b21104",
+      "summary": "New payload and existing public-input inventory with safety scope."
+    },
+    {
+      "id": "A-COMMIT",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/platform-gitops/commit/e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+      "revision": "e01882d8a2c4ac4eadad5b081c1b5c69e5599776",
+      "summary": "Implementation feature commit; complete source trees separately bound."
+    },
+    {
+      "id": "A-BASE",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/platform-gitops/commit/b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+      "revision": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+      "summary": "Unchanged fixed main base; does not certify descendants or behavior alone."
+    },
+    {
+      "id": "A-FIXTURE",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/platform-gitops/blob/e01882d8a2c4ac4eadad5b081c1b5c69e5599776/ci/fixtures/order-p0/enabled.yaml",
+      "revision": "sha256:97d092410f67c1aadac6449c9062313d18dc974b9ed0811a01bc4be9c57c4703",
+      "summary": "Synthetic render fixture or executable regression source; no live evidence."
+    },
+    {
+      "id": "A-SNAPSHOT",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/platform-gitops/blob/e01882d8a2c4ac4eadad5b081c1b5c69e5599776/ci/fixtures/order-p0/workloads-before.yaml",
+      "revision": "sha256:9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5",
+      "summary": "Synthetic render fixture or executable regression source; no live evidence."
+    },
+    {
+      "id": "A-HELM-TEST",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/platform-gitops/blob/e01882d8a2c4ac4eadad5b081c1b5c69e5599776/ci/test-order-workloads.sh",
+      "revision": "sha256:3fa2e231c42f5c863d4d4c032cb89f11c2e56e450fc0d026e7097abffb2d5eaa",
+      "summary": "Synthetic render fixture or executable regression source; no live evidence."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-S1",
+      "claim": "Disabled default/local preserve desired resources and existing boundaries",
+      "artifact_ids": [
+        "A-RENDER",
+        "A-OBS",
+        "A-PATCH",
+        "A-SNAPSHOT"
+      ],
+      "locator": "render-comparison.json",
+      "observation": "Six root/platform/workloads default/local byte-equal renders and five boundary-source comparisons; workload semantic comparison; three existing Applications only. No live-state observation."
+    },
+    {
+      "id": "E-S2",
+      "claim": "Future fixed revision Order topology is prepared and invalid values rejected",
+      "artifact_ids": [
+        "A-COMMIT",
+        "A-FIXTURE",
+        "A-HELM-TEST",
+        "A-OBS"
+      ],
+      "locator": "observations.json",
+      "observation": "Synthetic true emits exactly two additional Applications at waves -10/0, account/lab-account, distinct fixed SHA. Existing three Apps unchanged. 24 rejection fixtures; live false/empty. Actual Git source/chart/image availability unverified."
+    },
+    {
+      "id": "E-S3",
+      "claim": "Optional observer preserves distinct revisions and rejects missing/progress/failed/unknown evidence",
+      "artifact_ids": [
+        "A-COMMIT",
+        "A-KNOWLEDGE",
+        "A-OBS"
+      ],
+      "locator": "observations.json",
+      "observation": "Final fixed-head Go normal/race/vet plus 10 fake-kubectl CLI scenarios and resource/hook/revision/state boundaries passed. Disabled queries only three leaves; enabled checks Order DB/API and rechecks earlier DB."
+    },
+    {
+      "id": "E-S4",
+      "claim": "Existing and new local CI/render/schema/security checks completed with follow-up and limits",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-OBS",
+        "A-REPRO",
+        "A-SOURCE-SCAN",
+        "A-RENDER-SCAN",
+        "A-RENDER-BOUNDARY"
+      ],
+      "locator": "report.txt",
+      "observation": "Pinned complete Helm validation, four non-skipped render tests, Kubeconform 16/37/4 valid with zero skipped/errors, source/render security gates, both Go modules. Initial environment failures recorded separately; no independent Test/Review or cluster claim."
+    },
+    {
+      "id": "E-REMOTE",
+      "claim": "Feature commit remotely reflected, Draft PR created, same-head CI successful",
+      "artifact_ids": [
+        "A-GITHUB",
+        "A-INPUTS"
+      ],
+      "locator": "github-observations.json",
+      "observation": "PR58 draft=true, exact head/base; push and PR CI completed success. No merge/auto-merge or policy bypass."
+    },
+    {
+      "id": "E-INPUT",
+      "claim": "Mandatory immutable input was freshly verified before implementation",
+      "artifact_ids": [
+        "A-UPSTREAM",
+        "A-UPSTREAM-INVENTORY",
+        "A-REPORT"
+      ],
+      "locator": "upstream-inventory.json",
+      "observation": "Unmodified System Delivery1.2 accepted all 26 public payload objects and complete byte/type/slot/candidate/tree/retry bindings. Private authorization and Consumption Receipt are excluded; public-original equivalence only."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "unverified",
+      "scope": "Outside P0 assignment; no API/persistence/Account CRUD measurement in this implementation.",
+      "artifact_ids": [
+        "A-REPORT"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "unverified",
+      "scope": "Outside P0 assignment; no API/persistence/Account CRUD measurement in this implementation.",
+      "artifact_ids": [
+        "A-REPORT"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "covered",
+      "scope": "Assigned P0 disabled GitOps/observer preparation implementation only, P0-S1 through S4. Product AC-3 real Service/Synced/Healthy/digest and T6/T7 remain unverified; stage coverage is not product AC met.",
+      "artifact_ids": [
+        "A-COMMIT",
+        "A-OBS",
+        "A-REPORT",
+        "A-RENDER",
+        "A-GITHUB"
+      ],
+      "evidence_ids": [
+        "E-S1",
+        "E-S2",
+        "E-S3",
+        "E-S4",
+        "E-REMOTE",
+        "E-INPUT"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [
+    {
+      "id": "K-disabled-registration",
+      "domain": "gitops-preparation",
+      "summary": "Disabled registration can be prepared with an empty live revision and conditional full-commit validation, while retaining byte-identical existing Applications.",
+      "evidence_ids": [
+        "E-S1",
+        "E-S2"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "approved_public"
+    },
+    {
+      "id": "K-leaf-revision-boundary",
+      "domain": "gitops-observation",
+      "summary": "Keep independently selected service revisions per leaf, require current migration evidence, and recheck earlier leaves while later leaves wait.",
+      "evidence_ids": [
+        "E-S3"
+      ],
+      "raw_locator": "knowledge-candidates.json",
+      "publication_safety": "approved_public"
+    }
+  ],
+  "publication": "public_safe"
+}

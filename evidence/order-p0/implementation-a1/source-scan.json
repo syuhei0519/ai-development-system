@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "trivyVersion": "0.75.0",
+  "dbUpdatedAt": "2026-10-11T13:06:05.155544028Z",
+  "scannedAt": "2026-10-11T17:28:25.483376545Z",
+  "findings": [
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "charts/grafana/charts/grafana/templates/deployment.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0047",
+      "path": "charts/observability-foundation/templates/rbac.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-01010",
+      "path": "charts/otel-collector/templates/configmap.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0125",
+      "path": "charts/otel-collector/templates/deployment.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0048",
+      "path": "charts/runner-foundation/templates/role.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0053",
+      "path": "charts/runner-foundation/templates/role.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0056",
+      "path": "charts/runner-foundation/templates/role.yaml",
+      "severity": "HIGH",
+      "decision": "warning"
+    },
+    {
+      "kind": "misconfiguration",
+      "rule": "KSV-0113",
+      "path": "charts/runner-foundation/templates/role.yaml",
+      "severity": "MEDIUM",
+      "decision": "warning"
+    }
+  ],
+  "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337"
+}
