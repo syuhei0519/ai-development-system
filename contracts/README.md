@@ -78,3 +78,7 @@ P-B の機械的な非同期収集 CLI と永続 inbox/state は [Knowledge Coll
 ## Delivery 1.2 cross references
 
 See [the versioned extension](cross-reference-delivery.md) for typed Git commit objects, canonical cross-repository blobs, immutable candidate profiles and complete tree snapshots. Transport integrity is separate from approval and semantic review.
+
+## 依存準備 PR の追加契約
+
+[Readiness 1.1](readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。

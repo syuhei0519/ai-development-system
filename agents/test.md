@@ -50,3 +50,7 @@ dispatch/execution/delivery は各最大3回、過去履歴と RETRY_LIMIT_REACH
 公開派生版の検査は非公開原本の直接検査ではない。Producer 証言と自分の観測を区別する。
 
 型/拡張子と内容の矛盾も、外側 hash と承認 pin を整合させて検査する。receipt 再検査は新規 Git 取得が対象で、旧出力の改変検査とは区別する。
+
+## 依存準備 PR の追加契約
+
+[Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。

@@ -36,3 +36,17 @@ python scripts/validate_readiness.py examples/readiness/invalid-premerge-deferre
 形式が PASS でも真実性・独立性・実際のマージ可否は証明しない。架空の主張が構造上 PASS になるテストでこの境界も固定する。
 
 追加回帰は全premerge met・未マージのunverified、集約待ち/範囲不明、統合証跡欠落・時刻・AC対応、artifact ID/locator/実体/digestの不一致を扱う。manager.handoff.jsonのReadiness参照はHandoff相対パスと実bytesのSHA-256で固定している。
+
+## Synthetic preparation 1.1
+
+`preparation-ready.json` / `preparation-context.json` / `preparation-artifact.txt` are synthetic fixtures. Both product ACs remain unverified at their original phases; only the scaffold condition is measured. No real Test/Review, deployment, merge authority or product achievement is asserted.
+
+```sh
+python scripts/validate_readiness.py examples/readiness/preparation-ready.json \
+  --context examples/readiness/preparation-context.json \
+  --context-sha256 7193b9a041c6f655feff5e3a03962887240225d4c929d2e26de2f84dd8305899 \
+  --at 2030-01-01T12:00:00Z
+python -m unittest discover -s tests -p test_readiness_preparation.py -v
+```
+
+This published fixture pin is for synthetic replay only. Live use requires a separately authorized Manager pin. See the [contract](../../contracts/readiness.md) for version compatibility and failure boundaries.

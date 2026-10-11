@@ -74,3 +74,7 @@ Publication Receipt、独立 pin の Consumer 利用承認、Consumption Receipt
 ## Aggregate Issue Completion Context
 
 複数 PR/repo は [集約契約](../contracts/issue-completion.md) に従い、独立 context pin、全必須 PR/repo/AC 原文/subchecks、承認 scope、merge head/result 対応、配備 source/config/image/environment/workload、現在観測と期限、最新 previous pin と全履歴を初回入力に渡す。PR Readiness pair と最終 Issue Handoff pair は別実体で配送する。未実測は unverified、既知 failure/rollback は not_achieved を保持する。CLI 成功から操作権限を推論しない。
+
+## 依存準備 PR の追加契約
+
+[Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。

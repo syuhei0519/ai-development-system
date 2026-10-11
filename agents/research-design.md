@@ -47,3 +47,7 @@ GitHub 反映、Consumer 利用承認と全 bytes 検査を分離する。receip
 Handoff v2.0 の status/attempt/担当範囲を配送都合で変更しない。Knowledge 専用契約の判断も変更しない。
 dispatch/execution/delivery は各最大3回、過去履歴と RETRY_LIMIT_REACHED は不変。
 上限後は新明示承認・理由・新予算・scope・旧履歴との関係が揃うまで再開しない。
+
+## 依存準備 PR の追加契約
+
+[Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。

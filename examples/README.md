@@ -18,3 +18,7 @@ Research→Test の例:
 [Readiness の正常・異常例](readiness/README.md) は PR ready と Issue unverified の両立、実装のみ可能・配備 blocked、postdeploy 全 AC 実測、および不正な前倒し achieved / premerge defer を示す独立 v1.0 契約。固定時刻で再生し、現在のマージ許可と区別する。
 
 配送の固定公開参照・synthetic 承認例・未承認拒否例は [delivery/](delivery/README.md) を参照。
+
+## 依存準備 PR の追加契約
+
+[Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。

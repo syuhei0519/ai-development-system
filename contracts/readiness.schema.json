@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.invalid/ai-development-system/readiness.schema.json",
-  "title": "readiness v1.0",
+  "title": "readiness v1.0 / v1.1",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -9,7 +9,10 @@
       "const": "readiness_assessment"
     },
     "schema_version": {
-      "const": "1.0"
+      "enum": [
+        "1.0",
+        "1.1"
+      ]
     },
     "assessor_role": {
       "const": "manager"
@@ -32,7 +35,6 @@
       "items": {
         "$ref": "#/$defs/text"
       },
-      "minItems": 1,
       "uniqueItems": true
     },
     "deployment_effect": {
@@ -83,7 +85,8 @@
               "ac_measurement",
               "deferral_basis",
               "deployment_impact",
-              "issue_integration"
+              "issue_integration",
+              "preparation_measurement"
             ]
           },
           "subject": {
@@ -115,6 +118,22 @@
               "$ref": "#/$defs/text"
             },
             "minItems": 0,
+            "uniqueItems": true
+          },
+          "condition_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/text"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "artifact_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/text"
+            },
+            "minItems": 1,
             "uniqueItems": true
           }
         },
@@ -398,6 +417,56 @@
     },
     "issue_integration": {
       "$ref": "#/$defs/proof"
+    },
+    "pr_kind": {
+      "enum": [
+        "standard",
+        "preparation"
+      ]
+    },
+    "preparation": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/preparation"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "preparation_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "condition_id": {
+            "$ref": "#/$defs/text"
+          },
+          "outcome": {
+            "enum": [
+              "met",
+              "not_met",
+              "unverified"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/text"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "condition_id",
+          "outcome",
+          "evidence_ids"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
     }
   },
   "required": [
@@ -541,6 +610,291 @@
         "evidence_ids",
         "reason"
       ]
+    },
+    "preparation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope_reason": {
+          "$ref": "#/$defs/text"
+        },
+        "related_ac_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/text"
+              },
+              "verbatim": {
+                "$ref": "#/$defs/text"
+              },
+              "method": {
+                "$ref": "#/$defs/text"
+              },
+              "expected_result": {
+                "$ref": "#/$defs/text"
+              }
+            },
+            "required": [
+              "id",
+              "verbatim",
+              "method",
+              "expected_result"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/text"
+              },
+              "locator": {
+                "$ref": "#/$defs/text"
+              },
+              "revision": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{40}$"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "size_bytes": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "required": [
+              "id",
+              "locator",
+              "revision",
+              "sha256",
+              "size_bytes"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "followup": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "ac_id": {
+                "$ref": "#/$defs/text"
+              },
+              "owner": {
+                "$ref": "#/$defs/text"
+              },
+              "environment": {
+                "$ref": "#/$defs/text"
+              },
+              "method": {
+                "$ref": "#/$defs/text"
+              },
+              "dependencies": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/text"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "failure_action": {
+                "$ref": "#/$defs/text"
+              }
+            },
+            "required": [
+              "ac_id",
+              "owner",
+              "environment",
+              "method",
+              "dependencies",
+              "failure_action"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "product_outcomes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "ac_id": {
+                "$ref": "#/$defs/text"
+              },
+              "outcome": {
+                "enum": [
+                  "met",
+                  "not_met",
+                  "unverified"
+                ]
+              }
+            },
+            "required": [
+              "ac_id",
+              "outcome"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "scope_reason",
+        "related_ac_ids",
+        "conditions",
+        "artifacts",
+        "followup",
+        "product_outcomes"
+      ]
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": "1.0"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "pr_ac_ids": {
+            "minItems": 1
+          }
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "pr_kind"
+              ]
+            },
+            {
+              "required": [
+                "preparation"
+              ]
+            }
+          ]
+        }
+      },
+      "else": {
+        "required": [
+          "pr_kind",
+          "preparation"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "pr_kind": {
+            "const": "preparation"
+          }
+        },
+        "required": [
+          "pr_kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "schema_version": {
+            "const": "1.1"
+          },
+          "preparation": {
+            "$ref": "#/$defs/preparation"
+          },
+          "pr_ac_ids": {
+            "maxItems": 0
+          },
+          "deployment_effect": {
+            "const": "none"
+          },
+          "issue_integration_scope": {
+            "const": "aggregate_required"
+          }
+        },
+        "required": [
+          "preparation_results"
+        ]
+      },
+      "else": {
+        "properties": {
+          "pr_ac_ids": {
+            "minItems": 1
+          },
+          "preparation": {
+            "type": "null"
+          }
+        },
+        "not": {
+          "required": [
+            "preparation_results"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": "1.0"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "evidence": {
+            "items": {
+              "not": {
+                "anyOf": [
+                  {
+                    "required": [
+                      "condition_ids"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "artifact_ids"
+                    ]
+                  },
+                  {
+                    "properties": {
+                      "kind": {
+                        "const": "preparation_measurement"
+                      }
+                    },
+                    "required": [
+                      "kind"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 }

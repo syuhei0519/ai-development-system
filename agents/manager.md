@@ -54,3 +54,7 @@ dispatch/execution/delivery は各最大3回、過去履歴と RETRY_LIMIT_REACH
 ## Phase 1-3 P-B collection
 
 [収集契約](../contracts/knowledge-collection.md) と [入力テンプレート](../templates/knowledge-collection.md) を使い、単一 writer・最新 state digest・独立認可 pin を管理する。毎回全件 scan/reconcile し、候補の選別は代行しない。外部起動前に dispatch intent を永続化し、開始不明は lease 期限だけで再送しない。output 取得後は配送を再開し、Git 結果不明は固定 bytes を再照合する。旧 retry 履歴と terminal を保持する。Knowledge 結果は開発 gate に接続しない。P-C/P-D の定期同期・実運用完了は別に検証する。
+
+## 依存準備 PR の追加契約
+
+[Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。
