@@ -1,0 +1,321 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "acceptance_criteria": [
+      {
+        "id": "PB-1",
+        "source": "assignment-requirements.json",
+        "verbatim": "KnowledgeEvent、source registry、KnowledgeCollectionStateの閉じた版付き契約を実装する。event identityは固定repo/commit/path/source SHA256/candidate ID/event kindから決まり、時刻・配送試行・実task IDに依存しない。同identity別payloadを拒否し、類似内容だけで根拠を失う重複排除をしない。"
+      },
+      {
+        "id": "PB-2",
+        "source": "assignment-requirements.json",
+        "verbatim": "許可済み固定Git snapshotのinboxを全件列挙し全source bytesと必要依存を検証するscan/reconcileを実装する。partial readや改変時にcursorを先行させず、registry変更・履歴欠落・force push・旧cursor非ancestorでは全照合する。過去event消失を成功扱いせず隔離し、raw historyを保持する。"
+      },
+      {
+        "id": "PB-3",
+        "source": "assignment-requirements.json",
+        "verbatim": "single Manager writer、previous-state digest CAS、atomic保存、durable staging、scan/event/cursorのtransactionを実装する。pending/verified/reserved/dispatching/started/output_received/validated/commit_pending/committed/context_available、blocked/quarantined/dispatch_unknown/terminalを区別し、不正遷移・stale writer・overlapを拒否する。"
+      },
+      {
+        "id": "PB-4",
+        "source": "assignment-requirements.json",
+        "verbatim": "既存retry契約と連携しdispatch/execution/delivery各3上限・過去履歴・RETRY_LIMIT_REACHEDを保持する。開始不明をlease期限だけで再起動せず、取得済みoutputはdeliveryから再開し、Git確定後state更新前crashは固定commit検証で追認する。再開承認をreceiptやreplayから作らず、無限再試行を拒否する。"
+      },
+      {
+        "id": "PB-5",
+        "source": "assignment-requirements.json",
+        "verbatim": "collector自体はLLM/API/専門Agentを起動せず、scan/plan/record/reconcile/replayの機械的CLIとsynthetic fixturesを提供する。Knowledge失敗で開発gateを止めない。private stateとpublic-safe観測を分離し、runtime ID/認可/秘密/内部ログをpublic出力しない。scheduleは登録・有効化しない。"
+      },
+      {
+        "id": "PB-6",
+        "source": "assignment-requirements.json",
+        "verbatim": "正常系、重複・衝突、scan中断、source変更、CAS競合、各crash点、poison event、no-op、retry上限、未承認再開、legacy互換の回帰を実装し全128既存テストを維持する。schema/CLI/docs/README/workflow/templatesを整合させ、独立Testが再現できる固定head・自己検証根拠・Handoff v2を提出する。P-C/P-Dや定期実運用完了を主張しない。"
+      }
+    ],
+    "id": "SYSTEM-PHASE13-PB",
+    "source": "assignment-requirements.json",
+    "title": "System Phase 1-3 P-B asynchronous collection and durable inbox/state"
+  },
+  "assignment": {
+    "scope": "system/phase1-3/P-B",
+    "ac_ids": [
+      "PB-1",
+      "PB-2",
+      "PB-3",
+      "PB-4",
+      "PB-5",
+      "PB-6"
+    ],
+    "completion_criteria": [
+      "Independently review assigned PB-1 through PB-6 against fixed original head and integrated head, preserving separate historical observations.",
+      "Verify authorized evidence bytes and closure; reproduce F1 through F4, regressions, CLI/schema, Git, crash and public/private boundaries.",
+      "Return Handoff v2, review observations, reproducers and safe evidence bundle. Previously authorized bounded System evidence branch publication only; no PR mutation, merge, product execution, extra Agents or schedule."
+    ]
+  },
+  "role": "review",
+  "task_id": "PUBLIC-PHASE13-PB-REVIEW-01",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "PUBLIC-PHASE13-PB-TEST-03",
+      "attempt": 3,
+      "handoff_locator": "prior-test/handoff.json",
+      "revision": "sha256:89092ecf7a2f5b3935b07ecd709e9cbd4a8b3a38e700f79ab6f8e302fb11c67f",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "blocked",
+  "summary": "Final-head Review attempt1 local verification passed with no blocking findings: combined280/base229, independent21+15+5+5, CLI8/schema26/liveGit. New final-head independent Test3 input remains pending; no final merge readiness issued. Historical reports preserved unchanged.",
+  "artifacts": [
+    {
+      "id": "final-review",
+      "kind": "review",
+      "locator": "final-review.json",
+      "revision": "sha256:159ddd5f3e27c15f788db946d5777f98f599d0e242a2200ae38f6e2346283040",
+      "summary": "Review attempt1 artifact: final-review.json"
+    },
+    {
+      "id": "initial-review",
+      "kind": "review",
+      "locator": "initial-review.json",
+      "revision": "sha256:9979f09996709baa4cae94dbeaf0b9992560150cd2ebab470a0e6165d01346ce",
+      "summary": "Review attempt1 artifact: initial-review.json"
+    },
+    {
+      "id": "integration-review",
+      "kind": "review",
+      "locator": "integration-review.json",
+      "revision": "sha256:d5b28e8f3ac97b4191ffb35e07e3bfa3f8bbc2d112a464ae51cb41647cd07538",
+      "summary": "Review attempt1 artifact: integration-review.json"
+    },
+    {
+      "id": "ci",
+      "kind": "test-report",
+      "locator": "ci-observation.json",
+      "revision": "sha256:51f8fd910066bb41d7c4d2bb4f54caf9c832c3711d27790c0f014d5f2f8c7be2",
+      "summary": "Review attempt1 artifact: ci-observation.json"
+    },
+    {
+      "id": "diff",
+      "kind": "review",
+      "locator": "diff-check.json",
+      "revision": "sha256:15e5ad484f75fa3b8151271e03cf7410b306d41297d08460aeb6e882892adf3f",
+      "summary": "Review attempt1 artifact: diff-check.json"
+    },
+    {
+      "id": "cli",
+      "kind": "test-report",
+      "locator": "cli-schema.json",
+      "revision": "sha256:47a77b8b0402d691ece4e3d8f0327f165ac050078cafbeeb9cc8f51c3801e8e0",
+      "summary": "Review attempt1 artifact: cli-schema.json"
+    },
+    {
+      "id": "reproduce",
+      "kind": "document",
+      "locator": "reproduce.txt",
+      "revision": "sha256:2702993eee76d96a9c384a644d9985baf8a385462d3f2a945a4cc70b4e98afdf",
+      "summary": "Review attempt1 artifact: reproduce.txt"
+    },
+    {
+      "id": "live",
+      "kind": "other",
+      "locator": "live_final_fixture.py",
+      "revision": "sha256:7006dde82c9c8ecbc95920cf3d95550a40e0ec26fb0248f4bca276cde9b9a9e0",
+      "summary": "Review attempt1 artifact: live_final_fixture.py"
+    },
+    {
+      "id": "review-boundaries",
+      "kind": "other",
+      "locator": "review_boundaries.py",
+      "revision": "sha256:508ff3bba48c26e2bcabf5b7924c0e5023f12b1ff9a6751df3f8b7a32c36222c",
+      "summary": "Review attempt1 artifact: review_boundaries.py"
+    },
+    {
+      "id": "requirements",
+      "kind": "document",
+      "locator": "assignment-requirements.json",
+      "revision": "sha256:2f0042269a744ff6a01aa8fadfda41073670013a99b98408cdcb2944c67e4dd8",
+      "summary": "Review attempt1 artifact: assignment-requirements.json"
+    },
+    {
+      "id": "safety",
+      "kind": "document",
+      "locator": "safety-and-closure.json",
+      "revision": "sha256:cc8d095c8660d428e1f62f978e0327bceb081c58a2017def77aa97238676abee",
+      "summary": "Review attempt1 artifact: safety-and-closure.json"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "EV-1",
+      "claim": "Closed versioned contracts; canonical identity includes exact repo/commit/path/source hash/candidate/kind, excludes time/runtime/attempt. Raw payload collision is quarantined and both raw objects retained; equal text with distinct evidence identity survives.",
+      "artifact_ids": [
+        "final-review",
+        "initial-review",
+        "integration-review",
+        "reproduce"
+      ],
+      "locator": "final-review.json",
+      "observation": "Local final-head Review completed; current Test3 missing and final readiness not issued. Original reports retain their own fixed subjects."
+    },
+    {
+      "id": "EV-2",
+      "claim": "Verified Git commit type and every ancestor; complete recursive inventory and all declared dependency bytes. Full reconciliation is unconditional, so ancestry/history/force push cannot skip reads. Each historic (event,source_id) pair must remain; removed sources do not disappear from history. Partial read aborts before transaction; poison retains raw bytes and does not suppress other valid candidates.",
+      "artifact_ids": [
+        "final-review",
+        "initial-review",
+        "integration-review",
+        "reproduce"
+      ],
+      "locator": "final-review.json",
+      "observation": "Local final-head Review completed; current Test3 missing and final readiness not issued. Original reports retain their own fixed subjects."
+    },
+    {
+      "id": "EV-3",
+      "claim": "flock, writer/scope and raw previous-state digest CAS; complete objects/stage/snapshot precede atomic state replace and directory fsync. No overwrite of final immutable names. Forked process crash probes verify restart at raw write, hard link and transaction points. Pending and all required states are represented in history/state; record guards reject invalid state actions.",
+      "artifact_ids": [
+        "final-review",
+        "initial-review",
+        "integration-review",
+        "reproduce"
+      ],
+      "locator": "final-review.json",
+      "observation": "Local final-head Review completed; current Test3 missing and final readiness not issued. Original reports retain their own fixed subjects."
+    },
+    {
+      "id": "EV-4",
+      "claim": "Each dispatch/execution/delivery budget remains at most three. Pending reservation prohibits duplicate launch; lease expiry does not authorize restart. Output is durable and resumes delivery. Fixed committed snapshot must contain all validated path/size/hash bytes. Renewal requires separate pinned grant; original terminal epochs remain. Legacy terminal imports retain prior history.",
+      "artifact_ids": [
+        "final-review",
+        "initial-review",
+        "integration-review",
+        "reproduce"
+      ],
+      "locator": "final-review.json",
+      "observation": "Local final-head Review completed; current Test3 missing and final readiness not issued. Original reports retain their own fixed subjects."
+    },
+    {
+      "id": "EV-5",
+      "claim": "Mechanical CLI uses read-only Git, never Agent/LLM/scheduler/product execution. Public output has only closed status counts and false authority/gate flags; private state/objects/authorization remain local. plan/replay leave store unchanged. Knowledge completion is not a development prerequisite; workflow runs synthetic regression tests only.",
+      "artifact_ids": [
+        "final-review",
+        "initial-review",
+        "integration-review",
+        "reproduce"
+      ],
+      "locator": "final-review.json",
+      "observation": "Local final-head Review completed; current Test3 missing and final readiness not issued. Original reports retain their own fixed subjects."
+    },
+    {
+      "id": "EV-6",
+      "claim": "Repository regression, original independent reproducers, additional probes, CLI/schema/live Git and unchanged legacy files pass. Supplied Test3/Implementation3 Handoffs have full verified dependency/retry closure. Current documentation separates implemented P-B from unimplemented P-C/P-D and deferred periodic operation.",
+      "artifact_ids": [
+        "final-review",
+        "initial-review",
+        "integration-review",
+        "reproduce"
+      ],
+      "locator": "final-review.json",
+      "observation": "Local final-head Review completed; current Test3 missing and final readiness not issued. Original reports retain their own fixed subjects."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "PB-1",
+      "disposition": "covered",
+      "scope": "Independent Review scope only: Closed versioned contracts; canonical identity includes exact repo/commit/path/source hash/candidate/kind, excludes time/runtime/attempt. Raw payload collision is quarantined and both raw objects retained; equal text with distinct evidence identity survives.",
+      "artifact_ids": [
+        "final-review",
+        "initial-review",
+        "integration-review",
+        "reproduce"
+      ],
+      "evidence_ids": [
+        "EV-1"
+      ]
+    },
+    {
+      "ac_id": "PB-2",
+      "disposition": "covered",
+      "scope": "Independent Review scope only: Verified Git commit type and every ancestor; complete recursive inventory and all declared dependency bytes. Full reconciliation is unconditional, so ancestry/history/force push cannot skip reads. Each historic (event,source_id) pair must remain; removed sources do not disappear from history. Partial read aborts before transaction; poison retains raw bytes and does not suppress other valid candidates.",
+      "artifact_ids": [
+        "final-review",
+        "initial-review",
+        "integration-review",
+        "reproduce"
+      ],
+      "evidence_ids": [
+        "EV-2"
+      ]
+    },
+    {
+      "ac_id": "PB-3",
+      "disposition": "covered",
+      "scope": "Independent Review scope only: flock, writer/scope and raw previous-state digest CAS; complete objects/stage/snapshot precede atomic state replace and directory fsync. No overwrite of final immutable names. Forked process crash probes verify restart at raw write, hard link and transaction points. Pending and all required states are represented in history/state; record guards reject invalid state actions.",
+      "artifact_ids": [
+        "final-review",
+        "initial-review",
+        "integration-review",
+        "reproduce"
+      ],
+      "evidence_ids": [
+        "EV-3"
+      ]
+    },
+    {
+      "ac_id": "PB-4",
+      "disposition": "covered",
+      "scope": "Independent Review scope only: Each dispatch/execution/delivery budget remains at most three. Pending reservation prohibits duplicate launch; lease expiry does not authorize restart. Output is durable and resumes delivery. Fixed committed snapshot must contain all validated path/size/hash bytes. Renewal requires separate pinned grant; original terminal epochs remain. Legacy terminal imports retain prior history.",
+      "artifact_ids": [
+        "final-review",
+        "initial-review",
+        "integration-review",
+        "reproduce"
+      ],
+      "evidence_ids": [
+        "EV-4"
+      ]
+    },
+    {
+      "ac_id": "PB-5",
+      "disposition": "covered",
+      "scope": "Independent Review scope only: Mechanical CLI uses read-only Git, never Agent/LLM/scheduler/product execution. Public output has only closed status counts and false authority/gate flags; private state/objects/authorization remain local. plan/replay leave store unchanged. Knowledge completion is not a development prerequisite; workflow runs synthetic regression tests only.",
+      "artifact_ids": [
+        "final-review",
+        "initial-review",
+        "integration-review",
+        "reproduce"
+      ],
+      "evidence_ids": [
+        "EV-5"
+      ]
+    },
+    {
+      "ac_id": "PB-6",
+      "disposition": "covered",
+      "scope": "Independent Review scope only: Repository regression, original independent reproducers, additional probes, CLI/schema/live Git and unchanged legacy files pass. Supplied Test3/Implementation3 Handoffs have full verified dependency/retry closure. Current documentation separates implemented P-B from unimplemented P-C/P-D and deferred periodic operation.",
+      "artifact_ids": [
+        "final-review",
+        "initial-review",
+        "integration-review",
+        "reproduce"
+      ],
+      "evidence_ids": [
+        "EV-6"
+      ]
+    }
+  ],
+  "block_reasons": [
+    {
+      "code": "MISSING_INPUT",
+      "detail": "Independent Test3 supplement for final head5e1980eff37107bca7089aca7c457180d00ff020 has not been delivered. Old Test3 is not relabelled.",
+      "required_action": "Manager supplies immutable new Test3 records and separate consumption authorization; verify before adopting current Test gate and completing final readiness review."
+    }
+  ],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

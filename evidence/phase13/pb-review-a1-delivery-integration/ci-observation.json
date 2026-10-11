@@ -1,0 +1,33 @@
+{
+  "head": "5e1980eff37107bca7089aca7c457180d00ff020",
+  "runs": [
+    {
+      "run_id": 38117166964,
+      "job_id": 114404256911,
+      "suite_id": 103273760375,
+      "event": "push",
+      "head": "5e1980eff37107bca7089aca7c457180d00ff020",
+      "conclusion": "success",
+      "checkout": "5e1980eff37107bca7089aca7c457180d00ff020",
+      "tests": 280,
+      "checkout_evidence": "Direct successful job log observation, not inferred from run head_sha.",
+      "workflow": ".github/workflows/validate.yml",
+      "semantics": "actions/checkout@v4 with default ref; push checks head, PR checks synthetic merge; no schedule; full unittest discovery and eight CLI steps."
+    },
+    {
+      "run_id": 38117170216,
+      "job_id": 114404264752,
+      "suite_id": 103273767637,
+      "event": "pull_request",
+      "head": "5e1980eff37107bca7089aca7c457180d00ff020",
+      "conclusion": "success",
+      "checkout": "f6795e4b69087349a8aac40437e48a38ef20bdd1",
+      "tests": 280,
+      "checkout_evidence": "Direct successful job log observation, not inferred from run head_sha.",
+      "workflow": ".github/workflows/validate.yml",
+      "semantics": "actions/checkout@v4 with default ref; push checks head, PR checks synthetic merge; no schedule; full unittest discovery and eight CLI steps."
+    }
+  ],
+  "check_run_and_suite_heads_verified": true,
+  "raw_logs": "Retained privately; no Forbidden response was bypassed."
+}

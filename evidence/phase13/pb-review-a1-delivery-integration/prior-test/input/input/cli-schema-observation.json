@@ -1,0 +1,211 @@
+{
+  "commands": [
+    {
+      "command": [
+        "python",
+        "scripts/validate_delivery_records.py"
+      ],
+      "exit": 0,
+      "stdout": "PASS: delivery schemas and sample bindings only; no live approval certified\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_handoff.py",
+        "examples/research-to-test/research.handoff.json",
+        "examples/research-to-test/test.blocked.handoff.json",
+        "examples/research-to-test/test.handoff.json",
+        "examples/failed.handoff.json",
+        "examples/partial-assignment.handoff.json"
+      ],
+      "exit": 0,
+      "stdout": "PASS examples/research-to-test/research.handoff.json (shape + local references only; not business approval)\nPASS examples/research-to-test/test.blocked.handoff.json (shape + local references only; not business approval)\nPASS examples/research-to-test/test.handoff.json (shape + local references only; not business approval)\nPASS examples/failed.handoff.json (shape + local references only; not business approval)\nPASS examples/partial-assignment.handoff.json (shape + local references only; not business approval)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_knowledge.py",
+        "examples/knowledge/input.json",
+        "examples/knowledge/handoff.json",
+        "examples/knowledge/context.json",
+        "examples/knowledge-delivery/input.json",
+        "examples/knowledge-delivery/handoff.json",
+        "examples/knowledge-delivery/context.json",
+        "examples/knowledge-collector/input.json",
+        "examples/knowledge-collector/handoff.json",
+        "examples/knowledge-collector/context.json"
+      ],
+      "exit": 0,
+      "stdout": "PASS examples/knowledge/input.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge/handoff.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge/context.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge-delivery/input.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge-delivery/handoff.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge-delivery/context.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge-collector/input.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge-collector/handoff.json (shape + local references only; not knowledge approval)\nPASS examples/knowledge-collector/context.json (shape + local references only; not knowledge approval)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_readiness.py",
+        "examples/readiness/pr-ready-issue-unverified.json",
+        "--context",
+        "examples/readiness/context.json",
+        "--handoff",
+        "examples/readiness/manager.handoff.json",
+        "--at",
+        "2030-01-01T12:00:00Z"
+      ],
+      "exit": 0,
+      "stdout": "PASS examples/readiness/pr-ready-issue-unverified.json (record consistency only; not evidence truth or live GitHub permission)\nREPLAY: explicit historical time; not current readiness\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_readiness.py",
+        "examples/readiness/implementation-only.json",
+        "--context",
+        "examples/readiness/automatic-context.json",
+        "--at",
+        "2030-01-01T12:00:00Z"
+      ],
+      "exit": 0,
+      "stdout": "PASS examples/readiness/implementation-only.json (record consistency only; not evidence truth or live GitHub permission)\nREPLAY: explicit historical time; not current readiness\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_readiness.py",
+        "examples/readiness/postdeploy-achieved.json",
+        "--context",
+        "examples/readiness/context.json",
+        "--at",
+        "2030-01-01T12:00:00Z"
+      ],
+      "exit": 0,
+      "stdout": "PASS examples/readiness/postdeploy-achieved.json (record consistency only; not evidence truth or live GitHub permission)\nREPLAY: explicit historical time; not current readiness\n",
+      "stderr": ""
+    }
+  ],
+  "schemas": [
+    {
+      "path": "contracts/artifact-delivery-v1.1.schema.json",
+      "sha256": "4338f69dbdac36af4c7a861b3f7201720de6e3025a580528030e5182eb0d6056",
+      "same_as_before": true,
+      "same_as_base": true
+    },
+    {
+      "path": "contracts/artifact-delivery.schema.json",
+      "sha256": "480ba09256cb5b947d8b2df380a12a7ab9ff5fd3c777653e056eacb2541b655c",
+      "same_as_before": true,
+      "same_as_base": true
+    },
+    {
+      "path": "contracts/consumption-receipt-v1.1.schema.json",
+      "sha256": "0c8c4294162584b4fe1bc6576304507c8b79f70fe4fa02aa19a6393bbcb04364",
+      "same_as_before": true,
+      "same_as_base": true
+    },
+    {
+      "path": "contracts/consumption-receipt.schema.json",
+      "sha256": "f4d005cb0c806fb02989662b3df9e97902850f0304eec5e49308b1927da7a661",
+      "same_as_before": true,
+      "same_as_base": true
+    },
+    {
+      "path": "contracts/delivery-authorization-v1.1.schema.json",
+      "sha256": "4e13e3d04b954c04261dff1a215865dd6b41eb1a6dcdfc07ae3a589d0d5d447c",
+      "same_as_before": true,
+      "same_as_base": true
+    },
+    {
+      "path": "contracts/delivery-authorization.schema.json",
+      "sha256": "2a0955ed47b7f75e7a80b93f945dce1b2a6f8b07eb43806ae5c42176494c43b3",
+      "same_as_before": true,
+      "same_as_base": true
+    },
+    {
+      "path": "contracts/handoff.schema.json",
+      "sha256": "3df669f230c3f1d65ddaaa9e7de5f713f70b9e8440512403f6ea309eb70b3ae1",
+      "same_as_before": true,
+      "same_as_base": true
+    },
+    {
+      "path": "contracts/knowledge-collection-authorization.schema.json",
+      "sha256": "3b9f8a1919b60be75d9887b7f075ebfec38da07d3e5f79981998d0182ea48065",
+      "same_as_before": true,
+      "same_as_base": null
+    },
+    {
+      "path": "contracts/knowledge-collection-record.schema.json",
+      "sha256": "8442a00d8b26ae1cb8af77a4ce602c6fd185bbc1dde06f8f53835a7d70626ee8",
+      "same_as_before": true,
+      "same_as_base": null
+    },
+    {
+      "path": "contracts/knowledge-collection-state.schema.json",
+      "sha256": "c30e6664b93aebc7245d7aa986a63e9d0d593c722176328f3d908378863198cc",
+      "same_as_before": true,
+      "same_as_base": null
+    },
+    {
+      "path": "contracts/knowledge-context.schema.json",
+      "sha256": "458b15686bc2be28cc4a6b6b6b4e370b3334cf5ad91300c7d84e8c6f1e4a052a",
+      "same_as_before": true,
+      "same_as_base": true
+    },
+    {
+      "path": "contracts/knowledge-event.schema.json",
+      "sha256": "a1c985ee57f8a9702df27ee83cfad08d6adaddda34afe8c54546224f2898dd86",
+      "same_as_before": true,
+      "same_as_base": null
+    },
+    {
+      "path": "contracts/knowledge-handoff.schema.json",
+      "sha256": "e36d8a4fd6bc4f2fa4f8d6d234f9dd04dd01ad71f69364c369b664996188c420",
+      "same_as_before": true,
+      "same_as_base": true
+    },
+    {
+      "path": "contracts/knowledge-input.schema.json",
+      "sha256": "9af62e3b2a63b82445cf7114487b8b07eaf96ec22c63a373183aad4c96c181ae",
+      "same_as_before": true,
+      "same_as_base": true
+    },
+    {
+      "path": "contracts/knowledge-source-registry.schema.json",
+      "sha256": "ee376f8f758df2222947261b29a2cab9a7944df5c044dbc4816aa611df9fc0bc",
+      "same_as_before": true,
+      "same_as_base": null
+    },
+    {
+      "path": "contracts/publication-receipt-v1.1.schema.json",
+      "sha256": "78b0acf4e25f65357d7074ce1a51b1bc2fcbfbf6d061f472fe21884e5bb84441",
+      "same_as_before": true,
+      "same_as_base": true
+    },
+    {
+      "path": "contracts/publication-receipt.schema.json",
+      "sha256": "ca67a9513341975bafa6ff80e4c4010aedac3180835787de9d602b05fd41bd62",
+      "same_as_before": true,
+      "same_as_base": true
+    },
+    {
+      "path": "contracts/readiness-context.schema.json",
+      "sha256": "e10a8069441a17b447819b0bec9cb145b7a7f91f8d758a6f3dbdcc44361a2f4d",
+      "same_as_before": true,
+      "same_as_base": true
+    },
+    {
+      "path": "contracts/readiness.schema.json",
+      "sha256": "bfb1589b2cc0fce39b9b098dc72265796aa79053dd6c3f3131d28aa43d341693",
+      "same_as_before": true,
+      "same_as_base": true
+    }
+  ],
+  "legacy_test_files_unchanged": true,
+  "environment": {
+    "python": "3.12.14",
+    "jsonschema": "4.26.0",
+    "os": "Linux"
+  }
+}

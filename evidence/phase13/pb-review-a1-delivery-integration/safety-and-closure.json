@@ -1,0 +1,14 @@
+{
+  "status": "public_alias_candidate",
+  "inspection": "Every candidate file read as UTF-8; credential, runtime UUID, signed-URL and private-pin scans plus authored-content inspection. All inherited prior-test and historical report bytes unchanged.",
+  "excluded": [
+    "Private originals and their hashes",
+    "Authorization documents and private pins",
+    "New Consumption Receipts",
+    "Raw CI/API/internal logs",
+    "Runtime identifiers and private collector state"
+  ],
+  "closure": "Full inventory size/hash/type plus unchanged canonical Consumer Handoff/upstream/retry verification. Prior Test3 is historical only. Producer supplement verified privately; its external fixed records are provenance, not silently copied or rewritten.",
+  "authority": "Previously authorized bounded evidence branch publication only. No PR mutation, merge, product execution or schedule.",
+  "limits": "Pattern checks cannot prove absence of unknown secrets; no private upstream original attestation."
+}

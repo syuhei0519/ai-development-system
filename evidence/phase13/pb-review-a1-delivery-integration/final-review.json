@@ -1,0 +1,104 @@
+{
+  "document_type": "independent_review_integration_supplement",
+  "role": "review",
+  "attempt": 1,
+  "scope": "system/phase1-3/P-B",
+  "head": "5e1980eff37107bca7089aca7c457180d00ff020",
+  "tree": "a2d446ed7f9cb6d5cd5a9838776a556cb51e469a",
+  "base": "2e3acadabe67cbc336e032077dcc14cbeffde2a5",
+  "base_tree": "8c57b1a49781424d3b1be5af52b3d7d02727ae77",
+  "observed_at": "2026-10-11T06:21:02.624458+00:00",
+  "review_result": "No blocking code/contract finding. Current-head independent Test evidence missing; this is a partial handoff, not final merge readiness.",
+  "historical_targets": [
+    "b79f98d3cb3bd58059a12b543df1d187b284fe35",
+    "d3f8f582caef99a0e004c29ad3a430efe7df98bc"
+  ],
+  "preservation": "Initial and first-integration reports copied unchanged; never relabelled as final-head evidence.",
+  "findings": [],
+  "ac_review": [
+    {
+      "ac_id": "PB-1",
+      "disposition": "covered",
+      "locations": "scripts/knowledge_collector.py:51-71; knowledge-event/source-registry/state schemas",
+      "observation": "Closed versioned contracts; canonical identity includes exact repo/commit/path/source hash/candidate/kind, excludes time/runtime/attempt. Raw payload collision is quarantined and both raw objects retained; equal text with distinct evidence identity survives.",
+      "final_integration_observation": "Collector bytes unchanged; independently reran final-head tests and inherited Delivery Consumer integration. See current verification and pending Test3 input. Historical observations retain their original targets."
+    },
+    {
+      "ac_id": "PB-2",
+      "disposition": "covered",
+      "locations": "scripts/knowledge_collector.py:87-250",
+      "observation": "Verified Git commit type and every ancestor; complete recursive inventory and all declared dependency bytes. Full reconciliation is unconditional, so ancestry/history/force push cannot skip reads. Each historic (event,source_id) pair must remain; removed sources do not disappear from history. Partial read aborts before transaction; poison retains raw bytes and does not suppress other valid candidates.",
+      "final_integration_observation": "Collector bytes unchanged; independently reran final-head tests and inherited Delivery Consumer integration. See current verification and pending Test3 input. Historical observations retain their original targets."
+    },
+    {
+      "ac_id": "PB-3",
+      "disposition": "covered",
+      "locations": "scripts/knowledge_collector.py:523-628",
+      "observation": "flock, writer/scope and raw previous-state digest CAS; complete objects/stage/snapshot precede atomic state replace and directory fsync. No overwrite of final immutable names. Forked process crash probes verify restart at raw write, hard link and transaction points. Pending and all required states are represented in history/state; record guards reject invalid state actions.",
+      "final_integration_observation": "Collector bytes unchanged; independently reran final-head tests and inherited Delivery Consumer integration. See current verification and pending Test3 input. Historical observations retain their original targets."
+    },
+    {
+      "ac_id": "PB-4",
+      "disposition": "covered",
+      "locations": "scripts/knowledge_collector.py:251-492; scripts/validate_retry.py",
+      "observation": "Each dispatch/execution/delivery budget remains at most three. Pending reservation prohibits duplicate launch; lease expiry does not authorize restart. Output is durable and resumes delivery. Fixed committed snapshot must contain all validated path/size/hash bytes. Renewal requires separate pinned grant; original terminal epochs remain. Legacy terminal imports retain prior history.",
+      "final_integration_observation": "Collector bytes unchanged; independently reran final-head tests and inherited Delivery Consumer integration. See current verification and pending Test3 input. Historical observations retain their original targets."
+    },
+    {
+      "ac_id": "PB-5",
+      "disposition": "covered",
+      "locations": "scripts/knowledge_collector.py:495-682; workflows/single-issue.md; .github/workflows/validate.yml",
+      "observation": "Mechanical CLI uses read-only Git, never Agent/LLM/scheduler/product execution. Public output has only closed status counts and false authority/gate flags; private state/objects/authorization remain local. plan/replay leave store unchanged. Knowledge completion is not a development prerequisite; workflow runs synthetic regression tests only.",
+      "final_integration_observation": "Collector bytes unchanged; independently reran final-head tests and inherited Delivery Consumer integration. See current verification and pending Test3 input. Historical observations retain their original targets."
+    },
+    {
+      "ac_id": "PB-6",
+      "disposition": "covered",
+      "locations": "tests/test_knowledge_collector.py; contracts/README.md; upstream input/handoff.json",
+      "observation": "Repository regression, original independent reproducers, additional probes, CLI/schema/live Git and unchanged legacy files pass. Supplied Test3/Implementation3 Handoffs have full verified dependency/retry closure. Current documentation separates implemented P-B from unimplemented P-C/P-D and deferred periodic operation.",
+      "final_integration_observation": "Collector bytes unchanged; independently reran final-head tests and inherited Delivery Consumer integration. See current verification and pending Test3 input. Historical observations retain their original targets."
+    }
+  ],
+  "verification": {
+    "combined": 280,
+    "canonical_base": 229,
+    "independent": 21,
+    "extra": 15,
+    "test_attempt3_probes": 5,
+    "review_boundaries": 5,
+    "cli": 8,
+    "schemas": 26,
+    "local_document_links": 99,
+    "live_git": "Final fixed head: scan/reconcile, read-only plan/replay, synthetic reserve; no dispatch",
+    "all_passed": true
+  },
+  "integration_review": [
+    "Compared every changed path: nineteen main-only paths equal canonical main and twenty-seven feature-only paths equal prior PB head. Three overlaps are README.md, contracts/README.md and contracts/artifact-delivery.md; each preserves PB text and appends Delivery1.2 documentation.",
+    "Reviewed changed Consumer methods inherited by SnapshotSource and positional verify_handoffs v1.1 calls: repository cache key unchanged; normal blobs now enforce actual length and Git OID; collector remains exact v1.1 and ignores the new empty-map return. New slot/candidate/tree gates apply only explicit v1.2.",
+    "No collector runtime, collector contract, fixture or collector test bytes changed in this merge. Reviewed v1.2 candidate/tree traversal, slot owner/target pins, no URL following, authority separation and bounded reads; all new combined cases passed. This does not substitute independent PR7 review.",
+    "F1 source-specific missing-history quarantine, F2 durable no-overwrite publication and crash retry, F3 symlink/gitlink ancestors, and F4 docs scope were rechecked with the same original reproducers and unchanged implementation bytes. Existing corrupt final object intentionally remains fail-closed."
+  ],
+  "producer_input": {
+    "records_commit": "2c4b6f027ef8bdb57dbefc4bdb72762f9e2447a9",
+    "prefix": "evidence/phase13/pb-a3-delivery-integration/",
+    "payload_commit": "e010b7c8e7d8cf1cc7ce59ff5f757d6ecf5bc708",
+    "manifest_sha256": "1d3f23b112980eee7fe54675c0cff776bb007eba8aaed06fea1afec268acd3ba",
+    "publication_receipt_sha256": "dc7c7d15c7156d80b2d0643710e62c3f03745047e42842d450da026ff1081177",
+    "files": 58,
+    "bytes": 546826,
+    "report_sha256": "9d52686a11d58df4908e27e4722c588e5e4798aa68ad113973f2cfe8211e3b5b",
+    "verification": "Unchanged canonical base Consumer CLI freshly verified complete fixed Git bytes, sizes, hashes, types, schemas, dependency and retry closure before report use; authorization and new receipt private."
+  },
+  "pending": [
+    "Manager supplies new final-head independent Test3 immutable records and separate use authorization. Verify before adopting Test gate.",
+    "Final Manager readiness/adoption and current GitHub policy gates remain separate. No fresh readiness is issued by this partial handoff."
+  ],
+  "residual_risks": [
+    "Existing corrupt immutable object is not overwritten; Manager must investigate and explicitly repair before retry.",
+    "POSIX local filesystem fsync/rename/flock contract; synthetic process crash tests do not prove actual power-loss behavior or NFS semantics.",
+    "Trusted repository authorization and environment bounds still govern Git pack/network/disk volume and growing raw history.",
+    "Published derivative evidence does not prove private upstream originals; no private original comparison claimed.",
+    "P-C/P-D and periodic real operation remain deferred outside PB; no new development gate.",
+    "AI Review does not replace GitHub required reviews or Manager final product acceptance."
+  ]
+}
