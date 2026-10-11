@@ -24,6 +24,7 @@ except ImportError:
 ROOT = Path(__file__).resolve().parents[1]
 MAX_FILE = 16 * 1024 * 1024
 MAX_BUNDLE = 64 * 1024 * 1024
+ARTIFACT_LIMITS = {'1.0': 128, '1.1': 128, '1.2': 128, '1.3': 256}
 DELIVERY_SCHEMAS = {'artifact-delivery', 'delivery-authorization',
                     'publication-receipt', 'consumption-receipt'}
 KNOWLEDGE_FORMATS = {f'knowledge-{kind}-v1': f'knowledge_{kind}'
@@ -53,7 +54,7 @@ def parse(raw):
 
 def schema(name, data):
     if name in DELIVERY_SCHEMAS:
-        require(isinstance(data, dict) and data.get('schema_version') in ('1.0', '1.1', '1.2'),
+        require(isinstance(data, dict) and data.get('schema_version') in ('1.0', '1.1', '1.2', '1.3'),
                 'unsupported delivery version')
         if data['schema_version'] != '1.0':
             name += '-v' + data['schema_version']
@@ -229,11 +230,11 @@ class SlotResolver:
 
 def verify_handoffs(artifacts, blobs, version='1.0', knowledge_bindings=None, slot_bindings=None,
                     candidate_bindings=None, source=None):
-    require(version in ('1.0', '1.1', '1.2'), 'unsupported delivery version')
+    require(version in ('1.0', '1.1', '1.2', '1.3'), 'unsupported delivery version')
     formats = {'text', 'json', 'handoff-v2'}
     if version != '1.0':
         formats.update(KNOWLEDGE_FORMATS)
-    if version == '1.2':
+    if version in ('1.2', '1.3'):
         formats.update(('git-commit-object', 'knowledge-candidates-v1'))
     require(all(a['format'] in formats for a in artifacts), 'unsupported delivery format')
     by_ref = {reference_key(a['reference']): a
@@ -285,7 +286,7 @@ def verify_handoffs(artifacts, blobs, version='1.0', knowledge_bindings=None, sl
             # Reserved Handoff identity/coverage fields still identify incomplete
             # documents: deleting one required field must not downgrade the type.
             data = parsed[key]
-            if version == '1.2':
+            if version in ('1.2', '1.3'):
                 require(not (set(data) & {'candidates', 'publication_status'}),
                         'Candidates must use explicit candidate profile')
             if version != '1.0':
@@ -298,7 +299,7 @@ def verify_handoffs(artifacts, blobs, version='1.0', knowledge_bindings=None, sl
                          ('schema_version' in data and
                           set(data) & {'issue', 'assignment', 'upstream'})),
                     'Handoff must be typed handoff-v2')
-    resolver = SlotResolver(by_ref, blobs, slot_bindings) if version == '1.2' else None
+    resolver = SlotResolver(by_ref, blobs, slot_bindings) if version in ('1.2', '1.3') else None
     identities = set()
     for key, item in by_ref.items():
         if item['format'] != 'handoff-v2':
@@ -435,6 +436,7 @@ def consume(manifest_raw, policy_raw, publication_raw, policy_sha256,
     require(publication['manifest_sha256'] == digest(manifest_raw) and
             publication['artifacts'] == manifest['artifacts'], 'publication receipt mismatch')
     artifacts = manifest['artifacts']
+    require(len(artifacts) <= ARTIFACT_LIMITS[version], 'artifact count limit')
     keys = [reference_key(a['reference']) for a in artifacts]
     require(len(keys) == len(set(keys)), 'duplicate artifact path')
     require(sum(a['reference']['size'] for a in artifacts) <= MAX_BUNDLE, 'bundle too large')
@@ -447,7 +449,7 @@ def consume(manifest_raw, policy_raw, publication_raw, policy_sha256,
         raw = source.read(ref)
         require(len(raw) == ref['size'] and digest(raw) == ref['sha256'], 'raw size/hash mismatch')
         blobs[key] = raw
-    if version == '1.2' and any(s['target']['kind'] == 'tree'
+    if version in ('1.2', '1.3') and any(s['target']['kind'] == 'tree'
             for b in manifest.get('candidate_bindings', []) for s in b['sources']):
         require('original' in policy['allowed_representations'], 'tree originals not approved')
     tree_blobs = verify_handoffs(artifacts, blobs, version, manifest.get('knowledge_bindings'),
@@ -461,7 +463,7 @@ def consume(manifest_raw, policy_raw, publication_raw, policy_sha256,
                                if version == '1.1' else
                                'full-raw-bytes-size-sha256-json-handoff-bindings'),
                'authority_granted':False}
-    if version == '1.2':
+    if version in ('1.2', '1.3'):
         receipt['slot_bindings'] = manifest['slot_bindings']
         receipt['candidate_bindings'] = manifest.get('candidate_bindings', [])
         receipt['verification'] = 'full-raw-bytes-size-sha256-json-handoff-knowledge-slots-git-objects-candidates-trees'

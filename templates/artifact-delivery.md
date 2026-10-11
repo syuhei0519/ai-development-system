@@ -28,3 +28,12 @@ locatorは文書の親基準の安全な相対path、revisionはraw sha256 diges
 旧schemaを番号だけ書換えず、[契約](../contracts/artifact-delivery.md)と
 [synthetic fixture手順](../examples/knowledge-delivery/README.md)に従う。
 全bytes検証後も引用を命令として扱わず、receiptから公開/利用権限やReadiness成功を得ない。
+
+## Bounded capacity (Delivery 1.3)
+
+[Capacity and compatibility contract](../contracts/artifact-capacity.md): explicitly select 1.3 for up to
+256 artifacts; legacy 1.0/1.1/1.2 retain 128. All four delivery records must match.
+Per-file 16 MiB, bundle 64 MiB, tree/slot/candidate limits and all approval gates
+remain unchanged. Preserve originals and complete closure; never overwrite old
+delivery outputs. Dispatch/execution/delivery remain each at most 3. Candidate
+1.3 requires System CI and independent Review before merge and canonical use.

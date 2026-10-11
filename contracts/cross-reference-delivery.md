@@ -117,3 +117,12 @@ input, as in Handoff 2.0. Formal new Issue ACs would require a separately approv
 contract transition; this extension does not weaken retry Issue equality.
 
 See `examples/crossref-delivery/README.md` for reproducible preparation and validation.
+
+## Bounded capacity (Delivery 1.3)
+
+[Capacity and compatibility contract](artifact-capacity.md): explicitly select 1.3 for up to
+256 artifacts; legacy 1.0/1.1/1.2 retain 128. All four delivery records must match.
+Per-file 16 MiB, bundle 64 MiB, tree/slot/candidate limits and all approval gates
+remain unchanged. Preserve originals and complete closure; never overwrite old
+delivery outputs. Dispatch/execution/delivery remain each at most 3. Candidate
+1.3 requires System CI and independent Review before merge and canonical use.

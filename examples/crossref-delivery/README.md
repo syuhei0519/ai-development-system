@@ -59,3 +59,12 @@ Tests retain the original 128 plus previous-attempt 21 methods, and add candidat
 profile/producer/source/approval/type and complete-tree negative cases. Real B1
 verification requires its own Manager authorization; synthetic success cannot
 replace it. No application build, tests or deployment are part of these commands.
+
+## Bounded capacity (Delivery 1.3)
+
+[Capacity and compatibility contract](../../contracts/artifact-capacity.md): explicitly select 1.3 for up to
+256 artifacts; legacy 1.0/1.1/1.2 retain 128. All four delivery records must match.
+Per-file 16 MiB, bundle 64 MiB, tree/slot/candidate limits and all approval gates
+remain unchanged. Preserve originals and complete closure; never overwrite old
+delivery outputs. Dispatch/execution/delivery remain each at most 3. Candidate
+1.3 requires System CI and independent Review before merge and canonical use.
