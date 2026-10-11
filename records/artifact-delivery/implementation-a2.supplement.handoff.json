@@ -1,0 +1,225 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "SYSTEM-ARTIFACT-DELIVERY-CONTRACT",
+    "source": "https://github.com/syuhei0519/ai-development-system/blob/8b6b2cd7d71614a31e64c36554c6802160194b6c/contracts/artifact-delivery.md",
+    "title": "System repository Artifact Delivery contract and Consumer CLI (not backend application implementation)",
+    "acceptance_criteria": [
+      {
+        "id": "SYSTEM-DELIVERY-AC-1",
+        "verbatim": "Artifact Delivery 契約: repository、固定 commit SHA、path、size、SHA-256 必須。元成果物と公開派生版、Publication Receipt と Consumption Receipt、公開安全性確認と公開承認と Consumer 利用承認、GitHub 反映前/後を明確に分離。Handoff v2.0 への対応。非公開原本・実タスク ID・内部ログ・秘密情報は Public リポジトリに保存禁止。",
+        "source": "https://github.com/syuhei0519/ai-development-system/blob/8b6b2cd7d71614a31e64c36554c6802160194b6c/contracts/artifact-delivery.md"
+      },
+      {
+        "id": "SYSTEM-DELIVERY-AC-2",
+        "verbatim": "Consumer CLI: 固定 Git commit の存在、raw blob 全体取得、size/hash 一致、JSON/Handoff 検証、原本/派生版区分と利用承認を検証して Consumption Receipt を出す。失敗は fail-closed。LLM に元 bytes を再生成させない。入力の Git URL/path/コマンド注入、symlink/submodule、浮動 ref、部分取得、JSON 重複キー、検証前利用、receipt の自己申告だけで権限獲得できる問題なども考慮し、信頼境界を仕様化。",
+        "source": "https://github.com/syuhei0519/ai-development-system/blob/8b6b2cd7d71614a31e64c36554c6802160194b6c/contracts/artifact-delivery.md"
+      },
+      {
+        "id": "SYSTEM-DELIVERY-AC-3",
+        "verbatim": "正式記録: 下記 immutable 検証コミットを読み、provenance.json と FETCH.txt の未公開/承認待ちという seal 時点記載と、実際の公開済み状態を区別し、新しい correction/publication record を実装ブランチへ追加。元検証成果物を上書きしない。Publication は approval を意味しない。原本との B1 情報保持比較は、元 Producer の非公開対応表による確認を Manager が別途依頼中です。届くまで unverified とし、実装利用を承認済みにしない。",
+        "source": "https://github.com/syuhei0519/ai-development-system/blob/8b6b2cd7d71614a31e64c36554c6802160194b6c/contracts/artifact-delivery.md"
+      },
+      {
+        "id": "SYSTEM-DELIVERY-AC-4",
+        "verbatim": "再試行: Dispatch Failure と Agent Execution Failure を別カウンタ・上限で区別。配送未完了は実装実行失敗と分離。無限リトライ禁止。過去 3 回の B1 Implementation と RETRY_LIMIT_REACHED は不変。上限到達後は新たな明示承認、理由、新予算、scope、履歴との関係がなければ再開拒否。将来の分類変更で過去履歴をリセットしない。既存 workflow の最大 3 回を踏まえ、各上限を明示して回帰テスト。",
+        "source": "https://github.com/syuhei0519/ai-development-system/blob/8b6b2cd7d71614a31e64c36554c6802160194b6c/contracts/artifact-delivery.md"
+      },
+      {
+        "id": "SYSTEM-DELIVERY-AC-5",
+        "verbatim": "README、役割、workflow、契約説明、templates、正常/異常サンプル、CLI、CI、全テストの整合を更新。既存全件テストに加え改変、切詰め、size/SHA/commit 不一致、存在しない commit、未承認派生版、承認範囲不一致、改変 receipt、取得不能などを検証。",
+        "source": "https://github.com/syuhei0519/ai-development-system/blob/8b6b2cd7d71614a31e64c36554c6802160194b6c/contracts/artifact-delivery.md"
+      }
+    ]
+  },
+  "role": "implementation",
+  "task_id": "system-delivery-implementation-a2",
+  "attempt": 2,
+  "assignment": {
+    "scope": "System artifact-delivery contract implementation: corrective attempt2 for the prior Consumer content/type finding, regression/documentation consistency, receipt boundary clarification and evidence delivery. Same logical System stage as attempt1; not B1 implementation.",
+    "ac_ids": [
+      "SYSTEM-DELIVERY-AC-2",
+      "SYSTEM-DELIVERY-AC-5"
+    ],
+    "completion_criteria": [
+      "Fix the assigned P2 content/type validation bypass and add regression coverage while retaining legitimate Markdown/text handling.",
+      "Clarify fresh-fetch --verify-receipt semantics, update inventory/report, verify exact implementation-head branch CI, and normal-push the existing implementation branch without PR creation.",
+      "Preserve the original return Handoff and provide a separate public-safe supplemental Handoff bound to the Manager-supplied retrospective attempt1 record. This evidence supplement must not change code or count as another attempt."
+    ]
+  },
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "system-delivery-implementation-a1",
+      "attempt": 1,
+      "relationship": "retry_of",
+      "handoff_locator": "implementation-a1.handoff.json",
+      "revision": "sha256:ac9895252b10da4e0da5c86dda4b89a2eb45049af7ea33b38c3b74758260d4c4"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Supplemental evidence edition for system-delivery-implementation-a2, attempt 2 of the same System delivery implementation stage (maximum 3). This is not a new implementation attempt. The original return Handoff is preserved privately. Implementation head remains fa74afd588a6d75eb84330a23ede9fcb10ea4885; no code changes in this evidence supplement. The upstream is the Producer-authored retrospective failed attempt1 record supplied by Manager, not a Handoff claimed to have existed at initial completion. Public task_id values are aliases. Completed means assigned corrective implementation/self-validation and evidence delivery only, not independent Review or Issue achievement. Independent re-review and Manager authorization before PR remain pending. B1 historical three attempts and RETRY_LIMIT_REACHED, product-use prohibition, and independent original-comparison unverified state remain unchanged.",
+  "artifacts": [
+    {
+      "id": "INVENTORY",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/fa74afd588a6d75eb84330a23ede9fcb10ea4885/records/artifact-delivery/review-inventory.json",
+      "revision": "sha256:000e80011dee56aa321d13560946803ca226399c3e3463f37fab7fb758571747",
+      "summary": "37 changed-file byte hashes; inventory itself is separately pinned."
+    },
+    {
+      "id": "REPORT",
+      "kind": "test-report",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/fa74afd588a6d75eb84330a23ede9fcb10ea4885/records/artifact-delivery/implementation-validation.json",
+      "revision": "sha256:d2e944591895ac5668c8527707bd79765187749e2f42229136926503ef9f3e93",
+      "summary": "Implementer validation, attempt continuity, scope and limits."
+    },
+    {
+      "id": "CODE",
+      "kind": "patch",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/fa74afd588a6d75eb84330a23ede9fcb10ea4885/scripts/consume_delivery.py",
+      "revision": "sha256:62df142aa83c5216aae6151f2d21ffffe4bd8aa9db68dd1144502505cce8fcad",
+      "summary": "Fail-closed content/type repair and receipt help."
+    },
+    {
+      "id": "TESTS",
+      "kind": "test-report",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/fa74afd588a6d75eb84330a23ede9fcb10ea4885/tests/test_delivery_content.py",
+      "revision": "sha256:2f1c7d313c542877fa32fdb0a4520c0328452ae56f275f1a7dc6a5fa474f1092",
+      "summary": "Synthetic content regression cases."
+    },
+    {
+      "id": "CONTRACT",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/fa74afd588a6d75eb84330a23ede9fcb10ea4885/contracts/artifact-delivery.md",
+      "revision": "sha256:6f65c19c74aea4483f900ce045a6648357c754c1977cd38338839fbb1457ef22",
+      "summary": "Content typing and fresh-fetch receipt trust boundary."
+    },
+    {
+      "id": "A1-HANDOFF",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/6245e34b7bf0acae11b9fbdb24eccaf36d518634/records/artifact-delivery/implementation-a1.handoff.json",
+      "revision": "sha256:ac9895252b10da4e0da5c86dda4b89a2eb45049af7ea33b38c3b74758260d4c4",
+      "summary": "Producer-authored retrospective failed attempt1 Handoff; 13442 raw bytes at fixed commit 6245e34b7bf0acae11b9fbdb24eccaf36d518634. Same bytes are retained unchanged beside this supplement. Not an initial sealed original and not a new execution attempt."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "LOCAL",
+      "claim": "Assigned repair and implementation regressions pass.",
+      "artifact_ids": [
+        "CODE",
+        "TESTS",
+        "REPORT",
+        "CONTRACT"
+      ],
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/fa74afd588a6d75eb84330a23ede9fcb10ea4885/records/artifact-delivery/implementation-validation.json",
+      "observation": "python -m unittest discover -s tests -v: 107 PASS including prior 98. Handoff/Knowledge/Readiness and delivery record CLI checks PASS. Disguise matrix 192 rejects with valid outer pins; malformed JSON, duplicate/escaped keys, public/binding negatives, positive Markdown/text, and fresh-fetch receipt boundary tested. Implementer observation, not independent Review."
+    },
+    {
+      "id": "DELIVERY",
+      "claim": "Immutable public Git transport and byte verification pass.",
+      "artifact_ids": [
+        "REPORT",
+        "INVENTORY"
+      ],
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/fa74afd588a6d75eb84330a23ede9fcb10ea4885/records/artifact-delivery/implementation-validation.json",
+      "observation": "Synthetic: 7 files / 61602 bytes. Public derivative: 9 files / 57390 bytes. Four Handoffs and fresh receipt refetch PASS. Committed inventory 37/37, base diff coverage 38/38 including inventory. Producer attestation via Manager preserved; independent private-original comparison unverified and B1 implementation use not approved."
+    },
+    {
+      "id": "CI",
+      "claim": "Feature push CI succeeded at the delivered head.",
+      "artifact_ids": [
+        "CODE",
+        "TESTS",
+        "REPORT"
+      ],
+      "locator": "https://github.com/syuhei0519/ai-development-system/actions/runs/38103443566",
+      "observation": "GitHub Actions push run 38103443566, validate job 114363921469: completed/success; head fa74afd588a6d75eb84330a23ede9fcb10ea4885. main/test branches unchanged. Independent Review and Manager PR authorization pending."
+    },
+    {
+      "id": "UPSTREAM-BINDING",
+      "claim": "The missing retry_of evidence is now bound to the authentic Manager-supplied retrospective record.",
+      "artifact_ids": [
+        "A1-HANDOFF"
+      ],
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/6245e34b7bf0acae11b9fbdb24eccaf36d518634/records/artifact-delivery/implementation-a1.handoff.json",
+      "observation": "Retrieved the complete raw Git blob at the fixed commit and verified 13442 bytes and SHA-256 ac9895252b10da4e0da5c86dda4b89a2eb45049af7ea33b38c3b74758260d4c4 before strict JSON parsing. Handoff v2.0 schema/local references pass. The relative upstream locator resolves to the unchanged a1 file in the same directory; digest, role=implementation, alias=system-delivery-implementation-a1, attempt1 preceding attempt2, relationship=retry_of and entire issue object including all AC verbatim/source fields match. Retrospective authorship and failed status are preserved. This is an upstream binding check, not a Consumption Receipt or a claim that all historical artifact locators form a Consumer-CLI bundle."
+    },
+    {
+      "id": "SUPPLEMENT-CHANGES",
+      "claim": "This is a separate evidence supplement with explicit changes from the preserved original return Handoff.",
+      "artifact_ids": [
+        "A1-HANDOFF",
+        "REPORT",
+        "INVENTORY"
+      ],
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/6245e34b7bf0acae11b9fbdb24eccaf36d518634/records/artifact-delivery/implementation-a1.handoff.json",
+      "observation": "Preserved the prior private return Handoff unchanged. Replaced its provisional Issue ID/title/source and three repair-excerpt AC identifiers with the exact five-AC issue object read from a1; mapped the same authorized corrective work to original AC-2 and AC-5 without claiming the other requirements were re-audited. Replaced unavailable upstream locator/revision with the relative a1 path and its raw SHA-256. Cleared only the missing-predecessor-input blocker and changed status blocked to completed for the assigned corrective stage. Changed publication private_only to public_safe after reviewing this separate alias-only edition under Manager publication authorization. Added retrospective provenance and binding evidence. Retained implementation head, test/CI observations, public artifact references, attempt2/3 budget, independent-review pending state and B1 restrictions. No original a1 bytes, code, inventory or report were rewritten."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "SYSTEM-DELIVERY-AC-1",
+      "disposition": "not_assigned",
+      "scope": "Preserved in the whole-Issue AC list; outside this corrective assignment. No new audit or final gate approval claimed. Existing correction and retry history remain unchanged.",
+      "artifact_ids": [],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "SYSTEM-DELIVERY-AC-2",
+      "disposition": "covered",
+      "scope": "Assigned corrective implementation/self-verification only; includes the P2 fix, regression/documentation and receipt boundary work, not independent Review or final AC achievement.",
+      "artifact_ids": [
+        "CODE",
+        "TESTS",
+        "REPORT",
+        "CONTRACT"
+      ],
+      "evidence_ids": [
+        "LOCAL",
+        "DELIVERY",
+        "CI",
+        "UPSTREAM-BINDING",
+        "SUPPLEMENT-CHANGES"
+      ]
+    },
+    {
+      "ac_id": "SYSTEM-DELIVERY-AC-3",
+      "disposition": "not_assigned",
+      "scope": "Preserved in the whole-Issue AC list; outside this corrective assignment. No new audit or final gate approval claimed. Existing correction and retry history remain unchanged.",
+      "artifact_ids": [],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "SYSTEM-DELIVERY-AC-4",
+      "disposition": "not_assigned",
+      "scope": "Preserved in the whole-Issue AC list; outside this corrective assignment. No new audit or final gate approval claimed. Existing correction and retry history remain unchanged.",
+      "artifact_ids": [],
+      "evidence_ids": []
+    },
+    {
+      "ac_id": "SYSTEM-DELIVERY-AC-5",
+      "disposition": "covered",
+      "scope": "Assigned corrective implementation/self-verification only; includes the P2 fix, regression/documentation and receipt boundary work, not independent Review or final AC achievement.",
+      "artifact_ids": [
+        "CODE",
+        "TESTS",
+        "REPORT",
+        "CONTRACT"
+      ],
+      "evidence_ids": [
+        "LOCAL",
+        "DELIVERY",
+        "CI",
+        "UPSTREAM-BINDING",
+        "SUPPLEMENT-CHANGES"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}
