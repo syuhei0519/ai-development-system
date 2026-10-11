@@ -1,0 +1,30 @@
+{
+  "observed_at": "2026-10-11T09:59:20.693113+00:00",
+  "repository": "syuhei0519/ai-development-system",
+  "pr": {
+    "url": "https://github.com/syuhei0519/ai-development-system/pull/8",
+    "state": "open",
+    "draft": true,
+    "merged": false,
+    "base": "main",
+    "base_sha": "0083151aa2f6b2aaf0e1db64ada3f196ed766e48",
+    "head": "feat/readiness-prerequisite-gate",
+    "head_sha": "cdaad5a0d7437a9abc24481e4849b89a9e112401"
+  },
+  "ci_query_head": "cdaad5a0d7437a9abc24481e4849b89a9e112401",
+  "ci": {
+    "workflow_runs": [
+      {
+        "id": 38130204297,
+        "name": "Validate handoff contracts",
+        "status": "completed",
+        "conclusion": "success",
+        "run_number": 150,
+        "jobs_url": "https://api.github.com/repos/syuhei0519/ai-development-system/actions/runs/38130204297/jobs",
+        "logs_url": "https://api.github.com/repos/syuhei0519/ai-development-system/actions/runs/38130204297/logs",
+        "workflow_id": 380522606
+      }
+    ]
+  },
+  "limits": "Mutable metadata only; no raw logs, protection/permission certification, independent Review or merge authorization."
+}

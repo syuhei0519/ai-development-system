@@ -1,0 +1,300 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "system-readiness-prerequisite",
+    "source": "https://github.com/syuhei0519/ai-development-system",
+    "title": "Add bounded readiness for dependency preparation pull requests",
+    "acceptance_criteria": [
+      {
+        "id": "AC-S1",
+        "verbatim": "通常PRの既存マージ条件を維持し、依存準備PRだけを明示的に区分して空の製品AC集合を許容する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S2",
+        "verbatim": "依存準備PRは非空の工程受入条件と関連製品AC、固定成果物、独立TestとReview、後続検証責任を必須とし、工程達成を製品AC達成へ変換しない。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S3",
+        "verbatim": "配備影響noneとaggregate_requiredに限定し、CI、保護ルール、権限、依存、証跡鮮度、Issue Completionの既存fail-closed条件を維持する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S4",
+        "verbatim": "JSON Schema、CLI、正常・異常回帰テスト、サンプル、役割・workflow・テンプレート・READMEが整合し、既存全テストと新規テストが成功する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      },
+      {
+        "id": "AC-S5",
+        "verbatim": "変更と検証成果物を固定Git revisionとbytes/hashで取得でき、既存PRを重複作成せずSystem専用feature branchのDraft PRとして提示する。",
+        "source": "https://github.com/syuhei0519/ai-development-system"
+      }
+    ]
+  },
+  "assignment": {
+    "scope": "ai-development-system#readiness-prerequisite-support",
+    "ac_ids": [
+      "AC-S1",
+      "AC-S2",
+      "AC-S3",
+      "AC-S4",
+      "AC-S5"
+    ],
+    "completion_criteria": [
+      "通常PRの既存マージ条件を維持し、依存準備PRだけを明示的に区分して空の製品AC集合を許容する。",
+      "依存準備PRは非空の工程受入条件と関連製品AC、固定成果物、独立TestとReview、後続検証責任を必須とし、工程達成を製品AC達成へ変換しない。",
+      "配備影響noneとaggregate_requiredに限定し、CI、保護ルール、権限、依存、証跡鮮度、Issue Completionの既存fail-closed条件を維持する。",
+      "JSON Schema、CLI、正常・異常回帰テスト、サンプル、役割・workflow・テンプレート・READMEが整合し、既存全テストと新規テストが成功する。",
+      "変更と検証成果物を固定Git revisionとbytes/hashで取得でき、既存PRを重複作成せずSystem専用feature branchのDraft PRとして提示する。"
+    ]
+  },
+  "role": "implementation",
+  "task_id": "readiness-prerequisite-implementation-a2",
+  "attempt": 2,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "readiness-prerequisite-test-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/e4a9a624e0ce1bf608a401d5fa70215ab7a31118/evidence/readiness-prerequisite/test-a1/handoff.json",
+      "revision": "sha256:fbd67588755a2a3fe3588172cd991b977e35165392a605a270b1900b4f903c46",
+      "relationship": "dependency"
+    },
+    {
+      "role": "implementation",
+      "task_id": "readiness-prerequisite-implementation-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/2523ad8f63301a1987e1b45cf07d9c24531e4015/evidence/readiness-prerequisite/implementation-a1/handoff.json",
+      "revision": "sha256:46508abb6640dd8ef0574d3bae78d78100f9e2459d35dafe994d3038ed47e457",
+      "relationship": "retry_of"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Implemented F1 typed aggregate preparation integration and F2 bounded regular-file reads. 309 tests and 237-case replay pass. New-head independent Test/Review remain pending; previous failed Test is unchanged.",
+  "artifacts": [
+    {
+      "id": "aggregate-after.json",
+      "kind": "test-report",
+      "locator": "aggregate-after.json",
+      "revision": "sha256:acf9bcc7b771b3be57fee26dc5732e5bafaf23e82421f7dd0f437c1706d3393e",
+      "summary": "Public implementation self-verification: aggregate-after.json"
+    },
+    {
+      "id": "aggregate-before.json",
+      "kind": "test-report",
+      "locator": "aggregate-before.json",
+      "revision": "sha256:86ed2b32c26970bf04654e8a441aab7c6ae10452bf1557dacbd37995e5ea27e7",
+      "summary": "Public implementation self-verification: aggregate-before.json"
+    },
+    {
+      "id": "aggregate-original-after.json",
+      "kind": "test-report",
+      "locator": "aggregate-original-after.json",
+      "revision": "sha256:86ed2b32c26970bf04654e8a441aab7c6ae10452bf1557dacbd37995e5ea27e7",
+      "summary": "Public implementation self-verification: aggregate-original-after.json"
+    },
+    {
+      "id": "aggregate_reproducer_v2.py",
+      "kind": "other",
+      "locator": "aggregate_reproducer_v2.py",
+      "revision": "sha256:056d6092bb54838bb11ec83ca643d7265528d82168b7f874f0635f70d79daee1",
+      "summary": "Public implementation self-verification: aggregate_reproducer_v2.py"
+    },
+    {
+      "id": "change.patch",
+      "kind": "patch",
+      "locator": "change.patch",
+      "revision": "sha256:de894b6898f1a638f7c84c131873df91e5aaa40411710de4993c79850e25d573",
+      "summary": "Public implementation self-verification: change.patch"
+    },
+    {
+      "id": "fifo-after.json",
+      "kind": "test-report",
+      "locator": "fifo-after.json",
+      "revision": "sha256:b69b27971050d04f8e327bc14b7bda0abed054e8317dce2a7572b61b6c318da2",
+      "summary": "Public implementation self-verification: fifo-after.json"
+    },
+    {
+      "id": "fifo-before.json",
+      "kind": "test-report",
+      "locator": "fifo-before.json",
+      "revision": "sha256:a89e5f8ed5ca5a3bf7787e1f4b2707c3b50fad449281230445abbad3ebd5ea59",
+      "summary": "Public implementation self-verification: fifo-before.json"
+    },
+    {
+      "id": "fifo-original-after.txt",
+      "kind": "test-report",
+      "locator": "fifo-original-after.txt",
+      "revision": "sha256:26dc10ac56f2ae6afc70ce50800c1ec69b1938db0a24abbc8c1140e269eefcc9",
+      "summary": "Public implementation self-verification: fifo-original-after.txt"
+    },
+    {
+      "id": "fifo_reproducer_v2.py",
+      "kind": "other",
+      "locator": "fifo_reproducer_v2.py",
+      "revision": "sha256:17084896724cd98d9614c3f1d3a95c3a7658c38821f148db7fe10c9572df4ad3",
+      "summary": "Public implementation self-verification: fifo_reproducer_v2.py"
+    },
+    {
+      "id": "github-observations.json",
+      "kind": "test-report",
+      "locator": "github-observations.json",
+      "revision": "sha256:72fbe8028005b8486f190113200153047305ee289d26f431d0bb97e825d6b3fc",
+      "summary": "Public implementation self-verification: github-observations.json"
+    },
+    {
+      "id": "implementation-report.md",
+      "kind": "test-report",
+      "locator": "implementation-report.md",
+      "revision": "sha256:a61c648685a73f366de27789e55265297942c433fb18060a380ac7b79119834c",
+      "summary": "Public implementation self-verification: implementation-report.md"
+    },
+    {
+      "id": "independent-after.json",
+      "kind": "test-report",
+      "locator": "independent-after.json",
+      "revision": "sha256:bc0fc4e39d065b1bffa198fafed4a27c84da51338b6af221db16c6eec9850803",
+      "summary": "Public implementation self-verification: independent-after.json"
+    },
+    {
+      "id": "independent-before.json",
+      "kind": "test-report",
+      "locator": "independent-before.json",
+      "revision": "sha256:408fe0a0e53ab8e4e668357b3a8cb574713df82eaa3d9c2802dec36da95cd203",
+      "summary": "Public implementation self-verification: independent-before.json"
+    },
+    {
+      "id": "revision.json",
+      "kind": "test-report",
+      "locator": "revision.json",
+      "revision": "sha256:d4d55f6c40d66fc435119a8e6bdf0bb3ba534b87bc7889dea650c4014f0023c9",
+      "summary": "Public implementation self-verification: revision.json"
+    },
+    {
+      "id": "sample-results.json",
+      "kind": "test-report",
+      "locator": "sample-results.json",
+      "revision": "sha256:b5cef3748ab60d7950cfa4bf0ea6e3fbc7c030354b366740fcd17ef6a2e272be",
+      "summary": "Public implementation self-verification: sample-results.json"
+    },
+    {
+      "id": "self-tests.txt",
+      "kind": "test-report",
+      "locator": "self-tests.txt",
+      "revision": "sha256:33824d269d9319dec50409e295587854bd5ec2cd0a0209ebf6d8ad4589bdc377",
+      "summary": "Public implementation self-verification: self-tests.txt"
+    },
+    {
+      "id": "implementation-head",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/ai-development-system/commit/cdaad5a0d7437a9abc24481e4849b89a9e112401",
+      "revision": "cdaad5a0d7437a9abc24481e4849b89a9e112401",
+      "summary": "Fixed implementation revision; changed source files are separately materialized in the delivery manifest."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "implementation-and-self-tests",
+      "claim": "Assigned implementation repairs and self-tests completed; no independent result claimed.",
+      "artifact_ids": [
+        "change.patch",
+        "implementation-report.md",
+        "revision.json",
+        "self-tests.txt",
+        "aggregate-after.json",
+        "fifo-after.json",
+        "independent-after.json",
+        "sample-results.json"
+      ],
+      "locator": "implementation-report.md",
+      "observation": "309 repository tests,237 original independent cases replayed by Implementation,26 sample checks; positive typed aggregate integration and fail-closed special files. Original harness limitations and remaining independent gates disclosed."
+    },
+    {
+      "id": "remote-and-ci",
+      "claim": "Existing feature head/Draft PR and CI metadata observed.",
+      "artifact_ids": [
+        "github-observations.json",
+        "revision.json"
+      ],
+      "locator": "github-observations.json",
+      "observation": "PR8 remains Draft, open, unmerged at requested base and new head. Exact-head pull_request CI succeeded. No raw log or live permission certification."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-S1",
+      "disposition": "covered",
+      "scope": "Implementation responsibility only: Standard1.0/1.1 restrictions preserved; preparation alone has empty product scope.",
+      "artifact_ids": [
+        "implementation-report.md",
+        "revision.json",
+        "change.patch",
+        "self-tests.txt"
+      ],
+      "evidence_ids": [
+        "implementation-and-self-tests"
+      ]
+    },
+    {
+      "ac_id": "AC-S2",
+      "disposition": "covered",
+      "scope": "Implementation responsibility only: Typed historical preparation mapping and regular bounded artifact reads implemented; process does not measure product.",
+      "artifact_ids": [
+        "implementation-report.md",
+        "revision.json",
+        "change.patch",
+        "self-tests.txt"
+      ],
+      "evidence_ids": [
+        "implementation-and-self-tests"
+      ]
+    },
+    {
+      "ac_id": "AC-S3",
+      "disposition": "covered",
+      "scope": "Implementation responsibility only: Full required merges, independent gates, none/aggregate restrictions, product measurements and deployment/freshness safeguards retained.",
+      "artifact_ids": [
+        "implementation-report.md",
+        "revision.json",
+        "change.patch",
+        "self-tests.txt"
+      ],
+      "evidence_ids": [
+        "implementation-and-self-tests"
+      ]
+    },
+    {
+      "ac_id": "AC-S4",
+      "disposition": "covered",
+      "scope": "Implementation responsibility only: Versioned schemas, CLI, documentation, roles, template, generated sample and309 tests pass.",
+      "artifact_ids": [
+        "implementation-report.md",
+        "revision.json",
+        "change.patch",
+        "self-tests.txt"
+      ],
+      "evidence_ids": [
+        "implementation-and-self-tests"
+      ]
+    },
+    {
+      "ac_id": "AC-S5",
+      "disposition": "covered",
+      "scope": "Implementation responsibility only: Fixed commit and bytes-pinned public artifacts on dedicated evidence branch; existing Draft PR8 updated.",
+      "artifact_ids": [
+        "implementation-report.md",
+        "github-observations.json",
+        "revision.json"
+      ],
+      "evidence_ids": [
+        "remote-and-ci"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

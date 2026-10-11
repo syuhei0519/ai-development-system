@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<FIXED_PUBLIC_TEST1>/fifo_reproducer.py", line 18, in <module>
+    if fd is None:raise RuntimeError('reader did not open synthetic FIFO')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: reader did not open synthetic FIFO

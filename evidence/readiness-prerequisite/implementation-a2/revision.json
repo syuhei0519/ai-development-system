@@ -1,0 +1,38 @@
+{
+  "repository": "syuhei0519/ai-development-system",
+  "base": "0083151aa2f6b2aaf0e1db64ada3f196ed766e48",
+  "start_head": "3f41a0470fd0b7a2199be0b947bb22284e993e2f",
+  "head": "cdaad5a0d7437a9abc24481e4849b89a9e112401",
+  "tree": "bd6db38a828be65062b7cf0bd8044765190b0cc1",
+  "target_revision": "cdaad5a0d7437a9abc24481e4849b89a9e112401",
+  "branch": "feat/readiness-prerequisite-gate",
+  "pull_request": "https://github.com/syuhei0519/ai-development-system/pull/8",
+  "configuration": {
+    "python": "3.12.14",
+    "platform": "Linux; O_PATH and /proc/self/fd required",
+    "jsonschema": "4.26.0",
+    "test_command": "python -m unittest discover -s tests -v",
+    "test_result": {
+      "tests": 309,
+      "result": "OK"
+    },
+    "independent_matrix_reexecuted_by_implementation": {
+      "cases": 237,
+      "passed": 237
+    },
+    "sample_checks": 26,
+    "measured_at": "2026-10-11T09:59:20.707006+00:00",
+    "independent_test": false,
+    "configuration_files": {
+      "requirements-dev.txt": "756cc9e506ae4ee1a6f6c0507088b5cfc0dc8ba350fb2d2d46f1ffa72033adb6",
+      ".github/workflows/validate.yml": "f17ba4f6a20ee572f7c0fde05a1e8bab93efcbb7698efb08747dd1aae838ce95",
+      "scripts/regular_file.py": "3acac6caabc5796f7a704a18ca708e3bd10ec5d4c6e4a7b45663bb6d7c2c58b0",
+      "scripts/validate_readiness.py": "b1059084f8c519417290f762c8ea57c378770cdddcd30d79fefe7ecbde120f8d",
+      "scripts/validate_issue_completion.py": "868ae4b7762bf943ccd6b06d191e37ac36209a7eabaaa00abbf38d21d56955c1",
+      "tests/test_regular_file.py": "2e8a78c0a27f374d71e8043daa009332bf9b0eb470ef0a41c2b5c7fe7c6ef518",
+      "tests/test_preparation_completion.py": "2d1c4ec4b993a0081083f74949905c3af05db496f22b429f877a10a68f9a7c93",
+      "tests/preparation_completion_fixture.py": "42c6d02708457efe723d518cceef635b120644b60a8ed33dce5e6eddc65a3673"
+    }
+  },
+  "warning": "Test1 original scripts hardcode their original head in emitted JSON. All *after results here were executed against the head pinned in this revision record; the embedded old head is not an execution subject assertion."
+}

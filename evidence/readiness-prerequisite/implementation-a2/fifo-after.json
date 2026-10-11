@@ -1,0 +1,12 @@
+{
+  "subject": "checkout argument; see revision.json",
+  "synthetic": true,
+  "results": [
+    {
+      "case": "FIFO_supplied_expected_bytes",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "output": "FAIL <SYNTHETIC_ROOT>/preparation-ready.json\n  preparation artifact scaffold: ordinary file within size limit required\n"
+    }
+  ]
+}

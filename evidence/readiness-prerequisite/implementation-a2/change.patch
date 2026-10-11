@@ -1,0 +1,3013 @@
+diff --git a/README.md b/README.md
+index 770bede..836e31a 100644
+--- a/README.md
++++ b/README.md
+@@ -146,3 +146,9 @@ Fixed cross-repository delivery and immutable candidate/tree verification use [D
+ ## 依存準備 PR の追加契約
+ 
+ [Readiness 1.1](contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。
++
++Issue Completion 1.1 は準備 PR を型付き required メンバーとして保持する。
++空の製品担当 ac_ids と関連 AC を分離し、歴史的 Readiness の親を成果物 root として
++context の固定 BlobRef と照合する。全必要 merge 集合と後続 standard PR の全製品実測を要求し、
++工程合格を製品達成へ変換しない。版互換・配送・検証手順は
++[Issue Completion 契約](contracts/issue-completion.md) と [合成例](examples/issue-completion/README.md) を参照。
+diff --git a/agents/implementation.md b/agents/implementation.md
+index 8c7f424..37dad54 100644
+--- a/agents/implementation.md
++++ b/agents/implementation.md
+@@ -51,3 +51,9 @@ dispatch/execution/delivery は各最大3回、過去履歴と RETRY_LIMIT_REACH
+ ## 依存準備 PR の追加契約
+ 
+ [Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。
++
++Issue Completion 1.1 は準備 PR を型付き required メンバーとして保持する。
++空の製品担当 ac_ids と関連 AC を分離し、歴史的 Readiness の親を成果物 root として
++context の固定 BlobRef と照合する。全必要 merge 集合と後続 standard PR の全製品実測を要求し、
++工程合格を製品達成へ変換しない。版互換・配送・検証手順は
++[Issue Completion 契約](../contracts/issue-completion.md) と [合成例](../examples/issue-completion/README.md) を参照。
+diff --git a/agents/manager.md b/agents/manager.md
+index 53c6982..5dc7900 100644
+--- a/agents/manager.md
++++ b/agents/manager.md
+@@ -58,3 +58,9 @@ dispatch/execution/delivery は各最大3回、過去履歴と RETRY_LIMIT_REACH
+ ## 依存準備 PR の追加契約
+ 
+ [Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。
++
++Issue Completion 1.1 は準備 PR を型付き required メンバーとして保持する。
++空の製品担当 ac_ids と関連 AC を分離し、歴史的 Readiness の親を成果物 root として
++context の固定 BlobRef と照合する。全必要 merge 集合と後続 standard PR の全製品実測を要求し、
++工程合格を製品達成へ変換しない。版互換・配送・検証手順は
++[Issue Completion 契約](../contracts/issue-completion.md) と [合成例](../examples/issue-completion/README.md) を参照。
+diff --git a/agents/research-design.md b/agents/research-design.md
+index 63c8809..9b5d25a 100644
+--- a/agents/research-design.md
++++ b/agents/research-design.md
+@@ -51,3 +51,9 @@ dispatch/execution/delivery は各最大3回、過去履歴と RETRY_LIMIT_REACH
+ ## 依存準備 PR の追加契約
+ 
+ [Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。
++
++Issue Completion 1.1 は準備 PR を型付き required メンバーとして保持する。
++空の製品担当 ac_ids と関連 AC を分離し、歴史的 Readiness の親を成果物 root として
++context の固定 BlobRef と照合する。全必要 merge 集合と後続 standard PR の全製品実測を要求し、
++工程合格を製品達成へ変換しない。版互換・配送・検証手順は
++[Issue Completion 契約](../contracts/issue-completion.md) と [合成例](../examples/issue-completion/README.md) を参照。
+diff --git a/agents/review.md b/agents/review.md
+index 2f95dc4..423dba9 100644
+--- a/agents/review.md
++++ b/agents/review.md
+@@ -52,3 +52,9 @@ dispatch/execution/delivery は各最大3回、過去履歴と RETRY_LIMIT_REACH
+ ## 依存準備 PR の追加契約
+ 
+ [Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。
++
++Issue Completion 1.1 は準備 PR を型付き required メンバーとして保持する。
++空の製品担当 ac_ids と関連 AC を分離し、歴史的 Readiness の親を成果物 root として
++context の固定 BlobRef と照合する。全必要 merge 集合と後続 standard PR の全製品実測を要求し、
++工程合格を製品達成へ変換しない。版互換・配送・検証手順は
++[Issue Completion 契約](../contracts/issue-completion.md) と [合成例](../examples/issue-completion/README.md) を参照。
+diff --git a/agents/test.md b/agents/test.md
+index 9d0edd7..51b6af6 100644
+--- a/agents/test.md
++++ b/agents/test.md
+@@ -54,3 +54,9 @@ dispatch/execution/delivery は各最大3回、過去履歴と RETRY_LIMIT_REACH
+ ## 依存準備 PR の追加契約
+ 
+ [Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。
++
++Issue Completion 1.1 は準備 PR を型付き required メンバーとして保持する。
++空の製品担当 ac_ids と関連 AC を分離し、歴史的 Readiness の親を成果物 root として
++context の固定 BlobRef と照合する。全必要 merge 集合と後続 standard PR の全製品実測を要求し、
++工程合格を製品達成へ変換しない。版互換・配送・検証手順は
++[Issue Completion 契約](../contracts/issue-completion.md) と [合成例](../examples/issue-completion/README.md) を参照。
+diff --git a/contracts/README.md b/contracts/README.md
+index 2c934f5..60d00d3 100644
+--- a/contracts/README.md
++++ b/contracts/README.md
+@@ -82,3 +82,9 @@ See [the versioned extension](cross-reference-delivery.md) for typed Git commit
+ ## 依存準備 PR の追加契約
+ 
+ [Readiness 1.1](readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。
++
++Issue Completion 1.1 は準備 PR を型付き required メンバーとして保持する。
++空の製品担当 ac_ids と関連 AC を分離し、歴史的 Readiness の親を成果物 root として
++context の固定 BlobRef と照合する。全必要 merge 集合と後続 standard PR の全製品実測を要求し、
++工程合格を製品達成へ変換しない。版互換・配送・検証手順は
++[Issue Completion 契約](../contracts/issue-completion.md) と [合成例](../examples/issue-completion/README.md) を参照。
+diff --git a/contracts/issue-completion-context-v1.1.schema.json b/contracts/issue-completion-context-v1.1.schema.json
+new file mode 100644
+index 0000000..a45a372
+--- /dev/null
++++ b/contracts/issue-completion-context-v1.1.schema.json
+@@ -0,0 +1,1141 @@
++{
++  "$schema": "https://json-schema.org/draft/2020-12/schema",
++  "$id": "https://example.invalid/ai-development-system/issue-completion-context-v1.1.schema.json",
++  "title": "issue-completion-context v1.1",
++  "type": "object",
++  "additionalProperties": false,
++  "properties": {
++    "schema_version": {
++      "const": "1.1"
++    },
++    "document_type": {
++      "const": "issue_completion_context"
++    },
++    "context_id": {
++      "type": "string",
++      "minLength": 1,
++      "pattern": "\\S"
++    },
++    "issue": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "source": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "title": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "acceptance_criteria": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/criterion"
++          },
++          "minItems": 1,
++          "uniqueItems": true
++        }
++      },
++      "required": [
++        "id",
++        "source",
++        "title",
++        "acceptance_criteria"
++      ]
++    },
++    "issue_integration_scope": {
++      "enum": [
++        "aggregate_required",
++        "unknown"
++      ]
++    },
++    "scope_revision": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{64}$"
++    },
++    "scope_decisions": {
++      "type": "array",
++      "items": {
++        "$ref": "#/$defs/scope_decision"
++      },
++      "minItems": 0,
++      "uniqueItems": true
++    },
++    "required_prs": {
++      "type": "array",
++      "items": {
++        "$ref": "#/$defs/required_pr"
++      },
++      "minItems": 1,
++      "uniqueItems": true
++    },
++    "required_deployments": {
++      "type": "array",
++      "items": {
++        "$ref": "#/$defs/required_deployment"
++      },
++      "minItems": 0,
++      "uniqueItems": true
++    },
++    "required_verifications": {
++      "type": "array",
++      "items": {
++        "$ref": "#/$defs/verification"
++      },
++      "minItems": 1,
++      "uniqueItems": true
++    },
++    "current_members": {
++      "type": "array",
++      "items": {
++        "$ref": "#/$defs/current_member"
++      },
++      "minItems": 1,
++      "uniqueItems": true
++    },
++    "current_deployments": {
++      "type": "array",
++      "items": {
++        "$ref": "#/$defs/current_deployment"
++      },
++      "minItems": 0,
++      "uniqueItems": true
++    },
++    "observed_at": {
++      "type": "string",
++      "format": "date-time"
++    },
++    "valid_until": {
++      "type": "string",
++      "format": "date-time"
++    },
++    "source_refs": {
++      "type": "array",
++      "items": {
++        "$ref": "#/$defs/blob"
++      },
++      "minItems": 1,
++      "uniqueItems": true
++    },
++    "previous_assessment_sha256": {
++      "anyOf": [
++        {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        {
++          "type": "null"
++        }
++      ]
++    }
++  },
++  "required": [
++    "schema_version",
++    "document_type",
++    "context_id",
++    "issue",
++    "issue_integration_scope",
++    "scope_revision",
++    "scope_decisions",
++    "required_prs",
++    "required_deployments",
++    "required_verifications",
++    "current_members",
++    "current_deployments",
++    "observed_at",
++    "valid_until",
++    "source_refs",
++    "previous_assessment_sha256"
++  ],
++  "$defs": {
++    "blob": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "locator": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "sha256": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "size": {
++          "type": "integer",
++          "minimum": 1,
++          "maximum": 16777216
++        }
++      },
++      "required": [
++        "id",
++        "locator",
++        "sha256",
++        "size"
++      ]
++    },
++    "criterion": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "verbatim": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "source": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "verification_phase": {
++          "enum": [
++            "premerge",
++            "postmerge",
++            "postdeploy"
++          ]
++        }
++      },
++      "required": [
++        "id",
++        "verbatim",
++        "source",
++        "verification_phase"
++      ]
++    },
++    "current_deployment": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "deployment_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "state": {
++          "enum": [
++            "unknown",
++            "pending",
++            "deployed",
++            "failed",
++            "rolled_back"
++          ]
++        },
++        "sources": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/source"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        },
++        "config_sha256": {
++          "anyOf": [
++            {
++              "type": "string",
++              "pattern": "^[0-9a-f]{64}$"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "images": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/image"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        },
++        "environment_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "workload_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "deployed_at": {
++          "anyOf": [
++            {
++              "type": "string",
++              "format": "date-time"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "deploy_actor": {
++          "anyOf": [
++            {
++              "type": "string",
++              "minLength": 1,
++              "pattern": "\\S"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "observed_at": {
++          "type": "string",
++          "format": "date-time"
++        },
++        "valid_until": {
++          "type": "string",
++          "format": "date-time"
++        },
++        "evidence_refs": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/blob"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        }
++      },
++      "required": [
++        "deployment_id",
++        "state",
++        "sources",
++        "config_sha256",
++        "images",
++        "environment_id",
++        "workload_id",
++        "deployed_at",
++        "deploy_actor",
++        "observed_at",
++        "valid_until",
++        "evidence_refs"
++      ],
++      "allOf": [
++        {
++          "if": {
++            "properties": {
++              "state": {
++                "enum": [
++                  "deployed",
++                  "rolled_back"
++                ]
++              }
++            }
++          },
++          "then": {
++            "properties": {
++              "config_sha256": {
++                "not": {
++                  "type": "null"
++                }
++              },
++              "deployed_at": {
++                "not": {
++                  "type": "null"
++                }
++              },
++              "deploy_actor": {
++                "not": {
++                  "type": "null"
++                }
++              },
++              "evidence_refs": {
++                "type": "array",
++                "items": {
++                  "$ref": "#/$defs/blob"
++                },
++                "minItems": 1,
++                "uniqueItems": true
++              }
++            }
++          }
++        }
++      ]
++    },
++    "current_member": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "member_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "state": {
++          "enum": [
++            "unknown",
++            "open",
++            "merged",
++            "closed_unmerged",
++            "reverted"
++          ]
++        },
++        "head_sha": {
++          "anyOf": [
++            {
++              "type": "string",
++              "pattern": "^[0-9a-f]{40}$"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "base_sha": {
++          "anyOf": [
++            {
++              "type": "string",
++              "pattern": "^[0-9a-f]{40}$"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "target_revision": {
++          "anyOf": [
++            {
++              "type": "string",
++              "pattern": "^[0-9a-f]{40}$"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "config_revision": {
++          "anyOf": [
++            {
++              "type": "string",
++              "minLength": 1,
++              "pattern": "\\S"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "merge_group_sha": {
++          "anyOf": [
++            {
++              "type": "string",
++              "pattern": "^[0-9a-f]{40}$"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "merge_sha": {
++          "anyOf": [
++            {
++              "type": "string",
++              "pattern": "^[0-9a-f]{40}$"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "merged_at": {
++          "anyOf": [
++            {
++              "type": "string",
++              "format": "date-time"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "merge_actor": {
++          "anyOf": [
++            {
++              "type": "string",
++              "minLength": 1,
++              "pattern": "\\S"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "observed_at": {
++          "type": "string",
++          "format": "date-time"
++        },
++        "valid_until": {
++          "type": "string",
++          "format": "date-time"
++        },
++        "evidence_refs": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/blob"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        }
++      },
++      "required": [
++        "member_id",
++        "state",
++        "head_sha",
++        "base_sha",
++        "target_revision",
++        "config_revision",
++        "merge_group_sha",
++        "merge_sha",
++        "merged_at",
++        "merge_actor",
++        "observed_at",
++        "valid_until",
++        "evidence_refs"
++      ],
++      "allOf": [
++        {
++          "if": {
++            "properties": {
++              "state": {
++                "enum": [
++                  "merged",
++                  "reverted"
++                ]
++              }
++            }
++          },
++          "then": {
++            "properties": {
++              "head_sha": {
++                "not": {
++                  "type": "null"
++                }
++              },
++              "base_sha": {
++                "not": {
++                  "type": "null"
++                }
++              },
++              "target_revision": {
++                "not": {
++                  "type": "null"
++                }
++              },
++              "config_revision": {
++                "not": {
++                  "type": "null"
++                }
++              },
++              "merge_sha": {
++                "not": {
++                  "type": "null"
++                }
++              },
++              "merged_at": {
++                "not": {
++                  "type": "null"
++                }
++              },
++              "merge_actor": {
++                "not": {
++                  "type": "null"
++                }
++              },
++              "evidence_refs": {
++                "type": "array",
++                "items": {
++                  "$ref": "#/$defs/blob"
++                },
++                "minItems": 1,
++                "uniqueItems": true
++              }
++            }
++          }
++        }
++      ]
++    },
++    "image": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "component": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "digest": {
++          "type": "string",
++          "pattern": "^sha256:[0-9a-f]{64}$"
++        }
++      },
++      "required": [
++        "component",
++        "digest"
++      ]
++    },
++    "required_deployment": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "deployment_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "definition_state": {
++          "enum": [
++            "unknown",
++            "defined"
++          ]
++        },
++        "environment_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "workload_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "member_ids": {
++          "type": "array",
++          "items": {
++            "type": "string",
++            "minLength": 1,
++            "pattern": "\\S"
++          },
++          "minItems": 1,
++          "uniqueItems": true
++        },
++        "expected_sources": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/source"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        },
++        "expected_config_sha256": {
++          "anyOf": [
++            {
++              "type": "string",
++              "pattern": "^[0-9a-f]{64}$"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "image_requirement": {
++          "enum": [
++            "required",
++            "none",
++            "unknown"
++          ]
++        },
++        "expected_images": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/image"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        },
++        "no_image_basis": {
++          "anyOf": [
++            {
++              "$ref": "#/$defs/blob"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        }
++      },
++      "required": [
++        "deployment_id",
++        "definition_state",
++        "environment_id",
++        "workload_id",
++        "member_ids",
++        "expected_sources",
++        "expected_config_sha256",
++        "image_requirement",
++        "expected_images",
++        "no_image_basis"
++      ],
++      "allOf": [
++        {
++          "if": {
++            "properties": {
++              "definition_state": {
++                "const": "defined"
++              }
++            }
++          },
++          "then": {
++            "properties": {
++              "expected_sources": {
++                "type": "array",
++                "items": {
++                  "$ref": "#/$defs/source"
++                },
++                "minItems": 1,
++                "uniqueItems": true
++              },
++              "expected_config_sha256": {
++                "type": "string",
++                "pattern": "^[0-9a-f]{64}$"
++              },
++              "image_requirement": {
++                "enum": [
++                  "required",
++                  "none"
++                ]
++              }
++            },
++            "allOf": [
++              {
++                "if": {
++                  "properties": {
++                    "image_requirement": {
++                      "const": "required"
++                    }
++                  }
++                },
++                "then": {
++                  "properties": {
++                    "expected_images": {
++                      "type": "array",
++                      "items": {
++                        "$ref": "#/$defs/image"
++                      },
++                      "minItems": 1,
++                      "uniqueItems": true
++                    }
++                  }
++                }
++              },
++              {
++                "if": {
++                  "properties": {
++                    "image_requirement": {
++                      "const": "none"
++                    }
++                  }
++                },
++                "then": {
++                  "properties": {
++                    "expected_images": {
++                      "maxItems": 0
++                    },
++                    "no_image_basis": {
++                      "$ref": "#/$defs/blob"
++                    }
++                  }
++                }
++              }
++            ]
++          }
++        }
++      ]
++    },
++    "required_pr": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "member_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "repository": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "pr_number": {
++          "anyOf": [
++            {
++              "type": "integer",
++              "minimum": 1
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "scope": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "ac_ids": {
++          "type": "array",
++          "items": {
++            "type": "string",
++            "minLength": 1,
++            "pattern": "\\S"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        },
++        "depends_on": {
++          "type": "array",
++          "items": {
++            "type": "string",
++            "minLength": 1,
++            "pattern": "\\S"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        },
++        "requirement_source": {
++          "$ref": "#/$defs/blob"
++        },
++        "pr_kind": {
++          "enum": [
++            "standard",
++            "preparation"
++          ]
++        },
++        "preparation": {
++          "oneOf": [
++            {
++              "type": "null"
++            },
++            {
++              "type": "object",
++              "additionalProperties": false,
++              "properties": {
++                "related_ac_ids": {
++                  "type": "array",
++                  "items": {
++                    "type": "string",
++                    "minLength": 1,
++                    "pattern": "\\S"
++                  },
++                  "minItems": 1,
++                  "uniqueItems": true
++                },
++                "artifact_refs": {
++                  "type": "array",
++                  "minItems": 1,
++                  "maxItems": 128,
++                  "items": {
++                    "type": "object",
++                    "additionalProperties": false,
++                    "properties": {
++                      "artifact_id": {
++                        "type": "string",
++                        "minLength": 1,
++                        "pattern": "\\S"
++                      },
++                      "ref": {
++                        "$ref": "#/$defs/blob"
++                      }
++                    },
++                    "required": [
++                      "artifact_id",
++                      "ref"
++                    ]
++                  }
++                }
++              },
++              "required": [
++                "related_ac_ids",
++                "artifact_refs"
++              ]
++            }
++          ]
++        }
++      },
++      "required": [
++        "member_id",
++        "repository",
++        "pr_number",
++        "scope",
++        "ac_ids",
++        "depends_on",
++        "requirement_source",
++        "pr_kind",
++        "preparation"
++      ],
++      "allOf": [
++        {
++          "if": {
++            "properties": {
++              "pr_kind": {
++                "const": "standard"
++              }
++            }
++          },
++          "then": {
++            "properties": {
++              "ac_ids": {
++                "minItems": 1
++              },
++              "preparation": {
++                "type": "null"
++              }
++            }
++          },
++          "else": {
++            "properties": {
++              "ac_ids": {
++                "maxItems": 0
++              },
++              "preparation": {
++                "type": "object"
++              }
++            }
++          }
++        }
++      ]
++    },
++    "scope_decision": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "scope_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "revision": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "status": {
++          "enum": [
++            "approved",
++            "pending",
++            "revoked"
++          ]
++        },
++        "authority": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "actor": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "decision_kind": {
++          "enum": [
++            "required_scope",
++            "product_operation",
++            "delivery"
++          ]
++        },
++        "scope": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "issue_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "member_ids": {
++          "type": "array",
++          "items": {
++            "type": "string",
++            "minLength": 1,
++            "pattern": "\\S"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        },
++        "deployment_ids": {
++          "type": "array",
++          "items": {
++            "type": "string",
++            "minLength": 1,
++            "pattern": "\\S"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        },
++        "allowed_actions": {
++          "type": "array",
++          "items": {
++            "enum": [
++              "assess",
++              "implement",
++              "merge",
++              "deploy",
++              "rollback",
++              "close_issue",
++              "publish",
++              "consume"
++            ]
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        },
++        "evidence_refs": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/blob"
++          },
++          "minItems": 1,
++          "uniqueItems": true
++        },
++        "observed_at": {
++          "type": "string",
++          "format": "date-time"
++        },
++        "valid_until": {
++          "type": "string",
++          "format": "date-time"
++        }
++      },
++      "required": [
++        "scope_id",
++        "revision",
++        "status",
++        "authority",
++        "actor",
++        "decision_kind",
++        "scope",
++        "issue_id",
++        "member_ids",
++        "deployment_ids",
++        "allowed_actions",
++        "evidence_refs",
++        "observed_at",
++        "valid_until"
++      ]
++    },
++    "source": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "repository": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "revision": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{40}$"
++        }
++      },
++      "required": [
++        "repository",
++        "revision"
++      ]
++    },
++    "verification": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "verification_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "ac_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "phase": {
++          "enum": [
++            "premerge",
++            "postmerge",
++            "postdeploy"
++          ]
++        },
++        "member_ids": {
++          "type": "array",
++          "items": {
++            "type": "string",
++            "minLength": 1,
++            "pattern": "\\S"
++          },
++          "minItems": 1,
++          "uniqueItems": true
++        },
++        "deployment_ids": {
++          "type": "array",
++          "items": {
++            "type": "string",
++            "minLength": 1,
++            "pattern": "\\S"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        },
++        "environment_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "workload_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "method": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "expected_result": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "owner": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "failure_action": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        }
++      },
++      "required": [
++        "verification_id",
++        "ac_id",
++        "phase",
++        "member_ids",
++        "deployment_ids",
++        "environment_id",
++        "workload_id",
++        "method",
++        "expected_result",
++        "owner",
++        "failure_action"
++      ]
++    }
++  }
++}
+diff --git a/contracts/issue-completion-v1.1.schema.json b/contracts/issue-completion-v1.1.schema.json
+new file mode 100644
+index 0000000..90a66a4
+--- /dev/null
++++ b/contracts/issue-completion-v1.1.schema.json
+@@ -0,0 +1,1113 @@
++{
++  "$schema": "https://json-schema.org/draft/2020-12/schema",
++  "$id": "https://example.invalid/ai-development-system/issue-completion-v1.1.schema.json",
++  "title": "issue-completion v1.1",
++  "type": "object",
++  "additionalProperties": false,
++  "properties": {
++    "schema_version": {
++      "const": "1.1"
++    },
++    "document_type": {
++      "const": "issue_completion_assessment"
++    },
++    "artifact_id": {
++      "type": "string",
++      "minLength": 1,
++      "pattern": "\\S"
++    },
++    "assessor_role": {
++      "const": "manager"
++    },
++    "evaluated_at": {
++      "type": "string",
++      "format": "date-time"
++    },
++    "context_sha256": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{64}$"
++    },
++    "issue_id": {
++      "type": "string",
++      "minLength": 1,
++      "pattern": "\\S"
++    },
++    "acceptance_criteria": {
++      "type": "array",
++      "items": {
++        "$ref": "#/$defs/criterion"
++      },
++      "minItems": 1,
++      "uniqueItems": true
++    },
++    "scope_revision": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{64}$"
++    },
++    "member_results": {
++      "type": "array",
++      "items": {
++        "$ref": "#/$defs/member_result"
++      },
++      "minItems": 1,
++      "uniqueItems": true
++    },
++    "deployment_results": {
++      "type": "array",
++      "items": {
++        "$ref": "#/$defs/deployment_result"
++      },
++      "minItems": 0,
++      "uniqueItems": true
++    },
++    "evidence": {
++      "type": "array",
++      "items": {
++        "$ref": "#/$defs/evidence"
++      },
++      "minItems": 0,
++      "uniqueItems": true
++    },
++    "verification_results": {
++      "type": "array",
++      "items": {
++        "$ref": "#/$defs/verification_result"
++      },
++      "minItems": 1,
++      "uniqueItems": true
++    },
++    "ac_results": {
++      "type": "array",
++      "items": {
++        "$ref": "#/$defs/ac_result"
++      },
++      "minItems": 1,
++      "uniqueItems": true
++    },
++    "integration_readiness": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "status": {
++          "enum": [
++            "ready",
++            "blocked"
++          ]
++        },
++        "checks": {
++          "type": "object",
++          "additionalProperties": false,
++          "properties": {
++            "scope": {
++              "$ref": "#/$defs/proof"
++            },
++            "required_merges": {
++              "$ref": "#/$defs/proof"
++            },
++            "deployment": {
++              "$ref": "#/$defs/proof"
++            },
++            "compatibility": {
++              "$ref": "#/$defs/proof"
++            },
++            "measurement_coverage": {
++              "$ref": "#/$defs/proof"
++            },
++            "current_evidence": {
++              "$ref": "#/$defs/proof"
++            },
++            "authorizations": {
++              "$ref": "#/$defs/proof"
++            }
++          },
++          "required": [
++            "scope",
++            "required_merges",
++            "deployment",
++            "compatibility",
++            "measurement_coverage",
++            "current_evidence",
++            "authorizations"
++          ]
++        },
++        "evidence_ids": {
++          "type": "array",
++          "items": {
++            "type": "string",
++            "minLength": 1,
++            "pattern": "\\S"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        },
++        "reason": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        }
++      },
++      "required": [
++        "status",
++        "checks",
++        "evidence_ids",
++        "reason"
++      ]
++    },
++    "issue_completion": {
++      "enum": [
++        "achieved",
++        "not_achieved",
++        "unverified"
++      ]
++    },
++    "reasons": {
++      "type": "array",
++      "items": {
++        "type": "string",
++        "minLength": 1,
++        "pattern": "\\S"
++      },
++      "minItems": 1,
++      "uniqueItems": true
++    },
++    "history": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "previous_ref": {
++          "anyOf": [
++            {
++              "$ref": "#/$defs/blob"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "events": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/event"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        }
++      },
++      "required": [
++        "previous_ref",
++        "events"
++      ]
++    }
++  },
++  "required": [
++    "schema_version",
++    "document_type",
++    "artifact_id",
++    "assessor_role",
++    "evaluated_at",
++    "context_sha256",
++    "issue_id",
++    "acceptance_criteria",
++    "scope_revision",
++    "member_results",
++    "deployment_results",
++    "evidence",
++    "verification_results",
++    "ac_results",
++    "integration_readiness",
++    "issue_completion",
++    "reasons",
++    "history"
++  ],
++  "$defs": {
++    "ac_result": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "ac_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "outcome": {
++          "enum": [
++            "met",
++            "not_met",
++            "unverified"
++          ]
++        },
++        "verification_ids": {
++          "type": "array",
++          "items": {
++            "type": "string",
++            "minLength": 1,
++            "pattern": "\\S"
++          },
++          "minItems": 1,
++          "uniqueItems": true
++        },
++        "evidence_ids": {
++          "type": "array",
++          "items": {
++            "type": "string",
++            "minLength": 1,
++            "pattern": "\\S"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        }
++      },
++      "required": [
++        "ac_id",
++        "outcome",
++        "verification_ids",
++        "evidence_ids"
++      ]
++    },
++    "binding": {
++      "oneOf": [
++        {
++          "type": "object",
++          "additionalProperties": false,
++          "properties": {
++            "type": {
++              "const": "pr"
++            },
++            "member_id": {
++              "type": "string",
++              "minLength": 1,
++              "pattern": "\\S"
++            },
++            "subject": {
++              "$ref": "#/$defs/subject"
++            },
++            "scope_revision": {
++              "type": "string",
++              "pattern": "^[0-9a-f]{64}$"
++            }
++          },
++          "required": [
++            "type",
++            "member_id",
++            "subject",
++            "scope_revision"
++          ]
++        },
++        {
++          "type": "object",
++          "additionalProperties": false,
++          "properties": {
++            "type": {
++              "const": "integration"
++            },
++            "context_sha256": {
++              "type": "string",
++              "pattern": "^[0-9a-f]{64}$"
++            },
++            "scope_revision": {
++              "type": "string",
++              "pattern": "^[0-9a-f]{64}$"
++            },
++            "merged_members": {
++              "type": "array",
++              "items": {
++                "$ref": "#/$defs/merged_member"
++              },
++              "minItems": 1,
++              "uniqueItems": true
++            },
++            "deployments": {
++              "type": "array",
++              "items": {
++                "$ref": "#/$defs/deployment_vector"
++              },
++              "minItems": 0,
++              "uniqueItems": true
++            }
++          },
++          "required": [
++            "type",
++            "context_sha256",
++            "scope_revision",
++            "merged_members",
++            "deployments"
++          ]
++        }
++      ]
++    },
++    "blob": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "locator": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "sha256": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{64}$"
++        },
++        "size": {
++          "type": "integer",
++          "minimum": 1,
++          "maximum": 16777216
++        }
++      },
++      "required": [
++        "id",
++        "locator",
++        "sha256",
++        "size"
++      ]
++    },
++    "criterion": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "verbatim": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "source": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "verification_phase": {
++          "enum": [
++            "premerge",
++            "postmerge",
++            "postdeploy"
++          ]
++        }
++      },
++      "required": [
++        "id",
++        "verbatim",
++        "source",
++        "verification_phase"
++      ]
++    },
++    "deployment_result": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "deployment_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "status": {
++          "enum": [
++            "ready",
++            "blocked",
++            "failed",
++            "rolled_back"
++          ]
++        },
++        "evidence_ids": {
++          "type": "array",
++          "items": {
++            "type": "string",
++            "minLength": 1,
++            "pattern": "\\S"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        },
++        "reason": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        }
++      },
++      "required": [
++        "deployment_id",
++        "status",
++        "evidence_ids",
++        "reason"
++      ]
++    },
++    "deployment_vector": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "deployment_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "sources": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/source"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        },
++        "config_sha256": {
++          "anyOf": [
++            {
++              "type": "string",
++              "pattern": "^[0-9a-f]{64}$"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "images": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/image"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        },
++        "environment_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "workload_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        }
++      },
++      "required": [
++        "deployment_id",
++        "sources",
++        "config_sha256",
++        "images",
++        "environment_id",
++        "workload_id"
++      ]
++    },
++    "event": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "event_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "kind": {
++          "enum": [
++            "head_changed",
++            "required_set_changed",
++            "config_changed",
++            "deployment_changed",
++            "expired",
++            "measurement_failed",
++            "rollback",
++            "revert",
++            "revalidated",
++            "superseded"
++          ]
++        },
++        "observed_at": {
++          "type": "string",
++          "format": "date-time"
++        },
++        "affected_ids": {
++          "type": "array",
++          "items": {
++            "type": "string",
++            "minLength": 1,
++            "pattern": "\\S"
++          },
++          "minItems": 1,
++          "uniqueItems": true
++        },
++        "reason": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "evidence_refs": {
++          "type": "array",
++          "items": {
++            "$ref": "#/$defs/blob"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        }
++      },
++      "required": [
++        "event_id",
++        "kind",
++        "observed_at",
++        "affected_ids",
++        "reason",
++        "evidence_refs"
++      ]
++    },
++    "evidence": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "kind": {
++          "enum": [
++            "scope",
++            "authorization",
++            "merge_binding",
++            "deployment",
++            "compatibility",
++            "ac_measurement",
++            "integration",
++            "rollback",
++            "failure"
++          ]
++        },
++        "phase": {
++          "enum": [
++            "premerge",
++            "postmerge",
++            "postdeploy"
++          ]
++        },
++        "member_ids": {
++          "type": "array",
++          "items": {
++            "type": "string",
++            "minLength": 1,
++            "pattern": "\\S"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        },
++        "deployment_ids": {
++          "type": "array",
++          "items": {
++            "type": "string",
++            "minLength": 1,
++            "pattern": "\\S"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        },
++        "verification_ids": {
++          "type": "array",
++          "items": {
++            "type": "string",
++            "minLength": 1,
++            "pattern": "\\S"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        },
++        "ac_ids": {
++          "type": "array",
++          "items": {
++            "type": "string",
++            "minLength": 1,
++            "pattern": "\\S"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        },
++        "binding": {
++          "$ref": "#/$defs/binding"
++        },
++        "environment_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "workload_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "method": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "expected_result": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "merge": {
++          "anyOf": [
++            {
++              "$ref": "#/$defs/merge"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "observed_at": {
++          "type": "string",
++          "format": "date-time"
++        },
++        "valid_until": {
++          "type": "string",
++          "format": "date-time"
++        },
++        "producer": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "independent": {
++          "type": "boolean"
++        },
++        "result": {
++          "enum": [
++            "pass",
++            "fail",
++            "pending"
++          ]
++        },
++        "source_ref": {
++          "$ref": "#/$defs/blob"
++        },
++        "observation": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        }
++      },
++      "required": [
++        "id",
++        "kind",
++        "phase",
++        "member_ids",
++        "deployment_ids",
++        "verification_ids",
++        "ac_ids",
++        "binding",
++        "environment_id",
++        "workload_id",
++        "method",
++        "expected_result",
++        "merge",
++        "observed_at",
++        "valid_until",
++        "producer",
++        "independent",
++        "result",
++        "source_ref",
++        "observation"
++      ]
++    },
++    "image": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "component": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "digest": {
++          "type": "string",
++          "pattern": "^sha256:[0-9a-f]{64}$"
++        }
++      },
++      "required": [
++        "component",
++        "digest"
++      ]
++    },
++    "member_result": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "member_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "readiness_ref": {
++          "anyOf": [
++            {
++              "$ref": "#/$defs/blob"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "readiness_context_ref": {
++          "anyOf": [
++            {
++              "$ref": "#/$defs/blob"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "readiness_handoff_ref": {
++          "anyOf": [
++            {
++              "$ref": "#/$defs/blob"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "gate_checked_at": {
++          "anyOf": [
++            {
++              "type": "string",
++              "format": "date-time"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "approved_head_sha": {
++          "anyOf": [
++            {
++              "type": "string",
++              "pattern": "^[0-9a-f]{40}$"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "actual_merge_sha": {
++          "anyOf": [
++            {
++              "type": "string",
++              "pattern": "^[0-9a-f]{40}$"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "merged_at": {
++          "anyOf": [
++            {
++              "type": "string",
++              "format": "date-time"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "merge_binding": {
++          "$ref": "#/$defs/proof"
++        },
++        "historical_merge_gate": {
++          "$ref": "#/$defs/proof"
++        }
++      },
++      "required": [
++        "member_id",
++        "readiness_ref",
++        "readiness_context_ref",
++        "readiness_handoff_ref",
++        "gate_checked_at",
++        "approved_head_sha",
++        "actual_merge_sha",
++        "merged_at",
++        "merge_binding",
++        "historical_merge_gate"
++      ]
++    },
++    "merge": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "member_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "head_sha": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{40}$"
++        },
++        "base_sha": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{40}$"
++        },
++        "target_revision": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{40}$"
++        },
++        "merge_sha": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{40}$"
++        },
++        "merged_at": {
++          "type": "string",
++          "format": "date-time"
++        },
++        "method": {
++          "enum": [
++            "merge",
++            "squash",
++            "rebase",
++            "queue"
++          ]
++        }
++      },
++      "required": [
++        "member_id",
++        "head_sha",
++        "base_sha",
++        "target_revision",
++        "merge_sha",
++        "merged_at",
++        "method"
++      ]
++    },
++    "merged_member": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "member_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "merge_sha": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{40}$"
++        }
++      },
++      "required": [
++        "member_id",
++        "merge_sha"
++      ]
++    },
++    "proof": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "verdict": {
++          "enum": [
++            "pass",
++            "fail",
++            "pending"
++          ]
++        },
++        "evidence_ids": {
++          "type": "array",
++          "items": {
++            "type": "string",
++            "minLength": 1,
++            "pattern": "\\S"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        },
++        "reason": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        }
++      },
++      "required": [
++        "verdict",
++        "evidence_ids",
++        "reason"
++      ],
++      "allOf": [
++        {
++          "if": {
++            "properties": {
++              "verdict": {
++                "enum": [
++                  "pass",
++                  "fail"
++                ]
++              }
++            }
++          },
++          "then": {
++            "properties": {
++              "evidence_ids": {
++                "type": "array",
++                "items": {
++                  "type": "string",
++                  "minLength": 1,
++                  "pattern": "\\S"
++                },
++                "minItems": 1,
++                "uniqueItems": true
++              }
++            }
++          }
++        }
++      ]
++    },
++    "source": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "repository": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "revision": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{40}$"
++        }
++      },
++      "required": [
++        "repository",
++        "revision"
++      ]
++    },
++    "subject": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "repository": {
++          "$ref": "#/$defs/text"
++        },
++        "pr_number": {
++          "anyOf": [
++            {
++              "type": "integer",
++              "minimum": 1
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "head_sha": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{40}$"
++        },
++        "base_sha": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{40}$"
++        },
++        "target_revision": {
++          "type": "string",
++          "pattern": "^[0-9a-f]{40}$"
++        },
++        "config_revision": {
++          "$ref": "#/$defs/text"
++        },
++        "merge_group_sha": {
++          "anyOf": [
++            {
++              "type": "string",
++              "pattern": "^[0-9a-f]{40}$"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        }
++      },
++      "required": [
++        "repository",
++        "pr_number",
++        "head_sha",
++        "base_sha",
++        "target_revision",
++        "config_revision",
++        "merge_group_sha"
++      ]
++    },
++    "text": {
++      "type": "string",
++      "minLength": 1,
++      "pattern": "\\S"
++    },
++    "verification_result": {
++      "type": "object",
++      "additionalProperties": false,
++      "properties": {
++        "verification_id": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        },
++        "outcome": {
++          "enum": [
++            "met",
++            "not_met",
++            "unverified"
++          ]
++        },
++        "evidence_ids": {
++          "type": "array",
++          "items": {
++            "type": "string",
++            "minLength": 1,
++            "pattern": "\\S"
++          },
++          "minItems": 0,
++          "uniqueItems": true
++        },
++        "reason": {
++          "type": "string",
++          "minLength": 1,
++          "pattern": "\\S"
++        }
++      },
++      "required": [
++        "verification_id",
++        "outcome",
++        "evidence_ids",
++        "reason"
++      ],
++      "allOf": [
++        {
++          "if": {
++            "properties": {
++              "outcome": {
++                "enum": [
++                  "met",
++                  "not_met"
++                ]
++              }
++            }
++          },
++          "then": {
++            "properties": {
++              "evidence_ids": {
++                "type": "array",
++                "items": {
++                  "type": "string",
++                  "minLength": 1,
++                  "pattern": "\\S"
++                },
++                "minItems": 1,
++                "uniqueItems": true
++              }
++            }
++          }
++        }
++      ]
++    }
++  }
++}
+diff --git a/contracts/issue-completion.md b/contracts/issue-completion.md
+index cb1bb15..d92e80f 100644
+--- a/contracts/issue-completion.md
++++ b/contracts/issue-completion.md
+@@ -55,7 +55,7 @@ BlobRef は `id, locator, sha256, size`。locator は **assessment ディレク
+ Handoff artifact の locator のみ従来どおり Handoff ディレクトリ基準。
+ 歴史的 PR Handoff の Readiness locator にも集約入口で同じ通常ファイル・祖先検査を適用する。
+ 同じ正当な実体を指す symlink、絶対 path、空要素、`.` / `..`、backslash も受理しない。
+-通常の入れ子ディレクトリ内の相対 locator は使用できる。既存 Readiness CLI 自体は変更しない。
++通常の入れ子ディレクトリ内の相対 locator は使用できる。1.0 の説明時点では既存 Readiness CLI 自体は変更しない。1.1 の通常ファイル境界は末尾参照。
+ 同じ ref ID を異なる path/bytes に使わない。読み取った全ファイルを成功前に再読照合する。
+ ローカルの悪意ある writer が検査終了後に変更することまでは防がないので、配送時の pin を保全する。
+ 
+@@ -136,3 +136,36 @@ workload/method/expected_result、明示的 merge mapping、構造化 source obs
+ 3 repo、同 repo 複数 PR、squash/rebase/queue、過去期限切れ gate、現在実測、欠落/重複、scope/pin/expiry、
+ source fake、path/bytes、履歴、失敗と Handoff 境界を検証する。全既存回帰も維持する。
+ 実製品の Order3 AC は未実測のため unverified。schema 実装・synthetic 成功を製品 Issue 達成や配備許可にしない。
++
++## Issue Completion 1.1: 準備依存メンバー
++
++1.0 schema は変更しない。新 CLI は assessment/context とも明示的 1.1 の場合に
++`issue-completion-v1.1.schema.json` / `issue-completion-context-v1.1.schema.json` を使用する。
++通常の 1.0 は従来どおり受理し、版混在・未知版は拒否する。旧 Consumer は 1.1 を拒否する。
++履歴は元 bytes の 1.0/1.1 を保持し、既存の最新 previous pin と append-only 条件を維持する。
++
++1.1 の全 required_prs は `pr_kind` と `preparation` が必須。
++standard は非空 `ac_ids` と preparation=null、preparation は空 `ac_ids` と非 null の
++`related_ac_ids` / `artifact_refs` を要求する。関連 AC は製品担当集合ではない。
++歴史的 Readiness の pr_kind/pr_ac_ids/related_ac_ids と関連 AC 原文・最早段階を照合する。
++準備は Readiness 1.1 の none + aggregate_required 制約、工程条件、独立 Test/Review、
++後続責任、既知製品失敗、merge 当時の期限・全保護ゲートをすべて通す。
++
++`artifact_refs` は `{artifact_id, ref: BlobRef}` の非空集合。歴史的準備成果物の全 ID と
++完全一致し、各 ref は独立 pin された aggregate context 内に置く。root は自由指定せず、
++配送済み歴史的 Readiness ファイルの親ディレクトリに固定する。その root + 元 locator と
++BlobRef の assessment-root 相対 path が同一で、size/raw SHA-256 が一致することを検査する。
++全成果物は bundle の通常ファイル検査と成功前の全 bytes 再検査の対象になる。
++
++準備メンバーも required/current/result、依存 DAG、merge 認可、歴史的 gate、merge binding、
++全 merge vector、統合チェックから除かない。`measurement_coverage` の対象集合だけは
++非空の standard メンバー集合とし、全製品 AC と全 required subcheck の実測を要求する。
++製品 verification の member_ids に準備メンバーを指定して製品カバレッジに使うことはできない。
++その他の集約チェックは準備を含む全必要集合を維持する。準備だけの achieved は不可。
++デプロイの必要集合・source/config/image/environment/workload と全測定条件も維持する。
++
++固定ファイルは descriptor 相対の no-follow traversal、通常ファイル型・16 MiB 上限、
++Linux O_PATH で I/O 前に型を固定した descriptor の nonblocking open、読取前後の inode/size/mtime/ctime と祖先対応の照合で検査する。
++FIFO/device/socket/directory/symlink と読取中の差替え・増大は拒否する。
++検査後の悪意ある変更やネットワーク filesystem 自体の停止を防ぐ sandbox ではない。
++Manager は配送 pin と検証済み materialization を保全し、変更後は再検査する。
+diff --git a/contracts/readiness.md b/contracts/readiness.md
+index 38ac45f..dff798f 100644
+--- a/contracts/readiness.md
++++ b/contracts/readiness.md
+@@ -119,3 +119,13 @@ python scripts/validate_readiness.py readiness.json --context current-context.js
+ 固定コードだから無期限とはしない。全証跡について既存の時刻不等式を維持し、subject/config の
+ 変更は期限内でも即失効する。旧期限を書き換えず、新たな確認と新記録を作る。
+ 1.1 は期限検査を緩和しない。
++
++Issue Completion 1.1 は準備 PR を型付き required メンバーとして保持する。
++空の製品担当 ac_ids と関連 AC を分離し、歴史的 Readiness の親を成果物 root として
++context の固定 BlobRef と照合する。全必要 merge 集合と後続 standard PR の全製品実測を要求し、
++工程合格を製品達成へ変換しない。版互換・配送・検証手順は
++[Issue Completion 契約](../contracts/issue-completion.md) と [合成例](../examples/issue-completion/README.md) を参照。
++
++準備の固定成果物は通常ファイルのみ、各16 MiB以内。symlink を祖先を含め拒否し、
++Linux O_PATH による I/O 前の inode 固定、no-follow/nonblocking open と descriptor の型・size・読取前後の同一性を検査する。
++CLI では assessment の親が artifact_root。ライブラリ利用でも同じ境界と raw hash を維持する。
+diff --git a/examples/issue-completion/README.md b/examples/issue-completion/README.md
+index ab0b32b..652bc7b 100644
+--- a/examples/issue-completion/README.md
++++ b/examples/issue-completion/README.md
+@@ -18,3 +18,17 @@ python scripts/validate_issue_completion.py examples/issue-completion/synthetic-
+ ```
+ 
+ 再生成は `tests/completion_fixture.py` の build（テスト専用）。実体、全 hash、Handoff binding、CI の固定 pin を一緒に更新する。構造化 observation は元観測の真実性を保証しない。公開前に全 bytes を安全点検する。
++
++## Preparation → standard product measurements → integration (1.1)
++
++`tests/preparation_completion_fixture.py` は synthetic-achieved の準備依存版を生成する。
++準備の製品結果は unverified のまま、後続通常 PR が全製品実測を提供する。
++全3メンバーの merge、デプロイ、統合証跡は維持する。以下は合成 replay 専用。
++
++```sh
++python examples/issue-completion/preparation-example.py /tmp/synthetic-preparation
++```
++
++生成した context pin は合成例にのみ使用する。実運用の認可や独立 Manager pin の代用ではない。
++後方互換の通常 aggregate control と異常系は `test_issue_completion*.py`、
++新しい型・scope・root・測定と統合の異常系は `test_preparation_completion.py` を参照。
+diff --git a/examples/issue-completion/preparation-example.py b/examples/issue-completion/preparation-example.py
+new file mode 100644
+index 0000000..1d89f5d
+--- /dev/null
++++ b/examples/issue-completion/preparation-example.py
+@@ -0,0 +1,16 @@
++#!/usr/bin/env python3
++"""Generate and validate a fictional 1.1 bundle; no live result or authority."""
++from pathlib import Path
++import sys
++
++ROOT = Path(__file__).resolve().parents[2]
++sys.path[:0] = [str(ROOT), str(ROOT/'tests')]
++from preparation_completion_fixture import build_preparation
++from scripts.validate_issue_completion import validate_files, instant
++
++root = Path(sys.argv[1]).absolute()
++root.mkdir(parents=True, exist_ok=False)
++a, c = build_preparation(root)
++print(validate_files(root/'completion.json', root/'context.json', a['context_sha256'],
++                     root/'handoff.json', now=instant('2030-01-03T12:00:00Z')))
++print('SYNTHETIC REPLAY context SHA-256:', a['context_sha256'])
+diff --git a/scripts/regular_file.py b/scripts/regular_file.py
+new file mode 100644
+index 0000000..310c63d
+--- /dev/null
++++ b/scripts/regular_file.py
+@@ -0,0 +1,78 @@
++"""Bounded Linux regular-file reads with descriptor-relative, no-symlink traversal.
++
++No protection against a hostile writer after return; callers must retain pins.
++Unsupported no-follow primitives fail closed rather than silently weakening checks.
++"""
++import os
++from pathlib import Path
++import stat
++
++MAX_FILE = 16 * 1024 * 1024
++
++
++def signature(s):
++    return (s.st_dev, s.st_ino, s.st_mode, s.st_size, s.st_mtime_ns, s.st_ctime_ns)
++
++
++def read_regular(path, *, limit=MAX_FILE):
++    path = Path(path).absolute()
++    if '..' in path.parts or not 0 <= limit <= MAX_FILE:
++        raise ValueError('unsafe path or file size limit')
++    flags = os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK
++    directories = []
++    fd = pinned = None
++    try:
++        parent = os.open(path.anchor, flags | os.O_DIRECTORY)
++        directories.append(parent)
++        edges = []
++        for name in path.parts[1:-1]:
++            child = os.open(name, flags | os.O_DIRECTORY, dir_fd=parent)
++            edges.append((parent, name, child))
++            directories.append(child)
++            parent = child
++        before = os.stat(path.name, dir_fd=parent, follow_symlinks=False)
++        if not stat.S_ISREG(before.st_mode) or before.st_size > limit:
++            raise ValueError('ordinary file within size limit required')
++        # O_PATH pins the inode without opening a FIFO/device for I/O, even if
++        # the directory entry changes after lstat. Reopen only a verified regular
++        # inode through the kernel-owned descriptor link, never the mutable path.
++        pinned = os.open(path.name, os.O_PATH | os.O_NOFOLLOW, dir_fd=parent)
++        opened = os.fstat(pinned)
++        if not stat.S_ISREG(opened.st_mode) or signature(before) != signature(opened):
++            raise ValueError('file changed before read or is nonregular')
++        fd = os.open('/proc/self/fd/' + str(pinned), os.O_RDONLY | os.O_NONBLOCK)
++        if signature(os.fstat(fd)) != signature(opened):
++            raise ValueError('pinned file changed before read')
++        chunks, count = [], 0
++        while count <= limit:
++            chunk = os.read(fd, min(65536, limit + 1 - count))
++            if not chunk:
++                break
++            chunks.append(chunk)
++            count += len(chunk)
++        if count > limit or count != opened.st_size:
++            raise ValueError('file exceeded size limit or changed during read')
++        if (signature(os.fstat(fd)) != signature(opened) or
++                signature(os.stat(path.name, dir_fd=parent, follow_symlinks=False)) != signature(opened)):
++            raise ValueError('file changed during read')
++        for ancestor, name, child in edges:
++            actual = os.stat(name, dir_fd=ancestor, follow_symlinks=False)
++            held = os.fstat(child)
++            if not stat.S_ISDIR(actual.st_mode) or (actual.st_dev, actual.st_ino) != (held.st_dev, held.st_ino):
++                raise ValueError('directory changed during read')
++        return b''.join(chunks)
++    finally:
++        if fd is not None:
++            os.close(fd)
++        if pinned is not None:
++            os.close(pinned)
++        for directory in reversed(directories):
++            os.close(directory)
++
++
++def artifact_path(root, locator):
++    if (not isinstance(locator, str) or Path(locator).is_absolute() or
++            '\\' in locator or '://' in locator or
++            any(p in ('', '.', '..') for p in locator.split('/'))):
++        raise ValueError('unsafe relative artifact locator')
++    return Path(root).absolute() / locator
+diff --git a/scripts/validate_issue_completion.py b/scripts/validate_issue_completion.py
+index 56098c8..8e8c91c 100644
+--- a/scripts/validate_issue_completion.py
++++ b/scripts/validate_issue_completion.py
+@@ -15,7 +15,11 @@ from scripts.validate_handoff import validate as validate_handoff
+ from scripts.validate_readiness import (instant, validator, validate as validate_readiness,
+                                         validate_handoff_pair as readiness_pair)
+ 
++from scripts.regular_file import read_regular, artifact_path
++
+ ASSESSMENT = validator('issue-completion')
++ASSESSMENT_V11 = validator('issue-completion-v1.1')
++CONTEXT_V11 = validator('issue-completion-context-v1.1')
+ CONTEXT = validator('issue-completion-context')
+ PHASES = {'premerge': 0, 'postmerge': 1, 'postdeploy': 2}
+ VECTOR_FIELDS = ('deployment_id', 'sources', 'config_sha256', 'images', 'environment_id', 'workload_id')
+@@ -101,7 +105,7 @@ class Bundle:
+         path = self.path(path)
+         stat = path.stat()
+         require(stat.st_size <= 16 * 1024 * 1024, 'file too large')
+-        raw = path.read_bytes()
++        raw = read_regular(path)
+         require(raw and len(raw) <= 16 * 1024 * 1024, 'empty or oversized file')
+         if path in self.cache:
+             require(raw == self.cache[path], 'bytes changed during validation')
+@@ -152,8 +156,10 @@ def time_window(item, evaluated, now):
+ 
+ 
+ def validate_record(data, context, bundle, now, previous=None):
+-    check_schema(ASSESSMENT, data, 'assessment')
+-    check_schema(CONTEXT, context, 'context')
++    require(data.get('schema_version') == context.get('schema_version'), 'aggregate version mismatch')
++    v11 = data.get('schema_version') == '1.1'
++    check_schema(ASSESSMENT_V11 if v11 else ASSESSMENT, data, 'assessment')
++    check_schema(CONTEXT_V11 if v11 else CONTEXT, context, 'context')
+     bundle.refs(context)
+     bundle.refs(data)
+     evaluated = instant(data['evaluated_at'])
+@@ -182,6 +188,9 @@ def validate_record(data, context, bundle, now, previous=None):
+     require(len(pr_keys) == len(set(pr_keys)), 'duplicate repository/PR')
+     for r in required.values():
+         require(set(r['ac_ids']) <= set(acs), 'unknown member AC')
++        if r.get('pr_kind') == 'preparation':
++            require(set(r['preparation']['related_ac_ids']) <= set(acs), 'unknown related member AC')
++            index(r['preparation']['artifact_refs'], 'artifact_id')
+         require(set(r['depends_on']) <= set(required) and r['member_id'] not in r['depends_on'], 'invalid dependency')
+     visited, active = set(), set()
+     def visit(key):
+@@ -243,7 +252,25 @@ def validate_record(data, context, bundle, now, previous=None):
+             rc = parse(bundle.ref(refs[1])[0]); hr, hp = bundle.ref(refs[2]); handoff = parse(hr)
+             require(member['merged_at'] is not None and result['gate_checked_at'] is not None, 'historical gate needs merge time')
+             merge_time = instant(member['merged_at'])
+-            require(not validate_readiness(ready, rc, merge_time), 'invalid historical Readiness at actual merge')
++            require(ready.get('pr_kind', 'standard') == requirement.get('pr_kind', 'standard'),
++                    'historical PR kind mismatch')
++            if requirement.get('pr_kind') == 'preparation':
++                require(ready.get('schema_version') == '1.1' and ready.get('preparation') is not None,
++                        'preparation requires historical Readiness 1.1')
++                preparation = requirement['preparation']
++                require(set(preparation['related_ac_ids']) == set(ready['preparation']['related_ac_ids']),
++                        'historical related AC mapping mismatch')
++                fixed = index(ready['preparation']['artifacts'], 'id')
++                delivered = index(preparation['artifact_refs'], 'artifact_id')
++                require(set(fixed) == set(delivered), 'preparation artifact set mismatch')
++                for aid, artifact in fixed.items():
++                    payload, path = bundle.ref(delivered[aid]['ref'])
++                    require(path == artifact_path(rp.parent, artifact['locator']),
++                            'preparation artifact root/path mismatch')
++                    require(len(payload) == artifact['size_bytes'] and sha(payload) == artifact['sha256'],
++                            'preparation artifact bytes/digest mismatch')
++            require(not validate_readiness(ready, rc, merge_time, artifact_root=rp.parent),
++                    'invalid historical Readiness at actual merge')
+             require(not validate_handoff(handoff), 'invalid PR Handoff v2')
+             artifacts = index(handoff['artifacts'], 'id')
+             require(ready['artifact_id'] in artifacts and
+@@ -258,7 +285,9 @@ def validate_record(data, context, bundle, now, previous=None):
+             require(ready['issue_id'] == data['issue_id'], 'historical Issue mismatch')
+             require(set(ready['pr_ac_ids']) == set(requirement['ac_ids']), 'historical PR scope mapping mismatch')
+             originals = index(ready['acceptance_criteria'], 'id')
+-            require(all(k in acs and same(originals[k], acs[k]) for k in ready['pr_ac_ids']), 'historical AC originals mismatch')
++            historical_ids = (requirement['preparation']['related_ac_ids']
++                              if requirement.get('pr_kind') == 'preparation' else ready['pr_ac_ids'])
++            require(all(k in originals and k in acs and same(originals[k], acs[k]) for k in historical_ids), 'historical AC originals mismatch')
+             require(instant(ready['evaluated_at']) <= instant(result['gate_checked_at']) <= merge_time, 'gate time outside merge window')
+             gates[key] = ready
+         if merged:
+@@ -385,7 +414,10 @@ def validate_record(data, context, bundle, now, previous=None):
+         kind = 'scope' if key == 'deployment' and not deployments else kinds[key]
+         found = proofs(proof, kind)
+         if proof['verdict'] == 'pass':
+-            require({m for e in found for m in e['member_ids']} == set(required), 'integration check misses required members')
++            expected_members = ({mid for mid, r in required.items() if r.get('pr_kind') != 'preparation'}
++                                if key == 'measurement_coverage' else set(required))
++            require(bool(expected_members) and {m for e in found for m in e['member_ids']} == expected_members,
++                    'integration check misses required members')
+             if key in ('scope','deployment','compatibility','current_evidence','authorizations'):
+                 require({d for e in found for d in e['deployment_ids']} == set(deployments), 'integration check misses deployments')
+             if key in ('compatibility','current_evidence'):
+@@ -407,7 +439,7 @@ def validate_record(data, context, bundle, now, previous=None):
+         require(event['kind'] not in ('measurement_failed','rollback','revert') or event['evidence_refs'], 'failure history needs evidence')
+     require(all(instant(a['observed_at']) <= instant(b['observed_at']) for a,b in zip(events,events[1:])), 'history not chronological')
+     if previous is not None:
+-        check_schema(ASSESSMENT, previous, 'previous')
++        check_schema(ASSESSMENT_V11 if previous.get('schema_version') == '1.1' else ASSESSMENT, previous, 'previous')
+         old_events = previous['history']['events']
+         require(previous['issue_id'] == data['issue_id'] and instant(previous['evaluated_at']) <= evaluated, 'previous Issue/time mismatch')
+         require(same(events[:len(old_events)], old_events) and len(events) > len(old_events), 'history must be append-only')
+@@ -480,7 +512,9 @@ def validate_files(file, context_file, context_sha256, handoff_file, *, now=None
+     raw = bundle.read(file); data = parse(raw)
+     context_raw = bundle.read(Path(context_file).absolute()); context = parse(context_raw)
+     require(re.fullmatch('[0-9a-f]{64}', context_sha256 or '') is not None and sha(context_raw) == context_sha256, 'untrusted current context pin')
+-    check_schema(ASSESSMENT, data, 'assessment'); check_schema(CONTEXT, context, 'context')
++    require(data.get('schema_version') == context.get('schema_version'), 'aggregate version mismatch')
++    check_schema(ASSESSMENT_V11 if data.get('schema_version') == '1.1' else ASSESSMENT, data, 'assessment')
++    check_schema(CONTEXT_V11 if context.get('schema_version') == '1.1' else CONTEXT, context, 'context')
+     require(data['context_sha256'] == context_sha256, 'assessment context digest mismatch')
+     previous = None; ref = data['history']['previous_ref']; pin = context['previous_assessment_sha256']
+     if pin is None:
+diff --git a/scripts/validate_readiness.py b/scripts/validate_readiness.py
+index 1cb2afc..ecb1890 100644
+--- a/scripts/validate_readiness.py
++++ b/scripts/validate_readiness.py
+@@ -12,6 +12,10 @@ from jsonschema import Draft202012Validator, FormatChecker
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+ FORMATS = FormatChecker()
++try:
++    from .regular_file import read_regular, artifact_path
++except ImportError:
++    from regular_file import read_regular, artifact_path
+ 
+ 
+ @FORMATS.checks('date-time', raises=(ValueError, OverflowError))
+@@ -181,11 +185,8 @@ def validate(data, context, now=None, *, artifact_root=None):
+             try:
+                 if artifact_root is None:
+                     raise ValueError('materialized artifact root required')
+-                root = Path(artifact_root).resolve(strict=True)
+-                target = (root / artifact['locator']).resolve(strict=True)
+-                if not target.is_relative_to(root):
+-                    raise ValueError('artifact path escapes root')
+-                payload = target.read_bytes()
++                target = artifact_path(artifact_root, artifact['locator'])
++                payload = read_regular(target, limit=artifact['size_bytes'])
+                 if len(payload) != artifact['size_bytes'] or hashlib.sha256(payload).hexdigest() != artifact['sha256']:
+                     raise ValueError('artifact bytes/size/digest mismatch')
+             except (OSError, ValueError, RuntimeError) as exc:
+@@ -315,7 +316,7 @@ def main():
+             raise ValueError('v1.1 requires independent Manager --context-sha256')
+         if args.context_sha256 and hashlib.sha256(context_bytes).hexdigest() != args.context_sha256:
+             raise ValueError('Manager context digest mismatch')
+-        errors = validate(data, context, now, artifact_root=args.file.resolve().parent)
++        errors = validate(data, context, now, artifact_root=args.file.absolute().parent)
+         if args.handoff and not errors:
+             errors += validate_handoff_pair(
+                 data, json.loads(args.handoff.read_text(encoding='utf-8')),
+diff --git a/templates/task-input.md b/templates/task-input.md
+index 10c24c3..ffb73aa 100644
+--- a/templates/task-input.md
++++ b/templates/task-input.md
+@@ -78,3 +78,9 @@ Publication Receipt、独立 pin の Consumer 利用承認、Consumption Receipt
+ ## 依存準備 PR の追加契約
+ 
+ [Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。
++
++Issue Completion 1.1 は準備 PR を型付き required メンバーとして保持する。
++空の製品担当 ac_ids と関連 AC を分離し、歴史的 Readiness の親を成果物 root として
++context の固定 BlobRef と照合する。全必要 merge 集合と後続 standard PR の全製品実測を要求し、
++工程合格を製品達成へ変換しない。版互換・配送・検証手順は
++[Issue Completion 契約](../contracts/issue-completion.md) と [合成例](../examples/issue-completion/README.md) を参照。
+diff --git a/tests/preparation_completion_fixture.py b/tests/preparation_completion_fixture.py
+new file mode 100644
+index 0000000..73488d5
+--- /dev/null
++++ b/tests/preparation_completion_fixture.py
+@@ -0,0 +1,44 @@
++"""Synthetic preparation dependency followed by real product measurements."""
++from copy import deepcopy
++import json
++from completion_fixture import build, save, write, handoff, ROOT
++
++
++def build_preparation(root):
++    a, c = build(root)
++    a['schema_version'] = c['schema_version'] = '1.1'
++    for requirement in c['required_prs']:
++        requirement.update(pr_kind='standard', preparation=None)
++    d = json.loads((ROOT/'examples/readiness/preparation-ready.json').read_bytes())
++    rc = json.loads((ROOT/'examples/readiness/preparation-context.json').read_bytes())
++    subject = json.loads((root/'app-readiness.json').read_bytes())['subject']
++    d['subject'] = subject
++    rc['subject'] = deepcopy(subject)
++    for e in d['evidence']:
++        e['subject'] = deepcopy(subject)
++    for x in (d, rc):
++        x['preparation']['artifacts'][0]['revision'] = subject['target_revision']
++    ref = write(root, 'preparation-artifact.txt', (ROOT/'examples/readiness/preparation-artifact.txt').read_bytes())
++    c['required_prs'][0].update(pr_kind='preparation', ac_ids=[], preparation={
++        'related_ac_ids': deepcopy(d['preparation']['related_ac_ids']),
++        'artifact_refs': [{'artifact_id': d['preparation']['artifacts'][0]['id'], 'ref': ref}]})
++    rr = write(root, 'app-readiness.json', d)
++    rr['id'] = d['artifact_id']
++    a['member_results'][0].update(readiness_ref={**rr, 'id':'app-readiness'},
++        readiness_context_ref=write(root, 'app-context.json', rc),
++        readiness_handoff_ref=write(root, 'app-handoff.json', handoff(c['issue'], rr)))
++    c['required_verifications'] = [v for v in c['required_verifications'] if v['verification_id'] != 'app-pre']
++    a['verification_results'] = [v for v in a['verification_results'] if v['verification_id'] != 'app-pre']
++    a['evidence'] = [v for v in a['evidence'] if v['id'] != 'app-pre']
++    for v in a['ac_results']:
++        for k in ('verification_ids', 'evidence_ids'):
++            v[k] = [x for x in v[k] if x != 'app-pre']
++    a['integration_readiness']['checks']['measurement_coverage']['evidence_ids'].remove('app-pre')
++    # Preparation is a required merged dependency, never a product measurement target.
++    for v in c['required_verifications']:
++        v['member_ids'] = [x for x in v['member_ids'] if x != 'app']
++    for e in a['evidence']:
++        if e['kind'] == 'ac_measurement':
++            e['member_ids'] = [x for x in e['member_ids'] if x != 'app']
++    save(root, a, c)
++    return a, c
+diff --git a/tests/test_preparation_completion.py b/tests/test_preparation_completion.py
+new file mode 100644
+index 0000000..d33177f
+--- /dev/null
++++ b/tests/test_preparation_completion.py
+@@ -0,0 +1,139 @@
++from copy import deepcopy
++import json
++from pathlib import Path
++import tempfile
++import unittest
++
++from completion_fixture import save, write, handoff, NOW
++from preparation_completion_fixture import build_preparation
++from scripts.validate_issue_completion import validate_files, instant
++
++
++class PreparationCompletionTests(unittest.TestCase):
++    def setUp(self):
++        self.tmp = tempfile.TemporaryDirectory()
++        self.addCleanup(self.tmp.cleanup)
++        self.root = Path(self.tmp.name)
++        self.a, self.c = build_preparation(self.root)
++
++    def validate(self):
++        save(self.root, self.a, self.c)
++        return validate_files(self.root/'completion.json', self.root/'context.json',
++            self.a['context_sha256'], self.root/'handoff.json', now=instant(NOW))
++
++    def reject(self):
++        with self.assertRaises((ValueError, OSError)):
++            self.validate()
++
++    def test_preparation_then_product_then_full_integration(self):
++        self.assertEqual(self.validate(), ('ready','achieved'))
++        self.assertEqual(self.c['required_prs'][0]['ac_ids'], [])
++        ready = json.loads((self.root/'app-readiness.json').read_bytes())
++        self.assertTrue(all(x['outcome']=='unverified' for x in ready['ac_results']))
++        self.assertEqual(ready['issue_completion'], 'unverified')
++        self.assertTrue(all('app' not in x['member_ids'] for x in self.c['required_verifications']))
++        self.assertIn('app', [x['member_id'] for x in self.a['member_results']])
++
++    def test_explicit_version_and_kind_required(self):
++        for mode in ('old','mismatch','missing','standard','unknown','related_as_scope'):
++            with self.subTest(mode=mode):
++                self.a,self.c=build_preparation(self.root)
++                r=self.c['required_prs'][0]
++                if mode=='old': self.a['schema_version']=self.c['schema_version']='1.0'
++                elif mode=='mismatch': self.a['schema_version']='1.0'
++                elif mode=='missing': del r['pr_kind']
++                elif mode=='standard': r.update(pr_kind='standard',preparation=None)
++                elif mode=='unknown': r['pr_kind']='unknown'
++                else: r['ac_ids']=r['preparation']['related_ac_ids']
++                self.reject()
++
++    def test_related_unknown_missing_changed_and_originals(self):
++        for ids in ([], ['UNKNOWN'], ['SYNTHETIC-AC-1']):
++            self.a,self.c=build_preparation(self.root)
++            self.c['required_prs'][0]['preparation']['related_ac_ids']=ids
++            self.reject()
++        self.a,self.c=build_preparation(self.root)
++        self.c['issue']['acceptance_criteria'][0]['verbatim']+=' changed'
++        self.a['acceptance_criteria']=deepcopy(self.c['issue']['acceptance_criteria'])
++        self.reject()
++
++    def test_artifact_delivery_exact_set_root_digest(self):
++        for mode in ('missing','extra','duplicate','wrong_id','root','digest','size','bytes'):
++            with self.subTest(mode=mode):
++                self.a,self.c=build_preparation(self.root)
++                refs=self.c['required_prs'][0]['preparation']['artifact_refs']
++                if mode=='missing': refs.clear()
++                elif mode in ('extra','duplicate'):
++                    refs.append(deepcopy(refs[0]))
++                    if mode=='extra': refs[-1]['artifact_id']='extra'
++                elif mode=='wrong_id': refs[0]['artifact_id']='other'
++                elif mode=='root': refs[0]['ref']=write(self.root,'other.txt',(self.root/'preparation-artifact.txt').read_bytes())
++                elif mode=='digest': refs[0]['ref']['sha256']='0'*64
++                elif mode=='size': refs[0]['ref']['size']+=1
++                else: (self.root/'preparation-artifact.txt').write_bytes(b'changed')
++                self.reject()
++
++    def test_preparation_cannot_measure_product(self):
++        self.c['required_verifications'][0]['member_ids']=['app']
++        self.reject()
++
++    def test_required_preparation_must_merge_and_cannot_disappear(self):
++        for mode in ('open','missing','vector','dependency'):
++            self.a,self.c=build_preparation(self.root)
++            if mode=='open': self.c['current_members'][0]['state']='open'
++            elif mode=='missing': self.c['required_prs'].pop(0)
++            elif mode=='vector': self.c['current_members'][0]['merge_sha']=None
++            else: self.c['current_members'][0]['merged_at']='2030-01-02T12:00:00Z'
++            self.reject()
++
++    def test_product_measurement_missing_failed_fake_stage_deploy(self):
++        for mode in ('unmeasured','failed','phase','deployment'):
++            self.a,self.c=build_preparation(self.root)
++            if mode in ('unmeasured','failed'):
++                self.a['verification_results'][-1]['outcome']='unverified' if mode=='unmeasured' else 'not_met'
++            elif mode=='phase': self.c['required_verifications'][-1]['phase']='premerge'
++            else: self.c['current_deployments'][0]['state']='failed'
++            self.reject()
++
++    def test_historical_protection_expiry_and_none_boundary(self):
++        for mode in ('expiry','gate','impact','kind'):
++            self.a,self.c=build_preparation(self.root)
++            d=json.loads((self.root/'app-readiness.json').read_bytes())
++            rc=json.loads((self.root/'app-context.json').read_bytes())
++            if mode=='expiry': rc['policy_valid_until']='2030-01-01T13:00:00Z'
++            elif mode=='gate': d['merge_readiness']['checks']['github_ruleset']['verdict']='fail'
++            elif mode=='impact': d['deployment_effect']=rc['deployment_effect']='automatic'
++            else: self.c['required_prs'][0].update(pr_kind='standard',preparation=None,ac_ids=['SYNTHETIC-AC-1'])
++            rr=write(self.root,'app-readiness.json',d);rr['id']=d['artifact_id']
++            self.a['member_results'][0].update(readiness_ref={**rr,'id':'app-readiness'},
++                readiness_context_ref=write(self.root,'app-context.json',rc),
++                readiness_handoff_ref=write(self.root,'app-handoff.json',handoff(self.c['issue'],rr)))
++            self.reject()
++
++    def test_standard_v11_and_legacy_schema(self):
++        from completion_fixture import build
++        from scripts.validate_issue_completion import ASSESSMENT, CONTEXT
++        self.a,self.c=build(self.root)
++        self.assertTrue(ASSESSMENT.is_valid(self.a)); self.assertTrue(CONTEXT.is_valid(self.c))
++        self.a['schema_version']=self.c['schema_version']='1.1'
++        for r in self.c['required_prs']: r.update(pr_kind='standard',preparation=None)
++        self.assertFalse(ASSESSMENT.is_valid(self.a)); self.assertFalse(CONTEXT.is_valid(self.c))
++        self.assertEqual(self.validate(),('ready','achieved'))
++
++    def test_only_preparation_cannot_achieve(self):
++        for r in self.c['required_prs']:
++            r.update(pr_kind='preparation',ac_ids=[],preparation=deepcopy(self.c['required_prs'][0]['preparation']))
++        self.reject()
++
++    def test_nested_delivery_and_nonregular_artifact(self):
++        import os
++        r=self.a['member_results'][0]
++        folder=self.root/'nested';folder.mkdir()
++        for field in ('readiness_ref','readiness_context_ref','readiness_handoff_ref'):
++            ref=r[field]; name=ref['locator']; (self.root/name).rename(folder/name)
++            ref['locator']='nested/'+name
++        ref=self.c['required_prs'][0]['preparation']['artifact_refs'][0]['ref']
++        name=ref['locator'];(self.root/name).rename(folder/name);ref['locator']='nested/'+name
++        self.assertEqual(self.validate(),('ready','achieved'))
++        (folder/name).unlink();os.mkfifo(folder/name)
++        self.reject()
+diff --git a/tests/test_regular_file.py b/tests/test_regular_file.py
+new file mode 100644
+index 0000000..afdc125
+--- /dev/null
++++ b/tests/test_regular_file.py
+@@ -0,0 +1,68 @@
++import os
++from pathlib import Path
++import socket
++import tempfile
++import unittest
++from unittest.mock import patch
++
++from scripts.regular_file import read_regular, artifact_path, MAX_FILE
++
++
++class RegularFileTests(unittest.TestCase):
++    def setUp(self):
++        self.tmp=tempfile.TemporaryDirectory(); self.addCleanup(self.tmp.cleanup)
++        self.root=Path(self.tmp.name); self.file=self.root/'artifact';self.file.write_bytes(b'fixed')
++
++    def test_regular_bounded(self):
++        self.assertEqual(read_regular(self.file,limit=5),b'fixed')
++        with self.assertRaises(ValueError): read_regular(self.file,limit=4)
++        with self.assertRaises(ValueError): read_regular(self.file,limit=MAX_FILE+1)
++
++    def test_fifo_socket_directory_symlink(self):
++        fifo=self.root/'fifo';os.mkfifo(fifo)
++        sock=socket.socket(socket.AF_UNIX);self.addCleanup(sock.close);sock.bind(str(self.root/'socket'))
++        link=self.root/'link';link.symlink_to(self.file)
++        ancestor=self.root/'ancestor';ancestor.symlink_to(self.root,target_is_directory=True)
++        for path in (fifo,self.root/'socket',self.root,link,ancestor/'artifact',Path('/dev/null')):
++            with self.subTest(path=path), self.assertRaises((OSError,ValueError)):
++                read_regular(path)
++
++    def test_unsafe_locator(self):
++        for value in ('../artifact','/etc/passwd','a/../artifact','./artifact','a//b','a\\b','https://example.invalid/a'):
++            with self.assertRaises(ValueError): artifact_path(self.root,value)
++
++    def test_replacement_between_stat_and_open_nonblocking(self):
++        original=os.open
++        def swap(path,flags,*args,**kwargs):
++            if path=='artifact':
++                self.file.unlink();os.mkfifo(self.file)
++            return original(path,flags,*args,**kwargs)
++        with patch('scripts.regular_file.os.open',side_effect=swap), self.assertRaises(ValueError):
++            read_regular(self.file)
++
++    def test_replacement_growth_same_size_mutation_during_read(self):
++        original=os.read
++        for mode in ('replace','grow','same_size'):
++            self.file.write_bytes(b'fixed'); done=False
++            def mutate(fd,size):
++                nonlocal done
++                raw=original(fd,size)
++                if not done:
++                    done=True
++                    if mode=='replace':
++                        other=self.root/'other';other.write_bytes(b'fixed');other.replace(self.file)
++                    else: self.file.write_bytes(b'changed' if mode=='grow' else b'other')
++                return raw
++            with patch('scripts.regular_file.os.read',side_effect=mutate),self.assertRaises(ValueError):
++                read_regular(self.file,limit=5)
++
++    def test_ancestor_replacement(self):
++        sub=self.root/'sub';sub.mkdir();f=sub/'artifact';f.write_bytes(b'fixed')
++        original=os.read;done=False
++        def swap(fd,size):
++            nonlocal done
++            raw=original(fd,size)
++            if not done:
++                done=True;sub.rename(self.root/'old');sub.mkdir();(sub/'artifact').write_bytes(b'fixed')
++            return raw
++        with patch('scripts.regular_file.os.read',side_effect=swap), self.assertRaises(ValueError): read_regular(f)
+diff --git a/workflows/single-issue.md b/workflows/single-issue.md
+index 653e5a5..489e969 100644
+--- a/workflows/single-issue.md
++++ b/workflows/single-issue.md
+@@ -102,3 +102,9 @@ Consumer は format/拡張子だけで内容検査を省略しない。再利用
+ ## 依存準備 PR の追加契約
+ 
+ [Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。
++
++Issue Completion 1.1 は準備 PR を型付き required メンバーとして保持する。
++空の製品担当 ac_ids と関連 AC を分離し、歴史的 Readiness の親を成果物 root として
++context の固定 BlobRef と照合する。全必要 merge 集合と後続 standard PR の全製品実測を要求し、
++工程合格を製品達成へ変換しない。版互換・配送・検証手順は
++[Issue Completion 契約](../contracts/issue-completion.md) と [合成例](../examples/issue-completion/README.md) を参照。
