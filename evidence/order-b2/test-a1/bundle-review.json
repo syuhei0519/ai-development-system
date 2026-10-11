@@ -1,0 +1,60 @@
+{
+  "document_type": "public_bundle_safety_review",
+  "public_alias": "order-b2-test-a1",
+  "review": "Full newly authored text/code inspected; existing public input manifest/receipt copied without change. No private originals/digests, authorization, consumption receipt, real task identifiers, credentials or raw internal operational logs included. Synthetic fixture inputs are explicit. Repository technical config and public source/run identifiers retained.",
+  "publication_authority": "Existing Owner permission for Phase1-2/1-3 dedicated evidence branches, reaffirmed in this assignment. No new approval inferred from this record.",
+  "consumer_authority": "Not granted; Manager must separately issue.",
+  "inventory_excludes": "This review and Handoff are excluded from recursive hashes; Handoff binds this review and delivery binds Handoff.",
+  "files": [
+    {
+      "file": "README.txt",
+      "size": 565,
+      "sha256": "428dab539f878ced8eb81d394a6402ea96d6e904edf62096ca995bdb628a6a61"
+    },
+    {
+      "file": "config.json",
+      "size": 2102,
+      "sha256": "2f613db39d7c69ef60c74036a41de9dacd70b1c13d60099340a48c2924d5e20c"
+    },
+    {
+      "file": "independent-negative.py",
+      "size": 7073,
+      "sha256": "bc7b3869bfe76bbc7c84976183650ff8e97845def1e0173f95579a11925ce03e"
+    },
+    {
+      "file": "observations.json",
+      "size": 6454,
+      "sha256": "76102c21351b21e492ab8be2c3db1273af52256f0d9ca07449861510bbac2f62"
+    },
+    {
+      "file": "readiness-context-input.json",
+      "size": 1710,
+      "sha256": "5f0fea3dc8745b007a79311ba882a5c97d9c2b670144a5f21c3cf2b44943494c"
+    },
+    {
+      "file": "reproduce.sh",
+      "size": 1594,
+      "sha256": "a5f1dc11545703dc49538931c1c5407b148c32b0759f0de0bf524ec3ad2114bc"
+    },
+    {
+      "file": "test-report.txt",
+      "size": 11804,
+      "sha256": "fbd331dc92fd64a273bcfd0d16489c26b528aab05bca98ef09e859a1656cde2b"
+    },
+    {
+      "file": "transport-synthetic.go",
+      "size": 2008,
+      "sha256": "d2adf073f14a2964c840f8b7573ed175cb436145066e2bbfd6328b6659b08a35"
+    },
+    {
+      "file": "upstream-manifest.json",
+      "size": 96411,
+      "sha256": "aaec396be8c40e4dbef5db20e27621588f04d3ccde8f366f60b5e884972f28bf"
+    },
+    {
+      "file": "upstream-publication-receipt.json",
+      "size": 29520,
+      "sha256": "a1d08dcab0c6f9e92dd4a32b546292d8ec5ab4a089d6e6988579baaa36a1dac6"
+    }
+  ]
+}

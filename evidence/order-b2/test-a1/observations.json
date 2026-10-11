@@ -1,0 +1,225 @@
+{
+  "document_type": "independent_test_observations",
+  "public_alias": "order-b2-test-a1",
+  "epoch": 1,
+  "execution_attempt": 1,
+  "status": "blocked",
+  "subject": {
+    "repository": "syuhei0519/backend-app",
+    "pr_number": 32,
+    "head_sha": "65885af3fd648ce7010fa4a06470b273b995d418",
+    "base_sha": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+    "target_revision": "65885af3fd648ce7010fa4a06470b273b995d418",
+    "config_revision": "sha256:2f613db39d7c69ef60c74036a41de9dacd70b1c13d60099340a48c2924d5e20c",
+    "merge_group_sha": null
+  },
+  "source_tree": "a041558ad61f96dfbae616bcd3e91ab5f6b4a3a3",
+  "environment": {
+    "name": "PlatformEngineering Cloud",
+    "os": "Linux amd64",
+    "go": "1.27.1",
+    "docker": "28.4.0",
+    "db": "fresh isolated PostgreSQL containers and anonymous volumes; pinned image"
+  },
+  "fixed_measurement": {
+    "observed_at": "2026-10-11T17:23:29Z",
+    "valid_until": "2026-10-12T17:23:29Z",
+    "invalidated_by": [
+      "source change",
+      "relevant config change",
+      "new failure"
+    ]
+  },
+  "mutable_observation": {
+    "observed_window": [
+      "2026-10-11T17:21:00Z",
+      "2026-10-11T17:23:29Z"
+    ],
+    "valid_until": "2026-10-11T17:51:00Z",
+    "original_policy_valid_until": "2026-10-11T17:58:40Z"
+  },
+  "results": {
+    "unit": {
+      "exit": 0,
+      "pass": 109,
+      "skip": 5
+    },
+    "race_disposable": {
+      "exit": 0,
+      "pass": 112,
+      "skip": [
+        "TestMigrationDisposableDatabase",
+        "TestSDKCollectorMetricNames"
+      ]
+    },
+    "vet_build_mod_verify_gofmt": "passed",
+    "ci_boundary_suite": "passed",
+    "three_helper_module_vet_race_build": "passed",
+    "fresh_m0_suite": {
+      "exit": 0,
+      "tests": 19
+    },
+    "fresh_m0_byte_comparison": {
+      "files": 9,
+      "result": "identical"
+    },
+    "additional_independent_negative": {
+      "exit": 0,
+      "methods": 7
+    },
+    "synthetic_transport": {
+      "exit": 0,
+      "layers": 3,
+      "config_bytes": "identical",
+      "compressed_layer_digests": "identical",
+      "uncompressed_layer_contents": "identical",
+      "wrong_digest": "rejected",
+      "production_oci": false
+    },
+    "production_backend_oci": "blocked before build: BuildKit DNS/proxy hostname resolution",
+    "production_order_oci": "blocked before build: BuildKit DNS/proxy hostname resolution",
+    "production_reader_runtime_loaded_id_stamp_scan_sbom": "unverified",
+    "readiness_context_schema": "invalid: required preparation field missing"
+  },
+  "github": {
+    "pr": {
+      "base": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+      "draft": true,
+      "head": "65885af3fd648ce7010fa4a06470b273b995d418",
+      "mergeable": true,
+      "merged": false,
+      "number": 32,
+      "state": "open"
+    },
+    "push_run": 38157671767,
+    "push_jobs": [
+      {
+        "conclusion": "success",
+        "head_sha": "65885af3fd648ce7010fa4a06470b273b995d418",
+        "name": "classify",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "head_sha": "65885af3fd648ce7010fa4a06470b273b995d418",
+        "name": "validate",
+        "status": "completed"
+      },
+      {
+        "conclusion": "skipped",
+        "head_sha": "65885af3fd648ce7010fa4a06470b273b995d418",
+        "name": "docs",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "head_sha": "65885af3fd648ce7010fa4a06470b273b995d418",
+        "name": "image (order)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "head_sha": "65885af3fd648ce7010fa4a06470b273b995d418",
+        "name": "image (backend)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "head_sha": "65885af3fd648ce7010fa4a06470b273b995d418",
+        "name": "ci-result",
+        "status": "completed"
+      },
+      {
+        "conclusion": "skipped",
+        "head_sha": "65885af3fd648ce7010fa4a06470b273b995d418",
+        "name": "propose",
+        "status": "completed"
+      },
+      {
+        "conclusion": "skipped",
+        "head_sha": "65885af3fd648ce7010fa4a06470b273b995d418",
+        "name": "publish",
+        "status": "completed"
+      }
+    ],
+    "pr_run": 38157674375,
+    "pr_jobs": [
+      {
+        "conclusion": "success",
+        "head_sha": "65885af3fd648ce7010fa4a06470b273b995d418",
+        "name": "classify",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "head_sha": "65885af3fd648ce7010fa4a06470b273b995d418",
+        "name": "validate",
+        "status": "completed"
+      },
+      {
+        "conclusion": "skipped",
+        "head_sha": "65885af3fd648ce7010fa4a06470b273b995d418",
+        "name": "docs",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "head_sha": "65885af3fd648ce7010fa4a06470b273b995d418",
+        "name": "image (backend)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "head_sha": "65885af3fd648ce7010fa4a06470b273b995d418",
+        "name": "image (order)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "head_sha": "65885af3fd648ce7010fa4a06470b273b995d418",
+        "name": "ci-result",
+        "status": "completed"
+      },
+      {
+        "conclusion": "skipped",
+        "head_sha": "65885af3fd648ce7010fa4a06470b273b995d418",
+        "name": "publish",
+        "status": "completed"
+      },
+      {
+        "conclusion": "skipped",
+        "head_sha": "65885af3fd648ce7010fa4a06470b273b995d418",
+        "name": "propose",
+        "status": "completed"
+      }
+    ],
+    "environments": {
+      "ghcr-publish": {
+        "required_reviewers": 1,
+        "branches": [
+          "main"
+        ]
+      },
+      "manifest-update": {
+        "required_reviewers": 1,
+        "branches": [
+          "main"
+        ]
+      }
+    },
+    "ci_is_independent_execution": false
+  },
+  "deployment": {
+    "fixed_source_effect": "none",
+    "external_automation": "unobserved",
+    "live_service_synced_healthy_image_id": "unverified",
+    "actual_ghcr_publication": "unverified",
+    "aggregate_issue_completion": "unverified"
+  },
+  "cleanup": {
+    "disposable_suite_containers": "removed by test cleanup",
+    "task_builders": "removed",
+    "source_tracked_files": "unchanged"
+  },
+  "history": "Existing upstream attempts and failed/successful delivery candidates unchanged."
+}

@@ -1,0 +1,164 @@
+Order B2 independent Test, epoch 1 attempt 1, public alias order-b2-test-a1
+Business status: BLOCKED. No product acceptance, readiness or merge authorization.
+
+Target: backend-app PR32, head 65885af3fd648ce7010fa4a06470b273b995d418,
+base 2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0,
+tree a041558ad61f96dfbae616bcd3e91ab5f6b4a3a3.
+System 4693887fa79c2b4a291c555b8bd27b6903eb4199.
+M0 application-manifest bc6adaedcd645a4663c23284b977a3dd36c0796d.
+platform-gitops b989e29b8addbd6396c5c2b4833b969bc15fc8fa.
+Config raw SHA-256 2f613db39d7c69ef60c74036a41de9dacd70b1c13d60099340a48c2924d5e20c.
+Environment: selected PlatformEngineering Cloud, Linux amd64, Go1.27.1,
+Docker28.4.0 local Unix socket, fresh Git checkouts. Existing verified Go module
+cache and setup activation used; no prior test results reused. No AGENTS.md or
+SKILL.md was present in these fresh target/System repositories. Fixed role,
+workflow, Handoff/Readiness/Delivery contracts and task/delivery templates read.
+
+Mandatory input before use
+Canonical fixed-System consume_delivery.py exited 0 after fresh Git retrieval of
+all required upstream bytes/size/hash/type/slot/candidate/tree bindings. Incoming
+manifest and publication receipt match Manager pins and are retained unchanged.
+55 explicit / 64 actual upstream objects, 584480 bytes. The input Handoff is the
+fixed ed1d1a04cb3465238f0e560540f2d471f3f16dad payload; records are c9d009cd590f4b888434e5b0777571956458997a.
+Private Manager authorization and Consumption Receipt are excluded from publication.
+Current consumer-use approval does not certify historical publication approval or
+private-original equivalence. Historical failed delivery candidate 1 and corrected
+candidate 2, B1/M0/M1 history and prior attempts have not been rewritten.
+
+Independent execution (all commands ran against the fixed head)
+- go test -json -count=1 ./...: exit0, 109 passed tests/subtests, 5 explicit skips.
+- go vet ./...; go build ./...; go mod verify; gofmt check: exit0.
+- ORDER_DISPOSABLE_TEST=1 go test -race -json -count=1 ./...: exit0,
+  112 passed tests/subtests; 2 skips remain: TestMigrationDisposableDatabase
+  (named kind fixture absent) and TestSDKCollectorMetricNames (Collector absent).
+  Neither skip is claimed as tested. The ordinary unit run skipped the three
+  opt-in Order DB tests; the race/disposable run explicitly executed all three.
+- bash ci/github/test.sh: exit0. Documentation checks 14 cases; all three Go
+  helper module suites, manifest-update helper, OCI budget/finalizer/publication/
+  reuse/registry-runtime boundary shell suites; Python release 8, producer/M0
+  interoperability 7, vendored M0 19 tests all passed. Mock publish output in that
+  suite is synthetic only and is not a real registry publication.
+- Each of tools/oci-input, tools/release-record, tools/scan-gate:
+  go vet ./... && go test -race -count=1 ./... && go build ./...: exit0.
+- Fresh fixed M0 checkout: python3 -I ci/github/release_test.py: exit0, 19 tests.
+  All 9 vendored M0 source/schema/fixture files were independently compared byte
+  for byte and by SHA-256 to the fresh fixed M0 checkout: identical.
+- independent-negative.py: exit0, 7 independent additional test methods with
+  table-driven cases. Uses existing synthetic fixture setup only; new assertions
+  execute current producer/matrix plus the separate fresh M0 consumer.
+- transport-synthetic.go using compiled actual oci-runtime-export: exit0. A fresh
+  synthetic 3-layer OCI preserved exact config bytes, compressed layer digests,
+  and decompressed content in Docker transport; wrong digest was refused. This
+  checks the exporter and does not validate a production image or loaded image ID.
+
+AC-1 / AC-2 measured behavior
+Real HTTP: Order create/get representation and Location, boundary requests,
+nonexistent Account ID accepted by the documented decoupled contract, Order
+retained after deleting Account, 52 malformed/invalid bodies rejected, 8 invalid
+IDs rejected, oversize413, media415, methods405, missing404. DB row count unchanged
+across invalid requests. Two Order OS-process restarts with changed PIDs, followed
+by PostgreSQL stop/start on the same newly allocated volume, preserved exact Order
+response bytes and migration history. Shutdown readiness503 and DB-offline
+readiness/read503 with liveness200 measured. Account CRUD ran before and after
+Order activity, with duplicate409/invalid400/missing404; sentinel all columns and
+schema_migrations version/applied_at history remained unchanged.
+Fresh/no-op/concurrent Order migration, lock cancellation and recovery, failed DDL
+transaction/history rollback and retry, future-version refusal, actual wrong DB
+and role rejection before DDL, SQL constraints and timeout/retry boundaries passed.
+Fixtures accepted no existing DSN/volume. Only newly created local containers and
+anonymous volumes were used and removed by scoped cleanup. No kind/cluster used.
+
+Independent B2 malicious fixtures and static checks
+Additional matrix tests cover missing member, wrong attempt naming, extra/colliding
+artifact namespace, archive/SBOM/image/source byte tampering, repository/source/
+run/attempt/workflow/service/schema/image mismatches, false policy/runtime flags,
+changed config/digest, read-only/cap-drop/network mismatches. Exact ci-result shell
+rejects failure/skipped/cancelled/empty classify/validate/image results. The workflow
+uses fixed backend/order matrix, fail-fast=false, distinct workspaces/artifacts,
+ci-result complete-artifact verification and publish dependency on ci-result.
+Publish archive/SBOM/scan corruption is rejected before API or command side effects.
+Producer-generated Order records were accepted by actual fixed M0 validate_record;
+unknown/wrong service/repository/image, run/attempt/source, expiry, unpublished or
+unprotected record and deployment authorization were refused. Existing executable
+M0 suite separately exercised ZIP path/record count/duplicate/symlink/nonfinite,
+expired/missing/duplicate artifact, moved tag, peer-source/archive and registry
+config/digest/index/main/canonical-record failures. These are mocked remote inputs,
+not actual public GHCR validation. Original producer interoperability suite executes
+mocked publish with same checked archive and asserts no rebuild command.
+Order values absent: additional test executes propose and confirms only three GETs
+and no writes before FileNotFoundError. Branch github/order-* and Account github/
+backend-* remain separated; target is same-owner/application-manifest, fixed values
+path. Account v1 schema/tag/artifact names retained. No M0 policy/source modified.
+
+Image limitations (blocking)
+Both exact production Dockerfiles inspected: identical pinned Go/distroless bases,
+USER10001:10001, distinct /server versus /order-server; Account Dockerfile unchanged.
+Order SQL embedded; no Account migration COPY in Order image. Runtime.py uses exact
+checked OCI checksum, config check, transport export, loaded ID equality, fresh
+internal network/DB, nonroot/read-only/cap-drop ALL/no-new-privileges, migration,
+liveness/readiness and restart; publish revalidates the original archive and does
+not rebuild. These are source observations except for the synthetic exporter test.
+Actual production builds attempted for both Dockerfiles with original file bytes,
+fixed VCS args and OCI export. Default Docker driver cannot export OCI. A new
+isolated pinned rootless BuildKit builder then failed at Dockerfile frontend
+metadata resolution due to in-container DNS. Passing existing proxy variables
+through BuildKit's supported driver options also failed resolving the existing
+proxy hostname. No DNS, network-security, CA policy or privilege changes were made.
+No production OCI was produced; production reader/runtime/loadedID/stamp/scan/SBOM
+and the complete production archive-to-publication chain are UNVERIFIED. Existing
+CI success and synthetic transport success do not fill this gap. The previously
+403-denied CI ZIP/connector URL routes were neither retried nor bypassed.
+Both task-owned builders were removed. No new secret or external API credential.
+Required action: Manager provide an already authorized build environment with
+working standard BuildKit dependency access, then dispatch remaining independent
+production image checks within the retry contract; do not weaken network controls
+or count upstream CI as independent execution.
+
+Readiness input limitation (blocking; input, not a product failure)
+The raw context has 1710 bytes and matches the supplied public technical-context
+SHA-256 5f0fea3dc8745b007a79311ba882a5c97d9c2b670144a5f21c3cf2b44943494c.
+Fixed System readiness-context.schema.json rejects it: 'preparation' is a required
+property for schema1.1. Its pr_kind is standard. No context bytes/pin/expiry were
+modified. Manager must issue a corrected standard context with preparation:null
+and a new independent pin before formal Readiness evaluation. No assessment was
+fabricated. Original policy_valid_until remains 2026-10-11T17:58:40Z.
+
+Mutable GitHub observations, distinct from independent execution
+Read-only current PR32: open/draft, unmerged, head/base match fixed assignment.
+Push38157671767 and PR38157674375: both image jobs, validate and ci-result success;
+publish/propose skipped. This is independently fetched CI metadata, not independent
+execution of their OCI bytes. Both ghcr-publish and manifest-update Environments
+still require one reviewer and allow branch main only. Fixed workflow retains
+protected-main push + enable-variable guards and these Environments. Global
+contents:read; publish contents/packages:write; propose contents:read plus existing
+manifest token. No token inspection/new permission. Ruleset remains strict
+ci-result, zero required PR approvals, no bypass; this is separate from Environment
+reviewer approval. No actual approval event, actual publication or deployment claim.
+
+Deployment and preservation inspection
+All 24 changed files/diff inspected. No Account app/store/SQL, shared dependency
+lockfiles, Order migration SQL or scan policy changes relative to fixed base.
+Only Order runtime stamp variables/logging changed in application Go code.
+Fixed Manifest backend digest stays
+sha256:3087ed474d2e5e6fee1518f0d063fedc9ed754e84a5d7d9defa1129ef43b605d.
+Fixed GitOps workload sources are application-manifest main, charts and local values;
+existing applications are PostgreSQL, backend and frontend with automated Argo sync.
+No Order values at fixed M0 and no Order workload registration at fixed platform.
+No configured image tag updater found in inspected active GitOps/workflow sources.
+Backend-only diff therefore changes no fixed desired deployment digest. A later
+Manifest merge can deploy; unseen external automation and live state remain unknown.
+Unmerged M1 chart not imported. Actual Service/Synced/Healthy/imageID, GHCR public
+image and aggregate Issue completion remain unverified.
+
+Scope and validity
+AC1/2 covered means assigned independent B2 regression only. AC3 unverified because
+required B2 production-image checks cannot execute; actual deployed AC3 is also
+unverified. No blocking product defect was demonstrated; business status blocked,
+not completed. Execution attempt1 is preserved; no self-dispatch or Review/Knowledge
+started. Fixed measurements observed by 2026-10-11T17:23:29Z, valid at most through
+2026-10-12T17:23:29Z and immediately invalid on source/relevant-config change or new
+failure. Separate mutable metadata observation window 17:21-17:23Z has a conservative
+expiry 2026-10-11T17:51:00Z. No original policy expiry extension.
+Implementation edits/push/PR mutations/merge/auto-merge, workflow dispatch, actual
+GHCR publication, cluster/kind, Secrets/Ruleset/security changes: not_requested.
+Public delivery is separately recorded; it cannot promote blocked to completed.

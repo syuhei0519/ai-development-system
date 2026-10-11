@@ -1,0 +1,330 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "syuhei0519/backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "test",
+  "task_id": "order-b2-test-a1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "order-b2-implementation-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/ed1d1a04cb3465238f0e560540f2d471f3f16dad/evidence/order-b2/implementation-a1/handoff.json",
+      "revision": "sha256:97a03d7cd27c961488fc7ed37c0969fb4f1069e407e8fff61606f0f8aaf1d554",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "blocked",
+  "summary": "Independent AC1/2 HTTP/disposable DB regression and synthetic B2 CI/producer/M0 tests passed. Required production OCI build/runtime/scan/SBOM blocked by BuildKit dependency name resolution; supplied Readiness1.1 context also lacks required preparation. CI success is separate. No GHCR/deployment/Issue acceptance claimed.",
+  "assignment": {
+    "scope": "backend-app#2/B2",
+    "ac_ids": [
+      "AC-1",
+      "AC-2",
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "currentheadの全Unit/race/vet/build/関連既存suite、ORDER_DISPOSABLE_TEST=1の実HTTP+PostgreSQL回帰。Order create/get/不正4xx/書込0、プロセスと同一新規volume DB再起動後永続化、migration履歴、誤DB/role、失敗rollback/timeout、AccountCRUDと全sentinel/history不変。既存kind専用skipと実行済みを区別。使い捨てfixtureは新規専用コンテナ/network/volumeだけ、既存環境へ接続しない。",
+      "両イメージDockerfileを独立に検査/実行し、buildonce同一OCI tar→reader/runtime/scan/SBOM→publishが再buildなしで結合することを検証。runtime transport変換でconfig/layers/content同一、loadedID一致、stamp、nonroot/readonly/dropcap、migration/health/restartを検査。既存proxy/CAを正規手順で利用可。新Secret/権限/networksecurity設定変更禁止。実productionimageの未実行をsynthetic合格で埋めない。",
+      "matrixfailfastfalse、片方failure/missing/skip/別run/attempt/source、artifact名collision、混入checksum、異なるconfig/archive/SBOM、publish前guard、Accountv1互換、Orderv2完全bindingを悪性fixtureで検証。mock公開と実GHCRを分離。",
+      "M0固定consumerへproducer生成recordを実コードで渡し正常異常を突合。未知service/repository/image、zip/path/record個数、期限切れ、tag移動、peer不足、same-source確認を含む。M0/Account既存policyを緩めない。",
+      "全差分と関連sourceを検証し、CI/workflowの保護main専用publish、既存Environment人間承認とtoken最小scope、提案先固定/service別branch/未存在Ordervalues時failclosedを確認。実publish/workflowdispatch/Manifest PR17操作はしない。",
+      "backend-onlydiffのデプロイ影響、固定ManifestdigestとGitOpssourceを検証し、外部automation未観測の限界を残す。変更対象外Accountコード/SQL/lock/history保全、M1の未マージchartを取り込まない。",
+      "異常系追加はscratch/テスト成果物のみ。実装の無断修正禁止。阻害findingは重大度/対象fileline/reproducer/期待対実際/修正条件で早期報告しfailed。必要実行不能はblocked。Managerが別Implementationへ戻す。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-REPORT",
+      "kind": "test-report",
+      "locator": "test-report.txt",
+      "revision": "sha256:fbd331dc92fd64a273bcfd0d16489c26b528aab05bca98ef09e859a1656cde2b",
+      "summary": "Public fixed Test artifact; see report for measured scope and limitations."
+    },
+    {
+      "id": "A-OBS",
+      "kind": "other",
+      "locator": "observations.json",
+      "revision": "sha256:76102c21351b21e492ab8be2c3db1273af52256f0d9ca07449861510bbac2f62",
+      "summary": "Public fixed Test artifact; see report for measured scope and limitations."
+    },
+    {
+      "id": "A-NEGATIVE",
+      "kind": "document",
+      "locator": "independent-negative.py",
+      "revision": "sha256:bc7b3869bfe76bbc7c84976183650ff8e97845def1e0173f95579a11925ce03e",
+      "summary": "Public fixed Test artifact; see report for measured scope and limitations."
+    },
+    {
+      "id": "A-TRANSPORT",
+      "kind": "document",
+      "locator": "transport-synthetic.go",
+      "revision": "sha256:d2adf073f14a2964c840f8b7573ed175cb436145066e2bbfd6328b6659b08a35",
+      "summary": "Public fixed Test artifact; see report for measured scope and limitations."
+    },
+    {
+      "id": "A-REPRO",
+      "kind": "document",
+      "locator": "reproduce.sh",
+      "revision": "sha256:a5f1dc11545703dc49538931c1c5407b148c32b0759f0de0bf524ec3ad2114bc",
+      "summary": "Public fixed Test artifact; see report for measured scope and limitations."
+    },
+    {
+      "id": "A-CONFIG",
+      "kind": "other",
+      "locator": "config.json",
+      "revision": "sha256:2f613db39d7c69ef60c74036a41de9dacd70b1c13d60099340a48c2924d5e20c",
+      "summary": "Public fixed Test artifact; see report for measured scope and limitations."
+    },
+    {
+      "id": "A-CONTEXT",
+      "kind": "other",
+      "locator": "readiness-context-input.json",
+      "revision": "sha256:5f0fea3dc8745b007a79311ba882a5c97d9c2b670144a5f21c3cf2b44943494c",
+      "summary": "Public fixed Test artifact; see report for measured scope and limitations."
+    },
+    {
+      "id": "A-INPUT",
+      "kind": "other",
+      "locator": "upstream-manifest.json",
+      "revision": "sha256:aaec396be8c40e4dbef5db20e27621588f04d3ccde8f366f60b5e884972f28bf",
+      "summary": "Public fixed Test artifact; see report for measured scope and limitations."
+    },
+    {
+      "id": "A-INPUT-PUB",
+      "kind": "other",
+      "locator": "upstream-publication-receipt.json",
+      "revision": "sha256:a1d08dcab0c6f9e92dd4a32b546292d8ec5ab4a089d6e6988579baaa36a1dac6",
+      "summary": "Public fixed Test artifact; see report for measured scope and limitations."
+    },
+    {
+      "id": "A-README",
+      "kind": "document",
+      "locator": "README.txt",
+      "revision": "sha256:428dab539f878ced8eb81d394a6402ea96d6e904edf62096ca995bdb628a6a61",
+      "summary": "Public fixed Test artifact; see report for measured scope and limitations."
+    },
+    {
+      "id": "A-SOURCE-1",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/65885af3fd648ce7010fa4a06470b273b995d418/Dockerfile",
+      "revision": "sha256:b5ae8439bfc39b7e830fc6e4966c36a80b2ef3d4078724a427066c72db32e327",
+      "summary": "Exact public fixed source executed or inspected independently."
+    },
+    {
+      "id": "A-SOURCE-2",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/65885af3fd648ce7010fa4a06470b273b995d418/Dockerfile.order",
+      "revision": "sha256:8581ddc75070dabda49101d2c539c0c2605edf69d402d3d7120b7cbb7550cda2",
+      "summary": "Exact public fixed source executed or inspected independently."
+    },
+    {
+      "id": "A-SOURCE-3",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/65885af3fd648ce7010fa4a06470b273b995d418/.github/workflows/ci.yml",
+      "revision": "sha256:80c7f6d38e692956c702435250cf0879553d7a409b58cd4ae7d28be04bc4b34a",
+      "summary": "Exact public fixed source executed or inspected independently."
+    },
+    {
+      "id": "A-SOURCE-4",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/65885af3fd648ce7010fa4a06470b273b995d418/ci/github/release.py",
+      "revision": "sha256:3219acd417c6f01dd5e67bb6c66ac6f76123d42346fd2776d9c652c0ca0b448c",
+      "summary": "Exact public fixed source executed or inspected independently."
+    },
+    {
+      "id": "A-SOURCE-5",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/65885af3fd648ce7010fa4a06470b273b995d418/ci/github/matrix-result.py",
+      "revision": "sha256:afd832406c71447168246a07a11f0da7b9fc93c271a7d7123f2707d0e4d368d5",
+      "summary": "Exact public fixed source executed or inspected independently."
+    },
+    {
+      "id": "A-SOURCE-6",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/65885af3fd648ce7010fa4a06470b273b995d418/ci/github/runtime.py",
+      "revision": "sha256:20078aea273e96aba3152dd7c15fbecfd4e0f3e4d7aeeaff2c8e51ceeabd92e3",
+      "summary": "Exact public fixed source executed or inspected independently."
+    },
+    {
+      "id": "A-SOURCE-7",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/65885af3fd648ce7010fa4a06470b273b995d418/ci/github/oci.sh",
+      "revision": "sha256:6b04bfd2cbd326e0367bb7fd8915d4f891a8da28fe949f511af1bfa5b99df0ae",
+      "summary": "Exact public fixed source executed or inspected independently."
+    },
+    {
+      "id": "A-SOURCE-8",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/65885af3fd648ce7010fa4a06470b273b995d418/ci/github/order-release_test.py",
+      "revision": "sha256:6fcf5fa0367d45a130cd19042c601cbb96d20eb588759213e450ed9ec88135f7",
+      "summary": "Exact public fixed source executed or inspected independently."
+    },
+    {
+      "id": "A-SOURCE-9",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/65885af3fd648ce7010fa4a06470b273b995d418/tools/oci-input/cmd/oci-runtime-export/main.go",
+      "revision": "sha256:90fb22c6b5a61ab1593447cece0c9fe5f47fe5d2715892e8183d086b9b99ea4f",
+      "summary": "Exact public fixed source executed or inspected independently."
+    },
+    {
+      "id": "A-SOURCE-10",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/65885af3fd648ce7010fa4a06470b273b995d418/tests/orderintegration/order_test.go",
+      "revision": "sha256:b32da8aa4e99342a00603fb3bfb93ea6f73ad43ef67b9f2afebf3493c0c0524f",
+      "summary": "Exact public fixed source executed or inspected independently."
+    },
+    {
+      "id": "A-SOURCE-11",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/backend-app/blob/65885af3fd648ce7010fa4a06470b273b995d418/internal/store/orderpostgres/migrate_integration_test.go",
+      "revision": "sha256:6091cf2e397434782898006b61a2b85681fdb8ef78cb4bdb8c6d1fc69bfc7ea1",
+      "summary": "Exact public fixed source executed or inspected independently."
+    },
+    {
+      "id": "A-SOURCE-12",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/application-manifest/blob/bc6adaedcd645a4663c23284b977a3dd36c0796d/ci/github/release.py",
+      "revision": "sha256:ed2630b8b3fe3a18a6de2c0ce55dcbe494f7d20414d672326d7e524b30903867",
+      "summary": "Exact public fixed source executed or inspected independently."
+    },
+    {
+      "id": "A-SOURCE-13",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/platform-gitops/blob/b989e29b8addbd6396c5c2b4833b969bc15fc8fa/charts/workloads/templates/applications.yaml",
+      "revision": "sha256:6bc92483833f169a0f19fb7349f9105f410007328069b25d24509e5c1c58a7ee",
+      "summary": "Exact public fixed source executed or inspected independently."
+    },
+    {
+      "id": "A-SAFETY",
+      "kind": "other",
+      "locator": "bundle-review.json",
+      "revision": "sha256:3103b2e28dbdcafd810c736e3de8acd04a0abdbcb67a6b87448e696a286721db",
+      "summary": "Public derivative full-text review and nonrecursive inventory; no Consumer approval."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-INPUT",
+      "claim": "Fresh canonical incoming Delivery validation passed before use",
+      "artifact_ids": [
+        "A-INPUT",
+        "A-INPUT-PUB",
+        "A-REPORT"
+      ],
+      "locator": "test-report.txt",
+      "observation": "All required raw bytes, types, size/hash and structural/candidate/tree bindings verified; no historical publication authority inferred."
+    },
+    {
+      "id": "E-REGRESSION",
+      "claim": "Assigned B2 AC1/2 independent real HTTP/disposable DB regression passed",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-OBS",
+        "A-REPRO"
+      ],
+      "locator": "observations.json",
+      "observation": "112 test/subtest passes in fresh race/disposable run; persistence and Account preservation measured. Two unrelated optional integration skips listed."
+    },
+    {
+      "id": "E-B2",
+      "claim": "Synthetic CI/producer/M0 boundary tests passed; required production OCI execution blocked",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-OBS",
+        "A-NEGATIVE",
+        "A-TRANSPORT"
+      ],
+      "locator": "test-report.txt",
+      "observation": "No production archive generated; no independent production runtime/scan/SBOM success. Existing CI metadata kept separate."
+    },
+    {
+      "id": "E-CONTEXT",
+      "claim": "Supplied pinned Readiness context fails fixed schema1.1",
+      "artifact_ids": [
+        "A-CONTEXT",
+        "A-CONFIG",
+        "A-REPORT"
+      ],
+      "locator": "readiness-context-input.json",
+      "observation": "Missing required preparation property. Original bytes, pin and policy expiry preserved; Manager correction required."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "covered",
+      "scope": "Assigned independent B2 real HTTP/disposable DB regression only; no Kubernetes or aggregate final acceptance.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-OBS"
+      ],
+      "evidence_ids": [
+        "E-REGRESSION"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "covered",
+      "scope": "Assigned independent B2 real HTTP/disposable DB regression only; no Kubernetes or aggregate final acceptance.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-OBS"
+      ],
+      "evidence_ids": [
+        "E-REGRESSION"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "unverified",
+      "scope": "Assigned B2 production image preparation gate remains blocked; synthetic tests and source inspection passed but cannot replace production OCI execution. Actual GHCR, Service/Synced/Healthy/imageID also unverified.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-OBS",
+        "A-NEGATIVE",
+        "A-TRANSPORT"
+      ],
+      "evidence_ids": [
+        "E-B2"
+      ]
+    }
+  ],
+  "block_reasons": [
+    {
+      "code": "OTHER",
+      "detail": "Required exact production Dockerfile OCI builds cannot resolve Dockerfile frontend through BuildKit DNS; existing supported proxy environment also fails hostname resolution. No production image bytes or independent runtime/scan/SBOM.",
+      "required_action": "Manager arrange an already authorized working build environment and dispatch remaining independent image checks within preserved retry budgets. Do not bypass network controls or substitute prior CI."
+    },
+    {
+      "code": "MISSING_INPUT",
+      "detail": "Pinned Manager Readiness1.1 context lacks schema-required preparation field; standard context is invalid. Bytes/pin/expiry kept unchanged.",
+      "required_action": "Manager issue corrected standard context with preparation:null and a new independent pin; retain original expiry/history. Then evaluate formal Readiness separately."
+    }
+  ],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}
