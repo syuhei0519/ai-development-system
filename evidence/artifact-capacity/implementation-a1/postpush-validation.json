@@ -1,0 +1,23 @@
+{
+  "document_type": "system_capacity_postpush_validation",
+  "canonical_validator_commit": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+  "candidate_transport_trust_root": false,
+  "records_commit": "58691aa1a91477559d1e3ee23f5f0f0b08dd1c1d",
+  "payload_commit": "750b3771009488834e2bc2aca91c64923af158fd",
+  "implementation_head": "4e38376404d9486daae93829735f11166a01e062",
+  "manifest_sha256": "abf93cf8c6aa1d1312955817f03e4426d0566cb152e2de7ba223a1688266d536",
+  "publication_receipt_sha256": "e27bb916b290eb998e643de8ad2e70bea202a747ddbf92299436ef4f52bec5ab",
+  "delivery_version": "1.2",
+  "explicit_artifacts": 12,
+  "payload_objects": 12,
+  "payload_bytes": 200381,
+  "structural_slots": 11,
+  "records_fresh_git_retrieval": "passed",
+  "canonical_consumer_exit_code": 0,
+  "output_raw_bytes_size_sha256_rechecked": "passed",
+  "authority_granted": false,
+  "independent_test_review": false,
+  "authorization_and_consumption_receipt": "Private; excluded from publication. Task operator authorized producer self-validation only; Manager must separately authorize downstream Consumers.",
+  "history": "System epoch1 attempt1. No application history/counters changed. No delivery output overwritten.",
+  "observed_at": "2026-10-11T19:35:19.486419+00:00"
+}
