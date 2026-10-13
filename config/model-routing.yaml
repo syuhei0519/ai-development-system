@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "policy_revision": "bounded-read-only-v1",
+  "policy_revision": "bounded-read-only-v2",
   "global_rollout_enabled": false,
   "ordinary_development_policy": "Strict",
   "preserve_agent_defaults": true,
@@ -14,6 +14,6 @@
     "automatic_escalation": false,
     "requested_model": "gpt-6-luna",
     "requested_effort": "low",
-    "service_tier": "standard"
+    "service_tier": "default"
   }
 }

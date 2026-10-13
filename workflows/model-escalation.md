@@ -1,18 +1,24 @@
 # Bounded model routing: disabled rollout, one read-only pilot
 
-Policy revision `bounded-read-only-v1` is a local deterministic planner/validator,
+Policy revision `bounded-read-only-v2` is a local deterministic planner/validator,
 not an API client or scheduler. [Configuration](../config/model-routing.yaml) is
 JSON syntax (a YAML subset), parsed with a strict JSON parser; arbitrary YAML,
 custom tags, duplicate keys, nonfinite values, and additional request fields are
 not accepted. The existing `jsonschema` dependency is sufficient. No agent role
 files, standard model defaults, business attempt histories, or existing contracts
-change. Global rollout and Astra automatic escalation are disabled. No Astra pilot.
+change. Revision v2 replaces the invalid v1 tier wire value; prior approval pins
+are invalidated. The pilot ID, single durable reservation path and one-launch
+budget remain unchanged; a policy revision never resets an existing marker.
+Global rollout and Astra automatic escalation are disabled. No Astra pilot.
 
 Ordinary development retains **Strict** policy. This CLI offers no ordinary
 Implementation/Test/Review route. The separately authorized **BestEffort** pilot
 is explicitly opt-in: exactly one low-risk public synthetic classification task,
-Luna Low (`model=gpt-6-luna`, `thinking=low`), Standard (`service_tier=standard`).
-This requested route is an unvalidated hypothesis. There is no silent fallback,
+Luna Low (`model=gpt-6-luna`, `thinking=low`), Standard (`service_tier=default`).
+The supported Dots create wire enum is `default|fast|ultrafast`; `default`
+explicitly selects Standard. The wire value `standard` is rejected before a
+reservation marker is created. This requested route is an unvalidated hypothesis.
+There is no silent fallback,
 retry, escalation, comparison experiment, or model-comparison claim.
 
 Historical Draft PR10 remains **UNVERIFIED** and unchanged. Its findings do not

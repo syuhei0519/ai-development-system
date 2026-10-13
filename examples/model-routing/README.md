@@ -9,8 +9,14 @@ unknown admission and null observations. Neither template grants permission.
 
 This package is for independent review and same-head CI first, then one Manager
 launch. Policy and limitations are in [the workflow](../../workflows/model-escalation.md).
-The route decision is `gpt-6-luna / low / standard`, a requested hypothesis only.
+The route decision is `gpt-6-luna / low / Standard` (`service_tier=default`),
+a requested hypothesis only.
 Implementation has not launched the pilot. No automatic retry or escalation.
+Policy revision is `bounded-read-only-v2`. Standard explicitly maps to the
+supported wire value `default`; `standard` is not a valid create enum value.
+The supported enum is `default|fast|ultrafast`, and this pilot allows only `default`.
+Keep the same pilot ID, durable reservation path and launch budget; do not reset
+old markers or business attempt histories after a policy revision.
 
 ## Fixed public artifact
 
@@ -77,8 +83,8 @@ In a copy of `approval.template.json`, set `approved=true`, the actual reviewed
 40-hex `head_sha`, and `independent_review=same_head_ci="pass"` only after both are
 verified. Bind these raw SHA256 pins:
 
-- Request: `c70da143921b03b3698a9c0e3dfd43112a565330cadb28c1b58416d36f1c600b`
-- Policy: `f4654320703336e5153bdfcf3ed5159e095630fe6e22a12110b3ea4938aaf34c`
+- Request: `8b04dc008c9d6fce6c09fe580c05170e0cc14bb67fccb620360e37cca4974f2e`
+- Policy: `2f791794b3672e7cc310ae8e564c46f26b295f3ab416ff661ce9a92ec29cc082`
 
 Keep approval's own SHA256 independently through the authorized Manager channel.
 A hash supplied by an untrusted receipt is not an approval pin. Approval assertions
@@ -91,7 +97,7 @@ From the reviewed checkout, with Manager-defined private paths and pins:
 ROUTING_ARGS=(
   --request examples/model-routing/request.json
   --policy config/model-routing.yaml
-  --policy-sha256 f4654320703336e5153bdfcf3ed5159e095630fe6e22a12110b3ea4938aaf34c
+  --policy-sha256 2f791794b3672e7cc310ae8e564c46f26b295f3ab416ff661ce9a92ec29cc082
   --approval "$ROUTING_PRIVATE_APPROVAL"
   --approval-sha256 "$ROUTING_APPROVAL_PIN"
   --repo . --head "$ROUTING_HEAD"
@@ -105,7 +111,7 @@ python3 scripts/model_routing.py reserve "${ROUTING_ARGS[@]}" --state "$ROUTING_
 consumed marker then emits exactly:
 
 ```json
-{"model":"gpt-6-luna","thinking":"low","service_tier":"standard"}
+{"model":"gpt-6-luna","thinking":"low","service_tier":"default"}
 ```
 
 Only Manager may use those emitted create arguments once, together with the exact

@@ -89,12 +89,35 @@ class RoutingTests(unittest.TestCase):
         decision = self.plan()
         reserved = routing.reserve(decision, self.state)
         self.assertEqual(reserved['create_arguments'],
-                         {'model': 'gpt-6-luna', 'thinking': 'low', 'service_tier': 'standard'})
+                         {'model': 'gpt-6-luna', 'thinking': 'low', 'service_tier': 'default'})
         saved = json.loads(self.state.read_bytes())
         for field in ('observed_model', 'observed_effort', 'usage', 'create_arguments'):
             self.assertIsNone(saved[field])
         self.assertEqual(saved['launches_consumed'], 1)
         self.assertEqual(self.state.stat().st_mode & 0o777, 0o600)
+
+    def test_supported_create_wire_enum_and_standard_rejected_before_reservation(self):
+        # Schema supplied by independent review; no cloud invocation needed.
+        supported = {'default', 'fast', 'ultrafast'}
+        self.assertEqual(set(routing.CREATE_ARGUMENTS['properties']['service_tier']['enum']), supported)
+        self.assertNotIn('standard', supported)
+        instructions = (EXAMPLES / 'README.md').read_text()
+        self.assertIn(routing.digest(self.policy_raw), instructions)
+        self.assertIn(routing.digest((EXAMPLES / 'request.json').read_bytes()), instructions)
+        for template in ('approval.template.json', 'receipt.template.json'):
+            self.assertEqual(json.loads((EXAMPLES / template).read_bytes())['policy_revision'],
+                             routing.REVISION)
+        decision = self.plan()
+        for tier in ('standard', 'fast', 'ultrafast', 'priority'):
+            with self.subTest(tier=tier):
+                with self.assertRaises(ValueError):
+                    self.plan(dict(self.request, service_tier=tier))
+                with self.assertRaises(ValueError):
+                    routing.reserve(dict(decision, service_tier=tier), self.state)
+                self.assertFalse(self.state.exists())
+        wire = routing.reserve(decision, self.state)['create_arguments']
+        self.assertEqual(wire['service_tier'], 'default')
+        self.assertIn(wire['service_tier'], supported)
 
     def test_missing_observations_strict_vs_best_effort(self):
         for mode in ('Strict', 'BestEffort'):

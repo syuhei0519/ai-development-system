@@ -14,7 +14,7 @@ try:
 except ImportError:
     from scripts.regular_file import read_regular
 
-REVISION = 'bounded-read-only-v1'
+REVISION = 'bounded-read-only-v2'
 PILOT = 'SYNTHETIC-PUBLIC-CLASSIFICATION-01'
 SCOPE = 'public-synthetic-read-only-classification'
 PIN = {'repository': 'syuhei0519/ai-development-system',
@@ -27,7 +27,7 @@ POLICY = {'schema_version': '1.0', 'policy_revision': REVISION,
           'pilot': {'id': PILOT, 'explicit_opt_in_required': True, 'scope': SCOPE,
                     'max_launches': 1, 'automatic_retry': False,
                     'automatic_escalation': False, 'requested_model': 'gpt-6-luna',
-                    'requested_effort': 'low', 'service_tier': 'standard'}}
+                    'requested_effort': 'low', 'service_tier': 'default'}}
 RULES = {'rejected': 'public_safe=false OR evidence_complete=false',
          'deferred': 'otherwise reusable=false', 'adopted': 'otherwise'}
 MAX_INPUT = 65536
@@ -55,7 +55,11 @@ REQUEST = obj({'schema_version': const('1.0'), 'policy_revision': const(REVISION
                'scope': const(SCOPE), 'role': const('classification-consumer'),
                'permissions': const(['read_pinned_file', 'return_classification']),
                'requested_model': const('gpt-6-luna'), 'requested_effort': const('low'),
-               'service_tier': const('standard'), 'artifact': const(PIN)})
+               'service_tier': const('default'), 'artifact': const(PIN)})
+# Supported Dots create wire enum; this pilot explicitly selects Standard via default.
+CREATE_ARGUMENTS = obj({'model': const('gpt-6-luna'), 'thinking': const('low'),
+                        'service_tier': {'enum': ['default', 'fast', 'ultrafast'],
+                                         'const': 'default'}})
 APPROVAL = obj({'schema_version': const('1.0'), 'policy_revision': const(REVISION),
                 'pilot_id': const(PILOT), 'scope': const(SCOPE),
                 'approved': const(True), 'max_launches': const(1),
@@ -166,6 +170,9 @@ def plan(request_raw, policy_raw, approval_raw, approval_pin, policy_pin, repo, 
 
 def reserve(decision, state):
     """Exclusive immutable marker; supported on one trusted local POSIX filesystem."""
+    wire = check({'model': decision['requested_model'],
+                  'thinking': decision['requested_effort'],
+                  'service_tier': decision['service_tier']}, CREATE_ARGUMENTS)
     state = Path(state).absolute()
     if '..' in state.parts:
         raise ValueError('unsafe state path')
@@ -189,10 +196,7 @@ def reserve(decision, state):
             stream.flush()
             os.fsync(stream.fileno())
         os.fsync(parent)
-        return dict(saved, reservation_sha256=digest(raw),
-                    create_arguments={'model': saved['requested_model'],
-                                      'thinking': saved['requested_effort'],
-                                      'service_tier': saved['service_tier']})
+        return dict(saved, reservation_sha256=digest(raw), create_arguments=wire)
     finally:
         if fd is not None:
             os.close(fd)

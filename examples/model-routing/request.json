@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "policy_revision": "bounded-read-only-v1",
+  "policy_revision": "bounded-read-only-v2",
   "pilot_id": "SYNTHETIC-PUBLIC-CLASSIFICATION-01",
   "mode": "BestEffort",
   "scope": "public-synthetic-read-only-classification",
@@ -11,7 +11,7 @@
   ],
   "requested_model": "gpt-6-luna",
   "requested_effort": "low",
-  "service_tier": "standard",
+  "service_tier": "default",
   "artifact": {
     "repository": "syuhei0519/ai-development-system",
     "commit": "1e0115a27ace0ed7116230e46560648dd1476558",
