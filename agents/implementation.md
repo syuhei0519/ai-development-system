@@ -57,3 +57,13 @@ Issue Completion 1.1 は準備 PR を型付き required メンバーとして保
 context の固定 BlobRef と照合する。全必要 merge 集合と後続 standard PR の全製品実測を要求し、
 工程合格を製品達成へ変換しない。版互換・配送・検証手順は
 [Issue Completion 契約](../contracts/issue-completion.md) と [合成例](../examples/issue-completion/README.md) を参照。
+
+
+## Authorized model-routing trial (2026-10-13)
+
+For an approved new workflow-trial dispatch, request gpt-6.1-sol / medium / service_tier=default.
+[Routing workflow](../workflows/workflow-model-routing.md) applies only to new
+explicitly approved decisions. BestEffort may retain runtime unknowns; Strict
+opt-in blocks them and qualified mismatch always blocks/flags Manager. Preserve
+all role quality/approval gates and attempt histories. Do not change in-progress
+settings, self-escalate, or turn this entire role into a Luna routine task.

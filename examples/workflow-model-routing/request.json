@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "policy_revision": "workflow-best-effort-v1",
+  "role": "implementation",
+  "scope": "SYNTHETIC-NEW-IMPLEMENTATION-SCOPE",
+  "task_reference": "SYNTHETIC-PRIVATE-TASK-REF",
+  "attempt": 1,
+  "dispatch_kind": "new_task",
+  "in_progress": false,
+  "mode": "BestEffort",
+  "task_kind": "specialist",
+  "read_only": false,
+  "app_code": true,
+  "security_sensitive": false,
+  "live_infrastructure": false,
+  "manual_escalation": null
+}

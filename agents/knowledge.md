@@ -46,3 +46,13 @@ GitHub 反映、Consumer 利用承認と全 bytes 検査を分離する。receip
 Handoff v2.0 の status/attempt/担当範囲を配送都合で変更しない。Knowledge 専用契約の判断も変更しない。
 dispatch/execution/delivery は各最大3回、過去履歴と RETRY_LIMIT_REACHED は不変。
 上限後は新明示承認・理由・新予算・scope・旧履歴との関係が揃うまで再開しない。
+
+
+## Authorized model-routing trial (2026-10-13)
+
+For an approved new workflow-trial dispatch, request gpt-6.1-sol / medium / service_tier=default. This mapping does not enable Knowledge launches or scheduling.
+[Routing workflow](../workflows/workflow-model-routing.md) applies only to new
+explicitly approved decisions. BestEffort may retain runtime unknowns; Strict
+opt-in blocks them and qualified mismatch always blocks/flags Manager. Preserve
+all role quality/approval gates and attempt histories. Do not change in-progress
+settings, self-escalate, or turn this entire role into a Luna routine task.

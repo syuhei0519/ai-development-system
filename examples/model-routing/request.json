@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "policy_revision": "bounded-read-only-v2",
+  "pilot_id": "SYNTHETIC-PUBLIC-CLASSIFICATION-01",
+  "mode": "BestEffort",
+  "scope": "public-synthetic-read-only-classification",
+  "role": "classification-consumer",
+  "permissions": [
+    "read_pinned_file",
+    "return_classification"
+  ],
+  "requested_model": "gpt-6-luna",
+  "requested_effort": "low",
+  "service_tier": "default",
+  "artifact": {
+    "repository": "syuhei0519/ai-development-system",
+    "commit": "1e0115a27ace0ed7116230e46560648dd1476558",
+    "path": "examples/model-routing/candidates.json",
+    "size_bytes": 871,
+    "sha256": "9883284325ae2d6877d085b4e4b2fb22bfd9710aaf862c99e7f7dd49cf7d7a71"
+  }
+}

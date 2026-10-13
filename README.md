@@ -161,3 +161,36 @@ Per-file 16 MiB, bundle 64 MiB, tree/slot/candidate limits and all approval gate
 remain unchanged. Preserve originals and complete closure; never overwrite old
 delivery outputs. Dispatch/execution/delivery remain each at most 3. Candidate
 1.3 requires System CI and independent Review before merge and canonical use.
+
+## Bounded read-only model routing pilot
+
+[Planner policy and trust boundary](workflows/model-escalation.md) and
+[Manager commands / exact synthetic initial input](examples/model-routing/README.md)
+add a local deterministic one-shot planner/receipt validator. Global rollout is
+**disabled**, ordinary development remains **Strict**, and existing agent defaults
+and quality gates are unchanged. The explicit BestEffort pilot requests Luna Low
+on Standard for one public synthetic read-only classification; no Astra, fallback,
+API client, automatic retry, scheduler, runtime enforcement or savings claim.
+Historical PR10 remains unverified. Only Manager may launch after independent
+review and same-head CI; this implementation does not execute the pilot.
+
+
+## 2026-10-13: consolidated findings, consumed pilot and workflow trial
+
+PR10's [historical findings](records/model-evaluations/README.md) are retained in
+PR11 with dated later status, preserving the original Strict UNVERIFIED results.
+The one-shot pilot is now consumed 1/1 with PINNED_ARTIFACT_UNAVAILABLE; no
+classification pass or established model-quality cause. Evaluation count is 3/6.
+The earlier pilot instructions above are historical, not authorization to rerun.
+
+A separately approved [Best Effort workflow trial](workflows/workflow-model-routing.md)
+adds role routing, input-template context and a read-only
+[planner/observation CLI](scripts/workflow_model_routing.py). New authorized tasks
+request Sol High for Research/Design and Review, Sol Medium for
+Implementation/Test/Knowledge, and Luna Low only for separate narrow routine
+read-only consumers. Manager stays Dots. Astra remains manually approved only.
+Unknown runtime observations may remain explicit in BestEffort; Strict opt-in
+still blocks them. Per-task human UI provenance is distinct from settings or
+aggregate usage. All existing quality/security/approval/retry gates remain.
+No scheduler/API client, task launch, benchmark, app/Knowledge restart or merge
+is performed. Use the [synthetic command examples](examples/workflow-model-routing/README.md).

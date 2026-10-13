@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "policy_revision": "bounded-read-only-v2",
+  "global_rollout_enabled": false,
+  "ordinary_development_policy": "Strict",
+  "preserve_agent_defaults": true,
+  "astra_automatic_escalation": false,
+  "pilot": {
+    "id": "SYNTHETIC-PUBLIC-CLASSIFICATION-01",
+    "explicit_opt_in_required": true,
+    "scope": "public-synthetic-read-only-classification",
+    "max_launches": 1,
+    "automatic_retry": false,
+    "automatic_escalation": false,
+    "requested_model": "gpt-6-luna",
+    "requested_effort": "low",
+    "service_tier": "default"
+  }
+}

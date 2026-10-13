@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "policy_revision": "workflow-best-effort-v1",
+  "global_rollout_enabled": false,
+  "authorized_new_dispatch_trial": true,
+  "default_mode": "BestEffort",
+  "strict_opt_in": true,
+  "manager_runtime": "Dots",
+  "role_routes": {
+    "research-design": {
+      "model": "gpt-6.1-sol",
+      "thinking": "high"
+    },
+    "review": {
+      "model": "gpt-6.1-sol",
+      "thinking": "high"
+    },
+    "implementation": {
+      "model": "gpt-6.1-sol",
+      "thinking": "medium"
+    },
+    "test": {
+      "model": "gpt-6.1-sol",
+      "thinking": "medium"
+    },
+    "knowledge": {
+      "model": "gpt-6.1-sol",
+      "thinking": "medium"
+    }
+  },
+  "routine_route": {
+    "role": "routine-consumer",
+    "model": "gpt-6-luna",
+    "thinking": "low",
+    "kinds": [
+      "routine_classification",
+      "routine_extraction",
+      "routine_formatting"
+    ],
+    "read_only": true,
+    "app_code": false,
+    "security_sensitive": false,
+    "live_infrastructure": false
+  },
+  "service_tier": "default",
+  "astra_automatic_escalation": false,
+  "manual_astra_only": true,
+  "business_history_reset": false,
+  "historical_evaluations_used": 3,
+  "historical_evaluation_ceiling": 6,
+  "historical_pilot": {
+    "id": "SYNTHETIC-PUBLIC-CLASSIFICATION-01",
+    "launches_consumed": 1,
+    "limit": 1,
+    "result": "PINNED_ARTIFACT_UNAVAILABLE",
+    "root_cause": "unknown"
+  }
+}

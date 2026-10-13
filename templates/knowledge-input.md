@@ -17,3 +17,23 @@ Dots / Manager は `agents/knowledge.md` と Knowledge の契約・workflow、�
 返却は [knowledge-handoff.schema.json](../contracts/knowledge-handoff.schema.json)。入力 raw_findings と assignment のスナップショットを保持し、全 finding の根拠付き採否・保留判断を返す。成果物と出典を取得して照合するまで形式成功だけで知識を採用しない。Knowledge の待ち・失敗は開発のゲートにしない。
 
 Phase 1-3 P-B の [収集入力](knowledge-collection.md) で event/input digest・永続 state・有限 retry を管理する。collector は機械処理のみで、常駐処理・Knowledge Agent・スケジュールを起動しない。P-C/P-D は未実施。
+
+
+## Optional authorized model-routing trial context
+
+For a new explicitly approved workflow-trial dispatch, include a separate private
+[model routing record](../workflows/workflow-model-routing.md), not extra fields in
+Handoff/Knowledge input JSON. This section cannot replace required inputs above.
+
+- policy revision / independently pinned routing head: <workflow-best-effort-v1 / system checkout SHA; target task head and its CI remain separate>
+- role / exact logical scope / private task reference / attempt: <same authorized assignment and unchanged retry ledger>
+- dispatch decision: <new_task or explicit_redispatch; explicit approval; never change in-progress settings>
+- mode / requested model / requested effort / requested tier: <BestEffort trial or Strict opt-in / role route / thinking / default=Standard>
+- current business history and approval: <separate raw hashes, source/provenance, remaining existing budget; no reset>
+- routine-only or manual Astra decision, if any: <explicit narrow scope and separate approval; Astra exact model/effort/budget/reason>
+- observed model / effort / evidence sources and execution binding: <null/unverified until qualified platform or human-confirmed per-task UI evidence; selector/aggregate is insufficient>
+- usage / observation history: <null if unknown; append-only private records with predecessor hash; no inferred zeros/savings>
+
+No routing record grants AC completion, changes Handoff/Readiness/Delivery schemas,
+relaxes security/approval/independent testing/review/current-head CI, or advances
+an Issue. Role choice never grants access or additional attempts.
