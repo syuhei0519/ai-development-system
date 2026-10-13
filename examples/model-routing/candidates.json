@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "publication": "synthetic_sample",
+  "rules": {
+    "rejected": "public_safe=false OR evidence_complete=false",
+    "deferred": "otherwise reusable=false",
+    "adopted": "otherwise"
+  },
+  "candidates": [
+    {
+      "id": "SYNTHETIC-K01",
+      "public_safe": true,
+      "evidence_complete": true,
+      "reusable": true
+    },
+    {
+      "id": "SYNTHETIC-K02",
+      "public_safe": true,
+      "evidence_complete": false,
+      "reusable": true
+    },
+    {
+      "id": "SYNTHETIC-K03",
+      "public_safe": true,
+      "evidence_complete": true,
+      "reusable": false
+    },
+    {
+      "id": "SYNTHETIC-K04",
+      "public_safe": false,
+      "evidence_complete": true,
+      "reusable": false
+    },
+    {
+      "id": "SYNTHETIC-K05",
+      "public_safe": true,
+      "evidence_complete": true,
+      "reusable": true
+    }
+  ]
+}
