@@ -27,6 +27,8 @@ self-referential commit pin. The planner checks the actual commit type, ancestor
 relationship, regular Git blob mode, exact raw bytes/size/hash and input schema
 from an already available trusted local checkout. It does not fetch or modify Git.
 It ignores uncommitted artifact edits and reads the pinned committed blob.
+Use a full-history checkout containing the artifact commit and its ancestry; a
+shallow checkout without that object fails closed. CI uses `fetch-depth: 0`.
 The consumer may retrieve only this fixed public URL:
 
 `https://raw.githubusercontent.com/syuhei0519/ai-development-system/1e0115a27ace0ed7116230e46560648dd1476558/examples/model-routing/candidates.json`
