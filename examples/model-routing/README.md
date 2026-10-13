@@ -160,3 +160,14 @@ python3 -m unittest discover -s tests -v
 These are synthetic unit/CLI checks, using temporary local reservation files and
 synthetic approval assertions. They are not independent Review, actual task
 execution, actual approval, model observations, or new task Handoff validation.
+
+
+## 2026-10-13 later status: historical pilot consumed
+
+The instructions above describe the reviewed historical pilot package. Manager
+subsequently dispatched once; output was PINNED_ARTIFACT_UNAVAILABLE, and the
+validator rejected it (no classification pass). Runtime observations remain
+unknown. Root cause beyond that error is unknown. Pilot budget is consumed 1/1,
+evaluation count 3/6, original private bytes/marker unchanged. Do not reserve or
+launch again. A separately approved [new workflow trial](../../workflows/workflow-model-routing.md)
+uses a separate policy/record and never resets or reclassifies this history.

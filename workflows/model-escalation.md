@@ -124,3 +124,14 @@ Knowledge Handoff. Report this actual limitation to Manager as
 contract, or treat old synthetic Handoff fixtures passing as a newly validated
 Handoff. Implementation tests are self-verification; independent Test/Review and
 Manager readiness assessment remain pending.
+
+
+## 2026-10-13 later status: historical pilot consumed
+
+The instructions above describe the reviewed historical pilot package. Manager
+subsequently dispatched once; output was PINNED_ARTIFACT_UNAVAILABLE, and the
+validator rejected it (no classification pass). Runtime observations remain
+unknown. Root cause beyond that error is unknown. Pilot budget is consumed 1/1,
+evaluation count 3/6, original private bytes/marker unchanged. Do not reserve or
+launch again. A separately approved [new workflow trial](workflow-model-routing.md)
+uses a separate policy/record and never resets or reclassifies this history.

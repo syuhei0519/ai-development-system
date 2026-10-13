@@ -84,3 +84,23 @@ Issue Completion 1.1 は準備 PR を型付き required メンバーとして保
 context の固定 BlobRef と照合する。全必要 merge 集合と後続 standard PR の全製品実測を要求し、
 工程合格を製品達成へ変換しない。版互換・配送・検証手順は
 [Issue Completion 契約](../contracts/issue-completion.md) と [合成例](../examples/issue-completion/README.md) を参照。
+
+
+## Optional authorized model-routing trial context
+
+For a new explicitly approved workflow-trial dispatch, include a separate private
+[model routing record](../workflows/workflow-model-routing.md), not extra fields in
+Handoff/Knowledge input JSON. This section cannot replace required inputs above.
+
+- policy revision / independently pinned routing head: <workflow-best-effort-v1 / system checkout SHA; target task head and its CI remain separate>
+- role / exact logical scope / private task reference / attempt: <same authorized assignment and unchanged retry ledger>
+- dispatch decision: <new_task or explicit_redispatch; explicit approval; never change in-progress settings>
+- mode / requested model / requested effort / requested tier: <BestEffort trial or Strict opt-in / role route / thinking / default=Standard>
+- current business history and approval: <separate raw hashes, source/provenance, remaining existing budget; no reset>
+- routine-only or manual Astra decision, if any: <explicit narrow scope and separate approval; Astra exact model/effort/budget/reason>
+- observed model / effort / evidence sources and execution binding: <null/unverified until qualified platform or human-confirmed per-task UI evidence; selector/aggregate is insufficient>
+- usage / observation history: <null if unknown; append-only private records with predecessor hash; no inferred zeros/savings>
+
+No routing record grants AC completion, changes Handoff/Readiness/Delivery schemas,
+relaxes security/approval/independent testing/review/current-head CI, or advances
+an Issue. Role choice never grants access or additional attempts.

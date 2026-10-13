@@ -117,3 +117,26 @@ Per-file 16 MiB, bundle 64 MiB, tree/slot/candidate limits and all approval gate
 remain unchanged. Preserve originals and complete closure; never overwrite old
 delivery outputs. Dispatch/execution/delivery remain each at most 3. Candidate
 1.3 requires System CI and independent Review before merge and canonical use.
+
+
+## Model routing for explicitly approved new dispatches (2026-10-13)
+
+Insert the [Best Effort routing workflow](workflow-model-routing.md) between
+complete authorized task-input preparation and Manager's existing dispatch-intent
+reservation/create step. Manager stays Dots. Research/Design and Review request
+gpt-6.1-sol high; Implementation/Test/Knowledge request gpt-6.1-sol medium;
+service_tier=default explicitly selects Standard. Only a separately bounded routine
+read-only consumer may request Luna low. Astra requires a manual exact
+scope/model/effort/budget approval and never repairs access/input/transport errors.
+
+Use a separate private routing record with role/scope, policy revision, requested
+settings, task reference, source-qualified observations and null unknown usage.
+BestEffort runtime unknowns do not block this new authorized trial; Strict opt-in
+does, and qualified mismatch blocks/flags Manager without fallback. UI settings
+and aggregate usage cannot establish actual per-task execution. All existing
+AC/Handoff, independent Test/Review, current-head CI, Delivery, security, approval,
+Readiness and retry gates above remain unchanged. Routing eligibility is not
+quality pass or dispatch reservation. Preserve latest budget pins and histories;
+old scope redispatch needs a new explicit decision, not an in-progress setting edit.
+The historical pilot is consumed 1/1 with PINNED_ARTIFACT_UNAVAILABLE, cause unknown;
+evaluation count remains 3/6. This feature starts no task or paused backend work.
