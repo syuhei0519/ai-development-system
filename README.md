@@ -161,3 +161,15 @@ Per-file 16 MiB, bundle 64 MiB, tree/slot/candidate limits and all approval gate
 remain unchanged. Preserve originals and complete closure; never overwrite old
 delivery outputs. Dispatch/execution/delivery remain each at most 3. Candidate
 1.3 requires System CI and independent Review before merge and canonical use.
+
+## Bounded read-only model routing pilot
+
+[Planner policy and trust boundary](workflows/model-escalation.md) and
+[Manager commands / exact synthetic initial input](examples/model-routing/README.md)
+add a local deterministic one-shot planner/receipt validator. Global rollout is
+**disabled**, ordinary development remains **Strict**, and existing agent defaults
+and quality gates are unchanged. The explicit BestEffort pilot requests Luna Low
+on Standard for one public synthetic read-only classification; no Astra, fallback,
+API client, automatic retry, scheduler, runtime enforcement or savings claim.
+Historical PR10 remains unverified. Only Manager may launch after independent
+review and same-head CI; this implementation does not execute the pilot.
