@@ -1,0 +1,36 @@
+{
+  "artifacts": [
+    {
+      "format": "handoff-v2",
+      "public_classification": "public_safe",
+      "reference": {
+        "commit": "b0795909a65dad196fab8fcb1ba9468b5a22a1d5",
+        "object_type": "git-blob",
+        "path": "evidence/order-release/implementation-a1/handoff.json",
+        "repository": "syuhei0519/ai-development-system",
+        "sha256": "f9f856f53277378db64226ff674d4ba423a7c9624b1ba5755a907fe73e2a3316",
+        "size": 4350
+      },
+      "representation": "edited_derivative",
+      "source_alias": "order-release-implementation-a1"
+    },
+    {
+      "format": "json",
+      "public_classification": "public_safe",
+      "reference": {
+        "commit": "b0795909a65dad196fab8fcb1ba9468b5a22a1d5",
+        "object_type": "git-blob",
+        "path": "evidence/order-release/implementation-a1/preflight.json",
+        "repository": "syuhei0519/ai-development-system",
+        "sha256": "3e811868126c252e0b69fac0ed1ff1cda6146531ada7d193a5be660a6055695d",
+        "size": 3423
+      },
+      "representation": "edited_derivative",
+      "source_alias": "order-release-implementation-a1"
+    }
+  ],
+  "document_type": "artifact_delivery",
+  "knowledge_bindings": [],
+  "schema_version": "1.3",
+  "slot_bindings": []
+}
