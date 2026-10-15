@@ -1,0 +1,22 @@
+Reproduction record (requires a new separately authorized execution; not a retry instruction)
+Fixed checkout24083aba485abd6b37bcbe71736fb543a847dcc6,215-file pristine git archive.
+Existing immutable repro source: implementation-a3 at d4cbea1cad401d5a432b03ef4512e54f68b0c861; measure-final.py SHA2569ed88bd86977abd67d13cfaaea4665ae03abe5da3ad68e78defdbb6e3f8a0876; probe-final.py SHA25646112b1da77465f1886ba9484e800a3aa79e3a9f714ce05005a4794fe74906da; actual-consumers-final.py SHA25692aaf35325c1a120660c6bd48bce43591d5fa72a838875b74d49fe6a4dff3d6e.
+Independent descriptor checker: implementation-a2 check-image.py at437cb5b76359a8743613529aa33f7a9dacb88e9c SHA25676380118279465f7ad3c4fb5dffa7cabc988baa76a0e0c54413463be6e130b00.
+All originals came from the previously successful pinned canonical input consumption. Reused existing source/CA/proxy and fixed M0/M1 checkouts; no original code changed.
+Compile current scan-gate,sbom-check,github-oci-check,oci-crane-check,oci-runtime-export. Existing validators from prior same-head gate reused; runtime-export compiled from exact head.
+Set BACKEND_CHECKOUT to fixed checkout; PRIVATE_OUTPUT to fresh private root with context,bin,m0,m1. Existing environment activation supplies Go/dependency cache.
+Commands actually executed (scripts resolve to fixed sources above):
+python measure-final.py build ROOT/valid ROOT/context valid
+python measure-final.py source ROOT
+For each backend/order:
+ python check-image.py ROOT/valid/SERVICE.oci.tar SERVICE HEAD
+ python measure-final.py chain SERVICE
+ python measure-final.py image ROOT SERVICE
+ python measure-final.py leak ROOT SERVICE
+ python measure-final.py publish ROOT SERVICE
+python measure-final.py matrix ROOT
+python genuine-swap-probe.py
+Copy both original publish-binding result bytes to ROOT/final; set REPRO_ROOT=ROOT; python actual-consumers-final.py.
+The adapted genuine-swap-probe adds proof-only substitution and hashes the actual selected summary in the forged record. No upstream assertion was removed; no product code changed. Synthetic run1 attempt2 is the local protocol fixture,not GitHub CI identity.
+Both valid production images built once with --no-cache. Subsequent stages reuse those original archive bytes. Existing optional CA is a BuildKit secret; no TLS bypass. Only explicitly authorized temporary rootless seccomp/proc exceptions,bridge,user1000,native snapshotter and process sandbox. No privileged/host network/added capability or persistent daemon change. Container and private proxy env removed after build; runtime/migration/transport fixtures clean up invocation-owned resources.
+No CI artifact retry,full Feature rerun,Kind,real publish or deployment.

@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-10-15T09:41:14.336885+00:00",
+  "temporary_buildkit": {
+    "network": "bridge",
+    "privileged": false,
+    "cap_add": null,
+    "user": "1000:1000",
+    "apparmor": "",
+    "security_opt": [
+      "seccomp=unconfined"
+    ],
+    "masked_paths": [],
+    "readonly_paths": []
+  },
+  "owned_container_count": 1,
+  "all_owned_buildkit_containers_removed": true,
+  "temporary_proxy_environment_file_removed": true,
+  "pristine_git_archive_file_count": 215,
+  "all_context_bytes_still_match_fixed_head": true,
+  "new_security_changes_beyond_authorized_temporary_exceptions": false,
+  "builder_mode": "rootless pinned image; native snapshotter/process sandbox retained; no privileged or host-network",
+  "all_reproduction_runtime_containers_removed": true,
+  "all_reproduction_internal_networks_removed": true,
+  "all_driver_scripts_no_tracebacks": true
+}

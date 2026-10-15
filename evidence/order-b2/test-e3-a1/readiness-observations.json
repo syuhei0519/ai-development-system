@@ -1,0 +1,31 @@
+{
+  "document_type": "test_readiness_observations",
+  "observed_at": "2026-10-15T09:44:06.338386+00:00",
+  "valid_until": "2026-10-15T11:10:00Z",
+  "repository": "syuhei0519/backend-app",
+  "pr_number": 32,
+  "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+  "base_sha": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+  "target_revision": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+  "merge_group_sha": null,
+  "pr_kind": "standard",
+  "preparation": null,
+  "deployment_effect": "none",
+  "issue_integration_scope": "aggregate_required",
+  "private_context_binding": "Original fixed context/config bytes and independent pins preserved privately; Manager must bind these observations to that unchanged private config. No private original digest or approval bytes are published.",
+  "independent_test": "Assigned current-head B2 repair scope completed by fixed epoch2a3 local evidence plus this independent genuine-image remainder. Old blocked Handoff is unchanged.",
+  "ci": "Exact-head success remains separate fixed epoch2a3 observation; not rerun or substituted for Test.",
+  "ai_review": "unverified; next independent role is Manager-controlled",
+  "product_ac1_ac2": "No final product met assertion. API/DB prior evidence is revision-qualified; current B2-only image/CI responsibility completed.",
+  "ac3": {
+    "outcome": "unverified",
+    "verification_phase": "postdeploy",
+    "owner": "Manager-assigned postdeploy Test/deployment owner",
+    "environment": "Authorized target GitOps cluster, not accessed here",
+    "method": "After authorized merge/deploy, observe independent Service Synced/Healthy and correlate live imageID with authorized published digest",
+    "failure_action": "Keep Issue incomplete, return failure to Manager for authorized recovery and remeasurement"
+  },
+  "merge_and_issue_assessment": "Manager only; not issued",
+  "previous_manager_consumer": "epoch2a3 canonical full consumption remains unverified due parent network limits",
+  "this_delivery_consumer": "New separate Manager authorization and full fresh canonical consume required"
+}

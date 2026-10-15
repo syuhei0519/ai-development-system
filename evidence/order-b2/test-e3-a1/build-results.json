@@ -1,0 +1,20 @@
+[
+  {
+    "service": "backend",
+    "dockerfile": "Dockerfile",
+    "started_at": "2026-10-15T09:37:57Z",
+    "ended_at": "2026-10-15T09:39:19Z",
+    "exit_code": 0,
+    "size": 15378432,
+    "sha256": "b43285d142d4a1bcfa5f9946585d014eb997c5ed9d1d66fc02269b40fbe5361c"
+  },
+  {
+    "service": "order",
+    "dockerfile": "Dockerfile.order",
+    "started_at": "2026-10-15T09:39:20Z",
+    "ended_at": "2026-10-15T09:40:16Z",
+    "exit_code": 0,
+    "size": 8831488,
+    "sha256": "4ef9682c8af026a12b713e1749b26983cd798012dd9d07071af34615b32e0c81"
+  }
+]

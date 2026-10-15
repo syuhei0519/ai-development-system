@@ -1,0 +1,157 @@
+{
+  "document_type": "independent_test_measurements",
+  "producer": "order-b2-test-e3-a1",
+  "scope": "backend-app#2/B2",
+  "epoch": 3,
+  "attempt": 1,
+  "measured_at": "2026-10-15T09:44:06.338386+00:00",
+  "valid_until": "2026-10-15T11:10:00Z",
+  "system_revision": "3394bb069be64bdc43e057b251fc320302d185f6",
+  "source_revision": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+  "source_tree": "8d12e8e2b9c4571b4a8a4eb325f7b95abbd56b41",
+  "base_revision": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+  "manifest_revision": "df8c8b5d93e48bc1f0e5ced1678bba2e27d6a1f9",
+  "m0_revision": "bc6adaedcd645a4663c23284b977a3dd36c0796d",
+  "platform_revision": "482ba450983ac2929f8176374d0d6ca50a69cac6",
+  "assignment_result": "completed",
+  "boundary_only": true,
+  "prior_completed_gates": "Fixed Test epoch2a3 local suites/M0-M1 synthetic/type checks remain prior same-head observations, not rerun. Prior overall blocked status remains unchanged.",
+  "builder_image": "moby/buildkit@sha256:586cf37ba4bafd151058aa9c857fe06036942a2a765d7dc5630098cf31834200",
+  "builder_boundary": "cleanup-and-boundary.json",
+  "services": {
+    "backend": {
+      "layout": {
+        "schemaVersion": 1,
+        "sourceCommit": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+        "sourceProjectId": 0,
+        "archiveSha256": "b43285d142d4a1bcfa5f9946585d014eb997c5ed9d1d66fc02269b40fbe5361c",
+        "archiveBytes": 15378432,
+        "expandedBytes": 15362568,
+        "digest": "sha256:bbeca5e7bf1cff3bcd05173a6e1d3ea56f661d0c8a63eba41e0b8bb2994615de",
+        "layerCount": 14,
+        "platform": "linux/amd64",
+        "registryPush": false
+      },
+      "reader": {
+        "configDigest": "sha256:cff9be85fc4cae99587509581b36ea3b2aab8c5424f5acfbb1e7edd5b683a40c",
+        "digest": "sha256:bbeca5e7bf1cff3bcd05173a6e1d3ea56f661d0c8a63eba41e0b8bb2994615de",
+        "fullLayerValidation": true,
+        "reader": "crane-v0.21.7-layout-reader",
+        "registryPush": false,
+        "schemaVersion": 1
+      },
+      "raw_image_id": "sha256:cff9be85fc4cae99587509581b36ea3b2aab8c5424f5acfbb1e7edd5b683a40c",
+      "raw_scan_sha256": "6767220ad121c6d955ac6a79584519ed5ac9835140672dfcb4b16fa191c92c60",
+      "sbom_sha256": "48abdc87d16b3f48fac20048dd79922e6b2ed0353874da1b17cb9383180adf05",
+      "source_scan_sha256": "24f1551d46e47a84246f815a243c534ed8a01410128d37ca2f19a8accae6de46",
+      "scan_time": "2026-10-15T09:40:18.980639126Z",
+      "db_updated_at": "2026-10-15T07:10:08.755380281Z",
+      "source_and_local_run_identity": {
+        "archiveSha256": "b43285d142d4a1bcfa5f9946585d014eb997c5ed9d1d66fc02269b40fbe5361c",
+        "configDigest": "sha256:cff9be85fc4cae99587509581b36ea3b2aab8c5424f5acfbb1e7edd5b683a40c",
+        "imageDigest": "sha256:bbeca5e7bf1cff3bcd05173a6e1d3ea56f661d0c8a63eba41e0b8bb2994615de",
+        "repository": "syuhei0519/backend-app",
+        "runAttempt": 2,
+        "runId": 1,
+        "service": "backend",
+        "sourceCommit": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+        "sourceScanSha256": "24f1551d46e47a84246f815a243c534ed8a01410128d37ca2f19a8accae6de46"
+      },
+      "original_archive_unchanged_through_all_checks": true,
+      "reader_transport_runtime_scan_sbom_mock_publish": "pass"
+    },
+    "order": {
+      "layout": {
+        "schemaVersion": 1,
+        "sourceCommit": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+        "sourceProjectId": 0,
+        "archiveSha256": "4ef9682c8af026a12b713e1749b26983cd798012dd9d07071af34615b32e0c81",
+        "archiveBytes": 8831488,
+        "expandedBytes": 8816102,
+        "digest": "sha256:fc6962ae9ace743ef538f61e6a1e2e44ff17b34958a7785fc346fd66a6778863",
+        "layerCount": 13,
+        "platform": "linux/amd64",
+        "registryPush": false
+      },
+      "reader": {
+        "configDigest": "sha256:2ebe6177a10785f9becfcd97efe1d9ccf52c3a8e18fdcc984745e5a2b2d6f9f3",
+        "digest": "sha256:fc6962ae9ace743ef538f61e6a1e2e44ff17b34958a7785fc346fd66a6778863",
+        "fullLayerValidation": true,
+        "reader": "crane-v0.21.7-layout-reader",
+        "registryPush": false,
+        "schemaVersion": 1
+      },
+      "raw_image_id": "sha256:2ebe6177a10785f9becfcd97efe1d9ccf52c3a8e18fdcc984745e5a2b2d6f9f3",
+      "raw_scan_sha256": "db663eb02a42ade284d7a5a2cb85cba040ef2e5bd934945da423bbee7d5c18e2",
+      "sbom_sha256": "9209c650690009ec9a404e504afaee32dcfc396918dd333abf79ed9be4634c5e",
+      "source_scan_sha256": "24f1551d46e47a84246f815a243c534ed8a01410128d37ca2f19a8accae6de46",
+      "scan_time": "2026-10-15T09:41:18.376854886Z",
+      "db_updated_at": "2026-10-15T07:10:08.755380281Z",
+      "source_and_local_run_identity": {
+        "archiveSha256": "4ef9682c8af026a12b713e1749b26983cd798012dd9d07071af34615b32e0c81",
+        "configDigest": "sha256:2ebe6177a10785f9becfcd97efe1d9ccf52c3a8e18fdcc984745e5a2b2d6f9f3",
+        "imageDigest": "sha256:fc6962ae9ace743ef538f61e6a1e2e44ff17b34958a7785fc346fd66a6778863",
+        "repository": "syuhei0519/backend-app",
+        "runAttempt": 2,
+        "runId": 1,
+        "service": "order",
+        "sourceCommit": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+        "sourceScanSha256": "24f1551d46e47a84246f815a243c534ed8a01410128d37ca2f19a8accae6de46"
+      },
+      "original_archive_unchanged_through_all_checks": true,
+      "reader_transport_runtime_scan_sbom_mock_publish": "pass"
+    }
+  },
+  "genuine_swap_scenarios": 8,
+  "genuine_swap_cases_per_service": [
+    "foreign proof only",
+    "foreign summary",
+    "foreign summary plus proof",
+    "foreign raw before producer"
+  ],
+  "matrix_mock_publish_guards": "6 public evidence substitution scenarios refuse at record/matrix/publish, including freshly hashed selected scan; 2 genuine raw substitutions fail before proof production and remove prior success",
+  "actual_output_compatibility": {
+    "positives": 4,
+    "negatives": 40,
+    "consumers": [
+      "M0",
+      "M1"
+    ],
+    "schemas": [
+      "Account v1",
+      "Order v2"
+    ],
+    "m1_order_enabled": false,
+    "m0_order_values_absent": true
+  },
+  "build_context_files": 215,
+  "source_scan": "fresh pinned Trivy policy success; warnings retained, no policy weakening",
+  "real_ci_execution": false,
+  "local_test_run_ids": "Synthetic run1 attempt2 used as local evidence fixture; Handoff epoch3 attempt1 is independent accounting. These are actual independently built/scanned OCI outputs, not a GitHub-run claim.",
+  "ci": "Fresh exact-head metadata observed in fixed epoch2a3 evidence; no OCI artifact403 bypass or retry. Final PR read still exact head/base Open/Draft/unmerged.",
+  "pr_after_measurement": {
+    "base": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+    "draft": true,
+    "head": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+    "merged": false,
+    "state": "open"
+  },
+  "api_db": "No new full API/DB test. Repair leaves application/DB/Dockerfile/lockfile paths unchanged from dab0123. Prior Test112pass/2skip remains that revision with expired2026-10-11T19:27:15Z deadline; not transferred as current full product acceptance.",
+  "unverified": [
+    "deployed AC-3",
+    "real GHCR publication",
+    "independent Review",
+    "Manager Readiness and aggregate Issue Completion",
+    "Manager Consumer full verification of epoch2a3 and this delivery"
+  ],
+  "runtime_observation": {
+    "requested_model": "gpt-6.1-sol",
+    "requested_effort": "medium",
+    "requested_service_tier": "default",
+    "observed_model": null,
+    "observed_effort": null,
+    "usage": null,
+    "status": "unverified"
+  },
+  "knowledge_candidates": []
+}

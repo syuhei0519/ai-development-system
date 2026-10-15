@@ -1,0 +1,12 @@
+{
+  "service": "backend",
+  "custom_certificates_distinguished_from_standard": true,
+  "custom_pem_material_absent": true,
+  "full_bundle_absent": true,
+  "custom_secret_source_path_absent": true,
+  "standard_path_alias_not_a_leak": true,
+  "secret_target_paths_absent": true,
+  "actual_proxy_values_absent": true,
+  "all_runtime_layer_files_and_config_checked": true,
+  "standard_runtime_trust_retained": true
+}

@@ -1,0 +1,213 @@
+{
+  "dbUpdatedAt": "2026-10-15T07:10:08.755380281Z",
+  "findings": [
+    {
+      "decision": "warning",
+      "fixedVersion": "2026c-0+deb12u1",
+      "installedVersion": "2026b-0+deb12u1",
+      "kind": "vulnerability",
+      "package": "tzdata",
+      "path": "image/os",
+      "rule": "DLA-4792-1",
+      "severity": "UNKNOWN"
+    },
+    {
+      "decision": "warning",
+      "fixedVersion": "0.60.0",
+      "installedVersion": "v0.59.0",
+      "kind": "vulnerability",
+      "package": "golang.org/x/net",
+      "path": "server",
+      "rule": "CVE-2026-78669",
+      "severity": "HIGH"
+    },
+    {
+      "decision": "warning",
+      "fixedVersion": "0.60.0",
+      "installedVersion": "v0.59.0",
+      "kind": "vulnerability",
+      "package": "golang.org/x/net",
+      "path": "server",
+      "rule": "CVE-2026-78663",
+      "severity": "MEDIUM"
+    },
+    {
+      "decision": "warning",
+      "fixedVersion": "0.60.0",
+      "installedVersion": "v0.59.0",
+      "kind": "vulnerability",
+      "package": "golang.org/x/net",
+      "path": "server",
+      "rule": "CVE-2026-97032",
+      "severity": "MEDIUM"
+    },
+    {
+      "decision": "warning",
+      "fixedVersion": "0.60.0",
+      "installedVersion": "v0.59.0",
+      "kind": "vulnerability",
+      "package": "golang.org/x/net",
+      "path": "server",
+      "rule": "CVE-2026-78659",
+      "severity": "UNKNOWN"
+    },
+    {
+      "decision": "warning",
+      "fixedVersion": "0.60.0",
+      "installedVersion": "v0.59.0",
+      "kind": "vulnerability",
+      "package": "golang.org/x/net",
+      "path": "server",
+      "rule": "CVE-2026-78660",
+      "severity": "UNKNOWN"
+    },
+    {
+      "decision": "warning",
+      "fixedVersion": "1.26.9, 1.27.2",
+      "installedVersion": "v1.27.1",
+      "kind": "vulnerability",
+      "package": "stdlib",
+      "path": "server",
+      "rule": "CVE-2026-78667",
+      "severity": "HIGH"
+    },
+    {
+      "decision": "warning",
+      "fixedVersion": "1.26.9, 1.27.2",
+      "installedVersion": "v1.27.1",
+      "kind": "vulnerability",
+      "package": "stdlib",
+      "path": "server",
+      "rule": "CVE-2026-78669",
+      "severity": "HIGH"
+    },
+    {
+      "decision": "warning",
+      "fixedVersion": "1.26.9, 1.27.2",
+      "installedVersion": "v1.27.1",
+      "kind": "vulnerability",
+      "package": "stdlib",
+      "path": "server",
+      "rule": "CVE-2026-97031",
+      "severity": "HIGH"
+    },
+    {
+      "decision": "warning",
+      "fixedVersion": "1.26.9, 1.27.2",
+      "installedVersion": "v1.27.1",
+      "kind": "vulnerability",
+      "package": "stdlib",
+      "path": "server",
+      "rule": "CVE-2026-56866",
+      "severity": "MEDIUM"
+    },
+    {
+      "decision": "warning",
+      "fixedVersion": "1.26.9, 1.27.2",
+      "installedVersion": "v1.27.1",
+      "kind": "vulnerability",
+      "package": "stdlib",
+      "path": "server",
+      "rule": "CVE-2026-78663",
+      "severity": "MEDIUM"
+    },
+    {
+      "decision": "warning",
+      "fixedVersion": "1.26.9, 1.27.2",
+      "installedVersion": "v1.27.1",
+      "kind": "vulnerability",
+      "package": "stdlib",
+      "path": "server",
+      "rule": "CVE-2026-94439",
+      "severity": "MEDIUM"
+    },
+    {
+      "decision": "warning",
+      "fixedVersion": "1.26.9, 1.27.2",
+      "installedVersion": "v1.27.1",
+      "kind": "vulnerability",
+      "package": "stdlib",
+      "path": "server",
+      "rule": "CVE-2026-94448",
+      "severity": "MEDIUM"
+    },
+    {
+      "decision": "warning",
+      "fixedVersion": "1.26.9, 1.27.2",
+      "installedVersion": "v1.27.1",
+      "kind": "vulnerability",
+      "package": "stdlib",
+      "path": "server",
+      "rule": "CVE-2026-97032",
+      "severity": "MEDIUM"
+    },
+    {
+      "decision": "warning",
+      "fixedVersion": "1.26.9, 1.27.2",
+      "installedVersion": "v1.27.1",
+      "kind": "vulnerability",
+      "package": "stdlib",
+      "path": "server",
+      "rule": "CVE-2026-56857",
+      "severity": "LOW"
+    },
+    {
+      "decision": "warning",
+      "fixedVersion": "1.26.9, 1.27.2",
+      "installedVersion": "v1.27.1",
+      "kind": "vulnerability",
+      "package": "stdlib",
+      "path": "server",
+      "rule": "CVE-2026-78659",
+      "severity": "UNKNOWN"
+    },
+    {
+      "decision": "warning",
+      "fixedVersion": "1.26.9, 1.27.2",
+      "installedVersion": "v1.27.1",
+      "kind": "vulnerability",
+      "package": "stdlib",
+      "path": "server",
+      "rule": "CVE-2026-78660",
+      "severity": "UNKNOWN"
+    },
+    {
+      "decision": "warning",
+      "fixedVersion": "1.26.9, 1.27.2",
+      "installedVersion": "v1.27.1",
+      "kind": "vulnerability",
+      "package": "stdlib",
+      "path": "server",
+      "rule": "CVE-2026-94440",
+      "severity": "UNKNOWN"
+    },
+    {
+      "decision": "warning",
+      "fixedVersion": "1.26.9, 1.27.2",
+      "installedVersion": "v1.27.1",
+      "kind": "vulnerability",
+      "package": "stdlib",
+      "path": "server",
+      "rule": "CVE-2026-97030",
+      "severity": "UNKNOWN"
+    }
+  ],
+  "imageIdentity": {
+    "archiveSha256": "b43285d142d4a1bcfa5f9946585d014eb997c5ed9d1d66fc02269b40fbe5361c",
+    "configDigest": "sha256:cff9be85fc4cae99587509581b36ea3b2aab8c5424f5acfbb1e7edd5b683a40c",
+    "imageDigest": "sha256:bbeca5e7bf1cff3bcd05173a6e1d3ea56f661d0c8a63eba41e0b8bb2994615de",
+    "repository": "syuhei0519/backend-app",
+    "runAttempt": 2,
+    "runId": 1,
+    "service": "backend",
+    "sourceCommit": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+    "sourceScanSha256": "24f1551d46e47a84246f815a243c534ed8a01410128d37ca2f19a8accae6de46"
+  },
+  "pass": true,
+  "policySHA256": "d10f26ad064971e74b94f821560ede5303f0bcf4d364ea2514c45faac4c27337",
+  "rawScanSha256": "6767220ad121c6d955ac6a79584519ed5ac9835140672dfcb4b16fa191c92c60",
+  "sbomSha256": "48abdc87d16b3f48fac20048dd79922e6b2ed0353874da1b17cb9383180adf05",
+  "scannedAt": "2026-10-15T09:40:18.980639126Z",
+  "schemaVersion": 1,
+  "trivyVersion": "0.75.0"
+}

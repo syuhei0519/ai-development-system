@@ -1,0 +1,72 @@
+{
+  "head": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+  "measurements": [
+    {
+      "target": "backend",
+      "foreign": "order",
+      "case": "foreign-proof-only",
+      "record_refused_before_mint": true,
+      "matrix_refused_rehashed_scan": true,
+      "publish_refused_before_api_registry": true,
+      "real_original_oci_rechecked": true
+    },
+    {
+      "target": "backend",
+      "foreign": "order",
+      "case": "foreign-summary",
+      "record_refused_before_mint": true,
+      "matrix_refused_rehashed_scan": true,
+      "publish_refused_before_api_registry": true,
+      "real_original_oci_rechecked": true
+    },
+    {
+      "target": "backend",
+      "foreign": "order",
+      "case": "foreign-summary-and-proof",
+      "record_refused_before_mint": true,
+      "matrix_refused_rehashed_scan": true,
+      "publish_refused_before_api_registry": true,
+      "real_original_oci_rechecked": true
+    },
+    {
+      "target": "backend",
+      "case": "foreign-raw-before-producer",
+      "refused": true,
+      "prior_proof_removed": true
+    },
+    {
+      "target": "order",
+      "foreign": "backend",
+      "case": "foreign-proof-only",
+      "record_refused_before_mint": true,
+      "matrix_refused_rehashed_scan": true,
+      "publish_refused_before_api_registry": true,
+      "real_original_oci_rechecked": true
+    },
+    {
+      "target": "order",
+      "foreign": "backend",
+      "case": "foreign-summary",
+      "record_refused_before_mint": true,
+      "matrix_refused_rehashed_scan": true,
+      "publish_refused_before_api_registry": true,
+      "real_original_oci_rechecked": true
+    },
+    {
+      "target": "order",
+      "foreign": "backend",
+      "case": "foreign-summary-and-proof",
+      "record_refused_before_mint": true,
+      "matrix_refused_rehashed_scan": true,
+      "publish_refused_before_api_registry": true,
+      "real_original_oci_rechecked": true
+    },
+    {
+      "target": "order",
+      "case": "foreign-raw-before-producer",
+      "refused": true,
+      "prior_proof_removed": true
+    }
+  ],
+  "external_operations": false
+}

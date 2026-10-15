@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "consumer": "m0",
+      "service": "backend",
+      "real_producer_record_accepted": true,
+      "negative_cases": 9,
+      "actual_values_checked": true
+    },
+    {
+      "consumer": "m1",
+      "service": "backend",
+      "real_producer_record_accepted": true,
+      "negative_cases": 9,
+      "actual_values_checked": true
+    },
+    {
+      "consumer": "m0",
+      "service": "order",
+      "real_producer_record_accepted": true,
+      "negative_cases": 11,
+      "actual_values_checked": false
+    },
+    {
+      "consumer": "m1",
+      "service": "order",
+      "real_producer_record_accepted": true,
+      "negative_cases": 11,
+      "actual_values_checked": true
+    }
+  ],
+  "publication_transport": "mock only; actual OCI and policy inputs"
+}

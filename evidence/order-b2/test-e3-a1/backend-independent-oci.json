@@ -1,0 +1,86 @@
+{
+  "service": "backend",
+  "archive_size": 15378432,
+  "archive_sha256": "b43285d142d4a1bcfa5f9946585d014eb997c5ed9d1d66fc02269b40fbe5361c",
+  "descriptors": [
+    {
+      "digest": "sha256:bbeca5e7bf1cff3bcd05173a6e1d3ea56f661d0c8a63eba41e0b8bb2994615de",
+      "size": 2936
+    },
+    {
+      "digest": "sha256:cff9be85fc4cae99587509581b36ea3b2aab8c5424f5acfbb1e7edd5b683a40c",
+      "size": 3892
+    },
+    {
+      "digest": "sha256:a5789fc40e828c4e7467626e3f69ec5dea8e5da22fe660db8ae6d16f777b0bbf",
+      "size": 83900
+    },
+    {
+      "digest": "sha256:990a9c434e5e0f11549a8d4a41a1991e621b04e30cd63269adbc97b1dc38fd7e",
+      "size": 12481
+    },
+    {
+      "digest": "sha256:39dc083afc39bd8dc43d456fe7ff7d39292e593bb2769972c11bb2e5f9119386",
+      "size": 445709
+    },
+    {
+      "digest": "sha256:bf7a4185f01524837d19abde915ffde84e64368b250f5b5e9f6f75aea62a11d4",
+      "size": 29005
+    },
+    {
+      "digest": "sha256:2780920e5dbfbe103d03a583ed75345306e572ec5a48cb10361f046767d9f29a",
+      "size": 67
+    },
+    {
+      "digest": "sha256:7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212",
+      "size": 188
+    },
+    {
+      "digest": "sha256:3214acf345c0cc6bbdb56b698a41ccdefc624a09d6beb0d38b5de0b2303ecaf4",
+      "size": 123
+    },
+    {
+      "digest": "sha256:52630fc75a18675c530ed9eba5f55eca09b03e91bd5bc15307918bbc1a7e7296",
+      "size": 162
+    },
+    {
+      "digest": "sha256:dd64bf2dd177757451a98fcdc999a339c35dee5d9872d8f4dc69c8f3c4dd0112",
+      "size": 80
+    },
+    {
+      "digest": "sha256:b839dfae01f66e15c6a8b63520557ed315bdfe036342fa7a0c537259f10d7a9a",
+      "size": 351
+    },
+    {
+      "digest": "sha256:dcaa5a89b0ccda4b283e16d0b4d0891cd93d5fe05c6798f7806781a6a2d84354",
+      "size": 314
+    },
+    {
+      "digest": "sha256:96ed2737ae312e0bc637b40783f7c2f23416cb72ca957aa01855f1614278e64b",
+      "size": 143347
+    },
+    {
+      "digest": "sha256:d91b2d5bef8c9100252d86b9181c99517c60036dd420e3b7655bda79b6b0e91a",
+      "size": 14638656
+    },
+    {
+      "digest": "sha256:0e48df672e72f940e08432cffb79ee7289147d469cb25807e209c50af5444182",
+      "size": 963
+    }
+  ],
+  "runtime_user": "10001:10001",
+  "stamp_present": true,
+  "secret_paths_absent": true,
+  "bundle_bytes_absent": true,
+  "custom_trust_env_absent": true,
+  "application_layer_entries": [
+    [
+      "server"
+    ],
+    [
+      "migrations",
+      "migrations/0001_create_accounts.sql",
+      "migrations/embed.go"
+    ]
+  ]
+}

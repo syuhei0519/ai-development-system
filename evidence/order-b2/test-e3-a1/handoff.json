@@ -1,0 +1,356 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "test",
+  "task_id": "order-b2-test-e3-a1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "order-b2-test-e2-a3",
+      "attempt": 3,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/f64306e92f1964d3dd7c681519d53c2d859e6c1e/evidence/order-b2/test-e2-a3/handoff.json",
+      "revision": "sha256:fad97e870523edf67b91152c7c8f1bed5af41fc7f1e962c945e10b8d31cfb8dc",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Bounded epoch3 actual-image remainder passed on exact current head. Both pristine production OCI/reader/transport/runtime/scan/SBOM and genuine bidirectional summary/proof/raw refusal,actual-output matrix/mock publish/M0/M1 pass. Combined with fixed predecessor local same-head gates,assigned B2 independent Test completes. Old blocked result and Consumer-unverified history remain unchanged; no full product/AC3/Review/merge assertion.",
+  "assignment": {
+    "scope": "backend-app#2/B2",
+    "ac_ids": [
+      "AC-1",
+      "AC-2"
+    ],
+    "completion_criteria": [
+      "Complete only missing current-head genuine-image R-B2-1 boundary using fixed production Dockerfiles,existing OCI reader/transport/runtime/scan/SBOM,matrix/mock publish and actual-output M0/M1 gates.",
+      "Reuse predecessor successful same-head local tests without mechanical rerun; preserve prior blocked status,epoch/retry history,standard/null context and original deadline.",
+      "Use only explicitly authorized temporary rootless BuildKit exceptions,clean up invocation resources; no product code/security scope expansion,real publication/deploy,Review or merge. Deliver public-safe Handoff and Readiness observations using one Delivery1.3 candidate."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-ACTUAL-CONSUMERS-JSON",
+      "kind": "other",
+      "locator": "actual-consumers.json",
+      "revision": "sha256:632b9cf6eae230b70e4828cf5dca95bb7a45396f5a03832d420197bafabe5dc1",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-BACKEND-IMAGE-PROOF-JSON",
+      "kind": "other",
+      "locator": "backend-image-proof.json",
+      "revision": "sha256:4bb499f7879956acf9d755fe8ec0b913a8929404eb2e0879c949c89599e60b7e",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-BACKEND-IMAGE-SCAN-JSON",
+      "kind": "other",
+      "locator": "backend-image-scan.json",
+      "revision": "sha256:7b8e23753ed6152b08ded46667e03c249d1451fe980f3ceb9691c4a92378ab3a",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-BACKEND-INDEPENDENT-OCI-JSON",
+      "kind": "other",
+      "locator": "backend-independent-oci.json",
+      "revision": "sha256:6a38bc2e76dad34f0775871130ade91b17ae97dd052667f1c5ab417b36442465",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-BACKEND-PUBLISH-BINDING-JSON",
+      "kind": "other",
+      "locator": "backend-publish-binding.json",
+      "revision": "sha256:e9c3d722486022ecedbfd7ee44684dc38600f2bff08a0c5fb057a66e1f6eb9c1",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-BACKEND-RUNTIME-JSON",
+      "kind": "other",
+      "locator": "backend-runtime.json",
+      "revision": "sha256:3b5026a101a88fe91de18fb534091d40c3736aa4887eae61a3f66e19c2ecb7ef",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-BACKEND-SBOM-PROOF-JSON",
+      "kind": "other",
+      "locator": "backend-sbom-proof.json",
+      "revision": "sha256:4b14323313564ad8bb2156d758f2a10a952b06a82d659a90d9fa86fb88cb2738",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-BACKEND-SBOM-CDX-JSON",
+      "kind": "other",
+      "locator": "backend-sbom.cdx.json",
+      "revision": "sha256:48abdc87d16b3f48fac20048dd79922e6b2ed0353874da1b17cb9383180adf05",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-BACKEND-TRANSPORT-JSON",
+      "kind": "other",
+      "locator": "backend-transport.json",
+      "revision": "sha256:40994eba1502cc4f10d2d01bb8a20c9322c81c830d7ddf78ca06877b1fde3420",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-BACKEND-TRUST-LEAK-JSON",
+      "kind": "other",
+      "locator": "backend-trust-leak.json",
+      "revision": "sha256:a63d8841ca3bf99b4ec2e7a0c993ef7abf6b017c07f6dacc62d80cbdd13567d3",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-BUILD-RESULTS-JSON",
+      "kind": "other",
+      "locator": "build-results.json",
+      "revision": "sha256:3f9a7e83e382e2aac9e0467e8c6cc1cc9e31c263f319a3980793bd60b736ff07",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-CLEANUP-AND-BOUNDARY-JSON",
+      "kind": "other",
+      "locator": "cleanup-and-boundary.json",
+      "revision": "sha256:9755de0e3bfdc68c42977479f6a260a9443e1ebec2576f4259d2751d4f42d7e4",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-GENUINE-SWAP-PROBE-PY",
+      "kind": "document",
+      "locator": "genuine-swap-probe.py",
+      "revision": "sha256:fe0cdb732ae7bea53c75801c8a4a752e26b668971a4080a9d431ec3df8ac1b2c",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-GENUINE-SWAP-RESULTS-JSON",
+      "kind": "other",
+      "locator": "genuine-swap-results.json",
+      "revision": "sha256:503acc8a6cbe90cb22427f7fc5be15a3cfdc85ae26536340791efe0a647f10e3",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-MATRIX-RESULT-JSON",
+      "kind": "other",
+      "locator": "matrix-result.json",
+      "revision": "sha256:7135c04477371f6026d194f3fb3155845151549c848099d40f9e32859158a4ad",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-MEASUREMENTS-JSON",
+      "kind": "other",
+      "locator": "measurements.json",
+      "revision": "sha256:a3cc3aac1daf7701e833d8568ac4701a30454ddf257ad591acdce085974c8794",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-ORDER-IMAGE-PROOF-JSON",
+      "kind": "other",
+      "locator": "order-image-proof.json",
+      "revision": "sha256:8a32f97c74fae6dcc7b74332ea0afc715dc125426212370021633c67df6e04db",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-ORDER-IMAGE-SCAN-JSON",
+      "kind": "other",
+      "locator": "order-image-scan.json",
+      "revision": "sha256:2fc483d6dca53763f22438648a34a0e2e4f6506beba3d2d375f331fbe6c37e0f",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-ORDER-INDEPENDENT-OCI-JSON",
+      "kind": "other",
+      "locator": "order-independent-oci.json",
+      "revision": "sha256:4d1cc0b5c2b76bd8720d86491462d5ecd8a45d2ab22508a5ae79582e39a5fcaa",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-ORDER-PUBLISH-BINDING-JSON",
+      "kind": "other",
+      "locator": "order-publish-binding.json",
+      "revision": "sha256:937fe96bd6af5096843385b470c47671b0659c4576560e1cead641625be426ff",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-ORDER-RUNTIME-JSON",
+      "kind": "other",
+      "locator": "order-runtime.json",
+      "revision": "sha256:1e4524d09eb92f4b85b538a1508d4ec0f8c1675afad5dfa7edf29113c2d4645b",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-ORDER-SBOM-PROOF-JSON",
+      "kind": "other",
+      "locator": "order-sbom-proof.json",
+      "revision": "sha256:e13a4a427ca8a9ea6a612b401434f0bc72e77890683f2a567985b4a752f75bd7",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-ORDER-SBOM-CDX-JSON",
+      "kind": "other",
+      "locator": "order-sbom.cdx.json",
+      "revision": "sha256:9209c650690009ec9a404e504afaee32dcfc396918dd333abf79ed9be4634c5e",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-ORDER-TRANSPORT-JSON",
+      "kind": "other",
+      "locator": "order-transport.json",
+      "revision": "sha256:935cee41a701cfc4fa7ae1115fdd972a702df478f5d6a046ac7234176b878374",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-ORDER-TRUST-LEAK-JSON",
+      "kind": "other",
+      "locator": "order-trust-leak.json",
+      "revision": "sha256:7d25c709e3a703f7b200855d61be8c7d7fce586748625b0f00c11c35b6941929",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-READINESS-OBSERVATIONS-JSON",
+      "kind": "other",
+      "locator": "readiness-observations.json",
+      "revision": "sha256:259823d8bf574ee99fabe598a6562ccfbbd55087398379f71f525444f98d75ad",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-REPORT-TXT",
+      "kind": "test-report",
+      "locator": "report.txt",
+      "revision": "sha256:729520f026821a6da8d0692166d963492a32076d8b968b756cf8b9f33b312c3b",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    },
+    {
+      "id": "A-REPRODUCTION-TXT",
+      "kind": "document",
+      "locator": "reproduction.txt",
+      "revision": "sha256:964eb6dc23397fad8b5989aa5f193bae517518a5471037fc84d39f33bd099930",
+      "summary": "Public protocol output or reviewed public derivative of independent current-head measurement; private originals/logs/approvals excluded."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-GENUINE",
+      "claim": "Current-head genuine-image R-B2-1 boundary independently passes",
+      "artifact_ids": [
+        "A-MEASUREMENTS-JSON",
+        "A-GENUINE-SWAP-RESULTS-JSON",
+        "A-GENUINE-SWAP-PROBE-PY",
+        "A-REPORT-TXT"
+      ],
+      "locator": "genuine-swap-results.json",
+      "observation": "8 genuine cross-service scenarios;6 public substitutions refuse record/matrix/publish before effects,2 raw substitutions refuse producer with prior proof removed. Freshly rehashed summary cannot justify foreign identity."
+    },
+    {
+      "id": "E-CHAIN",
+      "claim": "Both original production OCI chains and actual-output consumers pass",
+      "artifact_ids": [
+        "A-ACTUAL-CONSUMERS-JSON",
+        "A-BACKEND-IMAGE-PROOF-JSON",
+        "A-BACKEND-IMAGE-SCAN-JSON",
+        "A-BACKEND-INDEPENDENT-OCI-JSON",
+        "A-BACKEND-PUBLISH-BINDING-JSON",
+        "A-BACKEND-RUNTIME-JSON",
+        "A-BACKEND-SBOM-PROOF-JSON",
+        "A-BACKEND-SBOM-CDX-JSON",
+        "A-BACKEND-TRANSPORT-JSON",
+        "A-BACKEND-TRUST-LEAK-JSON",
+        "A-BUILD-RESULTS-JSON",
+        "A-CLEANUP-AND-BOUNDARY-JSON",
+        "A-MATRIX-RESULT-JSON",
+        "A-MEASUREMENTS-JSON",
+        "A-ORDER-IMAGE-PROOF-JSON",
+        "A-ORDER-IMAGE-SCAN-JSON",
+        "A-ORDER-INDEPENDENT-OCI-JSON",
+        "A-ORDER-PUBLISH-BINDING-JSON",
+        "A-ORDER-RUNTIME-JSON",
+        "A-ORDER-SBOM-PROOF-JSON",
+        "A-ORDER-SBOM-CDX-JSON",
+        "A-ORDER-TRANSPORT-JSON",
+        "A-ORDER-TRUST-LEAK-JSON",
+        "A-REPORT-TXT",
+        "A-REPRODUCTION-TXT"
+      ],
+      "locator": "measurements.json",
+      "observation": "Both pristine build-once archives retained;independent descriptors,reader,transport,isolated runtime,scan/SBOM,nonleak,matrix,mock publish,4 actual-output consumer positives and40 negatives pass. No external publish/deploy."
+    },
+    {
+      "id": "E-HISTORY",
+      "claim": "Previous blocked result and distinct gate ownership preserved",
+      "artifact_ids": [
+        "A-REPORT-TXT",
+        "A-READINESS-OBSERVATIONS-JSON",
+        "A-CLEANUP-AND-BOUNDARY-JSON"
+      ],
+      "locator": "report.txt",
+      "observation": "New bounded epoch3attempt1 via dependency on fixed epoch2a3;old status remains blocked,old successful local same-head gates referenced,Manager Consumer unverified. No Review/merge/final Issue assessment. All temporary owned resources removed."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "covered",
+      "scope": "Assigned current-head B2 independent Test scope only,combining fixed predecessor same-head local gates with this genuine-image remainder. Not whole product AC acceptance;unchanged API/DB evidence remains prior revision and deadline.",
+      "artifact_ids": [
+        "A-REPORT-TXT",
+        "A-MEASUREMENTS-JSON",
+        "A-READINESS-OBSERVATIONS-JSON"
+      ],
+      "evidence_ids": [
+        "E-GENUINE",
+        "E-CHAIN",
+        "E-HISTORY"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "covered",
+      "scope": "Assigned current-head B2 independent Test scope only,combining fixed predecessor same-head local gates with this genuine-image remainder. Not whole product AC acceptance;unchanged API/DB evidence remains prior revision and deadline.",
+      "artifact_ids": [
+        "A-REPORT-TXT",
+        "A-MEASUREMENTS-JSON",
+        "A-READINESS-OBSERVATIONS-JSON"
+      ],
+      "evidence_ids": [
+        "E-GENUINE",
+        "E-CHAIN",
+        "E-HISTORY"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "unverified",
+      "scope": "Postdeploy/outside assignment;no live Synced/Healthy/imageID measurement.",
+      "artifact_ids": [
+        "A-READINESS-OBSERVATIONS-JSON"
+      ],
+      "evidence_ids": [
+        "E-HISTORY"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}
