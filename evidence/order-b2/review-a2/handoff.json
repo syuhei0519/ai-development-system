@@ -1,0 +1,178 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "review",
+  "task_id": "order-b2-review-a2",
+  "attempt": 2,
+  "upstream": [
+    {
+      "role": "review",
+      "task_id": "order-b2-review-a1",
+      "attempt": 1,
+      "relationship": "retry_of",
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/b8a3cb76d760bd208be432f0b4095e6ca4368d26/evidence/order-b2/review-a1/handoff.json",
+      "revision": "sha256:930b52ec3fa58840d7f6fa66a4e9e4a087fe7a792b5b14b5f3634fd2b882dbc2"
+    },
+    {
+      "role": "test",
+      "task_id": "order-b2-test-e3-a1",
+      "attempt": 1,
+      "relationship": "dependency",
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/0b260f2559ffed849f155612d971db413a0c2443/evidence/order-b2/test-e3-a1/handoff.json",
+      "revision": "sha256:7e4d60c5216b8da61108ed0da827061a9b81369b90d5f2f3758d6959b1cefa01"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Independent current-head B2 Review passed; R-B2-1 resolved,zero remaining Blocking findings. Full diff,fixed independent Test and35 bounded checks reviewed. Prior Review1 failed and all Test/Implementation histories unchanged. AC1/2 assigned B2 responsibility only;AC3,merge,product acceptance and Manager Readiness/Issue Completion unclaimed.",
+  "assignment": {
+    "scope": "backend-app#2/B2",
+    "ac_ids": [
+      "AC-1",
+      "AC-2"
+    ],
+    "completion_criteria": [
+      "Independently review current-head R-B2-1 foreign scan identity refusal before record creation,run identity types,proof/summary/raw coupling,Accountv1/Orderv2 compatibility and CI/release/gate boundaries.",
+      "Review prior failed Review1 and current independent Test evidence;inspect entire PR for Blocking issues and perform only necessary bounded reproduction,no image rebuild/full retest/new hardening.",
+      "Preserve epoch1attempt1 failed history with typed retry_of,complete execution Issue33 assigned independent Review/no Blocking responsibility without claiming whole product AC or merge.",
+      "Deliver Handoff2.0,severity findings,R-B2-1 resolution,current fixed-context readiness observations,Knowledge Candidates and one public-safe Delivery1.3 candidate;preserve private originals and original11:10UTC deadline."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-REPORT-TXT",
+      "kind": "review",
+      "locator": "report.txt",
+      "revision": "sha256:f802c5dbe99386169999773856ed01afc1bd1da93d5cb584a4faa014a2f2126b",
+      "summary": "Reviewed public derivative of assigned independent Review; no private approvals,identifiers or operational logs."
+    },
+    {
+      "id": "A-FINDINGS-JSON",
+      "kind": "other",
+      "locator": "findings.json",
+      "revision": "sha256:a374ea60cf22eeac8418e361452188a63de9a3ac3384770784f52561c2306ed2",
+      "summary": "Reviewed public derivative of assigned independent Review; no private approvals,identifiers or operational logs."
+    },
+    {
+      "id": "A-MEASUREMENTS-JSON",
+      "kind": "other",
+      "locator": "measurements.json",
+      "revision": "sha256:3b528e3ff47e0baac8c66e3061dbc27bce26560782bd6076fb64640d8ee2492d",
+      "summary": "Reviewed public derivative of assigned independent Review; no private approvals,identifiers or operational logs."
+    },
+    {
+      "id": "A-READINESS-OBSERVATIONS-JSON",
+      "kind": "other",
+      "locator": "readiness-observations.json",
+      "revision": "sha256:7fe06fae2d2567ead634fcae136646ed1b1ca160dd76b3ec9935e56487637ef7",
+      "summary": "Reviewed public derivative of assigned independent Review; no private approvals,identifiers or operational logs."
+    },
+    {
+      "id": "A-NARROW-REVIEW-PROBE-PY",
+      "kind": "document",
+      "locator": "narrow-review-probe.py",
+      "revision": "sha256:d2797df4a226360a1bfe2941c3cbb5a59f88460ddf2cfb42f64162994eb02ef6",
+      "summary": "Reviewed public derivative of assigned independent Review; no private approvals,identifiers or operational logs."
+    },
+    {
+      "id": "A-NARROW-REVIEW-RESULTS-JSON",
+      "kind": "other",
+      "locator": "narrow-review-results.json",
+      "revision": "sha256:a0d84b5510f8f88ca7e36bf47ee2cf9b2f1fba81d24a2f5d466b44fbee6849fd",
+      "summary": "Reviewed public derivative of assigned independent Review; no private approvals,identifiers or operational logs."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-REVIEW",
+      "claim": "R-B2-1 resolved and assigned independent Review passed",
+      "artifact_ids": [
+        "A-REPORT-TXT",
+        "A-FINDINGS-JSON",
+        "A-MEASUREMENTS-JSON",
+        "A-READINESS-OBSERVATIONS-JSON",
+        "A-NARROW-REVIEW-PROBE-PY",
+        "A-NARROW-REVIEW-RESULTS-JSON"
+      ],
+      "locator": "report.txt",
+      "observation": "Full28-path diff inspected;fixed Test genuine8 scenarios and current production chains reviewed;Reviewer35 bounded positive/negative checks pass;0 Blocking findings."
+    },
+    {
+      "id": "E-BOUNDARY",
+      "claim": "Scope,history,readiness and public safety remain separate",
+      "artifact_ids": [
+        "A-REPORT-TXT",
+        "A-READINESS-OBSERVATIONS-JSON",
+        "A-MEASUREMENTS-JSON"
+      ],
+      "locator": "readiness-observations.json",
+      "observation": "Exact head/base/live equivalent policy and separate CI successes;standard/null,none,aggregate_required and original deadline retained. No final readiness,product acceptance or merge assertion."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "covered",
+      "scope": "Assigned current-head B2 independent Review responsibility and execution Issue33 Review/no Blocking responsibility only;not whole-product AC acceptance.",
+      "artifact_ids": [
+        "A-REPORT-TXT",
+        "A-FINDINGS-JSON",
+        "A-MEASUREMENTS-JSON"
+      ],
+      "evidence_ids": [
+        "E-REVIEW",
+        "E-BOUNDARY"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "covered",
+      "scope": "Assigned current-head B2 independent Review responsibility and execution Issue33 Review/no Blocking responsibility only;not whole-product AC acceptance.",
+      "artifact_ids": [
+        "A-REPORT-TXT",
+        "A-FINDINGS-JSON",
+        "A-MEASUREMENTS-JSON"
+      ],
+      "evidence_ids": [
+        "E-REVIEW",
+        "E-BOUNDARY"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "not_assigned",
+      "scope": "Postdeploy,outside assignment;no live Service/Synced/Healthy/imageID measurement.",
+      "artifact_ids": [
+        "A-READINESS-OBSERVATIONS-JSON"
+      ],
+      "evidence_ids": [
+        "E-BOUNDARY"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

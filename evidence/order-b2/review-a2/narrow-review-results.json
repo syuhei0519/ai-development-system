@@ -1,0 +1,148 @@
+{
+  "document_type": "bounded_review_probe",
+  "checks": [
+    {
+      "case": "backend/actual-public-positive",
+      "result": "pass"
+    },
+    {
+      "case": "backend/actual-foreign-image-scan.json",
+      "result": "refused"
+    },
+    {
+      "case": "backend/actual-foreign-image-proof.json",
+      "result": "refused"
+    },
+    {
+      "case": "backend/actual-foreign-image-scan.json,image-proof.json",
+      "result": "refused"
+    },
+    {
+      "case": "backend/actual-summary-proof-runId-float",
+      "result": "refused"
+    },
+    {
+      "case": "backend/actual-summary-proof-runId-str",
+      "result": "refused"
+    },
+    {
+      "case": "backend/actual-summary-proof-runId-bool",
+      "result": "refused"
+    },
+    {
+      "case": "backend/actual-summary-proof-runId-null",
+      "result": "refused"
+    },
+    {
+      "case": "backend/actual-summary-proof-runAttempt-float",
+      "result": "refused"
+    },
+    {
+      "case": "backend/actual-summary-proof-runAttempt-str",
+      "result": "refused"
+    },
+    {
+      "case": "backend/actual-summary-proof-runAttempt-bool",
+      "result": "refused"
+    },
+    {
+      "case": "backend/actual-summary-proof-runAttempt-null",
+      "result": "refused"
+    },
+    {
+      "case": "backend/actual-foreign-summary-rehashed-proof",
+      "result": "refused"
+    },
+    {
+      "case": "order/actual-public-positive",
+      "result": "pass"
+    },
+    {
+      "case": "order/actual-foreign-image-scan.json",
+      "result": "refused"
+    },
+    {
+      "case": "order/actual-foreign-image-proof.json",
+      "result": "refused"
+    },
+    {
+      "case": "order/actual-foreign-image-scan.json,image-proof.json",
+      "result": "refused"
+    },
+    {
+      "case": "order/actual-summary-proof-runId-float",
+      "result": "refused"
+    },
+    {
+      "case": "order/actual-summary-proof-runId-str",
+      "result": "refused"
+    },
+    {
+      "case": "order/actual-summary-proof-runId-bool",
+      "result": "refused"
+    },
+    {
+      "case": "order/actual-summary-proof-runId-null",
+      "result": "refused"
+    },
+    {
+      "case": "order/actual-summary-proof-runAttempt-float",
+      "result": "refused"
+    },
+    {
+      "case": "order/actual-summary-proof-runAttempt-str",
+      "result": "refused"
+    },
+    {
+      "case": "order/actual-summary-proof-runAttempt-bool",
+      "result": "refused"
+    },
+    {
+      "case": "order/actual-summary-proof-runAttempt-null",
+      "result": "refused"
+    },
+    {
+      "case": "order/actual-foreign-summary-rehashed-proof",
+      "result": "refused"
+    },
+    {
+      "case": "synthetic/pre-record-source-runId-float",
+      "result": "refused"
+    },
+    {
+      "case": "synthetic/pre-record-source-runId-str",
+      "result": "refused"
+    },
+    {
+      "case": "synthetic/pre-record-source-runId-bool",
+      "result": "refused"
+    },
+    {
+      "case": "synthetic/pre-record-source-runId-null",
+      "result": "refused"
+    },
+    {
+      "case": "synthetic/pre-record-source-runAttempt-float",
+      "result": "refused"
+    },
+    {
+      "case": "synthetic/pre-record-source-runAttempt-str",
+      "result": "refused"
+    },
+    {
+      "case": "synthetic/pre-record-source-runAttempt-bool",
+      "result": "refused"
+    },
+    {
+      "case": "synthetic/pre-record-source-runAttempt-null",
+      "result": "refused"
+    },
+    {
+      "case": "synthetic/restored-record-positive",
+      "result": "pass"
+    }
+  ],
+  "total": 35,
+  "external_operations": false,
+  "rebuild": false
+}

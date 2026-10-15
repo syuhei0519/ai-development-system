@@ -1,0 +1,38 @@
+{
+  "document_type": "review_findings",
+  "subject": {
+    "repository": "syuhei0519/backend-app",
+    "pr_number": 32,
+    "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+    "base_sha": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0"
+  },
+  "verdict": "pass_assigned_review",
+  "blocking_findings": [],
+  "nonblocking_findings": [],
+  "resolved": [
+    {
+      "id": "R-B2-1",
+      "severity": "P2",
+      "historical_status": "blocking Review1 failed; preserved",
+      "current_status": "resolved",
+      "locations": [
+        "ci/github/image-policy.py:16",
+        "ci/github/image-policy.py:28",
+        "ci/github/release.py:138",
+        "ci/github/release.py:157",
+        "ci/github/release.py:185",
+        "ci/github/release.py:243",
+        "ci/github/matrix-result.py:15"
+      ],
+      "rationale": "Trusted producer checks actual raw ImageID twice against selected OCI config and couples the same raw scan with SBOM. Exact selected repository/commit/run/attempt/service/manifest/config/archive/source hash identity and summary/SBOM-proof/SBOM/raw fingerprints are required before record minting, matrix success and any publish API/registry effects. Strict int rejects bool/float/string/null run identities.",
+      "evidence": [
+        "Fixed independent Test genuine 8 scenarios,normal production chains and actual-output consumers",
+        "Reviewer35 bounded checks",
+        "Full base/head diff and trusted-validator source inspection"
+      ],
+      "limits": "Proofs are trusted CI outputs, not signatures. Arbitrary coherent trusted-producer compromise remains outside the artifact-mixing contract. Raw scan and original OCI remain Test-private, not directly remeasured by Review."
+    }
+  ],
+  "follow_up_candidates": [],
+  "knowledge_candidates": []
+}

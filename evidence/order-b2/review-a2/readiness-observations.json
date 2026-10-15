@@ -1,0 +1,153 @@
+{
+  "document_type": "review_readiness_observations",
+  "observed_at": "2026-10-15T10:15:05.812782+00:00",
+  "valid_until": "2026-10-15T11:10:00Z",
+  "repository": "syuhei0519/backend-app",
+  "pr_number": 32,
+  "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+  "base_sha": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+  "target_revision": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+  "merge_group_sha": null,
+  "pr_kind": "standard",
+  "preparation": null,
+  "deployment_effect": "none",
+  "issue_integration_scope": "aggregate_required",
+  "config_binding": "Independently pinned private context/config bytes verified. Current live ruleset equals fixed config, with UTC/offset timestamps compared as the same instants; no config revision rewrite.",
+  "pr": {
+    "state": "open",
+    "draft": true,
+    "merged": false,
+    "mergeable": true,
+    "mergeable_state": "clean"
+  },
+  "ci": [
+    {
+      "name": "propose",
+      "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "conclusion": "skipped",
+      "check_id": 114558668283
+    },
+    {
+      "name": "publish",
+      "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "conclusion": "skipped",
+      "check_id": 114558667887
+    },
+    {
+      "name": "ci-result",
+      "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "conclusion": "success",
+      "check_id": 114558634372
+    },
+    {
+      "name": "publish",
+      "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "conclusion": "skipped",
+      "check_id": 114558590157
+    },
+    {
+      "name": "propose",
+      "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "conclusion": "skipped",
+      "check_id": 114558589839
+    },
+    {
+      "name": "ci-result",
+      "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "conclusion": "success",
+      "check_id": 114558554311
+    },
+    {
+      "name": "image (order)",
+      "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "conclusion": "success",
+      "check_id": 114558091483
+    },
+    {
+      "name": "image (backend)",
+      "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "conclusion": "success",
+      "check_id": 114558091459
+    },
+    {
+      "name": "image (order)",
+      "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "conclusion": "success",
+      "check_id": 114557958960
+    },
+    {
+      "name": "image (backend)",
+      "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "conclusion": "success",
+      "check_id": 114557958870
+    },
+    {
+      "name": "docs",
+      "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "conclusion": "skipped",
+      "check_id": 114557544752
+    },
+    {
+      "name": "validate",
+      "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "conclusion": "success",
+      "check_id": 114557543965
+    },
+    {
+      "name": "classify",
+      "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "conclusion": "success",
+      "check_id": 114557526817
+    },
+    {
+      "name": "docs",
+      "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "conclusion": "skipped",
+      "check_id": 114557517118
+    },
+    {
+      "name": "validate",
+      "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "conclusion": "success",
+      "check_id": 114557515972
+    },
+    {
+      "name": "classify",
+      "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "conclusion": "success",
+      "check_id": 114557496663
+    }
+  ],
+  "ruleset": {
+    "id": 24733411,
+    "enforcement": "active",
+    "required_status": "ci-result",
+    "strict": true,
+    "required_approving_reviews": 0,
+    "thread_resolution": true,
+    "bypass": "never",
+    "queue_required": false,
+    "existing_reviews": 0
+  },
+  "environments": "Both ghcr-publish and manifest-update currently require one human reviewer and main-only branch policy; no token contents or scopes inspected/changed.",
+  "implementation_readiness": "Assigned repair Review prerequisites and upstream B2 evidence sufficient; no new implementation authorization issued.",
+  "deployment_readiness": "Unverified/blocked: no live environment/rollback/operation approval established by this review.",
+  "merge_readiness": "Not issued. Review gate passes and exact-head CI success is separate. Draft PR,Manager independent output Consumer and final context/AC/readiness/operation checks remain; AI review is not a GitHub required approval.",
+  "deployment_basis": "Fixed Manifest pins Account digest and disables Order/order-postgresql; fixed Platform local orderEnabled=false and Argo workloads read application-manifest. Backend PR changes no desired workload values/digests. Publication/proposal retain protected-main,variable,Environment gates and no automatic manifest merge. External automation and live cluster unobserved.",
+  "ac_phases": {
+    "AC-1": "premerge",
+    "AC-2": "premerge",
+    "AC-3": "postdeploy"
+  },
+  "product_ac1_ac2": "B2 Review responsibility covered only. Historical API/DB measurements keep their original revision and expired deadline; no new whole-product met assertion or premerge deferral.",
+  "ac3": {
+    "outcome": "unverified",
+    "verification_phase": "postdeploy",
+    "owner": "Manager-assigned deployment/postdeploy Test owner",
+    "environment": "Authorized target GitOps cluster",
+    "method": "After authorized merge/deploy,observe independent Service Synced/Healthy and correlate live imageID to approved published digest",
+    "failure_action": "Keep Issue incomplete; return to Manager for authorized recovery and remeasurement"
+  },
+  "deadline_policy": "Original 2026-10-15T11:10:00Z unchanged. Subject/config updates invalidate use immediately; Manager refresh required before merge and after expiry.",
+  "issue_completion": "Unverified; aggregate integration,postdeploy AC3 and execution Issue33 merge AC remain unclaimed. Manager-only final assessment."
+}
