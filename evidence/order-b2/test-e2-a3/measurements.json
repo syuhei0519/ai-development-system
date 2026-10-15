@@ -1,0 +1,89 @@
+{
+  "observed_at": "2026-10-15T09:22:52.626635+00:00",
+  "system_revision": "3394bb069be64bdc43e057b251fc320302d185f6",
+  "source_revision": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+  "source_tree": "8d12e8e2b9c4571b4a8a4eb325f7b95abbd56b41",
+  "base_revision": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+  "manifest_revision": "df8c8b5d93e48bc1f0e5ced1678bba2e27d6a1f9",
+  "m0_revision": "bc6adaedcd645a4663c23284b977a3dd36c0796d",
+  "platform_revision": "482ba450983ac2929f8176374d0d6ca50a69cac6",
+  "input_consumer": {
+    "canonical_cli": "scripts/consume_delivery.py",
+    "verified": true,
+    "explicit_artifacts": 144,
+    "objects": 153,
+    "bytes": 2381968,
+    "manifest_sha256": "91764691abd75ebded871c2e8c24d50aa8084b2537887e65325e6677ee0bfb66",
+    "publication_sha256": "68bc3c78a17b7aaa11572f4ec80182833ba0b1c20941243a9639b770e80e9c28",
+    "private_original_inspection": false
+  },
+  "local_gates": [
+    {
+      "command": "bash ci/github/test.sh",
+      "exit": 0,
+      "python_tests": 43,
+      "details": "8 release,11 Order release,19 vendored M0,2 build-CA,3 real-validator/synthetic raw image-policy; Go module/shell/docs gates pass."
+    },
+    {
+      "command": "python -I FIXED_M1/ci/github/release_test.py",
+      "exit": 0,
+      "tests": 19
+    },
+    {
+      "command": "python independent-probe.py FIXED_HEAD OUTPUT_JSON",
+      "exit": 0,
+      "checks": 32,
+      "input_class": "synthetic"
+    }
+  ],
+  "blocked_gates": [
+    {
+      "gate": "pristine production OCI build",
+      "pristine_files": 215,
+      "driver": "docker",
+      "buildkit": "v0.24.0",
+      "exit": 1,
+      "reason": "OCI exporter is not supported for the docker driver; no source build completed."
+    },
+    {
+      "gate": "exact-head CI original OCI retrieval",
+      "run_id": 38169002804,
+      "artifact_id": 11714020735,
+      "artifact_name": "checked-image-1",
+      "exit": 1,
+      "reason": "artifact download destination returned 403; no OCI bytes acquired; no retry or alternate access bypass."
+    }
+  ],
+  "unverified": [
+    "genuine bidirectional summary/proof/raw substitution using current-head images",
+    "current-head original OCI reader/transport/runtime/scan/SBOM chain and actual-output consumer/publish checks",
+    "AC-3 postdeploy",
+    "independent Review",
+    "Issue completion and merge"
+  ],
+  "api_db_regression": {
+    "rerun": false,
+    "repair_changed_paths_only": [
+      "ci/github/image-policy.py",
+      "ci/github/image-policy_test.py",
+      "ci/github/matrix-result.py",
+      "ci/github/oci.sh",
+      "ci/github/order-release_test.py",
+      "ci/github/release.py",
+      "ci/github/test.sh",
+      "docs/order-image-ci.md"
+    ],
+    "api_db_dockerfiles_lockfiles_unchanged_from": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+    "historical_test_handoff_sha256": "f3338f701626d40c234cf81bbd6979a5765c8becda5fc921b6441fb29f2e41c0",
+    "historical_112_pass_2_skip": "Producer testimony in independently consumed prior Test; not new current-head execution",
+    "historical_deadline": "2026-10-11T19:27:15Z",
+    "transfer_as_current_pass": false
+  },
+  "order_enabled": false,
+  "product_failure_found": false,
+  "assignment_outcome": "blocked",
+  "runtime_model": "unverified",
+  "runtime_effort": "unverified",
+  "usage": "unverified",
+  "knowledge_candidates": []
+}

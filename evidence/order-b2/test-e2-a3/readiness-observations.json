@@ -1,0 +1,28 @@
+{
+  "document_type": "test_readiness_observations",
+  "observed_at": "2026-10-15T09:22:52.626635+00:00",
+  "subject": {
+    "repository": "syuhei0519/backend-app",
+    "pr_number": 32,
+    "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+    "base_sha": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+    "target_revision": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+    "merge_group_sha": null
+  },
+  "context_binding": "Exact private Manager context/config bytes were independently pinned. Original context/config and their digests are not public artifacts; Manager must bind these observations to that private subject before assessment.",
+  "pr_kind": "standard",
+  "preparation": null,
+  "issue_integration_scope": "aggregate_required",
+  "deployment_effect": "none",
+  "policy_valid_until": "2026-10-15T11:10:00Z",
+  "ci": "pass: exact-head checks retrieved separately",
+  "independent_test": "blocked: genuine-image boundary unverified",
+  "ai_review": "unverified; separate role",
+  "merge_readiness": "not assessed by Test; Manager only",
+  "ac_outcomes": {
+    "AC-1": "unverified in this current-head B2 assignment; historical unchanged API/DB evidence remains historical",
+    "AC-2": "unverified in this current-head B2 assignment; historical unchanged API/DB evidence remains historical",
+    "AC-3": "unverified; postdeploy owner must observe Synced/Healthy and matching image digest after authorized deployment, retain Issue open and return for recovery if failed"
+  },
+  "limits": "Evidence format and publication do not grant Readiness, Consumer, merge, or deploy authority."
+}

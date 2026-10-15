@@ -1,0 +1,197 @@
+{
+  "head": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+  "input_class": "synthetic; no real image/scanner assertion",
+  "checks": [
+    {
+      "case": "synthetic foreign summary before record",
+      "prior_head": "dab0123f4fd459e12c1f64ff2305e5d28d8a41f5",
+      "prior_accepted": true,
+      "current_refused_before_record": true
+    },
+    {
+      "file": ".validation/source-identity.json",
+      "key": "runId",
+      "type": "float",
+      "refused": true
+    },
+    {
+      "file": ".validation/source-identity.json",
+      "key": "runId",
+      "type": "str",
+      "refused": true
+    },
+    {
+      "file": ".validation/source-identity.json",
+      "key": "runId",
+      "type": "bool",
+      "refused": true
+    },
+    {
+      "file": ".validation/source-identity.json",
+      "key": "runId",
+      "type": "bool",
+      "refused": true
+    },
+    {
+      "file": ".validation/source-identity.json",
+      "key": "runId",
+      "type": "NoneType",
+      "refused": true
+    },
+    {
+      "file": ".validation/source-identity.json",
+      "key": "runAttempt",
+      "type": "float",
+      "refused": true
+    },
+    {
+      "file": ".validation/source-identity.json",
+      "key": "runAttempt",
+      "type": "str",
+      "refused": true
+    },
+    {
+      "file": ".validation/source-identity.json",
+      "key": "runAttempt",
+      "type": "bool",
+      "refused": true
+    },
+    {
+      "file": ".validation/source-identity.json",
+      "key": "runAttempt",
+      "type": "bool",
+      "refused": true
+    },
+    {
+      "file": ".validation/source-identity.json",
+      "key": "runAttempt",
+      "type": "NoneType",
+      "refused": true
+    },
+    {
+      "file": ".security/public/image-scan.json",
+      "key": "runId",
+      "type": "float",
+      "refused": true
+    },
+    {
+      "file": ".security/public/image-scan.json",
+      "key": "runId",
+      "type": "str",
+      "refused": true
+    },
+    {
+      "file": ".security/public/image-scan.json",
+      "key": "runId",
+      "type": "bool",
+      "refused": true
+    },
+    {
+      "file": ".security/public/image-scan.json",
+      "key": "runId",
+      "type": "bool",
+      "refused": true
+    },
+    {
+      "file": ".security/public/image-scan.json",
+      "key": "runId",
+      "type": "NoneType",
+      "refused": true
+    },
+    {
+      "file": ".security/public/image-scan.json",
+      "key": "runAttempt",
+      "type": "float",
+      "refused": true
+    },
+    {
+      "file": ".security/public/image-scan.json",
+      "key": "runAttempt",
+      "type": "str",
+      "refused": true
+    },
+    {
+      "file": ".security/public/image-scan.json",
+      "key": "runAttempt",
+      "type": "bool",
+      "refused": true
+    },
+    {
+      "file": ".security/public/image-scan.json",
+      "key": "runAttempt",
+      "type": "bool",
+      "refused": true
+    },
+    {
+      "file": ".security/public/image-scan.json",
+      "key": "runAttempt",
+      "type": "NoneType",
+      "refused": true
+    },
+    {
+      "file": ".security/public/image-proof.json",
+      "key": "runId",
+      "type": "float",
+      "refused": true
+    },
+    {
+      "file": ".security/public/image-proof.json",
+      "key": "runId",
+      "type": "str",
+      "refused": true
+    },
+    {
+      "file": ".security/public/image-proof.json",
+      "key": "runId",
+      "type": "bool",
+      "refused": true
+    },
+    {
+      "file": ".security/public/image-proof.json",
+      "key": "runId",
+      "type": "bool",
+      "refused": true
+    },
+    {
+      "file": ".security/public/image-proof.json",
+      "key": "runId",
+      "type": "NoneType",
+      "refused": true
+    },
+    {
+      "file": ".security/public/image-proof.json",
+      "key": "runAttempt",
+      "type": "float",
+      "refused": true
+    },
+    {
+      "file": ".security/public/image-proof.json",
+      "key": "runAttempt",
+      "type": "str",
+      "refused": true
+    },
+    {
+      "file": ".security/public/image-proof.json",
+      "key": "runAttempt",
+      "type": "bool",
+      "refused": true
+    },
+    {
+      "file": ".security/public/image-proof.json",
+      "key": "runAttempt",
+      "type": "bool",
+      "refused": true
+    },
+    {
+      "file": ".security/public/image-proof.json",
+      "key": "runAttempt",
+      "type": "NoneType",
+      "refused": true
+    },
+    {
+      "case": "restored synthetic positive",
+      "passed": true
+    }
+  ],
+  "external_effects": false
+}

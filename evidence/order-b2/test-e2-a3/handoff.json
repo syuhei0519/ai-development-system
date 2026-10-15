@@ -1,0 +1,202 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "test",
+  "task_id": "order-b2-test-e2-a3",
+  "attempt": 3,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "order-b2-test-e2-a2",
+      "attempt": 2,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/61571179b9ae25747244c889b34758a177d3c3e1/evidence/order-b2/test-e2-a2/handoff.json",
+      "revision": "sha256:f3338f701626d40c234cf81bbd6979a5765c8becda5fc921b6441fb29f2e41c0",
+      "relationship": "retry_of"
+    },
+    {
+      "role": "implementation",
+      "task_id": "order-b2-implementation-a3",
+      "attempt": 3,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/d4cbea1cad401d5a432b03ef4512e54f68b0c861/evidence/order-b2/implementation-a3/handoff.json",
+      "revision": "sha256:4ae1e66c0ab7bcb0a8b3a2aecef4b95c0835151df5271457f5c6598565cd6aa9",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "blocked",
+  "summary": "Current-head B2 local gates and32 narrow synthetic checks pass; exact-head CI metadata succeeds. Genuine-image R-B2-1 independent verification blocked by existing OCI exporter capability and artifact download403. No product failure or current-head full Test success claimed; final execution budget exhausted.",
+  "assignment": {
+    "scope": "backend-app#2/B2",
+    "ac_ids": [
+      "AC-1",
+      "AC-2"
+    ],
+    "completion_criteria": [
+      "Issue33 first AC: independently verify current head R-B2-1 repair with necessary existing B2 image/CI gates, genuine bidirectional summary/proof/raw substitution and strict run identities.",
+      "Preserve Accountv1/Orderv2,M0/M1 compatibility; distinguish current measurements,CI and unchanged API/DB historical evidence; do not repeat all Feature or Kind tests or add hardening.",
+      "Return reproducible measurements,limitations,Handoff2.0 and Readiness evidence; preserve epoch2 attempt3 and retry history; no final Issue assessment,Review,merge,publish or deploy."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-REPORT",
+      "kind": "test-report",
+      "locator": "report.txt",
+      "revision": "sha256:eeaf91df2cb6ee3ce110e168b55cc1054bea6bdb1d48fba3a965f95d5ad4467b",
+      "summary": "Reviewed public derivative; observations and limitations preserved; no private-original equivalence asserted."
+    },
+    {
+      "id": "A-MEASURE",
+      "kind": "other",
+      "locator": "measurements.json",
+      "revision": "sha256:fea18345662c61ddf4771476b8b38487b04d8e556270c9c6ef3af79e5b83ec88",
+      "summary": "Reviewed public derivative; observations and limitations preserved; no private-original equivalence asserted."
+    },
+    {
+      "id": "A-CI",
+      "kind": "other",
+      "locator": "ci-observations.json",
+      "revision": "sha256:f142906b4f23a5c78bc9ba57d1dd832e727566f72843df7ba3ed9468076aee84",
+      "summary": "Reviewed public derivative; observations and limitations preserved; no private-original equivalence asserted."
+    },
+    {
+      "id": "A-READINESS",
+      "kind": "other",
+      "locator": "readiness-observations.json",
+      "revision": "sha256:bfa0db41dbbdbb52c649c75ecb804e410a9eda676475112a6eac978560ff85e9",
+      "summary": "Reviewed public derivative; observations and limitations preserved; no private-original equivalence asserted."
+    },
+    {
+      "id": "A-PROBE",
+      "kind": "document",
+      "locator": "independent-probe.py",
+      "revision": "sha256:deccdcc2fefe755381700260ca25a26fdc743d5c70a23a24dce9dd3b0c1de77f",
+      "summary": "Reviewed public derivative; observations and limitations preserved; no private-original equivalence asserted."
+    },
+    {
+      "id": "A-SYNTHETIC",
+      "kind": "other",
+      "locator": "synthetic-probe.json",
+      "revision": "sha256:dbcd8797fe99acb849c8f432df260e8cd4e440f4c5e5a8b6e6c3e5236d5dc2d9",
+      "summary": "Reviewed public derivative; observations and limitations preserved; no private-original equivalence asserted."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-LOCAL",
+      "claim": "Existing local B2 gates and narrow synthetic repair/type controls pass",
+      "artifact_ids": [
+        "A-MEASURE",
+        "A-PROBE",
+        "A-SYNTHETIC",
+        "A-REPORT"
+      ],
+      "locator": "measurements.json",
+      "observation": "ci/github/test.sh exit0; fixed M1 suite19pass;32 independent synthetic checks pass. Genuine current-image mixing is unverified."
+    },
+    {
+      "id": "E-BLOCK",
+      "claim": "Necessary genuine-image independent gate cannot complete in this environment",
+      "artifact_ids": [
+        "A-MEASURE",
+        "A-REPORT",
+        "A-READINESS"
+      ],
+      "locator": "measurements.json",
+      "observation": "Pristine production OCI invocation refused unsupported docker driver exporter before build. Exact-head CI original artifact download403; no bytes acquired. No new security configuration or retry."
+    },
+    {
+      "id": "E-CI",
+      "claim": "Fresh exact-head GitHub CI metadata and PR pins observed",
+      "artifact_ids": [
+        "A-CI"
+      ],
+      "locator": "ci-observations.json",
+      "observation": "Both runs image jobs and ci-result success; publish/propose skipped; Open/Draft/unmerged. CI and independent Test remain separate."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "unverified",
+      "scope": "Assigned current-head B2 verification incomplete; historical unchanged API/DB results are fixed prior evidence, not current Test success. Execution Issue33 first AC remains incomplete.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE",
+        "A-READINESS"
+      ],
+      "evidence_ids": [
+        "E-LOCAL",
+        "E-BLOCK",
+        "E-CI"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "unverified",
+      "scope": "Assigned current-head B2 verification incomplete; historical unchanged API/DB results are fixed prior evidence, not current Test success. Execution Issue33 first AC remains incomplete.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE",
+        "A-READINESS"
+      ],
+      "evidence_ids": [
+        "E-LOCAL",
+        "E-BLOCK",
+        "E-CI"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "unverified",
+      "scope": "Postdeploy/outside assignment; no deployment or live Service Synced/Healthy/image digest observation.",
+      "artifact_ids": [
+        "A-READINESS"
+      ],
+      "evidence_ids": [
+        "E-BLOCK"
+      ]
+    }
+  ],
+  "block_reasons": [
+    {
+      "code": "OTHER",
+      "detail": "Existing Docker driver does not support required original OCI exporter; pristine production build never started.",
+      "required_action": "Manager provides an authorized capable environment; do not change builder security/daemon settings under this assignment."
+    },
+    {
+      "code": "ACCESS_DENIED",
+      "detail": "Exact-head CI original OCI artifact download returned403; genuine image boundary remains unverified.",
+      "required_action": "Manager resolves authorized artifact access or environment; do not bypass access controls."
+    },
+    {
+      "code": "RETRY_LIMIT_REACHED",
+      "detail": "Epoch2 final reserved execution attempt3 ended blocked; prior success and admission-unknown dispatch history remain unchanged.",
+      "required_action": "Return to Manager; no self restart or further execution attempt without explicit bounded renewal."
+    }
+  ],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}
