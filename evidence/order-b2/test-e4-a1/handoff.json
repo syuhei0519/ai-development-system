@@ -1,0 +1,180 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "test",
+  "task_id": "order-b2-test-e4-a1",
+  "attempt": 1,
+  "upstream": [
+    {
+      "role": "test",
+      "task_id": "order-b2-test-e3-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/0b260f2559ffed849f155612d971db413a0c2443/evidence/order-b2/test-e3-a1/handoff.json",
+      "revision": "sha256:7e4d60c5216b8da61108ed0da827061a9b81369b90d5f2f3758d6959b1cefa01",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "Current-head direct product AC1/2 met in one narrow real HTTP/disposable PostgreSQL run:Order create/get,changed-PID restart with same running DB/volume and same response;3 invalid400 cases and Account CRUD pass. Retained exact-head OCI reused,no image/CI/Review/fullFeature rerun. All owned resources removed. AC3 and Manager Readiness/Issue Completion remain unverified/outside assignment.",
+  "assignment": {
+    "scope": "backend-app#2/B2",
+    "ac_ids": [
+      "AC-1",
+      "AC-2"
+    ],
+    "completion_criteria": [
+      "Directly observe current-head product AC1:Order create/get,restart API process retaining DB,get same Order.",
+      "Directly observe product AC2:representative invalid input4xx and Account create/read/update/delete in isolated disposable PostgreSQL with real HTTP.",
+      "Reuse existing same-head OCI and fixture procedures;no code changes,112-case/Image/CI/Review repeat,new security exceptions or existing Account data access.",
+      "Preserve fixed context/config/deadline,epoch history and predecessor dependency;return measured ac_measurement,Handoff,cleanup and one public-safe Delivery1.3 candidate."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-CLEANUP-JSON",
+      "kind": "other",
+      "locator": "cleanup.json",
+      "revision": "sha256:218d7a5b4c90b320fbd2135036e4bbef9a4b742e274b93207ffa291e0a457a3d",
+      "summary": "Reviewed public direct-product measurement or reproducible probe;synthetic fixture data only;private original/config/approval/runtime IDs/logs excluded."
+    },
+    {
+      "id": "A-DIRECT-AC-PROBE-PY",
+      "kind": "document",
+      "locator": "direct-ac-probe.py",
+      "revision": "sha256:5d9bab63c220124261d069ae3c2f335ffdbea6465db50dc0706cc281d48c5678",
+      "summary": "Reviewed public direct-product measurement or reproducible probe;synthetic fixture data only;private original/config/approval/runtime IDs/logs excluded."
+    },
+    {
+      "id": "A-MEASUREMENTS-JSON",
+      "kind": "other",
+      "locator": "measurements.json",
+      "revision": "sha256:bd65bb0e201cbbdb6059a9f032969cec73ceb192cf257e6bf496a9378d50bf0a",
+      "summary": "Reviewed public direct-product measurement or reproducible probe;synthetic fixture data only;private original/config/approval/runtime IDs/logs excluded."
+    },
+    {
+      "id": "A-READINESS-DIRECT-JSON",
+      "kind": "other",
+      "locator": "readiness-direct.json",
+      "revision": "sha256:75eea06b8da2fdacaac68afba6a3092ac6e1acd386a506c33e47092ee3933453",
+      "summary": "Reviewed public direct-product measurement or reproducible probe;synthetic fixture data only;private original/config/approval/runtime IDs/logs excluded."
+    },
+    {
+      "id": "A-REPORT-TXT",
+      "kind": "test-report",
+      "locator": "report.txt",
+      "revision": "sha256:4e4fce7b28cd585115c0e2efb957b3dbe880909ee5a414b11165b2dd4cf49110",
+      "summary": "Reviewed public direct-product measurement or reproducible probe;synthetic fixture data only;private original/config/approval/runtime IDs/logs excluded."
+    },
+    {
+      "id": "A-REPRODUCTION-TXT",
+      "kind": "document",
+      "locator": "reproduction.txt",
+      "revision": "sha256:2f3cd1d8612aca326468f2f5264ad68ecbc2c4bc1989383146ec082b7c9c7085",
+      "summary": "Reviewed public direct-product measurement or reproducible probe;synthetic fixture data only;private original/config/approval/runtime IDs/logs excluded."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-DIRECT-AC-1",
+      "claim": "作成したOrderが再起動後も取得できる",
+      "artifact_ids": [
+        "A-MEASUREMENTS-JSON",
+        "A-DIRECT-AC-PROBE-PY",
+        "A-READINESS-DIRECT-JSON",
+        "A-REPORT-TXT"
+      ],
+      "locator": "measurements.json",
+      "observation": "Actual current-head OCI HTTP create201/get200;changed API PID with same DB process/container/volume;post-restart GET200 has identical original bytes and DB row snapshot."
+    },
+    {
+      "id": "E-DIRECT-AC-2",
+      "claim": "不正入力は4xxとなりAccount CRUDが維持される",
+      "artifact_ids": [
+        "A-MEASUREMENTS-JSON",
+        "A-DIRECT-AC-PROBE-PY",
+        "A-READINESS-DIRECT-JSON",
+        "A-REPORT-TXT"
+      ],
+      "locator": "measurements.json",
+      "observation": "Order quantity0,malformed JSON and invalid Account input400;zero invalid Order writes. Separate fresh Account DB create201/read200/update200/read200/delete204/final404;history unchanged."
+    },
+    {
+      "id": "E-SCOPE",
+      "claim": "Bounded isolated measurement,cleanup and history preserved",
+      "artifact_ids": [
+        "A-CLEANUP-JSON",
+        "A-REPRODUCTION-TXT",
+        "A-REPORT-TXT"
+      ],
+      "locator": "cleanup.json",
+      "observation": "6 containers,anonymous volumes,network,2 imported tags and transport tars removed;no preexisting data,new security exception,source/image/CI/Review modification or repeat. Exact prior epoch history retained;no final Issue assessment."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "covered",
+      "scope": "Assigned direct current-head premerge product measurement met,not inference from B2 coverage or expired oldhead Test. Final Readiness/aggregate Issue Completion remain Manager responsibility.",
+      "artifact_ids": [
+        "A-MEASUREMENTS-JSON",
+        "A-READINESS-DIRECT-JSON",
+        "A-REPORT-TXT"
+      ],
+      "evidence_ids": [
+        "E-DIRECT-AC-1",
+        "E-SCOPE"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "covered",
+      "scope": "Assigned direct current-head premerge product measurement met,not inference from B2 coverage or expired oldhead Test. Final Readiness/aggregate Issue Completion remain Manager responsibility.",
+      "artifact_ids": [
+        "A-MEASUREMENTS-JSON",
+        "A-READINESS-DIRECT-JSON",
+        "A-REPORT-TXT"
+      ],
+      "evidence_ids": [
+        "E-DIRECT-AC-2",
+        "E-SCOPE"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "unverified",
+      "scope": "Postdeploy/outside assignment;no live Service Synced/Healthy/imageID observation.",
+      "artifact_ids": [
+        "A-READINESS-DIRECT-JSON"
+      ],
+      "evidence_ids": [
+        "E-SCOPE"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

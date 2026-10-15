@@ -1,0 +1,313 @@
+{
+  "document_type": "direct_ac_measurements",
+  "producer": "order-b2-test-e4-a1",
+  "started_at": "2026-10-15T10:27:59.739751+00:00",
+  "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+  "base_sha": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+  "target_revision": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+  "source_tree": "8d12e8e2b9c4571b4a8a4eb325f7b95abbd56b41",
+  "valid_until": "2026-10-15T11:10:00Z",
+  "fixture_data": "Synthetic names/emails/items only in newly created disposable databases",
+  "http": [
+    {
+      "started_at": "2026-10-15T10:28:15.585236+00:00",
+      "ended_at": "2026-10-15T10:28:15.595721+00:00",
+      "service": "backend",
+      "method": "POST",
+      "path": "/api/accounts",
+      "expected_status": 201,
+      "status": 201,
+      "response_sha256": "0f5fa3a6216b41723bee6ea912e44ca27ed1dd9d2ffae037ed9b3ecac4d35878",
+      "ac_ids": [
+        "AC-2"
+      ],
+      "response": {
+        "id": 1,
+        "name": "Synthetic AC Fixture",
+        "email": "ac-fixture@example.invalid",
+        "created_at": "2026-10-15T10:28:15.593392Z",
+        "updated_at": "2026-10-15T10:28:15.593392Z"
+      }
+    },
+    {
+      "started_at": "2026-10-15T10:28:15.595844+00:00",
+      "ended_at": "2026-10-15T10:28:15.603122+00:00",
+      "service": "backend",
+      "method": "GET",
+      "path": "/api/accounts/1",
+      "expected_status": 200,
+      "status": 200,
+      "response_sha256": "0f5fa3a6216b41723bee6ea912e44ca27ed1dd9d2ffae037ed9b3ecac4d35878",
+      "ac_ids": [
+        "AC-2"
+      ],
+      "response": {
+        "id": 1,
+        "name": "Synthetic AC Fixture",
+        "email": "ac-fixture@example.invalid",
+        "created_at": "2026-10-15T10:28:15.593392Z",
+        "updated_at": "2026-10-15T10:28:15.593392Z"
+      }
+    },
+    {
+      "started_at": "2026-10-15T10:28:15.603251+00:00",
+      "ended_at": "2026-10-15T10:28:15.612416+00:00",
+      "service": "order",
+      "method": "POST",
+      "path": "/api/orders",
+      "expected_status": 201,
+      "status": 201,
+      "response_sha256": "9228de0578517b2b5d30aae95d8676455788ab59b258484b43fc61e6082cf8d1",
+      "ac_ids": [
+        "AC-1"
+      ],
+      "response": {
+        "id": 1,
+        "account_id": 1,
+        "item_code": "AC-SYNTHETIC-001",
+        "quantity": 2,
+        "created_at": "2026-10-15T10:28:15.609484Z"
+      }
+    },
+    {
+      "started_at": "2026-10-15T10:28:15.612517+00:00",
+      "ended_at": "2026-10-15T10:28:15.620560+00:00",
+      "service": "order",
+      "method": "GET",
+      "path": "/api/orders/1",
+      "expected_status": 200,
+      "status": 200,
+      "response_sha256": "9228de0578517b2b5d30aae95d8676455788ab59b258484b43fc61e6082cf8d1",
+      "ac_ids": [
+        "AC-1"
+      ],
+      "response": {
+        "id": 1,
+        "account_id": 1,
+        "item_code": "AC-SYNTHETIC-001",
+        "quantity": 2,
+        "created_at": "2026-10-15T10:28:15.609484Z"
+      }
+    },
+    {
+      "started_at": "2026-10-15T10:28:21.137388+00:00",
+      "ended_at": "2026-10-15T10:28:21.152611+00:00",
+      "service": "order",
+      "method": "GET",
+      "path": "/api/orders/1",
+      "expected_status": 200,
+      "status": 200,
+      "response_sha256": "9228de0578517b2b5d30aae95d8676455788ab59b258484b43fc61e6082cf8d1",
+      "ac_ids": [
+        "AC-1"
+      ],
+      "response": {
+        "id": 1,
+        "account_id": 1,
+        "item_code": "AC-SYNTHETIC-001",
+        "quantity": 2,
+        "created_at": "2026-10-15T10:28:15.609484Z"
+      }
+    },
+    {
+      "started_at": "2026-10-15T10:28:21.349260+00:00",
+      "ended_at": "2026-10-15T10:28:21.356390+00:00",
+      "service": "order",
+      "method": "POST",
+      "path": "/api/orders",
+      "expected_status": 400,
+      "status": 400,
+      "response_sha256": "59a3efa05b65d2805add16e46348164ead635439ecdeb7b954c66710b232e651",
+      "ac_ids": [
+        "AC-2"
+      ],
+      "response": {
+        "error": {
+          "code": "validation_error",
+          "message": "Bad Request"
+        }
+      }
+    },
+    {
+      "started_at": "2026-10-15T10:28:21.356448+00:00",
+      "ended_at": "2026-10-15T10:28:21.362593+00:00",
+      "service": "order",
+      "method": "POST",
+      "path": "/api/orders",
+      "expected_status": 400,
+      "status": 400,
+      "response_sha256": "59a3efa05b65d2805add16e46348164ead635439ecdeb7b954c66710b232e651",
+      "ac_ids": [
+        "AC-2"
+      ],
+      "response": {
+        "error": {
+          "code": "validation_error",
+          "message": "Bad Request"
+        }
+      }
+    },
+    {
+      "started_at": "2026-10-15T10:28:21.362642+00:00",
+      "ended_at": "2026-10-15T10:28:21.370056+00:00",
+      "service": "backend",
+      "method": "POST",
+      "path": "/api/accounts",
+      "expected_status": 400,
+      "status": 400,
+      "response_sha256": "fa9b8d5ee4677f7a60ed7750565c2093b8ceb9686172584e1645e0c8293a85dc",
+      "ac_ids": [
+        "AC-2"
+      ],
+      "response": {
+        "error": {
+          "code": "validation_error",
+          "message": "入力内容を確認してください。"
+        }
+      }
+    },
+    {
+      "started_at": "2026-10-15T10:28:21.478575+00:00",
+      "ended_at": "2026-10-15T10:28:21.487644+00:00",
+      "service": "backend",
+      "method": "PUT",
+      "path": "/api/accounts/1",
+      "expected_status": 200,
+      "status": 200,
+      "response_sha256": "bd0fbfa22fcf91c3a5a76092e6caaa8570fa7c4a5365c89c31affb49156ec782",
+      "ac_ids": [
+        "AC-2"
+      ],
+      "response": {
+        "id": 1,
+        "name": "Synthetic AC Updated",
+        "email": "ac-updated@example.invalid",
+        "created_at": "2026-10-15T10:28:15.593392Z",
+        "updated_at": "2026-10-15T10:28:21.486219Z"
+      }
+    },
+    {
+      "started_at": "2026-10-15T10:28:21.487747+00:00",
+      "ended_at": "2026-10-15T10:28:21.512417+00:00",
+      "service": "backend",
+      "method": "GET",
+      "path": "/api/accounts/1",
+      "expected_status": 200,
+      "status": 200,
+      "response_sha256": "bd0fbfa22fcf91c3a5a76092e6caaa8570fa7c4a5365c89c31affb49156ec782",
+      "ac_ids": [
+        "AC-2"
+      ],
+      "response": {
+        "id": 1,
+        "name": "Synthetic AC Updated",
+        "email": "ac-updated@example.invalid",
+        "created_at": "2026-10-15T10:28:15.593392Z",
+        "updated_at": "2026-10-15T10:28:21.486219Z"
+      }
+    },
+    {
+      "started_at": "2026-10-15T10:28:21.512744+00:00",
+      "ended_at": "2026-10-15T10:28:21.521365+00:00",
+      "service": "backend",
+      "method": "DELETE",
+      "path": "/api/accounts/1",
+      "expected_status": 204,
+      "status": 204,
+      "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "ac_ids": [
+        "AC-2"
+      ]
+    },
+    {
+      "started_at": "2026-10-15T10:28:21.521427+00:00",
+      "ended_at": "2026-10-15T10:28:21.529700+00:00",
+      "service": "backend",
+      "method": "GET",
+      "path": "/api/accounts/1",
+      "expected_status": 404,
+      "status": 404,
+      "response_sha256": "1d0cafab306dc7c869dd99a8b717db37a0e43d43f6e13ef011d0c2328be004aa",
+      "ac_ids": [
+        "AC-2"
+      ],
+      "response": {
+        "error": {
+          "code": "not_found",
+          "message": "アカウントが見つかりません。"
+        }
+      }
+    }
+  ],
+  "commands": [
+    "docker --host LOCAL_SOCKET network create --internal OWNED_NETWORK",
+    "SERVICE: verify retained archive hash/source label/config ID; oci-runtime-export; docker load; fresh PostgreSQL create/start; create limited fixture role/database; existing SERVER migrate; SERVER start",
+    "SERVICE: verify retained archive hash/source label/config ID; oci-runtime-export; docker load; fresh PostgreSQL create/start; create limited fixture role/database; existing SERVER migrate; SERVER start"
+  ],
+  "outcomes": {
+    "AC-1": "met",
+    "AC-2": "met",
+    "AC-3": "unverified"
+  },
+  "image_rebuild": false,
+  "image_ci_review_repeated": false,
+  "no_existing_db_or_volume_used": true,
+  "new_security_exceptions": false,
+  "runtime_binding": {
+    "backend": {
+      "config_digest": "sha256:cff9be85fc4cae99587509581b36ea3b2aab8c5424f5acfbb1e7edd5b683a40c",
+      "image_digest": "sha256:bbeca5e7bf1cff3bcd05173a6e1d3ea56f661d0c8a63eba41e0b8bb2994615de",
+      "archive_sha256": "b43285d142d4a1bcfa5f9946585d014eb997c5ed9d1d66fc02269b40fbe5361c"
+    },
+    "order": {
+      "config_digest": "sha256:2ebe6177a10785f9becfcd97efe1d9ccf52c3a8e18fdcc984745e5a2b2d6f9f3",
+      "image_digest": "sha256:fc6962ae9ace743ef538f61e6a1e2e44ff17b34958a7785fc346fd66a6778863",
+      "archive_sha256": "4ef9682c8af026a12b713e1749b26983cd798012dd9d07071af34615b32e0c81"
+    }
+  },
+  "restart": {
+    "started_at": "2026-10-15T10:28:15.761878+00:00",
+    "ended_at": "2026-10-15T10:28:21.257889+00:00",
+    "command": "docker --host LOCAL_SOCKET restart --time 10 OWNED_ORDER_API",
+    "order_process_pid_changed": true,
+    "database_container_unchanged": true,
+    "database_process_unchanged": true,
+    "database_volume_mounts_unchanged": true,
+    "persisted_rows_before_after_equal": true,
+    "row_snapshot_sha256_before": "909e81f5e605d66df8461aa13e728ad8ea0f3e3a68cd53fa67d6aac82eab203f",
+    "row_snapshot_sha256_after": "909e81f5e605d66df8461aa13e728ad8ea0f3e3a68cd53fa67d6aac82eab203f",
+    "created_and_retrieved_order_responses_byte_equal": true,
+    "database_restarted": false
+  },
+  "ac1_observed_at": "2026-10-15T10:28:21.257927+00:00",
+  "migration_history_unchanged_after_initial_existing_migrations": true,
+  "invalid_requests_zero_order_writes": true,
+  "account_crud_verified": true,
+  "ac2_observed_at": "2026-10-15T10:28:21.814721+00:00",
+  "status": "completed",
+  "cleanup": {
+    "owned_containers_created": 6,
+    "owned_images_loaded": 2,
+    "all_owned_containers_anonymous_volumes_network_and_imported_tags_removed": true,
+    "transport_tars_removed": true
+  },
+  "ended_at": "2026-10-15T10:28:23.116504+00:00",
+  "system_revision": "3394bb069be64bdc43e057b251fc320302d185f6",
+  "epoch": 4,
+  "attempt": 1,
+  "pr_after_measurement": {
+    "base": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+    "draft": true,
+    "head": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+    "merged": false,
+    "state": "open"
+  },
+  "config_binding": "Exact original Manager context/config bytes and independent pins were checked. Full ac_measurement subject includes the original config_revision in private readiness-direct-original.json. This public derivative excludes private-original digests and approval text.",
+  "pr_kind": "standard",
+  "preparation": null,
+  "issue_integration_scope": "aggregate_required",
+  "deployment_effect": "none",
+  "previous_evidence": "Fixed epoch3 independent image results preserved;Manager reports Review2 and independent Consumer full-byte success. Neither is rerun or independently re-certified here.",
+  "knowledge_candidates": [],
+  "runtime_model_effort_usage": "unverified"
+}

@@ -1,0 +1,10 @@
+Direct product AC1/2 reproduction (requires separately authorized fresh execution; no retry instruction)
+Fixed backend source24083aba485abd6b37bcbe71736fb543a847dcc6/base2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0,System3394bb069be64bdc43e057b251fc320302d185f6.
+Command actually executed: python direct-ac-probe.py FIXED_CHECKOUT RETAINED_E3_ROOT NEW_PRIVATE_OUTPUT
+Probe reuses ci/github/runtime.py fixture steps and tests/orderintegration/order_test.go request cases,restricted to the two missing product ACs. Existing exact-head OCI from Test epoch3 is not rebuilt or rescanned. Retained archive hashes,loaded config IDs and source labels are checked to bind the measured application.
+1. Local Docker socket only;new internal network,two fresh pinned PostgreSQL containers and anonymous volumes. No operator DSN,existing volume or published DB port. Create accounts/account_app and orders/order_app limited roles in these new fixtures.
+2. Export/load retained OCI transport,run existing server migrate once for each fresh database,start read-only UID10001/dropALL/no-new-privileges API processes. No new security exceptions.
+3. Account POST201/GET200;Order POST201/GET200. Restart only Order API with docker restart --time10,retain DB process/container/volume,require changed API PID;GET same Order200 with exact original response bytes and identical persisted row snapshot.
+4. Order quantity0 and malformed JSON return400;invalid Account input returns400;Order count unchanged. Account PUT200/GET200 checks updated fields,DELETE204/GET404 and zero remaining fixture rows. Existing migration histories unchanged after initial migrations.
+5. Remove six owned containers,anonymous DB volumes,internal network,two imported test tags and transport tars. No existing Account data touched. Result records12 HTTP observations and start/end times;actual runtime IDs/operational logs remain private.
+No112-case/allFeature,Image/CI/Review rerun,Kind,real GHCR,GitOps,Order enablement,source change,PR or merge operation.

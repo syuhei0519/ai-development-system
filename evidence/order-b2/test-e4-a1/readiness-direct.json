@@ -1,0 +1,94 @@
+{
+  "document_type": "direct_ac_readiness_observations",
+  "subject_public": {
+    "repository": "syuhei0519/backend-app",
+    "pr_number": 32,
+    "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+    "base_sha": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+    "target_revision": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+    "merge_group_sha": null
+  },
+  "private_config_binding": "Full exact subject/config_revision retained in private fixed-context ac_measurement original; omitted here under private-original publication restrictions. Manager already holds its independent config/context pins and must use them unchanged.",
+  "issue_id": "backend-app#2",
+  "pr_kind": "standard",
+  "preparation": null,
+  "issue_integration_scope": "aggregate_required",
+  "deployment_effect": "none",
+  "policy_valid_until": "2026-10-15T11:10:00Z",
+  "evidence": [
+    {
+      "id": "E-DIRECT-AC-1",
+      "kind": "ac_measurement",
+      "subject_public": {
+        "repository": "syuhei0519/backend-app",
+        "pr_number": 32,
+        "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+        "base_sha": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+        "target_revision": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+        "merge_group_sha": null
+      },
+      "observed_at": "2026-10-15T10:28:21.257927+00:00",
+      "valid_until": "2026-10-15T11:10:00Z",
+      "producer": "order-b2-test-e4-a1",
+      "independent": true,
+      "ac_ids": [
+        "AC-1"
+      ],
+      "outcome": "met",
+      "locator": "measurements.json",
+      "measurement_sha256": "bd65bb0e201cbbdb6059a9f032969cec73ceb192cf257e6bf496a9378d50bf0a",
+      "observation": "Direct real HTTP and isolated PostgreSQL; current verified-source OCI; Order same-bytes after changed PID with same DB process/volume"
+    },
+    {
+      "id": "E-DIRECT-AC-2",
+      "kind": "ac_measurement",
+      "subject_public": {
+        "repository": "syuhei0519/backend-app",
+        "pr_number": 32,
+        "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+        "base_sha": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+        "target_revision": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+        "merge_group_sha": null
+      },
+      "observed_at": "2026-10-15T10:28:21.814721+00:00",
+      "valid_until": "2026-10-15T11:10:00Z",
+      "producer": "order-b2-test-e4-a1",
+      "independent": true,
+      "ac_ids": [
+        "AC-2"
+      ],
+      "outcome": "met",
+      "locator": "measurements.json",
+      "measurement_sha256": "bd65bb0e201cbbdb6059a9f032969cec73ceb192cf257e6bf496a9378d50bf0a",
+      "observation": "3 representative invalid requests400,zero new Order writes,Account CRUD201/200/200/204 and final404;existing migration histories unchanged"
+    }
+  ],
+  "ac_results": [
+    {
+      "ac_id": "AC-1",
+      "verbatim": "作成したOrderが再起動後も取得できる",
+      "verification_phase": "premerge",
+      "outcome": "met",
+      "evidence_ids": [
+        "E-DIRECT-AC-1"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+      "verification_phase": "premerge",
+      "outcome": "met",
+      "evidence_ids": [
+        "E-DIRECT-AC-2"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+      "verification_phase": "postdeploy",
+      "outcome": "unverified",
+      "reason": "Outside assignment;no deployment/live Service observation"
+    }
+  ],
+  "limits": "Direct Test evidence only;not Manager Readiness,merge authorization or final Issue Completion. Original deadline unchanged."
+}
