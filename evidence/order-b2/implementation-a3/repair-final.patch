@@ -1,0 +1,443 @@
+# Public code diff for backend-app dab0123f4fd459e12c1f64ff2305e5d28d8a41f5..24083aba485abd6b37bcbe71736fb543a847dcc6
+# Reviewed public edited derivative of completed Implementation self-verification; delivery-only preparation, no new measurement. Private originals retained; no private-original equivalence certification.
+diff --git a/ci/github/image-policy.py b/ci/github/image-policy.py
+new file mode 100644
+index 0000000..5f4b6d0
+--- /dev/null
++++ b/ci/github/image-policy.py
+@@ -0,0 +1,53 @@
++"""Mint image evidence only by evaluating the same private raw scan and SBOM.
++
++This trusted CI step never seals an existing public summary. Raw scanner data
++stays private; only validated identities, safe findings and fingerprints leave it.
++"""
++import importlib.util
++from pathlib import Path
++import tempfile
++
++spec=importlib.util.spec_from_file_location('release',Path(__file__).with_name('release.py'))
++m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
++
++def check():
++    public=m.PUBLIC
++    # A failed invocation must not leave an earlier success available to record().
++    for name in ('image-scan.json','image-proof.json','sbom-proof.json'):
++        (public/name).unlink(missing_ok=True)
++    repo,commit,run_id,attempt=m.identity()
++    service,_,_,_=m.service_contract(repo,m.os.environ.get('RELEASE_SERVICE'))
++    layout=m.load(public/'layout.json');reader=m.load(public/'reader.json')
++    m.check_oci_identity(layout,reader,repo,commit,service)
++    m.check_source(repo,commit,run_id,attempt,m.load('.validation/source-scan.json'))
++    raw=Path('.security/private/image.json');sbom=Path('.security/private/sbom.cdx.json')
++    raw_bytes=raw.read_bytes();sbom_bytes=sbom.read_bytes()
++    # Both validators independently check raw Metadata.ImageID against this OCI.
++    with tempfile.TemporaryDirectory(dir='.security/private',prefix='policy-') as temp:
++        summary=Path(temp)/'summary.json'
++        m.run(['.security/scan-gate','-policy','security/scan-policy.json','-db','.cache/trivy/db/metadata.json',
++               '-report',str(raw),'-out',str(summary),'-scanner-exit','0','-image-config',reader['configDigest']])
++        scan=m.load(summary)
++        proof=m.decode(m.run(['.security/sbom-check',str(sbom),str(raw),reader['configDigest']]))
++    m.require(raw.read_bytes()==raw_bytes and sbom.read_bytes()==sbom_bytes)
++    m.require(proof['configDigest']==reader['configDigest'] and proof['sha256']==m.sha(sbom_bytes))
++    identity=m.image_identity(repo,commit,run_id,attempt,service,layout['digest'],reader['configDigest'],
++                              layout['archiveSha256'],m.sha(Path('.validation/source-scan.json').read_bytes()))
++    raw_hash=m.sha(raw_bytes)
++    scan.update(imageIdentity=identity,rawScanSha256=raw_hash,sbomSha256=m.sha(sbom_bytes))
++    proof['rawScanSha256']=raw_hash
++    def encoded(value):return (m.json.dumps(value,sort_keys=True,indent=2)+'\n').encode()
++    scan_bytes=encoded(scan);proof_bytes=encoded(proof)
++    (public/'sbom.cdx.json').write_bytes(sbom_bytes)
++    (public/'sbom-proof.json').write_bytes(proof_bytes)
++    (public/'image-scan.json').write_bytes(scan_bytes)
++    # Write the final proof last, only after all independent checks succeeded.
++    (public/'image-proof.json').write_bytes(encoded({'schema':'core-platform/github-image-proof/v1',
++        'identity':identity,'rawScanSha256':raw_hash,'imageScanSha256':m.sha(scan_bytes),
++        'sbomProofSha256':m.sha(proof_bytes)}))
++
++if __name__=='__main__':
++    try:check()
++    except Exception:
++        print('Image scan identity or policy refused; no release authorized.')
++        raise SystemExit(1)
+diff --git a/ci/github/image-policy_test.py b/ci/github/image-policy_test.py
+new file mode 100644
+index 0000000..9973c9b
+--- /dev/null
++++ b/ci/github/image-policy_test.py
+@@ -0,0 +1,66 @@
++"""Real scan/SBOM validators with synthetic raw inputs; no network or registry."""
++import datetime as dt
++import json
++import os
++from pathlib import Path
++import shutil
++import unittest
++
++import importlib.util
++HERE=Path(__file__).resolve().parent
++spec=importlib.util.spec_from_file_location('fixture',HERE/'order-release_test.py')
++f=importlib.util.module_from_spec(spec);spec.loader.exec_module(f)
++policy=f.module('image_policy',HERE/'image-policy.py')
++
++class ScanProducer(unittest.TestCase):
++    def setUp(self):
++        self.fx=f.Interop();self.fx.setUp();self.addCleanup(self.fx.doCleanups)
++        Path('.security/private').mkdir();Path('.cache/trivy/db').mkdir(parents=True)
++        for name in ('scan-gate','sbom-check'):
++            shutil.copy2(HERE.parents[1]/'.security'/name,Path('.security')/name)
++        now=dt.datetime.now(dt.timezone.utc).isoformat()
++        self.fx.write('security/scan-policy.json',{'schemaVersion':1,'trivyVersion':'0.75.0','dbMaxAgeHours':24,'exceptions':[]})
++        self.fx.write('.cache/trivy/db/metadata.json',{'Version':2,'UpdatedAt':now})
++        self.raw={'SchemaVersion':2,'Trivy':{'Version':'0.75.0'},'ArtifactType':'container_image',
++                  'ArtifactName':'.oci/layout','Metadata':{'ImageID':self.fx.order['configDigest']},
++                  'Results':[{'Target':'.oci/layout (debian 13)','Packages':[{'Name':'nginx','Version':'1.29.0'}]}]}
++        self.bom={'bomFormat':'CycloneDX','specVersion':'1.7','version':1,
++            'metadata':{'timestamp':now,'tools':{'components':[{'type':'application','name':'trivy','version':'0.75.0'}]},
++                'component':{'type':'container','name':'.oci/layout','bom-ref':'root','properties':[
++                    {'name':'aquasecurity:trivy:ImageID','value':self.fx.order['configDigest']}]}},
++            'components':[{'type':'library','name':'nginx','version':'1.29.0','bom-ref':'nginx'}],
++            'dependencies':[{'ref':'root','dependsOn':['nginx']},{'ref':'nginx','dependsOn':[]}]}
++        self.write_inputs()
++    def write_inputs(self):
++        self.fx.write('.security/private/image.json',self.raw)
++        self.fx.write('.security/private/sbom.cdx.json',self.bom)
++    def test_real_validators_mint_identity_and_replace_untrusted_summary(self):
++        Path('.security/public/image-scan.json').write_bytes(b'untrusted passing summary')
++        policy.check()
++        m=policy.m;scan=m.load(m.PUBLIC/'image-scan.json')
++        self.assertEqual(scan['imageIdentity']['configDigest'],self.raw['Metadata']['ImageID'])
++        self.assertEqual(scan['imageIdentity']['service'],'order')
++        self.assertEqual(scan['rawScanSha256'],m.sha(Path('.security/private/image.json').read_bytes()))
++        m.check_image(scan['imageIdentity'])
++    def test_raw_scan_rejection_removes_prior_success(self):
++        original=json.dumps(self.raw)
++        mutations=[{'Metadata':{'ImageID':'sha256:'+'f'*64}}, {'ArtifactType':'filesystem'},
++                   {'Results':[]}, {'Trivy':{'Version':'0.1'}},
++                   {'Results':[{'Target':'image','Secrets':[{'RuleID':'synthetic','Severity':'HIGH','Match':'private-sentinel'}]}]}]
++        for change in mutations:
++            self.raw=json.loads(original);self.write_inputs();policy.check()
++            self.raw.update(change);self.write_inputs()
++            with self.subTest(change=change),self.assertRaises(ValueError):policy.check()
++            for name in ('image-proof.json','image-scan.json','sbom-proof.json'):
++                self.assertFalse((Path('.security/public')/name).exists())
++    def test_independent_sbom_inventory_and_config_rejection(self):
++        for kind in ('config','inventory'):
++            if kind=='config':self.bom['metadata']['component']['properties'][0]['value']='sha256:'+'f'*64
++            else:
++                self.bom['metadata']['component']['properties'][0]['value']=self.fx.order['configDigest']
++                self.bom['components'][0]['version']='1.28.0'
++            self.write_inputs()
++            with self.subTest(kind=kind),self.assertRaises(ValueError):policy.check()
++            self.assertFalse(Path('.security/public/image-proof.json').exists())
++
++if __name__=='__main__':unittest.main()
+diff --git a/ci/github/matrix-result.py b/ci/github/matrix-result.py
+index ef44291..dd1fb5e 100644
+--- a/ci/github/matrix-result.py
++++ b/ci/github/matrix-result.py
+@@ -12,6 +12,7 @@ def check(root=Path('.checked')):
+     for name,service in expected.items():
+         base=root/name;public=base/'.security/public';record=m.load(public/'release-record.json')
+         _,image,schema,_=m.service_contract(repo,service)
++        m.require(type(record['runId']) is int and type(record['runAttempt']) is int)
+         m.require(record['repository']==repo and record['sourceCommit']==commit and record['runId']==run_id and record['runAttempt']==attempt)
+         m.require(record['workflowRef']==m.os.environ['GITHUB_WORKFLOW_REF'])
+         m.require(record['schema']==schema and record['imageRepository']==image)
+@@ -22,6 +23,8 @@ def check(root=Path('.checked')):
+             m.require(m.sha((public/filename).read_bytes())==record[key])
+         m.require(m.sha((base/'.oci/image.tar').read_bytes())==record['archiveSha256'])
+         m.check_source(repo,commit,run_id,attempt,m.load(public/'source-scan.json'),public)
++        m.check_image(m.image_identity(repo,commit,run_id,attempt,service,record['imageDigest'],
++                                       record['configDigest'],record['archiveSha256'],record['sourceScanSha256']),public)
+         proof=m.load(public/'runtime.json')
+         m.require(proof=={'service':service,'digest':record['imageDigest'],'archiveSha256':record['archiveSha256'],
+                          'configDigest':record['configDigest'],'passed':True,'readOnly':True,'capDrop':'ALL','network':'internal'})
+diff --git a/ci/github/oci.sh b/ci/github/oci.sh
+index b551b96..27ee0e9 100644
+--- a/ci/github/oci.sh
++++ b/ci/github/oci.sh
+@@ -27,8 +27,7 @@ digest=$(python3 -c 'import json; print(json.load(open(".security/public/layout.
+ # Runtime imports the exact validated config/layers into a fresh isolated fixture.
+ docker pull postgres@sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f
+ python3 -I ci/github/runtime.py
+-config=$(python3 -c 'import json; print(json.load(open(".security/public/reader.json"))["configDigest"])')
+-docker run --rm -e IMAGE_CONFIG="$config" --user "$(id -u):$(id -g)" -v "$PWD:/work" -w /work --entrypoint sh \
++docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/work" -w /work --entrypoint sh \
+   aquasec/trivy:0.75.0@sha256:9db099105405c648166e6b94155eb32f8da12673cf1f455207f7385cc9a77283 -ec '
+     trivy image --download-db-only --db-repository ghcr.io/aquasecurity/trivy-db:2 --db-repository public.ecr.aws/aquasecurity/trivy-db:2 --cache-dir .cache/trivy --timeout 5m --quiet > .security/private/db.log 2>&1
+     : > .security/private/empty-ignore
+@@ -36,10 +35,7 @@ docker run --rm -e IMAGE_CONFIG="$config" --user "$(id -u):$(id -g)" -v "$PWD:/w
+       --scanners vuln,secret,misconfig --severity UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL \
+       --ignorefile .security/private/empty-ignore --list-all-pkgs --format json \
+       --output .security/private/image.json > .security/private/scan.log 2>&1
+-    .security/scan-gate -policy security/scan-policy.json -db .cache/trivy/db/metadata.json \
+-      -report .security/private/image.json -out .security/public/image-scan.json -scanner-exit 0 -image-config "$IMAGE_CONFIG"
+     trivy convert --format cyclonedx --output .security/private/sbom.cdx.json .security/private/image.json > .security/private/sbom.log 2>&1
+-    .security/sbom-check .security/private/sbom.cdx.json .security/private/image.json "$IMAGE_CONFIG" > .security/public/sbom-proof.json
+-    cp .security/private/sbom.cdx.json .security/public/sbom.cdx.json
+   '
++python3 -I ci/github/image-policy.py
+ python3 -I ci/github/release.py record
+diff --git a/ci/github/order-release_test.py b/ci/github/order-release_test.py
+index 9fe20e9..04acf41 100644
+--- a/ci/github/order-release_test.py
++++ b/ci/github/order-release_test.py
+@@ -24,7 +24,7 @@ class Interop(unittest.TestCase):
+         self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup)
+         self.old=os.getcwd();os.chdir(self.temp.name);self.addCleanup(os.chdir,self.old)
+         self.clock=dt.datetime(2030,1,1,1,tzinfo=dt.timezone.utc)
+-        for m in (p,c):
++        for m in (p,c,a.m):
+             patcher=patch.object(m,'now',return_value=self.clock);patcher.start();self.addCleanup(patcher.stop)
+         self.repo='syuhei0519/backend-app';self.commit='a'*40
+         self.env={'GITHUB_REPOSITORY':self.repo,'GITHUB_SHA':self.commit,'GITHUB_RUN_ID':'123','GITHUB_RUN_ATTEMPT':'2',
+@@ -36,7 +36,12 @@ class Interop(unittest.TestCase):
+         self.order=c.load(self.fixture/'order-record.json')
+         config=c.load(self.fixture/'order-config.json');config['config']['User']='10001:10001'
+         self.config=json.dumps(config).encode();self.order['configDigest']='sha256:'+p.sha(self.config)
++        self.manifest=json.dumps({'config':{'digest':self.order['configDigest']}}).encode()
++        self.order['imageDigest']='sha256:'+p.sha(self.manifest)
+         for path in ('.oci/layout','.security/public','.validation'):Path(path).mkdir(parents=True)
++        blobs=Path('.oci/layout/blobs/sha256');blobs.mkdir(parents=True)
++        (blobs/self.order['configDigest'][7:]).write_bytes(self.config)
++        (blobs/self.order['imageDigest'][7:]).write_bytes(self.manifest)
+         Path('.oci/image.tar').write_bytes(b'synthetic checked OCI bytes; not a real image')
+         self.scan={'pass':True,'trivyVersion':'0.75.0','dbUpdatedAt':'2030-01-01T00:00:00Z','scannedAt':'2030-01-01T00:00:00Z'}
+         self.write('.validation/source-scan.json',self.scan)
+@@ -49,7 +54,19 @@ class Interop(unittest.TestCase):
+         self.write('.security/public/reader.json',{'digest':self.order['imageDigest'],'configDigest':self.order['configDigest'],'fullLayerValidation':True})
+         self.write('.security/public/runtime.json',{'service':'order','digest':self.order['imageDigest'],'configDigest':self.order['configDigest'],'archiveSha256':self.layout['archiveSha256'],'passed':True,'readOnly':True,'capDrop':'ALL','network':'internal'})
+         Path('security').mkdir();self.write('security/scan-policy.json',{'exceptions':[]})
++        self.image_evidence(Path('.security/public'),'order',self.order['imageDigest'],self.order['configDigest'],self.layout['archiveSha256'])
+     def write(self,path,value):Path(path).write_text(json.dumps(value))
++    def image_evidence(self,public,service,digest,config,archive):
++        # Synthetic scanner-produced evidence; the real producer is tested separately.
++        source_hash=p.sha(Path('.validation/source-scan.json').read_bytes())
++        identity=p.image_identity(self.repo,self.commit,123,2,service,digest,config,archive,source_hash)
++        raw_hash=p.sha(('synthetic raw '+service).encode())
++        sbom_hash=p.sha((public/'sbom.cdx.json').read_bytes())
++        self.write(public/'image-scan.json',{**self.scan,'imageIdentity':identity,'rawScanSha256':raw_hash,'sbomSha256':sbom_hash})
++        self.write(public/'sbom-proof.json',{'sha256':sbom_hash,'configDigest':config,'rawScanSha256':raw_hash})
++        self.write(public/'image-proof.json',{'schema':'core-platform/github-image-proof/v1','identity':identity,
++            'rawScanSha256':raw_hash,'imageScanSha256':p.sha((public/'image-scan.json').read_bytes()),
++            'sbomProofSha256':p.sha((public/'sbom-proof.json').read_bytes())})
+     def published(self):
+         p.record();record=p.load('.security/public/release-record.json')
+         return {**record,'published':True,'protectedMain':True}
+@@ -83,7 +100,8 @@ class Interop(unittest.TestCase):
+             with self.assertRaises((ValueError,KeyError)):c.validate_record(bad,self.repo,self.commit,123,2,'order')
+     def test_producer_rejects_swapped_inputs_and_rebuild(self):
+         for path,key,value in [('.validation/source-identity.json','sourceCommit','b'*40),('.validation/source-identity.json','runId',124),
+-                               ('.validation/source-identity.json','runAttempt',3),('.security/public/runtime.json','service','backend'),
++                               ('.validation/source-identity.json','runAttempt',3),('.validation/source-identity.json','runAttempt',2.0),
++                               ('.validation/source-identity.json','runId',123.0),('.security/public/runtime.json','service','backend'),
+                                ('.security/public/runtime.json','configDigest','sha256:'+'0'*64),('.security/public/runtime.json','readOnly',False),
+                                ('.security/public/sbom-proof.json','sha256','0'*64),('.security/public/sbom-proof.json','configDigest','sha256:'+'0'*64),
+                                ('.security/public/layout.json','archiveSha256','0'*64)]:
+@@ -101,6 +119,7 @@ class Interop(unittest.TestCase):
+             if args[0]=='github-oci-check':
+                 dest=Path(args[3])/'blobs/sha256';dest.mkdir(parents=True)
+                 (dest/self.order['configDigest'][7:]).write_bytes(config)
++                (dest/self.order['imageDigest'][7:]).write_bytes(self.manifest)
+                 return json.dumps(self.layout).encode()
+             if args[:2]==['crane','digest']:return self.order['imageDigest'].encode()
+             if args[:2]==['crane','config']:return config
+@@ -116,6 +135,59 @@ class Interop(unittest.TestCase):
+         record=p.decode(assets['release-record.json']);c.validate_record(record,self.repo,self.commit,123,2,'order')
+         self.assertIn(['crane','push','.oci/publish-layout','ghcr.io/syuhei0519/backend-app-order:'+self.commit],calls)
+         self.assertFalse(any('build' in arg for call in calls for arg in call))
++    def test_pre_record_scan_substitution_and_missing_proof(self):
++        scan=Path('.security/public/image-scan.json');good=scan.read_bytes()
++        proof=Path('.security/public/image-proof.json');sealed=proof.read_bytes()
++        mutations=[b'{}',b'{"pass":true,"pass":true}',b'{"pass":NaN}',good+b'changed']
++        foreign=p.decode(good);foreign['imageIdentity']['service']='backend'
++        foreign['imageIdentity']['configDigest']='sha256:'+'f'*64
++        mutations.append(json.dumps(foreign).encode())
++        for raw in mutations:
++            scan.write_bytes(raw)
++            with self.assertRaises((ValueError,KeyError)):p.record()
++        scan.write_bytes(good)
++        proof.unlink()
++        with self.assertRaises(FileNotFoundError):p.record()
++        proof.write_bytes(sealed)
++        p.record()
++    def test_scan_identity_rejects_mixing_even_with_rehashed_summary(self):
++        scan=Path('.security/public/image-scan.json');proof=Path('.security/public/image-proof.json')
++        good=scan.read_bytes();seal=proof.read_bytes()
++        changes={'repository':'syuhei0519/frontend-app','sourceCommit':'b'*40,'runId':124,
++                 'runAttempt':3,'service':'backend','configDigest':'sha256:'+'f'*64,
++                 'imageDigest':'sha256:'+'e'*64,'archiveSha256':'0'*64,'sourceScanSha256':'1'*64}
++        for key,value in changes.items():
++            image=p.decode(good);image['imageIdentity'][key]=value
++            self.write(scan,image)
++            forged=p.decode(seal);forged['identity']=image['imageIdentity'];forged['imageScanSha256']=p.sha(scan.read_bytes())
++            self.write(proof,forged)
++            with self.subTest(key=key),self.assertRaises(ValueError):p.record()
++        scan.write_bytes(good);proof.write_bytes(seal)
++        for key in p.decode(good)['imageIdentity']:
++            image=p.decode(good);del image['imageIdentity'][key];self.write(scan,image)
++            with self.subTest(missing=key),self.assertRaises((ValueError,KeyError)):p.record()
++        scan.write_bytes(good)
++    def test_scan_sbom_raw_fingerprint_coupling(self):
++        scan=Path('.security/public/image-scan.json');proof=Path('.security/public/image-proof.json')
++        good=scan.read_bytes();seal=proof.read_bytes()
++        for field,value in [('rawScanSha256','0'*64),('rawScanSha256','invalid'),('sbomSha256','0'*64)]:
++            image=p.decode(good);image[field]=value;self.write(scan,image)
++            forged=p.decode(seal);forged['rawScanSha256']=image['rawScanSha256'];forged['imageScanSha256']=p.sha(scan.read_bytes());self.write(proof,forged)
++            with self.subTest(field=field),self.assertRaises(ValueError):p.record()
++        scan.write_bytes(good);proof.write_bytes(seal)
++    def test_publish_rechecks_pre_record_scan_binding_before_api(self):
++        p.record();scan=Path('.security/public/image-scan.json');image=p.load(scan)
++        image['imageIdentity']['runId']=124;self.write(scan,image)
++        record=p.load(p.PUBLIC/'release-record.json');record['imageScanSha256']=p.sha(scan.read_bytes())
++        self.write(p.PUBLIC/'release-record.json',record)
++        def validator(args,**kwargs):
++            self.assertEqual(args[0],'github-oci-check')
++            dest=Path(args[3])/'blobs/sha256';dest.mkdir(parents=True)
++            (dest/self.order['configDigest'][7:]).write_bytes(self.config)
++            (dest/self.order['imageDigest'][7:]).write_bytes(self.manifest)
++            return json.dumps(self.layout).encode()
++        with patch.object(p,'run',side_effect=validator),patch.object(p,'api') as api,self.assertRaises(ValueError):p.publish()
++        api.assert_not_called()
+     def test_guard_before_publish_and_propose_side_effects(self):
+         for field,value in [('GITHUB_EVENT_NAME','workflow_dispatch'),('GITHUB_REF','refs/heads/feature'),('GITHUB_REF_PROTECTED','false'),('RELEASE_SERVICE','unknown')]:
+             with patch.dict(os.environ,{field:value}),patch.object(p,'api') as api:
+@@ -133,11 +205,19 @@ class Interop(unittest.TestCase):
+                 del record['service'];record['schema']=p.SCHEMA;record['imageRepository']='ghcr.io/'+self.repo
+                 record['imageDigest']='sha256:'+'e'*64;record['configDigest']='sha256:'+'f'*64
+             for name in ('source-scan.json','source-identity.json','image-scan.json','sbom.cdx.json'):(public/name).write_bytes((Path('.security/public')/name).read_bytes())
++            self.image_evidence(public,service,record['imageDigest'],record['configDigest'],record['archiveSha256'])
++            record['imageScanSha256']=p.sha((public/'image-scan.json').read_bytes())
+             self.write(public/'release-record.json',record)
+             self.write(public/'runtime.json',{'service':service,'digest':record['imageDigest'],'configDigest':record['configDigest'],'archiveSha256':record['archiveSha256'],'passed':True,'readOnly':True,'capDrop':'ALL','network':'internal'})
+         a.check(root)
++        scan=root/'checked-image-order-2/.security/public/image-scan.json'
++        recordpath=scan.parent/'release-record.json';scanraw=scan.read_bytes();recordraw=recordpath.read_bytes()
++        foreign=(root/'checked-image-2/.security/public/image-scan.json').read_bytes();scan.write_bytes(foreign)
++        forged=p.decode(recordraw);forged['imageScanSha256']=p.sha(foreign);self.write(recordpath,forged)
++        with self.assertRaises(ValueError):a.check(root)
++        scan.write_bytes(scanraw);recordpath.write_bytes(recordraw)
+         target=root/'checked-image-order-2/.security/public/release-record.json';raw=target.read_bytes()
+-        for key,value in [('runId',124),('sourceCommit','b'*40),('runAttempt',3),('service','backend'),('imagePolicyPassed',False),('sourceScanSha256','0'*64)]:
++        for key,value in [('runId',124),('runId',123.0),('sourceCommit','b'*40),('runAttempt',3),('runAttempt',2.0),('service','backend'),('imagePolicyPassed',False),('sourceScanSha256','0'*64)]:
+             self.write(target,{**p.decode(raw),key:value})
+             with self.subTest(key=key),self.assertRaises(ValueError):a.check(root)
+         target.write_bytes(raw)
+diff --git a/ci/github/release.py b/ci/github/release.py
+index 7c3d785..3d2230d 100644
+--- a/ci/github/release.py
++++ b/ci/github/release.py
+@@ -115,6 +115,7 @@ def tag_for(commit,run_id,attempt,service=None):
+ 
+ def check_source(repo,commit,run_id,attempt,source,root=Path('.validation')):
+     binding=load(root/'source-identity.json')
++    require(type(binding['runId']) is int and type(binding['runAttempt']) is int)
+     require(binding=={'repository':repo,'sourceCommit':commit,'runId':run_id,'runAttempt':attempt,
+                       'sourceScanSha256':sha((root/'source-scan.json').read_bytes())})
+     require(source['pass'] is True)
+@@ -134,6 +135,38 @@ def check_runtime(service,layout,reader):
+     require(proof=={'service':service,'digest':layout['digest'],'archiveSha256':layout['archiveSha256'],
+                     'configDigest':reader['configDigest'],'passed':True,'readOnly':True,'capDrop':'ALL','network':'internal'})
+ 
++def image_identity(repo,commit,run_id,attempt,service,digest,config,archive,source_hash):
++    return {'repository':repo,'sourceCommit':commit,'runId':run_id,'runAttempt':attempt,
++            'service':service,'imageDigest':digest,'configDigest':config,'archiveSha256':archive,
++            'sourceScanSha256':source_hash}
++
++def check_oci_identity(layout,reader,repo,commit,service,root=Path('.oci/layout')):
++    require(layout['sourceCommit']==commit and reader['fullLayerValidation'] is True)
++    require(layout['digest']==reader['digest'] and DIGEST.fullmatch(layout['digest']))
++    require(sha(Path('.oci/image.tar').read_bytes())==layout['archiveSha256'])
++    manifest=(root/'blobs/sha256'/layout['digest'][7:]).read_bytes()
++    require('sha256:'+sha(manifest)==layout['digest'])
++    require(decode(manifest)['config']['digest']==reader['configDigest'])
++    config=check_config(root,reader['configDigest'],service)
++    require(config['config']['Labels']['org.opencontainers.image.revision']==commit)
++    require(config['config']['Labels']['org.opencontainers.image.source']=='https://github.com/'+repo)
++
++def check_image(identity,public=PUBLIC):
++    image=load(public/'image-scan.json');proof=load(public/'image-proof.json')
++    sbom=load(public/'sbom-proof.json')
++    require(type(identity['runId']) is int and type(identity['runAttempt']) is int)
++    for value in (image['imageIdentity'],proof['identity']):
++        require(type(value['runId']) is int and type(value['runAttempt']) is int and value==identity)
++    raw=image['rawScanSha256'];require(isinstance(raw,str) and re.fullmatch('[0-9a-f]{64}',raw))
++    require(proof=={'schema':'core-platform/github-image-proof/v1','identity':identity,
++                   'rawScanSha256':raw,'imageScanSha256':sha((public/'image-scan.json').read_bytes()),
++                   'sbomProofSha256':sha((public/'sbom-proof.json').read_bytes())})
++    require(sbom['rawScanSha256']==raw and sbom['configDigest']==identity['configDigest'])
++    require(sbom['sha256']==image['sbomSha256']==sha((public/'sbom.cdx.json').read_bytes()))
++    require(image['pass'] is True and image['trivyVersion']=='0.75.0')
++    fresh(image['scannedAt']);fresh(image['dbUpdatedAt'])
++    return image
++
+ def record():
+     repo,commit,run_id,attempt=identity()
+     service,image_repository,schema,_=service_contract(repo,os.environ.get('RELEASE_SERVICE'))
+@@ -149,6 +182,9 @@ def record():
+     proof=load(PUBLIC/'sbom-proof.json')
+     require(proof['sha256']==sha(sbom) and proof['configDigest']==reader['configDigest'])
+     check_source(repo,commit,run_id,attempt,source)
++    check_oci_identity(layout,reader,repo,commit,service)
++    check_image(image_identity(repo,commit,run_id,attempt,service,layout['digest'],reader['configDigest'],
++                               layout['archiveSha256'],sha(Path('.validation/source-scan.json').read_bytes())))
+     check_runtime(service,layout,reader)
+     for name in ('source-scan.json','source-identity.json'):
+         (PUBLIC/name).write_bytes(Path('.validation',name).read_bytes())
+@@ -200,9 +236,12 @@ def publish():
+     require(sha(Path(PUBLIC/'image-scan.json').read_bytes())==result['imageScanSha256'])
+     proof=decode(run(['github-oci-check','.oci/image.tar',result['archiveSha256'],'.oci/publish-layout',commit,repo]))
+     require(proof['digest']==result['imageDigest'])
+-    config=check_config(Path('.oci/publish-layout'),result['configDigest'],service)
++    check_oci_identity(proof,{'digest':result['imageDigest'],'configDigest':result['configDigest'],
++                              'fullLayerValidation':True},repo,commit,service,Path('.oci/publish-layout'))
+     check_source(repo,commit,run_id,attempt,load(PUBLIC/'source-scan.json'),PUBLIC)
+     require(sha((PUBLIC/'source-scan.json').read_bytes())==result['sourceScanSha256'])
++    check_image(image_identity(repo,commit,run_id,attempt,service,result['imageDigest'],result['configDigest'],
++                               result['archiveSha256'],result['sourceScanSha256']))
+     check_runtime(service,proof,{'configDigest':result['configDigest']})
+     require(api('/repos/'+repo+'/git/ref/heads/main')['object']['sha']==commit)
+     image=result['imageRepository']+':'+commit
+diff --git a/ci/github/test.sh b/ci/github/test.sh
+index 33ca6a6..7c5b95c 100644
+--- a/ci/github/test.sh
++++ b/ci/github/test.sh
+@@ -36,3 +36,5 @@ python3 -I ci/github/order-release_test.py
+ python3 -I ci/github/fixtures/m0/release_test.py
+ 
+ python3 -I ci/github/build-ca_test.py
++
++python3 -I ci/github/image-policy_test.py
+diff --git a/docs/order-image-ci.md b/docs/order-image-ci.md
+index c850444..66fa924 100644
+--- a/docs/order-image-ci.md
++++ b/docs/order-image-ci.md
+@@ -113,3 +113,28 @@ trust is unchanged, and the custom CA cannot be used by the resulting applicatio
+ 
+ References: [Docker build secrets](https://docs.docker.com/build/building/secrets/)
+ and [secret mount reference](https://docs.docker.com/reference/dockerfile/#run---mounttypesecret).
++
++## Scan provenance before record creation
++
++`image-policy.py` runs the trusted scan-gate and SBOM validator against the same
++private Trivy JSON after conversion. Each validator checks the raw ImageID against
++the selected OCI config. The producer also checks OCI manifest/config bytes,
++source labels, service entrypoint, shared source identity and run/attempt before
++emitting the public summary. It never blesses an existing public image-scan.json.
++A failed producer removes previous summary/proof outputs.
++
++The summary carries imageIdentity (repository/source/run/attempt/service,
++manifest/config/archive and source-scan checksum), rawScanSha256 and sbomSha256.
++The separate image-proof.json seals that identity and exact summary/SBOM-proof
++bytes; the SBOM proof carries the same raw-scan fingerprint. record(), ci-result
++and publish() all require these bindings. Missing/foreign/malformed proofs and
++pre-record summary swaps fail closed, even if a new record hashes the swapped
++summary. Publication rechecks the original archive and its manifest/config first,
++before any API or registry effects. Raw scans and trust inputs remain private.
++
++These are trusted CI outputs, not signatures: an attacker controlling the trusted
++producer or coherently forging every proof is outside this artifact-mixing
++boundary. Hashing alone is not scan authentication. Account v1 and Order v2
++release-record fields and M0/M1 consumer contracts are unchanged; historical
++unbound checked-image artifacts cannot be newly recorded or published by this
++producer. Existing published release consumption retains its versioned contract.

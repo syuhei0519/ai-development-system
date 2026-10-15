@@ -1,0 +1,144 @@
+{
+  "head": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+  "pr": {
+    "number": 32,
+    "state": "open",
+    "draft": true,
+    "head": {
+      "ref": "feat/order-image-ci-b2",
+      "sha": "24083aba485abd6b37bcbe71736fb543a847dcc6"
+    },
+    "base": {
+      "ref": "main",
+      "sha": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0"
+    },
+    "html_url": "https://github.com/syuhei0519/backend-app/pull/32"
+  },
+  "runs": [
+    {
+      "id": 38168998238,
+      "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/38168998238",
+      "run_attempt": 1,
+      "created_at": "2026-10-11T19:40:14Z",
+      "updated_at": "2026-10-11T19:45:52Z",
+      "jobs": [
+        {
+          "id": 114557526817,
+          "name": "classify",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 114557543965,
+          "name": "validate",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 114557544752,
+          "name": "docs",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 114557958870,
+          "name": "image (backend)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 114557958960,
+          "name": "image (order)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 114558554311,
+          "name": "ci-result",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 114558589839,
+          "name": "propose",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 114558590157,
+          "name": "publish",
+          "status": "completed",
+          "conclusion": "skipped"
+        }
+      ]
+    },
+    {
+      "id": 38169002804,
+      "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/38169002804",
+      "run_attempt": 1,
+      "created_at": "2026-10-11T19:40:17Z",
+      "updated_at": "2026-10-11T19:46:14Z",
+      "jobs": [
+        {
+          "id": 114557496663,
+          "name": "classify",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 114557515972,
+          "name": "validate",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 114557517118,
+          "name": "docs",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 114558091459,
+          "name": "image (backend)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 114558091483,
+          "name": "image (order)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 114558634372,
+          "name": "ci-result",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 114558667887,
+          "name": "publish",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 114558668283,
+          "name": "propose",
+          "status": "completed",
+          "conclusion": "skipped"
+        }
+      ]
+    }
+  ],
+  "workflow_dispatch_requested": false,
+  "actual_publication": false,
+  "publication_note": "Reviewed public edited derivative of completed Implementation self-verification; delivery-only preparation, no new measurement. Private originals retained; no private-original equivalence certification."
+}

@@ -1,0 +1,280 @@
+{
+  "schema_version": "2.0",
+  "issue": {
+    "id": "syuhei0519/backend-app#2",
+    "source": "https://github.com/syuhei0519/backend-app/issues/2",
+    "title": "Order Serviceを追加しKubernetes上で稼働させる",
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "verbatim": "作成したOrderが再起動後も取得できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-2",
+        "verbatim": "不正入力は4xxとなりAccount CRUDが維持される",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      },
+      {
+        "id": "AC-3",
+        "verbatim": "独立ServiceがSyncedかつHealthyになり対応image digestが確認できる",
+        "source": "https://github.com/syuhei0519/backend-app/issues/2"
+      }
+    ]
+  },
+  "role": "implementation",
+  "task_id": "order-b2-implementation-a3",
+  "attempt": 3,
+  "upstream": [
+    {
+      "role": "implementation",
+      "task_id": "order-b2-implementation-a2",
+      "attempt": 2,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/437cb5b76359a8743613529aa33f7a9dacb88e9c/evidence/order-b2/implementation-a2/handoff.json",
+      "revision": "sha256:751a0130aa37effd18edc57a2af7edc5373cf6ec6ada3914cd458701e00bb8aa",
+      "relationship": "retry_of"
+    },
+    {
+      "role": "review",
+      "task_id": "order-b2-review-a1",
+      "attempt": 1,
+      "handoff_locator": "https://github.com/syuhei0519/ai-development-system/blob/b8a3cb76d760bd208be432f0b4095e6ca4368d26/evidence/order-b2/review-a1/handoff.json",
+      "revision": "sha256:930b52ec3fa58840d7f6fa66a4e9e4a087fe7a792b5b14b5f3634fd2b882dbc2",
+      "relationship": "dependency"
+    }
+  ],
+  "system_status": "completed",
+  "status": "completed",
+  "summary": "R-B2-1 repaired on Draft PR32 final head24083aba485abd6b37bcbe71736fb543a847dcc6. Original execution epoch1 attempt3 completed with local regression, actual OCI and exact-head CI evidence; independent Test/Review pending. Delivery-only continuation uses canonical Delivery1.3 with full historical closure; execution and historical outcomes unchanged.",
+  "assignment": {
+    "scope": "backend-app#2/B2",
+    "ac_ids": [
+      "AC-1",
+      "AC-2",
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "Review R-B2-1 の最小再現を修正前headで確認し、修正後に本物のAccount/Orderのスキャン要約をrecord作成前に混入してもrecord/matrix/publish前でfail-closedになること。OCI/reader/runtime/SBOMとscanの対象identityを独立検証し、欠落/不正/別config/source/run/service/改変を拒否。単に混入bytesを新しくhashして正当化しない。",
+      "trusted scan outputまたはproofの形式を合理的に決め、既存Account v1互換とOrder v2分離を維持。M0 bc6adaedcd645a4663c23284b977a3dd36c0796dと現在M1 df8c8b5d93e48bc1f0e5ced1678bba2e27d6a1f9 consumerへproducer実出力を渡す正常異常検証。過去不備を隠すテスト弱体化禁止。",
+      "両本番Dockerfile pristine git archive build-once original OCI→reader/transport/runtime/scan/SBOM→mock publish入力まで実測し、実GHCRとの差を明示。optionalCAの限定scope/security/nonleakを保持。全関連既存/新規test、real新規DB/HTTP112回帰、全PR差分の影響確認。既存kind専用skipは実行済み扱いしない。",
+      "同じPRへpush後exacthead CIを確認し、独立Test/Review待ちで停止。全製品AC3/実GHCR/kind/Issue全体は未検証。",
+      "現行配送closure128上限のため新規成果物配送を保留する（下記）。コード修正/ローカル検証/認可済みPRpushは進めてよい。完了したらprivate成果物のstatus・paths・size/hashとPRheadを返し、Managerが新しい正式配送正本を指定するまで出力candidate生成・公開を開始しない。上限回避のclosure切捨て、原本改変、別scope偽装は禁止。",
+      "Manager補足: 既存epochの同一scope delivery3枠は消費済み。新規deliveryはSystem容量修正だけで再開できない。明示的な新配送承認と正式append-only ledger/grantが届くまで出力candidate生成・公開・検証試行を開始しない。過去をattempt別の新予算として再カウントしない。"
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "A-REPORT",
+      "kind": "test-report",
+      "locator": "report.txt",
+      "revision": "sha256:3aba01345a8440e023e88c1aa54cd962bc15cc2cfc34f9fd149ae2ce09df0ea2",
+      "summary": "Reviewed public edited derivative. Implementation self-verification only; original observations and limitations retained; private original excluded."
+    },
+    {
+      "id": "A-MEASURE",
+      "kind": "other",
+      "locator": "measurements.json",
+      "revision": "sha256:c7e4e5ff117ef4b5572c4e5ffa97793d7b5783a2624e34f4fa55e660998bdc61",
+      "summary": "Reviewed public edited derivative. Implementation self-verification only; original observations and limitations retained; private original excluded."
+    },
+    {
+      "id": "A-CI",
+      "kind": "other",
+      "locator": "ci-final.json",
+      "revision": "sha256:811fdfafe87e4e612c34feb2b21f5c1d54bdc2f909a9191f5ab0cfb7cf59aef3",
+      "summary": "Reviewed public edited derivative. Implementation self-verification only; original observations and limitations retained; private original excluded."
+    },
+    {
+      "id": "A-PATCH",
+      "kind": "patch",
+      "locator": "repair-final.patch",
+      "revision": "sha256:98b990bc75cb03d2fccb8d649f14ab72ce27d4d2313e91b12ac6119c3f503c39",
+      "summary": "Reviewed public edited derivative. Implementation self-verification only; original observations and limitations retained; private original excluded."
+    },
+    {
+      "id": "A-REPRO",
+      "kind": "document",
+      "locator": "measure-final.py",
+      "revision": "sha256:9ed88bd86977abd67d13cfaaea4665ae03abe5da3ad68e78defdbb6e3f8a0876",
+      "summary": "Reviewed public edited derivative. Implementation self-verification only; original observations and limitations retained; private original excluded."
+    },
+    {
+      "id": "A-REPRO-RUN",
+      "kind": "document",
+      "locator": "run-final.sh",
+      "revision": "sha256:9f5ef1aac9e256fbbfefcf1cca0863527dcf4e371753a8d35d47361916c90f3a",
+      "summary": "Reviewed public edited derivative. Implementation self-verification only; original observations and limitations retained; private original excluded."
+    },
+    {
+      "id": "A-PROBE",
+      "kind": "document",
+      "locator": "probe-final.py",
+      "revision": "sha256:46112b1da77465f1886ba9484e800a3aa79e3a9f714ce05005a4794fe74906da",
+      "summary": "Reviewed public edited derivative. Implementation self-verification only; original observations and limitations retained; private original excluded."
+    },
+    {
+      "id": "A-CONSUMER",
+      "kind": "document",
+      "locator": "actual-consumers-final.py",
+      "revision": "sha256:92aaf35325c1a120660c6bd48bce43591d5fa72a838875b74d49fe6a4dff3d6e",
+      "summary": "Reviewed public edited derivative. Implementation self-verification only; original observations and limitations retained; private original excluded."
+    },
+    {
+      "id": "A-HISTORY",
+      "kind": "document",
+      "locator": "history-and-delivery.txt",
+      "revision": "sha256:e8577476dcaafe4002566595d2cd1455698b33af60dd2a94624fec164c31e3ce",
+      "summary": "Reviewed public edited derivative. Implementation self-verification only; original observations and limitations retained; private original excluded."
+    },
+    {
+      "id": "A-SCOPE",
+      "kind": "other",
+      "locator": "scope-inventory-final.json",
+      "revision": "sha256:5bc03245070382c0a7fa9a8e7aaad7266110e2275806bfa544d58604cb008080",
+      "summary": "Reviewed public edited derivative. Implementation self-verification only; original observations and limitations retained; private original excluded."
+    },
+    {
+      "id": "A-BEFORE",
+      "kind": "other",
+      "locator": "before/scan-swap-probe.json",
+      "revision": "sha256:fc09f7397c1d24b83802880a9ea56d184f28eba9b511bf7369d435aaac88a332",
+      "summary": "Reviewed public edited derivative. Implementation self-verification only; original observations and limitations retained; private original excluded."
+    },
+    {
+      "id": "A-AFTER",
+      "kind": "other",
+      "locator": "final/scan-swap-fixed.json",
+      "revision": "sha256:d6cb20a55910e22ed62a11f87b0c0675a978e9f7a5d2e96c1d5ad148eee983e9",
+      "summary": "Reviewed public edited derivative. Implementation self-verification only; original observations and limitations retained; private original excluded."
+    },
+    {
+      "id": "A-NEGATIVE",
+      "kind": "document",
+      "locator": "independent-negative-adapted.py",
+      "revision": "sha256:ac53a7892c064071589534ce6f6bcffe85e9c3a49aac67e3f8e401a8c1e13f87",
+      "summary": "Reviewed public edited derivative. Implementation self-verification only; original observations and limitations retained; private original excluded."
+    },
+    {
+      "id": "A-ADVERSARIAL",
+      "kind": "document",
+      "locator": "adversarial-adapted.py",
+      "revision": "sha256:d5cbbc3429fd0d7f3059a1ab7e32622acc261e8d7e00c411a492fc46f7415ba7",
+      "summary": "Reviewed public edited derivative. Implementation self-verification only; original observations and limitations retained; private original excluded."
+    },
+    {
+      "id": "A-COMMIT",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/backend-app/commit/24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "revision": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "summary": "Authorized feature commits on existing Draft PR32; no merge or deployment."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-REPAIR",
+      "claim": "R-B2-1 reproduced before repair and rejected on final head using actual cross-service scan inputs",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE",
+        "A-BEFORE",
+        "A-AFTER",
+        "A-PATCH",
+        "A-COMMIT"
+      ],
+      "locator": "measurements.json",
+      "observation": "Old head accepted genuine foreign scan before minting and all local guards. Final head refuses bidirectional summary/proof/raw substitutions before record/matrix/publish; independent raw config and SBOM checks preserve source/service/run binding."
+    },
+    {
+      "id": "E-SELF",
+      "claim": "Assigned OCI,consumer and AC1/2 regression self-verification completed",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE",
+        "A-REPRO",
+        "A-REPRO-RUN",
+        "A-PROBE",
+        "A-CONSUMER",
+        "A-SCOPE"
+      ],
+      "locator": "measurements.json",
+      "observation": "Final-head112 disposable DB/HTTP race tests pass with2 existing skips. Both215-file pristine build-once OCI chains,transport/runtime/pinned scan/SBOM/mock publish and fixed M0/M1 actual-output positive/negative tests pass. Cold trust and nonleak checked. Not independent Test/Review or deployed AC3."
+    },
+    {
+      "id": "E-CI",
+      "claim": "Feature remote,Draft PR and exact-head push/PR CI verified",
+      "artifact_ids": [
+        "A-CI",
+        "A-COMMIT"
+      ],
+      "locator": "ci-final.json",
+      "observation": "Both final-head runs and their backend/order image jobs plus ci-result succeed; publish/propose skipped. No actual GHCR or deployment."
+    },
+    {
+      "id": "E-HISTORY",
+      "claim": "History preserved across original delivery hold and later authorized delivery-only continuation",
+      "artifact_ids": [
+        "A-HISTORY",
+        "A-REPORT"
+      ],
+      "locator": "history-and-delivery.txt",
+      "observation": "Execution epoch1 attempt3 unchanged; Implementation2 retry_of and Review1 dependency. Old Test deadline, failed Review and all prior events preserved. Subsequent delivery-only renewal and new Delivery1.3 canonical do not confer new execution or downstream Consumer authority."
+    }
+  ],
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "disposition": "covered",
+      "scope": "Assigned B2 Implementation/self-regression responsibility only. AC1/2 new disposable HTTP/DB regressions and AC3 image/CI preparation completed; product acceptance,independent Test/Review,real GHCR,kind,deployed Synced/Healthy and whole-Issue completion are unverified.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE",
+        "A-CI",
+        "A-COMMIT"
+      ],
+      "evidence_ids": [
+        "E-REPAIR",
+        "E-SELF",
+        "E-CI",
+        "E-HISTORY"
+      ]
+    },
+    {
+      "ac_id": "AC-2",
+      "disposition": "covered",
+      "scope": "Assigned B2 Implementation/self-regression responsibility only. AC1/2 new disposable HTTP/DB regressions and AC3 image/CI preparation completed; product acceptance,independent Test/Review,real GHCR,kind,deployed Synced/Healthy and whole-Issue completion are unverified.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE",
+        "A-CI",
+        "A-COMMIT"
+      ],
+      "evidence_ids": [
+        "E-REPAIR",
+        "E-SELF",
+        "E-CI",
+        "E-HISTORY"
+      ]
+    },
+    {
+      "ac_id": "AC-3",
+      "disposition": "covered",
+      "scope": "Assigned B2 Implementation/self-regression responsibility only. AC1/2 new disposable HTTP/DB regressions and AC3 image/CI preparation completed; product acceptance,independent Test/Review,real GHCR,kind,deployed Synced/Healthy and whole-Issue completion are unverified.",
+      "artifact_ids": [
+        "A-REPORT",
+        "A-MEASURE",
+        "A-CI",
+        "A-COMMIT"
+      ],
+      "evidence_ids": [
+        "E-REPAIR",
+        "E-SELF",
+        "E-CI",
+        "E-HISTORY"
+      ]
+    }
+  ],
+  "block_reasons": [],
+  "failure_reasons": [],
+  "knowledge_candidates": [],
+  "publication": "public_safe"
+}

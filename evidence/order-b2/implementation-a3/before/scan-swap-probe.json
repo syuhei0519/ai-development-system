@@ -1,0 +1,16 @@
+{
+  "probe": "actual cross-service image-scan summary replacement before record",
+  "source_service": "order",
+  "target_service": "backend",
+  "accepted": true,
+  "all_local_publish_guards_passed": true,
+  "actual_matrix_accepted_mixed_scan": true,
+  "own_scan_sha256": "1464af85d97a81f0ad6d22faf27682592add47c2a016125ed069a0882cf70979",
+  "foreign_scan_sha256": "a18fd236ac1e10f0cadd380eec4356089f363ae4c0692c60f8af3bddd29d7089",
+  "config_digest": "sha256:af6faa308a0e26ea38723d870919db693e6e33e2b67bb23ddab41178b2e895e2",
+  "archive_sha256": "1cd3a024d5b4c9c7a95dcd8b72f3f10662f1d886f9da23a05e806ca1f8a33b51",
+  "image_digest": "sha256:2320dafb1ca3065af041b07fa085504667323e9b156588276ddf808eb25f2741",
+  "sbom_sha256": "c0a4e16a5a060c562f45285e475e1ec49b7b95ff638f1722049fa4f4a1eb13cb",
+  "no_registry_or_api_operations": true,
+  "publication_note": "Reviewed public edited derivative of completed Implementation self-verification; delivery-only preparation, no new measurement. Private originals retained; no private-original equivalence certification."
+}

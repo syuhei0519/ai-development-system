@@ -1,0 +1,154 @@
+{
+  "head": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+  "base": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+  "pr_files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "size": 9101,
+      "sha256": "80c7f6d38e692956c702435250cf0879553d7a409b58cd4ae7d28be04bc4b34a"
+    },
+    {
+      "path": "Dockerfile",
+      "size": 1672,
+      "sha256": "dc34d001b4451e4059c89b28861187a87e98875138370b0c2b1dd318c26e19d6"
+    },
+    {
+      "path": "Dockerfile.order",
+      "size": 1654,
+      "sha256": "febd4bd227fc7cd520f25b467fbe2820142751f1daec040a1c56585f8e24206f"
+    },
+    {
+      "path": "ci/github/build-ca_test.py",
+      "size": 3894,
+      "sha256": "93e4d3f2ae9863eb92e0bacefd060636611eb735436295f419fb504ae444a687"
+    },
+    {
+      "path": "ci/github/fixtures/m0/SOURCE.json",
+      "size": 1040,
+      "sha256": "6227a28f67b7dad407b91bd60b9a093baebc98d87e80f0cb17bdb588c95e1bb7"
+    },
+    {
+      "path": "ci/github/fixtures/m0/fixtures/backend-record.json",
+      "size": 1121,
+      "sha256": "00f2602021a21c553b546083352a50936b10b923b03c39c8218c210d3c8bc4a7"
+    },
+    {
+      "path": "ci/github/fixtures/m0/fixtures/image-scan.json",
+      "size": 14,
+      "sha256": "63b684854bd4961bcb515b09823ea700dda69135486c5e11352bb1d7850f534e"
+    },
+    {
+      "path": "ci/github/fixtures/m0/fixtures/order-config.json",
+      "size": 248,
+      "sha256": "8bd06c0e86671a7e7f8d56d6ff80bf56db6e753ff45357ca5d1a21e5a8f680ea"
+    },
+    {
+      "path": "ci/github/fixtures/m0/fixtures/order-manifest.json",
+      "size": 153,
+      "sha256": "0578ef8eb4991f3b8db3ad3bfe3bb58501962e0ea97449d5feec6cd346d82768"
+    },
+    {
+      "path": "ci/github/fixtures/m0/fixtures/order-record.json",
+      "size": 1145,
+      "sha256": "a3a2b0472fe51d96614406d85fd89748eb8c255c45ebbfd21cfdde57e0968eb5"
+    },
+    {
+      "path": "ci/github/fixtures/m0/fixtures/sbom.cdx.json",
+      "size": 154,
+      "sha256": "b9104ba1eba76b6b080694eb4eb1717e38d5d9b7dbe4469e50acbfd756c5ca56"
+    },
+    {
+      "path": "ci/github/fixtures/m0/order-release.schema.json",
+      "size": 2574,
+      "sha256": "2bdc572d5e2ac6f694a1658b27d36ead6abdb44bcfb9eb284b47f74979468f92"
+    },
+    {
+      "path": "ci/github/fixtures/m0/release.py",
+      "size": 30677,
+      "sha256": "ed2630b8b3fe3a18a6de2c0ce55dcbe494f7d20414d672326d7e524b30903867"
+    },
+    {
+      "path": "ci/github/fixtures/m0/release_test.py",
+      "size": 18881,
+      "sha256": "c23078874ec77fb06a54525a4cb4f2a702a7758fe833f396174fc53fd77a4d86"
+    },
+    {
+      "path": "ci/github/image-policy.py",
+      "size": 3120,
+      "sha256": "f82434d7480ae9f111f7bb8a25b47a26a54b7b9e56a3724e1b3c6614df04cd3a"
+    },
+    {
+      "path": "ci/github/image-policy_test.py",
+      "size": 4188,
+      "sha256": "4021d3865768b521c989002a396a3db1fdba439e44a95585303104c45a60e818"
+    },
+    {
+      "path": "ci/github/matrix-result.py",
+      "size": 2742,
+      "sha256": "b0a9a108e4d57aed4e90a9db1c3429e20f6e0803d4aa1c9cc7e4007759c60240"
+    },
+    {
+      "path": "ci/github/oci.sh",
+      "size": 2621,
+      "sha256": "16639f70a599f16df7fb695bb9cfd3d1e77fd7a7ddb976d9bd1ca6cde436b7ac"
+    },
+    {
+      "path": "ci/github/order-release.schema.json",
+      "size": 2574,
+      "sha256": "2bdc572d5e2ac6f694a1658b27d36ead6abdb44bcfb9eb284b47f74979468f92"
+    },
+    {
+      "path": "ci/github/order-release_test.py",
+      "size": 17422,
+      "sha256": "616e8a98720fe2a5b565bebc281aeb4590683e792ea7bb47b37b83d9a59731e9"
+    },
+    {
+      "path": "ci/github/release.py",
+      "size": 31007,
+      "sha256": "f79bd6d75c20dabf6b212c541b3e218f4579f481b770a822edcb71d72bb1d807"
+    },
+    {
+      "path": "ci/github/runtime.py",
+      "size": 5393,
+      "sha256": "20078aea273e96aba3152dd7c15fbecfd4e0f3e4d7aeeaff2c8e51ceeabd92e3"
+    },
+    {
+      "path": "ci/github/source-identity.py",
+      "size": 598,
+      "sha256": "87f724a7339189fe1d2c8f037a02a4671f4d2a047f9fd83ab65f4e06b033fcec"
+    },
+    {
+      "path": "ci/github/test.sh",
+      "size": 1626,
+      "sha256": "28315a5e64f0b5056c1d6ab2dd22a4339617e7910d9042461943f9c9a1610f18"
+    },
+    {
+      "path": "cmd/order-server/main.go",
+      "size": 2453,
+      "sha256": "895f647192a4278c6ee394d31a4c999a94e0d84ba8893ef1f121de873083c7df"
+    },
+    {
+      "path": "docs/order-image-ci.md",
+      "size": 8803,
+      "sha256": "aa9298e8fc64f6bda430def9e8d83f6a4056ddb4820a00f162d8f95d14469552"
+    },
+    {
+      "path": "tools/oci-input/cmd/oci-runtime-export/main.go",
+      "size": 1211,
+      "sha256": "90fb22c6b5a61ab1593447cece0c9fe5f47fe5d2715892e8183d086b9b99ea4f"
+    },
+    {
+      "path": "tools/oci-input/cmd/oci-runtime-export/main_test.go",
+      "size": 406,
+      "sha256": "aeb9b91f22c01432e4f32c37ffc658c2d7883772429b53d70aa20768f12a0ec7"
+    }
+  ],
+  "protected_code_sql_migrations_lockfiles_unchanged": true,
+  "repair_changes_only_scan_binding_tests_docs": true,
+  "pristine_context_files": 215,
+  "pristine_context_exact": true,
+  "m0_vendored_source_bytes_verified": true,
+  "tree": "8d12e8e2b9c4571b4a8a4eb325f7b95abbd56b41",
+  "validator_go_sources_unchanged_between_measured_revisions": true,
+  "publication_note": "Reviewed public edited derivative of completed Implementation self-verification; delivery-only preparation, no new measurement. Private originals retained; no private-original equivalence certification."
+}

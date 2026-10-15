@@ -1,0 +1,1325 @@
+{
+  "role": "implementation self-verification; not independent Test/Review",
+  "head": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+  "base": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+  "tree": "8d12e8e2b9c4571b4a8a4eb325f7b95abbd56b41",
+  "observed_at": "2026-10-11T19:47:59.125946+00:00",
+  "input_delivery": {
+    "system": "4693887fa79c2b4a291c555b8bd27b6903eb4199",
+    "explicit_artifacts": 128,
+    "objects": 137,
+    "bytes": 2214708,
+    "canonical_consumer": "PASS",
+    "handoff_sha256": "930b52ec3fa58840d7f6fa66a4e9e4a087fe7a792b5b14b5f3634fd2b882dbc2"
+  },
+  "before": {
+    "probe": "actual cross-service image-scan summary replacement before record",
+    "source_service": "order",
+    "target_service": "backend",
+    "accepted": true,
+    "all_local_publish_guards_passed": true,
+    "actual_matrix_accepted_mixed_scan": true,
+    "own_scan_sha256": "1464af85d97a81f0ad6d22faf27682592add47c2a016125ed069a0882cf70979",
+    "foreign_scan_sha256": "a18fd236ac1e10f0cadd380eec4356089f363ae4c0692c60f8af3bddd29d7089",
+    "config_digest": "sha256:af6faa308a0e26ea38723d870919db693e6e33e2b67bb23ddab41178b2e895e2",
+    "archive_sha256": "1cd3a024d5b4c9c7a95dcd8b72f3f10662f1d886f9da23a05e806ca1f8a33b51",
+    "image_digest": "sha256:2320dafb1ca3065af041b07fa085504667323e9b156588276ddf808eb25f2741",
+    "sbom_sha256": "c0a4e16a5a060c562f45285e475e1ec49b7b95ff638f1722049fa4f4a1eb13cb",
+    "no_registry_or_api_operations": true
+  },
+  "after": {
+    "head": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+    "measurements": [
+      {
+        "target": "backend",
+        "foreign": "order",
+        "case": "foreign-summary",
+        "record_refused_before_mint": true,
+        "matrix_refused_rehashed_scan": true,
+        "publish_refused_before_api_registry": true,
+        "real_original_oci_rechecked": true
+      },
+      {
+        "target": "backend",
+        "foreign": "order",
+        "case": "foreign-summary-and-proof",
+        "record_refused_before_mint": true,
+        "matrix_refused_rehashed_scan": true,
+        "publish_refused_before_api_registry": true,
+        "real_original_oci_rechecked": true
+      },
+      {
+        "target": "backend",
+        "case": "foreign-raw-before-producer",
+        "refused": true,
+        "prior_proof_removed": true
+      },
+      {
+        "target": "order",
+        "foreign": "backend",
+        "case": "foreign-summary",
+        "record_refused_before_mint": true,
+        "matrix_refused_rehashed_scan": true,
+        "publish_refused_before_api_registry": true,
+        "real_original_oci_rechecked": true
+      },
+      {
+        "target": "order",
+        "foreign": "backend",
+        "case": "foreign-summary-and-proof",
+        "record_refused_before_mint": true,
+        "matrix_refused_rehashed_scan": true,
+        "publish_refused_before_api_registry": true,
+        "real_original_oci_rechecked": true
+      },
+      {
+        "target": "order",
+        "case": "foreign-raw-before-producer",
+        "refused": true,
+        "prior_proof_removed": true
+      }
+    ],
+    "external_operations": false
+  },
+  "tests": {
+    "unit": {
+      "counts": {
+        "run": 114,
+        "output": 235,
+        "pass": 109,
+        "skip": 5
+      },
+      "skips": [
+        {
+          "package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "test": "TestDisposableMigration"
+        },
+        {
+          "package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/orderpostgres",
+          "test": "TestDisposableTargetGuard"
+        },
+        {
+          "package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "test": "TestMigrationDisposableDatabase"
+        },
+        {
+          "package": "gitlab.com/platform-engineering-lab/backend-app/internal/telemetry",
+          "test": "TestSDKCollectorMetricNames"
+        },
+        {
+          "package": "gitlab.com/platform-engineering-lab/backend-app/tests/orderintegration",
+          "test": "TestDisposableHTTPPersistenceAndAccount"
+        }
+      ]
+    },
+    "race": {
+      "counts": {
+        "run": 114,
+        "output": 237,
+        "pass": 112,
+        "skip": 2
+      },
+      "skips": [
+        {
+          "package": "gitlab.com/platform-engineering-lab/backend-app/internal/store/postgres",
+          "test": "TestMigrationDisposableDatabase"
+        },
+        {
+          "package": "gitlab.com/platform-engineering-lab/backend-app/internal/telemetry",
+          "test": "TestSDKCollectorMetricNames"
+        }
+      ]
+    },
+    "github_suite": "PASS; includes real validator producer tests3, producer regressions11, release8, M0 consumer19, build CA2 and existing tools/shell suites",
+    "tools_vet_race_build": "PASS; tool source bytes unchanged at final head, separately inventoried",
+    "mod_verify_vet_build": "PASS at final head",
+    "fixed_consumer_suites": {
+      "M0": 19,
+      "M1": 19
+    },
+    "adapted_existing_negative": {
+      "M0": 7,
+      "M1": 7
+    },
+    "adapted_review_adversarial": 5,
+    "fixture_adaptation": "Original scripts retained. Old matrix fixture failed on required missing new proof; private adaptation creates proof data. Review fixture adds existing-directory support and valid manifest before intentionally corrupting config. All negative mutations and refusal assertions preserved; adaptations are Implementation self-tests."
+  },
+  "chains": {
+    "backend": {
+      "chain": {
+        "service": "backend",
+        "head": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+        "archive_sha256": "c5340de7ca3693f4b56e125897844db2a805db29cbc674afe2a90c1e9cbb562c",
+        "oci_digest": "sha256:2cdae3621e70c392d03c43072b0443d5a3c96bffe98b28d929cab8273ab82f3b",
+        "config_digest": "sha256:1fda00a69e6669ab96bbf7b1a2263c65a212a45a009fd35a257e51984eba8a57",
+        "reader": "passed",
+        "runtime": "passed",
+        "scan": "passed",
+        "sbom": "passed",
+        "original_archive_unchanged": true,
+        "actual_publish": false
+      },
+      "scan_identity": {
+        "archiveSha256": "c5340de7ca3693f4b56e125897844db2a805db29cbc674afe2a90c1e9cbb562c",
+        "configDigest": "sha256:1fda00a69e6669ab96bbf7b1a2263c65a212a45a009fd35a257e51984eba8a57",
+        "imageDigest": "sha256:2cdae3621e70c392d03c43072b0443d5a3c96bffe98b28d929cab8273ab82f3b",
+        "repository": "syuhei0519/backend-app",
+        "runAttempt": 2,
+        "runId": 1,
+        "service": "backend",
+        "sourceCommit": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+        "sourceScanSha256": "faf2ebe5fb5b3a5f4fd36d7e32ea32151819e2f3ae95d2c1b28f67cc3c47ff92"
+      },
+      "raw_scan_config_matches": true,
+      "raw_scan_sha256": "4c5229ccac8769e79a049b5d84bb270092a4ba7962484f72f780ceabe8b7c686",
+      "scan_summary_sha256": "d70ad213b4ccd54fb6f3aa43169e0cb47fcdf8e86f1bcec660ddd2ab4cbf3bbb",
+      "sbom_proof": {
+        "componentCount": 38,
+        "configDigest": "sha256:1fda00a69e6669ab96bbf7b1a2263c65a212a45a009fd35a257e51984eba8a57",
+        "format": "CycloneDX",
+        "rawScanSha256": "[private raw fingerprint omitted from public measurement derivative]",
+        "scannedPackageCount": 36,
+        "sha256": "361d9cc2c6e681f08787e95e8d2d7a2b9a8f946c3ab4b6646aeb7f6f70f34a54",
+        "specVersion": "1.7"
+      },
+      "transport": {
+        "service": "backend",
+        "config_bytes_equal": true,
+        "layers": [
+          {
+            "compressed_digest": "sha256:a5789fc40e828c4e7467626e3f69ec5dea8e5da22fe660db8ae6d16f777b0bbf",
+            "uncompressed_digest": "sha256:7223ea1323e8c1159ec17f07d35acc27bdd1cc2bc3ed425b44ef21dac9915db0",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:990a9c434e5e0f11549a8d4a41a1991e621b04e30cd63269adbc97b1dc38fd7e",
+            "uncompressed_digest": "sha256:8fa10c0194df9b7c054c90dbe482585f768a54428fc90a5b78a0066a123b1bba",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:39dc083afc39bd8dc43d456fe7ff7d39292e593bb2769972c11bb2e5f9119386",
+            "uncompressed_digest": "sha256:35b5ba6e08cdd034b8d1920f9c7203e5d66f258e1915f164a01de0af14f34710",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:bf7a4185f01524837d19abde915ffde84e64368b250f5b5e9f6f75aea62a11d4",
+            "uncompressed_digest": "sha256:114dde0fefebbca13165d0da9c500a66190e497a82a53dcaabc3172d630be1e9",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:2780920e5dbfbe103d03a583ed75345306e572ec5a48cb10361f046767d9f29a",
+            "uncompressed_digest": "sha256:4d049f83d9cf21d1f5cc0e11deaf36df02790d0e60c1a3829538fb4b61685368",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212",
+            "uncompressed_digest": "sha256:af5aa97ebe6ce1604747ec1e21af7136ded391bcabe4acef882e718a87c86bcc",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:3214acf345c0cc6bbdb56b698a41ccdefc624a09d6beb0d38b5de0b2303ecaf4",
+            "uncompressed_digest": "sha256:6f1cdceb6a3146f0ccb986521156bef8a422cdbb0863396f7f751f575ba308f4",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:52630fc75a18675c530ed9eba5f55eca09b03e91bd5bc15307918bbc1a7e7296",
+            "uncompressed_digest": "sha256:bd3cdfae1d3fdd83a2231d608969b38b82349777c2fff9a7c12d54f8ac5c9b38",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:dd64bf2dd177757451a98fcdc999a339c35dee5d9872d8f4dc69c8f3c4dd0112",
+            "uncompressed_digest": "sha256:4cde6b0bb6f50a5f255eef7b2a42162c661cf776b803225dcac9a659e396bb6b",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:b839dfae01f66e15c6a8b63520557ed315bdfe036342fa7a0c537259f10d7a9a",
+            "uncompressed_digest": "sha256:ad51d0769d16ba578106a177987dfe3d2e02c1668c852b795b2f6b024068242a",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:dcaa5a89b0ccda4b283e16d0b4d0891cd93d5fe05c6798f7806781a6a2d84354",
+            "uncompressed_digest": "sha256:6e7fbcf090d09b73a4aa85f9dce690d0ace73877c150b7c56955487b6e7a822a",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:96ed2737ae312e0bc637b40783f7c2f23416cb72ca957aa01855f1614278e64b",
+            "uncompressed_digest": "sha256:5904c32f457c96a16c8c68f5ccdf518c8138cd9e5971de9ce6d564fc481af222",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:52b1e3a6ca4c08246154bbd5b70e5c8eaf9a3804beb0eb7cb127862b257b46ba",
+            "uncompressed_digest": "sha256:dce4257c6d064ed174110b2e15c9c37ef08ff78f079253b8c5d29d24972ce7ca",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:de8fc8370f5c99013927cbe0fb9a497c03b4b2a376abfa3616a03d08a7e73df9",
+            "uncompressed_digest": "sha256:0b1412d17ef2fec624e6a92ddfa512dbd3685b82f3f16bc106f90c5c31a64914",
+            "exact_bytes": true
+          }
+        ],
+        "loaded_id": "sha256:1fda00a69e6669ab96bbf7b1a2263c65a212a45a009fd35a257e51984eba8a57",
+        "container_image": "sha256:1fda00a69e6669ab96bbf7b1a2263c65a212a45a009fd35a257e51984eba8a57",
+        "read_only": true,
+        "cap_drop": [
+          "ALL"
+        ],
+        "security_opt": [
+          "no-new-privileges"
+        ],
+        "user": "10001:10001",
+        "wrong_digest_rejected": true,
+        "real_runtime_result": {
+          "archiveSha256": "c5340de7ca3693f4b56e125897844db2a805db29cbc674afe2a90c1e9cbb562c",
+          "capDrop": "ALL",
+          "configDigest": "sha256:1fda00a69e6669ab96bbf7b1a2263c65a212a45a009fd35a257e51984eba8a57",
+          "digest": "sha256:2cdae3621e70c392d03c43072b0443d5a3c96bffe98b28d929cab8273ab82f3b",
+          "network": "internal",
+          "passed": true,
+          "readOnly": true,
+          "service": "backend"
+        }
+      },
+      "independent_oci_inspection": {
+        "service": "backend",
+        "archive_size": 15378432,
+        "archive_sha256": "c5340de7ca3693f4b56e125897844db2a805db29cbc674afe2a90c1e9cbb562c",
+        "descriptors": [
+          {
+            "digest": "sha256:2cdae3621e70c392d03c43072b0443d5a3c96bffe98b28d929cab8273ab82f3b",
+            "size": 2936
+          },
+          {
+            "digest": "sha256:1fda00a69e6669ab96bbf7b1a2263c65a212a45a009fd35a257e51984eba8a57",
+            "size": 3892
+          },
+          {
+            "digest": "sha256:a5789fc40e828c4e7467626e3f69ec5dea8e5da22fe660db8ae6d16f777b0bbf",
+            "size": 83900
+          },
+          {
+            "digest": "sha256:990a9c434e5e0f11549a8d4a41a1991e621b04e30cd63269adbc97b1dc38fd7e",
+            "size": 12481
+          },
+          {
+            "digest": "sha256:39dc083afc39bd8dc43d456fe7ff7d39292e593bb2769972c11bb2e5f9119386",
+            "size": 445709
+          },
+          {
+            "digest": "sha256:bf7a4185f01524837d19abde915ffde84e64368b250f5b5e9f6f75aea62a11d4",
+            "size": 29005
+          },
+          {
+            "digest": "sha256:2780920e5dbfbe103d03a583ed75345306e572ec5a48cb10361f046767d9f29a",
+            "size": 67
+          },
+          {
+            "digest": "sha256:7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212",
+            "size": 188
+          },
+          {
+            "digest": "sha256:3214acf345c0cc6bbdb56b698a41ccdefc624a09d6beb0d38b5de0b2303ecaf4",
+            "size": 123
+          },
+          {
+            "digest": "sha256:52630fc75a18675c530ed9eba5f55eca09b03e91bd5bc15307918bbc1a7e7296",
+            "size": 162
+          },
+          {
+            "digest": "sha256:dd64bf2dd177757451a98fcdc999a339c35dee5d9872d8f4dc69c8f3c4dd0112",
+            "size": 80
+          },
+          {
+            "digest": "sha256:b839dfae01f66e15c6a8b63520557ed315bdfe036342fa7a0c537259f10d7a9a",
+            "size": 351
+          },
+          {
+            "digest": "sha256:dcaa5a89b0ccda4b283e16d0b4d0891cd93d5fe05c6798f7806781a6a2d84354",
+            "size": 314
+          },
+          {
+            "digest": "sha256:96ed2737ae312e0bc637b40783f7c2f23416cb72ca957aa01855f1614278e64b",
+            "size": 143347
+          },
+          {
+            "digest": "sha256:52b1e3a6ca4c08246154bbd5b70e5c8eaf9a3804beb0eb7cb127862b257b46ba",
+            "size": 14638654
+          },
+          {
+            "digest": "sha256:de8fc8370f5c99013927cbe0fb9a497c03b4b2a376abfa3616a03d08a7e73df9",
+            "size": 964
+          }
+        ],
+        "runtime_user": "10001:10001",
+        "stamp_present": true,
+        "secret_paths_absent": true,
+        "bundle_bytes_absent": true,
+        "custom_trust_env_absent": true,
+        "application_layer_entries": [
+          [
+            "server"
+          ],
+          [
+            "migrations",
+            "migrations/0001_create_accounts.sql",
+            "migrations/embed.go"
+          ]
+        ]
+      },
+      "trust_leak": {
+        "service": "backend",
+        "custom_certificates_distinguished_from_standard": true,
+        "custom_pem_material_absent": true,
+        "full_bundle_absent": true,
+        "custom_secret_source_path_absent": true,
+        "standard_path_alias_not_a_leak": true,
+        "secret_target_paths_absent": true,
+        "actual_proxy_values_absent": true,
+        "all_runtime_layer_files_and_config_checked": true,
+        "standard_runtime_trust_retained": true
+      },
+      "publish": {
+        "service": "backend",
+        "identity": "synthetic run 1 attempt 2; not GitHub CI",
+        "real_source_scan": true,
+        "local_record": {
+          "archiveSha256": "c5340de7ca3693f4b56e125897844db2a805db29cbc674afe2a90c1e9cbb562c",
+          "configDigest": "sha256:1fda00a69e6669ab96bbf7b1a2263c65a212a45a009fd35a257e51984eba8a57",
+          "createdAt": "2026-10-11T19:43:42.006447+00:00",
+          "dbUpdatedAt": "2026-10-11T19:06:46.711696344Z",
+          "deploymentAuthorized": false,
+          "imageDigest": "sha256:2cdae3621e70c392d03c43072b0443d5a3c96bffe98b28d929cab8273ab82f3b",
+          "imagePolicyPassed": true,
+          "imageRepository": "ghcr.io/syuhei0519/backend-app",
+          "imageScanSha256": "d70ad213b4ccd54fb6f3aa43169e0cb47fcdf8e86f1bcec660ddd2ab4cbf3bbb",
+          "isolatedRuntimePassed": true,
+          "published": false,
+          "repository": "syuhei0519/backend-app",
+          "runAttempt": 2,
+          "runId": 1,
+          "sbomSha256": "361d9cc2c6e681f08787e95e8d2d7a2b9a8f946c3ab4b6646aeb7f6f70f34a54",
+          "sbomValidated": true,
+          "scannedAt": "2026-10-11T19:43:36.31965264Z",
+          "schema": "core-platform/github-release/v1",
+          "sourceCommit": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+          "sourcePolicyPassed": true,
+          "sourceScanSha256": "faf2ebe5fb5b3a5f4fd36d7e32ea32151819e2f3ae95d2c1b28f67cc3c47ff92",
+          "validUntil": "2026-10-12T19:06:46.711696+00:00",
+          "workflowRef": "syuhei0519/backend-app/.github/workflows/ci.yml@refs/heads/main"
+        },
+        "mocked_published_record": {
+          "archiveSha256": "c5340de7ca3693f4b56e125897844db2a805db29cbc674afe2a90c1e9cbb562c",
+          "configDigest": "sha256:1fda00a69e6669ab96bbf7b1a2263c65a212a45a009fd35a257e51984eba8a57",
+          "createdAt": "2026-10-11T19:43:42.006447+00:00",
+          "dbUpdatedAt": "2026-10-11T19:06:46.711696344Z",
+          "deploymentAuthorized": false,
+          "imageDigest": "sha256:2cdae3621e70c392d03c43072b0443d5a3c96bffe98b28d929cab8273ab82f3b",
+          "imagePolicyPassed": true,
+          "imageRepository": "ghcr.io/syuhei0519/backend-app",
+          "imageScanSha256": "d70ad213b4ccd54fb6f3aa43169e0cb47fcdf8e86f1bcec660ddd2ab4cbf3bbb",
+          "isolatedRuntimePassed": true,
+          "protectedMain": true,
+          "published": true,
+          "repository": "syuhei0519/backend-app",
+          "runAttempt": 2,
+          "runId": 1,
+          "sbomSha256": "361d9cc2c6e681f08787e95e8d2d7a2b9a8f946c3ab4b6646aeb7f6f70f34a54",
+          "sbomValidated": true,
+          "scannedAt": "2026-10-11T19:43:36.31965264Z",
+          "schema": "core-platform/github-release/v1",
+          "sourceCommit": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+          "sourcePolicyPassed": true,
+          "sourceScanSha256": "faf2ebe5fb5b3a5f4fd36d7e32ea32151819e2f3ae95d2c1b28f67cc3c47ff92",
+          "validUntil": "2026-10-12T19:06:46.711696+00:00",
+          "workflowRef": "syuhei0519/backend-app/.github/workflows/ci.yml@refs/heads/main"
+        },
+        "actual_registry_or_github_writes": false,
+        "fixed_consumers": [
+          "M0",
+          "M1"
+        ],
+        "same_original_archive": true,
+        "negative_tampering_rejected": [
+          ".oci/image.tar",
+          ".security/public/sbom.cdx.json",
+          ".security/public/image-scan.json"
+        ],
+        "real_local_validator_calls": 1,
+        "rebuild": false
+      }
+    },
+    "order": {
+      "chain": {
+        "service": "order",
+        "head": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+        "archive_sha256": "44b7b7bde3b40ce272e8ce22a8d147fc7a2ee742b261c0100fdfea608e208f56",
+        "oci_digest": "sha256:233c447648d0ddce42f8274c2f05e64539ddb732a1af7f1049cb13fcebabde9e",
+        "config_digest": "sha256:f9bbd7acc81e667fc2fb3e4409787943512abe91ad8a567cdc1432b4c1e8d01e",
+        "reader": "passed",
+        "runtime": "passed",
+        "scan": "passed",
+        "sbom": "passed",
+        "original_archive_unchanged": true,
+        "actual_publish": false
+      },
+      "scan_identity": {
+        "archiveSha256": "44b7b7bde3b40ce272e8ce22a8d147fc7a2ee742b261c0100fdfea608e208f56",
+        "configDigest": "sha256:f9bbd7acc81e667fc2fb3e4409787943512abe91ad8a567cdc1432b4c1e8d01e",
+        "imageDigest": "sha256:233c447648d0ddce42f8274c2f05e64539ddb732a1af7f1049cb13fcebabde9e",
+        "repository": "syuhei0519/backend-app",
+        "runAttempt": 2,
+        "runId": 1,
+        "service": "order",
+        "sourceCommit": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+        "sourceScanSha256": "faf2ebe5fb5b3a5f4fd36d7e32ea32151819e2f3ae95d2c1b28f67cc3c47ff92"
+      },
+      "raw_scan_config_matches": true,
+      "raw_scan_sha256": "4eb94ee297bbbacfe88c6c80de96adeca56dbb2e7ddc3b7c990e4cb7ce533941",
+      "scan_summary_sha256": "510e506a6d9f2e0639d2d53658960eaa140b4977ba25cd02d3ef7fbc14766905",
+      "sbom_proof": {
+        "componentCount": 15,
+        "configDigest": "sha256:f9bbd7acc81e667fc2fb3e4409787943512abe91ad8a567cdc1432b4c1e8d01e",
+        "format": "CycloneDX",
+        "rawScanSha256": "[private raw fingerprint omitted from public measurement derivative]",
+        "scannedPackageCount": 13,
+        "sha256": "0da7171f2d14caa0b1ed8c85afeca6aea6ea68a79a15ca30ffda1709286751aa",
+        "specVersion": "1.7"
+      },
+      "transport": {
+        "service": "order",
+        "config_bytes_equal": true,
+        "layers": [
+          {
+            "compressed_digest": "sha256:a5789fc40e828c4e7467626e3f69ec5dea8e5da22fe660db8ae6d16f777b0bbf",
+            "uncompressed_digest": "sha256:7223ea1323e8c1159ec17f07d35acc27bdd1cc2bc3ed425b44ef21dac9915db0",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:990a9c434e5e0f11549a8d4a41a1991e621b04e30cd63269adbc97b1dc38fd7e",
+            "uncompressed_digest": "sha256:8fa10c0194df9b7c054c90dbe482585f768a54428fc90a5b78a0066a123b1bba",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:39dc083afc39bd8dc43d456fe7ff7d39292e593bb2769972c11bb2e5f9119386",
+            "uncompressed_digest": "sha256:35b5ba6e08cdd034b8d1920f9c7203e5d66f258e1915f164a01de0af14f34710",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:bf7a4185f01524837d19abde915ffde84e64368b250f5b5e9f6f75aea62a11d4",
+            "uncompressed_digest": "sha256:114dde0fefebbca13165d0da9c500a66190e497a82a53dcaabc3172d630be1e9",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:2780920e5dbfbe103d03a583ed75345306e572ec5a48cb10361f046767d9f29a",
+            "uncompressed_digest": "sha256:4d049f83d9cf21d1f5cc0e11deaf36df02790d0e60c1a3829538fb4b61685368",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212",
+            "uncompressed_digest": "sha256:af5aa97ebe6ce1604747ec1e21af7136ded391bcabe4acef882e718a87c86bcc",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:3214acf345c0cc6bbdb56b698a41ccdefc624a09d6beb0d38b5de0b2303ecaf4",
+            "uncompressed_digest": "sha256:6f1cdceb6a3146f0ccb986521156bef8a422cdbb0863396f7f751f575ba308f4",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:52630fc75a18675c530ed9eba5f55eca09b03e91bd5bc15307918bbc1a7e7296",
+            "uncompressed_digest": "sha256:bd3cdfae1d3fdd83a2231d608969b38b82349777c2fff9a7c12d54f8ac5c9b38",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:dd64bf2dd177757451a98fcdc999a339c35dee5d9872d8f4dc69c8f3c4dd0112",
+            "uncompressed_digest": "sha256:4cde6b0bb6f50a5f255eef7b2a42162c661cf776b803225dcac9a659e396bb6b",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:b839dfae01f66e15c6a8b63520557ed315bdfe036342fa7a0c537259f10d7a9a",
+            "uncompressed_digest": "sha256:ad51d0769d16ba578106a177987dfe3d2e02c1668c852b795b2f6b024068242a",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:dcaa5a89b0ccda4b283e16d0b4d0891cd93d5fe05c6798f7806781a6a2d84354",
+            "uncompressed_digest": "sha256:6e7fbcf090d09b73a4aa85f9dce690d0ace73877c150b7c56955487b6e7a822a",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:96ed2737ae312e0bc637b40783f7c2f23416cb72ca957aa01855f1614278e64b",
+            "uncompressed_digest": "sha256:5904c32f457c96a16c8c68f5ccdf518c8138cd9e5971de9ce6d564fc481af222",
+            "exact_bytes": true
+          },
+          {
+            "compressed_digest": "sha256:e3daa98cc8f222683518ceff1c2e4018e05dc6ebf68299914e8664e556ed21fa",
+            "uncompressed_digest": "sha256:7d740ed56636407e6acd0de8054103f79e195adee6f38d7ea639efeeedc9919f",
+            "exact_bytes": true
+          }
+        ],
+        "loaded_id": "sha256:f9bbd7acc81e667fc2fb3e4409787943512abe91ad8a567cdc1432b4c1e8d01e",
+        "container_image": "sha256:f9bbd7acc81e667fc2fb3e4409787943512abe91ad8a567cdc1432b4c1e8d01e",
+        "read_only": true,
+        "cap_drop": [
+          "ALL"
+        ],
+        "security_opt": [
+          "no-new-privileges"
+        ],
+        "user": "10001:10001",
+        "wrong_digest_rejected": true,
+        "real_runtime_result": {
+          "archiveSha256": "44b7b7bde3b40ce272e8ce22a8d147fc7a2ee742b261c0100fdfea608e208f56",
+          "capDrop": "ALL",
+          "configDigest": "sha256:f9bbd7acc81e667fc2fb3e4409787943512abe91ad8a567cdc1432b4c1e8d01e",
+          "digest": "sha256:233c447648d0ddce42f8274c2f05e64539ddb732a1af7f1049cb13fcebabde9e",
+          "network": "internal",
+          "passed": true,
+          "readOnly": true,
+          "service": "order"
+        }
+      },
+      "independent_oci_inspection": {
+        "service": "order",
+        "archive_size": 8831488,
+        "archive_sha256": "44b7b7bde3b40ce272e8ce22a8d147fc7a2ee742b261c0100fdfea608e208f56",
+        "descriptors": [
+          {
+            "digest": "sha256:233c447648d0ddce42f8274c2f05e64539ddb732a1af7f1049cb13fcebabde9e",
+            "size": 2747
+          },
+          {
+            "digest": "sha256:f9bbd7acc81e667fc2fb3e4409787943512abe91ad8a567cdc1432b4c1e8d01e",
+            "size": 3680
+          },
+          {
+            "digest": "sha256:a5789fc40e828c4e7467626e3f69ec5dea8e5da22fe660db8ae6d16f777b0bbf",
+            "size": 83900
+          },
+          {
+            "digest": "sha256:990a9c434e5e0f11549a8d4a41a1991e621b04e30cd63269adbc97b1dc38fd7e",
+            "size": 12481
+          },
+          {
+            "digest": "sha256:39dc083afc39bd8dc43d456fe7ff7d39292e593bb2769972c11bb2e5f9119386",
+            "size": 445709
+          },
+          {
+            "digest": "sha256:bf7a4185f01524837d19abde915ffde84e64368b250f5b5e9f6f75aea62a11d4",
+            "size": 29005
+          },
+          {
+            "digest": "sha256:2780920e5dbfbe103d03a583ed75345306e572ec5a48cb10361f046767d9f29a",
+            "size": 67
+          },
+          {
+            "digest": "sha256:7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212",
+            "size": 188
+          },
+          {
+            "digest": "sha256:3214acf345c0cc6bbdb56b698a41ccdefc624a09d6beb0d38b5de0b2303ecaf4",
+            "size": 123
+          },
+          {
+            "digest": "sha256:52630fc75a18675c530ed9eba5f55eca09b03e91bd5bc15307918bbc1a7e7296",
+            "size": 162
+          },
+          {
+            "digest": "sha256:dd64bf2dd177757451a98fcdc999a339c35dee5d9872d8f4dc69c8f3c4dd0112",
+            "size": 80
+          },
+          {
+            "digest": "sha256:b839dfae01f66e15c6a8b63520557ed315bdfe036342fa7a0c537259f10d7a9a",
+            "size": 351
+          },
+          {
+            "digest": "sha256:dcaa5a89b0ccda4b283e16d0b4d0891cd93d5fe05c6798f7806781a6a2d84354",
+            "size": 314
+          },
+          {
+            "digest": "sha256:96ed2737ae312e0bc637b40783f7c2f23416cb72ca957aa01855f1614278e64b",
+            "size": 143347
+          },
+          {
+            "digest": "sha256:e3daa98cc8f222683518ceff1c2e4018e05dc6ebf68299914e8664e556ed21fa",
+            "size": 8093544
+          }
+        ],
+        "runtime_user": "10001:10001",
+        "stamp_present": true,
+        "secret_paths_absent": true,
+        "bundle_bytes_absent": true,
+        "custom_trust_env_absent": true,
+        "application_layer_entries": [
+          [
+            "order-server"
+          ]
+        ]
+      },
+      "trust_leak": {
+        "service": "order",
+        "custom_certificates_distinguished_from_standard": true,
+        "custom_pem_material_absent": true,
+        "full_bundle_absent": true,
+        "custom_secret_source_path_absent": true,
+        "standard_path_alias_not_a_leak": true,
+        "secret_target_paths_absent": true,
+        "actual_proxy_values_absent": true,
+        "all_runtime_layer_files_and_config_checked": true,
+        "standard_runtime_trust_retained": true
+      },
+      "publish": {
+        "service": "order",
+        "identity": "synthetic run 1 attempt 2; not GitHub CI",
+        "real_source_scan": true,
+        "local_record": {
+          "archiveSha256": "44b7b7bde3b40ce272e8ce22a8d147fc7a2ee742b261c0100fdfea608e208f56",
+          "configDigest": "sha256:f9bbd7acc81e667fc2fb3e4409787943512abe91ad8a567cdc1432b4c1e8d01e",
+          "createdAt": "2026-10-11T19:44:10.297993+00:00",
+          "dbUpdatedAt": "2026-10-11T19:06:46.711696344Z",
+          "deploymentAuthorized": false,
+          "imageDigest": "sha256:233c447648d0ddce42f8274c2f05e64539ddb732a1af7f1049cb13fcebabde9e",
+          "imagePolicyPassed": true,
+          "imageRepository": "ghcr.io/syuhei0519/backend-app-order",
+          "imageScanSha256": "510e506a6d9f2e0639d2d53658960eaa140b4977ba25cd02d3ef7fbc14766905",
+          "isolatedRuntimePassed": true,
+          "published": false,
+          "repository": "syuhei0519/backend-app",
+          "runAttempt": 2,
+          "runId": 1,
+          "sbomSha256": "0da7171f2d14caa0b1ed8c85afeca6aea6ea68a79a15ca30ffda1709286751aa",
+          "sbomValidated": true,
+          "scannedAt": "2026-10-11T19:44:05.888698743Z",
+          "schema": "core-platform/github-release/v2",
+          "service": "order",
+          "sourceCommit": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+          "sourcePolicyPassed": true,
+          "sourceScanSha256": "faf2ebe5fb5b3a5f4fd36d7e32ea32151819e2f3ae95d2c1b28f67cc3c47ff92",
+          "validUntil": "2026-10-12T19:06:46.711696+00:00",
+          "workflowRef": "syuhei0519/backend-app/.github/workflows/ci.yml@refs/heads/main"
+        },
+        "mocked_published_record": {
+          "archiveSha256": "44b7b7bde3b40ce272e8ce22a8d147fc7a2ee742b261c0100fdfea608e208f56",
+          "configDigest": "sha256:f9bbd7acc81e667fc2fb3e4409787943512abe91ad8a567cdc1432b4c1e8d01e",
+          "createdAt": "2026-10-11T19:44:10.297993+00:00",
+          "dbUpdatedAt": "2026-10-11T19:06:46.711696344Z",
+          "deploymentAuthorized": false,
+          "imageDigest": "sha256:233c447648d0ddce42f8274c2f05e64539ddb732a1af7f1049cb13fcebabde9e",
+          "imagePolicyPassed": true,
+          "imageRepository": "ghcr.io/syuhei0519/backend-app-order",
+          "imageScanSha256": "510e506a6d9f2e0639d2d53658960eaa140b4977ba25cd02d3ef7fbc14766905",
+          "isolatedRuntimePassed": true,
+          "protectedMain": true,
+          "published": true,
+          "repository": "syuhei0519/backend-app",
+          "runAttempt": 2,
+          "runId": 1,
+          "sbomSha256": "0da7171f2d14caa0b1ed8c85afeca6aea6ea68a79a15ca30ffda1709286751aa",
+          "sbomValidated": true,
+          "scannedAt": "2026-10-11T19:44:05.888698743Z",
+          "schema": "core-platform/github-release/v2",
+          "service": "order",
+          "sourceCommit": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+          "sourcePolicyPassed": true,
+          "sourceScanSha256": "faf2ebe5fb5b3a5f4fd36d7e32ea32151819e2f3ae95d2c1b28f67cc3c47ff92",
+          "validUntil": "2026-10-12T19:06:46.711696+00:00",
+          "workflowRef": "syuhei0519/backend-app/.github/workflows/ci.yml@refs/heads/main"
+        },
+        "actual_registry_or_github_writes": false,
+        "fixed_consumers": [
+          "M0",
+          "M1"
+        ],
+        "same_original_archive": true,
+        "negative_tampering_rejected": [
+          ".oci/image.tar",
+          ".security/public/sbom.cdx.json",
+          ".security/public/image-scan.json"
+        ],
+        "real_local_validator_calls": 1,
+        "rebuild": false
+      }
+    }
+  },
+  "worker_mode": [
+    {
+      "snapshotter": "native",
+      "process_mode": "sandbox",
+      "labels": [
+        "org.mobyproject.buildkit.worker.oci.process-mode:\tsandbox",
+        "org.mobyproject.buildkit.worker.snapshotter:\t\tnative"
+      ]
+    }
+  ],
+  "public_nonleak": [
+    {
+      "service": "backend",
+      "public_files_checked": 10,
+      "existing_trust_bundle_pem_proxy_credentials_absent": true
+    },
+    {
+      "service": "order",
+      "public_files_checked": 10,
+      "existing_trust_bundle_pem_proxy_credentials_absent": true
+    }
+  ],
+  "cold_trust": [
+    {
+      "mode": "valid",
+      "service": "backend",
+      "dockerfile": "Dockerfile",
+      "started_at": "2026-10-11T19:40:14Z",
+      "ended_at": "2026-10-11T19:42:08Z",
+      "exit_code": 0,
+      "size": 15378432,
+      "sha256": "c5340de7ca3693f4b56e125897844db2a805db29cbc674afe2a90c1e9cbb562c",
+      "dependency_run_cached": false,
+      "observation": "passed",
+      "worker_boundary": {
+        "network": "bridge",
+        "privileged": false,
+        "cap_add": null,
+        "user": "1000:1000",
+        "apparmor": "",
+        "security_opt": [
+          "seccomp=unconfined"
+        ],
+        "masked_paths": [],
+        "readonly_paths": []
+      }
+    },
+    {
+      "mode": "valid",
+      "service": "order",
+      "dockerfile": "Dockerfile.order",
+      "started_at": "2026-10-11T19:42:08Z",
+      "ended_at": "2026-10-11T19:42:57Z",
+      "exit_code": 0,
+      "size": 8831488,
+      "sha256": "44b7b7bde3b40ce272e8ce22a8d147fc7a2ee742b261c0100fdfea608e208f56",
+      "dependency_run_cached": false,
+      "observation": "passed",
+      "worker_boundary": {
+        "network": "bridge",
+        "privileged": false,
+        "cap_add": null,
+        "user": "1000:1000",
+        "apparmor": "",
+        "security_opt": [
+          "seccomp=unconfined"
+        ],
+        "masked_paths": [],
+        "readonly_paths": []
+      }
+    },
+    {
+      "mode": "missing",
+      "service": "backend",
+      "dockerfile": "Dockerfile",
+      "started_at": "2026-10-11T19:43:17Z",
+      "ended_at": "2026-10-11T19:44:05Z",
+      "exit_code": 1,
+      "dependency_run_cached": false,
+      "observation": "TLS issuer refused",
+      "worker_boundary": {
+        "network": "bridge",
+        "privileged": false,
+        "cap_add": null,
+        "user": "1000:1000",
+        "apparmor": "",
+        "security_opt": [
+          "seccomp=unconfined"
+        ],
+        "masked_paths": [],
+        "readonly_paths": []
+      }
+    },
+    {
+      "mode": "missing",
+      "service": "order",
+      "dockerfile": "Dockerfile.order",
+      "started_at": "2026-10-11T19:44:05Z",
+      "ended_at": "2026-10-11T19:44:14Z",
+      "exit_code": 1,
+      "dependency_run_cached": false,
+      "observation": "TLS issuer refused",
+      "worker_boundary": {
+        "network": "bridge",
+        "privileged": false,
+        "cap_add": null,
+        "user": "1000:1000",
+        "apparmor": "",
+        "security_opt": [
+          "seccomp=unconfined"
+        ],
+        "masked_paths": [],
+        "readonly_paths": []
+      }
+    },
+    {
+      "mode": "empty",
+      "service": "backend",
+      "dockerfile": "Dockerfile",
+      "started_at": "2026-10-11T19:44:23Z",
+      "ended_at": "2026-10-11T19:45:12Z",
+      "exit_code": 1,
+      "dependency_run_cached": false,
+      "observation": "empty bundle refused",
+      "worker_boundary": {
+        "network": "bridge",
+        "privileged": false,
+        "cap_add": null,
+        "user": "1000:1000",
+        "apparmor": "",
+        "security_opt": [
+          "seccomp=unconfined"
+        ],
+        "masked_paths": [],
+        "readonly_paths": []
+      }
+    },
+    {
+      "mode": "empty",
+      "service": "order",
+      "dockerfile": "Dockerfile.order",
+      "started_at": "2026-10-11T19:45:12Z",
+      "ended_at": "2026-10-11T19:45:22Z",
+      "exit_code": 1,
+      "dependency_run_cached": false,
+      "observation": "empty bundle refused",
+      "worker_boundary": {
+        "network": "bridge",
+        "privileged": false,
+        "cap_add": null,
+        "user": "1000:1000",
+        "apparmor": "",
+        "security_opt": [
+          "seccomp=unconfined"
+        ],
+        "masked_paths": [],
+        "readonly_paths": []
+      }
+    },
+    {
+      "mode": "invalid",
+      "service": "backend",
+      "dockerfile": "Dockerfile",
+      "started_at": "2026-10-11T19:45:30Z",
+      "ended_at": "2026-10-11T19:46:20Z",
+      "exit_code": 1,
+      "dependency_run_cached": false,
+      "observation": "TLS issuer refused",
+      "worker_boundary": {
+        "network": "bridge",
+        "privileged": false,
+        "cap_add": null,
+        "user": "1000:1000",
+        "apparmor": "",
+        "security_opt": [
+          "seccomp=unconfined"
+        ],
+        "masked_paths": [],
+        "readonly_paths": []
+      }
+    },
+    {
+      "mode": "invalid",
+      "service": "order",
+      "dockerfile": "Dockerfile.order",
+      "started_at": "2026-10-11T19:46:20Z",
+      "ended_at": "2026-10-11T19:46:31Z",
+      "exit_code": 1,
+      "dependency_run_cached": false,
+      "observation": "TLS issuer refused",
+      "worker_boundary": {
+        "network": "bridge",
+        "privileged": false,
+        "cap_add": null,
+        "user": "1000:1000",
+        "apparmor": "",
+        "security_opt": [
+          "seccomp=unconfined"
+        ],
+        "masked_paths": [],
+        "readonly_paths": []
+      }
+    },
+    {
+      "mode": "nonexistent",
+      "service": "backend",
+      "dockerfile": "Dockerfile",
+      "started_at": "2026-10-11T19:46:39Z",
+      "ended_at": "2026-10-11T19:46:39Z",
+      "exit_code": 1,
+      "dependency_run_cached": false,
+      "observation": "missing secret source refused",
+      "worker_boundary": {
+        "network": "bridge",
+        "privileged": false,
+        "cap_add": null,
+        "user": "1000:1000",
+        "apparmor": "",
+        "security_opt": [
+          "seccomp=unconfined"
+        ],
+        "masked_paths": [],
+        "readonly_paths": []
+      }
+    },
+    {
+      "mode": "nonexistent",
+      "service": "order",
+      "dockerfile": "Dockerfile.order",
+      "started_at": "2026-10-11T19:46:39Z",
+      "ended_at": "2026-10-11T19:46:39Z",
+      "exit_code": 1,
+      "dependency_run_cached": false,
+      "observation": "missing secret source refused",
+      "worker_boundary": {
+        "network": "bridge",
+        "privileged": false,
+        "cap_add": null,
+        "user": "1000:1000",
+        "apparmor": "",
+        "security_opt": [
+          "seccomp=unconfined"
+        ],
+        "masked_paths": [],
+        "readonly_paths": []
+      }
+    }
+  ],
+  "consumers": {
+    "checks": [
+      {
+        "consumer": "m0",
+        "service": "backend",
+        "real_producer_record_accepted": true,
+        "negative_cases": 9,
+        "actual_values_checked": true
+      },
+      {
+        "consumer": "m1",
+        "service": "backend",
+        "real_producer_record_accepted": true,
+        "negative_cases": 9,
+        "actual_values_checked": true
+      },
+      {
+        "consumer": "m0",
+        "service": "order",
+        "real_producer_record_accepted": true,
+        "negative_cases": 11,
+        "actual_values_checked": false
+      },
+      {
+        "consumer": "m1",
+        "service": "order",
+        "real_producer_record_accepted": true,
+        "negative_cases": 11,
+        "actual_values_checked": true
+      }
+    ],
+    "publication_transport": "mock only; actual OCI and policy inputs"
+  },
+  "scope": {
+    "head": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+    "base": "2d3b2feff46ddd8d7091e6b4b5e95355c9bf34d0",
+    "pr_files": [
+      {
+        "path": ".github/workflows/ci.yml",
+        "size": 9101,
+        "sha256": "80c7f6d38e692956c702435250cf0879553d7a409b58cd4ae7d28be04bc4b34a"
+      },
+      {
+        "path": "Dockerfile",
+        "size": 1672,
+        "sha256": "dc34d001b4451e4059c89b28861187a87e98875138370b0c2b1dd318c26e19d6"
+      },
+      {
+        "path": "Dockerfile.order",
+        "size": 1654,
+        "sha256": "febd4bd227fc7cd520f25b467fbe2820142751f1daec040a1c56585f8e24206f"
+      },
+      {
+        "path": "ci/github/build-ca_test.py",
+        "size": 3894,
+        "sha256": "93e4d3f2ae9863eb92e0bacefd060636611eb735436295f419fb504ae444a687"
+      },
+      {
+        "path": "ci/github/fixtures/m0/SOURCE.json",
+        "size": 1040,
+        "sha256": "6227a28f67b7dad407b91bd60b9a093baebc98d87e80f0cb17bdb588c95e1bb7"
+      },
+      {
+        "path": "ci/github/fixtures/m0/fixtures/backend-record.json",
+        "size": 1121,
+        "sha256": "00f2602021a21c553b546083352a50936b10b923b03c39c8218c210d3c8bc4a7"
+      },
+      {
+        "path": "ci/github/fixtures/m0/fixtures/image-scan.json",
+        "size": 14,
+        "sha256": "63b684854bd4961bcb515b09823ea700dda69135486c5e11352bb1d7850f534e"
+      },
+      {
+        "path": "ci/github/fixtures/m0/fixtures/order-config.json",
+        "size": 248,
+        "sha256": "8bd06c0e86671a7e7f8d56d6ff80bf56db6e753ff45357ca5d1a21e5a8f680ea"
+      },
+      {
+        "path": "ci/github/fixtures/m0/fixtures/order-manifest.json",
+        "size": 153,
+        "sha256": "0578ef8eb4991f3b8db3ad3bfe3bb58501962e0ea97449d5feec6cd346d82768"
+      },
+      {
+        "path": "ci/github/fixtures/m0/fixtures/order-record.json",
+        "size": 1145,
+        "sha256": "a3a2b0472fe51d96614406d85fd89748eb8c255c45ebbfd21cfdde57e0968eb5"
+      },
+      {
+        "path": "ci/github/fixtures/m0/fixtures/sbom.cdx.json",
+        "size": 154,
+        "sha256": "b9104ba1eba76b6b080694eb4eb1717e38d5d9b7dbe4469e50acbfd756c5ca56"
+      },
+      {
+        "path": "ci/github/fixtures/m0/order-release.schema.json",
+        "size": 2574,
+        "sha256": "2bdc572d5e2ac6f694a1658b27d36ead6abdb44bcfb9eb284b47f74979468f92"
+      },
+      {
+        "path": "ci/github/fixtures/m0/release.py",
+        "size": 30677,
+        "sha256": "ed2630b8b3fe3a18a6de2c0ce55dcbe494f7d20414d672326d7e524b30903867"
+      },
+      {
+        "path": "ci/github/fixtures/m0/release_test.py",
+        "size": 18881,
+        "sha256": "c23078874ec77fb06a54525a4cb4f2a702a7758fe833f396174fc53fd77a4d86"
+      },
+      {
+        "path": "ci/github/image-policy.py",
+        "size": 3120,
+        "sha256": "f82434d7480ae9f111f7bb8a25b47a26a54b7b9e56a3724e1b3c6614df04cd3a"
+      },
+      {
+        "path": "ci/github/image-policy_test.py",
+        "size": 4188,
+        "sha256": "4021d3865768b521c989002a396a3db1fdba439e44a95585303104c45a60e818"
+      },
+      {
+        "path": "ci/github/matrix-result.py",
+        "size": 2742,
+        "sha256": "b0a9a108e4d57aed4e90a9db1c3429e20f6e0803d4aa1c9cc7e4007759c60240"
+      },
+      {
+        "path": "ci/github/oci.sh",
+        "size": 2621,
+        "sha256": "16639f70a599f16df7fb695bb9cfd3d1e77fd7a7ddb976d9bd1ca6cde436b7ac"
+      },
+      {
+        "path": "ci/github/order-release.schema.json",
+        "size": 2574,
+        "sha256": "2bdc572d5e2ac6f694a1658b27d36ead6abdb44bcfb9eb284b47f74979468f92"
+      },
+      {
+        "path": "ci/github/order-release_test.py",
+        "size": 17422,
+        "sha256": "616e8a98720fe2a5b565bebc281aeb4590683e792ea7bb47b37b83d9a59731e9"
+      },
+      {
+        "path": "ci/github/release.py",
+        "size": 31007,
+        "sha256": "f79bd6d75c20dabf6b212c541b3e218f4579f481b770a822edcb71d72bb1d807"
+      },
+      {
+        "path": "ci/github/runtime.py",
+        "size": 5393,
+        "sha256": "20078aea273e96aba3152dd7c15fbecfd4e0f3e4d7aeeaff2c8e51ceeabd92e3"
+      },
+      {
+        "path": "ci/github/source-identity.py",
+        "size": 598,
+        "sha256": "87f724a7339189fe1d2c8f037a02a4671f4d2a047f9fd83ab65f4e06b033fcec"
+      },
+      {
+        "path": "ci/github/test.sh",
+        "size": 1626,
+        "sha256": "28315a5e64f0b5056c1d6ab2dd22a4339617e7910d9042461943f9c9a1610f18"
+      },
+      {
+        "path": "cmd/order-server/main.go",
+        "size": 2453,
+        "sha256": "895f647192a4278c6ee394d31a4c999a94e0d84ba8893ef1f121de873083c7df"
+      },
+      {
+        "path": "docs/order-image-ci.md",
+        "size": 8803,
+        "sha256": "aa9298e8fc64f6bda430def9e8d83f6a4056ddb4820a00f162d8f95d14469552"
+      },
+      {
+        "path": "tools/oci-input/cmd/oci-runtime-export/main.go",
+        "size": 1211,
+        "sha256": "90fb22c6b5a61ab1593447cece0c9fe5f47fe5d2715892e8183d086b9b99ea4f"
+      },
+      {
+        "path": "tools/oci-input/cmd/oci-runtime-export/main_test.go",
+        "size": 406,
+        "sha256": "aeb9b91f22c01432e4f32c37ffc658c2d7883772429b53d70aa20768f12a0ec7"
+      }
+    ],
+    "protected_code_sql_migrations_lockfiles_unchanged": true,
+    "repair_changes_only_scan_binding_tests_docs": true,
+    "pristine_context_files": 215,
+    "pristine_context_exact": true,
+    "m0_vendored_source_bytes_verified": true,
+    "tree": "8d12e8e2b9c4571b4a8a4eb325f7b95abbd56b41",
+    "validator_go_sources_unchanged_between_measured_revisions": true
+  },
+  "deployment_impact": {
+    "p0_before": "b989e29b8addbd6396c5c2b4833b969bc15fc8fa",
+    "p0_current": "482ba450983ac2929f8176374d0d6ca50a69cac6",
+    "rendered_workloads_equal": true,
+    "registered_applications": 3,
+    "order_registered": false,
+    "account_desired_values_equal_m0_m1": true,
+    "order_m1_enabled": false,
+    "render_sha256": "9cef846f6fe747121cdf87b4a611e48cb165113f800b2b31c0b556905905e7d5",
+    "deployment_effect": "none for inspected backend-only change and fixed desired digests; external automation and live cluster unobserved"
+  },
+  "ci": [
+    {
+      "id": 38168998238,
+      "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/38168998238",
+      "run_attempt": 1,
+      "created_at": "2026-10-11T19:40:14Z",
+      "updated_at": "2026-10-11T19:45:52Z",
+      "jobs": [
+        {
+          "id": 114557526817,
+          "name": "classify",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 114557543965,
+          "name": "validate",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 114557544752,
+          "name": "docs",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 114557958870,
+          "name": "image (backend)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 114557958960,
+          "name": "image (order)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 114558554311,
+          "name": "ci-result",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 114558589839,
+          "name": "propose",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 114558590157,
+          "name": "publish",
+          "status": "completed",
+          "conclusion": "skipped"
+        }
+      ]
+    },
+    {
+      "id": 38169002804,
+      "head_sha": "24083aba485abd6b37bcbe71736fb543a847dcc6",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/38169002804",
+      "run_attempt": 1,
+      "created_at": "2026-10-11T19:40:17Z",
+      "updated_at": "2026-10-11T19:46:14Z",
+      "jobs": [
+        {
+          "id": 114557496663,
+          "name": "classify",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 114557515972,
+          "name": "validate",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 114557517118,
+          "name": "docs",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 114558091459,
+          "name": "image (backend)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 114558091483,
+          "name": "image (order)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 114558634372,
+          "name": "ci-result",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 114558667887,
+          "name": "publish",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "id": 114558668283,
+          "name": "propose",
+          "status": "completed",
+          "conclusion": "skipped"
+        }
+      ]
+    }
+  ],
+  "history": {
+    "execution": "epoch1 attempt3; prior attempt1/2 and failed Review1 unchanged",
+    "test_deadline_immutable": "2026-10-11T19:27:15Z",
+    "delivery": "At original execution completion delivery was held after all three old slots were consumed. Later delivery-only renewal does not reset that history or reexecute implementation."
+  },
+  "unverified": [
+    "new independent Test",
+    "new independent Review",
+    "actual GHCR",
+    "kind",
+    "live cluster Service/Synced/Healthy/imageID",
+    "whole Issue completion"
+  ],
+  "artifact_publication": "public_safe edited derivative; prior private execution result retained",
+  "publication_note": "Reviewed public edited derivative of completed Implementation self-verification; delivery-only preparation, no new measurement. Private originals retained; no private-original equivalence certification."
+}
