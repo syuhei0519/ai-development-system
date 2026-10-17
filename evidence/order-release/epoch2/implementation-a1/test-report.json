@@ -1,0 +1,37 @@
+{
+  "environment": "Writable temporary Go build cache and existing module cache; no permission/trust modifications.",
+  "head": "c3d249698dfcdbc1c5f76885b9e76bab6d76ecd5",
+  "independent": false,
+  "producer": "order-release-implementation-e2a1",
+  "results": [
+    {
+      "command": "go test -count=1 -v -run '^(TestDBUpdatedAtNotDownloadedAt|TestDBRejectionDiagnostics|TestDBFreshnessBoundary)$' .",
+      "directory": "tools/scan-gate",
+      "exit_code": 0,
+      "seconds": 0.004,
+      "subtests": 10,
+      "tests": 3
+    },
+    {
+      "command": "go test -count=1 -v ./cmd/source-db-observation",
+      "directory": "tools/oci-input",
+      "exit_code": 0,
+      "seconds": 0.003,
+      "subtests": 2,
+      "tests": 2
+    },
+    {
+      "command": "python3 -I ci/github/source-db-observation_test.py -v",
+      "directory": ".",
+      "exit_code": 0,
+      "seconds": 0.033,
+      "tests": 3
+    },
+    {
+      "command": "sh -n ci/source-scan.sh; bash -n ci/github/source-scan.sh; git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "scope": "Focused tests with deterministic synthetic metadata and fake registry/scanner; no local real scan, DB download, application/image/kind suites.",
+  "toolchain": "go1.27.1 linux/amd64"
+}

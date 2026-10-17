@@ -1,0 +1,205 @@
+{
+  "changed_paths": [
+    "ci/github/source-db-observation_test.py",
+    "ci/github/source-scan.sh",
+    "ci/github/test.sh",
+    "ci/source-scan.sh",
+    "tools/oci-input/cmd/source-db-observation/main.go",
+    "tools/oci-input/cmd/source-db-observation/main_test.go"
+  ],
+  "ci": [
+    {
+      "jobs": [
+        {
+          "conclusion": "success",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39050568155/job/117448123210",
+          "id": 117448123210,
+          "name": "classify",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39050568155/job/117448148242",
+          "id": 117448148242,
+          "name": "validate",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39050568155/job/117448149583",
+          "id": 117448149583,
+          "name": "docs",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39050568155/job/117448639849",
+          "id": 117448639849,
+          "name": "ci-result",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39050568155/job/117448641232",
+          "id": 117448641232,
+          "name": "image",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39050568155/job/117448671888",
+          "id": 117448671888,
+          "name": "propose",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39050568155/job/117448672129",
+          "id": 117448672129,
+          "name": "publish",
+          "status": "completed"
+        }
+      ],
+      "run": {
+        "conclusion": "failure",
+        "event": "pull_request",
+        "head_sha": "c3d249698dfcdbc1c5f76885b9e76bab6d76ecd5",
+        "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39050568155",
+        "id": 39050568155,
+        "run_attempt": 1,
+        "status": "completed"
+      }
+    },
+    {
+      "jobs": [
+        {
+          "conclusion": "success",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39050565454/job/117448115048",
+          "id": 117448115048,
+          "name": "classify",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39050565454/job/117448134605",
+          "id": 117448134605,
+          "name": "validate",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39050565454/job/117448135588",
+          "id": 117448135588,
+          "name": "docs",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39050565454/job/117448643637",
+          "id": 117448643637,
+          "name": "ci-result",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39050565454/job/117448644684",
+          "id": 117448644684,
+          "name": "image",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39050565454/job/117448672813",
+          "id": 117448672813,
+          "name": "propose",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39050565454/job/117448672825",
+          "id": 117448672825,
+          "name": "publish",
+          "status": "completed"
+        }
+      ],
+      "run": {
+        "conclusion": "failure",
+        "event": "push",
+        "head_sha": "c3d249698dfcdbc1c5f76885b9e76bab6d76ecd5",
+        "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39050565454",
+        "id": 39050565454,
+        "run_attempt": 1,
+        "status": "completed"
+      }
+    }
+  ],
+  "current_review": "Prior independent Review applies only to df6e6cf; new commit not independently reviewed.",
+  "delivery_repair": "Old manifest/receipt and original payload remain unchanged. New manifest must bind all nine prior structural slots plus new Handoff slots. Manager consumption authorization remains pending; template grants no authority.",
+  "digest_limit": "registryTagDigest is sampled after download; it is not proof of the mutable tag or digest consumed by Trivy. Selected source is extracted only from successful fixed-tool log lines for the two approved repositories.",
+  "epoch": 2,
+  "execution_attempt": 1,
+  "flag_state": "Owner-reported ENABLE_GHCR_PUBLISH removed and ENABLE_MANIFEST_PR unset; not API-observed; no variables writes/probes.",
+  "formal_release_allowance": "Consumed in epoch1 attempt2; no manual CI rerun or publication in epoch2. One necessary commit/push only; native push and pull_request events triggered normal CI.",
+  "implementation": "Retain safe DB acquisition/cache/source/tag-digest/metadata snapshot in existing source-scan public artifact; original freshness gate and repository selection untouched. Existing pinned dependency and scanner only.",
+  "limits": {
+    "delivery": 1,
+    "execution": 1
+  },
+  "new_ci_observation": {
+    "age_seconds": "142243.048536751",
+    "artifact": {
+      "connector_download": "success: reusable ZIP reference returned",
+      "id": 12107167733,
+      "local_transfer": "URLError; subsequent DNS-only check of transfer host failed with EAI_AGAIN (-3), Temporary failure in name resolution. No repeated transfer or bypass; ZIP bytes not verified locally.",
+      "name": "security-results-1",
+      "size": 746,
+      "zip_sha256": "a29bd2b3d5b6e259ab973706d34c7a215eb4d3a6f739daf5bd9f126158665d33"
+    },
+    "gate_diagnostics": [
+      {
+        "maxAgeHours": 24,
+        "observedAt": "2026-10-17T16:44:37.995627143Z",
+        "reason": "expired",
+        "updatedAt": "2026-10-16T01:13:54.947090392Z",
+        "version": 2
+      }
+    ],
+    "head": "c3d249698dfcdbc1c5f76885b9e76bab6d76ecd5",
+    "job_id": 117448148242,
+    "run_id": 39050568155,
+    "source_and_digest": "New observer is wired to retain these fields in the existing artifact; actual ZIP members/values not inspected due to local transfer failure."
+  },
+  "next_action": "Stop for Manager evaluation; no further execution or delivery retries under the bounded epoch without Manager decision.",
+  "observed_at": "2026-10-17T16:46:45.570097+00:00",
+  "pr": {
+    "base": "d48a97851619912e7efc80c470912907ce965dc7",
+    "draft": true,
+    "head": "c3d249698dfcdbc1c5f76885b9e76bab6d76ecd5",
+    "previous_reviewed_head": "df6e6cfce592400349d42435ee2e45a87e9f17e9",
+    "tree": "27057ae33ecc19a9afe4678de92802795f7fc1ea",
+    "url": "https://github.com/syuhei0519/backend-app/pull/47"
+  },
+  "prior_epoch": {
+    "attempt1": "blocked variables access",
+    "attempt2": "failed main run 38722315079 attempt2",
+    "attempt3": "failed PR run 39048861317 attempt1, precise stale DB metadata; prior code Review passed exact previous head, delivery lacked nine bindings",
+    "history_preserved": "All prior Handoff and referenced payload bytes retained under prior-epoch1-a3; no history reset.",
+    "id": 1,
+    "terminal": "RETRY_LIMIT_REACHED"
+  },
+  "prior_inspection": {
+    "old_logs": "quiet acquisition log was private and removed; selected source/digest unavailable",
+    "repository_setting": "mutable :2 tags, GHCR then public ECR",
+    "selection_bug": "not_established; no speculative source/cache repair",
+    "workflow_cache_restore": "none found; setup-go cache=false; no tracked .cache DB files"
+  },
+  "readiness": "Merge and Issue completion not claimed; current CI, independent review and Manager assessment remain separate.",
+  "runtime": {
+    "effort": "unverified",
+    "model": "unverified",
+    "usage": "unverified"
+  },
+  "scope": "backend-app#34/order-release",
+  "system_revision": "3394bb069be64bdc43e057b251fc320302d185f6",
+  "uncertain_write_handling": "gh pr edit failed on deprecated GraphQL projectCards; REST read verified unchanged description; REST PATCH then verified exact updated body."
+}

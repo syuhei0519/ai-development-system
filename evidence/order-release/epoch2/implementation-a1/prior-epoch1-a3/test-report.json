@@ -1,0 +1,30 @@
+{
+  "command": "GOCACHE=/tmp/order-release-a3-go-build GOMODCACHE=/workspace/.cloud-setup/go-mod-cache /workspace/.cloud-setup/go/bin/go test -count=1 -v -run '^(TestDBUpdatedAtNotDownloadedAt|TestDBRejectionDiagnostics|TestDBFreshnessBoundary)$' .",
+  "diff_check": "git diff --check exit 0",
+  "directory": "tools/scan-gate",
+  "exit_code": 0,
+  "go_version": "go1.27.1 linux/amd64",
+  "head": "df6e6cfce592400349d42435ee2e45a87e9f17e9",
+  "independent": false,
+  "initial_environment_issue": "Default build cache path was read-only; selected writable temporary build cache before tests ran. No permissions changed.",
+  "producer": "order-release-implementation-a3",
+  "result": "PASS; ok core-platform/scan-gate 0.005s",
+  "scope": "Only focused DB unit tests locally; no application/image/kind suite, scan or extra workflow.",
+  "tests": {
+    "TestDBFreshnessBoundary": {
+      "-1ns": "pass",
+      "0s": "pass",
+      "23h59m59.999999999s": "pass",
+      "24h0m0.000000001s": "pass",
+      "24h0m0s": "pass"
+    },
+    "TestDBRejectionDiagnostics": {
+      "expired_despite_download": "pass",
+      "future": "pass",
+      "missing": "pass",
+      "version": "pass",
+      "zero": "pass"
+    },
+    "TestDBUpdatedAtNotDownloadedAt": "pass"
+  }
+}

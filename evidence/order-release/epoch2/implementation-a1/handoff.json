@@ -1,0 +1,172 @@
+{
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "artifact_ids": [
+        "execution-report"
+      ],
+      "disposition": "unverified",
+      "evidence_ids": [
+        "bounded-change"
+      ],
+      "scope": "backend-app#34/order-release"
+    },
+    {
+      "ac_id": "AC-2",
+      "artifact_ids": [
+        "execution-report"
+      ],
+      "disposition": "unverified",
+      "evidence_ids": [
+        "bounded-change"
+      ],
+      "scope": "backend-app#34/order-release"
+    },
+    {
+      "ac_id": "AC-3",
+      "artifact_ids": [
+        "execution-report"
+      ],
+      "disposition": "unverified",
+      "evidence_ids": [
+        "bounded-change"
+      ],
+      "scope": "backend-app#34/order-release"
+    },
+    {
+      "ac_id": "AC-4",
+      "artifact_ids": [
+        "execution-report"
+      ],
+      "disposition": "unverified",
+      "evidence_ids": [
+        "bounded-change"
+      ],
+      "scope": "backend-app#34/order-release"
+    },
+    {
+      "ac_id": "AC-5",
+      "artifact_ids": [
+        "execution-report"
+      ],
+      "disposition": "unverified",
+      "evidence_ids": [
+        "bounded-change"
+      ],
+      "scope": "backend-app#34/order-release"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "execution-report",
+      "kind": "other",
+      "locator": "execution-report.json",
+      "revision": "sha256:72de9a427bb3670f7cecf55ad7209e62786da49e5999eff3f18ac4db5522c329",
+      "summary": "Bounded epoch2 implementation evidence at c3d249698dfcdbc1c5f76885b9e76bab6d76ecd5"
+    },
+    {
+      "id": "focused-tests",
+      "kind": "test-report",
+      "locator": "test-report.json",
+      "revision": "sha256:fdbf687723fbebdf127501bf7753563e0aee2132df5ca67783b8fa328a0a97fe",
+      "summary": "Bounded epoch2 implementation evidence at c3d249698dfcdbc1c5f76885b9e76bab6d76ecd5"
+    },
+    {
+      "id": "patch",
+      "kind": "patch",
+      "locator": "change.patch",
+      "revision": "sha256:0ca2c669cdd3534f5e93caa54d47432e8f4a88a1ef0cb244caba2d687c08d3f0",
+      "summary": "Bounded epoch2 implementation evidence at c3d249698dfcdbc1c5f76885b9e76bab6d76ecd5"
+    }
+  ],
+  "assignment": {
+    "ac_ids": [
+      "AC-1",
+      "AC-2",
+      "AC-3",
+      "AC-4",
+      "AC-5"
+    ],
+    "completion_criteria": [
+      "Formal Order publication through existing Environment approval",
+      "Immutable digest and release record/SBOM/scan/source/run/attempt verification",
+      "Preserve Account paired delivery",
+      "Minimal fixed evidence and Handoff2.0 delivery"
+    ],
+    "scope": "backend-app#34/order-release"
+  },
+  "attempt": 1,
+  "block_reasons": [
+    {
+      "code": "RETRY_LIMIT_REACHED",
+      "detail": "Epoch 2 authorized one implementation execution and one delivery repair only. This execution is consumed; original epoch1 attempts remain terminal and unchanged. Product release AC and Manager authorization remain unresolved.",
+      "required_action": "Manager inspects CI/provenance and corrected delivery validation, completes and privately pins a separate consumption authorization if appropriate, and decides next action. No further execution, rerun, merge, publication or deployment from this handoff."
+    }
+  ],
+  "evidence": [
+    {
+      "artifact_ids": [
+        "execution-report",
+        "focused-tests",
+        "patch"
+      ],
+      "claim": "DB provenance observation implementation and focused verification; original acceptance gate preserved.",
+      "id": "bounded-change",
+      "locator": "execution-report.json",
+      "observation": "No source-selection bug inferred, no freshness/TLS/credential/permission change; new code review, CI and delivery evaluation remain separate."
+    }
+  ],
+  "failure_reasons": [
+    "Current-head PR CI failed; preserve exact new observation and stop, no rerun."
+  ],
+  "issue": {
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "source": "https://github.com/syuhei0519/backend-app/issues/34",
+        "verbatim": "Order Imageが正式なGHCR artifactとして公開されている"
+      },
+      {
+        "id": "AC-2",
+        "source": "https://github.com/syuhei0519/backend-app/issues/34",
+        "verbatim": "immutable digestが取得できている"
+      },
+      {
+        "id": "AC-3",
+        "source": "https://github.com/syuhei0519/backend-app/issues/34",
+        "verbatim": "release recordとdigestが対応している"
+      },
+      {
+        "id": "AC-4",
+        "source": "https://github.com/syuhei0519/backend-app/issues/34",
+        "verbatim": "SBOM / scan証跡が対象Imageと対応している"
+      },
+      {
+        "id": "AC-5",
+        "source": "https://github.com/syuhei0519/backend-app/issues/34",
+        "verbatim": "Account既存配信経路を破壊していない"
+      }
+    ],
+    "id": "syuhei0519/backend-app#34",
+    "source": "https://github.com/syuhei0519/backend-app/issues/34",
+    "title": "app-order-release-publish"
+  },
+  "knowledge_candidates": [],
+  "publication": "public_safe",
+  "role": "implementation",
+  "schema_version": "2.0",
+  "status": "failed",
+  "summary": "Epoch 2 bounded DB provenance/metadata implementation and focused tests complete; Draft PR #47 updated once. Product AC remain unverified. Corrected structural delivery bindings prepared; independent Manager consumption authorization pending.",
+  "system_status": "failed",
+  "task_id": "order-release-implementation-e2a1",
+  "upstream": [
+    {
+      "attempt": 3,
+      "handoff_locator": "prior-epoch1-a3/handoff.json",
+      "relationship": "dependency",
+      "revision": "sha256:2b050a9a9412a543cc773ce8aa017292f8330dd8027781370be63f290d26aa0e",
+      "role": "implementation",
+      "task_id": "order-release-implementation-a3"
+    }
+  ]
+}

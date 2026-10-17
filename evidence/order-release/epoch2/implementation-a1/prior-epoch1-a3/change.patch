@@ -1,0 +1,139 @@
+diff --git a/tools/scan-gate/policy.go b/tools/scan-gate/policy.go
+index da7eeff..55d1aa4 100644
+--- a/tools/scan-gate/policy.go
++++ b/tools/scan-gate/policy.go
+@@ -35,6 +35,22 @@ type DB struct {
+ 	Version   int
+ 	UpdatedAt time.Time
+ }
++
++// DBRejection contains only typed, allowlisted metadata, never raw scanner input.
++type DBRejection struct {
++	Reason      string `json:"reason"`
++	Version     int    `json:"version"`
++	UpdatedAt   string `json:"updatedAt"`
++	ObservedAt  string `json:"observedAt"`
++	MaxAgeHours int    `json:"maxAgeHours"`
++}
++
++func (e *DBRejection) Error() string {
++	// These string/int fields cannot fail JSON encoding.
++	data, _ := json.Marshal(e)
++	return "DB rejected: " + string(data)
++}
++
+ type Vulnerability struct{ VulnerabilityID, PkgName, InstalledVersion, FixedVersion, Severity string }
+ type Secret struct{ RuleID, Severity string }
+ type Misconfiguration struct{ ID, Severity, Status string }
+@@ -198,8 +214,23 @@ func evaluateInput(policyData, dbData, reportData []byte, now time.Time, configD
+ 	if err := decode(dbData, &db, false); err != nil {
+ 		return s, err
+ 	}
+-	if db.Version != 2 || db.UpdatedAt.IsZero() || db.UpdatedAt.After(now) || now.Sub(db.UpdatedAt) > 24*time.Hour {
+-		return s, errors.New("DB unknown, future, or expired")
++	var dbReason string
++	switch {
++	case db.Version != 2:
++		dbReason = "unsupported_version"
++	case db.UpdatedAt.IsZero():
++		dbReason = "missing_updated_at"
++	case db.UpdatedAt.After(now):
++		dbReason = "future_updated_at"
++	case now.Sub(db.UpdatedAt) > 24*time.Hour:
++		dbReason = "expired"
++	}
++	if dbReason != "" {
++		return s, &DBRejection{
++			Reason: dbReason, Version: db.Version,
++			UpdatedAt:  db.UpdatedAt.UTC().Format(time.RFC3339Nano),
++			ObservedAt: now.UTC().Format(time.RFC3339Nano), MaxAgeHours: 24,
++		}
+ 	}
+ 	if err := decode(reportData, &r, false); err != nil {
+ 		return s, err
+diff --git a/tools/scan-gate/policy_test.go b/tools/scan-gate/policy_test.go
+index 7f8e536..943877e 100644
+--- a/tools/scan-gate/policy_test.go
++++ b/tools/scan-gate/policy_test.go
+@@ -2,6 +2,7 @@ package main
+ 
+ import (
+ 	"encoding/json"
++	"errors"
+ 	"strings"
+ 	"testing"
+ 	"time"
+@@ -47,6 +48,73 @@ func TestDBUpdatedAtNotDownloadedAt(t *testing.T) {
+ 		}
+ 	}
+ }
++
++func TestDBRejectionDiagnostics(t *testing.T) {
++	const sentinel = "DO_NOT_EXPORT_DB_METADATA_48216"
++	for _, c := range []struct {
++		name, metadata, reason, updatedAt string
++		version                           int
++	}{
++		{"version", `{"Version":1,"UpdatedAt":"2026-10-02T19:00:00Z"}`, "unsupported_version", "2026-10-02T19:00:00Z", 1},
++		{"missing", `{"Version":2}`, "missing_updated_at", "0001-01-01T00:00:00Z", 2},
++		{"zero", `{"Version":2,"UpdatedAt":"0001-01-01T00:00:00Z"}`, "missing_updated_at", "0001-01-01T00:00:00Z", 2},
++		{"future", `{"Version":2,"UpdatedAt":"2026-10-03T06:00:00+09:00"}`, "future_updated_at", "2026-10-02T21:00:00Z", 2},
++		{"expired_despite_download", `{"Version":2,"UpdatedAt":"2026-10-01T19:00:00Z","DownloadedAt":"2026-10-02T19:59:00Z"}`, "expired", "2026-10-01T19:00:00Z", 2},
++	} {
++		t.Run(c.name, func(t *testing.T) {
++			// Arbitrary unknown metadata must never appear in the diagnostic.
++			input := strings.TrimSuffix(c.metadata, "}") + `,"Private":"` + sentinel + `"}`
++			_, err := evaluate(policy, []byte(input), report(""), at.In(time.FixedZone("offset", 9*60*60)))
++			var rejection *DBRejection
++			if !errors.As(err, &rejection) {
++				t.Fatalf("expected typed DB rejection, got %v", err)
++			}
++			want := DBRejection{Reason: c.reason, Version: c.version, UpdatedAt: c.updatedAt, ObservedAt: "2026-10-02T20:00:00Z", MaxAgeHours: 24}
++			if *rejection != want {
++				t.Fatalf("unexpected diagnostic: %+v", rejection)
++			}
++			message := err.Error()
++			var fields map[string]json.RawMessage
++			if !strings.HasPrefix(message, "DB rejected: ") || json.Unmarshal([]byte(strings.TrimPrefix(message, "DB rejected: ")), &fields) != nil || len(fields) != 5 {
++				t.Fatalf("expected only five safe JSON fields: %s", message)
++			}
++			var emitted DBRejection
++			if json.Unmarshal([]byte(strings.TrimPrefix(message, "DB rejected: ")), &emitted) != nil || emitted != want || strings.Contains(message, sentinel) || strings.Contains(message, "DownloadedAt") {
++				t.Fatal("diagnostic lost typed values or exposed arbitrary metadata")
++			}
++		})
++	}
++}
++
++func TestDBFreshnessBoundary(t *testing.T) {
++	for _, age := range []time.Duration{0, 24*time.Hour - time.Nanosecond, 24 * time.Hour, 24*time.Hour + time.Nanosecond, -time.Nanosecond} {
++		t.Run(age.String(), func(t *testing.T) {
++			input, err := json.Marshal(struct {
++				Version      int
++				UpdatedAt    time.Time
++				DownloadedAt time.Time
++			}{2, at.Add(-age), at})
++			if err != nil {
++				t.Fatal(err)
++			}
++			s, err := evaluate(policy, input, report(""), at)
++			if age >= 0 && age <= 24*time.Hour {
++				if err != nil || !s.Pass {
++					t.Fatalf("valid DB boundary rejected: %v", err)
++				}
++			} else {
++				var rejection *DBRejection
++				want := "expired"
++				if age < 0 {
++					want = "future_updated_at"
++				}
++				if !errors.As(err, &rejection) || rejection.Reason != want {
++					t.Fatalf("invalid DB boundary accepted or misclassified: %v", err)
++				}
++			}
++		})
++	}
++}
+ func TestStrictExceptionScopeAndExpiry(t *testing.T) {
+ 	valid := `{"id":"test-only","kind":"secret","rule":"fixture-rule","package":"","path":"ci/fixtures/example.txt","owner":"Lab operator","reason":"safe synthetic test","createdAt":"2026-10-02T19:00:00Z","expiresAt":"2026-10-03T19:00:00Z"}`
+ 	makePolicy := func(e string) []byte {

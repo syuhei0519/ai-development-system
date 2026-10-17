@@ -1,0 +1,151 @@
+{
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "artifact_ids": [
+        "preflight"
+      ],
+      "disposition": "unverified",
+      "evidence_ids": [
+        "preflight-stop"
+      ],
+      "scope": "backend-app#34/order-release"
+    },
+    {
+      "ac_id": "AC-2",
+      "artifact_ids": [
+        "preflight"
+      ],
+      "disposition": "unverified",
+      "evidence_ids": [
+        "preflight-stop"
+      ],
+      "scope": "backend-app#34/order-release"
+    },
+    {
+      "ac_id": "AC-3",
+      "artifact_ids": [
+        "preflight"
+      ],
+      "disposition": "unverified",
+      "evidence_ids": [
+        "preflight-stop"
+      ],
+      "scope": "backend-app#34/order-release"
+    },
+    {
+      "ac_id": "AC-4",
+      "artifact_ids": [
+        "preflight"
+      ],
+      "disposition": "unverified",
+      "evidence_ids": [
+        "preflight-stop"
+      ],
+      "scope": "backend-app#34/order-release"
+    },
+    {
+      "ac_id": "AC-5",
+      "artifact_ids": [
+        "preflight"
+      ],
+      "disposition": "unverified",
+      "evidence_ids": [
+        "preflight-stop"
+      ],
+      "scope": "backend-app#34/order-release"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "preflight",
+      "kind": "other",
+      "locator": "preflight.json",
+      "revision": "sha256:60bf8e70d813e3b5636e3d4db2c5bee6006852ba880931daab150372c6a6dc6b",
+      "summary": "Public derivative of attempt 2 rerun and pending gate metadata; prior attempt preserved byte for byte."
+    }
+  ],
+  "assignment": {
+    "ac_ids": [
+      "AC-1",
+      "AC-2",
+      "AC-3",
+      "AC-4",
+      "AC-5"
+    ],
+    "completion_criteria": [
+      "Formal Order publication through existing Environment approval",
+      "Immutable digest and release record/SBOM/scan/source/run/attempt verification",
+      "Preserve Account paired delivery",
+      "Minimal fixed evidence and Handoff2.0 delivery"
+    ],
+    "scope": "backend-app#34/order-release"
+  },
+  "attempt": 2,
+  "block_reasons": [],
+  "evidence": [
+    {
+      "artifact_ids": [
+        "preflight"
+      ],
+      "claim": "Attempt 2 terminated with failure at validate: Source and rendered security checks. image, publish and propose skipped; no pending owner gate.",
+      "id": "preflight-stop",
+      "locator": "preflight.json",
+      "observation": "Exactly one all-jobs rerun initiated; owner-reported flags kept separate from API observations; no gate approved by agent."
+    }
+  ],
+  "failure_reasons": [
+    "Attempt 2 terminated with failure at validate: Source and rendered security checks. image, publish and propose skipped; no pending owner gate.",
+    "Underlying scan reason not verified: artifact storage and log reads unavailable through existing gh route. Manager must inspect the failing step and request owner UI deletion of temporary ENABLE_GHCR_PUBLISH. No further CI rerun authorized."
+  ],
+  "issue": {
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "source": "https://github.com/syuhei0519/backend-app/issues/34",
+        "verbatim": "Order Imageが正式なGHCR artifactとして公開されている"
+      },
+      {
+        "id": "AC-2",
+        "source": "https://github.com/syuhei0519/backend-app/issues/34",
+        "verbatim": "immutable digestが取得できている"
+      },
+      {
+        "id": "AC-3",
+        "source": "https://github.com/syuhei0519/backend-app/issues/34",
+        "verbatim": "release recordとdigestが対応している"
+      },
+      {
+        "id": "AC-4",
+        "source": "https://github.com/syuhei0519/backend-app/issues/34",
+        "verbatim": "SBOM / scan証跡が対象Imageと対応している"
+      },
+      {
+        "id": "AC-5",
+        "source": "https://github.com/syuhei0519/backend-app/issues/34",
+        "verbatim": "Account既存配信経路を破壊していない"
+      }
+    ],
+    "id": "syuhei0519/backend-app#34",
+    "source": "https://github.com/syuhei0519/backend-app/issues/34",
+    "title": "app-order-release-publish"
+  },
+  "knowledge_candidates": [],
+  "publication": "public_safe",
+  "role": "implementation",
+  "schema_version": "2.0",
+  "status": "failed",
+  "summary": "Attempt 2 terminated with failure at validate: Source and rendered security checks. image, publish and propose skipped; no pending owner gate.",
+  "system_status": "failed",
+  "task_id": "order-release-implementation-a2",
+  "upstream": [
+    {
+      "attempt": 1,
+      "handoff_locator": "prior-a1/handoff.json",
+      "relationship": "retry_of",
+      "revision": "sha256:f9f856f53277378db64226ff674d4ba423a7c9624b1ba5755a907fe73e2a3316",
+      "role": "implementation",
+      "task_id": "order-release-implementation-a1"
+    }
+  ]
+}

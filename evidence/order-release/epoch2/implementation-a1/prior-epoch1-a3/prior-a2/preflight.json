@@ -1,0 +1,104 @@
+{
+  "account_path": "Existing backend/order matrix retained; paired publication not yet verified",
+  "epoch": 1,
+  "execution_attempt": 2,
+  "failure_detail": {
+    "artifact_download": "HTTP 403 from artifact storage; no credential or permission changes attempted",
+    "checked_image_artifacts_generated": false,
+    "failed_step": "Source and rendered security checks",
+    "job_id": 117431027762,
+    "retry_policy": "Single authorized rerun consumed; no further rerun or repair loop performed.",
+    "security_results_artifact": {
+      "bytes_retrieved": false,
+      "digest": "sha256:11bcac55aa694ce6ab7fa9f29493fc64e3f68fb3afa31631b80687c9ddfdb0f8",
+      "id": 12105481249,
+      "name": "security-results-2",
+      "size": 212
+    },
+    "underlying_scan_reason": "unverified; artifact download and failed log retrieval unavailable through existing gh route"
+  },
+  "feature_flags": {
+    "ENABLE_GHCR_PUBLISH": {
+      "api_observed": false,
+      "current_value": "true",
+      "evidence": "owner_reported_UI_configuration",
+      "original_state": "unset"
+    },
+    "ENABLE_MANIFEST_PR": {
+      "api_observed": false,
+      "evidence": "owner_reported_UI_configuration",
+      "value": "unset"
+    },
+    "api_reprobed": false,
+    "restoration": "not_restored; run_terminated; Manager_must_request_owner_UI_deletion_to_restore_unset",
+    "writes_by_agent": 0
+  },
+  "jobs": [
+    {
+      "conclusion": "success",
+      "name": "classify",
+      "status": "completed"
+    },
+    {
+      "conclusion": "failure",
+      "name": "validate",
+      "status": "completed"
+    },
+    {
+      "conclusion": "skipped",
+      "name": "docs",
+      "status": "completed"
+    },
+    {
+      "conclusion": "failure",
+      "name": "ci-result",
+      "status": "completed"
+    },
+    {
+      "conclusion": "skipped",
+      "name": "image",
+      "status": "completed"
+    },
+    {
+      "conclusion": "skipped",
+      "name": "publish",
+      "status": "completed"
+    },
+    {
+      "conclusion": "skipped",
+      "name": "propose",
+      "status": "completed"
+    }
+  ],
+  "main": {
+    "protected": true,
+    "sha": "d48a97851619912e7efc80c470912907ce965dc7"
+  },
+  "observed_at": "2026-10-17T15:25:45.536850+00:00",
+  "old_artifact_reuse": false,
+  "operations": {
+    "all_jobs_rerun_requests": 1,
+    "application_changes": 0,
+    "environment_approvals_by_agent": 0,
+    "manifest_changes": 0
+  },
+  "pending_environments": [],
+  "publication_validation": "not_performed; publish skipped; no digest/release/SBOM/scan success claimed",
+  "run": {
+    "conclusion": "failure",
+    "event": "push",
+    "head_branch": "main",
+    "head_sha": "d48a97851619912e7efc80c470912907ce965dc7",
+    "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/38722315079",
+    "id": 38722315079,
+    "run_attempt": 2,
+    "status": "completed"
+  },
+  "runtime": {
+    "effort": "unverified",
+    "model": "unverified",
+    "usage": "unverified"
+  },
+  "scope": "backend-app#34/order-release",
+  "status": "failed"
+}

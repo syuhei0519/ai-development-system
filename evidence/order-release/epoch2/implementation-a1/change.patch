@@ -1,0 +1,352 @@
+diff --git a/ci/github/source-db-observation_test.py b/ci/github/source-db-observation_test.py
+new file mode 100644
+index 0000000..eb176af
+--- /dev/null
++++ b/ci/github/source-db-observation_test.py
+@@ -0,0 +1,79 @@
++"""Source-scan wiring only; fake tools, no network or real scan."""
++import json
++import os
++from pathlib import Path
++import subprocess
++import tempfile
++import unittest
++
++SOURCE = Path(__file__).resolve().parents[1] / 'source-scan.sh'
++
++
++class DBObservationWiring(unittest.TestCase):
++    def run_source(self, cached=False, download_failure=False, observation_failure=False, gate_exit=1):
++        with tempfile.TemporaryDirectory() as temp:
++            root = Path(temp)
++            (root / 'bin').mkdir()
++            (root / '.security').mkdir()
++            def script(path, text):
++                path.write_text('#!/bin/sh\n' + text)
++                path.chmod(0o700)
++            script(root / 'bin/git', 'exit 0\n')
++            script(root / 'bin/tar', 'exit 0\n')
++            script(root / 'bin/sleep', 'exit 0\n')
++            script(root / 'bin/trivy', '''
++printf '%s\n' "$*" >> calls
++if [ "$1" = image ]; then
++  if [ "$DOWNLOAD_FAILURE" = true ]; then exit 1; fi
++  mkdir -p .cache/trivy/db
++  printf '%s\n' '{"Version":2,"UpdatedAt":"2026-10-16T01:00:00Z"}' > .cache/trivy/db/metadata.json
++  echo 'INFO Artifact successfully downloaded repo="ghcr.io/aquasecurity/trivy-db:2"'
++else
++  printf '%s\n' '{}' > .security/private/raw.json
++fi
++''')
++            script(root / '.security/scan-gate', f'exit {gate_exit}\n')
++            script(root / '.security/source-db-observation', '''
++printf '%s\n' "$*" > observation-args
++if [ "$OBSERVATION_FAILURE" = true ]; then exit 1; fi
++printf '%s\n' '{"sourceStatus":"fixture","metadata":{"gateReason":"expired"}}'
++''')
++            if cached:
++                (root / '.cache/trivy/db').mkdir(parents=True)
++                (root / '.cache/trivy/db/metadata.json').write_text('{}')
++            env = {**os.environ, 'PATH': str(root/'bin') + ':' + os.environ['PATH'],
++                   'DOWNLOAD_FAILURE': str(download_failure).lower(),
++                   'OBSERVATION_FAILURE': str(observation_failure).lower(),
++                   'SECURITY_RENDER_REQUIRED': 'false', 'AT11_CASE': ''}
++            result = subprocess.run(['sh', str(SOURCE)], cwd=root, env=env, capture_output=True)
++            self.assertFalse((root / '.security/private').exists())
++            calls = (root / 'calls').read_text().splitlines()
++            args = (root / 'observation-args').read_text().strip()
++            observation = (root / '.security/public/db-observation.json').read_bytes()
++            return result.returncode, calls, args, observation
++
++    def test_gate_failure_retains_observation(self):
++        code, calls, args, raw = self.run_source()
++        self.assertEqual(code, 1)
++        self.assertEqual(len(calls), 2)
++        self.assertIn('--db-repository ghcr.io/aquasecurity/trivy-db:2 --db-repository public.ecr.aws/aquasecurity/trivy-db:2', calls[0])
++        self.assertNotIn('--quiet', calls[0])
++        self.assertIn('--skip-db-update', calls[1])
++        self.assertEqual(args, '-cache-metadata-existed=false')
++        self.assertEqual(json.loads(raw)['metadata']['gateReason'], 'expired')
++
++    def test_download_failure_retains_cache_observation_without_scan(self):
++        code, calls, args, raw = self.run_source(cached=True, download_failure=True)
++        self.assertEqual(code, 2)
++        self.assertEqual(len(calls), 2)  # Existing bounded transport retry only.
++        self.assertTrue(all(c.startswith('image --download-db-only ') for c in calls))
++        self.assertEqual(args, '-cache-metadata-existed=true')
++        self.assertTrue(raw)
++
++    def test_optional_observation_does_not_change_gate_acceptance(self):
++        code, _, _, _ = self.run_source(observation_failure=True, gate_exit=0)
++        self.assertEqual(code, 0)
++
++
++if __name__ == '__main__':
++    unittest.main()
+diff --git a/ci/github/source-scan.sh b/ci/github/source-scan.sh
+index 7973844..451776f 100644
+--- a/ci/github/source-scan.sh
++++ b/ci/github/source-scan.sh
+@@ -1,6 +1,7 @@
+ #!/usr/bin/env bash
+ set -euo pipefail
+ # Checkout credentials are not persisted. Only the work tree is mounted.
++(cd tools/oci-input; CGO_ENABLED=0 go build -trimpath -o ../../.security/source-db-observation ./cmd/source-db-observation)
+ docker run --rm --user "$(id -u):$(id -g)" -e HOME=/tmp \
+   -v "$PWD:/work" -w /work -e SECURITY_RENDER_REQUIRED="${SECURITY_RENDER_REQUIRED:-false}" \
+   --entrypoint sh aquasec/trivy:0.75.0@sha256:9db099105405c648166e6b94155eb32f8da12673cf1f455207f7385cc9a77283 -ec 'git config --global --add safe.directory /work; sh ci/source-scan.sh'
+diff --git a/ci/github/test.sh b/ci/github/test.sh
+index 7c5b95c..16986f4 100644
+--- a/ci/github/test.sh
++++ b/ci/github/test.sh
+@@ -38,3 +38,4 @@ python3 -I ci/github/fixtures/m0/release_test.py
+ python3 -I ci/github/build-ca_test.py
+ 
+ python3 -I ci/github/image-policy_test.py
++python3 -I ci/github/source-db-observation_test.py
+diff --git a/ci/source-scan.sh b/ci/source-scan.sh
+index f6540cc..b535166 100644
+--- a/ci/source-scan.sh
++++ b/ci/source-scan.sh
+@@ -10,17 +10,28 @@ git archive --format=tar HEAD > .security/private/source.tar
+ tar -xf .security/private/source.tar -C .security/source
+ scanner_exit=0
+ : > .security/private/empty-ignore
++db_cache_present=false
++if [ -f .cache/trivy/db/metadata.json ]; then db_cache_present=true; fi
++observe_db() {
++  # Optional outside GitHub; GitHub builds this pinned-dependency helper first.
++  # Only safe typed metadata is retained. Private download logs are still removed.
++  if [ -x .security/source-db-observation ]; then
++    .security/source-db-observation -cache-metadata-existed="$db_cache_present" > .security/public/db-observation.json || echo 'DB observation unavailable' >&2
++  fi
++}
+ attempt=0
+ while :; do
+   attempt=$((attempt + 1))
+-  if trivy image --download-db-only --db-repository ghcr.io/aquasecurity/trivy-db:2 --db-repository public.ecr.aws/aquasecurity/trivy-db:2 --cache-dir .cache/trivy --timeout 5m --quiet > .security/private/db.log 2>&1; then break; fi
++  if trivy image --download-db-only --db-repository ghcr.io/aquasecurity/trivy-db:2 --db-repository public.ecr.aws/aquasecurity/trivy-db:2 --cache-dir .cache/trivy --timeout 5m > .security/private/db.log 2>&1; then break; fi
+   if [ "$attempt" -ge 2 ]; then
+     printf '%s\n' '{"pass":false,"reason":"scanner DB retrieval unavailable"}' > .security/public/failure.json
+     echo 'Security DB retrieval failed; no delivery permitted' >&2
++    observe_db
+     exit 2
+   fi
+   sleep 2
+ done
++observe_db
+ db_input=.cache/trivy/db/metadata.json
+ policy_input=security/scan-policy.json
+ scan_timeout=5m
+diff --git a/tools/oci-input/cmd/source-db-observation/main.go b/tools/oci-input/cmd/source-db-observation/main.go
+new file mode 100644
+index 0000000..798d9e6
+--- /dev/null
++++ b/tools/oci-input/cmd/source-db-observation/main.go
+@@ -0,0 +1,151 @@
++// Records allowlisted source-scan DB diagnostics, never a policy decision.
++package main
++
++import (
++	"bufio"
++	"context"
++	"encoding/json"
++	"errors"
++	"flag"
++	"io"
++	"os"
++	"regexp"
++	"strings"
++	"time"
++
++	"github.com/google/go-containerregistry/pkg/authn"
++	"github.com/google/go-containerregistry/pkg/name"
++	"github.com/google/go-containerregistry/pkg/v1/remote"
++)
++
++var repositories = []string{"ghcr.io/aquasecurity/trivy-db:2", "public.ecr.aws/aquasecurity/trivy-db:2"}
++var digestPattern = regexp.MustCompile(`^sha256:[0-9a-f]{64}$`)
++
++type metadata struct {
++	Version      int
++	UpdatedAt    time.Time
++	DownloadedAt time.Time
++}
++
++type safeMetadata struct {
++	Version      int     `json:"version"`
++	UpdatedAt    string  `json:"updatedAt"`
++	DownloadedAt string  `json:"downloadedAt"`
++	AgeSeconds   float64 `json:"ageSeconds"`
++	GateReason   string  `json:"gateReason"`
++}
++
++type observation struct {
++	ObservedAt           string        `json:"observedAt"`
++	CacheMetadataExisted bool          `json:"cacheMetadataExistedBeforeDownload"`
++	MetadataStatus       string        `json:"metadataStatus"`
++	Metadata             *safeMetadata `json:"metadata,omitempty"`
++	MaxAgeHours          int           `json:"maxAgeHours"`
++	DownloadSource       string        `json:"downloadSource,omitempty"`
++	SourceStatus         string        `json:"sourceStatus"`
++	RegistryTagDigest    string        `json:"registryTagDigest,omitempty"`
++	RegistryTagCheckedAt string        `json:"registryTagCheckedAt,omitempty"`
++	DigestStatus         string        `json:"digestStatus"`
++	DigestBinding        string        `json:"digestBinding"`
++}
++
++func selectedSource(log []byte) string {
++	selected := ""
++	scanner := bufio.NewScanner(strings.NewReader(string(log)))
++	for scanner.Scan() {
++		line := scanner.Text()
++		if !strings.Contains(line, "Artifact successfully downloaded") {
++			continue
++		}
++		for _, repo := range repositories {
++			if strings.HasSuffix(strings.TrimSpace(line), `repo="`+repo+`"`) || strings.HasSuffix(strings.TrimSpace(line), "repo="+repo) {
++				if selected != "" {
++					return "" // Ambiguous log; do not invent a selected source.
++				}
++				selected = repo
++			}
++		}
++	}
++	if scanner.Err() != nil {
++		return ""
++	}
++	return selected
++}
++
++func observe(data, log []byte, cached bool, now time.Time, lookup func(string) (string, error)) observation {
++	o := observation{ObservedAt: now.UTC().Format(time.RFC3339Nano), CacheMetadataExisted: cached,
++		MetadataStatus: "unavailable_or_invalid", MaxAgeHours: 24, SourceStatus: "unobserved_or_cache_reused",
++		DigestStatus: "not_observed", DigestBinding: "post-download registry tag observation; not proof of downloaded DB identity"}
++	var m metadata
++	if json.Unmarshal(data, &m) == nil {
++		reason := "pass"
++		switch {
++		case m.Version != 2:
++			reason = "unsupported_version"
++		case m.UpdatedAt.IsZero():
++			reason = "missing_updated_at"
++		case m.UpdatedAt.After(now):
++			reason = "future_updated_at"
++		case now.Sub(m.UpdatedAt) > 24*time.Hour:
++			reason = "expired"
++		}
++		o.MetadataStatus = "decoded"
++		o.Metadata = &safeMetadata{m.Version, m.UpdatedAt.UTC().Format(time.RFC3339Nano),
++			m.DownloadedAt.UTC().Format(time.RFC3339Nano), now.Sub(m.UpdatedAt).Seconds(), reason}
++	}
++	if source := selectedSource(log); source != "" {
++		o.DownloadSource, o.SourceStatus = source, "observed_trivy_download_success"
++		digest, err := lookup(source)
++		o.RegistryTagCheckedAt = time.Now().UTC().Format(time.RFC3339Nano)
++		o.DigestStatus = "registry_lookup_unavailable"
++		if err == nil && digestPattern.MatchString(digest) {
++			o.RegistryTagDigest, o.DigestStatus = digest, "observed_tag_digest"
++		}
++	}
++	return o
++}
++
++func lookup(source string) (string, error) {
++	allowed := false
++	for _, repo := range repositories {
++		allowed = allowed || source == repo
++	}
++	if !allowed {
++		return "", errors.New("unapproved source")
++	}
++	ref, err := name.NewTag(source, name.StrictValidation)
++	if err != nil {
++		return "", err
++	}
++	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
++	defer cancel()
++	desc, err := remote.Head(ref, remote.WithContext(ctx), remote.WithAuth(authn.Anonymous))
++	if err != nil {
++		return "", err
++	}
++	return desc.Digest.String(), nil
++}
++
++func limitedRead(path string) []byte {
++	f, err := os.Open(path)
++	if err != nil {
++		return nil
++	}
++	defer f.Close()
++	b, err := io.ReadAll(io.LimitReader(f, (1<<20)+1))
++	if err != nil || len(b) > 1<<20 {
++		return nil
++	}
++	return b
++}
++
++func main() {
++	db := flag.String("metadata", ".cache/trivy/db/metadata.json", "DB metadata")
++	log := flag.String("download-log", ".security/private/db.log", "private download log")
++	cached := flag.Bool("cache-metadata-existed", false, "metadata existed before download")
++	flag.Parse()
++	o := observe(limitedRead(*db), limitedRead(*log), *cached, time.Now().UTC(), lookup)
++	if json.NewEncoder(os.Stdout).Encode(o) != nil {
++		os.Exit(1)
++	}
++}
+diff --git a/tools/oci-input/cmd/source-db-observation/main_test.go b/tools/oci-input/cmd/source-db-observation/main_test.go
+new file mode 100644
+index 0000000..4515aad
+--- /dev/null
++++ b/tools/oci-input/cmd/source-db-observation/main_test.go
+@@ -0,0 +1,49 @@
++package main
++
++import (
++	"encoding/json"
++	"errors"
++	"strings"
++	"testing"
++	"time"
++)
++
++func TestSourceDBObservation(t *testing.T) {
++	now := time.Date(2026, 10, 17, 16, 0, 0, 0, time.UTC)
++	digest := "sha256:" + strings.Repeat("a", 64)
++	for _, repo := range repositories {
++		t.Run(repo, func(t *testing.T) {
++			calls := 0
++			log := []byte("INFO Failed to download artifact repo=untrusted.invalid/db:2\nINFO Artifact successfully downloaded repo=\"" + repo + "\"\n")
++			o := observe([]byte(`{"Version":2,"UpdatedAt":"2026-10-16T01:00:00Z","DownloadedAt":"2026-10-17T15:59:00Z","Secret":"DO_NOT_EXPORT"}`), log, false, now, func(s string) (string, error) {
++				calls++
++				if s != repo {
++					t.Fatal("wrong source")
++				}
++				return digest, nil
++			})
++			if calls != 1 || o.DownloadSource != repo || o.RegistryTagDigest != digest || o.Metadata.GateReason != "expired" || o.Metadata.AgeSeconds != 39*3600 || o.CacheMetadataExisted {
++				t.Fatalf("wrong observation: %+v", o)
++			}
++			b, _ := json.Marshal(o)
++			if strings.Contains(string(b), "DO_NOT_EXPORT") || strings.Contains(string(b), "untrusted.invalid") || !strings.Contains(o.DigestBinding, "not proof") {
++				t.Fatal("unsafe output or overstated binding")
++			}
++		})
++	}
++}
++
++func TestSourceDBObservationUnknownAndUnavailable(t *testing.T) {
++	now := time.Date(2026, 10, 17, 16, 0, 0, 0, time.UTC)
++	for _, log := range []string{"", "Artifact successfully downloaded repo=https://user:secret@evil.invalid/db:2", "Artifact successfully downloaded repo=" + repositories[0] + "\nArtifact successfully downloaded repo=" + repositories[1]} {
++		o := observe([]byte(`{"Version":2,"UpdatedAt":"2026-10-17T15:00:00Z"}`), []byte(log), true, now, func(string) (string, error) { t.Fatal("unobserved source looked up"); return "", nil })
++		if o.DownloadSource != "" || o.RegistryTagDigest != "" || !o.CacheMetadataExisted || o.Metadata.GateReason != "pass" {
++			t.Fatal("unobserved/cache result invented source")
++		}
++	}
++	o := observe([]byte(`not metadata`), []byte("Artifact successfully downloaded repo="+repositories[0]), false, now, func(string) (string, error) { return "", errors.New("private credential-bearing error") })
++	b, _ := json.Marshal(o)
++	if o.Metadata != nil || o.DigestStatus != "registry_lookup_unavailable" || strings.Contains(string(b), "credential") {
++		t.Fatal("failure leaked input or invented metadata")
++	}
++}

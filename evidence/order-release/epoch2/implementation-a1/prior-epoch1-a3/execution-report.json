@@ -1,0 +1,185 @@
+{
+  "changed_paths": [
+    "tools/scan-gate/policy.go",
+    "tools/scan-gate/policy_test.go"
+  ],
+  "ci": [
+    {
+      "jobs": [
+        {
+          "conclusion": "success",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39048861317/job/117443040550",
+          "id": 117443040550,
+          "name": "classify",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39048861317/job/117443062006",
+          "id": 117443062006,
+          "name": "validate",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39048861317/job/117443063394",
+          "id": 117443063394,
+          "name": "docs",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39048861317/job/117443721641",
+          "id": 117443721641,
+          "name": "ci-result",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39048861317/job/117443722550",
+          "id": 117443722550,
+          "name": "image",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39048861317/job/117443754374",
+          "id": 117443754374,
+          "name": "propose",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39048861317/job/117443754396",
+          "id": 117443754396,
+          "name": "publish",
+          "status": "completed"
+        }
+      ],
+      "run": {
+        "conclusion": "failure",
+        "event": "pull_request",
+        "head_sha": "df6e6cfce592400349d42435ee2e45a87e9f17e9",
+        "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39048861317",
+        "id": 39048861317,
+        "run_attempt": 1,
+        "status": "completed"
+      }
+    },
+    {
+      "jobs": [
+        {
+          "conclusion": "success",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39048839014/job/117442977332",
+          "id": 117442977332,
+          "name": "classify",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39048839014/job/117442998758",
+          "id": 117442998758,
+          "name": "validate",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39048839014/job/117443000156",
+          "id": 117443000156,
+          "name": "docs",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39048839014/job/117443492823",
+          "id": 117443492823,
+          "name": "ci-result",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39048839014/job/117443494494",
+          "id": 117443494494,
+          "name": "image",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39048839014/job/117443540456",
+          "id": 117443540456,
+          "name": "propose",
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39048839014/job/117443540500",
+          "id": 117443540500,
+          "name": "publish",
+          "status": "completed"
+        }
+      ],
+      "run": {
+        "conclusion": "failure",
+        "event": "push",
+        "head_sha": "df6e6cfce592400349d42435ee2e45a87e9f17e9",
+        "html_url": "https://github.com/syuhei0519/backend-app/actions/runs/39048839014",
+        "id": 39048839014,
+        "run_attempt": 1,
+        "status": "completed"
+      }
+    }
+  ],
+  "distinct_failure_history": {
+    "Cloud_DB_only_diagnostic": "One pinned DB download failed TLS unknown authority before metadata creation; no scan",
+    "attempt_3": "Diagnostic implementation, focused unit tests and normal branch/PR CI; no formal publication rerun",
+    "main_run_attempt_2": "DB unknown, future, or expired; exact runner metadata not retained"
+  },
+  "epoch": 1,
+  "execution_attempt": 3,
+  "formal_release_rerun_allowance": "Already consumed once by attempt 2; no further rerun performed",
+  "implementation": "Four precise typed DB rejection classes, Version, UpdatedAt, observed UTC and maxAgeHours; normalized timestamps and allowlisted metadata only. Original acceptance predicates and precedence retained.",
+  "new_observed_DB_metadata": {
+    "age_description": "39h 7m 32.336502443s",
+    "age_seconds": "140852.336502443",
+    "diagnostics": [
+      {
+        "maxAgeHours": 24,
+        "observedAt": "2026-10-17T16:21:27.283592835Z",
+        "reason": "expired",
+        "updatedAt": "2026-10-16T01:13:54.947090392Z",
+        "version": 2
+      }
+    ],
+    "job_id": 117443062006,
+    "observation_type": "new_PR_CI_metadata; not proof of the historical main-run metadata",
+    "run_id": 39048861317,
+    "source_head": "df6e6cfce592400349d42435ee2e45a87e9f17e9",
+    "unchanged_gate_result": "reject: age exceeds 24 hours"
+  },
+  "observed_at": "2026-10-17T16:22:56.140819+00:00",
+  "owner_reported_flags": {
+    "ENABLE_GHCR_PUBLISH": "removed; owner-reported only",
+    "ENABLE_MANIFEST_PR": "unset; owner-reported only",
+    "agent_writes": 0,
+    "api_reprobed": false
+  },
+  "pr": {
+    "base": "d48a97851619912e7efc80c470912907ce965dc7",
+    "draft": true,
+    "head": "df6e6cfce592400349d42435ee2e45a87e9f17e9",
+    "number": 47,
+    "synthetic_merge_commit": "245dd394e3a61aeb9b684fd30de5cb630dc51510",
+    "tree": "f33053afccc267754af80385a36bb103a8c935e1",
+    "url": "https://github.com/syuhei0519/backend-app/pull/47"
+  },
+  "publication_and_deployment": "Not performed; existing protected-main publication/proposal gates unchanged",
+  "readiness": "No Merge Ready or Issue Completion claim. Independent Test/Review and Manager context/assessment pending. Preparation classification not self-assigned.",
+  "remaining": "Manager arranges independent Cloud Review and evaluates current CI; full release AC remain unverified. Attempt 3 is final under current epoch; no recursive execution.",
+  "routing_observation": {
+    "effort": "unverified",
+    "model": "unverified",
+    "usage": "unverified"
+  },
+  "scope": "backend-app#34/order-release",
+  "system_revision": "3394bb069be64bdc43e057b251fc320302d185f6"
+}
