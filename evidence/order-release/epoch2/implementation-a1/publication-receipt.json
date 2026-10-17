@@ -1,0 +1,205 @@
+{
+  "schema_version": "1.3",
+  "document_type": "publication_receipt",
+  "manifest_sha256": "05288095e72b25be668cb8e49acd48e5994cd7571652923f78834392e0ad44cf",
+  "github_state": "published",
+  "artifacts": [
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "34eec74e22468c62146120267558598900b6d69c",
+        "path": "evidence/order-release/epoch2/implementation-a1/handoff.json",
+        "size": 5714,
+        "sha256": "6b49342d06c6aa5931cc952554b12ab2e54e1782532c62252aa311433ed78a73"
+      },
+      "format": "handoff-v2",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "order-release-implementation-e2a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "34eec74e22468c62146120267558598900b6d69c",
+        "path": "evidence/order-release/epoch2/implementation-a1/execution-report.json",
+        "size": 8780,
+        "sha256": "72de9a427bb3670f7cecf55ad7209e62786da49e5999eff3f18ac4db5522c329"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "order-release-implementation-e2a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "34eec74e22468c62146120267558598900b6d69c",
+        "path": "evidence/order-release/epoch2/implementation-a1/test-report.json",
+        "size": 1241,
+        "sha256": "fdbf687723fbebdf127501bf7753563e0aee2132df5ca67783b8fa328a0a97fe"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "order-release-implementation-e2a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "34eec74e22468c62146120267558598900b6d69c",
+        "path": "evidence/order-release/epoch2/implementation-a1/change.patch",
+        "size": 14695,
+        "sha256": "0ca2c669cdd3534f5e93caa54d47432e8f4a88a1ef0cb244caba2d687c08d3f0"
+      },
+      "format": "text",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "order-release-implementation-e2a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "34eec74e22468c62146120267558598900b6d69c",
+        "path": "evidence/order-release/epoch2/implementation-a1/prior-epoch1-a3/handoff.json",
+        "size": 6479,
+        "sha256": "2b050a9a9412a543cc773ce8aa017292f8330dd8027781370be63f290d26aa0e"
+      },
+      "format": "handoff-v2",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "order-release-implementation-a3"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "34eec74e22468c62146120267558598900b6d69c",
+        "path": "evidence/order-release/epoch2/implementation-a1/prior-epoch1-a3/execution-report.json",
+        "size": 7070,
+        "sha256": "7b8a698a03ca134eef89484679294b5c8276dd2cea5aa0f68a9c2b7445390b90"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "order-release-implementation-a3"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "34eec74e22468c62146120267558598900b6d69c",
+        "path": "evidence/order-release/epoch2/implementation-a1/prior-epoch1-a3/test-report.json",
+        "size": 1253,
+        "sha256": "7169ee97c45aea7315dc778b40c72af173da80a6b7a8f238e513581552fc25ea"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "order-release-implementation-a3"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "34eec74e22468c62146120267558598900b6d69c",
+        "path": "evidence/order-release/epoch2/implementation-a1/prior-epoch1-a3/change.patch",
+        "size": 5593,
+        "sha256": "e0b14d7c8f31b15f5fd19a77b5d2ffac1c04cf3f4df9c0472b5173593e31f765"
+      },
+      "format": "text",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "order-release-implementation-a3"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "34eec74e22468c62146120267558598900b6d69c",
+        "path": "evidence/order-release/epoch2/implementation-a1/prior-epoch1-a3/source/policy.go",
+        "size": 10958,
+        "sha256": "b003da230efe51c311972c284caf4ba5e2e9c5f37bc9e020c663dc82c4c61f22"
+      },
+      "format": "text",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "order-release-implementation-a3"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "34eec74e22468c62146120267558598900b6d69c",
+        "path": "evidence/order-release/epoch2/implementation-a1/prior-epoch1-a3/source/policy_test.go",
+        "size": 6852,
+        "sha256": "32c12a23fde9632fb70c50dbc1272a9e913daefdb42cc0e7a7043fdd3bf59b68"
+      },
+      "format": "text",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "order-release-implementation-a3"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "34eec74e22468c62146120267558598900b6d69c",
+        "path": "evidence/order-release/epoch2/implementation-a1/prior-epoch1-a3/prior-a2/handoff.json",
+        "size": 4686,
+        "sha256": "b2d1c5172df008f8841b53f7fe6f5c994f3ade0d304d10ab3c758e5887d940d2"
+      },
+      "format": "handoff-v2",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "order-release-implementation-a2"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "34eec74e22468c62146120267558598900b6d69c",
+        "path": "evidence/order-release/epoch2/implementation-a1/prior-epoch1-a3/prior-a2/preflight.json",
+        "size": 3022,
+        "sha256": "60bf8e70d813e3b5636e3d4db2c5bee6006852ba880931daab150372c6a6dc6b"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "order-release-implementation-a2"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "34eec74e22468c62146120267558598900b6d69c",
+        "path": "evidence/order-release/epoch2/implementation-a1/prior-epoch1-a3/prior-a2/prior-a1/handoff.json",
+        "size": 4350,
+        "sha256": "f9f856f53277378db64226ff674d4ba423a7c9624b1ba5755a907fe73e2a3316"
+      },
+      "format": "handoff-v2",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "order-release-implementation-a1"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "34eec74e22468c62146120267558598900b6d69c",
+        "path": "evidence/order-release/epoch2/implementation-a1/prior-epoch1-a3/prior-a2/prior-a1/preflight.json",
+        "size": 3423,
+        "sha256": "3e811868126c252e0b69fac0ed1ff1cda6146531ada7d193a5be660a6055695d"
+      },
+      "format": "json",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "order-release-implementation-a1"
+    }
+  ],
+  "observation": "Fixed public payload bytes re-fetched and validated through pinned canonical GitSource and verify_handoffs, including all nine prior Handoff slots. This is record preparation/full bundle validation, not Manager Consumer authorization, consumption success or product acceptance."
+}

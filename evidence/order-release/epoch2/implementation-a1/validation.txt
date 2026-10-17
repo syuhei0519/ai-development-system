@@ -1,0 +1,7 @@
+PASS: pinned canonical GitSource full bytes / size / SHA256 / Git object and path checks
+PASS: pinned canonical verify_handoffs strict JSON / Handoff / complete structural closure
+PASS: 14 artifacts, 13 slot bindings, including all 9 prior required slots
+PASS: publication/manifest identity and version 1.3 schemas
+EXPECTED REFUSAL: canonical consume_delivery.py exit 1; Consumer use is not approved; no output or Consumption Receipt
+PENDING: independent Manager authorization and full authorized Consumer run
+Validator System 3394bb069be64bdc43e057b251fc320302d185f6
