@@ -1,0 +1,64 @@
+{
+  "artifacts": [
+    {
+      "format": "handoff-v2",
+      "public_classification": "public_safe",
+      "reference": {
+        "commit": "7ad637dce737c9850fed26ce6cb848d624bb9bb3",
+        "object_type": "git-blob",
+        "path": "evidence/order-release/implementation-a2/handoff.json",
+        "repository": "syuhei0519/ai-development-system",
+        "sha256": "b2d1c5172df008f8841b53f7fe6f5c994f3ade0d304d10ab3c758e5887d940d2",
+        "size": 4686
+      },
+      "representation": "edited_derivative",
+      "source_alias": "order-release-implementation-a2"
+    },
+    {
+      "format": "json",
+      "public_classification": "public_safe",
+      "reference": {
+        "commit": "7ad637dce737c9850fed26ce6cb848d624bb9bb3",
+        "object_type": "git-blob",
+        "path": "evidence/order-release/implementation-a2/preflight.json",
+        "repository": "syuhei0519/ai-development-system",
+        "sha256": "60bf8e70d813e3b5636e3d4db2c5bee6006852ba880931daab150372c6a6dc6b",
+        "size": 3022
+      },
+      "representation": "edited_derivative",
+      "source_alias": "order-release-implementation-a2"
+    },
+    {
+      "format": "handoff-v2",
+      "public_classification": "public_safe",
+      "reference": {
+        "commit": "7ad637dce737c9850fed26ce6cb848d624bb9bb3",
+        "object_type": "git-blob",
+        "path": "evidence/order-release/implementation-a2/prior-a1/handoff.json",
+        "repository": "syuhei0519/ai-development-system",
+        "sha256": "f9f856f53277378db64226ff674d4ba423a7c9624b1ba5755a907fe73e2a3316",
+        "size": 4350
+      },
+      "representation": "edited_derivative",
+      "source_alias": "order-release-implementation-a1"
+    },
+    {
+      "format": "json",
+      "public_classification": "public_safe",
+      "reference": {
+        "commit": "7ad637dce737c9850fed26ce6cb848d624bb9bb3",
+        "object_type": "git-blob",
+        "path": "evidence/order-release/implementation-a2/prior-a1/preflight.json",
+        "repository": "syuhei0519/ai-development-system",
+        "sha256": "3e811868126c252e0b69fac0ed1ff1cda6146531ada7d193a5be660a6055695d",
+        "size": 3423
+      },
+      "representation": "edited_derivative",
+      "source_alias": "order-release-implementation-a1"
+    }
+  ],
+  "document_type": "artifact_delivery",
+  "knowledge_bindings": [],
+  "schema_version": "1.3",
+  "slot_bindings": []
+}
