@@ -14,6 +14,10 @@
 
 許可された sandbox でテストを実行しテスト成果物を作成。実装の無断修正、破壊的な外部実行、実データ公開はしない。
 
+## 実行場所の責務
+
+必要能力で担当検証を分ける。通常検証と既存 runtime で可能な実 DB/API E2E・Helm checks は保存済み Codex Cloud、実 cluster 挙動だけは検証済みローカル PC の既存 kind。mutation 前に接続/認可・context/cluster・namespace/owned inventory・credentials scope・cleanup 境界を確認し、既存 cluster/context を無断変更しない。offline は environment blocked、mock/compose 成功で cluster AC を covered にしない。venue・必要能力・実 code/config/image identity と runtime context を観測し、固定 bytes の配送で返す。 詳細は [実行ルーティング](../workflows/single-issue.md#実行場所と必要能力) に従う。
+
 ## Inputs
 
 [起動入力](../templates/task-input.md) の全項目、Issue の必須 AC 原文、assignment.scope・ac_ids・completion_criteria、固定 revision、許可範囲、取得済み upstream 成果物を初回入力として受け取る。会話・ファイル・環境が他タスクと自動共有されると仮定しない。任意の Knowledge 参照は knowledge-context と記事実体を受け取り、固定 revision・適用条件・例外・出典を確認して採否を記録する。知識は AC 原文や実測根拠を代替しない。共通仕様は [ワークフロー](../workflows/single-issue.md) と [契約](../contracts/README.md) に従う。

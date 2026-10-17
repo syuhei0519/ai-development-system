@@ -2,7 +2,7 @@
 
 ## 起動と責任分担
 
-この手順は Dots 自身が Manager として実行する運用契約であり、自動実行エンジンや Dots API の実装ではない。Dots は `agents/manager.md` と契約・本ワークフローを使用し、専門工程ごとに役割定義と [Issue 工程入力](../templates/task-input.md)（Knowledge は [専用入力](../templates/knowledge-input.md)）を渡した独立 Codex Cloud タスクを起動する。別の Manager Cloud タスクは標準構成に含めず、6プロセスも常設しない。Dots に起動・回収能力がない環境では人間が操作を補助し、その制限を明示する。追加の OpenAI API、新規課金サービス、新規 PAT は不要。
+この手順は Dots 自身が Manager として実行する運用契約であり、自動実行エンジンや Dots API の実装ではない。Dots は `agents/manager.md` と契約・本ワークフローを使用し、専門工程ごとに役割定義と [Issue 工程入力](../templates/task-input.md)（Knowledge は [専用入力](../templates/knowledge-input.md)）を渡した独立タスクを起動する。既定は保存済み Codex Cloud とし、実 Kubernetes 必須の Test だけは下記の検証済みローカル PC 環境を指定する。別の Manager Cloud タスクは標準構成に含めず、6プロセスも常設しない。Dots に起動・回収能力がない環境では人間が操作を補助し、その制限を明示する。追加の OpenAI API、新規課金サービス、新規 PAT は不要。
 
 標準依存関係は Research/Design → Implementation → Test → Review → Manager 最終ゲート。設計だけの検証では Research → Test も可能。独立した作業の並行実行は依存がないことを Manager が確認した場合のみ。Knowledge は各工程の候補から非同期に起動し、開発の必須依存にしない。
 
@@ -10,6 +10,43 @@
 2. 同じ論理工程（Issue + role + scope）ごとに最大3試行（初回 attempt=1、再実行2回）を割り当てる。scope を言い換えて試行上限を回避しない。新しい独立タスクには新しい task_id を与える。
 3. upstream handoff の JSON だけでなく、成果物の**実体**と根拠を取得する。固定 Git commit と raw bytes の配送契約で後続が読める形で渡す。LLM に本文を再生成させない。元タスクのローカルパスや終了通知だけを渡さない。
 4. タスクを起動し、非公開の進捗台帳に role/scope/task_id/attempt/upstream と基盤状態を記録する。タスク間の会話・ファイル・認証・環境が自動共有されるとは仮定しない。
+
+## 実行場所と必要能力
+
+Manager は各検証を AC/subcheck と必要能力に分け、最小限の関連検証を割り当てる。テスト名や E2E という名称だけで Kubernetes 必須にしない。
+
+| 必要能力 / 作業 | 実行場所 |
+| --- | --- |
+| Research/Design、Implementation、Review、Knowledge、Unit、build/static checks | 保存済み Codex Cloud |
+| 実 DB 統合、API レベルの複数サービス E2E（既存 runtime が対応する場合） | 保存済み Codex Cloud |
+| Helm rendering / schema checks（cluster 不要） | 保存済み Codex Cloud |
+| 実 deployment / Service DNS / Ingress / probes / Pod restart / PVC | ローカル PC の既存 kind |
+| Argo sync、Rollouts/canary、cluster observability の実挙動 | ローカル PC の既存 kind |
+
+Cloud の必要 runtime が使えなければその検証を環境阻害として記録する。通常作業をローカル PC へ自動 fallback したり、追加 API/課金サービスを導入して回避しない。API/DB の実測はその範囲の証拠であり、mock、compose、Helm rendering は実 cluster AC の合格を証明しない。
+
+### ローカル kind Test の起動前ゲート
+
+Dots が Manager のまま、Kubernetes Test を独立タスクとして `cloud_threads.create` で起動し、特定して検証済みのローカル環境を明示する。Cloud の既定環境や推測した環境 ID を選ばない。初回入力へ固定成果物と必要能力・venue・許可範囲を渡す。create 引数の具体的な環境指定は現在の tool schema に従い、対応手段がなければ blocked を返す。新 runner は作らない。
+
+ローカルでの mutation 前に、Manager と Test は認可済み read-only 観測と承認根拠から次を確認する。
+
+- 接続・認可済みの正しいローカル実行環境、既存 kind の正確な kube context / cluster（名称だけでなく接続先との一致）。
+- 対象 namespace、既存リソースと今回所有するリソースの inventory、他作業・ユーザーデータとの境界。
+- 承認された credentials / access scope、許可された具体的操作と対象。credentials 自体は入力へ転記しない。
+- cleanup の明示境界（今回作成物の除去範囲、残す既存物、復旧責任）。既存 cluster の再作成・削除は行わず、ユーザー context を無断で変更しない。
+
+通常の確認事項はまとめて確認し、既存の認可で満たされる事項を再承認要求しない。ただし safety floor の操作別承認、実 Rulesets / CI gates は保持し、包括的な実行場所の認可から破壊的操作の許可を推論しない。
+
+ローカル PC offline / 接続不明 / 権限不足なら、必要な cluster 検証を **environment blocked** として正確な対象・失敗操作・理由・必要処置と共に返す。未起動を実行済みにせず、開始不明は照合まで再送停止。無期限 polling、予算リセット、自動再作成はしない。既存 dispatch/execution/delivery 台帳の分類と最大3回を維持する。依存のない Cloud 実装・API/DB 検証は継続し、混在 assignment は部分成果を保持して cluster 担当部分を未検証にする。必須 premerge cluster AC が blocked なら Merge Ready も blocked のまま。環境不足だけで postdeploy に付け替えない。
+
+### 実行証跡と引き継ぎ
+
+Handoff v2.0 の既存 `evidence.observation` と固定 `test-report` artifact に、実行 venue、必要能力、実行コマンド/結果/時刻/制約を記録する。runtime Test は実際の code commit、config revision/digest、実行 image digest（使用時）、DB/runtime の識別と構成を記録する。cluster Test は検証済み environment / context / cluster / namespace / workload と所有 inventory、mutation/cleanup の実施結果も非公開原本へ記録する。未使用項目は理由付きで該当なし、未取得は未検証とし、要求した設定を実観測に変換しない。
+
+ローカル Test も [Artifact Delivery](../contracts/artifact-delivery.md) の固定 commit/path/size/SHA-256 と実体 bytes で Manager へ返す。ローカルパスや完了通知だけを返さず、再生成で補わない。原本は非公開に保全し、公開 Git には安全性確認・公開操作承認済みの派生版のみを置く。kubeconfig、Secrets、実際の非公開 environment/context/cluster/task ID は公開しない。配送不能は delivery blocked として残す。
+
+Implementation Ready、Deployment Ready、Merge Readiness、Issue Completion は別判定のまま。変更ごとの mandatory full suite は追加せず、最小の関連検証を選び、同一対象・必要能力・有効期限と現行契約に適合する既存証跡は再利用する。schema/CLI は venue や cluster 実測の真実性を証明しない。Manager が原本・対象 identity・独立性を確認する。
 
 ## 終了通知後のゲート
 

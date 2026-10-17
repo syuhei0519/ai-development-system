@@ -42,6 +42,10 @@ approval problems are **not** model escalation causes. Solve/report those blocke
 under existing contracts. No escalation creates another retry epoch or resets a
 counter. Knowledge and routine consumers have no Astra route.
 
+## Execution venue is independent of model routing
+
+The [capability-based venue policy](single-issue.md#実行場所と必要能力) selects saved Codex Cloud by default and the specifically verified local PC environment only for actual kind cluster Test behavior. Dots remains Manager; local Kubernetes Test uses `cloud_threads.create` with that verified environment explicitly selected. The planner's model/thinking/service_tier output does not select or authorize an environment. Manager supplies the venue through the current tool schema after the existing access, target and mutation gates. Local offline/access failure is environment blocked, never a model fallback/escalation cause. Role model routes, BestEffort/Strict observation rules, approvals and all existing budgets/history remain unchanged.
+
 ## Manager's existing dispatch sequence
 
 1. Retain the normal AC/assignment, permissions, upstream bytes, independent

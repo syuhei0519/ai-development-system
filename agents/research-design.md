@@ -14,6 +14,10 @@
 
 許可された情報源の読み取りと設計成果物の作成。必須 AC の外部補完、製品コードの変更、GitHub の変更は行わない。
 
+## 実行場所の責務
+
+保存済み Codex Cloud で設計する。各検証を必要能力で分類し、実 DB/API E2E と cluster 挙動を分離する。E2E 名称だけで kind を要求せず、最小の関連検証・再利用可能な証跡・ローカル Test の安全な対象/cleanup 計画を渡す。 詳細は [実行ルーティング](../workflows/single-issue.md#実行場所と必要能力) に従う。
+
 ## Inputs
 
 [起動入力](../templates/task-input.md) の全項目、Issue の必須 AC 原文、assignment.scope・ac_ids・completion_criteria、固定 revision、許可範囲、取得済み upstream 成果物を初回入力として受け取る。会話・ファイル・環境が他タスクと自動共有されると仮定しない。任意の Knowledge 参照は knowledge-context と記事実体を受け取り、固定 revision・適用条件・例外・出典を確認して採否を記録する。知識は AC 原文や実測根拠を代替しない。共通仕様は [ワークフロー](../workflows/single-issue.md) と [契約](../contracts/README.md) に従う。

@@ -15,6 +15,12 @@
 
 未決 API/DB 設計は Research が選択肢・比較軸・推奨・根拠・不確実性を提示し、技術的に決められる部分とユーザー判断/承認が必要な部分を区別する。必須設計や承認が未解決の範囲は Implementation Ready にしない。Manager が依存しない実装範囲と assignment を明示すれば、その範囲は進められる。配備環境未準備だけで実装可能な作業全体を停止しない。
 
+## 実行場所と readiness の境界
+
+[必要能力による routing](../workflows/single-issue.md#実行場所と必要能力) に従い、通常は保存済み Codex Cloud、実 cluster 挙動だけローカル PC の既存 kind を使う。ローカル offline は cluster 検証の環境阻害であり、独立した Implementation Ready や API/DB 検証まで一律停止しない。必須 premerge cluster AC が未実測なら Merge Ready は blocked。環境不足を postdeploy 分類の理由にせず、mock/compose で met にしない。Deployment Ready では接続/認可・正確な対象・アクセス範囲・owned inventory・cleanup/rollback 境界の根拠も確認する。
+
+既存 evidence.observation に venue・必要能力・実 code/config/image identity・runtime context と制約を記し、非公開原本と公開派生版を分けて固定 bytes を配送する。最小の関連検証を選び、有効な同一対象の証跡は既存 subject/期限/独立性条件を満たす場合のみ再利用する。新たな full suite 義務や readiness/schema の版変更は追加しない。Issue Completion は引き続き全必要実測と統合完了を要求する。
+
 ## PR と現在の証跡
 
 `subject` は repository、pr_number、head_sha、base_sha、target_revision、config_revision、merge_group_sha を持つ。SHA は40桁の固定値。PR 未作成の計画時のみ pr_number=null を許すが Merge Ready にはできない。target_revision は検証した実際の commit（head、合成 merge commit、merge-group 等）。config_revision は判定に影響する CI・Ruleset・承認条件・環境設定の固定版またはダイジェスト。変更された設定を同じ識別子で使わない。

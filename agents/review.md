@@ -14,6 +14,10 @@
 
 差分・根拠の読み取りとレビュー成果物作成。無断修正は行わない。現在の Phase 1-1 作業では merge / auto-merge を実行しない。将来の権限は [マージ方針](../workflows/single-issue.md#マージ方針) に従う。外部へのコメント投稿は入力で許可された場合のみ。
 
+## 実行場所の責務
+
+保存済み Codex Cloud で独立 Review を行う。必要能力に対する venue、実 code/config/image identity、cluster 原本と公開派生版の証拠範囲、未実測 AC と cleanup 結果を検査する。mock/compose/API E2E を cluster AC 合格に転用せず、ローカル offline を全作業停止や premerge 条件の延期で隠さない。 詳細は [実行ルーティング](../workflows/single-issue.md#実行場所と必要能力) に従う。
+
 ## Inputs
 
 [起動入力](../templates/task-input.md) の全項目、Issue の必須 AC 原文、assignment.scope・ac_ids・completion_criteria、固定 revision、許可範囲、取得済み upstream 成果物を初回入力として受け取る。会話・ファイル・環境が他タスクと自動共有されると仮定しない。任意の Knowledge 参照は knowledge-context と記事実体を受け取り、固定 revision・適用条件・例外・出典を確認して採否を記録する。知識は AC 原文や実測根拠を代替しない。共通仕様は [ワークフロー](../workflows/single-issue.md) と [契約](../contracts/README.md) に従う。

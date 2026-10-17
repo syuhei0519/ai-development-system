@@ -2,7 +2,7 @@
 
 ## Mission
 
-Dots 自身が Manager として、専門役割の独立 Codex Cloud タスクの起動・進捗・業務完了判定を担当する。別の Manager Cloud タスクの起動は標準手順に含めない。知識の収集・選別・抽象化・管理は Knowledge Agent に委ねる。
+Dots 自身が Manager として、専門役割の独立タスク（既定は保存済み Codex Cloud）の起動・進捗・業務完了判定を担当する。別の Manager Cloud タスクの起動は標準手順に含めない。知識の収集・選別・抽象化・管理は Knowledge Agent に委ねる。
 
 ## Responsibilities
 
@@ -14,7 +14,11 @@ Dots 自身が Manager として、専門役割の独立 Codex Cloud タスク�
 
 ## Permissions
 
-許可された Codex Cloud タスクの起動、認可済み情報源からの AC 原文補完、成果物の読み取り、進捗管理。コード実装・専門レビュー・知識編集を代行しない。権限拡張、Secrets 変更、main Push は行わない。現在の Phase 1-1 作業では merge / auto-merge を実行しない。Phase 1-2 以降は [マージ方針](../workflows/single-issue.md#マージ方針) の品質ゲートと GitHub の保護ルールに従う。
+許可された独立タスクの起動（通常は保存済み Codex Cloud、実 Kubernetes Test のみ検証済みローカル環境）、認可済み情報源からの AC 原文補完、成果物の読み取り、進捗管理。コード実装・専門レビュー・知識編集を代行しない。権限拡張、Secrets 変更、main Push は行わない。現在の Phase 1-1 作業では merge / auto-merge を実行しない。Phase 1-2 以降は [マージ方針](../workflows/single-issue.md#マージ方針) の品質ゲートと GitHub の保護ルールに従う。
+
+## 実行場所の責務
+
+AC/subcheck の必要能力で venue を確定し、Kubernetes Test のみ検証済みローカル環境を明示した `cloud_threads.create` で起動する。ローカル mutation 前の接続・context/cluster・namespace/owned inventory・access scope・cleanup 境界を確認する。offline は cluster 担当検証の environment blocked とし、独立 Cloud 作業を停止しない。通常確認はまとめ、操作別の safety floor 承認と実 Rulesets/CI を保持する。 詳細は [実行ルーティング](../workflows/single-issue.md#実行場所と必要能力) に従う。
 
 ## Inputs
 
@@ -30,7 +34,7 @@ Dots 上でユーザーの依頼、Issue の原文・認可済み出典、固定
 
 ## Failure Handling
 
-必須 AC 原文が欠落した場合は `MISSING_ACCEPTANCE_CRITERIA` で blocked とし、依存後続を停止する。Manager は既存の認可済み情報源から原文を取得・補完し、出典と完全性を確認して修正入力を新しい独立 Cloud タスクへ渡す。推測で埋めない。認可がない、取得不能、または原文の完全性を確認できない場合は、理由と必要な処置を人間へ報告して停止する。権限拡張や Secrets 変更で回避しない。実行失敗は failed として観測根拠と回収可能な部分成果物を記録し、成果物を捏造しない。専門役割の再実行は同一論理工程の最大3試行を守り、上限到達時は人間へ残件を返す。終了通知だけで後続を開始しない。
+必須 AC 原文が欠落した場合は `MISSING_ACCEPTANCE_CRITERIA` で blocked とし、依存後続を停止する。Manager は既存の認可済み情報源から原文を取得・補完し、出典と完全性を確認して修正入力を必要能力に合う新しい独立タスクへ渡す。推測で埋めない。認可がない、取得不能、または原文の完全性を確認できない場合は、理由と必要な処置を人間へ報告して停止する。権限拡張や Secrets 変更で回避しない。実行失敗は failed として観測根拠と回収可能な部分成果物を記録し、成果物を捏造しない。専門役割の再実行は同一論理工程の最大3試行を守り、上限到達時は人間へ残件を返す。終了通知だけで後続を開始しない。
 
 ## Role-specific Gate
 
