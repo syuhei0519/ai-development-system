@@ -1,0 +1,159 @@
+{
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "artifact_ids": [
+        "A-DESIGN",
+        "A-ISSUE"
+      ],
+      "disposition": "covered",
+      "evidence_ids": [
+        "E-SOURCE",
+        "E-DESIGN"
+      ],
+      "scope": "Research design only: synchronous succeeded/declined POST/GET, immutable owned persistence, representative fixture success/decline checks. Product behavior unverified."
+    },
+    {
+      "ac_id": "AC-2",
+      "artifact_ids": [
+        "A-DESIGN",
+        "A-ISSUE"
+      ],
+      "disposition": "covered",
+      "evidence_ids": [
+        "E-SOURCE",
+        "E-DESIGN"
+      ],
+      "scope": "Research design only: persistent UNIQUE request_id, typed replay/409 conflict, concurrent duplicate and post-API-restart replay checks. Product behavior unverified."
+    },
+    {
+      "ac_id": "AC-3",
+      "artifact_ids": [
+        "A-DESIGN",
+        "A-ISSUE"
+      ],
+      "disposition": "covered",
+      "evidence_ids": [
+        "E-SOURCE",
+        "E-DESIGN"
+      ],
+      "scope": "Research design only: historical order_id, payments/payment_app target guard, isolated embed/history/lock and no Account/Order edits; owned migration checks. Product behavior unverified."
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "A-DESIGN",
+      "kind": "document",
+      "locator": "design.md",
+      "revision": "sha256:c47c99f5384fc3d1b0c70b10629caae87a899cfd25a1041a56e80545a56f9525",
+      "summary": "Edited public derivative: complete implementable design semantics, disjoint paths, contracts, bounded validation plan and readiness limits; no automatic original equivalence."
+    },
+    {
+      "id": "A-ISSUE",
+      "kind": "document",
+      "locator": "issue39-input.md",
+      "revision": "sha256:67a060ff791d14cd3619d88a855d5413d527cec5a2140b2f0430a5eb7fd0fcbb",
+      "summary": "Exact supplied public Issue text snapshot, UTF-8/LF with trailing newline; not a live issue fetch."
+    },
+    {
+      "id": "A-SOURCE",
+      "kind": "commit",
+      "locator": "https://github.com/syuhei0519/backend-app/commit/d48a97851619912e7efc80c470912907ce965dc7",
+      "revision": "d48a97851619912e7efc80c470912907ce965dc7",
+      "summary": "Inspected backend source; remote main and local HEAD agreed, tree clean."
+    },
+    {
+      "id": "A-SCHEMA",
+      "kind": "document",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3394bb069be64bdc43e057b251fc320302d185f6/contracts/handoff.schema.json",
+      "revision": "sha256:3df669f230c3f1d65ddaaa9e7de5f713f70b9e8440512403f6ea309eb70b3ae1",
+      "summary": "Handoff v2 schema fetched at System 3394bb069be64bdc43e057b251fc320302d185f6; Git blob 2282039541de477c9b842f5c0e7e9c2fc83d6993 verified."
+    },
+    {
+      "id": "A-CLI",
+      "kind": "other",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3394bb069be64bdc43e057b251fc320302d185f6/scripts/validate_handoff.py",
+      "revision": "sha256:c78e917498087cf9bf230ac644135d3dd3aacfe6ff68e294dfe3bc563bfbe221",
+      "summary": "Pinned System 3394bb069be64bdc43e057b251fc320302d185f6 validator; Git blob 164d477795a4e54ce7c6cf8b9ff46d4a18d32fda verified."
+    }
+  ],
+  "assignment": {
+    "ac_ids": [
+      "AC-1",
+      "AC-2",
+      "AC-3"
+    ],
+    "completion_criteria": [
+      "Fix concrete implementable API, persistence, idempotency, Order reference and process/build boundaries from current backend source.",
+      "Map every supplied AC to design and one service-specific disposable API/DB fixture, with narrow units and product outcomes unverified.",
+      "Return the design and Handoff v2 with explicit public aliases, pinned source/System evidence and exact derivative artifact identities; retain private originals separately."
+    ],
+    "scope": "Design backend-app#39 Payment as one small learning service: minimal API/model, result and replay semantics, owned DB/migrations, independent entrypoint/local image inputs, disjoint paths, single-fixture test plan and scoped readiness recommendation; no product changes."
+  },
+  "attempt": 1,
+  "block_reasons": [],
+  "evidence": [
+    {
+      "artifact_ids": [
+        "A-SOURCE",
+        "A-DESIGN"
+      ],
+      "claim": "Design reuses current Order conventions at the actual backend source SHA.",
+      "id": "E-SOURCE",
+      "locator": "design.md#fixed-evidence-and-scope",
+      "observation": "Read-only git ls-remote origin refs/heads/main and local git log/status agreed on d48a97851619912e7efc80c470912907ce965dc7; tree clean. Inspected Order HTTP/domain/config/entrypoint/store/migration/fixture, Dockerfile.order and current CI. No runtime or test pass is claimed."
+    },
+    {
+      "artifact_ids": [
+        "A-DESIGN",
+        "A-ISSUE"
+      ],
+      "claim": "All assigned AC have concrete design decisions and bounded premerge validation plans.",
+      "id": "E-DESIGN",
+      "locator": "design.md#ac-mapping-and-bounded-verification",
+      "observation": "Supplied public AC originals retained. Fixed endpoints, required JSON, synchronous terminal results, durable request identity/conflict behavior, historical Order reference, owned schema/role/history/lock, independent process/image inputs and disjoint paths. Mandatory API restart only. Integration requires an explicitly approved isolated environment; k3d/k3s may be tried instead of kind without an environment success claim. Credential approval does not extend to implementation workspaces. These are design results, not measured product acceptance."
+    },
+    {
+      "artifact_ids": [
+        "A-SCHEMA",
+        "A-CLI"
+      ],
+      "claim": "Packaging uses the exact Handoff schema and CLI from the pinned System revision.",
+      "id": "E-CONTRACT",
+      "locator": "https://github.com/syuhei0519/ai-development-system/blob/3394bb069be64bdc43e057b251fc320302d185f6/scripts/validate_handoff.py",
+      "observation": "Exact public schema and CLI references are pinned to System 3394bb069be64bdc43e057b251fc320302d185f6. Structural validation does not establish semantic original equivalence, product acceptance or Consumer authority."
+    }
+  ],
+  "failure_reasons": [],
+  "issue": {
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "source": "issue39-input.md#execution-acceptance-criteria; https://github.com/syuhei0519/backend-app/issues/39; supplied public Issue text",
+        "verbatim": "模擬成功/拒否の状態をAPIで取得できる"
+      },
+      {
+        "id": "AC-2",
+        "source": "issue39-input.md#execution-acceptance-criteria; https://github.com/syuhei0519/backend-app/issues/39; supplied public Issue text",
+        "verbatim": "同一要求の再送で二重決済状態を作らない"
+      },
+      {
+        "id": "AC-3",
+        "source": "issue39-input.md#execution-acceptance-criteria; https://github.com/syuhei0519/backend-app/issues/39; supplied public Issue text",
+        "verbatim": "Order識別子との関連と所有DB migration境界が維持される"
+      }
+    ],
+    "id": "syuhei0519/backend-app#39",
+    "source": "https://github.com/syuhei0519/backend-app/issues/39; supplied public Issue text snapshot: issue39-input.md; not a live-current-state assertion",
+    "title": "[Payment/API] 独立APIと永続状態を実装する"
+  },
+  "knowledge_candidates": [],
+  "publication": "public_safe",
+  "role": "research-design",
+  "schema_version": "2.0",
+  "status": "completed",
+  "summary": "Edited public derivative of the completed Payment research/design assignment. The task_id is an explicit public alias, not a platform identifier. Original equivalence is not automatically established; technical-semantic preservation is producer-attested only. All product AC remain unverified. API process restart with the same owned DB is mandatory; DB-server restart is not a separate gate. k3d/k3s may be tried instead of kind in an explicitly approved isolated test environment, with no environment success claim. Credential authority does not extend to separate implementation workspaces. No implementation, product tests, app images, credentials, merge or deployment were performed. Publication grants no Consumer authority.",
+  "system_status": "completed",
+  "task_id": "PUBLIC-PAYMENT-RESEARCH-A1",
+  "upstream": []
+}
