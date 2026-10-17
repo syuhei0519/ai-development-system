@@ -1,0 +1,188 @@
+{
+  "ac_mapping": [
+    {
+      "ac_id": "AC-1",
+      "artifact_ids": [
+        "execution-report"
+      ],
+      "disposition": "unverified",
+      "evidence_ids": [
+        "diagnostic-change"
+      ],
+      "scope": "backend-app#34/order-release"
+    },
+    {
+      "ac_id": "AC-2",
+      "artifact_ids": [
+        "execution-report"
+      ],
+      "disposition": "unverified",
+      "evidence_ids": [
+        "diagnostic-change"
+      ],
+      "scope": "backend-app#34/order-release"
+    },
+    {
+      "ac_id": "AC-3",
+      "artifact_ids": [
+        "execution-report"
+      ],
+      "disposition": "unverified",
+      "evidence_ids": [
+        "diagnostic-change"
+      ],
+      "scope": "backend-app#34/order-release"
+    },
+    {
+      "ac_id": "AC-4",
+      "artifact_ids": [
+        "execution-report"
+      ],
+      "disposition": "unverified",
+      "evidence_ids": [
+        "diagnostic-change"
+      ],
+      "scope": "backend-app#34/order-release"
+    },
+    {
+      "ac_id": "AC-5",
+      "artifact_ids": [
+        "execution-report"
+      ],
+      "disposition": "unverified",
+      "evidence_ids": [
+        "diagnostic-change"
+      ],
+      "scope": "backend-app#34/order-release"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "execution-report",
+      "kind": "other",
+      "locator": "execution-report.json",
+      "revision": "sha256:7b8a698a03ca134eef89484679294b5c8276dd2cea5aa0f68a9c2b7445390b90",
+      "summary": "Fixed diagnostic implementation evidence at df6e6cfce592400349d42435ee2e45a87e9f17e9"
+    },
+    {
+      "id": "focused-tests",
+      "kind": "test-report",
+      "locator": "test-report.json",
+      "revision": "sha256:7169ee97c45aea7315dc778b40c72af173da80a6b7a8f238e513581552fc25ea",
+      "summary": "Fixed diagnostic implementation evidence at df6e6cfce592400349d42435ee2e45a87e9f17e9"
+    },
+    {
+      "id": "patch",
+      "kind": "patch",
+      "locator": "change.patch",
+      "revision": "sha256:e0b14d7c8f31b15f5fd19a77b5d2ffac1c04cf3f4df9c0472b5173593e31f765",
+      "summary": "Fixed diagnostic implementation evidence at df6e6cfce592400349d42435ee2e45a87e9f17e9"
+    },
+    {
+      "id": "policy-source",
+      "kind": "other",
+      "locator": "source/policy.go",
+      "revision": "sha256:b003da230efe51c311972c284caf4ba5e2e9c5f37bc9e020c663dc82c4c61f22",
+      "summary": "Fixed diagnostic implementation evidence at df6e6cfce592400349d42435ee2e45a87e9f17e9"
+    },
+    {
+      "id": "policy-tests-source",
+      "kind": "other",
+      "locator": "source/policy_test.go",
+      "revision": "sha256:32c12a23fde9632fb70c50dbc1272a9e913daefdb42cc0e7a7043fdd3bf59b68",
+      "summary": "Fixed diagnostic implementation evidence at df6e6cfce592400349d42435ee2e45a87e9f17e9"
+    }
+  ],
+  "assignment": {
+    "ac_ids": [
+      "AC-1",
+      "AC-2",
+      "AC-3",
+      "AC-4",
+      "AC-5"
+    ],
+    "completion_criteria": [
+      "Formal Order publication through existing Environment approval",
+      "Immutable digest and release record/SBOM/scan/source/run/attempt verification",
+      "Preserve Account paired delivery",
+      "Minimal fixed evidence and Handoff2.0 delivery"
+    ],
+    "scope": "backend-app#34/order-release"
+  },
+  "attempt": 3,
+  "block_reasons": [
+    {
+      "code": "RETRY_LIMIT_REACHED",
+      "detail": "Epoch 1 execution attempt 3 consumed; formal release AC remain unverified and independent Review/Manager evaluation pending. Diagnostic implementation itself succeeded. Prior failures and consumed release rerun allowance retained.",
+      "required_action": "Manager evaluates PR #47 with independent Cloud Review and current CI. No further execution under this epoch without the complete explicit renewal contract. Do not merge or publish from this handoff."
+    }
+  ],
+  "evidence": [
+    {
+      "artifact_ids": [
+        "execution-report",
+        "focused-tests",
+        "patch",
+        "policy-source",
+        "policy-tests-source"
+      ],
+      "claim": "Two-file diagnostic change and focused tests completed; no product release success claimed.",
+      "id": "diagnostic-change",
+      "locator": "execution-report.json",
+      "observation": "Dedicated branch and Draft PR, exact head/base/tree and normal CI state recorded. Unit tests are producer self-verification, not independent Test/Review."
+    }
+  ],
+  "failure_reasons": [
+    "PR CI 39048861317 attempt 1 failed: Version 2 DB UpdatedAt 2026-10-16T01:13:54.947090392Z at observed UTC 2026-10-17T16:21:27.283592835Z exceeds the unchanged 24-hour limit. No rerun or policy change performed."
+  ],
+  "issue": {
+    "acceptance_criteria": [
+      {
+        "id": "AC-1",
+        "source": "https://github.com/syuhei0519/backend-app/issues/34",
+        "verbatim": "Order Imageが正式なGHCR artifactとして公開されている"
+      },
+      {
+        "id": "AC-2",
+        "source": "https://github.com/syuhei0519/backend-app/issues/34",
+        "verbatim": "immutable digestが取得できている"
+      },
+      {
+        "id": "AC-3",
+        "source": "https://github.com/syuhei0519/backend-app/issues/34",
+        "verbatim": "release recordとdigestが対応している"
+      },
+      {
+        "id": "AC-4",
+        "source": "https://github.com/syuhei0519/backend-app/issues/34",
+        "verbatim": "SBOM / scan証跡が対象Imageと対応している"
+      },
+      {
+        "id": "AC-5",
+        "source": "https://github.com/syuhei0519/backend-app/issues/34",
+        "verbatim": "Account既存配信経路を破壊していない"
+      }
+    ],
+    "id": "syuhei0519/backend-app#34",
+    "source": "https://github.com/syuhei0519/backend-app/issues/34",
+    "title": "app-order-release-publish"
+  },
+  "knowledge_candidates": [],
+  "publication": "public_safe",
+  "role": "implementation",
+  "schema_version": "2.0",
+  "status": "failed",
+  "summary": "Diagnostic implementation and focused tests completed; Draft PR #47 CI failed with precise expired DB metadata (~39h7m age, 24h limit). Release AC remain unverified; independent Review and Manager evaluation pending. Epoch 1 attempt 3 consumed.",
+  "system_status": "failed",
+  "task_id": "order-release-implementation-a3",
+  "upstream": [
+    {
+      "attempt": 2,
+      "handoff_locator": "prior-a2/handoff.json",
+      "relationship": "retry_of",
+      "revision": "sha256:b2d1c5172df008f8841b53f7fe6f5c994f3ade0d304d10ab3c758e5887d940d2",
+      "role": "implementation",
+      "task_id": "order-release-implementation-a2"
+    }
+  ]
+}
