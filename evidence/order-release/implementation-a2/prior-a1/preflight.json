@@ -1,0 +1,102 @@
+{
+  "environments": {
+    "ghcr-publish": {
+      "branch_policies": [
+        {
+          "name": "main",
+          "type": "branch"
+        }
+      ],
+      "can_admins_bypass": true,
+      "prevent_self_review": false,
+      "required_reviewer": "syuhei0519"
+    },
+    "manifest-update": {
+      "branch_policies": [
+        {
+          "name": "main",
+          "type": "branch"
+        }
+      ],
+      "can_admins_bypass": true,
+      "prevent_self_review": false,
+      "required_reviewer": "syuhei0519"
+    }
+  },
+  "feature_flag_restoration": {
+    "changed": false,
+    "original_value": "unverified",
+    "restoration": "not_needed_no_writes"
+  },
+  "main": {
+    "protected": true,
+    "sha": "d48a97851619912e7efc80c470912907ce965dc7",
+    "tree": "8d12e8e2b9c4571b4a8a4eb325f7b95abbd56b41"
+  },
+  "observed_at": "2026-10-15T11:01:43.455135+00:00",
+  "operations": {
+    "application_changes": 0,
+    "ci_reruns": 0,
+    "environment_approvals": 0,
+    "flag_writes": 0,
+    "manifest_changes": 0,
+    "publication_attempts": 0
+  },
+  "policy_inspection": {
+    "AGENTS_and_related_skills": "No AGENTS.md or .agents/ paths in fixed backend tree or fixed System tree; workspace .agents empty.",
+    "files": [
+      ".github/workflows/ci.yml",
+      "ci/github/release.py",
+      "docs/order-image-ci.md",
+      "docs/github-migration.md"
+    ],
+    "manifest_gate": "propose uses manifest-update; required reviewer and main policy observed. It was not approved.",
+    "matrix": [
+      "backend",
+      "order"
+    ],
+    "publish_requires": "Protected main push, ENABLE_GHCR_PUBLISH=true, successful validate/image/ci-result and ghcr-publish environment. workflow_dispatch cannot publish.",
+    "same_attempt": "Checked artifact names use run_attempt; publisher validates source/run/attempt, archive/config/source labels, scan/SBOM proofs before registry effects.",
+    "source_revision": "d48a97851619912e7efc80c470912907ce965dc7"
+  },
+  "publication_result": {
+    "account_paired_publication": "not_run",
+    "digest": null,
+    "package_visibility": "not_checked_no_publication",
+    "release_record": null,
+    "sbom_scan_validation": "not_run_no_publication",
+    "started": false
+  },
+  "resume_requirement": "Manager must resolve access to existing repository variables through the existing authorized connection. Do not issue credentials, expand permissions, rerun CI or self-approve gates in this attempt.",
+  "run": {
+    "attempt": 1,
+    "conclusion": "success",
+    "event": "push",
+    "head_branch": "main",
+    "head_sha": "d48a97851619912e7efc80c470912907ce965dc7",
+    "id": 38722315079,
+    "status": "completed",
+    "url": "https://github.com/syuhei0519/backend-app/actions/runs/38722315079"
+  },
+  "runtime": {
+    "observation_status": "unverified",
+    "observed_effort": null,
+    "observed_model": null,
+    "requested_effort": "medium",
+    "requested_model": "gpt-6.1-sol",
+    "requested_service_tier": "default",
+    "usage": null
+  },
+  "scope": "backend-app#34/order-release",
+  "status": "blocked",
+  "system_revision": "3394bb069be64bdc43e057b251fc320302d185f6",
+  "variables": {
+    "individual_get_http_status": {
+      "ENABLE_GHCR_PUBLISH": 404,
+      "ENABLE_MANIFEST_PR": 404
+    },
+    "interpretation": "404 cannot distinguish unavailable endpoint/access from absent setting; listing also failed.",
+    "list_get_http_status": 404,
+    "values": "unverified"
+  }
+}
