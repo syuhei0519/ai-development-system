@@ -1,6 +1,6 @@
 # AI Development System
 
-既存の Dots / Codex Cloud 上で独立タスクを起動し、役割と成果物の契約を明示して AI 開発を進めるための設定・運用仕様です。Phase 1-1 の契約に Phase 1-2 のマージゲート契約を追加しています。追加 OpenAI API、新規課金サービス、6プロセスの常設は不要です。自動オーケストレーターや Dots 専用 API 連携の実装は含みません。
+既存の Dots を Manager とし、保存済み Codex Cloud とローカル PC の既存 kind に独立タスクを振り分け、役割と成果物の契約を明示して AI 開発を進めるための設定・運用仕様です。Phase 1-1 の契約に Phase 1-2 のマージゲート契約を追加しています。追加 OpenAI API、新規課金サービス、6プロセスの常設は不要です。自動オーケストレーターや Dots 専用 API 連携の実装は含みません。
 
 ## アーキテクチャ
 
@@ -26,6 +26,12 @@ flowchart TD
 
 Dots 自身が Manager としてタスク管理と完了判定に専念し、Knowledge Agent が知識の収集・選別・抽象化・管理を非同期に担当します。Knowledge の完了は開発をブロックしません。
 
+## 実行場所の選択
+
+[実行ルーティング](workflows/single-issue.md#実行場所と必要能力) はテスト名ではなく必要能力で決めます。Research、実装、Review、Unit、build/static checks、既存 runtime で可能な実 DB 統合・API レベルの複数サービス E2E、Helm rendering/schema checks は保存済み Codex Cloud。deployment、Service DNS、Ingress、probes、Pod restart/PVC、Argo sync、Rollouts/canary、cluster observability の実挙動のみローカル PC の既存 kind で検証します。E2E 自体は Kubernetes 要件ではありません。
+
+通常の Cloud 作業をローカルへ自動 fallback しません。ローカルが offline なら cluster 必須検証だけを environment blocked として残し、独立した実装・API/DB 検証を進めます。mock/compose 成功を cluster AC 合格にしません。ローカル操作前の接続・対象・権限・cleanup 境界の確認と、固定 bytes による証跡返却が必要です。追加課金サービスや新しい orchestration framework は導入しません。
+
 ## ファイル構成
 
 | パス | 用途 |
@@ -50,7 +56,7 @@ Dots 自身が Manager としてタスク管理と完了判定に専念し、Kno
 
 1. 既存の認可済み Dots / Codex Cloud 環境でこの repo の固定 revision を取得します。対象 repo の AGENTS.md と関連 SKILL.md があれば確認します。
 2. Dots 自身が Manager を担当します。Dots に `agents/manager.md`、契約、ワークフローと Issue 固有の依頼・認可済み出典・許可範囲を渡します。別の Manager Cloud タスクを起動する必要はありません。
-3. Dots / Manager は全必須 AC 原文・出典と許可範囲を確認し、`templates/task-input.md` に役割定義と Issue 固有情報、assignment.scope・担当 ac_ids・completion_criteria を明示して、必要な専門役割を独立 Cloud タスクとして起動します。Knowledge は専用入力で raw_findings と出典を渡し、単一 Issue / AC を要求しません。画面/API の名称や起動・回収能力は環境依存です。Dots に必要な操作手段がない環境では、人間が作成済みの初回入力を使って起動・成果物回収を補助します。この制限を二重 Manager の起動で解消したとはみなしません。
+3. Dots / Manager は全必須 AC 原文・出典と許可範囲を確認し、`templates/task-input.md` に役割定義と Issue 固有情報、assignment.scope・担当 ac_ids・completion_criteria を明示して、必要な専門役割を独立タスクとして起動します。既定は保存済み Codex Cloud、実 Kubernetes の挙動検証のみ検証済みローカル PC 環境を明示した `cloud_threads.create` を使用します。Knowledge は専用入力で raw_findings と出典を渡し、単一 Issue / AC を要求しません。画面/API の名称や起動・回収能力は環境依存です。Dots に必要な操作手段がない環境では、人間が作成済みの初回入力を使って起動・成果物回収を補助します。この制限を二重 Manager の起動で解消したとはみなしません。
 4. 終了通知後、Manager が handoff JSON と成果物実体を取得し、形式と担当範囲の業務完了を検査します。担当外 AC は covered にせず、未検証のままでも担当工程を completed にできます。Issue 全体の最終判定は Manager が全 AC を別途確認します。合格した成果物・根拠・AC 原文を後続の初回入力に渡します。
 5. 欠落・失敗時は依存後続を停止し、修正後に新しい独立タスクを起動します。各論理工程で初回を含め実行最大3試行です。配送/起動は別カウンタで各最大3回とし、過去履歴は変更しません。必須 AC 原文欠落は `MISSING_ACCEPTANCE_CRITERIA` とし、Manager が認可済み情報源から原文を補完するまで進めません。
 6. 実装完了、feature branch の remote SHA、Draft PR、同じ head SHA の CI を個別に確認します。CLI と GitHub 連携は別経路として扱います。main 直接 Push は行いません。現在の Phase 1-1 では merge / auto-merge は行わず Draft を維持します。Phase 1-2 以降はユーザーが許可した品質ゲート通過後の AI マージを扱います。GitHub の保護ルール・必須 checks/review は迂回しません。[マージ方針](workflows/single-issue.md#マージ方針) を参照してください。

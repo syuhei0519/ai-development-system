@@ -95,6 +95,10 @@ Git fetch は commit tree を取得するため pack のネットワーク量/�
 対象 repo 内の Git symlink は一切辿らない。出力後の外部改変をこの CLI が監視/検出するとは主張しない。再利用時は Git から再取得し、
 検査に成功した新規出力を使う。旧ローカル出力の改変検知が必要なら別の実体検査が必要。
 
+## ローカル kind Test からの返却
+
+[実行場所](../workflows/single-issue.md#実行場所と必要能力) がローカル PC でも配送契約は同じ。Handoff / test-report / Readiness を固定 commit/path/size/SHA-256 と実体 bytes で返し、ローカルパスや終了通知を証跡に代用しない。venue・必要能力・実 code/config/image identity・context/cluster/namespace/owned inventory・結果/cleanup を非公開原本で保全する。kubeconfig、Secrets、実際の非公開識別子を公開 Git に置かない。必要な安全性確認・公開操作承認を経た edited_derivative は原本と異なる証拠範囲である。現行公開 Consumer CLI が非公開配送を実装したとは主張せず、既存認可済み経路で配送できなければ blocked とする。再生成・retry リセットで補わない。版・容量・承認・全 bytes 検査は現行契約のまま。
+
 ## Handoff / Readiness 互換
 
 配送 manifest は v2.0 Handoff の `kind=other` artifact として locator と

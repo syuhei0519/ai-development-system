@@ -1,6 +1,6 @@
 # 独立専門エージェント起動入力
 
-Dots / Manager が専門役割の独立 Codex Cloud タスクに渡す入力テンプレート。Manager 自身の Cloud 起動には使わない。Knowledge は [専用入力](knowledge-input.md) を使用する。山括弧の項目を埋め、未記入のまま起動しない。必須 AC 原文が取得できなければ不足を明示し blocked を要求する。実識別子や非公開資料は認可された非公開実行領域だけで扱う。
+Dots / Manager が専門役割の独立タスク（保存済み Codex Cloud が既定、実 Kubernetes Test のみ検証済みローカル PC）に渡す入力テンプレート。Manager 自身の Cloud 起動には使わない。Knowledge は [専用入力](knowledge-input.md) を使用する。山括弧の項目を埋め、未記入のまま起動しない。必須 AC 原文が取得できなければ不足を明示し blocked を要求する。実識別子や非公開資料は認可された非公開実行領域だけで扱う。
 
 ## Role / Contract
 
@@ -20,6 +20,16 @@ Dots / Manager が専門役割の独立 Codex Cloud タスクに渡す入力テ�
 - Mission / deliverables: <今回の責務と成果物>
 - 許可操作・作業領域・禁止事項: <read/write/feature Push/Draft PR を個別指定>
 - 環境・依存物・検証手順: <既存認可済みの環境>
+
+## Execution Context（必要能力で選択）
+
+- venue / required capabilities: <保存済み Codex Cloud / 検証済み local kind。AC/subcheck ごとの能力と選択理由。E2E 名だけで判定しない>
+- runtime identity: <固定 code/config revision、実測 image digest（使用時）、DB/サービス構成、検証対象。未取得と該当なしを区別>
+- local kind Test の場合: <`cloud_threads.create` に明示する検証済み接続・認可済み環境の非公開参照、正確な context/cluster、namespace、既存/owned inventory、承認 access scope/操作、cleanup 境界と復旧責任。秘密値を添付しない>
+- unavailable / partial: <失敗操作・対象・理由・環境阻害の検証、独立して続ける Cloud 作業、残る gate と再開条件。予算・履歴は維持>
+- return evidence: <venue/必要能力/実 identity/context/観測時刻/コマンド/結果/cleanup を既存 observation と固定 report artifact に記録。非公開原本と公開承認済み派生版を分離し Artifact Delivery で返す>
+
+通常確認はまとめて行い、既存認可を再要求しない。mutation の safety floor 承認は省略しない。Cloud への既定割当・既存 runtime の対応範囲・offline 時の独立作業継続は [workflow](../workflows/single-issue.md#実行場所と必要能力) に従う。これは Handoff の新フィールドではなく初回入力の説明項目である。
 
 ## Explicit Handoff Bundle
 

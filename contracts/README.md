@@ -22,6 +22,10 @@ AC 原文が欠落していれば `MISSING_ACCEPTANCE_CRITERIA` で blocked。�
 
 `python scripts/validate_handoff.py FILE...` は schema とローカル参照整合性（担当 AC、重複、全担当の covered、最終判定の全 Issue AC 対応、retry）を検査する。Manager が assignment と元の起動入力の一致、同一論理工程の追跡を別途照合する。
 
+## 実行場所の証跡（既存契約の利用）
+
+[実行ルーティング](../workflows/single-issue.md#実行場所と必要能力) は運用方針であり schema 変更ではない。Handoff v2.0 の `evidence.observation` と `kind=test-report` artifact に venue・必要能力・実 code/config/image identity・runtime context を記録する。ローカル環境阻害は既存 `block_reasons.code=OTHER`、detail に `ENVIRONMENT_BLOCKED` と失敗操作/対象/理由、required_action に再開条件を記録できる（認可拒否は ACCESS_DENIED）。新 enum や top-level field を追加しない。未実測の cluster AC は unverified、既知 failure は保持する。schema 成功は実 cluster 観測や接続/認可の証明ではない。
+
 ## Knowledge 専用契約 v1.0
 
 - [knowledge-input.schema.json](knowledge-input.schema.json): `document_type=knowledge_input`。assignment は収集・比較・抽象化の範囲と完了条件。`raw_findings` は1件以上で、各件に観測、技術領域、出典 locator と固定 revision が必要。`issue_refs` は0件以上でよく、複数 Issue を横断できる。単一 Issue も AC 原文も要求しない。

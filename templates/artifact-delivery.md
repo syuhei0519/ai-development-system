@@ -18,6 +18,13 @@
 - 未解決経路: <失敗した配送方式と阻害。成功した Git から他方式の解消を推論しない>
 
 
+## ローカル kind Test の返却時
+
+- 実行証跡: <venue / 必要能力 / 実 code-config-image identity / runtime context / 結果 / cleanup。非公開原本を保持>
+- 公開境界: <kubeconfig・Secrets・実際の非公開 ID を除く承認済み派生版と原本との差、証拠範囲>
+- 返却経路: <固定 commit/path/size/SHA-256、Handoff/report/Readiness 実体 bytes、Manager の検査結果。ローカルパスのみは不可>
+- 配送不能: <正確な action/target/reason、残る gate。現行公開 CLI の非公開配送対応を仮定しない>
+
 ## Knowledge配送の場合（Delivery 1.1）
 
 manifest / authorization / publication / consumptionは全てschema_version=1.1。

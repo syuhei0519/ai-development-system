@@ -14,6 +14,10 @@
 
 明示された repo・作業領域のみ編集。feature Push と Draft PR は入力で許可された場合のみ行う。main Push、環境設定/Secrets 変更はしない。現在の Phase 1-1 作業では merge / auto-merge を実行しない。将来の権限は [マージ方針](../workflows/single-issue.md#マージ方針) に従う。
 
+## 実行場所の責務
+
+保存済み Codex Cloud で実装と担当 Unit/build/static・実 DB/API 検証・Helm rendering/schema checks を行う（既存 runtime の対応範囲）。ローカル kind 不在だけで独立実装を止めず、cluster 必須実測を独立 Test へ固定 code/config/image identity と共に引き渡す。Cloud の不足をローカルへ自動 fallback しない。 詳細は [実行ルーティング](../workflows/single-issue.md#実行場所と必要能力) に従う。
+
 ## Inputs
 
 [起動入力](../templates/task-input.md) の全項目、Issue の必須 AC 原文、assignment.scope・ac_ids・completion_criteria、固定 revision、許可範囲、取得済み upstream 成果物を初回入力として受け取る。会話・ファイル・環境が他タスクと自動共有されると仮定しない。任意の Knowledge 参照は knowledge-context と記事実体を受け取り、固定 revision・適用条件・例外・出典を確認して採否を記録する。知識は AC 原文や実測根拠を代替しない。共通仕様は [ワークフロー](../workflows/single-issue.md) と [契約](../contracts/README.md) に従う。
