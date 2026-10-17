@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.3",
+  "document_type": "publication_receipt",
+  "manifest_sha256": "a727fa526d8f4b52a6ffd60c491c7247a212d3554a21d67519795f46fbfb8e2a",
+  "github_state": "published",
+  "artifacts": [
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "562f11f6a909eec5510926e6cfabca8a4bb8047e",
+        "path": "evidence/learning-services/research-a1/issue39.handoff.json",
+        "size": 8242,
+        "sha256": "dbfe7edd036f1c241994d78b1dee660548038e9619e1664a34a954fa918c282e"
+      },
+      "format": "handoff-v2",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-LEARNING-SERVICES-DERIVATIVE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "562f11f6a909eec5510926e6cfabca8a4bb8047e",
+        "path": "evidence/learning-services/research-a1/issue41.handoff.json",
+        "size": 8259,
+        "sha256": "c0a4927613e1a0c1bead664e346e52bb4463dce6b8a6b168cb1e7b5f68f1d5d2"
+      },
+      "format": "handoff-v2",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-LEARNING-SERVICES-DERIVATIVE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "562f11f6a909eec5510926e6cfabca8a4bb8047e",
+        "path": "evidence/learning-services/research-a1/design.md",
+        "size": 16148,
+        "sha256": "c47c99f5384fc3d1b0c70b10629caae87a899cfd25a1041a56e80545a56f9525"
+      },
+      "format": "text",
+      "representation": "edited_derivative",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-LEARNING-SERVICES-DERIVATIVE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "562f11f6a909eec5510926e6cfabca8a4bb8047e",
+        "path": "evidence/learning-services/research-a1/issue39-input.md",
+        "size": 4304,
+        "sha256": "67a060ff791d14cd3619d88a855d5413d527cec5a2140b2f0430a5eb7fd0fcbb"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-ISSUE-TEXT-SNAPSHOT"
+    },
+    {
+      "reference": {
+        "object_type": "git-commit-object",
+        "repository": "syuhei0519/backend-app",
+        "commit": "d48a97851619912e7efc80c470912907ce965dc7",
+        "size": 1355,
+        "sha256": "c92b209a8bec2eec025328a896b69faba4f48f1a441c273dcb75b2cc8222616c"
+      },
+      "format": "git-commit-object",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-BACKEND-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "3394bb069be64bdc43e057b251fc320302d185f6",
+        "path": "contracts/handoff.schema.json",
+        "size": 15093,
+        "sha256": "3df669f230c3f1d65ddaaa9e7de5f713f70b9e8440512403f6ea309eb70b3ae1"
+      },
+      "format": "json",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SYSTEM-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "3394bb069be64bdc43e057b251fc320302d185f6",
+        "path": "scripts/validate_handoff.py",
+        "size": 5107,
+        "sha256": "c78e917498087cf9bf230ac644135d3dd3aacfe6ff68e294dfe3bc563bfbe221"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-FIXED-SYSTEM-SOURCE"
+    },
+    {
+      "reference": {
+        "object_type": "git-blob",
+        "repository": "syuhei0519/ai-development-system",
+        "commit": "562f11f6a909eec5510926e6cfabca8a4bb8047e",
+        "path": "evidence/learning-services/research-a1/issue41-input.md",
+        "size": 3842,
+        "sha256": "180e4e6a124c0296a38a34f984c5ad08ec2e416fbe4ca4ae46f1e3485a36321a"
+      },
+      "format": "text",
+      "representation": "original",
+      "public_classification": "public_safe",
+      "source_alias": "PUBLIC-ISSUE-TEXT-SNAPSHOT"
+    }
+  ],
+  "observation": "All eight fixed public Git artifact objects were freshly retrieved and raw size/SHA-256 checked after publishing payload commit 562f11f6a909eec5510926e6cfabca8a4bb8047e. The five payload files matched the prepared bytes exactly. Canonical Handoff/content/full-closure validation and all ten structural slots passed using pinned System 3394bb069be64bdc43e057b251fc320302d185f6. Derivative equivalence is producer-attested only. No Consumer approval or Consumption Receipt is asserted."
+}
