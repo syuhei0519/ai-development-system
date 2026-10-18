@@ -10,7 +10,7 @@ except ImportError:
 
 def registry(repository, commit):
     check_reference(dict(repository=repository, commit=commit, path='probe'))
-    data = parse((ROOT / 'examples/knowledge-collector/registry.template.json').read_bytes())
+    data = parse((ROOT / 'examples/collector/registry.template.json').read_bytes())
     data['sources'][0].update(repository=repository, commit=commit)
     validate('knowledge-source-registry', data)
     return data

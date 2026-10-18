@@ -14,7 +14,7 @@ from unittest.mock import patch
 from scripts import knowledge_collector as c
 
 NOW = datetime(2026, 10, 11, tzinfo=timezone.utc)
-FIXTURE = c.ROOT / 'examples/knowledge-collector'
+FIXTURE = c.ROOT / 'examples/collector'
 
 
 class Source:
@@ -24,7 +24,7 @@ class Source:
         for a in self.registry['artifacts']:
             r = a['reference']; self.files[c.refkey(r)] = (c.ROOT / r['path']).read_bytes()
         for p in (FIXTURE / 'events').glob('*.json'):
-            self.files['example/repo', 'a'*40, 'examples/knowledge-collector/events/' + p.name] = p.read_bytes()
+            self.files['example/repo', 'a'*40, 'examples/collector/events/' + p.name] = p.read_bytes()
         self.reads = []
 
     def read(self, ref):
@@ -39,7 +39,7 @@ class Source:
     def bundle(self):
         artifacts = []
         for name in ('input.json','handoff.json','context.json','article.md','source-1.md','source-2.md'):
-            raw = (FIXTURE/name).read_bytes(); path = 'examples/knowledge-collector/' + name
+            raw = (FIXTURE/name).read_bytes(); path = 'examples/collector/' + name
             kind = 'knowledge-' + name[:-5] + '-v1' if name.endswith('.json') else 'text'
             ref = dict(repository='example/repo', commit='b'*40, path=path, size=len(raw), sha256=c.digest(raw))
             self.files[c.refkey(ref)] = raw
@@ -51,12 +51,11 @@ class Source:
 class CollectorTests(unittest.TestCase):
     def test_documented_pb_scope_is_consistent(self):
         overview = (c.ROOT / 'contracts/README.md').read_text()
-        delivery_section = overview.split('## Artifact Delivery v1.1', 1)[1]
-        self.assertIn('[Knowledge Collection v1.0](knowledge-collection.md)', delivery_section)
-        self.assertIn('実装済み', delivery_section)
-        for boundary in ('P-C', 'context生成/ack', 'P-D', '実Agent利用実証', '周期実行', '未実施'):
-            self.assertIn(boundary, delivery_section)
-        self.assertIn('定期実運用の完了を意味しない', delivery_section)
+        self.assertIn('過去契約の再現', overview)
+        self.assertIn('新規タスクへの必須要件ではない', overview)
+        legacy = (c.ROOT / 'contracts/knowledge-collection.md').read_text()
+        for boundary in ('P-C', 'P-D', 'unimplemented'):
+            self.assertIn(boundary, legacy)
         current_docs = [c.ROOT / 'README.md']
         for directory in ('contracts', 'workflows', 'templates'):
             current_docs.extend((c.ROOT / directory).glob('*.md'))
@@ -127,7 +126,7 @@ class CollectorTests(unittest.TestCase):
         keys=[k for k in self.source.files if '/events/' in k[2]]
         event=c.parse(self.source.files[keys[0]]); event['candidate_id']='SYNTHETIC-OTHER'
         event['event_id']=c.event_id(event)
-        self.source.files[keys[0][:2]+('examples/knowledge-collector/events/'+event['event_id']+'.json',)]=c.encode(event)
+        self.source.files[keys[0][:2]+('examples/collector/events/'+event['event_id']+'.json',)]=c.encode(event)
         self.scan(); self.assertEqual(len(self.state['events']),3)
 
     def test_partial_source_read_never_advances_cursor(self):
@@ -192,7 +191,7 @@ class CollectorTests(unittest.TestCase):
                 self.assertIn(old['event_sha256'], self.objects)
 
     def test_poison_event_does_not_stop_other_events(self):
-        self.source.files['example/repo','a'*40,'examples/knowledge-collector/events/poison.json']=b'{"x":NaN}'
+        self.source.files['example/repo','a'*40,'examples/collector/events/poison.json']=b'{"x":NaN}'
         self.scan(); counts=c.public_observation(self.state)['counts']
         self.assertEqual(counts['quarantined'],1); self.assertEqual(counts['verified'],2)
         self.assertEqual(len([a for a in c.plan(self.state)['actions'] if a['action']=='reserve']),2)
@@ -292,7 +291,7 @@ class CollectorTests(unittest.TestCase):
         manifest['artifacts']=[a for a in manifest['artifacts'] if a['format'] not in ('knowledge-input-v1','knowledge-handoff-v1')]
         manifest['knowledge_bindings']=[]; refs={}
         for name,raw in self.retry_docs.items():
-            ref=dict(repository='example/repo',commit='b'*40,path='examples/knowledge-collector/'+name,size=len(raw),sha256=c.digest(raw))
+            ref=dict(repository='example/repo',commit='b'*40,path='examples/collector/'+name,size=len(raw),sha256=c.digest(raw))
             self.source.files[c.refkey(ref)]=raw; refs[name]=ref
             kind='knowledge-input-v1' if name.startswith('input') else 'knowledge-handoff-v1'
             manifest['artifacts'].append(dict(reference=ref,format=kind,representation='original',public_classification='synthetic_sample',source_alias='SYNTHETIC'))

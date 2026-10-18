@@ -1,3 +1,5 @@
+> 過去契約の再現・互換用。新規の標準タスクは [Markdown Handoff](../templates/handoff.md) を使い、この文書の配送記録は必須にしない。
+
 # Issue Completion v1.0（複数 PR・repo）
 
 PR の Merge Ready と Issue 全体の Completion は独立した契約。既存 Readiness v1.0 の

@@ -1,3 +1,5 @@
+> 過去契約の再現・互換用。新規の標準タスクは [Markdown Handoff](../templates/handoff.md) を使い、この文書の配送記録は必須にしない。
+
 # Artifact Delivery v1.0
 
 Handoff v2.0 / Readiness v1.0 の判断責任を維持する、公開 Git 成果物の配送契約。

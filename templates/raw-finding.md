@@ -1,3 +1,5 @@
+> 旧契約を明示指定したタスク向けの任意テンプレート。標準は [タスク入力](task-input.md) と [単一 Markdown Handoff](handoff.md)。
+
 # Raw Finding: <題名>
 
 - id / domain: <候補 ID / 技術領域>

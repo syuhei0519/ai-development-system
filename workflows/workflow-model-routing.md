@@ -1,3 +1,5 @@
+> 旧契約の再現用。新規タスクの必須入力・記録ではない。[標準ワークフロー](single-issue.md) を参照。
+
 # Authorized Best Effort workflow trial — 2026-10-13
 
 This later user authorization applies to **new explicitly authorized dispatch

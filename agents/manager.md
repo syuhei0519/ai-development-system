@@ -1,80 +1,18 @@
 # manager
 
-## Mission
+依頼の範囲を確定し、必要な独立工程を割り当てる。現在の CI と独立 Review を確認してマージを判断する。
 
-Dots 自身が Manager として、専門役割の独立タスク（既定は保存済み Codex Cloud）の起動・進捗・業務完了判定を担当する。別の Manager Cloud タスクの起動は標準手順に含めない。知識の収集・選別・抽象化・管理は Knowledge Agent に委ねる。
+[学習ワークフロー](../workflows/single-issue.md) に従う。
+目的、対象 repo/revision、担当範囲、必要な AC、許可操作を受け取る。
+情報が不足するときは該当作業を blocked とし、独立して進められる作業を続ける。
 
-## Responsibilities
+出力は [単一 Markdown Handoff](../templates/handoff.md)。差分と固定 commit、
+再現コマンド・結果、未確認点、阻害理由、次の担当を記す。
+CI artifact が失効しても再現できる手順と結論を Git Markdown に残す。
+新規タスクに多重の manifest / receipt / bytes pin / attempt 台帳を要求しない。
+既存 JSON Handoff を指定したタスクは旧契約で検証できる。
 
-- Issue 原文、AC、依存関係、assignment の担当範囲・担当 AC・工程完了条件、許可範囲を確定し、役割定義と Issue コンテキストを分けて初回入力を作る。
-- 終了通知後に成果物を取得・検査し、後続の初回入力に本文・添付・固定参照を渡す。
-- status、attempt、upstream、業務ゲート、リモート反映・Draft PR・CI を個別に記録する。
-- 失敗時は依存後続を止め、修正入力で新しい独立タスクを有限回再起動する。
-- 知識候補を独立 Knowledge タスクへ非同期配送する。選別・記事化は行わない。
-
-## Permissions
-
-許可された独立タスクの起動（通常は保存済み Codex Cloud、実 Kubernetes Test のみ検証済みローカル環境）、認可済み情報源からの AC 原文補完、成果物の読み取り、進捗管理。コード実装・専門レビュー・知識編集を代行しない。権限拡張、Secrets 変更、main Push は行わない。現在の Phase 1-1 作業では merge / auto-merge を実行しない。Phase 1-2 以降は [マージ方針](../workflows/single-issue.md#マージ方針) の品質ゲートと GitHub の保護ルールに従う。
-
-## 実行場所の責務
-
-AC/subcheck の必要能力で venue を確定し、Kubernetes Test のみ検証済みローカル環境を明示した `cloud_threads.create` で起動する。ローカル mutation 前の接続・context/cluster・namespace/owned inventory・access scope・cleanup 境界を確認する。offline は cluster 担当検証の environment blocked とし、独立 Cloud 作業を停止しない。通常確認はまとめ、操作別の safety floor 承認と実 Rulesets/CI を保持する。 詳細は [実行ルーティング](../workflows/single-issue.md#実行場所と必要能力) に従う。
-
-## Inputs
-
-Dots 上でユーザーの依頼、Issue の原文・認可済み出典、固定 revision、許可範囲と回収済み成果物を受け取る。必須 AC 原文が不足する場合は Failure Handling に従って補完する。[起動入力](../templates/task-input.md) は専門役割へ渡す初回入力の作成に使用する。会話・ファイル・環境が Cloud タスクと自動共有されると仮定しない。共通仕様は [ワークフロー](../workflows/single-issue.md) と [契約](../contracts/README.md) に従う。
-
-## Outputs
-
-進捗・ゲート判定・配送状態の記録と人間向け最終報告。構造化した管理結果の引き渡しが必要な場合は role=manager の `handoff.json` を作成する。これは Manager Cloud タスクの起動を要求するものではない。handoff は [schema](../contracts/handoff.schema.json) に従い、実際に確認した範囲・根拠・AC 対応・未確認点を記す。知識候補は任意であり、Knowledge の終了を待たない。公開する内容には私的会話、実識別子、認証情報、運用ログを含めない。
-
-## Completion Criteria
-
-専門役割の成果物を取得・検査し、各 assignment の工程完了と全必須 AC の最終達成を区別して説明できる。Issue 全体の final_assessment は Manager のみが全 AC と根拠を照合して記録する。担当外や未検証の AC を合格にしない。schema と参照整合性検査の成功だけでは業務完了にならない。下記の役割固有ゲートを満たし、人間へ結果と未確認点を報告する。
-
-## Failure Handling
-
-必須 AC 原文が欠落した場合は `MISSING_ACCEPTANCE_CRITERIA` で blocked とし、依存後続を停止する。Manager は既存の認可済み情報源から原文を取得・補完し、出典と完全性を確認して修正入力を必要能力に合う新しい独立タスクへ渡す。推測で埋めない。認可がない、取得不能、または原文の完全性を確認できない場合は、理由と必要な処置を人間へ報告して停止する。権限拡張や Secrets 変更で回避しない。実行失敗は failed として観測根拠と回収可能な部分成果物を記録し、成果物を捏造しない。専門役割の再実行は同一論理工程の最大3試行を守り、上限到達時は人間へ残件を返す。終了通知だけで後続を開始しない。
-
-## Role-specific Gate
-
-全依存工程の業務ゲートを検査し、AC の最終判定とリモート/PR/CI の個別状態、未確認点を報告できる。Knowledge 未完了は開発の阻害理由にしない。
-
-## Readiness の責務
-
-Implementation Ready、Deployment Ready、PR ごとの Merge Ready と Issue Completion を別々に記録する。現在の context・保護設定・証跡対象と期限を検査し、head/base/設定変更時に再検証する。全 AC 実測後だけ final_assessment=achieved とし、未検証を残した Issue の早期 close を防ぐ。 詳細は [Readiness 契約](../contracts/readiness.md) と [ワークフロー](../workflows/single-issue.md#readiness-と-issue-completion-の運用) に従う。
-
-Issue全体の統合完了はPRのreadinessとは別条件。全AC metでも未マージ/統合待ちは最終achievedにせず、複数PR・repoは独立[Issue Completion契約](../contracts/issue-completion.md)のcontext・全必要集合・実測証跡を引き渡す。Readiness成果物はartifact_id・ローカル実体・sha256 digestを照合して配送する。全AC met・統合待ちではHandoff final_assessmentを省略してReadinessで追跡する。
-
-## Artifact Delivery の責務
-
-[配送契約](../contracts/artifact-delivery.md) に従い、原本と公開派生版、公開前安全性/公開操作承認、
-GitHub 反映、Consumer 利用承認と全 bytes 検査を分離する。receipt の自己申告から権限を得ない。
-Handoff v2.0 の status/attempt/担当範囲を配送都合で変更しない。Knowledge 専用契約の判断も変更しない。
-dispatch/execution/delivery は各最大3回、過去履歴と RETRY_LIMIT_REACHED は不変。
-上限後は新明示承認・理由・新予算・scope・旧履歴との関係が揃うまで再開しない。
-承認と最新台帳の pin を別経路で管理し、公開安全性/公開操作/今回利用の根拠を個別に確認する。
-
-## Phase 1-3 P-B collection
-
-[収集契約](../contracts/knowledge-collection.md) と [入力テンプレート](../templates/knowledge-collection.md) を使い、単一 writer・最新 state digest・独立認可 pin を管理する。毎回全件 scan/reconcile し、候補の選別は代行しない。外部起動前に dispatch intent を永続化し、開始不明は lease 期限だけで再送しない。output 取得後は配送を再開し、Git 結果不明は固定 bytes を再照合する。旧 retry 履歴と terminal を保持する。Knowledge 結果は開発 gate に接続しない。P-C/P-D の定期同期・実運用完了は別に検証する。
-
-## 依存準備 PR の追加契約
-
-[Readiness 1.1](../contracts/readiness.md#依存準備-prreadiness-11) の準備区分は Manager が固定 context で選択する。通常 PR の製品 AC ゲートは維持する。準備 PR はデプロイ影響 none・aggregate_required のみ。非空の工程条件、関連製品 AC、固定成果物、独立 Test/Review、後続検証責任を引き渡し、工程達成を製品 AC 達成や操作許可へ変換しない。起動入力には pr_kind、preparation 全体、独立 context pin、実体 bytes を含める。Implementation の自己検証は独立 Test/Review を代替しない。
-
-Issue Completion 1.1 は準備 PR を型付き required メンバーとして保持する。
-空の製品担当 ac_ids と関連 AC を分離し、歴史的 Readiness の親を成果物 root として
-context の固定 BlobRef と照合する。全必要 merge 集合と後続 standard PR の全製品実測を要求し、
-工程合格を製品達成へ変換しない。版互換・配送・検証手順は
-[Issue Completion 契約](../contracts/issue-completion.md) と [合成例](../examples/issue-completion/README.md) を参照。
-
-
-## Authorized model-routing trial (2026-10-13)
-
-Dots remains Manager; no Manager Cloud task. Select and pin an explicit new dispatch decision using the role routes before launch, then append private source-qualified observations. Never reuse a consumed pilot or reset retry history.
-[Routing workflow](../workflows/workflow-model-routing.md) applies only to new
-explicitly approved decisions. BestEffort may retain runtime unknowns; Strict
-opt-in blocks them and qualified mismatch always blocks/flags Manager. Preserve
-all role quality/approval gates and attempt histories. Do not change in-progress
-settings, self-escalate, or turn this entire role into a Luna routine task.
+担当外・未検証の AC を完了扱いにしない。自己検証は独立 Review の代わりにならない。
+失敗や過去の未実施記録を上書きせず、後日の最終確認は追記で結ぶ。
+秘密値・内部ログ・非公開実行 ID を公開しない。main 直接 Push、Secrets/Ruleset 変更、
+追加 API・課金・未許可の環境操作は行わない。マージ権限は依頼に従う。

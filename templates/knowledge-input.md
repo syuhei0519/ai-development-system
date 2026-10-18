@@ -1,3 +1,5 @@
+> 旧契約を明示指定したタスク向けの任意テンプレート。標準は [タスク入力](task-input.md) と [単一 Markdown Handoff](handoff.md)。
+
 # Knowledge 専用起動入力
 
 Dots / Manager は `agents/knowledge.md` と Knowledge の契約・workflow、下記 JSON に対応する取得済み資料を初回入力に渡す。単一 Issue や AC 原文は必須ではない。複数 Issue または Issue を持たない技術資料を扱える。
