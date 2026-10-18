@@ -1,3 +1,5 @@
+> 過去契約の再現・互換用。新規の標準タスクは [Markdown Handoff](../templates/handoff.md) を使い、この文書の配送記録は必須にしない。
+
 # Delivery 1.2: fixed cross references and immutable candidates
 
 This explicitly versioned extension leaves Delivery 1.0/1.1 and Handoff 2.0,

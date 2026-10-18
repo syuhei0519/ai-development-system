@@ -1,3 +1,5 @@
+> 過去契約の再現・互換用。新規の標準タスクは [Markdown Handoff](../templates/handoff.md) を使い、この文書の配送記録は必須にしない。
+
 # Readiness v1.0 / v1.1 と Issue Completion
 
 [readiness.schema.json](readiness.schema.json) は PR ごとの判定記録、[readiness-context.schema.json](readiness-context.schema.json) は Manager が取得した現在の対象・AC・保護設定の照合用スナップショット。Issue handoff v2.0 と Knowledge v1.0 は変更しない。readiness は独立した v1.0 の artifact として locator・固定 revision/digest を handoff に記録し、実体を配送する。単に handoff のバージョンを置き換えない。

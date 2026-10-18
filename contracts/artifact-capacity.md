@@ -1,3 +1,5 @@
+> 過去契約の再現・互換用。新規の標準タスクは [Markdown Handoff](../templates/handoff.md) を使い、この文書の配送記録は必須にしない。
+
 # Delivery 1.3: bounded artifact capacity
 
 Delivery 1.3 increases only the explicit `artifacts` array limit from 128 to 256.

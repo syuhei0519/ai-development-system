@@ -1,3 +1,5 @@
+> 旧契約を明示指定したタスク向けの任意テンプレート。標準は [タスク入力](task-input.md) と [単一 Markdown Handoff](handoff.md)。
+
 # Artifact Delivery 入力テンプレート
 
 非公開で記入し、公開する必要がある派生版だけを安全性確認・操作承認後に公開する。

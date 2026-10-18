@@ -1,3 +1,5 @@
+> 旧契約の再現用。新規タスクの必須入力・記録ではない。[標準ワークフロー](single-issue.md) を参照。
+
 # Bounded model routing: disabled rollout, one read-only pilot
 
 Policy revision `bounded-read-only-v2` is a local deterministic planner/validator,

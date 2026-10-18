@@ -163,7 +163,7 @@ The CLI neither creates nor retries a commit. Manager reconciles external Git ou
 
 ## CLI and public/private boundary
 
-See [synthetic reproduction](../examples/knowledge-collector/README.md) and
+See [synthetic reproduction](../examples/collector/README.md) and
 [Manager input template](../templates/knowledge-collection.md). `plan` and `replay` are the same
 read-only deterministic calculation against an exact state digest. They do not confer authority,
 reserve a batch, use a past authorization, or read live sources. Private plan output can be saved

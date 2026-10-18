@@ -2,6 +2,7 @@
 """Validate shape and local references; never certify evidence or AC truth."""
 import argparse
 import json
+import re
 from pathlib import Path
 import sys
 
@@ -93,6 +94,13 @@ def validate(data):
     return [f'integrity: {error}' for error in integrity_errors(data)]
 
 
+def validate_markdown(text):
+    """Check the four learning sections; never infer semantic completion."""
+    headings = re.findall(r'^##[ \t]+([^\r\n]+)', text, re.MULTILINE)
+    required = ['目的', 'やったこと', '観察結果', '学び']
+    return [f'missing or duplicate section: {name}' for name in required if headings.count(name) != 1]
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('files', nargs='+', type=Path)
@@ -100,7 +108,8 @@ def main():
     failed = False
     for path in args.files:
         try:
-            errors = validate(json.loads(path.read_text(encoding='utf-8')))
+            raw = path.read_text(encoding='utf-8')
+            errors = validate_markdown(raw) if path.suffix.lower() == '.md' else validate(json.loads(raw))
         except (OSError, ValueError) as exc:
             errors = [str(exc)]
         if errors:

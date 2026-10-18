@@ -1,3 +1,5 @@
+> 旧契約を明示指定したタスク向けの任意テンプレート。標準は [タスク入力](task-input.md) と [単一 Markdown Handoff](handoff.md)。
+
 ---
 id: "<knowledge-id>"
 title: "<人間向けの題名>"

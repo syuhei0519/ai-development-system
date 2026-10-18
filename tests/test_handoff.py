@@ -6,7 +6,7 @@ import subprocess
 import sys
 import unittest
 
-from scripts.validate_handoff import ROOT, VALIDATOR, validate
+from scripts.validate_handoff import ROOT, VALIDATOR, validate, validate_markdown
 
 
 def fixture(name='research-to-test/research.handoff.json'):
@@ -14,6 +14,16 @@ def fixture(name='research-to-test/research.handoff.json'):
 
 
 class HandoffTests(unittest.TestCase):
+    def test_markdown_and_json_cli_compatibility(self):
+        text = (ROOT / 'templates/handoff.md').read_text()
+        self.assertEqual(validate_markdown(text), [])
+        self.assertTrue(validate_markdown(text.replace('## 学び', '## Other')))
+        self.assertTrue(validate_markdown(text + '\n## 学び\n'))
+        result = subprocess.run([sys.executable, str(ROOT / 'scripts/validate_handoff.py'),
+                                 str(ROOT / 'templates/handoff.md'),
+                                 str(ROOT / 'examples/research-to-test/research.handoff.json')], capture_output=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+
     def test_valid_statuses_and_retry(self):
         for name in ('research-to-test/research.handoff.json',
                      'research-to-test/test.blocked.handoff.json',
