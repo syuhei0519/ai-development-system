@@ -129,7 +129,9 @@ Readinessの配送にはartifact_id、Handoff基準のローカルlocator、実�
 配送未完了は delivery failure として扱う。開始不明は照合まで再送を止める。
 いずれかの最終許容試行が未完了なら RETRY_LIMIT_REACHED で依存ループ停止。
 過去の B1 Implementation 3回と terminal 状態は不変。分類変更・scope の言換えでリセットしない。
-再開には新たな明示承認、理由、各1〜3の新予算、scope、過去履歴 pin と関係がすべて必要。
+再開には新たな明示承認、理由、限定予算、scope、過去履歴 pin と関係がすべて必要。
+成功枯渇では履歴を増やさず停止し、配送限定owner grantで旧execution/dispatch残数を保持する。
+詳細なgrant形式と期限は配送契約に従い、業務attemptは全epochのexecution通算で最大3を維持する。
 [retry CLI](../scripts/validate_retry.py) で新 epoch と旧履歴の完全保持を検査する。
 配送成功は Readiness や製品実装再開許可にならない。ユーザーが同一 head の独立 Review と CI を
 PR 前に要求した場合、その確認と後続指示まで PR を作成しない。

@@ -277,6 +277,34 @@ class WorkflowRoutingTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.observe(initial, updated, self.observation)
 
+    def test_bounded_renewal_routes_cumulative_attempt_two_without_reset(self):
+        from test_retry import bounded_renewal, raw, step, event
+        original, stopped, renewed, grant = bounded_renewal()
+        request = dict(self.request, scope=original['scope'], attempt=2,
+                       dispatch_kind='explicit_redispatch')
+        for history in (original, stopped):
+            with self.assertRaises(ValueError): self.plan(request, history)
+        step(original, stopped)
+        step(stopped, renewed, grant_raw=raw(grant), grant_sha256=routing.digest(raw(grant)))
+        record = self.plan(request, renewed)
+        self.assertEqual(record['attempt'], 2)
+        self.assertEqual(record['remaining_business_budget'], {'dispatch': 1, 'execution': 2, 'delivery': 2})
+        for attempt in (1, 3):
+            with self.assertRaises(ValueError): self.plan(dict(request, attempt=attempt), renewed)
+        with self.assertRaises(ValueError): self.plan(dict(request, dispatch_kind='new_task'), renewed)
+        third = deepcopy(renewed)
+        third['epochs'][-1]['events'].append(event('execution', 'succeeded'))
+        step(renewed, third)
+        self.assertEqual(self.plan(dict(request, attempt=3), third)['attempt'], 3)
+        exhausted = deepcopy(third)
+        exhausted['epochs'][-1]['events'].append(event('execution', 'succeeded'))
+        step(third, exhausted)
+        for attempt in (1, 3, 4):
+            with self.assertRaises(ValueError): self.plan(dict(request, attempt=attempt), exhausted)
+        no_dispatch = deepcopy(renewed)
+        no_dispatch['epochs'][-1]['limits']['dispatch'] = 0
+        with self.assertRaises(ValueError): self.plan(request, no_dispatch)
+
     def test_retained_pr10_prefix_hashes(self):
         for name, size, pin in [('2026-10-13-model-routing-findings.md', 14349, '99e627df84da2e9e1022d76cc12e6d311e4db76c796aa838cb7fb98d835b4876'),
                                 ('README.md', 1456, '0f177595e7defe0c2928a11a646599e48e11a48410f745c7cc89352fbb500670')]:

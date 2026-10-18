@@ -2,6 +2,7 @@
 """Append-only retry transitions against independently pinned Manager history and grants."""
 import argparse
 from collections import Counter
+from datetime import datetime, timezone
 import json
 from pathlib import Path
 import sys
@@ -22,6 +23,20 @@ def text(value):
     require(isinstance(value, str) and bool(value.strip()), 'missing retry text')
 
 
+def remaining_budget(epoch):
+    counts = Counter(event['kind'] for event in epoch['events'])
+    return {kind: epoch['limits'][kind] - counts[kind] for kind in KINDS}
+
+
+def exhausted_failure(epoch):
+    remaining = remaining_budget(epoch)
+    for kind in KINDS:
+        last = next((e for e in reversed(epoch['events']) if e['kind'] == kind), None)
+        if remaining[kind] == 0 and last is not None and last['result'] != 'succeeded':
+            return True
+    return False
+
+
 def validate_ledger(ledger):
     keys(ledger, 'version scope epochs')
     require(ledger['version'] == '1.0', 'invalid retry version')
@@ -31,7 +46,7 @@ def validate_ledger(ledger):
         keys(epoch, 'id limits events terminal grant_sha256')
         require(type(epoch['id']) is int and epoch['id'] == index + 1, 'epoch order')
         keys(epoch['limits'], 'dispatch execution delivery')
-        require(all(type(n) is int and 1 <= n <= 3 for n in epoch['limits'].values()), 'invalid retry budget')
+        require(all(type(n) is int and (1 if index == 0 else 0) <= n <= 3 for n in epoch['limits'].values()), 'invalid retry budget')
         require(epoch['terminal'] in ('open', 'RETRY_LIMIT_REACHED'), 'invalid terminal state')
         require(isinstance(epoch['events'], list), 'invalid events')
         counts = Counter()
@@ -41,10 +56,11 @@ def validate_ledger(ledger):
             text(event['evidence'])
             counts[event['kind']] += 1
         require(all(counts[k] <= epoch['limits'][k] for k in KINDS), 'retry budget exceeded')
-        exhausted_failure = any(counts[k] == epoch['limits'][k] and
-            next(e for e in reversed(epoch['events']) if e['kind'] == k)['result'] != 'succeeded'
-            for k in KINDS if counts[k])
-        require(not exhausted_failure or epoch['terminal'] == 'RETRY_LIMIT_REACHED', 'terminal marker required')
+        exhausted = any(n == 0 for n in remaining_budget(epoch).values())
+        require(epoch['terminal'] != 'RETRY_LIMIT_REACHED' or exhausted, 'stop requires exhausted budget')
+        require(not exhausted_failure(epoch) or epoch['terminal'] == 'RETRY_LIMIT_REACHED', 'terminal marker required')
+        require(index == len(ledger['epochs']) - 1 or epoch['terminal'] == 'RETRY_LIMIT_REACHED',
+                'renewal only after terminal stop')
         if index == 0:
             require(epoch['grant_sha256'] is None and epoch['limits'] == LIMITS, 'initial budget must be three')
         else:
@@ -64,6 +80,10 @@ def transition(previous_raw, candidate_raw, previous_sha256, grant_raw=None, gra
         before, after = old[-1], new[-1]
         require(before['terminal'] != 'RETRY_LIMIT_REACHED', 'RETRY_LIMIT_REACHED: explicit renewal required')
         require(all(before[k] == after[k] for k in ('id','limits','grant_sha256')), 'budget changed')
+        if after['events'] == before['events']:
+            require(before['terminal'] == 'open' and after['terminal'] == 'RETRY_LIMIT_REACHED' and
+                    any(n == 0 for n in remaining_budget(before).values()), 'stop requires exhausted budget')
+            return candidate
         require(after['events'][:-1] == before['events'] and len(after['events']) == len(before['events'])+1,
                 'history must append exactly one event')
     else:
@@ -72,7 +92,23 @@ def transition(previous_raw, candidate_raw, previous_sha256, grant_raw=None, gra
         require(grant_raw is not None and grant_sha256 is not None and digest(grant_raw) == grant_sha256,
                 'independently pinned renewal approval required')
         grant = parse(grant_raw)
-        keys(grant, 'approval authority reason scope prior_history_sha256 new_epoch limits relationship')
+        fields = 'approval authority reason scope prior_history_sha256 new_epoch limits relationship'
+        bounded = 'increments' in grant
+        keys(grant, fields + (' increments explicit_owner_grant expires_at' if bounded else ''))
+        require(bounded or exhausted_failure(old[-1]), 'successful exhaustion needs bounded owner grant')
+        if bounded:
+            require(grant['explicit_owner_grant'] is True, 'explicit owner grant required')
+            text(grant['expires_at'])
+            expires = datetime.fromisoformat(grant['expires_at'].replace('Z', '+00:00'))
+            require(expires.tzinfo is not None and datetime.now(timezone.utc) < expires, 'expired owner grant')
+            increments = grant['increments']
+            keys(increments, 'dispatch execution delivery')
+            require(all(type(n) is int for n in increments.values()) and
+                    increments['dispatch'] == increments['execution'] == 0 and
+                    1 <= increments['delivery'] <= 3, 'only bounded delivery increment permitted')
+            remaining = remaining_budget(old[-1])
+            require(grant['limits'] == {k: remaining[k] + increments[k] for k in KINDS},
+                    'renewal must preserve other remaining budgets')
         require(grant['approval'] == 'approved', 'renewal not approved')
         for k in ('authority','reason','relationship'): text(grant[k])
         require(grant['scope'] == previous['scope'] and grant['prior_history_sha256'] == digest(previous_raw),

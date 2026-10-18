@@ -73,7 +73,8 @@ def budget(history, request):
     remaining = {kind: limit - counts[kind] for kind, limit in epoch['limits'].items()}
     if epoch['terminal'] != 'open' or any(n <= 0 for n in remaining.values()):
         raise ValueError('business budget exhausted')
-    if request['attempt'] != counts['execution'] + 1:
+    executions = sum(e['kind'] == 'execution' for epoch in history['epochs'] for e in epoch['events'])
+    if request['attempt'] != executions + 1:
         raise ValueError('business attempt mismatch')
     prior_work = any(epoch['events'] for epoch in history['epochs'])
     if (request['dispatch_kind'] == 'new_task') == prior_work:
