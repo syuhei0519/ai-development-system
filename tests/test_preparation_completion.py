@@ -117,8 +117,10 @@ class PreparationCompletionTests(unittest.TestCase):
         self.assertTrue(ASSESSMENT.is_valid(self.a)); self.assertTrue(CONTEXT.is_valid(self.c))
         self.a['schema_version']=self.c['schema_version']='1.1'
         for r in self.c['required_prs']: r.update(pr_kind='standard',preparation=None)
-        self.assertFalse(ASSESSMENT.is_valid(self.a)); self.assertFalse(CONTEXT.is_valid(self.c))
+        self.assertTrue(ASSESSMENT.is_valid(self.a)); self.assertTrue(CONTEXT.is_valid(self.c))
         self.assertEqual(self.validate(),('ready','achieved'))
+        self.a['schema_version']=self.c['schema_version']='1.0'
+        self.assertFalse(ASSESSMENT.is_valid(self.a)); self.assertFalse(CONTEXT.is_valid(self.c))
 
     def test_only_preparation_cannot_achieve(self):
         for r in self.c['required_prs']:

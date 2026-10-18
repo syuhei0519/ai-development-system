@@ -24,7 +24,7 @@ except ImportError:
 ROOT = Path(__file__).resolve().parents[1]
 MAX_FILE = 16 * 1024 * 1024
 MAX_BUNDLE = 64 * 1024 * 1024
-ARTIFACT_LIMITS = {'1.0': 128, '1.1': 128, '1.2': 128, '1.3': 256}
+ARTIFACT_LIMITS = {'1.3': 256}
 DELIVERY_SCHEMAS = {'artifact-delivery', 'delivery-authorization',
                     'publication-receipt', 'consumption-receipt'}
 KNOWLEDGE_FORMATS = {f'knowledge-{kind}-v1': f'knowledge_{kind}'
@@ -54,10 +54,8 @@ def parse(raw):
 
 def schema(name, data):
     if name in DELIVERY_SCHEMAS:
-        require(isinstance(data, dict) and data.get('schema_version') in ('1.0', '1.1', '1.2', '1.3'),
-                'unsupported delivery version')
-        if data['schema_version'] != '1.0':
-            name += '-v' + data['schema_version']
+        require(isinstance(data, dict) and data.get('schema_version') == '1.3',
+                'unsupported delivery version; historical records require their original Git revision')
     spec = json.loads((ROOT / 'contracts' / f'{name}.schema.json').read_text())
     require(Draft202012Validator(spec).is_valid(data), f'invalid {name} contract')
 
@@ -228,9 +226,9 @@ class SlotResolver:
         require(self.used == set(self.bindings), 'extra slot binding')
 
 
-def verify_handoffs(artifacts, blobs, version='1.0', knowledge_bindings=None, slot_bindings=None,
+def verify_handoffs(artifacts, blobs, version='1.3', knowledge_bindings=None, slot_bindings=None,
                     candidate_bindings=None, source=None):
-    require(version in ('1.0', '1.1', '1.2', '1.3'), 'unsupported delivery version')
+    require(version == '1.3', 'unsupported delivery version')
     formats = {'text', 'json', 'handoff-v2'}
     if version != '1.0':
         formats.update(KNOWLEDGE_FORMATS)

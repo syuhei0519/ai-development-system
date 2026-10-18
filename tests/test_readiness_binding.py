@@ -138,7 +138,7 @@ class ArtifactBindingTests(unittest.TestCase):
         context = self.root / 'context.json'
         context.write_text(json.dumps(fixture('context.json')))
         command = [sys.executable, str(ROOT / 'scripts/validate_readiness.py'), str(self.path),
-                   '--context', str(context), '--handoff', str(self.hpath), '--at', NOW.isoformat()]
+                   '--context', str(context), '--context-sha256', hashlib.sha256(context.read_bytes()).hexdigest(), '--handoff', str(self.hpath), '--at', NOW.isoformat()]
         for tampered, expected in [(False, 0), (True, 1)]:
             if tampered:
                 self.artifact['revision'] = 'sha256:' + '0' * 64
@@ -177,7 +177,7 @@ class InitialBytesRaceTests(unittest.TestCase):
             return payload
 
         args = ['validate_readiness.py', str(self.path), '--context', str(cpath),
-                '--handoff', str(self.hpath), '--at', NOW.isoformat()]
+                '--handoff', str(self.hpath), '--context-sha256', hashlib.sha256(cpath.read_bytes()).hexdigest(), '--at', NOW.isoformat()]
         errors = io.StringIO()
         with patch.object(Path, 'read_bytes', swap_after_read), patch.object(sys, 'argv', args), redirect_stderr(errors):
             self.assertEqual(main(), 1)

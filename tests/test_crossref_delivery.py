@@ -33,7 +33,7 @@ class Source:
 
 class Bundle:
     def __init__(self):
-        self.manifest = dict(schema_version='1.2', document_type='artifact_delivery',
+        self.manifest = dict(schema_version='1.3', document_type='artifact_delivery',
                              artifacts=[], knowledge_bindings=[], slot_bindings=[])
         self.blobs = {}
 
@@ -62,7 +62,7 @@ class Bundle:
         pub = dict(schema_version=self.manifest['schema_version'], document_type='publication_receipt',
                    manifest_sha256=digest(raw), github_state='published',
                    artifacts=deepcopy(self.manifest['artifacts']), observation='Synthetic fixture only.')
-        policy = parse((ROOT/'examples/delivery/synthetic.authorization.json').read_bytes())
+        policy = parse((ROOT/'examples/delivery/current.authorization.json').read_bytes())
         policy.update(schema_version=self.manifest['schema_version'], manifest_sha256=digest(raw),
                       publication_receipt_sha256=digest(encode(pub)), allowed_representations=['original'])
         return raw, pub, policy

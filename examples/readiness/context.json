@@ -1,6 +1,6 @@
 {
   "document_type": "readiness_context",
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "subject": {
     "repository": "example/synthetic-service",
     "pr_number": 42,
@@ -38,5 +38,7 @@
     "reviews": true,
     "queue": false
   },
-  "issue_integration_scope": "single_pr"
+  "issue_integration_scope": "single_pr",
+  "pr_kind": "standard",
+  "preparation": null
 }

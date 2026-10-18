@@ -112,10 +112,10 @@ class PreparationTests(unittest.TestCase):
                 self.assertEqual(slot['source'], url)
                 self.assertEqual(slot['target']['kind'], kind)
                 raw = encode(manifest)
-                pub = encode(dict(schema_version='1.2', document_type='publication_receipt',
+                pub = encode(dict(schema_version='1.3', document_type='publication_receipt',
                     manifest_sha256=delivery.digest(raw), github_state='published',
                     artifacts=manifest['artifacts'], observation='Synthetic only'))
-                auth = encode(dict(schema_version='1.2', document_type='delivery_authorization',
+                auth = encode(dict(schema_version='1.3', document_type='delivery_authorization',
                     authority='Synthetic', consumer='SYNTHETIC', scope='synthetic', purpose='contract-review',
                     manifest_sha256=delivery.digest(raw), valid_until='2030-01-01T00:00:00Z',
                     public_safety_review='Synthetic', publication_approval='unverified',

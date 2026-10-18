@@ -14,7 +14,7 @@ All new contracts are closed Draft 2020-12 objects, version 1.0:
   correction, or invalidation; producer role, observation kind, source and finding pins,
   timestamps, representation, optional Issue aliases, supersedes. No runtime identity field.
 - [source registry](knowledge-source-registry.schema.json): all approved fixed inbox snapshots,
-  typed artifact inventory and Delivery 1.1 Knowledge bindings. Each source ID and repository/path
+  typed artifact inventory and Delivery 1.3 Knowledge bindings. Each source ID and repository/path
   pair is unique; overlapping inbox prefixes are rejected. Source IDs remain stable on updates.
 - [KnowledgeCollectionState](knowledge-collection-state.schema.json): **private_only**, writer/scope,
   predecessor digest, cursors, immutable original event digest, event state/history, stable batches,
@@ -149,7 +149,7 @@ reserve imports an independently pinned existing ledger with the exact batch sco
 imports remain terminal. Manager must map previous logical work before initial ingestion.
 
 After an execution failure, dispatch rejects stale input attempts. `prepare_retry` verifies a
-complete Delivery 1.1 bundle including the new input and its typed prior handoff dependencies;
+complete Delivery 1.3 bundle including the new input and its typed prior handoff dependencies;
 the new task identity and next attempt are required. After an explicitly authorized new epoch,
 a new attempt-1 input is allowed while old epochs remain. `renew` uses the existing grant shape
 and separate `--grant-sha256`; ordinary record authorization alone cannot renew. It cannot discard

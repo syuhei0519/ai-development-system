@@ -1,18 +1,32 @@
-# 成果物の契約
+# 現在の契約
 
-新規の学習タスクは [単一 Markdown Handoff](../templates/handoff.md) が標準。
-「目的・やったこと・観察結果・学び」に担当範囲、対象 commit、再現手順、結論、未確認点を含める。
-CI artifact と PR 本文に実行結果をまとめ、Git には再現手順と結論の Markdown を残す。
-通常の image digest、依存固定、真正性確認、security check の失敗拒否は維持する。
+通常の学習記録は [単一 Markdown](../templates/handoff.md)。JSON 検証が必要な場合だけ下表を使う。
+新規タスクへの必須要件ではない。
 
-`python scripts/validate_handoff.py FILE.md` は4項目の存在を確認する。
-JSON 入力には従来の [Handoff v2.0 schema](handoff.schema.json) と参照整合性検査を適用する。
-形式の成功は事実、AC 達成、操作許可、独立レビューの成功を意味しない。
+| 契約 | 現行版 | schema |
+| --- | --- | --- |
+| Handoff | 2.0 | handoff.schema.json |
+| Knowledge 入力・出力・参照、収集 | 1.0 | knowledge-*.schema.json |
+| Artifact Delivery、Authorization、Publication、Consumption | 1.3 | artifact-delivery / delivery-authorization / publication-receipt / consumption-receipt.schema.json |
+| Readiness と context | 1.1 | readiness / readiness-context.schema.json |
+| Issue Completion と context | 1.1 | issue-completion / issue-completion-context.schema.json |
+
+版は契約ごとに異なり、全JSONを同じ番号へ変更しない。
+現行 CLI は Delivery 1.0–1.2、Readiness 1.0、Issue Completion 1.0 を拒否する。
+旧 schema 14本を削除し、最新版は版接尾辞のないファイル名に統一した。
+入力不備、未承認、参照の欠落・改変、未検証を成功とする記録は引き続き拒否する。
 
 ## 過去契約の再現
 
-Readiness、Issue Completion、Artifact Delivery 1.0–1.3、Knowledge、routing の既存 schema / CLI と
-実際の回帰 fixture は、指定済みの旧契約と過去の失敗を正確に検証するために保持する。
-新規タスクへの必須要件ではない。互換検証用 schema の存在から wrapper / receipt の作成義務は生じない。
-明示的な旧契約の再試行上限・停止履歴は保持し、この変更で再開・成功に書き換えない。
-新しい証跡基盤や schema 版は追加しない。
+[変更前の固定履歴](https://github.com/syuhei0519/ai-development-system/tree/e1d2b4dcbe47483e1193206386f8d21810cc3fd7) で旧 CLI / schema / 記録を再現する。
+旧版検証の現行サポートは終了。実データを新しい版へ書き換えて成功扱いにしない。
+現行テスト用の架空データは明示的に作り直し、過去の実行結果とは区別する。
+古い非公開の収集状態を再開する場合も、その状態を作った固定履歴を使う。
+
+```sh
+python scripts/validate_handoff.py templates/handoff.md
+python scripts/validate_delivery_records.py
+python -m unittest discover -s tests -v
+```
+
+形式検証は事実・達成・操作許可・レビューの成功を証明しない。

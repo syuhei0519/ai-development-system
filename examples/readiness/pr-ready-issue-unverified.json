@@ -1,6 +1,6 @@
 {
   "document_type": "readiness_assessment",
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "assessor_role": "manager",
   "subject": {
     "repository": "example/synthetic-service",
@@ -585,5 +585,7 @@
     "verdict": "pending",
     "evidence_ids": [],
     "reason": "synthetic sample: Issue integration still unverified"
-  }
+  },
+  "pr_kind": "standard",
+  "preparation": null
 }

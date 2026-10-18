@@ -19,5 +19,5 @@ python scripts/validate_handoff.py templates/handoff.md
 python -m unittest discover -s tests -v
 ```
 
-旧 JSON 契約と回帰 fixture は明示指定された既存タスクの互換検証に残しています。
+JSON の現行検証は契約ごとの最新版に統一しました。旧版と当時の結果は固定 Git 履歴で再現します。
 新規タスクに旧版の schema や多重の receipt を組み合わせる必要はありません。

@@ -193,7 +193,7 @@ def scan(state, registry_raw, source):
         require(len(raw) == ref['size'] and digest(raw) == ref['sha256'], 'source bytes changed')
         total += len(raw); require(total <= MAX_BUNDLE, 'scan resource limit')
         blobs[key] = raw; archive[digest(raw)] = raw
-    verify_handoffs(registry['artifacts'], blobs, '1.1', registry['knowledge_bindings'])
+    verify_handoffs(registry['artifacts'], blobs, '1.3', registry['knowledge_bindings'], registry.get('slot_bindings', []))
     inventory = {refkey(a['reference']): a['reference'] for a in registry['artifacts']}
     observations = []
     for item in registry['sources']:
@@ -267,7 +267,7 @@ def budget(batch, kind):
 
 def verify_bundle(manifest, source):
     # Exact bundle is authorized by the independently pinned record request.
-    from_schema = json.loads((ROOT / 'contracts/artifact-delivery-v1.1.schema.json').read_text())
+    from_schema = json.loads((ROOT / 'contracts/artifact-delivery.schema.json').read_text())
     require(Draft202012Validator(from_schema).is_valid(manifest), 'invalid typed bundle')
     blobs, archive, total = {}, {}, 0
     for a in manifest['artifacts']:
@@ -277,7 +277,7 @@ def verify_bundle(manifest, source):
         require(len(raw) == ref['size'] and digest(raw) == ref['sha256'], 'bundle bytes mismatch')
         total += len(raw); require(total <= MAX_BUNDLE, 'bundle resource limit')
         blobs[key] = raw; archive[digest(raw)] = raw
-    verify_handoffs(manifest['artifacts'], blobs, '1.1', manifest['knowledge_bindings'])
+    verify_handoffs(manifest['artifacts'], blobs, '1.3', manifest['knowledge_bindings'], manifest['slot_bindings'])
     return blobs, archive
 
 

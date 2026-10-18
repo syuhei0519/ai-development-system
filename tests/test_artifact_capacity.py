@@ -24,7 +24,7 @@ def capacity_bundle(count=128, version='1.3'):
 
 class CapacityTests(unittest.TestCase):
     def test_128_existing_plus_followup_129_and_256_preserve_every_byte(self):
-        b = capacity_bundle(version='1.2')
+        b = capacity_bundle(version='1.3')
         old_receipt, original = b.consume()
         self.assertEqual(len(original), 128)
         b.manifest['schema_version'] = '1.3'
@@ -66,20 +66,10 @@ class CapacityTests(unittest.TestCase):
         self.assertEqual(source.calls, [])
 
     def test_versions_schema_receipts_and_only_capacity_delta(self):
+        self.assertEqual(delivery.ARTIFACT_LIMITS, {'1.3':256})
         for name in delivery.DELIVERY_SCHEMAS:
-            old = json.loads((delivery.ROOT/f'contracts/{name}-v1.2.schema.json').read_bytes())
-            new = json.loads((delivery.ROOT/f'contracts/{name}-v1.3.schema.json').read_bytes())
-            new['$id'] = old['$id']
-            new['properties']['schema_version']['const'] = '1.2'
-            if 'artifacts' in new['properties']:
-                self.assertEqual(new['properties']['artifacts']['maxItems'], 256)
-                new['properties']['artifacts']['maxItems'] = 128
-            self.assertEqual(new, old, name)
-        for version, limit in delivery.ARTIFACT_LIMITS.items():
-            suffix = '' if version == '1.0' else '-v'+version
-            for name in ('artifact-delivery','publication-receipt','consumption-receipt'):
-                spec = json.loads((delivery.ROOT/f'contracts/{name}{suffix}.schema.json').read_bytes())
-                self.assertEqual(spec['properties']['artifacts']['maxItems'], limit)
+            spec = json.loads((delivery.ROOT/f'contracts/{name}.schema.json').read_bytes())
+            self.assertEqual(spec['properties']['schema_version']['const'], '1.3')
         b = capacity_bundle(129)
         receipt = b.consume()[0]
         raw,pub,policy = b.records()
@@ -156,11 +146,12 @@ class CapacityTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'artifact count limit'): p.add('synthetic/repo','a'*40,'overflow.txt')
 
     def test_preparation_version_and_count_before_fetch(self):
-        for version,limit in [('1.2',128),('1.3',256)]:
+        for version,limit in [('1.3',256)]:
             p=Preparation(None,version=version)
             p.items={('synthetic/repo','a'*40,str(n)):None for n in range(limit)}
             with self.assertRaisesRegex(ValueError,'artifact count limit'): p.add('synthetic/repo','a'*40,'new')
-        with self.assertRaises(ValueError): Preparation(None,version='1.4')
+        for version in ('1.0','1.1','1.2','1.4'):
+            with self.assertRaises(ValueError): Preparation(None,version=version)
 
 
 # Exercise existing semantic attacks with the new version as well; fixtures stay synthetic.
