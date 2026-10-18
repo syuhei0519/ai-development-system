@@ -72,3 +72,100 @@ class RetryTests(unittest.TestCase):
         b=deepcopy(a);b['epochs'][0]['events'].append(event('execution','succeeded'));step(a,b)
         c=deepcopy(b);c['epochs'][0]['events'].append(event('dispatch','succeeded'))
         with self.assertRaises(ValueError):step(b,c)
+
+
+def successful_delivery_exhaustion():
+    history = ledger()
+    history['epochs'][0]['events'] = [event('dispatch', 'succeeded')] * 2 + [
+        event('execution', 'succeeded'), event('delivery'), event('delivery'),
+        event('delivery', 'succeeded')]
+    return history
+
+
+def bounded_renewal():
+    original = successful_delivery_exhaustion()
+    stopped = deepcopy(original)
+    stopped['epochs'][-1]['terminal'] = 'RETRY_LIMIT_REACHED'
+    grant = {'approval': 'approved', 'authority': 'SYNTHETIC-OWNER',
+             'reason': 'Synthetic transport repair', 'scope': stopped['scope'],
+             'prior_history_sha256': digest(raw(stopped)), 'new_epoch': 2,
+             'limits': {'dispatch': 1, 'execution': 2, 'delivery': 2},
+             'increments': {'dispatch': 0, 'execution': 0, 'delivery': 2},
+             'explicit_owner_grant': True, 'expires_at': '9999-01-01T00:00:00Z',
+             'relationship': 'Same synthetic repair; only two additional delivery slots.'}
+    renewed = deepcopy(stopped)
+    renewed['epochs'].append({'id': 2, 'limits': deepcopy(grant['limits']), 'events': [],
+                              'terminal': 'open', 'grant_sha256': digest(raw(grant))})
+    return original, stopped, renewed, grant
+
+
+class BoundedRenewalTests(unittest.TestCase):
+    def approve(self, stopped, renewed, grant):
+        step(stopped, renewed, grant_raw=raw(grant), grant_sha256=digest(raw(grant)))
+
+    def test_successful_exhaustion_stop_and_exact_renewal(self):
+        original, stopped, renewed, grant = bounded_renewal()
+        self.assertEqual(step(original, stopped), stopped)
+        self.approve(stopped, renewed, grant)
+        self.assertEqual(original['epochs'][0]['events'], stopped['epochs'][0]['events'])
+        self.assertEqual(renewed['epochs'][:-1], stopped['epochs'])
+        self.assertEqual(renewed['epochs'][-1]['limits'], {'dispatch': 1, 'execution': 2, 'delivery': 2})
+
+    def test_stop_cannot_change_history_or_stop_nonexhausted_or_replay(self):
+        original, stopped, renewed, grant = bounded_renewal()
+        with self.assertRaises(ValueError): step(stopped, stopped)
+        for mutate in (lambda h: h['epochs'][0]['events'].pop(),
+                       lambda h: h['epochs'][0]['events'][0].update(result='failed'),
+                       lambda h: h.update(scope='SYNTHETIC-OTHER')):
+            changed = deepcopy(stopped); mutate(changed)
+            with self.assertRaises(ValueError): step(original, changed)
+        nonexhausted = ledger(); stop = deepcopy(nonexhausted)
+        stop['epochs'][0]['terminal'] = 'RETRY_LIMIT_REACHED'
+        with self.assertRaises(ValueError): step(nonexhausted, stop)
+        with self.assertRaises(ValueError): self.approve(original, renewed, grant)
+        self.approve(stopped, renewed, grant)
+        with self.assertRaises(ValueError): self.approve(renewed, renewed, grant)
+        replay = deepcopy(renewed); replay['epochs'].append(deepcopy(renewed['epochs'][-1]))
+        replay['epochs'][-1]['id'] = 3
+        with self.assertRaises(ValueError): self.approve(renewed, replay, grant)
+
+    def test_grant_missing_stale_mismatched_expired_and_broader_budgets(self):
+        _, stopped, renewed, grant = bounded_renewal()
+        with self.assertRaises(ValueError): step(stopped, renewed)
+        with self.assertRaises(ValueError):
+            step(stopped, renewed, grant_raw=raw(grant), grant_sha256='0' * 64)
+        changes = [('explicit_owner_grant', False), ('expires_at', '2000-01-01T00:00:00Z'),
+                   ('expires_at', '9999-01-01'), ('prior_history_sha256', '0' * 64),
+                   ('scope', 'SYNTHETIC-OTHER'), ('approval', 'pending'), ('new_epoch', 3),
+                   ('limits', dict(grant['limits'], execution=3)),
+                   ('limits', dict(grant['limits'], delivery=3)),
+                   ('increments', dict(grant['increments'], execution=1)),
+                   ('increments', dict(grant['increments'], dispatch=1)),
+                   ('increments', dict(grant['increments'], delivery=True))]
+        for key in grant:
+            changed = deepcopy(grant); del changed[key]
+            candidate = deepcopy(renewed); candidate['epochs'][-1]['grant_sha256'] = digest(raw(changed))
+            with self.subTest(missing=key), self.assertRaises(ValueError): self.approve(stopped, candidate, changed)
+        for key, value in changes:
+            changed = deepcopy(grant); changed[key] = value
+            candidate = deepcopy(renewed)
+            candidate['epochs'][-1]['grant_sha256'] = digest(raw(changed))
+            if key == 'limits': candidate['epochs'][-1]['limits'] = value
+            with self.subTest(key=key, value=value), self.assertRaises(ValueError):
+                self.approve(stopped, candidate, changed)
+        changed = {k: v for k, v in grant.items() if k not in ('increments', 'expires_at', 'explicit_owner_grant')}
+        candidate = deepcopy(renewed); candidate['epochs'][-1]['grant_sha256'] = digest(raw(changed))
+        with self.assertRaises(ValueError): self.approve(stopped, candidate, changed)
+
+    def test_zero_unrenewed_budget_stays_zero_and_unknown_admission_rejected(self):
+        original, stopped, renewed, grant = bounded_renewal()
+        for history in (original, stopped, renewed):
+            history['epochs'][0]['events'].append(event('dispatch', 'succeeded'))
+        grant['prior_history_sha256'] = digest(raw(stopped))
+        grant['limits']['dispatch'] = renewed['epochs'][-1]['limits']['dispatch'] = 0
+        renewed['epochs'][-1]['grant_sha256'] = digest(raw(grant))
+        step(original, stopped); self.approve(stopped, renewed, grant)
+        candidate = deepcopy(renewed); candidate['epochs'][-1]['events'].append(event('dispatch'))
+        with self.assertRaises(ValueError): step(renewed, candidate)
+        candidate = deepcopy(renewed); candidate['epochs'][-1]['events'].append(event('execution', 'unknown'))
+        with self.assertRaises(ValueError): step(renewed, candidate)

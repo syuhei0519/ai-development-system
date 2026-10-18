@@ -127,12 +127,30 @@ Delivery 成功は Implementation/Merge/Deployment Ready を自動で ready に�
 配送分類の導入は過去 attempt を dispatch/delivery に付替える許可ではない。
 
 台帳は scope と epochs を持ち、各 epoch は id、3種 limits、events(kind/result/evidence)、terminal、grant_sha256。
-初期 budget は各3。候補は前回の全イベントを保持し、1件だけ追加可能。
+初期 budget は各3。通常の候補は前回の全イベントを保持し、1件だけ追加可能。
 `--previous-sha256` は Manager が独立に保持した最新台帳 pin。古い snapshot の再提出や複数同時起動を Manager が防ぐ。
-terminal 後は新たな明示承認、authority、reason、scope、prior_history_sha256、new_epoch、
-各1〜3の limits、relationship が揃った別経路の grant pin がなければ再開拒否。
-承認後も元 epoch と terminal は残し、新しい空 epoch を追加する。Handoff attempt は epoch 内1〜3、
-旧 epoch との関係は外側台帳で保つ。Handoff v2.0 の最大3制約を緩めない。
+成功した最終配送などで実際にいずれかの予算が枯渇した open epoch は、同じ CLI で
+terminal のみ `RETRY_LIMIT_REACHED` に変更して停止できる。epoch、events、結果、limits、grant pin は
+完全保持し、失敗・実行・dispatch を追加しない。非枯渇停止、停止の再送、停止後のイベント追記は禁止。
+
+失敗 terminal の既存 renewal は、approval、authority、reason、scope、prior_history_sha256、new_epoch、
+各1〜3の limits、relationship を持つ独立 pin の grant で引き続き検査する。
+成功枯渇からの renewal は配送限定の bounded owner grant を必須とし、同じ基本フィールドに
+`explicit_owner_grant: true`、timezone 付きで将来の `expires_at`、
+`increments: {"dispatch": 0, "execution": 0, "delivery": 2}` を追加する。
+配送増分は明示された1〜3のみ。新 limits は各次元の旧残数 + 承認増分と完全一致し、
+execution/dispatch は補充しない。残数0の次元は新 epoch でも0のまま保持する。
+例: 旧残数 dispatch=1/execution=2/delivery=0 に配送2を承認した新 limits は1/2/2。
+別の増分・広い予算への読み替えは禁止し、期限、停止済み全履歴のraw hash、同一論理scope、
+次epoch番号、grant bytesの独立pinを検査する。承認の出所とowner権限はManagerが別経路で確認する。
+
+承認後も全旧 epoch と terminal を保持し、新しい空 epoch のみを追加する。
+Handoff / routing の業務 attempt は全 epoch の execution 通算 +1、最大3を維持する。
+epoch 内カウンタは予算会計のみであり、renewal を別業務タスクや attempt=1 と扱わない。
+新epochは停止前に追加できず、同じgrantを次epochへ再利用できない。
+独立pinのない承認、期限切れ/履歴不一致承認、改変履歴、scope変更は拒否する。
+未知 admission は引き続き照合まで再送停止し、renewal はその照合を代替しない。
+Managerは契約変更を独立Review後に検証・採用し、実台帳への利用を別途判断する。
 
 ```bash
 python scripts/validate_retry.py --previous prior.json --candidate next.json \

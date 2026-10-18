@@ -62,7 +62,9 @@ The [capability-based venue policy](single-issue.md#実行場所と必要能力)
    work; the current delegation leaves all app/Knowledge launches off.
 3. Run the read-only planner. `BestEffort` is the trial default (explicit in input);
    `Strict` is an explicit opt-in. Planner checks approved route/scope, current
-   business budget, attempt, ledger terminal state and callable create arguments.
+   business budget, cumulative execution attempt across all epochs, ledger terminal
+   state and callable create arguments. An approved delivery renewal preserves
+   remaining execution/dispatch budgets; it never starts attempt 1 again.
    Only routing eligibility is evaluated: `quality_gate=not_assessed` always.
 4. Manager inspects the route and all ordinary quality/approval gates, durably
    reserves dispatch intent in the **existing private progress/retry records**
