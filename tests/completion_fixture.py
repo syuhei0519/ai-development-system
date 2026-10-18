@@ -58,14 +58,14 @@ def build(root, pending=False, same_repo=False, queue=False):
     acs=base['acceptance_criteria']; mids=['app','config','client']; did='staging'
     scope=write(root,'scope.txt',(SAMPLE+'\n').encode())
     issue=dict(id=base['issue_id'],source='synthetic sample request',title='synthetic sample: three PR aggregate',acceptance_criteria=acs)
-    c=dict(schema_version='1.0',document_type='issue_completion_context',context_id='SYNTHETIC-CURRENT',issue=issue,
+    c=dict(schema_version='1.1',document_type='issue_completion_context',context_id='SYNTHETIC-CURRENT',issue=issue,
            issue_integration_scope='aggregate_required',scope_revision=scope['sha256'],scope_decisions=[],required_prs=[],required_deployments=[],required_verifications=[],current_members=[],current_deployments=[],observed_at=OBS,valid_until=END,source_refs=[scope],previous_assessment_sha256=None)
-    a=dict(schema_version='1.0',document_type='issue_completion_assessment',artifact_id='SYNTHETIC-COMPLETION',assessor_role='manager',evaluated_at=NOW,context_sha256='0'*64,issue_id=issue['id'],acceptance_criteria=acs,scope_revision=scope['sha256'],member_results=[],deployment_results=[],evidence=[],verification_results=[],ac_results=[],integration_readiness=dict(status='ready',checks={},evidence_ids=[],reason=SAMPLE),issue_completion='achieved',reasons=[SAMPLE],history=dict(previous_ref=None,events=[]))
+    a=dict(schema_version='1.1',document_type='issue_completion_assessment',artifact_id='SYNTHETIC-COMPLETION',assessor_role='manager',evaluated_at=NOW,context_sha256='0'*64,issue_id=issue['id'],acceptance_criteria=acs,scope_revision=scope['sha256'],member_results=[],deployment_results=[],evidence=[],verification_results=[],ac_results=[],integration_readiness=dict(status='ready',checks={},evidence_ids=[],reason=SAMPLE),issue_completion='achieved',reasons=[SAMPLE],history=dict(previous_ref=None,events=[]))
     readiness={}
     for i,mid in enumerate(mids):
         repo='example/synthetic-app' if same_repo else 'example/synthetic-'+mid
         head=hex(i+10)[2:]*40; merge=hex(i+1)[2:]*40
-        c['required_prs'].append(dict(member_id=mid,repository=repo,pr_number=i+1,scope=SAMPLE,ac_ids=[x['id'] for x in acs],depends_on=[] if i==0 else [mids[i-1]],requirement_source=scope))
+        c['required_prs'].append(dict(pr_kind='standard',preparation=None,member_id=mid,repository=repo,pr_number=i+1,scope=SAMPLE,ac_ids=[x['id'] for x in acs],depends_on=[] if i==0 else [mids[i-1]],requirement_source=scope))
         c['current_members'].append(dict(member_id=mid,state='merged',head_sha=head,base_sha='f'*40,target_revision='e'*40 if queue else head,config_revision='synthetic-policy-and-environment-v1',merge_group_sha='e'*40 if queue else None,merge_sha=merge,merged_at=MERGED,merge_actor='synthetic-operator',observed_at=OBS,valid_until=END,evidence_refs=[scope]))
         r=copy.deepcopy(base)
         r['subject'].update(repository=repo,pr_number=i+1,head_sha=head,base_sha='f'*40,target_revision='e'*40 if queue else head,merge_group_sha='e'*40 if queue else None)

@@ -34,7 +34,7 @@ class PreparationTests(unittest.TestCase):
                 if version=='1.1': x.update(pr_kind='standard',preparation=None)
             self.assertTrue(self.errors(d,c))
             d['pr_ac_ids']=c['pr_ac_ids']=fixture()['pr_ac_ids']
-            self.assertEqual(self.errors(d,c), [])
+            self.assertTrue(self.errors(d,c)) if version=='1.0' else self.assertEqual(self.errors(d,c), [])
 
     def test_each_preparation_field_required(self):
         for field in self.data['preparation']:

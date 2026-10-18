@@ -580,39 +580,80 @@
               "additionalProperties": false,
               "properties": {
                 "reference": {
-                  "type": "object",
-                  "additionalProperties": false,
-                  "properties": {
-                    "repository": {
-                      "type": "string",
-                      "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "repository": {
+                          "type": "string",
+                          "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+                        },
+                        "commit": {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{40}$"
+                        },
+                        "path": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 512,
+                          "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
+                        },
+                        "size": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 16777216
+                        },
+                        "sha256": {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{64}$"
+                        },
+                        "object_type": {
+                          "const": "git-blob"
+                        }
+                      },
+                      "required": [
+                        "repository",
+                        "commit",
+                        "path",
+                        "size",
+                        "sha256",
+                        "object_type"
+                      ]
                     },
-                    "commit": {
-                      "type": "string",
-                      "pattern": "^[0-9a-f]{40}$"
-                    },
-                    "path": {
-                      "type": "string",
-                      "minLength": 1,
-                      "maxLength": 512,
-                      "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
-                    },
-                    "size": {
-                      "type": "integer",
-                      "minimum": 0,
-                      "maximum": 16777216
-                    },
-                    "sha256": {
-                      "type": "string",
-                      "pattern": "^[0-9a-f]{64}$"
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "repository": {
+                          "type": "string",
+                          "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+                        },
+                        "commit": {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{40}$"
+                        },
+                        "size": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 16777216
+                        },
+                        "sha256": {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{64}$"
+                        },
+                        "object_type": {
+                          "const": "git-commit-object"
+                        }
+                      },
+                      "required": [
+                        "repository",
+                        "commit",
+                        "size",
+                        "sha256",
+                        "object_type"
+                      ]
                     }
-                  },
-                  "required": [
-                    "repository",
-                    "commit",
-                    "path",
-                    "size",
-                    "sha256"
                   ]
                 },
                 "representation": {
@@ -628,7 +669,9 @@
                     "handoff-v2",
                     "knowledge-input-v1",
                     "knowledge-handoff-v1",
-                    "knowledge-context-v1"
+                    "knowledge-context-v1",
+                    "git-commit-object",
+                    "knowledge-candidates-v1"
                   ]
                 },
                 "public_classification": {
@@ -650,10 +693,102 @@
                 "format",
                 "public_classification",
                 "source_alias"
+              ],
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "format": {
+                        "const": "git-commit-object"
+                      }
+                    }
+                  },
+                  "then": {
+                    "properties": {
+                      "reference": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "repository": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+                          },
+                          "commit": {
+                            "type": "string",
+                            "pattern": "^[0-9a-f]{40}$"
+                          },
+                          "size": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 16777216
+                          },
+                          "sha256": {
+                            "type": "string",
+                            "pattern": "^[0-9a-f]{64}$"
+                          },
+                          "object_type": {
+                            "const": "git-commit-object"
+                          }
+                        },
+                        "required": [
+                          "repository",
+                          "commit",
+                          "size",
+                          "sha256",
+                          "object_type"
+                        ]
+                      }
+                    }
+                  },
+                  "else": {
+                    "properties": {
+                      "reference": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "repository": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+                          },
+                          "commit": {
+                            "type": "string",
+                            "pattern": "^[0-9a-f]{40}$"
+                          },
+                          "path": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 512,
+                            "pattern": "^[A-Za-z0-9_][A-Za-z0-9_./-]*$"
+                          },
+                          "size": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 16777216
+                          },
+                          "sha256": {
+                            "type": "string",
+                            "pattern": "^[0-9a-f]{64}$"
+                          },
+                          "object_type": {
+                            "const": "git-blob"
+                          }
+                        },
+                        "required": [
+                          "repository",
+                          "commit",
+                          "path",
+                          "size",
+                          "sha256",
+                          "object_type"
+                        ]
+                      }
+                    }
+                  }
+                }
               ]
             },
             "minItems": 0,
-            "maxItems": 128
+            "maxItems": 256
           },
           "committed_output_pin": {
             "type": "array",
@@ -683,6 +818,9 @@
                 "sha256": {
                   "type": "string",
                   "pattern": "^[0-9a-f]{64}$"
+                },
+                "object_type": {
+                  "const": "git-blob"
                 }
               },
               "required": [
@@ -690,7 +828,8 @@
                 "commit",
                 "path",
                 "size",
-                "sha256"
+                "sha256",
+                "object_type"
               ]
             },
             "minItems": 0,

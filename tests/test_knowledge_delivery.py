@@ -15,8 +15,8 @@ class KnowledgeDeliveryTests(unittest.TestCase):
         self.manifest = fixture_manifest('example/repo', 'a' * 40)
         self.files = {a['reference']['path']: (ROOT / a['reference']['path']).read_bytes()
                       for a in self.manifest['artifacts']}
-        self.policy = parse((ROOT / 'examples/delivery/synthetic.authorization.json').read_bytes())
-        self.policy.update(schema_version='1.1', allowed_representations=['original'])
+        self.policy = parse((ROOT / 'examples/delivery/current.authorization.json').read_bytes())
+        self.policy.update(schema_version='1.3', allowed_representations=['original'])
         self.reseal()
 
     def item(self, name):
@@ -34,6 +34,8 @@ class KnowledgeDeliveryTests(unittest.TestCase):
         for a in self.manifest['artifacts']:
             ref = a['reference']; raw = self.files[ref['path']]
             ref.update(size=len(raw), sha256=digest(raw))
+        from scripts.prepare_knowledge_fixture import fixture_slots
+        fixture_slots(self.manifest, lambda ref: self.files[ref['path']])
         self.mraw = encode(self.manifest)
         self.publication = {'schema_version': self.manifest['schema_version'],
                             'document_type': 'publication_receipt', 'manifest_sha256': digest(self.mraw),
@@ -52,9 +54,9 @@ class KnowledgeDeliveryTests(unittest.TestCase):
 
     def test_complete_bundle_raw_bytes_and_receipt(self):
         receipt, blobs = self.run_consumer()
-        self.assertEqual(receipt['schema_version'], '1.1')
+        self.assertEqual(receipt['schema_version'], '1.3')
         self.assertFalse(receipt['authority_granted'])
-        self.assertIn('knowledge-bindings', receipt['verification'])
+        self.assertIn('knowledge-slots', receipt['verification'])
         self.assertEqual({key[2]: raw for key, raw in blobs.items()}, self.files)
         self.assertEqual(self.run_consumer(receipt_raw=encode(receipt))[0], receipt)
 
@@ -178,7 +180,7 @@ class KnowledgeDeliveryTests(unittest.TestCase):
             with self.assertRaises(ValueError): self.run_consumer()
         self.setUp(); self.files[self.item('source-1.md')['reference']['path']] += b'changed\n'
         self.reseal()  # Valid outer digests, invalid in-document source digest.
-        with self.assertRaisesRegex(ValueError, 'binding digest mismatch'): self.run_consumer()
+        with self.assertRaisesRegex(ValueError, 'slot digest mismatch'): self.run_consumer()
 
     def test_unbound_duplicate_or_wrong_binding_reference(self):
         for change in ('empty', 'duplicate', 'wrong-size', 'wrong-type', 'missing'):
@@ -201,28 +203,28 @@ class KnowledgeDeliveryTests(unittest.TestCase):
         self.reseal()
         with self.assertRaisesRegex(ValueError, 'duplicate Knowledge task identity'): self.run_consumer()
 
-    def test_version_matrix_old_schema_rejects_new_types(self):
+    def test_current_schema_accepts_types_and_rejects_retired_versions(self):
         for name, data in [('artifact-delivery', self.manifest), ('publication-receipt', self.publication),
                            ('delivery-authorization', self.policy), ('consumption-receipt', self.run_consumer()[0])]:
             old = json.loads((ROOT / f'contracts/{name}.schema.json').read_text())
-            self.assertFalse(Draft202012Validator(old).is_valid(data))
+            self.assertTrue(Draft202012Validator(old).is_valid(data))
             if 'artifacts' in data:
                 changed = deepcopy(data); changed['schema_version'] = '1.0'
                 with self.assertRaises(ValueError): schema(name, changed)
-        for version in ('1.0', '1.2', None, [], True):
+        for version in ('1.0', '1.1', '1.2', None, [], True):
             self.setUp(); self.policy['schema_version'] = version
             with self.subTest(version=version), self.assertRaises(ValueError): self.run_consumer()
         self.setUp(); publication = deepcopy(self.publication); publication['schema_version'] = '1.0'
         self.pubraw = encode(publication); self.policy['publication_receipt_sha256'] = digest(self.pubraw)
         with self.assertRaises(ValueError): self.run_consumer()
 
-    def test_legacy_context_generic_json_keeps_legacy_semantics(self):
+    def test_legacy_context_generic_json_is_rejected(self):
         self.manifest = {'schema_version': '1.0', 'document_type': 'artifact_delivery',
                          'artifacts': [self.item('context.json')]}
         self.manifest['artifacts'][0]['format'] = 'json'
         self.policy['schema_version'] = '1.0'
-        self.reseal(); receipt, _ = self.run_consumer()
-        self.assertNotIn('knowledge-bindings', receipt['verification'])
+        self.reseal()
+        with self.assertRaises(ValueError): self.run_consumer()
 
     def test_scope_pin_expiry_and_receipt_do_not_grant_authority(self):
         receipt, _ = self.run_consumer()
@@ -304,14 +306,14 @@ class KnowledgeDeliveryTests(unittest.TestCase):
             with self.assertRaises(ValueError): self.run_consumer()
 
     def test_schema_reference_definitions_stay_in_sync(self):
-        specs = {name: json.loads((ROOT / f'contracts/{name}-v1.1.schema.json').read_text())
+        specs = {name: json.loads((ROOT / f'contracts/{name}.schema.json').read_text())
                  for name in ('artifact-delivery', 'publication-receipt', 'consumption-receipt', 'delivery-authorization')}
         for spec in specs.values(): Draft202012Validator.check_schema(spec)
         artifacts = specs['artifact-delivery']['properties']['artifacts']
         for name in ('publication-receipt', 'consumption-receipt'):
             self.assertEqual(specs[name]['properties']['artifacts'], artifacts)
         self.assertEqual(specs['artifact-delivery']['properties']['knowledge_bindings']['items']['properties']['input'],
-                         artifacts['items']['properties']['reference'])
+                         artifacts['items']['properties']['reference']['oneOf'][0])
 
 
 if __name__ == '__main__':

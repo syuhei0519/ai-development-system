@@ -18,8 +18,6 @@ from scripts.validate_readiness import (instant, validator, validate as validate
 from scripts.regular_file import read_regular, artifact_path
 
 ASSESSMENT = validator('issue-completion')
-ASSESSMENT_V11 = validator('issue-completion-v1.1')
-CONTEXT_V11 = validator('issue-completion-context-v1.1')
 CONTEXT = validator('issue-completion-context')
 PHASES = {'premerge': 0, 'postmerge': 1, 'postdeploy': 2}
 VECTOR_FIELDS = ('deployment_id', 'sources', 'config_sha256', 'images', 'environment_id', 'workload_id')
@@ -158,8 +156,8 @@ def time_window(item, evaluated, now):
 def validate_record(data, context, bundle, now, previous=None):
     require(data.get('schema_version') == context.get('schema_version'), 'aggregate version mismatch')
     v11 = data.get('schema_version') == '1.1'
-    check_schema(ASSESSMENT_V11 if v11 else ASSESSMENT, data, 'assessment')
-    check_schema(CONTEXT_V11 if v11 else CONTEXT, context, 'context')
+    check_schema(ASSESSMENT, data, 'assessment')
+    check_schema(CONTEXT, context, 'context')
     bundle.refs(context)
     bundle.refs(data)
     evaluated = instant(data['evaluated_at'])
@@ -439,7 +437,7 @@ def validate_record(data, context, bundle, now, previous=None):
         require(event['kind'] not in ('measurement_failed','rollback','revert') or event['evidence_refs'], 'failure history needs evidence')
     require(all(instant(a['observed_at']) <= instant(b['observed_at']) for a,b in zip(events,events[1:])), 'history not chronological')
     if previous is not None:
-        check_schema(ASSESSMENT_V11 if previous.get('schema_version') == '1.1' else ASSESSMENT, previous, 'previous')
+        check_schema(ASSESSMENT, previous, 'previous')
         old_events = previous['history']['events']
         require(previous['issue_id'] == data['issue_id'] and instant(previous['evaluated_at']) <= evaluated, 'previous Issue/time mismatch')
         require(same(events[:len(old_events)], old_events) and len(events) > len(old_events), 'history must be append-only')
@@ -513,8 +511,8 @@ def validate_files(file, context_file, context_sha256, handoff_file, *, now=None
     context_raw = bundle.read(Path(context_file).absolute()); context = parse(context_raw)
     require(re.fullmatch('[0-9a-f]{64}', context_sha256 or '') is not None and sha(context_raw) == context_sha256, 'untrusted current context pin')
     require(data.get('schema_version') == context.get('schema_version'), 'aggregate version mismatch')
-    check_schema(ASSESSMENT_V11 if data.get('schema_version') == '1.1' else ASSESSMENT, data, 'assessment')
-    check_schema(CONTEXT_V11 if context.get('schema_version') == '1.1' else CONTEXT, context, 'context')
+    check_schema(ASSESSMENT, data, 'assessment')
+    check_schema(CONTEXT, context, 'context')
     require(data['context_sha256'] == context_sha256, 'assessment context digest mismatch')
     previous = None; ref = data['history']['previous_ref']; pin = context['previous_assessment_sha256']
     if pin is None:

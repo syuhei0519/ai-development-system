@@ -1,4 +1,4 @@
-> 旧契約を明示指定したタスク向けの任意テンプレート。標準は [タスク入力](task-input.md) と [単一 Markdown Handoff](handoff.md)。
+> JSON 検証が必要な場合の任意テンプレート。版は contracts/README.md の現行版に従う。標準は [タスク入力](task-input.md) と [単一 Markdown Handoff](handoff.md)。
 
 ---
 id: "<knowledge-id>"

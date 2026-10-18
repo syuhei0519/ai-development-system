@@ -44,8 +44,11 @@ class Source:
             ref = dict(repository='example/repo', commit='b'*40, path=path, size=len(raw), sha256=c.digest(raw))
             self.files[c.refkey(ref)] = raw
             artifacts.append(dict(reference=ref,format=kind,representation='original',public_classification='synthetic_sample',source_alias='SYNTHETIC'))
-        return dict(schema_version='1.1',document_type='artifact_delivery',artifacts=artifacts,
+        manifest = dict(schema_version='1.3',document_type='artifact_delivery',artifacts=artifacts,
                     knowledge_bindings=[dict(input=artifacts[0]['reference'],handoff=artifacts[1]['reference'])])
+        from scripts.prepare_knowledge_fixture import fixture_slots
+        fixture_slots(manifest, self.read)
+        return manifest
 
 
 class CollectorTests(unittest.TestCase):
@@ -299,6 +302,8 @@ class CollectorTests(unittest.TestCase):
             binding=dict(input=refs[f'input-{n}.json'])
             if n<=attempt: binding['handoff']=refs[f'handoff-{n}.json']
             manifest['knowledge_bindings'].append(binding)
+        from scripts.prepare_knowledge_fixture import fixture_slots
+        fixture_slots(manifest,self.source.read)
         self.record('prepare_retry',input_sha256=c.digest(c.encode(new)),manifest=manifest)
 
     def exhaust(self,kind):

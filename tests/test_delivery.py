@@ -31,17 +31,19 @@ class DeliveryTests(unittest.TestCase):
         old_id=parse(self.raw)['artifacts'][0]['id']
         h['artifacts'][0]['id']=old_id
         self.files={'handoff.json':encode(h),'design.txt':b'synthetic design\n','data.json':b'{"unicode":"\xe6\x98\x9f"}\n'}
-        self.manifest={'schema_version':'1.0','document_type':'artifact_delivery','artifacts':[
+        self.manifest={'schema_version':'1.3','document_type':'artifact_delivery','artifacts':[
             {'reference':{'repository':'example/repo','commit':'a'*40,'path':path,'size':len(raw),'sha256':digest(raw)},
              'representation':'edited_derivative','format':'handoff-v2' if path=='handoff.json' else 'json' if path.endswith('.json') else 'text',
              'public_classification':'synthetic_sample','source_alias':'SYNTHETIC-ORIGINAL'} for path,raw in self.files.items()]}
-        self.policy=parse((ROOT/'examples/delivery/synthetic.authorization.json').read_bytes())
+        self.policy=parse((ROOT/'examples/delivery/current.authorization.json').read_bytes())
         self.policy['allowed_representations']=['edited_derivative']
         self.reseal()
 
     def reseal(self):
+        from scripts.prepare_knowledge_fixture import fixture_slots
+        fixture_slots(self.manifest, lambda ref: self.files[ref['path']])
         self.mraw=encode(self.manifest)
-        self.publication={'schema_version':'1.0','document_type':'publication_receipt','manifest_sha256':digest(self.mraw),
+        self.publication={'schema_version':'1.3','document_type':'publication_receipt','manifest_sha256':digest(self.mraw),
                           'github_state':'published','artifacts':deepcopy(self.manifest['artifacts']),'observation':'synthetic observed publication'}
         self.pubraw=encode(self.publication)
         self.policy['manifest_sha256']=digest(self.mraw)
@@ -203,7 +205,8 @@ class GitTransportTests(unittest.TestCase):
             with patch.object(source,'git',side_effect=[b'',b'',b'commit\n',b'b'*40+b'\n']):
                 with self.assertRaises(ValueError):source.read({'repository':'example/repo','commit':'a'*40,'path':'x','size':1,'sha256':'a'*64})
 
-    def test_samples_and_schemas(self):
-        for name in ('synthetic','research-public'):
-            schema('artifact-delivery',parse((ROOT/f'examples/delivery/{name}.manifest.json').read_bytes()))
-            schema('publication-receipt',parse((ROOT/f'records/artifact-delivery/{name}.publication.json').read_bytes()))
+    def test_current_authorization_and_retired_version(self):
+        current = parse((ROOT/'examples/delivery/current.authorization.json').read_bytes())
+        schema('delivery-authorization',current)
+        for version in ('1.0','1.1','1.2'):
+            with self.assertRaises(ValueError): schema('delivery-authorization', dict(current,schema_version=version))

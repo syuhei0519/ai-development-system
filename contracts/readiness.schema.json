@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.invalid/ai-development-system/readiness.schema.json",
-  "title": "readiness v1.0 / v1.1",
+  "title": "readiness v1.1 / v1.1",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -9,10 +9,7 @@
       "const": "readiness_assessment"
     },
     "schema_version": {
-      "enum": [
-        "1.0",
-        "1.1"
-      ]
+      "const": "1.1"
     },
     "assessor_role": {
       "const": "manager"
@@ -771,40 +768,10 @@
   },
   "allOf": [
     {
-      "if": {
-        "properties": {
-          "schema_version": {
-            "const": "1.0"
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "pr_ac_ids": {
-            "minItems": 1
-          }
-        },
-        "not": {
-          "anyOf": [
-            {
-              "required": [
-                "pr_kind"
-              ]
-            },
-            {
-              "required": [
-                "preparation"
-              ]
-            }
-          ]
-        }
-      },
-      "else": {
-        "required": [
-          "pr_kind",
-          "preparation"
-        ]
-      }
+      "required": [
+        "pr_kind",
+        "preparation"
+      ]
     },
     {
       "if": {
@@ -852,47 +819,6 @@
           "required": [
             "preparation_results"
           ]
-        }
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "schema_version": {
-            "const": "1.0"
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "evidence": {
-            "items": {
-              "not": {
-                "anyOf": [
-                  {
-                    "required": [
-                      "condition_ids"
-                    ]
-                  },
-                  {
-                    "required": [
-                      "artifact_ids"
-                    ]
-                  },
-                  {
-                    "properties": {
-                      "kind": {
-                        "const": "preparation_measurement"
-                      }
-                    },
-                    "required": [
-                      "kind"
-                    ]
-                  }
-                ]
-              }
-            }
-          }
         }
       }
     }

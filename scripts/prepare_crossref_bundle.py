@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prepare private Delivery 1.2/1.3 record candidates from public fixed Git bytes.
+"""Prepare private Delivery 1.3 record candidates from public fixed Git bytes.
 
 No authorization is created; these records are not a Consumer success. The
 operator must obtain a separate Manager authorization before consume_delivery.
@@ -35,8 +35,8 @@ def fixed_url(locator, kind):
 
 
 class Preparation:
-    def __init__(self, source, classification='public_safe', version='1.2'):
-        require(version in ('1.2', '1.3'), 'unsupported preparation version')
+    def __init__(self, source, classification='public_safe', version='1.3'):
+        require(version == '1.3', 'unsupported preparation version')
         self.source, self.classification = source, classification
         self.manifest = dict(schema_version=version, document_type='artifact_delivery',
                              artifacts=[], knowledge_bindings=[], slot_bindings=[], candidate_bindings=[])
@@ -126,7 +126,7 @@ def main():
     parser.add_argument('--repository',required=True);parser.add_argument('--commit',required=True)
     parser.add_argument('--handoff-path',required=True);parser.add_argument('--handoff-sha256',required=True)
     parser.add_argument('--output',required=True,type=Path)
-    parser.add_argument('--delivery-version', choices=('1.2', '1.3'), default='1.2')
+    parser.add_argument('--delivery-version', choices=('1.3',), default='1.3')
     args=parser.parse_args()
     require(not args.output.exists(),'output already exists')
     with tempfile.TemporaryDirectory(prefix='prepare-crossref-') as temp:

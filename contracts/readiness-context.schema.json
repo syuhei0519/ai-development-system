@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.invalid/ai-development-system/readiness-context.schema.json",
-  "title": "readiness-context v1.0 / v1.1",
+  "title": "readiness-context v1.1 / v1.1",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -9,10 +9,7 @@
       "const": "readiness_context"
     },
     "schema_version": {
-      "enum": [
-        "1.0",
-        "1.1"
-      ]
+      "const": "1.1"
     },
     "subject": {
       "$ref": "#/$defs/subject"
@@ -389,40 +386,10 @@
   },
   "allOf": [
     {
-      "if": {
-        "properties": {
-          "schema_version": {
-            "const": "1.0"
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "pr_ac_ids": {
-            "minItems": 1
-          }
-        },
-        "not": {
-          "anyOf": [
-            {
-              "required": [
-                "pr_kind"
-              ]
-            },
-            {
-              "required": [
-                "preparation"
-              ]
-            }
-          ]
-        }
-      },
-      "else": {
-        "required": [
-          "pr_kind",
-          "preparation"
-        ]
-      }
+      "required": [
+        "pr_kind",
+        "preparation"
+      ]
     },
     {
       "if": {

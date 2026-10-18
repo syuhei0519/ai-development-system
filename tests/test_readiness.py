@@ -1,6 +1,7 @@
 """Synthetic gate regressions; these do not claim live GitHub or business truth."""
 from copy import deepcopy
 from datetime import datetime, timezone
+import hashlib
 import json
 from pathlib import Path
 import subprocess
@@ -243,7 +244,7 @@ class ReadinessTests(unittest.TestCase):
     def test_cli_exit_codes_replay_and_cwd_independence(self):
         script = str(ROOT / 'scripts/validate_readiness.py')
         base = [sys.executable, script, str(FIXTURES / 'pr-ready-issue-unverified.json')]
-        options = ['--context', str(FIXTURES / 'context.json'), '--at', NOW.isoformat()]
+        options = ['--context', str(FIXTURES / 'context.json'), '--context-sha256', hashlib.sha256((FIXTURES / 'context.json').read_bytes()).hexdigest(), '--at', NOW.isoformat()]
         for args, code in [(base + options, 0), (base, 2),
                            (base + options + ['--at', 'bad'], 1),
                            (base + options + ['--at', '2030-01-01T12:00:00'], 1),

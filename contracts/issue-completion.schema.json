@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.invalid/ai-development-system/issue-completion.schema.json",
-  "title": "issue-completion v1.0",
+  "title": "issue-completion v1.1",
   "type": "object",
   "additionalProperties": false,
   "properties": {
     "schema_version": {
-      "const": "1.0"
+      "const": "1.1"
     },
     "document_type": {
       "const": "issue_completion_assessment"
