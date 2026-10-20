@@ -1,0 +1,643 @@
+{
+  "version": 1,
+  "verified_at": "2026-10-20",
+  "site_url": "https://syuhei0519.atlassian.net",
+  "project_key": "PLAT",
+  "project_id": "10001",
+  "project_style": "classic",
+  "statuses": [
+    {
+      "id": "10005",
+      "name": "未着手"
+    },
+    {
+      "id": "10006",
+      "name": "進行中"
+    },
+    {
+      "id": "10007",
+      "name": "完了"
+    }
+  ],
+  "observed_board": {
+    "id": 2,
+    "name": "PLAT board",
+    "type": "scrum",
+    "filter_id": "10001",
+    "filter_jql": "project = \"PLAT\" ORDER BY Rank ASC"
+  },
+  "mappings": [
+    {
+      "key": "PLAT-1",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/3"
+    },
+    {
+      "key": "PLAT-2",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/4"
+    },
+    {
+      "key": "PLAT-3",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/36"
+    },
+    {
+      "key": "PLAT-4",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/37"
+    },
+    {
+      "key": "PLAT-5",
+      "source_github_url": "https://github.com/syuhei0519/frontend-app/issues/6"
+    },
+    {
+      "key": "PLAT-6",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/5"
+    },
+    {
+      "key": "PLAT-11",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/28"
+    },
+    {
+      "key": "PLAT-12",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/29"
+    },
+    {
+      "key": "PLAT-13",
+      "source_github_url": "https://github.com/syuhei0519/frontend-app/issues/3"
+    },
+    {
+      "key": "PLAT-14",
+      "source_github_url": "https://github.com/syuhei0519/frontend-app/issues/4"
+    },
+    {
+      "key": "PLAT-15",
+      "source_github_url": "https://github.com/syuhei0519/application-manifest/issues/7"
+    },
+    {
+      "key": "PLAT-16",
+      "source_github_url": "https://github.com/syuhei0519/application-manifest/issues/10"
+    },
+    {
+      "key": "PLAT-18",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/32"
+    },
+    {
+      "key": "PLAT-22",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/10"
+    },
+    {
+      "key": "PLAT-24",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/12"
+    },
+    {
+      "key": "PLAT-28",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/28"
+    },
+    {
+      "key": "PLAT-30",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/38"
+    },
+    {
+      "key": "PLAT-31",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/39"
+    },
+    {
+      "key": "PLAT-32",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/43"
+    },
+    {
+      "key": "PLAT-34",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/47"
+    },
+    {
+      "key": "PLAT-35",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/52"
+    },
+    {
+      "key": "PLAT-36",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/55"
+    },
+    {
+      "key": "PLAT-37",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/57"
+    },
+    {
+      "key": "PLAT-38",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/2"
+    },
+    {
+      "key": "PLAT-39",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/6"
+    },
+    {
+      "key": "PLAT-40",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/7"
+    },
+    {
+      "key": "PLAT-41",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/8"
+    },
+    {
+      "key": "PLAT-42",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/9"
+    },
+    {
+      "key": "PLAT-43",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/10"
+    },
+    {
+      "key": "PLAT-44",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/11"
+    },
+    {
+      "key": "PLAT-45",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/12"
+    },
+    {
+      "key": "PLAT-46",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/13"
+    },
+    {
+      "key": "PLAT-47",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/14"
+    },
+    {
+      "key": "PLAT-48",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/15"
+    },
+    {
+      "key": "PLAT-49",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/16"
+    },
+    {
+      "key": "PLAT-50",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/17"
+    },
+    {
+      "key": "PLAT-51",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/18"
+    },
+    {
+      "key": "PLAT-52",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/19"
+    },
+    {
+      "key": "PLAT-53",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/20"
+    },
+    {
+      "key": "PLAT-54",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/21"
+    },
+    {
+      "key": "PLAT-55",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/22"
+    },
+    {
+      "key": "PLAT-56",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/23"
+    },
+    {
+      "key": "PLAT-57",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/24"
+    },
+    {
+      "key": "PLAT-58",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/25"
+    },
+    {
+      "key": "PLAT-59",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/26"
+    },
+    {
+      "key": "PLAT-60",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/27"
+    },
+    {
+      "key": "PLAT-61",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/33"
+    },
+    {
+      "key": "PLAT-62",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/34"
+    },
+    {
+      "key": "PLAT-63",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/35"
+    },
+    {
+      "key": "PLAT-64",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/38"
+    },
+    {
+      "key": "PLAT-65",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/39"
+    },
+    {
+      "key": "PLAT-66",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/40"
+    },
+    {
+      "key": "PLAT-67",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/41"
+    },
+    {
+      "key": "PLAT-68",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/42"
+    },
+    {
+      "key": "PLAT-69",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/43"
+    },
+    {
+      "key": "PLAT-70",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/44"
+    },
+    {
+      "key": "PLAT-71",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/45"
+    },
+    {
+      "key": "PLAT-72",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/46"
+    },
+    {
+      "key": "PLAT-73",
+      "source_github_url": "https://github.com/syuhei0519/backend-app/issues/50"
+    },
+    {
+      "key": "PLAT-74",
+      "source_github_url": "https://github.com/syuhei0519/frontend-app/issues/5"
+    },
+    {
+      "key": "PLAT-75",
+      "source_github_url": "https://github.com/syuhei0519/frontend-app/issues/7"
+    },
+    {
+      "key": "PLAT-76",
+      "source_github_url": "https://github.com/syuhei0519/frontend-app/issues/8"
+    },
+    {
+      "key": "PLAT-77",
+      "source_github_url": "https://github.com/syuhei0519/frontend-app/issues/9"
+    },
+    {
+      "key": "PLAT-78",
+      "source_github_url": "https://github.com/syuhei0519/frontend-app/issues/10"
+    },
+    {
+      "key": "PLAT-79",
+      "source_github_url": "https://github.com/syuhei0519/frontend-app/issues/11"
+    },
+    {
+      "key": "PLAT-80",
+      "source_github_url": "https://github.com/syuhei0519/application-manifest/issues/8"
+    },
+    {
+      "key": "PLAT-81",
+      "source_github_url": "https://github.com/syuhei0519/application-manifest/issues/9"
+    },
+    {
+      "key": "PLAT-82",
+      "source_github_url": "https://github.com/syuhei0519/application-manifest/issues/11"
+    },
+    {
+      "key": "PLAT-83",
+      "source_github_url": "https://github.com/syuhei0519/application-manifest/issues/12"
+    },
+    {
+      "key": "PLAT-84",
+      "source_github_url": "https://github.com/syuhei0519/application-manifest/issues/13"
+    },
+    {
+      "key": "PLAT-85",
+      "source_github_url": "https://github.com/syuhei0519/application-manifest/issues/14"
+    },
+    {
+      "key": "PLAT-86",
+      "source_github_url": "https://github.com/syuhei0519/application-manifest/issues/15"
+    },
+    {
+      "key": "PLAT-87",
+      "source_github_url": "https://github.com/syuhei0519/application-manifest/issues/16"
+    },
+    {
+      "key": "PLAT-88",
+      "source_github_url": "https://github.com/syuhei0519/application-manifest/issues/20"
+    },
+    {
+      "key": "PLAT-89",
+      "source_github_url": "https://github.com/syuhei0519/application-manifest/issues/21"
+    },
+    {
+      "key": "PLAT-90",
+      "source_github_url": "https://github.com/syuhei0519/application-manifest/issues/22"
+    },
+    {
+      "key": "PLAT-91",
+      "source_github_url": "https://github.com/syuhei0519/application-manifest/issues/23"
+    },
+    {
+      "key": "PLAT-92",
+      "source_github_url": "https://github.com/syuhei0519/application-manifest/issues/24"
+    },
+    {
+      "key": "PLAT-93",
+      "source_github_url": "https://github.com/syuhei0519/application-manifest/issues/25"
+    },
+    {
+      "key": "PLAT-94",
+      "source_github_url": "https://github.com/syuhei0519/application-manifest/issues/26"
+    },
+    {
+      "key": "PLAT-95",
+      "source_github_url": "https://github.com/syuhei0519/application-manifest/issues/27"
+    },
+    {
+      "key": "PLAT-96",
+      "source_github_url": "https://github.com/syuhei0519/application-manifest/issues/28"
+    },
+    {
+      "key": "PLAT-97",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/3"
+    },
+    {
+      "key": "PLAT-98",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/4"
+    },
+    {
+      "key": "PLAT-99",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/5"
+    },
+    {
+      "key": "PLAT-100",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/6"
+    },
+    {
+      "key": "PLAT-101",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/7"
+    },
+    {
+      "key": "PLAT-102",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/8"
+    },
+    {
+      "key": "PLAT-103",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/9"
+    },
+    {
+      "key": "PLAT-104",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/11"
+    },
+    {
+      "key": "PLAT-105",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/13"
+    },
+    {
+      "key": "PLAT-106",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/14"
+    },
+    {
+      "key": "PLAT-107",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/15"
+    },
+    {
+      "key": "PLAT-108",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/16"
+    },
+    {
+      "key": "PLAT-109",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/17"
+    },
+    {
+      "key": "PLAT-110",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/18"
+    },
+    {
+      "key": "PLAT-111",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/19"
+    },
+    {
+      "key": "PLAT-112",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/20"
+    },
+    {
+      "key": "PLAT-113",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/21"
+    },
+    {
+      "key": "PLAT-114",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/22"
+    },
+    {
+      "key": "PLAT-115",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/23"
+    },
+    {
+      "key": "PLAT-116",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/24"
+    },
+    {
+      "key": "PLAT-117",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/25"
+    },
+    {
+      "key": "PLAT-118",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/26"
+    },
+    {
+      "key": "PLAT-119",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/27"
+    },
+    {
+      "key": "PLAT-120",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/29"
+    },
+    {
+      "key": "PLAT-121",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/30"
+    },
+    {
+      "key": "PLAT-122",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/31"
+    },
+    {
+      "key": "PLAT-123",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/33"
+    },
+    {
+      "key": "PLAT-124",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/34"
+    },
+    {
+      "key": "PLAT-125",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/35"
+    },
+    {
+      "key": "PLAT-126",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/36"
+    },
+    {
+      "key": "PLAT-127",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/37"
+    },
+    {
+      "key": "PLAT-128",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/40"
+    },
+    {
+      "key": "PLAT-129",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/41"
+    },
+    {
+      "key": "PLAT-130",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/42"
+    },
+    {
+      "key": "PLAT-131",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/44"
+    },
+    {
+      "key": "PLAT-132",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/45"
+    },
+    {
+      "key": "PLAT-133",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/46"
+    },
+    {
+      "key": "PLAT-134",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/48"
+    },
+    {
+      "key": "PLAT-135",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/49"
+    },
+    {
+      "key": "PLAT-136",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/50"
+    },
+    {
+      "key": "PLAT-137",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/51"
+    },
+    {
+      "key": "PLAT-138",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/53"
+    },
+    {
+      "key": "PLAT-139",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/54"
+    },
+    {
+      "key": "PLAT-140",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/56"
+    },
+    {
+      "key": "PLAT-141",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/59"
+    },
+    {
+      "key": "PLAT-142",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/60"
+    },
+    {
+      "key": "PLAT-143",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/61"
+    },
+    {
+      "key": "PLAT-144",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/62"
+    },
+    {
+      "key": "PLAT-145",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/63"
+    },
+    {
+      "key": "PLAT-146",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/64"
+    },
+    {
+      "key": "PLAT-147",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/65"
+    },
+    {
+      "key": "PLAT-148",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/66"
+    },
+    {
+      "key": "PLAT-149",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/67"
+    },
+    {
+      "key": "PLAT-150",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/68"
+    },
+    {
+      "key": "PLAT-151",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/69"
+    },
+    {
+      "key": "PLAT-152",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/70"
+    },
+    {
+      "key": "PLAT-153",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/71"
+    },
+    {
+      "key": "PLAT-154",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/72"
+    },
+    {
+      "key": "PLAT-155",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/73"
+    },
+    {
+      "key": "PLAT-156",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/74"
+    },
+    {
+      "key": "PLAT-157",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/75"
+    },
+    {
+      "key": "PLAT-158",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/76"
+    },
+    {
+      "key": "PLAT-159",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/77"
+    },
+    {
+      "key": "PLAT-160",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/78"
+    },
+    {
+      "key": "PLAT-161",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/79"
+    },
+    {
+      "key": "PLAT-162",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/80"
+    },
+    {
+      "key": "PLAT-163",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/81"
+    },
+    {
+      "key": "PLAT-164",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/82"
+    },
+    {
+      "key": "PLAT-165",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/83"
+    },
+    {
+      "key": "PLAT-166",
+      "source_github_url": "https://github.com/syuhei0519/platform-gitops/issues/85"
+    },
+    {
+      "key": "PLAT-167",
+      "source_github_url": "https://github.com/syuhei0519/ai-development-system/issues/13"
+    }
+  ]
+}
