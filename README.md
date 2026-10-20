@@ -2,6 +2,10 @@
 
 学習用の開発を、目的・変更・観察・学びが追える短い記録で進めます。
 
+仕事の選定・計画・進捗・完了は [個人 Jira PLAT](https://syuhei0519.atlassian.net/browse/PLAT)、
+コード・PR・Review・CI・再現可能な知識は GitHub を正本にします。
+旧 GitHub Issue は出典として保持します。[移行・運用手順](docs/jira-migration.md) を参照してください。
+
 - [ワークフロー](workflows/single-issue.md)
 - [タスク入力](templates/task-input.md) / [Handoff](templates/handoff.md)
 - [役割](agents/) / [契約と互換性](contracts/README.md)
@@ -16,6 +20,7 @@ artifact の失効後も対象 commit と手順から追試できるようにし
 ```sh
 python -m pip install -r requirements-dev.txt
 python scripts/validate_handoff.py templates/handoff.md
+python scripts/jira_tracker.py --check-mapping
 python -m unittest discover -s tests -v
 ```
 

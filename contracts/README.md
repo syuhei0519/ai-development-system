@@ -3,6 +3,10 @@
 通常の学習記録は [単一 Markdown](../templates/handoff.md)。JSON 検証が必要な場合だけ下表を使う。
 新規タスクへの必須要件ではない。
 
+新しい開発タスクの識別と管理には [Jira ワークフロー](../workflows/single-issue.md) と
+`scripts/jira_tracker.py` を使う。下表の GitHub Issue 前提の JSON と CLI は明示的な旧契約の
+再現・互換検証用であり、現在の Jira 状態や操作権限を更新・証明するものではない。
+
 | 契約 | 現行版 | schema |
 | --- | --- | --- |
 | Handoff | 2.0 | handoff.schema.json |

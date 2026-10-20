@@ -1,6 +1,6 @@
 # 学習の記録
 
-Issue と PR は「目的・やったこと・観察結果・学び」の4項目を基本にする。
+Jira 課題と PR は「目的・やったこと・観察結果・学び」の4項目を基本にする。
 未着手なら「未実施」と明記し、必要な AC と依存だけを目的に添える。
 
 ログ、生成 JSON、render、attempt ごとの出力は CI artifact に保存する。
@@ -12,7 +12,8 @@ image digest、依存固定、署名・真正性検査、security check の失�
 
 ## 既存 Issue / PR の変換ルール
 
-原文の履歴・失敗・未確認点は消さず、現在の結論と最終確認へのリンクを追記する。
+旧 GitHub Issue は原文の履歴・失敗・未確認点を含め読み取り専用の出典として保持する。
+現在の結論と最終確認へのリンクは Jira と新しい Git Markdown / PR に記録する。
 Manager 判定、固定 bytes、配送 receipt、attempt 予算は通常の Issue / PR では必須にしない。
 139 Issue の一括更新は行わない。実装前の Issue は未実施のままにする。
 
@@ -20,7 +21,7 @@ Manager 判定、固定 bytes、配送 receipt、attempt 予算は通常の Issu
 「マージ後の最終確認」へリンクする。2026-10-18 07:31:25 UTC のローカル kind で
 Order→Payment の成功201/再送200、拒否201/再送200、実 Payment GET との一致を確認済み。
 [最終確認コメント](https://github.com/syuhei0519/backend-app/issues/50#issuecomment-6247220637)。
-これは今回のタスクで再実行した試験ではない。既存 Issue / PR 本文の更新は Manager が担当する。
+これは今回のタスクで再実行した試験ではない。今後の進捗は Jira が正本で、旧 Issue を更新・Close しない。
 
 ## Windows のパス
 

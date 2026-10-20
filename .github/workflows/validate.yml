@@ -19,6 +19,8 @@ jobs:
           cache: pip
           cache-dependency-path: requirements-dev.txt
       - run: python -m pip install -r requirements-dev.txt
+      - name: Jira migration mapping consistency (offline, read-only)
+        run: python scripts/jira_tracker.py --check-mapping
       - name: Markdown Handoff structure
         run: python scripts/validate_handoff.py templates/handoff.md
       - name: Legacy compatibility and safety regressions

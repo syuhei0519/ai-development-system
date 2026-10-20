@@ -1,5 +1,5 @@
 ## 目的
-<!-- 対応 Issue と必要な AC -->
+<!-- Jira key / URL、元 GitHub Issue URL（出典）、必要な AC。旧 Issue の Close keyword は使わない -->
 
 ## やったこと
 <!-- 変更とその理由 -->
