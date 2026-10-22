@@ -1,5 +1,8 @@
 # Jira への作業管理切替（step 4）
 
+2026-10-22追記: 新規のnative/migrated実行は [Jira実行前契約](jira-execution.md) を使う。
+以下の153件の対応表・移行専用resolver・当時の結果は保持する。nativeをこの対応表に追加しない。
+
 ## 確認した実データ（2026-10-20）
 
 接続済み Jira を読み取り、`PLAT` / Platform Engineering Lab / project ID `10001` が
