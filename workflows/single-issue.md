@@ -4,12 +4,14 @@
 
 仕事の選定・計画・進捗・完了は個人 Jira の `PLAT`、コード・PR・Review・CI・再現可能な知識は GitHub を正本とする。
 GitHub Issues / Projects から新しい仕事を選定・更新・自動 Close しない。旧 Issue は読み取り専用の出典とする。
-Jira key と URL、元 GitHub Issue URL を [タスク入力](../templates/task-input.md) と単一 Handoff に記す。
+Jira identityとsource区分を [実行Handoff](../templates/jira-execution-handoff.md) に記す。
+元GitHub Issue URLはmigratedだけで照合し、jira-nativeは明示的にnoneとする。
 repo / branch / commit / PR の識別子は引き続き GitHub のものを使う。
 
 Manager は [Jira 移行手順](../docs/jira-migration.md) に従い、既存課題・実 status・出典・停止条件を読み直す。
-`config/jira-tracker.json` の対応を確認し、現在の read-only snapshot と
-`scripts/jira_tracker.py` で照合する。不明・欠落・重複・矛盾は blocked として解消し、
+`migrated` は `config/jira-tracker.json` と `scripts/jira_tracker.py` の移行照合を保持する。
+`jira-native` は対応表を経由せず現Jira identityを検証する。両者の実行開始は後述の
+`scripts/jira_execution.py` で照合する。不明・欠落・重複・矛盾は blocked として解消し、
 GitHub へのフォールバックや Jira の代替課題作成で埋めない。登録済み課題を再作成しない。
 移行・候補選定・スプリントへの計画だけでは実装開始や停止タスクの再開を許可しない。
 
@@ -69,7 +71,9 @@ attempt 予算や配送台帳を通常の学習作業の必須入力にはしな
 既存 Handoff v2.0 の JSON schema / CLI とその回帰 fixture は互換用に保持する。
 JSON 検証器は契約ごとの最新版のみを扱う。旧版は Git 履歴で再現する。標準の新規タスクには要求しない。
 Markdown は `python scripts/validate_handoff.py templates/handoff.md` で構造確認できる。
-新しい開発 Handoff は加えて `jira_tracker.py --key PLAT-N --snapshot current.json --handoff handoff.md` で
-Jira 対応を照合する。snapshot は接続済み Jira の現在の読み取り結果から用意し、Git に公開しない。
+新しい開発Handoffは [実行前契約](../docs/jira-execution.md) に従い、
+`jira_execution.py --snapshot current.json --handoff handoff.md --operation repo-change`で照合する。
+旧`jira_tracker.py`のPASSだけでは実行開始できない。snapshotは接続済みJiraの現在の読み取り結果と
+Managerが独立して確認した人の承認から用意し、Gitに公開しない。
 構造確認は事実・AC 達成・公開許可・独立レビューの証明にはならない。
 非公開実行 ID、内部ログ、認証情報は公開しない。

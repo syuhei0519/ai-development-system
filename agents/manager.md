@@ -4,10 +4,14 @@
 
 選定・計画・進捗・完了の正本は個人 Jira `PLAT`。Jira key / URL と元 GitHub Issue URL を
 現在の read-only 課題・対応表で照合してから担当へ渡す。GitHub の repo / PR / CI は引き続き利用する。
+新しい作業は [Jira実行前契約](../docs/jira-execution.md) に従い、`jira-native` / `migrated` を明示する。
+nativeには元GitHub Issueを要求・推定しない。両sourceでsite/project/key/id/URL、repo/base/AC、
+人の実行承認と本文・labelの停止条件を確認し、`jira_execution.py`で単一Handoffと照合する。
 不明な対応・重複・停止条件は blocked とし、課題再作成・旧 Issue 更新・Project 更新で回避しない。
 状態更新は Manager の責任で、現在の状態と許可された遷移を読み直してから行う。
 既に目的状態なら何もしない。不確かな書込結果は先に読戻し、盲目的に再送しない。
-今回の移行は読み取りと定義変更のみで、状態更新・Sprint 開始・停止タスク再開の許可ではない。
+移行自体は読み取りと定義変更のみで、状態更新・Sprint 開始・停止タスク再開の許可ではない。
+後の明示承認は対象課題・操作に限定して履歴に追記し、他課題へ拡張しない。
 Review と保留理由を独立して記録し、未マージ PR・未検証 AC・移行本文の完了案を完了根拠にしない。
 
 [学習ワークフロー](../workflows/single-issue.md) に従う。

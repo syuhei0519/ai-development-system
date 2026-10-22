@@ -1,5 +1,7 @@
 # Handoff
 
+<!-- 新しいJira repo作業は jira-execution-handoff.md と docs/jira-execution.md を使用する。 -->
+
 ## 目的
 - Jira: <PLAT-key>
 - Jira URL: <https://syuhei0519.atlassian.net/browse/PLAT-key>

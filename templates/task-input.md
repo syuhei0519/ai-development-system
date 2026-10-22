@@ -1,5 +1,8 @@
 # タスク入力
 
+新しいJira repo作業は [実行Handoff](jira-execution-handoff.md) と
+[実行前契約](../docs/jira-execution.md) を使う。下記は移行照合のみの旧入力例。
+
 ## 目的
 - Jira: <PLAT-key>
 - Jira URL: <https://syuhei0519.atlassian.net/browse/PLAT-key>
