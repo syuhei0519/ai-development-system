@@ -55,3 +55,8 @@ guard-secrets	Read	./.env	deny	-	-
 guard-secrets	Read	certs/tls.key	deny	-	-
 guard-secrets	Grep	~/.kube	deny	-	-
 guard-secrets	Read	README.md	allow	-	-
+# post-edit-lint（PostToolUse）。deny は「終了コード 2 で指摘を返す」の意味
+post-edit-lint	Write	fixtures/bad.sh	deny	-	-
+post-edit-lint	Edit	fixtures/good.sh	allow	-	-
+post-edit-lint	Write	fixtures/notes.txt	allow	-	-
+post-edit-lint	Write	fixtures/missing.yaml	allow	-	-

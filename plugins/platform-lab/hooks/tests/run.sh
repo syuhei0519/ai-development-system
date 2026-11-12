@@ -25,12 +25,13 @@ while IFS=$'\t' read -r hook tool input expect ctx branch; do
   n=$((n + 1))
   case "$tool" in
     Bash) key="command" ;;
-    Read) key=file_path ;;
+    Read | Edit | Write) key=file_path ;;
     Grep | Glob) key=path ;;
     *) echo "不明なツール: $tool" >&2; exit 1 ;;
   esac
-  json="$(jq -cn --arg t "$tool" --arg k "$key" --arg v "$input" \
-    '{hook_event_name: "PreToolUse", tool_name: $t, tool_input: {($k): $v}, cwd: "/tmp"}')"
+  # cwd は試験ディレクトリ。post-edit-lint の相対パス（fixtures/…）をここから解決する。
+  json="$(jq -cn --arg t "$tool" --arg k "$key" --arg v "$input" --arg c "$HERE" \
+    '{hook_event_name: "PreToolUse", tool_name: $t, tool_input: {($k): $v}, cwd: $c}')"
   [[ "$ctx" == - ]] && ctx=""
   [[ "$branch" == - ]] && branch="feat/PLAT-0-test"
   err="$(PATH="$FAKE_BIN:$PATH" FAKE_KUBE_CONTEXT="$ctx" PLATFORM_LAB_TEST_BRANCH="$branch" \
