@@ -11,7 +11,8 @@ Platform Lab の開発を Claude Code で安全に進めるためのプラグイ
 .claude-plugin/marketplace.json   マーケットプレイス（このリポジトリ）
 plugins/platform-lab/             プラグイン本体
   .claude-plugin/plugin.json
-  hooks/                          hooks.json と guard-*.sh、tests/（cases.tsv、run.sh）
+  agents/                         planner、implementer、reviewer、platform-operator、tutor
+  hooks/                          hooks.json、guard-*.sh、post-edit-lint.sh、tests/（cases.tsv、run.sh、fixtures/）
 templates/                        各 repo へ配るひな形（P3-01 以降で追加）
 ```
 
