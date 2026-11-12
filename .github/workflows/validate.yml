@@ -69,6 +69,6 @@ jobs:
       - name: shellcheck
         run: shellcheck -x plugins/platform-lab/hooks/*.sh plugins/platform-lab/hooks/tests/run.sh
       - name: manifest JSON
-        run: jq -e . .claude-plugin/marketplace.json plugins/platform-lab/.claude-plugin/plugin.json plugins/platform-lab/hooks/hooks.json >/dev/null
+        run: jq -e . .claude-plugin/marketplace.json plugins/platform-lab/.claude-plugin/plugin.json plugins/platform-lab/hooks/hooks.json templates/settings.json.tmpl .claude/settings.json >/dev/null
       - name: hook tests
         run: bash plugins/platform-lab/hooks/tests/run.sh
