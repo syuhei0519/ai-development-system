@@ -72,3 +72,17 @@ jobs:
         run: jq -e . .claude-plugin/marketplace.json plugins/platform-lab/.claude-plugin/plugin.json plugins/platform-lab/hooks/hooks.json templates/settings.json.tmpl .claude/settings.json >/dev/null
       - name: hook tests
         run: bash plugins/platform-lab/hooks/tests/run.sh
+      # プラグインを変えて version が同じだと、claude plugin update が古いキャッシュを使い続ける。
+      - name: plugin version bumped
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          git fetch -q --depth=1 origin "$BASE_REF"
+          git diff --quiet FETCH_HEAD -- plugins/platform-lab && exit 0
+          base="$(git show FETCH_HEAD:plugins/platform-lab/.claude-plugin/plugin.json | jq -r .version)"
+          head="$(jq -r .version plugins/platform-lab/.claude-plugin/plugin.json)"
+          if [ "$base" = "$head" ]; then
+            echo "::error::plugins/platform-lab を変えたら plugin.json の version を上げてください（現在 $head）"
+            exit 1
+          fi

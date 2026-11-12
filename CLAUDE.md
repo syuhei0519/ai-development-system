@@ -32,7 +32,9 @@ claude plugin marketplace add ./ && claude plugin install platform-lab@ai-develo
 
 1. Jira のチケット（PLAT-xxx）を読み、計画を出して承認を得る
 2. ブランチ feat/PLAT-xxx-名前 を作る
-3. 変更し、hook の試験と shellcheck を通す。hook の判定を変えたら cases.tsv に 1 行以上足す
+3. 変更し、hook の試験と shellcheck を通す。hook の判定を変えたら cases.tsv に 1 行以上足す。
+   plugins/platform-lab/ を変えたら plugin.json の version を上げる（同じ版のままだと
+   `claude plugin update` が古いキャッシュを使い続ける。CI が検査する）
 4. PR を作る（タイトル「PLAT-xxx: 要約」、追加 400 行以内、本文は 何を／なぜ／どう確かめたか／学び）
 5. 人が merge する
 
