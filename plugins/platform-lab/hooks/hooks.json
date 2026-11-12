@@ -5,10 +5,15 @@
       {
         "matcher": "Bash",
         "hooks": [
-          {
-            "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/guard-git.sh\""
-          }
+          {"type": "command", "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/guard-git.sh\""},
+          {"type": "command", "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/guard-kube-context.sh\""},
+          {"type": "command", "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/guard-secrets.sh\""}
+        ]
+      },
+      {
+        "matcher": "Read|Grep|Glob",
+        "hooks": [
+          {"type": "command", "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/guard-secrets.sh\""}
         ]
       }
     ]

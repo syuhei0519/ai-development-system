@@ -6,6 +6,17 @@ guard-git	Bash	git push -f origin feat/PLAT-240-kind	deny	-	feat/PLAT-240-kind
 guard-git	Bash	git push -u origin feat/PLAT-240-kind	allow	-	feat/PLAT-240-kind
 guard-git	Bash	git push origin my-branch	deny	-	my-branch
 guard-git	Bash	gh pr merge 12 --squash	deny	-	-
+guard-kube-context	Bash	kubectl get pods -A	allow	kind-platform-lab	-
+guard-kube-context	Bash	kubectl get pods -A	deny	kind-learning-20261018-69c763	-
+guard-kube-context	Bash	kubectl --context kind-learning-fresh-plat217-20261025 delete ns x	deny	kind-platform-lab	-
+guard-kube-context	Bash	KUBECONFIG=/tmp/k kubectl get ns	deny	kind-platform-lab	-
+guard-kube-context	Bash	helm template charts/go-service	allow	kind-learning-20261018-69c763	-
+guard-kube-context	Bash	kind delete cluster --name learning-20261018-69c763	deny	kind-platform-lab	-
+guard-secrets	Read	/home/u/.lab/credentials/proxmox.env	deny	-	-
+guard-secrets	Bash	kubectl get secret account-db -n apps -o yaml	deny	-	-
+guard-secrets	Bash	kubectl get secret -n apps	allow	-	-
+guard-secrets	Read	./.env.example	allow	-	-
+# 追加の境界ケース
 guard-git	Bash	git push --force-with-lease origin feat/PLAT-240-kind	allow	-	feat/PLAT-240-kind
 guard-git	Bash	git push origin +feat/PLAT-240-kind	deny	-	feat/PLAT-240-kind
 guard-git	Bash	git push	deny	-	main
@@ -21,3 +32,26 @@ guard-git	Bash	gh api -X DELETE repos/syuhei0519/x/git/refs/heads/y	deny	-	-
 guard-git	Bash	gh api repos/syuhei0519/x/rulesets -f name=r	deny	-	-
 guard-git	Bash	gh api repos/syuhei0519/x/rulesets	allow	-	-
 guard-git	Bash	gh pr create --title "PLAT-240: kind"	allow	-	-
+guard-kube-context	Bash	kubectl config use-context kind-learning-20261018-69c763	deny	kind-platform-lab	-
+guard-kube-context	Bash	kubectl version --client	allow	kind-learning-20261018-69c763	-
+guard-kube-context	Bash	kubectl --context=kind-platform-lab get ns	allow	kind-learning-20261018-69c763	-
+guard-kube-context	Bash	export KUBECONFIG=/tmp/k; kubectl get ns	deny	kind-platform-lab	-
+guard-kube-context	Bash	helm upgrade --install x charts/x	deny	kind-learning-20261018-69c763	-
+guard-kube-context	Bash	kind get clusters	allow	kind-learning-20261018-69c763	-
+guard-kube-context	Bash	kind delete cluster	deny	kind-platform-lab	-
+guard-kube-context	Bash	kind create cluster --name platform-lab --config bootstrap/kind.yaml	allow	kind-platform-lab	-
+guard-kube-context	Bash	echo ok && kubectl delete ns apps	deny	kind-learning-20261018-69c763	-
+guard-secrets	Bash	cat ~/.ssh/id_ed25519	deny	-	-
+guard-secrets	Bash	kubectl get secrets -n apps -o jsonpath={.data}	deny	-	-
+guard-secrets	Bash	kubectl get secret/account-db -n apps -oyaml	deny	-	-
+guard-secrets	Bash	kubectl describe secret account-db -n apps	allow	-	-
+guard-secrets	Bash	gh auth token	deny	-	-
+guard-secrets	Bash	printenv	deny	-	-
+guard-secrets	Bash	env	deny	-	-
+guard-secrets	Bash	env FOO=1 make test	allow	-	-
+guard-secrets	Bash	argocd admin initial-password -n argocd	deny	-	-
+guard-secrets	Bash	op read op://lab/db/password	deny	-	-
+guard-secrets	Read	./.env	deny	-	-
+guard-secrets	Read	certs/tls.key	deny	-	-
+guard-secrets	Grep	~/.kube	deny	-	-
+guard-secrets	Read	README.md	allow	-	-
