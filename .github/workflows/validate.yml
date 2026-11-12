@@ -61,3 +61,14 @@ jobs:
           --context examples/readiness/context.json
           --context-sha256 d7efd0d4948048eccf854820fecf72ad0a49a0c50f6b9b4dc733d3c062b50357
           --at 2030-01-01T12:00:00Z
+  # platform-lab プラグインの hook の試験（PLAT-235）。ruleset の必須チェックはこのジョブ名。
+  plugin-hooks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: shellcheck
+        run: shellcheck -x plugins/platform-lab/hooks/*.sh plugins/platform-lab/hooks/tests/run.sh
+      - name: manifest JSON
+        run: jq -e . .claude-plugin/marketplace.json plugins/platform-lab/.claude-plugin/plugin.json plugins/platform-lab/hooks/hooks.json >/dev/null
+      - name: hook tests
+        run: bash plugins/platform-lab/hooks/tests/run.sh
