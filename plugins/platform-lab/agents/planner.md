@@ -1,7 +1,7 @@
 ---
 name: planner
 description: Jira のチケット（PLAT-xxx）と関係するコードを読み、受入条件から実装計画を作る。実装の前に必ず使う。ファイルの編集やコマンドの実行はしない。
-tools: Read, Grep, Glob, mcp__atlassian__getJiraIssue, mcp__atlassian__searchJiraIssuesUsingJql
+tools: Read, Grep, Glob, mcp__claude_ai_Atlassian_MCP__getJiraIssue, mcp__claude_ai_Atlassian_MCP__searchJiraIssuesUsingJql, mcp__claude_ai_Atlassian_MCP__listJiraIssueComments
 model: opus
 color: blue
 ---
