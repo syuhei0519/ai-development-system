@@ -119,5 +119,15 @@ guard-git	Bash	2>/dev/null git status	allow	-	feat/PLAT-1-x
 guard-git	Bash	git -c user.name=x commit -m "PLAT-1: x"	allow	-	feat/PLAT-1-x
 guard-git	Bash	git -C repo -c core.quotepath=false status	allow	-	feat/PLAT-1-x
 guard-git	Bash	git -c color.ui=never log --oneline	allow	-	feat/PLAT-1-x
+guard-secrets	Bash	< ".env" cat	deny	-	-
+guard-secrets	Bash	< 'certs/tls.key' cat	deny	-	-
+guard-secrets	Bash	0< ".env" cat	deny	-	-
+guard-git	Bash	<<- EOF git push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	git <<- EOF push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	env GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=remote.origin.push GIT_CONFIG_VALUE_0=HEAD:main git push origin	deny	-	feat/PLAT-1-x
+guard-git	Bash	GIT_CONFIG_PARAMETERS="'remote.origin.push'='HEAD:main'" git push origin	deny	-	feat/PLAT-1-x
+guard-git	Bash	git -c includeIf.onbranch:main.path=/tmp/x push origin	deny	-	feat/PLAT-1-x
+guard-git	Bash	>& /tmp/x git push origin main	deny	-	feat/PLAT-1-x
+# 範囲外（PLAT-278 で扱う）: remote.*.pushurl は止めない
 guard-git	Bash	git -c remote.origin.pushurl=git@example.com:x/y.git push origin feat/PLAT-1-x	allow	-	feat/PLAT-1-x
 guard-kube-context	Bash	</dev/null kubectl get pods -A	allow	kind-platform-lab	-
