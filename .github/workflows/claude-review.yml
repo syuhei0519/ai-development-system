@@ -23,6 +23,22 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 1
+      # action 内の Claude Code は checkout した .claude/settings.json の sandbox（failIfUnavailable: true）を使う。
+      # sandbox を切らず、必要なパッケージと、Ubuntu の AppArmor が bwrap を止めないための公式のプロファイルを入れる。
+      # 出典: https://code.claude.com/docs/en/sandboxing（Set up Linux and WSL2 / Add an AppArmor profile for bubblewrap）
+      - name: install sandbox dependencies (bubblewrap, socat)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends bubblewrap socat
+          sudo tee /etc/apparmor.d/bwrap >/dev/null <<'EOF'
+          abi <abi/4.0>,
+          include <tunables/global>
+          profile bwrap /usr/bin/bwrap flags=(unconfined) {
+            userns,
+            include if exists <local/bwrap>
+          }
+          EOF
+          sudo systemctl reload apparmor
       - uses: anthropics/claude-code-action@f3b070c88125d33dbae5653df5f143101d4ea9dc # v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
