@@ -33,8 +33,18 @@ check_dest() {
     deny "ブランチ名「$dst」が規則 feat|fix|chore|docs/PLAT-番号-短い名前 に合いません。git switch -c で名前を付け直してから push してください。"
 }
 
+# リダイレクトの単語（2>&1、>/dev/null、&>file など）。push の宛先ではない。
+REDIR_RE='^[0-9]*(&>>|&>|>>|>&|<&|>\||<<<|<<|<>|>|<)'
+
+# 引用符か \ の直後に続く < > &。引用された記号は、リダイレクトと区別できない。
+QUOTED_REDIR_RE='["'\''\\][0-9]*[<>&]'
+
+# check_push セグメント文字列 push の引数...
 check_push() {
+  local seg="$1"; shift
   local args=("$@") pos=() a k
+  [[ "$seg" =~ $QUOTED_REDIR_RE ]] &&
+    deny "push の引数で、引用符や \\ の直後に < > & があり、リダイレクトと区別できないため止めています。引用せず、引用符との間に空白を入れて書いてください（例: \"feat/x\" >/dev/null）。"
   for ((k = 0; k < ${#args[@]}; k++)); do
     a="${args[k]}"
     case "$a" in
@@ -48,7 +58,13 @@ check_push() {
       -*)
         [[ "$a" == *f* ]] && deny "強制 push（$a）は止めています。"
         [[ "$a" == *d* ]] && deny "リモートの削除（$a）は人が行います。" ;;
-      *) pos+=("$a") ;;
+      *)
+        if [[ "$a" =~ $REDIR_RE ]]; then
+          [[ "$a" == "${BASH_REMATCH[0]}" ]] &&
+            deny "リダイレクト（$a）と先が離れていて push の宛先を判定できません。2>&1 や >/tmp/push.log のように続けて書いてください。"
+          continue
+        fi
+        pos+=("$a") ;;
     esac
   done
   # pos[0] はリモート名。refspec がなければ現在のブランチが宛先になる。
@@ -66,7 +82,7 @@ check_push() {
 }
 
 check_git() {
-  local i=1 sub
+  local seg="$1" i=1 sub
   # git -C dir や -c k=v などのグローバルオプションを飛ばす。
   while ((i < ${#WORDS[@]})); do
     case "${WORDS[i]}" in
@@ -78,7 +94,7 @@ check_git() {
   sub="${WORDS[i]:-}"
   local rest=("${WORDS[@]:i+1}")
   case "$sub" in
-    push) check_push "${rest[@]}" ;;
+    push) check_push "$seg" "${rest[@]}" ;;
     commit)
       case "$(current_branch)" in
         main | master) deny "main 上での commit は止めています。git switch -c feat/PLAT-xxx-名前 で作業ブランチを作ってください。" ;;
@@ -124,7 +140,7 @@ while IFS= read -r seg; do
   parse_words "$seg"
   ((${#WORDS[@]} == 0)) && continue
   case "${WORDS[0]}" in
-    git) check_git ;;
+    git) check_git "$seg" ;;
     gh) check_gh ;;
   esac
 done < <(split_segments "$CMD")

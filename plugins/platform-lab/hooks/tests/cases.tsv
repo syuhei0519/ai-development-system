@@ -55,6 +55,28 @@ guard-secrets	Read	./.env	deny	-	-
 guard-secrets	Read	certs/tls.key	deny	-	-
 guard-secrets	Grep	~/.kube	deny	-	-
 guard-secrets	Read	README.md	allow	-	-
+# PLAT-275 リダイレクトとパイプ
+guard-git	Bash	git push -u origin feat/PLAT-1-x 2>&1 | tail -5	allow	-	feat/PLAT-1-x
+guard-git	Bash	git push origin feat/PLAT-1-x >/dev/null 2>&1	allow	-	feat/PLAT-1-x
+guard-git	Bash	git push origin feat/PLAT-1-x 2>/dev/null	allow	-	feat/PLAT-1-x
+guard-git	Bash	git push origin feat/PLAT-1-x &>/tmp/push.log	allow	-	feat/PLAT-1-x
+guard-git	Bash	git push origin main 2>&1	deny	-	feat/PLAT-1-x
+guard-git	Bash	git push origin feat/PLAT-1-x 2>&1 main	deny	-	feat/PLAT-1-x
+guard-git	Bash	git push origin feat/PLAT-1-x >/dev/null main	deny	-	feat/PLAT-1-x
+guard-git	Bash	git push origin feat/PLAT-1-x &>/dev/null main	deny	-	feat/PLAT-1-x
+guard-git	Bash	git push origin feat/PLAT-1-x >|/tmp/out main	deny	-	feat/PLAT-1-x
+guard-git	Bash	git push origin feat/PLAT-1-x >/dev/null; git push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	git push origin feat/PLAT-1-x 2>&1 && git push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	git push origin feat/PLAT-1-x | tee /tmp/log || git push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	git push origin feat/PLAT-1-x > /tmp/push.log	deny	-	feat/PLAT-1-x
+guard-git	Bash	sleep 1 & git push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	git push origin '>x:main'	deny	-	feat/PLAT-1-x
+guard-git	Bash	git push '>r' main	deny	-	feat/PLAT-1-x
+guard-git	Bash	echo \>& git push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	git push origin '&>x:main'	deny	-	feat/PLAT-1-x
+guard-git	Bash	git push '&>r' main	deny	-	feat/PLAT-1-x
+guard-kube-context	Bash	kubectl get ns 2>&1 | head -3	allow	kind-platform-lab	-
+guard-kube-context	Bash	echo ok &>/dev/null && kubectl delete ns apps	deny	kind-learning-20261018-69c763	-
 # post-edit-lint（PostToolUse）。deny は「終了コード 2 で指摘を返す」の意味
 post-edit-lint	Write	fixtures/bad.sh	deny	-	-
 post-edit-lint	Edit	fixtures/good.sh	allow	-	-
