@@ -48,8 +48,9 @@ check_file_tools() {
 }
 
 check_bash_segment() {
-  local t="${WORDS[0]}" w why all=" ${WORDS[*]} "
-  for w in "${WORDS[@]:1}"; do
+  local t="${WORDS[0]:-}" w why all=" ${WORDS[*]} "
+  # parse_words が飛ばしたリダイレクトの宛先も見る。
+  for w in "${REDIR_TARGETS[@]}" "${WORDS[@]:1}"; do
     w="${w#*=}"  # --file=~/.ssh/id_ed25519 の形
     why="$(secret_path "$w")" && deny_path "$why"
   done
@@ -76,7 +77,7 @@ case "$TOOL_NAME" in
     CMD="$(tool_input command)"
     while IFS= read -r seg; do
       parse_words "$seg"
-      ((${#WORDS[@]} == 0)) && continue
+      ((${#WORDS[@]} + ${#REDIR_TARGETS[@]} == 0)) && continue
       check_bash_segment
     done < <(split_segments "$CMD")
     # リダイレクト（< ~/.lab/x）も見る。展開を止めてから空白で分ける。

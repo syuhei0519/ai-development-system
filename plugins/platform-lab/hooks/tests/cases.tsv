@@ -82,3 +82,52 @@ post-edit-lint	Write	fixtures/bad.sh	deny	-	-
 post-edit-lint	Edit	fixtures/good.sh	allow	-	-
 post-edit-lint	Write	fixtures/notes.txt	allow	-	-
 post-edit-lint	Write	fixtures/missing.yaml	allow	-	-
+# PLAT-276 先頭と git 直後のリダイレクト、git -c / --config-env / GIT_CONFIG_*
+guard-git	Bash	>/dev/null git push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	git 2>/dev/null push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	git -c remote.origin.push=HEAD:refs/heads/main push origin	deny	-	feat/PLAT-1-x
+guard-git	Bash	> /dev/null git push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	2>&1 git push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	&>/tmp/log git push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	>>/tmp/log git push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	</dev/null git push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	FOO=1 >/dev/null git push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	>/dev/null sudo git push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	>/dev/null /usr/bin/git push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	{fd}>/dev/null git push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	git > /dev/null push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	git 2>&1 -C . push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	git &>/dev/null push -f origin feat/PLAT-1-x	deny	-	feat/PLAT-1-x
+guard-git	Bash	git -c push.default=matching push origin	deny	-	feat/PLAT-1-x
+guard-git	Bash	git -c Remote.Origin.Push=HEAD:main push origin	deny	-	feat/PLAT-1-x
+guard-git	Bash	git -c PUSH.DEFAULT=upstream push	deny	-	feat/PLAT-1-x
+guard-git	Bash	git -c remote.origin.mirror=true push origin	deny	-	feat/PLAT-1-x
+guard-git	Bash	git -c branch.feat/PLAT-1-x.merge=refs/heads/main push origin	deny	-	feat/PLAT-1-x
+guard-git	Bash	git -c push.followTags=true push origin feat/PLAT-1-x	deny	-	feat/PLAT-1-x
+guard-git	Bash	git -c alias.p=push p origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	git -c include.path=/tmp/x push origin	deny	-	feat/PLAT-1-x
+guard-git	Bash	git --config-env=remote.origin.push=REFSPEC push origin	deny	-	feat/PLAT-1-x
+guard-git	Bash	git --config-env remote.origin.push=REFSPEC push origin	deny	-	feat/PLAT-1-x
+guard-git	Bash	GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=remote.origin.push GIT_CONFIG_VALUE_0=HEAD:main git push origin	deny	-	feat/PLAT-1-x
+guard-kube-context	Bash	>/dev/null kubectl delete ns apps	deny	kind-learning-20261018-69c763	-
+guard-kube-context	Bash	2>&1 kind delete cluster	deny	kind-platform-lab	-
+guard-git	Bash	>/dev/null git push origin feat/PLAT-1-x	allow	-	feat/PLAT-1-x
+guard-git	Bash	>/dev/null 2>&1 git push origin feat/PLAT-1-x	allow	-	feat/PLAT-1-x
+guard-git	Bash	git 2>&1 push -u origin feat/PLAT-1-x	allow	-	feat/PLAT-1-x
+guard-git	Bash	git > /dev/null push origin feat/PLAT-1-x	allow	-	feat/PLAT-1-x
+guard-git	Bash	2>/dev/null git status	allow	-	feat/PLAT-1-x
+guard-git	Bash	git -c user.name=x commit -m "PLAT-1: x"	allow	-	feat/PLAT-1-x
+guard-git	Bash	git -C repo -c core.quotepath=false status	allow	-	feat/PLAT-1-x
+guard-git	Bash	git -c color.ui=never log --oneline	allow	-	feat/PLAT-1-x
+guard-secrets	Bash	< ".env" cat	deny	-	-
+guard-secrets	Bash	< 'certs/tls.key' cat	deny	-	-
+guard-secrets	Bash	0< ".env" cat	deny	-	-
+guard-git	Bash	<<- EOF git push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	git <<- EOF push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	env GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=remote.origin.push GIT_CONFIG_VALUE_0=HEAD:main git push origin	deny	-	feat/PLAT-1-x
+guard-git	Bash	GIT_CONFIG_PARAMETERS="'remote.origin.push'='HEAD:main'" git push origin	deny	-	feat/PLAT-1-x
+guard-git	Bash	git -c includeIf.onbranch:main.path=/tmp/x push origin	deny	-	feat/PLAT-1-x
+guard-git	Bash	>& /tmp/x git push origin main	deny	-	feat/PLAT-1-x
+# 範囲外（PLAT-278 で扱う）: remote.*.pushurl は止めない
+guard-git	Bash	git -c remote.origin.pushurl=git@example.com:x/y.git push origin feat/PLAT-1-x	allow	-	feat/PLAT-1-x
+guard-kube-context	Bash	</dev/null kubectl get pods -A	allow	kind-platform-lab	-
