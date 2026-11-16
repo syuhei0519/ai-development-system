@@ -33,6 +33,9 @@ check_dest() {
     deny "ブランチ名「$dst」が規則 feat|fix|chore|docs/PLAT-番号-短い名前 に合いません。git switch -c で名前を付け直してから push してください。"
 }
 
+# リダイレクトの単語（2>&1、>/dev/null、&>file など）。push の宛先ではない。
+REDIR_RE='^[0-9]*(&>>|&>|>>|>&|<&|>\||<<<|<<|<>|>|<)'
+
 check_push() {
   local args=("$@") pos=() a k
   for ((k = 0; k < ${#args[@]}; k++)); do
@@ -48,7 +51,13 @@ check_push() {
       -*)
         [[ "$a" == *f* ]] && deny "強制 push（$a）は止めています。"
         [[ "$a" == *d* ]] && deny "リモートの削除（$a）は人が行います。" ;;
-      *) pos+=("$a") ;;
+      *)
+        if [[ "$a" =~ $REDIR_RE ]]; then
+          [[ "$a" == "${BASH_REMATCH[0]}" ]] &&
+            deny "リダイレクト（$a）と先が離れていて push の宛先を判定できません。2>&1 や >/tmp/push.log のように続けて書いてください。"
+          continue
+        fi
+        pos+=("$a") ;;
     esac
   done
   # pos[0] はリモート名。refspec がなければ現在のブランチが宛先になる。

@@ -30,6 +30,7 @@ tool_input() {
 
 # Bash のコマンド文字列を、&&、||、;、|、改行、$( で区切った単純コマンドに分ける。
 # 引用符の中は区切らない程度の簡易な分割で、完全な構文解析ではない。
+# >& <& &> &>> >| はリダイレクトの一部なので区切らない。
 # 迂回への備えは sandbox と専用 kubeconfig が受け持つ（03 の「柵の 4 層」）。
 split_segments() {
   awk '
@@ -39,6 +40,8 @@ split_segments() {
         c = substr(line, i, 1); n = substr(line, i + 1, 1)
         if (q != "") { if (c == q) q = ""; out = out c; continue }
         if (c == "\"" || c == "\047") { q = c; out = out c; continue }
+        p = substr(line, i - 1, 1)
+        if ((c == "&" && (p == ">" || p == "<" || n == ">")) || (c == "|" && p == ">")) { out = out c; continue }
         if ((c == "&" && n == "&") || (c == "|" && n == "|")) { print out; out = ""; i++; continue }
         if (c == ";" || c == "|" || c == "&" || c == "(" || c == ")" || c == "`") { print out; out = ""; continue }
         if (c == "$" && n == "(") { print out; out = ""; i++; continue }
