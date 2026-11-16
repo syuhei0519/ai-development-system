@@ -33,7 +33,7 @@ Agent ツールで `platform-lab:implementer` に、承認済みの計画の全�
 
 ## 5. PR を作る
 
-implementer に PR を作らせる。タイトルは「$ARGUMENTS: 要約」、本文は「何を」「なぜ」「どう確かめたか」「学び」の 4 見出し。次を必ず入れる。
+implementer に作業ブランチを push させ（`git push -u origin <branch>`。permissions の ask で人が確認する）、`gh pr create` で PR を作らせる。この 2 つは GitHub の認証を使うため sandbox の外で動く（settings の excludedCommands）。外で動くのは単独で実行したときだけなので、`&&` や `;` で他のコマンドとつながない。タイトルは「$ARGUMENTS: 要約」、本文は「何を」「なぜ」「どう確かめたか」「学び」の 4 見出し。次を必ず入れる。
 
 - 計画の承認者と日時（2 で控えたもの）
 - reviewer の判定（受入条件ごと）と、確認コマンドの出力

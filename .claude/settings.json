@@ -22,6 +22,11 @@
     "failIfUnavailable": true,
     "autoAllowBashIfSandboxed": false,
     "allowUnsandboxedCommands": false,
+    "excludedCommands": [
+      "git push *",
+      "gh pr create *", "gh pr view *", "gh pr list *", "gh pr checks *",
+      "gh run view *", "gh run list *"
+    ],
     "filesystem": {
       "denyRead": [
         "~/.lab", "~/.ssh", "~/.kube", "~/.docker/config.json",
