@@ -52,8 +52,12 @@ split_segments() {
     }' <<<"$1"
 }
 
+# リダイレクトの単語（2>&1、>/dev/null、&>file、{fd}>f など）。コマンドや push の宛先ではない。
+REDIR_RE='^([0-9]*|\{[A-Za-z_][A-Za-z0-9_]*\})(&>>|&>|>>|>&|<&|>\||<<<|<<|<>|>|<)'
+
 # 単純コマンド 1 つを単語の配列 WORDS に分ける。引用符は取り除く。
 # 先頭の環境変数代入は ENV_ASSIGNS に、sudo / env / command / exec / time は飛ばす。
+# 先頭のリダイレクトも飛ばす。記号だけの単語（> など）は宛先と合わせて 2 語、>/dev/null の形は 1 語。
 parse_words() {
   local seg="$1" w
   WORDS=(); ENV_ASSIGNS=()
@@ -65,6 +69,8 @@ parse_words() {
     w="${WORDS[0]}"
     if [[ "$w" =~ ^[A-Za-z_][A-Za-z0-9_]*= ]]; then
       ENV_ASSIGNS+=("$w"); WORDS=("${WORDS[@]:1}")
+    elif [[ "$w" =~ $REDIR_RE ]]; then
+      if [[ "$w" == "${BASH_REMATCH[0]}" ]]; then WORDS=("${WORDS[@]:2}"); else WORDS=("${WORDS[@]:1}"); fi
     elif [[ "$w" == sudo || "$w" == command || "$w" == exec || "$w" == time || "$w" == nohup ]]; then
       WORDS=("${WORDS[@]:1}")
     elif [[ "$w" == env && ${#WORDS[@]} -gt 1 ]]; then

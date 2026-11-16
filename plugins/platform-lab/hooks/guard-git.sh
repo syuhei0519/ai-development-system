@@ -33,9 +33,6 @@ check_dest() {
     deny "ブランチ名「$dst」が規則 feat|fix|chore|docs/PLAT-番号-短い名前 に合いません。git switch -c で名前を付け直してから push してください。"
 }
 
-# リダイレクトの単語（2>&1、>/dev/null、&>file など）。push の宛先ではない。
-REDIR_RE='^[0-9]*(&>>|&>|>>|>&|<&|>\||<<<|<<|<>|>|<)'
-
 # 引用符か \ の直後に続く < > &。引用された記号は、リダイレクトと区別できない。
 QUOTED_REDIR_RE='["'\''\\][0-9]*[<>&]'
 
@@ -81,12 +78,35 @@ check_push() {
   done
 }
 
+# git -c / --config-env で差し込まれた設定のキー。値は見ない。キーは大文字小文字を区別しないので小文字にする。
+check_config_key() {
+  local key="${1%%=*}"
+  case "${key,,}" in
+    remote.*.push | push.default | remote.*.mirror | branch.*.merge | push.followtags | alias.* | include.path | includeif.*.path)
+      deny "git の設定 $key をコマンドで変える形は、push の宛先や実行内容を判定できないため止めています。設定を外し、宛先は git push origin ブランチ名 で明示してください。" ;;
+  esac
+}
+
 check_git() {
-  local seg="$1" i=1 sub
-  # git -C dir や -c k=v などのグローバルオプションを飛ばす。
+  local seg="$1" i=1 sub e
+  for e in "${ENV_ASSIGNS[@]}"; do
+    case "${e%%=*}" in
+      GIT_CONFIG_COUNT | GIT_CONFIG_KEY_* | GIT_CONFIG_VALUE_* | GIT_CONFIG_PARAMETERS)
+        deny "GIT_CONFIG_* 環境変数で git の設定を差し込む形は、push の判定ができないため止めています。環境変数を外して実行するか、人に確認してください。" ;;
+    esac
+  done
+  # git -C dir や -c k=v、リダイレクトなどのグローバルオプションを飛ばす。
   while ((i < ${#WORDS[@]})); do
+    if [[ "${WORDS[i]}" =~ $REDIR_RE ]]; then
+      if [[ "${WORDS[i]}" == "${BASH_REMATCH[0]}" ]]; then i=$((i + 2)); else i=$((i + 1)); fi
+      continue
+    fi
     case "${WORDS[i]}" in
-      -C | -c | --git-dir | --work-tree | --namespace) i=$((i + 2)) ;;
+      -c) check_config_key "${WORDS[i + 1]:-}"; i=$((i + 2)) ;;
+      -c?*) check_config_key "${WORDS[i]#-c}"; i=$((i + 1)) ;;
+      --config-env) check_config_key "${WORDS[i + 1]:-}"; i=$((i + 2)) ;;
+      --config-env=*) check_config_key "${WORDS[i]#--config-env=}"; i=$((i + 1)) ;;
+      -C | --git-dir | --work-tree | --namespace) i=$((i + 2)) ;;
       -*) i=$((i + 1)) ;;
       *) break ;;
     esac
