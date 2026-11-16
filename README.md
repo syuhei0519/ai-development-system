@@ -26,3 +26,26 @@ python -m unittest discover -s tests -v
 
 JSON の現行検証は契約ごとの最新版に統一しました。旧版と当時の結果は固定 Git 履歴で再現します。
 新規タスクに旧版の schema や多重の receipt を組み合わせる必要はありません。
+
+## platform-lab プラグインの導入
+
+WSL の Claude Code で、このリポジトリをマーケットプレイスとして追加し、プラグインを入れます。
+
+```sh
+claude plugin marketplace add syuhei0519/ai-development-system
+claude plugin install platform-lab@ai-development-system
+```
+
+入れた後は Claude Code を再起動してください。
+更新するときは、マーケットプレイスを更新してからプラグインを更新します。
+
+```sh
+claude plugin marketplace update ai-development-system
+claude plugin update platform-lab@ai-development-system
+```
+
+sandbox を使うには、WSL に bubblewrap と socat が要ります（Ubuntu の場合の例）。
+
+```sh
+sudo apt-get install -y bubblewrap socat
+```
