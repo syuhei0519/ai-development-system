@@ -1,8 +1,7 @@
 name: Validate handoff contracts
 on:
-  push:
-    branches-ignore: [main]
   pull_request:
+    types: [opened, synchronize, reopened, edited]
 permissions:
   contents: read
 jobs:
@@ -72,6 +71,13 @@ jobs:
         run: jq -e . .claude-plugin/marketplace.json plugins/platform-lab/.claude-plugin/plugin.json plugins/platform-lab/hooks/hooks.json templates/settings.json.tmpl .claude/settings.json >/dev/null
       - name: hook tests
         run: bash plugins/platform-lab/hooks/tests/run.sh
+      # templates と適用先がずれないこと（PLAT-257）
+      - name: templates match applied files
+        run: |
+          diff templates/claude-review.yml .github/workflows/claude-review.yml
+          diff templates/pr-conventions.yml .github/workflows/pr-conventions.yml
+          diff templates/PULL_REQUEST_TEMPLATE.md .github/PULL_REQUEST_TEMPLATE.md
+          diff templates/CODEOWNERS CODEOWNERS
       # プラグインを変えて version が同じだと、claude plugin update が古いキャッシュを使い続ける。
       - name: plugin version bumped
         if: github.event_name == 'pull_request'
@@ -86,3 +92,22 @@ jobs:
             echo "::error::plugins/platform-lab を変えたら plugin.json の version を上げてください（現在 $head）"
             exit 1
           fi
+  # PR のタイトル・本文・大きさの検査（PLAT-257）
+  pr-conventions:
+    permissions:
+      contents: read
+      pull-requests: write
+    uses: ./.github/workflows/pr-conventions.yml
+  # ruleset の必須チェックはこのジョブ名（merge 後に plugin-hooks から切り替える）。
+  # claude-review は含めない（トークン期限切れで merge を止めないため）。
+  ci-result:
+    if: always()
+    needs: [validate, plugin-hooks, pr-conventions]
+    runs-on: ubuntu-latest
+    steps:
+      - name: all required jobs succeeded or were skipped
+        env:
+          NEEDS: ${{ toJSON(needs) }}
+        run: |
+          printf '%s\n' "$NEEDS" | jq -r 'to_entries[] | "\(.key): \(.value.result)"'
+          printf '%s\n' "$NEEDS" | jq -e 'all(.[]; .result == "success" or .result == "skipped")' >/dev/null
