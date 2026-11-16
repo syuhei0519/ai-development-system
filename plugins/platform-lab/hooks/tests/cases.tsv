@@ -73,6 +73,8 @@ guard-git	Bash	sleep 1 & git push origin main	deny	-	feat/PLAT-1-x
 guard-git	Bash	git push origin '>x:main'	deny	-	feat/PLAT-1-x
 guard-git	Bash	git push '>r' main	deny	-	feat/PLAT-1-x
 guard-git	Bash	echo \>& git push origin main	deny	-	feat/PLAT-1-x
+guard-git	Bash	git push origin '&>x:main'	deny	-	feat/PLAT-1-x
+guard-git	Bash	git push '&>r' main	deny	-	feat/PLAT-1-x
 guard-kube-context	Bash	kubectl get ns 2>&1 | head -3	allow	kind-platform-lab	-
 guard-kube-context	Bash	echo ok &>/dev/null && kubectl delete ns apps	deny	kind-learning-20261018-69c763	-
 # post-edit-lint（PostToolUse）。deny は「終了コード 2 で指摘を返す」の意味
