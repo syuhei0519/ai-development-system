@@ -41,7 +41,7 @@ split_segments() {
         if (q != "") { if (c == q) q = ""; out = out c; continue }
         if (c == "\"" || c == "\047") { q = c; out = out c; continue }
         p = substr(line, i - 1, 1)
-        if ((c == "&" && (p == ">" || p == "<" || n == ">")) || (c == "|" && p == ">")) { out = out c; continue }
+        if (substr(line, i - 2, 1) != "\\" && ((c == "&" && (p == ">" || p == "<" || n == ">")) || (c == "|" && p == ">"))) { out = out c; continue }
         if ((c == "&" && n == "&") || (c == "|" && n == "|")) { print out; out = ""; i++; continue }
         if (c == ";" || c == "|" || c == "&" || c == "(" || c == ")" || c == "`") { print out; out = ""; continue }
         if (c == "$" && n == "(") { print out; out = ""; i++; continue }
