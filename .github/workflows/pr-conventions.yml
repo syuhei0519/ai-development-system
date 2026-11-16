@@ -1,5 +1,5 @@
 name: PR conventions
-# PR のタイトル・本文・大きさを検査する（PLAT-257）。呼び出し側のジョブで pull-requests: write を渡す。
+# PR のタイトル・本文・大きさを検査する（PLAT-257）。警告コメント用に pull-requests: write を宣言する（呼び出し側のジョブでも同じ権限を渡す）。
 # タイトル・本文・ブランチ・作者は env 経由でだけ扱う（run に ${{ }} を直書きしない）。
 on:
   workflow_call:
@@ -9,6 +9,9 @@ permissions:
 
 jobs:
   pr-conventions:
+    permissions:
+      contents: read
+      pull-requests: write
     runs-on: ubuntu-latest
     env:
       PR_TITLE: ${{ github.event.pull_request.title }}
@@ -39,20 +42,28 @@ jobs:
             fi
           done
           exit "$missing"
+      # タイトル・見出しの検査が失敗しても大きさの検査は走らせる。取得失敗は警告のみでジョブは成功にする。
       - name: size warning (additions > 400, lock files excluded)
+        if: always()
         run: |
           limit=400
           marker='<!-- pr-conventions:size -->'
-          total="$(gh api --paginate "repos/${REPO}/pulls/${PR_NUMBER}/files" \
-            --jq '.[] | select(.filename | test("(^|/)(package-lock\\.json|npm-shrinkwrap\\.json|pnpm-lock\\.yaml|go\\.sum)$|\\.lock$") | not) | .additions' \
-            | awk '{s+=$1} END {print s+0}')"
+          if ! files="$(gh api --paginate "repos/${REPO}/pulls/${PR_NUMBER}/files" \
+            --jq '.[] | select(.filename | test("(^|/)(package-lock\\.json|npm-shrinkwrap\\.json|pnpm-lock\\.yaml|go\\.sum)$|\\.lock$") | not) | .additions')"; then
+            echo "::warning::変更ファイル一覧を取得できないため、大きさを検査できませんでした"
+            exit 0
+          fi
+          total="$(printf '%s\n' "$files" | awk '{s+=$1} END {print s+0}')"
           echo "additions (lock files excluded): ${total}"
           [ "$total" -gt "$limit" ] || exit 0
           echo "::warning::追加行が ${total} 行です（目安 ${limit} 行）。PR を分けられないか確認してください"
           body="${marker}
           追加行が ${total} 行です（lock ファイルを除く。目安 ${limit} 行）。PR を分けられないか確認してください。"
-          id="$(gh api --paginate "repos/${REPO}/issues/${PR_NUMBER}/comments" \
-            --jq ".[] | select(.body | contains(\"${marker}\")) | .id" | head -n1)"
+          if ! id="$(gh api --paginate "repos/${REPO}/issues/${PR_NUMBER}/comments" \
+            --jq ".[] | select(.user.login == \"github-actions[bot]\" and (.body | contains(\"${marker}\"))) | .id" | head -n1)"; then
+            echo "::warning::コメント一覧を取得できないため、警告コメントを付けられませんでした"
+            exit 0
+          fi
           if [ -n "$id" ]; then
             gh api -X PATCH "repos/${REPO}/issues/comments/${id}" -f body="$body" >/dev/null \
               || echo "::warning::警告コメントを更新できませんでした（権限不足の可能性）"
