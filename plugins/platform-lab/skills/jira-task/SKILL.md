@@ -28,7 +28,7 @@ Agent ツールで `platform-lab:implementer` に、承認済みの計画の全�
 
 ## 4. レビューする
 
-1. 親が `git status --short`（`-uno` を付けない）を実行し、出力が空であることを確かめる。未追跡のファイルも対象で、コミットし忘れを見逃さないため。次の出力を自分で取り、加工せずに Agent ツールで `platform-lab:reviewer` へ、受入条件、承認済みの計画とあわせて渡す。reviewer は Bash を持たないため、これが判定の根拠になる
+1. 親が `git status --short`（`-uno` を付けない）を実行し、コミットしていない変更と未追跡のファイルがないことを確かめる。sandbox が置く /dev/null のダミー（`ls -l` で先頭が `c` のもの）は除く。次の出力を自分で取り、加工せずに Agent ツールで `platform-lab:reviewer` へ、受入条件、承認済みの計画とあわせて渡す。reviewer は Bash を持たないため、これが判定の根拠になる
    - `git diff --numstat origin/main...HEAD`
    - `git diff origin/main...HEAD`
    - 計画の確認コマンドすべての出力
