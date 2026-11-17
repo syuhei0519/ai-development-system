@@ -28,13 +28,14 @@ Agent ツールで `platform-lab:implementer` に、承認済みの計画の全�
 
 ## 4. レビューする
 
-1. 親が `git status` で、コミットしていない変更がないことを確かめる。次の出力を自分で取り、加工せずに Agent ツールで `platform-lab:reviewer` へ、受入条件、承認済みの計画とあわせて渡す。reviewer は Bash を持たないため、これが判定の根拠になる
+1. 親が `git status --short`（`-uno` を付けない）を実行し、出力が空であることを確かめる。未追跡のファイルも対象で、コミットし忘れを見逃さないため。次の出力を自分で取り、加工せずに Agent ツールで `platform-lab:reviewer` へ、受入条件、承認済みの計画とあわせて渡す。reviewer は Bash を持たないため、これが判定の根拠になる
    - `git diff --numstat origin/main...HEAD`
    - `git diff origin/main...HEAD`
    - 計画の確認コマンドすべての出力
    - plugins/platform-lab を変えたときは、`bash plugins/platform-lab/hooks/tests/run.sh` と `shellcheck -x plugins/platform-lab/hooks/*.sh` の出力
    - 実行できなかったコマンドは、理由を添えて「未実行」として渡す
-   - origin/main が古いときの `git fetch` は、ask で人が確認する
+   - 縮めてよいのは run.sh の出力だけで、最終行と終了コードでよい。不合格があれば全行を渡す。ほかの出力は縮めない
+   - origin/main を最新にする `git fetch` は permissions の allow にないため、実行時に人が確認する
 2. 「満たさない」があれば、指摘を implementer に渡して直させ、もう一度レビューする。2 回直しても残るなら、人に判断を求めて止まる。「未確認」の理由が出力の不足なら、親がそのコマンドを実行して出力を渡し、もう一度レビューする。これは直し回数に数えない
 
 ## 5. PR を作る
