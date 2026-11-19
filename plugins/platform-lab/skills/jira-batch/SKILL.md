@@ -53,7 +53,7 @@ disable-model-invocation: true
 - `git diff --numstat origin/main...<ブランチ>`
 - `git diff origin/main...<ブランチ>`
 - 計画の確認コマンドすべての出力
-- plugins/platform-lab を変えたときは、`bash <worktree のパス>/plugins/platform-lab/hooks/tests/run.sh` と、worktree の hooks に対する `shellcheck -x` の出力。パスを付けたこれらのコマンドは allow と完全には一致しないため、人の確認が出る
+- plugins/platform-lab を変えたときは、`bash <worktree のパス>/plugins/platform-lab/hooks/tests/run.sh` と、worktree の hooks に対する `shellcheck -x` の出力。パスを付けた run.sh は allow と完全には一致しないため、人の確認が出る。shellcheck は allow が前方一致（`Bash(shellcheck:*)`）なので、パスを付けても確認は出ない
 - 実行できなかったコマンドは、理由を添えて「未実行」として渡す
 
 集めた出力を加工せずに、Agent ツールで `platform-lab:reviewer` へ、受入条件、承認済みの計画とあわせて渡す。reviewer は Bash を持たないため、これが判定の根拠になる。チケットごとに並列で起動してよい。縮めてよいのは run.sh の出力だけで、最終行と終了コードでよい。不合格があれば全行を渡す。ほかの出力は縮めない。
@@ -85,7 +85,7 @@ PR は 1 件ずつ順に作る。親の作業ツリーから、ブランチ名�
 
 直列で待っているチケットがあれば、3 に進む。
 
-変更がない worktree は自動で消える（worktrees の文書）。変更がある worktree は locked のまま残る。sandbox では、このセッション自身の worktree 以外の `.git/worktrees` が読み取り専用で、worktree の削除は失敗する。実行せず、次のコマンドを人に伝えて依頼する。
+変更がない worktree は自動で消える（worktrees の文書）。変更がある worktree は locked のまま残る。sandbox では、そのセッション自身の worktree 以外の `.git/worktrees` が読み取り専用になり、削除が途中で失敗する（セッションに示される sandbox の説明による。公式文書には記載がなく未確認）。実行せず、次のコマンドを人に伝えて依頼する。
 
 - `git worktree remove --force --force <パス>`（locked のものも外せる）
 - `git branch -D <ブランチ> worktree-agent-<id>`
