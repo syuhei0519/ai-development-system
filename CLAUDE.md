@@ -12,7 +12,7 @@ Platform Lab の開発を Claude Code で安全に進めるためのプラグイ
 plugins/platform-lab/             プラグイン本体
   .claude-plugin/plugin.json
   agents/                         planner、implementer、reviewer、platform-operator、tutor
-  skills/                         jira-task、gitops-change、cluster-diagnose
+  skills/                         jira-task、jira-batch、gitops-change、cluster-diagnose
   hooks/                          hooks.json、guard-*.sh、post-edit-lint.sh、tests/（cases.tsv、run.sh、fixtures/）
 templates/                        各 repo へ配るひな形（P3-01 以降で追加）
 ```
